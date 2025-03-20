@@ -13,9 +13,30 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetApiTokenPermissionsGroupsListResultResult
     {
+        /// <summary>
+        /// Public ID.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
+        /// Permission Group Name
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// Resources to which the Permission Group is scoped
+        /// </summary>
+        public readonly ImmutableArray<string> Scopes;
+
         [OutputConstructor]
-        private GetApiTokenPermissionsGroupsListResultResult()
+        private GetApiTokenPermissionsGroupsListResultResult(
+            string id,
+
+            string name,
+
+            ImmutableArray<string> scopes)
         {
+            Id = id;
+            Name = name;
+            Scopes = scopes;
         }
     }
 }

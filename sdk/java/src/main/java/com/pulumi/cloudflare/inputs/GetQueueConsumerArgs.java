@@ -29,26 +29,10 @@ public final class GetQueueConsumerArgs extends com.pulumi.resources.InvokeArgs 
         return this.accountId;
     }
 
-    /**
-     * A Resource identifier.
-     * 
-     */
-    @Import(name="queueId", required=true)
-    private Output<String> queueId;
-
-    /**
-     * @return A Resource identifier.
-     * 
-     */
-    public Output<String> queueId() {
-        return this.queueId;
-    }
-
     private GetQueueConsumerArgs() {}
 
     private GetQueueConsumerArgs(GetQueueConsumerArgs $) {
         this.accountId = $.accountId;
-        this.queueId = $.queueId;
     }
 
     public static Builder builder() {
@@ -90,33 +74,9 @@ public final class GetQueueConsumerArgs extends com.pulumi.resources.InvokeArgs 
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param queueId A Resource identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queueId(Output<String> queueId) {
-            $.queueId = queueId;
-            return this;
-        }
-
-        /**
-         * @param queueId A Resource identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queueId(String queueId) {
-            return queueId(Output.of(queueId));
-        }
-
         public GetQueueConsumerArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetQueueConsumerArgs", "accountId");
-            }
-            if ($.queueId == null) {
-                throw new MissingRequiredPropertyException("GetQueueConsumerArgs", "queueId");
             }
             return $;
         }

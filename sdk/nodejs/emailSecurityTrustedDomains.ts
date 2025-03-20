@@ -16,10 +16,10 @@ import * as utilities from "./utilities";
  * const exampleEmailSecurityTrustedDomains = new cloudflare.EmailSecurityTrustedDomains("example_email_security_trusted_domains", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     isRecent: true,
- *     isRegex: false,
- *     isSimilarity: false,
- *     pattern: "example.com",
- *     comments: undefined,
+ *     isRegex: true,
+ *     isSimilarity: true,
+ *     pattern: "x",
+ *     comments: "comments",
  * });
  * ```
  *

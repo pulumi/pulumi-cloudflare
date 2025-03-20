@@ -44,6 +44,9 @@ export class ZeroTrustDeviceManagedNetworks extends pulumi.CustomResource {
     }
 
     public readonly accountId!: pulumi.Output<string>;
+    /**
+     * The configuration object containing information for the WARP client to detect the managed network.
+     */
     public readonly config!: pulumi.Output<outputs.ZeroTrustDeviceManagedNetworksConfig>;
     /**
      * The name of the device managed network. This name must be unique.
@@ -106,6 +109,9 @@ export class ZeroTrustDeviceManagedNetworks extends pulumi.CustomResource {
  */
 export interface ZeroTrustDeviceManagedNetworksState {
     accountId?: pulumi.Input<string>;
+    /**
+     * The configuration object containing information for the WARP client to detect the managed network.
+     */
     config?: pulumi.Input<inputs.ZeroTrustDeviceManagedNetworksConfig>;
     /**
      * The name of the device managed network. This name must be unique.
@@ -126,6 +132,9 @@ export interface ZeroTrustDeviceManagedNetworksState {
  */
 export interface ZeroTrustDeviceManagedNetworksArgs {
     accountId: pulumi.Input<string>;
+    /**
+     * The configuration object containing information for the WARP client to detect the managed network.
+     */
     config: pulumi.Input<inputs.ZeroTrustDeviceManagedNetworksConfig>;
     /**
      * The name of the device managed network. This name must be unique.

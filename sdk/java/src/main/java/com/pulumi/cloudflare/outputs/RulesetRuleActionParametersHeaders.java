@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,7 +17,7 @@ public final class RulesetRuleActionParametersHeaders {
      * 
      */
     private @Nullable String expression;
-    private @Nullable String operation;
+    private String operation;
     /**
      * @return Static value for the header.
      * 
@@ -31,8 +32,8 @@ public final class RulesetRuleActionParametersHeaders {
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
-    public Optional<String> operation() {
-        return Optional.ofNullable(this.operation);
+    public String operation() {
+        return this.operation;
     }
     /**
      * @return Static value for the header.
@@ -52,7 +53,7 @@ public final class RulesetRuleActionParametersHeaders {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String expression;
-        private @Nullable String operation;
+        private String operation;
         private @Nullable String value;
         public Builder() {}
         public Builder(RulesetRuleActionParametersHeaders defaults) {
@@ -69,8 +70,10 @@ public final class RulesetRuleActionParametersHeaders {
             return this;
         }
         @CustomType.Setter
-        public Builder operation(@Nullable String operation) {
-
+        public Builder operation(String operation) {
+            if (operation == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleActionParametersHeaders", "operation");
+            }
             this.operation = operation;
             return this;
         }

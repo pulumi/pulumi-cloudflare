@@ -10,8 +10,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
@@ -41,21 +39,6 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique identifier of the firewall rule.
-     * 
-     */
-    @Import(name="ruleId")
-    private @Nullable Output<String> ruleId;
-
-    /**
-     * @return The unique identifier of the firewall rule.
-     * 
-     */
-    public Optional<Output<String>> ruleId() {
-        return Optional.ofNullable(this.ruleId);
-    }
-
-    /**
      * Identifier
      * 
      */
@@ -75,7 +58,6 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
     private FirewallRuleArgs(FirewallRuleArgs $) {
         this.action = $.action;
         this.filter = $.filter;
-        this.ruleId = $.ruleId;
         this.zoneId = $.zoneId;
     }
 
@@ -125,27 +107,6 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder filter(FirewallRuleFilterArgs filter) {
             return filter(Output.of(filter));
-        }
-
-        /**
-         * @param ruleId The unique identifier of the firewall rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ruleId(@Nullable Output<String> ruleId) {
-            $.ruleId = ruleId;
-            return this;
-        }
-
-        /**
-         * @param ruleId The unique identifier of the firewall rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ruleId(String ruleId) {
-            return ruleId(Output.of(ruleId));
         }
 
         /**

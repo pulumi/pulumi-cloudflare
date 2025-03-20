@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetFilterResult',
@@ -26,13 +28,16 @@ class GetFilterResult:
     """
     A collection of values returned by getFilter.
     """
-    def __init__(__self__, description=None, expression=None, filter_id=None, id=None, paused=None, ref=None, zone_id=None):
+    def __init__(__self__, description=None, expression=None, filter=None, filter_id=None, id=None, paused=None, ref=None, zone_id=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
         if expression and not isinstance(expression, str):
             raise TypeError("Expected argument 'expression' to be a str")
         pulumi.set(__self__, "expression", expression)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if filter_id and not isinstance(filter_id, str):
             raise TypeError("Expected argument 'filter_id' to be a str")
         pulumi.set(__self__, "filter_id", filter_id)
@@ -66,8 +71,13 @@ class GetFilterResult:
         return pulumi.get(self, "expression")
 
     @property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.GetFilterFilterResult']:
+        return pulumi.get(self, "filter")
+
+    @property
     @pulumi.getter(name="filterId")
-    def filter_id(self) -> str:
+    def filter_id(self) -> Optional[str]:
         """
         The unique identifier of the filter.
         """
@@ -114,6 +124,7 @@ class AwaitableGetFilterResult(GetFilterResult):
         return GetFilterResult(
             description=self.description,
             expression=self.expression,
+            filter=self.filter,
             filter_id=self.filter_id,
             id=self.id,
             paused=self.paused,
@@ -121,7 +132,8 @@ class AwaitableGetFilterResult(GetFilterResult):
             zone_id=self.zone_id)
 
 
-def get_filter(filter_id: Optional[str] = None,
+def get_filter(filter: Optional[Union['GetFilterFilterArgs', 'GetFilterFilterArgsDict']] = None,
+               filter_id: Optional[str] = None,
                zone_id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFilterResult:
     """
@@ -140,6 +152,7 @@ def get_filter(filter_id: Optional[str] = None,
     :param str zone_id: Identifier
     """
     __args__ = dict()
+    __args__['filter'] = filter
     __args__['filterId'] = filter_id
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -148,12 +161,14 @@ def get_filter(filter_id: Optional[str] = None,
     return AwaitableGetFilterResult(
         description=pulumi.get(__ret__, 'description'),
         expression=pulumi.get(__ret__, 'expression'),
+        filter=pulumi.get(__ret__, 'filter'),
         filter_id=pulumi.get(__ret__, 'filter_id'),
         id=pulumi.get(__ret__, 'id'),
         paused=pulumi.get(__ret__, 'paused'),
         ref=pulumi.get(__ret__, 'ref'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_filter_output(filter_id: Optional[pulumi.Input[str]] = None,
+def get_filter_output(filter: Optional[pulumi.Input[Optional[Union['GetFilterFilterArgs', 'GetFilterFilterArgsDict']]]] = None,
+                      filter_id: Optional[pulumi.Input[Optional[str]]] = None,
                       zone_id: Optional[pulumi.Input[str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFilterResult]:
     """
@@ -172,6 +187,7 @@ def get_filter_output(filter_id: Optional[pulumi.Input[str]] = None,
     :param str zone_id: Identifier
     """
     __args__ = dict()
+    __args__['filter'] = filter
     __args__['filterId'] = filter_id
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -179,6 +195,7 @@ def get_filter_output(filter_id: Optional[pulumi.Input[str]] = None,
     return __ret__.apply(lambda __response__: GetFilterResult(
         description=pulumi.get(__response__, 'description'),
         expression=pulumi.get(__response__, 'expression'),
+        filter=pulumi.get(__response__, 'filter'),
         filter_id=pulumi.get(__response__, 'filter_id'),
         id=pulumi.get(__response__, 'id'),
         paused=pulumi.get(__response__, 'paused'),

@@ -31,9 +31,17 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         return this.accountId;
     }
 
+    /**
+     * D1 database name.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return D1 database name.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -100,11 +108,23 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param name D1 database name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name D1 database name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

@@ -18,16 +18,16 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("nameByIdp")]
-        private InputMap<string>? _nameByIdp;
+        [Input("nameByIdps")]
+        private InputList<Inputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpGetArgs>? _nameByIdps;
 
         /// <summary>
         /// A mapping from IdP ID to attribute name.
         /// </summary>
-        public InputMap<string> NameByIdp
+        public InputList<Inputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpGetArgs> NameByIdps
         {
-            get => _nameByIdp ?? (_nameByIdp = new InputMap<string>());
-            set => _nameByIdp = value;
+            get => _nameByIdps ?? (_nameByIdps = new InputList<Inputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpGetArgs>());
+            set => _nameByIdps = value;
         }
 
         public ZeroTrustAccessApplicationSaasAppCustomAttributeSourceGetArgs()

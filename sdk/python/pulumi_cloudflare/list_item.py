@@ -24,6 +24,7 @@ class ListItemArgs:
                  list_id: pulumi.Input[str],
                  account_id: Optional[pulumi.Input[str]] = None,
                  asn: Optional[pulumi.Input[int]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input['ListItemHostnameArgs']] = None,
                  ip: Optional[pulumi.Input[str]] = None,
                  redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None):
@@ -32,6 +33,7 @@ class ListItemArgs:
         :param pulumi.Input[str] list_id: The unique ID of the list.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[int] asn: A non-negative 32 bit integer
+        :param pulumi.Input[str] comment: An informative summary of the list item.
         :param pulumi.Input['ListItemHostnameArgs'] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         :param pulumi.Input[str] ip: An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
         :param pulumi.Input['ListItemRedirectArgs'] redirect: The definition of the redirect.
@@ -41,6 +43,8 @@ class ListItemArgs:
             pulumi.set(__self__, "account_id", account_id)
         if asn is not None:
             pulumi.set(__self__, "asn", asn)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
         if ip is not None:
@@ -83,6 +87,18 @@ class ListItemArgs:
     @asn.setter
     def asn(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "asn", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        An informative summary of the list item.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
 
     @property
     @pulumi.getter
@@ -130,7 +146,6 @@ class _ListItemState:
                  created_on: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input['ListItemHostnameArgs']] = None,
                  ip: Optional[pulumi.Input[str]] = None,
-                 item_id: Optional[pulumi.Input[str]] = None,
                  list_id: Optional[pulumi.Input[str]] = None,
                  modified_on: Optional[pulumi.Input[str]] = None,
                  operation_id: Optional[pulumi.Input[str]] = None,
@@ -143,7 +158,6 @@ class _ListItemState:
         :param pulumi.Input[str] created_on: The RFC 3339 timestamp of when the item was created.
         :param pulumi.Input['ListItemHostnameArgs'] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         :param pulumi.Input[str] ip: An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
-        :param pulumi.Input[str] item_id: The unique ID of the item in the List.
         :param pulumi.Input[str] list_id: The unique ID of the list.
         :param pulumi.Input[str] modified_on: The RFC 3339 timestamp of when the item was last modified.
         :param pulumi.Input[str] operation_id: The unique operation ID of the asynchronous action.
@@ -161,8 +175,6 @@ class _ListItemState:
             pulumi.set(__self__, "hostname", hostname)
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
-        if item_id is not None:
-            pulumi.set(__self__, "item_id", item_id)
         if list_id is not None:
             pulumi.set(__self__, "list_id", list_id)
         if modified_on is not None:
@@ -245,18 +257,6 @@ class _ListItemState:
         pulumi.set(self, "ip", value)
 
     @property
-    @pulumi.getter(name="itemId")
-    def item_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The unique ID of the item in the List.
-        """
-        return pulumi.get(self, "item_id")
-
-    @item_id.setter
-    def item_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "item_id", value)
-
-    @property
     @pulumi.getter(name="listId")
     def list_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -312,6 +312,7 @@ class ListItem(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  asn: Optional[pulumi.Input[int]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']]] = None,
                  ip: Optional[pulumi.Input[str]] = None,
                  list_id: Optional[pulumi.Input[str]] = None,
@@ -324,6 +325,7 @@ class ListItem(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[int] asn: A non-negative 32 bit integer
+        :param pulumi.Input[str] comment: An informative summary of the list item.
         :param pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         :param pulumi.Input[str] ip: An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
         :param pulumi.Input[str] list_id: The unique ID of the list.
@@ -355,6 +357,7 @@ class ListItem(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  asn: Optional[pulumi.Input[int]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']]] = None,
                  ip: Optional[pulumi.Input[str]] = None,
                  list_id: Optional[pulumi.Input[str]] = None,
@@ -370,15 +373,14 @@ class ListItem(pulumi.CustomResource):
 
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["asn"] = asn
+            __props__.__dict__["comment"] = comment
             __props__.__dict__["hostname"] = hostname
             __props__.__dict__["ip"] = ip
             if list_id is None and not opts.urn:
                 raise TypeError("Missing required property 'list_id'")
             __props__.__dict__["list_id"] = list_id
             __props__.__dict__["redirect"] = redirect
-            __props__.__dict__["comment"] = None
             __props__.__dict__["created_on"] = None
-            __props__.__dict__["item_id"] = None
             __props__.__dict__["modified_on"] = None
             __props__.__dict__["operation_id"] = None
         super(ListItem, __self__).__init__(
@@ -397,7 +399,6 @@ class ListItem(pulumi.CustomResource):
             created_on: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']]] = None,
             ip: Optional[pulumi.Input[str]] = None,
-            item_id: Optional[pulumi.Input[str]] = None,
             list_id: Optional[pulumi.Input[str]] = None,
             modified_on: Optional[pulumi.Input[str]] = None,
             operation_id: Optional[pulumi.Input[str]] = None,
@@ -415,7 +416,6 @@ class ListItem(pulumi.CustomResource):
         :param pulumi.Input[str] created_on: The RFC 3339 timestamp of when the item was created.
         :param pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         :param pulumi.Input[str] ip: An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
-        :param pulumi.Input[str] item_id: The unique ID of the item in the List.
         :param pulumi.Input[str] list_id: The unique ID of the list.
         :param pulumi.Input[str] modified_on: The RFC 3339 timestamp of when the item was last modified.
         :param pulumi.Input[str] operation_id: The unique operation ID of the asynchronous action.
@@ -431,7 +431,6 @@ class ListItem(pulumi.CustomResource):
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["ip"] = ip
-        __props__.__dict__["item_id"] = item_id
         __props__.__dict__["list_id"] = list_id
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["operation_id"] = operation_id
@@ -456,7 +455,7 @@ class ListItem(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def comment(self) -> pulumi.Output[str]:
+    def comment(self) -> pulumi.Output[Optional[str]]:
         """
         An informative summary of the list item.
         """
@@ -485,14 +484,6 @@ class ListItem(pulumi.CustomResource):
         An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
         """
         return pulumi.get(self, "ip")
-
-    @property
-    @pulumi.getter(name="itemId")
-    def item_id(self) -> pulumi.Output[str]:
-        """
-        The unique ID of the item in the List.
-        """
-        return pulumi.get(self, "item_id")
 
     @property
     @pulumi.getter(name="listId")

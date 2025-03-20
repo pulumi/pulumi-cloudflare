@@ -30,6 +30,13 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
         return this.accountId;
     }
 
+    @Import(name="aiContextEnabled")
+    private @Nullable Output<Boolean> aiContextEnabled;
+
+    public Optional<Output<Boolean>> aiContextEnabled() {
+        return Optional.ofNullable(this.aiContextEnabled);
+    }
+
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
      * 
@@ -129,6 +136,7 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
 
     private ZeroTrustDlpCustomProfileArgs(ZeroTrustDlpCustomProfileArgs $) {
         this.accountId = $.accountId;
+        this.aiContextEnabled = $.aiContextEnabled;
         this.allowedMatchCount = $.allowedMatchCount;
         this.confidenceThreshold = $.confidenceThreshold;
         this.contextAwareness = $.contextAwareness;
@@ -165,6 +173,15 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
 
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        public Builder aiContextEnabled(@Nullable Output<Boolean> aiContextEnabled) {
+            $.aiContextEnabled = aiContextEnabled;
+            return this;
+        }
+
+        public Builder aiContextEnabled(Boolean aiContextEnabled) {
+            return aiContextEnabled(Output.of(aiContextEnabled));
         }
 
         /**

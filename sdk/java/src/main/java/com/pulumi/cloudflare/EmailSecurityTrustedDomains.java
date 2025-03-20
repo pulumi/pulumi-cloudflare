@@ -46,10 +46,10 @@ import javax.annotation.Nullable;
  *         var exampleEmailSecurityTrustedDomains = new EmailSecurityTrustedDomains("exampleEmailSecurityTrustedDomains", EmailSecurityTrustedDomainsArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .isRecent(true)
- *             .isRegex(false)
- *             .isSimilarity(false)
- *             .pattern("example.com")
- *             .comments(null)
+ *             .isRegex(true)
+ *             .isSimilarity(true)
+ *             .pattern("x")
+ *             .comments("comments")
  *             .build());
  * 
  *     }

@@ -48,7 +48,7 @@ export class ListItem extends pulumi.CustomResource {
     /**
      * An informative summary of the list item.
      */
-    public /*out*/ readonly comment!: pulumi.Output<string>;
+    public readonly comment!: pulumi.Output<string | undefined>;
     /**
      * The RFC 3339 timestamp of when the item was created.
      */
@@ -61,10 +61,6 @@ export class ListItem extends pulumi.CustomResource {
      * An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
      */
     public readonly ip!: pulumi.Output<string | undefined>;
-    /**
-     * The unique ID of the item in the List.
-     */
-    public /*out*/ readonly itemId!: pulumi.Output<string>;
     /**
      * The unique ID of the list.
      */
@@ -101,7 +97,6 @@ export class ListItem extends pulumi.CustomResource {
             resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["ip"] = state ? state.ip : undefined;
-            resourceInputs["itemId"] = state ? state.itemId : undefined;
             resourceInputs["listId"] = state ? state.listId : undefined;
             resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["operationId"] = state ? state.operationId : undefined;
@@ -113,13 +108,12 @@ export class ListItem extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["asn"] = args ? args.asn : undefined;
+            resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
             resourceInputs["ip"] = args ? args.ip : undefined;
             resourceInputs["listId"] = args ? args.listId : undefined;
             resourceInputs["redirect"] = args ? args.redirect : undefined;
-            resourceInputs["comment"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
-            resourceInputs["itemId"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["operationId"] = undefined /*out*/;
         }
@@ -157,10 +151,6 @@ export interface ListItemState {
      */
     ip?: pulumi.Input<string>;
     /**
-     * The unique ID of the item in the List.
-     */
-    itemId?: pulumi.Input<string>;
-    /**
      * The unique ID of the list.
      */
     listId?: pulumi.Input<string>;
@@ -190,6 +180,10 @@ export interface ListItemArgs {
      * A non-negative 32 bit integer
      */
     asn?: pulumi.Input<number>;
+    /**
+     * An informative summary of the list item.
+     */
+    comment?: pulumi.Input<string>;
     /**
      * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      */

@@ -21,6 +21,7 @@ import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireGroup;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireGsuite;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireIp;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireIpList;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireLoginMethod;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireOkta;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireSaml;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireServiceToken;
@@ -57,6 +58,7 @@ public final class ZeroTrustAccessGroupRequire {
     private @Nullable ZeroTrustAccessGroupRequireGsuite gsuite;
     private @Nullable ZeroTrustAccessGroupRequireIp ip;
     private @Nullable ZeroTrustAccessGroupRequireIpList ipList;
+    private @Nullable ZeroTrustAccessGroupRequireLoginMethod loginMethod;
     private @Nullable ZeroTrustAccessGroupRequireOkta okta;
     private @Nullable ZeroTrustAccessGroupRequireSaml saml;
     private @Nullable ZeroTrustAccessGroupRequireServiceToken serviceToken;
@@ -124,6 +126,9 @@ public final class ZeroTrustAccessGroupRequire {
     public Optional<ZeroTrustAccessGroupRequireIpList> ipList() {
         return Optional.ofNullable(this.ipList);
     }
+    public Optional<ZeroTrustAccessGroupRequireLoginMethod> loginMethod() {
+        return Optional.ofNullable(this.loginMethod);
+    }
     public Optional<ZeroTrustAccessGroupRequireOkta> okta() {
         return Optional.ofNullable(this.okta);
     }
@@ -161,6 +166,7 @@ public final class ZeroTrustAccessGroupRequire {
         private @Nullable ZeroTrustAccessGroupRequireGsuite gsuite;
         private @Nullable ZeroTrustAccessGroupRequireIp ip;
         private @Nullable ZeroTrustAccessGroupRequireIpList ipList;
+        private @Nullable ZeroTrustAccessGroupRequireLoginMethod loginMethod;
         private @Nullable ZeroTrustAccessGroupRequireOkta okta;
         private @Nullable ZeroTrustAccessGroupRequireSaml saml;
         private @Nullable ZeroTrustAccessGroupRequireServiceToken serviceToken;
@@ -185,6 +191,7 @@ public final class ZeroTrustAccessGroupRequire {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
+    	      this.loginMethod = defaults.loginMethod;
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -299,6 +306,12 @@ public final class ZeroTrustAccessGroupRequire {
             return this;
         }
         @CustomType.Setter
+        public Builder loginMethod(@Nullable ZeroTrustAccessGroupRequireLoginMethod loginMethod) {
+
+            this.loginMethod = loginMethod;
+            return this;
+        }
+        @CustomType.Setter
         public Builder okta(@Nullable ZeroTrustAccessGroupRequireOkta okta) {
 
             this.okta = okta;
@@ -336,6 +349,7 @@ public final class ZeroTrustAccessGroupRequire {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
+            _resultValue.loginMethod = loginMethod;
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

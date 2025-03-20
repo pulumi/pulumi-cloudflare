@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// &gt; `cloudflare.Filter` is in a deprecation phase until January 15th, 2025.
+    /// &gt; `cloudflare.Filter` is in a deprecation phase until June 15th, 2025.
     ///   During this time period, this resource is still fully
     ///   supported but you are strongly advised to move to the
     ///   `cloudflare.Ruleset` resource. Full details can be found in the
@@ -34,6 +34,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/filter:Filter example '&lt;zone_id&gt;/&lt;filter_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/filter:Filter")]
     public partial class Filter : global::Pulumi.CustomResource
@@ -49,12 +55,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("expression")]
         public Output<string> Expression { get; private set; } = null!;
-
-        /// <summary>
-        /// The unique identifier of the filter.
-        /// </summary>
-        [Output("filterId")]
-        public Output<string?> FilterId { get; private set; } = null!;
 
         /// <summary>
         /// When true, indicates that the filter is currently paused.
@@ -127,12 +127,6 @@ namespace Pulumi.Cloudflare
         public Input<string> Expression { get; set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the filter.
-        /// </summary>
-        [Input("filterId")]
-        public Input<string>? FilterId { get; set; }
-
-        /// <summary>
         /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
@@ -157,12 +151,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("expression")]
         public Input<string>? Expression { get; set; }
-
-        /// <summary>
-        /// The unique identifier of the filter.
-        /// </summary>
-        [Input("filterId")]
-        public Input<string>? FilterId { get; set; }
 
         /// <summary>
         /// When true, indicates that the filter is currently paused.

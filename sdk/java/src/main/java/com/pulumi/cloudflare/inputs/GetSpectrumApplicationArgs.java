@@ -15,14 +15,14 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
     public static final GetSpectrumApplicationArgs Empty = new GetSpectrumApplicationArgs();
 
     /**
-     * Identifier
+     * App identifier.
      * 
      */
     @Import(name="appId", required=true)
     private Output<String> appId;
 
     /**
-     * @return Identifier
+     * @return App identifier.
      * 
      */
     public Output<String> appId() {
@@ -30,14 +30,14 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * Identifier
+     * Zone identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Zone identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -70,7 +70,7 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param appId Identifier
+         * @param appId App identifier.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param appId Identifier
+         * @param appId App identifier.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Zone identifier.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Zone identifier.
          * 
          * @return builder
          * 

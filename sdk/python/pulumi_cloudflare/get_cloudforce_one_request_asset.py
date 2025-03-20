@@ -26,16 +26,28 @@ class GetCloudforceOneRequestAssetResult:
     """
     A collection of values returned by getCloudforceOneRequestAsset.
     """
-    def __init__(__self__, account_identifier=None, asset_identifer=None, id=None, request_identifier=None):
+    def __init__(__self__, account_identifier=None, asset_identifer=None, created=None, description=None, file_type=None, id=None, name=None, request_identifier=None):
         if account_identifier and not isinstance(account_identifier, str):
             raise TypeError("Expected argument 'account_identifier' to be a str")
         pulumi.set(__self__, "account_identifier", account_identifier)
         if asset_identifer and not isinstance(asset_identifer, str):
             raise TypeError("Expected argument 'asset_identifer' to be a str")
         pulumi.set(__self__, "asset_identifer", asset_identifer)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
+        if created and not isinstance(created, str):
+            raise TypeError("Expected argument 'created' to be a str")
+        pulumi.set(__self__, "created", created)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if file_type and not isinstance(file_type, str):
+            raise TypeError("Expected argument 'file_type' to be a str")
+        pulumi.set(__self__, "file_type", file_type)
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
         if request_identifier and not isinstance(request_identifier, str):
             raise TypeError("Expected argument 'request_identifier' to be a str")
         pulumi.set(__self__, "request_identifier", request_identifier)
@@ -58,11 +70,43 @@ class GetCloudforceOneRequestAssetResult:
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def created(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Asset creation time
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Asset description
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="fileType")
+    def file_type(self) -> str:
+        """
+        Asset file type
+        """
+        return pulumi.get(self, "file_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        Asset ID
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Asset name
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="requestIdentifier")
@@ -81,7 +125,11 @@ class AwaitableGetCloudforceOneRequestAssetResult(GetCloudforceOneRequestAssetRe
         return GetCloudforceOneRequestAssetResult(
             account_identifier=self.account_identifier,
             asset_identifer=self.asset_identifer,
+            created=self.created,
+            description=self.description,
+            file_type=self.file_type,
             id=self.id,
+            name=self.name,
             request_identifier=self.request_identifier)
 
 
@@ -116,7 +164,11 @@ def get_cloudforce_one_request_asset(account_identifier: Optional[str] = None,
     return AwaitableGetCloudforceOneRequestAssetResult(
         account_identifier=pulumi.get(__ret__, 'account_identifier'),
         asset_identifer=pulumi.get(__ret__, 'asset_identifer'),
+        created=pulumi.get(__ret__, 'created'),
+        description=pulumi.get(__ret__, 'description'),
+        file_type=pulumi.get(__ret__, 'file_type'),
         id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
         request_identifier=pulumi.get(__ret__, 'request_identifier'))
 def get_cloudforce_one_request_asset_output(account_identifier: Optional[pulumi.Input[str]] = None,
                                             asset_identifer: Optional[pulumi.Input[str]] = None,
@@ -148,5 +200,9 @@ def get_cloudforce_one_request_asset_output(account_identifier: Optional[pulumi.
     return __ret__.apply(lambda __response__: GetCloudforceOneRequestAssetResult(
         account_identifier=pulumi.get(__response__, 'account_identifier'),
         asset_identifer=pulumi.get(__response__, 'asset_identifer'),
+        created=pulumi.get(__response__, 'created'),
+        description=pulumi.get(__response__, 'description'),
+        file_type=pulumi.get(__response__, 'file_type'),
         id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
         request_identifier=pulumi.get(__response__, 'request_identifier')))

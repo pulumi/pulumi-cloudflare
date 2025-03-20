@@ -32,11 +32,11 @@ export function getSpectrumApplication(args: GetSpectrumApplicationArgs, opts?: 
  */
 export interface GetSpectrumApplicationArgs {
     /**
-     * Identifier
+     * App identifier.
      */
     appId: string;
     /**
-     * Identifier
+     * Zone identifier.
      */
     zoneId: string;
 }
@@ -46,7 +46,7 @@ export interface GetSpectrumApplicationArgs {
  */
 export interface GetSpectrumApplicationResult {
     /**
-     * Identifier
+     * App identifier.
      */
     readonly appId: string;
     /**
@@ -109,7 +109,7 @@ export interface GetSpectrumApplicationResult {
      */
     readonly trafficType: string;
     /**
-     * Identifier
+     * Zone identifier.
      */
     readonly zoneId: string;
 }
@@ -139,11 +139,11 @@ export function getSpectrumApplicationOutput(args: GetSpectrumApplicationOutputA
  */
 export interface GetSpectrumApplicationOutputArgs {
     /**
-     * Identifier
+     * App identifier.
      */
     appId: pulumi.Input<string>;
     /**
-     * Identifier
+     * Zone identifier.
      */
     zoneId: pulumi.Input<string>;
 }

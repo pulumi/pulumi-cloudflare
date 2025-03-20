@@ -106,7 +106,8 @@ class _ZoneState:
                  paused: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 verification_key: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Zone resources.
         :param pulumi.Input[str] activated_on: The last time proof of ownership was detected and the zone was made
@@ -131,6 +132,7 @@ class _ZoneState:
                typically a partner-hosted zone or a CNAME setup.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vanity_name_servers: An array of domains used for custom name servers. This is only
                available for Business and Enterprise plans.
+        :param pulumi.Input[str] verification_key: Verification key for partial zone setup.
         """
         if account is not None:
             pulumi.set(__self__, "account", account)
@@ -164,6 +166,8 @@ class _ZoneState:
             pulumi.set(__self__, "type", type)
         if vanity_name_servers is not None:
             pulumi.set(__self__, "vanity_name_servers", vanity_name_servers)
+        if verification_key is not None:
+            pulumi.set(__self__, "verification_key", verification_key)
 
     @property
     @pulumi.getter
@@ -361,6 +365,18 @@ class _ZoneState:
     def vanity_name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "vanity_name_servers", value)
 
+    @property
+    @pulumi.getter(name="verificationKey")
+    def verification_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Verification key for partial zone setup.
+        """
+        return pulumi.get(self, "verification_key")
+
+    @verification_key.setter
+    def verification_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "verification_key", value)
+
 
 class Zone(pulumi.CustomResource):
     @overload
@@ -480,6 +496,7 @@ class Zone(pulumi.CustomResource):
             __props__.__dict__["owner"] = None
             __props__.__dict__["paused"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["verification_key"] = None
         super(Zone, __self__).__init__(
             'cloudflare:index/zone:Zone',
             resource_name,
@@ -505,7 +522,8 @@ class Zone(pulumi.CustomResource):
             paused: Optional[pulumi.Input[bool]] = None,
             status: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Zone':
+            vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            verification_key: Optional[pulumi.Input[str]] = None) -> 'Zone':
         """
         Get an existing Zone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -535,6 +553,7 @@ class Zone(pulumi.CustomResource):
                typically a partner-hosted zone or a CNAME setup.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vanity_name_servers: An array of domains used for custom name servers. This is only
                available for Business and Enterprise plans.
+        :param pulumi.Input[str] verification_key: Verification key for partial zone setup.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -556,6 +575,7 @@ class Zone(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         __props__.__dict__["type"] = type
         __props__.__dict__["vanity_name_servers"] = vanity_name_servers
+        __props__.__dict__["verification_key"] = verification_key
         return Zone(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -689,4 +709,12 @@ class Zone(pulumi.CustomResource):
         available for Business and Enterprise plans.
         """
         return pulumi.get(self, "vanity_name_servers")
+
+    @property
+    @pulumi.getter(name="verificationKey")
+    def verification_key(self) -> pulumi.Output[str]:
+        """
+        Verification key for partial zone setup.
+        """
+        return pulumi.get(self, "verification_key")
 

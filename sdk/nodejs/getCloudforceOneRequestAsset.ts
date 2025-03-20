@@ -58,9 +58,25 @@ export interface GetCloudforceOneRequestAssetResult {
      */
     readonly assetIdentifer: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Asset creation time
      */
-    readonly id: string;
+    readonly created: string;
+    /**
+     * Asset description
+     */
+    readonly description: string;
+    /**
+     * Asset file type
+     */
+    readonly fileType: string;
+    /**
+     * Asset ID
+     */
+    readonly id: number;
+    /**
+     * Asset name
+     */
+    readonly name: string;
     /**
      * UUID
      */

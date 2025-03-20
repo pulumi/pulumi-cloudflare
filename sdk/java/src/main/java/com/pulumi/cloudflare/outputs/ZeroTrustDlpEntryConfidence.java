@@ -11,6 +11,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustDlpEntryConfidence {
+    private @Nullable Boolean aiContextAvailable;
     /**
      * @return Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
      * Profiles that use an entry with `available` set to true can use confidence thresholds
@@ -19,6 +20,9 @@ public final class ZeroTrustDlpEntryConfidence {
     private @Nullable Boolean available;
 
     private ZeroTrustDlpEntryConfidence() {}
+    public Optional<Boolean> aiContextAvailable() {
+        return Optional.ofNullable(this.aiContextAvailable);
+    }
     /**
      * @return Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
      * Profiles that use an entry with `available` set to true can use confidence thresholds
@@ -37,13 +41,21 @@ public final class ZeroTrustDlpEntryConfidence {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean aiContextAvailable;
         private @Nullable Boolean available;
         public Builder() {}
         public Builder(ZeroTrustDlpEntryConfidence defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aiContextAvailable = defaults.aiContextAvailable;
     	      this.available = defaults.available;
         }
 
+        @CustomType.Setter
+        public Builder aiContextAvailable(@Nullable Boolean aiContextAvailable) {
+
+            this.aiContextAvailable = aiContextAvailable;
+            return this;
+        }
         @CustomType.Setter
         public Builder available(@Nullable Boolean available) {
 
@@ -52,6 +64,7 @@ public final class ZeroTrustDlpEntryConfidence {
         }
         public ZeroTrustDlpEntryConfidence build() {
             final var _resultValue = new ZeroTrustDlpEntryConfidence();
+            _resultValue.aiContextAvailable = aiContextAvailable;
             _resultValue.available = available;
             return _resultValue;
         }

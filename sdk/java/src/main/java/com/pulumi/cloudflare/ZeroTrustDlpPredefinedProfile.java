@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  *                 .id("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
  *                 .enabled(true)
  *                 .build())
+ *             .aiContextEnabled(true)
  *             .allowedMatchCount(0)
  *             .confidenceThreshold("confidence_threshold")
  *             .contextAwareness(ZeroTrustDlpPredefinedProfileContextAwarenessArgs.builder()
@@ -86,6 +87,12 @@ public class ZeroTrustDlpPredefinedProfile extends com.pulumi.resources.CustomRe
 
     public Output<String> accountId() {
         return this.accountId;
+    }
+    @Export(name="aiContextEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> aiContextEnabled;
+
+    public Output<Optional<Boolean>> aiContextEnabled() {
+        return Codegen.optional(this.aiContextEnabled);
     }
     @Export(name="allowedMatchCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> allowedMatchCount;

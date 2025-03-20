@@ -18,21 +18,21 @@ public final class GetMagicTransitSiteFilter extends com.pulumi.resources.Invoke
      * Identifier
      * 
      */
-    @Import(name="connectorIdentifier")
-    private @Nullable String connectorIdentifier;
+    @Import(name="connectorid")
+    private @Nullable String connectorid;
 
     /**
      * @return Identifier
      * 
      */
-    public Optional<String> connectorIdentifier() {
-        return Optional.ofNullable(this.connectorIdentifier);
+    public Optional<String> connectorid() {
+        return Optional.ofNullable(this.connectorid);
     }
 
     private GetMagicTransitSiteFilter() {}
 
     private GetMagicTransitSiteFilter(GetMagicTransitSiteFilter $) {
-        this.connectorIdentifier = $.connectorIdentifier;
+        this.connectorid = $.connectorid;
     }
 
     public static Builder builder() {
@@ -54,13 +54,13 @@ public final class GetMagicTransitSiteFilter extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param connectorIdentifier Identifier
+         * @param connectorid Identifier
          * 
          * @return builder
          * 
          */
-        public Builder connectorIdentifier(@Nullable String connectorIdentifier) {
-            $.connectorIdentifier = connectorIdentifier;
+        public Builder connectorid(@Nullable String connectorid) {
+            $.connectorid = connectorid;
             return this;
         }
 

@@ -56,7 +56,7 @@ type LookupZoneCacheReserveArgs struct {
 type LookupZoneCacheReserveResult struct {
 	// Whether the setting is editable
 	Editable bool `pulumi:"editable"`
-	// The provider-assigned unique ID for this managed resource.
+	// ID of the zone setting.
 	Id string `pulumi:"id"`
 	// Last time this setting was modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
@@ -64,8 +64,6 @@ type LookupZoneCacheReserveResult struct {
 	Value string `pulumi:"value"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
-	// ID of the zone setting.
-	ZoneSettingId string `pulumi:"zoneSettingId"`
 }
 
 func LookupZoneCacheReserveOutput(ctx *pulumi.Context, args LookupZoneCacheReserveOutputArgs, opts ...pulumi.InvokeOption) LookupZoneCacheReserveResultOutput {
@@ -107,7 +105,7 @@ func (o LookupZoneCacheReserveResultOutput) Editable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZoneCacheReserveResult) bool { return v.Editable }).(pulumi.BoolOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// ID of the zone setting.
 func (o LookupZoneCacheReserveResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneCacheReserveResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -125,11 +123,6 @@ func (o LookupZoneCacheReserveResultOutput) Value() pulumi.StringOutput {
 // Identifier
 func (o LookupZoneCacheReserveResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneCacheReserveResult) string { return v.ZoneId }).(pulumi.StringOutput)
-}
-
-// ID of the zone setting.
-func (o LookupZoneCacheReserveResultOutput) ZoneSettingId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZoneCacheReserveResult) string { return v.ZoneSettingId }).(pulumi.StringOutput)
 }
 
 func init() {

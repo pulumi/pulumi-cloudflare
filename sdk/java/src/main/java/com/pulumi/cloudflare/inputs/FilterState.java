@@ -47,21 +47,6 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique identifier of the filter.
-     * 
-     */
-    @Import(name="filterId")
-    private @Nullable Output<String> filterId;
-
-    /**
-     * @return The unique identifier of the filter.
-     * 
-     */
-    public Optional<Output<String>> filterId() {
-        return Optional.ofNullable(this.filterId);
-    }
-
-    /**
      * When true, indicates that the filter is currently paused.
      * 
      */
@@ -111,7 +96,6 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
     private FilterState(FilterState $) {
         this.description = $.description;
         this.expression = $.expression;
-        this.filterId = $.filterId;
         this.paused = $.paused;
         this.ref = $.ref;
         this.zoneId = $.zoneId;
@@ -175,27 +159,6 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder expression(String expression) {
             return expression(Output.of(expression));
-        }
-
-        /**
-         * @param filterId The unique identifier of the filter.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder filterId(@Nullable Output<String> filterId) {
-            $.filterId = filterId;
-            return this;
-        }
-
-        /**
-         * @param filterId The unique identifier of the filter.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder filterId(String filterId) {
-            return filterId(Output.of(filterId));
         }
 
         /**

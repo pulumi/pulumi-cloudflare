@@ -19,30 +19,15 @@ public final class GetFirewallRulePlainArgs extends com.pulumi.resources.InvokeA
      * The unique identifier of the firewall rule.
      * 
      */
-    @Import(name="id")
-    private @Nullable String id;
+    @Import(name="ruleId")
+    private @Nullable String ruleId;
 
     /**
      * @return The unique identifier of the firewall rule.
      * 
      */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
-    }
-
-    /**
-     * The unique identifier of the firewall rule.
-     * 
-     */
-    @Import(name="ruleId", required=true)
-    private String ruleId;
-
-    /**
-     * @return The unique identifier of the firewall rule.
-     * 
-     */
-    public String ruleId() {
-        return this.ruleId;
+    public Optional<String> ruleId() {
+        return Optional.ofNullable(this.ruleId);
     }
 
     /**
@@ -63,7 +48,6 @@ public final class GetFirewallRulePlainArgs extends com.pulumi.resources.InvokeA
     private GetFirewallRulePlainArgs() {}
 
     private GetFirewallRulePlainArgs(GetFirewallRulePlainArgs $) {
-        this.id = $.id;
         this.ruleId = $.ruleId;
         this.zoneId = $.zoneId;
     }
@@ -87,23 +71,12 @@ public final class GetFirewallRulePlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param id The unique identifier of the firewall rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder id(@Nullable String id) {
-            $.id = id;
-            return this;
-        }
-
-        /**
          * @param ruleId The unique identifier of the firewall rule.
          * 
          * @return builder
          * 
          */
-        public Builder ruleId(String ruleId) {
+        public Builder ruleId(@Nullable String ruleId) {
             $.ruleId = ruleId;
             return this;
         }
@@ -120,9 +93,6 @@ public final class GetFirewallRulePlainArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetFirewallRulePlainArgs build() {
-            if ($.ruleId == null) {
-                throw new MissingRequiredPropertyException("GetFirewallRulePlainArgs", "ruleId");
-            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetFirewallRulePlainArgs", "zoneId");
             }

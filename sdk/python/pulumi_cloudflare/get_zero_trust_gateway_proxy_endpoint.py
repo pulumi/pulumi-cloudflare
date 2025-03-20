@@ -26,16 +26,31 @@ class GetZeroTrustGatewayProxyEndpointResult:
     """
     A collection of values returned by getZeroTrustGatewayProxyEndpoint.
     """
-    def __init__(__self__, account_id=None, id=None, proxy_endpoint_id=None):
+    def __init__(__self__, account_id=None, created_at=None, id=None, ips=None, name=None, proxy_endpoint_id=None, subdomain=None, updated_at=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if created_at and not isinstance(created_at, str):
+            raise TypeError("Expected argument 'created_at' to be a str")
+        pulumi.set(__self__, "created_at", created_at)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ips and not isinstance(ips, list):
+            raise TypeError("Expected argument 'ips' to be a list")
+        pulumi.set(__self__, "ips", ips)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
         if proxy_endpoint_id and not isinstance(proxy_endpoint_id, str):
             raise TypeError("Expected argument 'proxy_endpoint_id' to be a str")
         pulumi.set(__self__, "proxy_endpoint_id", proxy_endpoint_id)
+        if subdomain and not isinstance(subdomain, str):
+            raise TypeError("Expected argument 'subdomain' to be a str")
+        pulumi.set(__self__, "subdomain", subdomain)
+        if updated_at and not isinstance(updated_at, str):
+            raise TypeError("Expected argument 'updated_at' to be a str")
+        pulumi.set(__self__, "updated_at", updated_at)
 
     @property
     @pulumi.getter(name="accountId")
@@ -43,17 +58,51 @@ class GetZeroTrustGatewayProxyEndpointResult:
         return pulumi.get(self, "account_id")
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        return pulumi.get(self, "created_at")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ips(self) -> Sequence[str]:
+        """
+        A list of CIDRs to restrict ingress connections.
+        """
+        return pulumi.get(self, "ips")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the proxy endpoint.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="proxyEndpointId")
     def proxy_endpoint_id(self) -> str:
         return pulumi.get(self, "proxy_endpoint_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> str:
+        """
+        The subdomain to be used as the destination in the proxy client.
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
+        return pulumi.get(self, "updated_at")
 
 
 class AwaitableGetZeroTrustGatewayProxyEndpointResult(GetZeroTrustGatewayProxyEndpointResult):
@@ -63,8 +112,13 @@ class AwaitableGetZeroTrustGatewayProxyEndpointResult(GetZeroTrustGatewayProxyEn
             yield self
         return GetZeroTrustGatewayProxyEndpointResult(
             account_id=self.account_id,
+            created_at=self.created_at,
             id=self.id,
-            proxy_endpoint_id=self.proxy_endpoint_id)
+            ips=self.ips,
+            name=self.name,
+            proxy_endpoint_id=self.proxy_endpoint_id,
+            subdomain=self.subdomain,
+            updated_at=self.updated_at)
 
 
 def get_zero_trust_gateway_proxy_endpoint(account_id: Optional[str] = None,
@@ -89,8 +143,13 @@ def get_zero_trust_gateway_proxy_endpoint(account_id: Optional[str] = None,
 
     return AwaitableGetZeroTrustGatewayProxyEndpointResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        created_at=pulumi.get(__ret__, 'created_at'),
         id=pulumi.get(__ret__, 'id'),
-        proxy_endpoint_id=pulumi.get(__ret__, 'proxy_endpoint_id'))
+        ips=pulumi.get(__ret__, 'ips'),
+        name=pulumi.get(__ret__, 'name'),
+        proxy_endpoint_id=pulumi.get(__ret__, 'proxy_endpoint_id'),
+        subdomain=pulumi.get(__ret__, 'subdomain'),
+        updated_at=pulumi.get(__ret__, 'updated_at'))
 def get_zero_trust_gateway_proxy_endpoint_output(account_id: Optional[pulumi.Input[str]] = None,
                                                  proxy_endpoint_id: Optional[pulumi.Input[str]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustGatewayProxyEndpointResult]:
@@ -112,5 +171,10 @@ def get_zero_trust_gateway_proxy_endpoint_output(account_id: Optional[pulumi.Inp
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint', __args__, opts=opts, typ=GetZeroTrustGatewayProxyEndpointResult)
     return __ret__.apply(lambda __response__: GetZeroTrustGatewayProxyEndpointResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        created_at=pulumi.get(__response__, 'created_at'),
         id=pulumi.get(__response__, 'id'),
-        proxy_endpoint_id=pulumi.get(__response__, 'proxy_endpoint_id')))
+        ips=pulumi.get(__response__, 'ips'),
+        name=pulumi.get(__response__, 'name'),
+        proxy_endpoint_id=pulumi.get(__response__, 'proxy_endpoint_id'),
+        subdomain=pulumi.get(__response__, 'subdomain'),
+        updated_at=pulumi.get(__response__, 'updated_at')))

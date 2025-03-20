@@ -126,6 +126,10 @@ export class Zone extends pulumi.CustomResource {
      * available for Business and Enterprise plans.
      */
     public readonly vanityNameServers!: pulumi.Output<string[] | undefined>;
+    /**
+     * Verification key for partial zone setup.
+     */
+    public /*out*/ readonly verificationKey!: pulumi.Output<string>;
 
     /**
      * Create a Zone resource with the given unique name, arguments, and options.
@@ -156,6 +160,7 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["vanityNameServers"] = state ? state.vanityNameServers : undefined;
+            resourceInputs["verificationKey"] = state ? state.verificationKey : undefined;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
             if ((!args || args.account === undefined) && !opts.urn) {
@@ -180,6 +185,7 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["owner"] = undefined /*out*/;
             resourceInputs["paused"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["verificationKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Zone.__pulumiType, name, resourceInputs, opts);
@@ -258,6 +264,10 @@ export interface ZoneState {
      * available for Business and Enterprise plans.
      */
     vanityNameServers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Verification key for partial zone setup.
+     */
+    verificationKey?: pulumi.Input<string>;
 }
 
 /**

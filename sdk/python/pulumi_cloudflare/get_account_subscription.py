@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetAccountSubscriptionResult',
@@ -26,13 +27,34 @@ class GetAccountSubscriptionResult:
     """
     A collection of values returned by getAccountSubscription.
     """
-    def __init__(__self__, account_id=None, id=None):
+    def __init__(__self__, account_id=None, currency=None, current_period_end=None, current_period_start=None, frequency=None, id=None, price=None, rate_plan=None, state=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if currency and not isinstance(currency, str):
+            raise TypeError("Expected argument 'currency' to be a str")
+        pulumi.set(__self__, "currency", currency)
+        if current_period_end and not isinstance(current_period_end, str):
+            raise TypeError("Expected argument 'current_period_end' to be a str")
+        pulumi.set(__self__, "current_period_end", current_period_end)
+        if current_period_start and not isinstance(current_period_start, str):
+            raise TypeError("Expected argument 'current_period_start' to be a str")
+        pulumi.set(__self__, "current_period_start", current_period_start)
+        if frequency and not isinstance(frequency, str):
+            raise TypeError("Expected argument 'frequency' to be a str")
+        pulumi.set(__self__, "frequency", frequency)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if price and not isinstance(price, float):
+            raise TypeError("Expected argument 'price' to be a float")
+        pulumi.set(__self__, "price", price)
+        if rate_plan and not isinstance(rate_plan, dict):
+            raise TypeError("Expected argument 'rate_plan' to be a dict")
+        pulumi.set(__self__, "rate_plan", rate_plan)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter(name="accountId")
@@ -44,11 +66,67 @@ class GetAccountSubscriptionResult:
 
     @property
     @pulumi.getter
+    def currency(self) -> str:
+        """
+        The monetary unit in which pricing information is displayed.
+        """
+        return pulumi.get(self, "currency")
+
+    @property
+    @pulumi.getter(name="currentPeriodEnd")
+    def current_period_end(self) -> str:
+        """
+        The end of the current period and also when the next billing is due.
+        """
+        return pulumi.get(self, "current_period_end")
+
+    @property
+    @pulumi.getter(name="currentPeriodStart")
+    def current_period_start(self) -> str:
+        """
+        When the current billing period started. May match initial*period*start if this is the first period.
+        """
+        return pulumi.get(self, "current_period_start")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> str:
+        """
+        How often the subscription is renewed automatically.
+        """
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Subscription identifier tag.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def price(self) -> float:
+        """
+        The price of the subscription that will be billed, in US dollars.
+        """
+        return pulumi.get(self, "price")
+
+    @property
+    @pulumi.getter(name="ratePlan")
+    def rate_plan(self) -> 'outputs.GetAccountSubscriptionRatePlanResult':
+        """
+        The rate plan applied to the subscription.
+        """
+        return pulumi.get(self, "rate_plan")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state that the subscription is in.
+        """
+        return pulumi.get(self, "state")
 
 
 class AwaitableGetAccountSubscriptionResult(GetAccountSubscriptionResult):
@@ -58,7 +136,14 @@ class AwaitableGetAccountSubscriptionResult(GetAccountSubscriptionResult):
             yield self
         return GetAccountSubscriptionResult(
             account_id=self.account_id,
-            id=self.id)
+            currency=self.currency,
+            current_period_end=self.current_period_end,
+            current_period_start=self.current_period_start,
+            frequency=self.frequency,
+            id=self.id,
+            price=self.price,
+            rate_plan=self.rate_plan,
+            state=self.state)
 
 
 def get_account_subscription(account_id: Optional[str] = None,
@@ -83,7 +168,14 @@ def get_account_subscription(account_id: Optional[str] = None,
 
     return AwaitableGetAccountSubscriptionResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        id=pulumi.get(__ret__, 'id'))
+        currency=pulumi.get(__ret__, 'currency'),
+        current_period_end=pulumi.get(__ret__, 'current_period_end'),
+        current_period_start=pulumi.get(__ret__, 'current_period_start'),
+        frequency=pulumi.get(__ret__, 'frequency'),
+        id=pulumi.get(__ret__, 'id'),
+        price=pulumi.get(__ret__, 'price'),
+        rate_plan=pulumi.get(__ret__, 'rate_plan'),
+        state=pulumi.get(__ret__, 'state'))
 def get_account_subscription_output(account_id: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountSubscriptionResult]:
     """
@@ -105,4 +197,11 @@ def get_account_subscription_output(account_id: Optional[pulumi.Input[str]] = No
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAccountSubscription:getAccountSubscription', __args__, opts=opts, typ=GetAccountSubscriptionResult)
     return __ret__.apply(lambda __response__: GetAccountSubscriptionResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        id=pulumi.get(__response__, 'id')))
+        currency=pulumi.get(__response__, 'currency'),
+        current_period_end=pulumi.get(__response__, 'current_period_end'),
+        current_period_start=pulumi.get(__response__, 'current_period_start'),
+        frequency=pulumi.get(__response__, 'frequency'),
+        id=pulumi.get(__response__, 'id'),
+        price=pulumi.get(__response__, 'price'),
+        rate_plan=pulumi.get(__response__, 'rate_plan'),
+        state=pulumi.get(__response__, 'state')))

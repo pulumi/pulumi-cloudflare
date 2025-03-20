@@ -109,6 +109,23 @@ public final class GetZeroTrustAccessInfrastructureTargetsArgs extends com.pulum
     }
 
     /**
+     * Filters for targets whose IP addresses look like the specified string.
+     * Supports `*` as a wildcard character
+     * 
+     */
+    @Import(name="ipLike")
+    private @Nullable Output<String> ipLike;
+
+    /**
+     * @return Filters for targets whose IP addresses look like the specified string.
+     * Supports `*` as a wildcard character
+     * 
+     */
+    public Optional<Output<String>> ipLike() {
+        return Optional.ofNullable(this.ipLike);
+    }
+
+    /**
      * IPv4 address of the target
      * 
      */
@@ -153,6 +170,74 @@ public final class GetZeroTrustAccessInfrastructureTargetsArgs extends com.pulum
      */
     public Optional<Output<List<String>>> ips() {
         return Optional.ofNullable(this.ips);
+    }
+
+    /**
+     * Defines an IPv4 filter range&#39;s ending value (inclusive). Requires
+     * `ipv4_start` to be specified as well.
+     * 
+     */
+    @Import(name="ipv4End")
+    private @Nullable Output<String> ipv4End;
+
+    /**
+     * @return Defines an IPv4 filter range&#39;s ending value (inclusive). Requires
+     * `ipv4_start` to be specified as well.
+     * 
+     */
+    public Optional<Output<String>> ipv4End() {
+        return Optional.ofNullable(this.ipv4End);
+    }
+
+    /**
+     * Defines an IPv4 filter range&#39;s starting value (inclusive). Requires
+     * `ipv4_end` to be specified as well.
+     * 
+     */
+    @Import(name="ipv4Start")
+    private @Nullable Output<String> ipv4Start;
+
+    /**
+     * @return Defines an IPv4 filter range&#39;s starting value (inclusive). Requires
+     * `ipv4_end` to be specified as well.
+     * 
+     */
+    public Optional<Output<String>> ipv4Start() {
+        return Optional.ofNullable(this.ipv4Start);
+    }
+
+    /**
+     * Defines an IPv6 filter range&#39;s ending value (inclusive). Requires
+     * `ipv6_start` to be specified as well.
+     * 
+     */
+    @Import(name="ipv6End")
+    private @Nullable Output<String> ipv6End;
+
+    /**
+     * @return Defines an IPv6 filter range&#39;s ending value (inclusive). Requires
+     * `ipv6_start` to be specified as well.
+     * 
+     */
+    public Optional<Output<String>> ipv6End() {
+        return Optional.ofNullable(this.ipv6End);
+    }
+
+    /**
+     * Defines an IPv6 filter range&#39;s starting value (inclusive). Requires
+     * `ipv6_end` to be specified as well.
+     * 
+     */
+    @Import(name="ipv6Start")
+    private @Nullable Output<String> ipv6Start;
+
+    /**
+     * @return Defines an IPv6 filter range&#39;s starting value (inclusive). Requires
+     * `ipv6_end` to be specified as well.
+     * 
+     */
+    public Optional<Output<String>> ipv6Start() {
+        return Optional.ofNullable(this.ipv6Start);
     }
 
     /**
@@ -216,6 +301,25 @@ public final class GetZeroTrustAccessInfrastructureTargetsArgs extends com.pulum
     }
 
     /**
+     * Filters for targets that have any of the following UUIDs. Specify
+     * `target_ids` multiple times in query parameter to build list of
+     * candidates.
+     * 
+     */
+    @Import(name="targetIds")
+    private @Nullable Output<List<String>> targetIds;
+
+    /**
+     * @return Filters for targets that have any of the following UUIDs. Specify
+     * `target_ids` multiple times in query parameter to build list of
+     * candidates.
+     * 
+     */
+    public Optional<Output<List<String>>> targetIds() {
+        return Optional.ofNullable(this.targetIds);
+    }
+
+    /**
      * Private virtual network identifier of the target
      * 
      */
@@ -239,13 +343,19 @@ public final class GetZeroTrustAccessInfrastructureTargetsArgs extends com.pulum
         this.direction = $.direction;
         this.hostname = $.hostname;
         this.hostnameContains = $.hostnameContains;
+        this.ipLike = $.ipLike;
         this.ipV4 = $.ipV4;
         this.ipV6 = $.ipV6;
         this.ips = $.ips;
+        this.ipv4End = $.ipv4End;
+        this.ipv4Start = $.ipv4Start;
+        this.ipv6End = $.ipv6End;
+        this.ipv6Start = $.ipv6Start;
         this.maxItems = $.maxItems;
         this.modifiedAfter = $.modifiedAfter;
         this.modifiedBefore = $.modifiedBefore;
         this.order = $.order;
+        this.targetIds = $.targetIds;
         this.virtualNetworkId = $.virtualNetworkId;
     }
 
@@ -394,6 +504,29 @@ public final class GetZeroTrustAccessInfrastructureTargetsArgs extends com.pulum
         }
 
         /**
+         * @param ipLike Filters for targets whose IP addresses look like the specified string.
+         * Supports `*` as a wildcard character
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipLike(@Nullable Output<String> ipLike) {
+            $.ipLike = ipLike;
+            return this;
+        }
+
+        /**
+         * @param ipLike Filters for targets whose IP addresses look like the specified string.
+         * Supports `*` as a wildcard character
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipLike(String ipLike) {
+            return ipLike(Output.of(ipLike));
+        }
+
+        /**
          * @param ipV4 IPv4 address of the target
          * 
          * @return builder
@@ -467,6 +600,98 @@ public final class GetZeroTrustAccessInfrastructureTargetsArgs extends com.pulum
          */
         public Builder ips(String... ips) {
             return ips(List.of(ips));
+        }
+
+        /**
+         * @param ipv4End Defines an IPv4 filter range&#39;s ending value (inclusive). Requires
+         * `ipv4_start` to be specified as well.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4End(@Nullable Output<String> ipv4End) {
+            $.ipv4End = ipv4End;
+            return this;
+        }
+
+        /**
+         * @param ipv4End Defines an IPv4 filter range&#39;s ending value (inclusive). Requires
+         * `ipv4_start` to be specified as well.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4End(String ipv4End) {
+            return ipv4End(Output.of(ipv4End));
+        }
+
+        /**
+         * @param ipv4Start Defines an IPv4 filter range&#39;s starting value (inclusive). Requires
+         * `ipv4_end` to be specified as well.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4Start(@Nullable Output<String> ipv4Start) {
+            $.ipv4Start = ipv4Start;
+            return this;
+        }
+
+        /**
+         * @param ipv4Start Defines an IPv4 filter range&#39;s starting value (inclusive). Requires
+         * `ipv4_end` to be specified as well.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4Start(String ipv4Start) {
+            return ipv4Start(Output.of(ipv4Start));
+        }
+
+        /**
+         * @param ipv6End Defines an IPv6 filter range&#39;s ending value (inclusive). Requires
+         * `ipv6_start` to be specified as well.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6End(@Nullable Output<String> ipv6End) {
+            $.ipv6End = ipv6End;
+            return this;
+        }
+
+        /**
+         * @param ipv6End Defines an IPv6 filter range&#39;s ending value (inclusive). Requires
+         * `ipv6_start` to be specified as well.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6End(String ipv6End) {
+            return ipv6End(Output.of(ipv6End));
+        }
+
+        /**
+         * @param ipv6Start Defines an IPv6 filter range&#39;s starting value (inclusive). Requires
+         * `ipv6_end` to be specified as well.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Start(@Nullable Output<String> ipv6Start) {
+            $.ipv6Start = ipv6Start;
+            return this;
+        }
+
+        /**
+         * @param ipv6Start Defines an IPv6 filter range&#39;s starting value (inclusive). Requires
+         * `ipv6_end` to be specified as well.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Start(String ipv6Start) {
+            return ipv6Start(Output.of(ipv6Start));
         }
 
         /**
@@ -551,6 +776,43 @@ public final class GetZeroTrustAccessInfrastructureTargetsArgs extends com.pulum
          */
         public Builder order(String order) {
             return order(Output.of(order));
+        }
+
+        /**
+         * @param targetIds Filters for targets that have any of the following UUIDs. Specify
+         * `target_ids` multiple times in query parameter to build list of
+         * candidates.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetIds(@Nullable Output<List<String>> targetIds) {
+            $.targetIds = targetIds;
+            return this;
+        }
+
+        /**
+         * @param targetIds Filters for targets that have any of the following UUIDs. Specify
+         * `target_ids` multiple times in query parameter to build list of
+         * candidates.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetIds(List<String> targetIds) {
+            return targetIds(Output.of(targetIds));
+        }
+
+        /**
+         * @param targetIds Filters for targets that have any of the following UUIDs. Specify
+         * `target_ids` multiple times in query parameter to build list of
+         * candidates.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetIds(String... targetIds) {
+            return targetIds(List.of(targetIds));
         }
 
         /**

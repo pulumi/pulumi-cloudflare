@@ -64,8 +64,16 @@ type LookupCloudforceOneRequestAssetResult struct {
 	AccountIdentifier string `pulumi:"accountIdentifier"`
 	// UUID
 	AssetIdentifer string `pulumi:"assetIdentifer"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	// Asset creation time
+	Created string `pulumi:"created"`
+	// Asset description
+	Description string `pulumi:"description"`
+	// Asset file type
+	FileType string `pulumi:"fileType"`
+	// Asset ID
+	Id int `pulumi:"id"`
+	// Asset name
+	Name string `pulumi:"name"`
 	// UUID
 	RequestIdentifier string `pulumi:"requestIdentifier"`
 }
@@ -118,9 +126,29 @@ func (o LookupCloudforceOneRequestAssetResultOutput) AssetIdentifer() pulumi.Str
 	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.AssetIdentifer }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
-func (o LookupCloudforceOneRequestAssetResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.Id }).(pulumi.StringOutput)
+// Asset creation time
+func (o LookupCloudforceOneRequestAssetResultOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// Asset description
+func (o LookupCloudforceOneRequestAssetResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Asset file type
+func (o LookupCloudforceOneRequestAssetResultOutput) FileType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.FileType }).(pulumi.StringOutput)
+}
+
+// Asset ID
+func (o LookupCloudforceOneRequestAssetResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// Asset name
+func (o LookupCloudforceOneRequestAssetResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // UUID

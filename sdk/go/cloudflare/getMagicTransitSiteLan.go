@@ -27,7 +27,7 @@ type LookupMagicTransitSiteLanArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// Identifier
-	LanId string `pulumi:"lanId"`
+	LanId *string `pulumi:"lanId"`
 }
 
 // A collection of values returned by getMagicTransitSiteLan.
@@ -39,7 +39,7 @@ type LookupMagicTransitSiteLanResult struct {
 	// Identifier
 	Id string `pulumi:"id"`
 	// Identifier
-	LanId         string                               `pulumi:"lanId"`
+	LanId         *string                              `pulumi:"lanId"`
 	Name          string                               `pulumi:"name"`
 	Nat           GetMagicTransitSiteLanNat            `pulumi:"nat"`
 	Physport      int                                  `pulumi:"physport"`
@@ -66,7 +66,7 @@ type LookupMagicTransitSiteLanOutputArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identifier
-	LanId pulumi.StringInput `pulumi:"lanId"`
+	LanId pulumi.StringPtrInput `pulumi:"lanId"`
 }
 
 func (LookupMagicTransitSiteLanOutputArgs) ElementType() reflect.Type {
@@ -104,8 +104,8 @@ func (o LookupMagicTransitSiteLanResultOutput) Id() pulumi.StringOutput {
 }
 
 // Identifier
-func (o LookupMagicTransitSiteLanResultOutput) LanId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicTransitSiteLanResult) string { return v.LanId }).(pulumi.StringOutput)
+func (o LookupMagicTransitSiteLanResultOutput) LanId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMagicTransitSiteLanResult) *string { return v.LanId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupMagicTransitSiteLanResultOutput) Name() pulumi.StringOutput {

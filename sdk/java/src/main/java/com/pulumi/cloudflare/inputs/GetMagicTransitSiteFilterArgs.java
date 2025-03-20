@@ -19,21 +19,21 @@ public final class GetMagicTransitSiteFilterArgs extends com.pulumi.resources.Re
      * Identifier
      * 
      */
-    @Import(name="connectorIdentifier")
-    private @Nullable Output<String> connectorIdentifier;
+    @Import(name="connectorid")
+    private @Nullable Output<String> connectorid;
 
     /**
      * @return Identifier
      * 
      */
-    public Optional<Output<String>> connectorIdentifier() {
-        return Optional.ofNullable(this.connectorIdentifier);
+    public Optional<Output<String>> connectorid() {
+        return Optional.ofNullable(this.connectorid);
     }
 
     private GetMagicTransitSiteFilterArgs() {}
 
     private GetMagicTransitSiteFilterArgs(GetMagicTransitSiteFilterArgs $) {
-        this.connectorIdentifier = $.connectorIdentifier;
+        this.connectorid = $.connectorid;
     }
 
     public static Builder builder() {
@@ -55,24 +55,24 @@ public final class GetMagicTransitSiteFilterArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param connectorIdentifier Identifier
+         * @param connectorid Identifier
          * 
          * @return builder
          * 
          */
-        public Builder connectorIdentifier(@Nullable Output<String> connectorIdentifier) {
-            $.connectorIdentifier = connectorIdentifier;
+        public Builder connectorid(@Nullable Output<String> connectorid) {
+            $.connectorid = connectorid;
             return this;
         }
 
         /**
-         * @param connectorIdentifier Identifier
+         * @param connectorid Identifier
          * 
          * @return builder
          * 
          */
-        public Builder connectorIdentifier(String connectorIdentifier) {
-            return connectorIdentifier(Output.of(connectorIdentifier));
+        public Builder connectorid(String connectorid) {
+            return connectorid(Output.of(connectorid));
         }
 
         public GetMagicTransitSiteFilterArgs build() {

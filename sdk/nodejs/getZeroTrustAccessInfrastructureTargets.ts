@@ -20,12 +20,18 @@ import * as utilities from "./utilities";
  *     direction: "asc",
  *     hostname: "hostname",
  *     hostnameContains: "hostname_contains",
+ *     ipLike: "ip_like",
  *     ipV4: "ip_v4",
  *     ipV6: "ip_v6",
  *     ips: ["string"],
+ *     ipv4End: "ipv4_end",
+ *     ipv4Start: "ipv4_start",
+ *     ipv6End: "ipv6_end",
+ *     ipv6Start: "ipv6_start",
  *     modifiedAfter: "2019-12-27T18:11:19.117Z",
  *     modifiedBefore: "2019-12-27T18:11:19.117Z",
  *     order: "hostname",
+ *     targetIds: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
  *     virtualNetworkId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
@@ -39,13 +45,19 @@ export function getZeroTrustAccessInfrastructureTargets(args: GetZeroTrustAccess
         "direction": args.direction,
         "hostname": args.hostname,
         "hostnameContains": args.hostnameContains,
+        "ipLike": args.ipLike,
         "ipV4": args.ipV4,
         "ipV6": args.ipV6,
         "ips": args.ips,
+        "ipv4End": args.ipv4End,
+        "ipv4Start": args.ipv4Start,
+        "ipv6End": args.ipv6End,
+        "ipv6Start": args.ipv6Start,
         "maxItems": args.maxItems,
         "modifiedAfter": args.modifiedAfter,
         "modifiedBefore": args.modifiedBefore,
         "order": args.order,
+        "targetIds": args.targetIds,
         "virtualNetworkId": args.virtualNetworkId,
     }, opts);
 }
@@ -79,6 +91,11 @@ export interface GetZeroTrustAccessInfrastructureTargetsArgs {
      */
     hostnameContains?: string;
     /**
+     * Filters for targets whose IP addresses look like the specified string.
+     * Supports `*` as a wildcard character
+     */
+    ipLike?: string;
+    /**
      * IPv4 address of the target
      */
     ipV4?: string;
@@ -91,6 +108,26 @@ export interface GetZeroTrustAccessInfrastructureTargetsArgs {
      * `ips` multiple times in query parameter to build list of candidates.
      */
     ips?: string[];
+    /**
+     * Defines an IPv4 filter range's ending value (inclusive). Requires
+     * `ipv4Start` to be specified as well.
+     */
+    ipv4End?: string;
+    /**
+     * Defines an IPv4 filter range's starting value (inclusive). Requires
+     * `ipv4End` to be specified as well.
+     */
+    ipv4Start?: string;
+    /**
+     * Defines an IPv6 filter range's ending value (inclusive). Requires
+     * `ipv6Start` to be specified as well.
+     */
+    ipv6End?: string;
+    /**
+     * Defines an IPv6 filter range's starting value (inclusive). Requires
+     * `ipv6End` to be specified as well.
+     */
+    ipv6Start?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -107,6 +144,12 @@ export interface GetZeroTrustAccessInfrastructureTargetsArgs {
      * The field to sort by.
      */
     order?: string;
+    /**
+     * Filters for targets that have any of the following UUIDs. Specify
+     * `targetIds` multiple times in query parameter to build list of
+     * candidates.
+     */
+    targetIds?: string[];
     /**
      * Private virtual network identifier of the target
      */
@@ -146,6 +189,11 @@ export interface GetZeroTrustAccessInfrastructureTargetsResult {
      */
     readonly id: string;
     /**
+     * Filters for targets whose IP addresses look like the specified string.
+     * Supports `*` as a wildcard character
+     */
+    readonly ipLike?: string;
+    /**
      * IPv4 address of the target
      */
     readonly ipV4?: string;
@@ -158,6 +206,26 @@ export interface GetZeroTrustAccessInfrastructureTargetsResult {
      * `ips` multiple times in query parameter to build list of candidates.
      */
     readonly ips?: string[];
+    /**
+     * Defines an IPv4 filter range's ending value (inclusive). Requires
+     * `ipv4Start` to be specified as well.
+     */
+    readonly ipv4End?: string;
+    /**
+     * Defines an IPv4 filter range's starting value (inclusive). Requires
+     * `ipv4End` to be specified as well.
+     */
+    readonly ipv4Start?: string;
+    /**
+     * Defines an IPv6 filter range's ending value (inclusive). Requires
+     * `ipv6Start` to be specified as well.
+     */
+    readonly ipv6End?: string;
+    /**
+     * Defines an IPv6 filter range's starting value (inclusive). Requires
+     * `ipv6End` to be specified as well.
+     */
+    readonly ipv6Start?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -179,6 +247,12 @@ export interface GetZeroTrustAccessInfrastructureTargetsResult {
      */
     readonly results: outputs.GetZeroTrustAccessInfrastructureTargetsResult[];
     /**
+     * Filters for targets that have any of the following UUIDs. Specify
+     * `targetIds` multiple times in query parameter to build list of
+     * candidates.
+     */
+    readonly targetIds?: string[];
+    /**
      * Private virtual network identifier of the target
      */
     readonly virtualNetworkId?: string;
@@ -197,12 +271,18 @@ export interface GetZeroTrustAccessInfrastructureTargetsResult {
  *     direction: "asc",
  *     hostname: "hostname",
  *     hostnameContains: "hostname_contains",
+ *     ipLike: "ip_like",
  *     ipV4: "ip_v4",
  *     ipV6: "ip_v6",
  *     ips: ["string"],
+ *     ipv4End: "ipv4_end",
+ *     ipv4Start: "ipv4_start",
+ *     ipv6End: "ipv6_end",
+ *     ipv6Start: "ipv6_start",
  *     modifiedAfter: "2019-12-27T18:11:19.117Z",
  *     modifiedBefore: "2019-12-27T18:11:19.117Z",
  *     order: "hostname",
+ *     targetIds: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
  *     virtualNetworkId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
@@ -216,13 +296,19 @@ export function getZeroTrustAccessInfrastructureTargetsOutput(args: GetZeroTrust
         "direction": args.direction,
         "hostname": args.hostname,
         "hostnameContains": args.hostnameContains,
+        "ipLike": args.ipLike,
         "ipV4": args.ipV4,
         "ipV6": args.ipV6,
         "ips": args.ips,
+        "ipv4End": args.ipv4End,
+        "ipv4Start": args.ipv4Start,
+        "ipv6End": args.ipv6End,
+        "ipv6Start": args.ipv6Start,
         "maxItems": args.maxItems,
         "modifiedAfter": args.modifiedAfter,
         "modifiedBefore": args.modifiedBefore,
         "order": args.order,
+        "targetIds": args.targetIds,
         "virtualNetworkId": args.virtualNetworkId,
     }, opts);
 }
@@ -256,6 +342,11 @@ export interface GetZeroTrustAccessInfrastructureTargetsOutputArgs {
      */
     hostnameContains?: pulumi.Input<string>;
     /**
+     * Filters for targets whose IP addresses look like the specified string.
+     * Supports `*` as a wildcard character
+     */
+    ipLike?: pulumi.Input<string>;
+    /**
      * IPv4 address of the target
      */
     ipV4?: pulumi.Input<string>;
@@ -268,6 +359,26 @@ export interface GetZeroTrustAccessInfrastructureTargetsOutputArgs {
      * `ips` multiple times in query parameter to build list of candidates.
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Defines an IPv4 filter range's ending value (inclusive). Requires
+     * `ipv4Start` to be specified as well.
+     */
+    ipv4End?: pulumi.Input<string>;
+    /**
+     * Defines an IPv4 filter range's starting value (inclusive). Requires
+     * `ipv4End` to be specified as well.
+     */
+    ipv4Start?: pulumi.Input<string>;
+    /**
+     * Defines an IPv6 filter range's ending value (inclusive). Requires
+     * `ipv6Start` to be specified as well.
+     */
+    ipv6End?: pulumi.Input<string>;
+    /**
+     * Defines an IPv6 filter range's starting value (inclusive). Requires
+     * `ipv6End` to be specified as well.
+     */
+    ipv6Start?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */
@@ -284,6 +395,12 @@ export interface GetZeroTrustAccessInfrastructureTargetsOutputArgs {
      * The field to sort by.
      */
     order?: pulumi.Input<string>;
+    /**
+     * Filters for targets that have any of the following UUIDs. Specify
+     * `targetIds` multiple times in query parameter to build list of
+     * candidates.
+     */
+    targetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Private virtual network identifier of the target
      */

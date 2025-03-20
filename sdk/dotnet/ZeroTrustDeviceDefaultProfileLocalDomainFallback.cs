@@ -18,8 +18,26 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// A description of the fallback domain, displayed in the client UI.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of IP addresses to handle domain resolution.
+        /// </summary>
+        [Output("dnsServers")]
+        public Output<ImmutableArray<string>> DnsServers { get; private set; } = null!;
+
         [Output("domains")]
         public Output<ImmutableArray<Outputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomain>> Domains { get; private set; } = null!;
+
+        /// <summary>
+        /// The domain suffix to match when resolving locally.
+        /// </summary>
+        [Output("suffix")]
+        public Output<string> Suffix { get; private set; } = null!;
 
 
         /// <summary>
@@ -89,6 +107,24 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// A description of the fallback domain, displayed in the client UI.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("dnsServers")]
+        private InputList<string>? _dnsServers;
+
+        /// <summary>
+        /// A list of IP addresses to handle domain resolution.
+        /// </summary>
+        public InputList<string> DnsServers
+        {
+            get => _dnsServers ?? (_dnsServers = new InputList<string>());
+            set => _dnsServers = value;
+        }
+
         [Input("domains")]
         private InputList<Inputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainGetArgs>? _domains;
         public InputList<Inputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainGetArgs> Domains
@@ -96,6 +132,12 @@ namespace Pulumi.Cloudflare
             get => _domains ?? (_domains = new InputList<Inputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainGetArgs>());
             set => _domains = value;
         }
+
+        /// <summary>
+        /// The domain suffix to match when resolving locally.
+        /// </summary>
+        [Input("suffix")]
+        public Input<string>? Suffix { get; set; }
 
         public ZeroTrustDeviceDefaultProfileLocalDomainFallbackState()
         {

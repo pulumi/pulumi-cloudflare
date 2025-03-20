@@ -15,7 +15,15 @@ public final class GetD1DatabasesResult {
      * 
      */
     private String createdAt;
+    /**
+     * @return D1 database name.
+     * 
+     */
     private String name;
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
     private String uuid;
     private String version;
 
@@ -27,9 +35,17 @@ public final class GetD1DatabasesResult {
     public String createdAt() {
         return this.createdAt;
     }
+    /**
+     * @return D1 database name.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
     public String uuid() {
         return this.uuid;
     }

@@ -18,8 +18,8 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("expression")]
         public Input<string>? Expression { get; set; }
 
-        [Input("operation")]
-        public Input<string>? Operation { get; set; }
+        [Input("operation", required: true)]
+        public Input<string> Operation { get; set; } = null!;
 
         /// <summary>
         /// Static value for the header.

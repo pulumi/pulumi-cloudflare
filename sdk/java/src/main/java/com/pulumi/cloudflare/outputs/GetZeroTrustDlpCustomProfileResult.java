@@ -16,6 +16,7 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustDlpCustomProfileResult {
     private String accountId;
+    private Boolean aiContextEnabled;
     /**
      * @return Related DLP policies will trigger when the match count exceeds the number set.
      * 
@@ -65,6 +66,9 @@ public final class GetZeroTrustDlpCustomProfileResult {
     private GetZeroTrustDlpCustomProfileResult() {}
     public String accountId() {
         return this.accountId;
+    }
+    public Boolean aiContextEnabled() {
+        return this.aiContextEnabled;
     }
     /**
      * @return Related DLP policies will trigger when the match count exceeds the number set.
@@ -148,6 +152,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private Boolean aiContextEnabled;
         private Integer allowedMatchCount;
         private String confidenceThreshold;
         private GetZeroTrustDlpCustomProfileContextAwareness contextAwareness;
@@ -165,6 +170,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
         public Builder(GetZeroTrustDlpCustomProfileResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.aiContextEnabled = defaults.aiContextEnabled;
     	      this.allowedMatchCount = defaults.allowedMatchCount;
     	      this.confidenceThreshold = defaults.confidenceThreshold;
     	      this.contextAwareness = defaults.contextAwareness;
@@ -186,6 +192,14 @@ public final class GetZeroTrustDlpCustomProfileResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileResult", "accountId");
             }
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder aiContextEnabled(Boolean aiContextEnabled) {
+            if (aiContextEnabled == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileResult", "aiContextEnabled");
+            }
+            this.aiContextEnabled = aiContextEnabled;
             return this;
         }
         @CustomType.Setter
@@ -298,6 +312,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
         public GetZeroTrustDlpCustomProfileResult build() {
             final var _resultValue = new GetZeroTrustDlpCustomProfileResult();
             _resultValue.accountId = accountId;
+            _resultValue.aiContextEnabled = aiContextEnabled;
             _resultValue.allowedMatchCount = allowedMatchCount;
             _resultValue.confidenceThreshold = confidenceThreshold;
             _resultValue.contextAwareness = contextAwareness;

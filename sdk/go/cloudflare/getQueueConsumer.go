@@ -12,31 +12,6 @@ import (
 )
 
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupQueueConsumer(ctx, &cloudflare.LookupQueueConsumerArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				QueueId:   "023e105f4ecef8ad9ca31a8372d0c353",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupQueueConsumer(ctx *pulumi.Context, args *LookupQueueConsumerArgs, opts ...pulumi.InvokeOption) (*LookupQueueConsumerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupQueueConsumerResult
@@ -51,18 +26,25 @@ func LookupQueueConsumer(ctx *pulumi.Context, args *LookupQueueConsumerArgs, opt
 type LookupQueueConsumerArgs struct {
 	// A Resource identifier.
 	AccountId string `pulumi:"accountId"`
-	// A Resource identifier.
-	QueueId string `pulumi:"queueId"`
 }
 
 // A collection of values returned by getQueueConsumer.
 type LookupQueueConsumerResult struct {
 	// A Resource identifier.
 	AccountId string `pulumi:"accountId"`
+	// A Resource identifier.
+	ConsumerId string `pulumi:"consumerId"`
+	CreatedOn  string `pulumi:"createdOn"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A Resource identifier.
 	QueueId string `pulumi:"queueId"`
+	// Name of a Worker
+	Script string `pulumi:"script"`
+	// Name of a Worker
+	ScriptName string                   `pulumi:"scriptName"`
+	Settings   GetQueueConsumerSettings `pulumi:"settings"`
+	Type       string                   `pulumi:"type"`
 }
 
 func LookupQueueConsumerOutput(ctx *pulumi.Context, args LookupQueueConsumerOutputArgs, opts ...pulumi.InvokeOption) LookupQueueConsumerResultOutput {
@@ -78,8 +60,6 @@ func LookupQueueConsumerOutput(ctx *pulumi.Context, args LookupQueueConsumerOutp
 type LookupQueueConsumerOutputArgs struct {
 	// A Resource identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// A Resource identifier.
-	QueueId pulumi.StringInput `pulumi:"queueId"`
 }
 
 func (LookupQueueConsumerOutputArgs) ElementType() reflect.Type {
@@ -106,6 +86,15 @@ func (o LookupQueueConsumerResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// A Resource identifier.
+func (o LookupQueueConsumerResultOutput) ConsumerId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.ConsumerId }).(pulumi.StringOutput)
+}
+
+func (o LookupQueueConsumerResultOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupQueueConsumerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.Id }).(pulumi.StringOutput)
@@ -114,6 +103,24 @@ func (o LookupQueueConsumerResultOutput) Id() pulumi.StringOutput {
 // A Resource identifier.
 func (o LookupQueueConsumerResultOutput) QueueId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.QueueId }).(pulumi.StringOutput)
+}
+
+// Name of a Worker
+func (o LookupQueueConsumerResultOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.Script }).(pulumi.StringOutput)
+}
+
+// Name of a Worker
+func (o LookupQueueConsumerResultOutput) ScriptName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.ScriptName }).(pulumi.StringOutput)
+}
+
+func (o LookupQueueConsumerResultOutput) Settings() GetQueueConsumerSettingsOutput {
+	return o.ApplyT(func(v LookupQueueConsumerResult) GetQueueConsumerSettings { return v.Settings }).(GetQueueConsumerSettingsOutput)
+}
+
+func (o LookupQueueConsumerResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {

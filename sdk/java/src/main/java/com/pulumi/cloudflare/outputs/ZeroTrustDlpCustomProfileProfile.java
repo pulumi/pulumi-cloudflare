@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustDlpCustomProfileProfile {
+    private @Nullable Boolean aiContextEnabled;
     /**
      * @return Related DLP policies will trigger when the match count exceeds the number set.
      * 
@@ -44,6 +45,9 @@ public final class ZeroTrustDlpCustomProfileProfile {
     private @Nullable List<ZeroTrustDlpCustomProfileProfileSharedEntry> sharedEntries;
 
     private ZeroTrustDlpCustomProfileProfile() {}
+    public Optional<Boolean> aiContextEnabled() {
+        return Optional.ofNullable(this.aiContextEnabled);
+    }
     /**
      * @return Related DLP policies will trigger when the match count exceeds the number set.
      * 
@@ -94,6 +98,7 @@ public final class ZeroTrustDlpCustomProfileProfile {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean aiContextEnabled;
         private @Nullable Integer allowedMatchCount;
         private @Nullable String confidenceThreshold;
         private @Nullable ZeroTrustDlpCustomProfileProfileContextAwareness contextAwareness;
@@ -105,6 +110,7 @@ public final class ZeroTrustDlpCustomProfileProfile {
         public Builder() {}
         public Builder(ZeroTrustDlpCustomProfileProfile defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aiContextEnabled = defaults.aiContextEnabled;
     	      this.allowedMatchCount = defaults.allowedMatchCount;
     	      this.confidenceThreshold = defaults.confidenceThreshold;
     	      this.contextAwareness = defaults.contextAwareness;
@@ -115,6 +121,12 @@ public final class ZeroTrustDlpCustomProfileProfile {
     	      this.sharedEntries = defaults.sharedEntries;
         }
 
+        @CustomType.Setter
+        public Builder aiContextEnabled(@Nullable Boolean aiContextEnabled) {
+
+            this.aiContextEnabled = aiContextEnabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder allowedMatchCount(@Nullable Integer allowedMatchCount) {
 
@@ -175,6 +187,7 @@ public final class ZeroTrustDlpCustomProfileProfile {
         }
         public ZeroTrustDlpCustomProfileProfile build() {
             final var _resultValue = new ZeroTrustDlpCustomProfileProfile();
+            _resultValue.aiContextEnabled = aiContextEnabled;
             _resultValue.allowedMatchCount = allowedMatchCount;
             _resultValue.confidenceThreshold = confidenceThreshold;
             _resultValue.contextAwareness = contextAwareness;

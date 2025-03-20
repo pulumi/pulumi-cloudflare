@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -26,6 +27,7 @@ public final class GetMagicTransitSiteLanStaticAddressingDhcpServer {
      * 
      */
     private String dnsServer;
+    private List<String> dnsServers;
     /**
      * @return Mapping of MAC addresses to IP addresses
      * 
@@ -54,6 +56,9 @@ public final class GetMagicTransitSiteLanStaticAddressingDhcpServer {
     public String dnsServer() {
         return this.dnsServer;
     }
+    public List<String> dnsServers() {
+        return this.dnsServers;
+    }
     /**
      * @return Mapping of MAC addresses to IP addresses
      * 
@@ -74,6 +79,7 @@ public final class GetMagicTransitSiteLanStaticAddressingDhcpServer {
         private String dhcpPoolEnd;
         private String dhcpPoolStart;
         private String dnsServer;
+        private List<String> dnsServers;
         private Map<String,String> reservations;
         public Builder() {}
         public Builder(GetMagicTransitSiteLanStaticAddressingDhcpServer defaults) {
@@ -81,6 +87,7 @@ public final class GetMagicTransitSiteLanStaticAddressingDhcpServer {
     	      this.dhcpPoolEnd = defaults.dhcpPoolEnd;
     	      this.dhcpPoolStart = defaults.dhcpPoolStart;
     	      this.dnsServer = defaults.dnsServer;
+    	      this.dnsServers = defaults.dnsServers;
     	      this.reservations = defaults.reservations;
         }
 
@@ -109,6 +116,17 @@ public final class GetMagicTransitSiteLanStaticAddressingDhcpServer {
             return this;
         }
         @CustomType.Setter
+        public Builder dnsServers(List<String> dnsServers) {
+            if (dnsServers == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteLanStaticAddressingDhcpServer", "dnsServers");
+            }
+            this.dnsServers = dnsServers;
+            return this;
+        }
+        public Builder dnsServers(String... dnsServers) {
+            return dnsServers(List.of(dnsServers));
+        }
+        @CustomType.Setter
         public Builder reservations(Map<String,String> reservations) {
             if (reservations == null) {
               throw new MissingRequiredPropertyException("GetMagicTransitSiteLanStaticAddressingDhcpServer", "reservations");
@@ -121,6 +139,7 @@ public final class GetMagicTransitSiteLanStaticAddressingDhcpServer {
             _resultValue.dhcpPoolEnd = dhcpPoolEnd;
             _resultValue.dhcpPoolStart = dhcpPoolStart;
             _resultValue.dnsServer = dnsServer;
+            _resultValue.dnsServers = dnsServers;
             _resultValue.reservations = reservations;
             return _resultValue;
         }

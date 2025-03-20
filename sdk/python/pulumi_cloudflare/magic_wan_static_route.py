@@ -26,7 +26,9 @@ class MagicWanStaticRouteArgs:
                  nexthop: Optional[pulumi.Input[str]] = None,
                  prefix: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
+                 route: Optional[pulumi.Input['MagicWanStaticRouteRouteArgs']] = None,
                  route_id: Optional[pulumi.Input[str]] = None,
+                 routes: Optional[pulumi.Input[Sequence[pulumi.Input['MagicWanStaticRouteRouteArgs']]]] = None,
                  scope: Optional[pulumi.Input['MagicWanStaticRouteScopeArgs']] = None,
                  weight: Optional[pulumi.Input[int]] = None):
         """
@@ -49,8 +51,12 @@ class MagicWanStaticRouteArgs:
             pulumi.set(__self__, "prefix", prefix)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if route is not None:
+            pulumi.set(__self__, "route", route)
         if route_id is not None:
             pulumi.set(__self__, "route_id", route_id)
+        if routes is not None:
+            pulumi.set(__self__, "routes", routes)
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
         if weight is not None:
@@ -117,6 +123,15 @@ class MagicWanStaticRouteArgs:
         pulumi.set(self, "priority", value)
 
     @property
+    @pulumi.getter
+    def route(self) -> Optional[pulumi.Input['MagicWanStaticRouteRouteArgs']]:
+        return pulumi.get(self, "route")
+
+    @route.setter
+    def route(self, value: Optional[pulumi.Input['MagicWanStaticRouteRouteArgs']]):
+        pulumi.set(self, "route", value)
+
+    @property
     @pulumi.getter(name="routeId")
     def route_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -127,6 +142,15 @@ class MagicWanStaticRouteArgs:
     @route_id.setter
     def route_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "route_id", value)
+
+    @property
+    @pulumi.getter
+    def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MagicWanStaticRouteRouteArgs']]]]:
+        return pulumi.get(self, "routes")
+
+    @routes.setter
+    def routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MagicWanStaticRouteRouteArgs']]]]):
+        pulumi.set(self, "routes", value)
 
     @property
     @pulumi.getter
@@ -347,7 +371,9 @@ class MagicWanStaticRoute(pulumi.CustomResource):
                  nexthop: Optional[pulumi.Input[str]] = None,
                  prefix: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
+                 route: Optional[pulumi.Input[Union['MagicWanStaticRouteRouteArgs', 'MagicWanStaticRouteRouteArgsDict']]] = None,
                  route_id: Optional[pulumi.Input[str]] = None,
+                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MagicWanStaticRouteRouteArgs', 'MagicWanStaticRouteRouteArgsDict']]]]] = None,
                  scope: Optional[pulumi.Input[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict']]] = None,
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -408,7 +434,9 @@ class MagicWanStaticRoute(pulumi.CustomResource):
                  nexthop: Optional[pulumi.Input[str]] = None,
                  prefix: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
+                 route: Optional[pulumi.Input[Union['MagicWanStaticRouteRouteArgs', 'MagicWanStaticRouteRouteArgsDict']]] = None,
                  route_id: Optional[pulumi.Input[str]] = None,
+                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MagicWanStaticRouteRouteArgs', 'MagicWanStaticRouteRouteArgsDict']]]]] = None,
                  scope: Optional[pulumi.Input[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict']]] = None,
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -427,13 +455,13 @@ class MagicWanStaticRoute(pulumi.CustomResource):
             __props__.__dict__["nexthop"] = nexthop
             __props__.__dict__["prefix"] = prefix
             __props__.__dict__["priority"] = priority
+            __props__.__dict__["route"] = route
             __props__.__dict__["route_id"] = route_id
+            __props__.__dict__["routes"] = routes
             __props__.__dict__["scope"] = scope
             __props__.__dict__["weight"] = weight
             __props__.__dict__["modified"] = None
             __props__.__dict__["modified_route"] = None
-            __props__.__dict__["route"] = None
-            __props__.__dict__["routes"] = None
         super(MagicWanStaticRoute, __self__).__init__(
             'cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute',
             resource_name,

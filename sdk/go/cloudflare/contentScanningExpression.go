@@ -46,8 +46,8 @@ type ContentScanningExpression struct {
 	pulumi.CustomResourceState
 
 	Bodies ContentScanningExpressionBodyArrayOutput `pulumi:"bodies"`
-	// Identifier
-	ExpressionId pulumi.StringPtrOutput `pulumi:"expressionId"`
+	// Ruleset expression to use in matching content objects
+	Payload pulumi.StringOutput `pulumi:"payload"`
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -89,16 +89,16 @@ func GetContentScanningExpression(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ContentScanningExpression resources.
 type contentScanningExpressionState struct {
 	Bodies []ContentScanningExpressionBody `pulumi:"bodies"`
-	// Identifier
-	ExpressionId *string `pulumi:"expressionId"`
+	// Ruleset expression to use in matching content objects
+	Payload *string `pulumi:"payload"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ContentScanningExpressionState struct {
 	Bodies ContentScanningExpressionBodyArrayInput
-	// Identifier
-	ExpressionId pulumi.StringPtrInput
+	// Ruleset expression to use in matching content objects
+	Payload pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
@@ -110,16 +110,12 @@ func (ContentScanningExpressionState) ElementType() reflect.Type {
 type contentScanningExpressionArgs struct {
 	Bodies []ContentScanningExpressionBody `pulumi:"bodies"`
 	// Identifier
-	ExpressionId *string `pulumi:"expressionId"`
-	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ContentScanningExpression resource.
 type ContentScanningExpressionArgs struct {
 	Bodies ContentScanningExpressionBodyArrayInput
-	// Identifier
-	ExpressionId pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringInput
 }
@@ -215,9 +211,9 @@ func (o ContentScanningExpressionOutput) Bodies() ContentScanningExpressionBodyA
 	return o.ApplyT(func(v *ContentScanningExpression) ContentScanningExpressionBodyArrayOutput { return v.Bodies }).(ContentScanningExpressionBodyArrayOutput)
 }
 
-// Identifier
-func (o ContentScanningExpressionOutput) ExpressionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ContentScanningExpression) pulumi.StringPtrOutput { return v.ExpressionId }).(pulumi.StringPtrOutput)
+// Ruleset expression to use in matching content objects
+func (o ContentScanningExpressionOutput) Payload() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContentScanningExpression) pulumi.StringOutput { return v.Payload }).(pulumi.StringOutput)
 }
 
 // Identifier

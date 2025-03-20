@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
@@ -31,11 +29,11 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
         return this.accountId;
     }
 
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
@@ -100,7 +98,7 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
             return accountId(Output.of(accountId));
         }
 
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -133,6 +131,9 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
         public PagesDomainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("PagesDomainArgs", "accountId");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("PagesDomainArgs", "name");
             }
             if ($.projectName == null) {
                 throw new MissingRequiredPropertyException("PagesDomainArgs", "projectName");

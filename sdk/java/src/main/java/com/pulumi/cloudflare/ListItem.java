@@ -59,14 +59,14 @@ public class ListItem extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
-    private Output<String> comment;
+    private Output</* @Nullable */ String> comment;
 
     /**
      * @return An informative summary of the list item.
      * 
      */
-    public Output<String> comment() {
-        return this.comment;
+    public Output<Optional<String>> comment() {
+        return Codegen.optional(this.comment);
     }
     /**
      * The RFC 3339 timestamp of when the item was created.
@@ -109,20 +109,6 @@ public class ListItem extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> ip() {
         return Codegen.optional(this.ip);
-    }
-    /**
-     * The unique ID of the item in the List.
-     * 
-     */
-    @Export(name="itemId", refs={String.class}, tree="[0]")
-    private Output<String> itemId;
-
-    /**
-     * @return The unique ID of the item in the List.
-     * 
-     */
-    public Output<String> itemId() {
-        return this.itemId;
     }
     /**
      * The unique ID of the list.

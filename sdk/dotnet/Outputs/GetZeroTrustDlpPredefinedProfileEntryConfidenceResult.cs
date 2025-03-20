@@ -13,6 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetZeroTrustDlpPredefinedProfileEntryConfidenceResult
     {
+        public readonly bool AiContextAvailable;
         /// <summary>
         /// Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
         /// Profiles that use an entry with `available` set to true can use confidence thresholds
@@ -20,8 +21,12 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool Available;
 
         [OutputConstructor]
-        private GetZeroTrustDlpPredefinedProfileEntryConfidenceResult(bool available)
+        private GetZeroTrustDlpPredefinedProfileEntryConfidenceResult(
+            bool aiContextAvailable,
+
+            bool available)
         {
+            AiContextAvailable = aiContextAvailable;
             Available = available;
         }
     }

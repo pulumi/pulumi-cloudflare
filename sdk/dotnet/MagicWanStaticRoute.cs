@@ -167,11 +167,22 @@ namespace Pulumi.Cloudflare
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
+        [Input("route")]
+        public Input<Inputs.MagicWanStaticRouteRouteArgs>? Route { get; set; }
+
         /// <summary>
         /// Identifier
         /// </summary>
         [Input("routeId")]
         public Input<string>? RouteId { get; set; }
+
+        [Input("routes")]
+        private InputList<Inputs.MagicWanStaticRouteRouteArgs>? _routes;
+        public InputList<Inputs.MagicWanStaticRouteRouteArgs> Routes
+        {
+            get => _routes ?? (_routes = new InputList<Inputs.MagicWanStaticRouteRouteArgs>());
+            set => _routes = value;
+        }
 
         /// <summary>
         /// Used only for ECMP routes.

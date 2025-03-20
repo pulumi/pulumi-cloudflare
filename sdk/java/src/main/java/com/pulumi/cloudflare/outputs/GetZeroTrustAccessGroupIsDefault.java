@@ -21,6 +21,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupIsDefaultGroup;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupIsDefaultGsuite;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupIsDefaultIp;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupIsDefaultIpList;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupIsDefaultLoginMethod;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupIsDefaultOkta;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupIsDefaultSaml;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupIsDefaultServiceToken;
@@ -56,6 +57,7 @@ public final class GetZeroTrustAccessGroupIsDefault {
     private GetZeroTrustAccessGroupIsDefaultGsuite gsuite;
     private GetZeroTrustAccessGroupIsDefaultIp ip;
     private GetZeroTrustAccessGroupIsDefaultIpList ipList;
+    private GetZeroTrustAccessGroupIsDefaultLoginMethod loginMethod;
     private GetZeroTrustAccessGroupIsDefaultOkta okta;
     private GetZeroTrustAccessGroupIsDefaultSaml saml;
     private GetZeroTrustAccessGroupIsDefaultServiceToken serviceToken;
@@ -123,6 +125,9 @@ public final class GetZeroTrustAccessGroupIsDefault {
     public GetZeroTrustAccessGroupIsDefaultIpList ipList() {
         return this.ipList;
     }
+    public GetZeroTrustAccessGroupIsDefaultLoginMethod loginMethod() {
+        return this.loginMethod;
+    }
     public GetZeroTrustAccessGroupIsDefaultOkta okta() {
         return this.okta;
     }
@@ -160,6 +165,7 @@ public final class GetZeroTrustAccessGroupIsDefault {
         private GetZeroTrustAccessGroupIsDefaultGsuite gsuite;
         private GetZeroTrustAccessGroupIsDefaultIp ip;
         private GetZeroTrustAccessGroupIsDefaultIpList ipList;
+        private GetZeroTrustAccessGroupIsDefaultLoginMethod loginMethod;
         private GetZeroTrustAccessGroupIsDefaultOkta okta;
         private GetZeroTrustAccessGroupIsDefaultSaml saml;
         private GetZeroTrustAccessGroupIsDefaultServiceToken serviceToken;
@@ -184,6 +190,7 @@ public final class GetZeroTrustAccessGroupIsDefault {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
+    	      this.loginMethod = defaults.loginMethod;
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -334,6 +341,14 @@ public final class GetZeroTrustAccessGroupIsDefault {
             return this;
         }
         @CustomType.Setter
+        public Builder loginMethod(GetZeroTrustAccessGroupIsDefaultLoginMethod loginMethod) {
+            if (loginMethod == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupIsDefault", "loginMethod");
+            }
+            this.loginMethod = loginMethod;
+            return this;
+        }
+        @CustomType.Setter
         public Builder okta(GetZeroTrustAccessGroupIsDefaultOkta okta) {
             if (okta == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupIsDefault", "okta");
@@ -377,6 +392,7 @@ public final class GetZeroTrustAccessGroupIsDefault {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
+            _resultValue.loginMethod = loginMethod;
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

@@ -302,6 +302,20 @@ public class Zone extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> vanityNameServers() {
         return Codegen.optional(this.vanityNameServers);
     }
+    /**
+     * Verification key for partial zone setup.
+     * 
+     */
+    @Export(name="verificationKey", refs={String.class}, tree="[0]")
+    private Output<String> verificationKey;
+
+    /**
+     * @return Verification key for partial zone setup.
+     * 
+     */
+    public Output<String> verificationKey() {
+        return this.verificationKey;
+    }
 
     /**
      *

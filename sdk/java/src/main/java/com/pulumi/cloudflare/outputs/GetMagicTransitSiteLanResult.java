@@ -13,6 +13,8 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMagicTransitSiteLanResult {
@@ -35,7 +37,7 @@ public final class GetMagicTransitSiteLanResult {
      * @return Identifier
      * 
      */
-    private String lanId;
+    private @Nullable String lanId;
     private String name;
     private GetMagicTransitSiteLanNat nat;
     private Integer physport;
@@ -82,8 +84,8 @@ public final class GetMagicTransitSiteLanResult {
      * @return Identifier
      * 
      */
-    public String lanId() {
-        return this.lanId;
+    public Optional<String> lanId() {
+        return Optional.ofNullable(this.lanId);
     }
     public String name() {
         return this.name;
@@ -131,7 +133,7 @@ public final class GetMagicTransitSiteLanResult {
         private String accountId;
         private Boolean haLink;
         private String id;
-        private String lanId;
+        private @Nullable String lanId;
         private String name;
         private GetMagicTransitSiteLanNat nat;
         private Integer physport;
@@ -180,10 +182,8 @@ public final class GetMagicTransitSiteLanResult {
             return this;
         }
         @CustomType.Setter
-        public Builder lanId(String lanId) {
-            if (lanId == null) {
-              throw new MissingRequiredPropertyException("GetMagicTransitSiteLanResult", "lanId");
-            }
+        public Builder lanId(@Nullable String lanId) {
+
             this.lanId = lanId;
             return this;
         }

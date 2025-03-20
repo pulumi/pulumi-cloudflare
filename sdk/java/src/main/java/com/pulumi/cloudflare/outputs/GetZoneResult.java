@@ -37,6 +37,7 @@ public final class GetZoneResult {
     private String status;
     private String type;
     private List<String> vanityNameServers;
+    private String verificationKey;
     private @Nullable String zoneId;
 
     private GetZoneResult() {}
@@ -94,6 +95,9 @@ public final class GetZoneResult {
     public List<String> vanityNameServers() {
         return this.vanityNameServers;
     }
+    public String verificationKey() {
+        return this.verificationKey;
+    }
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }
@@ -125,6 +129,7 @@ public final class GetZoneResult {
         private String status;
         private String type;
         private List<String> vanityNameServers;
+        private String verificationKey;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetZoneResult defaults) {
@@ -147,6 +152,7 @@ public final class GetZoneResult {
     	      this.status = defaults.status;
     	      this.type = defaults.type;
     	      this.vanityNameServers = defaults.vanityNameServers;
+    	      this.verificationKey = defaults.verificationKey;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -302,6 +308,14 @@ public final class GetZoneResult {
             return vanityNameServers(List.of(vanityNameServers));
         }
         @CustomType.Setter
+        public Builder verificationKey(String verificationKey) {
+            if (verificationKey == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "verificationKey");
+            }
+            this.verificationKey = verificationKey;
+            return this;
+        }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
 
             this.zoneId = zoneId;
@@ -327,6 +341,7 @@ public final class GetZoneResult {
             _resultValue.status = status;
             _resultValue.type = type;
             _resultValue.vanityNameServers = vanityNameServers;
+            _resultValue.verificationKey = verificationKey;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

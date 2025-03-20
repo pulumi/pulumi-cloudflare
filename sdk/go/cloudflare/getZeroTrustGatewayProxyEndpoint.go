@@ -56,9 +56,17 @@ type LookupZeroTrustGatewayProxyEndpointArgs struct {
 // A collection of values returned by getZeroTrustGatewayProxyEndpoint.
 type LookupZeroTrustGatewayProxyEndpointResult struct {
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id              string `pulumi:"id"`
+	CreatedAt string `pulumi:"createdAt"`
+	// The ID of this resource.
+	Id string `pulumi:"id"`
+	// A list of CIDRs to restrict ingress connections.
+	Ips []string `pulumi:"ips"`
+	// The name of the proxy endpoint.
+	Name            string `pulumi:"name"`
 	ProxyEndpointId string `pulumi:"proxyEndpointId"`
+	// The subdomain to be used as the destination in the proxy client.
+	Subdomain string `pulumi:"subdomain"`
+	UpdatedAt string `pulumi:"updatedAt"`
 }
 
 func LookupZeroTrustGatewayProxyEndpointOutput(ctx *pulumi.Context, args LookupZeroTrustGatewayProxyEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustGatewayProxyEndpointResultOutput {
@@ -99,13 +107,36 @@ func (o LookupZeroTrustGatewayProxyEndpointResultOutput) AccountId() pulumi.Stri
 	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+func (o LookupZeroTrustGatewayProxyEndpointResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
 func (o LookupZeroTrustGatewayProxyEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of CIDRs to restrict ingress connections.
+func (o LookupZeroTrustGatewayProxyEndpointResultOutput) Ips() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointResult) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+// The name of the proxy endpoint.
+func (o LookupZeroTrustGatewayProxyEndpointResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
 func (o LookupZeroTrustGatewayProxyEndpointResultOutput) ProxyEndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointResult) string { return v.ProxyEndpointId }).(pulumi.StringOutput)
+}
+
+// The subdomain to be used as the destination in the proxy client.
+func (o LookupZeroTrustGatewayProxyEndpointResultOutput) Subdomain() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointResult) string { return v.Subdomain }).(pulumi.StringOutput)
+}
+
+func (o LookupZeroTrustGatewayProxyEndpointResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 func init() {

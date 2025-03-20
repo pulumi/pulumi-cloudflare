@@ -3,12 +3,52 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetPermissionGroupsResultMeta;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetPermissionGroupsResult {
+    /**
+     * @return Identifier of the group.
+     * 
+     */
+    private String id;
+    /**
+     * @return Attributes associated to the permission group.
+     * 
+     */
+    private GetPermissionGroupsResultMeta meta;
+    /**
+     * @return Name of the group.
+     * 
+     */
+    private String name;
+
     private GetPermissionGroupsResult() {}
+    /**
+     * @return Identifier of the group.
+     * 
+     */
+    public String id() {
+        return this.id;
+    }
+    /**
+     * @return Attributes associated to the permission group.
+     * 
+     */
+    public GetPermissionGroupsResultMeta meta() {
+        return this.meta;
+    }
+    /**
+     * @return Name of the group.
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -19,13 +59,46 @@ public final class GetPermissionGroupsResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String id;
+        private GetPermissionGroupsResultMeta meta;
+        private String name;
         public Builder() {}
         public Builder(GetPermissionGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.id = defaults.id;
+    	      this.meta = defaults.meta;
+    	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPermissionGroupsResult", "id");
+            }
+            this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder meta(GetPermissionGroupsResultMeta meta) {
+            if (meta == null) {
+              throw new MissingRequiredPropertyException("GetPermissionGroupsResult", "meta");
+            }
+            this.meta = meta;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetPermissionGroupsResult", "name");
+            }
+            this.name = name;
+            return this;
+        }
         public GetPermissionGroupsResult build() {
             final var _resultValue = new GetPermissionGroupsResult();
+            _resultValue.id = id;
+            _resultValue.meta = meta;
+            _resultValue.name = name;
             return _resultValue;
         }
     }

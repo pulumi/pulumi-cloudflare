@@ -57,12 +57,14 @@ __all__ = [
     'ApiTokenPolicyPermissionGroupMeta',
     'AuthenticatedOriginPullsConfig',
     'BotManagementStaleZoneConfiguration',
+    'CloudConnectorRulesParameters',
     'CloudConnectorRulesRule',
     'CloudConnectorRulesRuleParameters',
     'ContentScanningExpressionBody',
     'CustomHostnameOwnershipVerification',
     'CustomHostnameOwnershipVerificationHttp',
     'CustomHostnameSsl',
+    'CustomHostnameSslCustomCertBundle',
     'CustomHostnameSslSettings',
     'CustomSslGeoRestrictions',
     'CustomSslKeylessServer',
@@ -70,6 +72,10 @@ __all__ = [
     'DnsFirewallAttackMitigation',
     'DnsRecordData',
     'DnsRecordSettings',
+    'DnsSettingsZoneDefaults',
+    'DnsSettingsZoneDefaultsInternalDns',
+    'DnsSettingsZoneDefaultsNameservers',
+    'DnsSettingsZoneDefaultsSoa',
     'EmailRoutingCatchAllAction',
     'EmailRoutingCatchAllMatcher',
     'EmailRoutingDnsError',
@@ -229,6 +235,24 @@ __all__ = [
     'QueueConsumerSettings',
     'QueueProducer',
     'QueueSettings',
+    'R2BucketCorsRule',
+    'R2BucketCorsRuleAllowed',
+    'R2BucketEventNotificationQueue',
+    'R2BucketEventNotificationQueueRule',
+    'R2BucketEventNotificationRule',
+    'R2BucketLifecycleRule',
+    'R2BucketLifecycleRuleAbortMultipartUploadsTransition',
+    'R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition',
+    'R2BucketLifecycleRuleConditions',
+    'R2BucketLifecycleRuleDeleteObjectsTransition',
+    'R2BucketLifecycleRuleDeleteObjectsTransitionCondition',
+    'R2BucketLifecycleRuleStorageClassTransition',
+    'R2BucketLifecycleRuleStorageClassTransitionCondition',
+    'R2BucketLockRule',
+    'R2BucketLockRuleCondition',
+    'R2BucketSippyDestination',
+    'R2BucketSippySource',
+    'R2CustomDomainStatus',
     'RateLimitAction',
     'RateLimitActionResponse',
     'RateLimitBypass',
@@ -305,6 +329,8 @@ __all__ = [
     'WorkersDeploymentDeploymentAnnotations',
     'WorkersDeploymentDeploymentVersion',
     'WorkersDeploymentVersion',
+    'WorkersRouteError',
+    'WorkersRouteMessage',
     'WorkersScriptAssets',
     'WorkersScriptAssetsConfig',
     'WorkersScriptBinding',
@@ -345,6 +371,7 @@ __all__ = [
     'ZeroTrustAccessApplicationPolicyExcludeGsuite',
     'ZeroTrustAccessApplicationPolicyExcludeIp',
     'ZeroTrustAccessApplicationPolicyExcludeIpList',
+    'ZeroTrustAccessApplicationPolicyExcludeLoginMethod',
     'ZeroTrustAccessApplicationPolicyExcludeOkta',
     'ZeroTrustAccessApplicationPolicyExcludeSaml',
     'ZeroTrustAccessApplicationPolicyExcludeServiceToken',
@@ -367,6 +394,7 @@ __all__ = [
     'ZeroTrustAccessApplicationPolicyIncludeGsuite',
     'ZeroTrustAccessApplicationPolicyIncludeIp',
     'ZeroTrustAccessApplicationPolicyIncludeIpList',
+    'ZeroTrustAccessApplicationPolicyIncludeLoginMethod',
     'ZeroTrustAccessApplicationPolicyIncludeOkta',
     'ZeroTrustAccessApplicationPolicyIncludeSaml',
     'ZeroTrustAccessApplicationPolicyIncludeServiceToken',
@@ -389,12 +417,14 @@ __all__ = [
     'ZeroTrustAccessApplicationPolicyRequireGsuite',
     'ZeroTrustAccessApplicationPolicyRequireIp',
     'ZeroTrustAccessApplicationPolicyRequireIpList',
+    'ZeroTrustAccessApplicationPolicyRequireLoginMethod',
     'ZeroTrustAccessApplicationPolicyRequireOkta',
     'ZeroTrustAccessApplicationPolicyRequireSaml',
     'ZeroTrustAccessApplicationPolicyRequireServiceToken',
     'ZeroTrustAccessApplicationSaasApp',
     'ZeroTrustAccessApplicationSaasAppCustomAttribute',
     'ZeroTrustAccessApplicationSaasAppCustomAttributeSource',
+    'ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp',
     'ZeroTrustAccessApplicationSaasAppCustomClaim',
     'ZeroTrustAccessApplicationSaasAppCustomClaimSource',
     'ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptions',
@@ -423,6 +453,7 @@ __all__ = [
     'ZeroTrustAccessGroupExcludeGsuite',
     'ZeroTrustAccessGroupExcludeIp',
     'ZeroTrustAccessGroupExcludeIpList',
+    'ZeroTrustAccessGroupExcludeLoginMethod',
     'ZeroTrustAccessGroupExcludeOkta',
     'ZeroTrustAccessGroupExcludeSaml',
     'ZeroTrustAccessGroupExcludeServiceToken',
@@ -445,6 +476,7 @@ __all__ = [
     'ZeroTrustAccessGroupIncludeGsuite',
     'ZeroTrustAccessGroupIncludeIp',
     'ZeroTrustAccessGroupIncludeIpList',
+    'ZeroTrustAccessGroupIncludeLoginMethod',
     'ZeroTrustAccessGroupIncludeOkta',
     'ZeroTrustAccessGroupIncludeSaml',
     'ZeroTrustAccessGroupIncludeServiceToken',
@@ -467,6 +499,7 @@ __all__ = [
     'ZeroTrustAccessGroupRequireGsuite',
     'ZeroTrustAccessGroupRequireIp',
     'ZeroTrustAccessGroupRequireIpList',
+    'ZeroTrustAccessGroupRequireLoginMethod',
     'ZeroTrustAccessGroupRequireOkta',
     'ZeroTrustAccessGroupRequireSaml',
     'ZeroTrustAccessGroupRequireServiceToken',
@@ -497,6 +530,7 @@ __all__ = [
     'ZeroTrustAccessPolicyExcludeGsuite',
     'ZeroTrustAccessPolicyExcludeIp',
     'ZeroTrustAccessPolicyExcludeIpList',
+    'ZeroTrustAccessPolicyExcludeLoginMethod',
     'ZeroTrustAccessPolicyExcludeOkta',
     'ZeroTrustAccessPolicyExcludeSaml',
     'ZeroTrustAccessPolicyExcludeServiceToken',
@@ -519,6 +553,7 @@ __all__ = [
     'ZeroTrustAccessPolicyIncludeGsuite',
     'ZeroTrustAccessPolicyIncludeIp',
     'ZeroTrustAccessPolicyIncludeIpList',
+    'ZeroTrustAccessPolicyIncludeLoginMethod',
     'ZeroTrustAccessPolicyIncludeOkta',
     'ZeroTrustAccessPolicyIncludeSaml',
     'ZeroTrustAccessPolicyIncludeServiceToken',
@@ -541,6 +576,7 @@ __all__ = [
     'ZeroTrustAccessPolicyRequireGsuite',
     'ZeroTrustAccessPolicyRequireIp',
     'ZeroTrustAccessPolicyRequireIpList',
+    'ZeroTrustAccessPolicyRequireLoginMethod',
     'ZeroTrustAccessPolicyRequireOkta',
     'ZeroTrustAccessPolicyRequireSaml',
     'ZeroTrustAccessPolicyRequireServiceToken',
@@ -592,6 +628,7 @@ __all__ = [
     'ZeroTrustDnsLocationEndpointsIpv6',
     'ZeroTrustDnsLocationEndpointsIpv6Network',
     'ZeroTrustDnsLocationNetwork',
+    'ZeroTrustGatewayLoggingSettingsByRuleType',
     'ZeroTrustGatewayPolicyExpiration',
     'ZeroTrustGatewayPolicyRuleSettings',
     'ZeroTrustGatewayPolicyRuleSettingsAuditSsh',
@@ -723,6 +760,7 @@ __all__ = [
     'GetAccountRolesResultPermissionsZoneSettingsResult',
     'GetAccountRolesResultPermissionsZonesResult',
     'GetAccountSettingsResult',
+    'GetAccountSubscriptionRatePlanResult',
     'GetAccountTokenConditionResult',
     'GetAccountTokenConditionRequestIpResult',
     'GetAccountTokenFilterResult',
@@ -837,6 +875,14 @@ __all__ = [
     'GetDnsRecordsResultDataResult',
     'GetDnsRecordsResultSettingsResult',
     'GetDnsRecordsTagResult',
+    'GetDnsSettingsInternalViewFilterResult',
+    'GetDnsSettingsInternalViewFilterNameResult',
+    'GetDnsSettingsInternalViewsNameResult',
+    'GetDnsSettingsInternalViewsResultResult',
+    'GetDnsSettingsZoneDefaultsResult',
+    'GetDnsSettingsZoneDefaultsInternalDnsResult',
+    'GetDnsSettingsZoneDefaultsNameserversResult',
+    'GetDnsSettingsZoneDefaultsSoaResult',
     'GetDnsZoneTransfersAclsResultResult',
     'GetDnsZoneTransfersPeersResultResult',
     'GetDnsZoneTransfersTsigsResultResult',
@@ -863,8 +909,8 @@ __all__ = [
     'GetEmailSecurityImpersonationRegistryFilterResult',
     'GetEmailSecurityTrustedDomainsFilterResult',
     'GetEmailSecurityTrustedDomainsListResultResult',
+    'GetFilterFilterResult',
     'GetFiltersResultResult',
-    'GetFirewallRuleFilterResult',
     'GetFirewallRulesResultResult',
     'GetFirewallRulesResultFilterResult',
     'GetHealthcheckHttpConfigResult',
@@ -931,6 +977,7 @@ __all__ = [
     'GetLoadBalancersResultRuleOverridesRandomSteeringResult',
     'GetLoadBalancersResultRuleOverridesSessionAffinityAttributesResult',
     'GetLoadBalancersResultSessionAffinityAttributesResult',
+    'GetLogpushDatasetJobOutputOptionsResult',
     'GetLogpushJobOutputOptionsResult',
     'GetLogpushJobsResultResult',
     'GetLogpushJobsResultOutputOptionsResult',
@@ -1063,6 +1110,7 @@ __all__ = [
     'GetPagesProjectsResultStageResult',
     'GetPermissionGroupMetaResult',
     'GetPermissionGroupsResultResult',
+    'GetPermissionGroupsResultMetaResult',
     'GetQueueConsumerResult',
     'GetQueueConsumerSettingsResult',
     'GetQueueProducerResult',
@@ -1072,6 +1120,23 @@ __all__ = [
     'GetQueuesResultConsumerSettingsResult',
     'GetQueuesResultProducerResult',
     'GetQueuesResultSettingsResult',
+    'GetR2BucketCorsRuleResult',
+    'GetR2BucketCorsRuleAllowedResult',
+    'GetR2BucketEventNotificationQueueResult',
+    'GetR2BucketEventNotificationQueueRuleResult',
+    'GetR2BucketLifecycleRuleResult',
+    'GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionResult',
+    'GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionResult',
+    'GetR2BucketLifecycleRuleConditionsResult',
+    'GetR2BucketLifecycleRuleDeleteObjectsTransitionResult',
+    'GetR2BucketLifecycleRuleDeleteObjectsTransitionConditionResult',
+    'GetR2BucketLifecycleRuleStorageClassTransitionResult',
+    'GetR2BucketLifecycleRuleStorageClassTransitionConditionResult',
+    'GetR2BucketLockRuleResult',
+    'GetR2BucketLockRuleConditionResult',
+    'GetR2BucketSippyDestinationResult',
+    'GetR2BucketSippySourceResult',
+    'GetR2CustomDomainStatusResult',
     'GetRateLimitActionResult',
     'GetRateLimitActionResponseResult',
     'GetRateLimitBypassResult',
@@ -1095,6 +1160,9 @@ __all__ = [
     'GetResourceGroupScopeResult',
     'GetResourceGroupScopeObjectResult',
     'GetResourceGroupsResultResult',
+    'GetResourceGroupsResultMetaResult',
+    'GetResourceGroupsResultScopeResult',
+    'GetResourceGroupsResultScopeObjectResult',
     'GetRulesetRuleResult',
     'GetRulesetRuleActionParametersResult',
     'GetRulesetRuleActionParametersAlgorithmResult',
@@ -1184,6 +1252,7 @@ __all__ = [
     'GetWorkersForPlatformsDispatchNamespacesResultResult',
     'GetWorkersKvNamespaceFilterResult',
     'GetWorkersKvNamespacesResultResult',
+    'GetWorkersRoutesResultResult',
     'GetWorkersScriptsResultResult',
     'GetWorkersScriptsResultPlacementResult',
     'GetWorkersScriptsResultTailConsumerResult',
@@ -1216,6 +1285,7 @@ __all__ = [
     'GetZeroTrustAccessApplicationPolicyExcludeGsuiteResult',
     'GetZeroTrustAccessApplicationPolicyExcludeIpResult',
     'GetZeroTrustAccessApplicationPolicyExcludeIpListResult',
+    'GetZeroTrustAccessApplicationPolicyExcludeLoginMethodResult',
     'GetZeroTrustAccessApplicationPolicyExcludeOktaResult',
     'GetZeroTrustAccessApplicationPolicyExcludeSamlResult',
     'GetZeroTrustAccessApplicationPolicyExcludeServiceTokenResult',
@@ -1238,6 +1308,7 @@ __all__ = [
     'GetZeroTrustAccessApplicationPolicyIncludeGsuiteResult',
     'GetZeroTrustAccessApplicationPolicyIncludeIpResult',
     'GetZeroTrustAccessApplicationPolicyIncludeIpListResult',
+    'GetZeroTrustAccessApplicationPolicyIncludeLoginMethodResult',
     'GetZeroTrustAccessApplicationPolicyIncludeOktaResult',
     'GetZeroTrustAccessApplicationPolicyIncludeSamlResult',
     'GetZeroTrustAccessApplicationPolicyIncludeServiceTokenResult',
@@ -1260,12 +1331,14 @@ __all__ = [
     'GetZeroTrustAccessApplicationPolicyRequireGsuiteResult',
     'GetZeroTrustAccessApplicationPolicyRequireIpResult',
     'GetZeroTrustAccessApplicationPolicyRequireIpListResult',
+    'GetZeroTrustAccessApplicationPolicyRequireLoginMethodResult',
     'GetZeroTrustAccessApplicationPolicyRequireOktaResult',
     'GetZeroTrustAccessApplicationPolicyRequireSamlResult',
     'GetZeroTrustAccessApplicationPolicyRequireServiceTokenResult',
     'GetZeroTrustAccessApplicationSaasAppResult',
     'GetZeroTrustAccessApplicationSaasAppCustomAttributeResult',
     'GetZeroTrustAccessApplicationSaasAppCustomAttributeSourceResult',
+    'GetZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpResult',
     'GetZeroTrustAccessApplicationSaasAppCustomClaimResult',
     'GetZeroTrustAccessApplicationSaasAppCustomClaimSourceResult',
     'GetZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsResult',
@@ -1303,6 +1376,7 @@ __all__ = [
     'GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteResult',
     'GetZeroTrustAccessApplicationsResultPolicyExcludeIpResult',
     'GetZeroTrustAccessApplicationsResultPolicyExcludeIpListResult',
+    'GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodResult',
     'GetZeroTrustAccessApplicationsResultPolicyExcludeOktaResult',
     'GetZeroTrustAccessApplicationsResultPolicyExcludeSamlResult',
     'GetZeroTrustAccessApplicationsResultPolicyExcludeServiceTokenResult',
@@ -1325,6 +1399,7 @@ __all__ = [
     'GetZeroTrustAccessApplicationsResultPolicyIncludeGsuiteResult',
     'GetZeroTrustAccessApplicationsResultPolicyIncludeIpResult',
     'GetZeroTrustAccessApplicationsResultPolicyIncludeIpListResult',
+    'GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodResult',
     'GetZeroTrustAccessApplicationsResultPolicyIncludeOktaResult',
     'GetZeroTrustAccessApplicationsResultPolicyIncludeSamlResult',
     'GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenResult',
@@ -1347,12 +1422,14 @@ __all__ = [
     'GetZeroTrustAccessApplicationsResultPolicyRequireGsuiteResult',
     'GetZeroTrustAccessApplicationsResultPolicyRequireIpResult',
     'GetZeroTrustAccessApplicationsResultPolicyRequireIpListResult',
+    'GetZeroTrustAccessApplicationsResultPolicyRequireLoginMethodResult',
     'GetZeroTrustAccessApplicationsResultPolicyRequireOktaResult',
     'GetZeroTrustAccessApplicationsResultPolicyRequireSamlResult',
     'GetZeroTrustAccessApplicationsResultPolicyRequireServiceTokenResult',
     'GetZeroTrustAccessApplicationsResultSaasAppResult',
     'GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeResult',
     'GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSourceResult',
+    'GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSourceNameByIdpResult',
     'GetZeroTrustAccessApplicationsResultSaasAppCustomClaimResult',
     'GetZeroTrustAccessApplicationsResultSaasAppCustomClaimSourceResult',
     'GetZeroTrustAccessApplicationsResultSaasAppHybridAndImplicitOptionsResult',
@@ -1382,6 +1459,7 @@ __all__ = [
     'GetZeroTrustAccessGroupExcludeGsuiteResult',
     'GetZeroTrustAccessGroupExcludeIpResult',
     'GetZeroTrustAccessGroupExcludeIpListResult',
+    'GetZeroTrustAccessGroupExcludeLoginMethodResult',
     'GetZeroTrustAccessGroupExcludeOktaResult',
     'GetZeroTrustAccessGroupExcludeSamlResult',
     'GetZeroTrustAccessGroupExcludeServiceTokenResult',
@@ -1405,6 +1483,7 @@ __all__ = [
     'GetZeroTrustAccessGroupIncludeGsuiteResult',
     'GetZeroTrustAccessGroupIncludeIpResult',
     'GetZeroTrustAccessGroupIncludeIpListResult',
+    'GetZeroTrustAccessGroupIncludeLoginMethodResult',
     'GetZeroTrustAccessGroupIncludeOktaResult',
     'GetZeroTrustAccessGroupIncludeSamlResult',
     'GetZeroTrustAccessGroupIncludeServiceTokenResult',
@@ -1427,6 +1506,7 @@ __all__ = [
     'GetZeroTrustAccessGroupIsDefaultGsuiteResult',
     'GetZeroTrustAccessGroupIsDefaultIpResult',
     'GetZeroTrustAccessGroupIsDefaultIpListResult',
+    'GetZeroTrustAccessGroupIsDefaultLoginMethodResult',
     'GetZeroTrustAccessGroupIsDefaultOktaResult',
     'GetZeroTrustAccessGroupIsDefaultSamlResult',
     'GetZeroTrustAccessGroupIsDefaultServiceTokenResult',
@@ -1449,6 +1529,7 @@ __all__ = [
     'GetZeroTrustAccessGroupRequireGsuiteResult',
     'GetZeroTrustAccessGroupRequireIpResult',
     'GetZeroTrustAccessGroupRequireIpListResult',
+    'GetZeroTrustAccessGroupRequireLoginMethodResult',
     'GetZeroTrustAccessGroupRequireOktaResult',
     'GetZeroTrustAccessGroupRequireSamlResult',
     'GetZeroTrustAccessGroupRequireServiceTokenResult',
@@ -1472,6 +1553,7 @@ __all__ = [
     'GetZeroTrustAccessGroupsResultExcludeGsuiteResult',
     'GetZeroTrustAccessGroupsResultExcludeIpResult',
     'GetZeroTrustAccessGroupsResultExcludeIpListResult',
+    'GetZeroTrustAccessGroupsResultExcludeLoginMethodResult',
     'GetZeroTrustAccessGroupsResultExcludeOktaResult',
     'GetZeroTrustAccessGroupsResultExcludeSamlResult',
     'GetZeroTrustAccessGroupsResultExcludeServiceTokenResult',
@@ -1494,6 +1576,7 @@ __all__ = [
     'GetZeroTrustAccessGroupsResultIncludeGsuiteResult',
     'GetZeroTrustAccessGroupsResultIncludeIpResult',
     'GetZeroTrustAccessGroupsResultIncludeIpListResult',
+    'GetZeroTrustAccessGroupsResultIncludeLoginMethodResult',
     'GetZeroTrustAccessGroupsResultIncludeOktaResult',
     'GetZeroTrustAccessGroupsResultIncludeSamlResult',
     'GetZeroTrustAccessGroupsResultIncludeServiceTokenResult',
@@ -1516,6 +1599,7 @@ __all__ = [
     'GetZeroTrustAccessGroupsResultIsDefaultGsuiteResult',
     'GetZeroTrustAccessGroupsResultIsDefaultIpResult',
     'GetZeroTrustAccessGroupsResultIsDefaultIpListResult',
+    'GetZeroTrustAccessGroupsResultIsDefaultLoginMethodResult',
     'GetZeroTrustAccessGroupsResultIsDefaultOktaResult',
     'GetZeroTrustAccessGroupsResultIsDefaultSamlResult',
     'GetZeroTrustAccessGroupsResultIsDefaultServiceTokenResult',
@@ -1538,6 +1622,7 @@ __all__ = [
     'GetZeroTrustAccessGroupsResultRequireGsuiteResult',
     'GetZeroTrustAccessGroupsResultRequireIpResult',
     'GetZeroTrustAccessGroupsResultRequireIpListResult',
+    'GetZeroTrustAccessGroupsResultRequireLoginMethodResult',
     'GetZeroTrustAccessGroupsResultRequireOktaResult',
     'GetZeroTrustAccessGroupsResultRequireSamlResult',
     'GetZeroTrustAccessGroupsResultRequireServiceTokenResult',
@@ -1579,6 +1664,7 @@ __all__ = [
     'GetZeroTrustAccessPoliciesResultExcludeGsuiteResult',
     'GetZeroTrustAccessPoliciesResultExcludeIpResult',
     'GetZeroTrustAccessPoliciesResultExcludeIpListResult',
+    'GetZeroTrustAccessPoliciesResultExcludeLoginMethodResult',
     'GetZeroTrustAccessPoliciesResultExcludeOktaResult',
     'GetZeroTrustAccessPoliciesResultExcludeSamlResult',
     'GetZeroTrustAccessPoliciesResultExcludeServiceTokenResult',
@@ -1601,6 +1687,7 @@ __all__ = [
     'GetZeroTrustAccessPoliciesResultIncludeGsuiteResult',
     'GetZeroTrustAccessPoliciesResultIncludeIpResult',
     'GetZeroTrustAccessPoliciesResultIncludeIpListResult',
+    'GetZeroTrustAccessPoliciesResultIncludeLoginMethodResult',
     'GetZeroTrustAccessPoliciesResultIncludeOktaResult',
     'GetZeroTrustAccessPoliciesResultIncludeSamlResult',
     'GetZeroTrustAccessPoliciesResultIncludeServiceTokenResult',
@@ -1623,6 +1710,7 @@ __all__ = [
     'GetZeroTrustAccessPoliciesResultRequireGsuiteResult',
     'GetZeroTrustAccessPoliciesResultRequireIpResult',
     'GetZeroTrustAccessPoliciesResultRequireIpListResult',
+    'GetZeroTrustAccessPoliciesResultRequireLoginMethodResult',
     'GetZeroTrustAccessPoliciesResultRequireOktaResult',
     'GetZeroTrustAccessPoliciesResultRequireSamlResult',
     'GetZeroTrustAccessPoliciesResultRequireServiceTokenResult',
@@ -1646,6 +1734,7 @@ __all__ = [
     'GetZeroTrustAccessPolicyExcludeGsuiteResult',
     'GetZeroTrustAccessPolicyExcludeIpResult',
     'GetZeroTrustAccessPolicyExcludeIpListResult',
+    'GetZeroTrustAccessPolicyExcludeLoginMethodResult',
     'GetZeroTrustAccessPolicyExcludeOktaResult',
     'GetZeroTrustAccessPolicyExcludeSamlResult',
     'GetZeroTrustAccessPolicyExcludeServiceTokenResult',
@@ -1668,6 +1757,7 @@ __all__ = [
     'GetZeroTrustAccessPolicyIncludeGsuiteResult',
     'GetZeroTrustAccessPolicyIncludeIpResult',
     'GetZeroTrustAccessPolicyIncludeIpListResult',
+    'GetZeroTrustAccessPolicyIncludeLoginMethodResult',
     'GetZeroTrustAccessPolicyIncludeOktaResult',
     'GetZeroTrustAccessPolicyIncludeSamlResult',
     'GetZeroTrustAccessPolicyIncludeServiceTokenResult',
@@ -1690,6 +1780,7 @@ __all__ = [
     'GetZeroTrustAccessPolicyRequireGsuiteResult',
     'GetZeroTrustAccessPolicyRequireIpResult',
     'GetZeroTrustAccessPolicyRequireIpListResult',
+    'GetZeroTrustAccessPolicyRequireLoginMethodResult',
     'GetZeroTrustAccessPolicyRequireOktaResult',
     'GetZeroTrustAccessPolicyRequireSamlResult',
     'GetZeroTrustAccessPolicyRequireServiceTokenResult',
@@ -1773,6 +1864,7 @@ __all__ = [
     'GetZeroTrustGatewayCategoriesListResultResult',
     'GetZeroTrustGatewayCategoriesListResultSubcategoryResult',
     'GetZeroTrustGatewayCertificatesResultResult',
+    'GetZeroTrustGatewayLoggingSettingsByRuleTypeResult',
     'GetZeroTrustGatewayPoliciesResultResult',
     'GetZeroTrustGatewayPoliciesResultExpirationResult',
     'GetZeroTrustGatewayPoliciesResultRuleSettingsResult',
@@ -2480,7 +2572,7 @@ class AccountTokenPolicy(dict):
 @pulumi.output_type
 class AccountTokenPolicyPermissionGroup(dict):
     def __init__(__self__, *,
-                 id: Optional[str] = None,
+                 id: str,
                  meta: Optional['outputs.AccountTokenPolicyPermissionGroupMeta'] = None,
                  name: Optional[str] = None):
         """
@@ -2488,8 +2580,7 @@ class AccountTokenPolicyPermissionGroup(dict):
         :param 'AccountTokenPolicyPermissionGroupMetaArgs' meta: Attributes associated to the permission group.
         :param str name: Name of the group.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
         if meta is not None:
             pulumi.set(__self__, "meta", meta)
         if name is not None:
@@ -2497,7 +2588,7 @@ class AccountTokenPolicyPermissionGroup(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> str:
         """
         Identifier of the group.
         """
@@ -3941,6 +4032,25 @@ class BotManagementStaleZoneConfiguration(dict):
 
 
 @pulumi.output_type
+class CloudConnectorRulesParameters(dict):
+    def __init__(__self__, *,
+                 host: Optional[str] = None):
+        """
+        :param str host: Host to perform Cloud Connection to
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        """
+        Host to perform Cloud Connection to
+        """
+        return pulumi.get(self, "host")
+
+
+@pulumi.output_type
 class CloudConnectorRulesRule(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4161,6 +4271,8 @@ class CustomHostnameSsl(dict):
             suggest = "certificate_authority"
         elif key == "cloudflareBranding":
             suggest = "cloudflare_branding"
+        elif key == "customCertBundles":
+            suggest = "custom_cert_bundles"
         elif key == "customCertificate":
             suggest = "custom_certificate"
         elif key == "customKey":
@@ -4181,6 +4293,7 @@ class CustomHostnameSsl(dict):
                  bundle_method: Optional[str] = None,
                  certificate_authority: Optional[str] = None,
                  cloudflare_branding: Optional[bool] = None,
+                 custom_cert_bundles: Optional[Sequence['outputs.CustomHostnameSslCustomCertBundle']] = None,
                  custom_certificate: Optional[str] = None,
                  custom_key: Optional[str] = None,
                  method: Optional[str] = None,
@@ -4191,6 +4304,7 @@ class CustomHostnameSsl(dict):
         :param str bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
         :param str certificate_authority: The Certificate Authority that will issue the certificate
         :param bool cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
+        :param Sequence['CustomHostnameSslCustomCertBundleArgs'] custom_cert_bundles: Array of custom certificate and key pairs (1 or 2 pairs allowed)
         :param str custom_certificate: If a custom uploaded certificate is used.
         :param str custom_key: The key for a custom uploaded certificate.
         :param str method: Domain control validation (DCV) method used for this hostname.
@@ -4204,6 +4318,8 @@ class CustomHostnameSsl(dict):
             pulumi.set(__self__, "certificate_authority", certificate_authority)
         if cloudflare_branding is not None:
             pulumi.set(__self__, "cloudflare_branding", cloudflare_branding)
+        if custom_cert_bundles is not None:
+            pulumi.set(__self__, "custom_cert_bundles", custom_cert_bundles)
         if custom_certificate is not None:
             pulumi.set(__self__, "custom_certificate", custom_certificate)
         if custom_key is not None:
@@ -4240,6 +4356,14 @@ class CustomHostnameSsl(dict):
         Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
         """
         return pulumi.get(self, "cloudflare_branding")
+
+    @property
+    @pulumi.getter(name="customCertBundles")
+    def custom_cert_bundles(self) -> Optional[Sequence['outputs.CustomHostnameSslCustomCertBundle']]:
+        """
+        Array of custom certificate and key pairs (1 or 2 pairs allowed)
+        """
+        return pulumi.get(self, "custom_cert_bundles")
 
     @property
     @pulumi.getter(name="customCertificate")
@@ -4288,6 +4412,54 @@ class CustomHostnameSsl(dict):
         Indicates whether the certificate covers a wildcard.
         """
         return pulumi.get(self, "wildcard")
+
+
+@pulumi.output_type
+class CustomHostnameSslCustomCertBundle(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customCertificate":
+            suggest = "custom_certificate"
+        elif key == "customKey":
+            suggest = "custom_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomHostnameSslCustomCertBundle. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomHostnameSslCustomCertBundle.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomHostnameSslCustomCertBundle.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_certificate: str,
+                 custom_key: str):
+        """
+        :param str custom_certificate: If a custom uploaded certificate is used.
+        :param str custom_key: The key for a custom uploaded certificate.
+        """
+        pulumi.set(__self__, "custom_certificate", custom_certificate)
+        pulumi.set(__self__, "custom_key", custom_key)
+
+    @property
+    @pulumi.getter(name="customCertificate")
+    def custom_certificate(self) -> str:
+        """
+        If a custom uploaded certificate is used.
+        """
+        return pulumi.get(self, "custom_certificate")
+
+    @property
+    @pulumi.getter(name="customKey")
+    def custom_key(self) -> str:
+        """
+        The key for a custom uploaded certificate.
+        """
+        return pulumi.get(self, "custom_key")
 
 
 @pulumi.output_type
@@ -4685,7 +4857,7 @@ class DnsRecordData(dict):
                  digest: Optional[str] = None,
                  digest_type: Optional[float] = None,
                  fingerprint: Optional[str] = None,
-                 flags: Optional[Any] = None,
+                 flags: Optional[float] = None,
                  key_tag: Optional[float] = None,
                  lat_degrees: Optional[float] = None,
                  lat_direction: Optional[str] = None,
@@ -4722,7 +4894,7 @@ class DnsRecordData(dict):
         :param str digest: Digest.
         :param float digest_type: Digest Type.
         :param str fingerprint: fingerprint.
-        :param Any flags: Flags for the CAA record.
+        :param float flags: Flags for the CAA record.
         :param float key_tag: Key Tag.
         :param float lat_degrees: Degrees of latitude.
         :param str lat_direction: Latitude direction.
@@ -4876,7 +5048,7 @@ class DnsRecordData(dict):
 
     @property
     @pulumi.getter
-    def flags(self) -> Optional[Any]:
+    def flags(self) -> Optional[float]:
         """
         Flags for the CAA record.
         """
@@ -5177,6 +5349,305 @@ class DnsRecordSettings(dict):
         When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
         """
         return pulumi.get(self, "ipv6_only")
+
+
+@pulumi.output_type
+class DnsSettingsZoneDefaults(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "flattenAllCnames":
+            suggest = "flatten_all_cnames"
+        elif key == "foundationDns":
+            suggest = "foundation_dns"
+        elif key == "internalDns":
+            suggest = "internal_dns"
+        elif key == "multiProvider":
+            suggest = "multi_provider"
+        elif key == "nsTtl":
+            suggest = "ns_ttl"
+        elif key == "secondaryOverrides":
+            suggest = "secondary_overrides"
+        elif key == "zoneMode":
+            suggest = "zone_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DnsSettingsZoneDefaults. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DnsSettingsZoneDefaults.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DnsSettingsZoneDefaults.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 flatten_all_cnames: Optional[bool] = None,
+                 foundation_dns: Optional[bool] = None,
+                 internal_dns: Optional['outputs.DnsSettingsZoneDefaultsInternalDns'] = None,
+                 multi_provider: Optional[bool] = None,
+                 nameservers: Optional['outputs.DnsSettingsZoneDefaultsNameservers'] = None,
+                 ns_ttl: Optional[float] = None,
+                 secondary_overrides: Optional[bool] = None,
+                 soa: Optional['outputs.DnsSettingsZoneDefaultsSoa'] = None,
+                 zone_mode: Optional[str] = None):
+        """
+        :param bool flatten_all_cnames: Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
+        :param bool foundation_dns: Whether to enable Foundation DNS Advanced Nameservers on the zone.
+        :param 'DnsSettingsZoneDefaultsInternalDnsArgs' internal_dns: Settings for this internal zone.
+        :param bool multi_provider: Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
+        :param 'DnsSettingsZoneDefaultsNameserversArgs' nameservers: Settings determining the nameservers through which the zone should be available.
+        :param float ns_ttl: The time to live (TTL) of the zone's nameserver (NS) records.
+        :param bool secondary_overrides: Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
+        :param 'DnsSettingsZoneDefaultsSoaArgs' soa: Components of the zone's SOA record.
+        :param str zone_mode: Whether the zone mode is a regular or CDN/DNS only zone.
+        """
+        if flatten_all_cnames is not None:
+            pulumi.set(__self__, "flatten_all_cnames", flatten_all_cnames)
+        if foundation_dns is not None:
+            pulumi.set(__self__, "foundation_dns", foundation_dns)
+        if internal_dns is not None:
+            pulumi.set(__self__, "internal_dns", internal_dns)
+        if multi_provider is not None:
+            pulumi.set(__self__, "multi_provider", multi_provider)
+        if nameservers is not None:
+            pulumi.set(__self__, "nameservers", nameservers)
+        if ns_ttl is not None:
+            pulumi.set(__self__, "ns_ttl", ns_ttl)
+        if secondary_overrides is not None:
+            pulumi.set(__self__, "secondary_overrides", secondary_overrides)
+        if soa is not None:
+            pulumi.set(__self__, "soa", soa)
+        if zone_mode is not None:
+            pulumi.set(__self__, "zone_mode", zone_mode)
+
+    @property
+    @pulumi.getter(name="flattenAllCnames")
+    def flatten_all_cnames(self) -> Optional[bool]:
+        """
+        Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
+        """
+        return pulumi.get(self, "flatten_all_cnames")
+
+    @property
+    @pulumi.getter(name="foundationDns")
+    def foundation_dns(self) -> Optional[bool]:
+        """
+        Whether to enable Foundation DNS Advanced Nameservers on the zone.
+        """
+        return pulumi.get(self, "foundation_dns")
+
+    @property
+    @pulumi.getter(name="internalDns")
+    def internal_dns(self) -> Optional['outputs.DnsSettingsZoneDefaultsInternalDns']:
+        """
+        Settings for this internal zone.
+        """
+        return pulumi.get(self, "internal_dns")
+
+    @property
+    @pulumi.getter(name="multiProvider")
+    def multi_provider(self) -> Optional[bool]:
+        """
+        Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
+        """
+        return pulumi.get(self, "multi_provider")
+
+    @property
+    @pulumi.getter
+    def nameservers(self) -> Optional['outputs.DnsSettingsZoneDefaultsNameservers']:
+        """
+        Settings determining the nameservers through which the zone should be available.
+        """
+        return pulumi.get(self, "nameservers")
+
+    @property
+    @pulumi.getter(name="nsTtl")
+    def ns_ttl(self) -> Optional[float]:
+        """
+        The time to live (TTL) of the zone's nameserver (NS) records.
+        """
+        return pulumi.get(self, "ns_ttl")
+
+    @property
+    @pulumi.getter(name="secondaryOverrides")
+    def secondary_overrides(self) -> Optional[bool]:
+        """
+        Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
+        """
+        return pulumi.get(self, "secondary_overrides")
+
+    @property
+    @pulumi.getter
+    def soa(self) -> Optional['outputs.DnsSettingsZoneDefaultsSoa']:
+        """
+        Components of the zone's SOA record.
+        """
+        return pulumi.get(self, "soa")
+
+    @property
+    @pulumi.getter(name="zoneMode")
+    def zone_mode(self) -> Optional[str]:
+        """
+        Whether the zone mode is a regular or CDN/DNS only zone.
+        """
+        return pulumi.get(self, "zone_mode")
+
+
+@pulumi.output_type
+class DnsSettingsZoneDefaultsInternalDns(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "referenceZoneId":
+            suggest = "reference_zone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DnsSettingsZoneDefaultsInternalDns. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DnsSettingsZoneDefaultsInternalDns.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DnsSettingsZoneDefaultsInternalDns.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 reference_zone_id: Optional[str] = None):
+        """
+        :param str reference_zone_id: The ID of the zone to fallback to.
+        """
+        if reference_zone_id is not None:
+            pulumi.set(__self__, "reference_zone_id", reference_zone_id)
+
+    @property
+    @pulumi.getter(name="referenceZoneId")
+    def reference_zone_id(self) -> Optional[str]:
+        """
+        The ID of the zone to fallback to.
+        """
+        return pulumi.get(self, "reference_zone_id")
+
+
+@pulumi.output_type
+class DnsSettingsZoneDefaultsNameservers(dict):
+    def __init__(__self__, *,
+                 type: str):
+        """
+        :param str type: Nameserver type
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Nameserver type
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DnsSettingsZoneDefaultsSoa(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minTtl":
+            suggest = "min_ttl"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DnsSettingsZoneDefaultsSoa. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DnsSettingsZoneDefaultsSoa.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DnsSettingsZoneDefaultsSoa.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expire: float,
+                 min_ttl: float,
+                 mname: str,
+                 refresh: float,
+                 retry: float,
+                 rname: str,
+                 ttl: float):
+        """
+        :param float expire: Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
+        :param float min_ttl: The time to live (TTL) for negative caching of records within the zone.
+        :param str mname: The primary nameserver, which may be used for outbound zone transfers.
+        :param float refresh: Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
+        :param float retry: Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
+        :param str rname: The email address of the zone administrator, with the first label representing the local part of the email address.
+        :param float ttl: The time to live (TTL) of the SOA record itself.
+        """
+        pulumi.set(__self__, "expire", expire)
+        pulumi.set(__self__, "min_ttl", min_ttl)
+        pulumi.set(__self__, "mname", mname)
+        pulumi.set(__self__, "refresh", refresh)
+        pulumi.set(__self__, "retry", retry)
+        pulumi.set(__self__, "rname", rname)
+        pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def expire(self) -> float:
+        """
+        Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
+        """
+        return pulumi.get(self, "expire")
+
+    @property
+    @pulumi.getter(name="minTtl")
+    def min_ttl(self) -> float:
+        """
+        The time to live (TTL) for negative caching of records within the zone.
+        """
+        return pulumi.get(self, "min_ttl")
+
+    @property
+    @pulumi.getter
+    def mname(self) -> str:
+        """
+        The primary nameserver, which may be used for outbound zone transfers.
+        """
+        return pulumi.get(self, "mname")
+
+    @property
+    @pulumi.getter
+    def refresh(self) -> float:
+        """
+        Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
+        """
+        return pulumi.get(self, "refresh")
+
+    @property
+    @pulumi.getter
+    def retry(self) -> float:
+        """
+        Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
+        """
+        return pulumi.get(self, "retry")
+
+    @property
+    @pulumi.getter
+    def rname(self) -> str:
+        """
+        The email address of the zone administrator, with the first label representing the local part of the email address.
+        """
+        return pulumi.get(self, "rname")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> float:
+        """
+        The time to live (TTL) of the SOA record itself.
+        """
+        return pulumi.get(self, "ttl")
 
 
 @pulumi.output_type
@@ -8435,6 +8906,8 @@ class MagicTransitSiteLanStaticAddressingDhcpServer(dict):
             suggest = "dhcp_pool_start"
         elif key == "dnsServer":
             suggest = "dns_server"
+        elif key == "dnsServers":
+            suggest = "dns_servers"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MagicTransitSiteLanStaticAddressingDhcpServer. Access the value via the '{suggest}' property getter instead.")
@@ -8451,6 +8924,7 @@ class MagicTransitSiteLanStaticAddressingDhcpServer(dict):
                  dhcp_pool_end: Optional[str] = None,
                  dhcp_pool_start: Optional[str] = None,
                  dns_server: Optional[str] = None,
+                 dns_servers: Optional[Sequence[str]] = None,
                  reservations: Optional[Mapping[str, str]] = None):
         """
         :param str dhcp_pool_end: A valid IPv4 address.
@@ -8464,6 +8938,8 @@ class MagicTransitSiteLanStaticAddressingDhcpServer(dict):
             pulumi.set(__self__, "dhcp_pool_start", dhcp_pool_start)
         if dns_server is not None:
             pulumi.set(__self__, "dns_server", dns_server)
+        if dns_servers is not None:
+            pulumi.set(__self__, "dns_servers", dns_servers)
         if reservations is not None:
             pulumi.set(__self__, "reservations", reservations)
 
@@ -8490,6 +8966,11 @@ class MagicTransitSiteLanStaticAddressingDhcpServer(dict):
         A valid IPv4 address.
         """
         return pulumi.get(self, "dns_server")
+
+    @property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "dns_servers")
 
     @property
     @pulumi.getter
@@ -16054,6 +16535,961 @@ class QueueSettings(dict):
 
 
 @pulumi.output_type
+class R2BucketCorsRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exposeHeaders":
+            suggest = "expose_headers"
+        elif key == "maxAgeSeconds":
+            suggest = "max_age_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in R2BucketCorsRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        R2BucketCorsRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        R2BucketCorsRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed: 'outputs.R2BucketCorsRuleAllowed',
+                 expose_headers: Optional[Sequence[str]] = None,
+                 id: Optional[str] = None,
+                 max_age_seconds: Optional[float] = None):
+        """
+        :param 'R2BucketCorsRuleAllowedArgs' allowed: Object specifying allowed origins, methods and headers for this CORS rule.
+        :param Sequence[str] expose_headers: Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
+        :param str id: Identifier for this rule
+        :param float max_age_seconds: Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
+        """
+        pulumi.set(__self__, "allowed", allowed)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if max_age_seconds is not None:
+            pulumi.set(__self__, "max_age_seconds", max_age_seconds)
+
+    @property
+    @pulumi.getter
+    def allowed(self) -> 'outputs.R2BucketCorsRuleAllowed':
+        """
+        Object specifying allowed origins, methods and headers for this CORS rule.
+        """
+        return pulumi.get(self, "allowed")
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Identifier for this rule
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="maxAgeSeconds")
+    def max_age_seconds(self) -> Optional[float]:
+        """
+        Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
+        """
+        return pulumi.get(self, "max_age_seconds")
+
+
+@pulumi.output_type
+class R2BucketCorsRuleAllowed(dict):
+    def __init__(__self__, *,
+                 methods: Sequence[str],
+                 origins: Sequence[str],
+                 headers: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] methods: Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.
+        :param Sequence[str] origins: Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.
+        :param Sequence[str] headers: Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.
+        """
+        pulumi.set(__self__, "methods", methods)
+        pulumi.set(__self__, "origins", origins)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+
+    @property
+    @pulumi.getter
+    def methods(self) -> Sequence[str]:
+        """
+        Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.
+        """
+        return pulumi.get(self, "methods")
+
+    @property
+    @pulumi.getter
+    def origins(self) -> Sequence[str]:
+        """
+        Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.
+        """
+        return pulumi.get(self, "origins")
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.
+        """
+        return pulumi.get(self, "headers")
+
+
+@pulumi.output_type
+class R2BucketEventNotificationQueue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queueId":
+            suggest = "queue_id"
+        elif key == "queueName":
+            suggest = "queue_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in R2BucketEventNotificationQueue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        R2BucketEventNotificationQueue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        R2BucketEventNotificationQueue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 queue_id: Optional[str] = None,
+                 queue_name: Optional[str] = None,
+                 rules: Optional[Sequence['outputs.R2BucketEventNotificationQueueRule']] = None):
+        """
+        :param str queue_id: Queue ID
+        :param str queue_name: Name of the queue
+        """
+        if queue_id is not None:
+            pulumi.set(__self__, "queue_id", queue_id)
+        if queue_name is not None:
+            pulumi.set(__self__, "queue_name", queue_name)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter(name="queueId")
+    def queue_id(self) -> Optional[str]:
+        """
+        Queue ID
+        """
+        return pulumi.get(self, "queue_id")
+
+    @property
+    @pulumi.getter(name="queueName")
+    def queue_name(self) -> Optional[str]:
+        """
+        Name of the queue
+        """
+        return pulumi.get(self, "queue_name")
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[Sequence['outputs.R2BucketEventNotificationQueueRule']]:
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class R2BucketEventNotificationQueueRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAt":
+            suggest = "created_at"
+        elif key == "ruleId":
+            suggest = "rule_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in R2BucketEventNotificationQueueRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        R2BucketEventNotificationQueueRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        R2BucketEventNotificationQueueRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 actions: Optional[Sequence[str]] = None,
+                 created_at: Optional[str] = None,
+                 description: Optional[str] = None,
+                 prefix: Optional[str] = None,
+                 rule_id: Optional[str] = None,
+                 suffix: Optional[str] = None):
+        """
+        :param Sequence[str] actions: Array of R2 object actions that will trigger notifications
+        :param str created_at: Timestamp when the rule was created
+        :param str description: A description that can be used to identify the event notification rule after creation
+        :param str prefix: Notifications will be sent only for objects with this prefix
+        :param str rule_id: Rule ID
+        :param str suffix: Notifications will be sent only for objects with this suffix
+        """
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if rule_id is not None:
+            pulumi.set(__self__, "rule_id", rule_id)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[Sequence[str]]:
+        """
+        Array of R2 object actions that will trigger notifications
+        """
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[str]:
+        """
+        Timestamp when the rule was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description that can be used to identify the event notification rule after creation
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        Notifications will be sent only for objects with this prefix
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> Optional[str]:
+        """
+        Rule ID
+        """
+        return pulumi.get(self, "rule_id")
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[str]:
+        """
+        Notifications will be sent only for objects with this suffix
+        """
+        return pulumi.get(self, "suffix")
+
+
+@pulumi.output_type
+class R2BucketEventNotificationRule(dict):
+    def __init__(__self__, *,
+                 actions: Sequence[str],
+                 description: Optional[str] = None,
+                 prefix: Optional[str] = None,
+                 suffix: Optional[str] = None):
+        """
+        :param Sequence[str] actions: Array of R2 object actions that will trigger notifications
+        :param str description: A description that can be used to identify the event notification rule after creation
+        :param str prefix: Notifications will be sent only for objects with this prefix
+        :param str suffix: Notifications will be sent only for objects with this suffix
+        """
+        pulumi.set(__self__, "actions", actions)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Sequence[str]:
+        """
+        Array of R2 object actions that will trigger notifications
+        """
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description that can be used to identify the event notification rule after creation
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        Notifications will be sent only for objects with this prefix
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[str]:
+        """
+        Notifications will be sent only for objects with this suffix
+        """
+        return pulumi.get(self, "suffix")
+
+
+@pulumi.output_type
+class R2BucketLifecycleRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "abortMultipartUploadsTransition":
+            suggest = "abort_multipart_uploads_transition"
+        elif key == "deleteObjectsTransition":
+            suggest = "delete_objects_transition"
+        elif key == "storageClassTransitions":
+            suggest = "storage_class_transitions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in R2BucketLifecycleRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        R2BucketLifecycleRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        R2BucketLifecycleRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 conditions: 'outputs.R2BucketLifecycleRuleConditions',
+                 enabled: bool,
+                 id: str,
+                 abort_multipart_uploads_transition: Optional['outputs.R2BucketLifecycleRuleAbortMultipartUploadsTransition'] = None,
+                 delete_objects_transition: Optional['outputs.R2BucketLifecycleRuleDeleteObjectsTransition'] = None,
+                 storage_class_transitions: Optional[Sequence['outputs.R2BucketLifecycleRuleStorageClassTransition']] = None):
+        """
+        :param 'R2BucketLifecycleRuleConditionsArgs' conditions: Conditions that apply to all transitions of this rule
+        :param bool enabled: Whether or not this rule is in effect
+        :param str id: Unique identifier for this rule
+        :param 'R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs' abort_multipart_uploads_transition: Transition to abort ongoing multipart uploads
+        :param 'R2BucketLifecycleRuleDeleteObjectsTransitionArgs' delete_objects_transition: Transition to delete objects
+        :param Sequence['R2BucketLifecycleRuleStorageClassTransitionArgs'] storage_class_transitions: Transitions to change the storage class of objects
+        """
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        if abort_multipart_uploads_transition is not None:
+            pulumi.set(__self__, "abort_multipart_uploads_transition", abort_multipart_uploads_transition)
+        if delete_objects_transition is not None:
+            pulumi.set(__self__, "delete_objects_transition", delete_objects_transition)
+        if storage_class_transitions is not None:
+            pulumi.set(__self__, "storage_class_transitions", storage_class_transitions)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> 'outputs.R2BucketLifecycleRuleConditions':
+        """
+        Conditions that apply to all transitions of this rule
+        """
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether or not this rule is in effect
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier for this rule
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="abortMultipartUploadsTransition")
+    def abort_multipart_uploads_transition(self) -> Optional['outputs.R2BucketLifecycleRuleAbortMultipartUploadsTransition']:
+        """
+        Transition to abort ongoing multipart uploads
+        """
+        return pulumi.get(self, "abort_multipart_uploads_transition")
+
+    @property
+    @pulumi.getter(name="deleteObjectsTransition")
+    def delete_objects_transition(self) -> Optional['outputs.R2BucketLifecycleRuleDeleteObjectsTransition']:
+        """
+        Transition to delete objects
+        """
+        return pulumi.get(self, "delete_objects_transition")
+
+    @property
+    @pulumi.getter(name="storageClassTransitions")
+    def storage_class_transitions(self) -> Optional[Sequence['outputs.R2BucketLifecycleRuleStorageClassTransition']]:
+        """
+        Transitions to change the storage class of objects
+        """
+        return pulumi.get(self, "storage_class_transitions")
+
+
+@pulumi.output_type
+class R2BucketLifecycleRuleAbortMultipartUploadsTransition(dict):
+    def __init__(__self__, *,
+                 condition: Optional['outputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition'] = None):
+        """
+        :param 'R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs' condition: Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional['outputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition']:
+        """
+        Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        """
+        return pulumi.get(self, "condition")
+
+
+@pulumi.output_type
+class R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxAge":
+            suggest = "max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_age: int,
+                 type: str):
+        pulumi.set(__self__, "max_age", max_age)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> int:
+        return pulumi.get(self, "max_age")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class R2BucketLifecycleRuleConditions(dict):
+    def __init__(__self__, *,
+                 prefix: str):
+        """
+        :param str prefix: Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+        """
+        pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> str:
+        """
+        Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+        """
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class R2BucketLifecycleRuleDeleteObjectsTransition(dict):
+    def __init__(__self__, *,
+                 condition: Optional['outputs.R2BucketLifecycleRuleDeleteObjectsTransitionCondition'] = None):
+        """
+        :param 'R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs' condition: Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional['outputs.R2BucketLifecycleRuleDeleteObjectsTransitionCondition']:
+        """
+        Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        """
+        return pulumi.get(self, "condition")
+
+
+@pulumi.output_type
+class R2BucketLifecycleRuleDeleteObjectsTransitionCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxAge":
+            suggest = "max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in R2BucketLifecycleRuleDeleteObjectsTransitionCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        R2BucketLifecycleRuleDeleteObjectsTransitionCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        R2BucketLifecycleRuleDeleteObjectsTransitionCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 date: Optional[str] = None,
+                 max_age: Optional[int] = None):
+        pulumi.set(__self__, "type", type)
+        if date is not None:
+            pulumi.set(__self__, "date", date)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def date(self) -> Optional[str]:
+        return pulumi.get(self, "date")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[int]:
+        return pulumi.get(self, "max_age")
+
+
+@pulumi.output_type
+class R2BucketLifecycleRuleStorageClassTransition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storageClass":
+            suggest = "storage_class"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in R2BucketLifecycleRuleStorageClassTransition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        R2BucketLifecycleRuleStorageClassTransition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        R2BucketLifecycleRuleStorageClassTransition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 condition: 'outputs.R2BucketLifecycleRuleStorageClassTransitionCondition',
+                 storage_class: str):
+        """
+        :param 'R2BucketLifecycleRuleStorageClassTransitionConditionArgs' condition: Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "storage_class", storage_class)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> 'outputs.R2BucketLifecycleRuleStorageClassTransitionCondition':
+        """
+        Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> str:
+        return pulumi.get(self, "storage_class")
+
+
+@pulumi.output_type
+class R2BucketLifecycleRuleStorageClassTransitionCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxAge":
+            suggest = "max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in R2BucketLifecycleRuleStorageClassTransitionCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        R2BucketLifecycleRuleStorageClassTransitionCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        R2BucketLifecycleRuleStorageClassTransitionCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 date: Optional[str] = None,
+                 max_age: Optional[int] = None):
+        pulumi.set(__self__, "type", type)
+        if date is not None:
+            pulumi.set(__self__, "date", date)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def date(self) -> Optional[str]:
+        return pulumi.get(self, "date")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[int]:
+        return pulumi.get(self, "max_age")
+
+
+@pulumi.output_type
+class R2BucketLockRule(dict):
+    def __init__(__self__, *,
+                 condition: 'outputs.R2BucketLockRuleCondition',
+                 enabled: bool,
+                 id: str,
+                 prefix: Optional[str] = None):
+        """
+        :param 'R2BucketLockRuleConditionArgs' condition: Condition to apply a lock rule to an object for how long in seconds
+        :param bool enabled: Whether or not this rule is in effect
+        :param str id: Unique identifier for this rule
+        :param str prefix: Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> 'outputs.R2BucketLockRuleCondition':
+        """
+        Condition to apply a lock rule to an object for how long in seconds
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether or not this rule is in effect
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier for this rule
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+        """
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class R2BucketLockRuleCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxAgeSeconds":
+            suggest = "max_age_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in R2BucketLockRuleCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        R2BucketLockRuleCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        R2BucketLockRuleCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 date: Optional[str] = None,
+                 max_age_seconds: Optional[int] = None):
+        pulumi.set(__self__, "type", type)
+        if date is not None:
+            pulumi.set(__self__, "date", date)
+        if max_age_seconds is not None:
+            pulumi.set(__self__, "max_age_seconds", max_age_seconds)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def date(self) -> Optional[str]:
+        return pulumi.get(self, "date")
+
+    @property
+    @pulumi.getter(name="maxAgeSeconds")
+    def max_age_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "max_age_seconds")
+
+
+@pulumi.output_type
+class R2BucketSippyDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyId":
+            suggest = "access_key_id"
+        elif key == "secretAccessKey":
+            suggest = "secret_access_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in R2BucketSippyDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        R2BucketSippyDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        R2BucketSippyDestination.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key_id: Optional[str] = None,
+                 provider: Optional[str] = None,
+                 secret_access_key: Optional[str] = None):
+        """
+        :param str access_key_id: ID of a Cloudflare API token.
+               This is the value labelled "Access Key ID" when creating an API
+               token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
+        :param str secret_access_key: Value of a Cloudflare API token.
+               This is the value labelled "Secret Access Key" when creating an API
+               token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
+               
+               Sippy will use this token when writing objects to R2, so it is
+               best to scope this token to the bucket you're enabling Sippy for.
+        """
+        if access_key_id is not None:
+            pulumi.set(__self__, "access_key_id", access_key_id)
+        if provider is not None:
+            pulumi.set(__self__, "provider", provider)
+        if secret_access_key is not None:
+            pulumi.set(__self__, "secret_access_key", secret_access_key)
+
+    @property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> Optional[str]:
+        """
+        ID of a Cloudflare API token.
+        This is the value labelled "Access Key ID" when creating an API
+        token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @property
+    @pulumi.getter
+    def provider(self) -> Optional[str]:
+        return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter(name="secretAccessKey")
+    def secret_access_key(self) -> Optional[str]:
+        """
+        Value of a Cloudflare API token.
+        This is the value labelled "Secret Access Key" when creating an API
+        token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
+
+        Sippy will use this token when writing objects to R2, so it is
+        best to scope this token to the bucket you're enabling Sippy for.
+        """
+        return pulumi.get(self, "secret_access_key")
+
+
+@pulumi.output_type
+class R2BucketSippySource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyId":
+            suggest = "access_key_id"
+        elif key == "clientEmail":
+            suggest = "client_email"
+        elif key == "privateKey":
+            suggest = "private_key"
+        elif key == "secretAccessKey":
+            suggest = "secret_access_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in R2BucketSippySource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        R2BucketSippySource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        R2BucketSippySource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key_id: Optional[str] = None,
+                 bucket: Optional[str] = None,
+                 client_email: Optional[str] = None,
+                 private_key: Optional[str] = None,
+                 provider: Optional[str] = None,
+                 region: Optional[str] = None,
+                 secret_access_key: Optional[str] = None):
+        """
+        :param str access_key_id: Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+        :param str bucket: Name of the AWS S3 bucket
+        :param str client_email: Client email of an IAM credential (ideally scoped to a single GCS bucket)
+        :param str private_key: Private Key of an IAM credential (ideally scoped to a single GCS bucket)
+        :param str region: Name of the AWS availability zone
+        :param str secret_access_key: Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+        """
+        if access_key_id is not None:
+            pulumi.set(__self__, "access_key_id", access_key_id)
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if client_email is not None:
+            pulumi.set(__self__, "client_email", client_email)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if provider is not None:
+            pulumi.set(__self__, "provider", provider)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if secret_access_key is not None:
+            pulumi.set(__self__, "secret_access_key", secret_access_key)
+
+    @property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> Optional[str]:
+        """
+        Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> Optional[str]:
+        """
+        Name of the AWS S3 bucket
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="clientEmail")
+    def client_email(self) -> Optional[str]:
+        """
+        Client email of an IAM credential (ideally scoped to a single GCS bucket)
+        """
+        return pulumi.get(self, "client_email")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        """
+        Private Key of an IAM credential (ideally scoped to a single GCS bucket)
+        """
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter
+    def provider(self) -> Optional[str]:
+        return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        Name of the AWS availability zone
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="secretAccessKey")
+    def secret_access_key(self) -> Optional[str]:
+        """
+        Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+        """
+        return pulumi.get(self, "secret_access_key")
+
+
+@pulumi.output_type
+class R2CustomDomainStatus(dict):
+    def __init__(__self__, *,
+                 ownership: Optional[str] = None,
+                 ssl: Optional[str] = None):
+        """
+        :param str ownership: Ownership status of the domain
+        :param str ssl: SSL certificate status
+        """
+        if ownership is not None:
+            pulumi.set(__self__, "ownership", ownership)
+        if ssl is not None:
+            pulumi.set(__self__, "ssl", ssl)
+
+    @property
+    @pulumi.getter
+    def ownership(self) -> Optional[str]:
+        """
+        Ownership status of the domain
+        """
+        return pulumi.get(self, "ownership")
+
+    @property
+    @pulumi.getter
+    def ssl(self) -> Optional[str]:
+        """
+        SSL certificate status
+        """
+        return pulumi.get(self, "ssl")
+
+
+@pulumi.output_type
 class RateLimitAction(dict):
     def __init__(__self__, *,
                  mode: Optional[str] = None,
@@ -16380,7 +17816,7 @@ class RecordData(dict):
                  digest: Optional[str] = None,
                  digest_type: Optional[float] = None,
                  fingerprint: Optional[str] = None,
-                 flags: Optional[Any] = None,
+                 flags: Optional[float] = None,
                  key_tag: Optional[float] = None,
                  lat_degrees: Optional[float] = None,
                  lat_direction: Optional[str] = None,
@@ -16417,7 +17853,7 @@ class RecordData(dict):
         :param str digest: Digest.
         :param float digest_type: Digest Type.
         :param str fingerprint: fingerprint.
-        :param Any flags: Flags for the CAA record.
+        :param float flags: Flags for the CAA record.
         :param float key_tag: Key Tag.
         :param float lat_degrees: Degrees of latitude.
         :param str lat_direction: Latitude direction.
@@ -16571,7 +18007,7 @@ class RecordData(dict):
 
     @property
     @pulumi.getter
-    def flags(self) -> Optional[Any]:
+    def flags(self) -> Optional[float]:
         """
         Flags for the CAA record.
         """
@@ -18297,14 +19733,13 @@ class RulesetRuleActionParametersCacheReserve(dict):
 
     def __init__(__self__, *,
                  eligible: bool,
-                 minimum_file_size: Optional[int] = None):
+                 minimum_file_size: int):
         """
         :param bool eligible: Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
         :param int minimum_file_size: The minimum file size eligible for store in cache reserve.
         """
         pulumi.set(__self__, "eligible", eligible)
-        if minimum_file_size is not None:
-            pulumi.set(__self__, "minimum_file_size", minimum_file_size)
+        pulumi.set(__self__, "minimum_file_size", minimum_file_size)
 
     @property
     @pulumi.getter
@@ -18316,7 +19751,7 @@ class RulesetRuleActionParametersCacheReserve(dict):
 
     @property
     @pulumi.getter(name="minimumFileSize")
-    def minimum_file_size(self) -> Optional[int]:
+    def minimum_file_size(self) -> int:
         """
         The minimum file size eligible for store in cache reserve.
         """
@@ -18638,19 +20073,23 @@ class RulesetRuleActionParametersFromValueTargetUrl(dict):
 @pulumi.output_type
 class RulesetRuleActionParametersHeaders(dict):
     def __init__(__self__, *,
+                 operation: str,
                  expression: Optional[str] = None,
-                 operation: Optional[str] = None,
                  value: Optional[str] = None):
         """
         :param str expression: Expression for the header value.
         :param str value: Static value for the header.
         """
+        pulumi.set(__self__, "operation", operation)
         if expression is not None:
             pulumi.set(__self__, "expression", expression)
-        if operation is not None:
-            pulumi.set(__self__, "operation", operation)
         if value is not None:
             pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def operation(self) -> str:
+        return pulumi.get(self, "operation")
 
     @property
     @pulumi.getter
@@ -18659,11 +20098,6 @@ class RulesetRuleActionParametersHeaders(dict):
         Expression for the header value.
         """
         return pulumi.get(self, "expression")
-
-    @property
-    @pulumi.getter
-    def operation(self) -> Optional[str]:
-        return pulumi.get(self, "operation")
 
     @property
     @pulumi.getter
@@ -20821,6 +22255,48 @@ class WorkersDeploymentVersion(dict):
 
 
 @pulumi.output_type
+class WorkersRouteError(dict):
+    def __init__(__self__, *,
+                 code: Optional[int] = None,
+                 message: Optional[str] = None):
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[int]:
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class WorkersRouteMessage(dict):
+    def __init__(__self__, *,
+                 code: Optional[int] = None,
+                 message: Optional[str] = None):
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[int]:
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
 class WorkersScriptAssets(dict):
     def __init__(__self__, *,
                  config: Optional['outputs.WorkersScriptAssetsConfig'] = None,
@@ -22317,6 +23793,8 @@ class ZeroTrustAccessApplicationPolicyExclude(dict):
             suggest = "github_organization"
         elif key == "ipList":
             suggest = "ip_list"
+        elif key == "loginMethod":
+            suggest = "login_method"
         elif key == "serviceToken":
             suggest = "service_token"
 
@@ -22350,6 +23828,7 @@ class ZeroTrustAccessApplicationPolicyExclude(dict):
                  gsuite: Optional['outputs.ZeroTrustAccessApplicationPolicyExcludeGsuite'] = None,
                  ip: Optional['outputs.ZeroTrustAccessApplicationPolicyExcludeIp'] = None,
                  ip_list: Optional['outputs.ZeroTrustAccessApplicationPolicyExcludeIpList'] = None,
+                 login_method: Optional['outputs.ZeroTrustAccessApplicationPolicyExcludeLoginMethod'] = None,
                  okta: Optional['outputs.ZeroTrustAccessApplicationPolicyExcludeOkta'] = None,
                  saml: Optional['outputs.ZeroTrustAccessApplicationPolicyExcludeSaml'] = None,
                  service_token: Optional['outputs.ZeroTrustAccessApplicationPolicyExcludeServiceToken'] = None):
@@ -22393,6 +23872,8 @@ class ZeroTrustAccessApplicationPolicyExclude(dict):
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -22495,6 +23976,11 @@ class ZeroTrustAccessApplicationPolicyExclude(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> Optional['outputs.ZeroTrustAccessApplicationPolicyExcludeIpList']:
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional['outputs.ZeroTrustAccessApplicationPolicyExcludeLoginMethod']:
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -23036,6 +24522,24 @@ class ZeroTrustAccessApplicationPolicyExcludeIpList(dict):
 
 
 @pulumi.output_type
+class ZeroTrustAccessApplicationPolicyExcludeLoginMethod(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class ZeroTrustAccessApplicationPolicyExcludeOkta(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -23204,6 +24708,8 @@ class ZeroTrustAccessApplicationPolicyInclude(dict):
             suggest = "github_organization"
         elif key == "ipList":
             suggest = "ip_list"
+        elif key == "loginMethod":
+            suggest = "login_method"
         elif key == "serviceToken":
             suggest = "service_token"
 
@@ -23237,6 +24743,7 @@ class ZeroTrustAccessApplicationPolicyInclude(dict):
                  gsuite: Optional['outputs.ZeroTrustAccessApplicationPolicyIncludeGsuite'] = None,
                  ip: Optional['outputs.ZeroTrustAccessApplicationPolicyIncludeIp'] = None,
                  ip_list: Optional['outputs.ZeroTrustAccessApplicationPolicyIncludeIpList'] = None,
+                 login_method: Optional['outputs.ZeroTrustAccessApplicationPolicyIncludeLoginMethod'] = None,
                  okta: Optional['outputs.ZeroTrustAccessApplicationPolicyIncludeOkta'] = None,
                  saml: Optional['outputs.ZeroTrustAccessApplicationPolicyIncludeSaml'] = None,
                  service_token: Optional['outputs.ZeroTrustAccessApplicationPolicyIncludeServiceToken'] = None):
@@ -23280,6 +24787,8 @@ class ZeroTrustAccessApplicationPolicyInclude(dict):
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -23382,6 +24891,11 @@ class ZeroTrustAccessApplicationPolicyInclude(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> Optional['outputs.ZeroTrustAccessApplicationPolicyIncludeIpList']:
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional['outputs.ZeroTrustAccessApplicationPolicyIncludeLoginMethod']:
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -23923,6 +25437,24 @@ class ZeroTrustAccessApplicationPolicyIncludeIpList(dict):
 
 
 @pulumi.output_type
+class ZeroTrustAccessApplicationPolicyIncludeLoginMethod(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class ZeroTrustAccessApplicationPolicyIncludeOkta(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -24091,6 +25623,8 @@ class ZeroTrustAccessApplicationPolicyRequire(dict):
             suggest = "github_organization"
         elif key == "ipList":
             suggest = "ip_list"
+        elif key == "loginMethod":
+            suggest = "login_method"
         elif key == "serviceToken":
             suggest = "service_token"
 
@@ -24124,6 +25658,7 @@ class ZeroTrustAccessApplicationPolicyRequire(dict):
                  gsuite: Optional['outputs.ZeroTrustAccessApplicationPolicyRequireGsuite'] = None,
                  ip: Optional['outputs.ZeroTrustAccessApplicationPolicyRequireIp'] = None,
                  ip_list: Optional['outputs.ZeroTrustAccessApplicationPolicyRequireIpList'] = None,
+                 login_method: Optional['outputs.ZeroTrustAccessApplicationPolicyRequireLoginMethod'] = None,
                  okta: Optional['outputs.ZeroTrustAccessApplicationPolicyRequireOkta'] = None,
                  saml: Optional['outputs.ZeroTrustAccessApplicationPolicyRequireSaml'] = None,
                  service_token: Optional['outputs.ZeroTrustAccessApplicationPolicyRequireServiceToken'] = None):
@@ -24167,6 +25702,8 @@ class ZeroTrustAccessApplicationPolicyRequire(dict):
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -24269,6 +25806,11 @@ class ZeroTrustAccessApplicationPolicyRequire(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> Optional['outputs.ZeroTrustAccessApplicationPolicyRequireIpList']:
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional['outputs.ZeroTrustAccessApplicationPolicyRequireLoginMethod']:
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -24805,6 +26347,24 @@ class ZeroTrustAccessApplicationPolicyRequireIpList(dict):
     def id(self) -> str:
         """
         The ID of a previously created IP list.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessApplicationPolicyRequireLoginMethod(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
         """
         return pulumi.get(self, "id")
 
@@ -25384,8 +26944,8 @@ class ZeroTrustAccessApplicationSaasAppCustomAttributeSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "nameByIdp":
-            suggest = "name_by_idp"
+        if key == "nameByIdps":
+            suggest = "name_by_idps"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessApplicationSaasAppCustomAttributeSource. Access the value via the '{suggest}' property getter instead.")
@@ -25400,15 +26960,15 @@ class ZeroTrustAccessApplicationSaasAppCustomAttributeSource(dict):
 
     def __init__(__self__, *,
                  name: Optional[str] = None,
-                 name_by_idp: Optional[Mapping[str, str]] = None):
+                 name_by_idps: Optional[Sequence['outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp']] = None):
         """
         :param str name: The name of the IdP attribute.
-        :param Mapping[str, str] name_by_idp: A mapping from IdP ID to attribute name.
+        :param Sequence['ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpArgs'] name_by_idps: A mapping from IdP ID to attribute name.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if name_by_idp is not None:
-            pulumi.set(__self__, "name_by_idp", name_by_idp)
+        if name_by_idps is not None:
+            pulumi.set(__self__, "name_by_idps", name_by_idps)
 
     @property
     @pulumi.getter
@@ -25419,12 +26979,62 @@ class ZeroTrustAccessApplicationSaasAppCustomAttributeSource(dict):
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="nameByIdp")
-    def name_by_idp(self) -> Optional[Mapping[str, str]]:
+    @pulumi.getter(name="nameByIdps")
+    def name_by_idps(self) -> Optional[Sequence['outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp']]:
         """
         A mapping from IdP ID to attribute name.
         """
-        return pulumi.get(self, "name_by_idp")
+        return pulumi.get(self, "name_by_idps")
+
+
+@pulumi.output_type
+class ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "idpId":
+            suggest = "idp_id"
+        elif key == "sourceName":
+            suggest = "source_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 idp_id: Optional[str] = None,
+                 source_name: Optional[str] = None):
+        """
+        :param str idp_id: The UID of the IdP.
+        :param str source_name: The name of the IdP provided attribute.
+        """
+        if idp_id is not None:
+            pulumi.set(__self__, "idp_id", idp_id)
+        if source_name is not None:
+            pulumi.set(__self__, "source_name", source_name)
+
+    @property
+    @pulumi.getter(name="idpId")
+    def idp_id(self) -> Optional[str]:
+        """
+        The UID of the IdP.
+        """
+        return pulumi.get(self, "idp_id")
+
+    @property
+    @pulumi.getter(name="sourceName")
+    def source_name(self) -> Optional[str]:
+        """
+        The name of the IdP provided attribute.
+        """
+        return pulumi.get(self, "source_name")
 
 
 @pulumi.output_type
@@ -26052,6 +27662,8 @@ class ZeroTrustAccessGroupExclude(dict):
             suggest = "github_organization"
         elif key == "ipList":
             suggest = "ip_list"
+        elif key == "loginMethod":
+            suggest = "login_method"
         elif key == "serviceToken":
             suggest = "service_token"
 
@@ -26085,6 +27697,7 @@ class ZeroTrustAccessGroupExclude(dict):
                  gsuite: Optional['outputs.ZeroTrustAccessGroupExcludeGsuite'] = None,
                  ip: Optional['outputs.ZeroTrustAccessGroupExcludeIp'] = None,
                  ip_list: Optional['outputs.ZeroTrustAccessGroupExcludeIpList'] = None,
+                 login_method: Optional['outputs.ZeroTrustAccessGroupExcludeLoginMethod'] = None,
                  okta: Optional['outputs.ZeroTrustAccessGroupExcludeOkta'] = None,
                  saml: Optional['outputs.ZeroTrustAccessGroupExcludeSaml'] = None,
                  service_token: Optional['outputs.ZeroTrustAccessGroupExcludeServiceToken'] = None):
@@ -26128,6 +27741,8 @@ class ZeroTrustAccessGroupExclude(dict):
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -26230,6 +27845,11 @@ class ZeroTrustAccessGroupExclude(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> Optional['outputs.ZeroTrustAccessGroupExcludeIpList']:
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional['outputs.ZeroTrustAccessGroupExcludeLoginMethod']:
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -26771,6 +28391,24 @@ class ZeroTrustAccessGroupExcludeIpList(dict):
 
 
 @pulumi.output_type
+class ZeroTrustAccessGroupExcludeLoginMethod(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class ZeroTrustAccessGroupExcludeOkta(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -26939,6 +28577,8 @@ class ZeroTrustAccessGroupInclude(dict):
             suggest = "github_organization"
         elif key == "ipList":
             suggest = "ip_list"
+        elif key == "loginMethod":
+            suggest = "login_method"
         elif key == "serviceToken":
             suggest = "service_token"
 
@@ -26972,6 +28612,7 @@ class ZeroTrustAccessGroupInclude(dict):
                  gsuite: Optional['outputs.ZeroTrustAccessGroupIncludeGsuite'] = None,
                  ip: Optional['outputs.ZeroTrustAccessGroupIncludeIp'] = None,
                  ip_list: Optional['outputs.ZeroTrustAccessGroupIncludeIpList'] = None,
+                 login_method: Optional['outputs.ZeroTrustAccessGroupIncludeLoginMethod'] = None,
                  okta: Optional['outputs.ZeroTrustAccessGroupIncludeOkta'] = None,
                  saml: Optional['outputs.ZeroTrustAccessGroupIncludeSaml'] = None,
                  service_token: Optional['outputs.ZeroTrustAccessGroupIncludeServiceToken'] = None):
@@ -27015,6 +28656,8 @@ class ZeroTrustAccessGroupInclude(dict):
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -27117,6 +28760,11 @@ class ZeroTrustAccessGroupInclude(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> Optional['outputs.ZeroTrustAccessGroupIncludeIpList']:
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional['outputs.ZeroTrustAccessGroupIncludeLoginMethod']:
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -27658,6 +29306,24 @@ class ZeroTrustAccessGroupIncludeIpList(dict):
 
 
 @pulumi.output_type
+class ZeroTrustAccessGroupIncludeLoginMethod(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class ZeroTrustAccessGroupIncludeOkta(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -27826,6 +29492,8 @@ class ZeroTrustAccessGroupRequire(dict):
             suggest = "github_organization"
         elif key == "ipList":
             suggest = "ip_list"
+        elif key == "loginMethod":
+            suggest = "login_method"
         elif key == "serviceToken":
             suggest = "service_token"
 
@@ -27859,6 +29527,7 @@ class ZeroTrustAccessGroupRequire(dict):
                  gsuite: Optional['outputs.ZeroTrustAccessGroupRequireGsuite'] = None,
                  ip: Optional['outputs.ZeroTrustAccessGroupRequireIp'] = None,
                  ip_list: Optional['outputs.ZeroTrustAccessGroupRequireIpList'] = None,
+                 login_method: Optional['outputs.ZeroTrustAccessGroupRequireLoginMethod'] = None,
                  okta: Optional['outputs.ZeroTrustAccessGroupRequireOkta'] = None,
                  saml: Optional['outputs.ZeroTrustAccessGroupRequireSaml'] = None,
                  service_token: Optional['outputs.ZeroTrustAccessGroupRequireServiceToken'] = None):
@@ -27902,6 +29571,8 @@ class ZeroTrustAccessGroupRequire(dict):
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -28004,6 +29675,11 @@ class ZeroTrustAccessGroupRequire(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> Optional['outputs.ZeroTrustAccessGroupRequireIpList']:
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional['outputs.ZeroTrustAccessGroupRequireLoginMethod']:
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -28540,6 +30216,24 @@ class ZeroTrustAccessGroupRequireIpList(dict):
     def id(self) -> str:
         """
         The ID of a previously created IP list.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupRequireLoginMethod(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
         """
         return pulumi.get(self, "id")
 
@@ -29520,6 +31214,8 @@ class ZeroTrustAccessPolicyExclude(dict):
             suggest = "github_organization"
         elif key == "ipList":
             suggest = "ip_list"
+        elif key == "loginMethod":
+            suggest = "login_method"
         elif key == "serviceToken":
             suggest = "service_token"
 
@@ -29553,6 +31249,7 @@ class ZeroTrustAccessPolicyExclude(dict):
                  gsuite: Optional['outputs.ZeroTrustAccessPolicyExcludeGsuite'] = None,
                  ip: Optional['outputs.ZeroTrustAccessPolicyExcludeIp'] = None,
                  ip_list: Optional['outputs.ZeroTrustAccessPolicyExcludeIpList'] = None,
+                 login_method: Optional['outputs.ZeroTrustAccessPolicyExcludeLoginMethod'] = None,
                  okta: Optional['outputs.ZeroTrustAccessPolicyExcludeOkta'] = None,
                  saml: Optional['outputs.ZeroTrustAccessPolicyExcludeSaml'] = None,
                  service_token: Optional['outputs.ZeroTrustAccessPolicyExcludeServiceToken'] = None):
@@ -29596,6 +31293,8 @@ class ZeroTrustAccessPolicyExclude(dict):
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -29698,6 +31397,11 @@ class ZeroTrustAccessPolicyExclude(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> Optional['outputs.ZeroTrustAccessPolicyExcludeIpList']:
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional['outputs.ZeroTrustAccessPolicyExcludeLoginMethod']:
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -30239,6 +31943,24 @@ class ZeroTrustAccessPolicyExcludeIpList(dict):
 
 
 @pulumi.output_type
+class ZeroTrustAccessPolicyExcludeLoginMethod(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class ZeroTrustAccessPolicyExcludeOkta(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -30407,6 +32129,8 @@ class ZeroTrustAccessPolicyInclude(dict):
             suggest = "github_organization"
         elif key == "ipList":
             suggest = "ip_list"
+        elif key == "loginMethod":
+            suggest = "login_method"
         elif key == "serviceToken":
             suggest = "service_token"
 
@@ -30440,6 +32164,7 @@ class ZeroTrustAccessPolicyInclude(dict):
                  gsuite: Optional['outputs.ZeroTrustAccessPolicyIncludeGsuite'] = None,
                  ip: Optional['outputs.ZeroTrustAccessPolicyIncludeIp'] = None,
                  ip_list: Optional['outputs.ZeroTrustAccessPolicyIncludeIpList'] = None,
+                 login_method: Optional['outputs.ZeroTrustAccessPolicyIncludeLoginMethod'] = None,
                  okta: Optional['outputs.ZeroTrustAccessPolicyIncludeOkta'] = None,
                  saml: Optional['outputs.ZeroTrustAccessPolicyIncludeSaml'] = None,
                  service_token: Optional['outputs.ZeroTrustAccessPolicyIncludeServiceToken'] = None):
@@ -30483,6 +32208,8 @@ class ZeroTrustAccessPolicyInclude(dict):
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -30585,6 +32312,11 @@ class ZeroTrustAccessPolicyInclude(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> Optional['outputs.ZeroTrustAccessPolicyIncludeIpList']:
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional['outputs.ZeroTrustAccessPolicyIncludeLoginMethod']:
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -31126,6 +32858,24 @@ class ZeroTrustAccessPolicyIncludeIpList(dict):
 
 
 @pulumi.output_type
+class ZeroTrustAccessPolicyIncludeLoginMethod(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class ZeroTrustAccessPolicyIncludeOkta(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -31294,6 +33044,8 @@ class ZeroTrustAccessPolicyRequire(dict):
             suggest = "github_organization"
         elif key == "ipList":
             suggest = "ip_list"
+        elif key == "loginMethod":
+            suggest = "login_method"
         elif key == "serviceToken":
             suggest = "service_token"
 
@@ -31327,6 +33079,7 @@ class ZeroTrustAccessPolicyRequire(dict):
                  gsuite: Optional['outputs.ZeroTrustAccessPolicyRequireGsuite'] = None,
                  ip: Optional['outputs.ZeroTrustAccessPolicyRequireIp'] = None,
                  ip_list: Optional['outputs.ZeroTrustAccessPolicyRequireIpList'] = None,
+                 login_method: Optional['outputs.ZeroTrustAccessPolicyRequireLoginMethod'] = None,
                  okta: Optional['outputs.ZeroTrustAccessPolicyRequireOkta'] = None,
                  saml: Optional['outputs.ZeroTrustAccessPolicyRequireSaml'] = None,
                  service_token: Optional['outputs.ZeroTrustAccessPolicyRequireServiceToken'] = None):
@@ -31370,6 +33123,8 @@ class ZeroTrustAccessPolicyRequire(dict):
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -31472,6 +33227,11 @@ class ZeroTrustAccessPolicyRequire(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> Optional['outputs.ZeroTrustAccessPolicyRequireIpList']:
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional['outputs.ZeroTrustAccessPolicyRequireLoginMethod']:
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -32008,6 +33768,24 @@ class ZeroTrustAccessPolicyRequireIpList(dict):
     def id(self) -> str:
         """
         The ID of a previously created IP list.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyRequireLoginMethod(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
         """
         return pulumi.get(self, "id")
 
@@ -33638,7 +35416,9 @@ class ZeroTrustDlpCustomProfileProfile(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "allowedMatchCount":
+        if key == "aiContextEnabled":
+            suggest = "ai_context_enabled"
+        elif key == "allowedMatchCount":
             suggest = "allowed_match_count"
         elif key == "confidenceThreshold":
             suggest = "confidence_threshold"
@@ -33663,6 +35443,7 @@ class ZeroTrustDlpCustomProfileProfile(dict):
     def __init__(__self__, *,
                  entries: Sequence['outputs.ZeroTrustDlpCustomProfileProfileEntry'],
                  name: str,
+                 ai_context_enabled: Optional[bool] = None,
                  allowed_match_count: Optional[int] = None,
                  confidence_threshold: Optional[str] = None,
                  context_awareness: Optional['outputs.ZeroTrustDlpCustomProfileProfileContextAwareness'] = None,
@@ -33677,6 +35458,8 @@ class ZeroTrustDlpCustomProfileProfile(dict):
         """
         pulumi.set(__self__, "entries", entries)
         pulumi.set(__self__, "name", name)
+        if ai_context_enabled is not None:
+            pulumi.set(__self__, "ai_context_enabled", ai_context_enabled)
         if allowed_match_count is not None:
             pulumi.set(__self__, "allowed_match_count", allowed_match_count)
         if confidence_threshold is not None:
@@ -33699,6 +35482,11 @@ class ZeroTrustDlpCustomProfileProfile(dict):
     @pulumi.getter
     def name(self) -> str:
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="aiContextEnabled")
+    def ai_context_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "ai_context_enabled")
 
     @property
     @pulumi.getter(name="allowedMatchCount")
@@ -34275,14 +36063,39 @@ class ZeroTrustDlpDatasetUpload(dict):
 
 @pulumi.output_type
 class ZeroTrustDlpEntryConfidence(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aiContextAvailable":
+            suggest = "ai_context_available"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustDlpEntryConfidence. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustDlpEntryConfidence.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustDlpEntryConfidence.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 ai_context_available: Optional[bool] = None,
                  available: Optional[bool] = None):
         """
         :param bool available: Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
                Profiles that use an entry with `available` set to true can use confidence thresholds
         """
+        if ai_context_available is not None:
+            pulumi.set(__self__, "ai_context_available", ai_context_available)
         if available is not None:
             pulumi.set(__self__, "available", available)
+
+    @property
+    @pulumi.getter(name="aiContextAvailable")
+    def ai_context_available(self) -> Optional[bool]:
+        return pulumi.get(self, "ai_context_available")
 
     @property
     @pulumi.getter
@@ -34628,6 +36441,49 @@ class ZeroTrustDnsLocationNetwork(dict):
         The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
         """
         return pulumi.get(self, "network")
+
+
+@pulumi.output_type
+class ZeroTrustGatewayLoggingSettingsByRuleType(dict):
+    def __init__(__self__, *,
+                 dns: Optional[str] = None,
+                 http: Optional[str] = None,
+                 l4: Optional[str] = None):
+        """
+        :param str dns: Logging settings for DNS firewall.
+        :param str http: Logging settings for HTTP/HTTPS firewall.
+        :param str l4: Logging settings for Network firewall.
+        """
+        if dns is not None:
+            pulumi.set(__self__, "dns", dns)
+        if http is not None:
+            pulumi.set(__self__, "http", http)
+        if l4 is not None:
+            pulumi.set(__self__, "l4", l4)
+
+    @property
+    @pulumi.getter
+    def dns(self) -> Optional[str]:
+        """
+        Logging settings for DNS firewall.
+        """
+        return pulumi.get(self, "dns")
+
+    @property
+    @pulumi.getter
+    def http(self) -> Optional[str]:
+        """
+        Logging settings for HTTP/HTTPS firewall.
+        """
+        return pulumi.get(self, "http")
+
+    @property
+    @pulumi.getter
+    def l4(self) -> Optional[str]:
+        """
+        Logging settings for Network firewall.
+        """
+        return pulumi.get(self, "l4")
 
 
 @pulumi.output_type
@@ -40657,6 +42513,90 @@ class GetAccountSettingsResult(dict):
 
 
 @pulumi.output_type
+class GetAccountSubscriptionRatePlanResult(dict):
+    def __init__(__self__, *,
+                 currency: str,
+                 externally_managed: bool,
+                 id: str,
+                 is_contract: bool,
+                 public_name: str,
+                 scope: str,
+                 sets: Sequence[str]):
+        """
+        :param str currency: The currency applied to the rate plan subscription.
+        :param bool externally_managed: Whether this rate plan is managed externally from Cloudflare.
+        :param str id: The ID of the rate plan.
+        :param bool is_contract: Whether a rate plan is enterprise-based (or newly adopted term contract).
+        :param str public_name: The full name of the rate plan.
+        :param str scope: The scope that this rate plan applies to.
+        :param Sequence[str] sets: The list of sets this rate plan applies to.
+        """
+        pulumi.set(__self__, "currency", currency)
+        pulumi.set(__self__, "externally_managed", externally_managed)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_contract", is_contract)
+        pulumi.set(__self__, "public_name", public_name)
+        pulumi.set(__self__, "scope", scope)
+        pulumi.set(__self__, "sets", sets)
+
+    @property
+    @pulumi.getter
+    def currency(self) -> str:
+        """
+        The currency applied to the rate plan subscription.
+        """
+        return pulumi.get(self, "currency")
+
+    @property
+    @pulumi.getter(name="externallyManaged")
+    def externally_managed(self) -> bool:
+        """
+        Whether this rate plan is managed externally from Cloudflare.
+        """
+        return pulumi.get(self, "externally_managed")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the rate plan.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isContract")
+    def is_contract(self) -> bool:
+        """
+        Whether a rate plan is enterprise-based (or newly adopted term contract).
+        """
+        return pulumi.get(self, "is_contract")
+
+    @property
+    @pulumi.getter(name="publicName")
+    def public_name(self) -> str:
+        """
+        The full name of the rate plan.
+        """
+        return pulumi.get(self, "public_name")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        """
+        The scope that this rate plan applies to.
+        """
+        return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter
+    def sets(self) -> Sequence[str]:
+        """
+        The list of sets this rate plan applies to.
+        """
+        return pulumi.get(self, "sets")
+
+
+@pulumi.output_type
 class GetAccountTokenConditionResult(dict):
     def __init__(__self__, *,
                  request_ip: 'outputs.GetAccountTokenConditionRequestIpResult'):
@@ -42792,8 +44732,42 @@ class GetApiTokenFilterResult(dict):
 
 @pulumi.output_type
 class GetApiTokenPermissionsGroupsListResultResult(dict):
-    def __init__(__self__):
-        pass
+    def __init__(__self__, *,
+                 id: str,
+                 name: str,
+                 scopes: Sequence[str]):
+        """
+        :param str id: Public ID.
+        :param str name: Permission Group Name
+        :param Sequence[str] scopes: Resources to which the Permission Group is scoped
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Public ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Permission Group Name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[str]:
+        """
+        Resources to which the Permission Group is scoped
+        """
+        return pulumi.get(self, "scopes")
 
 
 @pulumi.output_type
@@ -45410,6 +47384,8 @@ class GetD1DatabasesResultResult(dict):
                  version: str):
         """
         :param str created_at: Specifies the timestamp the resource was created as an ISO8601 string.
+        :param str name: D1 database name.
+        :param str uuid: D1 database identifier (UUID).
         """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "name", name)
@@ -45427,11 +47403,17 @@ class GetD1DatabasesResultResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        D1 database name.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        D1 database identifier (UUID).
+        """
         return pulumi.get(self, "uuid")
 
     @property
@@ -47375,6 +49357,477 @@ class GetDnsRecordsTagResult(dict):
 
 
 @pulumi.output_type
+class GetDnsSettingsInternalViewFilterResult(dict):
+    def __init__(__self__, *,
+                 direction: str,
+                 match: str,
+                 name: Optional['outputs.GetDnsSettingsInternalViewFilterNameResult'] = None,
+                 order: Optional[str] = None,
+                 zone_id: Optional[str] = None,
+                 zone_name: Optional[str] = None):
+        """
+        :param str direction: Direction to order DNS views in.
+        :param str match: Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead.
+        :param str order: Field to order DNS views by.
+        :param str zone_id: A zone ID that exists in the zones list for the view.
+        :param str zone_name: A zone name that exists in the zones list for the view.
+        """
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "match", match)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+        if zone_name is not None:
+            pulumi.set(__self__, "zone_name", zone_name)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> str:
+        """
+        Direction to order DNS views in.
+        """
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter
+    def match(self) -> str:
+        """
+        Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead.
+        """
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional['outputs.GetDnsSettingsInternalViewFilterNameResult']:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[str]:
+        """
+        Field to order DNS views by.
+        """
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[str]:
+        """
+        A zone ID that exists in the zones list for the view.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @property
+    @pulumi.getter(name="zoneName")
+    def zone_name(self) -> Optional[str]:
+        """
+        A zone name that exists in the zones list for the view.
+        """
+        return pulumi.get(self, "zone_name")
+
+
+@pulumi.output_type
+class GetDnsSettingsInternalViewFilterNameResult(dict):
+    def __init__(__self__, *,
+                 contains: Optional[str] = None,
+                 endswith: Optional[str] = None,
+                 exact: Optional[str] = None,
+                 startswith: Optional[str] = None):
+        """
+        :param str contains: Substring of the DNS view name.
+        :param str endswith: Suffix of the DNS view name.
+        :param str exact: Exact value of the DNS view name.
+        :param str startswith: Prefix of the DNS view name.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if endswith is not None:
+            pulumi.set(__self__, "endswith", endswith)
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if startswith is not None:
+            pulumi.set(__self__, "startswith", startswith)
+
+    @property
+    @pulumi.getter
+    def contains(self) -> Optional[str]:
+        """
+        Substring of the DNS view name.
+        """
+        return pulumi.get(self, "contains")
+
+    @property
+    @pulumi.getter
+    def endswith(self) -> Optional[str]:
+        """
+        Suffix of the DNS view name.
+        """
+        return pulumi.get(self, "endswith")
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        """
+        Exact value of the DNS view name.
+        """
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def startswith(self) -> Optional[str]:
+        """
+        Prefix of the DNS view name.
+        """
+        return pulumi.get(self, "startswith")
+
+
+@pulumi.output_type
+class GetDnsSettingsInternalViewsNameResult(dict):
+    def __init__(__self__, *,
+                 contains: Optional[str] = None,
+                 endswith: Optional[str] = None,
+                 exact: Optional[str] = None,
+                 startswith: Optional[str] = None):
+        """
+        :param str contains: Substring of the DNS view name.
+        :param str endswith: Suffix of the DNS view name.
+        :param str exact: Exact value of the DNS view name.
+        :param str startswith: Prefix of the DNS view name.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if endswith is not None:
+            pulumi.set(__self__, "endswith", endswith)
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if startswith is not None:
+            pulumi.set(__self__, "startswith", startswith)
+
+    @property
+    @pulumi.getter
+    def contains(self) -> Optional[str]:
+        """
+        Substring of the DNS view name.
+        """
+        return pulumi.get(self, "contains")
+
+    @property
+    @pulumi.getter
+    def endswith(self) -> Optional[str]:
+        """
+        Suffix of the DNS view name.
+        """
+        return pulumi.get(self, "endswith")
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        """
+        Exact value of the DNS view name.
+        """
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def startswith(self) -> Optional[str]:
+        """
+        Prefix of the DNS view name.
+        """
+        return pulumi.get(self, "startswith")
+
+
+@pulumi.output_type
+class GetDnsSettingsInternalViewsResultResult(dict):
+    def __init__(__self__, *,
+                 created_time: str,
+                 id: str,
+                 modified_time: str,
+                 name: str,
+                 zones: Sequence[str]):
+        """
+        :param str created_time: When the view was created.
+        :param str id: Identifier
+        :param str modified_time: When the view was last modified.
+        :param str name: The name of the view.
+        :param Sequence[str] zones: The list of zones linked to this view.
+        """
+        pulumi.set(__self__, "created_time", created_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "modified_time", modified_time)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "zones", zones)
+
+    @property
+    @pulumi.getter(name="createdTime")
+    def created_time(self) -> str:
+        """
+        When the view was created.
+        """
+        return pulumi.get(self, "created_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="modifiedTime")
+    def modified_time(self) -> str:
+        """
+        When the view was last modified.
+        """
+        return pulumi.get(self, "modified_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the view.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def zones(self) -> Sequence[str]:
+        """
+        The list of zones linked to this view.
+        """
+        return pulumi.get(self, "zones")
+
+
+@pulumi.output_type
+class GetDnsSettingsZoneDefaultsResult(dict):
+    def __init__(__self__, *,
+                 flatten_all_cnames: bool,
+                 foundation_dns: bool,
+                 internal_dns: 'outputs.GetDnsSettingsZoneDefaultsInternalDnsResult',
+                 multi_provider: bool,
+                 nameservers: 'outputs.GetDnsSettingsZoneDefaultsNameserversResult',
+                 ns_ttl: float,
+                 secondary_overrides: bool,
+                 soa: 'outputs.GetDnsSettingsZoneDefaultsSoaResult',
+                 zone_mode: str):
+        """
+        :param bool flatten_all_cnames: Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
+        :param bool foundation_dns: Whether to enable Foundation DNS Advanced Nameservers on the zone.
+        :param 'GetDnsSettingsZoneDefaultsInternalDnsArgs' internal_dns: Settings for this internal zone.
+        :param bool multi_provider: Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
+        :param 'GetDnsSettingsZoneDefaultsNameserversArgs' nameservers: Settings determining the nameservers through which the zone should be available.
+        :param float ns_ttl: The time to live (TTL) of the zone's nameserver (NS) records.
+        :param bool secondary_overrides: Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
+        :param 'GetDnsSettingsZoneDefaultsSoaArgs' soa: Components of the zone's SOA record.
+        :param str zone_mode: Whether the zone mode is a regular or CDN/DNS only zone.
+        """
+        pulumi.set(__self__, "flatten_all_cnames", flatten_all_cnames)
+        pulumi.set(__self__, "foundation_dns", foundation_dns)
+        pulumi.set(__self__, "internal_dns", internal_dns)
+        pulumi.set(__self__, "multi_provider", multi_provider)
+        pulumi.set(__self__, "nameservers", nameservers)
+        pulumi.set(__self__, "ns_ttl", ns_ttl)
+        pulumi.set(__self__, "secondary_overrides", secondary_overrides)
+        pulumi.set(__self__, "soa", soa)
+        pulumi.set(__self__, "zone_mode", zone_mode)
+
+    @property
+    @pulumi.getter(name="flattenAllCnames")
+    def flatten_all_cnames(self) -> bool:
+        """
+        Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
+        """
+        return pulumi.get(self, "flatten_all_cnames")
+
+    @property
+    @pulumi.getter(name="foundationDns")
+    def foundation_dns(self) -> bool:
+        """
+        Whether to enable Foundation DNS Advanced Nameservers on the zone.
+        """
+        return pulumi.get(self, "foundation_dns")
+
+    @property
+    @pulumi.getter(name="internalDns")
+    def internal_dns(self) -> 'outputs.GetDnsSettingsZoneDefaultsInternalDnsResult':
+        """
+        Settings for this internal zone.
+        """
+        return pulumi.get(self, "internal_dns")
+
+    @property
+    @pulumi.getter(name="multiProvider")
+    def multi_provider(self) -> bool:
+        """
+        Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
+        """
+        return pulumi.get(self, "multi_provider")
+
+    @property
+    @pulumi.getter
+    def nameservers(self) -> 'outputs.GetDnsSettingsZoneDefaultsNameserversResult':
+        """
+        Settings determining the nameservers through which the zone should be available.
+        """
+        return pulumi.get(self, "nameservers")
+
+    @property
+    @pulumi.getter(name="nsTtl")
+    def ns_ttl(self) -> float:
+        """
+        The time to live (TTL) of the zone's nameserver (NS) records.
+        """
+        return pulumi.get(self, "ns_ttl")
+
+    @property
+    @pulumi.getter(name="secondaryOverrides")
+    def secondary_overrides(self) -> bool:
+        """
+        Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
+        """
+        return pulumi.get(self, "secondary_overrides")
+
+    @property
+    @pulumi.getter
+    def soa(self) -> 'outputs.GetDnsSettingsZoneDefaultsSoaResult':
+        """
+        Components of the zone's SOA record.
+        """
+        return pulumi.get(self, "soa")
+
+    @property
+    @pulumi.getter(name="zoneMode")
+    def zone_mode(self) -> str:
+        """
+        Whether the zone mode is a regular or CDN/DNS only zone.
+        """
+        return pulumi.get(self, "zone_mode")
+
+
+@pulumi.output_type
+class GetDnsSettingsZoneDefaultsInternalDnsResult(dict):
+    def __init__(__self__, *,
+                 reference_zone_id: str):
+        """
+        :param str reference_zone_id: The ID of the zone to fallback to.
+        """
+        pulumi.set(__self__, "reference_zone_id", reference_zone_id)
+
+    @property
+    @pulumi.getter(name="referenceZoneId")
+    def reference_zone_id(self) -> str:
+        """
+        The ID of the zone to fallback to.
+        """
+        return pulumi.get(self, "reference_zone_id")
+
+
+@pulumi.output_type
+class GetDnsSettingsZoneDefaultsNameserversResult(dict):
+    def __init__(__self__, *,
+                 type: str):
+        """
+        :param str type: Nameserver type
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Nameserver type
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDnsSettingsZoneDefaultsSoaResult(dict):
+    def __init__(__self__, *,
+                 expire: float,
+                 min_ttl: float,
+                 mname: str,
+                 refresh: float,
+                 retry: float,
+                 rname: str,
+                 ttl: float):
+        """
+        :param float expire: Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
+        :param float min_ttl: The time to live (TTL) for negative caching of records within the zone.
+        :param str mname: The primary nameserver, which may be used for outbound zone transfers.
+        :param float refresh: Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
+        :param float retry: Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
+        :param str rname: The email address of the zone administrator, with the first label representing the local part of the email address.
+        :param float ttl: The time to live (TTL) of the SOA record itself.
+        """
+        pulumi.set(__self__, "expire", expire)
+        pulumi.set(__self__, "min_ttl", min_ttl)
+        pulumi.set(__self__, "mname", mname)
+        pulumi.set(__self__, "refresh", refresh)
+        pulumi.set(__self__, "retry", retry)
+        pulumi.set(__self__, "rname", rname)
+        pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def expire(self) -> float:
+        """
+        Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
+        """
+        return pulumi.get(self, "expire")
+
+    @property
+    @pulumi.getter(name="minTtl")
+    def min_ttl(self) -> float:
+        """
+        The time to live (TTL) for negative caching of records within the zone.
+        """
+        return pulumi.get(self, "min_ttl")
+
+    @property
+    @pulumi.getter
+    def mname(self) -> str:
+        """
+        The primary nameserver, which may be used for outbound zone transfers.
+        """
+        return pulumi.get(self, "mname")
+
+    @property
+    @pulumi.getter
+    def refresh(self) -> float:
+        """
+        Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
+        """
+        return pulumi.get(self, "refresh")
+
+    @property
+    @pulumi.getter
+    def retry(self) -> float:
+        """
+        Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
+        """
+        return pulumi.get(self, "retry")
+
+    @property
+    @pulumi.getter
+    def rname(self) -> str:
+        """
+        The email address of the zone administrator, with the first label representing the local part of the email address.
+        """
+        return pulumi.get(self, "rname")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> float:
+        """
+        The time to live (TTL) of the SOA record itself.
+        """
+        return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
 class GetDnsZoneTransfersAclsResultResult(dict):
     def __init__(__self__, *,
                  id: str,
@@ -48621,6 +51074,73 @@ class GetEmailSecurityTrustedDomainsListResultResult(dict):
 
 
 @pulumi.output_type
+class GetFilterFilterResult(dict):
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 expression: Optional[str] = None,
+                 id: Optional[str] = None,
+                 paused: Optional[bool] = None,
+                 ref: Optional[str] = None):
+        """
+        :param str description: A case-insensitive string to find in the description.
+        :param str expression: A case-insensitive string to find in the expression.
+        :param str id: The unique identifier of the filter.
+        :param bool paused: When true, indicates that the filter is currently paused.
+        :param str ref: The filter ref (a short reference tag) to search for. Must be an exact match.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A case-insensitive string to find in the description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[str]:
+        """
+        A case-insensitive string to find in the expression.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The unique identifier of the filter.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def paused(self) -> Optional[bool]:
+        """
+        When true, indicates that the filter is currently paused.
+        """
+        return pulumi.get(self, "paused")
+
+    @property
+    @pulumi.getter
+    def ref(self) -> Optional[str]:
+        """
+        The filter ref (a short reference tag) to search for. Must be an exact match.
+        """
+        return pulumi.get(self, "ref")
+
+
+@pulumi.output_type
 class GetFiltersResultResult(dict):
     def __init__(__self__, *,
                  description: str,
@@ -48640,79 +51160,6 @@ class GetFiltersResultResult(dict):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "paused", paused)
         pulumi.set(__self__, "ref", ref)
-
-    @property
-    @pulumi.getter
-    def description(self) -> str:
-        """
-        An informative summary of the filter.
-        """
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter
-    def expression(self) -> str:
-        """
-        The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
-        """
-        return pulumi.get(self, "expression")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        The unique identifier of the filter.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def paused(self) -> bool:
-        """
-        When true, indicates that the filter is currently paused.
-        """
-        return pulumi.get(self, "paused")
-
-    @property
-    @pulumi.getter
-    def ref(self) -> str:
-        """
-        A short reference tag. Allows you to select related filters.
-        """
-        return pulumi.get(self, "ref")
-
-
-@pulumi.output_type
-class GetFirewallRuleFilterResult(dict):
-    def __init__(__self__, *,
-                 deleted: bool,
-                 description: str,
-                 expression: str,
-                 id: str,
-                 paused: bool,
-                 ref: str):
-        """
-        :param bool deleted: When true, indicates that the firewall rule was deleted.
-        :param str description: An informative summary of the filter.
-        :param str expression: The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
-        :param str id: The unique identifier of the filter.
-        :param bool paused: When true, indicates that the filter is currently paused.
-        :param str ref: A short reference tag. Allows you to select related filters.
-        """
-        pulumi.set(__self__, "deleted", deleted)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "paused", paused)
-        pulumi.set(__self__, "ref", ref)
-
-    @property
-    @pulumi.getter
-    def deleted(self) -> bool:
-        """
-        When true, indicates that the firewall rule was deleted.
-        """
-        return pulumi.get(self, "deleted")
 
     @property
     @pulumi.getter
@@ -52736,6 +55183,145 @@ class GetLoadBalancersResultSessionAffinityAttributesResult(dict):
 
 
 @pulumi.output_type
+class GetLogpushDatasetJobOutputOptionsResult(dict):
+    def __init__(__self__, *,
+                 batch_prefix: str,
+                 batch_suffix: str,
+                 cve20214428: bool,
+                 field_delimiter: str,
+                 field_names: Sequence[str],
+                 output_type: str,
+                 record_delimiter: str,
+                 record_prefix: str,
+                 record_suffix: str,
+                 record_template: str,
+                 sample_rate: float,
+                 timestamp_format: str):
+        """
+        :param str batch_prefix: String to be prepended before each batch.
+        :param str batch_suffix: String to be appended after each batch.
+        :param bool cve20214428: If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
+        :param str field_delimiter: String to join fields. This field be ignored when `record_template` is set.
+        :param Sequence[str] field_names: List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
+        :param str output_type: Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+        :param str record_delimiter: String to be inserted in-between the records as separator.
+        :param str record_prefix: String to be prepended before each record.
+        :param str record_suffix: String to be appended after each record.
+        :param str record_template: String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+        :param float sample_rate: Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
+        :param str timestamp_format: String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+        """
+        pulumi.set(__self__, "batch_prefix", batch_prefix)
+        pulumi.set(__self__, "batch_suffix", batch_suffix)
+        pulumi.set(__self__, "cve20214428", cve20214428)
+        pulumi.set(__self__, "field_delimiter", field_delimiter)
+        pulumi.set(__self__, "field_names", field_names)
+        pulumi.set(__self__, "output_type", output_type)
+        pulumi.set(__self__, "record_delimiter", record_delimiter)
+        pulumi.set(__self__, "record_prefix", record_prefix)
+        pulumi.set(__self__, "record_suffix", record_suffix)
+        pulumi.set(__self__, "record_template", record_template)
+        pulumi.set(__self__, "sample_rate", sample_rate)
+        pulumi.set(__self__, "timestamp_format", timestamp_format)
+
+    @property
+    @pulumi.getter(name="batchPrefix")
+    def batch_prefix(self) -> str:
+        """
+        String to be prepended before each batch.
+        """
+        return pulumi.get(self, "batch_prefix")
+
+    @property
+    @pulumi.getter(name="batchSuffix")
+    def batch_suffix(self) -> str:
+        """
+        String to be appended after each batch.
+        """
+        return pulumi.get(self, "batch_suffix")
+
+    @property
+    @pulumi.getter
+    def cve20214428(self) -> bool:
+        """
+        If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
+        """
+        return pulumi.get(self, "cve20214428")
+
+    @property
+    @pulumi.getter(name="fieldDelimiter")
+    def field_delimiter(self) -> str:
+        """
+        String to join fields. This field be ignored when `record_template` is set.
+        """
+        return pulumi.get(self, "field_delimiter")
+
+    @property
+    @pulumi.getter(name="fieldNames")
+    def field_names(self) -> Sequence[str]:
+        """
+        List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
+        """
+        return pulumi.get(self, "field_names")
+
+    @property
+    @pulumi.getter(name="outputType")
+    def output_type(self) -> str:
+        """
+        Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+        """
+        return pulumi.get(self, "output_type")
+
+    @property
+    @pulumi.getter(name="recordDelimiter")
+    def record_delimiter(self) -> str:
+        """
+        String to be inserted in-between the records as separator.
+        """
+        return pulumi.get(self, "record_delimiter")
+
+    @property
+    @pulumi.getter(name="recordPrefix")
+    def record_prefix(self) -> str:
+        """
+        String to be prepended before each record.
+        """
+        return pulumi.get(self, "record_prefix")
+
+    @property
+    @pulumi.getter(name="recordSuffix")
+    def record_suffix(self) -> str:
+        """
+        String to be appended after each record.
+        """
+        return pulumi.get(self, "record_suffix")
+
+    @property
+    @pulumi.getter(name="recordTemplate")
+    def record_template(self) -> str:
+        """
+        String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+        """
+        return pulumi.get(self, "record_template")
+
+    @property
+    @pulumi.getter(name="sampleRate")
+    def sample_rate(self) -> float:
+        """
+        Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
+        """
+        return pulumi.get(self, "sample_rate")
+
+    @property
+    @pulumi.getter(name="timestampFormat")
+    def timestamp_format(self) -> str:
+        """
+        String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+        """
+        return pulumi.get(self, "timestamp_format")
+
+
+@pulumi.output_type
 class GetLogpushJobOutputOptionsResult(dict):
     def __init__(__self__, *,
                  batch_prefix: str,
@@ -53752,20 +56338,20 @@ class GetMagicTransitSiteAclsResultLan2Result(dict):
 @pulumi.output_type
 class GetMagicTransitSiteFilterResult(dict):
     def __init__(__self__, *,
-                 connector_identifier: Optional[str] = None):
+                 connectorid: Optional[str] = None):
         """
-        :param str connector_identifier: Identifier
+        :param str connectorid: Identifier
         """
-        if connector_identifier is not None:
-            pulumi.set(__self__, "connector_identifier", connector_identifier)
+        if connectorid is not None:
+            pulumi.set(__self__, "connectorid", connectorid)
 
     @property
-    @pulumi.getter(name="connectorIdentifier")
-    def connector_identifier(self) -> Optional[str]:
+    @pulumi.getter
+    def connectorid(self) -> Optional[str]:
         """
         Identifier
         """
-        return pulumi.get(self, "connector_identifier")
+        return pulumi.get(self, "connectorid")
 
 
 @pulumi.output_type
@@ -53918,6 +56504,7 @@ class GetMagicTransitSiteLanStaticAddressingDhcpServerResult(dict):
                  dhcp_pool_end: str,
                  dhcp_pool_start: str,
                  dns_server: str,
+                 dns_servers: Sequence[str],
                  reservations: Mapping[str, str]):
         """
         :param str dhcp_pool_end: A valid IPv4 address.
@@ -53928,6 +56515,7 @@ class GetMagicTransitSiteLanStaticAddressingDhcpServerResult(dict):
         pulumi.set(__self__, "dhcp_pool_end", dhcp_pool_end)
         pulumi.set(__self__, "dhcp_pool_start", dhcp_pool_start)
         pulumi.set(__self__, "dns_server", dns_server)
+        pulumi.set(__self__, "dns_servers", dns_servers)
         pulumi.set(__self__, "reservations", reservations)
 
     @property
@@ -53953,6 +56541,11 @@ class GetMagicTransitSiteLanStaticAddressingDhcpServerResult(dict):
         A valid IPv4 address.
         """
         return pulumi.get(self, "dns_server")
+
+    @property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> Sequence[str]:
+        return pulumi.get(self, "dns_servers")
 
     @property
     @pulumi.getter
@@ -54203,6 +56796,7 @@ class GetMagicTransitSiteLansResultStaticAddressingDhcpServerResult(dict):
                  dhcp_pool_end: str,
                  dhcp_pool_start: str,
                  dns_server: str,
+                 dns_servers: Sequence[str],
                  reservations: Mapping[str, str]):
         """
         :param str dhcp_pool_end: A valid IPv4 address.
@@ -54213,6 +56807,7 @@ class GetMagicTransitSiteLansResultStaticAddressingDhcpServerResult(dict):
         pulumi.set(__self__, "dhcp_pool_end", dhcp_pool_end)
         pulumi.set(__self__, "dhcp_pool_start", dhcp_pool_start)
         pulumi.set(__self__, "dns_server", dns_server)
+        pulumi.set(__self__, "dns_servers", dns_servers)
         pulumi.set(__self__, "reservations", reservations)
 
     @property
@@ -54238,6 +56833,11 @@ class GetMagicTransitSiteLansResultStaticAddressingDhcpServerResult(dict):
         A valid IPv4 address.
         """
         return pulumi.get(self, "dns_server")
+
+    @property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> Sequence[str]:
+        return pulumi.get(self, "dns_servers")
 
     @property
     @pulumi.getter
@@ -60284,8 +62884,61 @@ class GetPermissionGroupMetaResult(dict):
 
 @pulumi.output_type
 class GetPermissionGroupsResultResult(dict):
-    def __init__(__self__):
-        pass
+    def __init__(__self__, *,
+                 id: str,
+                 meta: 'outputs.GetPermissionGroupsResultMetaResult',
+                 name: str):
+        """
+        :param str id: Identifier of the group.
+        :param 'GetPermissionGroupsResultMetaArgs' meta: Attributes associated to the permission group.
+        :param str name: Name of the group.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "meta", meta)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Identifier of the group.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def meta(self) -> 'outputs.GetPermissionGroupsResultMetaResult':
+        """
+        Attributes associated to the permission group.
+        """
+        return pulumi.get(self, "meta")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the group.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetPermissionGroupsResultMetaResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -60754,6 +63407,616 @@ class GetQueuesResultSettingsResult(dict):
         Number of seconds after which an unconsumed message will be delayed.
         """
         return pulumi.get(self, "message_retention_period")
+
+
+@pulumi.output_type
+class GetR2BucketCorsRuleResult(dict):
+    def __init__(__self__, *,
+                 allowed: 'outputs.GetR2BucketCorsRuleAllowedResult',
+                 expose_headers: Sequence[str],
+                 id: str,
+                 max_age_seconds: float):
+        """
+        :param 'GetR2BucketCorsRuleAllowedArgs' allowed: Object specifying allowed origins, methods and headers for this CORS rule.
+        :param Sequence[str] expose_headers: Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
+        :param str id: Identifier for this rule
+        :param float max_age_seconds: Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
+        """
+        pulumi.set(__self__, "allowed", allowed)
+        pulumi.set(__self__, "expose_headers", expose_headers)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "max_age_seconds", max_age_seconds)
+
+    @property
+    @pulumi.getter
+    def allowed(self) -> 'outputs.GetR2BucketCorsRuleAllowedResult':
+        """
+        Object specifying allowed origins, methods and headers for this CORS rule.
+        """
+        return pulumi.get(self, "allowed")
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Sequence[str]:
+        """
+        Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Identifier for this rule
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="maxAgeSeconds")
+    def max_age_seconds(self) -> float:
+        """
+        Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
+        """
+        return pulumi.get(self, "max_age_seconds")
+
+
+@pulumi.output_type
+class GetR2BucketCorsRuleAllowedResult(dict):
+    def __init__(__self__, *,
+                 headers: Sequence[str],
+                 methods: Sequence[str],
+                 origins: Sequence[str]):
+        """
+        :param Sequence[str] headers: Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.
+        :param Sequence[str] methods: Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.
+        :param Sequence[str] origins: Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.
+        """
+        pulumi.set(__self__, "headers", headers)
+        pulumi.set(__self__, "methods", methods)
+        pulumi.set(__self__, "origins", origins)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Sequence[str]:
+        """
+        Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.
+        """
+        return pulumi.get(self, "headers")
+
+    @property
+    @pulumi.getter
+    def methods(self) -> Sequence[str]:
+        """
+        Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.
+        """
+        return pulumi.get(self, "methods")
+
+    @property
+    @pulumi.getter
+    def origins(self) -> Sequence[str]:
+        """
+        Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.
+        """
+        return pulumi.get(self, "origins")
+
+
+@pulumi.output_type
+class GetR2BucketEventNotificationQueueResult(dict):
+    def __init__(__self__, *,
+                 queue_id: str,
+                 queue_name: str,
+                 rules: Sequence['outputs.GetR2BucketEventNotificationQueueRuleResult']):
+        """
+        :param str queue_id: Queue ID
+        :param str queue_name: Name of the queue
+        """
+        pulumi.set(__self__, "queue_id", queue_id)
+        pulumi.set(__self__, "queue_name", queue_name)
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter(name="queueId")
+    def queue_id(self) -> str:
+        """
+        Queue ID
+        """
+        return pulumi.get(self, "queue_id")
+
+    @property
+    @pulumi.getter(name="queueName")
+    def queue_name(self) -> str:
+        """
+        Name of the queue
+        """
+        return pulumi.get(self, "queue_name")
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetR2BucketEventNotificationQueueRuleResult']:
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class GetR2BucketEventNotificationQueueRuleResult(dict):
+    def __init__(__self__, *,
+                 actions: Sequence[str],
+                 created_at: str,
+                 description: str,
+                 prefix: str,
+                 rule_id: str,
+                 suffix: str):
+        """
+        :param Sequence[str] actions: Array of R2 object actions that will trigger notifications
+        :param str created_at: Timestamp when the rule was created
+        :param str description: A description that can be used to identify the event notification rule after creation
+        :param str prefix: Notifications will be sent only for objects with this prefix
+        :param str rule_id: Rule ID
+        :param str suffix: Notifications will be sent only for objects with this suffix
+        """
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "rule_id", rule_id)
+        pulumi.set(__self__, "suffix", suffix)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Sequence[str]:
+        """
+        Array of R2 object actions that will trigger notifications
+        """
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        Timestamp when the rule was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A description that can be used to identify the event notification rule after creation
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> str:
+        """
+        Notifications will be sent only for objects with this prefix
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> str:
+        """
+        Rule ID
+        """
+        return pulumi.get(self, "rule_id")
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> str:
+        """
+        Notifications will be sent only for objects with this suffix
+        """
+        return pulumi.get(self, "suffix")
+
+
+@pulumi.output_type
+class GetR2BucketLifecycleRuleResult(dict):
+    def __init__(__self__, *,
+                 abort_multipart_uploads_transition: 'outputs.GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionResult',
+                 conditions: 'outputs.GetR2BucketLifecycleRuleConditionsResult',
+                 delete_objects_transition: 'outputs.GetR2BucketLifecycleRuleDeleteObjectsTransitionResult',
+                 enabled: bool,
+                 id: str,
+                 storage_class_transitions: Sequence['outputs.GetR2BucketLifecycleRuleStorageClassTransitionResult']):
+        """
+        :param 'GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs' abort_multipart_uploads_transition: Transition to abort ongoing multipart uploads
+        :param 'GetR2BucketLifecycleRuleConditionsArgs' conditions: Conditions that apply to all transitions of this rule
+        :param 'GetR2BucketLifecycleRuleDeleteObjectsTransitionArgs' delete_objects_transition: Transition to delete objects
+        :param bool enabled: Whether or not this rule is in effect
+        :param str id: Unique identifier for this rule
+        :param Sequence['GetR2BucketLifecycleRuleStorageClassTransitionArgs'] storage_class_transitions: Transitions to change the storage class of objects
+        """
+        pulumi.set(__self__, "abort_multipart_uploads_transition", abort_multipart_uploads_transition)
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "delete_objects_transition", delete_objects_transition)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "storage_class_transitions", storage_class_transitions)
+
+    @property
+    @pulumi.getter(name="abortMultipartUploadsTransition")
+    def abort_multipart_uploads_transition(self) -> 'outputs.GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionResult':
+        """
+        Transition to abort ongoing multipart uploads
+        """
+        return pulumi.get(self, "abort_multipart_uploads_transition")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> 'outputs.GetR2BucketLifecycleRuleConditionsResult':
+        """
+        Conditions that apply to all transitions of this rule
+        """
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="deleteObjectsTransition")
+    def delete_objects_transition(self) -> 'outputs.GetR2BucketLifecycleRuleDeleteObjectsTransitionResult':
+        """
+        Transition to delete objects
+        """
+        return pulumi.get(self, "delete_objects_transition")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether or not this rule is in effect
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier for this rule
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="storageClassTransitions")
+    def storage_class_transitions(self) -> Sequence['outputs.GetR2BucketLifecycleRuleStorageClassTransitionResult']:
+        """
+        Transitions to change the storage class of objects
+        """
+        return pulumi.get(self, "storage_class_transitions")
+
+
+@pulumi.output_type
+class GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionResult(dict):
+    def __init__(__self__, *,
+                 condition: 'outputs.GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionResult'):
+        """
+        :param 'GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs' condition: Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        """
+        pulumi.set(__self__, "condition", condition)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> 'outputs.GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionResult':
+        """
+        Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        """
+        return pulumi.get(self, "condition")
+
+
+@pulumi.output_type
+class GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionResult(dict):
+    def __init__(__self__, *,
+                 max_age: int,
+                 type: str):
+        pulumi.set(__self__, "max_age", max_age)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> int:
+        return pulumi.get(self, "max_age")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetR2BucketLifecycleRuleConditionsResult(dict):
+    def __init__(__self__, *,
+                 prefix: str):
+        """
+        :param str prefix: Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+        """
+        pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> str:
+        """
+        Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+        """
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class GetR2BucketLifecycleRuleDeleteObjectsTransitionResult(dict):
+    def __init__(__self__, *,
+                 condition: 'outputs.GetR2BucketLifecycleRuleDeleteObjectsTransitionConditionResult'):
+        """
+        :param 'GetR2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs' condition: Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        """
+        pulumi.set(__self__, "condition", condition)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> 'outputs.GetR2BucketLifecycleRuleDeleteObjectsTransitionConditionResult':
+        """
+        Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        """
+        return pulumi.get(self, "condition")
+
+
+@pulumi.output_type
+class GetR2BucketLifecycleRuleDeleteObjectsTransitionConditionResult(dict):
+    def __init__(__self__, *,
+                 date: str,
+                 max_age: int,
+                 type: str):
+        pulumi.set(__self__, "date", date)
+        pulumi.set(__self__, "max_age", max_age)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def date(self) -> str:
+        return pulumi.get(self, "date")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> int:
+        return pulumi.get(self, "max_age")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetR2BucketLifecycleRuleStorageClassTransitionResult(dict):
+    def __init__(__self__, *,
+                 condition: 'outputs.GetR2BucketLifecycleRuleStorageClassTransitionConditionResult',
+                 storage_class: str):
+        """
+        :param 'GetR2BucketLifecycleRuleStorageClassTransitionConditionArgs' condition: Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "storage_class", storage_class)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> 'outputs.GetR2BucketLifecycleRuleStorageClassTransitionConditionResult':
+        """
+        Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> str:
+        return pulumi.get(self, "storage_class")
+
+
+@pulumi.output_type
+class GetR2BucketLifecycleRuleStorageClassTransitionConditionResult(dict):
+    def __init__(__self__, *,
+                 date: str,
+                 max_age: int,
+                 type: str):
+        pulumi.set(__self__, "date", date)
+        pulumi.set(__self__, "max_age", max_age)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def date(self) -> str:
+        return pulumi.get(self, "date")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> int:
+        return pulumi.get(self, "max_age")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetR2BucketLockRuleResult(dict):
+    def __init__(__self__, *,
+                 condition: 'outputs.GetR2BucketLockRuleConditionResult',
+                 enabled: bool,
+                 id: str,
+                 prefix: str):
+        """
+        :param 'GetR2BucketLockRuleConditionArgs' condition: Condition to apply a lock rule to an object for how long in seconds
+        :param bool enabled: Whether or not this rule is in effect
+        :param str id: Unique identifier for this rule
+        :param str prefix: Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> 'outputs.GetR2BucketLockRuleConditionResult':
+        """
+        Condition to apply a lock rule to an object for how long in seconds
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether or not this rule is in effect
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier for this rule
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> str:
+        """
+        Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+        """
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class GetR2BucketLockRuleConditionResult(dict):
+    def __init__(__self__, *,
+                 date: str,
+                 max_age_seconds: int,
+                 type: str):
+        pulumi.set(__self__, "date", date)
+        pulumi.set(__self__, "max_age_seconds", max_age_seconds)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def date(self) -> str:
+        return pulumi.get(self, "date")
+
+    @property
+    @pulumi.getter(name="maxAgeSeconds")
+    def max_age_seconds(self) -> int:
+        return pulumi.get(self, "max_age_seconds")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetR2BucketSippyDestinationResult(dict):
+    def __init__(__self__, *,
+                 access_key_id: str,
+                 account: str,
+                 bucket: str,
+                 provider: str):
+        """
+        :param str access_key_id: ID of the Cloudflare API token used when writing objects to this
+               bucket
+        :param str bucket: Name of the bucket on the provider
+        """
+        pulumi.set(__self__, "access_key_id", access_key_id)
+        pulumi.set(__self__, "account", account)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "provider", provider)
+
+    @property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> str:
+        """
+        ID of the Cloudflare API token used when writing objects to this
+        bucket
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @property
+    @pulumi.getter
+    def account(self) -> str:
+        return pulumi.get(self, "account")
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        Name of the bucket on the provider
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
+    def provider(self) -> str:
+        return pulumi.get(self, "provider")
+
+
+@pulumi.output_type
+class GetR2BucketSippySourceResult(dict):
+    def __init__(__self__, *,
+                 bucket: str,
+                 provider: str,
+                 region: str):
+        """
+        :param str bucket: Name of the bucket on the provider
+        :param str region: Region where the bucket resides (AWS only)
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "provider", provider)
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        Name of the bucket on the provider
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
+    def provider(self) -> str:
+        return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Region where the bucket resides (AWS only)
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetR2CustomDomainStatusResult(dict):
+    def __init__(__self__, *,
+                 ownership: str,
+                 ssl: str):
+        """
+        :param str ownership: Ownership status of the domain
+        :param str ssl: SSL certificate status
+        """
+        pulumi.set(__self__, "ownership", ownership)
+        pulumi.set(__self__, "ssl", ssl)
+
+    @property
+    @pulumi.getter
+    def ownership(self) -> str:
+        """
+        Ownership status of the domain
+        """
+        return pulumi.get(self, "ownership")
+
+    @property
+    @pulumi.getter
+    def ssl(self) -> str:
+        """
+        SSL certificate status
+        """
+        return pulumi.get(self, "ssl")
 
 
 @pulumi.output_type
@@ -61769,8 +65032,119 @@ class GetResourceGroupScopeObjectResult(dict):
 
 @pulumi.output_type
 class GetResourceGroupsResultResult(dict):
-    def __init__(__self__):
-        pass
+    def __init__(__self__, *,
+                 id: str,
+                 meta: 'outputs.GetResourceGroupsResultMetaResult',
+                 name: str,
+                 scopes: Sequence['outputs.GetResourceGroupsResultScopeResult']):
+        """
+        :param str id: Identifier of the group.
+        :param 'GetResourceGroupsResultMetaArgs' meta: Attributes associated to the resource group.
+        :param str name: Name of the resource group.
+        :param Sequence['GetResourceGroupsResultScopeArgs'] scopes: The scope associated to the resource group
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "meta", meta)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Identifier of the group.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def meta(self) -> 'outputs.GetResourceGroupsResultMetaResult':
+        """
+        Attributes associated to the resource group.
+        """
+        return pulumi.get(self, "meta")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the resource group.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence['outputs.GetResourceGroupsResultScopeResult']:
+        """
+        The scope associated to the resource group
+        """
+        return pulumi.get(self, "scopes")
+
+
+@pulumi.output_type
+class GetResourceGroupsResultMetaResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetResourceGroupsResultScopeResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 objects: Sequence['outputs.GetResourceGroupsResultScopeObjectResult']):
+        """
+        :param str key: This is a combination of pre-defined resource name and identifier (like Account ID etc.)
+        :param Sequence['GetResourceGroupsResultScopeObjectArgs'] objects: A list of scope objects for additional context.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "objects", objects)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        This is a combination of pre-defined resource name and identifier (like Account ID etc.)
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def objects(self) -> Sequence['outputs.GetResourceGroupsResultScopeObjectResult']:
+        """
+        A list of scope objects for additional context.
+        """
+        return pulumi.get(self, "objects")
+
+
+@pulumi.output_type
+class GetResourceGroupsResultScopeObjectResult(dict):
+    def __init__(__self__, *,
+                 key: str):
+        """
+        :param str key: This is a combination of pre-defined resource name and identifier (like Zone ID etc.)
+        """
+        pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        This is a combination of pre-defined resource name and identifier (like Zone ID etc.)
+        """
+        return pulumi.get(self, "key")
 
 
 @pulumi.output_type
@@ -66955,6 +70329,42 @@ class GetWorkersKvNamespacesResultResult(dict):
 
 
 @pulumi.output_type
+class GetWorkersRoutesResultResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 pattern: str,
+                 script: str):
+        """
+        :param str id: Identifier
+        :param str script: Name of the script, used in URLs and route configuration.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "pattern", pattern)
+        pulumi.set(__self__, "script", script)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> str:
+        return pulumi.get(self, "pattern")
+
+    @property
+    @pulumi.getter
+    def script(self) -> str:
+        """
+        Name of the script, used in URLs and route configuration.
+        """
+        return pulumi.get(self, "script")
+
+
+@pulumi.output_type
 class GetWorkersScriptsResultResult(dict):
     def __init__(__self__, *,
                  created_on: str,
@@ -67795,6 +71205,7 @@ class GetZeroTrustAccessApplicationPolicyExcludeResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessApplicationPolicyExcludeGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessApplicationPolicyExcludeIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessApplicationPolicyExcludeIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessApplicationPolicyExcludeLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessApplicationPolicyExcludeOktaResult',
                  saml: 'outputs.GetZeroTrustAccessApplicationPolicyExcludeSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessApplicationPolicyExcludeServiceTokenResult'):
@@ -67820,6 +71231,7 @@ class GetZeroTrustAccessApplicationPolicyExcludeResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -67919,6 +71331,11 @@ class GetZeroTrustAccessApplicationPolicyExcludeResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessApplicationPolicyExcludeIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessApplicationPolicyExcludeLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -68302,6 +71719,24 @@ class GetZeroTrustAccessApplicationPolicyExcludeIpListResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustAccessApplicationPolicyExcludeLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetZeroTrustAccessApplicationPolicyExcludeOktaResult(dict):
     def __init__(__self__, *,
                  identity_provider_id: str,
@@ -68409,6 +71844,7 @@ class GetZeroTrustAccessApplicationPolicyIncludeResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessApplicationPolicyIncludeGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessApplicationPolicyIncludeIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessApplicationPolicyIncludeIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessApplicationPolicyIncludeLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessApplicationPolicyIncludeOktaResult',
                  saml: 'outputs.GetZeroTrustAccessApplicationPolicyIncludeSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessApplicationPolicyIncludeServiceTokenResult'):
@@ -68434,6 +71870,7 @@ class GetZeroTrustAccessApplicationPolicyIncludeResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -68533,6 +71970,11 @@ class GetZeroTrustAccessApplicationPolicyIncludeResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessApplicationPolicyIncludeIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessApplicationPolicyIncludeLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -68916,6 +72358,24 @@ class GetZeroTrustAccessApplicationPolicyIncludeIpListResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustAccessApplicationPolicyIncludeLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetZeroTrustAccessApplicationPolicyIncludeOktaResult(dict):
     def __init__(__self__, *,
                  identity_provider_id: str,
@@ -69023,6 +72483,7 @@ class GetZeroTrustAccessApplicationPolicyRequireResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessApplicationPolicyRequireGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessApplicationPolicyRequireIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessApplicationPolicyRequireIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessApplicationPolicyRequireLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessApplicationPolicyRequireOktaResult',
                  saml: 'outputs.GetZeroTrustAccessApplicationPolicyRequireSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessApplicationPolicyRequireServiceTokenResult'):
@@ -69048,6 +72509,7 @@ class GetZeroTrustAccessApplicationPolicyRequireResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -69147,6 +72609,11 @@ class GetZeroTrustAccessApplicationPolicyRequireResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessApplicationPolicyRequireIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessApplicationPolicyRequireLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -69525,6 +72992,24 @@ class GetZeroTrustAccessApplicationPolicyRequireIpListResult(dict):
     def id(self) -> str:
         """
         The ID of a previously created IP list.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetZeroTrustAccessApplicationPolicyRequireLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
         """
         return pulumi.get(self, "id")
 
@@ -69936,13 +73421,13 @@ class GetZeroTrustAccessApplicationSaasAppCustomAttributeResult(dict):
 class GetZeroTrustAccessApplicationSaasAppCustomAttributeSourceResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 name_by_idp: Mapping[str, str]):
+                 name_by_idps: Sequence['outputs.GetZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpResult']):
         """
         :param str name: The name of the IdP attribute.
-        :param Mapping[str, str] name_by_idp: A mapping from IdP ID to attribute name.
+        :param Sequence['GetZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpArgs'] name_by_idps: A mapping from IdP ID to attribute name.
         """
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "name_by_idp", name_by_idp)
+        pulumi.set(__self__, "name_by_idps", name_by_idps)
 
     @property
     @pulumi.getter
@@ -69953,12 +73438,41 @@ class GetZeroTrustAccessApplicationSaasAppCustomAttributeSourceResult(dict):
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="nameByIdp")
-    def name_by_idp(self) -> Mapping[str, str]:
+    @pulumi.getter(name="nameByIdps")
+    def name_by_idps(self) -> Sequence['outputs.GetZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpResult']:
         """
         A mapping from IdP ID to attribute name.
         """
-        return pulumi.get(self, "name_by_idp")
+        return pulumi.get(self, "name_by_idps")
+
+
+@pulumi.output_type
+class GetZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpResult(dict):
+    def __init__(__self__, *,
+                 idp_id: str,
+                 source_name: str):
+        """
+        :param str idp_id: The UID of the IdP.
+        :param str source_name: The name of the IdP provided attribute.
+        """
+        pulumi.set(__self__, "idp_id", idp_id)
+        pulumi.set(__self__, "source_name", source_name)
+
+    @property
+    @pulumi.getter(name="idpId")
+    def idp_id(self) -> str:
+        """
+        The UID of the IdP.
+        """
+        return pulumi.get(self, "idp_id")
+
+    @property
+    @pulumi.getter(name="sourceName")
+    def source_name(self) -> str:
+        """
+        The name of the IdP provided attribute.
+        """
+        return pulumi.get(self, "source_name")
 
 
 @pulumi.output_type
@@ -71366,6 +74880,7 @@ class GetZeroTrustAccessApplicationsResultPolicyExcludeResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessApplicationsResultPolicyExcludeIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessApplicationsResultPolicyExcludeIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessApplicationsResultPolicyExcludeOktaResult',
                  saml: 'outputs.GetZeroTrustAccessApplicationsResultPolicyExcludeSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessApplicationsResultPolicyExcludeServiceTokenResult'):
@@ -71391,6 +74906,7 @@ class GetZeroTrustAccessApplicationsResultPolicyExcludeResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -71490,6 +75006,11 @@ class GetZeroTrustAccessApplicationsResultPolicyExcludeResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessApplicationsResultPolicyExcludeIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -71873,6 +75394,24 @@ class GetZeroTrustAccessApplicationsResultPolicyExcludeIpListResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetZeroTrustAccessApplicationsResultPolicyExcludeOktaResult(dict):
     def __init__(__self__, *,
                  identity_provider_id: str,
@@ -71980,6 +75519,7 @@ class GetZeroTrustAccessApplicationsResultPolicyIncludeResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeOktaResult',
                  saml: 'outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeServiceTokenResult'):
@@ -72005,6 +75545,7 @@ class GetZeroTrustAccessApplicationsResultPolicyIncludeResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -72104,6 +75645,11 @@ class GetZeroTrustAccessApplicationsResultPolicyIncludeResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -72487,6 +76033,24 @@ class GetZeroTrustAccessApplicationsResultPolicyIncludeIpListResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetZeroTrustAccessApplicationsResultPolicyIncludeOktaResult(dict):
     def __init__(__self__, *,
                  identity_provider_id: str,
@@ -72594,6 +76158,7 @@ class GetZeroTrustAccessApplicationsResultPolicyRequireResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessApplicationsResultPolicyRequireGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessApplicationsResultPolicyRequireIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessApplicationsResultPolicyRequireIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessApplicationsResultPolicyRequireLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessApplicationsResultPolicyRequireOktaResult',
                  saml: 'outputs.GetZeroTrustAccessApplicationsResultPolicyRequireSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessApplicationsResultPolicyRequireServiceTokenResult'):
@@ -72619,6 +76184,7 @@ class GetZeroTrustAccessApplicationsResultPolicyRequireResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -72718,6 +76284,11 @@ class GetZeroTrustAccessApplicationsResultPolicyRequireResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessApplicationsResultPolicyRequireIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessApplicationsResultPolicyRequireLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -73096,6 +76667,24 @@ class GetZeroTrustAccessApplicationsResultPolicyRequireIpListResult(dict):
     def id(self) -> str:
         """
         The ID of a previously created IP list.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetZeroTrustAccessApplicationsResultPolicyRequireLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
         """
         return pulumi.get(self, "id")
 
@@ -73507,13 +77096,13 @@ class GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeResult(dict):
 class GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSourceResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 name_by_idp: Mapping[str, str]):
+                 name_by_idps: Sequence['outputs.GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSourceNameByIdpResult']):
         """
         :param str name: The name of the IdP attribute.
-        :param Mapping[str, str] name_by_idp: A mapping from IdP ID to attribute name.
+        :param Sequence['GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSourceNameByIdpArgs'] name_by_idps: A mapping from IdP ID to attribute name.
         """
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "name_by_idp", name_by_idp)
+        pulumi.set(__self__, "name_by_idps", name_by_idps)
 
     @property
     @pulumi.getter
@@ -73524,12 +77113,41 @@ class GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSourceResult(dic
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="nameByIdp")
-    def name_by_idp(self) -> Mapping[str, str]:
+    @pulumi.getter(name="nameByIdps")
+    def name_by_idps(self) -> Sequence['outputs.GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSourceNameByIdpResult']:
         """
         A mapping from IdP ID to attribute name.
         """
-        return pulumi.get(self, "name_by_idp")
+        return pulumi.get(self, "name_by_idps")
+
+
+@pulumi.output_type
+class GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSourceNameByIdpResult(dict):
+    def __init__(__self__, *,
+                 idp_id: str,
+                 source_name: str):
+        """
+        :param str idp_id: The UID of the IdP.
+        :param str source_name: The name of the IdP provided attribute.
+        """
+        pulumi.set(__self__, "idp_id", idp_id)
+        pulumi.set(__self__, "source_name", source_name)
+
+    @property
+    @pulumi.getter(name="idpId")
+    def idp_id(self) -> str:
+        """
+        The UID of the IdP.
+        """
+        return pulumi.get(self, "idp_id")
+
+    @property
+    @pulumi.getter(name="sourceName")
+    def source_name(self) -> str:
+        """
+        The name of the IdP provided attribute.
+        """
+        return pulumi.get(self, "source_name")
 
 
 @pulumi.output_type
@@ -74073,6 +77691,7 @@ class GetZeroTrustAccessGroupExcludeResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessGroupExcludeGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessGroupExcludeIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessGroupExcludeIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessGroupExcludeLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessGroupExcludeOktaResult',
                  saml: 'outputs.GetZeroTrustAccessGroupExcludeSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessGroupExcludeServiceTokenResult'):
@@ -74098,6 +77717,7 @@ class GetZeroTrustAccessGroupExcludeResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -74197,6 +77817,11 @@ class GetZeroTrustAccessGroupExcludeResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessGroupExcludeIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessGroupExcludeLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -74580,6 +78205,24 @@ class GetZeroTrustAccessGroupExcludeIpListResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustAccessGroupExcludeLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetZeroTrustAccessGroupExcludeOktaResult(dict):
     def __init__(__self__, *,
                  identity_provider_id: str,
@@ -74718,6 +78361,7 @@ class GetZeroTrustAccessGroupIncludeResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessGroupIncludeGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessGroupIncludeIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessGroupIncludeIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessGroupIncludeLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessGroupIncludeOktaResult',
                  saml: 'outputs.GetZeroTrustAccessGroupIncludeSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessGroupIncludeServiceTokenResult'):
@@ -74743,6 +78387,7 @@ class GetZeroTrustAccessGroupIncludeResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -74842,6 +78487,11 @@ class GetZeroTrustAccessGroupIncludeResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessGroupIncludeIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessGroupIncludeLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -75225,6 +78875,24 @@ class GetZeroTrustAccessGroupIncludeIpListResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustAccessGroupIncludeLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetZeroTrustAccessGroupIncludeOktaResult(dict):
     def __init__(__self__, *,
                  identity_provider_id: str,
@@ -75332,6 +79000,7 @@ class GetZeroTrustAccessGroupIsDefaultResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessGroupIsDefaultGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessGroupIsDefaultIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessGroupIsDefaultIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessGroupIsDefaultLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessGroupIsDefaultOktaResult',
                  saml: 'outputs.GetZeroTrustAccessGroupIsDefaultSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessGroupIsDefaultServiceTokenResult'):
@@ -75357,6 +79026,7 @@ class GetZeroTrustAccessGroupIsDefaultResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -75456,6 +79126,11 @@ class GetZeroTrustAccessGroupIsDefaultResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessGroupIsDefaultIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessGroupIsDefaultLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -75839,6 +79514,24 @@ class GetZeroTrustAccessGroupIsDefaultIpListResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustAccessGroupIsDefaultLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetZeroTrustAccessGroupIsDefaultOktaResult(dict):
     def __init__(__self__, *,
                  identity_provider_id: str,
@@ -75946,6 +79639,7 @@ class GetZeroTrustAccessGroupRequireResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessGroupRequireGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessGroupRequireIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessGroupRequireIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessGroupRequireLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessGroupRequireOktaResult',
                  saml: 'outputs.GetZeroTrustAccessGroupRequireSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessGroupRequireServiceTokenResult'):
@@ -75971,6 +79665,7 @@ class GetZeroTrustAccessGroupRequireResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -76070,6 +79765,11 @@ class GetZeroTrustAccessGroupRequireResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessGroupRequireIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessGroupRequireLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -76453,6 +80153,24 @@ class GetZeroTrustAccessGroupRequireIpListResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustAccessGroupRequireLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetZeroTrustAccessGroupRequireOktaResult(dict):
     def __init__(__self__, *,
                  identity_provider_id: str,
@@ -76647,6 +80365,7 @@ class GetZeroTrustAccessGroupsResultExcludeResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessGroupsResultExcludeGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessGroupsResultExcludeIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessGroupsResultExcludeIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessGroupsResultExcludeLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessGroupsResultExcludeOktaResult',
                  saml: 'outputs.GetZeroTrustAccessGroupsResultExcludeSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessGroupsResultExcludeServiceTokenResult'):
@@ -76672,6 +80391,7 @@ class GetZeroTrustAccessGroupsResultExcludeResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -76771,6 +80491,11 @@ class GetZeroTrustAccessGroupsResultExcludeResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessGroupsResultExcludeIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessGroupsResultExcludeLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -77154,6 +80879,24 @@ class GetZeroTrustAccessGroupsResultExcludeIpListResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustAccessGroupsResultExcludeLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetZeroTrustAccessGroupsResultExcludeOktaResult(dict):
     def __init__(__self__, *,
                  identity_provider_id: str,
@@ -77261,6 +81004,7 @@ class GetZeroTrustAccessGroupsResultIncludeResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessGroupsResultIncludeGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessGroupsResultIncludeIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessGroupsResultIncludeIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessGroupsResultIncludeLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessGroupsResultIncludeOktaResult',
                  saml: 'outputs.GetZeroTrustAccessGroupsResultIncludeSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessGroupsResultIncludeServiceTokenResult'):
@@ -77286,6 +81030,7 @@ class GetZeroTrustAccessGroupsResultIncludeResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -77385,6 +81130,11 @@ class GetZeroTrustAccessGroupsResultIncludeResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessGroupsResultIncludeIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessGroupsResultIncludeLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -77768,6 +81518,24 @@ class GetZeroTrustAccessGroupsResultIncludeIpListResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustAccessGroupsResultIncludeLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetZeroTrustAccessGroupsResultIncludeOktaResult(dict):
     def __init__(__self__, *,
                  identity_provider_id: str,
@@ -77875,6 +81643,7 @@ class GetZeroTrustAccessGroupsResultIsDefaultResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessGroupsResultIsDefaultGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessGroupsResultIsDefaultIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessGroupsResultIsDefaultIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessGroupsResultIsDefaultLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessGroupsResultIsDefaultOktaResult',
                  saml: 'outputs.GetZeroTrustAccessGroupsResultIsDefaultSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessGroupsResultIsDefaultServiceTokenResult'):
@@ -77900,6 +81669,7 @@ class GetZeroTrustAccessGroupsResultIsDefaultResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -77999,6 +81769,11 @@ class GetZeroTrustAccessGroupsResultIsDefaultResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessGroupsResultIsDefaultIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessGroupsResultIsDefaultLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -78382,6 +82157,24 @@ class GetZeroTrustAccessGroupsResultIsDefaultIpListResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustAccessGroupsResultIsDefaultLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetZeroTrustAccessGroupsResultIsDefaultOktaResult(dict):
     def __init__(__self__, *,
                  identity_provider_id: str,
@@ -78489,6 +82282,7 @@ class GetZeroTrustAccessGroupsResultRequireResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessGroupsResultRequireGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessGroupsResultRequireIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessGroupsResultRequireIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessGroupsResultRequireLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessGroupsResultRequireOktaResult',
                  saml: 'outputs.GetZeroTrustAccessGroupsResultRequireSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessGroupsResultRequireServiceTokenResult'):
@@ -78514,6 +82308,7 @@ class GetZeroTrustAccessGroupsResultRequireResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -78613,6 +82408,11 @@ class GetZeroTrustAccessGroupsResultRequireResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessGroupsResultRequireIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessGroupsResultRequireLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -78991,6 +82791,24 @@ class GetZeroTrustAccessGroupsResultRequireIpListResult(dict):
     def id(self) -> str:
         """
         The ID of a previously created IP list.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetZeroTrustAccessGroupsResultRequireLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
         """
         return pulumi.get(self, "id")
 
@@ -79990,12 +83808,18 @@ class GetZeroTrustAccessInfrastructureTargetFilterResult(dict):
                  direction: Optional[str] = None,
                  hostname: Optional[str] = None,
                  hostname_contains: Optional[str] = None,
+                 ip_like: Optional[str] = None,
                  ip_v4: Optional[str] = None,
                  ip_v6: Optional[str] = None,
                  ips: Optional[Sequence[str]] = None,
+                 ipv4_end: Optional[str] = None,
+                 ipv4_start: Optional[str] = None,
+                 ipv6_end: Optional[str] = None,
+                 ipv6_start: Optional[str] = None,
                  modified_after: Optional[str] = None,
                  modified_before: Optional[str] = None,
                  order: Optional[str] = None,
+                 target_ids: Optional[Sequence[str]] = None,
                  virtual_network_id: Optional[str] = None):
         """
         :param str created_after: Date and time at which the target was created after (inclusive)
@@ -80003,13 +83827,26 @@ class GetZeroTrustAccessInfrastructureTargetFilterResult(dict):
         :param str direction: The sorting direction.
         :param str hostname: Hostname of a target
         :param str hostname_contains: Partial match to the hostname of a target
+        :param str ip_like: Filters for targets whose IP addresses look like the specified string.
+               Supports `*` as a wildcard character
         :param str ip_v4: IPv4 address of the target
         :param str ip_v6: IPv6 address of the target
         :param Sequence[str] ips: Filters for targets that have any of the following IP addresses. Specify
                `ips` multiple times in query parameter to build list of candidates.
+        :param str ipv4_end: Defines an IPv4 filter range's ending value (inclusive). Requires
+               `ipv4_start` to be specified as well.
+        :param str ipv4_start: Defines an IPv4 filter range's starting value (inclusive). Requires
+               `ipv4_end` to be specified as well.
+        :param str ipv6_end: Defines an IPv6 filter range's ending value (inclusive). Requires
+               `ipv6_start` to be specified as well.
+        :param str ipv6_start: Defines an IPv6 filter range's starting value (inclusive). Requires
+               `ipv6_end` to be specified as well.
         :param str modified_after: Date and time at which the target was modified after (inclusive)
         :param str modified_before: Date and time at which the target was modified before (inclusive)
         :param str order: The field to sort by.
+        :param Sequence[str] target_ids: Filters for targets that have any of the following UUIDs. Specify
+               `target_ids` multiple times in query parameter to build list of
+               candidates.
         :param str virtual_network_id: Private virtual network identifier of the target
         """
         if created_after is not None:
@@ -80022,18 +83859,30 @@ class GetZeroTrustAccessInfrastructureTargetFilterResult(dict):
             pulumi.set(__self__, "hostname", hostname)
         if hostname_contains is not None:
             pulumi.set(__self__, "hostname_contains", hostname_contains)
+        if ip_like is not None:
+            pulumi.set(__self__, "ip_like", ip_like)
         if ip_v4 is not None:
             pulumi.set(__self__, "ip_v4", ip_v4)
         if ip_v6 is not None:
             pulumi.set(__self__, "ip_v6", ip_v6)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
+        if ipv4_end is not None:
+            pulumi.set(__self__, "ipv4_end", ipv4_end)
+        if ipv4_start is not None:
+            pulumi.set(__self__, "ipv4_start", ipv4_start)
+        if ipv6_end is not None:
+            pulumi.set(__self__, "ipv6_end", ipv6_end)
+        if ipv6_start is not None:
+            pulumi.set(__self__, "ipv6_start", ipv6_start)
         if modified_after is not None:
             pulumi.set(__self__, "modified_after", modified_after)
         if modified_before is not None:
             pulumi.set(__self__, "modified_before", modified_before)
         if order is not None:
             pulumi.set(__self__, "order", order)
+        if target_ids is not None:
+            pulumi.set(__self__, "target_ids", target_ids)
         if virtual_network_id is not None:
             pulumi.set(__self__, "virtual_network_id", virtual_network_id)
 
@@ -80078,6 +83927,15 @@ class GetZeroTrustAccessInfrastructureTargetFilterResult(dict):
         return pulumi.get(self, "hostname_contains")
 
     @property
+    @pulumi.getter(name="ipLike")
+    def ip_like(self) -> Optional[str]:
+        """
+        Filters for targets whose IP addresses look like the specified string.
+        Supports `*` as a wildcard character
+        """
+        return pulumi.get(self, "ip_like")
+
+    @property
     @pulumi.getter(name="ipV4")
     def ip_v4(self) -> Optional[str]:
         """
@@ -80103,6 +83961,42 @@ class GetZeroTrustAccessInfrastructureTargetFilterResult(dict):
         return pulumi.get(self, "ips")
 
     @property
+    @pulumi.getter(name="ipv4End")
+    def ipv4_end(self) -> Optional[str]:
+        """
+        Defines an IPv4 filter range's ending value (inclusive). Requires
+        `ipv4_start` to be specified as well.
+        """
+        return pulumi.get(self, "ipv4_end")
+
+    @property
+    @pulumi.getter(name="ipv4Start")
+    def ipv4_start(self) -> Optional[str]:
+        """
+        Defines an IPv4 filter range's starting value (inclusive). Requires
+        `ipv4_end` to be specified as well.
+        """
+        return pulumi.get(self, "ipv4_start")
+
+    @property
+    @pulumi.getter(name="ipv6End")
+    def ipv6_end(self) -> Optional[str]:
+        """
+        Defines an IPv6 filter range's ending value (inclusive). Requires
+        `ipv6_start` to be specified as well.
+        """
+        return pulumi.get(self, "ipv6_end")
+
+    @property
+    @pulumi.getter(name="ipv6Start")
+    def ipv6_start(self) -> Optional[str]:
+        """
+        Defines an IPv6 filter range's starting value (inclusive). Requires
+        `ipv6_end` to be specified as well.
+        """
+        return pulumi.get(self, "ipv6_start")
+
+    @property
     @pulumi.getter(name="modifiedAfter")
     def modified_after(self) -> Optional[str]:
         """
@@ -80125,6 +84019,16 @@ class GetZeroTrustAccessInfrastructureTargetFilterResult(dict):
         The field to sort by.
         """
         return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter(name="targetIds")
+    def target_ids(self) -> Optional[Sequence[str]]:
+        """
+        Filters for targets that have any of the following UUIDs. Specify
+        `target_ids` multiple times in query parameter to build list of
+        candidates.
+        """
+        return pulumi.get(self, "target_ids")
 
     @property
     @pulumi.getter(name="virtualNetworkId")
@@ -80675,6 +84579,7 @@ class GetZeroTrustAccessPoliciesResultExcludeResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessPoliciesResultExcludeGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessPoliciesResultExcludeIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessPoliciesResultExcludeIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessPoliciesResultExcludeLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessPoliciesResultExcludeOktaResult',
                  saml: 'outputs.GetZeroTrustAccessPoliciesResultExcludeSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessPoliciesResultExcludeServiceTokenResult'):
@@ -80700,6 +84605,7 @@ class GetZeroTrustAccessPoliciesResultExcludeResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -80799,6 +84705,11 @@ class GetZeroTrustAccessPoliciesResultExcludeResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessPoliciesResultExcludeIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessPoliciesResultExcludeLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -81182,6 +85093,24 @@ class GetZeroTrustAccessPoliciesResultExcludeIpListResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustAccessPoliciesResultExcludeLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetZeroTrustAccessPoliciesResultExcludeOktaResult(dict):
     def __init__(__self__, *,
                  identity_provider_id: str,
@@ -81289,6 +85218,7 @@ class GetZeroTrustAccessPoliciesResultIncludeResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessPoliciesResultIncludeGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessPoliciesResultIncludeIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessPoliciesResultIncludeIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessPoliciesResultIncludeLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessPoliciesResultIncludeOktaResult',
                  saml: 'outputs.GetZeroTrustAccessPoliciesResultIncludeSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessPoliciesResultIncludeServiceTokenResult'):
@@ -81314,6 +85244,7 @@ class GetZeroTrustAccessPoliciesResultIncludeResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -81413,6 +85344,11 @@ class GetZeroTrustAccessPoliciesResultIncludeResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessPoliciesResultIncludeIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessPoliciesResultIncludeLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -81796,6 +85732,24 @@ class GetZeroTrustAccessPoliciesResultIncludeIpListResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustAccessPoliciesResultIncludeLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetZeroTrustAccessPoliciesResultIncludeOktaResult(dict):
     def __init__(__self__, *,
                  identity_provider_id: str,
@@ -81903,6 +85857,7 @@ class GetZeroTrustAccessPoliciesResultRequireResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessPoliciesResultRequireGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessPoliciesResultRequireIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessPoliciesResultRequireIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessPoliciesResultRequireLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessPoliciesResultRequireOktaResult',
                  saml: 'outputs.GetZeroTrustAccessPoliciesResultRequireSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessPoliciesResultRequireServiceTokenResult'):
@@ -81928,6 +85883,7 @@ class GetZeroTrustAccessPoliciesResultRequireResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -82027,6 +85983,11 @@ class GetZeroTrustAccessPoliciesResultRequireResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessPoliciesResultRequireIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessPoliciesResultRequireLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -82410,6 +86371,24 @@ class GetZeroTrustAccessPoliciesResultRequireIpListResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustAccessPoliciesResultRequireLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetZeroTrustAccessPoliciesResultRequireOktaResult(dict):
     def __init__(__self__, *,
                  identity_provider_id: str,
@@ -82557,6 +86536,7 @@ class GetZeroTrustAccessPolicyExcludeResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessPolicyExcludeGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessPolicyExcludeIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessPolicyExcludeIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessPolicyExcludeLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessPolicyExcludeOktaResult',
                  saml: 'outputs.GetZeroTrustAccessPolicyExcludeSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessPolicyExcludeServiceTokenResult'):
@@ -82582,6 +86562,7 @@ class GetZeroTrustAccessPolicyExcludeResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -82681,6 +86662,11 @@ class GetZeroTrustAccessPolicyExcludeResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessPolicyExcludeIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessPolicyExcludeLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -83064,6 +87050,24 @@ class GetZeroTrustAccessPolicyExcludeIpListResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustAccessPolicyExcludeLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetZeroTrustAccessPolicyExcludeOktaResult(dict):
     def __init__(__self__, *,
                  identity_provider_id: str,
@@ -83171,6 +87175,7 @@ class GetZeroTrustAccessPolicyIncludeResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessPolicyIncludeGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessPolicyIncludeIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessPolicyIncludeIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessPolicyIncludeLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessPolicyIncludeOktaResult',
                  saml: 'outputs.GetZeroTrustAccessPolicyIncludeSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessPolicyIncludeServiceTokenResult'):
@@ -83196,6 +87201,7 @@ class GetZeroTrustAccessPolicyIncludeResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -83295,6 +87301,11 @@ class GetZeroTrustAccessPolicyIncludeResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessPolicyIncludeIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessPolicyIncludeLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -83678,6 +87689,24 @@ class GetZeroTrustAccessPolicyIncludeIpListResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustAccessPolicyIncludeLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetZeroTrustAccessPolicyIncludeOktaResult(dict):
     def __init__(__self__, *,
                  identity_provider_id: str,
@@ -83785,6 +87814,7 @@ class GetZeroTrustAccessPolicyRequireResult(dict):
                  gsuite: 'outputs.GetZeroTrustAccessPolicyRequireGsuiteResult',
                  ip: 'outputs.GetZeroTrustAccessPolicyRequireIpResult',
                  ip_list: 'outputs.GetZeroTrustAccessPolicyRequireIpListResult',
+                 login_method: 'outputs.GetZeroTrustAccessPolicyRequireLoginMethodResult',
                  okta: 'outputs.GetZeroTrustAccessPolicyRequireOktaResult',
                  saml: 'outputs.GetZeroTrustAccessPolicyRequireSamlResult',
                  service_token: 'outputs.GetZeroTrustAccessPolicyRequireServiceTokenResult'):
@@ -83810,6 +87840,7 @@ class GetZeroTrustAccessPolicyRequireResult(dict):
         pulumi.set(__self__, "gsuite", gsuite)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "login_method", login_method)
         pulumi.set(__self__, "okta", okta)
         pulumi.set(__self__, "saml", saml)
         pulumi.set(__self__, "service_token", service_token)
@@ -83909,6 +87940,11 @@ class GetZeroTrustAccessPolicyRequireResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> 'outputs.GetZeroTrustAccessPolicyRequireIpListResult':
         return pulumi.get(self, "ip_list")
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> 'outputs.GetZeroTrustAccessPolicyRequireLoginMethodResult':
+        return pulumi.get(self, "login_method")
 
     @property
     @pulumi.getter
@@ -84287,6 +88323,24 @@ class GetZeroTrustAccessPolicyRequireIpListResult(dict):
     def id(self) -> str:
         """
         The ID of a previously created IP list.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetZeroTrustAccessPolicyRequireLoginMethodResult(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of an identity provider.
         """
         return pulumi.get(self, "id")
 
@@ -85492,7 +89546,7 @@ class GetZeroTrustDevicePostureIntegrationsResultResult(dict):
                  name: str,
                  type: str):
         """
-        :param 'GetZeroTrustDevicePostureIntegrationsResultConfigArgs' config: The Workspace One Config Response.
+        :param 'GetZeroTrustDevicePostureIntegrationsResultConfigArgs' config: The configuration object containing third-party integration information.
         :param str id: API UUID.
         :param str interval: The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
         :param str name: The name of the device posture integration.
@@ -85508,7 +89562,7 @@ class GetZeroTrustDevicePostureIntegrationsResultResult(dict):
     @pulumi.getter
     def config(self) -> 'outputs.GetZeroTrustDevicePostureIntegrationsResultConfigResult':
         """
-        The Workspace One Config Response.
+        The configuration object containing third-party integration information.
         """
         return pulumi.get(self, "config")
 
@@ -87031,12 +91085,19 @@ class GetZeroTrustDlpCustomProfileEntryResult(dict):
 @pulumi.output_type
 class GetZeroTrustDlpCustomProfileEntryConfidenceResult(dict):
     def __init__(__self__, *,
+                 ai_context_available: bool,
                  available: bool):
         """
         :param bool available: Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
                Profiles that use an entry with `available` set to true can use confidence thresholds
         """
+        pulumi.set(__self__, "ai_context_available", ai_context_available)
         pulumi.set(__self__, "available", available)
+
+    @property
+    @pulumi.getter(name="aiContextAvailable")
+    def ai_context_available(self) -> bool:
+        return pulumi.get(self, "ai_context_available")
 
     @property
     @pulumi.getter
@@ -87362,12 +91423,19 @@ class GetZeroTrustDlpEntriesResultResult(dict):
 @pulumi.output_type
 class GetZeroTrustDlpEntriesResultConfidenceResult(dict):
     def __init__(__self__, *,
+                 ai_context_available: bool,
                  available: bool):
         """
         :param bool available: Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
                Profiles that use an entry with `available` set to true can use confidence thresholds
         """
+        pulumi.set(__self__, "ai_context_available", ai_context_available)
         pulumi.set(__self__, "available", available)
+
+    @property
+    @pulumi.getter(name="aiContextAvailable")
+    def ai_context_available(self) -> bool:
+        return pulumi.get(self, "ai_context_available")
 
     @property
     @pulumi.getter
@@ -87401,12 +91469,19 @@ class GetZeroTrustDlpEntriesResultPatternResult(dict):
 @pulumi.output_type
 class GetZeroTrustDlpEntryConfidenceResult(dict):
     def __init__(__self__, *,
+                 ai_context_available: bool,
                  available: bool):
         """
         :param bool available: Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
                Profiles that use an entry with `available` set to true can use confidence thresholds
         """
+        pulumi.set(__self__, "ai_context_available", ai_context_available)
         pulumi.set(__self__, "available", available)
+
+    @property
+    @pulumi.getter(name="aiContextAvailable")
+    def ai_context_available(self) -> bool:
+        return pulumi.get(self, "ai_context_available")
 
     @property
     @pulumi.getter
@@ -87569,12 +91644,19 @@ class GetZeroTrustDlpPredefinedProfileEntryResult(dict):
 @pulumi.output_type
 class GetZeroTrustDlpPredefinedProfileEntryConfidenceResult(dict):
     def __init__(__self__, *,
+                 ai_context_available: bool,
                  available: bool):
         """
         :param bool available: Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
                Profiles that use an entry with `available` set to true can use confidence thresholds
         """
+        pulumi.set(__self__, "ai_context_available", ai_context_available)
         pulumi.set(__self__, "available", available)
+
+    @property
+    @pulumi.getter(name="aiContextAvailable")
+    def ai_context_available(self) -> bool:
+        return pulumi.get(self, "ai_context_available")
 
     @property
     @pulumi.getter
@@ -88510,6 +92592,46 @@ class GetZeroTrustGatewayCertificatesResultResult(dict):
     @pulumi.getter(name="uploadedOn")
     def uploaded_on(self) -> str:
         return pulumi.get(self, "uploaded_on")
+
+
+@pulumi.output_type
+class GetZeroTrustGatewayLoggingSettingsByRuleTypeResult(dict):
+    def __init__(__self__, *,
+                 dns: str,
+                 http: str,
+                 l4: str):
+        """
+        :param str dns: Logging settings for DNS firewall.
+        :param str http: Logging settings for HTTP/HTTPS firewall.
+        :param str l4: Logging settings for Network firewall.
+        """
+        pulumi.set(__self__, "dns", dns)
+        pulumi.set(__self__, "http", http)
+        pulumi.set(__self__, "l4", l4)
+
+    @property
+    @pulumi.getter
+    def dns(self) -> str:
+        """
+        Logging settings for DNS firewall.
+        """
+        return pulumi.get(self, "dns")
+
+    @property
+    @pulumi.getter
+    def http(self) -> str:
+        """
+        Logging settings for HTTP/HTTPS firewall.
+        """
+        return pulumi.get(self, "http")
+
+    @property
+    @pulumi.getter
+    def l4(self) -> str:
+        """
+        Logging settings for Network firewall.
+        """
+        return pulumi.get(self, "l4")
 
 
 @pulumi.output_type
@@ -93267,7 +97389,8 @@ class GetZonesResultResult(dict):
                  paused: bool,
                  status: str,
                  type: str,
-                 vanity_name_servers: Sequence[str]):
+                 vanity_name_servers: Sequence[str],
+                 verification_key: str):
         """
         :param 'GetZonesResultAccountArgs' account: The account the zone belongs to
         :param str activated_on: The last time proof of ownership was detected and the zone was made
@@ -93292,6 +97415,7 @@ class GetZonesResultResult(dict):
         :param str type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is
                typically a partner-hosted zone or a CNAME setup.
         :param Sequence[str] vanity_name_servers: An array of domains used for custom name servers. This is only available for Business and Enterprise plans.
+        :param str verification_key: Verification key for partial zone setup.
         """
         pulumi.set(__self__, "account", account)
         pulumi.set(__self__, "activated_on", activated_on)
@@ -93310,6 +97434,7 @@ class GetZonesResultResult(dict):
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "vanity_name_servers", vanity_name_servers)
+        pulumi.set(__self__, "verification_key", verification_key)
 
     @property
     @pulumi.getter
@@ -93452,6 +97577,14 @@ class GetZonesResultResult(dict):
         An array of domains used for custom name servers. This is only available for Business and Enterprise plans.
         """
         return pulumi.get(self, "vanity_name_servers")
+
+    @property
+    @pulumi.getter(name="verificationKey")
+    def verification_key(self) -> str:
+        """
+        Verification key for partial zone setup.
+        """
+        return pulumi.get(self, "verification_key")
 
 
 @pulumi.output_type

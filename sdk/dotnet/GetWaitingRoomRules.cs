@@ -121,9 +121,30 @@ namespace Pulumi.Cloudflare
     public sealed class GetWaitingRoomRulesResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The action to take when the expression matches.
+        /// </summary>
+        public readonly string Action;
+        /// <summary>
+        /// The description of the rule.
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
+        /// When set to true, the rule is enabled.
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
+        /// Criteria defining when there is a match for the current rule.
+        /// </summary>
+        public readonly string Expression;
+        /// <summary>
+        /// The ID of the rule.
         /// </summary>
         public readonly string Id;
+        public readonly string LastUpdated;
+        /// <summary>
+        /// The version of the rule.
+        /// </summary>
+        public readonly string Version;
         public readonly string WaitingRoomId;
         /// <summary>
         /// Identifier
@@ -132,13 +153,31 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWaitingRoomRulesResult(
+            string action,
+
+            string description,
+
+            bool enabled,
+
+            string expression,
+
             string id,
+
+            string lastUpdated,
+
+            string version,
 
             string waitingRoomId,
 
             string zoneId)
         {
+            Action = action;
+            Description = description;
+            Enabled = enabled;
+            Expression = expression;
             Id = id;
+            LastUpdated = lastUpdated;
+            Version = version;
             WaitingRoomId = waitingRoomId;
             ZoneId = zoneId;
         }

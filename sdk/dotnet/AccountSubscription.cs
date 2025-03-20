@@ -22,16 +22,46 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// The monetary unit in which pricing information is displayed.
+        /// </summary>
+        [Output("currency")]
+        public Output<string> Currency { get; private set; } = null!;
+
+        /// <summary>
+        /// The end of the current period and also when the next billing is due.
+        /// </summary>
+        [Output("currentPeriodEnd")]
+        public Output<string> CurrentPeriodEnd { get; private set; } = null!;
+
+        /// <summary>
+        /// When the current billing period started. May match initial*period*start if this is the first period.
+        /// </summary>
+        [Output("currentPeriodStart")]
+        public Output<string> CurrentPeriodStart { get; private set; } = null!;
+
+        /// <summary>
         /// How often the subscription is renewed automatically.
         /// </summary>
         [Output("frequency")]
         public Output<string?> Frequency { get; private set; } = null!;
 
         /// <summary>
+        /// The price of the subscription that will be billed, in US dollars.
+        /// </summary>
+        [Output("price")]
+        public Output<double> Price { get; private set; } = null!;
+
+        /// <summary>
         /// The rate plan applied to the subscription.
         /// </summary>
         [Output("ratePlan")]
         public Output<Outputs.AccountSubscriptionRatePlan> RatePlan { get; private set; } = null!;
+
+        /// <summary>
+        /// The state that the subscription is in.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
 
         /// <summary>
         /// Subscription identifier tag.
@@ -124,16 +154,46 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
+        /// The monetary unit in which pricing information is displayed.
+        /// </summary>
+        [Input("currency")]
+        public Input<string>? Currency { get; set; }
+
+        /// <summary>
+        /// The end of the current period and also when the next billing is due.
+        /// </summary>
+        [Input("currentPeriodEnd")]
+        public Input<string>? CurrentPeriodEnd { get; set; }
+
+        /// <summary>
+        /// When the current billing period started. May match initial*period*start if this is the first period.
+        /// </summary>
+        [Input("currentPeriodStart")]
+        public Input<string>? CurrentPeriodStart { get; set; }
+
+        /// <summary>
         /// How often the subscription is renewed automatically.
         /// </summary>
         [Input("frequency")]
         public Input<string>? Frequency { get; set; }
 
         /// <summary>
+        /// The price of the subscription that will be billed, in US dollars.
+        /// </summary>
+        [Input("price")]
+        public Input<double>? Price { get; set; }
+
+        /// <summary>
         /// The rate plan applied to the subscription.
         /// </summary>
         [Input("ratePlan")]
         public Input<Inputs.AccountSubscriptionRatePlanGetArgs>? RatePlan { get; set; }
+
+        /// <summary>
+        /// The state that the subscription is in.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         /// <summary>
         /// Subscription identifier tag.

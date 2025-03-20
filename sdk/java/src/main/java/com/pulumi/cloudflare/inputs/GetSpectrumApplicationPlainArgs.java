@@ -14,14 +14,14 @@ public final class GetSpectrumApplicationPlainArgs extends com.pulumi.resources.
     public static final GetSpectrumApplicationPlainArgs Empty = new GetSpectrumApplicationPlainArgs();
 
     /**
-     * Identifier
+     * App identifier.
      * 
      */
     @Import(name="appId", required=true)
     private String appId;
 
     /**
-     * @return Identifier
+     * @return App identifier.
      * 
      */
     public String appId() {
@@ -29,14 +29,14 @@ public final class GetSpectrumApplicationPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * Identifier
+     * Zone identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Zone identifier.
      * 
      */
     public String zoneId() {
@@ -69,7 +69,7 @@ public final class GetSpectrumApplicationPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param appId Identifier
+         * @param appId App identifier.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class GetSpectrumApplicationPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Zone identifier.
          * 
          * @return builder
          * 

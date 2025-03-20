@@ -150,9 +150,25 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AssetIdentifer;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Asset creation time
         /// </summary>
-        public readonly string Id;
+        public readonly string Created;
+        /// <summary>
+        /// Asset description
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
+        /// Asset file type
+        /// </summary>
+        public readonly string FileType;
+        /// <summary>
+        /// Asset ID
+        /// </summary>
+        public readonly int Id;
+        /// <summary>
+        /// Asset name
+        /// </summary>
+        public readonly string Name;
         /// <summary>
         /// UUID
         /// </summary>
@@ -164,13 +180,25 @@ namespace Pulumi.Cloudflare
 
             string assetIdentifer,
 
-            string id,
+            string created,
+
+            string description,
+
+            string fileType,
+
+            int id,
+
+            string name,
 
             string requestIdentifier)
         {
             AccountIdentifier = accountIdentifier;
             AssetIdentifer = assetIdentifer;
+            Created = created;
+            Description = description;
+            FileType = fileType;
             Id = id;
+            Name = name;
             RequestIdentifier = requestIdentifier;
         }
     }

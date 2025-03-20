@@ -51,6 +51,12 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile example '<account_id>'
+// ```
 type ZeroTrustDeviceDefaultProfile struct {
 	pulumi.CustomResourceState
 

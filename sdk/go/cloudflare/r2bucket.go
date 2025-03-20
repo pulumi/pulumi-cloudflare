@@ -41,12 +41,10 @@ import (
 //
 // ```
 //
-// > Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/reference/data-location/#available-hints).
-//
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '<account_id>/<bucket_name>'
+// $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '<account_id>/<bucket_name>/<jurisdiction>'
 // ```
 type R2Bucket struct {
 	pulumi.CustomResourceState

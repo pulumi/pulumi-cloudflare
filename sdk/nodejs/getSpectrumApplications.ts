@@ -45,7 +45,7 @@ export interface GetSpectrumApplicationsArgs {
      */
     order?: string;
     /**
-     * Identifier
+     * Zone identifier.
      */
     zoneId: string;
 }
@@ -75,7 +75,7 @@ export interface GetSpectrumApplicationsResult {
      */
     readonly results: outputs.GetSpectrumApplicationsResult[];
     /**
-     * Identifier
+     * Zone identifier.
      */
     readonly zoneId: string;
 }
@@ -118,7 +118,7 @@ export interface GetSpectrumApplicationsOutputArgs {
      */
     order?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Zone identifier.
      */
     zoneId: pulumi.Input<string>;
 }

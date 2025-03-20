@@ -3,30 +3,40 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetFilterFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetFilterArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetFilterArgs Empty = new GetFilterArgs();
 
+    @Import(name="filter")
+    private @Nullable Output<GetFilterFilterArgs> filter;
+
+    public Optional<Output<GetFilterFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
     /**
      * The unique identifier of the filter.
      * 
      */
-    @Import(name="filterId", required=true)
-    private Output<String> filterId;
+    @Import(name="filterId")
+    private @Nullable Output<String> filterId;
 
     /**
      * @return The unique identifier of the filter.
      * 
      */
-    public Output<String> filterId() {
-        return this.filterId;
+    public Optional<Output<String>> filterId() {
+        return Optional.ofNullable(this.filterId);
     }
 
     /**
@@ -47,6 +57,7 @@ public final class GetFilterArgs extends com.pulumi.resources.InvokeArgs {
     private GetFilterArgs() {}
 
     private GetFilterArgs(GetFilterArgs $) {
+        this.filter = $.filter;
         this.filterId = $.filterId;
         this.zoneId = $.zoneId;
     }
@@ -69,13 +80,22 @@ public final class GetFilterArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetFilterArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder filter(@Nullable Output<GetFilterFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetFilterFilterArgs filter) {
+            return filter(Output.of(filter));
+        }
+
         /**
          * @param filterId The unique identifier of the filter.
          * 
          * @return builder
          * 
          */
-        public Builder filterId(Output<String> filterId) {
+        public Builder filterId(@Nullable Output<String> filterId) {
             $.filterId = filterId;
             return this;
         }
@@ -112,9 +132,6 @@ public final class GetFilterArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetFilterArgs build() {
-            if ($.filterId == null) {
-                throw new MissingRequiredPropertyException("GetFilterArgs", "filterId");
-            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetFilterArgs", "zoneId");
             }

@@ -3,10 +3,11 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSourceNameByIdp;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.Map;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -20,7 +21,7 @@ public final class GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSou
      * @return A mapping from IdP ID to attribute name.
      * 
      */
-    private Map<String,String> nameByIdp;
+    private List<GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSourceNameByIdp> nameByIdps;
 
     private GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSource() {}
     /**
@@ -34,8 +35,8 @@ public final class GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSou
      * @return A mapping from IdP ID to attribute name.
      * 
      */
-    public Map<String,String> nameByIdp() {
-        return this.nameByIdp;
+    public List<GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSourceNameByIdp> nameByIdps() {
+        return this.nameByIdps;
     }
 
     public static Builder builder() {
@@ -48,12 +49,12 @@ public final class GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSou
     @CustomType.Builder
     public static final class Builder {
         private String name;
-        private Map<String,String> nameByIdp;
+        private List<GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSourceNameByIdp> nameByIdps;
         public Builder() {}
         public Builder(GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
-    	      this.nameByIdp = defaults.nameByIdp;
+    	      this.nameByIdps = defaults.nameByIdps;
         }
 
         @CustomType.Setter
@@ -65,17 +66,20 @@ public final class GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSou
             return this;
         }
         @CustomType.Setter
-        public Builder nameByIdp(Map<String,String> nameByIdp) {
-            if (nameByIdp == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSource", "nameByIdp");
+        public Builder nameByIdps(List<GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSourceNameByIdp> nameByIdps) {
+            if (nameByIdps == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSource", "nameByIdps");
             }
-            this.nameByIdp = nameByIdp;
+            this.nameByIdps = nameByIdps;
             return this;
+        }
+        public Builder nameByIdps(GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSourceNameByIdp... nameByIdps) {
+            return nameByIdps(List.of(nameByIdps));
         }
         public GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSource build() {
             final var _resultValue = new GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSource();
             _resultValue.name = name;
-            _resultValue.nameByIdp = nameByIdp;
+            _resultValue.nameByIdps = nameByIdps;
             return _resultValue;
         }
     }

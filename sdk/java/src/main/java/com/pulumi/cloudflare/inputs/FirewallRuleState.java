@@ -110,21 +110,6 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique identifier of the firewall rule.
-     * 
-     */
-    @Import(name="ruleId")
-    private @Nullable Output<String> ruleId;
-
-    /**
-     * @return The unique identifier of the firewall rule.
-     * 
-     */
-    public Optional<Output<String>> ruleId() {
-        return Optional.ofNullable(this.ruleId);
-    }
-
-    /**
      * Identifier
      * 
      */
@@ -149,7 +134,6 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
         this.priority = $.priority;
         this.products = $.products;
         this.ref = $.ref;
-        this.ruleId = $.ruleId;
         this.zoneId = $.zoneId;
     }
 
@@ -296,27 +280,6 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ref(String ref) {
             return ref(Output.of(ref));
-        }
-
-        /**
-         * @param ruleId The unique identifier of the firewall rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ruleId(@Nullable Output<String> ruleId) {
-            $.ruleId = ruleId;
-            return this;
-        }
-
-        /**
-         * @param ruleId The unique identifier of the firewall rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ruleId(String ruleId) {
-            return ruleId(Output.of(ruleId));
         }
 
         /**

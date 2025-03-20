@@ -26,10 +26,13 @@ class GetStreamKeyResult:
     """
     A collection of values returned by getStreamKey.
     """
-    def __init__(__self__, account_id=None, id=None):
+    def __init__(__self__, account_id=None, created=None, id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if created and not isinstance(created, str):
+            raise TypeError("Expected argument 'created' to be a str")
+        pulumi.set(__self__, "created", created)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -44,9 +47,17 @@ class GetStreamKeyResult:
 
     @property
     @pulumi.getter
+    def created(self) -> str:
+        """
+        The date and time a signing key was created.
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Identifier
         """
         return pulumi.get(self, "id")
 
@@ -58,6 +69,7 @@ class AwaitableGetStreamKeyResult(GetStreamKeyResult):
             yield self
         return GetStreamKeyResult(
             account_id=self.account_id,
+            created=self.created,
             id=self.id)
 
 
@@ -83,6 +95,7 @@ def get_stream_key(account_id: Optional[str] = None,
 
     return AwaitableGetStreamKeyResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        created=pulumi.get(__ret__, 'created'),
         id=pulumi.get(__ret__, 'id'))
 def get_stream_key_output(account_id: Optional[pulumi.Input[str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamKeyResult]:
@@ -105,4 +118,5 @@ def get_stream_key_output(account_id: Optional[pulumi.Input[str]] = None,
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getStreamKey:getStreamKey', __args__, opts=opts, typ=GetStreamKeyResult)
     return __ret__.apply(lambda __response__: GetStreamKeyResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        created=pulumi.get(__response__, 'created'),
         id=pulumi.get(__response__, 'id')))

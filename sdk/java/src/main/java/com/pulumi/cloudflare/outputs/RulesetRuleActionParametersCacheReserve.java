@@ -8,8 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersCacheReserve {
@@ -22,7 +20,7 @@ public final class RulesetRuleActionParametersCacheReserve {
      * @return The minimum file size eligible for store in cache reserve.
      * 
      */
-    private @Nullable Integer minimumFileSize;
+    private Integer minimumFileSize;
 
     private RulesetRuleActionParametersCacheReserve() {}
     /**
@@ -36,8 +34,8 @@ public final class RulesetRuleActionParametersCacheReserve {
      * @return The minimum file size eligible for store in cache reserve.
      * 
      */
-    public Optional<Integer> minimumFileSize() {
-        return Optional.ofNullable(this.minimumFileSize);
+    public Integer minimumFileSize() {
+        return this.minimumFileSize;
     }
 
     public static Builder builder() {
@@ -50,7 +48,7 @@ public final class RulesetRuleActionParametersCacheReserve {
     @CustomType.Builder
     public static final class Builder {
         private Boolean eligible;
-        private @Nullable Integer minimumFileSize;
+        private Integer minimumFileSize;
         public Builder() {}
         public Builder(RulesetRuleActionParametersCacheReserve defaults) {
     	      Objects.requireNonNull(defaults);
@@ -67,8 +65,10 @@ public final class RulesetRuleActionParametersCacheReserve {
             return this;
         }
         @CustomType.Setter
-        public Builder minimumFileSize(@Nullable Integer minimumFileSize) {
-
+        public Builder minimumFileSize(Integer minimumFileSize) {
+            if (minimumFileSize == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleActionParametersCacheReserve", "minimumFileSize");
+            }
             this.minimumFileSize = minimumFileSize;
             return this;
         }

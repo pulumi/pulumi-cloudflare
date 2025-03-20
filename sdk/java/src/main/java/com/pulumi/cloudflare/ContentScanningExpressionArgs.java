@@ -10,8 +10,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ContentScanningExpressionArgs extends com.pulumi.resources.ResourceArgs {
@@ -23,21 +21,6 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
 
     public Output<List<ContentScanningExpressionBodyArgs>> bodies() {
         return this.bodies;
-    }
-
-    /**
-     * Identifier
-     * 
-     */
-    @Import(name="expressionId")
-    private @Nullable Output<String> expressionId;
-
-    /**
-     * @return Identifier
-     * 
-     */
-    public Optional<Output<String>> expressionId() {
-        return Optional.ofNullable(this.expressionId);
     }
 
     /**
@@ -59,7 +42,6 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
 
     private ContentScanningExpressionArgs(ContentScanningExpressionArgs $) {
         this.bodies = $.bodies;
-        this.expressionId = $.expressionId;
         this.zoneId = $.zoneId;
     }
 
@@ -92,27 +74,6 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
 
         public Builder bodies(ContentScanningExpressionBodyArgs... bodies) {
             return bodies(List.of(bodies));
-        }
-
-        /**
-         * @param expressionId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder expressionId(@Nullable Output<String> expressionId) {
-            $.expressionId = expressionId;
-            return this;
-        }
-
-        /**
-         * @param expressionId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder expressionId(String expressionId) {
-            return expressionId(Output.of(expressionId));
         }
 
         /**

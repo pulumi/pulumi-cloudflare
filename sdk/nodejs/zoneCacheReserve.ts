@@ -67,10 +67,6 @@ export class ZoneCacheReserve extends pulumi.CustomResource {
      * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
-    /**
-     * ID of the zone setting.
-     */
-    public /*out*/ readonly zoneSettingId!: pulumi.Output<string>;
 
     /**
      * Create a ZoneCacheReserve resource with the given unique name, arguments, and options.
@@ -89,7 +85,6 @@ export class ZoneCacheReserve extends pulumi.CustomResource {
             resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["value"] = state ? state.value : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
-            resourceInputs["zoneSettingId"] = state ? state.zoneSettingId : undefined;
         } else {
             const args = argsOrState as ZoneCacheReserveArgs | undefined;
             if ((!args || args.zoneId === undefined) && !opts.urn) {
@@ -99,7 +94,6 @@ export class ZoneCacheReserve extends pulumi.CustomResource {
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["editable"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
-            resourceInputs["zoneSettingId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZoneCacheReserve.__pulumiType, name, resourceInputs, opts);
@@ -126,10 +120,6 @@ export interface ZoneCacheReserveState {
      * Identifier
      */
     zoneId?: pulumi.Input<string>;
-    /**
-     * ID of the zone setting.
-     */
-    zoneSettingId?: pulumi.Input<string>;
 }
 
 /**

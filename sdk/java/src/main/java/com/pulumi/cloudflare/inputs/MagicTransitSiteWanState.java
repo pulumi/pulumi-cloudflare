@@ -113,21 +113,6 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.vlanTag);
     }
 
-    /**
-     * Identifier
-     * 
-     */
-    @Import(name="wanId")
-    private @Nullable Output<String> wanId;
-
-    /**
-     * @return Identifier
-     * 
-     */
-    public Optional<Output<String>> wanId() {
-        return Optional.ofNullable(this.wanId);
-    }
-
     private MagicTransitSiteWanState() {}
 
     private MagicTransitSiteWanState(MagicTransitSiteWanState $) {
@@ -139,7 +124,6 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
         this.siteId = $.siteId;
         this.staticAddressing = $.staticAddressing;
         this.vlanTag = $.vlanTag;
-        this.wanId = $.wanId;
     }
 
     public static Builder builder() {
@@ -290,27 +274,6 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
          */
         public Builder vlanTag(Integer vlanTag) {
             return vlanTag(Output.of(vlanTag));
-        }
-
-        /**
-         * @param wanId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder wanId(@Nullable Output<String> wanId) {
-            $.wanId = wanId;
-            return this;
-        }
-
-        /**
-         * @param wanId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder wanId(String wanId) {
-            return wanId(Output.of(wanId));
         }
 
         public MagicTransitSiteWanState build() {

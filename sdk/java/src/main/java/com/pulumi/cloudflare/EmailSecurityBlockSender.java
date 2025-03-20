@@ -35,22 +35,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
+ * public class App {
+ *     public static void main(String[] args) {
  *         Pulumi.run(App::stack);
- *     }}{@code
+ *     }
  * 
- *     public static void stack(Context ctx) }{{@code
+ *     public static void stack(Context ctx) {
  *         var exampleEmailSecurityBlockSender = new EmailSecurityBlockSender("exampleEmailSecurityBlockSender", EmailSecurityBlockSenderArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .isRegex(false)
- *             .pattern("test}{@literal @}{@code example.com")
+ *             .isRegex(true)
+ *             .pattern("x")
  *             .patternType("EMAIL")
- *             .comments("block sender with email test}{@literal @}{@code example.com")
+ *             .comments("comments")
  *             .build());
  * 
- *     }}{@code
- * }}{@code
+ *     }
+ * }
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;

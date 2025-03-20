@@ -11,6 +11,12 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan example '&lt;account_id&gt;/&lt;site_id&gt;/&lt;lan_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan")]
     public partial class MagicTransitSiteLan : global::Pulumi.CustomResource
@@ -26,12 +32,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("haLink")]
         public Output<bool?> HaLink { get; private set; } = null!;
-
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Output("lanId")]
-        public Output<string?> LanId { get; private set; } = null!;
 
         [Output("name")]
         public Output<string?> Name { get; private set; } = null!;
@@ -121,12 +121,6 @@ namespace Pulumi.Cloudflare
         [Input("haLink")]
         public Input<bool>? HaLink { get; set; }
 
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Input("lanId")]
-        public Input<string>? LanId { get; set; }
-
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -181,12 +175,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("haLink")]
         public Input<bool>? HaLink { get; set; }
-
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Input("lanId")]
-        public Input<string>? LanId { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }

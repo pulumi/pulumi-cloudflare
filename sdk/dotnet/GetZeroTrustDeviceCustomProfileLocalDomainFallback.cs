@@ -122,6 +122,14 @@ namespace Pulumi.Cloudflare
     {
         public readonly string AccountId;
         /// <summary>
+        /// A description of the fallback domain, displayed in the client UI.
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
+        /// A list of IP addresses to handle domain resolution.
+        /// </summary>
+        public readonly ImmutableArray<string> DnsServers;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -129,18 +137,31 @@ namespace Pulumi.Cloudflare
         /// Device ID.
         /// </summary>
         public readonly string PolicyId;
+        /// <summary>
+        /// The domain suffix to match when resolving locally.
+        /// </summary>
+        public readonly string Suffix;
 
         [OutputConstructor]
         private GetZeroTrustDeviceCustomProfileLocalDomainFallbackResult(
             string accountId,
 
+            string description,
+
+            ImmutableArray<string> dnsServers,
+
             string id,
 
-            string policyId)
+            string policyId,
+
+            string suffix)
         {
             AccountId = accountId;
+            Description = description;
+            DnsServers = dnsServers;
             Id = id;
             PolicyId = policyId;
+            Suffix = suffix;
         }
     }
 }

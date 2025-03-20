@@ -21,8 +21,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// The minimum file size eligible for store in cache reserve.
         /// </summary>
-        [Input("minimumFileSize")]
-        public Input<int>? MinimumFileSize { get; set; }
+        [Input("minimumFileSize", required: true)]
+        public Input<int> MinimumFileSize { get; set; } = null!;
 
         public RulesetRuleActionParametersCacheReserveGetArgs()
         {

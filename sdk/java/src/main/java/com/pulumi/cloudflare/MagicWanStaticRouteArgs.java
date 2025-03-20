@@ -3,12 +3,14 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.MagicWanStaticRouteRouteArgs;
 import com.pulumi.cloudflare.inputs.MagicWanStaticRouteScopeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -93,6 +95,13 @@ public final class MagicWanStaticRouteArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.priority);
     }
 
+    @Import(name="route")
+    private @Nullable Output<MagicWanStaticRouteRouteArgs> route;
+
+    public Optional<Output<MagicWanStaticRouteRouteArgs>> route() {
+        return Optional.ofNullable(this.route);
+    }
+
     /**
      * Identifier
      * 
@@ -106,6 +115,13 @@ public final class MagicWanStaticRouteArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<String>> routeId() {
         return Optional.ofNullable(this.routeId);
+    }
+
+    @Import(name="routes")
+    private @Nullable Output<List<MagicWanStaticRouteRouteArgs>> routes;
+
+    public Optional<Output<List<MagicWanStaticRouteRouteArgs>>> routes() {
+        return Optional.ofNullable(this.routes);
     }
 
     /**
@@ -146,7 +162,9 @@ public final class MagicWanStaticRouteArgs extends com.pulumi.resources.Resource
         this.nexthop = $.nexthop;
         this.prefix = $.prefix;
         this.priority = $.priority;
+        this.route = $.route;
         this.routeId = $.routeId;
+        this.routes = $.routes;
         this.scope = $.scope;
         this.weight = $.weight;
     }
@@ -274,6 +292,15 @@ public final class MagicWanStaticRouteArgs extends com.pulumi.resources.Resource
             return priority(Output.of(priority));
         }
 
+        public Builder route(@Nullable Output<MagicWanStaticRouteRouteArgs> route) {
+            $.route = route;
+            return this;
+        }
+
+        public Builder route(MagicWanStaticRouteRouteArgs route) {
+            return route(Output.of(route));
+        }
+
         /**
          * @param routeId Identifier
          * 
@@ -293,6 +320,19 @@ public final class MagicWanStaticRouteArgs extends com.pulumi.resources.Resource
          */
         public Builder routeId(String routeId) {
             return routeId(Output.of(routeId));
+        }
+
+        public Builder routes(@Nullable Output<List<MagicWanStaticRouteRouteArgs>> routes) {
+            $.routes = routes;
+            return this;
+        }
+
+        public Builder routes(List<MagicWanStaticRouteRouteArgs> routes) {
+            return routes(Output.of(routes));
+        }
+
+        public Builder routes(MagicWanStaticRouteRouteArgs... routes) {
+            return routes(List.of(routes));
         }
 
         /**

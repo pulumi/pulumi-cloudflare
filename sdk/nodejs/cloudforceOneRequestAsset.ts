@@ -18,6 +18,12 @@ import * as utilities from "./utilities";
  *     perPage: 10,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example '<account_identifier>/<request_identifier>/<asset_identifer>'
+ * ```
  */
 export class CloudforceOneRequestAsset extends pulumi.CustomResource {
     /**
@@ -51,10 +57,6 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
      * Identifier
      */
     public readonly accountIdentifier!: pulumi.Output<string>;
-    /**
-     * UUID
-     */
-    public readonly assetIdentifer!: pulumi.Output<string | undefined>;
     /**
      * Asset creation time
      */
@@ -102,7 +104,6 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CloudforceOneRequestAssetState | undefined;
             resourceInputs["accountIdentifier"] = state ? state.accountIdentifier : undefined;
-            resourceInputs["assetIdentifer"] = state ? state.assetIdentifer : undefined;
             resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["fileType"] = state ? state.fileType : undefined;
@@ -126,7 +127,6 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
                 throw new Error("Missing required property 'requestIdentifier'");
             }
             resourceInputs["accountIdentifier"] = args ? args.accountIdentifier : undefined;
-            resourceInputs["assetIdentifer"] = args ? args.assetIdentifer : undefined;
             resourceInputs["page"] = args ? args.page : undefined;
             resourceInputs["perPage"] = args ? args.perPage : undefined;
             resourceInputs["requestIdentifier"] = args ? args.requestIdentifier : undefined;
@@ -149,10 +149,6 @@ export interface CloudforceOneRequestAssetState {
      * Identifier
      */
     accountIdentifier?: pulumi.Input<string>;
-    /**
-     * UUID
-     */
-    assetIdentifer?: pulumi.Input<string>;
     /**
      * Asset creation time
      */
@@ -195,10 +191,6 @@ export interface CloudforceOneRequestAssetArgs {
      * Identifier
      */
     accountIdentifier: pulumi.Input<string>;
-    /**
-     * UUID
-     */
-    assetIdentifer?: pulumi.Input<string>;
     /**
      * Page number of results
      */

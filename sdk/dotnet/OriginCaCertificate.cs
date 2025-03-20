@@ -10,10 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// &gt; Since v3.32.0
-    ///    all authentication schemes are supported for managing Origin CA certificates.
-    ///    Versions prior to v3.32.0 will still need to use `api_user_service_key`.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

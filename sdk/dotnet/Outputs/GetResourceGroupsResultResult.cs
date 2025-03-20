@@ -13,9 +13,37 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetResourceGroupsResultResult
     {
+        /// <summary>
+        /// Identifier of the group.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
+        /// Attributes associated to the resource group.
+        /// </summary>
+        public readonly Outputs.GetResourceGroupsResultMetaResult Meta;
+        /// <summary>
+        /// Name of the resource group.
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// The scope associated to the resource group
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetResourceGroupsResultScopeResult> Scopes;
+
         [OutputConstructor]
-        private GetResourceGroupsResultResult()
+        private GetResourceGroupsResultResult(
+            string id,
+
+            Outputs.GetResourceGroupsResultMetaResult meta,
+
+            string name,
+
+            ImmutableArray<Outputs.GetResourceGroupsResultScopeResult> scopes)
         {
+            Id = id;
+            Meta = meta;
+            Name = name;
+            Scopes = scopes;
         }
     }
 }

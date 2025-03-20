@@ -62,14 +62,14 @@ public final class GetSpectrumApplicationsPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * Identifier
+     * Zone identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Zone identifier.
      * 
      */
     public String zoneId() {
@@ -137,7 +137,7 @@ public final class GetSpectrumApplicationsPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Zone identifier.
          * 
          * @return builder
          * 

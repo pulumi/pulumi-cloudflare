@@ -3,11 +3,14 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetFilterFilter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFilterResult {
@@ -21,11 +24,12 @@ public final class GetFilterResult {
      * 
      */
     private String expression;
+    private @Nullable GetFilterFilter filter;
     /**
      * @return The unique identifier of the filter.
      * 
      */
-    private String filterId;
+    private @Nullable String filterId;
     /**
      * @return The unique identifier of the filter.
      * 
@@ -62,12 +66,15 @@ public final class GetFilterResult {
     public String expression() {
         return this.expression;
     }
+    public Optional<GetFilterFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
     /**
      * @return The unique identifier of the filter.
      * 
      */
-    public String filterId() {
-        return this.filterId;
+    public Optional<String> filterId() {
+        return Optional.ofNullable(this.filterId);
     }
     /**
      * @return The unique identifier of the filter.
@@ -109,7 +116,8 @@ public final class GetFilterResult {
     public static final class Builder {
         private String description;
         private String expression;
-        private String filterId;
+        private @Nullable GetFilterFilter filter;
+        private @Nullable String filterId;
         private String id;
         private Boolean paused;
         private String ref;
@@ -119,6 +127,7 @@ public final class GetFilterResult {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.expression = defaults.expression;
+    	      this.filter = defaults.filter;
     	      this.filterId = defaults.filterId;
     	      this.id = defaults.id;
     	      this.paused = defaults.paused;
@@ -143,10 +152,14 @@ public final class GetFilterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder filterId(String filterId) {
-            if (filterId == null) {
-              throw new MissingRequiredPropertyException("GetFilterResult", "filterId");
-            }
+        public Builder filter(@Nullable GetFilterFilter filter) {
+
+            this.filter = filter;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filterId(@Nullable String filterId) {
+
             this.filterId = filterId;
             return this;
         }
@@ -186,6 +199,7 @@ public final class GetFilterResult {
             final var _resultValue = new GetFilterResult();
             _resultValue.description = description;
             _resultValue.expression = expression;
+            _resultValue.filter = filter;
             _resultValue.filterId = filterId;
             _resultValue.id = id;
             _resultValue.paused = paused;

@@ -10,7 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Double;
+import java.lang.Object;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -139,14 +139,14 @@ public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
      * The tls setting value.
      * 
      */
-    @Export(name="value", refs={Double.class}, tree="[0]")
-    private Output<Double> value;
+    @Export(name="value", refs={Object.class}, tree="[0]")
+    private Output<Object> value;
 
     /**
      * @return The tls setting value.
      * 
      */
-    public Output<Double> value() {
+    public Output<Object> value() {
         return this.value;
     }
     /**

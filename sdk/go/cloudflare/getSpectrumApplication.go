@@ -49,15 +49,15 @@ func LookupSpectrumApplication(ctx *pulumi.Context, args *LookupSpectrumApplicat
 
 // A collection of arguments for invoking getSpectrumApplication.
 type LookupSpectrumApplicationArgs struct {
-	// Identifier
+	// App identifier.
 	AppId string `pulumi:"appId"`
-	// Identifier
+	// Zone identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getSpectrumApplication.
 type LookupSpectrumApplicationResult struct {
-	// Identifier
+	// App identifier.
 	AppId string `pulumi:"appId"`
 	// Enables Argo Smart Routing for this application.
 	// Notes: Only available for TCP applications with trafficType set to "direct".
@@ -90,7 +90,7 @@ type LookupSpectrumApplicationResult struct {
 	Tls string `pulumi:"tls"`
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
 	TrafficType string `pulumi:"trafficType"`
-	// Identifier
+	// Zone identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -105,9 +105,9 @@ func LookupSpectrumApplicationOutput(ctx *pulumi.Context, args LookupSpectrumApp
 
 // A collection of arguments for invoking getSpectrumApplication.
 type LookupSpectrumApplicationOutputArgs struct {
-	// Identifier
+	// App identifier.
 	AppId pulumi.StringInput `pulumi:"appId"`
-	// Identifier
+	// Zone identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -130,7 +130,7 @@ func (o LookupSpectrumApplicationResultOutput) ToLookupSpectrumApplicationResult
 	return o
 }
 
-// Identifier
+// App identifier.
 func (o LookupSpectrumApplicationResultOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpectrumApplicationResult) string { return v.AppId }).(pulumi.StringOutput)
 }
@@ -208,7 +208,7 @@ func (o LookupSpectrumApplicationResultOutput) TrafficType() pulumi.StringOutput
 	return o.ApplyT(func(v LookupSpectrumApplicationResult) string { return v.TrafficType }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Zone identifier.
 func (o LookupSpectrumApplicationResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpectrumApplicationResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

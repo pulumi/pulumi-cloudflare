@@ -26,16 +26,28 @@ class GetStreamAudioTrackResult:
     """
     A collection of values returned by getStreamAudioTrack.
     """
-    def __init__(__self__, account_id=None, id=None, identifier=None):
+    def __init__(__self__, account_id=None, default=None, id=None, identifier=None, label=None, status=None, uid=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if default and not isinstance(default, bool):
+            raise TypeError("Expected argument 'default' to be a bool")
+        pulumi.set(__self__, "default", default)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if identifier and not isinstance(identifier, str):
             raise TypeError("Expected argument 'identifier' to be a str")
         pulumi.set(__self__, "identifier", identifier)
+        if label and not isinstance(label, str):
+            raise TypeError("Expected argument 'label' to be a str")
+        pulumi.set(__self__, "label", label)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+        if uid and not isinstance(uid, str):
+            raise TypeError("Expected argument 'uid' to be a str")
+        pulumi.set(__self__, "uid", uid)
 
     @property
     @pulumi.getter(name="accountId")
@@ -44,6 +56,14 @@ class GetStreamAudioTrackResult:
         The account identifier tag.
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter
+    def default(self) -> bool:
+        """
+        Denotes whether the audio track will be played by default in a player.
+        """
+        return pulumi.get(self, "default")
 
     @property
     @pulumi.getter
@@ -61,6 +81,30 @@ class GetStreamAudioTrackResult:
         """
         return pulumi.get(self, "identifier")
 
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        A string to uniquely identify the track amongst other audio track labels for the specified video.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Specifies the processing status of the video.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> str:
+        """
+        A Cloudflare-generated unique identifier for a media item.
+        """
+        return pulumi.get(self, "uid")
+
 
 class AwaitableGetStreamAudioTrackResult(GetStreamAudioTrackResult):
     # pylint: disable=using-constant-test
@@ -69,8 +113,12 @@ class AwaitableGetStreamAudioTrackResult(GetStreamAudioTrackResult):
             yield self
         return GetStreamAudioTrackResult(
             account_id=self.account_id,
+            default=self.default,
             id=self.id,
-            identifier=self.identifier)
+            identifier=self.identifier,
+            label=self.label,
+            status=self.status,
+            uid=self.uid)
 
 
 def get_stream_audio_track(account_id: Optional[str] = None,
@@ -99,8 +147,12 @@ def get_stream_audio_track(account_id: Optional[str] = None,
 
     return AwaitableGetStreamAudioTrackResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        default=pulumi.get(__ret__, 'default'),
         id=pulumi.get(__ret__, 'id'),
-        identifier=pulumi.get(__ret__, 'identifier'))
+        identifier=pulumi.get(__ret__, 'identifier'),
+        label=pulumi.get(__ret__, 'label'),
+        status=pulumi.get(__ret__, 'status'),
+        uid=pulumi.get(__ret__, 'uid'))
 def get_stream_audio_track_output(account_id: Optional[pulumi.Input[str]] = None,
                                   identifier: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamAudioTrackResult]:
@@ -126,5 +178,9 @@ def get_stream_audio_track_output(account_id: Optional[pulumi.Input[str]] = None
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getStreamAudioTrack:getStreamAudioTrack', __args__, opts=opts, typ=GetStreamAudioTrackResult)
     return __ret__.apply(lambda __response__: GetStreamAudioTrackResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        default=pulumi.get(__response__, 'default'),
         id=pulumi.get(__response__, 'id'),
-        identifier=pulumi.get(__response__, 'identifier')))
+        identifier=pulumi.get(__response__, 'identifier'),
+        label=pulumi.get(__response__, 'label'),
+        status=pulumi.get(__response__, 'status'),
+        uid=pulumi.get(__response__, 'uid')))

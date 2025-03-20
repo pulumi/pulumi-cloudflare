@@ -13,7 +13,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -66,18 +65,18 @@ public class ContentScanningExpression extends com.pulumi.resources.CustomResour
         return this.bodies;
     }
     /**
-     * Identifier
+     * Ruleset expression to use in matching content objects
      * 
      */
-    @Export(name="expressionId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> expressionId;
+    @Export(name="payload", refs={String.class}, tree="[0]")
+    private Output<String> payload;
 
     /**
-     * @return Identifier
+     * @return Ruleset expression to use in matching content objects
      * 
      */
-    public Output<Optional<String>> expressionId() {
-        return Codegen.optional(this.expressionId);
+    public Output<String> payload() {
+        return this.payload;
     }
     /**
      * Identifier

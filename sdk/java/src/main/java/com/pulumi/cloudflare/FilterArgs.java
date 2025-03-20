@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
@@ -32,21 +30,6 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique identifier of the filter.
-     * 
-     */
-    @Import(name="filterId")
-    private @Nullable Output<String> filterId;
-
-    /**
-     * @return The unique identifier of the filter.
-     * 
-     */
-    public Optional<Output<String>> filterId() {
-        return Optional.ofNullable(this.filterId);
-    }
-
-    /**
      * Identifier
      * 
      */
@@ -65,7 +48,6 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
 
     private FilterArgs(FilterArgs $) {
         this.expression = $.expression;
-        this.filterId = $.filterId;
         this.zoneId = $.zoneId;
     }
 
@@ -106,27 +88,6 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder expression(String expression) {
             return expression(Output.of(expression));
-        }
-
-        /**
-         * @param filterId The unique identifier of the filter.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder filterId(@Nullable Output<String> filterId) {
-            $.filterId = filterId;
-            return this;
-        }
-
-        /**
-         * @param filterId The unique identifier of the filter.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder filterId(String filterId) {
-            return filterId(Output.of(filterId));
         }
 
         /**

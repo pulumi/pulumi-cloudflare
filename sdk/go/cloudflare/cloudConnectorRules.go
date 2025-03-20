@@ -16,6 +16,13 @@ import (
 type CloudConnectorRules struct {
 	pulumi.CustomResourceState
 
+	// Cloud Provider type
+	CloudProvider pulumi.StringOutput `pulumi:"cloudProvider"`
+	Description   pulumi.StringOutput `pulumi:"description"`
+	Enabled       pulumi.BoolOutput   `pulumi:"enabled"`
+	Expression    pulumi.StringOutput `pulumi:"expression"`
+	// Parameters of Cloud Connector Rule
+	Parameters CloudConnectorRulesParametersOutput `pulumi:"parameters"`
 	// List of Cloud Connector rules
 	Rules CloudConnectorRulesRuleArrayOutput `pulumi:"rules"`
 	// Identifier
@@ -58,6 +65,13 @@ func GetCloudConnectorRules(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudConnectorRules resources.
 type cloudConnectorRulesState struct {
+	// Cloud Provider type
+	CloudProvider *string `pulumi:"cloudProvider"`
+	Description   *string `pulumi:"description"`
+	Enabled       *bool   `pulumi:"enabled"`
+	Expression    *string `pulumi:"expression"`
+	// Parameters of Cloud Connector Rule
+	Parameters *CloudConnectorRulesParameters `pulumi:"parameters"`
 	// List of Cloud Connector rules
 	Rules []CloudConnectorRulesRule `pulumi:"rules"`
 	// Identifier
@@ -65,6 +79,13 @@ type cloudConnectorRulesState struct {
 }
 
 type CloudConnectorRulesState struct {
+	// Cloud Provider type
+	CloudProvider pulumi.StringPtrInput
+	Description   pulumi.StringPtrInput
+	Enabled       pulumi.BoolPtrInput
+	Expression    pulumi.StringPtrInput
+	// Parameters of Cloud Connector Rule
+	Parameters CloudConnectorRulesParametersPtrInput
 	// List of Cloud Connector rules
 	Rules CloudConnectorRulesRuleArrayInput
 	// Identifier
@@ -175,6 +196,28 @@ func (o CloudConnectorRulesOutput) ToCloudConnectorRulesOutput() CloudConnectorR
 
 func (o CloudConnectorRulesOutput) ToCloudConnectorRulesOutputWithContext(ctx context.Context) CloudConnectorRulesOutput {
 	return o
+}
+
+// Cloud Provider type
+func (o CloudConnectorRulesOutput) CloudProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudConnectorRules) pulumi.StringOutput { return v.CloudProvider }).(pulumi.StringOutput)
+}
+
+func (o CloudConnectorRulesOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudConnectorRules) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o CloudConnectorRulesOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CloudConnectorRules) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o CloudConnectorRulesOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudConnectorRules) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Parameters of Cloud Connector Rule
+func (o CloudConnectorRulesOutput) Parameters() CloudConnectorRulesParametersOutput {
+	return o.ApplyT(func(v *CloudConnectorRules) CloudConnectorRulesParametersOutput { return v.Parameters }).(CloudConnectorRulesParametersOutput)
 }
 
 // List of Cloud Connector rules

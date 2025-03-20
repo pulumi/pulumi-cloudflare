@@ -53,11 +53,11 @@ type PagesDomain struct {
 	pulumi.CustomResourceState
 
 	// Identifier
-	AccountId            pulumi.StringOutput    `pulumi:"accountId"`
-	CertificateAuthority pulumi.StringOutput    `pulumi:"certificateAuthority"`
-	CreatedOn            pulumi.StringOutput    `pulumi:"createdOn"`
-	DomainId             pulumi.StringOutput    `pulumi:"domainId"`
-	Name                 pulumi.StringPtrOutput `pulumi:"name"`
+	AccountId            pulumi.StringOutput `pulumi:"accountId"`
+	CertificateAuthority pulumi.StringOutput `pulumi:"certificateAuthority"`
+	CreatedOn            pulumi.StringOutput `pulumi:"createdOn"`
+	DomainId             pulumi.StringOutput `pulumi:"domainId"`
+	Name                 pulumi.StringOutput `pulumi:"name"`
 	// Name of the project.
 	ProjectName      pulumi.StringOutput               `pulumi:"projectName"`
 	Status           pulumi.StringOutput               `pulumi:"status"`
@@ -75,6 +75,9 @@ func NewPagesDomain(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.ProjectName == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectName'")
@@ -137,8 +140,8 @@ func (PagesDomainState) ElementType() reflect.Type {
 
 type pagesDomainArgs struct {
 	// Identifier
-	AccountId string  `pulumi:"accountId"`
-	Name      *string `pulumi:"name"`
+	AccountId string `pulumi:"accountId"`
+	Name      string `pulumi:"name"`
 	// Name of the project.
 	ProjectName string `pulumi:"projectName"`
 }
@@ -147,7 +150,7 @@ type pagesDomainArgs struct {
 type PagesDomainArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput
-	Name      pulumi.StringPtrInput
+	Name      pulumi.StringInput
 	// Name of the project.
 	ProjectName pulumi.StringInput
 }
@@ -256,8 +259,8 @@ func (o PagesDomainOutput) DomainId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
 }
 
-func (o PagesDomainOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PagesDomain) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+func (o PagesDomainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // Name of the project.

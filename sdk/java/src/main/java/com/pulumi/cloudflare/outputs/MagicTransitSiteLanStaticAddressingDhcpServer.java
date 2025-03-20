@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -27,6 +28,7 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServer {
      * 
      */
     private @Nullable String dnsServer;
+    private @Nullable List<String> dnsServers;
     /**
      * @return Mapping of MAC addresses to IP addresses
      * 
@@ -55,6 +57,9 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServer {
     public Optional<String> dnsServer() {
         return Optional.ofNullable(this.dnsServer);
     }
+    public List<String> dnsServers() {
+        return this.dnsServers == null ? List.of() : this.dnsServers;
+    }
     /**
      * @return Mapping of MAC addresses to IP addresses
      * 
@@ -75,6 +80,7 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServer {
         private @Nullable String dhcpPoolEnd;
         private @Nullable String dhcpPoolStart;
         private @Nullable String dnsServer;
+        private @Nullable List<String> dnsServers;
         private @Nullable Map<String,String> reservations;
         public Builder() {}
         public Builder(MagicTransitSiteLanStaticAddressingDhcpServer defaults) {
@@ -82,6 +88,7 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServer {
     	      this.dhcpPoolEnd = defaults.dhcpPoolEnd;
     	      this.dhcpPoolStart = defaults.dhcpPoolStart;
     	      this.dnsServer = defaults.dnsServer;
+    	      this.dnsServers = defaults.dnsServers;
     	      this.reservations = defaults.reservations;
         }
 
@@ -104,6 +111,15 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServer {
             return this;
         }
         @CustomType.Setter
+        public Builder dnsServers(@Nullable List<String> dnsServers) {
+
+            this.dnsServers = dnsServers;
+            return this;
+        }
+        public Builder dnsServers(String... dnsServers) {
+            return dnsServers(List.of(dnsServers));
+        }
+        @CustomType.Setter
         public Builder reservations(@Nullable Map<String,String> reservations) {
 
             this.reservations = reservations;
@@ -114,6 +130,7 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServer {
             _resultValue.dhcpPoolEnd = dhcpPoolEnd;
             _resultValue.dhcpPoolStart = dhcpPoolStart;
             _resultValue.dnsServer = dnsServer;
+            _resultValue.dnsServers = dnsServers;
             _resultValue.reservations = reservations;
             return _resultValue;
         }

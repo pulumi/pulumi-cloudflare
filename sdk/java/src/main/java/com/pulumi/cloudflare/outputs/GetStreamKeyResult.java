@@ -16,7 +16,12 @@ public final class GetStreamKeyResult {
      */
     private String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The date and time a signing key was created.
+     * 
+     */
+    private String created;
+    /**
+     * @return Identifier
      * 
      */
     private String id;
@@ -30,7 +35,14 @@ public final class GetStreamKeyResult {
         return this.accountId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The date and time a signing key was created.
+     * 
+     */
+    public String created() {
+        return this.created;
+    }
+    /**
+     * @return Identifier
      * 
      */
     public String id() {
@@ -47,11 +59,13 @@ public final class GetStreamKeyResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private String created;
         private String id;
         public Builder() {}
         public Builder(GetStreamKeyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.created = defaults.created;
     	      this.id = defaults.id;
         }
 
@@ -61,6 +75,14 @@ public final class GetStreamKeyResult {
               throw new MissingRequiredPropertyException("GetStreamKeyResult", "accountId");
             }
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder created(String created) {
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetStreamKeyResult", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
@@ -74,6 +96,7 @@ public final class GetStreamKeyResult {
         public GetStreamKeyResult build() {
             final var _resultValue = new GetStreamKeyResult();
             _resultValue.accountId = accountId;
+            _resultValue.created = created;
             _resultValue.id = id;
             return _resultValue;
         }

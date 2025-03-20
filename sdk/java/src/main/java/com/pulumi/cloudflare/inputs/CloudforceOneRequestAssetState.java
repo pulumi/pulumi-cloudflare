@@ -32,21 +32,6 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
     }
 
     /**
-     * UUID
-     * 
-     */
-    @Import(name="assetIdentifer")
-    private @Nullable Output<String> assetIdentifer;
-
-    /**
-     * @return UUID
-     * 
-     */
-    public Optional<Output<String>> assetIdentifer() {
-        return Optional.ofNullable(this.assetIdentifer);
-    }
-
-    /**
      * Asset creation time
      * 
      */
@@ -170,7 +155,6 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
 
     private CloudforceOneRequestAssetState(CloudforceOneRequestAssetState $) {
         this.accountIdentifier = $.accountIdentifier;
-        this.assetIdentifer = $.assetIdentifer;
         this.created = $.created;
         this.description = $.description;
         this.fileType = $.fileType;
@@ -218,27 +202,6 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
          */
         public Builder accountIdentifier(String accountIdentifier) {
             return accountIdentifier(Output.of(accountIdentifier));
-        }
-
-        /**
-         * @param assetIdentifer UUID
-         * 
-         * @return builder
-         * 
-         */
-        public Builder assetIdentifer(@Nullable Output<String> assetIdentifer) {
-            $.assetIdentifer = assetIdentifer;
-            return this;
-        }
-
-        /**
-         * @param assetIdentifer UUID
-         * 
-         * @return builder
-         * 
-         */
-        public Builder assetIdentifer(String assetIdentifer) {
-            return assetIdentifer(Output.of(assetIdentifer));
         }
 
         /**

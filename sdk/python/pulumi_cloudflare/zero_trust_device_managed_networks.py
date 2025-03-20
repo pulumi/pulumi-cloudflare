@@ -27,6 +27,7 @@ class ZeroTrustDeviceManagedNetworksArgs:
                  type: pulumi.Input[str]):
         """
         The set of arguments for constructing a ZeroTrustDeviceManagedNetworks resource.
+        :param pulumi.Input['ZeroTrustDeviceManagedNetworksConfigArgs'] config: The configuration object containing information for the WARP client to detect the managed network.
         :param pulumi.Input[str] name: The name of the device managed network. This name must be unique.
         :param pulumi.Input[str] type: The type of device managed network.
         """
@@ -47,6 +48,9 @@ class ZeroTrustDeviceManagedNetworksArgs:
     @property
     @pulumi.getter
     def config(self) -> pulumi.Input['ZeroTrustDeviceManagedNetworksConfigArgs']:
+        """
+        The configuration object containing information for the WARP client to detect the managed network.
+        """
         return pulumi.get(self, "config")
 
     @config.setter
@@ -88,6 +92,7 @@ class _ZeroTrustDeviceManagedNetworksState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDeviceManagedNetworks resources.
+        :param pulumi.Input['ZeroTrustDeviceManagedNetworksConfigArgs'] config: The configuration object containing information for the WARP client to detect the managed network.
         :param pulumi.Input[str] name: The name of the device managed network. This name must be unique.
         :param pulumi.Input[str] network_id: API UUID.
         :param pulumi.Input[str] type: The type of device managed network.
@@ -115,6 +120,9 @@ class _ZeroTrustDeviceManagedNetworksState:
     @property
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['ZeroTrustDeviceManagedNetworksConfigArgs']]:
+        """
+        The configuration object containing information for the WARP client to detect the managed network.
+        """
         return pulumi.get(self, "config")
 
     @config.setter
@@ -179,6 +187,7 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ZeroTrustDeviceManagedNetworksConfigArgs', 'ZeroTrustDeviceManagedNetworksConfigArgsDict']] config: The configuration object containing information for the WARP client to detect the managed network.
         :param pulumi.Input[str] name: The name of the device managed network. This name must be unique.
         :param pulumi.Input[str] type: The type of device managed network.
         """
@@ -260,6 +269,7 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ZeroTrustDeviceManagedNetworksConfigArgs', 'ZeroTrustDeviceManagedNetworksConfigArgsDict']] config: The configuration object containing information for the WARP client to detect the managed network.
         :param pulumi.Input[str] name: The name of the device managed network. This name must be unique.
         :param pulumi.Input[str] network_id: API UUID.
         :param pulumi.Input[str] type: The type of device managed network.
@@ -283,6 +293,9 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
     @property
     @pulumi.getter
     def config(self) -> pulumi.Output['outputs.ZeroTrustDeviceManagedNetworksConfig']:
+        """
+        The configuration object containing information for the WARP client to detect the managed network.
+        """
         return pulumi.get(self, "config")
 
     @property

@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
         /// An informative summary of the list item.
         /// </summary>
         [Output("comment")]
-        public Output<string> Comment { get; private set; } = null!;
+        public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
         /// The RFC 3339 timestamp of when the item was created.
@@ -50,12 +50,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("ip")]
         public Output<string?> Ip { get; private set; } = null!;
-
-        /// <summary>
-        /// The unique ID of the item in the List.
-        /// </summary>
-        [Output("itemId")]
-        public Output<string> ItemId { get; private set; } = null!;
 
         /// <summary>
         /// The unique ID of the list.
@@ -140,6 +134,12 @@ namespace Pulumi.Cloudflare
         public Input<int>? Asn { get; set; }
 
         /// <summary>
+        /// An informative summary of the list item.
+        /// </summary>
+        [Input("comment")]
+        public Input<string>? Comment { get; set; }
+
+        /// <summary>
         /// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         /// </summary>
         [Input("hostname")]
@@ -206,12 +206,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
-
-        /// <summary>
-        /// The unique ID of the item in the List.
-        /// </summary>
-        [Input("itemId")]
-        public Input<string>? ItemId { get; set; }
 
         /// <summary>
         /// The unique ID of the list.

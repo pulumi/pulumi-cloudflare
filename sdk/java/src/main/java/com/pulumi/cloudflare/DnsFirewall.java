@@ -47,6 +47,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleDnsFirewall = new DnsFirewall("exampleDnsFirewall", DnsFirewallArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .name("My Awesome DNS Firewall cluster")
+ *             .upstreamIps(            
+ *                 "192.0.2.1",
+ *                 "198.51.100.1",
+ *                 "2001:DB8:100::CF")
  *             .attackMitigation(DnsFirewallAttackMitigationArgs.builder()
  *                 .enabled(true)
  *                 .only_when_upstream_unhealthy(false)
@@ -55,14 +60,9 @@ import javax.annotation.Nullable;
  *             .ecsFallback(false)
  *             .maximumCacheTtl(900)
  *             .minimumCacheTtl(60)
- *             .name("My Awesome DNS Firewall cluster")
  *             .negativeCacheTtl(900)
  *             .ratelimit(600)
  *             .retries(2)
- *             .upstreamIps(            
- *                 "192.0.2.1",
- *                 "198.51.100.1",
- *                 "string")
  *             .build());
  * 
  *     }
@@ -189,14 +189,14 @@ public class DnsFirewall extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> name;
+    private Output<String> name;
 
     /**
      * @return DNS Firewall cluster name
      * 
      */
-    public Output<Optional<String>> name() {
-        return Codegen.optional(this.name);
+    public Output<String> name() {
+        return this.name;
     }
     /**
      * Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
@@ -241,10 +241,10 @@ public class DnsFirewall extends com.pulumi.resources.CustomResource {
         return this.retries;
     }
     @Export(name="upstreamIps", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> upstreamIps;
+    private Output<List<String>> upstreamIps;
 
-    public Output<Optional<List<String>>> upstreamIps() {
-        return Codegen.optional(this.upstreamIps);
+    public Output<List<String>> upstreamIps() {
+        return this.upstreamIps;
     }
 
     /**

@@ -91,7 +91,7 @@ class GetSpectrumApplicationsResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
         """
-        Identifier
+        Zone identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -129,7 +129,7 @@ def get_spectrum_applications(direction: Optional[str] = None,
     :param str direction: Sets the direction by which results are ordered.
     :param int max_items: Max items to fetch, default: 1000
     :param str order: Application field by which results are ordered.
-    :param str zone_id: Identifier
+    :param str zone_id: Zone identifier.
     """
     __args__ = dict()
     __args__['direction'] = direction
@@ -165,7 +165,7 @@ def get_spectrum_applications_output(direction: Optional[pulumi.Input[Optional[s
     :param str direction: Sets the direction by which results are ordered.
     :param int max_items: Max items to fetch, default: 1000
     :param str order: Application field by which results are ordered.
-    :param str zone_id: Identifier
+    :param str zone_id: Zone identifier.
     """
     __args__ = dict()
     __args__['direction'] = direction

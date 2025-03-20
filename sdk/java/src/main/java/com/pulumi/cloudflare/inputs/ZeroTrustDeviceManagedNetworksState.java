@@ -23,9 +23,17 @@ public final class ZeroTrustDeviceManagedNetworksState extends com.pulumi.resour
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * The configuration object containing information for the WARP client to detect the managed network.
+     * 
+     */
     @Import(name="config")
     private @Nullable Output<ZeroTrustDeviceManagedNetworksConfigArgs> config;
 
+    /**
+     * @return The configuration object containing information for the WARP client to detect the managed network.
+     * 
+     */
     public Optional<Output<ZeroTrustDeviceManagedNetworksConfigArgs>> config() {
         return Optional.ofNullable(this.config);
     }
@@ -112,11 +120,23 @@ public final class ZeroTrustDeviceManagedNetworksState extends com.pulumi.resour
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param config The configuration object containing information for the WARP client to detect the managed network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder config(@Nullable Output<ZeroTrustDeviceManagedNetworksConfigArgs> config) {
             $.config = config;
             return this;
         }
 
+        /**
+         * @param config The configuration object containing information for the WARP client to detect the managed network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder config(ZeroTrustDeviceManagedNetworksConfigArgs config) {
             return config(Output.of(config));
         }

@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ZeroTrustDlpEntryConfidenceGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("aiContextAvailable")]
+        public Input<bool>? AiContextAvailable { get; set; }
+
         /// <summary>
         /// Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
         /// Profiles that use an entry with `available` set to true can use confidence thresholds

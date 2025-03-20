@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.AccountSubscriptionRatePlanArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,6 +33,51 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The monetary unit in which pricing information is displayed.
+     * 
+     */
+    @Import(name="currency")
+    private @Nullable Output<String> currency;
+
+    /**
+     * @return The monetary unit in which pricing information is displayed.
+     * 
+     */
+    public Optional<Output<String>> currency() {
+        return Optional.ofNullable(this.currency);
+    }
+
+    /**
+     * The end of the current period and also when the next billing is due.
+     * 
+     */
+    @Import(name="currentPeriodEnd")
+    private @Nullable Output<String> currentPeriodEnd;
+
+    /**
+     * @return The end of the current period and also when the next billing is due.
+     * 
+     */
+    public Optional<Output<String>> currentPeriodEnd() {
+        return Optional.ofNullable(this.currentPeriodEnd);
+    }
+
+    /**
+     * When the current billing period started. May match initial*period*start if this is the first period.
+     * 
+     */
+    @Import(name="currentPeriodStart")
+    private @Nullable Output<String> currentPeriodStart;
+
+    /**
+     * @return When the current billing period started. May match initial*period*start if this is the first period.
+     * 
+     */
+    public Optional<Output<String>> currentPeriodStart() {
+        return Optional.ofNullable(this.currentPeriodStart);
+    }
+
+    /**
      * How often the subscription is renewed automatically.
      * 
      */
@@ -47,6 +93,21 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The price of the subscription that will be billed, in US dollars.
+     * 
+     */
+    @Import(name="price")
+    private @Nullable Output<Double> price;
+
+    /**
+     * @return The price of the subscription that will be billed, in US dollars.
+     * 
+     */
+    public Optional<Output<Double>> price() {
+        return Optional.ofNullable(this.price);
+    }
+
+    /**
      * The rate plan applied to the subscription.
      * 
      */
@@ -59,6 +120,21 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<AccountSubscriptionRatePlanArgs>> ratePlan() {
         return Optional.ofNullable(this.ratePlan);
+    }
+
+    /**
+     * The state that the subscription is in.
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return The state that the subscription is in.
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
     }
 
     /**
@@ -80,8 +156,13 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
 
     private AccountSubscriptionState(AccountSubscriptionState $) {
         this.accountId = $.accountId;
+        this.currency = $.currency;
+        this.currentPeriodEnd = $.currentPeriodEnd;
+        this.currentPeriodStart = $.currentPeriodStart;
         this.frequency = $.frequency;
+        this.price = $.price;
         this.ratePlan = $.ratePlan;
+        this.state = $.state;
         this.subscriptionIdentifier = $.subscriptionIdentifier;
     }
 
@@ -125,6 +206,69 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param currency The monetary unit in which pricing information is displayed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currency(@Nullable Output<String> currency) {
+            $.currency = currency;
+            return this;
+        }
+
+        /**
+         * @param currency The monetary unit in which pricing information is displayed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currency(String currency) {
+            return currency(Output.of(currency));
+        }
+
+        /**
+         * @param currentPeriodEnd The end of the current period and also when the next billing is due.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currentPeriodEnd(@Nullable Output<String> currentPeriodEnd) {
+            $.currentPeriodEnd = currentPeriodEnd;
+            return this;
+        }
+
+        /**
+         * @param currentPeriodEnd The end of the current period and also when the next billing is due.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currentPeriodEnd(String currentPeriodEnd) {
+            return currentPeriodEnd(Output.of(currentPeriodEnd));
+        }
+
+        /**
+         * @param currentPeriodStart When the current billing period started. May match initial*period*start if this is the first period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currentPeriodStart(@Nullable Output<String> currentPeriodStart) {
+            $.currentPeriodStart = currentPeriodStart;
+            return this;
+        }
+
+        /**
+         * @param currentPeriodStart When the current billing period started. May match initial*period*start if this is the first period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currentPeriodStart(String currentPeriodStart) {
+            return currentPeriodStart(Output.of(currentPeriodStart));
+        }
+
+        /**
          * @param frequency How often the subscription is renewed automatically.
          * 
          * @return builder
@@ -146,6 +290,27 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param price The price of the subscription that will be billed, in US dollars.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder price(@Nullable Output<Double> price) {
+            $.price = price;
+            return this;
+        }
+
+        /**
+         * @param price The price of the subscription that will be billed, in US dollars.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder price(Double price) {
+            return price(Output.of(price));
+        }
+
+        /**
          * @param ratePlan The rate plan applied to the subscription.
          * 
          * @return builder
@@ -164,6 +329,27 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
          */
         public Builder ratePlan(AccountSubscriptionRatePlanArgs ratePlan) {
             return ratePlan(Output.of(ratePlan));
+        }
+
+        /**
+         * @param state The state that the subscription is in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state The state that the subscription is in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
         }
 
         /**

@@ -37,6 +37,8 @@ type AuthenticatedOriginPulls struct {
 	Hostname pulumi.StringPtrOutput `pulumi:"hostname"`
 	// The certificate authority that issued the certificate.
 	Issuer pulumi.StringOutput `pulumi:"issuer"`
+	// The hostname certificate's private key.
+	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
 	// The serial number on the uploaded certificate.
 	SerialNumber pulumi.StringOutput `pulumi:"serialNumber"`
 	// The type of hash used for the certificate.
@@ -106,6 +108,8 @@ type authenticatedOriginPullsState struct {
 	Hostname *string `pulumi:"hostname"`
 	// The certificate authority that issued the certificate.
 	Issuer *string `pulumi:"issuer"`
+	// The hostname certificate's private key.
+	PrivateKey *string `pulumi:"privateKey"`
 	// The serial number on the uploaded certificate.
 	SerialNumber *string `pulumi:"serialNumber"`
 	// The type of hash used for the certificate.
@@ -140,6 +144,8 @@ type AuthenticatedOriginPullsState struct {
 	Hostname pulumi.StringPtrInput
 	// The certificate authority that issued the certificate.
 	Issuer pulumi.StringPtrInput
+	// The hostname certificate's private key.
+	PrivateKey pulumi.StringPtrInput
 	// The serial number on the uploaded certificate.
 	SerialNumber pulumi.StringPtrInput
 	// The type of hash used for the certificate.
@@ -312,6 +318,11 @@ func (o AuthenticatedOriginPullsOutput) Hostname() pulumi.StringPtrOutput {
 // The certificate authority that issued the certificate.
 func (o AuthenticatedOriginPullsOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// The hostname certificate's private key.
+func (o AuthenticatedOriginPullsOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.PrivateKey }).(pulumi.StringOutput)
 }
 
 // The serial number on the uploaded certificate.

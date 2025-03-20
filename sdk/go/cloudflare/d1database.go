@@ -57,13 +57,15 @@ type D1Database struct {
 	// Specifies the timestamp the resource was created as an ISO8601 string.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The D1 database's size, in bytes.
-	FileSize  pulumi.Float64Output `pulumi:"fileSize"`
+	FileSize pulumi.Float64Output `pulumi:"fileSize"`
+	// D1 database name.
 	Name      pulumi.StringOutput  `pulumi:"name"`
 	NumTables pulumi.Float64Output `pulumi:"numTables"`
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	PrimaryLocationHint pulumi.StringPtrOutput `pulumi:"primaryLocationHint"`
-	Uuid                pulumi.StringOutput    `pulumi:"uuid"`
-	Version             pulumi.StringOutput    `pulumi:"version"`
+	// D1 database identifier (UUID).
+	Uuid    pulumi.StringOutput `pulumi:"uuid"`
+	Version pulumi.StringOutput `pulumi:"version"`
 }
 
 // NewD1Database registers a new resource with the given unique name, arguments, and options.
@@ -107,13 +109,15 @@ type d1databaseState struct {
 	// Specifies the timestamp the resource was created as an ISO8601 string.
 	CreatedAt *string `pulumi:"createdAt"`
 	// The D1 database's size, in bytes.
-	FileSize  *float64 `pulumi:"fileSize"`
+	FileSize *float64 `pulumi:"fileSize"`
+	// D1 database name.
 	Name      *string  `pulumi:"name"`
 	NumTables *float64 `pulumi:"numTables"`
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	PrimaryLocationHint *string `pulumi:"primaryLocationHint"`
-	Uuid                *string `pulumi:"uuid"`
-	Version             *string `pulumi:"version"`
+	// D1 database identifier (UUID).
+	Uuid    *string `pulumi:"uuid"`
+	Version *string `pulumi:"version"`
 }
 
 type D1DatabaseState struct {
@@ -122,13 +126,15 @@ type D1DatabaseState struct {
 	// Specifies the timestamp the resource was created as an ISO8601 string.
 	CreatedAt pulumi.StringPtrInput
 	// The D1 database's size, in bytes.
-	FileSize  pulumi.Float64PtrInput
+	FileSize pulumi.Float64PtrInput
+	// D1 database name.
 	Name      pulumi.StringPtrInput
 	NumTables pulumi.Float64PtrInput
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	PrimaryLocationHint pulumi.StringPtrInput
-	Uuid                pulumi.StringPtrInput
-	Version             pulumi.StringPtrInput
+	// D1 database identifier (UUID).
+	Uuid    pulumi.StringPtrInput
+	Version pulumi.StringPtrInput
 }
 
 func (D1DatabaseState) ElementType() reflect.Type {
@@ -138,7 +144,8 @@ func (D1DatabaseState) ElementType() reflect.Type {
 type d1databaseArgs struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
-	Name      string `pulumi:"name"`
+	// D1 database name.
+	Name string `pulumi:"name"`
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	PrimaryLocationHint *string `pulumi:"primaryLocationHint"`
 }
@@ -147,7 +154,8 @@ type d1databaseArgs struct {
 type D1DatabaseArgs struct {
 	// Account identifier tag.
 	AccountId pulumi.StringInput
-	Name      pulumi.StringInput
+	// D1 database name.
+	Name pulumi.StringInput
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	PrimaryLocationHint pulumi.StringPtrInput
 }
@@ -254,6 +262,7 @@ func (o D1DatabaseOutput) FileSize() pulumi.Float64Output {
 	return o.ApplyT(func(v *D1Database) pulumi.Float64Output { return v.FileSize }).(pulumi.Float64Output)
 }
 
+// D1 database name.
 func (o D1DatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *D1Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -267,6 +276,7 @@ func (o D1DatabaseOutput) PrimaryLocationHint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *D1Database) pulumi.StringPtrOutput { return v.PrimaryLocationHint }).(pulumi.StringPtrOutput)
 }
 
+// D1 database identifier (UUID).
 func (o D1DatabaseOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *D1Database) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
 }

@@ -44,7 +44,7 @@ export interface GetZeroTrustDevicePostureIntegrationArgs {
 export interface GetZeroTrustDevicePostureIntegrationResult {
     readonly accountId: string;
     /**
-     * The Workspace One Config Response.
+     * The configuration object containing third-party integration information.
      */
     readonly config: outputs.GetZeroTrustDevicePostureIntegrationConfig;
     /**

@@ -15,15 +15,15 @@ public final class GetMagicTransitSiteFilter {
      * @return Identifier
      * 
      */
-    private @Nullable String connectorIdentifier;
+    private @Nullable String connectorid;
 
     private GetMagicTransitSiteFilter() {}
     /**
      * @return Identifier
      * 
      */
-    public Optional<String> connectorIdentifier() {
-        return Optional.ofNullable(this.connectorIdentifier);
+    public Optional<String> connectorid() {
+        return Optional.ofNullable(this.connectorid);
     }
 
     public static Builder builder() {
@@ -35,22 +35,22 @@ public final class GetMagicTransitSiteFilter {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String connectorIdentifier;
+        private @Nullable String connectorid;
         public Builder() {}
         public Builder(GetMagicTransitSiteFilter defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.connectorIdentifier = defaults.connectorIdentifier;
+    	      this.connectorid = defaults.connectorid;
         }
 
         @CustomType.Setter
-        public Builder connectorIdentifier(@Nullable String connectorIdentifier) {
+        public Builder connectorid(@Nullable String connectorid) {
 
-            this.connectorIdentifier = connectorIdentifier;
+            this.connectorid = connectorid;
             return this;
         }
         public GetMagicTransitSiteFilter build() {
             final var _resultValue = new GetMagicTransitSiteFilter();
-            _resultValue.connectorIdentifier = connectorIdentifier;
+            _resultValue.connectorid = connectorid;
             return _resultValue;
         }
     }

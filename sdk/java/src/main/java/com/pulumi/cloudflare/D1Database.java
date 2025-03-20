@@ -107,9 +107,17 @@ public class D1Database extends com.pulumi.resources.CustomResource {
     public Output<Double> fileSize() {
         return this.fileSize;
     }
+    /**
+     * D1 database name.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return D1 database name.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -133,9 +141,17 @@ public class D1Database extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> primaryLocationHint() {
         return Codegen.optional(this.primaryLocationHint);
     }
+    /**
+     * D1 database identifier (UUID).
+     * 
+     */
     @Export(name="uuid", refs={String.class}, tree="[0]")
     private Output<String> uuid;
 
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
     public Output<String> uuid() {
         return this.uuid;
     }

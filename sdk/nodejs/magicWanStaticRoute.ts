@@ -66,12 +66,12 @@ export class MagicWanStaticRoute extends pulumi.CustomResource {
      * Priority of the static route.
      */
     public readonly priority!: pulumi.Output<number | undefined>;
-    public /*out*/ readonly route!: pulumi.Output<outputs.MagicWanStaticRouteRoute>;
+    public readonly route!: pulumi.Output<outputs.MagicWanStaticRouteRoute>;
     /**
      * Identifier
      */
     public readonly routeId!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly routes!: pulumi.Output<outputs.MagicWanStaticRouteRoute[]>;
+    public readonly routes!: pulumi.Output<outputs.MagicWanStaticRouteRoute[]>;
     /**
      * Used only for ECMP routes.
      */
@@ -116,13 +116,13 @@ export class MagicWanStaticRoute extends pulumi.CustomResource {
             resourceInputs["nexthop"] = args ? args.nexthop : undefined;
             resourceInputs["prefix"] = args ? args.prefix : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["route"] = args ? args.route : undefined;
             resourceInputs["routeId"] = args ? args.routeId : undefined;
+            resourceInputs["routes"] = args ? args.routes : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
             resourceInputs["weight"] = args ? args.weight : undefined;
             resourceInputs["modified"] = undefined /*out*/;
             resourceInputs["modifiedRoute"] = undefined /*out*/;
-            resourceInputs["route"] = undefined /*out*/;
-            resourceInputs["routes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MagicWanStaticRoute.__pulumiType, name, resourceInputs, opts);
@@ -195,10 +195,12 @@ export interface MagicWanStaticRouteArgs {
      * Priority of the static route.
      */
     priority?: pulumi.Input<number>;
+    route?: pulumi.Input<inputs.MagicWanStaticRouteRoute>;
     /**
      * Identifier
      */
     routeId?: pulumi.Input<string>;
+    routes?: pulumi.Input<pulumi.Input<inputs.MagicWanStaticRouteRoute>[]>;
     /**
      * Used only for ECMP routes.
      */

@@ -115,23 +115,52 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustGatewayProxyEndpointResult
     {
         public readonly string AccountId;
+        public readonly string CreatedAt;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of CIDRs to restrict ingress connections.
+        /// </summary>
+        public readonly ImmutableArray<string> Ips;
+        /// <summary>
+        /// The name of the proxy endpoint.
+        /// </summary>
+        public readonly string Name;
         public readonly string ProxyEndpointId;
+        /// <summary>
+        /// The subdomain to be used as the destination in the proxy client.
+        /// </summary>
+        public readonly string Subdomain;
+        public readonly string UpdatedAt;
 
         [OutputConstructor]
         private GetZeroTrustGatewayProxyEndpointResult(
             string accountId,
 
+            string createdAt,
+
             string id,
 
-            string proxyEndpointId)
+            ImmutableArray<string> ips,
+
+            string name,
+
+            string proxyEndpointId,
+
+            string subdomain,
+
+            string updatedAt)
         {
             AccountId = accountId;
+            CreatedAt = createdAt;
             Id = id;
+            Ips = ips;
+            Name = name;
             ProxyEndpointId = proxyEndpointId;
+            Subdomain = subdomain;
+            UpdatedAt = updatedAt;
         }
     }
 }

@@ -17,8 +17,14 @@ type ZeroTrustAccessMtlsHostnameSettings struct {
 	pulumi.CustomResourceState
 
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-	AccountId pulumi.StringPtrOutput                                `pulumi:"accountId"`
-	Settings  ZeroTrustAccessMtlsHostnameSettingsSettingArrayOutput `pulumi:"settings"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+	ChinaNetwork pulumi.BoolOutput `pulumi:"chinaNetwork"`
+	// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+	ClientCertificateForwarding pulumi.BoolOutput `pulumi:"clientCertificateForwarding"`
+	// The hostname that these settings apply to.
+	Hostname pulumi.StringOutput                                   `pulumi:"hostname"`
+	Settings ZeroTrustAccessMtlsHostnameSettingsSettingArrayOutput `pulumi:"settings"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
@@ -57,8 +63,14 @@ func GetZeroTrustAccessMtlsHostnameSettings(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ZeroTrustAccessMtlsHostnameSettings resources.
 type zeroTrustAccessMtlsHostnameSettingsState struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-	AccountId *string                                      `pulumi:"accountId"`
-	Settings  []ZeroTrustAccessMtlsHostnameSettingsSetting `pulumi:"settings"`
+	AccountId *string `pulumi:"accountId"`
+	// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+	ChinaNetwork *bool `pulumi:"chinaNetwork"`
+	// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+	ClientCertificateForwarding *bool `pulumi:"clientCertificateForwarding"`
+	// The hostname that these settings apply to.
+	Hostname *string                                      `pulumi:"hostname"`
+	Settings []ZeroTrustAccessMtlsHostnameSettingsSetting `pulumi:"settings"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -66,7 +78,13 @@ type zeroTrustAccessMtlsHostnameSettingsState struct {
 type ZeroTrustAccessMtlsHostnameSettingsState struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	Settings  ZeroTrustAccessMtlsHostnameSettingsSettingArrayInput
+	// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+	ChinaNetwork pulumi.BoolPtrInput
+	// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+	ClientCertificateForwarding pulumi.BoolPtrInput
+	// The hostname that these settings apply to.
+	Hostname pulumi.StringPtrInput
+	Settings ZeroTrustAccessMtlsHostnameSettingsSettingArrayInput
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
@@ -182,6 +200,21 @@ func (o ZeroTrustAccessMtlsHostnameSettingsOutput) ToZeroTrustAccessMtlsHostname
 // The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 func (o ZeroTrustAccessMtlsHostnameSettingsOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessMtlsHostnameSettings) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+func (o ZeroTrustAccessMtlsHostnameSettingsOutput) ChinaNetwork() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessMtlsHostnameSettings) pulumi.BoolOutput { return v.ChinaNetwork }).(pulumi.BoolOutput)
+}
+
+// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+func (o ZeroTrustAccessMtlsHostnameSettingsOutput) ClientCertificateForwarding() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessMtlsHostnameSettings) pulumi.BoolOutput { return v.ClientCertificateForwarding }).(pulumi.BoolOutput)
+}
+
+// The hostname that these settings apply to.
+func (o ZeroTrustAccessMtlsHostnameSettingsOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessMtlsHostnameSettings) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustAccessMtlsHostnameSettingsOutput) Settings() ZeroTrustAccessMtlsHostnameSettingsSettingArrayOutput {

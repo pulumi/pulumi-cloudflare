@@ -129,6 +129,7 @@ namespace Pulumi.Cloudflare
         public readonly string Status;
         public readonly string Type;
         public readonly ImmutableArray<string> VanityNameServers;
+        public readonly string VerificationKey;
         public readonly string? ZoneId;
 
         [OutputConstructor]
@@ -169,6 +170,8 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<string> vanityNameServers,
 
+            string verificationKey,
+
             string? zoneId)
         {
             Account = account;
@@ -189,6 +192,7 @@ namespace Pulumi.Cloudflare
             Status = status;
             Type = type;
             VanityNameServers = vanityNameServers;
+            VerificationKey = verificationKey;
             ZoneId = zoneId;
         }
     }

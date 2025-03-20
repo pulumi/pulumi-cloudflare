@@ -51,9 +51,9 @@ export class ContentScanningExpression extends pulumi.CustomResource {
 
     public readonly bodies!: pulumi.Output<outputs.ContentScanningExpressionBody[]>;
     /**
-     * Identifier
+     * Ruleset expression to use in matching content objects
      */
-    public readonly expressionId!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly payload!: pulumi.Output<string>;
     /**
      * Identifier
      */
@@ -73,7 +73,7 @@ export class ContentScanningExpression extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ContentScanningExpressionState | undefined;
             resourceInputs["bodies"] = state ? state.bodies : undefined;
-            resourceInputs["expressionId"] = state ? state.expressionId : undefined;
+            resourceInputs["payload"] = state ? state.payload : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ContentScanningExpressionArgs | undefined;
@@ -84,8 +84,8 @@ export class ContentScanningExpression extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["bodies"] = args ? args.bodies : undefined;
-            resourceInputs["expressionId"] = args ? args.expressionId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["payload"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ContentScanningExpression.__pulumiType, name, resourceInputs, opts);
@@ -98,9 +98,9 @@ export class ContentScanningExpression extends pulumi.CustomResource {
 export interface ContentScanningExpressionState {
     bodies?: pulumi.Input<pulumi.Input<inputs.ContentScanningExpressionBody>[]>;
     /**
-     * Identifier
+     * Ruleset expression to use in matching content objects
      */
-    expressionId?: pulumi.Input<string>;
+    payload?: pulumi.Input<string>;
     /**
      * Identifier
      */
@@ -112,10 +112,6 @@ export interface ContentScanningExpressionState {
  */
 export interface ContentScanningExpressionArgs {
     bodies: pulumi.Input<pulumi.Input<inputs.ContentScanningExpressionBody>[]>;
-    /**
-     * Identifier
-     */
-    expressionId?: pulumi.Input<string>;
     /**
      * Identifier
      */

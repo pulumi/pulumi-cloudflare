@@ -59,6 +59,12 @@ type LookupZeroTrustAccessMtlsHostnameSettingsArgs struct {
 type LookupZeroTrustAccessMtlsHostnameSettingsResult struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
+	// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+	ChinaNetwork bool `pulumi:"chinaNetwork"`
+	// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+	ClientCertificateForwarding bool `pulumi:"clientCertificateForwarding"`
+	// The hostname that these settings apply to.
+	Hostname string `pulumi:"hostname"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -104,6 +110,21 @@ func (o LookupZeroTrustAccessMtlsHostnameSettingsResultOutput) ToLookupZeroTrust
 // The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 func (o LookupZeroTrustAccessMtlsHostnameSettingsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessMtlsHostnameSettingsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+func (o LookupZeroTrustAccessMtlsHostnameSettingsResultOutput) ChinaNetwork() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessMtlsHostnameSettingsResult) bool { return v.ChinaNetwork }).(pulumi.BoolOutput)
+}
+
+// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+func (o LookupZeroTrustAccessMtlsHostnameSettingsResultOutput) ClientCertificateForwarding() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessMtlsHostnameSettingsResult) bool { return v.ClientCertificateForwarding }).(pulumi.BoolOutput)
+}
+
+// The hostname that these settings apply to.
+func (o LookupZeroTrustAccessMtlsHostnameSettingsResultOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessMtlsHostnameSettingsResult) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

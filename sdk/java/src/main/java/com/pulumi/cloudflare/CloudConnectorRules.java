@@ -6,11 +6,13 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.CloudConnectorRulesArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.CloudConnectorRulesState;
+import com.pulumi.cloudflare.outputs.CloudConnectorRulesParameters;
 import com.pulumi.cloudflare.outputs.CloudConnectorRulesRule;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -66,6 +68,52 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/cloudConnectorRules:CloudConnectorRules")
 public class CloudConnectorRules extends com.pulumi.resources.CustomResource {
+    /**
+     * Cloud Provider type
+     * 
+     */
+    @Export(name="cloudProvider", refs={String.class}, tree="[0]")
+    private Output<String> cloudProvider;
+
+    /**
+     * @return Cloud Provider type
+     * 
+     */
+    public Output<String> cloudProvider() {
+        return this.cloudProvider;
+    }
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    public Output<String> description() {
+        return this.description;
+    }
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enabled;
+
+    public Output<Boolean> enabled() {
+        return this.enabled;
+    }
+    @Export(name="expression", refs={String.class}, tree="[0]")
+    private Output<String> expression;
+
+    public Output<String> expression() {
+        return this.expression;
+    }
+    /**
+     * Parameters of Cloud Connector Rule
+     * 
+     */
+    @Export(name="parameters", refs={CloudConnectorRulesParameters.class}, tree="[0]")
+    private Output<CloudConnectorRulesParameters> parameters;
+
+    /**
+     * @return Parameters of Cloud Connector Rule
+     * 
+     */
+    public Output<CloudConnectorRulesParameters> parameters() {
+        return this.parameters;
+    }
     /**
      * List of Cloud Connector rules
      * 

@@ -21,6 +21,24 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        /// </summary>
+        [Output("chinaNetwork")]
+        public Output<bool> ChinaNetwork { get; private set; } = null!;
+
+        /// <summary>
+        /// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        /// </summary>
+        [Output("clientCertificateForwarding")]
+        public Output<bool> ClientCertificateForwarding { get; private set; } = null!;
+
+        /// <summary>
+        /// The hostname that these settings apply to.
+        /// </summary>
+        [Output("hostname")]
+        public Output<string> Hostname { get; private set; } = null!;
+
         [Output("settings")]
         public Output<ImmutableArray<Outputs.ZeroTrustAccessMtlsHostnameSettingsSetting>> Settings { get; private set; } = null!;
 
@@ -109,6 +127,24 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        /// </summary>
+        [Input("chinaNetwork")]
+        public Input<bool>? ChinaNetwork { get; set; }
+
+        /// <summary>
+        /// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        /// </summary>
+        [Input("clientCertificateForwarding")]
+        public Input<bool>? ClientCertificateForwarding { get; set; }
+
+        /// <summary>
+        /// The hostname that these settings apply to.
+        /// </summary>
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
 
         [Input("settings")]
         private InputList<Inputs.ZeroTrustAccessMtlsHostnameSettingsSettingGetArgs>? _settings;

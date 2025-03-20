@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.WaitingRoomRulesRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,18 +19,70 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
     public static final WaitingRoomRulesState Empty = new WaitingRoomRulesState();
 
     /**
-     * The ID of the rule.
+     * The action to take when the expression matches.
      * 
      */
-    @Import(name="ruleId")
-    private @Nullable Output<String> ruleId;
+    @Import(name="action")
+    private @Nullable Output<String> action;
 
     /**
-     * @return The ID of the rule.
+     * @return The action to take when the expression matches.
      * 
      */
-    public Optional<Output<String>> ruleId() {
-        return Optional.ofNullable(this.ruleId);
+    public Optional<Output<String>> action() {
+        return Optional.ofNullable(this.action);
+    }
+
+    /**
+     * The description of the rule.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the rule.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * When set to true, the rule is enabled.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    /**
+     * @return When set to true, the rule is enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
+
+    /**
+     * Criteria defining when there is a match for the current rule.
+     * 
+     */
+    @Import(name="expression")
+    private @Nullable Output<String> expression;
+
+    /**
+     * @return Criteria defining when there is a match for the current rule.
+     * 
+     */
+    public Optional<Output<String>> expression() {
+        return Optional.ofNullable(this.expression);
+    }
+
+    @Import(name="lastUpdated")
+    private @Nullable Output<String> lastUpdated;
+
+    public Optional<Output<String>> lastUpdated() {
+        return Optional.ofNullable(this.lastUpdated);
     }
 
     @Import(name="rules")
@@ -37,6 +90,21 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
 
     public Optional<Output<List<WaitingRoomRulesRuleArgs>>> rules() {
         return Optional.ofNullable(this.rules);
+    }
+
+    /**
+     * The version of the rule.
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<String> version;
+
+    /**
+     * @return The version of the rule.
+     * 
+     */
+    public Optional<Output<String>> version() {
+        return Optional.ofNullable(this.version);
     }
 
     @Import(name="waitingRoomId")
@@ -64,8 +132,13 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
     private WaitingRoomRulesState() {}
 
     private WaitingRoomRulesState(WaitingRoomRulesState $) {
-        this.ruleId = $.ruleId;
+        this.action = $.action;
+        this.description = $.description;
+        this.enabled = $.enabled;
+        this.expression = $.expression;
+        this.lastUpdated = $.lastUpdated;
         this.rules = $.rules;
+        this.version = $.version;
         this.waitingRoomId = $.waitingRoomId;
         this.zoneId = $.zoneId;
     }
@@ -89,24 +162,96 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ruleId The ID of the rule.
+         * @param action The action to take when the expression matches.
          * 
          * @return builder
          * 
          */
-        public Builder ruleId(@Nullable Output<String> ruleId) {
-            $.ruleId = ruleId;
+        public Builder action(@Nullable Output<String> action) {
+            $.action = action;
             return this;
         }
 
         /**
-         * @param ruleId The ID of the rule.
+         * @param action The action to take when the expression matches.
          * 
          * @return builder
          * 
          */
-        public Builder ruleId(String ruleId) {
-            return ruleId(Output.of(ruleId));
+        public Builder action(String action) {
+            return action(Output.of(action));
+        }
+
+        /**
+         * @param description The description of the rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param enabled When set to true, the rule is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled When set to true, the rule is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param expression Criteria defining when there is a match for the current rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expression(@Nullable Output<String> expression) {
+            $.expression = expression;
+            return this;
+        }
+
+        /**
+         * @param expression Criteria defining when there is a match for the current rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expression(String expression) {
+            return expression(Output.of(expression));
+        }
+
+        public Builder lastUpdated(@Nullable Output<String> lastUpdated) {
+            $.lastUpdated = lastUpdated;
+            return this;
+        }
+
+        public Builder lastUpdated(String lastUpdated) {
+            return lastUpdated(Output.of(lastUpdated));
         }
 
         public Builder rules(@Nullable Output<List<WaitingRoomRulesRuleArgs>> rules) {
@@ -120,6 +265,27 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
 
         public Builder rules(WaitingRoomRulesRuleArgs... rules) {
             return rules(List.of(rules));
+        }
+
+        /**
+         * @param version The version of the rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<String> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version The version of the rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(String version) {
+            return version(Output.of(version));
         }
 
         public Builder waitingRoomId(@Nullable Output<String> waitingRoomId) {

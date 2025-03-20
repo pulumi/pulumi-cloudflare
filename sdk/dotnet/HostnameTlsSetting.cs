@@ -12,6 +12,29 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleHostnameTlsSetting = new Cloudflare.HostnameTlsSetting("example_hostname_tls_setting", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "ciphers",
+    ///         Hostname = "app.example.com",
+    ///         Value = new[]
+    ///         {
+    ///             "ECDHE-RSA-AES128-GCM-SHA256",
+    ///             "AES128-GCM-SHA256",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -55,7 +78,7 @@ namespace Pulumi.Cloudflare
         /// The tls setting value.
         /// </summary>
         [Output("value")]
-        public Output<double> Value { get; private set; } = null!;
+        public Output<object> Value { get; private set; } = null!;
 
         /// <summary>
         /// Identifier
@@ -125,7 +148,7 @@ namespace Pulumi.Cloudflare
         /// The tls setting value.
         /// </summary>
         [Input("value", required: true)]
-        public Input<double> Value { get; set; } = null!;
+        public Input<object> Value { get; set; } = null!;
 
         /// <summary>
         /// Identifier
@@ -175,7 +198,7 @@ namespace Pulumi.Cloudflare
         /// The tls setting value.
         /// </summary>
         [Input("value")]
-        public Input<double>? Value { get; set; }
+        public Input<object>? Value { get; set; }
 
         /// <summary>
         /// Identifier

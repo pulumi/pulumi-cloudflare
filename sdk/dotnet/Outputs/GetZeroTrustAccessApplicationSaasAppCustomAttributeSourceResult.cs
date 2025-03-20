@@ -20,16 +20,16 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// A mapping from IdP ID to attribute name.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> NameByIdp;
+        public readonly ImmutableArray<Outputs.GetZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpResult> NameByIdps;
 
         [OutputConstructor]
         private GetZeroTrustAccessApplicationSaasAppCustomAttributeSourceResult(
             string name,
 
-            ImmutableDictionary<string, string> nameByIdp)
+            ImmutableArray<Outputs.GetZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpResult> nameByIdps)
         {
             Name = name;
-            NameByIdp = nameByIdp;
+            NameByIdps = nameByIdps;
         }
     }
 }

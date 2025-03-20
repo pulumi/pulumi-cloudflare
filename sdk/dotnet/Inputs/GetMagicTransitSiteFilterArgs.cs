@@ -15,8 +15,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("connectorIdentifier")]
-        public Input<string>? ConnectorIdentifier { get; set; }
+        [Input("connectorid")]
+        public Input<string>? Connectorid { get; set; }
 
         public GetMagicTransitSiteFilterInputArgs()
         {

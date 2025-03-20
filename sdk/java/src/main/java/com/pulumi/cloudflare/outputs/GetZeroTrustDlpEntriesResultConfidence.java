@@ -10,6 +10,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustDlpEntriesResultConfidence {
+    private Boolean aiContextAvailable;
     /**
      * @return Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
      * Profiles that use an entry with `available` set to true can use confidence thresholds
@@ -18,6 +19,9 @@ public final class GetZeroTrustDlpEntriesResultConfidence {
     private Boolean available;
 
     private GetZeroTrustDlpEntriesResultConfidence() {}
+    public Boolean aiContextAvailable() {
+        return this.aiContextAvailable;
+    }
     /**
      * @return Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
      * Profiles that use an entry with `available` set to true can use confidence thresholds
@@ -36,13 +40,23 @@ public final class GetZeroTrustDlpEntriesResultConfidence {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean aiContextAvailable;
         private Boolean available;
         public Builder() {}
         public Builder(GetZeroTrustDlpEntriesResultConfidence defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aiContextAvailable = defaults.aiContextAvailable;
     	      this.available = defaults.available;
         }
 
+        @CustomType.Setter
+        public Builder aiContextAvailable(Boolean aiContextAvailable) {
+            if (aiContextAvailable == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpEntriesResultConfidence", "aiContextAvailable");
+            }
+            this.aiContextAvailable = aiContextAvailable;
+            return this;
+        }
         @CustomType.Setter
         public Builder available(Boolean available) {
             if (available == null) {
@@ -53,6 +67,7 @@ public final class GetZeroTrustDlpEntriesResultConfidence {
         }
         public GetZeroTrustDlpEntriesResultConfidence build() {
             final var _resultValue = new GetZeroTrustDlpEntriesResultConfidence();
+            _resultValue.aiContextAvailable = aiContextAvailable;
             _resultValue.available = available;
             return _resultValue;
         }

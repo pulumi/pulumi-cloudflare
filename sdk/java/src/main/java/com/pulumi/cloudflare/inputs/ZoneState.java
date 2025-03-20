@@ -267,6 +267,21 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vanityNameServers);
     }
 
+    /**
+     * Verification key for partial zone setup.
+     * 
+     */
+    @Import(name="verificationKey")
+    private @Nullable Output<String> verificationKey;
+
+    /**
+     * @return Verification key for partial zone setup.
+     * 
+     */
+    public Optional<Output<String>> verificationKey() {
+        return Optional.ofNullable(this.verificationKey);
+    }
+
     private ZoneState() {}
 
     private ZoneState(ZoneState $) {
@@ -286,6 +301,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         this.status = $.status;
         this.type = $.type;
         this.vanityNameServers = $.vanityNameServers;
+        this.verificationKey = $.verificationKey;
     }
 
     public static Builder builder() {
@@ -673,6 +689,27 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vanityNameServers(String... vanityNameServers) {
             return vanityNameServers(List.of(vanityNameServers));
+        }
+
+        /**
+         * @param verificationKey Verification key for partial zone setup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder verificationKey(@Nullable Output<String> verificationKey) {
+            $.verificationKey = verificationKey;
+            return this;
+        }
+
+        /**
+         * @param verificationKey Verification key for partial zone setup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder verificationKey(String verificationKey) {
+            return verificationKey(Output.of(verificationKey));
         }
 
         public ZoneState build() {

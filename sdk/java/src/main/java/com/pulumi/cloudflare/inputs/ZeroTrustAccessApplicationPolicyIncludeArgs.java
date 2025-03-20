@@ -21,6 +21,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyIncludeGroup
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyIncludeGsuiteArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyIncludeIpArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyIncludeIpListArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyIncludeLoginMethodArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyIncludeOktaArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyIncludeSamlArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyIncludeServiceTokenArgs;
@@ -177,6 +178,13 @@ public final class ZeroTrustAccessApplicationPolicyIncludeArgs extends com.pulum
         return Optional.ofNullable(this.ipList);
     }
 
+    @Import(name="loginMethod")
+    private @Nullable Output<ZeroTrustAccessApplicationPolicyIncludeLoginMethodArgs> loginMethod;
+
+    public Optional<Output<ZeroTrustAccessApplicationPolicyIncludeLoginMethodArgs>> loginMethod() {
+        return Optional.ofNullable(this.loginMethod);
+    }
+
     @Import(name="okta")
     private @Nullable Output<ZeroTrustAccessApplicationPolicyIncludeOktaArgs> okta;
 
@@ -219,6 +227,7 @@ public final class ZeroTrustAccessApplicationPolicyIncludeArgs extends com.pulum
         this.gsuite = $.gsuite;
         this.ip = $.ip;
         this.ipList = $.ipList;
+        this.loginMethod = $.loginMethod;
         this.okta = $.okta;
         this.saml = $.saml;
         this.serviceToken = $.serviceToken;
@@ -426,6 +435,15 @@ public final class ZeroTrustAccessApplicationPolicyIncludeArgs extends com.pulum
 
         public Builder ipList(ZeroTrustAccessApplicationPolicyIncludeIpListArgs ipList) {
             return ipList(Output.of(ipList));
+        }
+
+        public Builder loginMethod(@Nullable Output<ZeroTrustAccessApplicationPolicyIncludeLoginMethodArgs> loginMethod) {
+            $.loginMethod = loginMethod;
+            return this;
+        }
+
+        public Builder loginMethod(ZeroTrustAccessApplicationPolicyIncludeLoginMethodArgs loginMethod) {
+            return loginMethod(Output.of(loginMethod));
         }
 
         public Builder okta(@Nullable Output<ZeroTrustAccessApplicationPolicyIncludeOktaArgs> okta) {

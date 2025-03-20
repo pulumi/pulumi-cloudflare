@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > `cloudflare.Filter` is in a deprecation phase until January 15th, 2025.
+ * > `cloudflare.Filter` is in a deprecation phase until June 15th, 2025.
  *   During this time period, this resource is still fully
  *   supported but you are strongly advised to move to the
  *   `cloudflare.Ruleset` resource. Full details can be found in the
@@ -21,6 +21,12 @@ import * as utilities from "./utilities";
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     expression: "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/filter:Filter example '<zone_id>/<filter_id>'
  * ```
  */
 export class Filter extends pulumi.CustomResource {
@@ -60,10 +66,6 @@ export class Filter extends pulumi.CustomResource {
      */
     public readonly expression!: pulumi.Output<string>;
     /**
-     * The unique identifier of the filter.
-     */
-    public readonly filterId!: pulumi.Output<string | undefined>;
-    /**
      * When true, indicates that the filter is currently paused.
      */
     public /*out*/ readonly paused!: pulumi.Output<boolean>;
@@ -91,7 +93,6 @@ export class Filter extends pulumi.CustomResource {
             const state = argsOrState as FilterState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["expression"] = state ? state.expression : undefined;
-            resourceInputs["filterId"] = state ? state.filterId : undefined;
             resourceInputs["paused"] = state ? state.paused : undefined;
             resourceInputs["ref"] = state ? state.ref : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
@@ -104,7 +105,6 @@ export class Filter extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["expression"] = args ? args.expression : undefined;
-            resourceInputs["filterId"] = args ? args.filterId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["paused"] = undefined /*out*/;
@@ -128,10 +128,6 @@ export interface FilterState {
      */
     expression?: pulumi.Input<string>;
     /**
-     * The unique identifier of the filter.
-     */
-    filterId?: pulumi.Input<string>;
-    /**
      * When true, indicates that the filter is currently paused.
      */
     paused?: pulumi.Input<boolean>;
@@ -153,10 +149,6 @@ export interface FilterArgs {
      * The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
      */
     expression: pulumi.Input<string>;
-    /**
-     * The unique identifier of the filter.
-     */
-    filterId?: pulumi.Input<string>;
     /**
      * Identifier
      */

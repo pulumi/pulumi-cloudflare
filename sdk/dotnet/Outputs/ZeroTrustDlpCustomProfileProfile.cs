@@ -13,6 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ZeroTrustDlpCustomProfileProfile
     {
+        public readonly bool? AiContextEnabled;
         /// <summary>
         /// Related DLP policies will trigger when the match count exceeds the number set.
         /// </summary>
@@ -36,6 +37,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private ZeroTrustDlpCustomProfileProfile(
+            bool? aiContextEnabled,
+
             int? allowedMatchCount,
 
             string? confidenceThreshold,
@@ -52,6 +55,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<Outputs.ZeroTrustDlpCustomProfileProfileSharedEntry> sharedEntries)
         {
+            AiContextEnabled = aiContextEnabled;
             AllowedMatchCount = allowedMatchCount;
             ConfidenceThreshold = confidenceThreshold;
             ContextAwareness = contextAwareness;

@@ -21,6 +21,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeGroupArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeGsuiteArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeIpArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeIpListArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeLoginMethodArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeOktaArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeSamlArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeServiceTokenArgs;
@@ -177,6 +178,13 @@ public final class ZeroTrustAccessGroupIncludeArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.ipList);
     }
 
+    @Import(name="loginMethod")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeLoginMethodArgs> loginMethod;
+
+    public Optional<Output<ZeroTrustAccessGroupIncludeLoginMethodArgs>> loginMethod() {
+        return Optional.ofNullable(this.loginMethod);
+    }
+
     @Import(name="okta")
     private @Nullable Output<ZeroTrustAccessGroupIncludeOktaArgs> okta;
 
@@ -219,6 +227,7 @@ public final class ZeroTrustAccessGroupIncludeArgs extends com.pulumi.resources.
         this.gsuite = $.gsuite;
         this.ip = $.ip;
         this.ipList = $.ipList;
+        this.loginMethod = $.loginMethod;
         this.okta = $.okta;
         this.saml = $.saml;
         this.serviceToken = $.serviceToken;
@@ -426,6 +435,15 @@ public final class ZeroTrustAccessGroupIncludeArgs extends com.pulumi.resources.
 
         public Builder ipList(ZeroTrustAccessGroupIncludeIpListArgs ipList) {
             return ipList(Output.of(ipList));
+        }
+
+        public Builder loginMethod(@Nullable Output<ZeroTrustAccessGroupIncludeLoginMethodArgs> loginMethod) {
+            $.loginMethod = loginMethod;
+            return this;
+        }
+
+        public Builder loginMethod(ZeroTrustAccessGroupIncludeLoginMethodArgs loginMethod) {
+            return loginMethod(Output.of(loginMethod));
         }
 
         public Builder okta(@Nullable Output<ZeroTrustAccessGroupIncludeOktaArgs> okta) {

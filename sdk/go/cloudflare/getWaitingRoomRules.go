@@ -56,8 +56,19 @@ type LookupWaitingRoomRulesArgs struct {
 
 // A collection of values returned by getWaitingRoomRules.
 type LookupWaitingRoomRulesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id            string `pulumi:"id"`
+	// The action to take when the expression matches.
+	Action string `pulumi:"action"`
+	// The description of the rule.
+	Description string `pulumi:"description"`
+	// When set to true, the rule is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Criteria defining when there is a match for the current rule.
+	Expression string `pulumi:"expression"`
+	// The ID of the rule.
+	Id          string `pulumi:"id"`
+	LastUpdated string `pulumi:"lastUpdated"`
+	// The version of the rule.
+	Version       string `pulumi:"version"`
 	WaitingRoomId string `pulumi:"waitingRoomId"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -98,9 +109,38 @@ func (o LookupWaitingRoomRulesResultOutput) ToLookupWaitingRoomRulesResultOutput
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The action to take when the expression matches.
+func (o LookupWaitingRoomRulesResultOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWaitingRoomRulesResult) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// The description of the rule.
+func (o LookupWaitingRoomRulesResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWaitingRoomRulesResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// When set to true, the rule is enabled.
+func (o LookupWaitingRoomRulesResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupWaitingRoomRulesResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Criteria defining when there is a match for the current rule.
+func (o LookupWaitingRoomRulesResultOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWaitingRoomRulesResult) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// The ID of the rule.
 func (o LookupWaitingRoomRulesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWaitingRoomRulesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupWaitingRoomRulesResultOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWaitingRoomRulesResult) string { return v.LastUpdated }).(pulumi.StringOutput)
+}
+
+// The version of the rule.
+func (o LookupWaitingRoomRulesResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWaitingRoomRulesResult) string { return v.Version }).(pulumi.StringOutput)
 }
 
 func (o LookupWaitingRoomRulesResultOutput) WaitingRoomId() pulumi.StringOutput {

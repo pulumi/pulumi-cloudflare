@@ -10,6 +10,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustDlpEntryConfidence {
+    private Boolean aiContextAvailable;
     /**
      * @return Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
      * Profiles that use an entry with `available` set to true can use confidence thresholds
@@ -18,6 +19,9 @@ public final class GetZeroTrustDlpEntryConfidence {
     private Boolean available;
 
     private GetZeroTrustDlpEntryConfidence() {}
+    public Boolean aiContextAvailable() {
+        return this.aiContextAvailable;
+    }
     /**
      * @return Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
      * Profiles that use an entry with `available` set to true can use confidence thresholds
@@ -36,13 +40,23 @@ public final class GetZeroTrustDlpEntryConfidence {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean aiContextAvailable;
         private Boolean available;
         public Builder() {}
         public Builder(GetZeroTrustDlpEntryConfidence defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aiContextAvailable = defaults.aiContextAvailable;
     	      this.available = defaults.available;
         }
 
+        @CustomType.Setter
+        public Builder aiContextAvailable(Boolean aiContextAvailable) {
+            if (aiContextAvailable == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpEntryConfidence", "aiContextAvailable");
+            }
+            this.aiContextAvailable = aiContextAvailable;
+            return this;
+        }
         @CustomType.Setter
         public Builder available(Boolean available) {
             if (available == null) {
@@ -53,6 +67,7 @@ public final class GetZeroTrustDlpEntryConfidence {
         }
         public GetZeroTrustDlpEntryConfidence build() {
             final var _resultValue = new GetZeroTrustDlpEntryConfidence();
+            _resultValue.aiContextAvailable = aiContextAvailable;
             _resultValue.available = available;
             return _resultValue;
         }

@@ -59,10 +59,18 @@ type LookupStreamAudioTrackArgs struct {
 type LookupStreamAudioTrackResult struct {
 	// The account identifier tag.
 	AccountId string `pulumi:"accountId"`
+	// Denotes whether the audio track will be played by default in a player.
+	Default bool `pulumi:"default"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier string `pulumi:"identifier"`
+	// A string to uniquely identify the track amongst other audio track labels for the specified video.
+	Label string `pulumi:"label"`
+	// Specifies the processing status of the video.
+	Status string `pulumi:"status"`
+	// A Cloudflare-generated unique identifier for a media item.
+	Uid string `pulumi:"uid"`
 }
 
 func LookupStreamAudioTrackOutput(ctx *pulumi.Context, args LookupStreamAudioTrackOutputArgs, opts ...pulumi.InvokeOption) LookupStreamAudioTrackResultOutput {
@@ -106,6 +114,11 @@ func (o LookupStreamAudioTrackResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamAudioTrackResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Denotes whether the audio track will be played by default in a player.
+func (o LookupStreamAudioTrackResultOutput) Default() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupStreamAudioTrackResult) bool { return v.Default }).(pulumi.BoolOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupStreamAudioTrackResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamAudioTrackResult) string { return v.Id }).(pulumi.StringOutput)
@@ -114,6 +127,21 @@ func (o LookupStreamAudioTrackResultOutput) Id() pulumi.StringOutput {
 // A Cloudflare-generated unique identifier for a media item.
 func (o LookupStreamAudioTrackResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamAudioTrackResult) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// A string to uniquely identify the track amongst other audio track labels for the specified video.
+func (o LookupStreamAudioTrackResultOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamAudioTrackResult) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Specifies the processing status of the video.
+func (o LookupStreamAudioTrackResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamAudioTrackResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A Cloudflare-generated unique identifier for a media item.
+func (o LookupStreamAudioTrackResultOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamAudioTrackResult) string { return v.Uid }).(pulumi.StringOutput)
 }
 
 func init() {

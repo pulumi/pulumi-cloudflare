@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *         var exampleZeroTrustDeviceManagedNetworks = new ZeroTrustDeviceManagedNetworks("exampleZeroTrustDeviceManagedNetworks", ZeroTrustDeviceManagedNetworksArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .config(ZeroTrustDeviceManagedNetworksConfigArgs.builder()
- *                 .tls_sockaddr("foobar:1234")
+ *                 .tls_sockaddr("foo.bar:1234")
  *                 .sha256("b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c")
  *                 .build())
  *             .name("managed-network-1")
@@ -72,9 +72,17 @@ public class ZeroTrustDeviceManagedNetworks extends com.pulumi.resources.CustomR
     public Output<String> accountId() {
         return this.accountId;
     }
+    /**
+     * The configuration object containing information for the WARP client to detect the managed network.
+     * 
+     */
     @Export(name="config", refs={ZeroTrustDeviceManagedNetworksConfig.class}, tree="[0]")
     private Output<ZeroTrustDeviceManagedNetworksConfig> config;
 
+    /**
+     * @return The configuration object containing information for the WARP client to detect the managed network.
+     * 
+     */
     public Output<ZeroTrustDeviceManagedNetworksConfig> config() {
         return this.config;
     }

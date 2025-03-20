@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustDevicePostureIntegrationsResult {
     /**
-     * @return The Workspace One Config Response.
+     * @return The configuration object containing third-party integration information.
      * 
      */
     private GetZeroTrustDevicePostureIntegrationsResultConfig config;
@@ -39,7 +39,7 @@ public final class GetZeroTrustDevicePostureIntegrationsResult {
 
     private GetZeroTrustDevicePostureIntegrationsResult() {}
     /**
-     * @return The Workspace One Config Response.
+     * @return The configuration object containing third-party integration information.
      * 
      */
     public GetZeroTrustDevicePostureIntegrationsResultConfig config() {

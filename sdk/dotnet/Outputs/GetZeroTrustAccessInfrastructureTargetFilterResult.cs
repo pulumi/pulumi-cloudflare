@@ -34,6 +34,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? HostnameContains;
         /// <summary>
+        /// Filters for targets whose IP addresses look like the specified string.
+        /// Supports `*` as a wildcard character
+        /// </summary>
+        public readonly string? IpLike;
+        /// <summary>
         /// IPv4 address of the target
         /// </summary>
         public readonly string? IpV4;
@@ -47,6 +52,26 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Ips;
         /// <summary>
+        /// Defines an IPv4 filter range's ending value (inclusive). Requires
+        /// `ipv4_start` to be specified as well.
+        /// </summary>
+        public readonly string? Ipv4End;
+        /// <summary>
+        /// Defines an IPv4 filter range's starting value (inclusive). Requires
+        /// `ipv4_end` to be specified as well.
+        /// </summary>
+        public readonly string? Ipv4Start;
+        /// <summary>
+        /// Defines an IPv6 filter range's ending value (inclusive). Requires
+        /// `ipv6_start` to be specified as well.
+        /// </summary>
+        public readonly string? Ipv6End;
+        /// <summary>
+        /// Defines an IPv6 filter range's starting value (inclusive). Requires
+        /// `ipv6_end` to be specified as well.
+        /// </summary>
+        public readonly string? Ipv6Start;
+        /// <summary>
         /// Date and time at which the target was modified after (inclusive)
         /// </summary>
         public readonly string? ModifiedAfter;
@@ -58,6 +83,12 @@ namespace Pulumi.Cloudflare.Outputs
         /// The field to sort by.
         /// </summary>
         public readonly string? Order;
+        /// <summary>
+        /// Filters for targets that have any of the following UUIDs. Specify
+        /// `target_ids` multiple times in query parameter to build list of
+        /// candidates.
+        /// </summary>
+        public readonly ImmutableArray<string> TargetIds;
         /// <summary>
         /// Private virtual network identifier of the target
         /// </summary>
@@ -75,17 +106,29 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? hostnameContains,
 
+            string? ipLike,
+
             string? ipV4,
 
             string? ipV6,
 
             ImmutableArray<string> ips,
 
+            string? ipv4End,
+
+            string? ipv4Start,
+
+            string? ipv6End,
+
+            string? ipv6Start,
+
             string? modifiedAfter,
 
             string? modifiedBefore,
 
             string? order,
+
+            ImmutableArray<string> targetIds,
 
             string? virtualNetworkId)
         {
@@ -94,12 +137,18 @@ namespace Pulumi.Cloudflare.Outputs
             Direction = direction;
             Hostname = hostname;
             HostnameContains = hostnameContains;
+            IpLike = ipLike;
             IpV4 = ipV4;
             IpV6 = ipV6;
             Ips = ips;
+            Ipv4End = ipv4End;
+            Ipv4Start = ipv4Start;
+            Ipv6End = ipv6End;
+            Ipv6Start = ipv6Start;
             ModifiedAfter = modifiedAfter;
             ModifiedBefore = modifiedBefore;
             Order = order;
+            TargetIds = targetIds;
             VirtualNetworkId = virtualNetworkId;
         }
     }

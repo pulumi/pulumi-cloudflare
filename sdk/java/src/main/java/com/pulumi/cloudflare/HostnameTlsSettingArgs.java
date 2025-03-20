@@ -6,7 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Double;
+import java.lang.Object;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -52,13 +52,13 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
      * 
      */
     @Import(name="value", required=true)
-    private Output<Double> value;
+    private Output<Object> value;
 
     /**
      * @return The tls setting value.
      * 
      */
-    public Output<Double> value() {
+    public Output<Object> value() {
         return this.value;
     }
 
@@ -152,7 +152,7 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder value(Output<Double> value) {
+        public Builder value(Output<Object> value) {
             $.value = value;
             return this;
         }
@@ -163,7 +163,7 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder value(Double value) {
+        public Builder value(Object value) {
             return value(Output.of(value));
         }
 

@@ -10,28 +10,11 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WaitingRoomRulesArgs Empty = new WaitingRoomRulesArgs();
-
-    /**
-     * The ID of the rule.
-     * 
-     */
-    @Import(name="ruleId")
-    private @Nullable Output<String> ruleId;
-
-    /**
-     * @return The ID of the rule.
-     * 
-     */
-    public Optional<Output<String>> ruleId() {
-        return Optional.ofNullable(this.ruleId);
-    }
 
     @Import(name="rules", required=true)
     private Output<List<WaitingRoomRulesRuleArgs>> rules;
@@ -65,7 +48,6 @@ public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArg
     private WaitingRoomRulesArgs() {}
 
     private WaitingRoomRulesArgs(WaitingRoomRulesArgs $) {
-        this.ruleId = $.ruleId;
         this.rules = $.rules;
         this.waitingRoomId = $.waitingRoomId;
         this.zoneId = $.zoneId;
@@ -87,27 +69,6 @@ public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(WaitingRoomRulesArgs defaults) {
             $ = new WaitingRoomRulesArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param ruleId The ID of the rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ruleId(@Nullable Output<String> ruleId) {
-            $.ruleId = ruleId;
-            return this;
-        }
-
-        /**
-         * @param ruleId The ID of the rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ruleId(String ruleId) {
-            return ruleId(Output.of(ruleId));
         }
 
         public Builder rules(Output<List<WaitingRoomRulesRuleArgs>> rules) {

@@ -146,7 +146,7 @@ namespace Pulumi.Cloudflare
         public Output<string> TrafficType { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Zone identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -273,7 +273,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? TrafficType { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Zone identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -374,7 +374,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? TrafficType { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Zone identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -112,13 +111,13 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="flags")
-    private @Nullable Output<Object> flags;
+    private @Nullable Output<Double> flags;
 
     /**
      * @return Flags for the CAA record.
      * 
      */
-    public Optional<Output<Object>> flags() {
+    public Optional<Output<Double>> flags() {
         return Optional.ofNullable(this.flags);
     }
 
@@ -748,7 +747,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder flags(@Nullable Output<Object> flags) {
+        public Builder flags(@Nullable Output<Double> flags) {
             $.flags = flags;
             return this;
         }
@@ -759,7 +758,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder flags(Object flags) {
+        public Builder flags(Double flags) {
             return flags(Output.of(flags));
         }
 

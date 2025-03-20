@@ -38,11 +38,25 @@ export interface GetZeroTrustGatewayProxyEndpointArgs {
  */
 export interface GetZeroTrustGatewayProxyEndpointResult {
     readonly accountId: string;
+    readonly createdAt: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
     readonly id: string;
+    /**
+     * A list of CIDRs to restrict ingress connections.
+     */
+    readonly ips: string[];
+    /**
+     * The name of the proxy endpoint.
+     */
+    readonly name: string;
     readonly proxyEndpointId: string;
+    /**
+     * The subdomain to be used as the destination in the proxy client.
+     */
+    readonly subdomain: string;
+    readonly updatedAt: string;
 }
 /**
  * ## Example Usage

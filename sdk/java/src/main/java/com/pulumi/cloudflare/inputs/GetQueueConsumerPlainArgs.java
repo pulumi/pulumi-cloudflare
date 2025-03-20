@@ -28,26 +28,10 @@ public final class GetQueueConsumerPlainArgs extends com.pulumi.resources.Invoke
         return this.accountId;
     }
 
-    /**
-     * A Resource identifier.
-     * 
-     */
-    @Import(name="queueId", required=true)
-    private String queueId;
-
-    /**
-     * @return A Resource identifier.
-     * 
-     */
-    public String queueId() {
-        return this.queueId;
-    }
-
     private GetQueueConsumerPlainArgs() {}
 
     private GetQueueConsumerPlainArgs(GetQueueConsumerPlainArgs $) {
         this.accountId = $.accountId;
-        this.queueId = $.queueId;
     }
 
     public static Builder builder() {
@@ -79,23 +63,9 @@ public final class GetQueueConsumerPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
-        /**
-         * @param queueId A Resource identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queueId(String queueId) {
-            $.queueId = queueId;
-            return this;
-        }
-
         public GetQueueConsumerPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetQueueConsumerPlainArgs", "accountId");
-            }
-            if ($.queueId == null) {
-                throw new MissingRequiredPropertyException("GetQueueConsumerPlainArgs", "queueId");
             }
             return $;
         }

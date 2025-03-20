@@ -5,10 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > Since v3.32.0
- *    all authentication schemes are supported for managing Origin CA certificates.
- *    Versions prior to v3.32.0 will still need to use `apiUserServiceKey`.
- *
  * ## Example Usage
  *
  * ```typescript

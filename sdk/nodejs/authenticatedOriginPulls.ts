@@ -79,6 +79,10 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
      */
     public /*out*/ readonly issuer!: pulumi.Output<string>;
     /**
+     * The hostname certificate's private key.
+     */
+    public /*out*/ readonly privateKey!: pulumi.Output<string>;
+    /**
      * The serial number on the uploaded certificate.
      */
     public /*out*/ readonly serialNumber!: pulumi.Output<string>;
@@ -123,6 +127,7 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
             resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["issuer"] = state ? state.issuer : undefined;
+            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
             resourceInputs["serialNumber"] = state ? state.serialNumber : undefined;
             resourceInputs["signature"] = state ? state.signature : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -148,6 +153,7 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
             resourceInputs["enabled"] = undefined /*out*/;
             resourceInputs["expiresOn"] = undefined /*out*/;
             resourceInputs["issuer"] = undefined /*out*/;
+            resourceInputs["privateKey"] = undefined /*out*/;
             resourceInputs["serialNumber"] = undefined /*out*/;
             resourceInputs["signature"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -203,6 +209,10 @@ export interface AuthenticatedOriginPullsState {
      * The certificate authority that issued the certificate.
      */
     issuer?: pulumi.Input<string>;
+    /**
+     * The hostname certificate's private key.
+     */
+    privateKey?: pulumi.Input<string>;
     /**
      * The serial number on the uploaded certificate.
      */

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// &gt; `cloudflare.FirewallRule` is in a deprecation phase until January 15th, 2025.
+    /// &gt; `cloudflare.FirewallRule` is in a deprecation phase until June 15th, 2025.
     ///   During this time period, this resource is still
     ///   fully supported but you are strongly advised  to move to the
     ///   `cloudflare.Ruleset` resource. Full details can be found in the
@@ -49,6 +49,12 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/firewallRule:FirewallRule example '&lt;zone_id&gt;/&lt;rule_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/firewallRule:FirewallRule")]
@@ -89,12 +95,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("ref")]
         public Output<string> Ref { get; private set; } = null!;
-
-        /// <summary>
-        /// The unique identifier of the firewall rule.
-        /// </summary>
-        [Output("ruleId")]
-        public Output<string?> RuleId { get; private set; } = null!;
 
         /// <summary>
         /// Identifier
@@ -158,12 +158,6 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.FirewallRuleFilterArgs> Filter { get; set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the firewall rule.
-        /// </summary>
-        [Input("ruleId")]
-        public Input<string>? RuleId { get; set; }
-
-        /// <summary>
         /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
@@ -217,12 +211,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("ref")]
         public Input<string>? Ref { get; set; }
-
-        /// <summary>
-        /// The unique identifier of the firewall rule.
-        /// </summary>
-        [Input("ruleId")]
-        public Input<string>? RuleId { get; set; }
 
         /// <summary>
         /// Identifier

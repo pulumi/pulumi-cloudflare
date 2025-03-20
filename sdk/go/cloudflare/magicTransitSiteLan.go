@@ -13,15 +13,19 @@ import (
 )
 
 // ## Example Usage
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan example '<account_id>/<site_id>/<lan_id>'
+// ```
 type MagicTransitSiteLan struct {
 	pulumi.CustomResourceState
 
 	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-	HaLink pulumi.BoolPtrOutput `pulumi:"haLink"`
-	// Identifier
-	LanId         pulumi.StringPtrOutput                     `pulumi:"lanId"`
+	HaLink        pulumi.BoolPtrOutput                       `pulumi:"haLink"`
 	Name          pulumi.StringPtrOutput                     `pulumi:"name"`
 	Nat           MagicTransitSiteLanNatOutput               `pulumi:"nat"`
 	Physport      pulumi.IntOutput                           `pulumi:"physport"`
@@ -79,9 +83,7 @@ type magicTransitSiteLanState struct {
 	// Identifier
 	AccountId *string `pulumi:"accountId"`
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-	HaLink *bool `pulumi:"haLink"`
-	// Identifier
-	LanId         *string                           `pulumi:"lanId"`
+	HaLink        *bool                             `pulumi:"haLink"`
 	Name          *string                           `pulumi:"name"`
 	Nat           *MagicTransitSiteLanNat           `pulumi:"nat"`
 	Physport      *int                              `pulumi:"physport"`
@@ -98,9 +100,7 @@ type MagicTransitSiteLanState struct {
 	// Identifier
 	AccountId pulumi.StringPtrInput
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-	HaLink pulumi.BoolPtrInput
-	// Identifier
-	LanId         pulumi.StringPtrInput
+	HaLink        pulumi.BoolPtrInput
 	Name          pulumi.StringPtrInput
 	Nat           MagicTransitSiteLanNatPtrInput
 	Physport      pulumi.IntPtrInput
@@ -121,9 +121,7 @@ type magicTransitSiteLanArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-	HaLink *bool `pulumi:"haLink"`
-	// Identifier
-	LanId         *string                           `pulumi:"lanId"`
+	HaLink        *bool                             `pulumi:"haLink"`
 	Name          *string                           `pulumi:"name"`
 	Nat           *MagicTransitSiteLanNat           `pulumi:"nat"`
 	Physport      int                               `pulumi:"physport"`
@@ -141,9 +139,7 @@ type MagicTransitSiteLanArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-	HaLink pulumi.BoolPtrInput
-	// Identifier
-	LanId         pulumi.StringPtrInput
+	HaLink        pulumi.BoolPtrInput
 	Name          pulumi.StringPtrInput
 	Nat           MagicTransitSiteLanNatPtrInput
 	Physport      pulumi.IntInput
@@ -251,11 +247,6 @@ func (o MagicTransitSiteLanOutput) AccountId() pulumi.StringOutput {
 // mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
 func (o MagicTransitSiteLanOutput) HaLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MagicTransitSiteLan) pulumi.BoolPtrOutput { return v.HaLink }).(pulumi.BoolPtrOutput)
-}
-
-// Identifier
-func (o MagicTransitSiteLanOutput) LanId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicTransitSiteLan) pulumi.StringPtrOutput { return v.LanId }).(pulumi.StringPtrOutput)
 }
 
 func (o MagicTransitSiteLanOutput) Name() pulumi.StringPtrOutput {

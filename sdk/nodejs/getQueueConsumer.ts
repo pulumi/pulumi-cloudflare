@@ -2,26 +2,17 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleQueueConsumer = cloudflare.getQueueConsumer({
- *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     queueId: "023e105f4ecef8ad9ca31a8372d0c353",
- * });
- * ```
  */
 export function getQueueConsumer(args: GetQueueConsumerArgs, opts?: pulumi.InvokeOptions): Promise<GetQueueConsumerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getQueueConsumer:getQueueConsumer", {
         "accountId": args.accountId,
-        "queueId": args.queueId,
     }, opts);
 }
 
@@ -33,10 +24,6 @@ export interface GetQueueConsumerArgs {
      * A Resource identifier.
      */
     accountId: string;
-    /**
-     * A Resource identifier.
-     */
-    queueId: string;
 }
 
 /**
@@ -48,6 +35,11 @@ export interface GetQueueConsumerResult {
      */
     readonly accountId: string;
     /**
+     * A Resource identifier.
+     */
+    readonly consumerId: string;
+    readonly createdOn: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -55,25 +47,24 @@ export interface GetQueueConsumerResult {
      * A Resource identifier.
      */
     readonly queueId: string;
+    /**
+     * Name of a Worker
+     */
+    readonly script: string;
+    /**
+     * Name of a Worker
+     */
+    readonly scriptName: string;
+    readonly settings: outputs.GetQueueConsumerSettings;
+    readonly type: string;
 }
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleQueueConsumer = cloudflare.getQueueConsumer({
- *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     queueId: "023e105f4ecef8ad9ca31a8372d0c353",
- * });
- * ```
  */
 export function getQueueConsumerOutput(args: GetQueueConsumerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQueueConsumerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getQueueConsumer:getQueueConsumer", {
         "accountId": args.accountId,
-        "queueId": args.queueId,
     }, opts);
 }
 
@@ -85,8 +76,4 @@ export interface GetQueueConsumerOutputArgs {
      * A Resource identifier.
      */
     accountId: pulumi.Input<string>;
-    /**
-     * A Resource identifier.
-     */
-    queueId: pulumi.Input<string>;
 }

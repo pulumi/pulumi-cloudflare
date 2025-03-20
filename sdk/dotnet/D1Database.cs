@@ -60,6 +60,9 @@ namespace Pulumi.Cloudflare
         [Output("fileSize")]
         public Output<double> FileSize { get; private set; } = null!;
 
+        /// <summary>
+        /// D1 database name.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -72,6 +75,9 @@ namespace Pulumi.Cloudflare
         [Output("primaryLocationHint")]
         public Output<string?> PrimaryLocationHint { get; private set; } = null!;
 
+        /// <summary>
+        /// D1 database identifier (UUID).
+        /// </summary>
         [Output("uuid")]
         public Output<string> Uuid { get; private set; } = null!;
 
@@ -130,6 +136,9 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// D1 database name.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -165,6 +174,9 @@ namespace Pulumi.Cloudflare
         [Input("fileSize")]
         public Input<double>? FileSize { get; set; }
 
+        /// <summary>
+        /// D1 database name.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -177,6 +189,9 @@ namespace Pulumi.Cloudflare
         [Input("primaryLocationHint")]
         public Input<string>? PrimaryLocationHint { get; set; }
 
+        /// <summary>
+        /// D1 database identifier (UUID).
+        /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 

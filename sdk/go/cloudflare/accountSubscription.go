@@ -18,10 +18,20 @@ type AccountSubscription struct {
 
 	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// The monetary unit in which pricing information is displayed.
+	Currency pulumi.StringOutput `pulumi:"currency"`
+	// The end of the current period and also when the next billing is due.
+	CurrentPeriodEnd pulumi.StringOutput `pulumi:"currentPeriodEnd"`
+	// When the current billing period started. May match initial*period*start if this is the first period.
+	CurrentPeriodStart pulumi.StringOutput `pulumi:"currentPeriodStart"`
 	// How often the subscription is renewed automatically.
 	Frequency pulumi.StringPtrOutput `pulumi:"frequency"`
+	// The price of the subscription that will be billed, in US dollars.
+	Price pulumi.Float64Output `pulumi:"price"`
 	// The rate plan applied to the subscription.
 	RatePlan AccountSubscriptionRatePlanOutput `pulumi:"ratePlan"`
+	// The state that the subscription is in.
+	State pulumi.StringOutput `pulumi:"state"`
 	// Subscription identifier tag.
 	SubscriptionIdentifier pulumi.StringPtrOutput `pulumi:"subscriptionIdentifier"`
 }
@@ -61,10 +71,20 @@ func GetAccountSubscription(ctx *pulumi.Context,
 type accountSubscriptionState struct {
 	// Identifier
 	AccountId *string `pulumi:"accountId"`
+	// The monetary unit in which pricing information is displayed.
+	Currency *string `pulumi:"currency"`
+	// The end of the current period and also when the next billing is due.
+	CurrentPeriodEnd *string `pulumi:"currentPeriodEnd"`
+	// When the current billing period started. May match initial*period*start if this is the first period.
+	CurrentPeriodStart *string `pulumi:"currentPeriodStart"`
 	// How often the subscription is renewed automatically.
 	Frequency *string `pulumi:"frequency"`
+	// The price of the subscription that will be billed, in US dollars.
+	Price *float64 `pulumi:"price"`
 	// The rate plan applied to the subscription.
 	RatePlan *AccountSubscriptionRatePlan `pulumi:"ratePlan"`
+	// The state that the subscription is in.
+	State *string `pulumi:"state"`
 	// Subscription identifier tag.
 	SubscriptionIdentifier *string `pulumi:"subscriptionIdentifier"`
 }
@@ -72,10 +92,20 @@ type accountSubscriptionState struct {
 type AccountSubscriptionState struct {
 	// Identifier
 	AccountId pulumi.StringPtrInput
+	// The monetary unit in which pricing information is displayed.
+	Currency pulumi.StringPtrInput
+	// The end of the current period and also when the next billing is due.
+	CurrentPeriodEnd pulumi.StringPtrInput
+	// When the current billing period started. May match initial*period*start if this is the first period.
+	CurrentPeriodStart pulumi.StringPtrInput
 	// How often the subscription is renewed automatically.
 	Frequency pulumi.StringPtrInput
+	// The price of the subscription that will be billed, in US dollars.
+	Price pulumi.Float64PtrInput
 	// The rate plan applied to the subscription.
 	RatePlan AccountSubscriptionRatePlanPtrInput
+	// The state that the subscription is in.
+	State pulumi.StringPtrInput
 	// Subscription identifier tag.
 	SubscriptionIdentifier pulumi.StringPtrInput
 }
@@ -199,14 +229,39 @@ func (o AccountSubscriptionOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountSubscription) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// The monetary unit in which pricing information is displayed.
+func (o AccountSubscriptionOutput) Currency() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountSubscription) pulumi.StringOutput { return v.Currency }).(pulumi.StringOutput)
+}
+
+// The end of the current period and also when the next billing is due.
+func (o AccountSubscriptionOutput) CurrentPeriodEnd() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountSubscription) pulumi.StringOutput { return v.CurrentPeriodEnd }).(pulumi.StringOutput)
+}
+
+// When the current billing period started. May match initial*period*start if this is the first period.
+func (o AccountSubscriptionOutput) CurrentPeriodStart() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountSubscription) pulumi.StringOutput { return v.CurrentPeriodStart }).(pulumi.StringOutput)
+}
+
 // How often the subscription is renewed automatically.
 func (o AccountSubscriptionOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountSubscription) pulumi.StringPtrOutput { return v.Frequency }).(pulumi.StringPtrOutput)
 }
 
+// The price of the subscription that will be billed, in US dollars.
+func (o AccountSubscriptionOutput) Price() pulumi.Float64Output {
+	return o.ApplyT(func(v *AccountSubscription) pulumi.Float64Output { return v.Price }).(pulumi.Float64Output)
+}
+
 // The rate plan applied to the subscription.
 func (o AccountSubscriptionOutput) RatePlan() AccountSubscriptionRatePlanOutput {
 	return o.ApplyT(func(v *AccountSubscription) AccountSubscriptionRatePlanOutput { return v.RatePlan }).(AccountSubscriptionRatePlanOutput)
+}
+
+// The state that the subscription is in.
+func (o AccountSubscriptionOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountSubscription) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 // Subscription identifier tag.

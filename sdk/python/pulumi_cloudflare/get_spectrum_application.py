@@ -81,7 +81,7 @@ class GetSpectrumApplicationResult:
     @pulumi.getter(name="appId")
     def app_id(self) -> str:
         """
-        Identifier
+        App identifier.
         """
         return pulumi.get(self, "app_id")
 
@@ -204,7 +204,7 @@ class GetSpectrumApplicationResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
         """
-        Identifier
+        Zone identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -248,8 +248,8 @@ def get_spectrum_application(app_id: Optional[str] = None,
     ```
 
 
-    :param str app_id: Identifier
-    :param str zone_id: Identifier
+    :param str app_id: App identifier.
+    :param str zone_id: Zone identifier.
     """
     __args__ = dict()
     __args__['appId'] = app_id
@@ -289,8 +289,8 @@ def get_spectrum_application_output(app_id: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str app_id: Identifier
-    :param str zone_id: Identifier
+    :param str app_id: App identifier.
+    :param str zone_id: Zone identifier.
     """
     __args__ = dict()
     __args__['appId'] = app_id

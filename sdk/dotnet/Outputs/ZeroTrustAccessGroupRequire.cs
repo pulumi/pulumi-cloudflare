@@ -37,6 +37,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.ZeroTrustAccessGroupRequireGsuite? Gsuite;
         public readonly Outputs.ZeroTrustAccessGroupRequireIp? Ip;
         public readonly Outputs.ZeroTrustAccessGroupRequireIpList? IpList;
+        public readonly Outputs.ZeroTrustAccessGroupRequireLoginMethod? LoginMethod;
         public readonly Outputs.ZeroTrustAccessGroupRequireOkta? Okta;
         public readonly Outputs.ZeroTrustAccessGroupRequireSaml? Saml;
         public readonly Outputs.ZeroTrustAccessGroupRequireServiceToken? ServiceToken;
@@ -79,6 +80,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.ZeroTrustAccessGroupRequireIpList? ipList,
 
+            Outputs.ZeroTrustAccessGroupRequireLoginMethod? loginMethod,
+
             Outputs.ZeroTrustAccessGroupRequireOkta? okta,
 
             Outputs.ZeroTrustAccessGroupRequireSaml? saml,
@@ -103,6 +106,7 @@ namespace Pulumi.Cloudflare.Outputs
             Gsuite = gsuite;
             Ip = ip;
             IpList = ipList;
+            LoginMethod = loginMethod;
             Okta = okta;
             Saml = saml;
             ServiceToken = serviceToken;

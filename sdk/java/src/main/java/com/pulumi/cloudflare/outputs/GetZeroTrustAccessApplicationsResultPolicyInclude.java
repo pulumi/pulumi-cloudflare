@@ -21,6 +21,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyI
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeGsuite;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeIp;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeIpList;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethod;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeOkta;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeSaml;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeServiceToken;
@@ -56,6 +57,7 @@ public final class GetZeroTrustAccessApplicationsResultPolicyInclude {
     private GetZeroTrustAccessApplicationsResultPolicyIncludeGsuite gsuite;
     private GetZeroTrustAccessApplicationsResultPolicyIncludeIp ip;
     private GetZeroTrustAccessApplicationsResultPolicyIncludeIpList ipList;
+    private GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethod loginMethod;
     private GetZeroTrustAccessApplicationsResultPolicyIncludeOkta okta;
     private GetZeroTrustAccessApplicationsResultPolicyIncludeSaml saml;
     private GetZeroTrustAccessApplicationsResultPolicyIncludeServiceToken serviceToken;
@@ -123,6 +125,9 @@ public final class GetZeroTrustAccessApplicationsResultPolicyInclude {
     public GetZeroTrustAccessApplicationsResultPolicyIncludeIpList ipList() {
         return this.ipList;
     }
+    public GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethod loginMethod() {
+        return this.loginMethod;
+    }
     public GetZeroTrustAccessApplicationsResultPolicyIncludeOkta okta() {
         return this.okta;
     }
@@ -160,6 +165,7 @@ public final class GetZeroTrustAccessApplicationsResultPolicyInclude {
         private GetZeroTrustAccessApplicationsResultPolicyIncludeGsuite gsuite;
         private GetZeroTrustAccessApplicationsResultPolicyIncludeIp ip;
         private GetZeroTrustAccessApplicationsResultPolicyIncludeIpList ipList;
+        private GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethod loginMethod;
         private GetZeroTrustAccessApplicationsResultPolicyIncludeOkta okta;
         private GetZeroTrustAccessApplicationsResultPolicyIncludeSaml saml;
         private GetZeroTrustAccessApplicationsResultPolicyIncludeServiceToken serviceToken;
@@ -184,6 +190,7 @@ public final class GetZeroTrustAccessApplicationsResultPolicyInclude {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
+    	      this.loginMethod = defaults.loginMethod;
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -334,6 +341,14 @@ public final class GetZeroTrustAccessApplicationsResultPolicyInclude {
             return this;
         }
         @CustomType.Setter
+        public Builder loginMethod(GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethod loginMethod) {
+            if (loginMethod == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResultPolicyInclude", "loginMethod");
+            }
+            this.loginMethod = loginMethod;
+            return this;
+        }
+        @CustomType.Setter
         public Builder okta(GetZeroTrustAccessApplicationsResultPolicyIncludeOkta okta) {
             if (okta == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResultPolicyInclude", "okta");
@@ -377,6 +392,7 @@ public final class GetZeroTrustAccessApplicationsResultPolicyInclude {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
+            _resultValue.loginMethod = loginMethod;
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

@@ -116,20 +116,6 @@ public class ZoneCacheReserve extends com.pulumi.resources.CustomResource {
     public Output<String> zoneId() {
         return this.zoneId;
     }
-    /**
-     * ID of the zone setting.
-     * 
-     */
-    @Export(name="zoneSettingId", refs={String.class}, tree="[0]")
-    private Output<String> zoneSettingId;
-
-    /**
-     * @return ID of the zone setting.
-     * 
-     */
-    public Output<String> zoneSettingId() {
-        return this.zoneSettingId;
-    }
 
     /**
      *

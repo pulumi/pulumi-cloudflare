@@ -41,7 +41,7 @@ public final class GetSpectrumApplicationsInvokeResult {
      */
     private List<GetSpectrumApplicationsResult> results;
     /**
-     * @return Identifier
+     * @return Zone identifier.
      * 
      */
     private String zoneId;
@@ -83,7 +83,7 @@ public final class GetSpectrumApplicationsInvokeResult {
         return this.results;
     }
     /**
-     * @return Identifier
+     * @return Zone identifier.
      * 
      */
     public String zoneId() {

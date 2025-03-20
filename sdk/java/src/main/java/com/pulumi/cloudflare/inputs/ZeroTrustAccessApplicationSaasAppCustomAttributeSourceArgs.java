@@ -3,10 +3,11 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
-import java.util.Map;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -35,22 +36,22 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs ex
      * A mapping from IdP ID to attribute name.
      * 
      */
-    @Import(name="nameByIdp")
-    private @Nullable Output<Map<String,String>> nameByIdp;
+    @Import(name="nameByIdps")
+    private @Nullable Output<List<ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpArgs>> nameByIdps;
 
     /**
      * @return A mapping from IdP ID to attribute name.
      * 
      */
-    public Optional<Output<Map<String,String>>> nameByIdp() {
-        return Optional.ofNullable(this.nameByIdp);
+    public Optional<Output<List<ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpArgs>>> nameByIdps() {
+        return Optional.ofNullable(this.nameByIdps);
     }
 
     private ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs() {}
 
     private ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs(ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs $) {
         this.name = $.name;
-        this.nameByIdp = $.nameByIdp;
+        this.nameByIdps = $.nameByIdps;
     }
 
     public static Builder builder() {
@@ -93,24 +94,34 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs ex
         }
 
         /**
-         * @param nameByIdp A mapping from IdP ID to attribute name.
+         * @param nameByIdps A mapping from IdP ID to attribute name.
          * 
          * @return builder
          * 
          */
-        public Builder nameByIdp(@Nullable Output<Map<String,String>> nameByIdp) {
-            $.nameByIdp = nameByIdp;
+        public Builder nameByIdps(@Nullable Output<List<ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpArgs>> nameByIdps) {
+            $.nameByIdps = nameByIdps;
             return this;
         }
 
         /**
-         * @param nameByIdp A mapping from IdP ID to attribute name.
+         * @param nameByIdps A mapping from IdP ID to attribute name.
          * 
          * @return builder
          * 
          */
-        public Builder nameByIdp(Map<String,String> nameByIdp) {
-            return nameByIdp(Output.of(nameByIdp));
+        public Builder nameByIdps(List<ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpArgs> nameByIdps) {
+            return nameByIdps(Output.of(nameByIdps));
+        }
+
+        /**
+         * @param nameByIdps A mapping from IdP ID to attribute name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameByIdps(ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpArgs... nameByIdps) {
+            return nameByIdps(List.of(nameByIdps));
         }
 
         public ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs build() {

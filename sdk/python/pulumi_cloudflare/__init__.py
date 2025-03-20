@@ -39,6 +39,8 @@ from .custom_ssl import *
 from .d1_database import *
 from .dns_firewall import *
 from .dns_record import *
+from .dns_settings import *
+from .dns_settings_internal_view import *
 from .dns_zone_transfers_acl import *
 from .dns_zone_transfers_incoming import *
 from .dns_zone_transfers_outgoing import *
@@ -76,6 +78,7 @@ from .get_api_shield_schema import *
 from .get_api_shield_schema_validation_settings import *
 from .get_api_shield_schemas import *
 from .get_api_token import *
+from .get_api_token_permissions_groups import *
 from .get_api_token_permissions_groups_list import *
 from .get_api_tokens import *
 from .get_argo_smart_routing import *
@@ -84,6 +87,7 @@ from .get_authenticated_origin_pulls import *
 from .get_authenticated_origin_pulls_certificate import *
 from .get_authenticated_origin_pulls_certificates import *
 from .get_bot_management import *
+from .get_botnet_feed_config_asn import *
 from .get_byo_ip_prefix import *
 from .get_byo_ip_prefixes import *
 from .get_calls_sfu_app import *
@@ -111,6 +115,9 @@ from .get_dns_firewall import *
 from .get_dns_firewalls import *
 from .get_dns_record import *
 from .get_dns_records import *
+from .get_dns_settings import *
+from .get_dns_settings_internal_view import *
+from .get_dns_settings_internal_views import *
 from .get_dns_zone_transfers_acl import *
 from .get_dns_zone_transfers_acls import *
 from .get_dns_zone_transfers_incoming import *
@@ -144,6 +151,7 @@ from .get_hyperdrive_configs import *
 from .get_image import *
 from .get_image_variant import *
 from .get_images import *
+from .get_ip_ranges import *
 from .get_keyless_certificate import *
 from .get_keyless_certificates import *
 from .get_leaked_credential_check import *
@@ -208,6 +216,12 @@ from .get_queue import *
 from .get_queue_consumer import *
 from .get_queues import *
 from .get_r2_bucket import *
+from .get_r2_bucket_cors import *
+from .get_r2_bucket_event_notification import *
+from .get_r2_bucket_lifecycle import *
+from .get_r2_bucket_lock import *
+from .get_r2_bucket_sippy import *
+from .get_r2_custom_domain import *
 from .get_rate_limit import *
 from .get_rate_limits import *
 from .get_regional_hostname import *
@@ -261,6 +275,8 @@ from .get_workers_for_platforms_dispatch_namespaces import *
 from .get_workers_kv import *
 from .get_workers_kv_namespace import *
 from .get_workers_kv_namespaces import *
+from .get_workers_route import *
+from .get_workers_routes import *
 from .get_workers_script import *
 from .get_workers_script_subdomain import *
 from .get_workers_scripts import *
@@ -314,6 +330,7 @@ from .get_zero_trust_gateway_app_types_list import *
 from .get_zero_trust_gateway_categories_list import *
 from .get_zero_trust_gateway_certificate import *
 from .get_zero_trust_gateway_certificates import *
+from .get_zero_trust_gateway_logging import *
 from .get_zero_trust_gateway_policies import *
 from .get_zero_trust_gateway_policy import *
 from .get_zero_trust_gateway_proxy_endpoint import *
@@ -328,6 +345,7 @@ from .get_zero_trust_tunnel_cloudflared import *
 from .get_zero_trust_tunnel_cloudflared_config import *
 from .get_zero_trust_tunnel_cloudflared_route import *
 from .get_zero_trust_tunnel_cloudflared_routes import *
+from .get_zero_trust_tunnel_cloudflared_token import *
 from .get_zero_trust_tunnel_cloudflared_virtual_network import *
 from .get_zero_trust_tunnel_cloudflared_virtual_networks import *
 from .get_zero_trust_tunnel_cloudflareds import *
@@ -381,6 +399,13 @@ from .provider import *
 from .queue import *
 from .queue_consumer import *
 from .r2_bucket import *
+from .r2_bucket_cors import *
+from .r2_bucket_event_notification import *
+from .r2_bucket_lifecycle import *
+from .r2_bucket_lock import *
+from .r2_bucket_sippy import *
+from .r2_custom_domain import *
+from .r2_managed_domain import *
 from .rate_limit import *
 from .record import *
 from .regional_hostname import *
@@ -417,6 +442,7 @@ from .workers_deployment import *
 from .workers_for_platforms_dispatch_namespace import *
 from .workers_kv import *
 from .workers_kv_namespace import *
+from .workers_route import *
 from .workers_script import *
 from .workers_script_subdomain import *
 from .workers_secret import *
@@ -447,6 +473,7 @@ from .zero_trust_dlp_entry import *
 from .zero_trust_dlp_predefined_profile import *
 from .zero_trust_dns_location import *
 from .zero_trust_gateway_certificate import *
+from .zero_trust_gateway_logging import *
 from .zero_trust_gateway_policy import *
 from .zero_trust_gateway_proxy_endpoint import *
 from .zero_trust_gateway_settings import *
@@ -749,6 +776,22 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/dnsRecord:DnsRecord": "DnsRecord"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/dnsSettings",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/dnsSettings:DnsSettings": "DnsSettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/dnsSettingsInternalView",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/dnsSettingsInternalView:DnsSettingsInternalView": "DnsSettingsInternalView"
   }
  },
  {
@@ -1185,6 +1228,62 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/r2BucketCors",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/r2BucketCors:R2BucketCors": "R2BucketCors"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/r2BucketEventNotification",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/r2BucketEventNotification:R2BucketEventNotification": "R2BucketEventNotification"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/r2BucketLifecycle",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/r2BucketLifecycle:R2BucketLifecycle": "R2BucketLifecycle"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/r2BucketLock",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/r2BucketLock:R2BucketLock": "R2BucketLock"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/r2BucketSippy",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/r2BucketSippy:R2BucketSippy": "R2BucketSippy"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/r2CustomDomain",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/r2CustomDomain:R2CustomDomain": "R2CustomDomain"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/r2ManagedDomain",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/r2ManagedDomain:R2ManagedDomain": "R2ManagedDomain"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/rateLimit",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1473,6 +1572,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/workersRoute",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workersRoute:WorkersRoute": "WorkersRoute"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/workersScript",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1709,6 +1816,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate": "ZeroTrustGatewayCertificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustGatewayLogging",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging": "ZeroTrustGatewayLogging"
   }
  },
  {

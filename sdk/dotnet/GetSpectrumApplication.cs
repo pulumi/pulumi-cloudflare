@@ -85,13 +85,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetSpectrumApplicationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// App identifier.
         /// </summary>
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Zone identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -105,13 +105,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetSpectrumApplicationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// App identifier.
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Zone identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetSpectrumApplicationResult
     {
         /// <summary>
-        /// Identifier
+        /// App identifier.
         /// </summary>
         public readonly string AppId;
         /// <summary>
@@ -190,7 +190,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string TrafficType;
         /// <summary>
-        /// Identifier
+        /// Zone identifier.
         /// </summary>
         public readonly string ZoneId;
 

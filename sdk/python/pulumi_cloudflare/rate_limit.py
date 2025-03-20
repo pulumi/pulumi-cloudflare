@@ -249,7 +249,7 @@ class RateLimit(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > `RateLimit` is in a deprecation phase until January 15th, 2025.
+        > `RateLimit` is in a deprecation phase until June 15th, 2025.
           During this time period, this resource is still
           fully supported but you are strongly advised to move to the
           `Ruleset` resource. Full details can be found in the
@@ -317,7 +317,7 @@ class RateLimit(pulumi.CustomResource):
                  args: RateLimitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > `RateLimit` is in a deprecation phase until January 15th, 2025.
+        > `RateLimit` is in a deprecation phase until June 15th, 2025.
           During this time period, this resource is still
           fully supported but you are strongly advised to move to the
           `Ruleset` resource. Full details can be found in the

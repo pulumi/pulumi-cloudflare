@@ -44,6 +44,14 @@ export interface GetHostnameTlsSettingArgs {
  */
 export interface GetHostnameTlsSettingResult {
     /**
+     * This is the time the tls setting was originally created for this hostname.
+     */
+    readonly createdAt: string;
+    /**
+     * The hostname for which the tls settings are set.
+     */
+    readonly hostname: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -51,6 +59,18 @@ export interface GetHostnameTlsSettingResult {
      * The TLS Setting name.
      */
     readonly settingId: string;
+    /**
+     * Deployment status for the given tls setting.
+     */
+    readonly status: string;
+    /**
+     * This is the time the tls setting was updated.
+     */
+    readonly updatedAt: string;
+    /**
+     * The tls setting value.
+     */
+    readonly value: number;
     /**
      * Identifier
      */

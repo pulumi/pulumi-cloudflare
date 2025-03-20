@@ -131,25 +131,60 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountIdentifier;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Author of message
         /// </summary>
-        public readonly string Id;
+        public readonly string Author;
+        /// <summary>
+        /// Content of message
+        /// </summary>
+        public readonly string Content;
+        /// <summary>
+        /// Message creation time
+        /// </summary>
+        public readonly string Created;
+        /// <summary>
+        /// Message ID
+        /// </summary>
+        public readonly int Id;
+        /// <summary>
+        /// Whether the message is a follow-on request
+        /// </summary>
+        public readonly bool IsFollowOnRequest;
         /// <summary>
         /// UUID
         /// </summary>
         public readonly string RequestIdentifier;
+        /// <summary>
+        /// Message last updated time
+        /// </summary>
+        public readonly string Updated;
 
         [OutputConstructor]
         private GetCloudforceOneRequestMessageResult(
             string accountIdentifier,
 
-            string id,
+            string author,
 
-            string requestIdentifier)
+            string content,
+
+            string created,
+
+            int id,
+
+            bool isFollowOnRequest,
+
+            string requestIdentifier,
+
+            string updated)
         {
             AccountIdentifier = accountIdentifier;
+            Author = author;
+            Content = content;
+            Created = created;
             Id = id;
+            IsFollowOnRequest = isFollowOnRequest;
             RequestIdentifier = requestIdentifier;
+            Updated = updated;
         }
     }
 }

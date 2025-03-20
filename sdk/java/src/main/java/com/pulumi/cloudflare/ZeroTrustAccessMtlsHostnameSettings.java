@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -74,6 +75,48 @@ public class ZeroTrustAccessMtlsHostnameSettings extends com.pulumi.resources.Cu
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
+    }
+    /**
+     * Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+     * 
+     */
+    @Export(name="chinaNetwork", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> chinaNetwork;
+
+    /**
+     * @return Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+     * 
+     */
+    public Output<Boolean> chinaNetwork() {
+        return this.chinaNetwork;
+    }
+    /**
+     * Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+     * 
+     */
+    @Export(name="clientCertificateForwarding", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> clientCertificateForwarding;
+
+    /**
+     * @return Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+     * 
+     */
+    public Output<Boolean> clientCertificateForwarding() {
+        return this.clientCertificateForwarding;
+    }
+    /**
+     * The hostname that these settings apply to.
+     * 
+     */
+    @Export(name="hostname", refs={String.class}, tree="[0]")
+    private Output<String> hostname;
+
+    /**
+     * @return The hostname that these settings apply to.
+     * 
+     */
+    public Output<String> hostname() {
+        return this.hostname;
     }
     @Export(name="settings", refs={List.class,ZeroTrustAccessMtlsHostnameSettingsSetting.class}, tree="[0,1]")
     private Output<List<ZeroTrustAccessMtlsHostnameSettingsSetting>> settings;

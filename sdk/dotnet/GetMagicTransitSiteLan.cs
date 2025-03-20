@@ -42,8 +42,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("lanId", required: true)]
-        public string LanId { get; set; } = null!;
+        [Input("lanId")]
+        public string? LanId { get; set; }
 
         public GetMagicTransitSiteLanArgs()
         {
@@ -62,8 +62,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("lanId", required: true)]
-        public Input<string> LanId { get; set; } = null!;
+        [Input("lanId")]
+        public Input<string>? LanId { get; set; }
 
         public GetMagicTransitSiteLanInvokeArgs()
         {
@@ -90,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string LanId;
+        public readonly string? LanId;
         public readonly string Name;
         public readonly Outputs.GetMagicTransitSiteLanNatResult Nat;
         public readonly int Physport;
@@ -116,7 +116,7 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            string lanId,
+            string? lanId,
 
             string name,
 

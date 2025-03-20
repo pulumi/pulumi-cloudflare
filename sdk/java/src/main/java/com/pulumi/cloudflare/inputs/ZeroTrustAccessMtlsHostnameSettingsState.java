@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessMtlsHostnameSettingsSettingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -30,6 +31,51 @@ public final class ZeroTrustAccessMtlsHostnameSettingsState extends com.pulumi.r
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+     * 
+     */
+    @Import(name="chinaNetwork")
+    private @Nullable Output<Boolean> chinaNetwork;
+
+    /**
+     * @return Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> chinaNetwork() {
+        return Optional.ofNullable(this.chinaNetwork);
+    }
+
+    /**
+     * Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+     * 
+     */
+    @Import(name="clientCertificateForwarding")
+    private @Nullable Output<Boolean> clientCertificateForwarding;
+
+    /**
+     * @return Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+     * 
+     */
+    public Optional<Output<Boolean>> clientCertificateForwarding() {
+        return Optional.ofNullable(this.clientCertificateForwarding);
+    }
+
+    /**
+     * The hostname that these settings apply to.
+     * 
+     */
+    @Import(name="hostname")
+    private @Nullable Output<String> hostname;
+
+    /**
+     * @return The hostname that these settings apply to.
+     * 
+     */
+    public Optional<Output<String>> hostname() {
+        return Optional.ofNullable(this.hostname);
     }
 
     @Import(name="settings")
@@ -58,6 +104,9 @@ public final class ZeroTrustAccessMtlsHostnameSettingsState extends com.pulumi.r
 
     private ZeroTrustAccessMtlsHostnameSettingsState(ZeroTrustAccessMtlsHostnameSettingsState $) {
         this.accountId = $.accountId;
+        this.chinaNetwork = $.chinaNetwork;
+        this.clientCertificateForwarding = $.clientCertificateForwarding;
+        this.hostname = $.hostname;
         this.settings = $.settings;
         this.zoneId = $.zoneId;
     }
@@ -99,6 +148,69 @@ public final class ZeroTrustAccessMtlsHostnameSettingsState extends com.pulumi.r
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param chinaNetwork Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder chinaNetwork(@Nullable Output<Boolean> chinaNetwork) {
+            $.chinaNetwork = chinaNetwork;
+            return this;
+        }
+
+        /**
+         * @param chinaNetwork Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder chinaNetwork(Boolean chinaNetwork) {
+            return chinaNetwork(Output.of(chinaNetwork));
+        }
+
+        /**
+         * @param clientCertificateForwarding Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCertificateForwarding(@Nullable Output<Boolean> clientCertificateForwarding) {
+            $.clientCertificateForwarding = clientCertificateForwarding;
+            return this;
+        }
+
+        /**
+         * @param clientCertificateForwarding Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCertificateForwarding(Boolean clientCertificateForwarding) {
+            return clientCertificateForwarding(Output.of(clientCertificateForwarding));
+        }
+
+        /**
+         * @param hostname The hostname that these settings apply to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(@Nullable Output<String> hostname) {
+            $.hostname = hostname;
+            return this;
+        }
+
+        /**
+         * @param hostname The hostname that these settings apply to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(String hostname) {
+            return hostname(Output.of(hostname));
         }
 
         public Builder settings(@Nullable Output<List<ZeroTrustAccessMtlsHostnameSettingsSettingArgs>> settings) {

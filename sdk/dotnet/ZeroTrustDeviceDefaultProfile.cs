@@ -42,6 +42,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile example '&lt;account_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile")]
     public partial class ZeroTrustDeviceDefaultProfile : global::Pulumi.CustomResource

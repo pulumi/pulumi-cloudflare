@@ -16,12 +16,12 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string? ConnectorIdentifier;
+        public readonly string? Connectorid;
 
         [OutputConstructor]
-        private GetMagicTransitSiteFilterResult(string? connectorIdentifier)
+        private GetMagicTransitSiteFilterResult(string? connectorid)
         {
-            ConnectorIdentifier = connectorIdentifier;
+            Connectorid = connectorid;
         }
     }
 }

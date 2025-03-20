@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -21,10 +22,30 @@ public final class GetCloudforceOneRequestAssetResult {
      */
     private String assetIdentifer;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Asset creation time
      * 
      */
-    private String id;
+    private String created;
+    /**
+     * @return Asset description
+     * 
+     */
+    private String description;
+    /**
+     * @return Asset file type
+     * 
+     */
+    private String fileType;
+    /**
+     * @return Asset ID
+     * 
+     */
+    private Integer id;
+    /**
+     * @return Asset name
+     * 
+     */
+    private String name;
     /**
      * @return UUID
      * 
@@ -47,11 +68,39 @@ public final class GetCloudforceOneRequestAssetResult {
         return this.assetIdentifer;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Asset creation time
      * 
      */
-    public String id() {
+    public String created() {
+        return this.created;
+    }
+    /**
+     * @return Asset description
+     * 
+     */
+    public String description() {
+        return this.description;
+    }
+    /**
+     * @return Asset file type
+     * 
+     */
+    public String fileType() {
+        return this.fileType;
+    }
+    /**
+     * @return Asset ID
+     * 
+     */
+    public Integer id() {
         return this.id;
+    }
+    /**
+     * @return Asset name
+     * 
+     */
+    public String name() {
+        return this.name;
     }
     /**
      * @return UUID
@@ -72,14 +121,22 @@ public final class GetCloudforceOneRequestAssetResult {
     public static final class Builder {
         private String accountIdentifier;
         private String assetIdentifer;
-        private String id;
+        private String created;
+        private String description;
+        private String fileType;
+        private Integer id;
+        private String name;
         private String requestIdentifier;
         public Builder() {}
         public Builder(GetCloudforceOneRequestAssetResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountIdentifier = defaults.accountIdentifier;
     	      this.assetIdentifer = defaults.assetIdentifer;
+    	      this.created = defaults.created;
+    	      this.description = defaults.description;
+    	      this.fileType = defaults.fileType;
     	      this.id = defaults.id;
+    	      this.name = defaults.name;
     	      this.requestIdentifier = defaults.requestIdentifier;
         }
 
@@ -100,11 +157,43 @@ public final class GetCloudforceOneRequestAssetResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
+        public Builder created(String created) {
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetResult", "created");
+            }
+            this.created = created;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetResult", "description");
+            }
+            this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fileType(String fileType) {
+            if (fileType == null) {
+              throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetResult", "fileType");
+            }
+            this.fileType = fileType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(Integer id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
@@ -119,7 +208,11 @@ public final class GetCloudforceOneRequestAssetResult {
             final var _resultValue = new GetCloudforceOneRequestAssetResult();
             _resultValue.accountIdentifier = accountIdentifier;
             _resultValue.assetIdentifer = assetIdentifer;
+            _resultValue.created = created;
+            _resultValue.description = description;
+            _resultValue.fileType = fileType;
             _resultValue.id = id;
+            _resultValue.name = name;
             _resultValue.requestIdentifier = requestIdentifier;
             return _resultValue;
         }

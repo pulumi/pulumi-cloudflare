@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class GetZeroTrustDevicePostureIntegrationResult {
     private String accountId;
     /**
-     * @return The Workspace One Config Response.
+     * @return The configuration object containing third-party integration information.
      * 
      */
     private GetZeroTrustDevicePostureIntegrationConfig config;
@@ -50,7 +50,7 @@ public final class GetZeroTrustDevicePostureIntegrationResult {
         return this.accountId;
     }
     /**
-     * @return The Workspace One Config Response.
+     * @return The configuration object containing third-party integration information.
      * 
      */
     public GetZeroTrustDevicePostureIntegrationConfig config() {

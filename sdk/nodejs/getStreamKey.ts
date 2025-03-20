@@ -42,7 +42,11 @@ export interface GetStreamKeyResult {
      */
     readonly accountId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The date and time a signing key was created.
+     */
+    readonly created: string;
+    /**
+     * Identifier
      */
     readonly id: string;
 }

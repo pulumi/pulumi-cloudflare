@@ -13,72 +13,18 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleFirewallRule = Cloudflare.GetFirewallRule.Invoke(new()
-        ///     {
-        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         RuleId = "372e67954025e0ba6aaa6d586b9e0b60",
-        ///         Id = "372e67954025e0ba6aaa6d586b9e0b60",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetFirewallRuleResult> InvokeAsync(GetFirewallRuleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFirewallRuleResult>("cloudflare:index/getFirewallRule:getFirewallRule", args ?? new GetFirewallRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleFirewallRule = Cloudflare.GetFirewallRule.Invoke(new()
-        ///     {
-        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         RuleId = "372e67954025e0ba6aaa6d586b9e0b60",
-        ///         Id = "372e67954025e0ba6aaa6d586b9e0b60",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetFirewallRuleResult> Invoke(GetFirewallRuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFirewallRuleResult>("cloudflare:index/getFirewallRule:getFirewallRule", args ?? new GetFirewallRuleInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleFirewallRule = Cloudflare.GetFirewallRule.Invoke(new()
-        ///     {
-        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         RuleId = "372e67954025e0ba6aaa6d586b9e0b60",
-        ///         Id = "372e67954025e0ba6aaa6d586b9e0b60",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetFirewallRuleResult> Invoke(GetFirewallRuleInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetFirewallRuleResult>("cloudflare:index/getFirewallRule:getFirewallRule", args ?? new GetFirewallRuleInvokeArgs(), options.WithDefaults());
@@ -90,14 +36,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier of the firewall rule.
         /// </summary>
-        [Input("id")]
-        public string? Id { get; set; }
-
-        /// <summary>
-        /// The unique identifier of the firewall rule.
-        /// </summary>
-        [Input("ruleId", required: true)]
-        public string RuleId { get; set; } = null!;
+        [Input("ruleId")]
+        public string? RuleId { get; set; }
 
         /// <summary>
         /// Identifier
@@ -116,14 +56,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier of the firewall rule.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// The unique identifier of the firewall rule.
-        /// </summary>
-        [Input("ruleId", required: true)]
-        public Input<string> RuleId { get; set; } = null!;
+        [Input("ruleId")]
+        public Input<string>? RuleId { get; set; }
 
         /// <summary>
         /// Identifier
@@ -149,7 +83,6 @@ namespace Pulumi.Cloudflare
         /// An informative summary of the firewall rule.
         /// </summary>
         public readonly string Description;
-        public readonly Outputs.GetFirewallRuleFilterResult Filter;
         /// <summary>
         /// The unique identifier of the firewall rule.
         /// </summary>
@@ -170,7 +103,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier of the firewall rule.
         /// </summary>
-        public readonly string RuleId;
+        public readonly string? RuleId;
         /// <summary>
         /// Identifier
         /// </summary>
@@ -182,8 +115,6 @@ namespace Pulumi.Cloudflare
 
             string description,
 
-            Outputs.GetFirewallRuleFilterResult filter,
-
             string id,
 
             bool paused,
@@ -194,13 +125,12 @@ namespace Pulumi.Cloudflare
 
             string @ref,
 
-            string ruleId,
+            string? ruleId,
 
             string zoneId)
         {
             Action = action;
             Description = description;
-            Filter = filter;
             Id = id;
             Paused = paused;
             Priority = priority;

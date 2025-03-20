@@ -35,15 +35,15 @@ public final class GetMagicTransitSitesPlainArgs extends com.pulumi.resources.In
      * Identifier
      * 
      */
-    @Import(name="connectorIdentifier")
-    private @Nullable String connectorIdentifier;
+    @Import(name="connectorid")
+    private @Nullable String connectorid;
 
     /**
      * @return Identifier
      * 
      */
-    public Optional<String> connectorIdentifier() {
-        return Optional.ofNullable(this.connectorIdentifier);
+    public Optional<String> connectorid() {
+        return Optional.ofNullable(this.connectorid);
     }
 
     /**
@@ -65,7 +65,7 @@ public final class GetMagicTransitSitesPlainArgs extends com.pulumi.resources.In
 
     private GetMagicTransitSitesPlainArgs(GetMagicTransitSitesPlainArgs $) {
         this.accountId = $.accountId;
-        this.connectorIdentifier = $.connectorIdentifier;
+        this.connectorid = $.connectorid;
         this.maxItems = $.maxItems;
     }
 
@@ -99,13 +99,13 @@ public final class GetMagicTransitSitesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param connectorIdentifier Identifier
+         * @param connectorid Identifier
          * 
          * @return builder
          * 
          */
-        public Builder connectorIdentifier(@Nullable String connectorIdentifier) {
-            $.connectorIdentifier = connectorIdentifier;
+        public Builder connectorid(@Nullable String connectorid) {
+            $.connectorid = connectorid;
             return this;
         }
 

@@ -24,7 +24,7 @@ public final class GetMagicTransitSitesInvokeResult {
      * @return Identifier
      * 
      */
-    private @Nullable String connectorIdentifier;
+    private @Nullable String connectorid;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -53,8 +53,8 @@ public final class GetMagicTransitSitesInvokeResult {
      * @return Identifier
      * 
      */
-    public Optional<String> connectorIdentifier() {
-        return Optional.ofNullable(this.connectorIdentifier);
+    public Optional<String> connectorid() {
+        return Optional.ofNullable(this.connectorid);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -88,7 +88,7 @@ public final class GetMagicTransitSitesInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private @Nullable String connectorIdentifier;
+        private @Nullable String connectorid;
         private String id;
         private @Nullable Integer maxItems;
         private List<GetMagicTransitSitesResult> results;
@@ -96,7 +96,7 @@ public final class GetMagicTransitSitesInvokeResult {
         public Builder(GetMagicTransitSitesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.connectorIdentifier = defaults.connectorIdentifier;
+    	      this.connectorid = defaults.connectorid;
     	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
@@ -111,9 +111,9 @@ public final class GetMagicTransitSitesInvokeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder connectorIdentifier(@Nullable String connectorIdentifier) {
+        public Builder connectorid(@Nullable String connectorid) {
 
-            this.connectorIdentifier = connectorIdentifier;
+            this.connectorid = connectorid;
             return this;
         }
         @CustomType.Setter
@@ -144,7 +144,7 @@ public final class GetMagicTransitSitesInvokeResult {
         public GetMagicTransitSitesInvokeResult build() {
             final var _resultValue = new GetMagicTransitSitesInvokeResult();
             _resultValue.accountId = accountId;
-            _resultValue.connectorIdentifier = connectorIdentifier;
+            _resultValue.connectorid = connectorid;
             _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;

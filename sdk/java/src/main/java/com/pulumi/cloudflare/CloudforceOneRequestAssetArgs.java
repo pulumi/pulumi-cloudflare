@@ -33,21 +33,6 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * UUID
-     * 
-     */
-    @Import(name="assetIdentifer")
-    private @Nullable Output<String> assetIdentifer;
-
-    /**
-     * @return UUID
-     * 
-     */
-    public Optional<Output<String>> assetIdentifer() {
-        return Optional.ofNullable(this.assetIdentifer);
-    }
-
-    /**
      * Page number of results
      * 
      */
@@ -111,7 +96,6 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
 
     private CloudforceOneRequestAssetArgs(CloudforceOneRequestAssetArgs $) {
         this.accountIdentifier = $.accountIdentifier;
-        this.assetIdentifer = $.assetIdentifer;
         this.page = $.page;
         this.perPage = $.perPage;
         this.requestIdentifier = $.requestIdentifier;
@@ -155,27 +139,6 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
          */
         public Builder accountIdentifier(String accountIdentifier) {
             return accountIdentifier(Output.of(accountIdentifier));
-        }
-
-        /**
-         * @param assetIdentifer UUID
-         * 
-         * @return builder
-         * 
-         */
-        public Builder assetIdentifer(@Nullable Output<String> assetIdentifer) {
-            $.assetIdentifer = assetIdentifer;
-            return this;
-        }
-
-        /**
-         * @param assetIdentifer UUID
-         * 
-         * @return builder
-         * 
-         */
-        public Builder assetIdentifer(String assetIdentifer) {
-            return assetIdentifer(Output.of(assetIdentifer));
         }
 
         /**

@@ -26,16 +26,31 @@ class GetCloudforceOneRequestMessageResult:
     """
     A collection of values returned by getCloudforceOneRequestMessage.
     """
-    def __init__(__self__, account_identifier=None, id=None, request_identifier=None):
+    def __init__(__self__, account_identifier=None, author=None, content=None, created=None, id=None, is_follow_on_request=None, request_identifier=None, updated=None):
         if account_identifier and not isinstance(account_identifier, str):
             raise TypeError("Expected argument 'account_identifier' to be a str")
         pulumi.set(__self__, "account_identifier", account_identifier)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
+        if author and not isinstance(author, str):
+            raise TypeError("Expected argument 'author' to be a str")
+        pulumi.set(__self__, "author", author)
+        if content and not isinstance(content, str):
+            raise TypeError("Expected argument 'content' to be a str")
+        pulumi.set(__self__, "content", content)
+        if created and not isinstance(created, str):
+            raise TypeError("Expected argument 'created' to be a str")
+        pulumi.set(__self__, "created", created)
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
+        if is_follow_on_request and not isinstance(is_follow_on_request, bool):
+            raise TypeError("Expected argument 'is_follow_on_request' to be a bool")
+        pulumi.set(__self__, "is_follow_on_request", is_follow_on_request)
         if request_identifier and not isinstance(request_identifier, str):
             raise TypeError("Expected argument 'request_identifier' to be a str")
         pulumi.set(__self__, "request_identifier", request_identifier)
+        if updated and not isinstance(updated, str):
+            raise TypeError("Expected argument 'updated' to be a str")
+        pulumi.set(__self__, "updated", updated)
 
     @property
     @pulumi.getter(name="accountIdentifier")
@@ -47,11 +62,43 @@ class GetCloudforceOneRequestMessageResult:
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def author(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Author of message
+        """
+        return pulumi.get(self, "author")
+
+    @property
+    @pulumi.getter
+    def content(self) -> str:
+        """
+        Content of message
+        """
+        return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        Message creation time
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        Message ID
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isFollowOnRequest")
+    def is_follow_on_request(self) -> bool:
+        """
+        Whether the message is a follow-on request
+        """
+        return pulumi.get(self, "is_follow_on_request")
 
     @property
     @pulumi.getter(name="requestIdentifier")
@@ -61,6 +108,14 @@ class GetCloudforceOneRequestMessageResult:
         """
         return pulumi.get(self, "request_identifier")
 
+    @property
+    @pulumi.getter
+    def updated(self) -> str:
+        """
+        Message last updated time
+        """
+        return pulumi.get(self, "updated")
+
 
 class AwaitableGetCloudforceOneRequestMessageResult(GetCloudforceOneRequestMessageResult):
     # pylint: disable=using-constant-test
@@ -69,8 +124,13 @@ class AwaitableGetCloudforceOneRequestMessageResult(GetCloudforceOneRequestMessa
             yield self
         return GetCloudforceOneRequestMessageResult(
             account_identifier=self.account_identifier,
+            author=self.author,
+            content=self.content,
+            created=self.created,
             id=self.id,
-            request_identifier=self.request_identifier)
+            is_follow_on_request=self.is_follow_on_request,
+            request_identifier=self.request_identifier,
+            updated=self.updated)
 
 
 def get_cloudforce_one_request_message(account_identifier: Optional[str] = None,
@@ -99,8 +159,13 @@ def get_cloudforce_one_request_message(account_identifier: Optional[str] = None,
 
     return AwaitableGetCloudforceOneRequestMessageResult(
         account_identifier=pulumi.get(__ret__, 'account_identifier'),
+        author=pulumi.get(__ret__, 'author'),
+        content=pulumi.get(__ret__, 'content'),
+        created=pulumi.get(__ret__, 'created'),
         id=pulumi.get(__ret__, 'id'),
-        request_identifier=pulumi.get(__ret__, 'request_identifier'))
+        is_follow_on_request=pulumi.get(__ret__, 'is_follow_on_request'),
+        request_identifier=pulumi.get(__ret__, 'request_identifier'),
+        updated=pulumi.get(__ret__, 'updated'))
 def get_cloudforce_one_request_message_output(account_identifier: Optional[pulumi.Input[str]] = None,
                                               request_identifier: Optional[pulumi.Input[str]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudforceOneRequestMessageResult]:
@@ -126,5 +191,10 @@ def get_cloudforce_one_request_message_output(account_identifier: Optional[pulum
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage', __args__, opts=opts, typ=GetCloudforceOneRequestMessageResult)
     return __ret__.apply(lambda __response__: GetCloudforceOneRequestMessageResult(
         account_identifier=pulumi.get(__response__, 'account_identifier'),
+        author=pulumi.get(__response__, 'author'),
+        content=pulumi.get(__response__, 'content'),
+        created=pulumi.get(__response__, 'created'),
         id=pulumi.get(__response__, 'id'),
-        request_identifier=pulumi.get(__response__, 'request_identifier')))
+        is_follow_on_request=pulumi.get(__response__, 'is_follow_on_request'),
+        request_identifier=pulumi.get(__response__, 'request_identifier'),
+        updated=pulumi.get(__response__, 'updated')))

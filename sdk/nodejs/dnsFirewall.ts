@@ -75,7 +75,7 @@ export class DnsFirewall extends pulumi.CustomResource {
     /**
      * DNS Firewall cluster name
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
      */
@@ -88,7 +88,7 @@ export class DnsFirewall extends pulumi.CustomResource {
      * Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
      */
     public readonly retries!: pulumi.Output<number>;
-    public readonly upstreamIps!: pulumi.Output<string[] | undefined>;
+    public readonly upstreamIps!: pulumi.Output<string[]>;
 
     /**
      * Create a DnsFirewall resource with the given unique name, arguments, and options.
@@ -120,6 +120,12 @@ export class DnsFirewall extends pulumi.CustomResource {
             const args = argsOrState as DnsFirewallArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
+            if ((!args || args.upstreamIps === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'upstreamIps'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["attackMitigation"] = args ? args.attackMitigation : undefined;
@@ -223,7 +229,7 @@ export interface DnsFirewallArgs {
     /**
      * DNS Firewall cluster name
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
      */
@@ -236,5 +242,5 @@ export interface DnsFirewallArgs {
      * Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
      */
     retries?: pulumi.Input<number>;
-    upstreamIps?: pulumi.Input<pulumi.Input<string>[]>;
+    upstreamIps: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -3,8 +3,10 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetAccountSubscriptionRatePlan;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 
@@ -16,10 +18,45 @@ public final class GetAccountSubscriptionResult {
      */
     private String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The monetary unit in which pricing information is displayed.
+     * 
+     */
+    private String currency;
+    /**
+     * @return The end of the current period and also when the next billing is due.
+     * 
+     */
+    private String currentPeriodEnd;
+    /**
+     * @return When the current billing period started. May match initial*period*start if this is the first period.
+     * 
+     */
+    private String currentPeriodStart;
+    /**
+     * @return How often the subscription is renewed automatically.
+     * 
+     */
+    private String frequency;
+    /**
+     * @return Subscription identifier tag.
      * 
      */
     private String id;
+    /**
+     * @return The price of the subscription that will be billed, in US dollars.
+     * 
+     */
+    private Double price;
+    /**
+     * @return The rate plan applied to the subscription.
+     * 
+     */
+    private GetAccountSubscriptionRatePlan ratePlan;
+    /**
+     * @return The state that the subscription is in.
+     * 
+     */
+    private String state;
 
     private GetAccountSubscriptionResult() {}
     /**
@@ -30,11 +67,60 @@ public final class GetAccountSubscriptionResult {
         return this.accountId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The monetary unit in which pricing information is displayed.
+     * 
+     */
+    public String currency() {
+        return this.currency;
+    }
+    /**
+     * @return The end of the current period and also when the next billing is due.
+     * 
+     */
+    public String currentPeriodEnd() {
+        return this.currentPeriodEnd;
+    }
+    /**
+     * @return When the current billing period started. May match initial*period*start if this is the first period.
+     * 
+     */
+    public String currentPeriodStart() {
+        return this.currentPeriodStart;
+    }
+    /**
+     * @return How often the subscription is renewed automatically.
+     * 
+     */
+    public String frequency() {
+        return this.frequency;
+    }
+    /**
+     * @return Subscription identifier tag.
      * 
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return The price of the subscription that will be billed, in US dollars.
+     * 
+     */
+    public Double price() {
+        return this.price;
+    }
+    /**
+     * @return The rate plan applied to the subscription.
+     * 
+     */
+    public GetAccountSubscriptionRatePlan ratePlan() {
+        return this.ratePlan;
+    }
+    /**
+     * @return The state that the subscription is in.
+     * 
+     */
+    public String state() {
+        return this.state;
     }
 
     public static Builder builder() {
@@ -47,12 +133,26 @@ public final class GetAccountSubscriptionResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private String currency;
+        private String currentPeriodEnd;
+        private String currentPeriodStart;
+        private String frequency;
         private String id;
+        private Double price;
+        private GetAccountSubscriptionRatePlan ratePlan;
+        private String state;
         public Builder() {}
         public Builder(GetAccountSubscriptionResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.currency = defaults.currency;
+    	      this.currentPeriodEnd = defaults.currentPeriodEnd;
+    	      this.currentPeriodStart = defaults.currentPeriodStart;
+    	      this.frequency = defaults.frequency;
     	      this.id = defaults.id;
+    	      this.price = defaults.price;
+    	      this.ratePlan = defaults.ratePlan;
+    	      this.state = defaults.state;
         }
 
         @CustomType.Setter
@@ -64,6 +164,38 @@ public final class GetAccountSubscriptionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder currency(String currency) {
+            if (currency == null) {
+              throw new MissingRequiredPropertyException("GetAccountSubscriptionResult", "currency");
+            }
+            this.currency = currency;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder currentPeriodEnd(String currentPeriodEnd) {
+            if (currentPeriodEnd == null) {
+              throw new MissingRequiredPropertyException("GetAccountSubscriptionResult", "currentPeriodEnd");
+            }
+            this.currentPeriodEnd = currentPeriodEnd;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder currentPeriodStart(String currentPeriodStart) {
+            if (currentPeriodStart == null) {
+              throw new MissingRequiredPropertyException("GetAccountSubscriptionResult", "currentPeriodStart");
+            }
+            this.currentPeriodStart = currentPeriodStart;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder frequency(String frequency) {
+            if (frequency == null) {
+              throw new MissingRequiredPropertyException("GetAccountSubscriptionResult", "frequency");
+            }
+            this.frequency = frequency;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetAccountSubscriptionResult", "id");
@@ -71,10 +203,41 @@ public final class GetAccountSubscriptionResult {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
+        public Builder price(Double price) {
+            if (price == null) {
+              throw new MissingRequiredPropertyException("GetAccountSubscriptionResult", "price");
+            }
+            this.price = price;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ratePlan(GetAccountSubscriptionRatePlan ratePlan) {
+            if (ratePlan == null) {
+              throw new MissingRequiredPropertyException("GetAccountSubscriptionResult", "ratePlan");
+            }
+            this.ratePlan = ratePlan;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder state(String state) {
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetAccountSubscriptionResult", "state");
+            }
+            this.state = state;
+            return this;
+        }
         public GetAccountSubscriptionResult build() {
             final var _resultValue = new GetAccountSubscriptionResult();
             _resultValue.accountId = accountId;
+            _resultValue.currency = currency;
+            _resultValue.currentPeriodEnd = currentPeriodEnd;
+            _resultValue.currentPeriodStart = currentPeriodStart;
+            _resultValue.frequency = frequency;
             _resultValue.id = id;
+            _resultValue.price = price;
+            _resultValue.ratePlan = ratePlan;
+            _resultValue.state = state;
             return _resultValue;
         }
     }

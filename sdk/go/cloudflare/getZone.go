@@ -72,6 +72,7 @@ type LookupZoneResult struct {
 	Status              string         `pulumi:"status"`
 	Type                string         `pulumi:"type"`
 	VanityNameServers   []string       `pulumi:"vanityNameServers"`
+	VerificationKey     string         `pulumi:"verificationKey"`
 	ZoneId              *string        `pulumi:"zoneId"`
 }
 
@@ -179,6 +180,10 @@ func (o LookupZoneResultOutput) Type() pulumi.StringOutput {
 
 func (o LookupZoneResultOutput) VanityNameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZoneResult) []string { return v.VanityNameServers }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupZoneResultOutput) VerificationKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZoneResult) string { return v.VerificationKey }).(pulumi.StringOutput)
 }
 
 func (o LookupZoneResultOutput) ZoneId() pulumi.StringPtrOutput {

@@ -4,6 +4,7 @@ title: Cloudflare Provider
 meta_desc: Provides an overview on how to configure the Pulumi Cloudflare provider.
 layout: package
 ---
+
 ## Installation
 
 The Cloudflare provider is available as a package in all Pulumi languages:
@@ -13,6 +14,7 @@ The Cloudflare provider is available as a package in all Pulumi languages:
 * Go: [`github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare`](https://github.com/pulumi/pulumi-cloudflare)
 * .NET: [`Pulumi.Cloudflare`](https://www.nuget.org/packages/Pulumi.Cloudflare)
 * Java: [`com.pulumi/cloudflare`](https://central.sonatype.com/artifact/com.pulumi/cloudflare)
+
 ## Overview
 
 The Cloudflare provider is used to interact with resources supported by
@@ -35,10 +37,8 @@ config:
 import * as pulumi from "@pulumi/pulumi";
 import * as cloudflare from "@pulumi/cloudflare";
 
-// Create a record
-const www = new cloudflare.Record("www", {});
-// Create a page rule
-const wwwPageRule = new cloudflare.PageRule("www", {});
+// Create a DNS record
+const www = new cloudflare.DnsRecord("www", {});
 ```
 {{% /choosable %}}
 {{% choosable language python %}}
@@ -55,10 +55,8 @@ config:
 import pulumi
 import pulumi_cloudflare as cloudflare
 
-# Create a record
-www = cloudflare.Record("www")
-# Create a page rule
-www_page_rule = cloudflare.PageRule("www")
+# Create a DNS record
+www = cloudflare.DnsRecord("www")
 ```
 {{% /choosable %}}
 {{% choosable language csharp %}}
@@ -79,11 +77,8 @@ using Cloudflare = Pulumi.Cloudflare;
 
 return await Deployment.RunAsync(() =>
 {
-    // Create a record
-    var www = new Cloudflare.Record("www");
-
-    // Create a page rule
-    var wwwPageRule = new Cloudflare.PageRule("www");
+    // Create a DNS record
+    var www = new Cloudflare.DnsRecord("www");
 
 });
 
@@ -109,13 +104,8 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		// Create a record
-		_, err := cloudflare.NewRecord(ctx, "www", nil)
-		if err != nil {
-			return err
-		}
-		// Create a page rule
-		_, err = cloudflare.NewPageRule(ctx, "www", nil)
+		// Create a DNS record
+		_, err := cloudflare.NewDnsRecord(ctx, "www", nil)
 		if err != nil {
 			return err
 		}
@@ -136,13 +126,9 @@ config:
 ```
 ```yaml
 resources:
-  # Create a record
+  # Create a DNS record
   www:
-    type: cloudflare:Record
-  # Create a page rule
-  wwwPageRule:
-    type: cloudflare:PageRule
-    name: www
+    type: cloudflare:DnsRecord
 ```
 {{% /choosable %}}
 {{% choosable language java %}}
@@ -161,8 +147,7 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.pulumi.cloudflare.Record;
-import com.pulumi.cloudflare.PageRule;
+import com.pulumi.cloudflare.DnsRecord;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -176,11 +161,8 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        // Create a record
-        var www = new Record("www");
-
-        // Create a page rule
-        var wwwPageRule = new PageRule("wwwPageRule");
+        // Create a DNS record
+        var www = new DnsRecord("www");
 
     }
 }
@@ -189,15 +171,9 @@ public class App {
 {{< /chooser >}}
 ## Configuration Reference
 
-- `apiBasePath` (String) Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH` environment variable.
-- `apiClientLogging` (Boolean) Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
-- `apiHostname` (String) Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME` environment variable.
 - `apiKey` (String) The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
 - `apiToken` (String) The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
 - `apiUserServiceKey` (String) A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
+- `baseUrl` (String) Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment variable.
 - `email` (String) A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `apiKey`. Conflicts with `apiToken`.
-- `maxBackoff` (Number) Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the `CLOUDFLARE_MAX_BACKOFF` environment variable.
-- `minBackoff` (Number) Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the `CLOUDFLARE_MIN_BACKOFF` environment variable.
-- `retries` (Number) Maximum number of retries to perform when an API request fails. Alternatively, can be configured using the `CLOUDFLARE_RETRIES` environment variable.
-- `rps` (Number) RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment variable.
 - `userAgentOperatorSuffix` (String) A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely identifying your traffic. **Setting this value will remove the Pulumi version from the HTTP User Agent string and may have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.

@@ -62,12 +62,6 @@ namespace Pulumi.Cloudflare
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
 
-        /// <summary>
-        /// ID of the zone setting.
-        /// </summary>
-        [Output("zoneSettingId")]
-        public Output<string> ZoneSettingId { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a ZoneCacheReserve resource with the given unique name, arguments, and options.
@@ -157,12 +151,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
-
-        /// <summary>
-        /// ID of the zone setting.
-        /// </summary>
-        [Input("zoneSettingId")]
-        public Input<string>? ZoneSettingId { get; set; }
 
         public ZoneCacheReserveState()
         {

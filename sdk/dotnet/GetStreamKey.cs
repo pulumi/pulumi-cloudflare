@@ -116,7 +116,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The date and time a signing key was created.
+        /// </summary>
+        public readonly string Created;
+        /// <summary>
+        /// Identifier
         /// </summary>
         public readonly string Id;
 
@@ -124,9 +128,12 @@ namespace Pulumi.Cloudflare
         private GetStreamKeyResult(
             string accountId,
 
+            string created,
+
             string id)
         {
             AccountId = accountId;
+            Created = created;
             Id = id;
         }
     }

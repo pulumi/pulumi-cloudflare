@@ -16,8 +16,13 @@ import (
 type SnippetRules struct {
 	pulumi.CustomResourceState
 
+	Description pulumi.StringOutput `pulumi:"description"`
+	Enabled     pulumi.BoolOutput   `pulumi:"enabled"`
+	Expression  pulumi.StringOutput `pulumi:"expression"`
 	// List of snippet rules
 	Rules SnippetRulesRuleArrayOutput `pulumi:"rules"`
+	// Snippet identifying name
+	SnippetName pulumi.StringOutput `pulumi:"snippetName"`
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -55,15 +60,25 @@ func GetSnippetRules(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SnippetRules resources.
 type snippetRulesState struct {
+	Description *string `pulumi:"description"`
+	Enabled     *bool   `pulumi:"enabled"`
+	Expression  *string `pulumi:"expression"`
 	// List of snippet rules
 	Rules []SnippetRulesRule `pulumi:"rules"`
+	// Snippet identifying name
+	SnippetName *string `pulumi:"snippetName"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type SnippetRulesState struct {
+	Description pulumi.StringPtrInput
+	Enabled     pulumi.BoolPtrInput
+	Expression  pulumi.StringPtrInput
 	// List of snippet rules
 	Rules SnippetRulesRuleArrayInput
+	// Snippet identifying name
+	SnippetName pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
@@ -174,9 +189,26 @@ func (o SnippetRulesOutput) ToSnippetRulesOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o SnippetRulesOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnippetRules) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o SnippetRulesOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SnippetRules) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o SnippetRulesOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnippetRules) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
+}
+
 // List of snippet rules
 func (o SnippetRulesOutput) Rules() SnippetRulesRuleArrayOutput {
 	return o.ApplyT(func(v *SnippetRules) SnippetRulesRuleArrayOutput { return v.Rules }).(SnippetRulesRuleArrayOutput)
+}
+
+// Snippet identifying name
+func (o SnippetRulesOutput) SnippetName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnippetRules) pulumi.StringOutput { return v.SnippetName }).(pulumi.StringOutput)
 }
 
 // Identifier

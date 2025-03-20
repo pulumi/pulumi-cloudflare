@@ -107,6 +107,11 @@ public final class GetZonesResult {
      * 
      */
     private List<String> vanityNameServers;
+    /**
+     * @return Verification key for partial zone setup.
+     * 
+     */
+    private String verificationKey;
 
     private GetZonesResult() {}
     /**
@@ -234,6 +239,13 @@ public final class GetZonesResult {
     public List<String> vanityNameServers() {
         return this.vanityNameServers;
     }
+    /**
+     * @return Verification key for partial zone setup.
+     * 
+     */
+    public String verificationKey() {
+        return this.verificationKey;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -261,6 +273,7 @@ public final class GetZonesResult {
         private String status;
         private String type;
         private List<String> vanityNameServers;
+        private String verificationKey;
         public Builder() {}
         public Builder(GetZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -281,6 +294,7 @@ public final class GetZonesResult {
     	      this.status = defaults.status;
     	      this.type = defaults.type;
     	      this.vanityNameServers = defaults.vanityNameServers;
+    	      this.verificationKey = defaults.verificationKey;
         }
 
         @CustomType.Setter
@@ -428,6 +442,14 @@ public final class GetZonesResult {
         public Builder vanityNameServers(String... vanityNameServers) {
             return vanityNameServers(List.of(vanityNameServers));
         }
+        @CustomType.Setter
+        public Builder verificationKey(String verificationKey) {
+            if (verificationKey == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "verificationKey");
+            }
+            this.verificationKey = verificationKey;
+            return this;
+        }
         public GetZonesResult build() {
             final var _resultValue = new GetZonesResult();
             _resultValue.account = account;
@@ -447,6 +469,7 @@ public final class GetZonesResult {
             _resultValue.status = status;
             _resultValue.type = type;
             _resultValue.vanityNameServers = vanityNameServers;
+            _resultValue.verificationKey = verificationKey;
             return _resultValue;
         }
     }

@@ -17,7 +17,7 @@ import java.util.Objects;
 @CustomType
 public final class GetSpectrumApplicationResult {
     /**
-     * @return Identifier
+     * @return App identifier.
      * 
      */
     private String appId;
@@ -95,14 +95,14 @@ public final class GetSpectrumApplicationResult {
      */
     private String trafficType;
     /**
-     * @return Identifier
+     * @return Zone identifier.
      * 
      */
     private String zoneId;
 
     private GetSpectrumApplicationResult() {}
     /**
-     * @return Identifier
+     * @return App identifier.
      * 
      */
     public String appId() {
@@ -210,7 +210,7 @@ public final class GetSpectrumApplicationResult {
         return this.trafficType;
     }
     /**
-     * @return Identifier
+     * @return Zone identifier.
      * 
      */
     public String zoneId() {

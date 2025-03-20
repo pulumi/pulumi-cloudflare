@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Double;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -47,7 +46,7 @@ public final class DnsRecordData {
      * @return Flags for the CAA record.
      * 
      */
-    private @Nullable Object flags;
+    private @Nullable Double flags;
     /**
      * @return Key Tag.
      * 
@@ -241,7 +240,7 @@ public final class DnsRecordData {
      * @return Flags for the CAA record.
      * 
      */
-    public Optional<Object> flags() {
+    public Optional<Double> flags() {
         return Optional.ofNullable(this.flags);
     }
     /**
@@ -463,7 +462,7 @@ public final class DnsRecordData {
         private @Nullable String digest;
         private @Nullable Double digestType;
         private @Nullable String fingerprint;
-        private @Nullable Object flags;
+        private @Nullable Double flags;
         private @Nullable Double keyTag;
         private @Nullable Double latDegrees;
         private @Nullable String latDirection;
@@ -571,7 +570,7 @@ public final class DnsRecordData {
             return this;
         }
         @CustomType.Setter
-        public Builder flags(@Nullable Object flags) {
+        public Builder flags(@Nullable Double flags) {
 
             this.flags = flags;
             return this;

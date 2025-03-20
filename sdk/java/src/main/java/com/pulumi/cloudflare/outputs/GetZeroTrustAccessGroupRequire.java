@@ -21,6 +21,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupRequireGroup;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupRequireGsuite;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupRequireIp;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupRequireIpList;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupRequireLoginMethod;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupRequireOkta;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupRequireSaml;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupRequireServiceToken;
@@ -56,6 +57,7 @@ public final class GetZeroTrustAccessGroupRequire {
     private GetZeroTrustAccessGroupRequireGsuite gsuite;
     private GetZeroTrustAccessGroupRequireIp ip;
     private GetZeroTrustAccessGroupRequireIpList ipList;
+    private GetZeroTrustAccessGroupRequireLoginMethod loginMethod;
     private GetZeroTrustAccessGroupRequireOkta okta;
     private GetZeroTrustAccessGroupRequireSaml saml;
     private GetZeroTrustAccessGroupRequireServiceToken serviceToken;
@@ -123,6 +125,9 @@ public final class GetZeroTrustAccessGroupRequire {
     public GetZeroTrustAccessGroupRequireIpList ipList() {
         return this.ipList;
     }
+    public GetZeroTrustAccessGroupRequireLoginMethod loginMethod() {
+        return this.loginMethod;
+    }
     public GetZeroTrustAccessGroupRequireOkta okta() {
         return this.okta;
     }
@@ -160,6 +165,7 @@ public final class GetZeroTrustAccessGroupRequire {
         private GetZeroTrustAccessGroupRequireGsuite gsuite;
         private GetZeroTrustAccessGroupRequireIp ip;
         private GetZeroTrustAccessGroupRequireIpList ipList;
+        private GetZeroTrustAccessGroupRequireLoginMethod loginMethod;
         private GetZeroTrustAccessGroupRequireOkta okta;
         private GetZeroTrustAccessGroupRequireSaml saml;
         private GetZeroTrustAccessGroupRequireServiceToken serviceToken;
@@ -184,6 +190,7 @@ public final class GetZeroTrustAccessGroupRequire {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
+    	      this.loginMethod = defaults.loginMethod;
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -334,6 +341,14 @@ public final class GetZeroTrustAccessGroupRequire {
             return this;
         }
         @CustomType.Setter
+        public Builder loginMethod(GetZeroTrustAccessGroupRequireLoginMethod loginMethod) {
+            if (loginMethod == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupRequire", "loginMethod");
+            }
+            this.loginMethod = loginMethod;
+            return this;
+        }
+        @CustomType.Setter
         public Builder okta(GetZeroTrustAccessGroupRequireOkta okta) {
             if (okta == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupRequire", "okta");
@@ -377,6 +392,7 @@ public final class GetZeroTrustAccessGroupRequire {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
+            _resultValue.loginMethod = loginMethod;
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

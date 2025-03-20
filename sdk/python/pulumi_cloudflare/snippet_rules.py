@@ -60,17 +60,57 @@ class SnippetRulesArgs:
 @pulumi.input_type
 class _SnippetRulesState:
     def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 expression: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['SnippetRulesRuleArgs']]]] = None,
+                 snippet_name: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SnippetRules resources.
         :param pulumi.Input[Sequence[pulumi.Input['SnippetRulesRuleArgs']]] rules: List of snippet rules
+        :param pulumi.Input[str] snippet_name: Snippet identifying name
         :param pulumi.Input[str] zone_id: Identifier
         """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
+        if snippet_name is not None:
+            pulumi.set(__self__, "snippet_name", snippet_name)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expression", value)
 
     @property
     @pulumi.getter
@@ -83,6 +123,18 @@ class _SnippetRulesState:
     @rules.setter
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SnippetRulesRuleArgs']]]]):
         pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter(name="snippetName")
+    def snippet_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Snippet identifying name
+        """
+        return pulumi.get(self, "snippet_name")
+
+    @snippet_name.setter
+    def snippet_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snippet_name", value)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -152,6 +204,10 @@ class SnippetRules(pulumi.CustomResource):
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["description"] = None
+            __props__.__dict__["enabled"] = None
+            __props__.__dict__["expression"] = None
+            __props__.__dict__["snippet_name"] = None
         super(SnippetRules, __self__).__init__(
             'cloudflare:index/snippetRules:SnippetRules',
             resource_name,
@@ -162,7 +218,11 @@ class SnippetRules(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            expression: Optional[pulumi.Input[str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SnippetRulesRuleArgs', 'SnippetRulesRuleArgsDict']]]]] = None,
+            snippet_name: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'SnippetRules':
         """
         Get an existing SnippetRules resource's state with the given name, id, and optional extra
@@ -172,15 +232,35 @@ class SnippetRules(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SnippetRulesRuleArgs', 'SnippetRulesRuleArgsDict']]]] rules: List of snippet rules
+        :param pulumi.Input[str] snippet_name: Snippet identifying name
         :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _SnippetRulesState.__new__(_SnippetRulesState)
 
+        __props__.__dict__["description"] = description
+        __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["expression"] = expression
         __props__.__dict__["rules"] = rules
+        __props__.__dict__["snippet_name"] = snippet_name
         __props__.__dict__["zone_id"] = zone_id
         return SnippetRules(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Output[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "expression")
 
     @property
     @pulumi.getter
@@ -189,6 +269,14 @@ class SnippetRules(pulumi.CustomResource):
         List of snippet rules
         """
         return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter(name="snippetName")
+    def snippet_name(self) -> pulumi.Output[str]:
+        """
+        Snippet identifying name
+        """
+        return pulumi.get(self, "snippet_name")
 
     @property
     @pulumi.getter(name="zoneId")

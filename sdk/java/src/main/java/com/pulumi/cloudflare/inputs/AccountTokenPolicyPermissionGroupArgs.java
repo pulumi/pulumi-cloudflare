@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.AccountTokenPolicyPermissionGroupMetaArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,15 +21,15 @@ public final class AccountTokenPolicyPermissionGroupArgs extends com.pulumi.reso
      * Identifier of the group.
      * 
      */
-    @Import(name="id")
-    private @Nullable Output<String> id;
+    @Import(name="id", required=true)
+    private Output<String> id;
 
     /**
      * @return Identifier of the group.
      * 
      */
-    public Optional<Output<String>> id() {
-        return Optional.ofNullable(this.id);
+    public Output<String> id() {
+        return this.id;
     }
 
     /**
@@ -93,7 +94,7 @@ public final class AccountTokenPolicyPermissionGroupArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder id(@Nullable Output<String> id) {
+        public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
@@ -151,6 +152,9 @@ public final class AccountTokenPolicyPermissionGroupArgs extends com.pulumi.reso
         }
 
         public AccountTokenPolicyPermissionGroupArgs build() {
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("AccountTokenPolicyPermissionGroupArgs", "id");
+            }
             return $;
         }
     }

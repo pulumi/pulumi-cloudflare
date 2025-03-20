@@ -4,11 +4,51 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetApiTokenPermissionsGroupsListResult {
+    /**
+     * @return Public ID.
+     * 
+     */
+    private String id;
+    /**
+     * @return Permission Group Name
+     * 
+     */
+    private String name;
+    /**
+     * @return Resources to which the Permission Group is scoped
+     * 
+     */
+    private List<String> scopes;
+
     private GetApiTokenPermissionsGroupsListResult() {}
+    /**
+     * @return Public ID.
+     * 
+     */
+    public String id() {
+        return this.id;
+    }
+    /**
+     * @return Permission Group Name
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return Resources to which the Permission Group is scoped
+     * 
+     */
+    public List<String> scopes() {
+        return this.scopes;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -19,13 +59,49 @@ public final class GetApiTokenPermissionsGroupsListResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String id;
+        private String name;
+        private List<String> scopes;
         public Builder() {}
         public Builder(GetApiTokenPermissionsGroupsListResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.id = defaults.id;
+    	      this.name = defaults.name;
+    	      this.scopes = defaults.scopes;
         }
 
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetApiTokenPermissionsGroupsListResult", "id");
+            }
+            this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetApiTokenPermissionsGroupsListResult", "name");
+            }
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder scopes(List<String> scopes) {
+            if (scopes == null) {
+              throw new MissingRequiredPropertyException("GetApiTokenPermissionsGroupsListResult", "scopes");
+            }
+            this.scopes = scopes;
+            return this;
+        }
+        public Builder scopes(String... scopes) {
+            return scopes(List.of(scopes));
+        }
         public GetApiTokenPermissionsGroupsListResult build() {
             final var _resultValue = new GetApiTokenPermissionsGroupsListResult();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.scopes = scopes;
             return _resultValue;
         }
     }

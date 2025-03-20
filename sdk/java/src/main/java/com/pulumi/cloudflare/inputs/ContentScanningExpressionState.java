@@ -25,18 +25,18 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
     }
 
     /**
-     * Identifier
+     * Ruleset expression to use in matching content objects
      * 
      */
-    @Import(name="expressionId")
-    private @Nullable Output<String> expressionId;
+    @Import(name="payload")
+    private @Nullable Output<String> payload;
 
     /**
-     * @return Identifier
+     * @return Ruleset expression to use in matching content objects
      * 
      */
-    public Optional<Output<String>> expressionId() {
-        return Optional.ofNullable(this.expressionId);
+    public Optional<Output<String>> payload() {
+        return Optional.ofNullable(this.payload);
     }
 
     /**
@@ -58,7 +58,7 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
 
     private ContentScanningExpressionState(ContentScanningExpressionState $) {
         this.bodies = $.bodies;
-        this.expressionId = $.expressionId;
+        this.payload = $.payload;
         this.zoneId = $.zoneId;
     }
 
@@ -94,24 +94,24 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param expressionId Identifier
+         * @param payload Ruleset expression to use in matching content objects
          * 
          * @return builder
          * 
          */
-        public Builder expressionId(@Nullable Output<String> expressionId) {
-            $.expressionId = expressionId;
+        public Builder payload(@Nullable Output<String> payload) {
+            $.payload = payload;
             return this;
         }
 
         /**
-         * @param expressionId Identifier
+         * @param payload Ruleset expression to use in matching content objects
          * 
          * @return builder
          * 
          */
-        public Builder expressionId(String expressionId) {
-            return expressionId(Output.of(expressionId));
+        public Builder payload(String payload) {
+            return payload(Output.of(payload));
         }
 
         /**

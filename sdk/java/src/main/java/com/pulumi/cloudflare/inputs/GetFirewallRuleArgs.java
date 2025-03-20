@@ -20,30 +20,15 @@ public final class GetFirewallRuleArgs extends com.pulumi.resources.InvokeArgs {
      * The unique identifier of the firewall rule.
      * 
      */
-    @Import(name="id")
-    private @Nullable Output<String> id;
+    @Import(name="ruleId")
+    private @Nullable Output<String> ruleId;
 
     /**
      * @return The unique identifier of the firewall rule.
      * 
      */
-    public Optional<Output<String>> id() {
-        return Optional.ofNullable(this.id);
-    }
-
-    /**
-     * The unique identifier of the firewall rule.
-     * 
-     */
-    @Import(name="ruleId", required=true)
-    private Output<String> ruleId;
-
-    /**
-     * @return The unique identifier of the firewall rule.
-     * 
-     */
-    public Output<String> ruleId() {
-        return this.ruleId;
+    public Optional<Output<String>> ruleId() {
+        return Optional.ofNullable(this.ruleId);
     }
 
     /**
@@ -64,7 +49,6 @@ public final class GetFirewallRuleArgs extends com.pulumi.resources.InvokeArgs {
     private GetFirewallRuleArgs() {}
 
     private GetFirewallRuleArgs(GetFirewallRuleArgs $) {
-        this.id = $.id;
         this.ruleId = $.ruleId;
         this.zoneId = $.zoneId;
     }
@@ -88,33 +72,12 @@ public final class GetFirewallRuleArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param id The unique identifier of the firewall rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder id(@Nullable Output<String> id) {
-            $.id = id;
-            return this;
-        }
-
-        /**
-         * @param id The unique identifier of the firewall rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder id(String id) {
-            return id(Output.of(id));
-        }
-
-        /**
          * @param ruleId The unique identifier of the firewall rule.
          * 
          * @return builder
          * 
          */
-        public Builder ruleId(Output<String> ruleId) {
+        public Builder ruleId(@Nullable Output<String> ruleId) {
             $.ruleId = ruleId;
             return this;
         }
@@ -151,9 +114,6 @@ public final class GetFirewallRuleArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetFirewallRuleArgs build() {
-            if ($.ruleId == null) {
-                throw new MissingRequiredPropertyException("GetFirewallRuleArgs", "ruleId");
-            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetFirewallRuleArgs", "zoneId");
             }

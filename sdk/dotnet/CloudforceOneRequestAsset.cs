@@ -30,6 +30,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example '&lt;account_identifier&gt;/&lt;request_identifier&gt;/&lt;asset_identifer&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset")]
     public partial class CloudforceOneRequestAsset : global::Pulumi.CustomResource
@@ -39,12 +45,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("accountIdentifier")]
         public Output<string> AccountIdentifier { get; private set; } = null!;
-
-        /// <summary>
-        /// UUID
-        /// </summary>
-        [Output("assetIdentifer")]
-        public Output<string?> AssetIdentifer { get; private set; } = null!;
 
         /// <summary>
         /// Asset creation time
@@ -147,12 +147,6 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountIdentifier { get; set; } = null!;
 
         /// <summary>
-        /// UUID
-        /// </summary>
-        [Input("assetIdentifer")]
-        public Input<string>? AssetIdentifer { get; set; }
-
-        /// <summary>
         /// Page number of results
         /// </summary>
         [Input("page", required: true)]
@@ -189,12 +183,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountIdentifier")]
         public Input<string>? AccountIdentifier { get; set; }
-
-        /// <summary>
-        /// UUID
-        /// </summary>
-        [Input("assetIdentifer")]
-        public Input<string>? AssetIdentifer { get; set; }
 
         /// <summary>
         /// Asset creation time

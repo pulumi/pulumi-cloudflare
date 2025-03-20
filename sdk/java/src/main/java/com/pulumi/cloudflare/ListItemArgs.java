@@ -50,6 +50,21 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * An informative summary of the list item.
+     * 
+     */
+    @Import(name="comment")
+    private @Nullable Output<String> comment;
+
+    /**
+     * @return An informative summary of the list item.
+     * 
+     */
+    public Optional<Output<String>> comment() {
+        return Optional.ofNullable(this.comment);
+    }
+
+    /**
      * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      * 
      */
@@ -114,6 +129,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
     private ListItemArgs(ListItemArgs $) {
         this.accountId = $.accountId;
         this.asn = $.asn;
+        this.comment = $.comment;
         this.hostname = $.hostname;
         this.ip = $.ip;
         this.listId = $.listId;
@@ -178,6 +194,27 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder asn(Integer asn) {
             return asn(Output.of(asn));
+        }
+
+        /**
+         * @param comment An informative summary of the list item.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder comment(@Nullable Output<String> comment) {
+            $.comment = comment;
+            return this;
+        }
+
+        /**
+         * @param comment An informative summary of the list item.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder comment(String comment) {
+            return comment(Output.of(comment));
         }
 
         /**

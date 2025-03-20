@@ -82,6 +82,12 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan example &#39;&lt;account_id&gt;/&lt;site_id&gt;/&lt;lan_id&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan")
 public class MagicTransitSiteLan extends com.pulumi.resources.CustomResource {
@@ -112,20 +118,6 @@ public class MagicTransitSiteLan extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> haLink() {
         return Codegen.optional(this.haLink);
-    }
-    /**
-     * Identifier
-     * 
-     */
-    @Export(name="lanId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> lanId;
-
-    /**
-     * @return Identifier
-     * 
-     */
-    public Output<Optional<String>> lanId() {
-        return Codegen.optional(this.lanId);
     }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> name;

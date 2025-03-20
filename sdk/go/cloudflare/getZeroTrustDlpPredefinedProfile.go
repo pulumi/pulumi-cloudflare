@@ -55,7 +55,8 @@ type LookupZeroTrustDlpPredefinedProfileArgs struct {
 
 // A collection of values returned by getZeroTrustDlpPredefinedProfile.
 type LookupZeroTrustDlpPredefinedProfileResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId        string `pulumi:"accountId"`
+	AiContextEnabled bool   `pulumi:"aiContextEnabled"`
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount   int    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold string `pulumi:"confidenceThreshold"`
@@ -115,6 +116,10 @@ func (o LookupZeroTrustDlpPredefinedProfileResultOutput) ToLookupZeroTrustDlpPre
 
 func (o LookupZeroTrustDlpPredefinedProfileResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+func (o LookupZeroTrustDlpPredefinedProfileResultOutput) AiContextEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) bool { return v.AiContextEnabled }).(pulumi.BoolOutput)
 }
 
 // Related DLP policies will trigger when the match count exceeds the number set.

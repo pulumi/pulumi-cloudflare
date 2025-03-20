@@ -61,9 +61,17 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.fileSize);
     }
 
+    /**
+     * D1 database name.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return D1 database name.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -90,9 +98,17 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.primaryLocationHint);
     }
 
+    /**
+     * D1 database identifier (UUID).
+     * 
+     */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
     public Optional<Output<String>> uuid() {
         return Optional.ofNullable(this.uuid);
     }
@@ -198,11 +214,23 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
             return fileSize(Output.of(fileSize));
         }
 
+        /**
+         * @param name D1 database name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name D1 database name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -237,11 +265,23 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
             return primaryLocationHint(Output.of(primaryLocationHint));
         }
 
+        /**
+         * @param uuid D1 database identifier (UUID).
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(@Nullable Output<String> uuid) {
             $.uuid = uuid;
             return this;
         }
 
+        /**
+         * @param uuid D1 database identifier (UUID).
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(String uuid) {
             return uuid(Output.of(uuid));
         }

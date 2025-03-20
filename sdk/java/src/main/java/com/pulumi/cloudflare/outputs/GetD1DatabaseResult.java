@@ -24,6 +24,10 @@ public final class GetD1DatabaseResult {
      * 
      */
     private String createdAt;
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
     private @Nullable String databaseId;
     /**
      * @return The D1 database&#39;s size, in bytes.
@@ -32,12 +36,20 @@ public final class GetD1DatabaseResult {
     private Double fileSize;
     private @Nullable GetD1DatabaseFilter filter;
     /**
-     * @return The ID of this resource.
+     * @return D1 database identifier (UUID).
      * 
      */
     private String id;
+    /**
+     * @return D1 database name.
+     * 
+     */
     private String name;
     private Double numTables;
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
     private String uuid;
     private String version;
 
@@ -56,6 +68,10 @@ public final class GetD1DatabaseResult {
     public String createdAt() {
         return this.createdAt;
     }
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
     public Optional<String> databaseId() {
         return Optional.ofNullable(this.databaseId);
     }
@@ -70,18 +86,26 @@ public final class GetD1DatabaseResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return The ID of this resource.
+     * @return D1 database identifier (UUID).
      * 
      */
     public String id() {
         return this.id;
     }
+    /**
+     * @return D1 database name.
+     * 
+     */
     public String name() {
         return this.name;
     }
     public Double numTables() {
         return this.numTables;
     }
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
     public String uuid() {
         return this.uuid;
     }

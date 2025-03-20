@@ -57,6 +57,7 @@ export interface GetZoneResult {
     readonly status: string;
     readonly type: string;
     readonly vanityNameServers: string[];
+    readonly verificationKey: string;
     readonly zoneId?: string;
 }
 /**

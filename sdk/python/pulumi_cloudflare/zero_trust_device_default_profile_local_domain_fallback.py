@@ -52,14 +52,26 @@ class ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs:
 class _ZeroTrustDeviceDefaultProfileLocalDomainFallbackState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs']]]] = None):
+                 description: Optional[pulumi.Input[str]] = None,
+                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 domains: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs']]]] = None,
+                 suffix: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDeviceDefaultProfileLocalDomainFallback resources.
+        :param pulumi.Input[str] description: A description of the fallback domain, displayed in the client UI.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: A list of IP addresses to handle domain resolution.
+        :param pulumi.Input[str] suffix: The domain suffix to match when resolving locally.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if dns_servers is not None:
+            pulumi.set(__self__, "dns_servers", dns_servers)
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
 
     @property
     @pulumi.getter(name="accountId")
@@ -72,12 +84,48 @@ class _ZeroTrustDeviceDefaultProfileLocalDomainFallbackState:
 
     @property
     @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the fallback domain, displayed in the client UI.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IP addresses to handle domain resolution.
+        """
+        return pulumi.get(self, "dns_servers")
+
+    @dns_servers.setter
+    def dns_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dns_servers", value)
+
+    @property
+    @pulumi.getter
     def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs']]]]:
         return pulumi.get(self, "domains")
 
     @domains.setter
     def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs']]]]):
         pulumi.set(self, "domains", value)
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain suffix to match when resolving locally.
+        """
+        return pulumi.get(self, "suffix")
+
+    @suffix.setter
+    def suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "suffix", value)
 
 
 class ZeroTrustDeviceDefaultProfileLocalDomainFallback(pulumi.CustomResource):
@@ -135,6 +183,9 @@ class ZeroTrustDeviceDefaultProfileLocalDomainFallback(pulumi.CustomResource):
             if domains is None and not opts.urn:
                 raise TypeError("Missing required property 'domains'")
             __props__.__dict__["domains"] = domains
+            __props__.__dict__["description"] = None
+            __props__.__dict__["dns_servers"] = None
+            __props__.__dict__["suffix"] = None
         super(ZeroTrustDeviceDefaultProfileLocalDomainFallback, __self__).__init__(
             'cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback',
             resource_name,
@@ -146,7 +197,10 @@ class ZeroTrustDeviceDefaultProfileLocalDomainFallback(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgsDict']]]]] = None) -> 'ZeroTrustDeviceDefaultProfileLocalDomainFallback':
+            description: Optional[pulumi.Input[str]] = None,
+            dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgsDict']]]]] = None,
+            suffix: Optional[pulumi.Input[str]] = None) -> 'ZeroTrustDeviceDefaultProfileLocalDomainFallback':
         """
         Get an existing ZeroTrustDeviceDefaultProfileLocalDomainFallback resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -154,13 +208,19 @@ class ZeroTrustDeviceDefaultProfileLocalDomainFallback(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: A description of the fallback domain, displayed in the client UI.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: A list of IP addresses to handle domain resolution.
+        :param pulumi.Input[str] suffix: The domain suffix to match when resolving locally.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ZeroTrustDeviceDefaultProfileLocalDomainFallbackState.__new__(_ZeroTrustDeviceDefaultProfileLocalDomainFallbackState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["dns_servers"] = dns_servers
         __props__.__dict__["domains"] = domains
+        __props__.__dict__["suffix"] = suffix
         return ZeroTrustDeviceDefaultProfileLocalDomainFallback(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -170,6 +230,30 @@ class ZeroTrustDeviceDefaultProfileLocalDomainFallback(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        A description of the fallback domain, displayed in the client UI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of IP addresses to handle domain resolution.
+        """
+        return pulumi.get(self, "dns_servers")
+
+    @property
+    @pulumi.getter
     def domains(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomain']]:
         return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> pulumi.Output[str]:
+        """
+        The domain suffix to match when resolving locally.
+        """
+        return pulumi.get(self, "suffix")
 

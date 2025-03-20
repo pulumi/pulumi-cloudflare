@@ -54,6 +54,12 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example &#39;&lt;account_identifier&gt;/&lt;request_identifier&gt;/&lt;asset_identifer&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset")
 public class CloudforceOneRequestAsset extends com.pulumi.resources.CustomResource {
@@ -70,20 +76,6 @@ public class CloudforceOneRequestAsset extends com.pulumi.resources.CustomResour
      */
     public Output<String> accountIdentifier() {
         return this.accountIdentifier;
-    }
-    /**
-     * UUID
-     * 
-     */
-    @Export(name="assetIdentifer", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> assetIdentifer;
-
-    /**
-     * @return UUID
-     * 
-     */
-    public Output<Optional<String>> assetIdentifer() {
-        return Codegen.optional(this.assetIdentifer);
     }
     /**
      * Asset creation time

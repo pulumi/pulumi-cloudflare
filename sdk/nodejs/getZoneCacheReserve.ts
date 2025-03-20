@@ -42,7 +42,7 @@ export interface GetZoneCacheReserveResult {
      */
     readonly editable: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * ID of the zone setting.
      */
     readonly id: string;
     /**
@@ -57,10 +57,6 @@ export interface GetZoneCacheReserveResult {
      * Identifier
      */
     readonly zoneId: string;
-    /**
-     * ID of the zone setting.
-     */
-    readonly zoneSettingId: string;
 }
 /**
  * ## Example Usage

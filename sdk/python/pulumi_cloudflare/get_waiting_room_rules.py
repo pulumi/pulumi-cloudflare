@@ -26,10 +26,28 @@ class GetWaitingRoomRulesResult:
     """
     A collection of values returned by getWaitingRoomRules.
     """
-    def __init__(__self__, id=None, waiting_room_id=None, zone_id=None):
+    def __init__(__self__, action=None, description=None, enabled=None, expression=None, id=None, last_updated=None, version=None, waiting_room_id=None, zone_id=None):
+        if action and not isinstance(action, str):
+            raise TypeError("Expected argument 'action' to be a str")
+        pulumi.set(__self__, "action", action)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if enabled and not isinstance(enabled, bool):
+            raise TypeError("Expected argument 'enabled' to be a bool")
+        pulumi.set(__self__, "enabled", enabled)
+        if expression and not isinstance(expression, str):
+            raise TypeError("Expected argument 'expression' to be a str")
+        pulumi.set(__self__, "expression", expression)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if last_updated and not isinstance(last_updated, str):
+            raise TypeError("Expected argument 'last_updated' to be a str")
+        pulumi.set(__self__, "last_updated", last_updated)
+        if version and not isinstance(version, str):
+            raise TypeError("Expected argument 'version' to be a str")
+        pulumi.set(__self__, "version", version)
         if waiting_room_id and not isinstance(waiting_room_id, str):
             raise TypeError("Expected argument 'waiting_room_id' to be a str")
         pulumi.set(__self__, "waiting_room_id", waiting_room_id)
@@ -39,11 +57,56 @@ class GetWaitingRoomRulesResult:
 
     @property
     @pulumi.getter
+    def action(self) -> str:
+        """
+        The action to take when the expression matches.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        When set to true, the rule is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Criteria defining when there is a match for the current rule.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of the rule.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastUpdated")
+    def last_updated(self) -> str:
+        return pulumi.get(self, "last_updated")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The version of the rule.
+        """
+        return pulumi.get(self, "version")
 
     @property
     @pulumi.getter(name="waitingRoomId")
@@ -65,7 +128,13 @@ class AwaitableGetWaitingRoomRulesResult(GetWaitingRoomRulesResult):
         if False:
             yield self
         return GetWaitingRoomRulesResult(
+            action=self.action,
+            description=self.description,
+            enabled=self.enabled,
+            expression=self.expression,
             id=self.id,
+            last_updated=self.last_updated,
+            version=self.version,
             waiting_room_id=self.waiting_room_id,
             zone_id=self.zone_id)
 
@@ -94,7 +163,13 @@ def get_waiting_room_rules(waiting_room_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getWaitingRoomRules:getWaitingRoomRules', __args__, opts=opts, typ=GetWaitingRoomRulesResult).value
 
     return AwaitableGetWaitingRoomRulesResult(
+        action=pulumi.get(__ret__, 'action'),
+        description=pulumi.get(__ret__, 'description'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        expression=pulumi.get(__ret__, 'expression'),
         id=pulumi.get(__ret__, 'id'),
+        last_updated=pulumi.get(__ret__, 'last_updated'),
+        version=pulumi.get(__ret__, 'version'),
         waiting_room_id=pulumi.get(__ret__, 'waiting_room_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_waiting_room_rules_output(waiting_room_id: Optional[pulumi.Input[str]] = None,
@@ -120,6 +195,12 @@ def get_waiting_room_rules_output(waiting_room_id: Optional[pulumi.Input[str]] =
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getWaitingRoomRules:getWaitingRoomRules', __args__, opts=opts, typ=GetWaitingRoomRulesResult)
     return __ret__.apply(lambda __response__: GetWaitingRoomRulesResult(
+        action=pulumi.get(__response__, 'action'),
+        description=pulumi.get(__response__, 'description'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        expression=pulumi.get(__response__, 'expression'),
         id=pulumi.get(__response__, 'id'),
+        last_updated=pulumi.get(__response__, 'last_updated'),
+        version=pulumi.get(__response__, 'version'),
         waiting_room_id=pulumi.get(__response__, 'waiting_room_id'),
         zone_id=pulumi.get(__response__, 'zone_id')))

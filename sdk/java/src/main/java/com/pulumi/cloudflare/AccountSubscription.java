@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -80,6 +81,48 @@ public class AccountSubscription extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
+     * The monetary unit in which pricing information is displayed.
+     * 
+     */
+    @Export(name="currency", refs={String.class}, tree="[0]")
+    private Output<String> currency;
+
+    /**
+     * @return The monetary unit in which pricing information is displayed.
+     * 
+     */
+    public Output<String> currency() {
+        return this.currency;
+    }
+    /**
+     * The end of the current period and also when the next billing is due.
+     * 
+     */
+    @Export(name="currentPeriodEnd", refs={String.class}, tree="[0]")
+    private Output<String> currentPeriodEnd;
+
+    /**
+     * @return The end of the current period and also when the next billing is due.
+     * 
+     */
+    public Output<String> currentPeriodEnd() {
+        return this.currentPeriodEnd;
+    }
+    /**
+     * When the current billing period started. May match initial*period*start if this is the first period.
+     * 
+     */
+    @Export(name="currentPeriodStart", refs={String.class}, tree="[0]")
+    private Output<String> currentPeriodStart;
+
+    /**
+     * @return When the current billing period started. May match initial*period*start if this is the first period.
+     * 
+     */
+    public Output<String> currentPeriodStart() {
+        return this.currentPeriodStart;
+    }
+    /**
      * How often the subscription is renewed automatically.
      * 
      */
@@ -94,6 +137,20 @@ public class AccountSubscription extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.frequency);
     }
     /**
+     * The price of the subscription that will be billed, in US dollars.
+     * 
+     */
+    @Export(name="price", refs={Double.class}, tree="[0]")
+    private Output<Double> price;
+
+    /**
+     * @return The price of the subscription that will be billed, in US dollars.
+     * 
+     */
+    public Output<Double> price() {
+        return this.price;
+    }
+    /**
      * The rate plan applied to the subscription.
      * 
      */
@@ -106,6 +163,20 @@ public class AccountSubscription extends com.pulumi.resources.CustomResource {
      */
     public Output<AccountSubscriptionRatePlan> ratePlan() {
         return this.ratePlan;
+    }
+    /**
+     * The state that the subscription is in.
+     * 
+     */
+    @Export(name="state", refs={String.class}, tree="[0]")
+    private Output<String> state;
+
+    /**
+     * @return The state that the subscription is in.
+     * 
+     */
+    public Output<String> state() {
+        return this.state;
     }
     /**
      * Subscription identifier tag.

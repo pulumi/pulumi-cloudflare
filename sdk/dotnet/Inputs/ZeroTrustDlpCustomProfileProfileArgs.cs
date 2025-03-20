@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ZeroTrustDlpCustomProfileProfileArgs : global::Pulumi.ResourceArgs
     {
+        [Input("aiContextEnabled")]
+        public Input<bool>? AiContextEnabled { get; set; }
+
         /// <summary>
         /// Related DLP policies will trigger when the match count exceeds the number set.
         /// </summary>

@@ -10,6 +10,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustDlpCustomProfileEntryConfidence {
+    private Boolean aiContextAvailable;
     /**
      * @return Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
      * Profiles that use an entry with `available` set to true can use confidence thresholds
@@ -18,6 +19,9 @@ public final class GetZeroTrustDlpCustomProfileEntryConfidence {
     private Boolean available;
 
     private GetZeroTrustDlpCustomProfileEntryConfidence() {}
+    public Boolean aiContextAvailable() {
+        return this.aiContextAvailable;
+    }
     /**
      * @return Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
      * Profiles that use an entry with `available` set to true can use confidence thresholds
@@ -36,13 +40,23 @@ public final class GetZeroTrustDlpCustomProfileEntryConfidence {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean aiContextAvailable;
         private Boolean available;
         public Builder() {}
         public Builder(GetZeroTrustDlpCustomProfileEntryConfidence defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aiContextAvailable = defaults.aiContextAvailable;
     	      this.available = defaults.available;
         }
 
+        @CustomType.Setter
+        public Builder aiContextAvailable(Boolean aiContextAvailable) {
+            if (aiContextAvailable == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileEntryConfidence", "aiContextAvailable");
+            }
+            this.aiContextAvailable = aiContextAvailable;
+            return this;
+        }
         @CustomType.Setter
         public Builder available(Boolean available) {
             if (available == null) {
@@ -53,6 +67,7 @@ public final class GetZeroTrustDlpCustomProfileEntryConfidence {
         }
         public GetZeroTrustDlpCustomProfileEntryConfidence build() {
             final var _resultValue = new GetZeroTrustDlpCustomProfileEntryConfidence();
+            _resultValue.aiContextAvailable = aiContextAvailable;
             _resultValue.available = available;
             return _resultValue;
         }

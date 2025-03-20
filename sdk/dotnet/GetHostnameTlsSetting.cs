@@ -127,6 +127,14 @@ namespace Pulumi.Cloudflare
     public sealed class GetHostnameTlsSettingResult
     {
         /// <summary>
+        /// This is the time the tls setting was originally created for this hostname.
+        /// </summary>
+        public readonly string CreatedAt;
+        /// <summary>
+        /// The hostname for which the tls settings are set.
+        /// </summary>
+        public readonly string Hostname;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -135,20 +143,47 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string SettingId;
         /// <summary>
+        /// Deployment status for the given tls setting.
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
+        /// This is the time the tls setting was updated.
+        /// </summary>
+        public readonly string UpdatedAt;
+        /// <summary>
+        /// The tls setting value.
+        /// </summary>
+        public readonly double Value;
+        /// <summary>
         /// Identifier
         /// </summary>
         public readonly string ZoneId;
 
         [OutputConstructor]
         private GetHostnameTlsSettingResult(
+            string createdAt,
+
+            string hostname,
+
             string id,
 
             string settingId,
 
+            string status,
+
+            string updatedAt,
+
+            double value,
+
             string zoneId)
         {
+            CreatedAt = createdAt;
+            Hostname = hostname;
             Id = id;
             SettingId = settingId;
+            Status = status;
+            UpdatedAt = updatedAt;
+            Value = value;
             ZoneId = zoneId;
         }
     }

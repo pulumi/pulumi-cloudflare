@@ -100,7 +100,7 @@ namespace Pulumi.Cloudflare
         public string? Order { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Zone identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Order { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Zone identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -168,7 +168,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSpectrumApplicationsResultResult> Results;
         /// <summary>
-        /// Identifier
+        /// Zone identifier.
         /// </summary>
         public readonly string ZoneId;
 

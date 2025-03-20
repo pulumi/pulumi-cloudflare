@@ -57,7 +57,7 @@ type LookupZeroTrustDevicePostureIntegrationArgs struct {
 // A collection of values returned by getZeroTrustDevicePostureIntegration.
 type LookupZeroTrustDevicePostureIntegrationResult struct {
 	AccountId string `pulumi:"accountId"`
-	// The Workspace One Config Response.
+	// The configuration object containing third-party integration information.
 	Config GetZeroTrustDevicePostureIntegrationConfig `pulumi:"config"`
 	// API UUID.
 	Id string `pulumi:"id"`
@@ -110,7 +110,7 @@ func (o LookupZeroTrustDevicePostureIntegrationResultOutput) AccountId() pulumi.
 	return o.ApplyT(func(v LookupZeroTrustDevicePostureIntegrationResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The Workspace One Config Response.
+// The configuration object containing third-party integration information.
 func (o LookupZeroTrustDevicePostureIntegrationResultOutput) Config() GetZeroTrustDevicePostureIntegrationConfigOutput {
 	return o.ApplyT(func(v LookupZeroTrustDevicePostureIntegrationResult) GetZeroTrustDevicePostureIntegrationConfig {
 		return v.Config

@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustDevicePostureIntegrationsResultResult
     {
         /// <summary>
-        /// The Workspace One Config Response.
+        /// The configuration object containing third-party integration information.
         /// </summary>
         public readonly Outputs.GetZeroTrustDevicePostureIntegrationsResultConfigResult Config;
         /// <summary>

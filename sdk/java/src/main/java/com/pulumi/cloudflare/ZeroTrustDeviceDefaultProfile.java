@@ -72,6 +72,12 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile example &#39;&lt;account_id&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile")
 public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomResource {

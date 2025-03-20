@@ -21,6 +21,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPolicyIncludeGroup;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPolicyIncludeGsuite;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPolicyIncludeIp;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPolicyIncludeIpList;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPolicyIncludeLoginMethod;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPolicyIncludeOkta;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPolicyIncludeSaml;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPolicyIncludeServiceToken;
@@ -56,6 +57,7 @@ public final class GetZeroTrustAccessPolicyInclude {
     private GetZeroTrustAccessPolicyIncludeGsuite gsuite;
     private GetZeroTrustAccessPolicyIncludeIp ip;
     private GetZeroTrustAccessPolicyIncludeIpList ipList;
+    private GetZeroTrustAccessPolicyIncludeLoginMethod loginMethod;
     private GetZeroTrustAccessPolicyIncludeOkta okta;
     private GetZeroTrustAccessPolicyIncludeSaml saml;
     private GetZeroTrustAccessPolicyIncludeServiceToken serviceToken;
@@ -123,6 +125,9 @@ public final class GetZeroTrustAccessPolicyInclude {
     public GetZeroTrustAccessPolicyIncludeIpList ipList() {
         return this.ipList;
     }
+    public GetZeroTrustAccessPolicyIncludeLoginMethod loginMethod() {
+        return this.loginMethod;
+    }
     public GetZeroTrustAccessPolicyIncludeOkta okta() {
         return this.okta;
     }
@@ -160,6 +165,7 @@ public final class GetZeroTrustAccessPolicyInclude {
         private GetZeroTrustAccessPolicyIncludeGsuite gsuite;
         private GetZeroTrustAccessPolicyIncludeIp ip;
         private GetZeroTrustAccessPolicyIncludeIpList ipList;
+        private GetZeroTrustAccessPolicyIncludeLoginMethod loginMethod;
         private GetZeroTrustAccessPolicyIncludeOkta okta;
         private GetZeroTrustAccessPolicyIncludeSaml saml;
         private GetZeroTrustAccessPolicyIncludeServiceToken serviceToken;
@@ -184,6 +190,7 @@ public final class GetZeroTrustAccessPolicyInclude {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
+    	      this.loginMethod = defaults.loginMethod;
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -334,6 +341,14 @@ public final class GetZeroTrustAccessPolicyInclude {
             return this;
         }
         @CustomType.Setter
+        public Builder loginMethod(GetZeroTrustAccessPolicyIncludeLoginMethod loginMethod) {
+            if (loginMethod == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessPolicyInclude", "loginMethod");
+            }
+            this.loginMethod = loginMethod;
+            return this;
+        }
+        @CustomType.Setter
         public Builder okta(GetZeroTrustAccessPolicyIncludeOkta okta) {
             if (okta == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessPolicyInclude", "okta");
@@ -377,6 +392,7 @@ public final class GetZeroTrustAccessPolicyInclude {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
+            _resultValue.loginMethod = loginMethod;
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare.Inputs
         /// Flags for the CAA record.
         /// </summary>
         [Input("flags")]
-        public Input<object>? Flags { get; set; }
+        public Input<double>? Flags { get; set; }
 
         /// <summary>
         /// Key Tag.

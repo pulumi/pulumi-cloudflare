@@ -27,7 +27,7 @@ class GetZeroTrustAccessInfrastructureTargetsResult:
     """
     A collection of values returned by getZeroTrustAccessInfrastructureTargets.
     """
-    def __init__(__self__, account_id=None, created_after=None, created_before=None, direction=None, hostname=None, hostname_contains=None, id=None, ip_v4=None, ip_v6=None, ips=None, max_items=None, modified_after=None, modified_before=None, order=None, results=None, virtual_network_id=None):
+    def __init__(__self__, account_id=None, created_after=None, created_before=None, direction=None, hostname=None, hostname_contains=None, id=None, ip_like=None, ip_v4=None, ip_v6=None, ips=None, ipv4_end=None, ipv4_start=None, ipv6_end=None, ipv6_start=None, max_items=None, modified_after=None, modified_before=None, order=None, results=None, target_ids=None, virtual_network_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -49,6 +49,9 @@ class GetZeroTrustAccessInfrastructureTargetsResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ip_like and not isinstance(ip_like, str):
+            raise TypeError("Expected argument 'ip_like' to be a str")
+        pulumi.set(__self__, "ip_like", ip_like)
         if ip_v4 and not isinstance(ip_v4, str):
             raise TypeError("Expected argument 'ip_v4' to be a str")
         pulumi.set(__self__, "ip_v4", ip_v4)
@@ -58,6 +61,18 @@ class GetZeroTrustAccessInfrastructureTargetsResult:
         if ips and not isinstance(ips, list):
             raise TypeError("Expected argument 'ips' to be a list")
         pulumi.set(__self__, "ips", ips)
+        if ipv4_end and not isinstance(ipv4_end, str):
+            raise TypeError("Expected argument 'ipv4_end' to be a str")
+        pulumi.set(__self__, "ipv4_end", ipv4_end)
+        if ipv4_start and not isinstance(ipv4_start, str):
+            raise TypeError("Expected argument 'ipv4_start' to be a str")
+        pulumi.set(__self__, "ipv4_start", ipv4_start)
+        if ipv6_end and not isinstance(ipv6_end, str):
+            raise TypeError("Expected argument 'ipv6_end' to be a str")
+        pulumi.set(__self__, "ipv6_end", ipv6_end)
+        if ipv6_start and not isinstance(ipv6_start, str):
+            raise TypeError("Expected argument 'ipv6_start' to be a str")
+        pulumi.set(__self__, "ipv6_start", ipv6_start)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -73,6 +88,9 @@ class GetZeroTrustAccessInfrastructureTargetsResult:
         if results and not isinstance(results, list):
             raise TypeError("Expected argument 'results' to be a list")
         pulumi.set(__self__, "results", results)
+        if target_ids and not isinstance(target_ids, list):
+            raise TypeError("Expected argument 'target_ids' to be a list")
+        pulumi.set(__self__, "target_ids", target_ids)
         if virtual_network_id and not isinstance(virtual_network_id, str):
             raise TypeError("Expected argument 'virtual_network_id' to be a str")
         pulumi.set(__self__, "virtual_network_id", virtual_network_id)
@@ -134,6 +152,15 @@ class GetZeroTrustAccessInfrastructureTargetsResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="ipLike")
+    def ip_like(self) -> Optional[str]:
+        """
+        Filters for targets whose IP addresses look like the specified string.
+        Supports `*` as a wildcard character
+        """
+        return pulumi.get(self, "ip_like")
+
+    @property
     @pulumi.getter(name="ipV4")
     def ip_v4(self) -> Optional[str]:
         """
@@ -157,6 +184,42 @@ class GetZeroTrustAccessInfrastructureTargetsResult:
         `ips` multiple times in query parameter to build list of candidates.
         """
         return pulumi.get(self, "ips")
+
+    @property
+    @pulumi.getter(name="ipv4End")
+    def ipv4_end(self) -> Optional[str]:
+        """
+        Defines an IPv4 filter range's ending value (inclusive). Requires
+        `ipv4_start` to be specified as well.
+        """
+        return pulumi.get(self, "ipv4_end")
+
+    @property
+    @pulumi.getter(name="ipv4Start")
+    def ipv4_start(self) -> Optional[str]:
+        """
+        Defines an IPv4 filter range's starting value (inclusive). Requires
+        `ipv4_end` to be specified as well.
+        """
+        return pulumi.get(self, "ipv4_start")
+
+    @property
+    @pulumi.getter(name="ipv6End")
+    def ipv6_end(self) -> Optional[str]:
+        """
+        Defines an IPv6 filter range's ending value (inclusive). Requires
+        `ipv6_start` to be specified as well.
+        """
+        return pulumi.get(self, "ipv6_end")
+
+    @property
+    @pulumi.getter(name="ipv6Start")
+    def ipv6_start(self) -> Optional[str]:
+        """
+        Defines an IPv6 filter range's starting value (inclusive). Requires
+        `ipv6_end` to be specified as well.
+        """
+        return pulumi.get(self, "ipv6_start")
 
     @property
     @pulumi.getter(name="maxItems")
@@ -199,6 +262,16 @@ class GetZeroTrustAccessInfrastructureTargetsResult:
         return pulumi.get(self, "results")
 
     @property
+    @pulumi.getter(name="targetIds")
+    def target_ids(self) -> Optional[Sequence[str]]:
+        """
+        Filters for targets that have any of the following UUIDs. Specify
+        `target_ids` multiple times in query parameter to build list of
+        candidates.
+        """
+        return pulumi.get(self, "target_ids")
+
+    @property
     @pulumi.getter(name="virtualNetworkId")
     def virtual_network_id(self) -> Optional[str]:
         """
@@ -220,14 +293,20 @@ class AwaitableGetZeroTrustAccessInfrastructureTargetsResult(GetZeroTrustAccessI
             hostname=self.hostname,
             hostname_contains=self.hostname_contains,
             id=self.id,
+            ip_like=self.ip_like,
             ip_v4=self.ip_v4,
             ip_v6=self.ip_v6,
             ips=self.ips,
+            ipv4_end=self.ipv4_end,
+            ipv4_start=self.ipv4_start,
+            ipv6_end=self.ipv6_end,
+            ipv6_start=self.ipv6_start,
             max_items=self.max_items,
             modified_after=self.modified_after,
             modified_before=self.modified_before,
             order=self.order,
             results=self.results,
+            target_ids=self.target_ids,
             virtual_network_id=self.virtual_network_id)
 
 
@@ -237,13 +316,19 @@ def get_zero_trust_access_infrastructure_targets(account_id: Optional[str] = Non
                                                  direction: Optional[str] = None,
                                                  hostname: Optional[str] = None,
                                                  hostname_contains: Optional[str] = None,
+                                                 ip_like: Optional[str] = None,
                                                  ip_v4: Optional[str] = None,
                                                  ip_v6: Optional[str] = None,
                                                  ips: Optional[Sequence[str]] = None,
+                                                 ipv4_end: Optional[str] = None,
+                                                 ipv4_start: Optional[str] = None,
+                                                 ipv6_end: Optional[str] = None,
+                                                 ipv6_start: Optional[str] = None,
                                                  max_items: Optional[int] = None,
                                                  modified_after: Optional[str] = None,
                                                  modified_before: Optional[str] = None,
                                                  order: Optional[str] = None,
+                                                 target_ids: Optional[Sequence[str]] = None,
                                                  virtual_network_id: Optional[str] = None,
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustAccessInfrastructureTargetsResult:
     """
@@ -259,12 +344,18 @@ def get_zero_trust_access_infrastructure_targets(account_id: Optional[str] = Non
         direction="asc",
         hostname="hostname",
         hostname_contains="hostname_contains",
+        ip_like="ip_like",
         ip_v4="ip_v4",
         ip_v6="ip_v6",
         ips=["string"],
+        ipv4_end="ipv4_end",
+        ipv4_start="ipv4_start",
+        ipv6_end="ipv6_end",
+        ipv6_start="ipv6_start",
         modified_after="2019-12-27T18:11:19.117Z",
         modified_before="2019-12-27T18:11:19.117Z",
         order="hostname",
+        target_ids=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
         virtual_network_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
 
@@ -275,14 +366,27 @@ def get_zero_trust_access_infrastructure_targets(account_id: Optional[str] = Non
     :param str direction: The sorting direction.
     :param str hostname: Hostname of a target
     :param str hostname_contains: Partial match to the hostname of a target
+    :param str ip_like: Filters for targets whose IP addresses look like the specified string.
+           Supports `*` as a wildcard character
     :param str ip_v4: IPv4 address of the target
     :param str ip_v6: IPv6 address of the target
     :param Sequence[str] ips: Filters for targets that have any of the following IP addresses. Specify
            `ips` multiple times in query parameter to build list of candidates.
+    :param str ipv4_end: Defines an IPv4 filter range's ending value (inclusive). Requires
+           `ipv4_start` to be specified as well.
+    :param str ipv4_start: Defines an IPv4 filter range's starting value (inclusive). Requires
+           `ipv4_end` to be specified as well.
+    :param str ipv6_end: Defines an IPv6 filter range's ending value (inclusive). Requires
+           `ipv6_start` to be specified as well.
+    :param str ipv6_start: Defines an IPv6 filter range's starting value (inclusive). Requires
+           `ipv6_end` to be specified as well.
     :param int max_items: Max items to fetch, default: 1000
     :param str modified_after: Date and time at which the target was modified after (inclusive)
     :param str modified_before: Date and time at which the target was modified before (inclusive)
     :param str order: The field to sort by.
+    :param Sequence[str] target_ids: Filters for targets that have any of the following UUIDs. Specify
+           `target_ids` multiple times in query parameter to build list of
+           candidates.
     :param str virtual_network_id: Private virtual network identifier of the target
     """
     __args__ = dict()
@@ -292,13 +396,19 @@ def get_zero_trust_access_infrastructure_targets(account_id: Optional[str] = Non
     __args__['direction'] = direction
     __args__['hostname'] = hostname
     __args__['hostnameContains'] = hostname_contains
+    __args__['ipLike'] = ip_like
     __args__['ipV4'] = ip_v4
     __args__['ipV6'] = ip_v6
     __args__['ips'] = ips
+    __args__['ipv4End'] = ipv4_end
+    __args__['ipv4Start'] = ipv4_start
+    __args__['ipv6End'] = ipv6_end
+    __args__['ipv6Start'] = ipv6_start
     __args__['maxItems'] = max_items
     __args__['modifiedAfter'] = modified_after
     __args__['modifiedBefore'] = modified_before
     __args__['order'] = order
+    __args__['targetIds'] = target_ids
     __args__['virtualNetworkId'] = virtual_network_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZeroTrustAccessInfrastructureTargets:getZeroTrustAccessInfrastructureTargets', __args__, opts=opts, typ=GetZeroTrustAccessInfrastructureTargetsResult).value
@@ -311,14 +421,20 @@ def get_zero_trust_access_infrastructure_targets(account_id: Optional[str] = Non
         hostname=pulumi.get(__ret__, 'hostname'),
         hostname_contains=pulumi.get(__ret__, 'hostname_contains'),
         id=pulumi.get(__ret__, 'id'),
+        ip_like=pulumi.get(__ret__, 'ip_like'),
         ip_v4=pulumi.get(__ret__, 'ip_v4'),
         ip_v6=pulumi.get(__ret__, 'ip_v6'),
         ips=pulumi.get(__ret__, 'ips'),
+        ipv4_end=pulumi.get(__ret__, 'ipv4_end'),
+        ipv4_start=pulumi.get(__ret__, 'ipv4_start'),
+        ipv6_end=pulumi.get(__ret__, 'ipv6_end'),
+        ipv6_start=pulumi.get(__ret__, 'ipv6_start'),
         max_items=pulumi.get(__ret__, 'max_items'),
         modified_after=pulumi.get(__ret__, 'modified_after'),
         modified_before=pulumi.get(__ret__, 'modified_before'),
         order=pulumi.get(__ret__, 'order'),
         results=pulumi.get(__ret__, 'results'),
+        target_ids=pulumi.get(__ret__, 'target_ids'),
         virtual_network_id=pulumi.get(__ret__, 'virtual_network_id'))
 def get_zero_trust_access_infrastructure_targets_output(account_id: Optional[pulumi.Input[str]] = None,
                                                         created_after: Optional[pulumi.Input[Optional[str]]] = None,
@@ -326,13 +442,19 @@ def get_zero_trust_access_infrastructure_targets_output(account_id: Optional[pul
                                                         direction: Optional[pulumi.Input[Optional[str]]] = None,
                                                         hostname: Optional[pulumi.Input[Optional[str]]] = None,
                                                         hostname_contains: Optional[pulumi.Input[Optional[str]]] = None,
+                                                        ip_like: Optional[pulumi.Input[Optional[str]]] = None,
                                                         ip_v4: Optional[pulumi.Input[Optional[str]]] = None,
                                                         ip_v6: Optional[pulumi.Input[Optional[str]]] = None,
                                                         ips: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                                        ipv4_end: Optional[pulumi.Input[Optional[str]]] = None,
+                                                        ipv4_start: Optional[pulumi.Input[Optional[str]]] = None,
+                                                        ipv6_end: Optional[pulumi.Input[Optional[str]]] = None,
+                                                        ipv6_start: Optional[pulumi.Input[Optional[str]]] = None,
                                                         max_items: Optional[pulumi.Input[Optional[int]]] = None,
                                                         modified_after: Optional[pulumi.Input[Optional[str]]] = None,
                                                         modified_before: Optional[pulumi.Input[Optional[str]]] = None,
                                                         order: Optional[pulumi.Input[Optional[str]]] = None,
+                                                        target_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                                         virtual_network_id: Optional[pulumi.Input[Optional[str]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessInfrastructureTargetsResult]:
     """
@@ -348,12 +470,18 @@ def get_zero_trust_access_infrastructure_targets_output(account_id: Optional[pul
         direction="asc",
         hostname="hostname",
         hostname_contains="hostname_contains",
+        ip_like="ip_like",
         ip_v4="ip_v4",
         ip_v6="ip_v6",
         ips=["string"],
+        ipv4_end="ipv4_end",
+        ipv4_start="ipv4_start",
+        ipv6_end="ipv6_end",
+        ipv6_start="ipv6_start",
         modified_after="2019-12-27T18:11:19.117Z",
         modified_before="2019-12-27T18:11:19.117Z",
         order="hostname",
+        target_ids=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
         virtual_network_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
 
@@ -364,14 +492,27 @@ def get_zero_trust_access_infrastructure_targets_output(account_id: Optional[pul
     :param str direction: The sorting direction.
     :param str hostname: Hostname of a target
     :param str hostname_contains: Partial match to the hostname of a target
+    :param str ip_like: Filters for targets whose IP addresses look like the specified string.
+           Supports `*` as a wildcard character
     :param str ip_v4: IPv4 address of the target
     :param str ip_v6: IPv6 address of the target
     :param Sequence[str] ips: Filters for targets that have any of the following IP addresses. Specify
            `ips` multiple times in query parameter to build list of candidates.
+    :param str ipv4_end: Defines an IPv4 filter range's ending value (inclusive). Requires
+           `ipv4_start` to be specified as well.
+    :param str ipv4_start: Defines an IPv4 filter range's starting value (inclusive). Requires
+           `ipv4_end` to be specified as well.
+    :param str ipv6_end: Defines an IPv6 filter range's ending value (inclusive). Requires
+           `ipv6_start` to be specified as well.
+    :param str ipv6_start: Defines an IPv6 filter range's starting value (inclusive). Requires
+           `ipv6_end` to be specified as well.
     :param int max_items: Max items to fetch, default: 1000
     :param str modified_after: Date and time at which the target was modified after (inclusive)
     :param str modified_before: Date and time at which the target was modified before (inclusive)
     :param str order: The field to sort by.
+    :param Sequence[str] target_ids: Filters for targets that have any of the following UUIDs. Specify
+           `target_ids` multiple times in query parameter to build list of
+           candidates.
     :param str virtual_network_id: Private virtual network identifier of the target
     """
     __args__ = dict()
@@ -381,13 +522,19 @@ def get_zero_trust_access_infrastructure_targets_output(account_id: Optional[pul
     __args__['direction'] = direction
     __args__['hostname'] = hostname
     __args__['hostnameContains'] = hostname_contains
+    __args__['ipLike'] = ip_like
     __args__['ipV4'] = ip_v4
     __args__['ipV6'] = ip_v6
     __args__['ips'] = ips
+    __args__['ipv4End'] = ipv4_end
+    __args__['ipv4Start'] = ipv4_start
+    __args__['ipv6End'] = ipv6_end
+    __args__['ipv6Start'] = ipv6_start
     __args__['maxItems'] = max_items
     __args__['modifiedAfter'] = modified_after
     __args__['modifiedBefore'] = modified_before
     __args__['order'] = order
+    __args__['targetIds'] = target_ids
     __args__['virtualNetworkId'] = virtual_network_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustAccessInfrastructureTargets:getZeroTrustAccessInfrastructureTargets', __args__, opts=opts, typ=GetZeroTrustAccessInfrastructureTargetsResult)
@@ -399,12 +546,18 @@ def get_zero_trust_access_infrastructure_targets_output(account_id: Optional[pul
         hostname=pulumi.get(__response__, 'hostname'),
         hostname_contains=pulumi.get(__response__, 'hostname_contains'),
         id=pulumi.get(__response__, 'id'),
+        ip_like=pulumi.get(__response__, 'ip_like'),
         ip_v4=pulumi.get(__response__, 'ip_v4'),
         ip_v6=pulumi.get(__response__, 'ip_v6'),
         ips=pulumi.get(__response__, 'ips'),
+        ipv4_end=pulumi.get(__response__, 'ipv4_end'),
+        ipv4_start=pulumi.get(__response__, 'ipv4_start'),
+        ipv6_end=pulumi.get(__response__, 'ipv6_end'),
+        ipv6_start=pulumi.get(__response__, 'ipv6_start'),
         max_items=pulumi.get(__response__, 'max_items'),
         modified_after=pulumi.get(__response__, 'modified_after'),
         modified_before=pulumi.get(__response__, 'modified_before'),
         order=pulumi.get(__response__, 'order'),
         results=pulumi.get(__response__, 'results'),
+        target_ids=pulumi.get(__response__, 'target_ids'),
         virtual_network_id=pulumi.get(__response__, 'virtual_network_id')))

@@ -17,10 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; Since v3.32.0
- *    all authentication schemes are supported for managing Origin CA certificates.
- *    Versions prior to v3.32.0 will still need to use `api_user_service_key`.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

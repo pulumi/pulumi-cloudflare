@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.AccountTokenPolicyPermissionGroupMeta;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,7 +17,7 @@ public final class AccountTokenPolicyPermissionGroup {
      * @return Identifier of the group.
      * 
      */
-    private @Nullable String id;
+    private String id;
     /**
      * @return Attributes associated to the permission group.
      * 
@@ -33,8 +34,8 @@ public final class AccountTokenPolicyPermissionGroup {
      * @return Identifier of the group.
      * 
      */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
+    public String id() {
+        return this.id;
     }
     /**
      * @return Attributes associated to the permission group.
@@ -60,7 +61,7 @@ public final class AccountTokenPolicyPermissionGroup {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String id;
+        private String id;
         private @Nullable AccountTokenPolicyPermissionGroupMeta meta;
         private @Nullable String name;
         public Builder() {}
@@ -72,8 +73,10 @@ public final class AccountTokenPolicyPermissionGroup {
         }
 
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("AccountTokenPolicyPermissionGroup", "id");
+            }
             this.id = id;
             return this;
         }

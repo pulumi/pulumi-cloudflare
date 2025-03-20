@@ -5,7 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Double;
+import java.lang.Object;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -96,13 +96,13 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
      * 
      */
     @Import(name="value")
-    private @Nullable Output<Double> value;
+    private @Nullable Output<Object> value;
 
     /**
      * @return The tls setting value.
      * 
      */
-    public Optional<Output<Double>> value() {
+    public Optional<Output<Object>> value() {
         return Optional.ofNullable(this.value);
     }
 
@@ -262,7 +262,7 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder value(@Nullable Output<Double> value) {
+        public Builder value(@Nullable Output<Object> value) {
             $.value = value;
             return this;
         }
@@ -273,7 +273,7 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder value(Double value) {
+        public Builder value(Object value) {
             return value(Output.of(value));
         }
 

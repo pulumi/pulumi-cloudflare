@@ -67,12 +67,18 @@ export class D1Database extends pulumi.CustomResource {
      * The D1 database's size, in bytes.
      */
     public /*out*/ readonly fileSize!: pulumi.Output<number>;
+    /**
+     * D1 database name.
+     */
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly numTables!: pulumi.Output<number>;
     /**
      * Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
      */
     public readonly primaryLocationHint!: pulumi.Output<string | undefined>;
+    /**
+     * D1 database identifier (UUID).
+     */
     public /*out*/ readonly uuid!: pulumi.Output<string>;
     public /*out*/ readonly version!: pulumi.Output<string>;
 
@@ -135,12 +141,18 @@ export interface D1DatabaseState {
      * The D1 database's size, in bytes.
      */
     fileSize?: pulumi.Input<number>;
+    /**
+     * D1 database name.
+     */
     name?: pulumi.Input<string>;
     numTables?: pulumi.Input<number>;
     /**
      * Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
      */
     primaryLocationHint?: pulumi.Input<string>;
+    /**
+     * D1 database identifier (UUID).
+     */
     uuid?: pulumi.Input<string>;
     version?: pulumi.Input<string>;
 }
@@ -153,6 +165,9 @@ export interface D1DatabaseArgs {
      * Account identifier tag.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * D1 database name.
+     */
     name: pulumi.Input<string>;
     /**
      * Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.

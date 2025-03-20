@@ -114,15 +114,15 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
      * DNS Firewall cluster name
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return DNS Firewall cluster name
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
@@ -170,11 +170,11 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.retries);
     }
 
-    @Import(name="upstreamIps")
-    private @Nullable Output<List<String>> upstreamIps;
+    @Import(name="upstreamIps", required=true)
+    private Output<List<String>> upstreamIps;
 
-    public Optional<Output<List<String>>> upstreamIps() {
-        return Optional.ofNullable(this.upstreamIps);
+    public Output<List<String>> upstreamIps() {
+        return this.upstreamIps;
     }
 
     private DnsFirewallArgs() {}
@@ -343,7 +343,7 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -421,7 +421,7 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
             return retries(Output.of(retries));
         }
 
-        public Builder upstreamIps(@Nullable Output<List<String>> upstreamIps) {
+        public Builder upstreamIps(Output<List<String>> upstreamIps) {
             $.upstreamIps = upstreamIps;
             return this;
         }
@@ -437,6 +437,12 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
         public DnsFirewallArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("DnsFirewallArgs", "accountId");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("DnsFirewallArgs", "name");
+            }
+            if ($.upstreamIps == null) {
+                throw new MissingRequiredPropertyException("DnsFirewallArgs", "upstreamIps");
             }
             return $;
         }

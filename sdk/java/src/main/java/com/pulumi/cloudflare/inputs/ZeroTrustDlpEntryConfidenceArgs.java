@@ -15,6 +15,13 @@ public final class ZeroTrustDlpEntryConfidenceArgs extends com.pulumi.resources.
 
     public static final ZeroTrustDlpEntryConfidenceArgs Empty = new ZeroTrustDlpEntryConfidenceArgs();
 
+    @Import(name="aiContextAvailable")
+    private @Nullable Output<Boolean> aiContextAvailable;
+
+    public Optional<Output<Boolean>> aiContextAvailable() {
+        return Optional.ofNullable(this.aiContextAvailable);
+    }
+
     /**
      * Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
      * Profiles that use an entry with `available` set to true can use confidence thresholds
@@ -35,6 +42,7 @@ public final class ZeroTrustDlpEntryConfidenceArgs extends com.pulumi.resources.
     private ZeroTrustDlpEntryConfidenceArgs() {}
 
     private ZeroTrustDlpEntryConfidenceArgs(ZeroTrustDlpEntryConfidenceArgs $) {
+        this.aiContextAvailable = $.aiContextAvailable;
         this.available = $.available;
     }
 
@@ -54,6 +62,15 @@ public final class ZeroTrustDlpEntryConfidenceArgs extends com.pulumi.resources.
 
         public Builder(ZeroTrustDlpEntryConfidenceArgs defaults) {
             $ = new ZeroTrustDlpEntryConfidenceArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder aiContextAvailable(@Nullable Output<Boolean> aiContextAvailable) {
+            $.aiContextAvailable = aiContextAvailable;
+            return this;
+        }
+
+        public Builder aiContextAvailable(Boolean aiContextAvailable) {
+            return aiContextAvailable(Output.of(aiContextAvailable));
         }
 
         /**

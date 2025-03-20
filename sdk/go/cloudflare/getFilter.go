@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupFilter(ctx, &cloudflare.LookupFilterArgs{
 //				ZoneId:   "023e105f4ecef8ad9ca31a8372d0c353",
-//				FilterId: "372e67954025e0ba6aaa6d586b9e0b61",
+//				FilterId: pulumi.StringRef("372e67954025e0ba6aaa6d586b9e0b61"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,8 +49,9 @@ func LookupFilter(ctx *pulumi.Context, args *LookupFilterArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getFilter.
 type LookupFilterArgs struct {
+	Filter *GetFilterFilter `pulumi:"filter"`
 	// The unique identifier of the filter.
-	FilterId string `pulumi:"filterId"`
+	FilterId *string `pulumi:"filterId"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -60,9 +61,10 @@ type LookupFilterResult struct {
 	// An informative summary of the filter.
 	Description string `pulumi:"description"`
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
-	Expression string `pulumi:"expression"`
+	Expression string           `pulumi:"expression"`
+	Filter     *GetFilterFilter `pulumi:"filter"`
 	// The unique identifier of the filter.
-	FilterId string `pulumi:"filterId"`
+	FilterId *string `pulumi:"filterId"`
 	// The unique identifier of the filter.
 	Id string `pulumi:"id"`
 	// When true, indicates that the filter is currently paused.
@@ -84,8 +86,9 @@ func LookupFilterOutput(ctx *pulumi.Context, args LookupFilterOutputArgs, opts .
 
 // A collection of arguments for invoking getFilter.
 type LookupFilterOutputArgs struct {
+	Filter GetFilterFilterPtrInput `pulumi:"filter"`
 	// The unique identifier of the filter.
-	FilterId pulumi.StringInput `pulumi:"filterId"`
+	FilterId pulumi.StringPtrInput `pulumi:"filterId"`
 	// Identifier
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -119,9 +122,13 @@ func (o LookupFilterResultOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFilterResult) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+func (o LookupFilterResultOutput) Filter() GetFilterFilterPtrOutput {
+	return o.ApplyT(func(v LookupFilterResult) *GetFilterFilter { return v.Filter }).(GetFilterFilterPtrOutput)
+}
+
 // The unique identifier of the filter.
-func (o LookupFilterResultOutput) FilterId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFilterResult) string { return v.FilterId }).(pulumi.StringOutput)
+func (o LookupFilterResultOutput) FilterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupFilterResult) *string { return v.FilterId }).(pulumi.StringPtrOutput)
 }
 
 // The unique identifier of the filter.

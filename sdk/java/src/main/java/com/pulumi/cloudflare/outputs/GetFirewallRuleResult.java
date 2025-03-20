@@ -3,7 +3,6 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.GetFirewallRuleFilter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -11,6 +10,8 @@ import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFirewallRuleResult {
@@ -24,7 +25,6 @@ public final class GetFirewallRuleResult {
      * 
      */
     private String description;
-    private GetFirewallRuleFilter filter;
     /**
      * @return The unique identifier of the firewall rule.
      * 
@@ -50,7 +50,7 @@ public final class GetFirewallRuleResult {
      * @return The unique identifier of the firewall rule.
      * 
      */
-    private String ruleId;
+    private @Nullable String ruleId;
     /**
      * @return Identifier
      * 
@@ -71,9 +71,6 @@ public final class GetFirewallRuleResult {
      */
     public String description() {
         return this.description;
-    }
-    public GetFirewallRuleFilter filter() {
-        return this.filter;
     }
     /**
      * @return The unique identifier of the firewall rule.
@@ -110,8 +107,8 @@ public final class GetFirewallRuleResult {
      * @return The unique identifier of the firewall rule.
      * 
      */
-    public String ruleId() {
-        return this.ruleId;
+    public Optional<String> ruleId() {
+        return Optional.ofNullable(this.ruleId);
     }
     /**
      * @return Identifier
@@ -132,20 +129,18 @@ public final class GetFirewallRuleResult {
     public static final class Builder {
         private String action;
         private String description;
-        private GetFirewallRuleFilter filter;
         private String id;
         private Boolean paused;
         private Double priority;
         private List<String> products;
         private String ref;
-        private String ruleId;
+        private @Nullable String ruleId;
         private String zoneId;
         public Builder() {}
         public Builder(GetFirewallRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
     	      this.description = defaults.description;
-    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.paused = defaults.paused;
     	      this.priority = defaults.priority;
@@ -169,14 +164,6 @@ public final class GetFirewallRuleResult {
               throw new MissingRequiredPropertyException("GetFirewallRuleResult", "description");
             }
             this.description = description;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder filter(GetFirewallRuleFilter filter) {
-            if (filter == null) {
-              throw new MissingRequiredPropertyException("GetFirewallRuleResult", "filter");
-            }
-            this.filter = filter;
             return this;
         }
         @CustomType.Setter
@@ -223,10 +210,8 @@ public final class GetFirewallRuleResult {
             return this;
         }
         @CustomType.Setter
-        public Builder ruleId(String ruleId) {
-            if (ruleId == null) {
-              throw new MissingRequiredPropertyException("GetFirewallRuleResult", "ruleId");
-            }
+        public Builder ruleId(@Nullable String ruleId) {
+
             this.ruleId = ruleId;
             return this;
         }
@@ -242,7 +227,6 @@ public final class GetFirewallRuleResult {
             final var _resultValue = new GetFirewallRuleResult();
             _resultValue.action = action;
             _resultValue.description = description;
-            _resultValue.filter = filter;
             _resultValue.id = id;
             _resultValue.paused = paused;
             _resultValue.priority = priority;

@@ -122,7 +122,7 @@ namespace Pulumi.Cloudflare
     {
         public readonly string AccountId;
         /// <summary>
-        /// The Workspace One Config Response.
+        /// The configuration object containing third-party integration information.
         /// </summary>
         public readonly Outputs.GetZeroTrustDevicePostureIntegrationConfigResult Config;
         /// <summary>

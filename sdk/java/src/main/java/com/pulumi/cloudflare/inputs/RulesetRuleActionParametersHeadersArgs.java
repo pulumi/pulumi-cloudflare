@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,11 +31,11 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
         return Optional.ofNullable(this.expression);
     }
 
-    @Import(name="operation")
-    private @Nullable Output<String> operation;
+    @Import(name="operation", required=true)
+    private Output<String> operation;
 
-    public Optional<Output<String>> operation() {
-        return Optional.ofNullable(this.operation);
+    public Output<String> operation() {
+        return this.operation;
     }
 
     /**
@@ -99,7 +100,7 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
             return expression(Output.of(expression));
         }
 
-        public Builder operation(@Nullable Output<String> operation) {
+        public Builder operation(Output<String> operation) {
             $.operation = operation;
             return this;
         }
@@ -130,6 +131,9 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
         }
 
         public RulesetRuleActionParametersHeadersArgs build() {
+            if ($.operation == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleActionParametersHeadersArgs", "operation");
+            }
             return $;
         }
     }

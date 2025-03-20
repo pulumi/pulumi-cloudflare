@@ -131,6 +131,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
+        /// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        /// </summary>
+        public readonly bool ChinaNetwork;
+        /// <summary>
+        /// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        /// </summary>
+        public readonly bool ClientCertificateForwarding;
+        /// <summary>
+        /// The hostname that these settings apply to.
+        /// </summary>
+        public readonly string Hostname;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -143,11 +155,20 @@ namespace Pulumi.Cloudflare
         private GetZeroTrustAccessMtlsHostnameSettingsResult(
             string? accountId,
 
+            bool chinaNetwork,
+
+            bool clientCertificateForwarding,
+
+            string hostname,
+
             string id,
 
             string? zoneId)
         {
             AccountId = accountId;
+            ChinaNetwork = chinaNetwork;
+            ClientCertificateForwarding = clientCertificateForwarding;
+            Hostname = hostname;
             Id = id;
             ZoneId = zoneId;
         }

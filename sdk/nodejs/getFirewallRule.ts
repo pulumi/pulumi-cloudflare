@@ -2,28 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleFirewallRule = cloudflare.getFirewallRule({
- *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     ruleId: "372e67954025e0ba6aaa6d586b9e0b60",
- *     id: "372e67954025e0ba6aaa6d586b9e0b60",
- * });
- * ```
  */
 export function getFirewallRule(args: GetFirewallRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getFirewallRule:getFirewallRule", {
-        "id": args.id,
         "ruleId": args.ruleId,
         "zoneId": args.zoneId,
     }, opts);
@@ -36,11 +22,7 @@ export interface GetFirewallRuleArgs {
     /**
      * The unique identifier of the firewall rule.
      */
-    id?: string;
-    /**
-     * The unique identifier of the firewall rule.
-     */
-    ruleId: string;
+    ruleId?: string;
     /**
      * Identifier
      */
@@ -59,7 +41,6 @@ export interface GetFirewallRuleResult {
      * An informative summary of the firewall rule.
      */
     readonly description: string;
-    readonly filter: outputs.GetFirewallRuleFilter;
     /**
      * The unique identifier of the firewall rule.
      */
@@ -80,7 +61,7 @@ export interface GetFirewallRuleResult {
     /**
      * The unique identifier of the firewall rule.
      */
-    readonly ruleId: string;
+    readonly ruleId?: string;
     /**
      * Identifier
      */
@@ -88,22 +69,10 @@ export interface GetFirewallRuleResult {
 }
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleFirewallRule = cloudflare.getFirewallRule({
- *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     ruleId: "372e67954025e0ba6aaa6d586b9e0b60",
- *     id: "372e67954025e0ba6aaa6d586b9e0b60",
- * });
- * ```
  */
 export function getFirewallRuleOutput(args: GetFirewallRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFirewallRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getFirewallRule:getFirewallRule", {
-        "id": args.id,
         "ruleId": args.ruleId,
         "zoneId": args.zoneId,
     }, opts);
@@ -116,11 +85,7 @@ export interface GetFirewallRuleOutputArgs {
     /**
      * The unique identifier of the firewall rule.
      */
-    id?: pulumi.Input<string>;
-    /**
-     * The unique identifier of the firewall rule.
-     */
-    ruleId: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string>;
     /**
      * Identifier
      */

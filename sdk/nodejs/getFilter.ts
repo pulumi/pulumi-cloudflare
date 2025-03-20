@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -20,6 +22,7 @@ import * as utilities from "./utilities";
 export function getFilter(args: GetFilterArgs, opts?: pulumi.InvokeOptions): Promise<GetFilterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getFilter:getFilter", {
+        "filter": args.filter,
         "filterId": args.filterId,
         "zoneId": args.zoneId,
     }, opts);
@@ -29,10 +32,11 @@ export function getFilter(args: GetFilterArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getFilter.
  */
 export interface GetFilterArgs {
+    filter?: inputs.GetFilterFilter;
     /**
      * The unique identifier of the filter.
      */
-    filterId: string;
+    filterId?: string;
     /**
      * Identifier
      */
@@ -51,10 +55,11 @@ export interface GetFilterResult {
      * The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
      */
     readonly expression: string;
+    readonly filter?: outputs.GetFilterFilter;
     /**
      * The unique identifier of the filter.
      */
-    readonly filterId: string;
+    readonly filterId?: string;
     /**
      * The unique identifier of the filter.
      */
@@ -88,6 +93,7 @@ export interface GetFilterResult {
 export function getFilterOutput(args: GetFilterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFilterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getFilter:getFilter", {
+        "filter": args.filter,
         "filterId": args.filterId,
         "zoneId": args.zoneId,
     }, opts);
@@ -97,10 +103,11 @@ export function getFilterOutput(args: GetFilterOutputArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getFilter.
  */
 export interface GetFilterOutputArgs {
+    filter?: pulumi.Input<inputs.GetFilterFilterArgs>;
     /**
      * The unique identifier of the filter.
      */
-    filterId: pulumi.Input<string>;
+    filterId?: pulumi.Input<string>;
     /**
      * Identifier
      */

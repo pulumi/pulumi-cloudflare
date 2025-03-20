@@ -524,6 +524,12 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             tunnel_protocol="wireguard")
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile example '<account_id>'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_mode_switch: Whether to allow the user to switch WARP between modes.
@@ -566,6 +572,12 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             support_url="https://1.1.1.1/help",
             switch_locked=True,
             tunnel_protocol="wireguard")
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile example '<account_id>'
         ```
 
         :param str resource_name: The name of the resource.

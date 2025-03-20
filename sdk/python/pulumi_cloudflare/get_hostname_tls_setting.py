@@ -26,16 +26,47 @@ class GetHostnameTlsSettingResult:
     """
     A collection of values returned by getHostnameTlsSetting.
     """
-    def __init__(__self__, id=None, setting_id=None, zone_id=None):
+    def __init__(__self__, created_at=None, hostname=None, id=None, setting_id=None, status=None, updated_at=None, value=None, zone_id=None):
+        if created_at and not isinstance(created_at, str):
+            raise TypeError("Expected argument 'created_at' to be a str")
+        pulumi.set(__self__, "created_at", created_at)
+        if hostname and not isinstance(hostname, str):
+            raise TypeError("Expected argument 'hostname' to be a str")
+        pulumi.set(__self__, "hostname", hostname)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if setting_id and not isinstance(setting_id, str):
             raise TypeError("Expected argument 'setting_id' to be a str")
         pulumi.set(__self__, "setting_id", setting_id)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+        if updated_at and not isinstance(updated_at, str):
+            raise TypeError("Expected argument 'updated_at' to be a str")
+        pulumi.set(__self__, "updated_at", updated_at)
+        if value and not isinstance(value, float):
+            raise TypeError("Expected argument 'value' to be a float")
+        pulumi.set(__self__, "value", value)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        This is the time the tls setting was originally created for this hostname.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        The hostname for which the tls settings are set.
+        """
+        return pulumi.get(self, "hostname")
 
     @property
     @pulumi.getter
@@ -54,6 +85,30 @@ class GetHostnameTlsSettingResult:
         return pulumi.get(self, "setting_id")
 
     @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Deployment status for the given tls setting.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
+        """
+        This is the time the tls setting was updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        """
+        The tls setting value.
+        """
+        return pulumi.get(self, "value")
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
         """
@@ -68,8 +123,13 @@ class AwaitableGetHostnameTlsSettingResult(GetHostnameTlsSettingResult):
         if False:
             yield self
         return GetHostnameTlsSettingResult(
+            created_at=self.created_at,
+            hostname=self.hostname,
             id=self.id,
             setting_id=self.setting_id,
+            status=self.status,
+            updated_at=self.updated_at,
+            value=self.value,
             zone_id=self.zone_id)
 
 
@@ -98,8 +158,13 @@ def get_hostname_tls_setting(setting_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getHostnameTlsSetting:getHostnameTlsSetting', __args__, opts=opts, typ=GetHostnameTlsSettingResult).value
 
     return AwaitableGetHostnameTlsSettingResult(
+        created_at=pulumi.get(__ret__, 'created_at'),
+        hostname=pulumi.get(__ret__, 'hostname'),
         id=pulumi.get(__ret__, 'id'),
         setting_id=pulumi.get(__ret__, 'setting_id'),
+        status=pulumi.get(__ret__, 'status'),
+        updated_at=pulumi.get(__ret__, 'updated_at'),
+        value=pulumi.get(__ret__, 'value'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_hostname_tls_setting_output(setting_id: Optional[pulumi.Input[str]] = None,
                                     zone_id: Optional[pulumi.Input[str]] = None,
@@ -125,6 +190,11 @@ def get_hostname_tls_setting_output(setting_id: Optional[pulumi.Input[str]] = No
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getHostnameTlsSetting:getHostnameTlsSetting', __args__, opts=opts, typ=GetHostnameTlsSettingResult)
     return __ret__.apply(lambda __response__: GetHostnameTlsSettingResult(
+        created_at=pulumi.get(__response__, 'created_at'),
+        hostname=pulumi.get(__response__, 'hostname'),
         id=pulumi.get(__response__, 'id'),
         setting_id=pulumi.get(__response__, 'setting_id'),
+        status=pulumi.get(__response__, 'status'),
+        updated_at=pulumi.get(__response__, 'updated_at'),
+        value=pulumi.get(__response__, 'value'),
         zone_id=pulumi.get(__response__, 'zone_id')))

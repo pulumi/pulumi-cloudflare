@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > `cloudflare.FirewallRule` is in a deprecation phase until January 15th, 2025.
+ * > `cloudflare.FirewallRule` is in a deprecation phase until June 15th, 2025.
  *   During this time period, this resource is still
  *   fully supported but you are strongly advised  to move to the
  *   `cloudflare.Ruleset` resource. Full details can be found in the
@@ -36,6 +36,12 @@ import * as utilities from "./utilities";
  *         ref: "FIL-100",
  *     },
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/firewallRule:FirewallRule example '<zone_id>/<rule_id>'
  * ```
  */
 export class FirewallRule extends pulumi.CustomResource {
@@ -89,10 +95,6 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly ref!: pulumi.Output<string>;
     /**
-     * The unique identifier of the firewall rule.
-     */
-    public readonly ruleId!: pulumi.Output<string | undefined>;
-    /**
      * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
@@ -117,7 +119,6 @@ export class FirewallRule extends pulumi.CustomResource {
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["products"] = state ? state.products : undefined;
             resourceInputs["ref"] = state ? state.ref : undefined;
-            resourceInputs["ruleId"] = state ? state.ruleId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as FirewallRuleArgs | undefined;
@@ -132,7 +133,6 @@ export class FirewallRule extends pulumi.CustomResource {
             }
             resourceInputs["action"] = args ? args.action : undefined;
             resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["ruleId"] = args ? args.ruleId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["paused"] = undefined /*out*/;
@@ -172,10 +172,6 @@ export interface FirewallRuleState {
      */
     ref?: pulumi.Input<string>;
     /**
-     * The unique identifier of the firewall rule.
-     */
-    ruleId?: pulumi.Input<string>;
-    /**
      * Identifier
      */
     zoneId?: pulumi.Input<string>;
@@ -190,10 +186,6 @@ export interface FirewallRuleArgs {
      */
     action: pulumi.Input<inputs.FirewallRuleAction>;
     filter: pulumi.Input<inputs.FirewallRuleFilter>;
-    /**
-     * The unique identifier of the firewall rule.
-     */
-    ruleId?: pulumi.Input<string>;
     /**
      * Identifier
      */

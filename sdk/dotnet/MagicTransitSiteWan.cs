@@ -11,6 +11,12 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan example '&lt;account_id&gt;/&lt;site_id&gt;/&lt;wan_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan")]
     public partial class MagicTransitSiteWan : global::Pulumi.CustomResource
@@ -53,12 +59,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("vlanTag")]
         public Output<int> VlanTag { get; private set; } = null!;
-
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Output("wanId")]
-        public Output<string?> WanId { get; private set; } = null!;
 
 
         /// <summary>
@@ -139,12 +139,6 @@ namespace Pulumi.Cloudflare
         [Input("vlanTag", required: true)]
         public Input<int> VlanTag { get; set; } = null!;
 
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Input("wanId")]
-        public Input<string>? WanId { get; set; }
-
         public MagicTransitSiteWanArgs()
         {
         }
@@ -191,12 +185,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("vlanTag")]
         public Input<int>? VlanTag { get; set; }
-
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Input("wanId")]
-        public Input<string>? WanId { get; set; }
 
         public MagicTransitSiteWanState()
         {

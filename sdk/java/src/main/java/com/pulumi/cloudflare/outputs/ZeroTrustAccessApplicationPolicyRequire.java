@@ -21,6 +21,7 @@ import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyRequireGrou
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyRequireGsuite;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyRequireIp;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyRequireIpList;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyRequireLoginMethod;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyRequireOkta;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyRequireSaml;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyRequireServiceToken;
@@ -57,6 +58,7 @@ public final class ZeroTrustAccessApplicationPolicyRequire {
     private @Nullable ZeroTrustAccessApplicationPolicyRequireGsuite gsuite;
     private @Nullable ZeroTrustAccessApplicationPolicyRequireIp ip;
     private @Nullable ZeroTrustAccessApplicationPolicyRequireIpList ipList;
+    private @Nullable ZeroTrustAccessApplicationPolicyRequireLoginMethod loginMethod;
     private @Nullable ZeroTrustAccessApplicationPolicyRequireOkta okta;
     private @Nullable ZeroTrustAccessApplicationPolicyRequireSaml saml;
     private @Nullable ZeroTrustAccessApplicationPolicyRequireServiceToken serviceToken;
@@ -124,6 +126,9 @@ public final class ZeroTrustAccessApplicationPolicyRequire {
     public Optional<ZeroTrustAccessApplicationPolicyRequireIpList> ipList() {
         return Optional.ofNullable(this.ipList);
     }
+    public Optional<ZeroTrustAccessApplicationPolicyRequireLoginMethod> loginMethod() {
+        return Optional.ofNullable(this.loginMethod);
+    }
     public Optional<ZeroTrustAccessApplicationPolicyRequireOkta> okta() {
         return Optional.ofNullable(this.okta);
     }
@@ -161,6 +166,7 @@ public final class ZeroTrustAccessApplicationPolicyRequire {
         private @Nullable ZeroTrustAccessApplicationPolicyRequireGsuite gsuite;
         private @Nullable ZeroTrustAccessApplicationPolicyRequireIp ip;
         private @Nullable ZeroTrustAccessApplicationPolicyRequireIpList ipList;
+        private @Nullable ZeroTrustAccessApplicationPolicyRequireLoginMethod loginMethod;
         private @Nullable ZeroTrustAccessApplicationPolicyRequireOkta okta;
         private @Nullable ZeroTrustAccessApplicationPolicyRequireSaml saml;
         private @Nullable ZeroTrustAccessApplicationPolicyRequireServiceToken serviceToken;
@@ -185,6 +191,7 @@ public final class ZeroTrustAccessApplicationPolicyRequire {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
+    	      this.loginMethod = defaults.loginMethod;
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -299,6 +306,12 @@ public final class ZeroTrustAccessApplicationPolicyRequire {
             return this;
         }
         @CustomType.Setter
+        public Builder loginMethod(@Nullable ZeroTrustAccessApplicationPolicyRequireLoginMethod loginMethod) {
+
+            this.loginMethod = loginMethod;
+            return this;
+        }
+        @CustomType.Setter
         public Builder okta(@Nullable ZeroTrustAccessApplicationPolicyRequireOkta okta) {
 
             this.okta = okta;
@@ -336,6 +349,7 @@ public final class ZeroTrustAccessApplicationPolicyRequire {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
+            _resultValue.loginMethod = loginMethod;
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

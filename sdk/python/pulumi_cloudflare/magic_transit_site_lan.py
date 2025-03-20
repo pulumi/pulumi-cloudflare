@@ -26,7 +26,6 @@ class MagicTransitSiteLanArgs:
                  site_id: pulumi.Input[str],
                  vlan_tag: pulumi.Input[int],
                  ha_link: Optional[pulumi.Input[bool]] = None,
-                 lan_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nat: Optional[pulumi.Input['MagicTransitSiteLanNatArgs']] = None,
                  routed_subnets: Optional[pulumi.Input[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]] = None,
@@ -37,7 +36,6 @@ class MagicTransitSiteLanArgs:
         :param pulumi.Input[str] site_id: Identifier
         :param pulumi.Input[int] vlan_tag: VLAN port number.
         :param pulumi.Input[bool] ha_link: mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-        :param pulumi.Input[str] lan_id: Identifier
         :param pulumi.Input['MagicTransitSiteLanStaticAddressingArgs'] static_addressing: If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -46,8 +44,6 @@ class MagicTransitSiteLanArgs:
         pulumi.set(__self__, "vlan_tag", vlan_tag)
         if ha_link is not None:
             pulumi.set(__self__, "ha_link", ha_link)
-        if lan_id is not None:
-            pulumi.set(__self__, "lan_id", lan_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if nat is not None:
@@ -115,18 +111,6 @@ class MagicTransitSiteLanArgs:
         pulumi.set(self, "ha_link", value)
 
     @property
-    @pulumi.getter(name="lanId")
-    def lan_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "lan_id")
-
-    @lan_id.setter
-    def lan_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "lan_id", value)
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "name")
@@ -171,7 +155,6 @@ class _MagicTransitSiteLanState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  ha_link: Optional[pulumi.Input[bool]] = None,
-                 lan_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nat: Optional[pulumi.Input['MagicTransitSiteLanNatArgs']] = None,
                  physport: Optional[pulumi.Input[int]] = None,
@@ -183,7 +166,6 @@ class _MagicTransitSiteLanState:
         Input properties used for looking up and filtering MagicTransitSiteLan resources.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[bool] ha_link: mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-        :param pulumi.Input[str] lan_id: Identifier
         :param pulumi.Input[str] site_id: Identifier
         :param pulumi.Input['MagicTransitSiteLanStaticAddressingArgs'] static_addressing: If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
         :param pulumi.Input[int] vlan_tag: VLAN port number.
@@ -192,8 +174,6 @@ class _MagicTransitSiteLanState:
             pulumi.set(__self__, "account_id", account_id)
         if ha_link is not None:
             pulumi.set(__self__, "ha_link", ha_link)
-        if lan_id is not None:
-            pulumi.set(__self__, "lan_id", lan_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if nat is not None:
@@ -232,18 +212,6 @@ class _MagicTransitSiteLanState:
     @ha_link.setter
     def ha_link(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ha_link", value)
-
-    @property
-    @pulumi.getter(name="lanId")
-    def lan_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "lan_id")
-
-    @lan_id.setter
-    def lan_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "lan_id", value)
 
     @property
     @pulumi.getter
@@ -325,7 +293,6 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  ha_link: Optional[pulumi.Input[bool]] = None,
-                 lan_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nat: Optional[pulumi.Input[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
                  physport: Optional[pulumi.Input[int]] = None,
@@ -337,11 +304,16 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan example '<account_id>/<site_id>/<lan_id>'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[bool] ha_link: mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-        :param pulumi.Input[str] lan_id: Identifier
         :param pulumi.Input[str] site_id: Identifier
         :param pulumi.Input[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']] static_addressing: If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
         :param pulumi.Input[int] vlan_tag: VLAN port number.
@@ -354,6 +326,12 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan example '<account_id>/<site_id>/<lan_id>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param MagicTransitSiteLanArgs args: The arguments to use to populate this resource's properties.
@@ -372,7 +350,6 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  ha_link: Optional[pulumi.Input[bool]] = None,
-                 lan_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nat: Optional[pulumi.Input[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
                  physport: Optional[pulumi.Input[int]] = None,
@@ -393,7 +370,6 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["ha_link"] = ha_link
-            __props__.__dict__["lan_id"] = lan_id
             __props__.__dict__["name"] = name
             __props__.__dict__["nat"] = nat
             if physport is None and not opts.urn:
@@ -419,7 +395,6 @@ class MagicTransitSiteLan(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             ha_link: Optional[pulumi.Input[bool]] = None,
-            lan_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nat: Optional[pulumi.Input[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
             physport: Optional[pulumi.Input[int]] = None,
@@ -436,7 +411,6 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[bool] ha_link: mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-        :param pulumi.Input[str] lan_id: Identifier
         :param pulumi.Input[str] site_id: Identifier
         :param pulumi.Input[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']] static_addressing: If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
         :param pulumi.Input[int] vlan_tag: VLAN port number.
@@ -447,7 +421,6 @@ class MagicTransitSiteLan(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["ha_link"] = ha_link
-        __props__.__dict__["lan_id"] = lan_id
         __props__.__dict__["name"] = name
         __props__.__dict__["nat"] = nat
         __props__.__dict__["physport"] = physport
@@ -472,14 +445,6 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
         """
         return pulumi.get(self, "ha_link")
-
-    @property
-    @pulumi.getter(name="lanId")
-    def lan_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "lan_id")
 
     @property
     @pulumi.getter

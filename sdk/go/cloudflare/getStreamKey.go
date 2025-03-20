@@ -56,7 +56,9 @@ type LookupStreamKeyArgs struct {
 type LookupStreamKeyResult struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
+	// The date and time a signing key was created.
+	Created string `pulumi:"created"`
+	// Identifier
 	Id string `pulumi:"id"`
 }
 
@@ -99,7 +101,12 @@ func (o LookupStreamKeyResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamKeyResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The date and time a signing key was created.
+func (o LookupStreamKeyResultOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamKeyResult) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// Identifier
 func (o LookupStreamKeyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamKeyResult) string { return v.Id }).(pulumi.StringOutput)
 }

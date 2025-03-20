@@ -42,10 +42,10 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.ContentScanningExpressionBody>> Bodies { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Ruleset expression to use in matching content objects
         /// </summary>
-        [Output("expressionId")]
-        public Output<string?> ExpressionId { get; private set; } = null!;
+        [Output("payload")]
+        public Output<string> Payload { get; private set; } = null!;
 
         /// <summary>
         /// Identifier
@@ -110,12 +110,6 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("expressionId")]
-        public Input<string>? ExpressionId { get; set; }
-
-        /// <summary>
-        /// Identifier
-        /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
 
@@ -136,10 +130,10 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Identifier
+        /// Ruleset expression to use in matching content objects
         /// </summary>
-        [Input("expressionId")]
-        public Input<string>? ExpressionId { get; set; }
+        [Input("payload")]
+        public Input<string>? Payload { get; set; }
 
         /// <summary>
         /// Identifier

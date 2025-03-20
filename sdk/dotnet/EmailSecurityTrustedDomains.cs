@@ -24,10 +24,10 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         IsRecent = true,
-    ///         IsRegex = false,
-    ///         IsSimilarity = false,
-    ///         Pattern = "example.com",
-    ///         Comments = null,
+    ///         IsRegex = true,
+    ///         IsSimilarity = true,
+    ///         Pattern = "x",
+    ///         Comments = "comments",
     ///     });
     /// 
     /// });
