@@ -6,6 +6,9 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.MagicWanIpsecTunnelArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelState;
+import com.pulumi.cloudflare.outputs.MagicWanIpsecTunnelHealthCheck;
+import com.pulumi.cloudflare.outputs.MagicWanIpsecTunnelIpsecTunnel;
+import com.pulumi.cloudflare.outputs.MagicWanIpsecTunnelModifiedIpsecTunnel;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -17,8 +20,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource, that manages IPsec tunnels for Magic Transit.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -31,6 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.MagicWanIpsecTunnel;
  * import com.pulumi.cloudflare.MagicWanIpsecTunnelArgs;
+ * import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelHealthCheckArgs;
+ * import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelHealthCheckTargetArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,18 +47,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new MagicWanIpsecTunnel("example", MagicWanIpsecTunnelArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("IPsec_1")
- *             .customerEndpoint("203.0.113.1")
+ *         var exampleMagicWanIpsecTunnel = new MagicWanIpsecTunnel("exampleMagicWanIpsecTunnel", MagicWanIpsecTunnelArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .cloudflareEndpoint("203.0.113.1")
  *             .interfaceAddress("192.0.2.0/31")
+ *             .name("IPsec_1")
+ *             .customerEndpoint("203.0.113.1")
  *             .description("Tunnel for ISP X")
- *             .healthCheckEnabled(true)
- *             .healthCheckTarget("203.0.113.1")
- *             .healthCheckType("reply")
- *             .psk("asdf12341234")
- *             .allowNullCipher(false)
+ *             .healthCheck(MagicWanIpsecTunnelHealthCheckArgs.builder()
+ *                 .direction("unidirectional")
+ *                 .enabled(true)
+ *                 .rate("low")
+ *                 .target(MagicWanIpsecTunnelHealthCheckTargetArgs.builder()
+ *                     .saved("203.0.113.1")
+ *                     .build())
+ *                 .type("reply")
+ *                 .build())
+ *             .psk("O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy")
+ *             .replayProtection(false)
  *             .build());
  * 
  *     }
@@ -64,266 +73,164 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel example &lt;account_id&gt;/&lt;tunnel_id&gt;
- * ```
- * 
  */
 @ResourceType(type="cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel")
 public class MagicWanIpsecTunnel extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
-     * Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2. Defaults to `false`.
-     * 
-     */
-    @Export(name="allowNullCipher", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> allowNullCipher;
-
-    /**
-     * @return Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2. Defaults to `false`.
-     * 
-     */
-    public Output<Optional<Boolean>> allowNullCipher() {
-        return Codegen.optional(this.allowNullCipher);
-    }
-    /**
-     * IP address assigned to the Cloudflare side of the IPsec tunnel.
+     * The IP address assigned to the Cloudflare side of the IPsec tunnel.
      * 
      */
     @Export(name="cloudflareEndpoint", refs={String.class}, tree="[0]")
     private Output<String> cloudflareEndpoint;
 
     /**
-     * @return IP address assigned to the Cloudflare side of the IPsec tunnel.
+     * @return The IP address assigned to the Cloudflare side of the IPsec tunnel.
      * 
      */
     public Output<String> cloudflareEndpoint() {
         return this.cloudflareEndpoint;
     }
     /**
-     * IP address assigned to the customer side of the IPsec tunnel.
+     * The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
      * 
      */
     @Export(name="customerEndpoint", refs={String.class}, tree="[0]")
-    private Output<String> customerEndpoint;
+    private Output</* @Nullable */ String> customerEndpoint;
 
     /**
-     * @return IP address assigned to the customer side of the IPsec tunnel.
+     * @return The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
      * 
      */
-    public Output<String> customerEndpoint() {
-        return this.customerEndpoint;
+    public Output<Optional<String>> customerEndpoint() {
+        return Codegen.optional(this.customerEndpoint);
     }
     /**
-     * An optional description of the IPsec tunnel.
+     * An optional description forthe IPsec tunnel.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return An optional description of the IPsec tunnel.
+     * @return An optional description forthe IPsec tunnel.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    /**
-     * `remote_id` in the form of a fqdn. This value is generated by cloudflare.
-     * 
-     */
-    @Export(name="fqdnId", refs={String.class}, tree="[0]")
-    private Output<String> fqdnId;
+    @Export(name="healthCheck", refs={MagicWanIpsecTunnelHealthCheck.class}, tree="[0]")
+    private Output<MagicWanIpsecTunnelHealthCheck> healthCheck;
 
-    /**
-     * @return `remote_id` in the form of a fqdn. This value is generated by cloudflare.
-     * 
-     */
-    public Output<String> fqdnId() {
-        return this.fqdnId;
+    public Output<MagicWanIpsecTunnelHealthCheck> healthCheck() {
+        return this.healthCheck;
     }
     /**
-     * Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`.
-     * 
-     */
-    @Export(name="healthCheckDirection", refs={String.class}, tree="[0]")
-    private Output<String> healthCheckDirection;
-
-    /**
-     * @return Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`.
-     * 
-     */
-    public Output<String> healthCheckDirection() {
-        return this.healthCheckDirection;
-    }
-    /**
-     * Specifies if ICMP tunnel health checks are enabled. Default: `true`.
-     * 
-     */
-    @Export(name="healthCheckEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> healthCheckEnabled;
-
-    /**
-     * @return Specifies if ICMP tunnel health checks are enabled. Default: `true`.
-     * 
-     */
-    public Output<Boolean> healthCheckEnabled() {
-        return this.healthCheckEnabled;
-    }
-    /**
-     * Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`.
-     * 
-     */
-    @Export(name="healthCheckRate", refs={String.class}, tree="[0]")
-    private Output<String> healthCheckRate;
-
-    /**
-     * @return Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`.
-     * 
-     */
-    public Output<String> healthCheckRate() {
-        return this.healthCheckRate;
-    }
-    /**
-     * The IP address of the customer endpoint that will receive tunnel health checks. Default: `&lt;customer_gre_endpoint&gt;`.
-     * 
-     */
-    @Export(name="healthCheckTarget", refs={String.class}, tree="[0]")
-    private Output<String> healthCheckTarget;
-
-    /**
-     * @return The IP address of the customer endpoint that will receive tunnel health checks. Default: `&lt;customer_gre_endpoint&gt;`.
-     * 
-     */
-    public Output<String> healthCheckTarget() {
-        return this.healthCheckTarget;
-    }
-    /**
-     * Specifies the ICMP echo type for the health check (`request` or `reply`). Available values: `request`, `reply` Default: `reply`.
-     * 
-     */
-    @Export(name="healthCheckType", refs={String.class}, tree="[0]")
-    private Output<String> healthCheckType;
-
-    /**
-     * @return Specifies the ICMP echo type for the health check (`request` or `reply`). Available values: `request`, `reply` Default: `reply`.
-     * 
-     */
-    public Output<String> healthCheckType() {
-        return this.healthCheckType;
-    }
-    /**
-     * `remote_id` as a hex string. This value is generated by cloudflare.
-     * 
-     */
-    @Export(name="hexId", refs={String.class}, tree="[0]")
-    private Output<String> hexId;
-
-    /**
-     * @return `remote_id` as a hex string. This value is generated by cloudflare.
-     * 
-     */
-    public Output<String> hexId() {
-        return this.hexId;
-    }
-    /**
-     * 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
+     * A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      * 
      */
     @Export(name="interfaceAddress", refs={String.class}, tree="[0]")
     private Output<String> interfaceAddress;
 
     /**
-     * @return 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
+     * @return A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      * 
      */
     public Output<String> interfaceAddress() {
         return this.interfaceAddress;
     }
+    @Export(name="ipsecTunnel", refs={MagicWanIpsecTunnelIpsecTunnel.class}, tree="[0]")
+    private Output<MagicWanIpsecTunnelIpsecTunnel> ipsecTunnel;
+
+    public Output<MagicWanIpsecTunnelIpsecTunnel> ipsecTunnel() {
+        return this.ipsecTunnel;
+    }
     /**
-     * Name of the IPsec tunnel.
+     * Identifier
+     * 
+     */
+    @Export(name="ipsecTunnelId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ipsecTunnelId;
+
+    /**
+     * @return Identifier
+     * 
+     */
+    public Output<Optional<String>> ipsecTunnelId() {
+        return Codegen.optional(this.ipsecTunnelId);
+    }
+    @Export(name="ipsecTunnels", refs={List.class,MagicWanIpsecTunnelIpsecTunnel.class}, tree="[0,1]")
+    private Output<List<MagicWanIpsecTunnelIpsecTunnel>> ipsecTunnels;
+
+    public Output<List<MagicWanIpsecTunnelIpsecTunnel>> ipsecTunnels() {
+        return this.ipsecTunnels;
+    }
+    @Export(name="modified", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> modified;
+
+    public Output<Boolean> modified() {
+        return this.modified;
+    }
+    @Export(name="modifiedIpsecTunnel", refs={MagicWanIpsecTunnelModifiedIpsecTunnel.class}, tree="[0]")
+    private Output<MagicWanIpsecTunnelModifiedIpsecTunnel> modifiedIpsecTunnel;
+
+    public Output<MagicWanIpsecTunnelModifiedIpsecTunnel> modifiedIpsecTunnel() {
+        return this.modifiedIpsecTunnel;
+    }
+    /**
+     * The name of the IPsec tunnel. The name cannot share a name with other tunnels.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the IPsec tunnel.
+     * @return The name of the IPsec tunnel. The name cannot share a name with other tunnels.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Pre shared key to be used with the IPsec tunnel. If left unset, it will be autogenerated.
+     * A randomly generated or provided string for use in the IPsec tunnel.
      * 
      */
     @Export(name="psk", refs={String.class}, tree="[0]")
-    private Output<String> psk;
+    private Output</* @Nullable */ String> psk;
 
     /**
-     * @return Pre shared key to be used with the IPsec tunnel. If left unset, it will be autogenerated.
+     * @return A randomly generated or provided string for use in the IPsec tunnel.
      * 
      */
-    public Output<String> psk() {
-        return this.psk;
+    public Output<Optional<String>> psk() {
+        return Codegen.optional(this.psk);
     }
     /**
-     * ID to be used while setting up the IPsec tunnel. This value is generated by cloudflare.
-     * 
-     */
-    @Export(name="remoteId", refs={String.class}, tree="[0]")
-    private Output<String> remoteId;
-
-    /**
-     * @return ID to be used while setting up the IPsec tunnel. This value is generated by cloudflare.
-     * 
-     */
-    public Output<String> remoteId() {
-        return this.remoteId;
-    }
-    /**
-     * Specifies if replay protection is enabled. Defaults to `false`.
+     * If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
      * 
      */
     @Export(name="replayProtection", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> replayProtection;
+    private Output<Boolean> replayProtection;
 
     /**
-     * @return Specifies if replay protection is enabled. Defaults to `false`.
+     * @return If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
      * 
      */
-    public Output<Optional<Boolean>> replayProtection() {
-        return Codegen.optional(this.replayProtection);
-    }
-    /**
-     * `remote_id` in the form of an email address. This value is generated by cloudflare.
-     * 
-     */
-    @Export(name="userId", refs={String.class}, tree="[0]")
-    private Output<String> userId;
-
-    /**
-     * @return `remote_id` in the form of an email address. This value is generated by cloudflare.
-     * 
-     */
-    public Output<String> userId() {
-        return this.userId;
+    public Output<Boolean> replayProtection() {
+        return this.replayProtection;
     }
 
     /**
@@ -365,9 +272,6 @@ public class MagicWanIpsecTunnel extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .additionalSecretOutputs(List.of(
-                "psk"
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

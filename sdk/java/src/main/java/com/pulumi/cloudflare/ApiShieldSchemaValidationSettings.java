@@ -15,8 +15,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource to manage settings in API Shield Schema Validation 2.0.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -42,9 +40,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApiShieldSchemaValidationSettings("example", ApiShieldSchemaValidationSettingsArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .validationDefaultMitigationAction("log")
+ *         var exampleApiShieldSchemaValidationSettings = new ApiShieldSchemaValidationSettings("exampleApiShieldSchemaValidationSettings", ApiShieldSchemaValidationSettingsArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .validationDefaultMitigationAction("none")
  *             .validationOverrideMitigationAction("none")
  *             .build());
  * 
@@ -54,46 +52,56 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings example &#39;&lt;zone_id&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings")
 public class ApiShieldSchemaValidationSettings extends com.pulumi.resources.CustomResource {
     /**
-     * The default mitigation action used when there is no mitigation action defined on the operation.
+     * The default mitigation action used when there is no mitigation action defined on the operation
      * 
      */
     @Export(name="validationDefaultMitigationAction", refs={String.class}, tree="[0]")
     private Output<String> validationDefaultMitigationAction;
 
     /**
-     * @return The default mitigation action used when there is no mitigation action defined on the operation.
+     * @return The default mitigation action used when there is no mitigation action defined on the operation
      * 
      */
     public Output<String> validationDefaultMitigationAction() {
         return this.validationDefaultMitigationAction;
     }
     /**
-     * When set, this overrides both zone level and operation level mitigation actions.
+     * When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+     * validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+     * special value `disable_override` or `null`
      * 
      */
     @Export(name="validationOverrideMitigationAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> validationOverrideMitigationAction;
 
     /**
-     * @return When set, this overrides both zone level and operation level mitigation actions.
+     * @return When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+     * validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+     * special value `disable_override` or `null`
      * 
      */
     public Output<Optional<String>> validationOverrideMitigationAction() {
         return Codegen.optional(this.validationOverrideMitigationAction);
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

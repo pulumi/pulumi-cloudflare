@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class EmailRoutingCatchAllMatcher
     {
         /// <summary>
-        /// Type of matcher. Available values: `all`.
+        /// Type of matcher. Default is 'all'.
         /// </summary>
         public readonly string Type;
 

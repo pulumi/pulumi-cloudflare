@@ -13,13 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ZeroTrustGatewayPolicyRuleSettingsDnsResolvers
     {
-        /// <summary>
-        /// IPv4 resolvers.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4> Ipv4s;
-        /// <summary>
-        /// IPv6 resolvers.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6> Ipv6s;
 
         [OutputConstructor]

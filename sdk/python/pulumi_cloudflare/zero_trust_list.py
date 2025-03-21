@@ -25,16 +25,13 @@ class ZeroTrustListArgs:
                  name: pulumi.Input[str],
                  type: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 items_with_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemsWithDescriptionArgs']]]] = None):
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemArgs']]]] = None):
         """
         The set of arguments for constructing a ZeroTrustList resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] name: Name of the teams list.
-        :param pulumi.Input[str] type: The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
-        :param pulumi.Input[str] description: The description of the teams list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
-        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemsWithDescriptionArgs']]] items_with_descriptions: The items of the teams list that has explicit description.
+        :param pulumi.Input[str] name: The name of the list.
+        :param pulumi.Input[str] type: The type of list.
+        :param pulumi.Input[str] description: The description of the list.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemArgs']]] items: The items in the list.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -43,15 +40,10 @@ class ZeroTrustListArgs:
             pulumi.set(__self__, "description", description)
         if items is not None:
             pulumi.set(__self__, "items", items)
-        if items_with_descriptions is not None:
-            pulumi.set(__self__, "items_with_descriptions", items_with_descriptions)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -62,7 +54,7 @@ class ZeroTrustListArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the teams list.
+        The name of the list.
         """
         return pulumi.get(self, "name")
 
@@ -74,7 +66,7 @@ class ZeroTrustListArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+        The type of list.
         """
         return pulumi.get(self, "type")
 
@@ -86,7 +78,7 @@ class ZeroTrustListArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the teams list.
+        The description of the list.
         """
         return pulumi.get(self, "description")
 
@@ -96,66 +88,56 @@ class ZeroTrustListArgs:
 
     @property
     @pulumi.getter
-    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemArgs']]]]:
         """
-        The items of the teams list.
+        The items in the list.
         """
         return pulumi.get(self, "items")
 
     @items.setter
-    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemArgs']]]]):
         pulumi.set(self, "items", value)
-
-    @property
-    @pulumi.getter(name="itemsWithDescriptions")
-    def items_with_descriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemsWithDescriptionArgs']]]]:
-        """
-        The items of the teams list that has explicit description.
-        """
-        return pulumi.get(self, "items_with_descriptions")
-
-    @items_with_descriptions.setter
-    def items_with_descriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemsWithDescriptionArgs']]]]):
-        pulumi.set(self, "items_with_descriptions", value)
 
 
 @pulumi.input_type
 class _ZeroTrustListState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 items_with_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemsWithDescriptionArgs']]]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemArgs']]]] = None,
+                 list_count: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustList resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] description: The description of the teams list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
-        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemsWithDescriptionArgs']]] items_with_descriptions: The items of the teams list that has explicit description.
-        :param pulumi.Input[str] name: Name of the teams list.
-        :param pulumi.Input[str] type: The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+        :param pulumi.Input[str] description: The description of the list.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemArgs']]] items: The items in the list.
+        :param pulumi.Input[float] list_count: The number of items in the list.
+        :param pulumi.Input[str] name: The name of the list.
+        :param pulumi.Input[str] type: The type of list.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if items is not None:
             pulumi.set(__self__, "items", items)
-        if items_with_descriptions is not None:
-            pulumi.set(__self__, "items_with_descriptions", items_with_descriptions)
+        if list_count is not None:
+            pulumi.set(__self__, "list_count", list_count)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -163,10 +145,19 @@ class _ZeroTrustListState:
         pulumi.set(self, "account_id", value)
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the teams list.
+        The description of the list.
         """
         return pulumi.get(self, "description")
 
@@ -176,33 +167,33 @@ class _ZeroTrustListState:
 
     @property
     @pulumi.getter
-    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemArgs']]]]:
         """
-        The items of the teams list.
+        The items in the list.
         """
         return pulumi.get(self, "items")
 
     @items.setter
-    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemArgs']]]]):
         pulumi.set(self, "items", value)
 
     @property
-    @pulumi.getter(name="itemsWithDescriptions")
-    def items_with_descriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemsWithDescriptionArgs']]]]:
+    @pulumi.getter(name="listCount")
+    def list_count(self) -> Optional[pulumi.Input[float]]:
         """
-        The items of the teams list that has explicit description.
+        The number of items in the list.
         """
-        return pulumi.get(self, "items_with_descriptions")
+        return pulumi.get(self, "list_count")
 
-    @items_with_descriptions.setter
-    def items_with_descriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemsWithDescriptionArgs']]]]):
-        pulumi.set(self, "items_with_descriptions", value)
+    @list_count.setter
+    def list_count(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "list_count", value)
 
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the teams list.
+        The name of the list.
         """
         return pulumi.get(self, "name")
 
@@ -214,13 +205,22 @@ class _ZeroTrustListState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+        The type of list.
         """
         return pulumi.get(self, "type")
 
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
 
 
 class ZeroTrustList(pulumi.CustomResource):
@@ -230,48 +230,40 @@ class ZeroTrustList(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 items_with_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustListItemsWithDescriptionArgs', 'ZeroTrustListItemsWithDescriptionArgsDict']]]]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustListItemArgs', 'ZeroTrustListItemArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Teams List resource. Teams lists are
-        referenced when creating secure web gateway policies or device
-        posture rules.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.ZeroTrustList("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="Corporate devices",
+        example_zero_trust_list = cloudflare.ZeroTrustList("example_zero_trust_list",
+            account_id="699d98642c564d2e855e9661899b7252",
+            name="Admin Serial Numbers",
             type="SERIAL",
-            description="Serial numbers for all corporate devices.",
-            items=[
-                "8GE8721REF",
-                "5RE8543EGG",
-                "1YE2880LNP",
-            ])
+            description="The serial numbers for administrators",
+            items=[{
+                "description": "Austin office IP",
+                "value": "8GE8721REF",
+            }])
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zeroTrustList:ZeroTrustList example <account_id>/<teams_list_id>
+        $ pulumi import cloudflare:index/zeroTrustList:ZeroTrustList example '<account_id>/<list_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] description: The description of the teams list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustListItemsWithDescriptionArgs', 'ZeroTrustListItemsWithDescriptionArgsDict']]]] items_with_descriptions: The items of the teams list that has explicit description.
-        :param pulumi.Input[str] name: Name of the teams list.
-        :param pulumi.Input[str] type: The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+        :param pulumi.Input[str] description: The description of the list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustListItemArgs', 'ZeroTrustListItemArgsDict']]]] items: The items in the list.
+        :param pulumi.Input[str] name: The name of the list.
+        :param pulumi.Input[str] type: The type of list.
         """
         ...
     @overload
@@ -280,32 +272,27 @@ class ZeroTrustList(pulumi.CustomResource):
                  args: ZeroTrustListArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Teams List resource. Teams lists are
-        referenced when creating secure web gateway policies or device
-        posture rules.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.ZeroTrustList("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="Corporate devices",
+        example_zero_trust_list = cloudflare.ZeroTrustList("example_zero_trust_list",
+            account_id="699d98642c564d2e855e9661899b7252",
+            name="Admin Serial Numbers",
             type="SERIAL",
-            description="Serial numbers for all corporate devices.",
-            items=[
-                "8GE8721REF",
-                "5RE8543EGG",
-                "1YE2880LNP",
-            ])
+            description="The serial numbers for administrators",
+            items=[{
+                "description": "Austin office IP",
+                "value": "8GE8721REF",
+            }])
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zeroTrustList:ZeroTrustList example <account_id>/<teams_list_id>
+        $ pulumi import cloudflare:index/zeroTrustList:ZeroTrustList example '<account_id>/<list_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -325,8 +312,7 @@ class ZeroTrustList(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 items_with_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustListItemsWithDescriptionArgs', 'ZeroTrustListItemsWithDescriptionArgsDict']]]]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustListItemArgs', 'ZeroTrustListItemArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -343,13 +329,15 @@ class ZeroTrustList(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
             __props__.__dict__["items"] = items
-            __props__.__dict__["items_with_descriptions"] = items_with_descriptions
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["list_count"] = None
+            __props__.__dict__["updated_at"] = None
         super(ZeroTrustList, __self__).__init__(
             'cloudflare:index/zeroTrustList:ZeroTrustList',
             resource_name,
@@ -361,11 +349,13 @@ class ZeroTrustList(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            items_with_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustListItemsWithDescriptionArgs', 'ZeroTrustListItemsWithDescriptionArgsDict']]]]] = None,
+            items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustListItemArgs', 'ZeroTrustListItemArgsDict']]]]] = None,
+            list_count: Optional[pulumi.Input[float]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            type: Optional[pulumi.Input[str]] = None) -> 'ZeroTrustList':
+            type: Optional[pulumi.Input[str]] = None,
+            updated_at: Optional[pulumi.Input[str]] = None) -> 'ZeroTrustList':
         """
         Get an existing ZeroTrustList resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -373,62 +363,65 @@ class ZeroTrustList(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] description: The description of the teams list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustListItemsWithDescriptionArgs', 'ZeroTrustListItemsWithDescriptionArgsDict']]]] items_with_descriptions: The items of the teams list that has explicit description.
-        :param pulumi.Input[str] name: Name of the teams list.
-        :param pulumi.Input[str] type: The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+        :param pulumi.Input[str] description: The description of the list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustListItemArgs', 'ZeroTrustListItemArgsDict']]]] items: The items in the list.
+        :param pulumi.Input[float] list_count: The number of items in the list.
+        :param pulumi.Input[str] name: The name of the list.
+        :param pulumi.Input[str] type: The type of list.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ZeroTrustListState.__new__(_ZeroTrustListState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["description"] = description
         __props__.__dict__["items"] = items
-        __props__.__dict__["items_with_descriptions"] = items_with_descriptions
+        __props__.__dict__["list_count"] = list_count
         __props__.__dict__["name"] = name
         __props__.__dict__["type"] = type
+        __props__.__dict__["updated_at"] = updated_at
         return ZeroTrustList(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the teams list.
+        The description of the list.
         """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
-    def items(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def items(self) -> pulumi.Output[Sequence['outputs.ZeroTrustListItem']]:
         """
-        The items of the teams list.
+        The items in the list.
         """
         return pulumi.get(self, "items")
 
     @property
-    @pulumi.getter(name="itemsWithDescriptions")
-    def items_with_descriptions(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustListItemsWithDescription']]]:
+    @pulumi.getter(name="listCount")
+    def list_count(self) -> pulumi.Output[float]:
         """
-        The items of the teams list that has explicit description.
+        The number of items in the list.
         """
-        return pulumi.get(self, "items_with_descriptions")
+        return pulumi.get(self, "list_count")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the teams list.
+        The name of the list.
         """
         return pulumi.get(self, "name")
 
@@ -436,7 +429,12 @@ class ZeroTrustList(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+        The type of list.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "updated_at")
 

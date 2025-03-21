@@ -12,22 +12,16 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class LoadBalancerPoolOriginHeaderGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// HTTP Header name.
-        /// </summary>
-        [Input("header", required: true)]
-        public Input<string> Header { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private InputList<string>? _values;
+        [Input("hosts")]
+        private InputList<string>? _hosts;
 
         /// <summary>
-        /// Values for the HTTP headers.
+        /// The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin.
         /// </summary>
-        public InputList<string> Values
+        public InputList<string> Hosts
         {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
+            get => _hosts ?? (_hosts = new InputList<string>());
+            set => _hosts = value;
         }
 
         public LoadBalancerPoolOriginHeaderGetArgs()

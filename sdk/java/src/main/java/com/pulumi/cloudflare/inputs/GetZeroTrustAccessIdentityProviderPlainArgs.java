@@ -3,8 +3,8 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZeroTrustAccessIdentityProviderFilter;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,44 +16,51 @@ public final class GetZeroTrustAccessIdentityProviderPlainArgs extends com.pulum
     public static final GetZeroTrustAccessIdentityProviderPlainArgs Empty = new GetZeroTrustAccessIdentityProviderPlainArgs();
 
     /**
-     * The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
-     * @return The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
-    /**
-     * Access Identity Provider name to search for.
-     * 
-     */
-    @Import(name="name", required=true)
-    private String name;
+    @Import(name="filter")
+    private @Nullable GetZeroTrustAccessIdentityProviderFilter filter;
 
-    /**
-     * @return Access Identity Provider name to search for.
-     * 
-     */
-    public String name() {
-        return this.name;
+    public Optional<GetZeroTrustAccessIdentityProviderFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
-     * The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * UUID
+     * 
+     */
+    @Import(name="identityProviderId")
+    private @Nullable String identityProviderId;
+
+    /**
+     * @return UUID
+     * 
+     */
+    public Optional<String> identityProviderId() {
+        return Optional.ofNullable(this.identityProviderId);
+    }
+
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable String zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<String> zoneId() {
@@ -64,7 +71,8 @@ public final class GetZeroTrustAccessIdentityProviderPlainArgs extends com.pulum
 
     private GetZeroTrustAccessIdentityProviderPlainArgs(GetZeroTrustAccessIdentityProviderPlainArgs $) {
         this.accountId = $.accountId;
-        this.name = $.name;
+        this.filter = $.filter;
+        this.identityProviderId = $.identityProviderId;
         this.zoneId = $.zoneId;
     }
 
@@ -87,7 +95,7 @@ public final class GetZeroTrustAccessIdentityProviderPlainArgs extends com.pulum
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -97,19 +105,24 @@ public final class GetZeroTrustAccessIdentityProviderPlainArgs extends com.pulum
             return this;
         }
 
-        /**
-         * @param name Access Identity Provider name to search for.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(String name) {
-            $.name = name;
+        public Builder filter(@Nullable GetZeroTrustAccessIdentityProviderFilter filter) {
+            $.filter = filter;
             return this;
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+         * @param identityProviderId UUID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identityProviderId(@Nullable String identityProviderId) {
+            $.identityProviderId = identityProviderId;
+            return this;
+        }
+
+        /**
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -120,9 +133,6 @@ public final class GetZeroTrustAccessIdentityProviderPlainArgs extends com.pulum
         }
 
         public GetZeroTrustAccessIdentityProviderPlainArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProviderPlainArgs", "name");
-            }
             return $;
         }
     }

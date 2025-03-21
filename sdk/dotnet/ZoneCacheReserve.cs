@@ -10,12 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Cache Reserve resource. Cache Reserve can
-    /// increase cache lifetimes by automatically storing all cacheable
-    /// files in Cloudflare's persistent object storage buckets.
-    /// 
-    /// Note: Using Cache Reserve without Tiered Cache is not recommended.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -26,10 +20,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.ZoneCacheReserve("example", new()
+    ///     var exampleZoneCacheReserve = new Cloudflare.ZoneCacheReserve("example_zone_cache_reserve", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Enabled = true,
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Value = "on",
     ///     });
     /// 
     /// });
@@ -38,23 +32,41 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example &lt;zone_id&gt;
+    /// $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zoneCacheReserve:ZoneCacheReserve")]
     public partial class ZoneCacheReserve : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to enable or disable Cache Reserve support for a given zone.
+        /// Whether the setting is editable
         /// </summary>
-        [Output("enabled")]
-        public Output<bool> Enabled { get; private set; } = null!;
+        [Output("editable")]
+        public Output<bool> Editable { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Last time this setting was modified.
+        /// </summary>
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// Value of the Cache Reserve zone setting.
+        /// </summary>
+        [Output("value")]
+        public Output<string> Value { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the zone setting.
+        /// </summary>
+        [Output("zoneSettingId")]
+        public Output<string> ZoneSettingId { get; private set; } = null!;
 
 
         /// <summary>
@@ -103,13 +115,13 @@ namespace Pulumi.Cloudflare
     public sealed class ZoneCacheReserveArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable or disable Cache Reserve support for a given zone.
+        /// Value of the Cache Reserve zone setting.
         /// </summary>
-        [Input("enabled", required: true)]
-        public Input<bool> Enabled { get; set; } = null!;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -123,16 +135,34 @@ namespace Pulumi.Cloudflare
     public sealed class ZoneCacheReserveState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable or disable Cache Reserve support for a given zone.
+        /// Whether the setting is editable
         /// </summary>
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("editable")]
+        public Input<bool>? Editable { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Last time this setting was modified.
+        /// </summary>
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
+
+        /// <summary>
+        /// Value of the Cache Reserve zone setting.
+        /// </summary>
+        [Input("value")]
+        public Input<string>? Value { get; set; }
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
+
+        /// <summary>
+        /// ID of the zone setting.
+        /// </summary>
+        [Input("zoneSettingId")]
+        public Input<string>? ZoneSettingId { get; set; }
 
         public ZoneCacheReserveState()
         {

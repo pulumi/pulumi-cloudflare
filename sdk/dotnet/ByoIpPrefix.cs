@@ -10,9 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP)
-    /// which are used with or without Magic Transit.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -23,12 +20,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.ByoIpPrefix("example", new()
+    ///     var exampleByoIpPrefix = new Cloudflare.ByoIpPrefix("example_byo_ip_prefix", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         PrefixId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///         Description = "Example IP Prefix",
-    ///         Advertisement = "on",
+    ///         AccountId = "258def64c72dae45f3e4c8516e2111f2",
+    ///         Asn = 209242,
+    ///         Cidr = "192.0.2.0/24",
+    ///         LoaDocumentId = "d933b1530bc56c9953cf8ce166da8004",
     ///     });
     /// 
     /// });
@@ -37,35 +34,77 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example &lt;account_id&gt;/&lt;prefix_id&gt;
+    /// $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example '&lt;account_id&gt;/&lt;prefix_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/byoIpPrefix:ByoIpPrefix")]
     public partial class ByoIpPrefix : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier of a Cloudflare account.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+        /// Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
         /// </summary>
-        [Output("advertisement")]
-        public Output<string> Advertisement { get; private set; } = null!;
+        [Output("advertised")]
+        public Output<bool> Advertised { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the BYO IP prefix.
+        /// Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+        /// </summary>
+        [Output("advertisedModifiedAt")]
+        public Output<string> AdvertisedModifiedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Approval state of the prefix (P = pending, V = active).
+        /// </summary>
+        [Output("approved")]
+        public Output<string> Approved { get; private set; } = null!;
+
+        /// <summary>
+        /// Autonomous System Number (ASN) the prefix will be advertised under.
+        /// </summary>
+        [Output("asn")]
+        public Output<int> Asn { get; private set; } = null!;
+
+        /// <summary>
+        /// IP Prefix in Classless Inter-Domain Routing format.
+        /// </summary>
+        [Output("cidr")]
+        public Output<string> Cidr { get; private set; } = null!;
+
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Description of the prefix.
         /// </summary>
         [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier for the uploaded LOA document.
         /// </summary>
-        [Output("prefixId")]
-        public Output<string> PrefixId { get; private set; } = null!;
+        [Output("loaDocumentId")]
+        public Output<string> LoaDocumentId { get; private set; } = null!;
+
+        [Output("modifiedAt")]
+        public Output<string> ModifiedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+        /// </summary>
+        [Output("onDemandEnabled")]
+        public Output<bool> OnDemandEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+        /// </summary>
+        [Output("onDemandLocked")]
+        public Output<bool> OnDemandLocked { get; private set; } = null!;
 
 
         /// <summary>
@@ -114,28 +153,34 @@ namespace Pulumi.Cloudflare
     public sealed class ByoIpPrefixArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier of a Cloudflare account.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+        /// Autonomous System Number (ASN) the prefix will be advertised under.
         /// </summary>
-        [Input("advertisement")]
-        public Input<string>? Advertisement { get; set; }
+        [Input("asn", required: true)]
+        public Input<int> Asn { get; set; } = null!;
 
         /// <summary>
-        /// Description of the BYO IP prefix.
+        /// IP Prefix in Classless Inter-Domain Routing format.
+        /// </summary>
+        [Input("cidr", required: true)]
+        public Input<string> Cidr { get; set; } = null!;
+
+        /// <summary>
+        /// Description of the prefix.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier for the uploaded LOA document.
         /// </summary>
-        [Input("prefixId", required: true)]
-        public Input<string> PrefixId { get; set; } = null!;
+        [Input("loaDocumentId", required: true)]
+        public Input<string> LoaDocumentId { get; set; } = null!;
 
         public ByoIpPrefixArgs()
         {
@@ -146,28 +191,70 @@ namespace Pulumi.Cloudflare
     public sealed class ByoIpPrefixState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier of a Cloudflare account.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+        /// Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
         /// </summary>
-        [Input("advertisement")]
-        public Input<string>? Advertisement { get; set; }
+        [Input("advertised")]
+        public Input<bool>? Advertised { get; set; }
 
         /// <summary>
-        /// Description of the BYO IP prefix.
+        /// Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+        /// </summary>
+        [Input("advertisedModifiedAt")]
+        public Input<string>? AdvertisedModifiedAt { get; set; }
+
+        /// <summary>
+        /// Approval state of the prefix (P = pending, V = active).
+        /// </summary>
+        [Input("approved")]
+        public Input<string>? Approved { get; set; }
+
+        /// <summary>
+        /// Autonomous System Number (ASN) the prefix will be advertised under.
+        /// </summary>
+        [Input("asn")]
+        public Input<int>? Asn { get; set; }
+
+        /// <summary>
+        /// IP Prefix in Classless Inter-Domain Routing format.
+        /// </summary>
+        [Input("cidr")]
+        public Input<string>? Cidr { get; set; }
+
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Description of the prefix.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier for the uploaded LOA document.
         /// </summary>
-        [Input("prefixId")]
-        public Input<string>? PrefixId { get; set; }
+        [Input("loaDocumentId")]
+        public Input<string>? LoaDocumentId { get; set; }
+
+        [Input("modifiedAt")]
+        public Input<string>? ModifiedAt { get; set; }
+
+        /// <summary>
+        /// Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+        /// </summary>
+        [Input("onDemandEnabled")]
+        public Input<bool>? OnDemandEnabled { get; set; }
+
+        /// <summary>
+        /// Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+        /// </summary>
+        [Input("onDemandLocked")]
+        public Input<bool>? OnDemandLocked { get; set; }
 
         public ByoIpPrefixState()
         {

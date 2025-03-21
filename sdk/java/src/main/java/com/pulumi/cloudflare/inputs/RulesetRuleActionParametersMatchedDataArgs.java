@@ -5,10 +5,9 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersMatchedDataArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,18 +15,18 @@ public final class RulesetRuleActionParametersMatchedDataArgs extends com.pulumi
     public static final RulesetRuleActionParametersMatchedDataArgs Empty = new RulesetRuleActionParametersMatchedDataArgs();
 
     /**
-     * Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
+     * The public key to encrypt matched data logs with.
      * 
      */
-    @Import(name="publicKey")
-    private @Nullable Output<String> publicKey;
+    @Import(name="publicKey", required=true)
+    private Output<String> publicKey;
 
     /**
-     * @return Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
+     * @return The public key to encrypt matched data logs with.
      * 
      */
-    public Optional<Output<String>> publicKey() {
-        return Optional.ofNullable(this.publicKey);
+    public Output<String> publicKey() {
+        return this.publicKey;
     }
 
     private RulesetRuleActionParametersMatchedDataArgs() {}
@@ -55,18 +54,18 @@ public final class RulesetRuleActionParametersMatchedDataArgs extends com.pulumi
         }
 
         /**
-         * @param publicKey Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
+         * @param publicKey The public key to encrypt matched data logs with.
          * 
          * @return builder
          * 
          */
-        public Builder publicKey(@Nullable Output<String> publicKey) {
+        public Builder publicKey(Output<String> publicKey) {
             $.publicKey = publicKey;
             return this;
         }
 
         /**
-         * @param publicKey Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
+         * @param publicKey The public key to encrypt matched data logs with.
          * 
          * @return builder
          * 
@@ -76,6 +75,9 @@ public final class RulesetRuleActionParametersMatchedDataArgs extends com.pulumi
         }
 
         public RulesetRuleActionParametersMatchedDataArgs build() {
+            if ($.publicKey == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleActionParametersMatchedDataArgs", "publicKey");
+            }
             return $;
         }
     }

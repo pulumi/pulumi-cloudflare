@@ -4,13 +4,11 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,14 +19,14 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
     public static final ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs Empty = new ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs();
 
     /**
-     * Access rules for the ingress service.
+     * For all L7 requests to this hostname, cloudflared will validate each request&#39;s Cf-Access-Jwt-Assertion request header.
      * 
      */
     @Import(name="access")
     private @Nullable Output<ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs> access;
 
     /**
-     * @return Access rules for the ingress service.
+     * @return For all L7 requests to this hostname, cloudflared will validate each request&#39;s Cf-Access-Jwt-Assertion request header.
      * 
      */
     public Optional<Output<ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs>> access() {
@@ -36,29 +34,14 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
     }
 
     /**
-     * Runs as jump host.
-     * 
-     */
-    @Import(name="bastionMode")
-    private @Nullable Output<Boolean> bastionMode;
-
-    /**
-     * @return Runs as jump host.
-     * 
-     */
-    public Optional<Output<Boolean>> bastionMode() {
-        return Optional.ofNullable(this.bastionMode);
-    }
-
-    /**
-     * Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `&#34;&#34;`.
+     * Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
      * 
      */
     @Import(name="caPool")
     private @Nullable Output<String> caPool;
 
     /**
-     * @return Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `&#34;&#34;`.
+     * @return Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
      * 
      */
     public Optional<Output<String>> caPool() {
@@ -66,29 +49,29 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
     }
 
     /**
-     * Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`.
+     * Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
      * 
      */
     @Import(name="connectTimeout")
-    private @Nullable Output<String> connectTimeout;
+    private @Nullable Output<Integer> connectTimeout;
 
     /**
-     * @return Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`.
+     * @return Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
      * 
      */
-    public Optional<Output<String>> connectTimeout() {
+    public Optional<Output<Integer>> connectTimeout() {
         return Optional.ofNullable(this.connectTimeout);
     }
 
     /**
-     * Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`.
+     * Disables chunked transfer encoding. Useful if you are running a WSGI server.
      * 
      */
     @Import(name="disableChunkedEncoding")
     private @Nullable Output<Boolean> disableChunkedEncoding;
 
     /**
-     * @return Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`.
+     * @return Disables chunked transfer encoding. Useful if you are running a WSGI server.
      * 
      */
     public Optional<Output<Boolean>> disableChunkedEncoding() {
@@ -96,14 +79,14 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
     }
 
     /**
-     * Enables HTTP/2 support for the origin connection. Defaults to `false`.
+     * Attempt to connect to origin using HTTP2. Origin must be configured as https.
      * 
      */
     @Import(name="http2Origin")
     private @Nullable Output<Boolean> http2Origin;
 
     /**
-     * @return Enables HTTP/2 support for the origin connection. Defaults to `false`.
+     * @return Attempt to connect to origin using HTTP2. Origin must be configured as https.
      * 
      */
     public Optional<Output<Boolean>> http2Origin() {
@@ -111,14 +94,14 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
     }
 
     /**
-     * Sets the HTTP Host header on requests sent to the local service. Defaults to `&#34;&#34;`.
+     * Sets the HTTP Host header on requests sent to the local service.
      * 
      */
     @Import(name="httpHostHeader")
     private @Nullable Output<String> httpHostHeader;
 
     /**
-     * @return Sets the HTTP Host header on requests sent to the local service. Defaults to `&#34;&#34;`.
+     * @return Sets the HTTP Host header on requests sent to the local service.
      * 
      */
     public Optional<Output<String>> httpHostHeader() {
@@ -126,29 +109,14 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
     }
 
     /**
-     * IP rules for the proxy service.
-     * 
-     */
-    @Import(name="ipRules")
-    private @Nullable Output<List<ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleArgs>> ipRules;
-
-    /**
-     * @return IP rules for the proxy service.
-     * 
-     */
-    public Optional<Output<List<ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleArgs>>> ipRules() {
-        return Optional.ofNullable(this.ipRules);
-    }
-
-    /**
-     * Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`.
+     * Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
      * 
      */
     @Import(name="keepAliveConnections")
     private @Nullable Output<Integer> keepAliveConnections;
 
     /**
-     * @return Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`.
+     * @return Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
      * 
      */
     public Optional<Output<Integer>> keepAliveConnections() {
@@ -156,29 +124,29 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
     }
 
     /**
-     * Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`.
+     * Timeout after which an idle keepalive connection can be discarded.
      * 
      */
     @Import(name="keepAliveTimeout")
-    private @Nullable Output<String> keepAliveTimeout;
+    private @Nullable Output<Integer> keepAliveTimeout;
 
     /**
-     * @return Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`.
+     * @return Timeout after which an idle keepalive connection can be discarded.
      * 
      */
-    public Optional<Output<String>> keepAliveTimeout() {
+    public Optional<Output<Integer>> keepAliveTimeout() {
         return Optional.ofNullable(this.keepAliveTimeout);
     }
 
     /**
-     * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`.
+     * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      * 
      */
     @Import(name="noHappyEyeballs")
     private @Nullable Output<Boolean> noHappyEyeballs;
 
     /**
-     * @return Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`.
+     * @return Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      * 
      */
     public Optional<Output<Boolean>> noHappyEyeballs() {
@@ -186,14 +154,14 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
     }
 
     /**
-     * Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`.
+     * Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
      * 
      */
     @Import(name="noTlsVerify")
     private @Nullable Output<Boolean> noTlsVerify;
 
     /**
-     * @return Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`.
+     * @return Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
      * 
      */
     public Optional<Output<Boolean>> noTlsVerify() {
@@ -201,14 +169,14 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
     }
 
     /**
-     * Hostname that cloudflared should expect from your origin server certificate. Defaults to `&#34;&#34;`.
+     * Hostname that cloudflared should expect from your origin server certificate.
      * 
      */
     @Import(name="originServerName")
     private @Nullable Output<String> originServerName;
 
     /**
-     * @return Hostname that cloudflared should expect from your origin server certificate. Defaults to `&#34;&#34;`.
+     * @return Hostname that cloudflared should expect from your origin server certificate.
      * 
      */
     public Optional<Output<String>> originServerName() {
@@ -216,44 +184,14 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
     }
 
     /**
-     * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`.
-     * 
-     */
-    @Import(name="proxyAddress")
-    private @Nullable Output<String> proxyAddress;
-
-    /**
-     * @return cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`.
-     * 
-     */
-    public Optional<Output<String>> proxyAddress() {
-        return Optional.ofNullable(this.proxyAddress);
-    }
-
-    /**
-     * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`.
-     * 
-     */
-    @Import(name="proxyPort")
-    private @Nullable Output<Integer> proxyPort;
-
-    /**
-     * @return cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`.
-     * 
-     */
-    public Optional<Output<Integer>> proxyPort() {
-        return Optional.ofNullable(this.proxyPort);
-    }
-
-    /**
-     * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `&#34;&#34;`, `socks`. Defaults to `&#34;&#34;`.
+     * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: &#34;&#34; for the regular proxy and &#34;socks&#34; for a SOCKS5 proxy.
      * 
      */
     @Import(name="proxyType")
     private @Nullable Output<String> proxyType;
 
     /**
-     * @return cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `&#34;&#34;`, `socks`. Defaults to `&#34;&#34;`.
+     * @return cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: &#34;&#34; for the regular proxy and &#34;socks&#34; for a SOCKS5 proxy.
      * 
      */
     public Optional<Output<String>> proxyType() {
@@ -261,32 +199,32 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
     }
 
     /**
-     * The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`.
+     * The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
      * 
      */
     @Import(name="tcpKeepAlive")
-    private @Nullable Output<String> tcpKeepAlive;
+    private @Nullable Output<Integer> tcpKeepAlive;
 
     /**
-     * @return The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`.
+     * @return The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
      * 
      */
-    public Optional<Output<String>> tcpKeepAlive() {
+    public Optional<Output<Integer>> tcpKeepAlive() {
         return Optional.ofNullable(this.tcpKeepAlive);
     }
 
     /**
-     * Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`.
+     * Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
      * 
      */
     @Import(name="tlsTimeout")
-    private @Nullable Output<String> tlsTimeout;
+    private @Nullable Output<Integer> tlsTimeout;
 
     /**
-     * @return Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`.
+     * @return Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
      * 
      */
-    public Optional<Output<String>> tlsTimeout() {
+    public Optional<Output<Integer>> tlsTimeout() {
         return Optional.ofNullable(this.tlsTimeout);
     }
 
@@ -294,20 +232,16 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
 
     private ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs(ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs $) {
         this.access = $.access;
-        this.bastionMode = $.bastionMode;
         this.caPool = $.caPool;
         this.connectTimeout = $.connectTimeout;
         this.disableChunkedEncoding = $.disableChunkedEncoding;
         this.http2Origin = $.http2Origin;
         this.httpHostHeader = $.httpHostHeader;
-        this.ipRules = $.ipRules;
         this.keepAliveConnections = $.keepAliveConnections;
         this.keepAliveTimeout = $.keepAliveTimeout;
         this.noHappyEyeballs = $.noHappyEyeballs;
         this.noTlsVerify = $.noTlsVerify;
         this.originServerName = $.originServerName;
-        this.proxyAddress = $.proxyAddress;
-        this.proxyPort = $.proxyPort;
         this.proxyType = $.proxyType;
         this.tcpKeepAlive = $.tcpKeepAlive;
         this.tlsTimeout = $.tlsTimeout;
@@ -332,7 +266,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param access Access rules for the ingress service.
+         * @param access For all L7 requests to this hostname, cloudflared will validate each request&#39;s Cf-Access-Jwt-Assertion request header.
          * 
          * @return builder
          * 
@@ -343,7 +277,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param access Access rules for the ingress service.
+         * @param access For all L7 requests to this hostname, cloudflared will validate each request&#39;s Cf-Access-Jwt-Assertion request header.
          * 
          * @return builder
          * 
@@ -353,28 +287,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param bastionMode Runs as jump host.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder bastionMode(@Nullable Output<Boolean> bastionMode) {
-            $.bastionMode = bastionMode;
-            return this;
-        }
-
-        /**
-         * @param bastionMode Runs as jump host.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder bastionMode(Boolean bastionMode) {
-            return bastionMode(Output.of(bastionMode));
-        }
-
-        /**
-         * @param caPool Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `&#34;&#34;`.
+         * @param caPool Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
          * 
          * @return builder
          * 
@@ -385,7 +298,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param caPool Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `&#34;&#34;`.
+         * @param caPool Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
          * 
          * @return builder
          * 
@@ -395,28 +308,28 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param connectTimeout Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`.
+         * @param connectTimeout Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
          * 
          * @return builder
          * 
          */
-        public Builder connectTimeout(@Nullable Output<String> connectTimeout) {
+        public Builder connectTimeout(@Nullable Output<Integer> connectTimeout) {
             $.connectTimeout = connectTimeout;
             return this;
         }
 
         /**
-         * @param connectTimeout Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`.
+         * @param connectTimeout Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
          * 
          * @return builder
          * 
          */
-        public Builder connectTimeout(String connectTimeout) {
+        public Builder connectTimeout(Integer connectTimeout) {
             return connectTimeout(Output.of(connectTimeout));
         }
 
         /**
-         * @param disableChunkedEncoding Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`.
+         * @param disableChunkedEncoding Disables chunked transfer encoding. Useful if you are running a WSGI server.
          * 
          * @return builder
          * 
@@ -427,7 +340,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param disableChunkedEncoding Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`.
+         * @param disableChunkedEncoding Disables chunked transfer encoding. Useful if you are running a WSGI server.
          * 
          * @return builder
          * 
@@ -437,7 +350,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param http2Origin Enables HTTP/2 support for the origin connection. Defaults to `false`.
+         * @param http2Origin Attempt to connect to origin using HTTP2. Origin must be configured as https.
          * 
          * @return builder
          * 
@@ -448,7 +361,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param http2Origin Enables HTTP/2 support for the origin connection. Defaults to `false`.
+         * @param http2Origin Attempt to connect to origin using HTTP2. Origin must be configured as https.
          * 
          * @return builder
          * 
@@ -458,7 +371,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param httpHostHeader Sets the HTTP Host header on requests sent to the local service. Defaults to `&#34;&#34;`.
+         * @param httpHostHeader Sets the HTTP Host header on requests sent to the local service.
          * 
          * @return builder
          * 
@@ -469,7 +382,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param httpHostHeader Sets the HTTP Host header on requests sent to the local service. Defaults to `&#34;&#34;`.
+         * @param httpHostHeader Sets the HTTP Host header on requests sent to the local service.
          * 
          * @return builder
          * 
@@ -479,38 +392,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param ipRules IP rules for the proxy service.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ipRules(@Nullable Output<List<ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleArgs>> ipRules) {
-            $.ipRules = ipRules;
-            return this;
-        }
-
-        /**
-         * @param ipRules IP rules for the proxy service.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ipRules(List<ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleArgs> ipRules) {
-            return ipRules(Output.of(ipRules));
-        }
-
-        /**
-         * @param ipRules IP rules for the proxy service.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ipRules(ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleArgs... ipRules) {
-            return ipRules(List.of(ipRules));
-        }
-
-        /**
-         * @param keepAliveConnections Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`.
+         * @param keepAliveConnections Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
          * 
          * @return builder
          * 
@@ -521,7 +403,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param keepAliveConnections Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`.
+         * @param keepAliveConnections Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
          * 
          * @return builder
          * 
@@ -531,28 +413,28 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param keepAliveTimeout Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`.
+         * @param keepAliveTimeout Timeout after which an idle keepalive connection can be discarded.
          * 
          * @return builder
          * 
          */
-        public Builder keepAliveTimeout(@Nullable Output<String> keepAliveTimeout) {
+        public Builder keepAliveTimeout(@Nullable Output<Integer> keepAliveTimeout) {
             $.keepAliveTimeout = keepAliveTimeout;
             return this;
         }
 
         /**
-         * @param keepAliveTimeout Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`.
+         * @param keepAliveTimeout Timeout after which an idle keepalive connection can be discarded.
          * 
          * @return builder
          * 
          */
-        public Builder keepAliveTimeout(String keepAliveTimeout) {
+        public Builder keepAliveTimeout(Integer keepAliveTimeout) {
             return keepAliveTimeout(Output.of(keepAliveTimeout));
         }
 
         /**
-         * @param noHappyEyeballs Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`.
+         * @param noHappyEyeballs Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
          * 
          * @return builder
          * 
@@ -563,7 +445,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param noHappyEyeballs Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`.
+         * @param noHappyEyeballs Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
          * 
          * @return builder
          * 
@@ -573,7 +455,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param noTlsVerify Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`.
+         * @param noTlsVerify Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
          * 
          * @return builder
          * 
@@ -584,7 +466,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param noTlsVerify Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`.
+         * @param noTlsVerify Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
          * 
          * @return builder
          * 
@@ -594,7 +476,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param originServerName Hostname that cloudflared should expect from your origin server certificate. Defaults to `&#34;&#34;`.
+         * @param originServerName Hostname that cloudflared should expect from your origin server certificate.
          * 
          * @return builder
          * 
@@ -605,7 +487,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param originServerName Hostname that cloudflared should expect from your origin server certificate. Defaults to `&#34;&#34;`.
+         * @param originServerName Hostname that cloudflared should expect from your origin server certificate.
          * 
          * @return builder
          * 
@@ -615,49 +497,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param proxyAddress cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder proxyAddress(@Nullable Output<String> proxyAddress) {
-            $.proxyAddress = proxyAddress;
-            return this;
-        }
-
-        /**
-         * @param proxyAddress cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder proxyAddress(String proxyAddress) {
-            return proxyAddress(Output.of(proxyAddress));
-        }
-
-        /**
-         * @param proxyPort cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder proxyPort(@Nullable Output<Integer> proxyPort) {
-            $.proxyPort = proxyPort;
-            return this;
-        }
-
-        /**
-         * @param proxyPort cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder proxyPort(Integer proxyPort) {
-            return proxyPort(Output.of(proxyPort));
-        }
-
-        /**
-         * @param proxyType cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `&#34;&#34;`, `socks`. Defaults to `&#34;&#34;`.
+         * @param proxyType cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: &#34;&#34; for the regular proxy and &#34;socks&#34; for a SOCKS5 proxy.
          * 
          * @return builder
          * 
@@ -668,7 +508,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param proxyType cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `&#34;&#34;`, `socks`. Defaults to `&#34;&#34;`.
+         * @param proxyType cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: &#34;&#34; for the regular proxy and &#34;socks&#34; for a SOCKS5 proxy.
          * 
          * @return builder
          * 
@@ -678,44 +518,44 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs exten
         }
 
         /**
-         * @param tcpKeepAlive The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`.
+         * @param tcpKeepAlive The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
          * 
          * @return builder
          * 
          */
-        public Builder tcpKeepAlive(@Nullable Output<String> tcpKeepAlive) {
+        public Builder tcpKeepAlive(@Nullable Output<Integer> tcpKeepAlive) {
             $.tcpKeepAlive = tcpKeepAlive;
             return this;
         }
 
         /**
-         * @param tcpKeepAlive The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`.
+         * @param tcpKeepAlive The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
          * 
          * @return builder
          * 
          */
-        public Builder tcpKeepAlive(String tcpKeepAlive) {
+        public Builder tcpKeepAlive(Integer tcpKeepAlive) {
             return tcpKeepAlive(Output.of(tcpKeepAlive));
         }
 
         /**
-         * @param tlsTimeout Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`.
+         * @param tlsTimeout Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
          * 
          * @return builder
          * 
          */
-        public Builder tlsTimeout(@Nullable Output<String> tlsTimeout) {
+        public Builder tlsTimeout(@Nullable Output<Integer> tlsTimeout) {
             $.tlsTimeout = tlsTimeout;
             return this;
         }
 
         /**
-         * @param tlsTimeout Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`.
+         * @param tlsTimeout Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
          * 
          * @return builder
          * 
          */
-        public Builder tlsTimeout(String tlsTimeout) {
+        public Builder tlsTimeout(Integer tlsTimeout) {
             return tlsTimeout(Output.of(tlsTimeout));
         }
 

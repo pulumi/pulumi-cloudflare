@@ -11,14 +11,13 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Access Mutual TLS Certificate Settings resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -45,13 +44,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ZeroTrustAccessMtlsHostnameSettings("example", ZeroTrustAccessMtlsHostnameSettingsArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *         var exampleZeroTrustAccessMtlsHostnameSettings = new ZeroTrustAccessMtlsHostnameSettings("exampleZeroTrustAccessMtlsHostnameSettings", ZeroTrustAccessMtlsHostnameSettingsArgs.builder()
  *             .settings(ZeroTrustAccessMtlsHostnameSettingsSettingArgs.builder()
- *                 .hostname("example.com")
- *                 .clientCertificateForwarding(true)
- *                 .chinaNetwork(false)
+ *                 .china_network(false)
+ *                 .client_certificate_forwarding(true)
+ *                 .hostname("admin.example.com")
  *                 .build())
+ *             .zoneId("zone_id")
  *             .build());
  * 
  *     }
@@ -60,52 +59,90 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Import
- * 
- * Account level mTLS hostname settings import.
- * 
- * ```sh
- * $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example account/&lt;account_id&gt;
- * ```
- * 
- * Zone level mTLS hostname settings import.
- * 
- * ```sh
- * $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example zone/&lt;zone_id&gt;
- * ```
- * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings")
 public class ZeroTrustAccessMtlsHostnameSettings extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
+<<<<<<< HEAD
     @Export(name="settings", refs={List.class,ZeroTrustAccessMtlsHostnameSettingsSetting.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustAccessMtlsHostnameSettingsSetting>> settings;
+    private Output<List<ZeroTrustAccessMtlsHostnameSettingsSetting>> settings;
 
-    public Output<Optional<List<ZeroTrustAccessMtlsHostnameSettingsSetting>>> settings() {
-        return Codegen.optional(this.settings);
+    public Output<List<ZeroTrustAccessMtlsHostnameSettingsSetting>> settings() {
+        return this.settings;
     }
     /**
-     * The zone identifier to target for the resource.
+=======
+    /**
+     * Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+     * 
+     */
+    @Export(name="chinaNetwork", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> chinaNetwork;
+
+    /**
+     * @return Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+     * 
+     */
+    public Output<Boolean> chinaNetwork() {
+        return this.chinaNetwork;
+    }
+    /**
+     * Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+     * 
+     */
+    @Export(name="clientCertificateForwarding", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> clientCertificateForwarding;
+
+    /**
+     * @return Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+     * 
+     */
+    public Output<Boolean> clientCertificateForwarding() {
+        return this.clientCertificateForwarding;
+    }
+    /**
+     * The hostname that these settings apply to.
+     * 
+     */
+    @Export(name="hostname", refs={String.class}, tree="[0]")
+    private Output<String> hostname;
+
+    /**
+     * @return The hostname that these settings apply to.
+     * 
+     */
+    public Output<String> hostname() {
+        return this.hostname;
+    }
+    @Export(name="settings", refs={List.class,ZeroTrustAccessMtlsHostnameSettingsSetting.class}, tree="[0,1]")
+    private Output<List<ZeroTrustAccessMtlsHostnameSettingsSetting>> settings;
+
+    public Output<List<ZeroTrustAccessMtlsHostnameSettingsSetting>> settings() {
+        return this.settings;
+    }
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Output<Optional<String>> zoneId() {
@@ -124,7 +161,7 @@ public class ZeroTrustAccessMtlsHostnameSettings extends com.pulumi.resources.Cu
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ZeroTrustAccessMtlsHostnameSettings(java.lang.String name, @Nullable ZeroTrustAccessMtlsHostnameSettingsArgs args) {
+    public ZeroTrustAccessMtlsHostnameSettings(java.lang.String name, ZeroTrustAccessMtlsHostnameSettingsArgs args) {
         this(name, args, null);
     }
     /**
@@ -133,7 +170,7 @@ public class ZeroTrustAccessMtlsHostnameSettings extends com.pulumi.resources.Cu
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ZeroTrustAccessMtlsHostnameSettings(java.lang.String name, @Nullable ZeroTrustAccessMtlsHostnameSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public ZeroTrustAccessMtlsHostnameSettings(java.lang.String name, ZeroTrustAccessMtlsHostnameSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -141,7 +178,7 @@ public class ZeroTrustAccessMtlsHostnameSettings extends com.pulumi.resources.Cu
         super("cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static ZeroTrustAccessMtlsHostnameSettingsArgs makeArgs(@Nullable ZeroTrustAccessMtlsHostnameSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ZeroTrustAccessMtlsHostnameSettingsArgs makeArgs(ZeroTrustAccessMtlsHostnameSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

@@ -12,9 +12,6 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ListItemHostnameGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The FQDN to match on.
-        /// </summary>
         [Input("urlHostname", required: true)]
         public Input<string> UrlHostname { get; set; } = null!;
 

@@ -10,13 +10,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource, that manages Cloudflare Tiered Cache settings.
- * This allows you to adjust topologies for your zone.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -42,9 +40,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TieredCache("example", TieredCacheArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .cacheType("smart")
+ *         var exampleTieredCache = new TieredCache("exampleTieredCache", TieredCacheArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .value("on")
  *             .build());
  * 
  *     }
@@ -53,32 +51,66 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/tieredCache:TieredCache example &#39;&lt;zone_id&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/tieredCache:TieredCache")
 public class TieredCache extends com.pulumi.resources.CustomResource {
     /**
-     * The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+     * Whether the setting is editable
      * 
      */
-    @Export(name="cacheType", refs={String.class}, tree="[0]")
-    private Output<String> cacheType;
+    @Export(name="editable", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> editable;
 
     /**
-     * @return The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+     * @return Whether the setting is editable
      * 
      */
-    public Output<String> cacheType() {
-        return this.cacheType;
+    public Output<Boolean> editable() {
+        return this.editable;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Last time this setting was modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return Last time this setting was modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * Enable or disable the Smart Tiered Cache
+     * 
+     */
+    @Export(name="value", refs={String.class}, tree="[0]")
+    private Output<String> value;
+
+    /**
+     * @return Enable or disable the Smart Tiered Cache
+     * 
+     */
+    public Output<String> value() {
+        return this.value;
+    }
+    /**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

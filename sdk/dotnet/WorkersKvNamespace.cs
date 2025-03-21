@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides the ability to manage Cloudflare Workers KV Namespace features.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,10 +20,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.WorkersKvNamespace("example", new()
+    ///     var exampleWorkersKvNamespace = new Cloudflare.WorkersKvNamespace("example_workers_kv_namespace", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Title = "test-namespace",
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Title = "My Own Namespace",
     ///     });
     /// 
     /// });
@@ -34,20 +32,26 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example &lt;account_id&gt;/&lt;namespace_id&gt;
+    /// $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example '&lt;account_id&gt;/&lt;namespace_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workersKvNamespace:WorkersKvNamespace")]
     public partial class WorkersKvNamespace : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Title value of the Worker KV Namespace.
+        /// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
+        /// </summary>
+        [Output("supportsUrlEncoding")]
+        public Output<bool> SupportsUrlEncoding { get; private set; } = null!;
+
+        /// <summary>
+        /// A human-readable string name for a Namespace.
         /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
@@ -99,13 +103,13 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersKvNamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Title value of the Worker KV Namespace.
+        /// A human-readable string name for a Namespace.
         /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
@@ -119,13 +123,19 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersKvNamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Title value of the Worker KV Namespace.
+        /// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
+        /// </summary>
+        [Input("supportsUrlEncoding")]
+        public Input<bool>? SupportsUrlEncoding { get; set; }
+
+        /// <summary>
+        /// A human-readable string name for a Namespace.
         /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }

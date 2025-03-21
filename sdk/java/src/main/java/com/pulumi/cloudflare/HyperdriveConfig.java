@@ -16,8 +16,6 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The [Hyperdrive Config](https://developers.cloudflare.com/hyperdrive/) resource allows you to manage Cloudflare Hyperdrive Configs.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -31,6 +29,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.HyperdriveConfig;
  * import com.pulumi.cloudflare.HyperdriveConfigArgs;
  * import com.pulumi.cloudflare.inputs.HyperdriveConfigOriginArgs;
+ * import com.pulumi.cloudflare.inputs.HyperdriveConfigCachingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,16 +43,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var noDefaults = new HyperdriveConfig("noDefaults", HyperdriveConfigArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("my-hyperdrive-config")
+ *         var exampleHyperdriveConfig = new HyperdriveConfig("exampleHyperdriveConfig", HyperdriveConfigArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .name("example-hyperdrive")
  *             .origin(HyperdriveConfigOriginArgs.builder()
  *                 .database("postgres")
- *                 .password("my-password")
- *                 .host("my-database.example.com")
+ *                 .host("database.example.com")
+ *                 .password("password")
  *                 .port(5432)
  *                 .scheme("postgres")
- *                 .user("my-user")
+ *                 .user("postgres")
+ *                 .build())
+ *             .caching(HyperdriveConfigCachingArgs.builder()
+ *                 .disabled(true)
  *                 .build())
  *             .build());
  * 
@@ -63,84 +65,68 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example &lt;account_id&gt;/&lt;hyperdrive_config_id&gt;
- * ```
- * 
  */
 @ResourceType(type="cloudflare:index/hyperdriveConfig:HyperdriveConfig")
 public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
-    /**
-     * The caching details for the Hyperdrive configuration.
-     * 
-     */
     @Export(name="caching", refs={HyperdriveConfigCaching.class}, tree="[0]")
     private Output<HyperdriveConfigCaching> caching;
 
-    /**
-     * @return The caching details for the Hyperdrive configuration.
-     * 
-     */
     public Output<HyperdriveConfigCaching> caching() {
         return this.caching;
     }
     /**
-     * The name of the Hyperdrive configuration.
+     * When the Hyperdrive configuration was created.
      * 
      */
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
+
+    /**
+     * @return When the Hyperdrive configuration was created.
+     * 
+     */
+    public Output<String> createdOn() {
+        return this.createdOn;
+    }
+    /**
+     * When the Hyperdrive configuration was last modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return When the Hyperdrive configuration was last modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
-    /**
-     * @return The name of the Hyperdrive configuration.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * The origin details for the Hyperdrive configuration.
-     * 
-     */
     @Export(name="origin", refs={HyperdriveConfigOrigin.class}, tree="[0]")
     private Output<HyperdriveConfigOrigin> origin;
 
-    /**
-     * @return The origin details for the Hyperdrive configuration.
-     * 
-     */
     public Output<HyperdriveConfigOrigin> origin() {
         return this.origin;
-    }
-    /**
-     * The identifier of this resource. This is the hyperdrive config value.
-     * 
-     */
-    @Export(name="resourceId", refs={String.class}, tree="[0]")
-    private Output<String> resourceId;
-
-    /**
-     * @return The identifier of this resource. This is the hyperdrive config value.
-     * 
-     */
-    public Output<String> resourceId() {
-        return this.resourceId;
     }
 
     /**

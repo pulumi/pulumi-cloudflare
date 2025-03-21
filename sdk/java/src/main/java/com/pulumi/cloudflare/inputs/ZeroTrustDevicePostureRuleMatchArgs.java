@@ -15,17 +15,9 @@ public final class ZeroTrustDevicePostureRuleMatchArgs extends com.pulumi.resour
 
     public static final ZeroTrustDevicePostureRuleMatchArgs Empty = new ZeroTrustDevicePostureRuleMatchArgs();
 
-    /**
-     * The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
-     * 
-     */
     @Import(name="platform")
     private @Nullable Output<String> platform;
 
-    /**
-     * @return The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
-     * 
-     */
     public Optional<Output<String>> platform() {
         return Optional.ofNullable(this.platform);
     }
@@ -54,23 +46,11 @@ public final class ZeroTrustDevicePostureRuleMatchArgs extends com.pulumi.resour
             $ = new ZeroTrustDevicePostureRuleMatchArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param platform The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder platform(@Nullable Output<String> platform) {
             $.platform = platform;
             return this;
         }
 
-        /**
-         * @param platform The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder platform(String platform) {
             return platform(Output.of(platform));
         }

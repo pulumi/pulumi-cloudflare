@@ -14,8 +14,6 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource to manage URL Normalization Settings.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -41,10 +39,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new UrlNormalizationSettings("example", UrlNormalizationSettingsArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .type("cloudflare")
+ *         var exampleUrlNormalizationSettings = new UrlNormalizationSettings("exampleUrlNormalizationSettings", UrlNormalizationSettingsArgs.builder()
+ *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
  *             .scope("incoming")
+ *             .type("cloudflare")
  *             .build());
  * 
  *     }
@@ -52,6 +50,12 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings example &#39;&lt;zone_id&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings")
@@ -85,14 +89,14 @@ public class UrlNormalizationSettings extends com.pulumi.resources.CustomResourc
         return this.type;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The unique ID of the zone.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return The unique ID of the zone.
      * 
      */
     public Output<String> zoneId() {

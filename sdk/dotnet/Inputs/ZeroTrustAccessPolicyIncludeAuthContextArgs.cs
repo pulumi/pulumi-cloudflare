@@ -13,19 +13,19 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustAccessPolicyIncludeAuthContextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ACID of the Authentication Context.
+        /// The ACID of an Authentication context.
         /// </summary>
         [Input("acId", required: true)]
         public Input<string> AcId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the Authentication Context.
+        /// The ID of an Authentication context.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the Azure identity provider.
+        /// The ID of your Azure identity provider.
         /// </summary>
         [Input("identityProviderId", required: true)]
         public Input<string> IdentityProviderId { get; set; } = null!;

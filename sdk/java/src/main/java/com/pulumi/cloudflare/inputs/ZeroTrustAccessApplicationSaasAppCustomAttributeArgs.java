@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -19,14 +18,14 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeArgs extends 
     public static final ZeroTrustAccessApplicationSaasAppCustomAttributeArgs Empty = new ZeroTrustAccessApplicationSaasAppCustomAttributeArgs();
 
     /**
-     * A friendly name for the attribute as provided to the SaaS app.
+     * The SAML FriendlyName of the attribute.
      * 
      */
     @Import(name="friendlyName")
     private @Nullable Output<String> friendlyName;
 
     /**
-     * @return A friendly name for the attribute as provided to the SaaS app.
+     * @return The SAML FriendlyName of the attribute.
      * 
      */
     public Optional<Output<String>> friendlyName() {
@@ -34,14 +33,14 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeArgs extends 
     }
 
     /**
-     * The name of the attribute as provided to the SaaS app.
+     * The name of the attribute.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the attribute as provided to the SaaS app.
+     * @return The name of the attribute.
      * 
      */
     public Optional<Output<String>> name() {
@@ -64,25 +63,25 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeArgs extends 
     }
 
     /**
-     * True if the attribute must be always present.
+     * If the attribute is required when building a SAML assertion.
      * 
      */
     @Import(name="required")
     private @Nullable Output<Boolean> required;
 
     /**
-     * @return True if the attribute must be always present.
+     * @return If the attribute is required when building a SAML assertion.
      * 
      */
     public Optional<Output<Boolean>> required() {
         return Optional.ofNullable(this.required);
     }
 
-    @Import(name="source", required=true)
-    private Output<ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs> source;
+    @Import(name="source")
+    private @Nullable Output<ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs> source;
 
-    public Output<ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs> source() {
-        return this.source;
+    public Optional<Output<ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs>> source() {
+        return Optional.ofNullable(this.source);
     }
 
     private ZeroTrustAccessApplicationSaasAppCustomAttributeArgs() {}
@@ -114,7 +113,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeArgs extends 
         }
 
         /**
-         * @param friendlyName A friendly name for the attribute as provided to the SaaS app.
+         * @param friendlyName The SAML FriendlyName of the attribute.
          * 
          * @return builder
          * 
@@ -125,7 +124,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeArgs extends 
         }
 
         /**
-         * @param friendlyName A friendly name for the attribute as provided to the SaaS app.
+         * @param friendlyName The SAML FriendlyName of the attribute.
          * 
          * @return builder
          * 
@@ -135,7 +134,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeArgs extends 
         }
 
         /**
-         * @param name The name of the attribute as provided to the SaaS app.
+         * @param name The name of the attribute.
          * 
          * @return builder
          * 
@@ -146,7 +145,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeArgs extends 
         }
 
         /**
-         * @param name The name of the attribute as provided to the SaaS app.
+         * @param name The name of the attribute.
          * 
          * @return builder
          * 
@@ -177,7 +176,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeArgs extends 
         }
 
         /**
-         * @param required True if the attribute must be always present.
+         * @param required If the attribute is required when building a SAML assertion.
          * 
          * @return builder
          * 
@@ -188,7 +187,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeArgs extends 
         }
 
         /**
-         * @param required True if the attribute must be always present.
+         * @param required If the attribute is required when building a SAML assertion.
          * 
          * @return builder
          * 
@@ -197,7 +196,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeArgs extends 
             return required(Output.of(required));
         }
 
-        public Builder source(Output<ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs> source) {
+        public Builder source(@Nullable Output<ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs> source) {
             $.source = source;
             return this;
         }
@@ -207,9 +206,6 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeArgs extends 
         }
 
         public ZeroTrustAccessApplicationSaasAppCustomAttributeArgs build() {
-            if ($.source == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustAccessApplicationSaasAppCustomAttributeArgs", "source");
-            }
             return $;
         }
     }

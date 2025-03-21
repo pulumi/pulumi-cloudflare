@@ -6,16 +6,19 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.QueueArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.QueueState;
+import com.pulumi.cloudflare.outputs.QueueConsumer;
+import com.pulumi.cloudflare.outputs.QueueProducer;
+import com.pulumi.cloudflare.outputs.QueueSettings;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Provides the ability to manage Cloudflare Workers Queue features.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -41,9 +44,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Queue("example", QueueArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("my-queue")
+ *         var exampleQueue = new Queue("exampleQueue", QueueArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .queueName("example-queue")
  *             .build());
  * 
  *     }
@@ -55,39 +58,79 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/queue:Queue example &lt;account_id&gt;/&lt;queue_id&gt;
+ * $ pulumi import cloudflare:index/queue:Queue example &#39;&lt;account_id&gt;/&lt;queue_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/queue:Queue")
 public class Queue extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * A Resource identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return A Resource identifier.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
-    /**
-     * The name of the queue.
-     * 
-     */
-    @Export(name="name", refs={String.class}, tree="[0]")
-    private Output<String> name;
+    @Export(name="consumers", refs={List.class,QueueConsumer.class}, tree="[0,1]")
+    private Output<List<QueueConsumer>> consumers;
 
-    /**
-     * @return The name of the queue.
-     * 
-     */
-    public Output<String> name() {
-        return this.name;
+    public Output<List<QueueConsumer>> consumers() {
+        return this.consumers;
+    }
+    @Export(name="consumersTotalCount", refs={Double.class}, tree="[0]")
+    private Output<Double> consumersTotalCount;
+
+    public Output<Double> consumersTotalCount() {
+        return this.consumersTotalCount;
+    }
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
+
+    public Output<String> createdOn() {
+        return this.createdOn;
+    }
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
+    @Export(name="producers", refs={List.class,QueueProducer.class}, tree="[0,1]")
+    private Output<List<QueueProducer>> producers;
+
+    public Output<List<QueueProducer>> producers() {
+        return this.producers;
+    }
+    @Export(name="producersTotalCount", refs={Double.class}, tree="[0]")
+    private Output<Double> producersTotalCount;
+
+    public Output<Double> producersTotalCount() {
+        return this.producersTotalCount;
+    }
+    @Export(name="queueId", refs={String.class}, tree="[0]")
+    private Output<String> queueId;
+
+    public Output<String> queueId() {
+        return this.queueId;
+    }
+    @Export(name="queueName", refs={String.class}, tree="[0]")
+    private Output<String> queueName;
+
+    public Output<String> queueName() {
+        return this.queueName;
+    }
+    @Export(name="settings", refs={QueueSettings.class}, tree="[0]")
+    private Output<QueueSettings> settings;
+
+    public Output<QueueSettings> settings() {
+        return this.settings;
     }
 
     /**

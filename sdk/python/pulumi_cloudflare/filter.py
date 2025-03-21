@@ -20,32 +20,34 @@ __all__ = ['FilterArgs', 'Filter']
 class FilterArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
+<<<<<<< HEAD
                  zone_id: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None,
-                 paused: Optional[pulumi.Input[bool]] = None,
-                 ref: Optional[pulumi.Input[str]] = None):
+                 filter_id: Optional[pulumi.Input[str]] = None):
+=======
+                 zone_id: pulumi.Input[str]):
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         The set of arguments for constructing a Filter resource.
-        :param pulumi.Input[str] expression: The filter expression to be used.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] description: A note that you can use to describe the purpose of the filter.
-        :param pulumi.Input[bool] paused: Whether this filter is currently paused.
-        :param pulumi.Input[str] ref: Short reference tag to quickly select related rules.
+        :param pulumi.Input[str] expression: The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+        :param pulumi.Input[str] zone_id: Identifier
+<<<<<<< HEAD
+        :param pulumi.Input[str] filter_id: The unique identifier of the filter.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "zone_id", zone_id)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if paused is not None:
-            pulumi.set(__self__, "paused", paused)
-        if ref is not None:
-            pulumi.set(__self__, "ref", ref)
+        if filter_id is not None:
+            pulumi.set(__self__, "filter_id", filter_id)
+=======
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "zone_id", zone_id)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     @property
     @pulumi.getter
     def expression(self) -> pulumi.Input[str]:
         """
-        The filter expression to be used.
+        The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
         """
         return pulumi.get(self, "expression")
 
@@ -57,7 +59,7 @@ class FilterArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -65,63 +67,49 @@ class FilterArgs:
     def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
 
+<<<<<<< HEAD
     @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="filterId")
+    def filter_id(self) -> Optional[pulumi.Input[str]]:
         """
-        A note that you can use to describe the purpose of the filter.
+        The unique identifier of the filter.
         """
-        return pulumi.get(self, "description")
+        return pulumi.get(self, "filter_id")
 
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
+    @filter_id.setter
+    def filter_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter_id", value)
 
-    @property
-    @pulumi.getter
-    def paused(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether this filter is currently paused.
-        """
-        return pulumi.get(self, "paused")
-
-    @paused.setter
-    def paused(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "paused", value)
-
-    @property
-    @pulumi.getter
-    def ref(self) -> Optional[pulumi.Input[str]]:
-        """
-        Short reference tag to quickly select related rules.
-        """
-        return pulumi.get(self, "ref")
-
-    @ref.setter
-    def ref(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ref", value)
-
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 @pulumi.input_type
 class _FilterState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  expression: Optional[pulumi.Input[str]] = None,
+                 filter_id: Optional[pulumi.Input[str]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  ref: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Filter resources.
-        :param pulumi.Input[str] description: A note that you can use to describe the purpose of the filter.
-        :param pulumi.Input[str] expression: The filter expression to be used.
-        :param pulumi.Input[bool] paused: Whether this filter is currently paused.
-        :param pulumi.Input[str] ref: Short reference tag to quickly select related rules.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] description: An informative summary of the filter.
+        :param pulumi.Input[str] expression: The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+<<<<<<< HEAD
+        :param pulumi.Input[str] filter_id: The unique identifier of the filter.
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+        :param pulumi.Input[bool] paused: When true, indicates that the filter is currently paused.
+        :param pulumi.Input[str] ref: A short reference tag. Allows you to select related filters.
+        :param pulumi.Input[str] zone_id: Identifier
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if expression is not None:
             pulumi.set(__self__, "expression", expression)
+        if filter_id is not None:
+            pulumi.set(__self__, "filter_id", filter_id)
         if paused is not None:
             pulumi.set(__self__, "paused", paused)
         if ref is not None:
@@ -133,7 +121,7 @@ class _FilterState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A note that you can use to describe the purpose of the filter.
+        An informative summary of the filter.
         """
         return pulumi.get(self, "description")
 
@@ -145,7 +133,7 @@ class _FilterState:
     @pulumi.getter
     def expression(self) -> Optional[pulumi.Input[str]]:
         """
-        The filter expression to be used.
+        The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
         """
         return pulumi.get(self, "expression")
 
@@ -154,10 +142,22 @@ class _FilterState:
         pulumi.set(self, "expression", value)
 
     @property
+    @pulumi.getter(name="filterId")
+    def filter_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier of the filter.
+        """
+        return pulumi.get(self, "filter_id")
+
+    @filter_id.setter
+    def filter_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter_id", value)
+
+    @property
     @pulumi.getter
     def paused(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this filter is currently paused.
+        When true, indicates that the filter is currently paused.
         """
         return pulumi.get(self, "paused")
 
@@ -169,7 +169,7 @@ class _FilterState:
     @pulumi.getter
     def ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Short reference tag to quickly select related rules.
+        A short reference tag. Allows you to select related filters.
         """
         return pulumi.get(self, "ref")
 
@@ -181,7 +181,7 @@ class _FilterState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -195,18 +195,19 @@ class Filter(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[str]] = None,
                  expression: Optional[pulumi.Input[str]] = None,
-                 paused: Optional[pulumi.Input[bool]] = None,
-                 ref: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
+                 filter_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Filter expressions that can be referenced across multiple features,
-        e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/)
-        for more details and available fields and operators.
-
+        > `Filter` is in a deprecation phase until January 15th, 2025.
+=======
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
+        """
         > `Filter` is in a deprecation phase until June 15th, 2025.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
           During this time period, this resource is still fully
           supported but you are strongly advised to move to the
           `Ruleset` resource. Full details can be found in the
@@ -218,25 +219,28 @@ class Filter(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        wordpress = cloudflare.Filter("wordpress",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            description="Wordpress break-in attempts that are outside of the office",
-            expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.src ne 192.0.2.1")
+        example_filter = cloudflare.Filter("example_filter",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.addr ne 172.16.22.155")
+<<<<<<< HEAD
+=======
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/filter:Filter example <zone_id>/<filter_id>
+        $ pulumi import cloudflare:index/filter:Filter example '<zone_id>/<filter_id>'
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A note that you can use to describe the purpose of the filter.
-        :param pulumi.Input[str] expression: The filter expression to be used.
-        :param pulumi.Input[bool] paused: Whether this filter is currently paused.
-        :param pulumi.Input[str] ref: Short reference tag to quickly select related rules.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] expression: The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+<<<<<<< HEAD
+        :param pulumi.Input[str] filter_id: The unique identifier of the filter.
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+        :param pulumi.Input[str] zone_id: Identifier
         """
         ...
     @overload
@@ -245,11 +249,11 @@ class Filter(pulumi.CustomResource):
                  args: FilterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Filter expressions that can be referenced across multiple features,
-        e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/)
-        for more details and available fields and operators.
-
+<<<<<<< HEAD
+        > `Filter` is in a deprecation phase until January 15th, 2025.
+=======
         > `Filter` is in a deprecation phase until June 15th, 2025.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
           During this time period, this resource is still fully
           supported but you are strongly advised to move to the
           `Ruleset` resource. Full details can be found in the
@@ -261,16 +265,18 @@ class Filter(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        wordpress = cloudflare.Filter("wordpress",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            description="Wordpress break-in attempts that are outside of the office",
-            expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.src ne 192.0.2.1")
+        example_filter = cloudflare.Filter("example_filter",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.addr ne 172.16.22.155")
+<<<<<<< HEAD
+=======
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/filter:Filter example <zone_id>/<filter_id>
+        $ pulumi import cloudflare:index/filter:Filter example '<zone_id>/<filter_id>'
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ```
 
         :param str resource_name: The name of the resource.
@@ -288,10 +294,11 @@ class Filter(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[str]] = None,
                  expression: Optional[pulumi.Input[str]] = None,
-                 paused: Optional[pulumi.Input[bool]] = None,
-                 ref: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
+                 filter_id: Optional[pulumi.Input[str]] = None,
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -302,15 +309,19 @@ class Filter(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FilterArgs.__new__(FilterArgs)
 
-            __props__.__dict__["description"] = description
             if expression is None and not opts.urn:
                 raise TypeError("Missing required property 'expression'")
             __props__.__dict__["expression"] = expression
-            __props__.__dict__["paused"] = paused
-            __props__.__dict__["ref"] = ref
+<<<<<<< HEAD
+            __props__.__dict__["filter_id"] = filter_id
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["description"] = None
+            __props__.__dict__["paused"] = None
+            __props__.__dict__["ref"] = None
         super(Filter, __self__).__init__(
             'cloudflare:index/filter:Filter',
             resource_name,
@@ -323,6 +334,7 @@ class Filter(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             expression: Optional[pulumi.Input[str]] = None,
+            filter_id: Optional[pulumi.Input[str]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
             ref: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Filter':
@@ -333,11 +345,15 @@ class Filter(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A note that you can use to describe the purpose of the filter.
-        :param pulumi.Input[str] expression: The filter expression to be used.
-        :param pulumi.Input[bool] paused: Whether this filter is currently paused.
-        :param pulumi.Input[str] ref: Short reference tag to quickly select related rules.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] description: An informative summary of the filter.
+        :param pulumi.Input[str] expression: The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+<<<<<<< HEAD
+        :param pulumi.Input[str] filter_id: The unique identifier of the filter.
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+        :param pulumi.Input[bool] paused: When true, indicates that the filter is currently paused.
+        :param pulumi.Input[str] ref: A short reference tag. Allows you to select related filters.
+        :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -345,6 +361,7 @@ class Filter(pulumi.CustomResource):
 
         __props__.__dict__["description"] = description
         __props__.__dict__["expression"] = expression
+        __props__.__dict__["filter_id"] = filter_id
         __props__.__dict__["paused"] = paused
         __props__.__dict__["ref"] = ref
         __props__.__dict__["zone_id"] = zone_id
@@ -352,9 +369,9 @@ class Filter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[str]]:
+    def description(self) -> pulumi.Output[str]:
         """
-        A note that you can use to describe the purpose of the filter.
+        An informative summary of the filter.
         """
         return pulumi.get(self, "description")
 
@@ -362,23 +379,37 @@ class Filter(pulumi.CustomResource):
     @pulumi.getter
     def expression(self) -> pulumi.Output[str]:
         """
-        The filter expression to be used.
+        The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
         """
         return pulumi.get(self, "expression")
 
     @property
-    @pulumi.getter
-    def paused(self) -> pulumi.Output[Optional[bool]]:
+<<<<<<< HEAD
+    @pulumi.getter(name="filterId")
+    def filter_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Whether this filter is currently paused.
+        The unique identifier of the filter.
+        """
+        return pulumi.get(self, "filter_id")
+
+    @property
+    @pulumi.getter
+    def paused(self) -> pulumi.Output[bool]:
+        """
+=======
+    @pulumi.getter
+    def paused(self) -> pulumi.Output[bool]:
+        """
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+        When true, indicates that the filter is currently paused.
         """
         return pulumi.get(self, "paused")
 
     @property
     @pulumi.getter
-    def ref(self) -> pulumi.Output[Optional[str]]:
+    def ref(self) -> pulumi.Output[str]:
         """
-        Short reference tag to quickly select related rules.
+        A short reference tag. Allows you to select related filters.
         """
         return pulumi.get(self, "ref")
 
@@ -386,7 +417,7 @@ class Filter(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

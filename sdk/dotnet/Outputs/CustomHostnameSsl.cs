@@ -14,11 +14,25 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class CustomHostnameSsl
     {
         /// <summary>
-        /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+        /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
         /// </summary>
         public readonly string? BundleMethod;
+        /// <summary>
+        /// The Certificate Authority that will issue the certificate
+        /// </summary>
         public readonly string? CertificateAuthority;
         /// <summary>
+        /// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
+        /// </summary>
+        public readonly bool? CloudflareBranding;
+        /// <summary>
+<<<<<<< HEAD
+=======
+        /// Array of custom certificate and key pairs (1 or 2 pairs allowed)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.CustomHostnameSslCustomCertBundle> CustomCertBundles;
+        /// <summary>
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// If a custom uploaded certificate is used.
         /// </summary>
         public readonly string? CustomCertificate;
@@ -27,20 +41,17 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? CustomKey;
         /// <summary>
-        /// Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
+        /// Domain control validation (DCV) method used for this hostname.
         /// </summary>
         public readonly string? Method;
         /// <summary>
-        /// SSL/TLS settings for the certificate.
+        /// SSL specific settings.
         /// </summary>
-        public readonly ImmutableArray<Outputs.CustomHostnameSslSetting> Settings;
-        public readonly string? Status;
+        public readonly Outputs.CustomHostnameSslSettings? Settings;
         /// <summary>
-        /// Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
+        /// Level of validation to be used for this hostname. Domain validation (dv) must be used.
         /// </summary>
         public readonly string? Type;
-        public readonly ImmutableArray<Outputs.CustomHostnameSslValidationError> ValidationErrors;
-        public readonly ImmutableArray<Outputs.CustomHostnameSslValidationRecord> ValidationRecords;
         /// <summary>
         /// Indicates whether the certificate covers a wildcard.
         /// </summary>
@@ -52,34 +63,37 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? certificateAuthority,
 
+            bool? cloudflareBranding,
+
+<<<<<<< HEAD
+=======
+            ImmutableArray<Outputs.CustomHostnameSslCustomCertBundle> customCertBundles,
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             string? customCertificate,
 
             string? customKey,
 
             string? method,
 
-            ImmutableArray<Outputs.CustomHostnameSslSetting> settings,
-
-            string? status,
+            Outputs.CustomHostnameSslSettings? settings,
 
             string? type,
-
-            ImmutableArray<Outputs.CustomHostnameSslValidationError> validationErrors,
-
-            ImmutableArray<Outputs.CustomHostnameSslValidationRecord> validationRecords,
 
             bool? wildcard)
         {
             BundleMethod = bundleMethod;
             CertificateAuthority = certificateAuthority;
+            CloudflareBranding = cloudflareBranding;
+<<<<<<< HEAD
+=======
+            CustomCertBundles = customCertBundles;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             CustomCertificate = customCertificate;
             CustomKey = customKey;
             Method = method;
             Settings = settings;
-            Status = status;
             Type = type;
-            ValidationErrors = validationErrors;
-            ValidationRecords = validationRecords;
             Wildcard = wildcard;
         }
     }

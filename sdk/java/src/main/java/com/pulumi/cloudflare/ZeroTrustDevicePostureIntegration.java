@@ -12,15 +12,9 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Device Posture Integration resource. Device
- * posture integrations configure third-party data providers for device
- * posture rules.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -47,17 +41,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ZeroTrustDevicePostureIntegration("example", ZeroTrustDevicePostureIntegrationArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("Device posture integration")
- *             .type("workspace_one")
- *             .interval("24h")
- *             .configs(ZeroTrustDevicePostureIntegrationConfigArgs.builder()
- *                 .apiUrl("https://example.com/api")
- *                 .authUrl("https://example.com/connect/token")
- *                 .clientId("client-id")
- *                 .clientSecret("client-secret")
+ *         var exampleZeroTrustDevicePostureIntegration = new ZeroTrustDevicePostureIntegration("exampleZeroTrustDevicePostureIntegration", ZeroTrustDevicePostureIntegrationArgs.builder()
+ *             .accountId("699d98642c564d2e855e9661899b7252")
+ *             .config(ZeroTrustDevicePostureIntegrationConfigArgs.builder()
+ *                 .api_url("https://as123.awmdm.com/API")
+ *                 .auth_url("https://na.uemauth.vmwservices.com/connect/token")
+ *                 .client_id("example client id")
+ *                 .client_secret("example client secret")
  *                 .build())
+ *             .interval("10m")
+ *             .name("My Workspace One Integration")
+ *             .type("workspace_one")
  *             .build());
  * 
  *     }
@@ -69,83 +63,69 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration example &lt;account_id&gt;/&lt;device_posture_integration_id&gt;
+ * $ pulumi import cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration example &#39;&lt;account_id&gt;/&lt;integration_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration")
 public class ZeroTrustDevicePostureIntegration extends com.pulumi.resources.CustomResource {
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * The device posture integration&#39;s connection authorization parameters.
+     * The configuration object containing third-party integration information.
      * 
      */
-    @Export(name="configs", refs={List.class,ZeroTrustDevicePostureIntegrationConfig.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustDevicePostureIntegrationConfig>> configs;
+    @Export(name="config", refs={ZeroTrustDevicePostureIntegrationConfig.class}, tree="[0]")
+    private Output<ZeroTrustDevicePostureIntegrationConfig> config;
 
     /**
-     * @return The device posture integration&#39;s connection authorization parameters.
+     * @return The configuration object containing third-party integration information.
      * 
      */
-    public Output<Optional<List<ZeroTrustDevicePostureIntegrationConfig>>> configs() {
-        return Codegen.optional(this.configs);
-    }
-    @Export(name="identifier", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> identifier;
-
-    public Output<Optional<String>> identifier() {
-        return Codegen.optional(this.identifier);
+    public Output<ZeroTrustDevicePostureIntegrationConfig> config() {
+        return this.config;
     }
     /**
-     * Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+     * The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
      * 
      */
     @Export(name="interval", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> interval;
+    private Output<String> interval;
 
     /**
-     * @return Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+     * @return The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
      * 
      */
-    public Output<Optional<String>> interval() {
-        return Codegen.optional(this.interval);
+    public Output<String> interval() {
+        return this.interval;
     }
     /**
-     * Name of the device posture integration.
+     * The name of the device posture integration.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the device posture integration.
+     * @return The name of the device posture integration.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+     * The type of device posture integration.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+     * @return The type of device posture integration.
      * 
      */
     public Output<String> type() {

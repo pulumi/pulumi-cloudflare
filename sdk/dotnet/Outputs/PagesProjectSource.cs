@@ -13,13 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class PagesProjectSource
     {
-        /// <summary>
-        /// Configuration for the source of the Cloudflare Pages project.
-        /// </summary>
         public readonly Outputs.PagesProjectSourceConfig? Config;
-        /// <summary>
-        /// Project host type.
-        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

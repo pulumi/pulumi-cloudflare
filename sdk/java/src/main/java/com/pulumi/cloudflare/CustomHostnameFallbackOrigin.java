@@ -11,11 +11,10 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare custom hostname fallback origin resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -41,8 +40,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new CustomHostnameFallbackOrigin("example", CustomHostnameFallbackOriginArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *         var exampleCustomHostnameFallbackOrigin = new CustomHostnameFallbackOrigin("exampleCustomHostnameFallbackOrigin", CustomHostnameFallbackOriginArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .origin("fallback.example.com")
  *             .build());
  * 
@@ -55,21 +54,49 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example &lt;zone_id&gt;/&lt;fallback_hostname&gt;
+ * $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin")
 public class CustomHostnameFallbackOrigin extends com.pulumi.resources.CustomResource {
     /**
-     * Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+     * This is the time the fallback origin was created.
+     * 
+     */
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    /**
+     * @return This is the time the fallback origin was created.
+     * 
+     */
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * These are errors that were encountered while trying to activate a fallback origin.
+     * 
+     */
+    @Export(name="errors", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> errors;
+
+    /**
+     * @return These are errors that were encountered while trying to activate a fallback origin.
+     * 
+     */
+    public Output<List<String>> errors() {
+        return this.errors;
+    }
+    /**
+     * Your origin hostname that requests to your custom hostnames will be sent to.
      * 
      */
     @Export(name="origin", refs={String.class}, tree="[0]")
     private Output<String> origin;
 
     /**
-     * @return Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+     * @return Your origin hostname that requests to your custom hostnames will be sent to.
      * 
      */
     public Output<String> origin() {
@@ -90,14 +117,28 @@ public class CustomHostnameFallbackOrigin extends com.pulumi.resources.CustomRes
         return this.status;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * This is the time the fallback origin was updated.
+     * 
+     */
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
+
+    /**
+     * @return This is the time the fallback origin was updated.
+     * 
+     */
+    public Output<String> updatedAt() {
+        return this.updatedAt;
+    }
+    /**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Content Scanning Expression resource for managing custom scan expression within a specific zone.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,45 +20,47 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Enable Content Scanning before trying to add custom scan expressions
-    ///     var example = new Cloudflare.ContentScanning("example", new()
+    ///     var exampleContentScanningExpression = new Cloudflare.ContentScanningExpression("example_content_scanning_expression", new()
     ///     {
-    ///         ZoneId = "399c6f4950c01a5a141b99ff7fbcbd8b",
-    ///         Enabled = true,
-    ///     });
-    /// 
-    ///     var firstExample = new Cloudflare.ContentScanningExpression("first_example", new()
-    ///     {
-    ///         ZoneId = example.ZoneId,
-    ///         Payload = "lookup_json_string(http.request.body.raw, \"file\")",
-    ///     });
-    /// 
-    ///     var secondExample = new Cloudflare.ContentScanningExpression("second_example", new()
-    ///     {
-    ///         ZoneId = example.ZoneId,
-    ///         Payload = "lookup_json_string(http.request.body.raw, \"document\")",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Bodies = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ContentScanningExpressionBodyArgs
+    ///             {
+    ///                 Payload = "lookup_json_string(http.request.body.raw, \"file\")",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/contentScanningExpression:ContentScanningExpression example &lt;zone_id&gt;/&lt;resource_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/contentScanningExpression:ContentScanningExpression")]
     public partial class ContentScanningExpression : global::Pulumi.CustomResource
     {
+        [Output("bodies")]
+        public Output<ImmutableArray<Outputs.ContentScanningExpressionBody>> Bodies { get; private set; } = null!;
+<<<<<<< HEAD
+
         /// <summary>
-        /// Custom scan expression to tell the content scanner where to find the content objects.
+        /// Identifier
+        /// </summary>
+        [Output("expressionId")]
+        public Output<string?> ExpressionId { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier
+=======
+
+        /// <summary>
+        /// Ruleset expression to use in matching content objects
         /// </summary>
         [Output("payload")]
         public Output<string> Payload { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -111,14 +111,25 @@ namespace Pulumi.Cloudflare
 
     public sealed class ContentScanningExpressionArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Custom scan expression to tell the content scanner where to find the content objects.
-        /// </summary>
-        [Input("payload", required: true)]
-        public Input<string> Payload { get; set; } = null!;
+        [Input("bodies", required: true)]
+        private InputList<Inputs.ContentScanningExpressionBodyArgs>? _bodies;
+        public InputList<Inputs.ContentScanningExpressionBodyArgs> Bodies
+        {
+            get => _bodies ?? (_bodies = new InputList<Inputs.ContentScanningExpressionBodyArgs>());
+            set => _bodies = value;
+        }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
+<<<<<<< HEAD
+        /// </summary>
+        [Input("expressionId")]
+        public Input<string>? ExpressionId { get; set; }
+
+        /// <summary>
+        /// Identifier
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -131,14 +142,34 @@ namespace Pulumi.Cloudflare
 
     public sealed class ContentScanningExpressionState : global::Pulumi.ResourceArgs
     {
+        [Input("bodies")]
+        private InputList<Inputs.ContentScanningExpressionBodyGetArgs>? _bodies;
+        public InputList<Inputs.ContentScanningExpressionBodyGetArgs> Bodies
+        {
+            get => _bodies ?? (_bodies = new InputList<Inputs.ContentScanningExpressionBodyGetArgs>());
+            set => _bodies = value;
+        }
+<<<<<<< HEAD
+
         /// <summary>
-        /// Custom scan expression to tell the content scanner where to find the content objects.
+        /// Identifier
+        /// </summary>
+        [Input("expressionId")]
+        public Input<string>? ExpressionId { get; set; }
+
+        /// <summary>
+        /// Identifier
+=======
+
+        /// <summary>
+        /// Ruleset expression to use in matching content objects
         /// </summary>
         [Input("payload")]
         public Input<string>? Payload { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

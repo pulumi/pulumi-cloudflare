@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -33,21 +32,6 @@ public final class PageRuleActionsCacheKeyFieldsQueryStringArgs extends com.pulu
     }
 
     /**
-     * `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value should be `false` if any of `exclude` or `include` is non-empty.
-     * 
-     */
-    @Import(name="ignore")
-    private @Nullable Output<Boolean> ignore;
-
-    /**
-     * @return `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value should be `false` if any of `exclude` or `include` is non-empty.
-     * 
-     */
-    public Optional<Output<Boolean>> ignore() {
-        return Optional.ofNullable(this.ignore);
-    }
-
-    /**
      * Only use values of specified query string parameters in Cache Key.
      * 
      */
@@ -66,7 +50,6 @@ public final class PageRuleActionsCacheKeyFieldsQueryStringArgs extends com.pulu
 
     private PageRuleActionsCacheKeyFieldsQueryStringArgs(PageRuleActionsCacheKeyFieldsQueryStringArgs $) {
         this.excludes = $.excludes;
-        this.ignore = $.ignore;
         this.includes = $.includes;
     }
 
@@ -117,27 +100,6 @@ public final class PageRuleActionsCacheKeyFieldsQueryStringArgs extends com.pulu
          */
         public Builder excludes(String... excludes) {
             return excludes(List.of(excludes));
-        }
-
-        /**
-         * @param ignore `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value should be `false` if any of `exclude` or `include` is non-empty.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ignore(@Nullable Output<Boolean> ignore) {
-            $.ignore = ignore;
-            return this;
-        }
-
-        /**
-         * @param ignore `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value should be `false` if any of `exclude` or `include` is non-empty.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ignore(Boolean ignore) {
-            return ignore(Output.of(ignore));
         }
 
         /**

@@ -14,23 +14,23 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustAccessApplicationLandingPageDesign
     {
         /// <summary>
-        /// The button color of the landing page.
+        /// The background color of the log in button on the landing page.
         /// </summary>
         public readonly string? ButtonColor;
         /// <summary>
-        /// The button text color of the landing page.
+        /// The color of the text in the log in button on the landing page.
         /// </summary>
         public readonly string? ButtonTextColor;
         /// <summary>
-        /// The URL of the image to be displayed in the landing page.
+        /// The URL of the image shown on the landing page.
         /// </summary>
         public readonly string? ImageUrl;
         /// <summary>
-        /// The message of the landing page.
+        /// The message shown on the landing page.
         /// </summary>
         public readonly string? Message;
         /// <summary>
-        /// The title of the landing page.
+        /// The title shown on the landing page.
         /// </summary>
         public readonly string? Title;
 

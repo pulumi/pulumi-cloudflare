@@ -13,10 +13,16 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WorkersScriptPlacementGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The placement mode for the Worker. Available values: `smart`.
+        /// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         /// </summary>
-        [Input("mode", required: true)]
-        public Input<string> Mode { get; set; } = null!;
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        /// <summary>
+        /// Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public WorkersScriptPlacementGetArgs()
         {

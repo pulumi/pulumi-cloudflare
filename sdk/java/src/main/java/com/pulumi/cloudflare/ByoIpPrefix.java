@@ -10,13 +10,13 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP)
- * which are used with or without Magic Transit.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -42,11 +42,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ByoIpPrefix("example", ByoIpPrefixArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .prefixId("d41d8cd98f00b204e9800998ecf8427e")
- *             .description("Example IP Prefix")
- *             .advertisement("on")
+ *         var exampleByoIpPrefix = new ByoIpPrefix("exampleByoIpPrefix", ByoIpPrefixArgs.builder()
+ *             .accountId("258def64c72dae45f3e4c8516e2111f2")
+ *             .asn(209242)
+ *             .cidr("192.0.2.0/24")
+ *             .loaDocumentId("d933b1530bc56c9953cf8ce166da8004")
  *             .build());
  * 
  *     }
@@ -58,67 +58,163 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example &lt;account_id&gt;/&lt;prefix_id&gt;
+ * $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example &#39;&lt;account_id&gt;/&lt;prefix_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/byoIpPrefix:ByoIpPrefix")
 public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier of a Cloudflare account.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier of a Cloudflare account.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+     * Prefix advertisement status to the Internet. This field is only not &#39;null&#39; if on demand is enabled.
      * 
      */
-    @Export(name="advertisement", refs={String.class}, tree="[0]")
-    private Output<String> advertisement;
+    @Export(name="advertised", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> advertised;
 
     /**
-     * @return Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+     * @return Prefix advertisement status to the Internet. This field is only not &#39;null&#39; if on demand is enabled.
      * 
      */
-    public Output<String> advertisement() {
-        return this.advertisement;
+    public Output<Boolean> advertised() {
+        return this.advertised;
     }
     /**
-     * Description of the BYO IP prefix.
+     * Last time the advertisement status was changed. This field is only not &#39;null&#39; if on demand is enabled.
+     * 
+     */
+    @Export(name="advertisedModifiedAt", refs={String.class}, tree="[0]")
+    private Output<String> advertisedModifiedAt;
+
+    /**
+     * @return Last time the advertisement status was changed. This field is only not &#39;null&#39; if on demand is enabled.
+     * 
+     */
+    public Output<String> advertisedModifiedAt() {
+        return this.advertisedModifiedAt;
+    }
+    /**
+     * Approval state of the prefix (P = pending, V = active).
+     * 
+     */
+    @Export(name="approved", refs={String.class}, tree="[0]")
+    private Output<String> approved;
+
+    /**
+     * @return Approval state of the prefix (P = pending, V = active).
+     * 
+     */
+    public Output<String> approved() {
+        return this.approved;
+    }
+    /**
+     * Autonomous System Number (ASN) the prefix will be advertised under.
+     * 
+     */
+    @Export(name="asn", refs={Integer.class}, tree="[0]")
+    private Output<Integer> asn;
+
+    /**
+     * @return Autonomous System Number (ASN) the prefix will be advertised under.
+     * 
+     */
+    public Output<Integer> asn() {
+        return this.asn;
+    }
+    /**
+     * IP Prefix in Classless Inter-Domain Routing format.
+     * 
+     */
+    @Export(name="cidr", refs={String.class}, tree="[0]")
+    private Output<String> cidr;
+
+    /**
+     * @return IP Prefix in Classless Inter-Domain Routing format.
+     * 
+     */
+    public Output<String> cidr() {
+        return this.cidr;
+    }
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * Description of the prefix.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output<String> description;
+    private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the BYO IP prefix.
+     * @return Description of the prefix.
      * 
      */
-    public Output<String> description() {
-        return this.description;
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
-     * The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+     * Identifier for the uploaded LOA document.
      * 
      */
-    @Export(name="prefixId", refs={String.class}, tree="[0]")
-    private Output<String> prefixId;
+    @Export(name="loaDocumentId", refs={String.class}, tree="[0]")
+    private Output<String> loaDocumentId;
 
     /**
-     * @return The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier for the uploaded LOA document.
      * 
      */
-    public Output<String> prefixId() {
-        return this.prefixId;
+    public Output<String> loaDocumentId() {
+        return this.loaDocumentId;
+    }
+    @Export(name="modifiedAt", refs={String.class}, tree="[0]")
+    private Output<String> modifiedAt;
+
+    public Output<String> modifiedAt() {
+        return this.modifiedAt;
+    }
+    /**
+     * Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+     * 
+     */
+    @Export(name="onDemandEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> onDemandEnabled;
+
+    /**
+     * @return Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+     * 
+     */
+    public Output<Boolean> onDemandEnabled() {
+        return this.onDemandEnabled;
+    }
+    /**
+     * Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+     * 
+     */
+    @Export(name="onDemandLocked", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> onDemandLocked;
+
+    /**
+     * @return Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+     * 
+     */
+    public Output<Boolean> onDemandLocked() {
+        return this.onDemandLocked;
     }
 
     /**

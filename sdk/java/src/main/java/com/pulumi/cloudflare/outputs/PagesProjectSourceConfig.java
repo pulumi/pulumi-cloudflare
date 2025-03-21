@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -14,113 +13,49 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectSourceConfig {
-    /**
-     * @return Toggle deployments on this repo. Defaults to `true`.
-     * 
-     */
     private @Nullable Boolean deploymentsEnabled;
-    /**
-     * @return Project owner username. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     private @Nullable String owner;
-    /**
-     * @return Enable Pages to comment on Pull Requests. Defaults to `true`.
-     * 
-     */
+    private @Nullable List<String> pathExcludes;
+    private @Nullable List<String> pathIncludes;
     private @Nullable Boolean prCommentsEnabled;
-    /**
-     * @return Branches will be excluded from automatic deployment.
-     * 
-     */
     private @Nullable List<String> previewBranchExcludes;
-    /**
-     * @return Branches will be included for automatic deployment.
-     * 
-     */
     private @Nullable List<String> previewBranchIncludes;
-    /**
-     * @return Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
-     * 
-     */
     private @Nullable String previewDeploymentSetting;
-    /**
-     * @return Project production branch name.
-     * 
-     */
-    private String productionBranch;
-    /**
-     * @return Enable production deployments. Defaults to `true`.
-     * 
-     */
-    private @Nullable Boolean productionDeploymentEnabled;
-    /**
-     * @return Project repository name. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
+    private @Nullable String productionBranch;
+    private @Nullable Boolean productionDeploymentsEnabled;
     private @Nullable String repoName;
 
     private PagesProjectSourceConfig() {}
-    /**
-     * @return Toggle deployments on this repo. Defaults to `true`.
-     * 
-     */
     public Optional<Boolean> deploymentsEnabled() {
         return Optional.ofNullable(this.deploymentsEnabled);
     }
-    /**
-     * @return Project owner username. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
-    /**
-     * @return Enable Pages to comment on Pull Requests. Defaults to `true`.
-     * 
-     */
+    public List<String> pathExcludes() {
+        return this.pathExcludes == null ? List.of() : this.pathExcludes;
+    }
+    public List<String> pathIncludes() {
+        return this.pathIncludes == null ? List.of() : this.pathIncludes;
+    }
     public Optional<Boolean> prCommentsEnabled() {
         return Optional.ofNullable(this.prCommentsEnabled);
     }
-    /**
-     * @return Branches will be excluded from automatic deployment.
-     * 
-     */
     public List<String> previewBranchExcludes() {
         return this.previewBranchExcludes == null ? List.of() : this.previewBranchExcludes;
     }
-    /**
-     * @return Branches will be included for automatic deployment.
-     * 
-     */
     public List<String> previewBranchIncludes() {
         return this.previewBranchIncludes == null ? List.of() : this.previewBranchIncludes;
     }
-    /**
-     * @return Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
-     * 
-     */
     public Optional<String> previewDeploymentSetting() {
         return Optional.ofNullable(this.previewDeploymentSetting);
     }
-    /**
-     * @return Project production branch name.
-     * 
-     */
-    public String productionBranch() {
-        return this.productionBranch;
+    public Optional<String> productionBranch() {
+        return Optional.ofNullable(this.productionBranch);
     }
-    /**
-     * @return Enable production deployments. Defaults to `true`.
-     * 
-     */
-    public Optional<Boolean> productionDeploymentEnabled() {
-        return Optional.ofNullable(this.productionDeploymentEnabled);
+    public Optional<Boolean> productionDeploymentsEnabled() {
+        return Optional.ofNullable(this.productionDeploymentsEnabled);
     }
-    /**
-     * @return Project repository name. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Optional<String> repoName() {
         return Optional.ofNullable(this.repoName);
     }
@@ -136,24 +71,28 @@ public final class PagesProjectSourceConfig {
     public static final class Builder {
         private @Nullable Boolean deploymentsEnabled;
         private @Nullable String owner;
+        private @Nullable List<String> pathExcludes;
+        private @Nullable List<String> pathIncludes;
         private @Nullable Boolean prCommentsEnabled;
         private @Nullable List<String> previewBranchExcludes;
         private @Nullable List<String> previewBranchIncludes;
         private @Nullable String previewDeploymentSetting;
-        private String productionBranch;
-        private @Nullable Boolean productionDeploymentEnabled;
+        private @Nullable String productionBranch;
+        private @Nullable Boolean productionDeploymentsEnabled;
         private @Nullable String repoName;
         public Builder() {}
         public Builder(PagesProjectSourceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deploymentsEnabled = defaults.deploymentsEnabled;
     	      this.owner = defaults.owner;
+    	      this.pathExcludes = defaults.pathExcludes;
+    	      this.pathIncludes = defaults.pathIncludes;
     	      this.prCommentsEnabled = defaults.prCommentsEnabled;
     	      this.previewBranchExcludes = defaults.previewBranchExcludes;
     	      this.previewBranchIncludes = defaults.previewBranchIncludes;
     	      this.previewDeploymentSetting = defaults.previewDeploymentSetting;
     	      this.productionBranch = defaults.productionBranch;
-    	      this.productionDeploymentEnabled = defaults.productionDeploymentEnabled;
+    	      this.productionDeploymentsEnabled = defaults.productionDeploymentsEnabled;
     	      this.repoName = defaults.repoName;
         }
 
@@ -168,6 +107,24 @@ public final class PagesProjectSourceConfig {
 
             this.owner = owner;
             return this;
+        }
+        @CustomType.Setter
+        public Builder pathExcludes(@Nullable List<String> pathExcludes) {
+
+            this.pathExcludes = pathExcludes;
+            return this;
+        }
+        public Builder pathExcludes(String... pathExcludes) {
+            return pathExcludes(List.of(pathExcludes));
+        }
+        @CustomType.Setter
+        public Builder pathIncludes(@Nullable List<String> pathIncludes) {
+
+            this.pathIncludes = pathIncludes;
+            return this;
+        }
+        public Builder pathIncludes(String... pathIncludes) {
+            return pathIncludes(List.of(pathIncludes));
         }
         @CustomType.Setter
         public Builder prCommentsEnabled(@Nullable Boolean prCommentsEnabled) {
@@ -200,17 +157,15 @@ public final class PagesProjectSourceConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder productionBranch(String productionBranch) {
-            if (productionBranch == null) {
-              throw new MissingRequiredPropertyException("PagesProjectSourceConfig", "productionBranch");
-            }
+        public Builder productionBranch(@Nullable String productionBranch) {
+
             this.productionBranch = productionBranch;
             return this;
         }
         @CustomType.Setter
-        public Builder productionDeploymentEnabled(@Nullable Boolean productionDeploymentEnabled) {
+        public Builder productionDeploymentsEnabled(@Nullable Boolean productionDeploymentsEnabled) {
 
-            this.productionDeploymentEnabled = productionDeploymentEnabled;
+            this.productionDeploymentsEnabled = productionDeploymentsEnabled;
             return this;
         }
         @CustomType.Setter
@@ -223,12 +178,14 @@ public final class PagesProjectSourceConfig {
             final var _resultValue = new PagesProjectSourceConfig();
             _resultValue.deploymentsEnabled = deploymentsEnabled;
             _resultValue.owner = owner;
+            _resultValue.pathExcludes = pathExcludes;
+            _resultValue.pathIncludes = pathIncludes;
             _resultValue.prCommentsEnabled = prCommentsEnabled;
             _resultValue.previewBranchExcludes = previewBranchExcludes;
             _resultValue.previewBranchIncludes = previewBranchIncludes;
             _resultValue.previewDeploymentSetting = previewDeploymentSetting;
             _resultValue.productionBranch = productionBranch;
-            _resultValue.productionDeploymentEnabled = productionDeploymentEnabled;
+            _resultValue.productionDeploymentsEnabled = productionDeploymentsEnabled;
             _resultValue.repoName = repoName;
             return _resultValue;
         }

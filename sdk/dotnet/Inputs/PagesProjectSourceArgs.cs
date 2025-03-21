@@ -12,15 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class PagesProjectSourceArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configuration for the source of the Cloudflare Pages project.
-        /// </summary>
         [Input("config")]
         public Input<Inputs.PagesProjectSourceConfigArgs>? Config { get; set; }
 
-        /// <summary>
-        /// Project host type.
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

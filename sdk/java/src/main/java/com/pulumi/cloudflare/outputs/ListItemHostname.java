@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ListItemHostname {
-    /**
-     * @return The FQDN to match on.
-     * 
-     */
     private String urlHostname;
 
     private ListItemHostname() {}
-    /**
-     * @return The FQDN to match on.
-     * 
-     */
     public String urlHostname() {
         return this.urlHostname;
     }

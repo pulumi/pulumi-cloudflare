@@ -5,9 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersAlgorithmArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,18 +16,18 @@ public final class RulesetRuleActionParametersAlgorithmArgs extends com.pulumi.r
     public static final RulesetRuleActionParametersAlgorithmArgs Empty = new RulesetRuleActionParametersAlgorithmArgs();
 
     /**
-     * Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
+     * Name of compression algorithm to enable.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
-     * @return Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
+     * @return Name of compression algorithm to enable.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     private RulesetRuleActionParametersAlgorithmArgs() {}
@@ -54,18 +55,18 @@ public final class RulesetRuleActionParametersAlgorithmArgs extends com.pulumi.r
         }
 
         /**
-         * @param name Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
+         * @param name Name of compression algorithm to enable.
          * 
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
+         * @param name Name of compression algorithm to enable.
          * 
          * @return builder
          * 
@@ -75,9 +76,6 @@ public final class RulesetRuleActionParametersAlgorithmArgs extends com.pulumi.r
         }
 
         public RulesetRuleActionParametersAlgorithmArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("RulesetRuleActionParametersAlgorithmArgs", "name");
-            }
             return $;
         }
     }

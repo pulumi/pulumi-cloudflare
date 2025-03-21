@@ -2,16 +2,31 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustAccessIdentityProvider = cloudflare.getZeroTrustAccessIdentityProvider({
+ *     identityProviderId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     accountId: "account_id",
+ *     zoneId: "zone_id",
+ * });
+ * ```
  */
-export function getZeroTrustAccessIdentityProvider(args: GetZeroTrustAccessIdentityProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessIdentityProviderResult> {
+export function getZeroTrustAccessIdentityProvider(args?: GetZeroTrustAccessIdentityProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessIdentityProviderResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider", {
         "accountId": args.accountId,
-        "name": args.name,
+        "filter": args.filter,
+        "identityProviderId": args.identityProviderId,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -21,15 +36,16 @@ export function getZeroTrustAccessIdentityProvider(args: GetZeroTrustAccessIdent
  */
 export interface GetZeroTrustAccessIdentityProviderArgs {
     /**
-     * The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: string;
+    filter?: inputs.GetZeroTrustAccessIdentityProviderFilter;
     /**
-     * Access Identity Provider name to search for.
+     * UUID
      */
-    name: string;
+    identityProviderId?: string;
     /**
-     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: string;
 }
@@ -39,34 +55,60 @@ export interface GetZeroTrustAccessIdentityProviderArgs {
  */
 export interface GetZeroTrustAccessIdentityProviderResult {
     /**
-     * The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     readonly accountId?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+     */
+    readonly config: outputs.GetZeroTrustAccessIdentityProviderConfig;
+    readonly filter?: outputs.GetZeroTrustAccessIdentityProviderFilter;
+    /**
+     * UUID
      */
     readonly id: string;
     /**
-     * Access Identity Provider name to search for.
+     * UUID
+     */
+    readonly identityProviderId?: string;
+    /**
+     * The name of the identity provider, shown to users on the login page.
      */
     readonly name: string;
     /**
-     * Access Identity Provider Type.
+     * The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
+     */
+    readonly scimConfig: outputs.GetZeroTrustAccessIdentityProviderScimConfig;
+    /**
+     * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
      */
     readonly type: string;
     /**
-     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     readonly zoneId?: string;
 }
 /**
- * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustAccessIdentityProvider = cloudflare.getZeroTrustAccessIdentityProvider({
+ *     identityProviderId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     accountId: "account_id",
+ *     zoneId: "zone_id",
+ * });
+ * ```
  */
-export function getZeroTrustAccessIdentityProviderOutput(args: GetZeroTrustAccessIdentityProviderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessIdentityProviderResult> {
+export function getZeroTrustAccessIdentityProviderOutput(args?: GetZeroTrustAccessIdentityProviderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessIdentityProviderResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider", {
         "accountId": args.accountId,
-        "name": args.name,
+        "filter": args.filter,
+        "identityProviderId": args.identityProviderId,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -76,15 +118,16 @@ export function getZeroTrustAccessIdentityProviderOutput(args: GetZeroTrustAcces
  */
 export interface GetZeroTrustAccessIdentityProviderOutputArgs {
     /**
-     * The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
+    filter?: pulumi.Input<inputs.GetZeroTrustAccessIdentityProviderFilterArgs>;
     /**
-     * Access Identity Provider name to search for.
+     * UUID
      */
-    name: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }

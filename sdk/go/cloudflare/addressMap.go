@@ -8,13 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides the ability to manage IP addresses that can be used by DNS records when
-// they are proxied through Cloudflare.
-//
 // ## Example Usage
 //
 // ```go
@@ -22,31 +19,21 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAddressMap(ctx, "example", &cloudflare.AddressMapArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Description: pulumi.String("My address map"),
-//				DefaultSni:  pulumi.String("*.example.com"),
+//			_, err := cloudflare.NewAddressMap(ctx, "example_address_map", &cloudflare.AddressMapArgs{
+//				AccountId:   pulumi.String("258def64c72dae45f3e4c8516e2111f2"),
+//				Description: pulumi.String("My Ecommerce zones"),
 //				Enabled:     pulumi.Bool(true),
-//				Ips: cloudflare.AddressMapIpArray{
-//					&cloudflare.AddressMapIpArgs{
-//						Ip: pulumi.String("192.0.2.1"),
-//					},
-//					&cloudflare.AddressMapIpArgs{
-//						Ip: pulumi.String("203.0.113.1"),
-//					},
+//				Ips: pulumi.StringArray{
+//					pulumi.String("192.0.2.1"),
 //				},
 //				Memberships: cloudflare.AddressMapMembershipArray{
-//					&cloudflare.AddressMapMembershipArgs{
-//						Identifier: pulumi.String("92f17202ed8bd63d69a66b86a49a8f6b"),
-//						Kind:       pulumi.String("account"),
-//					},
 //					&cloudflare.AddressMapMembershipArgs{
 //						Identifier: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //						Kind:       pulumi.String("zone"),
@@ -65,27 +52,28 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/addressMap:AddressMap example <account_id>/<address_map_id>
+// $ pulumi import cloudflare:index/addressMap:AddressMap example '<account_id>/<address_map_id>'
 // ```
 type AddressMap struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// Identifier of a Cloudflare account.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
 	CanDelete pulumi.BoolOutput `pulumi:"canDelete"`
 	// If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
-	CanModifyIps pulumi.BoolOutput `pulumi:"canModifyIps"`
-	// If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+	CanModifyIps pulumi.BoolOutput   `pulumi:"canModifyIps"`
+	CreatedAt    pulumi.StringOutput `pulumi:"createdAt"`
+	// If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
 	DefaultSni pulumi.StringPtrOutput `pulumi:"defaultSni"`
-	// Description of the address map.
+	// An optional description field which may be used to describe the types of IPs or zones on the map.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Whether the Address Map is enabled or not.
-	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// The set of IPs on the Address Map.
-	Ips AddressMapIpArrayOutput `pulumi:"ips"`
-	// Zones and Accounts which will be assigned IPs on this Address Map.
+	// Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.
+	Enabled pulumi.BoolOutput        `pulumi:"enabled"`
+	Ips     pulumi.StringArrayOutput `pulumi:"ips"`
+	// Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
 	Memberships AddressMapMembershipArrayOutput `pulumi:"memberships"`
+	ModifiedAt  pulumi.StringOutput             `pulumi:"modifiedAt"`
 }
 
 // NewAddressMap registers a new resource with the given unique name, arguments, and options.
@@ -97,9 +85,6 @@ func NewAddressMap(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
-	if args.Enabled == nil {
-		return nil, errors.New("invalid value for required argument 'Enabled'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AddressMap
@@ -124,41 +109,43 @@ func GetAddressMap(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AddressMap resources.
 type addressMapState struct {
-	// The account identifier to target for the resource.
+	// Identifier of a Cloudflare account.
 	AccountId *string `pulumi:"accountId"`
 	// If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
 	CanDelete *bool `pulumi:"canDelete"`
 	// If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
-	CanModifyIps *bool `pulumi:"canModifyIps"`
-	// If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+	CanModifyIps *bool   `pulumi:"canModifyIps"`
+	CreatedAt    *string `pulumi:"createdAt"`
+	// If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
 	DefaultSni *string `pulumi:"defaultSni"`
-	// Description of the address map.
+	// An optional description field which may be used to describe the types of IPs or zones on the map.
 	Description *string `pulumi:"description"`
-	// Whether the Address Map is enabled or not.
-	Enabled *bool `pulumi:"enabled"`
-	// The set of IPs on the Address Map.
-	Ips []AddressMapIp `pulumi:"ips"`
-	// Zones and Accounts which will be assigned IPs on this Address Map.
+	// Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.
+	Enabled *bool    `pulumi:"enabled"`
+	Ips     []string `pulumi:"ips"`
+	// Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
 	Memberships []AddressMapMembership `pulumi:"memberships"`
+	ModifiedAt  *string                `pulumi:"modifiedAt"`
 }
 
 type AddressMapState struct {
-	// The account identifier to target for the resource.
+	// Identifier of a Cloudflare account.
 	AccountId pulumi.StringPtrInput
 	// If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
 	CanDelete pulumi.BoolPtrInput
 	// If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
 	CanModifyIps pulumi.BoolPtrInput
-	// If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+	CreatedAt    pulumi.StringPtrInput
+	// If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
 	DefaultSni pulumi.StringPtrInput
-	// Description of the address map.
+	// An optional description field which may be used to describe the types of IPs or zones on the map.
 	Description pulumi.StringPtrInput
-	// Whether the Address Map is enabled or not.
+	// Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.
 	Enabled pulumi.BoolPtrInput
-	// The set of IPs on the Address Map.
-	Ips AddressMapIpArrayInput
-	// Zones and Accounts which will be assigned IPs on this Address Map.
+	Ips     pulumi.StringArrayInput
+	// Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
 	Memberships AddressMapMembershipArrayInput
+	ModifiedAt  pulumi.StringPtrInput
 }
 
 func (AddressMapState) ElementType() reflect.Type {
@@ -166,33 +153,31 @@ func (AddressMapState) ElementType() reflect.Type {
 }
 
 type addressMapArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier of a Cloudflare account.
 	AccountId string `pulumi:"accountId"`
-	// If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+	// If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
 	DefaultSni *string `pulumi:"defaultSni"`
-	// Description of the address map.
+	// An optional description field which may be used to describe the types of IPs or zones on the map.
 	Description *string `pulumi:"description"`
-	// Whether the Address Map is enabled or not.
-	Enabled bool `pulumi:"enabled"`
-	// The set of IPs on the Address Map.
-	Ips []AddressMapIp `pulumi:"ips"`
-	// Zones and Accounts which will be assigned IPs on this Address Map.
+	// Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.
+	Enabled *bool    `pulumi:"enabled"`
+	Ips     []string `pulumi:"ips"`
+	// Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
 	Memberships []AddressMapMembership `pulumi:"memberships"`
 }
 
 // The set of arguments for constructing a AddressMap resource.
 type AddressMapArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier of a Cloudflare account.
 	AccountId pulumi.StringInput
-	// If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+	// If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
 	DefaultSni pulumi.StringPtrInput
-	// Description of the address map.
+	// An optional description field which may be used to describe the types of IPs or zones on the map.
 	Description pulumi.StringPtrInput
-	// Whether the Address Map is enabled or not.
-	Enabled pulumi.BoolInput
-	// The set of IPs on the Address Map.
-	Ips AddressMapIpArrayInput
-	// Zones and Accounts which will be assigned IPs on this Address Map.
+	// Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.
+	Enabled pulumi.BoolPtrInput
+	Ips     pulumi.StringArrayInput
+	// Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
 	Memberships AddressMapMembershipArrayInput
 }
 
@@ -283,7 +268,7 @@ func (o AddressMapOutput) ToAddressMapOutputWithContext(ctx context.Context) Add
 	return o
 }
 
-// The account identifier to target for the resource.
+// Identifier of a Cloudflare account.
 func (o AddressMapOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AddressMap) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -298,29 +283,36 @@ func (o AddressMapOutput) CanModifyIps() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AddressMap) pulumi.BoolOutput { return v.CanModifyIps }).(pulumi.BoolOutput)
 }
 
-// If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+func (o AddressMapOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AddressMap) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
 func (o AddressMapOutput) DefaultSni() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AddressMap) pulumi.StringPtrOutput { return v.DefaultSni }).(pulumi.StringPtrOutput)
 }
 
-// Description of the address map.
+// An optional description field which may be used to describe the types of IPs or zones on the map.
 func (o AddressMapOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AddressMap) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Whether the Address Map is enabled or not.
+// Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.
 func (o AddressMapOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AddressMap) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The set of IPs on the Address Map.
-func (o AddressMapOutput) Ips() AddressMapIpArrayOutput {
-	return o.ApplyT(func(v *AddressMap) AddressMapIpArrayOutput { return v.Ips }).(AddressMapIpArrayOutput)
+func (o AddressMapOutput) Ips() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AddressMap) pulumi.StringArrayOutput { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
-// Zones and Accounts which will be assigned IPs on this Address Map.
+// Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
 func (o AddressMapOutput) Memberships() AddressMapMembershipArrayOutput {
 	return o.ApplyT(func(v *AddressMap) AddressMapMembershipArrayOutput { return v.Memberships }).(AddressMapMembershipArrayOutput)
+}
+
+func (o AddressMapOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AddressMap) pulumi.StringOutput { return v.ModifiedAt }).(pulumi.StringOutput)
 }
 
 type AddressMapArrayOutput struct{ *pulumi.OutputState }

@@ -11,42 +11,18 @@ import java.util.Objects;
 @CustomType
 public final class GetUserResult {
     /**
-     * @return The user&#39;s email address.
-     * 
-     */
-    private String email;
-    /**
-     * @return The user&#39;s unique identifier.
+     * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    /**
-     * @return The user&#39;s username.
-     * 
-     */
-    private String username;
 
     private GetUserResult() {}
     /**
-     * @return The user&#39;s email address.
-     * 
-     */
-    public String email() {
-        return this.email;
-    }
-    /**
-     * @return The user&#39;s unique identifier.
+     * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     public String id() {
         return this.id;
-    }
-    /**
-     * @return The user&#39;s username.
-     * 
-     */
-    public String username() {
-        return this.username;
     }
 
     public static Builder builder() {
@@ -58,25 +34,13 @@ public final class GetUserResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String email;
         private String id;
-        private String username;
         public Builder() {}
         public Builder(GetUserResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.email = defaults.email;
     	      this.id = defaults.id;
-    	      this.username = defaults.username;
         }
 
-        @CustomType.Setter
-        public Builder email(String email) {
-            if (email == null) {
-              throw new MissingRequiredPropertyException("GetUserResult", "email");
-            }
-            this.email = email;
-            return this;
-        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -85,19 +49,9 @@ public final class GetUserResult {
             this.id = id;
             return this;
         }
-        @CustomType.Setter
-        public Builder username(String username) {
-            if (username == null) {
-              throw new MissingRequiredPropertyException("GetUserResult", "username");
-            }
-            this.username = username;
-            return this;
-        }
         public GetUserResult build() {
             final var _resultValue = new GetUserResult();
-            _resultValue.email = email;
             _resultValue.id = id;
-            _resultValue.username = username;
             return _resultValue;
         }
     }

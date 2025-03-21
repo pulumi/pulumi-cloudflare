@@ -12,19 +12,11 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows
- * you to define one or more URLs (with wildcard matching on the domain
- * or path) that will only permit access if the request originates
- * from an IP address that matches a safelist of one or more IP
- * addresses and/or IP ranges.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -51,16 +43,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Restrict access to these endpoints to requests from a known IP address range.
- *         var example = new ZoneLockdown("example", ZoneLockdownArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .paused("false")
- *             .description("Restrict access to these endpoints to requests from a known IP address range")
- *             .urls("api.mysite.com/some/endpoint*")
+ *         var exampleZoneLockdown = new ZoneLockdown("exampleZoneLockdown", ZoneLockdownArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .configurations(ZoneLockdownConfigurationArgs.builder()
- *                 .target("ip_range")
- *                 .value("192.0.2.0/24")
+ *                 .target("ip")
+ *                 .value("198.51.100.4")
  *                 .build())
+ *             .urls("shop.example.com/*")
  *             .build());
  * 
  *     }
@@ -72,83 +61,105 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example &lt;zone_id&gt;/&lt;lockdown_id&gt;
+ * $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example &#39;&lt;zone_id&gt;/&lt;lock_downs_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zoneLockdown:ZoneLockdown")
 public class ZoneLockdown extends com.pulumi.resources.CustomResource {
     /**
-     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+     * A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
      * 
      */
     @Export(name="configurations", refs={List.class,ZoneLockdownConfiguration.class}, tree="[0,1]")
     private Output<List<ZoneLockdownConfiguration>> configurations;
 
     /**
-     * @return A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+     * @return A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
      * 
      */
     public Output<List<ZoneLockdownConfiguration>> configurations() {
         return this.configurations;
     }
     /**
-     * A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+     * The timestamp of when the rule was created.
+     * 
+     */
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
+
+    /**
+     * @return The timestamp of when the rule was created.
+     * 
+     */
+    public Output<String> createdOn() {
+        return this.createdOn;
+    }
+    /**
+     * An informative summary of the rule.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
-     * @return A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+     * @return An informative summary of the rule.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
-     * Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
+     * The timestamp of when the rule was last modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return The timestamp of when the rule was last modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * When true, indicates that the rule is currently paused.
      * 
      */
     @Export(name="paused", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> paused;
+    private Output<Boolean> paused;
 
     /**
-     * @return Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
+     * @return When true, indicates that the rule is currently paused.
      * 
      */
-    public Output<Optional<Boolean>> paused() {
-        return Codegen.optional(this.paused);
-    }
-    @Export(name="priority", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> priority;
-
-    public Output<Optional<Integer>> priority() {
-        return Codegen.optional(this.priority);
+    public Output<Boolean> paused() {
+        return this.paused;
     }
     /**
-     * A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+     * The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
      * 
      */
     @Export(name="urls", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> urls;
 
     /**
-     * @return A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+     * @return The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
      * 
      */
     public Output<List<String>> urls() {
         return this.urls;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

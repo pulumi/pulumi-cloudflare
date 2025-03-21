@@ -3,9 +3,13 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.WorkersRouteErrorArgs;
+import com.pulumi.cloudflare.inputs.WorkersRouteMessageArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,45 +19,81 @@ public final class WorkersRouteState extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkersRouteState Empty = new WorkersRouteState();
 
-    /**
-     * The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-     * 
-     */
+    @Import(name="errors")
+    private @Nullable Output<List<WorkersRouteErrorArgs>> errors;
+
+    public Optional<Output<List<WorkersRouteErrorArgs>>> errors() {
+        return Optional.ofNullable(this.errors);
+    }
+
+    @Import(name="messages")
+    private @Nullable Output<List<WorkersRouteMessageArgs>> messages;
+
+    public Optional<Output<List<WorkersRouteMessageArgs>>> messages() {
+        return Optional.ofNullable(this.messages);
+    }
+
     @Import(name="pattern")
     private @Nullable Output<String> pattern;
 
-    /**
-     * @return The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-     * 
-     */
     public Optional<Output<String>> pattern() {
         return Optional.ofNullable(this.pattern);
     }
 
     /**
-     * Worker script name to invoke for requests that match the route pattern.
+     * Identifier
      * 
      */
-    @Import(name="scriptName")
-    private @Nullable Output<String> scriptName;
+    @Import(name="routeId")
+    private @Nullable Output<String> routeId;
 
     /**
-     * @return Worker script name to invoke for requests that match the route pattern.
+     * @return Identifier
      * 
      */
-    public Optional<Output<String>> scriptName() {
-        return Optional.ofNullable(this.scriptName);
+    public Optional<Output<String>> routeId() {
+        return Optional.ofNullable(this.routeId);
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Name of the script, used in URLs and route configuration.
+     * 
+     */
+    @Import(name="script")
+    private @Nullable Output<String> script;
+
+    /**
+     * @return Name of the script, used in URLs and route configuration.
+     * 
+     */
+    public Optional<Output<String>> script() {
+        return Optional.ofNullable(this.script);
+    }
+
+    /**
+     * Whether the API call was successful
+     * 
+     */
+    @Import(name="success")
+    private @Nullable Output<Boolean> success;
+
+    /**
+     * @return Whether the API call was successful
+     * 
+     */
+    public Optional<Output<Boolean>> success() {
+        return Optional.ofNullable(this.success);
+    }
+
+    /**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -63,8 +103,12 @@ public final class WorkersRouteState extends com.pulumi.resources.ResourceArgs {
     private WorkersRouteState() {}
 
     private WorkersRouteState(WorkersRouteState $) {
+        this.errors = $.errors;
+        this.messages = $.messages;
         this.pattern = $.pattern;
-        this.scriptName = $.scriptName;
+        this.routeId = $.routeId;
+        this.script = $.script;
+        this.success = $.success;
         this.zoneId = $.zoneId;
     }
 
@@ -86,50 +130,106 @@ public final class WorkersRouteState extends com.pulumi.resources.ResourceArgs {
             $ = new WorkersRouteState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param pattern The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-         * 
-         * @return builder
-         * 
-         */
+        public Builder errors(@Nullable Output<List<WorkersRouteErrorArgs>> errors) {
+            $.errors = errors;
+            return this;
+        }
+
+        public Builder errors(List<WorkersRouteErrorArgs> errors) {
+            return errors(Output.of(errors));
+        }
+
+        public Builder errors(WorkersRouteErrorArgs... errors) {
+            return errors(List.of(errors));
+        }
+
+        public Builder messages(@Nullable Output<List<WorkersRouteMessageArgs>> messages) {
+            $.messages = messages;
+            return this;
+        }
+
+        public Builder messages(List<WorkersRouteMessageArgs> messages) {
+            return messages(Output.of(messages));
+        }
+
+        public Builder messages(WorkersRouteMessageArgs... messages) {
+            return messages(List.of(messages));
+        }
+
         public Builder pattern(@Nullable Output<String> pattern) {
             $.pattern = pattern;
             return this;
         }
 
-        /**
-         * @param pattern The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pattern(String pattern) {
             return pattern(Output.of(pattern));
         }
 
         /**
-         * @param scriptName Worker script name to invoke for requests that match the route pattern.
+         * @param routeId Identifier
          * 
          * @return builder
          * 
          */
-        public Builder scriptName(@Nullable Output<String> scriptName) {
-            $.scriptName = scriptName;
+        public Builder routeId(@Nullable Output<String> routeId) {
+            $.routeId = routeId;
             return this;
         }
 
         /**
-         * @param scriptName Worker script name to invoke for requests that match the route pattern.
+         * @param routeId Identifier
          * 
          * @return builder
          * 
          */
-        public Builder scriptName(String scriptName) {
-            return scriptName(Output.of(scriptName));
+        public Builder routeId(String routeId) {
+            return routeId(Output.of(routeId));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param script Name of the script, used in URLs and route configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder script(@Nullable Output<String> script) {
+            $.script = script;
+            return this;
+        }
+
+        /**
+         * @param script Name of the script, used in URLs and route configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder script(String script) {
+            return script(Output.of(script));
+        }
+
+        /**
+         * @param success Whether the API call was successful
+         * 
+         * @return builder
+         * 
+         */
+        public Builder success(@Nullable Output<Boolean> success) {
+            $.success = success;
+            return this;
+        }
+
+        /**
+         * @param success Whether the API call was successful
+         * 
+         * @return builder
+         * 
+         */
+        public Builder success(Boolean success) {
+            return success(Output.of(success));
+        }
+
+        /**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -140,7 +240,7 @@ public final class WorkersRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

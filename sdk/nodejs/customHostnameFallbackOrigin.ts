@@ -5,16 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare custom hostname fallback origin resource.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.CustomHostnameFallbackOrigin("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * const exampleCustomHostnameFallbackOrigin = new cloudflare.CustomHostnameFallbackOrigin("example_custom_hostname_fallback_origin", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     origin: "fallback.example.com",
  * });
  * ```
@@ -22,7 +20,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example <zone_id>/<fallback_hostname>
+ * $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example '<zone_id>'
  * ```
  */
 export class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
@@ -54,7 +52,15 @@ export class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
     }
 
     /**
-     * Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+     * This is the time the fallback origin was created.
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * These are errors that were encountered while trying to activate a fallback origin.
+     */
+    public /*out*/ readonly errors!: pulumi.Output<string[]>;
+    /**
+     * Your origin hostname that requests to your custom hostnames will be sent to.
      */
     public readonly origin!: pulumi.Output<string>;
     /**
@@ -62,7 +68,11 @@ export class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * This is the time the fallback origin was updated.
+     */
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    /**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -79,8 +89,11 @@ export class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomHostnameFallbackOriginState | undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["errors"] = state ? state.errors : undefined;
             resourceInputs["origin"] = state ? state.origin : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as CustomHostnameFallbackOriginArgs | undefined;
@@ -92,7 +105,10 @@ export class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
             }
             resourceInputs["origin"] = args ? args.origin : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CustomHostnameFallbackOrigin.__pulumiType, name, resourceInputs, opts);
@@ -104,7 +120,15 @@ export class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
  */
 export interface CustomHostnameFallbackOriginState {
     /**
-     * Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+     * This is the time the fallback origin was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * These are errors that were encountered while trying to activate a fallback origin.
+     */
+    errors?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Your origin hostname that requests to your custom hostnames will be sent to.
      */
     origin?: pulumi.Input<string>;
     /**
@@ -112,7 +136,11 @@ export interface CustomHostnameFallbackOriginState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * This is the time the fallback origin was updated.
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -122,11 +150,11 @@ export interface CustomHostnameFallbackOriginState {
  */
 export interface CustomHostnameFallbackOriginArgs {
     /**
-     * Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+     * Your origin hostname that requests to your custom hostnames will be sent to.
      */
     origin: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

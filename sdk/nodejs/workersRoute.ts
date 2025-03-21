@@ -2,30 +2,22 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare worker route resource. A route will also require a `cloudflare.WorkerScript`.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const myScript = new cloudflare.WorkersScript("my_script", {});
- * // Runs the specified worker script for all URLs that match `example.com/*`
- * const myRoute = new cloudflare.WorkersRoute("my_route", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     pattern: "example.com/*",
- *     scriptName: myScript.name,
+ * const exampleWorkersRoute = new cloudflare.WorkersRoute("example_workers_route", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     pattern: "example.net/*",
+ *     script: "this-is_my_script-01",
  * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import cloudflare:index/workersRoute:WorkersRoute example <zone_id>/<route_id>
  * ```
  */
 export class WorkersRoute extends pulumi.CustomResource {
@@ -56,16 +48,23 @@ export class WorkersRoute extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkersRoute.__pulumiType;
     }
 
-    /**
-     * The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-     */
+    public /*out*/ readonly errors!: pulumi.Output<outputs.WorkersRouteError[]>;
+    public /*out*/ readonly messages!: pulumi.Output<outputs.WorkersRouteMessage[]>;
     public readonly pattern!: pulumi.Output<string>;
     /**
-     * Worker script name to invoke for requests that match the route pattern.
+     * Identifier
      */
-    public readonly scriptName!: pulumi.Output<string | undefined>;
+    public readonly routeId!: pulumi.Output<string | undefined>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Name of the script, used in URLs and route configuration.
+     */
+    public readonly script!: pulumi.Output<string | undefined>;
+    /**
+     * Whether the API call was successful
+     */
+    public /*out*/ readonly success!: pulumi.Output<boolean>;
+    /**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -82,8 +81,12 @@ export class WorkersRoute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkersRouteState | undefined;
+            resourceInputs["errors"] = state ? state.errors : undefined;
+            resourceInputs["messages"] = state ? state.messages : undefined;
             resourceInputs["pattern"] = state ? state.pattern : undefined;
-            resourceInputs["scriptName"] = state ? state.scriptName : undefined;
+            resourceInputs["routeId"] = state ? state.routeId : undefined;
+            resourceInputs["script"] = state ? state.script : undefined;
+            resourceInputs["success"] = state ? state.success : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as WorkersRouteArgs | undefined;
@@ -94,8 +97,12 @@ export class WorkersRoute extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["pattern"] = args ? args.pattern : undefined;
-            resourceInputs["scriptName"] = args ? args.scriptName : undefined;
+            resourceInputs["routeId"] = args ? args.routeId : undefined;
+            resourceInputs["script"] = args ? args.script : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["errors"] = undefined /*out*/;
+            resourceInputs["messages"] = undefined /*out*/;
+            resourceInputs["success"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkersRoute.__pulumiType, name, resourceInputs, opts);
@@ -106,16 +113,23 @@ export class WorkersRoute extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkersRoute resources.
  */
 export interface WorkersRouteState {
-    /**
-     * The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-     */
+    errors?: pulumi.Input<pulumi.Input<inputs.WorkersRouteError>[]>;
+    messages?: pulumi.Input<pulumi.Input<inputs.WorkersRouteMessage>[]>;
     pattern?: pulumi.Input<string>;
     /**
-     * Worker script name to invoke for requests that match the route pattern.
+     * Identifier
      */
-    scriptName?: pulumi.Input<string>;
+    routeId?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Name of the script, used in URLs and route configuration.
+     */
+    script?: pulumi.Input<string>;
+    /**
+     * Whether the API call was successful
+     */
+    success?: pulumi.Input<boolean>;
+    /**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -124,16 +138,17 @@ export interface WorkersRouteState {
  * The set of arguments for constructing a WorkersRoute resource.
  */
 export interface WorkersRouteArgs {
-    /**
-     * The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-     */
     pattern: pulumi.Input<string>;
     /**
-     * Worker script name to invoke for requests that match the route pattern.
+     * Identifier
      */
-    scriptName?: pulumi.Input<string>;
+    routeId?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Name of the script, used in URLs and route configuration.
+     */
+    script?: pulumi.Input<string>;
+    /**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

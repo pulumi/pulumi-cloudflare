@@ -7,12 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
-//
 // ## Example Usage
 //
 // ```go
@@ -20,29 +18,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi-example/sdk/go/example"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cloudflare, err := cloudflare.GetIpRanges(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = example.NewFirewallResource(ctx, "example", &example.FirewallResourceArgs{
-//				Name:         "from-cloudflare",
-//				Network:      "default",
-//				SourceRanges: cloudflare.Ipv4CidrBlocks,
-//				Allow: []map[string]interface{}{
-//					map[string]interface{}{
-//						"ports":    "443",
-//						"protocol": "tcp",
-//					},
-//				},
-//			})
+//			_, err := cloudflare.GetIpRanges(ctx, &cloudflare.GetIpRangesArgs{
+//				Networks: pulumi.StringRef("networks"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -51,37 +36,55 @@ import (
 //	}
 //
 // ```
-func GetIpRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIpRangesResult, error) {
+func GetIpRanges(ctx *pulumi.Context, args *GetIpRangesArgs, opts ...pulumi.InvokeOption) (*GetIpRangesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpRangesResult
-	err := ctx.Invoke("cloudflare:index/getIpRanges:getIpRanges", nil, &rv, opts...)
+	err := ctx.Invoke("cloudflare:index/getIpRanges:getIpRanges", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
-// A collection of values returned by getIpRanges.
-type GetIpRangesResult struct {
-	// The lexically ordered list of only the IPv4 China CIDR blocks.
-	ChinaIpv4CidrBlocks []string `pulumi:"chinaIpv4CidrBlocks"`
-	// The lexically ordered list of only the IPv6 China CIDR blocks.
-	ChinaIpv6CidrBlocks []string `pulumi:"chinaIpv6CidrBlocks"`
-	// The lexically ordered list of all non-China CIDR blocks.
-	CidrBlocks []string `pulumi:"cidrBlocks"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The lexically ordered list of only the IPv4 CIDR blocks.
-	Ipv4CidrBlocks []string `pulumi:"ipv4CidrBlocks"`
-	// The lexically ordered list of only the IPv6 CIDR blocks.
-	Ipv6CidrBlocks []string `pulumi:"ipv6CidrBlocks"`
+// A collection of arguments for invoking getIpRanges.
+type GetIpRangesArgs struct {
+	// Specified as `jdcloud` to list IPs used by JD Cloud data centers.
+	Networks *string `pulumi:"networks"`
 }
 
-func GetIpRangesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetIpRangesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetIpRangesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("cloudflare:index/getIpRanges:getIpRanges", nil, GetIpRangesResultOutput{}, options).(GetIpRangesResultOutput), nil
-	}).(GetIpRangesResultOutput)
+// A collection of values returned by getIpRanges.
+type GetIpRangesResult struct {
+	// A digest of the IP data. Useful for determining if the data has changed.
+	Etag string `pulumi:"etag"`
+	// The provider-assigned unique ID for this managed resource.
+	Id string `pulumi:"id"`
+	// List of Cloudflare IPv4 CIDR addresses.
+	Ipv4Cidrs []string `pulumi:"ipv4Cidrs"`
+	// List of Cloudflare IPv6 CIDR addresses.
+	Ipv6Cidrs []string `pulumi:"ipv6Cidrs"`
+	// List IPv4 and IPv6 CIDRs, only populated if `?networks=jdcloud` is used.
+	JdcloudCidrs []string `pulumi:"jdcloudCidrs"`
+	// Specified as `jdcloud` to list IPs used by JD Cloud data centers.
+	Networks *string `pulumi:"networks"`
+}
+
+func GetIpRangesOutput(ctx *pulumi.Context, args GetIpRangesOutputArgs, opts ...pulumi.InvokeOption) GetIpRangesResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetIpRangesResultOutput, error) {
+			args := v.(GetIpRangesArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudflare:index/getIpRanges:getIpRanges", args, GetIpRangesResultOutput{}, options).(GetIpRangesResultOutput), nil
+		}).(GetIpRangesResultOutput)
+}
+
+// A collection of arguments for invoking getIpRanges.
+type GetIpRangesOutputArgs struct {
+	// Specified as `jdcloud` to list IPs used by JD Cloud data centers.
+	Networks pulumi.StringPtrInput `pulumi:"networks"`
+}
+
+func (GetIpRangesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpRangesArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getIpRanges.
@@ -99,19 +102,9 @@ func (o GetIpRangesResultOutput) ToGetIpRangesResultOutputWithContext(ctx contex
 	return o
 }
 
-// The lexically ordered list of only the IPv4 China CIDR blocks.
-func (o GetIpRangesResultOutput) ChinaIpv4CidrBlocks() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetIpRangesResult) []string { return v.ChinaIpv4CidrBlocks }).(pulumi.StringArrayOutput)
-}
-
-// The lexically ordered list of only the IPv6 China CIDR blocks.
-func (o GetIpRangesResultOutput) ChinaIpv6CidrBlocks() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetIpRangesResult) []string { return v.ChinaIpv6CidrBlocks }).(pulumi.StringArrayOutput)
-}
-
-// The lexically ordered list of all non-China CIDR blocks.
-func (o GetIpRangesResultOutput) CidrBlocks() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetIpRangesResult) []string { return v.CidrBlocks }).(pulumi.StringArrayOutput)
+// A digest of the IP data. Useful for determining if the data has changed.
+func (o GetIpRangesResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpRangesResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -119,14 +112,24 @@ func (o GetIpRangesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpRangesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The lexically ordered list of only the IPv4 CIDR blocks.
-func (o GetIpRangesResultOutput) Ipv4CidrBlocks() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetIpRangesResult) []string { return v.Ipv4CidrBlocks }).(pulumi.StringArrayOutput)
+// List of Cloudflare IPv4 CIDR addresses.
+func (o GetIpRangesResultOutput) Ipv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpRangesResult) []string { return v.Ipv4Cidrs }).(pulumi.StringArrayOutput)
 }
 
-// The lexically ordered list of only the IPv6 CIDR blocks.
-func (o GetIpRangesResultOutput) Ipv6CidrBlocks() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetIpRangesResult) []string { return v.Ipv6CidrBlocks }).(pulumi.StringArrayOutput)
+// List of Cloudflare IPv6 CIDR addresses.
+func (o GetIpRangesResultOutput) Ipv6Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpRangesResult) []string { return v.Ipv6Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// List IPv4 and IPv6 CIDRs, only populated if `?networks=jdcloud` is used.
+func (o GetIpRangesResultOutput) JdcloudCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpRangesResult) []string { return v.JdcloudCidrs }).(pulumi.StringArrayOutput)
+}
+
+// Specified as `jdcloud` to list IPs used by JD Cloud data centers.
+func (o GetIpRangesResultOutput) Networks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIpRangesResult) *string { return v.Networks }).(pulumi.StringPtrOutput)
 }
 
 func init() {

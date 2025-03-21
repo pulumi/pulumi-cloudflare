@@ -7,7 +7,9 @@ import com.pulumi.cloudflare.PagesProjectArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.PagesProjectState;
 import com.pulumi.cloudflare.outputs.PagesProjectBuildConfig;
+import com.pulumi.cloudflare.outputs.PagesProjectCanonicalDeployment;
 import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigs;
+import com.pulumi.cloudflare.outputs.PagesProjectLatestDeployment;
 import com.pulumi.cloudflare.outputs.PagesProjectSource;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -19,50 +21,175 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource which manages Cloudflare Pages projects.
- * 
  * &gt; If you are using a `source` block configuration, you must first have a
  *    connected GitHub or GitLab account connected to Cloudflare. See the
  *    [Getting Started with Pages] documentation on how to link your accounts.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.PagesProject;
+ * import com.pulumi.cloudflare.PagesProjectArgs;
+ * import com.pulumi.cloudflare.inputs.PagesProjectBuildConfigArgs;
+ * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsArgs;
+ * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewArgs;
+ * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewPlacementArgs;
+ * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionArgs;
+ * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionPlacementArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var examplePagesProject = new PagesProject("examplePagesProject", PagesProjectArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .buildConfig(PagesProjectBuildConfigArgs.builder()
+ *                 .build_caching(true)
+ *                 .build_command("npm run build")
+ *                 .destination_dir("build")
+ *                 .root_dir("/")
+ *                 .web_analytics_tag("cee1c73f6e4743d0b5e6bb1a0bcaabcc")
+ *                 .web_analytics_token("021e1057c18547eca7b79f2516f06o7x")
+ *                 .build())
+ *             .deploymentConfigs(PagesProjectDeploymentConfigsArgs.builder()
+ *                 .preview(PagesProjectDeploymentConfigsPreviewArgs.builder()
+ *                     .aiBindings(Map.of("AI_BINDING", Map.of("projectId", "some-project-id")))
+ *                     .analyticsEngineDatasets(Map.of("ANALYTICS_ENGINE_BINDING", Map.of("dataset", "api_analytics")))
+ *                     .browsers(Map.of("BROWSER", ))
+ *                     .compatibilityDate("2022-01-01")
+ *                     .compatibilityFlags("url_standard")
+ *                     .d1Databases(Map.of("D1_BINDING", Map.of("id", "445e2955-951a-43f8-a35b-a4d0c8138f63")))
+ *                     .durableObjectNamespaces(Map.of("DO_BINDING", Map.of("namespaceId", "5eb63bbbe01eeed093cb22bb8f5acdc3")))
+ *                     .envVars(Map.of("foo", Map.ofEntries(
+ *                         Map.entry("value", "hello world"),
+ *                         Map.entry("type", "plain_text")
+ *                     )))
+ *                     .hyperdriveBindings(Map.of("HYPERDRIVE", Map.of("id", "a76a99bc342644deb02c38d66082262a")))
+ *                     .kvNamespaces(Map.of("KV_BINDING", Map.of("namespaceId", "5eb63bbbe01eeed093cb22bb8f5acdc3")))
+ *                     .mtlsCertificates(Map.of("MTLS", Map.of("certificateId", "d7cdd17c-916f-4cb7-aabe-585eb382ec4e")))
+ *                     .placement(PagesProjectDeploymentConfigsPreviewPlacementArgs.builder()
+ *                         .mode("smart")
+ *                         .build())
+ *                     .queueProducers(Map.of("QUEUE_PRODUCER_BINDING", Map.of("name", "some-queue")))
+ *                     .r2Buckets(Map.of("R2_BINDING", Map.ofEntries(
+ *                         Map.entry("jurisdiction", "eu"),
+ *                         Map.entry("name", "some-bucket")
+ *                     )))
+ *                     .services(Map.of("SERVICE_BINDING", Map.ofEntries(
+ *                         Map.entry("entrypoint", "MyHandler"),
+ *                         Map.entry("environment", "production"),
+ *                         Map.entry("service", "example-worker")
+ *                     )))
+ *                     .vectorizeBindings(Map.of("VECTORIZE", Map.of("indexName", "my_index")))
+ *                     .build())
+ *                 .production(PagesProjectDeploymentConfigsProductionArgs.builder()
+ *                     .aiBindings(Map.of("AI_BINDING", Map.of("projectId", "some-project-id")))
+ *                     .analyticsEngineDatasets(Map.of("ANALYTICS_ENGINE_BINDING", Map.of("dataset", "api_analytics")))
+ *                     .browsers(Map.of("BROWSER", ))
+ *                     .compatibilityDate("2022-01-01")
+ *                     .compatibilityFlags("url_standard")
+ *                     .d1Databases(Map.of("D1_BINDING", Map.of("id", "445e2955-951a-43f8-a35b-a4d0c8138f63")))
+ *                     .durableObjectNamespaces(Map.of("DO_BINDING", Map.of("namespaceId", "5eb63bbbe01eeed093cb22bb8f5acdc3")))
+ *                     .envVars(Map.of("foo", Map.ofEntries(
+ *                         Map.entry("value", "hello world"),
+ *                         Map.entry("type", "plain_text")
+ *                     )))
+ *                     .hyperdriveBindings(Map.of("HYPERDRIVE", Map.of("id", "a76a99bc342644deb02c38d66082262a")))
+ *                     .kvNamespaces(Map.of("KV_BINDING", Map.of("namespaceId", "5eb63bbbe01eeed093cb22bb8f5acdc3")))
+ *                     .mtlsCertificates(Map.of("MTLS", Map.of("certificateId", "d7cdd17c-916f-4cb7-aabe-585eb382ec4e")))
+ *                     .placement(PagesProjectDeploymentConfigsProductionPlacementArgs.builder()
+ *                         .mode("smart")
+ *                         .build())
+ *                     .queueProducers(Map.of("QUEUE_PRODUCER_BINDING", Map.of("name", "some-queue")))
+ *                     .r2Buckets(Map.of("R2_BINDING", Map.ofEntries(
+ *                         Map.entry("jurisdiction", "eu"),
+ *                         Map.entry("name", "some-bucket")
+ *                     )))
+ *                     .services(Map.of("SERVICE_BINDING", Map.ofEntries(
+ *                         Map.entry("entrypoint", "MyHandler"),
+ *                         Map.entry("environment", "production"),
+ *                         Map.entry("service", "example-worker")
+ *                     )))
+ *                     .vectorizeBindings(Map.of("VECTORIZE", Map.of("indexName", "my_index")))
+ *                     .build())
+ *                 .build())
+ *             .name("NextJS Blog")
+ *             .productionBranch("main")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * !&gt; It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.
  * 
  * ```sh
- * $ pulumi import cloudflare:index/pagesProject:PagesProject example &lt;account_id&gt;/&lt;project_name&gt;
+ * $ pulumi import cloudflare:index/pagesProject:PagesProject example &#39;&lt;account_id&gt;/&lt;project_name&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/pagesProject:PagesProject")
 public class PagesProject extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+     * Configs for the project build process.
      * 
      */
     @Export(name="buildConfig", refs={PagesProjectBuildConfig.class}, tree="[0]")
-    private Output</* @Nullable */ PagesProjectBuildConfig> buildConfig;
+    private Output<PagesProjectBuildConfig> buildConfig;
 
     /**
-     * @return Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+     * @return Configs for the project build process.
      * 
      */
-    public Output<Optional<PagesProjectBuildConfig>> buildConfig() {
-        return Codegen.optional(this.buildConfig);
+    public Output<PagesProjectBuildConfig> buildConfig() {
+        return this.buildConfig;
+    }
+    /**
+     * Most recent deployment to the repo.
+     * 
+     */
+    @Export(name="canonicalDeployment", refs={PagesProjectCanonicalDeployment.class}, tree="[0]")
+    private Output<PagesProjectCanonicalDeployment> canonicalDeployment;
+
+    /**
+     * @return Most recent deployment to the repo.
+     * 
+     */
+    public Output<PagesProjectCanonicalDeployment> canonicalDeployment() {
+        return this.canonicalDeployment;
     }
     /**
      * When the project was created.
@@ -79,14 +206,14 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
         return this.createdOn;
     }
     /**
-     * Configuration for deployments in a project.
+     * Configs for deployments in a project.
      * 
      */
     @Export(name="deploymentConfigs", refs={PagesProjectDeploymentConfigs.class}, tree="[0]")
     private Output<PagesProjectDeploymentConfigs> deploymentConfigs;
 
     /**
-     * @return Configuration for deployments in a project.
+     * @return Configs for deployments in a project.
      * 
      */
     public Output<PagesProjectDeploymentConfigs> deploymentConfigs() {
@@ -107,6 +234,20 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
         return this.domains;
     }
     /**
+     * Most recent deployment to the repo.
+     * 
+     */
+    @Export(name="latestDeployment", refs={PagesProjectLatestDeployment.class}, tree="[0]")
+    private Output<PagesProjectLatestDeployment> latestDeployment;
+
+    /**
+     * @return Most recent deployment to the repo.
+     * 
+     */
+    public Output<PagesProjectLatestDeployment> latestDeployment() {
+        return this.latestDeployment;
+    }
+    /**
      * Name of the project.
      * 
      */
@@ -121,32 +262,24 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The name of the branch that is used for the production environment.
+     * Production branch of the project. Used to identify production deployments.
      * 
      */
     @Export(name="productionBranch", refs={String.class}, tree="[0]")
-    private Output<String> productionBranch;
+    private Output</* @Nullable */ String> productionBranch;
 
     /**
-     * @return The name of the branch that is used for the production environment.
+     * @return Production branch of the project. Used to identify production deployments.
      * 
      */
-    public Output<String> productionBranch() {
-        return this.productionBranch;
+    public Output<Optional<String>> productionBranch() {
+        return Codegen.optional(this.productionBranch);
     }
-    /**
-     * Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-     * 
-     */
     @Export(name="source", refs={PagesProjectSource.class}, tree="[0]")
-    private Output</* @Nullable */ PagesProjectSource> source;
+    private Output<PagesProjectSource> source;
 
-    /**
-     * @return Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-     * 
-     */
-    public Output<Optional<PagesProjectSource>> source() {
-        return Codegen.optional(this.source);
+    public Output<PagesProjectSource> source() {
+        return this.source;
     }
     /**
      * The Cloudflare subdomain associated with the project.

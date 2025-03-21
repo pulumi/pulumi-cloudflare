@@ -10,18 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Access Mutual TLS Certificate resource.
-    /// Mutual TLS authentication ensures that the traffic is secure and
-    /// trusted in both directions between a client and server and can be
-    ///  used with Access to only allows requests from devices with a
-    ///  corresponding client certificate.
-    /// 
-    /// &gt; It's required that an `account_id` or `zone_id` is provided and in
-    ///    most cases using either is fine. However, if you're using a scoped
-    ///    access token, you must provide the argument that matches the token's
-    ///    scope. For example, an access token that is scoped to the "example.com"
-    ///    zone needs to use the `zone_id` argument.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -32,14 +20,18 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myCert = new Cloudflare.ZeroTrustAccessMtlsCertificate("my_cert", new()
+    ///     var exampleZeroTrustAccessMtlsCertificate = new Cloudflare.ZeroTrustAccessMtlsCertificate("example_zero_trust_access_mtls_certificate", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Name = "My Root Cert",
-    ///         Certificate = caPem,
+    ///         Certificate = @"  -----BEGIN CERTIFICATE-----
+    ///   MIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10
+    ///   DrUtmu/B
+    ///   -----END CERTIFICATE-----
+    /// ",
+    ///         Name = "Allow devs",
+    ///         ZoneId = "zone_id",
     ///         AssociatedHostnames = new[]
     ///         {
-    ///             "staging.example.com",
+    ///             "admin.example.com",
     ///         },
     ///     });
     /// 
@@ -48,39 +40,40 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Account level import.
-    /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate cloudflare_zero_sd -t_access_mtls_certificate.example account/&lt;account_id&gt;/&lt;mutual_tls_certificate_id&gt;
-    /// ```
-    /// 
-    /// Zone level import.
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate cloudflare_zero_sd -t_access_mtls_certificate.example zone/&lt;zone_id&gt;/&lt;mutual_tls_certificate_id&gt;
+    /// $ pulumi import cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;certificate_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate")]
     public partial class ZeroTrustAccessMtlsCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The hostnames that will be prompted for this certificate.
+        /// The hostnames of the applications that will use this certificate.
         /// </summary>
         [Output("associatedHostnames")]
         public Output<ImmutableArray<string>> AssociatedHostnames { get; private set; } = null!;
 
         /// <summary>
-        /// The Root CA for your certificates.
+        /// The certificate content.
         /// </summary>
         [Output("certificate")]
-        public Output<string?> Certificate { get; private set; } = null!;
+        public Output<string> Certificate { get; private set; } = null!;
 
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        [Output("expiresOn")]
+        public Output<string> ExpiresOn { get; private set; } = null!;
+
+        /// <summary>
+        /// The MD5 fingerprint of the certificate.
+        /// </summary>
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;
 
@@ -90,11 +83,14 @@ namespace Pulumi.Cloudflare
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
+
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -143,7 +139,7 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustAccessMtlsCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -152,7 +148,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _associatedHostnames;
 
         /// <summary>
-        /// The hostnames that will be prompted for this certificate.
+        /// The hostnames of the applications that will use this certificate.
         /// </summary>
         public InputList<string> AssociatedHostnames
         {
@@ -161,10 +157,10 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The Root CA for your certificates.
+        /// The certificate content.
         /// </summary>
-        [Input("certificate")]
-        public Input<string>? Certificate { get; set; }
+        [Input("certificate", required: true)]
+        public Input<string> Certificate { get; set; } = null!;
 
         /// <summary>
         /// The name of the certificate.
@@ -173,7 +169,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -187,7 +183,7 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustAccessMtlsCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -196,7 +192,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _associatedHostnames;
 
         /// <summary>
-        /// The hostnames that will be prompted for this certificate.
+        /// The hostnames of the applications that will use this certificate.
         /// </summary>
         public InputList<string> AssociatedHostnames
         {
@@ -205,11 +201,20 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The Root CA for your certificates.
+        /// The certificate content.
         /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
 
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
+        [Input("expiresOn")]
+        public Input<string>? ExpiresOn { get; set; }
+
+        /// <summary>
+        /// The MD5 fingerprint of the certificate.
+        /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
 
@@ -219,8 +224,11 @@ namespace Pulumi.Cloudflare
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
+
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

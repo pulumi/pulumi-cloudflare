@@ -8,17 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The [Snippet Rules](https://developers.cloudflare.com/rules/snippets/) resource allows you to create and manage snippet rules for a zone.
+// ## Example Usage
 type SnippetRules struct {
 	pulumi.CustomResourceState
 
-	// List of Snippet Rules
+<<<<<<< HEAD
+	// List of snippet rules
 	Rules SnippetRulesRuleArrayOutput `pulumi:"rules"`
-	// The zone identifier to target for the resource.
+=======
+	Description pulumi.StringOutput `pulumi:"description"`
+	Enabled     pulumi.BoolOutput   `pulumi:"enabled"`
+	Expression  pulumi.StringOutput `pulumi:"expression"`
+	// List of snippet rules
+	Rules SnippetRulesRuleArrayOutput `pulumi:"rules"`
+	// Snippet identifying name
+	SnippetName pulumi.StringOutput `pulumi:"snippetName"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -55,16 +65,36 @@ func GetSnippetRules(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SnippetRules resources.
 type snippetRulesState struct {
-	// List of Snippet Rules
+<<<<<<< HEAD
+	// List of snippet rules
 	Rules []SnippetRulesRule `pulumi:"rules"`
-	// The zone identifier to target for the resource.
+=======
+	Description *string `pulumi:"description"`
+	Enabled     *bool   `pulumi:"enabled"`
+	Expression  *string `pulumi:"expression"`
+	// List of snippet rules
+	Rules []SnippetRulesRule `pulumi:"rules"`
+	// Snippet identifying name
+	SnippetName *string `pulumi:"snippetName"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type SnippetRulesState struct {
-	// List of Snippet Rules
+<<<<<<< HEAD
+	// List of snippet rules
 	Rules SnippetRulesRuleArrayInput
-	// The zone identifier to target for the resource.
+=======
+	Description pulumi.StringPtrInput
+	Enabled     pulumi.BoolPtrInput
+	Expression  pulumi.StringPtrInput
+	// List of snippet rules
+	Rules SnippetRulesRuleArrayInput
+	// Snippet identifying name
+	SnippetName pulumi.StringPtrInput
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -73,17 +103,17 @@ func (SnippetRulesState) ElementType() reflect.Type {
 }
 
 type snippetRulesArgs struct {
-	// List of Snippet Rules
+	// List of snippet rules
 	Rules []SnippetRulesRule `pulumi:"rules"`
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a SnippetRules resource.
 type SnippetRulesArgs struct {
-	// List of Snippet Rules
+	// List of snippet rules
 	Rules SnippetRulesRuleArrayInput
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -174,12 +204,35 @@ func (o SnippetRulesOutput) ToSnippetRulesOutputWithContext(ctx context.Context)
 	return o
 }
 
-// List of Snippet Rules
+<<<<<<< HEAD
+=======
+func (o SnippetRulesOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnippetRules) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o SnippetRulesOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SnippetRules) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o SnippetRulesOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnippetRules) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+// List of snippet rules
 func (o SnippetRulesOutput) Rules() SnippetRulesRuleArrayOutput {
 	return o.ApplyT(func(v *SnippetRules) SnippetRulesRuleArrayOutput { return v.Rules }).(SnippetRulesRuleArrayOutput)
 }
 
-// The zone identifier to target for the resource.
+<<<<<<< HEAD
+=======
+// Snippet identifying name
+func (o SnippetRulesOutput) SnippetName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnippetRules) pulumi.StringOutput { return v.SnippetName }).(pulumi.StringOutput)
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+// Identifier
 func (o SnippetRulesOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnippetRules) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

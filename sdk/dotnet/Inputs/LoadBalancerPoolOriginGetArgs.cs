@@ -13,34 +13,34 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class LoadBalancerPoolOriginGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+        /// The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual*network*id must also be set.
         /// </summary>
-        [Input("address", required: true)]
-        public Input<string> Address { get; set; } = null!;
+        [Input("address")]
+        public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+        /// This field shows up only if the origin is disabled. This field is set with the time the origin was disabled.
+        /// </summary>
+        [Input("disabledAt")]
+        public Input<string>? DisabledAt { get; set; }
+
+        /// <summary>
+        /// Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        [Input("headers")]
-        private InputList<Inputs.LoadBalancerPoolOriginHeaderGetArgs>? _headers;
-
         /// <summary>
-        /// HTTP request headers.
+        /// The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'.
         /// </summary>
-        public InputList<Inputs.LoadBalancerPoolOriginHeaderGetArgs> Headers
-        {
-            get => _headers ?? (_headers = new InputList<Inputs.LoadBalancerPoolOriginHeaderGetArgs>());
-            set => _headers = value;
-        }
+        [Input("header")]
+        public Input<Inputs.LoadBalancerPoolOriginHeaderGetArgs>? Header { get; set; }
 
         /// <summary>
         /// A human-identifiable name for the origin.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? VirtualNetworkId { get; set; }
 
         /// <summary>
-        /// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="least_connections"`, weight is used to scale the origin's open connections. Defaults to `1`.
+        /// The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.
         /// </summary>
         [Input("weight")]
         public Input<double>? Weight { get; set; }

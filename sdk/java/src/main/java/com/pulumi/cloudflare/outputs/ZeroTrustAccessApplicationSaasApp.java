@@ -6,7 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationSaasAppCustomAttribute;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationSaasAppCustomClaim;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptions;
-import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationSaasAppRefreshTokenOption;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationSaasAppRefreshTokenOptions;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
@@ -18,32 +18,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustAccessApplicationSaasApp {
     /**
-     * @return The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+     * @return The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.
      * 
      */
     private @Nullable String accessTokenLifetime;
     /**
-     * @return Allow PKCE flow without a client secret.
+     * @return If client secret should be required on the token endpoint when authorization*code*with_pkce grant is used.
      * 
      */
     private @Nullable Boolean allowPkceWithoutClientSecret;
     /**
-     * @return The URL where this applications tile redirects users.
+     * @return The URL where this applications tile redirects users
      * 
      */
     private @Nullable String appLauncherUrl;
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is &#34;saml&#34;
      * 
      */
     private @Nullable String authType;
     /**
-     * @return The application client id.
+     * @return The application client id
      * 
      */
     private @Nullable String clientId;
     /**
-     * @return The application client secret, only returned on initial apply.
+     * @return The application client secret, only returned on POST request.
      * 
      */
     private @Nullable String clientSecret;
@@ -52,38 +52,27 @@ public final class ZeroTrustAccessApplicationSaasApp {
      * 
      */
     private @Nullable String consumerServiceUrl;
-    /**
-     * @return Custom attribute mapped from IDPs.
-     * 
-     */
+    private @Nullable String createdAt;
     private @Nullable List<ZeroTrustAccessApplicationSaasAppCustomAttribute> customAttributes;
-    /**
-     * @return Custom claim mapped from IDPs.
-     * 
-     */
     private @Nullable List<ZeroTrustAccessApplicationSaasAppCustomClaim> customClaims;
     /**
-     * @return The relay state used if not provided by the identity provider.
+     * @return The URL that the user will be redirected to after a successful login for IDP initiated logins.
      * 
      */
     private @Nullable String defaultRelayState;
     /**
-     * @return The OIDC flows supported by this application.
+     * @return The OIDC flows supported by this application
      * 
      */
     private @Nullable List<String> grantTypes;
     /**
-     * @return A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
+     * @return A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
      * 
      */
     private @Nullable String groupFilterRegex;
-    /**
-     * @return Hybrid and Implicit Flow options.
-     * 
-     */
     private @Nullable ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptions hybridAndImplicitOptions;
     /**
-     * @return The unique identifier for the SaaS application.
+     * @return The unique identifier for your SaaS application.
      * 
      */
     private @Nullable String idpEntityId;
@@ -98,27 +87,23 @@ public final class ZeroTrustAccessApplicationSaasApp {
      */
     private @Nullable String nameIdTransformJsonata;
     /**
-     * @return The public certificate that will be used to verify identities.
+     * @return The Access public certificate that will be used to verify your identity.
      * 
      */
     private @Nullable String publicKey;
     /**
-     * @return The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens.
+     * @return The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
      * 
      */
     private @Nullable List<String> redirectUris;
-    /**
-     * @return Refresh token grant options.
-     * 
-     */
-    private @Nullable List<ZeroTrustAccessApplicationSaasAppRefreshTokenOption> refreshTokenOptions;
+    private @Nullable ZeroTrustAccessApplicationSaasAppRefreshTokenOptions refreshTokenOptions;
     /**
      * @return A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
      * 
      */
     private @Nullable String samlAttributeTransformJsonata;
     /**
-     * @return Define the user information shared with access.
+     * @return Define the user information shared with access, &#34;offline_access&#34; scope will be automatically enabled if refresh tokens are enabled
      * 
      */
     private @Nullable List<String> scopes;
@@ -128,49 +113,50 @@ public final class ZeroTrustAccessApplicationSaasApp {
      */
     private @Nullable String spEntityId;
     /**
-     * @return The endpoint where the SaaS application will send login requests.
+     * @return The endpoint where your SaaS application will send login requests.
      * 
      */
     private @Nullable String ssoEndpoint;
+    private @Nullable String updatedAt;
 
     private ZeroTrustAccessApplicationSaasApp() {}
     /**
-     * @return The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+     * @return The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.
      * 
      */
     public Optional<String> accessTokenLifetime() {
         return Optional.ofNullable(this.accessTokenLifetime);
     }
     /**
-     * @return Allow PKCE flow without a client secret.
+     * @return If client secret should be required on the token endpoint when authorization*code*with_pkce grant is used.
      * 
      */
     public Optional<Boolean> allowPkceWithoutClientSecret() {
         return Optional.ofNullable(this.allowPkceWithoutClientSecret);
     }
     /**
-     * @return The URL where this applications tile redirects users.
+     * @return The URL where this applications tile redirects users
      * 
      */
     public Optional<String> appLauncherUrl() {
         return Optional.ofNullable(this.appLauncherUrl);
     }
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is &#34;saml&#34;
      * 
      */
     public Optional<String> authType() {
         return Optional.ofNullable(this.authType);
     }
     /**
-     * @return The application client id.
+     * @return The application client id
      * 
      */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }
     /**
-     * @return The application client secret, only returned on initial apply.
+     * @return The application client secret, only returned on POST request.
      * 
      */
     public Optional<String> clientSecret() {
@@ -183,50 +169,41 @@ public final class ZeroTrustAccessApplicationSaasApp {
     public Optional<String> consumerServiceUrl() {
         return Optional.ofNullable(this.consumerServiceUrl);
     }
-    /**
-     * @return Custom attribute mapped from IDPs.
-     * 
-     */
+    public Optional<String> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
     public List<ZeroTrustAccessApplicationSaasAppCustomAttribute> customAttributes() {
         return this.customAttributes == null ? List.of() : this.customAttributes;
     }
-    /**
-     * @return Custom claim mapped from IDPs.
-     * 
-     */
     public List<ZeroTrustAccessApplicationSaasAppCustomClaim> customClaims() {
         return this.customClaims == null ? List.of() : this.customClaims;
     }
     /**
-     * @return The relay state used if not provided by the identity provider.
+     * @return The URL that the user will be redirected to after a successful login for IDP initiated logins.
      * 
      */
     public Optional<String> defaultRelayState() {
         return Optional.ofNullable(this.defaultRelayState);
     }
     /**
-     * @return The OIDC flows supported by this application.
+     * @return The OIDC flows supported by this application
      * 
      */
     public List<String> grantTypes() {
         return this.grantTypes == null ? List.of() : this.grantTypes;
     }
     /**
-     * @return A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
+     * @return A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
      * 
      */
     public Optional<String> groupFilterRegex() {
         return Optional.ofNullable(this.groupFilterRegex);
     }
-    /**
-     * @return Hybrid and Implicit Flow options.
-     * 
-     */
     public Optional<ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptions> hybridAndImplicitOptions() {
         return Optional.ofNullable(this.hybridAndImplicitOptions);
     }
     /**
-     * @return The unique identifier for the SaaS application.
+     * @return The unique identifier for your SaaS application.
      * 
      */
     public Optional<String> idpEntityId() {
@@ -247,25 +224,21 @@ public final class ZeroTrustAccessApplicationSaasApp {
         return Optional.ofNullable(this.nameIdTransformJsonata);
     }
     /**
-     * @return The public certificate that will be used to verify identities.
+     * @return The Access public certificate that will be used to verify your identity.
      * 
      */
     public Optional<String> publicKey() {
         return Optional.ofNullable(this.publicKey);
     }
     /**
-     * @return The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens.
+     * @return The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
      * 
      */
     public List<String> redirectUris() {
         return this.redirectUris == null ? List.of() : this.redirectUris;
     }
-    /**
-     * @return Refresh token grant options.
-     * 
-     */
-    public List<ZeroTrustAccessApplicationSaasAppRefreshTokenOption> refreshTokenOptions() {
-        return this.refreshTokenOptions == null ? List.of() : this.refreshTokenOptions;
+    public Optional<ZeroTrustAccessApplicationSaasAppRefreshTokenOptions> refreshTokenOptions() {
+        return Optional.ofNullable(this.refreshTokenOptions);
     }
     /**
      * @return A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
@@ -275,7 +248,7 @@ public final class ZeroTrustAccessApplicationSaasApp {
         return Optional.ofNullable(this.samlAttributeTransformJsonata);
     }
     /**
-     * @return Define the user information shared with access.
+     * @return Define the user information shared with access, &#34;offline_access&#34; scope will be automatically enabled if refresh tokens are enabled
      * 
      */
     public List<String> scopes() {
@@ -289,11 +262,14 @@ public final class ZeroTrustAccessApplicationSaasApp {
         return Optional.ofNullable(this.spEntityId);
     }
     /**
-     * @return The endpoint where the SaaS application will send login requests.
+     * @return The endpoint where your SaaS application will send login requests.
      * 
      */
     public Optional<String> ssoEndpoint() {
         return Optional.ofNullable(this.ssoEndpoint);
+    }
+    public Optional<String> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
     }
 
     public static Builder builder() {
@@ -312,6 +288,7 @@ public final class ZeroTrustAccessApplicationSaasApp {
         private @Nullable String clientId;
         private @Nullable String clientSecret;
         private @Nullable String consumerServiceUrl;
+        private @Nullable String createdAt;
         private @Nullable List<ZeroTrustAccessApplicationSaasAppCustomAttribute> customAttributes;
         private @Nullable List<ZeroTrustAccessApplicationSaasAppCustomClaim> customClaims;
         private @Nullable String defaultRelayState;
@@ -323,11 +300,12 @@ public final class ZeroTrustAccessApplicationSaasApp {
         private @Nullable String nameIdTransformJsonata;
         private @Nullable String publicKey;
         private @Nullable List<String> redirectUris;
-        private @Nullable List<ZeroTrustAccessApplicationSaasAppRefreshTokenOption> refreshTokenOptions;
+        private @Nullable ZeroTrustAccessApplicationSaasAppRefreshTokenOptions refreshTokenOptions;
         private @Nullable String samlAttributeTransformJsonata;
         private @Nullable List<String> scopes;
         private @Nullable String spEntityId;
         private @Nullable String ssoEndpoint;
+        private @Nullable String updatedAt;
         public Builder() {}
         public Builder(ZeroTrustAccessApplicationSaasApp defaults) {
     	      Objects.requireNonNull(defaults);
@@ -338,6 +316,7 @@ public final class ZeroTrustAccessApplicationSaasApp {
     	      this.clientId = defaults.clientId;
     	      this.clientSecret = defaults.clientSecret;
     	      this.consumerServiceUrl = defaults.consumerServiceUrl;
+    	      this.createdAt = defaults.createdAt;
     	      this.customAttributes = defaults.customAttributes;
     	      this.customClaims = defaults.customClaims;
     	      this.defaultRelayState = defaults.defaultRelayState;
@@ -354,6 +333,7 @@ public final class ZeroTrustAccessApplicationSaasApp {
     	      this.scopes = defaults.scopes;
     	      this.spEntityId = defaults.spEntityId;
     	      this.ssoEndpoint = defaults.ssoEndpoint;
+    	      this.updatedAt = defaults.updatedAt;
         }
 
         @CustomType.Setter
@@ -396,6 +376,12 @@ public final class ZeroTrustAccessApplicationSaasApp {
         public Builder consumerServiceUrl(@Nullable String consumerServiceUrl) {
 
             this.consumerServiceUrl = consumerServiceUrl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createdAt(@Nullable String createdAt) {
+
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
@@ -477,13 +463,10 @@ public final class ZeroTrustAccessApplicationSaasApp {
             return redirectUris(List.of(redirectUris));
         }
         @CustomType.Setter
-        public Builder refreshTokenOptions(@Nullable List<ZeroTrustAccessApplicationSaasAppRefreshTokenOption> refreshTokenOptions) {
+        public Builder refreshTokenOptions(@Nullable ZeroTrustAccessApplicationSaasAppRefreshTokenOptions refreshTokenOptions) {
 
             this.refreshTokenOptions = refreshTokenOptions;
             return this;
-        }
-        public Builder refreshTokenOptions(ZeroTrustAccessApplicationSaasAppRefreshTokenOption... refreshTokenOptions) {
-            return refreshTokenOptions(List.of(refreshTokenOptions));
         }
         @CustomType.Setter
         public Builder samlAttributeTransformJsonata(@Nullable String samlAttributeTransformJsonata) {
@@ -512,6 +495,12 @@ public final class ZeroTrustAccessApplicationSaasApp {
             this.ssoEndpoint = ssoEndpoint;
             return this;
         }
+        @CustomType.Setter
+        public Builder updatedAt(@Nullable String updatedAt) {
+
+            this.updatedAt = updatedAt;
+            return this;
+        }
         public ZeroTrustAccessApplicationSaasApp build() {
             final var _resultValue = new ZeroTrustAccessApplicationSaasApp();
             _resultValue.accessTokenLifetime = accessTokenLifetime;
@@ -521,6 +510,7 @@ public final class ZeroTrustAccessApplicationSaasApp {
             _resultValue.clientId = clientId;
             _resultValue.clientSecret = clientSecret;
             _resultValue.consumerServiceUrl = consumerServiceUrl;
+            _resultValue.createdAt = createdAt;
             _resultValue.customAttributes = customAttributes;
             _resultValue.customClaims = customClaims;
             _resultValue.defaultRelayState = defaultRelayState;
@@ -537,6 +527,7 @@ public final class ZeroTrustAccessApplicationSaasApp {
             _resultValue.scopes = scopes;
             _resultValue.spEntityId = spEntityId;
             _resultValue.ssoEndpoint = ssoEndpoint;
+            _resultValue.updatedAt = updatedAt;
             return _resultValue;
         }
     }

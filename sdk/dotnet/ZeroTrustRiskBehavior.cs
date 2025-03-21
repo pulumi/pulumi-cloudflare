@@ -10,22 +10,40 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// The [Risk Behavior](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) resource allows you to configure Cloudflare Risk Behaviors for an account.
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustRiskBehavior = new Cloudflare.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior", new()
+    ///     {
+    ///         AccountId = "account_id",
+    ///         Behaviors = 
+    ///         {
+    ///             { "foo", new Cloudflare.Inputs.ZeroTrustRiskBehaviorBehaviorsArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 RiskLevel = "low",
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior")]
     public partial class ZeroTrustRiskBehavior : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-        /// <summary>
-        /// Zero Trust risk behaviors configured on this account
-        /// </summary>
         [Output("behaviors")]
-        public Output<ImmutableArray<Outputs.ZeroTrustRiskBehaviorBehavior>> Behaviors { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.ZeroTrustRiskBehaviorBehaviors>> Behaviors { get; private set; } = null!;
 
 
         /// <summary>
@@ -73,21 +91,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustRiskBehaviorArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("behaviors")]
-        private InputList<Inputs.ZeroTrustRiskBehaviorBehaviorArgs>? _behaviors;
-
-        /// <summary>
-        /// Zero Trust risk behaviors configured on this account
-        /// </summary>
-        public InputList<Inputs.ZeroTrustRiskBehaviorBehaviorArgs> Behaviors
+        [Input("behaviors", required: true)]
+        private InputMap<Inputs.ZeroTrustRiskBehaviorBehaviorsArgs>? _behaviors;
+        public InputMap<Inputs.ZeroTrustRiskBehaviorBehaviorsArgs> Behaviors
         {
-            get => _behaviors ?? (_behaviors = new InputList<Inputs.ZeroTrustRiskBehaviorBehaviorArgs>());
+            get => _behaviors ?? (_behaviors = new InputMap<Inputs.ZeroTrustRiskBehaviorBehaviorsArgs>());
             set => _behaviors = value;
         }
 
@@ -99,21 +110,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustRiskBehaviorState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         [Input("behaviors")]
-        private InputList<Inputs.ZeroTrustRiskBehaviorBehaviorGetArgs>? _behaviors;
-
-        /// <summary>
-        /// Zero Trust risk behaviors configured on this account
-        /// </summary>
-        public InputList<Inputs.ZeroTrustRiskBehaviorBehaviorGetArgs> Behaviors
+        private InputMap<Inputs.ZeroTrustRiskBehaviorBehaviorsGetArgs>? _behaviors;
+        public InputMap<Inputs.ZeroTrustRiskBehaviorBehaviorsGetArgs> Behaviors
         {
-            get => _behaviors ?? (_behaviors = new InputList<Inputs.ZeroTrustRiskBehaviorBehaviorGetArgs>());
+            get => _behaviors ?? (_behaviors = new InputMap<Inputs.ZeroTrustRiskBehaviorBehaviorsGetArgs>());
             set => _behaviors = value;
         }
 

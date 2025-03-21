@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,36 @@ import javax.annotation.Nullable;
 public final class RegionalTieredCacheState extends com.pulumi.resources.ResourceArgs {
 
     public static final RegionalTieredCacheState Empty = new RegionalTieredCacheState();
+
+    /**
+     * Whether the setting is editable
+     * 
+     */
+    @Import(name="editable")
+    private @Nullable Output<Boolean> editable;
+
+    /**
+     * @return Whether the setting is editable
+     * 
+     */
+    public Optional<Output<Boolean>> editable() {
+        return Optional.ofNullable(this.editable);
+    }
+
+    /**
+     * Last time this setting was modified.
+     * 
+     */
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    /**
+     * @return Last time this setting was modified.
+     * 
+     */
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
+    }
 
     /**
      * Value of the Regional Tiered Cache zone setting.
@@ -31,14 +62,14 @@ public final class RegionalTieredCacheState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -48,6 +79,8 @@ public final class RegionalTieredCacheState extends com.pulumi.resources.Resourc
     private RegionalTieredCacheState() {}
 
     private RegionalTieredCacheState(RegionalTieredCacheState $) {
+        this.editable = $.editable;
+        this.modifiedOn = $.modifiedOn;
         this.value = $.value;
         this.zoneId = $.zoneId;
     }
@@ -68,6 +101,48 @@ public final class RegionalTieredCacheState extends com.pulumi.resources.Resourc
 
         public Builder(RegionalTieredCacheState defaults) {
             $ = new RegionalTieredCacheState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param editable Whether the setting is editable
+         * 
+         * @return builder
+         * 
+         */
+        public Builder editable(@Nullable Output<Boolean> editable) {
+            $.editable = editable;
+            return this;
+        }
+
+        /**
+         * @param editable Whether the setting is editable
+         * 
+         * @return builder
+         * 
+         */
+        public Builder editable(Boolean editable) {
+            return editable(Output.of(editable));
+        }
+
+        /**
+         * @param modifiedOn Last time this setting was modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        /**
+         * @param modifiedOn Last time this setting was modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
         }
 
         /**
@@ -92,7 +167,7 @@ public final class RegionalTieredCacheState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -103,7 +178,7 @@ public final class RegionalTieredCacheState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

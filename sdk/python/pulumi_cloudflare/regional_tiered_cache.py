@@ -19,33 +19,22 @@ __all__ = ['RegionalTieredCacheArgs', 'RegionalTieredCache']
 @pulumi.input_type
 class RegionalTieredCacheArgs:
     def __init__(__self__, *,
-                 value: pulumi.Input[str],
-                 zone_id: pulumi.Input[str]):
+                 zone_id: pulumi.Input[str],
+                 value: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegionalTieredCache resource.
+        :param pulumi.Input[str] zone_id: Identifier
         :param pulumi.Input[str] value: Value of the Regional Tiered Cache zone setting.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
-        pulumi.set(__self__, "value", value)
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @property
-    @pulumi.getter
-    def value(self) -> pulumi.Input[str]:
-        """
-        Value of the Regional Tiered Cache zone setting.
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input[str]):
-        pulumi.set(self, "value", value)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -53,21 +42,65 @@ class RegionalTieredCacheArgs:
     def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
 
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value of the Regional Tiered Cache zone setting.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
 
 @pulumi.input_type
 class _RegionalTieredCacheState:
     def __init__(__self__, *,
+                 editable: Optional[pulumi.Input[bool]] = None,
+                 modified_on: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RegionalTieredCache resources.
+        :param pulumi.Input[bool] editable: Whether the setting is editable
+        :param pulumi.Input[str] modified_on: Last time this setting was modified.
         :param pulumi.Input[str] value: Value of the Regional Tiered Cache zone setting.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: Identifier
         """
+        if editable is not None:
+            pulumi.set(__self__, "editable", editable)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
         if value is not None:
             pulumi.set(__self__, "value", value)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def editable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the setting is editable
+        """
+        return pulumi.get(self, "editable")
+
+    @editable.setter
+    def editable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "editable", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last time this setting was modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modified_on", value)
 
     @property
     @pulumi.getter
@@ -85,7 +118,7 @@ class _RegionalTieredCacheState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -103,30 +136,27 @@ class RegionalTieredCache(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Instructs Cloudflare to check a regional hub data center on the way to your upper tier.
-        This can help improve performance for smart and custom tiered cache topologies.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.RegionalTieredCache("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+        example_regional_tiered_cache = cloudflare.RegionalTieredCache("example_regional_tiered_cache",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             value="on")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example <zone_id>
+        $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] value: Value of the Regional Tiered Cache zone setting.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: Identifier
         """
         ...
     @overload
@@ -135,24 +165,21 @@ class RegionalTieredCache(pulumi.CustomResource):
                  args: RegionalTieredCacheArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Instructs Cloudflare to check a regional hub data center on the way to your upper tier.
-        This can help improve performance for smart and custom tiered cache topologies.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.RegionalTieredCache("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+        example_regional_tiered_cache = cloudflare.RegionalTieredCache("example_regional_tiered_cache",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             value="on")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example <zone_id>
+        $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -181,12 +208,12 @@ class RegionalTieredCache(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegionalTieredCacheArgs.__new__(RegionalTieredCacheArgs)
 
-            if value is None and not opts.urn:
-                raise TypeError("Missing required property 'value'")
             __props__.__dict__["value"] = value
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["editable"] = None
+            __props__.__dict__["modified_on"] = None
         super(RegionalTieredCache, __self__).__init__(
             'cloudflare:index/regionalTieredCache:RegionalTieredCache',
             resource_name,
@@ -197,6 +224,8 @@ class RegionalTieredCache(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            editable: Optional[pulumi.Input[bool]] = None,
+            modified_on: Optional[pulumi.Input[str]] = None,
             value: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'RegionalTieredCache':
         """
@@ -206,16 +235,36 @@ class RegionalTieredCache(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] editable: Whether the setting is editable
+        :param pulumi.Input[str] modified_on: Last time this setting was modified.
         :param pulumi.Input[str] value: Value of the Regional Tiered Cache zone setting.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _RegionalTieredCacheState.__new__(_RegionalTieredCacheState)
 
+        __props__.__dict__["editable"] = editable
+        __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["value"] = value
         __props__.__dict__["zone_id"] = zone_id
         return RegionalTieredCache(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def editable(self) -> pulumi.Output[bool]:
+        """
+        Whether the setting is editable
+        """
+        return pulumi.get(self, "editable")
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> pulumi.Output[str]:
+        """
+        Last time this setting was modified.
+        """
+        return pulumi.get(self, "modified_on")
 
     @property
     @pulumi.getter
@@ -229,7 +278,7 @@ class RegionalTieredCache(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

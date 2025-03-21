@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource to manage a schema in API Shield Schema Validation 2.0.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -19,20 +17,16 @@ namespace Pulumi.Cloudflare
     /// using System.Linq;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
-    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var petstoreSchema = new Cloudflare.ApiShieldSchema("petstore_schema", new()
+    ///     var exampleApiShieldSchema = new Cloudflare.ApiShieldSchema("example_api_shield_schema", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Name = "myschema",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         File = "file.txt",
     ///         Kind = "openapi_v3",
-    ///         ValidationEnabled = true,
-    ///         Source = Std.File.Invoke(new()
-    ///         {
-    ///             Input = "./schemas/petstore.json",
-    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Name = "petstore schema",
+    ///         ValidationEnabled = "true",
     ///     });
     /// 
     /// });
@@ -41,32 +35,50 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/apiShieldSchema:ApiShieldSchema")]
     public partial class ApiShieldSchema : global::Pulumi.CustomResource
     {
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
         /// <summary>
-        /// Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
+        /// Schema file bytes
+        /// </summary>
+        [Output("file")]
+        public Output<string> File { get; private set; } = null!;
+
+        /// <summary>
+        /// Kind of schema
         /// </summary>
         [Output("kind")]
-        public Output<string?> Kind { get; private set; } = null!;
+        public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the schema. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the schema
         /// </summary>
         [Output("name")]
-        public Output<string> Name { get; private set; } = null!;
+        public Output<string?> Name { get; private set; } = null!;
+
+        [Output("schema")]
+        public Output<Outputs.ApiShieldSchemaSchema> Schema { get; private set; } = null!;
+
+        [Output("schemaId")]
+        public Output<string?> SchemaId { get; private set; } = null!;
 
         /// <summary>
-        /// Schema file bytes. **Modifying this attribute will force creation of a new resource.**
+        /// Source of the schema
         /// </summary>
         [Output("source")]
         public Output<string> Source { get; private set; } = null!;
+
+        [Output("uploadDetails")]
+        public Output<Outputs.ApiShieldSchemaUploadDetails> UploadDetails { get; private set; } = null!;
 
         /// <summary>
         /// Flag whether schema is enabled for validation.
         /// </summary>
         [Output("validationEnabled")]
-        public Output<bool?> ValidationEnabled { get; private set; } = null!;
+        public Output<string?> ValidationEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -118,31 +130,34 @@ namespace Pulumi.Cloudflare
     public sealed class ApiShieldSchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
+        /// Schema file bytes
         /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
+        [Input("file", required: true)]
+        public Input<string> File { get; set; } = null!;
 
         /// <summary>
-        /// Name of the schema. **Modifying this attribute will force creation of a new resource.**
+        /// Kind of schema
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("kind", required: true)]
+        public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
-        /// Schema file bytes. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the schema
         /// </summary>
-        [Input("source", required: true)]
-        public Input<string> Source { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("schemaId")]
+        public Input<string>? SchemaId { get; set; }
 
         /// <summary>
         /// Flag whether schema is enabled for validation.
         /// </summary>
         [Input("validationEnabled")]
-        public Input<bool>? ValidationEnabled { get; set; }
+        public Input<string>? ValidationEnabled { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -155,32 +170,50 @@ namespace Pulumi.Cloudflare
 
     public sealed class ApiShieldSchemaState : global::Pulumi.ResourceArgs
     {
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
         /// <summary>
-        /// Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
+        /// Schema file bytes
+        /// </summary>
+        [Input("file")]
+        public Input<string>? File { get; set; }
+
+        /// <summary>
+        /// Kind of schema
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// Name of the schema. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the schema
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("schema")]
+        public Input<Inputs.ApiShieldSchemaSchemaGetArgs>? Schema { get; set; }
+
+        [Input("schemaId")]
+        public Input<string>? SchemaId { get; set; }
+
         /// <summary>
-        /// Schema file bytes. **Modifying this attribute will force creation of a new resource.**
+        /// Source of the schema
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
+
+        [Input("uploadDetails")]
+        public Input<Inputs.ApiShieldSchemaUploadDetailsGetArgs>? UploadDetails { get; set; }
 
         /// <summary>
         /// Flag whether schema is enabled for validation.
         /// </summary>
         [Input("validationEnabled")]
-        public Input<bool>? ValidationEnabled { get; set; }
+        public Input<string>? ValidationEnabled { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

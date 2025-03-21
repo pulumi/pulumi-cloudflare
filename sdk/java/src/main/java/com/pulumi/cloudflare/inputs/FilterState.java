@@ -17,14 +17,14 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
     public static final FilterState Empty = new FilterState();
 
     /**
-     * A note that you can use to describe the purpose of the filter.
+     * An informative summary of the filter.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A note that you can use to describe the purpose of the filter.
+     * @return An informative summary of the filter.
      * 
      */
     public Optional<Output<String>> description() {
@@ -32,14 +32,14 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The filter expression to be used.
+     * The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
      * 
      */
     @Import(name="expression")
     private @Nullable Output<String> expression;
 
     /**
-     * @return The filter expression to be used.
+     * @return The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
      * 
      */
     public Optional<Output<String>> expression() {
@@ -47,14 +47,32 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether this filter is currently paused.
+<<<<<<< HEAD
+     * The unique identifier of the filter.
+     * 
+     */
+    @Import(name="filterId")
+    private @Nullable Output<String> filterId;
+
+    /**
+     * @return The unique identifier of the filter.
+     * 
+     */
+    public Optional<Output<String>> filterId() {
+        return Optional.ofNullable(this.filterId);
+    }
+
+    /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+     * When true, indicates that the filter is currently paused.
      * 
      */
     @Import(name="paused")
     private @Nullable Output<Boolean> paused;
 
     /**
-     * @return Whether this filter is currently paused.
+     * @return When true, indicates that the filter is currently paused.
      * 
      */
     public Optional<Output<Boolean>> paused() {
@@ -62,14 +80,14 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Short reference tag to quickly select related rules.
+     * A short reference tag. Allows you to select related filters.
      * 
      */
     @Import(name="ref")
     private @Nullable Output<String> ref;
 
     /**
-     * @return Short reference tag to quickly select related rules.
+     * @return A short reference tag. Allows you to select related filters.
      * 
      */
     public Optional<Output<String>> ref() {
@@ -77,14 +95,14 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -96,6 +114,7 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
     private FilterState(FilterState $) {
         this.description = $.description;
         this.expression = $.expression;
+        this.filterId = $.filterId;
         this.paused = $.paused;
         this.ref = $.ref;
         this.zoneId = $.zoneId;
@@ -120,7 +139,7 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A note that you can use to describe the purpose of the filter.
+         * @param description An informative summary of the filter.
          * 
          * @return builder
          * 
@@ -131,7 +150,7 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A note that you can use to describe the purpose of the filter.
+         * @param description An informative summary of the filter.
          * 
          * @return builder
          * 
@@ -141,7 +160,7 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expression The filter expression to be used.
+         * @param expression The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
          * 
          * @return builder
          * 
@@ -152,7 +171,7 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expression The filter expression to be used.
+         * @param expression The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
          * 
          * @return builder
          * 
@@ -162,7 +181,31 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paused Whether this filter is currently paused.
+<<<<<<< HEAD
+         * @param filterId The unique identifier of the filter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterId(@Nullable Output<String> filterId) {
+            $.filterId = filterId;
+            return this;
+        }
+
+        /**
+         * @param filterId The unique identifier of the filter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterId(String filterId) {
+            return filterId(Output.of(filterId));
+        }
+
+        /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+         * @param paused When true, indicates that the filter is currently paused.
          * 
          * @return builder
          * 
@@ -173,7 +216,7 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paused Whether this filter is currently paused.
+         * @param paused When true, indicates that the filter is currently paused.
          * 
          * @return builder
          * 
@@ -183,7 +226,7 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ref Short reference tag to quickly select related rules.
+         * @param ref A short reference tag. Allows you to select related filters.
          * 
          * @return builder
          * 
@@ -194,7 +237,7 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ref Short reference tag to quickly select related rules.
+         * @param ref A short reference tag. Allows you to select related filters.
          * 
          * @return builder
          * 
@@ -204,7 +247,7 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -215,7 +258,7 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

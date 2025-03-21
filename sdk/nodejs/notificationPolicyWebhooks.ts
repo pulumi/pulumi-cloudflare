@@ -5,26 +5,24 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource, that manages a webhook destination. These destinations can be tied to the notification policies created for Cloudflare's products.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.NotificationPolicyWebhooks("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "Webhooks destination",
- *     url: "https://example.com",
- *     secret: "my-secret",
+ * const exampleNotificationPolicyWebhooks = new cloudflare.NotificationPolicyWebhooks("example_notification_policy_webhooks", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "Slack Webhook",
+ *     url: "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd",
+ *     secret: "secret",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example <account_id>/<notification_webhook_id>
+ * $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example '<account_id>/<webhook_id>'
  * ```
  */
 export class NotificationPolicyWebhooks extends pulumi.CustomResource {
@@ -56,34 +54,37 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account id
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Timestamp of when the notification webhook was created.
+     * Timestamp of when the webhook destination was created.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Timestamp of when the notification webhook last failed.
+     * Timestamp of the last time an attempt to dispatch a notification to this webhook failed.
      */
     public /*out*/ readonly lastFailure!: pulumi.Output<string>;
     /**
-     * Timestamp of when the notification webhook was last successful.
+     * Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.
      */
     public /*out*/ readonly lastSuccess!: pulumi.Output<string>;
     /**
-     * The name of the webhook destination.
+     * The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
+     * Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
      */
     public readonly secret!: pulumi.Output<string | undefined>;
+    /**
+     * Type of webhook endpoint.
+     */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
+     * The POST endpoint to call when dispatching a notification.
      */
-    public readonly url!: pulumi.Output<string | undefined>;
+    public readonly url!: pulumi.Output<string>;
 
     /**
      * Create a NotificationPolicyWebhooks resource with the given unique name, arguments, and options.
@@ -114,6 +115,9 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
+            if ((!args || args.url === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'url'");
+            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["secret"] = args ? args.secret : undefined;
@@ -133,32 +137,35 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
  */
 export interface NotificationPolicyWebhooksState {
     /**
-     * The account identifier to target for the resource.
+     * The account id
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Timestamp of when the notification webhook was created.
+     * Timestamp of when the webhook destination was created.
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Timestamp of when the notification webhook last failed.
+     * Timestamp of the last time an attempt to dispatch a notification to this webhook failed.
      */
     lastFailure?: pulumi.Input<string>;
     /**
-     * Timestamp of when the notification webhook was last successful.
+     * Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.
      */
     lastSuccess?: pulumi.Input<string>;
     /**
-     * The name of the webhook destination.
+     * The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
      */
     name?: pulumi.Input<string>;
     /**
-     * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
+     * Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
      */
     secret?: pulumi.Input<string>;
+    /**
+     * Type of webhook endpoint.
+     */
     type?: pulumi.Input<string>;
     /**
-     * The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
+     * The POST endpoint to call when dispatching a notification.
      */
     url?: pulumi.Input<string>;
 }
@@ -168,19 +175,19 @@ export interface NotificationPolicyWebhooksState {
  */
 export interface NotificationPolicyWebhooksArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account id
      */
     accountId: pulumi.Input<string>;
     /**
-     * The name of the webhook destination.
+     * The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
      */
     name: pulumi.Input<string>;
     /**
-     * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
+     * Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
      */
     secret?: pulumi.Input<string>;
     /**
-     * The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
+     * The POST endpoint to call when dispatching a notification.
      */
-    url?: pulumi.Input<string>;
+    url: pulumi.Input<string>;
 }

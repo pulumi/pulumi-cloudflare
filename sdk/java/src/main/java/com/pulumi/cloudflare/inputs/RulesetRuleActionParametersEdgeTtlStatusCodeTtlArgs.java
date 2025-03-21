@@ -6,8 +6,8 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,14 +18,14 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
     public static final RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs Empty = new RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs();
 
     /**
-     * Status code for which the edge TTL is applied.
+     * Set the ttl for responses with this specific status code
      * 
      */
     @Import(name="statusCode")
     private @Nullable Output<Integer> statusCode;
 
     /**
-     * @return Status code for which the edge TTL is applied.
+     * @return Set the ttl for responses with this specific status code
      * 
      */
     public Optional<Output<Integer>> statusCode() {
@@ -33,40 +33,40 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
     }
 
     /**
-     * Status code range for which the edge TTL is applied.
+     * The range of status codes used to apply the selected mode.
      * 
      */
-    @Import(name="statusCodeRanges")
-    private @Nullable Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs>> statusCodeRanges;
+    @Import(name="statusCodeRange")
+    private @Nullable Output<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs> statusCodeRange;
 
     /**
-     * @return Status code range for which the edge TTL is applied.
+     * @return The range of status codes used to apply the selected mode.
      * 
      */
-    public Optional<Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs>>> statusCodeRanges() {
-        return Optional.ofNullable(this.statusCodeRanges);
+    public Optional<Output<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs>> statusCodeRange() {
+        return Optional.ofNullable(this.statusCodeRange);
     }
 
     /**
-     * Status code edge TTL value.
+     * Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting Cache-Control header with the value of &#34;no-store&#34;.
      * 
      */
-    @Import(name="value")
-    private @Nullable Output<Integer> value;
+    @Import(name="value", required=true)
+    private Output<Integer> value;
 
     /**
-     * @return Status code edge TTL value.
+     * @return Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting Cache-Control header with the value of &#34;no-store&#34;.
      * 
      */
-    public Optional<Output<Integer>> value() {
-        return Optional.ofNullable(this.value);
+    public Output<Integer> value() {
+        return this.value;
     }
 
     private RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs() {}
 
     private RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs(RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs $) {
         this.statusCode = $.statusCode;
-        this.statusCodeRanges = $.statusCodeRanges;
+        this.statusCodeRange = $.statusCodeRange;
         this.value = $.value;
     }
 
@@ -89,7 +89,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
         }
 
         /**
-         * @param statusCode Status code for which the edge TTL is applied.
+         * @param statusCode Set the ttl for responses with this specific status code
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
         }
 
         /**
-         * @param statusCode Status code for which the edge TTL is applied.
+         * @param statusCode Set the ttl for responses with this specific status code
          * 
          * @return builder
          * 
@@ -110,49 +110,39 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
         }
 
         /**
-         * @param statusCodeRanges Status code range for which the edge TTL is applied.
+         * @param statusCodeRange The range of status codes used to apply the selected mode.
          * 
          * @return builder
          * 
          */
-        public Builder statusCodeRanges(@Nullable Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs>> statusCodeRanges) {
-            $.statusCodeRanges = statusCodeRanges;
+        public Builder statusCodeRange(@Nullable Output<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs> statusCodeRange) {
+            $.statusCodeRange = statusCodeRange;
             return this;
         }
 
         /**
-         * @param statusCodeRanges Status code range for which the edge TTL is applied.
+         * @param statusCodeRange The range of status codes used to apply the selected mode.
          * 
          * @return builder
          * 
          */
-        public Builder statusCodeRanges(List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs> statusCodeRanges) {
-            return statusCodeRanges(Output.of(statusCodeRanges));
+        public Builder statusCodeRange(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs statusCodeRange) {
+            return statusCodeRange(Output.of(statusCodeRange));
         }
 
         /**
-         * @param statusCodeRanges Status code range for which the edge TTL is applied.
+         * @param value Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting Cache-Control header with the value of &#34;no-store&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder statusCodeRanges(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs... statusCodeRanges) {
-            return statusCodeRanges(List.of(statusCodeRanges));
-        }
-
-        /**
-         * @param value Status code edge TTL value.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder value(@Nullable Output<Integer> value) {
+        public Builder value(Output<Integer> value) {
             $.value = value;
             return this;
         }
 
         /**
-         * @param value Status code edge TTL value.
+         * @param value Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting Cache-Control header with the value of &#34;no-store&#34;.
          * 
          * @return builder
          * 
@@ -162,6 +152,9 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
         }
 
         public RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs build() {
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs", "value");
+            }
             return $;
         }
     }

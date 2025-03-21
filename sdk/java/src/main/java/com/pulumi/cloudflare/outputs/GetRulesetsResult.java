@@ -3,76 +3,74 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.GetRulesetsFilter;
-import com.pulumi.cloudflare.outputs.GetRulesetsRuleset;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsResult {
     /**
-     * @return The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * @return An informative description of the ruleset.
      * 
      */
-    private @Nullable String accountId;
-    private @Nullable GetRulesetsFilter filter;
+    private String description;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The unique ID of the ruleset.
      * 
      */
     private String id;
     /**
-     * @return Include rule data in response.
+     * @return The kind of the ruleset.
      * 
      */
-    private @Nullable Boolean includeRules;
-    private List<GetRulesetsRuleset> rulesets;
+    private String kind;
     /**
-     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * @return The human-readable name of the ruleset.
      * 
      */
-    private @Nullable String zoneId;
+    private String name;
+    /**
+     * @return The phase of the ruleset.
+     * 
+     */
+    private String phase;
 
     private GetRulesetsResult() {}
     /**
-     * @return The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * @return An informative description of the ruleset.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
-    }
-    public Optional<GetRulesetsFilter> filter() {
-        return Optional.ofNullable(this.filter);
+    public String description() {
+        return this.description;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The unique ID of the ruleset.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Include rule data in response.
+     * @return The kind of the ruleset.
      * 
      */
-    public Optional<Boolean> includeRules() {
-        return Optional.ofNullable(this.includeRules);
-    }
-    public List<GetRulesetsRuleset> rulesets() {
-        return this.rulesets;
+    public String kind() {
+        return this.kind;
     }
     /**
-     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * @return The human-readable name of the ruleset.
      * 
      */
-    public Optional<String> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return The phase of the ruleset.
+     * 
+     */
+    public String phase() {
+        return this.phase;
     }
 
     public static Builder builder() {
@@ -84,33 +82,27 @@ public final class GetRulesetsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
-        private @Nullable GetRulesetsFilter filter;
+        private String description;
         private String id;
-        private @Nullable Boolean includeRules;
-        private List<GetRulesetsRuleset> rulesets;
-        private @Nullable String zoneId;
+        private String kind;
+        private String name;
+        private String phase;
         public Builder() {}
         public Builder(GetRulesetsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accountId = defaults.accountId;
-    	      this.filter = defaults.filter;
+    	      this.description = defaults.description;
     	      this.id = defaults.id;
-    	      this.includeRules = defaults.includeRules;
-    	      this.rulesets = defaults.rulesets;
-    	      this.zoneId = defaults.zoneId;
+    	      this.kind = defaults.kind;
+    	      this.name = defaults.name;
+    	      this.phase = defaults.phase;
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
-            this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder filter(@Nullable GetRulesetsFilter filter) {
-
-            this.filter = filter;
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
@@ -122,36 +114,36 @@ public final class GetRulesetsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder includeRules(@Nullable Boolean includeRules) {
-
-            this.includeRules = includeRules;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder rulesets(List<GetRulesetsRuleset> rulesets) {
-            if (rulesets == null) {
-              throw new MissingRequiredPropertyException("GetRulesetsResult", "rulesets");
+        public Builder kind(String kind) {
+            if (kind == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsResult", "kind");
             }
-            this.rulesets = rulesets;
+            this.kind = kind;
             return this;
         }
-        public Builder rulesets(GetRulesetsRuleset... rulesets) {
-            return rulesets(List.of(rulesets));
+        @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsResult", "name");
+            }
+            this.name = name;
+            return this;
         }
         @CustomType.Setter
-        public Builder zoneId(@Nullable String zoneId) {
-
-            this.zoneId = zoneId;
+        public Builder phase(String phase) {
+            if (phase == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsResult", "phase");
+            }
+            this.phase = phase;
             return this;
         }
         public GetRulesetsResult build() {
             final var _resultValue = new GetRulesetsResult();
-            _resultValue.accountId = accountId;
-            _resultValue.filter = filter;
+            _resultValue.description = description;
             _resultValue.id = id;
-            _resultValue.includeRules = includeRules;
-            _resultValue.rulesets = rulesets;
-            _resultValue.zoneId = zoneId;
+            _resultValue.kind = kind;
+            _resultValue.name = name;
+            _resultValue.phase = phase;
             return _resultValue;
         }
     }

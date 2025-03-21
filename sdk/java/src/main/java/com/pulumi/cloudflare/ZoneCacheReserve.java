@@ -15,12 +15,6 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Cache Reserve resource. Cache Reserve can
- * increase cache lifetimes by automatically storing all cacheable
- * files in Cloudflare&#39;s persistent object storage buckets.
- * 
- * Note: Using Cache Reserve without Tiered Cache is not recommended.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -46,9 +40,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ZoneCacheReserve("example", ZoneCacheReserveArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .enabled(true)
+ *         var exampleZoneCacheReserve = new ZoneCacheReserve("exampleZoneCacheReserve", ZoneCacheReserveArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .value("on")
  *             .build());
  * 
  *     }
@@ -60,39 +54,81 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example &lt;zone_id&gt;
+ * $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zoneCacheReserve:ZoneCacheReserve")
 public class ZoneCacheReserve extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to enable or disable Cache Reserve support for a given zone.
+     * Whether the setting is editable
      * 
      */
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> enabled;
+    @Export(name="editable", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> editable;
 
     /**
-     * @return Whether to enable or disable Cache Reserve support for a given zone.
+     * @return Whether the setting is editable
      * 
      */
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Output<Boolean> editable() {
+        return this.editable;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Last time this setting was modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return Last time this setting was modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * Value of the Cache Reserve zone setting.
+     * 
+     */
+    @Export(name="value", refs={String.class}, tree="[0]")
+    private Output<String> value;
+
+    /**
+     * @return Value of the Cache Reserve zone setting.
+     * 
+     */
+    public Output<String> value() {
+        return this.value;
+    }
+    /**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
         return this.zoneId;
+    }
+    /**
+     * ID of the zone setting.
+     * 
+     */
+    @Export(name="zoneSettingId", refs={String.class}, tree="[0]")
+    private Output<String> zoneSettingId;
+
+    /**
+     * @return ID of the zone setting.
+     * 
+     */
+    public Output<String> zoneSettingId() {
+        return this.zoneSettingId;
     }
 
     /**

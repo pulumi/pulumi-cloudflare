@@ -10,53 +10,56 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WaitingRoomRulesArgs Empty = new WaitingRoomRulesArgs();
 
+<<<<<<< HEAD
     /**
-     * List of rules to apply to the ruleset.
+     * The ID of the rule.
      * 
      */
-    @Import(name="rules")
-    private @Nullable Output<List<WaitingRoomRulesRuleArgs>> rules;
+    @Import(name="ruleId")
+    private @Nullable Output<String> ruleId;
 
     /**
-     * @return List of rules to apply to the ruleset.
+     * @return The ID of the rule.
      * 
      */
-    public Optional<Output<List<WaitingRoomRulesRuleArgs>>> rules() {
-        return Optional.ofNullable(this.rules);
+    public Optional<Output<String>> ruleId() {
+        return Optional.ofNullable(this.ruleId);
     }
 
-    /**
-     * The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
+    @Import(name="rules", required=true)
+    private Output<List<WaitingRoomRulesRuleArgs>> rules;
+
+=======
+    @Import(name="rules", required=true)
+    private Output<List<WaitingRoomRulesRuleArgs>> rules;
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+    public Output<List<WaitingRoomRulesRuleArgs>> rules() {
+        return this.rules;
+    }
+
     @Import(name="waitingRoomId", required=true)
     private Output<String> waitingRoomId;
 
-    /**
-     * @return The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Output<String> waitingRoomId() {
         return this.waitingRoomId;
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -66,6 +69,7 @@ public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArg
     private WaitingRoomRulesArgs() {}
 
     private WaitingRoomRulesArgs(WaitingRoomRulesArgs $) {
+        this.ruleId = $.ruleId;
         this.rules = $.rules;
         this.waitingRoomId = $.waitingRoomId;
         this.zoneId = $.zoneId;
@@ -89,60 +93,59 @@ public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArg
             $ = new WaitingRoomRulesArgs(Objects.requireNonNull(defaults));
         }
 
+<<<<<<< HEAD
         /**
-         * @param rules List of rules to apply to the ruleset.
+         * @param ruleId The ID of the rule.
          * 
          * @return builder
          * 
          */
-        public Builder rules(@Nullable Output<List<WaitingRoomRulesRuleArgs>> rules) {
-            $.rules = rules;
+        public Builder ruleId(@Nullable Output<String> ruleId) {
+            $.ruleId = ruleId;
             return this;
         }
 
         /**
-         * @param rules List of rules to apply to the ruleset.
+         * @param ruleId The ID of the rule.
          * 
          * @return builder
          * 
          */
+        public Builder ruleId(String ruleId) {
+            return ruleId(Output.of(ruleId));
+        }
+
+        public Builder rules(Output<List<WaitingRoomRulesRuleArgs>> rules) {
+            $.rules = rules;
+            return this;
+        }
+
+=======
+        public Builder rules(Output<List<WaitingRoomRulesRuleArgs>> rules) {
+            $.rules = rules;
+            return this;
+        }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder rules(List<WaitingRoomRulesRuleArgs> rules) {
             return rules(Output.of(rules));
         }
 
-        /**
-         * @param rules List of rules to apply to the ruleset.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rules(WaitingRoomRulesRuleArgs... rules) {
             return rules(List.of(rules));
         }
 
-        /**
-         * @param waitingRoomId The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitingRoomId(Output<String> waitingRoomId) {
             $.waitingRoomId = waitingRoomId;
             return this;
         }
 
-        /**
-         * @param waitingRoomId The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitingRoomId(String waitingRoomId) {
             return waitingRoomId(Output.of(waitingRoomId));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -153,7 +156,7 @@ public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -163,6 +166,9 @@ public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArg
         }
 
         public WaitingRoomRulesArgs build() {
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("WaitingRoomRulesArgs", "rules");
+            }
             if ($.waitingRoomId == null) {
                 throw new MissingRequiredPropertyException("WaitingRoomRulesArgs", "waitingRoomId");
             }

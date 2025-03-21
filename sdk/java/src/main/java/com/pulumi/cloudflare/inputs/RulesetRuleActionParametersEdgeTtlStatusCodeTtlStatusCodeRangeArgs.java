@@ -16,14 +16,14 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
     public static final RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs Empty = new RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs();
 
     /**
-     * From status code.
+     * response status code lower bound
      * 
      */
     @Import(name="from")
     private @Nullable Output<Integer> from;
 
     /**
-     * @return From status code.
+     * @return response status code lower bound
      * 
      */
     public Optional<Output<Integer>> from() {
@@ -31,14 +31,14 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
     }
 
     /**
-     * To status code.
+     * response status code upper bound
      * 
      */
     @Import(name="to")
     private @Nullable Output<Integer> to;
 
     /**
-     * @return To status code.
+     * @return response status code upper bound
      * 
      */
     public Optional<Output<Integer>> to() {
@@ -71,7 +71,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
         }
 
         /**
-         * @param from From status code.
+         * @param from response status code lower bound
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
         }
 
         /**
-         * @param from From status code.
+         * @param from response status code lower bound
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
         }
 
         /**
-         * @param to To status code.
+         * @param to response status code upper bound
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
         }
 
         /**
-         * @param to To status code.
+         * @param to response status code upper bound
          * 
          * @return builder
          * 

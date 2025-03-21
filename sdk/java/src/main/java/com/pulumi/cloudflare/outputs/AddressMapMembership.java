@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -18,16 +17,17 @@ public final class AddressMapMembership {
      * 
      */
     private @Nullable Boolean canDelete;
+    private @Nullable String createdAt;
     /**
-     * @return Identifier of the account or zone.
+     * @return The identifier for the membership (eg. a zone or account tag).
      * 
      */
-    private String identifier;
+    private @Nullable String identifier;
     /**
      * @return The type of the membership.
      * 
      */
-    private String kind;
+    private @Nullable String kind;
 
     private AddressMapMembership() {}
     /**
@@ -37,19 +37,22 @@ public final class AddressMapMembership {
     public Optional<Boolean> canDelete() {
         return Optional.ofNullable(this.canDelete);
     }
+    public Optional<String> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
     /**
-     * @return Identifier of the account or zone.
+     * @return The identifier for the membership (eg. a zone or account tag).
      * 
      */
-    public String identifier() {
-        return this.identifier;
+    public Optional<String> identifier() {
+        return Optional.ofNullable(this.identifier);
     }
     /**
      * @return The type of the membership.
      * 
      */
-    public String kind() {
-        return this.kind;
+    public Optional<String> kind() {
+        return Optional.ofNullable(this.kind);
     }
 
     public static Builder builder() {
@@ -62,12 +65,14 @@ public final class AddressMapMembership {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean canDelete;
-        private String identifier;
-        private String kind;
+        private @Nullable String createdAt;
+        private @Nullable String identifier;
+        private @Nullable String kind;
         public Builder() {}
         public Builder(AddressMapMembership defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.canDelete = defaults.canDelete;
+    	      this.createdAt = defaults.createdAt;
     	      this.identifier = defaults.identifier;
     	      this.kind = defaults.kind;
         }
@@ -79,24 +84,27 @@ public final class AddressMapMembership {
             return this;
         }
         @CustomType.Setter
-        public Builder identifier(String identifier) {
-            if (identifier == null) {
-              throw new MissingRequiredPropertyException("AddressMapMembership", "identifier");
-            }
+        public Builder createdAt(@Nullable String createdAt) {
+
+            this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder identifier(@Nullable String identifier) {
+
             this.identifier = identifier;
             return this;
         }
         @CustomType.Setter
-        public Builder kind(String kind) {
-            if (kind == null) {
-              throw new MissingRequiredPropertyException("AddressMapMembership", "kind");
-            }
+        public Builder kind(@Nullable String kind) {
+
             this.kind = kind;
             return this;
         }
         public AddressMapMembership build() {
             final var _resultValue = new AddressMapMembership();
             _resultValue.canDelete = canDelete;
+            _resultValue.createdAt = createdAt;
             _resultValue.identifier = identifier;
             _resultValue.kind = kind;
             return _resultValue;

@@ -8,80 +8,34 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.
-//
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDevicePostureRule(ctx, "eaxmple", &cloudflare.ZeroTrustDevicePostureRuleArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:        pulumi.String("Corporate devices posture rule"),
-//				Type:        pulumi.String("os_version"),
-//				Description: pulumi.String("Device posture rule for corporate devices."),
-//				Schedule:    pulumi.String("24h"),
-//				Expiration:  pulumi.String("24h"),
-//				Matches: cloudflare.ZeroTrustDevicePostureRuleMatchArray{
-//					&cloudflare.ZeroTrustDevicePostureRuleMatchArgs{
-//						Platform: pulumi.String("linux"),
-//					},
-//				},
-//				Inputs: cloudflare.ZeroTrustDevicePostureRuleInputTypeArray{
-//					&cloudflare.ZeroTrustDevicePostureRuleInputTypeArgs{
-//						Id:               pulumi.Any(corporateDevices.Id),
-//						Version:          pulumi.String("1.0.0"),
-//						Operator:         pulumi.String("<"),
-//						OsDistroName:     pulumi.String("ubuntu"),
-//						OsDistroRevision: pulumi.String("1.0.0"),
-//						OsVersionExtra:   pulumi.String("(a)"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule example <account_id>/<device_posture_rule_id>
+// $ pulumi import cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule example '<account_id>/<rule_id>'
 // ```
 type ZeroTrustDevicePostureRule struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
-	AccountId   pulumi.StringOutput    `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// The description of the device posture rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+	// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
 	Expiration pulumi.StringPtrOutput `pulumi:"expiration"`
-	// Required for all rule types except `warp`, `gateway`, and `tanium`.
-	Inputs ZeroTrustDevicePostureRuleInputTypeArrayOutput `pulumi:"inputs"`
+	// The value to be checked against.
+	Input ZeroTrustDevicePostureRuleInputTypeOutput `pulumi:"input"`
 	// The conditions that the client must match to run the rule.
 	Matches ZeroTrustDevicePostureRuleMatchArrayOutput `pulumi:"matches"`
-	// Name of the device posture rule.
-	Name pulumi.StringPtrOutput `pulumi:"name"`
-	// Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+	// The name of the device posture rule.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
 	Schedule pulumi.StringPtrOutput `pulumi:"schedule"`
-	// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`.
+	// The type of device posture rule.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -94,6 +48,9 @@ func NewZeroTrustDevicePostureRule(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
@@ -121,38 +78,38 @@ func GetZeroTrustDevicePostureRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustDevicePostureRule resources.
 type zeroTrustDevicePostureRuleState struct {
-	// The account identifier to target for the resource.
-	AccountId   *string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
+	// The description of the device posture rule.
 	Description *string `pulumi:"description"`
-	// Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+	// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
 	Expiration *string `pulumi:"expiration"`
-	// Required for all rule types except `warp`, `gateway`, and `tanium`.
-	Inputs []ZeroTrustDevicePostureRuleInputType `pulumi:"inputs"`
+	// The value to be checked against.
+	Input *ZeroTrustDevicePostureRuleInputType `pulumi:"input"`
 	// The conditions that the client must match to run the rule.
 	Matches []ZeroTrustDevicePostureRuleMatch `pulumi:"matches"`
-	// Name of the device posture rule.
+	// The name of the device posture rule.
 	Name *string `pulumi:"name"`
-	// Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+	// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
 	Schedule *string `pulumi:"schedule"`
-	// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`.
+	// The type of device posture rule.
 	Type *string `pulumi:"type"`
 }
 
 type ZeroTrustDevicePostureRuleState struct {
-	// The account identifier to target for the resource.
-	AccountId   pulumi.StringPtrInput
+	AccountId pulumi.StringPtrInput
+	// The description of the device posture rule.
 	Description pulumi.StringPtrInput
-	// Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+	// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
 	Expiration pulumi.StringPtrInput
-	// Required for all rule types except `warp`, `gateway`, and `tanium`.
-	Inputs ZeroTrustDevicePostureRuleInputTypeArrayInput
+	// The value to be checked against.
+	Input ZeroTrustDevicePostureRuleInputTypePtrInput
 	// The conditions that the client must match to run the rule.
 	Matches ZeroTrustDevicePostureRuleMatchArrayInput
-	// Name of the device posture rule.
+	// The name of the device posture rule.
 	Name pulumi.StringPtrInput
-	// Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+	// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
 	Schedule pulumi.StringPtrInput
-	// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`.
+	// The type of device posture rule.
 	Type pulumi.StringPtrInput
 }
 
@@ -161,39 +118,39 @@ func (ZeroTrustDevicePostureRuleState) ElementType() reflect.Type {
 }
 
 type zeroTrustDevicePostureRuleArgs struct {
-	// The account identifier to target for the resource.
-	AccountId   string  `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
+	// The description of the device posture rule.
 	Description *string `pulumi:"description"`
-	// Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+	// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
 	Expiration *string `pulumi:"expiration"`
-	// Required for all rule types except `warp`, `gateway`, and `tanium`.
-	Inputs []ZeroTrustDevicePostureRuleInputType `pulumi:"inputs"`
+	// The value to be checked against.
+	Input *ZeroTrustDevicePostureRuleInputType `pulumi:"input"`
 	// The conditions that the client must match to run the rule.
 	Matches []ZeroTrustDevicePostureRuleMatch `pulumi:"matches"`
-	// Name of the device posture rule.
-	Name *string `pulumi:"name"`
-	// Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+	// The name of the device posture rule.
+	Name string `pulumi:"name"`
+	// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
 	Schedule *string `pulumi:"schedule"`
-	// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`.
+	// The type of device posture rule.
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a ZeroTrustDevicePostureRule resource.
 type ZeroTrustDevicePostureRuleArgs struct {
-	// The account identifier to target for the resource.
-	AccountId   pulumi.StringInput
+	AccountId pulumi.StringInput
+	// The description of the device posture rule.
 	Description pulumi.StringPtrInput
-	// Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+	// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
 	Expiration pulumi.StringPtrInput
-	// Required for all rule types except `warp`, `gateway`, and `tanium`.
-	Inputs ZeroTrustDevicePostureRuleInputTypeArrayInput
+	// The value to be checked against.
+	Input ZeroTrustDevicePostureRuleInputTypePtrInput
 	// The conditions that the client must match to run the rule.
 	Matches ZeroTrustDevicePostureRuleMatchArrayInput
-	// Name of the device posture rule.
-	Name pulumi.StringPtrInput
-	// Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+	// The name of the device posture rule.
+	Name pulumi.StringInput
+	// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
 	Schedule pulumi.StringPtrInput
-	// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`.
+	// The type of device posture rule.
 	Type pulumi.StringInput
 }
 
@@ -284,23 +241,23 @@ func (o ZeroTrustDevicePostureRuleOutput) ToZeroTrustDevicePostureRuleOutputWith
 	return o
 }
 
-// The account identifier to target for the resource.
 func (o ZeroTrustDevicePostureRuleOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// The description of the device posture rule.
 func (o ZeroTrustDevicePostureRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
 func (o ZeroTrustDevicePostureRuleOutput) Expiration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) pulumi.StringPtrOutput { return v.Expiration }).(pulumi.StringPtrOutput)
 }
 
-// Required for all rule types except `warp`, `gateway`, and `tanium`.
-func (o ZeroTrustDevicePostureRuleOutput) Inputs() ZeroTrustDevicePostureRuleInputTypeArrayOutput {
-	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) ZeroTrustDevicePostureRuleInputTypeArrayOutput { return v.Inputs }).(ZeroTrustDevicePostureRuleInputTypeArrayOutput)
+// The value to be checked against.
+func (o ZeroTrustDevicePostureRuleOutput) Input() ZeroTrustDevicePostureRuleInputTypeOutput {
+	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) ZeroTrustDevicePostureRuleInputTypeOutput { return v.Input }).(ZeroTrustDevicePostureRuleInputTypeOutput)
 }
 
 // The conditions that the client must match to run the rule.
@@ -308,17 +265,17 @@ func (o ZeroTrustDevicePostureRuleOutput) Matches() ZeroTrustDevicePostureRuleMa
 	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) ZeroTrustDevicePostureRuleMatchArrayOutput { return v.Matches }).(ZeroTrustDevicePostureRuleMatchArrayOutput)
 }
 
-// Name of the device posture rule.
-func (o ZeroTrustDevicePostureRuleOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+// The name of the device posture rule.
+func (o ZeroTrustDevicePostureRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
 func (o ZeroTrustDevicePostureRuleOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) pulumi.StringPtrOutput { return v.Schedule }).(pulumi.StringPtrOutput)
 }
 
-// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`.
+// The type of device posture rule.
 func (o ZeroTrustDevicePostureRuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

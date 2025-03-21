@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource, that manages GRE tunnels for Magic Transit.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,92 +20,79 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.MagicWanGreTunnel("example", new()
+    ///     var exampleMagicWanGreTunnel = new Cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "GRE_1",
-    ///         CustomerGreEndpoint = "203.0.113.1",
-    ///         CloudflareGreEndpoint = "203.0.113.2",
-    ///         InterfaceAddress = "192.0.2.0/31",
-    ///         Description = "Tunnel for ISP X",
-    ///         Ttl = 64,
-    ///         Mtu = 1476,
-    ///         HealthCheckEnabled = true,
-    ///         HealthCheckTarget = "203.0.113.1",
-    ///         HealthCheckType = "reply",
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///     });
     /// 
     /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel example &lt;account_id&gt;/&lt;tunnel_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel")]
     public partial class MagicWanGreTunnel : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The IP address assigned to the Cloudflare side of the GRE tunnel.
         /// </summary>
         [Output("cloudflareGreEndpoint")]
-        public Output<string> CloudflareGreEndpoint { get; private set; } = null!;
+        public Output<string?> CloudflareGreEndpoint { get; private set; } = null!;
 
         /// <summary>
         /// The IP address assigned to the customer side of the GRE tunnel.
         /// </summary>
         [Output("customerGreEndpoint")]
-        public Output<string> CustomerGreEndpoint { get; private set; } = null!;
+        public Output<string?> CustomerGreEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the GRE tunnel intent.
+        /// An optional description of the GRE tunnel.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies if ICMP tunnel health checks are enabled.
-        /// </summary>
-        [Output("healthCheckEnabled")]
-        public Output<bool> HealthCheckEnabled { get; private set; } = null!;
+        [Output("greTunnel")]
+        public Output<Outputs.MagicWanGreTunnelGreTunnel> GreTunnel { get; private set; } = null!;
 
         /// <summary>
-        /// The IP address of the customer endpoint that will receive tunnel health checks.
+        /// Identifier
         /// </summary>
-        [Output("healthCheckTarget")]
-        public Output<string> HealthCheckTarget { get; private set; } = null!;
+        [Output("greTunnelId")]
+        public Output<string?> GreTunnelId { get; private set; } = null!;
+
+        [Output("greTunnels")]
+        public Output<ImmutableArray<Outputs.MagicWanGreTunnelGreTunnel>> GreTunnels { get; private set; } = null!;
+
+        [Output("healthCheck")]
+        public Output<Outputs.MagicWanGreTunnelHealthCheck> HealthCheck { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-        /// </summary>
-        [Output("healthCheckType")]
-        public Output<string> HealthCheckType { get; private set; } = null!;
-
-        /// <summary>
-        /// 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
+        /// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         /// </summary>
         [Output("interfaceAddress")]
-        public Output<string> InterfaceAddress { get; private set; } = null!;
+        public Output<string?> InterfaceAddress { get; private set; } = null!;
+
+        [Output("modified")]
+        public Output<bool> Modified { get; private set; } = null!;
+
+        [Output("modifiedGreTunnel")]
+        public Output<Outputs.MagicWanGreTunnelModifiedGreTunnel> ModifiedGreTunnel { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
+        /// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
         /// </summary>
         [Output("mtu")]
         public Output<int> Mtu { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the GRE tunnel.
+        /// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
         /// </summary>
         [Output("name")]
-        public Output<string> Name { get; private set; } = null!;
+        public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
         /// Time To Live (TTL) in number of hops of the GRE tunnel.
@@ -162,64 +147,55 @@ namespace Pulumi.Cloudflare
     public sealed class MagicWanGreTunnelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// The IP address assigned to the Cloudflare side of the GRE tunnel.
         /// </summary>
-        [Input("cloudflareGreEndpoint", required: true)]
-        public Input<string> CloudflareGreEndpoint { get; set; } = null!;
+        [Input("cloudflareGreEndpoint")]
+        public Input<string>? CloudflareGreEndpoint { get; set; }
 
         /// <summary>
         /// The IP address assigned to the customer side of the GRE tunnel.
         /// </summary>
-        [Input("customerGreEndpoint", required: true)]
-        public Input<string> CustomerGreEndpoint { get; set; } = null!;
+        [Input("customerGreEndpoint")]
+        public Input<string>? CustomerGreEndpoint { get; set; }
 
         /// <summary>
-        /// Description of the GRE tunnel intent.
+        /// An optional description of the GRE tunnel.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies if ICMP tunnel health checks are enabled.
+        /// Identifier
         /// </summary>
-        [Input("healthCheckEnabled")]
-        public Input<bool>? HealthCheckEnabled { get; set; }
+        [Input("greTunnelId")]
+        public Input<string>? GreTunnelId { get; set; }
+
+        [Input("healthCheck")]
+        public Input<Inputs.MagicWanGreTunnelHealthCheckArgs>? HealthCheck { get; set; }
 
         /// <summary>
-        /// The IP address of the customer endpoint that will receive tunnel health checks.
+        /// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         /// </summary>
-        [Input("healthCheckTarget")]
-        public Input<string>? HealthCheckTarget { get; set; }
+        [Input("interfaceAddress")]
+        public Input<string>? InterfaceAddress { get; set; }
 
         /// <summary>
-        /// Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-        /// </summary>
-        [Input("healthCheckType")]
-        public Input<string>? HealthCheckType { get; set; }
-
-        /// <summary>
-        /// 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
-        /// </summary>
-        [Input("interfaceAddress", required: true)]
-        public Input<string> InterfaceAddress { get; set; } = null!;
-
-        /// <summary>
-        /// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
+        /// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
         /// </summary>
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
 
         /// <summary>
-        /// Name of the GRE tunnel.
+        /// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Time To Live (TTL) in number of hops of the GRE tunnel.
@@ -236,7 +212,7 @@ namespace Pulumi.Cloudflare
     public sealed class MagicWanGreTunnelState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -254,43 +230,51 @@ namespace Pulumi.Cloudflare
         public Input<string>? CustomerGreEndpoint { get; set; }
 
         /// <summary>
-        /// Description of the GRE tunnel intent.
+        /// An optional description of the GRE tunnel.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Specifies if ICMP tunnel health checks are enabled.
-        /// </summary>
-        [Input("healthCheckEnabled")]
-        public Input<bool>? HealthCheckEnabled { get; set; }
+        [Input("greTunnel")]
+        public Input<Inputs.MagicWanGreTunnelGreTunnelGetArgs>? GreTunnel { get; set; }
 
         /// <summary>
-        /// The IP address of the customer endpoint that will receive tunnel health checks.
+        /// Identifier
         /// </summary>
-        [Input("healthCheckTarget")]
-        public Input<string>? HealthCheckTarget { get; set; }
+        [Input("greTunnelId")]
+        public Input<string>? GreTunnelId { get; set; }
+
+        [Input("greTunnels")]
+        private InputList<Inputs.MagicWanGreTunnelGreTunnelGetArgs>? _greTunnels;
+        public InputList<Inputs.MagicWanGreTunnelGreTunnelGetArgs> GreTunnels
+        {
+            get => _greTunnels ?? (_greTunnels = new InputList<Inputs.MagicWanGreTunnelGreTunnelGetArgs>());
+            set => _greTunnels = value;
+        }
+
+        [Input("healthCheck")]
+        public Input<Inputs.MagicWanGreTunnelHealthCheckGetArgs>? HealthCheck { get; set; }
 
         /// <summary>
-        /// Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-        /// </summary>
-        [Input("healthCheckType")]
-        public Input<string>? HealthCheckType { get; set; }
-
-        /// <summary>
-        /// 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
+        /// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         /// </summary>
         [Input("interfaceAddress")]
         public Input<string>? InterfaceAddress { get; set; }
 
+        [Input("modified")]
+        public Input<bool>? Modified { get; set; }
+
+        [Input("modifiedGreTunnel")]
+        public Input<Inputs.MagicWanGreTunnelModifiedGreTunnelGetArgs>? ModifiedGreTunnel { get; set; }
+
         /// <summary>
-        /// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
+        /// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
         /// </summary>
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
 
         /// <summary>
-        /// Name of the GRE tunnel.
+        /// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

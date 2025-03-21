@@ -14,22 +14,14 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class LoadBalancerPoolOriginHeader
     {
         /// <summary>
-        /// HTTP Header name.
+        /// The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin.
         /// </summary>
-        public readonly string Header;
-        /// <summary>
-        /// Values for the HTTP headers.
-        /// </summary>
-        public readonly ImmutableArray<string> Values;
+        public readonly ImmutableArray<string> Hosts;
 
         [OutputConstructor]
-        private LoadBalancerPoolOriginHeader(
-            string header,
-
-            ImmutableArray<string> values)
+        private LoadBalancerPoolOriginHeader(ImmutableArray<string> hosts)
         {
-            Header = header;
-            Values = values;
+            Hosts = hosts;
         }
     }
 }

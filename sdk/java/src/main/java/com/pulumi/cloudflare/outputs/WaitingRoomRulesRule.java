@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,78 +14,54 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WaitingRoomRulesRule {
     /**
-     * @return Action to perform in the ruleset rule. Available values: `bypass_waiting_room`.
+     * @return The action to take when the expression matches.
      * 
      */
     private String action;
     /**
-     * @return Brief summary of the waiting room rule and its intended use.
+     * @return The description of the rule.
      * 
      */
     private @Nullable String description;
     /**
-     * @return Criteria for an HTTP request to trigger the waiting room rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Waiting Room Rules Docs](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/).
+     * @return When set to true, the rule is enabled.
+     * 
+     */
+    private @Nullable Boolean enabled;
+    /**
+     * @return Criteria defining when there is a match for the current rule.
      * 
      */
     private String expression;
-    /**
-     * @return Unique rule identifier.
-     * 
-     */
-    private @Nullable String id;
-    /**
-     * @return Whether the rule is enabled or disabled. Available values: `enabled`, `disabled`.
-     * 
-     */
-    private @Nullable String status;
-    /**
-     * @return Version of the waiting room rule.
-     * 
-     */
-    private @Nullable String version;
 
     private WaitingRoomRulesRule() {}
     /**
-     * @return Action to perform in the ruleset rule. Available values: `bypass_waiting_room`.
+     * @return The action to take when the expression matches.
      * 
      */
     public String action() {
         return this.action;
     }
     /**
-     * @return Brief summary of the waiting room rule and its intended use.
+     * @return The description of the rule.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Criteria for an HTTP request to trigger the waiting room rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Waiting Room Rules Docs](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/).
+     * @return When set to true, the rule is enabled.
+     * 
+     */
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
+    /**
+     * @return Criteria defining when there is a match for the current rule.
      * 
      */
     public String expression() {
         return this.expression;
-    }
-    /**
-     * @return Unique rule identifier.
-     * 
-     */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
-    }
-    /**
-     * @return Whether the rule is enabled or disabled. Available values: `enabled`, `disabled`.
-     * 
-     */
-    public Optional<String> status() {
-        return Optional.ofNullable(this.status);
-    }
-    /**
-     * @return Version of the waiting room rule.
-     * 
-     */
-    public Optional<String> version() {
-        return Optional.ofNullable(this.version);
     }
 
     public static Builder builder() {
@@ -98,19 +75,15 @@ public final class WaitingRoomRulesRule {
     public static final class Builder {
         private String action;
         private @Nullable String description;
+        private @Nullable Boolean enabled;
         private String expression;
-        private @Nullable String id;
-        private @Nullable String status;
-        private @Nullable String version;
         public Builder() {}
         public Builder(WaitingRoomRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
     	      this.description = defaults.description;
+    	      this.enabled = defaults.enabled;
     	      this.expression = defaults.expression;
-    	      this.id = defaults.id;
-    	      this.status = defaults.status;
-    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -128,6 +101,12 @@ public final class WaitingRoomRulesRule {
             return this;
         }
         @CustomType.Setter
+        public Builder enabled(@Nullable Boolean enabled) {
+
+            this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder expression(String expression) {
             if (expression == null) {
               throw new MissingRequiredPropertyException("WaitingRoomRulesRule", "expression");
@@ -135,32 +114,12 @@ public final class WaitingRoomRulesRule {
             this.expression = expression;
             return this;
         }
-        @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder status(@Nullable String status) {
-
-            this.status = status;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder version(@Nullable String version) {
-
-            this.version = version;
-            return this;
-        }
         public WaitingRoomRulesRule build() {
             final var _resultValue = new WaitingRoomRulesRule();
             _resultValue.action = action;
             _resultValue.description = description;
+            _resultValue.enabled = enabled;
             _resultValue.expression = expression;
-            _resultValue.id = id;
-            _resultValue.status = status;
-            _resultValue.version = version;
             return _resultValue;
         }
     }

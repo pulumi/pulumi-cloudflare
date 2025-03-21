@@ -13,16 +13,16 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersCacheReserveGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determines whether Cloudflare will write the eligible resource to cache reserve.
+        /// Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
         /// </summary>
         [Input("eligible", required: true)]
         public Input<bool> Eligible { get; set; } = null!;
 
         /// <summary>
-        /// The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and "eligible" is true, Cloudflare will use 0 bytes by default.
+        /// The minimum file size eligible for store in cache reserve.
         /// </summary>
-        [Input("minimumFileSize")]
-        public Input<int>? MinimumFileSize { get; set; }
+        [Input("minimumFileSize", required: true)]
+        public Input<int> MinimumFileSize { get; set; } = null!;
 
         public RulesetRuleActionParametersCacheReserveGetArgs()
         {

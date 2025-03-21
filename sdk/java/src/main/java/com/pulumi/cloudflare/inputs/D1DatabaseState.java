@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +17,14 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
     public static final D1DatabaseState Empty = new D1DatabaseState();
 
     /**
-     * The account identifier to target for the resource.
+     * Account identifier tag.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Account identifier tag.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -31,31 +32,128 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the D1 Database.
+     * Specifies the timestamp the resource was created as an ISO8601 string.
+<<<<<<< HEAD
+=======
      * 
      */
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    /**
+     * @return Specifies the timestamp the resource was created as an ISO8601 string.
+     * 
+     */
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * The D1 database&#39;s size, in bytes.
+     * 
+     */
+    @Import(name="fileSize")
+    private @Nullable Output<Double> fileSize;
+
+    /**
+     * @return The D1 database&#39;s size, in bytes.
+     * 
+     */
+    public Optional<Output<Double>> fileSize() {
+        return Optional.ofNullable(this.fileSize);
+    }
+
+    /**
+     * D1 database name.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+     * 
+     */
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    /**
+     * @return Specifies the timestamp the resource was created as an ISO8601 string.
+     * 
+     */
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * The D1 database&#39;s size, in bytes.
+     * 
+     */
+    @Import(name="fileSize")
+    private @Nullable Output<Double> fileSize;
+
+    /**
+     * @return The D1 database&#39;s size, in bytes.
+     * 
+     */
+    public Optional<Output<Double>> fileSize() {
+        return Optional.ofNullable(this.fileSize);
+    }
+
     @Import(name="name")
     private @Nullable Output<String> name;
 
+<<<<<<< HEAD
+=======
     /**
-     * @return The name of the D1 Database.
+     * @return D1 database name.
      * 
      */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="numTables")
+    private @Nullable Output<Double> numTables;
+
+    public Optional<Output<Double>> numTables() {
+        return Optional.ofNullable(this.numTables);
+    }
+
     /**
-     * The backend version of the database.
+     * Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
      * 
      */
+    @Import(name="primaryLocationHint")
+    private @Nullable Output<String> primaryLocationHint;
+
+    /**
+     * @return Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+     * 
+     */
+    public Optional<Output<String>> primaryLocationHint() {
+        return Optional.ofNullable(this.primaryLocationHint);
+    }
+
+<<<<<<< HEAD
+    @Import(name="uuid")
+    private @Nullable Output<String> uuid;
+
+=======
+    /**
+     * D1 database identifier (UUID).
+     * 
+     */
+    @Import(name="uuid")
+    private @Nullable Output<String> uuid;
+
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+    public Optional<Output<String>> uuid() {
+        return Optional.ofNullable(this.uuid);
+    }
+
     @Import(name="version")
     private @Nullable Output<String> version;
 
-    /**
-     * @return The backend version of the database.
-     * 
-     */
     public Optional<Output<String>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -64,7 +162,12 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
 
     private D1DatabaseState(D1DatabaseState $) {
         this.accountId = $.accountId;
+        this.createdAt = $.createdAt;
+        this.fileSize = $.fileSize;
         this.name = $.name;
+        this.numTables = $.numTables;
+        this.primaryLocationHint = $.primaryLocationHint;
+        this.uuid = $.uuid;
         this.version = $.version;
     }
 
@@ -87,7 +190,7 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Account identifier tag.
          * 
          * @return builder
          * 
@@ -98,7 +201,7 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Account identifier tag.
          * 
          * @return builder
          * 
@@ -108,43 +211,172 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the D1 Database.
+         * @param createdAt Specifies the timestamp the resource was created as an ISO8601 string.
+<<<<<<< HEAD
+=======
          * 
          * @return builder
          * 
          */
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        /**
+         * @param createdAt Specifies the timestamp the resource was created as an ISO8601 string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param fileSize The D1 database&#39;s size, in bytes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSize(@Nullable Output<Double> fileSize) {
+            $.fileSize = fileSize;
+            return this;
+        }
+
+        /**
+         * @param fileSize The D1 database&#39;s size, in bytes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSize(Double fileSize) {
+            return fileSize(Output.of(fileSize));
+        }
+
+        /**
+         * @param name D1 database name.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        /**
+         * @param createdAt Specifies the timestamp the resource was created as an ISO8601 string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param fileSize The D1 database&#39;s size, in bytes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSize(@Nullable Output<Double> fileSize) {
+            $.fileSize = fileSize;
+            return this;
+        }
+
+        /**
+         * @param fileSize The D1 database&#39;s size, in bytes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSize(Double fileSize) {
+            return fileSize(Output.of(fileSize));
+        }
+
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+<<<<<<< HEAD
+=======
         /**
-         * @param name The name of the D1 Database.
+         * @param name D1 database name.
          * 
          * @return builder
          * 
          */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        public Builder numTables(@Nullable Output<Double> numTables) {
+            $.numTables = numTables;
+            return this;
+        }
+
+        public Builder numTables(Double numTables) {
+            return numTables(Output.of(numTables));
+        }
+
         /**
-         * @param version The backend version of the database.
+         * @param primaryLocationHint Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
          * 
          * @return builder
          * 
          */
+        public Builder primaryLocationHint(@Nullable Output<String> primaryLocationHint) {
+            $.primaryLocationHint = primaryLocationHint;
+            return this;
+        }
+
+        /**
+         * @param primaryLocationHint Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryLocationHint(String primaryLocationHint) {
+            return primaryLocationHint(Output.of(primaryLocationHint));
+        }
+
+<<<<<<< HEAD
+=======
+        /**
+         * @param uuid D1 database identifier (UUID).
+         * 
+         * @return builder
+         * 
+         */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+        public Builder uuid(@Nullable Output<String> uuid) {
+            $.uuid = uuid;
+            return this;
+        }
+
+<<<<<<< HEAD
+=======
+        /**
+         * @param uuid D1 database identifier (UUID).
+         * 
+         * @return builder
+         * 
+         */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+        public Builder uuid(String uuid) {
+            return uuid(Output.of(uuid));
+        }
+
         public Builder version(@Nullable Output<String> version) {
             $.version = version;
             return this;
         }
 
-        /**
-         * @param version The backend version of the database.
-         * 
-         * @return builder
-         * 
-         */
         public Builder version(String version) {
             return version(Output.of(version));
         }

@@ -7,14 +7,45 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to look up Zone results for use in other resources.
-func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.LookupZones(ctx, &cloudflare.LookupZonesArgs{
+//				Account: cloudflare.GetZonesAccount{
+//					Id:   pulumi.StringRef("id"),
+//					Name: pulumi.StringRef("name"),
+//				},
+//				Direction: pulumi.StringRef("asc"),
+//				Name:      pulumi.StringRef("name"),
+//				Order:     pulumi.StringRef("name"),
+//				Status:    pulumi.StringRef("initializing"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+func LookupZones(ctx *pulumi.Context, args *LookupZonesArgs, opts ...pulumi.InvokeOption) (*LookupZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetZonesResult
+	var rv LookupZonesResult
 	err := ctx.Invoke("cloudflare:index/getZones:getZones", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -23,70 +54,106 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 }
 
 // A collection of arguments for invoking getZones.
-type GetZonesArgs struct {
-	// One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-	Filter GetZonesFilter `pulumi:"filter"`
+type LookupZonesArgs struct {
+	Account   *GetZonesAccount `pulumi:"account"`
+	Direction *string          `pulumi:"direction"`
+	Match     *string          `pulumi:"match"`
+	MaxItems  *int             `pulumi:"maxItems"`
+	Name      *string          `pulumi:"name"`
+	Order     *string          `pulumi:"order"`
+	Status    *string          `pulumi:"status"`
 }
 
 // A collection of values returned by getZones.
-type GetZonesResult struct {
-	// One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-	Filter GetZonesFilter `pulumi:"filter"`
+type LookupZonesResult struct {
+	Account   *GetZonesAccount `pulumi:"account"`
+	Direction *string          `pulumi:"direction"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of zone objects.
-	Zones []GetZonesZone `pulumi:"zones"`
+	Id       string           `pulumi:"id"`
+	Match    string           `pulumi:"match"`
+	MaxItems *int             `pulumi:"maxItems"`
+	Name     *string          `pulumi:"name"`
+	Order    *string          `pulumi:"order"`
+	Results  []GetZonesResult `pulumi:"results"`
+	Status   *string          `pulumi:"status"`
 }
 
-func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi.InvokeOption) GetZonesResultOutput {
+func LookupZonesOutput(ctx *pulumi.Context, args LookupZonesOutputArgs, opts ...pulumi.InvokeOption) LookupZonesResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetZonesResultOutput, error) {
-			args := v.(GetZonesArgs)
+		ApplyT(func(v interface{}) (LookupZonesResultOutput, error) {
+			args := v.(LookupZonesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZones:getZones", args, GetZonesResultOutput{}, options).(GetZonesResultOutput), nil
-		}).(GetZonesResultOutput)
+			return ctx.InvokeOutput("cloudflare:index/getZones:getZones", args, LookupZonesResultOutput{}, options).(LookupZonesResultOutput), nil
+		}).(LookupZonesResultOutput)
 }
 
 // A collection of arguments for invoking getZones.
-type GetZonesOutputArgs struct {
-	// One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-	Filter GetZonesFilterInput `pulumi:"filter"`
+type LookupZonesOutputArgs struct {
+	Account   GetZonesAccountPtrInput `pulumi:"account"`
+	Direction pulumi.StringPtrInput   `pulumi:"direction"`
+	Match     pulumi.StringPtrInput   `pulumi:"match"`
+	MaxItems  pulumi.IntPtrInput      `pulumi:"maxItems"`
+	Name      pulumi.StringPtrInput   `pulumi:"name"`
+	Order     pulumi.StringPtrInput   `pulumi:"order"`
+	Status    pulumi.StringPtrInput   `pulumi:"status"`
 }
 
-func (GetZonesOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZonesArgs)(nil)).Elem()
+func (LookupZonesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupZonesArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getZones.
-type GetZonesResultOutput struct{ *pulumi.OutputState }
+type LookupZonesResultOutput struct{ *pulumi.OutputState }
 
-func (GetZonesResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZonesResult)(nil)).Elem()
+func (LookupZonesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupZonesResult)(nil)).Elem()
 }
 
-func (o GetZonesResultOutput) ToGetZonesResultOutput() GetZonesResultOutput {
+func (o LookupZonesResultOutput) ToLookupZonesResultOutput() LookupZonesResultOutput {
 	return o
 }
 
-func (o GetZonesResultOutput) ToGetZonesResultOutputWithContext(ctx context.Context) GetZonesResultOutput {
+func (o LookupZonesResultOutput) ToLookupZonesResultOutputWithContext(ctx context.Context) LookupZonesResultOutput {
 	return o
 }
 
-// One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-func (o GetZonesResultOutput) Filter() GetZonesFilterOutput {
-	return o.ApplyT(func(v GetZonesResult) GetZonesFilter { return v.Filter }).(GetZonesFilterOutput)
+func (o LookupZonesResultOutput) Account() GetZonesAccountPtrOutput {
+	return o.ApplyT(func(v LookupZonesResult) *GetZonesAccount { return v.Account }).(GetZonesAccountPtrOutput)
+}
+
+func (o LookupZonesResultOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZonesResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetZonesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZonesResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupZonesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of zone objects.
-func (o GetZonesResultOutput) Zones() GetZonesZoneArrayOutput {
-	return o.ApplyT(func(v GetZonesResult) []GetZonesZone { return v.Zones }).(GetZonesZoneArrayOutput)
+func (o LookupZonesResultOutput) Match() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZonesResult) string { return v.Match }).(pulumi.StringOutput)
+}
+
+func (o LookupZonesResultOutput) MaxItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupZonesResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
+}
+
+func (o LookupZonesResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZonesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupZonesResultOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZonesResult) *string { return v.Order }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupZonesResultOutput) Results() GetZonesResultArrayOutput {
+	return o.ApplyT(func(v LookupZonesResult) []GetZonesResult { return v.Results }).(GetZonesResultArrayOutput)
+}
+
+func (o LookupZonesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZonesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetZonesResultOutput{})
+	pulumi.RegisterOutputType(LookupZonesResultOutput{})
 }
