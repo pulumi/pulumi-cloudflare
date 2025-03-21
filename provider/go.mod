@@ -7,7 +7,6 @@ require (
 	github.com/pulumi/providertest v0.1.3
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.105.0
 	github.com/pulumi/pulumi/sdk/v3 v3.156.0
-	github.com/stretchr/testify v1.10.0
 )
 
 replace github.com/cloudflare/terraform-provider-cloudflare => ../upstream
@@ -66,11 +65,7 @@ require (
 	github.com/cheggaaa/pb v1.0.29 // indirect
 	github.com/cloudflare/circl v1.3.7 // indirect
 	github.com/cloudflare/cloudflare-go v0.114.0 // indirect
-<<<<<<< HEAD
-	github.com/cloudflare/cloudflare-go/v4 v4.0.0 // indirect
-=======
 	github.com/cloudflare/cloudflare-go/v4 v4.1.0 // indirect
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	github.com/containerd/console v1.0.4-0.20230313162750-1ae8d489ac81 // indirect
 	github.com/cyphar/filepath-securejoin v0.3.6 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
@@ -122,17 +117,10 @@ require (
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/hashicorp/hcl/v2 v2.23.0 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
-<<<<<<< HEAD
-	github.com/hashicorp/terraform-plugin-framework v1.13.0 // indirect
-	github.com/hashicorp/terraform-plugin-framework-jsontypes v0.2.0 // indirect
-	github.com/hashicorp/terraform-plugin-framework-timetypes v0.5.0 // indirect
-	github.com/hashicorp/terraform-plugin-framework-validators v0.16.0 // indirect
-=======
 	github.com/hashicorp/terraform-plugin-framework v1.14.1 // indirect
 	github.com/hashicorp/terraform-plugin-framework-jsontypes v0.2.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-timetypes v0.5.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.17.0 // indirect
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	github.com/hashicorp/terraform-plugin-go v0.26.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.35.0 // indirect
@@ -209,6 +197,7 @@ require (
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/cobra v1.8.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/stretchr/testify v1.10.0 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
 	github.com/tidwall/gjson v1.17.0 // indirect
@@ -225,11 +214,7 @@ require (
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
 	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
 	github.com/yuin/goldmark v1.7.7 // indirect
-<<<<<<< HEAD
-	github.com/zclconf/go-cty v1.15.0 // indirect
-=======
 	github.com/zclconf/go-cty v1.16.2 // indirect
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	go.opencensus.io v0.24.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.49.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.49.0 // indirect
