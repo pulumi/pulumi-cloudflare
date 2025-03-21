@@ -54,7 +54,11 @@ type LookupSpectrumApplicationsArgs struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// Application field by which results are ordered.
 	Order *string `pulumi:"order"`
+<<<<<<< HEAD
 	// Identifier
+=======
+	// Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -70,7 +74,11 @@ type LookupSpectrumApplicationsResult struct {
 	Order string `pulumi:"order"`
 	// The items returned by the data source
 	Results []GetSpectrumApplicationsResult `pulumi:"results"`
+<<<<<<< HEAD
 	// Identifier
+=======
+	// Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -91,7 +99,11 @@ type LookupSpectrumApplicationsOutputArgs struct {
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Application field by which results are ordered.
 	Order pulumi.StringPtrInput `pulumi:"order"`
+<<<<<<< HEAD
 	// Identifier
+=======
+	// Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -139,7 +151,11 @@ func (o LookupSpectrumApplicationsResultOutput) Results() GetSpectrumApplication
 	return o.ApplyT(func(v LookupSpectrumApplicationsResult) []GetSpectrumApplicationsResult { return v.Results }).(GetSpectrumApplicationsResultArrayOutput)
 }
 
+<<<<<<< HEAD
 // Identifier
+=======
+// Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func (o LookupSpectrumApplicationsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpectrumApplicationsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

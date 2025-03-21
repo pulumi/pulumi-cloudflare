@@ -2,6 +2,11 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+<<<<<<< HEAD
+=======
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import * as utilities from "./utilities";
 
 /**
@@ -42,9 +47,43 @@ export interface GetAccountSubscriptionResult {
      */
     readonly accountId: string;
     /**
+<<<<<<< HEAD
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+=======
+     * The monetary unit in which pricing information is displayed.
+     */
+    readonly currency: string;
+    /**
+     * The end of the current period and also when the next billing is due.
+     */
+    readonly currentPeriodEnd: string;
+    /**
+     * When the current billing period started. May match initial*period*start if this is the first period.
+     */
+    readonly currentPeriodStart: string;
+    /**
+     * How often the subscription is renewed automatically.
+     */
+    readonly frequency: string;
+    /**
+     * Subscription identifier tag.
+     */
+    readonly id: string;
+    /**
+     * The price of the subscription that will be billed, in US dollars.
+     */
+    readonly price: number;
+    /**
+     * The rate plan applied to the subscription.
+     */
+    readonly ratePlan: outputs.GetAccountSubscriptionRatePlan;
+    /**
+     * The state that the subscription is in.
+     */
+    readonly state: string;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 /**
  * ## Example Usage

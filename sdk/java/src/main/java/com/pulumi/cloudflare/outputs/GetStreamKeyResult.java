@@ -16,7 +16,16 @@ public final class GetStreamKeyResult {
      */
     private String accountId;
     /**
+<<<<<<< HEAD
      * @return The provider-assigned unique ID for this managed resource.
+=======
+     * @return The date and time a signing key was created.
+     * 
+     */
+    private String created;
+    /**
+     * @return Identifier
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     private String id;
@@ -30,7 +39,18 @@ public final class GetStreamKeyResult {
         return this.accountId;
     }
     /**
+<<<<<<< HEAD
      * @return The provider-assigned unique ID for this managed resource.
+=======
+     * @return The date and time a signing key was created.
+     * 
+     */
+    public String created() {
+        return this.created;
+    }
+    /**
+     * @return Identifier
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public String id() {
@@ -47,11 +67,19 @@ public final class GetStreamKeyResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+<<<<<<< HEAD
+=======
+        private String created;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private String id;
         public Builder() {}
         public Builder(GetStreamKeyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+<<<<<<< HEAD
+=======
+    	      this.created = defaults.created;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.id = defaults.id;
         }
 
@@ -64,6 +92,17 @@ public final class GetStreamKeyResult {
             return this;
         }
         @CustomType.Setter
+<<<<<<< HEAD
+=======
+        public Builder created(String created) {
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetStreamKeyResult", "created");
+            }
+            this.created = created;
+            return this;
+        }
+        @CustomType.Setter
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetStreamKeyResult", "id");
@@ -74,6 +113,10 @@ public final class GetStreamKeyResult {
         public GetStreamKeyResult build() {
             final var _resultValue = new GetStreamKeyResult();
             _resultValue.accountId = accountId;
+<<<<<<< HEAD
+=======
+            _resultValue.created = created;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.id = id;
             return _resultValue;
         }

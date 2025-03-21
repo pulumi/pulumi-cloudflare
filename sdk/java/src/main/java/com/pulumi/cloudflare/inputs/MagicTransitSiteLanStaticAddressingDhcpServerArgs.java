@@ -6,6 +6,10 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+<<<<<<< HEAD
+=======
+import java.util.List;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -61,6 +65,16 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServerArgs extends com
         return Optional.ofNullable(this.dnsServer);
     }
 
+<<<<<<< HEAD
+=======
+    @Import(name="dnsServers")
+    private @Nullable Output<List<String>> dnsServers;
+
+    public Optional<Output<List<String>>> dnsServers() {
+        return Optional.ofNullable(this.dnsServers);
+    }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Mapping of MAC addresses to IP addresses
      * 
@@ -82,6 +96,10 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServerArgs extends com
         this.dhcpPoolEnd = $.dhcpPoolEnd;
         this.dhcpPoolStart = $.dhcpPoolStart;
         this.dnsServer = $.dnsServer;
+<<<<<<< HEAD
+=======
+        this.dnsServers = $.dnsServers;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.reservations = $.reservations;
     }
 
@@ -166,6 +184,22 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServerArgs extends com
             return dnsServer(Output.of(dnsServer));
         }
 
+<<<<<<< HEAD
+=======
+        public Builder dnsServers(@Nullable Output<List<String>> dnsServers) {
+            $.dnsServers = dnsServers;
+            return this;
+        }
+
+        public Builder dnsServers(List<String> dnsServers) {
+            return dnsServers(Output.of(dnsServers));
+        }
+
+        public Builder dnsServers(String... dnsServers) {
+            return dnsServers(List.of(dnsServers));
+        }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /**
          * @param reservations Mapping of MAC addresses to IP addresses
          * 

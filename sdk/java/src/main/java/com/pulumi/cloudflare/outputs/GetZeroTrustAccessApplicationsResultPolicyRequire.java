@@ -21,6 +21,10 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyR
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyRequireGsuite;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyRequireIp;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyRequireIpList;
+<<<<<<< HEAD
+=======
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyRequireLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyRequireOkta;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyRequireSaml;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyRequireServiceToken;
@@ -56,6 +60,10 @@ public final class GetZeroTrustAccessApplicationsResultPolicyRequire {
     private GetZeroTrustAccessApplicationsResultPolicyRequireGsuite gsuite;
     private GetZeroTrustAccessApplicationsResultPolicyRequireIp ip;
     private GetZeroTrustAccessApplicationsResultPolicyRequireIpList ipList;
+<<<<<<< HEAD
+=======
+    private GetZeroTrustAccessApplicationsResultPolicyRequireLoginMethod loginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     private GetZeroTrustAccessApplicationsResultPolicyRequireOkta okta;
     private GetZeroTrustAccessApplicationsResultPolicyRequireSaml saml;
     private GetZeroTrustAccessApplicationsResultPolicyRequireServiceToken serviceToken;
@@ -123,6 +131,12 @@ public final class GetZeroTrustAccessApplicationsResultPolicyRequire {
     public GetZeroTrustAccessApplicationsResultPolicyRequireIpList ipList() {
         return this.ipList;
     }
+<<<<<<< HEAD
+=======
+    public GetZeroTrustAccessApplicationsResultPolicyRequireLoginMethod loginMethod() {
+        return this.loginMethod;
+    }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public GetZeroTrustAccessApplicationsResultPolicyRequireOkta okta() {
         return this.okta;
     }
@@ -160,6 +174,10 @@ public final class GetZeroTrustAccessApplicationsResultPolicyRequire {
         private GetZeroTrustAccessApplicationsResultPolicyRequireGsuite gsuite;
         private GetZeroTrustAccessApplicationsResultPolicyRequireIp ip;
         private GetZeroTrustAccessApplicationsResultPolicyRequireIpList ipList;
+<<<<<<< HEAD
+=======
+        private GetZeroTrustAccessApplicationsResultPolicyRequireLoginMethod loginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private GetZeroTrustAccessApplicationsResultPolicyRequireOkta okta;
         private GetZeroTrustAccessApplicationsResultPolicyRequireSaml saml;
         private GetZeroTrustAccessApplicationsResultPolicyRequireServiceToken serviceToken;
@@ -184,6 +202,10 @@ public final class GetZeroTrustAccessApplicationsResultPolicyRequire {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
+<<<<<<< HEAD
+=======
+    	      this.loginMethod = defaults.loginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -334,6 +356,17 @@ public final class GetZeroTrustAccessApplicationsResultPolicyRequire {
             return this;
         }
         @CustomType.Setter
+<<<<<<< HEAD
+=======
+        public Builder loginMethod(GetZeroTrustAccessApplicationsResultPolicyRequireLoginMethod loginMethod) {
+            if (loginMethod == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResultPolicyRequire", "loginMethod");
+            }
+            this.loginMethod = loginMethod;
+            return this;
+        }
+        @CustomType.Setter
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder okta(GetZeroTrustAccessApplicationsResultPolicyRequireOkta okta) {
             if (okta == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResultPolicyRequire", "okta");
@@ -377,6 +410,10 @@ public final class GetZeroTrustAccessApplicationsResultPolicyRequire {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
+<<<<<<< HEAD
+=======
+            _resultValue.loginMethod = loginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

@@ -26,10 +26,26 @@ class GetZeroTrustAccessMtlsHostnameSettingsResult:
     """
     A collection of values returned by getZeroTrustAccessMtlsHostnameSettings.
     """
+<<<<<<< HEAD
     def __init__(__self__, account_id=None, id=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+=======
+    def __init__(__self__, account_id=None, china_network=None, client_certificate_forwarding=None, hostname=None, id=None, zone_id=None):
+        if account_id and not isinstance(account_id, str):
+            raise TypeError("Expected argument 'account_id' to be a str")
+        pulumi.set(__self__, "account_id", account_id)
+        if china_network and not isinstance(china_network, bool):
+            raise TypeError("Expected argument 'china_network' to be a bool")
+        pulumi.set(__self__, "china_network", china_network)
+        if client_certificate_forwarding and not isinstance(client_certificate_forwarding, bool):
+            raise TypeError("Expected argument 'client_certificate_forwarding' to be a bool")
+        pulumi.set(__self__, "client_certificate_forwarding", client_certificate_forwarding)
+        if hostname and not isinstance(hostname, str):
+            raise TypeError("Expected argument 'hostname' to be a str")
+        pulumi.set(__self__, "hostname", hostname)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -46,6 +62,33 @@ class GetZeroTrustAccessMtlsHostnameSettingsResult:
         return pulumi.get(self, "account_id")
 
     @property
+<<<<<<< HEAD
+=======
+    @pulumi.getter(name="chinaNetwork")
+    def china_network(self) -> bool:
+        """
+        Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        """
+        return pulumi.get(self, "china_network")
+
+    @property
+    @pulumi.getter(name="clientCertificateForwarding")
+    def client_certificate_forwarding(self) -> bool:
+        """
+        Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        """
+        return pulumi.get(self, "client_certificate_forwarding")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        The hostname that these settings apply to.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter
     def id(self) -> str:
         """
@@ -69,6 +112,12 @@ class AwaitableGetZeroTrustAccessMtlsHostnameSettingsResult(GetZeroTrustAccessMt
             yield self
         return GetZeroTrustAccessMtlsHostnameSettingsResult(
             account_id=self.account_id,
+<<<<<<< HEAD
+=======
+            china_network=self.china_network,
+            client_certificate_forwarding=self.client_certificate_forwarding,
+            hostname=self.hostname,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             id=self.id,
             zone_id=self.zone_id)
 
@@ -99,6 +148,12 @@ def get_zero_trust_access_mtls_hostname_settings(account_id: Optional[str] = Non
 
     return AwaitableGetZeroTrustAccessMtlsHostnameSettingsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+<<<<<<< HEAD
+=======
+        china_network=pulumi.get(__ret__, 'china_network'),
+        client_certificate_forwarding=pulumi.get(__ret__, 'client_certificate_forwarding'),
+        hostname=pulumi.get(__ret__, 'hostname'),
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         id=pulumi.get(__ret__, 'id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zero_trust_access_mtls_hostname_settings_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -126,5 +181,11 @@ def get_zero_trust_access_mtls_hostname_settings_output(account_id: Optional[pul
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustAccessMtlsHostnameSettings:getZeroTrustAccessMtlsHostnameSettings', __args__, opts=opts, typ=GetZeroTrustAccessMtlsHostnameSettingsResult)
     return __ret__.apply(lambda __response__: GetZeroTrustAccessMtlsHostnameSettingsResult(
         account_id=pulumi.get(__response__, 'account_id'),
+<<<<<<< HEAD
+=======
+        china_network=pulumi.get(__response__, 'china_network'),
+        client_certificate_forwarding=pulumi.get(__response__, 'client_certificate_forwarding'),
+        hostname=pulumi.get(__response__, 'hostname'),
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         id=pulumi.get(__response__, 'id'),
         zone_id=pulumi.get(__response__, 'zone_id')))

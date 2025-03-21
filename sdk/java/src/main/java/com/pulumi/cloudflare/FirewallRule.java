@@ -16,11 +16,14 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+<<<<<<< HEAD
  * &gt; `cloudflare.FirewallRule` is in a deprecation phase until January 15th, 2025.
+=======
+ * &gt; `cloudflare.FirewallRule` is in a deprecation phase until June 15th, 2025.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  *   During this time period, this resource is still
  *   fully supported but you are strongly advised  to move to the
  *   `cloudflare.Ruleset` resource. Full details can be found in the
@@ -78,6 +81,15 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+<<<<<<< HEAD
+=======
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/firewallRule:FirewallRule example &#39;&lt;zone_id&gt;/&lt;rule_id&gt;&#39;
+ * ```
+ * 
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  */
 @ResourceType(type="cloudflare:index/firewallRule:FirewallRule")
 public class FirewallRule extends com.pulumi.resources.CustomResource {
@@ -164,6 +176,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
         return this.ref;
     }
     /**
+<<<<<<< HEAD
      * The unique identifier of the firewall rule.
      * 
      */
@@ -178,6 +191,8 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ruleId);
     }
     /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Identifier
      * 
      */

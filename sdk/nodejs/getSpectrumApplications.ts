@@ -45,7 +45,11 @@ export interface GetSpectrumApplicationsArgs {
      */
     order?: string;
     /**
+<<<<<<< HEAD
      * Identifier
+=======
+     * Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     zoneId: string;
 }
@@ -75,7 +79,11 @@ export interface GetSpectrumApplicationsResult {
      */
     readonly results: outputs.GetSpectrumApplicationsResult[];
     /**
+<<<<<<< HEAD
      * Identifier
+=======
+     * Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     readonly zoneId: string;
 }
@@ -118,7 +126,11 @@ export interface GetSpectrumApplicationsOutputArgs {
      */
     order?: pulumi.Input<string>;
     /**
+<<<<<<< HEAD
      * Identifier
+=======
+     * Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     zoneId: pulumi.Input<string>;
 }

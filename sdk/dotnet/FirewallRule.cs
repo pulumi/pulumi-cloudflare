@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+<<<<<<< HEAD
     /// &gt; `cloudflare.FirewallRule` is in a deprecation phase until January 15th, 2025.
+=======
+    /// &gt; `cloudflare.FirewallRule` is in a deprecation phase until June 15th, 2025.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     ///   During this time period, this resource is still
     ///   fully supported but you are strongly advised  to move to the
     ///   `cloudflare.Ruleset` resource. Full details can be found in the
@@ -50,6 +54,15 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+<<<<<<< HEAD
+=======
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/firewallRule:FirewallRule example '&lt;zone_id&gt;/&lt;rule_id&gt;'
+    /// ```
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /// </summary>
     [CloudflareResourceType("cloudflare:index/firewallRule:FirewallRule")]
     public partial class FirewallRule : global::Pulumi.CustomResource
@@ -91,12 +104,15 @@ namespace Pulumi.Cloudflare
         public Output<string> Ref { get; private set; } = null!;
 
         /// <summary>
+<<<<<<< HEAD
         /// The unique identifier of the firewall rule.
         /// </summary>
         [Output("ruleId")]
         public Output<string?> RuleId { get; private set; } = null!;
 
         /// <summary>
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// Identifier
         /// </summary>
         [Output("zoneId")]
@@ -158,12 +174,15 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.FirewallRuleFilterArgs> Filter { get; set; } = null!;
 
         /// <summary>
+<<<<<<< HEAD
         /// The unique identifier of the firewall rule.
         /// </summary>
         [Input("ruleId")]
         public Input<string>? RuleId { get; set; }
 
         /// <summary>
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
@@ -219,12 +238,15 @@ namespace Pulumi.Cloudflare
         public Input<string>? Ref { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// The unique identifier of the firewall rule.
         /// </summary>
         [Input("ruleId")]
         public Input<string>? RuleId { get; set; }
 
         /// <summary>
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// Identifier
         /// </summary>
         [Input("zoneId")]

@@ -33,6 +33,39 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies the timestamp the resource was created as an ISO8601 string.
+<<<<<<< HEAD
+=======
+     * 
+     */
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    /**
+     * @return Specifies the timestamp the resource was created as an ISO8601 string.
+     * 
+     */
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * The D1 database&#39;s size, in bytes.
+     * 
+     */
+    @Import(name="fileSize")
+    private @Nullable Output<Double> fileSize;
+
+    /**
+     * @return The D1 database&#39;s size, in bytes.
+     * 
+     */
+    public Optional<Output<Double>> fileSize() {
+        return Optional.ofNullable(this.fileSize);
+    }
+
+    /**
+     * D1 database name.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     @Import(name="createdAt")
@@ -64,6 +97,13 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
     @Import(name="name")
     private @Nullable Output<String> name;
 
+<<<<<<< HEAD
+=======
+    /**
+     * @return D1 database name.
+     * 
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -90,9 +130,23 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.primaryLocationHint);
     }
 
+<<<<<<< HEAD
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
+=======
+    /**
+     * D1 database identifier (UUID).
+     * 
+     */
+    @Import(name="uuid")
+    private @Nullable Output<String> uuid;
+
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Optional<Output<String>> uuid() {
         return Optional.ofNullable(this.uuid);
     }
@@ -158,6 +212,51 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param createdAt Specifies the timestamp the resource was created as an ISO8601 string.
+<<<<<<< HEAD
+=======
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        /**
+         * @param createdAt Specifies the timestamp the resource was created as an ISO8601 string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param fileSize The D1 database&#39;s size, in bytes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSize(@Nullable Output<Double> fileSize) {
+            $.fileSize = fileSize;
+            return this;
+        }
+
+        /**
+         * @param fileSize The D1 database&#39;s size, in bytes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSize(Double fileSize) {
+            return fileSize(Output.of(fileSize));
+        }
+
+        /**
+         * @param name D1 database name.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 
@@ -203,6 +302,15 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
             return this;
         }
 
+<<<<<<< HEAD
+=======
+        /**
+         * @param name D1 database name.
+         * 
+         * @return builder
+         * 
+         */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -237,11 +345,29 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
             return primaryLocationHint(Output.of(primaryLocationHint));
         }
 
+<<<<<<< HEAD
+=======
+        /**
+         * @param uuid D1 database identifier (UUID).
+         * 
+         * @return builder
+         * 
+         */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder uuid(@Nullable Output<String> uuid) {
             $.uuid = uuid;
             return this;
         }
 
+<<<<<<< HEAD
+=======
+        /**
+         * @param uuid D1 database identifier (UUID).
+         * 
+         * @return builder
+         * 
+         */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder uuid(String uuid) {
             return uuid(Output.of(uuid));
         }

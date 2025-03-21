@@ -85,13 +85,21 @@ namespace Pulumi.Cloudflare
     public sealed class GetSpectrumApplicationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+<<<<<<< HEAD
         /// Identifier
+=======
+        /// App identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
 
         /// <summary>
+<<<<<<< HEAD
         /// Identifier
+=======
+        /// Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -105,13 +113,21 @@ namespace Pulumi.Cloudflare
     public sealed class GetSpectrumApplicationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+<<<<<<< HEAD
         /// Identifier
+=======
+        /// App identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
 
         /// <summary>
+<<<<<<< HEAD
         /// Identifier
+=======
+        /// Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -127,7 +143,11 @@ namespace Pulumi.Cloudflare
     public sealed class GetSpectrumApplicationResult
     {
         /// <summary>
+<<<<<<< HEAD
         /// Identifier
+=======
+        /// App identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         public readonly string AppId;
         /// <summary>
@@ -190,7 +210,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string TrafficType;
         /// <summary>
+<<<<<<< HEAD
         /// Identifier
+=======
+        /// Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         public readonly string ZoneId;
 

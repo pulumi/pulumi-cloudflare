@@ -59,7 +59,11 @@ class GetZeroTrustDevicePostureIntegrationResult:
     @pulumi.getter
     def config(self) -> 'outputs.GetZeroTrustDevicePostureIntegrationConfigResult':
         """
+<<<<<<< HEAD
         The Workspace One Config Response.
+=======
+        The configuration object containing third-party integration information.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         return pulumi.get(self, "config")
 

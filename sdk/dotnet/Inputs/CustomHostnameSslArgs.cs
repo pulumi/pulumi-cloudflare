@@ -30,6 +30,21 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("cloudflareBranding")]
         public Input<bool>? CloudflareBranding { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Input("customCertBundles")]
+        private InputList<Inputs.CustomHostnameSslCustomCertBundleArgs>? _customCertBundles;
+
+        /// <summary>
+        /// Array of custom certificate and key pairs (1 or 2 pairs allowed)
+        /// </summary>
+        public InputList<Inputs.CustomHostnameSslCustomCertBundleArgs> CustomCertBundles
+        {
+            get => _customCertBundles ?? (_customCertBundles = new InputList<Inputs.CustomHostnameSslCustomCertBundleArgs>());
+            set => _customCertBundles = value;
+        }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// If a custom uploaded certificate is used.
         /// </summary>

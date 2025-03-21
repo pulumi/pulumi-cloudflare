@@ -3,6 +3,10 @@
 
 package com.pulumi.cloudflare.inputs;
 
+<<<<<<< HEAD
+=======
+import com.pulumi.cloudflare.inputs.CustomHostnameSslCustomCertBundleArgs;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import com.pulumi.cloudflare.inputs.CustomHostnameSslSettingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -63,6 +67,24 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Array of custom certificate and key pairs (1 or 2 pairs allowed)
+     * 
+     */
+    @Import(name="customCertBundles")
+    private @Nullable Output<List<CustomHostnameSslCustomCertBundleArgs>> customCertBundles;
+
+    /**
+     * @return Array of custom certificate and key pairs (1 or 2 pairs allowed)
+     * 
+     */
+    public Optional<Output<List<CustomHostnameSslCustomCertBundleArgs>>> customCertBundles() {
+        return Optional.ofNullable(this.customCertBundles);
+    }
+
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * If a custom uploaded certificate is used.
      * 
      */
@@ -158,6 +180,10 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
         this.bundleMethod = $.bundleMethod;
         this.certificateAuthority = $.certificateAuthority;
         this.cloudflareBranding = $.cloudflareBranding;
+<<<<<<< HEAD
+=======
+        this.customCertBundles = $.customCertBundles;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.customCertificate = $.customCertificate;
         this.customKey = $.customKey;
         this.method = $.method;
@@ -248,6 +274,40 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+<<<<<<< HEAD
+=======
+         * @param customCertBundles Array of custom certificate and key pairs (1 or 2 pairs allowed)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCertBundles(@Nullable Output<List<CustomHostnameSslCustomCertBundleArgs>> customCertBundles) {
+            $.customCertBundles = customCertBundles;
+            return this;
+        }
+
+        /**
+         * @param customCertBundles Array of custom certificate and key pairs (1 or 2 pairs allowed)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCertBundles(List<CustomHostnameSslCustomCertBundleArgs> customCertBundles) {
+            return customCertBundles(Output.of(customCertBundles));
+        }
+
+        /**
+         * @param customCertBundles Array of custom certificate and key pairs (1 or 2 pairs allowed)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCertBundles(CustomHostnameSslCustomCertBundleArgs... customCertBundles) {
+            return customCertBundles(List.of(customCertBundles));
+        }
+
+        /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param customCertificate If a custom uploaded certificate is used.
          * 
          * @return builder

@@ -15,14 +15,22 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
     public static final GetSpectrumApplicationArgs Empty = new GetSpectrumApplicationArgs();
 
     /**
+<<<<<<< HEAD
      * Identifier
+=======
+     * App identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     @Import(name="appId", required=true)
     private Output<String> appId;
 
     /**
+<<<<<<< HEAD
      * @return Identifier
+=======
+     * @return App identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public Output<String> appId() {
@@ -30,14 +38,22 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
     }
 
     /**
+<<<<<<< HEAD
      * Identifier
+=======
+     * Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
+<<<<<<< HEAD
      * @return Identifier
+=======
+     * @return Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public Output<String> zoneId() {
@@ -70,7 +86,11 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
         }
 
         /**
+<<<<<<< HEAD
          * @param appId Identifier
+=======
+         * @param appId App identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 
@@ -81,7 +101,11 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
         }
 
         /**
+<<<<<<< HEAD
          * @param appId Identifier
+=======
+         * @param appId App identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 
@@ -91,7 +115,11 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
         }
 
         /**
+<<<<<<< HEAD
          * @param zoneId Identifier
+=======
+         * @param zoneId Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 
@@ -102,7 +130,11 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
         }
 
         /**
+<<<<<<< HEAD
          * @param zoneId Identifier
+=======
+         * @param zoneId Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 

@@ -60,6 +60,10 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .name("name")
+<<<<<<< HEAD
+=======
+ *                 .ai_context_enabled(true)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  *                 .allowed_match_count(5)
  *                 .confidence_threshold("confidence_threshold")
  *                 .context_awareness(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
@@ -90,6 +94,15 @@ public class ZeroTrustDlpCustomProfile extends com.pulumi.resources.CustomResour
     public Output<String> accountId() {
         return this.accountId;
     }
+<<<<<<< HEAD
+=======
+    @Export(name="aiContextEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> aiContextEnabled;
+
+    public Output<Optional<Boolean>> aiContextEnabled() {
+        return Codegen.optional(this.aiContextEnabled);
+    }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
      * 

@@ -22,14 +22,23 @@ __all__ = ['PagesDomainArgs', 'PagesDomain']
 class PagesDomainArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
+<<<<<<< HEAD
                  project_name: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None):
+=======
+                 name: pulumi.Input[str],
+                 project_name: pulumi.Input[str]):
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         The set of arguments for constructing a PagesDomain resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] project_name: Name of the project.
         """
         pulumi.set(__self__, "account_id", account_id)
+<<<<<<< HEAD
+=======
+        pulumi.set(__self__, "name", name)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         pulumi.set(__self__, "project_name", project_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -47,6 +56,18 @@ class PagesDomainArgs:
         pulumi.set(self, "account_id", value)
 
     @property
+<<<<<<< HEAD
+=======
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="projectName")
     def project_name(self) -> pulumi.Input[str]:
         """
@@ -298,6 +319,11 @@ class PagesDomain(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+<<<<<<< HEAD
+=======
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             __props__.__dict__["name"] = name
             if project_name is None and not opts.urn:
                 raise TypeError("Missing required property 'project_name'")
@@ -380,7 +406,11 @@ class PagesDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+<<<<<<< HEAD
     def name(self) -> pulumi.Output[Optional[str]]:
+=======
+    def name(self) -> pulumi.Output[str]:
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return pulumi.get(self, "name")
 
     @property

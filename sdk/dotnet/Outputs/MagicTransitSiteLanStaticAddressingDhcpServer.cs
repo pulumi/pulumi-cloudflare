@@ -25,6 +25,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// A valid IPv4 address.
         /// </summary>
         public readonly string? DnsServer;
+<<<<<<< HEAD
+=======
+        public readonly ImmutableArray<string> DnsServers;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// Mapping of MAC addresses to IP addresses
         /// </summary>
@@ -38,11 +42,20 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? dnsServer,
 
+<<<<<<< HEAD
+=======
+            ImmutableArray<string> dnsServers,
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             ImmutableDictionary<string, string>? reservations)
         {
             DhcpPoolEnd = dhcpPoolEnd;
             DhcpPoolStart = dhcpPoolStart;
             DnsServer = dnsServer;
+<<<<<<< HEAD
+=======
+            DnsServers = dnsServers;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             Reservations = reservations;
         }
     }

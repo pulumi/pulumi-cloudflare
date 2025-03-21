@@ -50,7 +50,12 @@ func LookupD1Database(ctx *pulumi.Context, args *LookupD1DatabaseArgs, opts ...p
 // A collection of arguments for invoking getD1Database.
 type LookupD1DatabaseArgs struct {
 	// Account identifier tag.
+<<<<<<< HEAD
 	AccountId  string               `pulumi:"accountId"`
+=======
+	AccountId string `pulumi:"accountId"`
+	// D1 database identifier (UUID).
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	DatabaseId *string              `pulumi:"databaseId"`
 	Filter     *GetD1DatabaseFilter `pulumi:"filter"`
 }
@@ -60,17 +65,33 @@ type LookupD1DatabaseResult struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
 	// Specifies the timestamp the resource was created as an ISO8601 string.
+<<<<<<< HEAD
 	CreatedAt  string  `pulumi:"createdAt"`
+=======
+	CreatedAt string `pulumi:"createdAt"`
+	// D1 database identifier (UUID).
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	DatabaseId *string `pulumi:"databaseId"`
 	// The D1 database's size, in bytes.
 	FileSize float64              `pulumi:"fileSize"`
 	Filter   *GetD1DatabaseFilter `pulumi:"filter"`
+<<<<<<< HEAD
 	// The ID of this resource.
 	Id        string  `pulumi:"id"`
 	Name      string  `pulumi:"name"`
 	NumTables float64 `pulumi:"numTables"`
 	Uuid      string  `pulumi:"uuid"`
 	Version   string  `pulumi:"version"`
+=======
+	// D1 database identifier (UUID).
+	Id string `pulumi:"id"`
+	// D1 database name.
+	Name      string  `pulumi:"name"`
+	NumTables float64 `pulumi:"numTables"`
+	// D1 database identifier (UUID).
+	Uuid    string `pulumi:"uuid"`
+	Version string `pulumi:"version"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func LookupD1DatabaseOutput(ctx *pulumi.Context, args LookupD1DatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupD1DatabaseResultOutput {
@@ -85,7 +106,12 @@ func LookupD1DatabaseOutput(ctx *pulumi.Context, args LookupD1DatabaseOutputArgs
 // A collection of arguments for invoking getD1Database.
 type LookupD1DatabaseOutputArgs struct {
 	// Account identifier tag.
+<<<<<<< HEAD
 	AccountId  pulumi.StringInput          `pulumi:"accountId"`
+=======
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// D1 database identifier (UUID).
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	DatabaseId pulumi.StringPtrInput       `pulumi:"databaseId"`
 	Filter     GetD1DatabaseFilterPtrInput `pulumi:"filter"`
 }
@@ -119,6 +145,10 @@ func (o LookupD1DatabaseResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupD1DatabaseResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+<<<<<<< HEAD
+=======
+// D1 database identifier (UUID).
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func (o LookupD1DatabaseResultOutput) DatabaseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupD1DatabaseResult) *string { return v.DatabaseId }).(pulumi.StringPtrOutput)
 }
@@ -132,11 +162,19 @@ func (o LookupD1DatabaseResultOutput) Filter() GetD1DatabaseFilterPtrOutput {
 	return o.ApplyT(func(v LookupD1DatabaseResult) *GetD1DatabaseFilter { return v.Filter }).(GetD1DatabaseFilterPtrOutput)
 }
 
+<<<<<<< HEAD
 // The ID of this resource.
+=======
+// D1 database identifier (UUID).
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func (o LookupD1DatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupD1DatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+<<<<<<< HEAD
+=======
+// D1 database name.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func (o LookupD1DatabaseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupD1DatabaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -145,6 +183,10 @@ func (o LookupD1DatabaseResultOutput) NumTables() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupD1DatabaseResult) float64 { return v.NumTables }).(pulumi.Float64Output)
 }
 
+<<<<<<< HEAD
+=======
+// D1 database identifier (UUID).
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func (o LookupD1DatabaseResultOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupD1DatabaseResult) string { return v.Uuid }).(pulumi.StringOutput)
 }

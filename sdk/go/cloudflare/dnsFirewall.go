@@ -38,7 +38,11 @@ type DnsFirewall struct {
 	// Last modification of DNS Firewall cluster
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// DNS Firewall cluster name
+<<<<<<< HEAD
 	Name pulumi.StringPtrOutput `pulumi:"name"`
+=======
+	Name pulumi.StringOutput `pulumi:"name"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
 	NegativeCacheTtl pulumi.Float64PtrOutput `pulumi:"negativeCacheTtl"`
 	// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
@@ -58,6 +62,15 @@ func NewDnsFirewall(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+<<<<<<< HEAD
+=======
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.UpstreamIps == nil {
+		return nil, errors.New("invalid value for required argument 'UpstreamIps'")
+	}
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DnsFirewall
 	err := ctx.RegisterResource("cloudflare:index/dnsFirewall:DnsFirewall", name, args, &resource, opts...)
@@ -152,7 +165,11 @@ type dnsFirewallArgs struct {
 	// Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.
 	MinimumCacheTtl *float64 `pulumi:"minimumCacheTtl"`
 	// DNS Firewall cluster name
+<<<<<<< HEAD
 	Name *string `pulumi:"name"`
+=======
+	Name string `pulumi:"name"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
 	NegativeCacheTtl *float64 `pulumi:"negativeCacheTtl"`
 	// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
@@ -177,7 +194,11 @@ type DnsFirewallArgs struct {
 	// Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.
 	MinimumCacheTtl pulumi.Float64PtrInput
 	// DNS Firewall cluster name
+<<<<<<< HEAD
 	Name pulumi.StringPtrInput
+=======
+	Name pulumi.StringInput
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
 	NegativeCacheTtl pulumi.Float64PtrInput
 	// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
@@ -314,8 +335,13 @@ func (o DnsFirewallOutput) ModifiedOn() pulumi.StringOutput {
 }
 
 // DNS Firewall cluster name
+<<<<<<< HEAD
 func (o DnsFirewallOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DnsFirewall) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+=======
+func (o DnsFirewallOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsFirewall) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.

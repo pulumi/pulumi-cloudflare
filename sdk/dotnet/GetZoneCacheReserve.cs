@@ -116,7 +116,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool Editable;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// ID of the zone setting.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -146,9 +146,13 @@ namespace Pulumi.Cloudflare
 
             string value,
 
+<<<<<<< HEAD
             string zoneId,
 
             string zoneSettingId)
+=======
+            string zoneId)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         {
             Editable = editable;
             Id = id;

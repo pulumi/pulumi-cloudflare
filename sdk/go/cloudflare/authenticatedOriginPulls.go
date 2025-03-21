@@ -37,6 +37,11 @@ type AuthenticatedOriginPulls struct {
 	Hostname pulumi.StringPtrOutput `pulumi:"hostname"`
 	// The certificate authority that issued the certificate.
 	Issuer pulumi.StringOutput `pulumi:"issuer"`
+<<<<<<< HEAD
+=======
+	// The hostname certificate's private key.
+	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The serial number on the uploaded certificate.
 	SerialNumber pulumi.StringOutput `pulumi:"serialNumber"`
 	// The type of hash used for the certificate.
@@ -106,6 +111,11 @@ type authenticatedOriginPullsState struct {
 	Hostname *string `pulumi:"hostname"`
 	// The certificate authority that issued the certificate.
 	Issuer *string `pulumi:"issuer"`
+<<<<<<< HEAD
+=======
+	// The hostname certificate's private key.
+	PrivateKey *string `pulumi:"privateKey"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The serial number on the uploaded certificate.
 	SerialNumber *string `pulumi:"serialNumber"`
 	// The type of hash used for the certificate.
@@ -140,6 +150,11 @@ type AuthenticatedOriginPullsState struct {
 	Hostname pulumi.StringPtrInput
 	// The certificate authority that issued the certificate.
 	Issuer pulumi.StringPtrInput
+<<<<<<< HEAD
+=======
+	// The hostname certificate's private key.
+	PrivateKey pulumi.StringPtrInput
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The serial number on the uploaded certificate.
 	SerialNumber pulumi.StringPtrInput
 	// The type of hash used for the certificate.
@@ -314,6 +329,14 @@ func (o AuthenticatedOriginPullsOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.Issuer }).(pulumi.StringOutput)
 }
 
+<<<<<<< HEAD
+=======
+// The hostname certificate's private key.
+func (o AuthenticatedOriginPullsOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // The serial number on the uploaded certificate.
 func (o AuthenticatedOriginPullsOutput) SerialNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.SerialNumber }).(pulumi.StringOutput)

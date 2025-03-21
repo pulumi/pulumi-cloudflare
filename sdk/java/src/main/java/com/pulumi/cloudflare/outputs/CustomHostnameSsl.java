@@ -3,6 +3,10 @@
 
 package com.pulumi.cloudflare.outputs;
 
+<<<<<<< HEAD
+=======
+import com.pulumi.cloudflare.outputs.CustomHostnameSslCustomCertBundle;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import com.pulumi.cloudflare.outputs.CustomHostnameSslSettings;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -29,6 +33,14 @@ public final class CustomHostnameSsl {
      */
     private @Nullable Boolean cloudflareBranding;
     /**
+<<<<<<< HEAD
+=======
+     * @return Array of custom certificate and key pairs (1 or 2 pairs allowed)
+     * 
+     */
+    private @Nullable List<CustomHostnameSslCustomCertBundle> customCertBundles;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return If a custom uploaded certificate is used.
      * 
      */
@@ -82,6 +94,16 @@ public final class CustomHostnameSsl {
         return Optional.ofNullable(this.cloudflareBranding);
     }
     /**
+<<<<<<< HEAD
+=======
+     * @return Array of custom certificate and key pairs (1 or 2 pairs allowed)
+     * 
+     */
+    public List<CustomHostnameSslCustomCertBundle> customCertBundles() {
+        return this.customCertBundles == null ? List.of() : this.customCertBundles;
+    }
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return If a custom uploaded certificate is used.
      * 
      */
@@ -136,6 +158,10 @@ public final class CustomHostnameSsl {
         private @Nullable String bundleMethod;
         private @Nullable String certificateAuthority;
         private @Nullable Boolean cloudflareBranding;
+<<<<<<< HEAD
+=======
+        private @Nullable List<CustomHostnameSslCustomCertBundle> customCertBundles;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private @Nullable String customCertificate;
         private @Nullable String customKey;
         private @Nullable String method;
@@ -148,6 +174,10 @@ public final class CustomHostnameSsl {
     	      this.bundleMethod = defaults.bundleMethod;
     	      this.certificateAuthority = defaults.certificateAuthority;
     	      this.cloudflareBranding = defaults.cloudflareBranding;
+<<<<<<< HEAD
+=======
+    	      this.customCertBundles = defaults.customCertBundles;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.customCertificate = defaults.customCertificate;
     	      this.customKey = defaults.customKey;
     	      this.method = defaults.method;
@@ -175,6 +205,18 @@ public final class CustomHostnameSsl {
             return this;
         }
         @CustomType.Setter
+<<<<<<< HEAD
+=======
+        public Builder customCertBundles(@Nullable List<CustomHostnameSslCustomCertBundle> customCertBundles) {
+
+            this.customCertBundles = customCertBundles;
+            return this;
+        }
+        public Builder customCertBundles(CustomHostnameSslCustomCertBundle... customCertBundles) {
+            return customCertBundles(List.of(customCertBundles));
+        }
+        @CustomType.Setter
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder customCertificate(@Nullable String customCertificate) {
 
             this.customCertificate = customCertificate;
@@ -215,6 +257,10 @@ public final class CustomHostnameSsl {
             _resultValue.bundleMethod = bundleMethod;
             _resultValue.certificateAuthority = certificateAuthority;
             _resultValue.cloudflareBranding = cloudflareBranding;
+<<<<<<< HEAD
+=======
+            _resultValue.customCertBundles = customCertBundles;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.customCertificate = customCertificate;
             _resultValue.customKey = customKey;
             _resultValue.method = method;

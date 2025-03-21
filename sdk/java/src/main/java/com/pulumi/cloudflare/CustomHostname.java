@@ -54,6 +54,10 @@ import javax.annotation.Nullable;
  *                 .bundle_method("ubiquitous")
  *                 .certificate_authority("digicert")
  *                 .cloudflare_branding(false)
+<<<<<<< HEAD
+=======
+ *                 .custom_cert_bundle(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  *                 .custom_certificate("-----BEGIN CERTIFICATE-----\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\n-----END CERTIFICATE-----\\n")
  *                 .custom_key("""
  *     -----BEGIN RSA PRIVATE KEY-----

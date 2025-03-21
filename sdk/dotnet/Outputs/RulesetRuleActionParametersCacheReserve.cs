@@ -20,13 +20,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The minimum file size eligible for store in cache reserve.
         /// </summary>
-        public readonly int? MinimumFileSize;
+        public readonly int MinimumFileSize;
 
         [OutputConstructor]
         private RulesetRuleActionParametersCacheReserve(
             bool eligible,
 
-            int? minimumFileSize)
+            int minimumFileSize)
         {
             Eligible = eligible;
             MinimumFileSize = minimumFileSize;

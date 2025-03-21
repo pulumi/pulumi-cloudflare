@@ -144,6 +144,15 @@ namespace Pulumi.Cloudflare
         [Output("vanityNameServers")]
         public Output<ImmutableArray<string>> VanityNameServers { get; private set; } = null!;
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Verification key for partial zone setup.
+        /// </summary>
+        [Output("verificationKey")]
+        public Output<string> VerificationKey { get; private set; } = null!;
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Create a Zone resource with the given unique name, arguments, and options.
@@ -345,6 +354,15 @@ namespace Pulumi.Cloudflare
             set => _vanityNameServers = value;
         }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Verification key for partial zone setup.
+        /// </summary>
+        [Input("verificationKey")]
+        public Input<string>? VerificationKey { get; set; }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public ZoneState()
         {
         }

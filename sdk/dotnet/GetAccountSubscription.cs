@@ -116,18 +116,80 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
+<<<<<<< HEAD
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+=======
+        /// The monetary unit in which pricing information is displayed.
+        /// </summary>
+        public readonly string Currency;
+        /// <summary>
+        /// The end of the current period and also when the next billing is due.
+        /// </summary>
+        public readonly string CurrentPeriodEnd;
+        /// <summary>
+        /// When the current billing period started. May match initial*period*start if this is the first period.
+        /// </summary>
+        public readonly string CurrentPeriodStart;
+        /// <summary>
+        /// How often the subscription is renewed automatically.
+        /// </summary>
+        public readonly string Frequency;
+        /// <summary>
+        /// Subscription identifier tag.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
+        /// The price of the subscription that will be billed, in US dollars.
+        /// </summary>
+        public readonly double Price;
+        /// <summary>
+        /// The rate plan applied to the subscription.
+        /// </summary>
+        public readonly Outputs.GetAccountSubscriptionRatePlanResult RatePlan;
+        /// <summary>
+        /// The state that the subscription is in.
+        /// </summary>
+        public readonly string State;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         [OutputConstructor]
         private GetAccountSubscriptionResult(
             string accountId,
 
+<<<<<<< HEAD
             string id)
         {
             AccountId = accountId;
             Id = id;
+=======
+            string currency,
+
+            string currentPeriodEnd,
+
+            string currentPeriodStart,
+
+            string frequency,
+
+            string id,
+
+            double price,
+
+            Outputs.GetAccountSubscriptionRatePlanResult ratePlan,
+
+            string state)
+        {
+            AccountId = accountId;
+            Currency = currency;
+            CurrentPeriodEnd = currentPeriodEnd;
+            CurrentPeriodStart = currentPeriodStart;
+            Frequency = frequency;
+            Id = id;
+            Price = price;
+            RatePlan = ratePlan;
+            State = state;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
     }
 }

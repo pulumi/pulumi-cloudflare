@@ -28,7 +28,11 @@ export interface GetMagicTransitSiteWanArgs {
     /**
      * Identifier
      */
+<<<<<<< HEAD
     wanId: string;
+=======
+    wanId?: string;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 /**
@@ -68,7 +72,11 @@ export interface GetMagicTransitSiteWanResult {
     /**
      * Identifier
      */
+<<<<<<< HEAD
     readonly wanId: string;
+=======
+    readonly wanId?: string;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 /**
  * ## Example Usage
@@ -92,5 +100,9 @@ export interface GetMagicTransitSiteWanOutputArgs {
     /**
      * Identifier
      */
+<<<<<<< HEAD
     wanId: pulumi.Input<string>;
+=======
+    wanId?: pulumi.Input<string>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }

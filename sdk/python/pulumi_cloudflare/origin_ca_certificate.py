@@ -203,10 +203,13 @@ class OriginCaCertificate(pulumi.CustomResource):
                  requested_validity: Optional[pulumi.Input[float]] = None,
                  __props__=None):
         """
+<<<<<<< HEAD
         > Since v3.32.0
            all authentication schemes are supported for managing Origin CA certificates.
            Versions prior to v3.32.0 will still need to use `api_user_service_key`.
 
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ## Example Usage
 
         ```python
@@ -260,10 +263,13 @@ class OriginCaCertificate(pulumi.CustomResource):
                  args: Optional[OriginCaCertificateArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+<<<<<<< HEAD
         > Since v3.32.0
            all authentication schemes are supported for managing Origin CA certificates.
            Versions prior to v3.32.0 will still need to use `api_user_service_key`.
 
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ## Example Usage
 
         ```python

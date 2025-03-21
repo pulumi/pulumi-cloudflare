@@ -49,6 +49,21 @@ export interface GetZeroTrustAccessMtlsHostnameSettingsResult {
      */
     readonly accountId?: string;
     /**
+<<<<<<< HEAD
+=======
+     * Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+     */
+    readonly chinaNetwork: boolean;
+    /**
+     * Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+     */
+    readonly clientCertificateForwarding: boolean;
+    /**
+     * The hostname that these settings apply to.
+     */
+    readonly hostname: string;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

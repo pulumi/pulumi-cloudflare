@@ -79,7 +79,7 @@ index 000000000..f2a4952b7
 +	return r.DNSRecordResource.UpgradeState(ctx)
 +}
 diff --git a/internal/provider.go b/internal/provider.go
-index 59f4e8a1f..6d28ed045 100644
+index fcb222c1a..f75149fe7 100644
 --- a/internal/provider.go
 +++ b/internal/provider.go
 @@ -11,6 +11,7 @@ import (
@@ -90,7 +90,7 @@ index 59f4e8a1f..6d28ed045 100644
  	"github.com/cloudflare/terraform-provider-cloudflare/internal/services/access_rule"
  	"github.com/cloudflare/terraform-provider-cloudflare/internal/services/account"
  	"github.com/cloudflare/terraform-provider-cloudflare/internal/services/account_member"
-@@ -532,6 +533,7 @@ func (p *CloudflareProvider) Resources(ctx context.Context) []func() resource.Re
+@@ -557,6 +558,7 @@ func (p *CloudflareProvider) Resources(ctx context.Context) []func() resource.Re
  		leaked_credential_check.NewResource,
  		leaked_credential_check_rule.NewResource,
  		content_scanning_expression.NewResource,

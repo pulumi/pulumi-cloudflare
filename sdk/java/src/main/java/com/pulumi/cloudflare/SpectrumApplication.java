@@ -278,14 +278,22 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
         return this.trafficType;
     }
     /**
+<<<<<<< HEAD
      * Identifier
+=======
+     * Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
+<<<<<<< HEAD
      * @return Identifier
+=======
+     * @return Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public Output<String> zoneId() {

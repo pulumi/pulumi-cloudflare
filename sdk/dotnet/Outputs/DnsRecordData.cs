@@ -40,7 +40,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Flags for the CAA record.
         /// </summary>
+<<<<<<< HEAD
         public readonly object? Flags;
+=======
+        public readonly double? Flags;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// Key Tag.
         /// </summary>
@@ -172,7 +176,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? fingerprint,
 
+<<<<<<< HEAD
             object? flags,
+=======
+            double? flags,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
             double? keyTag,
 

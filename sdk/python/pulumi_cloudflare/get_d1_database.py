@@ -79,6 +79,12 @@ class GetD1DatabaseResult:
     @property
     @pulumi.getter(name="databaseId")
     def database_id(self) -> Optional[str]:
+<<<<<<< HEAD
+=======
+        """
+        D1 database identifier (UUID).
+        """
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return pulumi.get(self, "database_id")
 
     @property
@@ -98,13 +104,23 @@ class GetD1DatabaseResult:
     @pulumi.getter
     def id(self) -> str:
         """
+<<<<<<< HEAD
         The ID of this resource.
+=======
+        D1 database identifier (UUID).
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+<<<<<<< HEAD
+=======
+        """
+        D1 database name.
+        """
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return pulumi.get(self, "name")
 
     @property
@@ -115,6 +131,12 @@ class GetD1DatabaseResult:
     @property
     @pulumi.getter
     def uuid(self) -> str:
+<<<<<<< HEAD
+=======
+        """
+        D1 database identifier (UUID).
+        """
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return pulumi.get(self, "uuid")
 
     @property
@@ -158,6 +180,10 @@ def get_d1_database(account_id: Optional[str] = None,
 
 
     :param str account_id: Account identifier tag.
+<<<<<<< HEAD
+=======
+    :param str database_id: D1 database identifier (UUID).
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -194,6 +220,10 @@ def get_d1_database_output(account_id: Optional[pulumi.Input[str]] = None,
 
 
     :param str account_id: Account identifier tag.
+<<<<<<< HEAD
+=======
+    :param str database_id: D1 database identifier (UUID).
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     """
     __args__ = dict()
     __args__['accountId'] = account_id

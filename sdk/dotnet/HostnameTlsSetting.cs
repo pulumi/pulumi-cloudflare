@@ -12,6 +12,32 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+<<<<<<< HEAD
+=======
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleHostnameTlsSetting = new Cloudflare.HostnameTlsSetting("example_hostname_tls_setting", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "ciphers",
+    ///         Hostname = "app.example.com",
+    ///         Value = new[]
+    ///         {
+    ///             "ECDHE-RSA-AES128-GCM-SHA256",
+    ///             "AES128-GCM-SHA256",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /// ## Import
     /// 
     /// ```sh
@@ -55,7 +81,11 @@ namespace Pulumi.Cloudflare
         /// The tls setting value.
         /// </summary>
         [Output("value")]
+<<<<<<< HEAD
         public Output<double> Value { get; private set; } = null!;
+=======
+        public Output<object> Value { get; private set; } = null!;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Identifier
@@ -125,7 +155,11 @@ namespace Pulumi.Cloudflare
         /// The tls setting value.
         /// </summary>
         [Input("value", required: true)]
+<<<<<<< HEAD
         public Input<double> Value { get; set; } = null!;
+=======
+        public Input<object> Value { get; set; } = null!;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Identifier
@@ -175,7 +209,11 @@ namespace Pulumi.Cloudflare
         /// The tls setting value.
         /// </summary>
         [Input("value")]
+<<<<<<< HEAD
         public Input<double>? Value { get; set; }
+=======
+        public Input<object>? Value { get; set; }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Identifier

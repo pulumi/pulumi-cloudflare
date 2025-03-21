@@ -182,7 +182,11 @@ export interface AccountTokenPolicyPermissionGroup {
     /**
      * Identifier of the group.
      */
+<<<<<<< HEAD
     id?: pulumi.Input<string>;
+=======
+    id: pulumi.Input<string>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Attributes associated to the permission group.
      */
@@ -555,6 +559,16 @@ export interface BotManagementStaleZoneConfiguration {
      * Indicates that the zone's session score tracking is disabled.
      */
     suppressSessionScore?: pulumi.Input<boolean>;
+<<<<<<< HEAD
+=======
+}
+
+export interface CloudConnectorRulesParameters {
+    /**
+     * Host to perform Cloud Connection to
+     */
+    host?: pulumi.Input<string>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 export interface CloudConnectorRulesRule {
@@ -626,6 +640,13 @@ export interface CustomHostnameSsl {
      */
     cloudflareBranding?: pulumi.Input<boolean>;
     /**
+<<<<<<< HEAD
+=======
+     * Array of custom certificate and key pairs (1 or 2 pairs allowed)
+     */
+    customCertBundles?: pulumi.Input<pulumi.Input<inputs.CustomHostnameSslCustomCertBundle>[]>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * If a custom uploaded certificate is used.
      */
     customCertificate?: pulumi.Input<string>;
@@ -651,8 +672,24 @@ export interface CustomHostnameSsl {
     wildcard?: pulumi.Input<boolean>;
 }
 
+<<<<<<< HEAD
 export interface CustomHostnameSslSettings {
     /**
+=======
+export interface CustomHostnameSslCustomCertBundle {
+    /**
+     * If a custom uploaded certificate is used.
+     */
+    customCertificate: pulumi.Input<string>;
+    /**
+     * The key for a custom uploaded certificate.
+     */
+    customKey: pulumi.Input<string>;
+}
+
+export interface CustomHostnameSslSettings {
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
      */
     ciphers?: pulumi.Input<pulumi.Input<string>[]>;
@@ -771,7 +808,11 @@ export interface DnsRecordData {
     /**
      * Flags for the CAA record.
      */
+<<<<<<< HEAD
     flags?: any;
+=======
+    flags?: pulumi.Input<number>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Key Tag.
      */
@@ -905,6 +946,7 @@ export interface DnsRecordSettings {
     ipv6Only?: pulumi.Input<boolean>;
 }
 
+<<<<<<< HEAD
 export interface EmailRoutingCatchAllAction {
     /**
      * Type of action for catch-all rule.
@@ -937,6 +979,124 @@ export interface EmailRoutingDnsResult {
     content?: pulumi.Input<string>;
     errors?: pulumi.Input<pulumi.Input<inputs.EmailRoutingDnsResultError>[]>;
     /**
+=======
+export interface DnsSettingsZoneDefaults {
+    /**
+     * Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
+     */
+    flattenAllCnames?: pulumi.Input<boolean>;
+    /**
+     * Whether to enable Foundation DNS Advanced Nameservers on the zone.
+     */
+    foundationDns?: pulumi.Input<boolean>;
+    /**
+     * Settings for this internal zone.
+     */
+    internalDns?: pulumi.Input<inputs.DnsSettingsZoneDefaultsInternalDns>;
+    /**
+     * Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
+     */
+    multiProvider?: pulumi.Input<boolean>;
+    /**
+     * Settings determining the nameservers through which the zone should be available.
+     */
+    nameservers?: pulumi.Input<inputs.DnsSettingsZoneDefaultsNameservers>;
+    /**
+     * The time to live (TTL) of the zone's nameserver (NS) records.
+     */
+    nsTtl?: pulumi.Input<number>;
+    /**
+     * Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
+     */
+    secondaryOverrides?: pulumi.Input<boolean>;
+    /**
+     * Components of the zone's SOA record.
+     */
+    soa?: pulumi.Input<inputs.DnsSettingsZoneDefaultsSoa>;
+    /**
+     * Whether the zone mode is a regular or CDN/DNS only zone.
+     */
+    zoneMode?: pulumi.Input<string>;
+}
+
+export interface DnsSettingsZoneDefaultsInternalDns {
+    /**
+     * The ID of the zone to fallback to.
+     */
+    referenceZoneId?: pulumi.Input<string>;
+}
+
+export interface DnsSettingsZoneDefaultsNameservers {
+    /**
+     * Nameserver type
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface DnsSettingsZoneDefaultsSoa {
+    /**
+     * Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
+     */
+    expire: pulumi.Input<number>;
+    /**
+     * The time to live (TTL) for negative caching of records within the zone.
+     */
+    minTtl: pulumi.Input<number>;
+    /**
+     * The primary nameserver, which may be used for outbound zone transfers.
+     */
+    mname: pulumi.Input<string>;
+    /**
+     * Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
+     */
+    refresh: pulumi.Input<number>;
+    /**
+     * Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
+     */
+    retry: pulumi.Input<number>;
+    /**
+     * The email address of the zone administrator, with the first label representing the local part of the email address.
+     */
+    rname: pulumi.Input<string>;
+    /**
+     * The time to live (TTL) of the SOA record itself.
+     */
+    ttl: pulumi.Input<number>;
+}
+
+export interface EmailRoutingCatchAllAction {
+    /**
+     * Type of action for catch-all rule.
+     */
+    type: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface EmailRoutingCatchAllMatcher {
+    /**
+     * Type of matcher. Default is 'all'.
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface EmailRoutingDnsError {
+    code?: pulumi.Input<number>;
+    message?: pulumi.Input<string>;
+}
+
+export interface EmailRoutingDnsMessage {
+    code?: pulumi.Input<number>;
+    message?: pulumi.Input<string>;
+}
+
+export interface EmailRoutingDnsResult {
+    /**
+     * DNS record content.
+     */
+    content?: pulumi.Input<string>;
+    errors?: pulumi.Input<pulumi.Input<inputs.EmailRoutingDnsResultError>[]>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * DNS record name (or @ for the zone apex).
      */
     name?: pulumi.Input<string>;
@@ -1871,6 +2031,133 @@ export interface GetDnsRecordsTagArgs {
     startswith?: pulumi.Input<string>;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetDnsSettingsInternalViewFilter {
+    /**
+     * Direction to order DNS views in.
+     */
+    direction?: string;
+    /**
+     * Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead.
+     */
+    match?: string;
+    name?: inputs.GetDnsSettingsInternalViewFilterName;
+    /**
+     * Field to order DNS views by.
+     */
+    order?: string;
+    /**
+     * A zone ID that exists in the zones list for the view.
+     */
+    zoneId?: string;
+    /**
+     * A zone name that exists in the zones list for the view.
+     */
+    zoneName?: string;
+}
+
+export interface GetDnsSettingsInternalViewFilterArgs {
+    /**
+     * Direction to order DNS views in.
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead.
+     */
+    match?: pulumi.Input<string>;
+    name?: pulumi.Input<inputs.GetDnsSettingsInternalViewFilterNameArgs>;
+    /**
+     * Field to order DNS views by.
+     */
+    order?: pulumi.Input<string>;
+    /**
+     * A zone ID that exists in the zones list for the view.
+     */
+    zoneId?: pulumi.Input<string>;
+    /**
+     * A zone name that exists in the zones list for the view.
+     */
+    zoneName?: pulumi.Input<string>;
+}
+
+export interface GetDnsSettingsInternalViewFilterName {
+    /**
+     * Substring of the DNS view name.
+     */
+    contains?: string;
+    /**
+     * Suffix of the DNS view name.
+     */
+    endswith?: string;
+    /**
+     * Exact value of the DNS view name.
+     */
+    exact?: string;
+    /**
+     * Prefix of the DNS view name.
+     */
+    startswith?: string;
+}
+
+export interface GetDnsSettingsInternalViewFilterNameArgs {
+    /**
+     * Substring of the DNS view name.
+     */
+    contains?: pulumi.Input<string>;
+    /**
+     * Suffix of the DNS view name.
+     */
+    endswith?: pulumi.Input<string>;
+    /**
+     * Exact value of the DNS view name.
+     */
+    exact?: pulumi.Input<string>;
+    /**
+     * Prefix of the DNS view name.
+     */
+    startswith?: pulumi.Input<string>;
+}
+
+export interface GetDnsSettingsInternalViewsName {
+    /**
+     * Substring of the DNS view name.
+     */
+    contains?: string;
+    /**
+     * Suffix of the DNS view name.
+     */
+    endswith?: string;
+    /**
+     * Exact value of the DNS view name.
+     */
+    exact?: string;
+    /**
+     * Prefix of the DNS view name.
+     */
+    startswith?: string;
+}
+
+export interface GetDnsSettingsInternalViewsNameArgs {
+    /**
+     * Substring of the DNS view name.
+     */
+    contains?: pulumi.Input<string>;
+    /**
+     * Suffix of the DNS view name.
+     */
+    endswith?: pulumi.Input<string>;
+    /**
+     * Exact value of the DNS view name.
+     */
+    exact?: pulumi.Input<string>;
+    /**
+     * Prefix of the DNS view name.
+     */
+    startswith?: pulumi.Input<string>;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetEmailRoutingAddressFilter {
     /**
      * Sorts results in an ascending or descending order.
@@ -2023,6 +2310,55 @@ export interface GetEmailSecurityTrustedDomainsFilterArgs {
     search?: pulumi.Input<string>;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetFilterFilter {
+    /**
+     * A case-insensitive string to find in the description.
+     */
+    description?: string;
+    /**
+     * A case-insensitive string to find in the expression.
+     */
+    expression?: string;
+    /**
+     * The unique identifier of the filter.
+     */
+    id?: string;
+    /**
+     * When true, indicates that the filter is currently paused.
+     */
+    paused?: boolean;
+    /**
+     * The filter ref (a short reference tag) to search for. Must be an exact match.
+     */
+    ref?: string;
+}
+
+export interface GetFilterFilterArgs {
+    /**
+     * A case-insensitive string to find in the description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * A case-insensitive string to find in the expression.
+     */
+    expression?: pulumi.Input<string>;
+    /**
+     * The unique identifier of the filter.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * When true, indicates that the filter is currently paused.
+     */
+    paused?: pulumi.Input<boolean>;
+    /**
+     * The filter ref (a short reference tag) to search for. Must be an exact match.
+     */
+    ref?: pulumi.Input<string>;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetLoadBalancerPoolFilter {
     /**
      * The ID of the Monitor to use for checking the health of origins within this pool.
@@ -2041,14 +2377,22 @@ export interface GetMagicTransitSiteFilter {
     /**
      * Identifier
      */
+<<<<<<< HEAD
     connectorIdentifier?: string;
+=======
+    connectorid?: string;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 export interface GetMagicTransitSiteFilterArgs {
     /**
      * Identifier
      */
+<<<<<<< HEAD
     connectorIdentifier?: pulumi.Input<string>;
+=======
+    connectorid?: pulumi.Input<string>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 export interface GetOriginCaCertificateFilter {
@@ -2265,6 +2609,14 @@ export interface GetZeroTrustAccessInfrastructureTargetFilter {
      */
     hostnameContains?: string;
     /**
+<<<<<<< HEAD
+=======
+     * Filters for targets whose IP addresses look like the specified string.
+     * Supports `*` as a wildcard character
+     */
+    ipLike?: string;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * IPv4 address of the target
      */
     ipV4?: string;
@@ -2278,6 +2630,29 @@ export interface GetZeroTrustAccessInfrastructureTargetFilter {
      */
     ips?: string[];
     /**
+<<<<<<< HEAD
+=======
+     * Defines an IPv4 filter range's ending value (inclusive). Requires
+     * `ipv4Start` to be specified as well.
+     */
+    ipv4End?: string;
+    /**
+     * Defines an IPv4 filter range's starting value (inclusive). Requires
+     * `ipv4End` to be specified as well.
+     */
+    ipv4Start?: string;
+    /**
+     * Defines an IPv6 filter range's ending value (inclusive). Requires
+     * `ipv6Start` to be specified as well.
+     */
+    ipv6End?: string;
+    /**
+     * Defines an IPv6 filter range's starting value (inclusive). Requires
+     * `ipv6End` to be specified as well.
+     */
+    ipv6Start?: string;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Date and time at which the target was modified after (inclusive)
      */
     modifiedAfter?: string;
@@ -2290,6 +2665,15 @@ export interface GetZeroTrustAccessInfrastructureTargetFilter {
      */
     order?: string;
     /**
+<<<<<<< HEAD
+=======
+     * Filters for targets that have any of the following UUIDs. Specify
+     * `targetIds` multiple times in query parameter to build list of
+     * candidates.
+     */
+    targetIds?: string[];
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Private virtual network identifier of the target
      */
     virtualNetworkId?: string;
@@ -2317,6 +2701,14 @@ export interface GetZeroTrustAccessInfrastructureTargetFilterArgs {
      */
     hostnameContains?: pulumi.Input<string>;
     /**
+<<<<<<< HEAD
+=======
+     * Filters for targets whose IP addresses look like the specified string.
+     * Supports `*` as a wildcard character
+     */
+    ipLike?: pulumi.Input<string>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * IPv4 address of the target
      */
     ipV4?: pulumi.Input<string>;
@@ -2330,6 +2722,29 @@ export interface GetZeroTrustAccessInfrastructureTargetFilterArgs {
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+<<<<<<< HEAD
+=======
+     * Defines an IPv4 filter range's ending value (inclusive). Requires
+     * `ipv4Start` to be specified as well.
+     */
+    ipv4End?: pulumi.Input<string>;
+    /**
+     * Defines an IPv4 filter range's starting value (inclusive). Requires
+     * `ipv4End` to be specified as well.
+     */
+    ipv4Start?: pulumi.Input<string>;
+    /**
+     * Defines an IPv6 filter range's ending value (inclusive). Requires
+     * `ipv6Start` to be specified as well.
+     */
+    ipv6End?: pulumi.Input<string>;
+    /**
+     * Defines an IPv6 filter range's starting value (inclusive). Requires
+     * `ipv6End` to be specified as well.
+     */
+    ipv6Start?: pulumi.Input<string>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Date and time at which the target was modified after (inclusive)
      */
     modifiedAfter?: pulumi.Input<string>;
@@ -2342,6 +2757,15 @@ export interface GetZeroTrustAccessInfrastructureTargetFilterArgs {
      */
     order?: pulumi.Input<string>;
     /**
+<<<<<<< HEAD
+=======
+     * Filters for targets that have any of the following UUIDs. Specify
+     * `targetIds` multiple times in query parameter to build list of
+     * candidates.
+     */
+    targetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Private virtual network identifier of the target
      */
     virtualNetworkId?: pulumi.Input<string>;
@@ -3436,6 +3860,10 @@ export interface MagicTransitSiteLanStaticAddressingDhcpServer {
      * A valid IPv4 address.
      */
     dnsServer?: pulumi.Input<string>;
+<<<<<<< HEAD
+=======
+    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Mapping of MAC addresses to IP addresses
      */
@@ -5464,6 +5892,257 @@ export interface QueueSettings {
     messageRetentionPeriod?: pulumi.Input<number>;
 }
 
+<<<<<<< HEAD
+=======
+export interface R2BucketCorsRule {
+    /**
+     * Object specifying allowed origins, methods and headers for this CORS rule.
+     */
+    allowed: pulumi.Input<inputs.R2BucketCorsRuleAllowed>;
+    /**
+     * Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
+     */
+    exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Identifier for this rule
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
+     */
+    maxAgeSeconds?: pulumi.Input<number>;
+}
+
+export interface R2BucketCorsRuleAllowed {
+    /**
+     * Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.
+     */
+    headers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.
+     */
+    methods: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.
+     */
+    origins: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface R2BucketEventNotificationQueue {
+    /**
+     * Queue ID
+     */
+    queueId?: pulumi.Input<string>;
+    /**
+     * Name of the queue
+     */
+    queueName?: pulumi.Input<string>;
+    rules?: pulumi.Input<pulumi.Input<inputs.R2BucketEventNotificationQueueRule>[]>;
+}
+
+export interface R2BucketEventNotificationQueueRule {
+    /**
+     * Array of R2 object actions that will trigger notifications
+     */
+    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timestamp when the rule was created
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * A description that can be used to identify the event notification rule after creation
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Notifications will be sent only for objects with this prefix
+     */
+    prefix?: pulumi.Input<string>;
+    /**
+     * Rule ID
+     */
+    ruleId?: pulumi.Input<string>;
+    /**
+     * Notifications will be sent only for objects with this suffix
+     */
+    suffix?: pulumi.Input<string>;
+}
+
+export interface R2BucketEventNotificationRule {
+    /**
+     * Array of R2 object actions that will trigger notifications
+     */
+    actions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A description that can be used to identify the event notification rule after creation
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Notifications will be sent only for objects with this prefix
+     */
+    prefix?: pulumi.Input<string>;
+    /**
+     * Notifications will be sent only for objects with this suffix
+     */
+    suffix?: pulumi.Input<string>;
+}
+
+export interface R2BucketLifecycleRule {
+    /**
+     * Transition to abort ongoing multipart uploads
+     */
+    abortMultipartUploadsTransition?: pulumi.Input<inputs.R2BucketLifecycleRuleAbortMultipartUploadsTransition>;
+    /**
+     * Conditions that apply to all transitions of this rule
+     */
+    conditions: pulumi.Input<inputs.R2BucketLifecycleRuleConditions>;
+    /**
+     * Transition to delete objects
+     */
+    deleteObjectsTransition?: pulumi.Input<inputs.R2BucketLifecycleRuleDeleteObjectsTransition>;
+    /**
+     * Whether or not this rule is in effect
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Unique identifier for this rule
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Transitions to change the storage class of objects
+     */
+    storageClassTransitions?: pulumi.Input<pulumi.Input<inputs.R2BucketLifecycleRuleStorageClassTransition>[]>;
+}
+
+export interface R2BucketLifecycleRuleAbortMultipartUploadsTransition {
+    /**
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     */
+    condition?: pulumi.Input<inputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition>;
+}
+
+export interface R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition {
+    maxAge: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface R2BucketLifecycleRuleConditions {
+    /**
+     * Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     */
+    prefix: pulumi.Input<string>;
+}
+
+export interface R2BucketLifecycleRuleDeleteObjectsTransition {
+    /**
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     */
+    condition?: pulumi.Input<inputs.R2BucketLifecycleRuleDeleteObjectsTransitionCondition>;
+}
+
+export interface R2BucketLifecycleRuleDeleteObjectsTransitionCondition {
+    date?: pulumi.Input<string>;
+    maxAge?: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface R2BucketLifecycleRuleStorageClassTransition {
+    /**
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     */
+    condition: pulumi.Input<inputs.R2BucketLifecycleRuleStorageClassTransitionCondition>;
+    storageClass: pulumi.Input<string>;
+}
+
+export interface R2BucketLifecycleRuleStorageClassTransitionCondition {
+    date?: pulumi.Input<string>;
+    maxAge?: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface R2BucketLockRule {
+    /**
+     * Condition to apply a lock rule to an object for how long in seconds
+     */
+    condition: pulumi.Input<inputs.R2BucketLockRuleCondition>;
+    /**
+     * Whether or not this rule is in effect
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Unique identifier for this rule
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     */
+    prefix?: pulumi.Input<string>;
+}
+
+export interface R2BucketLockRuleCondition {
+    date?: pulumi.Input<string>;
+    maxAgeSeconds?: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface R2BucketSippyDestination {
+    /**
+     * ID of a Cloudflare API token.
+     * This is the value labelled "Access Key ID" when creating an API
+     * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
+     */
+    accessKeyId?: pulumi.Input<string>;
+    provider?: pulumi.Input<string>;
+    /**
+     * Value of a Cloudflare API token.
+     * This is the value labelled "Secret Access Key" when creating an API
+     * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
+     *
+     * Sippy will use this token when writing objects to R2, so it is
+     * best to scope this token to the bucket you're enabling Sippy for.
+     */
+    secretAccessKey?: pulumi.Input<string>;
+}
+
+export interface R2BucketSippySource {
+    /**
+     * Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+     */
+    accessKeyId?: pulumi.Input<string>;
+    /**
+     * Name of the AWS S3 bucket
+     */
+    bucket?: pulumi.Input<string>;
+    /**
+     * Client email of an IAM credential (ideally scoped to a single GCS bucket)
+     */
+    clientEmail?: pulumi.Input<string>;
+    /**
+     * Private Key of an IAM credential (ideally scoped to a single GCS bucket)
+     */
+    privateKey?: pulumi.Input<string>;
+    provider?: pulumi.Input<string>;
+    /**
+     * Name of the AWS availability zone
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+     */
+    secretAccessKey?: pulumi.Input<string>;
+}
+
+export interface R2CustomDomainStatus {
+    /**
+     * Ownership status of the domain
+     */
+    ownership?: pulumi.Input<string>;
+    /**
+     * SSL certificate status
+     */
+    ssl?: pulumi.Input<string>;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface RateLimitAction {
     /**
      * The action to perform.
@@ -5572,7 +6251,11 @@ export interface RecordData {
     /**
      * Flags for the CAA record.
      */
+<<<<<<< HEAD
     flags?: any;
+=======
+    flags?: pulumi.Input<number>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Key Tag.
      */
@@ -6126,7 +6809,14 @@ export interface RulesetRuleActionParametersCacheReserve {
     /**
      * The minimum file size eligible for store in cache reserve.
      */
-    minimumFileSize?: pulumi.Input<number>;
+    minimumFileSize: pulumi.Input<number>;
+}
+
+export interface RulesetRuleActionParametersCookieField {
+    /**
+     * The name of the field.
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersCookieField {
@@ -6219,7 +6909,11 @@ export interface RulesetRuleActionParametersHeaders {
      * Expression for the header value.
      */
     expression?: pulumi.Input<string>;
+<<<<<<< HEAD
     operation?: pulumi.Input<string>;
+=======
+    operation: pulumi.Input<string>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Static value for the header.
      */
@@ -6804,6 +7498,7 @@ export interface WorkersDeploymentVersion {
     versionId: pulumi.Input<string>;
 }
 
+<<<<<<< HEAD
 export interface WorkersScriptAssets {
     /**
      * Configuration for assets within a Worker.
@@ -6836,6 +7531,50 @@ export interface WorkersScriptAssetsConfig {
 
 export interface WorkersScriptBinding {
     /**
+=======
+export interface WorkersRouteError {
+    code?: pulumi.Input<number>;
+    message?: pulumi.Input<string>;
+}
+
+export interface WorkersRouteMessage {
+    code?: pulumi.Input<number>;
+    message?: pulumi.Input<string>;
+}
+
+export interface WorkersScriptAssets {
+    /**
+     * Configuration for assets within a Worker.
+     */
+    config?: pulumi.Input<inputs.WorkersScriptAssetsConfig>;
+    /**
+     * Token provided upon successful upload of all files from a registered manifest.
+     */
+    jwt?: pulumi.Input<string>;
+}
+
+export interface WorkersScriptAssetsConfig {
+    /**
+     * Determines the redirects and rewrites of requests for HTML content.
+     */
+    htmlHandling?: pulumi.Input<string>;
+    /**
+     * Determines the response when a request does not match a static asset, and there is no Worker script.
+     */
+    notFoundHandling?: pulumi.Input<string>;
+    /**
+     * When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
+     */
+    runWorkerFirst?: pulumi.Input<boolean>;
+    /**
+     * When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
+     */
+    serveDirectly?: pulumi.Input<boolean>;
+}
+
+export interface WorkersScriptBinding {
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * R2 bucket to bind to.
      */
     bucketName?: pulumi.Input<string>;
@@ -7219,6 +7958,10 @@ export interface ZeroTrustAccessApplicationPolicyExclude {
     gsuite?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyExcludeGsuite>;
     ip?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyExcludeIp>;
     ipList?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyExcludeIpList>;
+<<<<<<< HEAD
+=======
+    loginMethod?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyExcludeLoginMethod>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyExcludeOkta>;
     saml?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyExcludeSaml>;
     serviceToken?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyExcludeServiceToken>;
@@ -7366,6 +8109,16 @@ export interface ZeroTrustAccessApplicationPolicyExcludeIpList {
     id: pulumi.Input<string>;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessApplicationPolicyExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessApplicationPolicyExcludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -7424,6 +8177,10 @@ export interface ZeroTrustAccessApplicationPolicyInclude {
     gsuite?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyIncludeGsuite>;
     ip?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyIncludeIp>;
     ipList?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyIncludeIpList>;
+<<<<<<< HEAD
+=======
+    loginMethod?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyIncludeLoginMethod>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyIncludeOkta>;
     saml?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyIncludeSaml>;
     serviceToken?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyIncludeServiceToken>;
@@ -7571,6 +8328,16 @@ export interface ZeroTrustAccessApplicationPolicyIncludeIpList {
     id: pulumi.Input<string>;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessApplicationPolicyIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessApplicationPolicyIncludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -7629,6 +8396,10 @@ export interface ZeroTrustAccessApplicationPolicyRequire {
     gsuite?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyRequireGsuite>;
     ip?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyRequireIp>;
     ipList?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyRequireIpList>;
+<<<<<<< HEAD
+=======
+    loginMethod?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyRequireLoginMethod>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyRequireOkta>;
     saml?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyRequireSaml>;
     serviceToken?: pulumi.Input<inputs.ZeroTrustAccessApplicationPolicyRequireServiceToken>;
@@ -7776,6 +8547,16 @@ export interface ZeroTrustAccessApplicationPolicyRequireIpList {
     id: pulumi.Input<string>;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessApplicationPolicyRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessApplicationPolicyRequireOkta {
     /**
      * The ID of your Okta identity provider.
@@ -7922,7 +8703,18 @@ export interface ZeroTrustAccessApplicationSaasAppCustomAttributeSource {
     /**
      * A mapping from IdP ID to attribute name.
      */
-    nameByIdp?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    nameByIdps?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp>[]>;
+}
+
+export interface ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp {
+    /**
+     * The UID of the IdP.
+     */
+    idpId?: pulumi.Input<string>;
+    /**
+     * The name of the IdP provided attribute.
+     */
+    sourceName?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessApplicationSaasAppCustomClaim {
@@ -8118,6 +8910,10 @@ export interface ZeroTrustAccessGroupExclude {
     gsuite?: pulumi.Input<inputs.ZeroTrustAccessGroupExcludeGsuite>;
     ip?: pulumi.Input<inputs.ZeroTrustAccessGroupExcludeIp>;
     ipList?: pulumi.Input<inputs.ZeroTrustAccessGroupExcludeIpList>;
+<<<<<<< HEAD
+=======
+    loginMethod?: pulumi.Input<inputs.ZeroTrustAccessGroupExcludeLoginMethod>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta?: pulumi.Input<inputs.ZeroTrustAccessGroupExcludeOkta>;
     saml?: pulumi.Input<inputs.ZeroTrustAccessGroupExcludeSaml>;
     serviceToken?: pulumi.Input<inputs.ZeroTrustAccessGroupExcludeServiceToken>;
@@ -8265,6 +9061,16 @@ export interface ZeroTrustAccessGroupExcludeIpList {
     id: pulumi.Input<string>;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessGroupExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessGroupExcludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -8323,6 +9129,10 @@ export interface ZeroTrustAccessGroupInclude {
     gsuite?: pulumi.Input<inputs.ZeroTrustAccessGroupIncludeGsuite>;
     ip?: pulumi.Input<inputs.ZeroTrustAccessGroupIncludeIp>;
     ipList?: pulumi.Input<inputs.ZeroTrustAccessGroupIncludeIpList>;
+<<<<<<< HEAD
+=======
+    loginMethod?: pulumi.Input<inputs.ZeroTrustAccessGroupIncludeLoginMethod>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta?: pulumi.Input<inputs.ZeroTrustAccessGroupIncludeOkta>;
     saml?: pulumi.Input<inputs.ZeroTrustAccessGroupIncludeSaml>;
     serviceToken?: pulumi.Input<inputs.ZeroTrustAccessGroupIncludeServiceToken>;
@@ -8470,6 +9280,16 @@ export interface ZeroTrustAccessGroupIncludeIpList {
     id: pulumi.Input<string>;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessGroupIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessGroupIncludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -8528,6 +9348,10 @@ export interface ZeroTrustAccessGroupRequire {
     gsuite?: pulumi.Input<inputs.ZeroTrustAccessGroupRequireGsuite>;
     ip?: pulumi.Input<inputs.ZeroTrustAccessGroupRequireIp>;
     ipList?: pulumi.Input<inputs.ZeroTrustAccessGroupRequireIpList>;
+<<<<<<< HEAD
+=======
+    loginMethod?: pulumi.Input<inputs.ZeroTrustAccessGroupRequireLoginMethod>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta?: pulumi.Input<inputs.ZeroTrustAccessGroupRequireOkta>;
     saml?: pulumi.Input<inputs.ZeroTrustAccessGroupRequireSaml>;
     serviceToken?: pulumi.Input<inputs.ZeroTrustAccessGroupRequireServiceToken>;
@@ -8675,6 +9499,16 @@ export interface ZeroTrustAccessGroupRequireIpList {
     id: pulumi.Input<string>;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessGroupRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessGroupRequireOkta {
     /**
      * The ID of your Okta identity provider.
@@ -8946,6 +9780,10 @@ export interface ZeroTrustAccessPolicyExclude {
     gsuite?: pulumi.Input<inputs.ZeroTrustAccessPolicyExcludeGsuite>;
     ip?: pulumi.Input<inputs.ZeroTrustAccessPolicyExcludeIp>;
     ipList?: pulumi.Input<inputs.ZeroTrustAccessPolicyExcludeIpList>;
+<<<<<<< HEAD
+=======
+    loginMethod?: pulumi.Input<inputs.ZeroTrustAccessPolicyExcludeLoginMethod>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta?: pulumi.Input<inputs.ZeroTrustAccessPolicyExcludeOkta>;
     saml?: pulumi.Input<inputs.ZeroTrustAccessPolicyExcludeSaml>;
     serviceToken?: pulumi.Input<inputs.ZeroTrustAccessPolicyExcludeServiceToken>;
@@ -9093,6 +9931,16 @@ export interface ZeroTrustAccessPolicyExcludeIpList {
     id: pulumi.Input<string>;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessPolicyExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessPolicyExcludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -9151,6 +9999,10 @@ export interface ZeroTrustAccessPolicyInclude {
     gsuite?: pulumi.Input<inputs.ZeroTrustAccessPolicyIncludeGsuite>;
     ip?: pulumi.Input<inputs.ZeroTrustAccessPolicyIncludeIp>;
     ipList?: pulumi.Input<inputs.ZeroTrustAccessPolicyIncludeIpList>;
+<<<<<<< HEAD
+=======
+    loginMethod?: pulumi.Input<inputs.ZeroTrustAccessPolicyIncludeLoginMethod>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta?: pulumi.Input<inputs.ZeroTrustAccessPolicyIncludeOkta>;
     saml?: pulumi.Input<inputs.ZeroTrustAccessPolicyIncludeSaml>;
     serviceToken?: pulumi.Input<inputs.ZeroTrustAccessPolicyIncludeServiceToken>;
@@ -9298,6 +10150,16 @@ export interface ZeroTrustAccessPolicyIncludeIpList {
     id: pulumi.Input<string>;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessPolicyIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessPolicyIncludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -9356,6 +10218,10 @@ export interface ZeroTrustAccessPolicyRequire {
     gsuite?: pulumi.Input<inputs.ZeroTrustAccessPolicyRequireGsuite>;
     ip?: pulumi.Input<inputs.ZeroTrustAccessPolicyRequireIp>;
     ipList?: pulumi.Input<inputs.ZeroTrustAccessPolicyRequireIpList>;
+<<<<<<< HEAD
+=======
+    loginMethod?: pulumi.Input<inputs.ZeroTrustAccessPolicyRequireLoginMethod>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta?: pulumi.Input<inputs.ZeroTrustAccessPolicyRequireOkta>;
     saml?: pulumi.Input<inputs.ZeroTrustAccessPolicyRequireSaml>;
     serviceToken?: pulumi.Input<inputs.ZeroTrustAccessPolicyRequireServiceToken>;
@@ -9503,6 +10369,16 @@ export interface ZeroTrustAccessPolicyRequireIpList {
     id: pulumi.Input<string>;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessPolicyRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessPolicyRequireOkta {
     /**
      * The ID of your Okta identity provider.
@@ -9971,6 +10847,10 @@ export interface ZeroTrustDlpCustomProfileEntryPattern {
 }
 
 export interface ZeroTrustDlpCustomProfileProfile {
+<<<<<<< HEAD
+=======
+    aiContextEnabled?: pulumi.Input<boolean>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
      */
@@ -10082,6 +10962,10 @@ export interface ZeroTrustDlpDatasetUpload {
 }
 
 export interface ZeroTrustDlpEntryConfidence {
+<<<<<<< HEAD
+=======
+    aiContextAvailable?: pulumi.Input<boolean>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
      * Profiles that use an entry with `available` set to true can use confidence thresholds
@@ -10196,6 +11080,24 @@ export interface ZeroTrustDnsLocationNetwork {
     network: pulumi.Input<string>;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustGatewayLoggingSettingsByRuleType {
+    /**
+     * Logging settings for DNS firewall.
+     */
+    dns?: pulumi.Input<string>;
+    /**
+     * Logging settings for HTTP/HTTPS firewall.
+     */
+    http?: pulumi.Input<string>;
+    /**
+     * Logging settings for Network firewall.
+     */
+    l4?: pulumi.Input<string>;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustGatewayPolicyExpiration {
     /**
      * The default duration a policy will be active in minutes. Must be set in order to use the `resetExpiration` endpoint on this rule.

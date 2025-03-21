@@ -27,6 +27,16 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         return Optional.ofNullable(this.accountId);
     }
 
+<<<<<<< HEAD
+=======
+    @Import(name="aiContextEnabled")
+    private @Nullable Output<Boolean> aiContextEnabled;
+
+    public Optional<Output<Boolean>> aiContextEnabled() {
+        return Optional.ofNullable(this.aiContextEnabled);
+    }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @Import(name="allowedMatchCount")
     private @Nullable Output<Integer> allowedMatchCount;
 
@@ -163,6 +173,7 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
 
     private ZeroTrustDlpPredefinedProfileState(ZeroTrustDlpPredefinedProfileState $) {
         this.accountId = $.accountId;
+        this.aiContextEnabled = $.aiContextEnabled;
         this.allowedMatchCount = $.allowedMatchCount;
         this.confidenceThreshold = $.confidenceThreshold;
         this.contextAwareness = $.contextAwareness;
@@ -204,6 +215,18 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
             return accountId(Output.of(accountId));
         }
 
+<<<<<<< HEAD
+=======
+        public Builder aiContextEnabled(@Nullable Output<Boolean> aiContextEnabled) {
+            $.aiContextEnabled = aiContextEnabled;
+            return this;
+        }
+
+        public Builder aiContextEnabled(Boolean aiContextEnabled) {
+            return aiContextEnabled(Output.of(aiContextEnabled));
+        }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder allowedMatchCount(@Nullable Output<Integer> allowedMatchCount) {
             $.allowedMatchCount = allowedMatchCount;
             return this;

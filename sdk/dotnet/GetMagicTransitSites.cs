@@ -25,7 +25,11 @@ namespace Pulumi.Cloudflare
         ///     var exampleMagicTransitSites = Cloudflare.GetMagicTransitSites.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+<<<<<<< HEAD
         ///         ConnectorIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
+=======
+        ///         Connectorid = "023e105f4ecef8ad9ca31a8372d0c353",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ///     });
         /// 
         /// });
@@ -48,7 +52,11 @@ namespace Pulumi.Cloudflare
         ///     var exampleMagicTransitSites = Cloudflare.GetMagicTransitSites.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+<<<<<<< HEAD
         ///         ConnectorIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
+=======
+        ///         Connectorid = "023e105f4ecef8ad9ca31a8372d0c353",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ///     });
         /// 
         /// });
@@ -71,7 +79,11 @@ namespace Pulumi.Cloudflare
         ///     var exampleMagicTransitSites = Cloudflare.GetMagicTransitSites.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+<<<<<<< HEAD
         ///         ConnectorIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
+=======
+        ///         Connectorid = "023e105f4ecef8ad9ca31a8372d0c353",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ///     });
         /// 
         /// });
@@ -93,8 +105,13 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
+<<<<<<< HEAD
         [Input("connectorIdentifier")]
         public string? ConnectorIdentifier { get; set; }
+=======
+        [Input("connectorid")]
+        public string? Connectorid { get; set; }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -119,8 +136,13 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
+<<<<<<< HEAD
         [Input("connectorIdentifier")]
         public Input<string>? ConnectorIdentifier { get; set; }
+=======
+        [Input("connectorid")]
+        public Input<string>? Connectorid { get; set; }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -145,7 +167,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
+<<<<<<< HEAD
         public readonly string? ConnectorIdentifier;
+=======
+        public readonly string? Connectorid;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -163,7 +189,11 @@ namespace Pulumi.Cloudflare
         private GetMagicTransitSitesResult(
             string accountId,
 
+<<<<<<< HEAD
             string? connectorIdentifier,
+=======
+            string? connectorid,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
             string id,
 
@@ -172,7 +202,11 @@ namespace Pulumi.Cloudflare
             ImmutableArray<Outputs.GetMagicTransitSitesResultResult> results)
         {
             AccountId = accountId;
+<<<<<<< HEAD
             ConnectorIdentifier = connectorIdentifier;
+=======
+            Connectorid = connectorid;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             Id = id;
             MaxItems = maxItems;
             Results = results;

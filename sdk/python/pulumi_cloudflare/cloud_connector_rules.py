@@ -59,17 +59,88 @@ class CloudConnectorRulesArgs:
 @pulumi.input_type
 class _CloudConnectorRulesState:
     def __init__(__self__, *,
+                 cloud_provider: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 expression: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input['CloudConnectorRulesParametersArgs']] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['CloudConnectorRulesRuleArgs']]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CloudConnectorRules resources.
+<<<<<<< HEAD
+=======
+        :param pulumi.Input[str] cloud_provider: Cloud Provider type
+        :param pulumi.Input['CloudConnectorRulesParametersArgs'] parameters: Parameters of Cloud Connector Rule
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[Sequence[pulumi.Input['CloudConnectorRulesRuleArgs']]] rules: List of Cloud Connector rules
         :param pulumi.Input[str] zone_id: Identifier
         """
+        if cloud_provider is not None:
+            pulumi.set(__self__, "cloud_provider", cloud_provider)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="cloudProvider")
+    def cloud_provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud Provider type
+        """
+        return pulumi.get(self, "cloud_provider")
+
+    @cloud_provider.setter
+    def cloud_provider(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_provider", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input['CloudConnectorRulesParametersArgs']]:
+        """
+        Parameters of Cloud Connector Rule
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input['CloudConnectorRulesParametersArgs']]):
+        pulumi.set(self, "parameters", value)
 
     @property
     @pulumi.getter
@@ -153,6 +224,11 @@ class CloudConnectorRules(pulumi.CustomResource):
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["cloud_provider"] = None
+            __props__.__dict__["description"] = None
+            __props__.__dict__["enabled"] = None
+            __props__.__dict__["expression"] = None
+            __props__.__dict__["parameters"] = None
         super(CloudConnectorRules, __self__).__init__(
             'cloudflare:index/cloudConnectorRules:CloudConnectorRules',
             resource_name,
@@ -163,6 +239,11 @@ class CloudConnectorRules(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            cloud_provider: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            expression: Optional[pulumi.Input[str]] = None,
+            parameters: Optional[pulumi.Input[Union['CloudConnectorRulesParametersArgs', 'CloudConnectorRulesParametersArgsDict']]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudConnectorRulesRuleArgs', 'CloudConnectorRulesRuleArgsDict']]]]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'CloudConnectorRules':
         """
@@ -172,6 +253,11 @@ class CloudConnectorRules(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+<<<<<<< HEAD
+=======
+        :param pulumi.Input[str] cloud_provider: Cloud Provider type
+        :param pulumi.Input[Union['CloudConnectorRulesParametersArgs', 'CloudConnectorRulesParametersArgsDict']] parameters: Parameters of Cloud Connector Rule
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[Sequence[pulumi.Input[Union['CloudConnectorRulesRuleArgs', 'CloudConnectorRulesRuleArgsDict']]]] rules: List of Cloud Connector rules
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -179,14 +265,56 @@ class CloudConnectorRules(pulumi.CustomResource):
 
         __props__ = _CloudConnectorRulesState.__new__(_CloudConnectorRulesState)
 
+        __props__.__dict__["cloud_provider"] = cloud_provider
+        __props__.__dict__["description"] = description
+        __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["expression"] = expression
+        __props__.__dict__["parameters"] = parameters
         __props__.__dict__["rules"] = rules
         __props__.__dict__["zone_id"] = zone_id
         return CloudConnectorRules(resource_name, opts=opts, __props__=__props__)
 
     @property
+<<<<<<< HEAD
     @pulumi.getter
     def rules(self) -> pulumi.Output[Sequence['outputs.CloudConnectorRulesRule']]:
         """
+=======
+    @pulumi.getter(name="cloudProvider")
+    def cloud_provider(self) -> pulumi.Output[str]:
+        """
+        Cloud Provider type
+        """
+        return pulumi.get(self, "cloud_provider")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Output[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Output['outputs.CloudConnectorRulesParameters']:
+        """
+        Parameters of Cloud Connector Rule
+        """
+        return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Output[Sequence['outputs.CloudConnectorRulesRule']]:
+        """
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         List of Cloud Connector rules
         """
         return pulumi.get(self, "rules")

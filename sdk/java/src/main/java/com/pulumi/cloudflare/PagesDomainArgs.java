@@ -31,11 +31,19 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
         return this.accountId;
     }
 
+<<<<<<< HEAD
     @Import(name="name")
     private @Nullable Output<String> name;
 
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+=======
+    @Import(name="name", required=true)
+    private Output<String> name;
+
+    public Output<String> name() {
+        return this.name;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     /**
@@ -100,7 +108,11 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
             return accountId(Output.of(accountId));
         }
 
+<<<<<<< HEAD
         public Builder name(@Nullable Output<String> name) {
+=======
+        public Builder name(Output<String> name) {
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             $.name = name;
             return this;
         }
@@ -134,6 +146,12 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("PagesDomainArgs", "accountId");
             }
+<<<<<<< HEAD
+=======
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("PagesDomainArgs", "name");
+            }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             if ($.projectName == null) {
                 throw new MissingRequiredPropertyException("PagesDomainArgs", "projectName");
             }

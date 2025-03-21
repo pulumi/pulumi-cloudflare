@@ -36,9 +36,27 @@ export interface GetZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs {
 export interface GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
     readonly accountId: string;
     /**
+<<<<<<< HEAD
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+=======
+     * A description of the fallback domain, displayed in the client UI.
+     */
+    readonly description: string;
+    /**
+     * A list of IP addresses to handle domain resolution.
+     */
+    readonly dnsServers: string[];
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
+     * The domain suffix to match when resolving locally.
+     */
+    readonly suffix: string;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 /**
  * ## Example Usage

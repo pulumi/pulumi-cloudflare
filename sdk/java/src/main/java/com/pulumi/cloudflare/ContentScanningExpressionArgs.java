@@ -27,6 +27,7 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
 
     /**
      * Identifier
+<<<<<<< HEAD
      * 
      */
     @Import(name="expressionId")
@@ -42,6 +43,8 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
 
     /**
      * Identifier
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     @Import(name="zoneId", required=true)
@@ -59,7 +62,10 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
 
     private ContentScanningExpressionArgs(ContentScanningExpressionArgs $) {
         this.bodies = $.bodies;
+<<<<<<< HEAD
         this.expressionId = $.expressionId;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.zoneId = $.zoneId;
     }
 
@@ -83,6 +89,7 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
 
         public Builder bodies(Output<List<ContentScanningExpressionBodyArgs>> bodies) {
             $.bodies = bodies;
+<<<<<<< HEAD
             return this;
         }
 
@@ -113,6 +120,17 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
          */
         public Builder expressionId(String expressionId) {
             return expressionId(Output.of(expressionId));
+=======
+            return this;
+        }
+
+        public Builder bodies(List<ContentScanningExpressionBodyArgs> bodies) {
+            return bodies(Output.of(bodies));
+        }
+
+        public Builder bodies(ContentScanningExpressionBodyArgs... bodies) {
+            return bodies(List.of(bodies));
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
 
         /**

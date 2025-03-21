@@ -13,7 +13,10 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+<<<<<<< HEAD
 from . import outputs
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 __all__ = [
     'GetFirewallRuleResult',
@@ -27,16 +30,23 @@ class GetFirewallRuleResult:
     """
     A collection of values returned by getFirewallRule.
     """
+<<<<<<< HEAD
     def __init__(__self__, action=None, description=None, filter=None, id=None, paused=None, priority=None, products=None, ref=None, rule_id=None, zone_id=None):
+=======
+    def __init__(__self__, action=None, description=None, id=None, paused=None, priority=None, products=None, ref=None, rule_id=None, zone_id=None):
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if action and not isinstance(action, str):
             raise TypeError("Expected argument 'action' to be a str")
         pulumi.set(__self__, "action", action)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+<<<<<<< HEAD
         if filter and not isinstance(filter, dict):
             raise TypeError("Expected argument 'filter' to be a dict")
         pulumi.set(__self__, "filter", filter)
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -77,11 +87,14 @@ class GetFirewallRuleResult:
 
     @property
     @pulumi.getter
+<<<<<<< HEAD
     def filter(self) -> 'outputs.GetFirewallRuleFilterResult':
         return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     def id(self) -> str:
         """
         The unique identifier of the firewall rule.
@@ -119,7 +132,11 @@ class GetFirewallRuleResult:
 
     @property
     @pulumi.getter(name="ruleId")
+<<<<<<< HEAD
     def rule_id(self) -> str:
+=======
+    def rule_id(self) -> Optional[str]:
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         The unique identifier of the firewall rule.
         """
@@ -142,7 +159,10 @@ class AwaitableGetFirewallRuleResult(GetFirewallRuleResult):
         return GetFirewallRuleResult(
             action=self.action,
             description=self.description,
+<<<<<<< HEAD
             filter=self.filter,
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             id=self.id,
             paused=self.paused,
             priority=self.priority,
@@ -152,13 +172,18 @@ class AwaitableGetFirewallRuleResult(GetFirewallRuleResult):
             zone_id=self.zone_id)
 
 
+<<<<<<< HEAD
 def get_firewall_rule(id: Optional[str] = None,
                       rule_id: Optional[str] = None,
+=======
+def get_firewall_rule(rule_id: Optional[str] = None,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                       zone_id: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFirewallRuleResult:
     """
     ## Example Usage
 
+<<<<<<< HEAD
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -170,11 +195,17 @@ def get_firewall_rule(id: Optional[str] = None,
 
 
     :param str id: The unique identifier of the firewall rule.
+=======
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     :param str rule_id: The unique identifier of the firewall rule.
     :param str zone_id: Identifier
     """
     __args__ = dict()
+<<<<<<< HEAD
     __args__['id'] = id
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     __args__['ruleId'] = rule_id
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -183,7 +214,10 @@ def get_firewall_rule(id: Optional[str] = None,
     return AwaitableGetFirewallRuleResult(
         action=pulumi.get(__ret__, 'action'),
         description=pulumi.get(__ret__, 'description'),
+<<<<<<< HEAD
         filter=pulumi.get(__ret__, 'filter'),
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         id=pulumi.get(__ret__, 'id'),
         paused=pulumi.get(__ret__, 'paused'),
         priority=pulumi.get(__ret__, 'priority'),
@@ -191,13 +225,18 @@ def get_firewall_rule(id: Optional[str] = None,
         ref=pulumi.get(__ret__, 'ref'),
         rule_id=pulumi.get(__ret__, 'rule_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
+<<<<<<< HEAD
 def get_firewall_rule_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                              rule_id: Optional[pulumi.Input[str]] = None,
+=======
+def get_firewall_rule_output(rule_id: Optional[pulumi.Input[Optional[str]]] = None,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                              zone_id: Optional[pulumi.Input[str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallRuleResult]:
     """
     ## Example Usage
 
+<<<<<<< HEAD
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -209,11 +248,17 @@ def get_firewall_rule_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str id: The unique identifier of the firewall rule.
+=======
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     :param str rule_id: The unique identifier of the firewall rule.
     :param str zone_id: Identifier
     """
     __args__ = dict()
+<<<<<<< HEAD
     __args__['id'] = id
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     __args__['ruleId'] = rule_id
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -221,7 +266,10 @@ def get_firewall_rule_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     return __ret__.apply(lambda __response__: GetFirewallRuleResult(
         action=pulumi.get(__response__, 'action'),
         description=pulumi.get(__response__, 'description'),
+<<<<<<< HEAD
         filter=pulumi.get(__response__, 'filter'),
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         id=pulumi.get(__response__, 'id'),
         paused=pulumi.get(__response__, 'paused'),
         priority=pulumi.get(__response__, 'priority'),

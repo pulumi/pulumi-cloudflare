@@ -90,6 +90,11 @@ type Zone struct {
 	// An array of domains used for custom name servers. This is only
 	// available for Business and Enterprise plans.
 	VanityNameServers pulumi.StringArrayOutput `pulumi:"vanityNameServers"`
+<<<<<<< HEAD
+=======
+	// Verification key for partial zone setup.
+	VerificationKey pulumi.StringOutput `pulumi:"verificationKey"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // NewZone registers a new resource with the given unique name, arguments, and options.
@@ -166,6 +171,11 @@ type zoneState struct {
 	// An array of domains used for custom name servers. This is only
 	// available for Business and Enterprise plans.
 	VanityNameServers []string `pulumi:"vanityNameServers"`
+<<<<<<< HEAD
+=======
+	// Verification key for partial zone setup.
+	VerificationKey *string `pulumi:"verificationKey"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 type ZoneState struct {
@@ -207,6 +217,11 @@ type ZoneState struct {
 	// An array of domains used for custom name servers. This is only
 	// available for Business and Enterprise plans.
 	VanityNameServers pulumi.StringArrayInput
+<<<<<<< HEAD
+=======
+	// Verification key for partial zone setup.
+	VerificationKey pulumi.StringPtrInput
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func (ZoneState) ElementType() reflect.Type {
@@ -411,6 +426,14 @@ func (o ZoneOutput) VanityNameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringArrayOutput { return v.VanityNameServers }).(pulumi.StringArrayOutput)
 }
 
+<<<<<<< HEAD
+=======
+// Verification key for partial zone setup.
+func (o ZoneOutput) VerificationKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.VerificationKey }).(pulumi.StringOutput)
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 type ZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (ZoneArrayOutput) ElementType() reflect.Type {

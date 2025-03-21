@@ -126,6 +126,13 @@ export class Zone extends pulumi.CustomResource {
      * available for Business and Enterprise plans.
      */
     public readonly vanityNameServers!: pulumi.Output<string[] | undefined>;
+<<<<<<< HEAD
+=======
+    /**
+     * Verification key for partial zone setup.
+     */
+    public /*out*/ readonly verificationKey!: pulumi.Output<string>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      * Create a Zone resource with the given unique name, arguments, and options.
@@ -156,6 +163,10 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["vanityNameServers"] = state ? state.vanityNameServers : undefined;
+<<<<<<< HEAD
+=======
+            resourceInputs["verificationKey"] = state ? state.verificationKey : undefined;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         } else {
             const args = argsOrState as ZoneArgs | undefined;
             if ((!args || args.account === undefined) && !opts.urn) {
@@ -258,6 +269,13 @@ export interface ZoneState {
      * available for Business and Enterprise plans.
      */
     vanityNameServers?: pulumi.Input<pulumi.Input<string>[]>;
+<<<<<<< HEAD
+=======
+    /**
+     * Verification key for partial zone setup.
+     */
+    verificationKey?: pulumi.Input<string>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 /**

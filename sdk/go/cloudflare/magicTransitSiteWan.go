@@ -13,6 +13,15 @@ import (
 )
 
 // ## Example Usage
+<<<<<<< HEAD
+=======
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan example '<account_id>/<site_id>/<wan_id>'
+// ```
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 type MagicTransitSiteWan struct {
 	pulumi.CustomResourceState
 
@@ -29,8 +38,11 @@ type MagicTransitSiteWan struct {
 	StaticAddressing MagicTransitSiteWanStaticAddressingOutput `pulumi:"staticAddressing"`
 	// VLAN port number.
 	VlanTag pulumi.IntOutput `pulumi:"vlanTag"`
+<<<<<<< HEAD
 	// Identifier
 	WanId pulumi.StringPtrOutput `pulumi:"wanId"`
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // NewMagicTransitSiteWan registers a new resource with the given unique name, arguments, and options.
@@ -88,8 +100,11 @@ type magicTransitSiteWanState struct {
 	StaticAddressing *MagicTransitSiteWanStaticAddressing `pulumi:"staticAddressing"`
 	// VLAN port number.
 	VlanTag *int `pulumi:"vlanTag"`
+<<<<<<< HEAD
 	// Identifier
 	WanId *string `pulumi:"wanId"`
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 type MagicTransitSiteWanState struct {
@@ -106,8 +121,11 @@ type MagicTransitSiteWanState struct {
 	StaticAddressing MagicTransitSiteWanStaticAddressingPtrInput
 	// VLAN port number.
 	VlanTag pulumi.IntPtrInput
+<<<<<<< HEAD
 	// Identifier
 	WanId pulumi.StringPtrInput
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func (MagicTransitSiteWanState) ElementType() reflect.Type {
@@ -126,8 +144,11 @@ type magicTransitSiteWanArgs struct {
 	StaticAddressing *MagicTransitSiteWanStaticAddressing `pulumi:"staticAddressing"`
 	// VLAN port number.
 	VlanTag int `pulumi:"vlanTag"`
+<<<<<<< HEAD
 	// Identifier
 	WanId *string `pulumi:"wanId"`
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // The set of arguments for constructing a MagicTransitSiteWan resource.
@@ -143,8 +164,11 @@ type MagicTransitSiteWanArgs struct {
 	StaticAddressing MagicTransitSiteWanStaticAddressingPtrInput
 	// VLAN port number.
 	VlanTag pulumi.IntInput
+<<<<<<< HEAD
 	// Identifier
 	WanId pulumi.StringPtrInput
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func (MagicTransitSiteWanArgs) ElementType() reflect.Type {
@@ -271,11 +295,14 @@ func (o MagicTransitSiteWanOutput) VlanTag() pulumi.IntOutput {
 	return o.ApplyT(func(v *MagicTransitSiteWan) pulumi.IntOutput { return v.VlanTag }).(pulumi.IntOutput)
 }
 
+<<<<<<< HEAD
 // Identifier
 func (o MagicTransitSiteWanOutput) WanId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MagicTransitSiteWan) pulumi.StringPtrOutput { return v.WanId }).(pulumi.StringPtrOutput)
 }
 
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 type MagicTransitSiteWanArrayOutput struct{ *pulumi.OutputState }
 
 func (MagicTransitSiteWanArrayOutput) ElementType() reflect.Type {

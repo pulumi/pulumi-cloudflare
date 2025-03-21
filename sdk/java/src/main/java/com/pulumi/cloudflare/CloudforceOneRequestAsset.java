@@ -54,6 +54,15 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+<<<<<<< HEAD
+=======
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example &#39;&lt;account_identifier&gt;/&lt;request_identifier&gt;/&lt;asset_identifer&gt;&#39;
+ * ```
+ * 
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  */
 @ResourceType(type="cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset")
 public class CloudforceOneRequestAsset extends com.pulumi.resources.CustomResource {
@@ -72,6 +81,7 @@ public class CloudforceOneRequestAsset extends com.pulumi.resources.CustomResour
         return this.accountIdentifier;
     }
     /**
+<<<<<<< HEAD
      * UUID
      * 
      */
@@ -86,6 +96,8 @@ public class CloudforceOneRequestAsset extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.assetIdentifer);
     }
     /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Asset creation time
      * 
      */

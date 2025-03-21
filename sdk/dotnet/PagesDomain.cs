@@ -58,7 +58,11 @@ namespace Pulumi.Cloudflare
         public Output<string> DomainId { get; private set; } = null!;
 
         [Output("name")]
+<<<<<<< HEAD
         public Output<string?> Name { get; private set; } = null!;
+=======
+        public Output<string> Name { get; private set; } = null!;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Name of the project.
@@ -130,8 +134,13 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+<<<<<<< HEAD
         [Input("name")]
         public Input<string>? Name { get; set; }
+=======
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Name of the project.

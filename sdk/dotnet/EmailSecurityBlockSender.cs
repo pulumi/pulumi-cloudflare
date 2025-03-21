@@ -23,10 +23,17 @@ namespace Pulumi.Cloudflare
     ///     var exampleEmailSecurityBlockSender = new Cloudflare.EmailSecurityBlockSender("example_email_security_block_sender", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+<<<<<<< HEAD
     ///         IsRegex = false,
     ///         Pattern = "test@example.com",
     ///         PatternType = "EMAIL",
     ///         Comments = "block sender with email test@example.com",
+=======
+    ///         IsRegex = true,
+    ///         Pattern = "x",
+    ///         PatternType = "EMAIL",
+    ///         Comments = "comments",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     ///     });
     /// 
     /// });

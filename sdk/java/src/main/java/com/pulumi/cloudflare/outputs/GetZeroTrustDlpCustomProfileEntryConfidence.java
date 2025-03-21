@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustDlpCustomProfileEntryConfidence {
+<<<<<<< HEAD
+=======
+    private Boolean aiContextAvailable;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
      * Profiles that use an entry with `available` set to true can use confidence thresholds
@@ -18,6 +22,12 @@ public final class GetZeroTrustDlpCustomProfileEntryConfidence {
     private Boolean available;
 
     private GetZeroTrustDlpCustomProfileEntryConfidence() {}
+<<<<<<< HEAD
+=======
+    public Boolean aiContextAvailable() {
+        return this.aiContextAvailable;
+    }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
      * Profiles that use an entry with `available` set to true can use confidence thresholds
@@ -36,14 +46,33 @@ public final class GetZeroTrustDlpCustomProfileEntryConfidence {
     }
     @CustomType.Builder
     public static final class Builder {
+<<<<<<< HEAD
+=======
+        private Boolean aiContextAvailable;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private Boolean available;
         public Builder() {}
         public Builder(GetZeroTrustDlpCustomProfileEntryConfidence defaults) {
     	      Objects.requireNonNull(defaults);
+<<<<<<< HEAD
+=======
+    	      this.aiContextAvailable = defaults.aiContextAvailable;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.available = defaults.available;
         }
 
         @CustomType.Setter
+<<<<<<< HEAD
+=======
+        public Builder aiContextAvailable(Boolean aiContextAvailable) {
+            if (aiContextAvailable == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileEntryConfidence", "aiContextAvailable");
+            }
+            this.aiContextAvailable = aiContextAvailable;
+            return this;
+        }
+        @CustomType.Setter
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder available(Boolean available) {
             if (available == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileEntryConfidence", "available");
@@ -53,6 +82,10 @@ public final class GetZeroTrustDlpCustomProfileEntryConfidence {
         }
         public GetZeroTrustDlpCustomProfileEntryConfidence build() {
             final var _resultValue = new GetZeroTrustDlpCustomProfileEntryConfidence();
+<<<<<<< HEAD
+=======
+            _resultValue.aiContextAvailable = aiContextAvailable;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.available = available;
             return _resultValue;
         }

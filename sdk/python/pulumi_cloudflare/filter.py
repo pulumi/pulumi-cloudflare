@@ -20,18 +20,28 @@ __all__ = ['FilterArgs', 'Filter']
 class FilterArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
+<<<<<<< HEAD
                  zone_id: pulumi.Input[str],
                  filter_id: Optional[pulumi.Input[str]] = None):
+=======
+                 zone_id: pulumi.Input[str]):
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         The set of arguments for constructing a Filter resource.
         :param pulumi.Input[str] expression: The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
         :param pulumi.Input[str] zone_id: Identifier
+<<<<<<< HEAD
         :param pulumi.Input[str] filter_id: The unique identifier of the filter.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "zone_id", zone_id)
         if filter_id is not None:
             pulumi.set(__self__, "filter_id", filter_id)
+=======
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "zone_id", zone_id)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     @property
     @pulumi.getter
@@ -57,6 +67,7 @@ class FilterArgs:
     def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
 
+<<<<<<< HEAD
     @property
     @pulumi.getter(name="filterId")
     def filter_id(self) -> Optional[pulumi.Input[str]]:
@@ -69,6 +80,8 @@ class FilterArgs:
     def filter_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "filter_id", value)
 
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 @pulumi.input_type
 class _FilterState:
@@ -83,7 +96,10 @@ class _FilterState:
         Input properties used for looking up and filtering Filter resources.
         :param pulumi.Input[str] description: An informative summary of the filter.
         :param pulumi.Input[str] expression: The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+<<<<<<< HEAD
         :param pulumi.Input[str] filter_id: The unique identifier of the filter.
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[bool] paused: When true, indicates that the filter is currently paused.
         :param pulumi.Input[str] ref: A short reference tag. Allows you to select related filters.
         :param pulumi.Input[str] zone_id: Identifier
@@ -180,11 +196,18 @@ class Filter(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  expression: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
                  filter_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         > `Filter` is in a deprecation phase until January 15th, 2025.
+=======
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
+        """
+        > `Filter` is in a deprecation phase until June 15th, 2025.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
           During this time period, this resource is still fully
           supported but you are strongly advised to move to the
           `Ruleset` resource. Full details can be found in the
@@ -199,12 +222,24 @@ class Filter(pulumi.CustomResource):
         example_filter = cloudflare.Filter("example_filter",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.addr ne 172.16.22.155")
+<<<<<<< HEAD
+=======
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/filter:Filter example '<zone_id>/<filter_id>'
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] expression: The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+<<<<<<< HEAD
         :param pulumi.Input[str] filter_id: The unique identifier of the filter.
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] zone_id: Identifier
         """
         ...
@@ -214,7 +249,11 @@ class Filter(pulumi.CustomResource):
                  args: FilterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+<<<<<<< HEAD
         > `Filter` is in a deprecation phase until January 15th, 2025.
+=======
+        > `Filter` is in a deprecation phase until June 15th, 2025.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
           During this time period, this resource is still fully
           supported but you are strongly advised to move to the
           `Ruleset` resource. Full details can be found in the
@@ -229,6 +268,15 @@ class Filter(pulumi.CustomResource):
         example_filter = cloudflare.Filter("example_filter",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.addr ne 172.16.22.155")
+<<<<<<< HEAD
+=======
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/filter:Filter example '<zone_id>/<filter_id>'
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ```
 
         :param str resource_name: The name of the resource.
@@ -247,7 +295,10 @@ class Filter(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  expression: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
                  filter_id: Optional[pulumi.Input[str]] = None,
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -261,7 +312,10 @@ class Filter(pulumi.CustomResource):
             if expression is None and not opts.urn:
                 raise TypeError("Missing required property 'expression'")
             __props__.__dict__["expression"] = expression
+<<<<<<< HEAD
             __props__.__dict__["filter_id"] = filter_id
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
@@ -293,7 +347,10 @@ class Filter(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An informative summary of the filter.
         :param pulumi.Input[str] expression: The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+<<<<<<< HEAD
         :param pulumi.Input[str] filter_id: The unique identifier of the filter.
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[bool] paused: When true, indicates that the filter is currently paused.
         :param pulumi.Input[str] ref: A short reference tag. Allows you to select related filters.
         :param pulumi.Input[str] zone_id: Identifier
@@ -327,6 +384,7 @@ class Filter(pulumi.CustomResource):
         return pulumi.get(self, "expression")
 
     @property
+<<<<<<< HEAD
     @pulumi.getter(name="filterId")
     def filter_id(self) -> pulumi.Output[Optional[str]]:
         """
@@ -338,6 +396,11 @@ class Filter(pulumi.CustomResource):
     @pulumi.getter
     def paused(self) -> pulumi.Output[bool]:
         """
+=======
+    @pulumi.getter
+    def paused(self) -> pulumi.Output[bool]:
+        """
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         When true, indicates that the filter is currently paused.
         """
         return pulumi.get(self, "paused")

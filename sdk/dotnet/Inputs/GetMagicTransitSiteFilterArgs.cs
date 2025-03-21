@@ -10,17 +10,43 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/dotnet/Inputs/GetMagicTransitSiteFilterArgs.cs
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public sealed class GetMagicTransitSiteFilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifier
         /// </summary>
+<<<<<<< HEAD
         [Input("connectorIdentifier")]
         public Input<string>? ConnectorIdentifier { get; set; }
+=======
+        [Input("connectorid")]
+        public Input<string>? Connectorid { get; set; }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         public GetMagicTransitSiteFilterInputArgs()
         {
         }
         public static new GetMagicTransitSiteFilterInputArgs Empty => new GetMagicTransitSiteFilterInputArgs();
+<<<<<<< HEAD
+========
+    public sealed class ZeroTrustAccessPolicyExcludeIpArgs : global::Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// An IPv4 or IPv6 CIDR block.
+        /// </summary>
+        [Input("ip", required: true)]
+        public Input<string> Ip { get; set; } = null!;
+
+        public ZeroTrustAccessPolicyExcludeIpArgs()
+        {
+        }
+        public static new ZeroTrustAccessPolicyExcludeIpArgs Empty => new ZeroTrustAccessPolicyExcludeIpArgs();
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/dotnet/Inputs/ZeroTrustAccessPolicyExcludeIpArgs.cs
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 }

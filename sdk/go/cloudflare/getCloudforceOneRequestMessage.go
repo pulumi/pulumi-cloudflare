@@ -59,10 +59,27 @@ type LookupCloudforceOneRequestMessageArgs struct {
 type LookupCloudforceOneRequestMessageResult struct {
 	// Identifier
 	AccountIdentifier string `pulumi:"accountIdentifier"`
+<<<<<<< HEAD
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// UUID
 	RequestIdentifier string `pulumi:"requestIdentifier"`
+=======
+	// Author of message
+	Author string `pulumi:"author"`
+	// Content of message
+	Content string `pulumi:"content"`
+	// Message creation time
+	Created string `pulumi:"created"`
+	// Message ID
+	Id int `pulumi:"id"`
+	// Whether the message is a follow-on request
+	IsFollowOnRequest bool `pulumi:"isFollowOnRequest"`
+	// UUID
+	RequestIdentifier string `pulumi:"requestIdentifier"`
+	// Message last updated time
+	Updated string `pulumi:"updated"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func LookupCloudforceOneRequestMessageOutput(ctx *pulumi.Context, args LookupCloudforceOneRequestMessageOutputArgs, opts ...pulumi.InvokeOption) LookupCloudforceOneRequestMessageResultOutput {
@@ -106,9 +123,35 @@ func (o LookupCloudforceOneRequestMessageResultOutput) AccountIdentifier() pulum
 	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.AccountIdentifier }).(pulumi.StringOutput)
 }
 
+<<<<<<< HEAD
 // The provider-assigned unique ID for this managed resource.
 func (o LookupCloudforceOneRequestMessageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.Id }).(pulumi.StringOutput)
+=======
+// Author of message
+func (o LookupCloudforceOneRequestMessageResultOutput) Author() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.Author }).(pulumi.StringOutput)
+}
+
+// Content of message
+func (o LookupCloudforceOneRequestMessageResultOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// Message creation time
+func (o LookupCloudforceOneRequestMessageResultOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// Message ID
+func (o LookupCloudforceOneRequestMessageResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// Whether the message is a follow-on request
+func (o LookupCloudforceOneRequestMessageResultOutput) IsFollowOnRequest() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) bool { return v.IsFollowOnRequest }).(pulumi.BoolOutput)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // UUID
@@ -116,6 +159,14 @@ func (o LookupCloudforceOneRequestMessageResultOutput) RequestIdentifier() pulum
 	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.RequestIdentifier }).(pulumi.StringOutput)
 }
 
+<<<<<<< HEAD
+=======
+// Message last updated time
+func (o LookupCloudforceOneRequestMessageResultOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func init() {
 	pulumi.RegisterOutputType(LookupCloudforceOneRequestMessageResultOutput{})
 }

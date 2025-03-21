@@ -63,6 +63,15 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+<<<<<<< HEAD
+=======
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan example &#39;&lt;account_id&gt;/&lt;site_id&gt;/&lt;wan_id&gt;&#39;
+ * ```
+ * 
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  */
 @ResourceType(type="cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan")
 public class MagicTransitSiteWan extends com.pulumi.resources.CustomResource {
@@ -154,6 +163,7 @@ public class MagicTransitSiteWan extends com.pulumi.resources.CustomResource {
     public Output<Integer> vlanTag() {
         return this.vlanTag;
     }
+<<<<<<< HEAD
     /**
      * Identifier
      * 
@@ -168,6 +178,8 @@ public class MagicTransitSiteWan extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> wanId() {
         return Codegen.optional(this.wanId);
     }
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      *

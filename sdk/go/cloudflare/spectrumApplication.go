@@ -98,7 +98,11 @@ type SpectrumApplication struct {
 	Tls pulumi.StringPtrOutput `pulumi:"tls"`
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
 	TrafficType pulumi.StringOutput `pulumi:"trafficType"`
+<<<<<<< HEAD
 	// Identifier
+=======
+	// Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -170,7 +174,11 @@ type spectrumApplicationState struct {
 	Tls *string `pulumi:"tls"`
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
 	TrafficType *string `pulumi:"trafficType"`
+<<<<<<< HEAD
 	// Identifier
+=======
+	// Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -204,7 +212,11 @@ type SpectrumApplicationState struct {
 	Tls pulumi.StringPtrInput
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
 	TrafficType pulumi.StringPtrInput
+<<<<<<< HEAD
 	// Identifier
+=======
+	// Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -238,7 +250,11 @@ type spectrumApplicationArgs struct {
 	Tls *string `pulumi:"tls"`
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
 	TrafficType *string `pulumi:"trafficType"`
+<<<<<<< HEAD
 	// Identifier
+=======
+	// Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -269,7 +285,11 @@ type SpectrumApplicationArgs struct {
 	Tls pulumi.StringPtrInput
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
 	TrafficType pulumi.StringPtrInput
+<<<<<<< HEAD
 	// Identifier
+=======
+	// Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	ZoneId pulumi.StringInput
 }
 
@@ -428,7 +448,11 @@ func (o SpectrumApplicationOutput) TrafficType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringOutput { return v.TrafficType }).(pulumi.StringOutput)
 }
 
+<<<<<<< HEAD
 // Identifier
+=======
+// Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func (o SpectrumApplicationOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

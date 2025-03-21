@@ -15,7 +15,19 @@ public final class GetD1DatabasesResult {
      * 
      */
     private String createdAt;
+<<<<<<< HEAD
     private String name;
+=======
+    /**
+     * @return D1 database name.
+     * 
+     */
+    private String name;
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     private String uuid;
     private String version;
 
@@ -27,9 +39,23 @@ public final class GetD1DatabasesResult {
     public String createdAt() {
         return this.createdAt;
     }
+<<<<<<< HEAD
     public String name() {
         return this.name;
     }
+=======
+    /**
+     * @return D1 database name.
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public String uuid() {
         return this.uuid;
     }

@@ -5,7 +5,10 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Double;
+<<<<<<< HEAD
 import java.lang.Object;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -47,7 +50,11 @@ public final class RecordData {
      * @return Flags for the CAA record.
      * 
      */
+<<<<<<< HEAD
     private @Nullable Object flags;
+=======
+    private @Nullable Double flags;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return Key Tag.
      * 
@@ -241,7 +248,11 @@ public final class RecordData {
      * @return Flags for the CAA record.
      * 
      */
+<<<<<<< HEAD
     public Optional<Object> flags() {
+=======
+    public Optional<Double> flags() {
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return Optional.ofNullable(this.flags);
     }
     /**
@@ -463,7 +474,11 @@ public final class RecordData {
         private @Nullable String digest;
         private @Nullable Double digestType;
         private @Nullable String fingerprint;
+<<<<<<< HEAD
         private @Nullable Object flags;
+=======
+        private @Nullable Double flags;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private @Nullable Double keyTag;
         private @Nullable Double latDegrees;
         private @Nullable String latDirection;
@@ -571,7 +586,11 @@ public final class RecordData {
             return this;
         }
         @CustomType.Setter
+<<<<<<< HEAD
         public Builder flags(@Nullable Object flags) {
+=======
+        public Builder flags(@Nullable Double flags) {
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
             this.flags = flags;
             return this;

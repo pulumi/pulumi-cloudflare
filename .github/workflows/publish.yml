@@ -59,8 +59,9 @@ jobs:
       uses: ./.github/actions/setup-tools
       with:
         tools: pulumictl, pulumicli, go, schema-tools
+        cache-go: false
     - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@4fc4975a852c8cd99761e2de1f4ba73402e44dd9 # v4.0.3
+      uses: aws-actions/configure-aws-credentials@ececac1a45f3b08a01d2dd070d28d111c5fe6722 # v4.1.0
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-region: us-east-2
@@ -72,14 +73,14 @@ jobs:
     - name: Create dist directory
       run: mkdir -p dist
     - name: Download provider assets
-      uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
+      uses: actions/download-artifact@cc203385981b70ca67e1cc392babf9cc229d5806 # v4.1.9
       with:
         pattern: pulumi-resource-cloudflare-v${{ inputs.version }}-*
         path: dist
         # Don't create a directory for each artifact
         merge-multiple: true
     - name: Download schema
-      uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
+      uses: actions/download-artifact@cc203385981b70ca67e1cc392babf9cc229d5806 # v4.1.9
       with:
         # Use a pattern to avoid failing if the artifact doesn't exist
         pattern: schema-embed.*
@@ -222,7 +223,5 @@ jobs:
     secrets: inherit
     with:
       providerVersion: ${{ inputs.version }}
-      # Prelease is run often but we only have 5 concurrent macos runners, so we only test after the stable release.
-      enableMacRunner: ${{ inputs.isPrerelease == false }}
       skipGoSdk: ${{ inputs.skipGoSdk }}
       pythonVersion: ${{ needs.publish_sdk.outputs.python_version }}

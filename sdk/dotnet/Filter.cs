@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+<<<<<<< HEAD
     /// &gt; `cloudflare.Filter` is in a deprecation phase until January 15th, 2025.
+=======
+    /// &gt; `cloudflare.Filter` is in a deprecation phase until June 15th, 2025.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     ///   During this time period, this resource is still fully
     ///   supported but you are strongly advised to move to the
     ///   `cloudflare.Ruleset` resource. Full details can be found in the
@@ -34,6 +38,15 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+<<<<<<< HEAD
+=======
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/filter:Filter example '&lt;zone_id&gt;/&lt;filter_id&gt;'
+    /// ```
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /// </summary>
     [CloudflareResourceType("cloudflare:index/filter:Filter")]
     public partial class Filter : global::Pulumi.CustomResource
@@ -51,12 +64,15 @@ namespace Pulumi.Cloudflare
         public Output<string> Expression { get; private set; } = null!;
 
         /// <summary>
+<<<<<<< HEAD
         /// The unique identifier of the filter.
         /// </summary>
         [Output("filterId")]
         public Output<string?> FilterId { get; private set; } = null!;
 
         /// <summary>
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// When true, indicates that the filter is currently paused.
         /// </summary>
         [Output("paused")]
@@ -127,12 +143,15 @@ namespace Pulumi.Cloudflare
         public Input<string> Expression { get; set; } = null!;
 
         /// <summary>
+<<<<<<< HEAD
         /// The unique identifier of the filter.
         /// </summary>
         [Input("filterId")]
         public Input<string>? FilterId { get; set; }
 
         /// <summary>
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
@@ -159,12 +178,15 @@ namespace Pulumi.Cloudflare
         public Input<string>? Expression { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
         /// The unique identifier of the filter.
         /// </summary>
         [Input("filterId")]
         public Input<string>? FilterId { get; set; }
 
         /// <summary>
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// When true, indicates that the filter is currently paused.
         /// </summary>
         [Input("paused")]

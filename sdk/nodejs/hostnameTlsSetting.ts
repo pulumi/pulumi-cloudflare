@@ -7,6 +7,24 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+<<<<<<< HEAD
+=======
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleHostnameTlsSetting = new cloudflare.HostnameTlsSetting("example_hostname_tls_setting", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     settingId: "ciphers",
+ *     hostname: "app.example.com",
+ *     value: [
+ *         "ECDHE-RSA-AES128-GCM-SHA256",
+ *         "AES128-GCM-SHA256",
+ *     ],
+ * });
+ * ```
+ *
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  * ## Import
  *
  * ```sh
@@ -64,7 +82,11 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
     /**
      * The tls setting value.
      */
+<<<<<<< HEAD
     public readonly value!: pulumi.Output<number>;
+=======
+    public readonly value!: pulumi.Output<any>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Identifier
      */
@@ -141,7 +163,11 @@ export interface HostnameTlsSettingState {
     /**
      * The tls setting value.
      */
+<<<<<<< HEAD
     value?: pulumi.Input<number>;
+=======
+    value?: any;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Identifier
      */
@@ -163,7 +189,11 @@ export interface HostnameTlsSettingArgs {
     /**
      * The tls setting value.
      */
+<<<<<<< HEAD
     value: pulumi.Input<number>;
+=======
+    value: any;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Identifier
      */

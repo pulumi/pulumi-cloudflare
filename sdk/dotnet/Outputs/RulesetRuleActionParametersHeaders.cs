@@ -17,7 +17,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// Expression for the header value.
         /// </summary>
         public readonly string? Expression;
+<<<<<<< HEAD
         public readonly string? Operation;
+=======
+        public readonly string Operation;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// Static value for the header.
         /// </summary>
@@ -27,7 +31,11 @@ namespace Pulumi.Cloudflare.Outputs
         private RulesetRuleActionParametersHeaders(
             string? expression,
 
+<<<<<<< HEAD
             string? operation,
+=======
+            string operation,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
             string? value)
         {

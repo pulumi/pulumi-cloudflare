@@ -57,13 +57,24 @@ type D1Database struct {
 	// Specifies the timestamp the resource was created as an ISO8601 string.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The D1 database's size, in bytes.
+<<<<<<< HEAD
 	FileSize  pulumi.Float64Output `pulumi:"fileSize"`
+=======
+	FileSize pulumi.Float64Output `pulumi:"fileSize"`
+	// D1 database name.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	Name      pulumi.StringOutput  `pulumi:"name"`
 	NumTables pulumi.Float64Output `pulumi:"numTables"`
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	PrimaryLocationHint pulumi.StringPtrOutput `pulumi:"primaryLocationHint"`
+<<<<<<< HEAD
 	Uuid                pulumi.StringOutput    `pulumi:"uuid"`
 	Version             pulumi.StringOutput    `pulumi:"version"`
+=======
+	// D1 database identifier (UUID).
+	Uuid    pulumi.StringOutput `pulumi:"uuid"`
+	Version pulumi.StringOutput `pulumi:"version"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // NewD1Database registers a new resource with the given unique name, arguments, and options.
@@ -107,13 +118,24 @@ type d1databaseState struct {
 	// Specifies the timestamp the resource was created as an ISO8601 string.
 	CreatedAt *string `pulumi:"createdAt"`
 	// The D1 database's size, in bytes.
+<<<<<<< HEAD
 	FileSize  *float64 `pulumi:"fileSize"`
+=======
+	FileSize *float64 `pulumi:"fileSize"`
+	// D1 database name.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	Name      *string  `pulumi:"name"`
 	NumTables *float64 `pulumi:"numTables"`
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	PrimaryLocationHint *string `pulumi:"primaryLocationHint"`
+<<<<<<< HEAD
 	Uuid                *string `pulumi:"uuid"`
 	Version             *string `pulumi:"version"`
+=======
+	// D1 database identifier (UUID).
+	Uuid    *string `pulumi:"uuid"`
+	Version *string `pulumi:"version"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 type D1DatabaseState struct {
@@ -122,13 +144,24 @@ type D1DatabaseState struct {
 	// Specifies the timestamp the resource was created as an ISO8601 string.
 	CreatedAt pulumi.StringPtrInput
 	// The D1 database's size, in bytes.
+<<<<<<< HEAD
 	FileSize  pulumi.Float64PtrInput
+=======
+	FileSize pulumi.Float64PtrInput
+	// D1 database name.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	Name      pulumi.StringPtrInput
 	NumTables pulumi.Float64PtrInput
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	PrimaryLocationHint pulumi.StringPtrInput
+<<<<<<< HEAD
 	Uuid                pulumi.StringPtrInput
 	Version             pulumi.StringPtrInput
+=======
+	// D1 database identifier (UUID).
+	Uuid    pulumi.StringPtrInput
+	Version pulumi.StringPtrInput
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func (D1DatabaseState) ElementType() reflect.Type {
@@ -138,7 +171,12 @@ func (D1DatabaseState) ElementType() reflect.Type {
 type d1databaseArgs struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
+<<<<<<< HEAD
 	Name      string `pulumi:"name"`
+=======
+	// D1 database name.
+	Name string `pulumi:"name"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	PrimaryLocationHint *string `pulumi:"primaryLocationHint"`
 }
@@ -147,7 +185,12 @@ type d1databaseArgs struct {
 type D1DatabaseArgs struct {
 	// Account identifier tag.
 	AccountId pulumi.StringInput
+<<<<<<< HEAD
 	Name      pulumi.StringInput
+=======
+	// D1 database name.
+	Name pulumi.StringInput
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	PrimaryLocationHint pulumi.StringPtrInput
 }
@@ -254,6 +297,10 @@ func (o D1DatabaseOutput) FileSize() pulumi.Float64Output {
 	return o.ApplyT(func(v *D1Database) pulumi.Float64Output { return v.FileSize }).(pulumi.Float64Output)
 }
 
+<<<<<<< HEAD
+=======
+// D1 database name.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func (o D1DatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *D1Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -267,6 +314,10 @@ func (o D1DatabaseOutput) PrimaryLocationHint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *D1Database) pulumi.StringPtrOutput { return v.PrimaryLocationHint }).(pulumi.StringPtrOutput)
 }
 
+<<<<<<< HEAD
+=======
+// D1 database identifier (UUID).
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func (o D1DatabaseOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *D1Database) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
 }

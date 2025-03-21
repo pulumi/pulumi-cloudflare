@@ -176,6 +176,24 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * The hostname certificate&#39;s private key.
+     * 
+     */
+    @Import(name="privateKey")
+    private @Nullable Output<String> privateKey;
+
+    /**
+     * @return The hostname certificate&#39;s private key.
+     * 
+     */
+    public Optional<Output<String>> privateKey() {
+        return Optional.ofNullable(this.privateKey);
+    }
+
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The serial number on the uploaded certificate.
      * 
      */
@@ -264,6 +282,10 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         this.expiresOn = $.expiresOn;
         this.hostname = $.hostname;
         this.issuer = $.issuer;
+<<<<<<< HEAD
+=======
+        this.privateKey = $.privateKey;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.serialNumber = $.serialNumber;
         this.signature = $.signature;
         this.status = $.status;
@@ -513,6 +535,30 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
+<<<<<<< HEAD
+=======
+         * @param privateKey The hostname certificate&#39;s private key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateKey(@Nullable Output<String> privateKey) {
+            $.privateKey = privateKey;
+            return this;
+        }
+
+        /**
+         * @param privateKey The hostname certificate&#39;s private key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateKey(String privateKey) {
+            return privateKey(Output.of(privateKey));
+        }
+
+        /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param serialNumber The serial number on the uploaded certificate.
          * 
          * @return builder

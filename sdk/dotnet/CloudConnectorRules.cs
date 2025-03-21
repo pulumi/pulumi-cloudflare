@@ -16,6 +16,30 @@ namespace Pulumi.Cloudflare
     public partial class CloudConnectorRules : global::Pulumi.CustomResource
     {
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Cloud Provider type
+        /// </summary>
+        [Output("cloudProvider")]
+        public Output<string> CloudProvider { get; private set; } = null!;
+
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        [Output("enabled")]
+        public Output<bool> Enabled { get; private set; } = null!;
+
+        [Output("expression")]
+        public Output<string> Expression { get; private set; } = null!;
+
+        /// <summary>
+        /// Parameters of Cloud Connector Rule
+        /// </summary>
+        [Output("parameters")]
+        public Output<Outputs.CloudConnectorRulesParameters> Parameters { get; private set; } = null!;
+
+        /// <summary>
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// List of Cloud Connector rules
         /// </summary>
         [Output("rules")]
@@ -99,6 +123,27 @@ namespace Pulumi.Cloudflare
 
     public sealed class CloudConnectorRulesState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cloud Provider type
+        /// </summary>
+        [Input("cloudProvider")]
+        public Input<string>? CloudProvider { get; set; }
+
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        [Input("expression")]
+        public Input<string>? Expression { get; set; }
+
+        /// <summary>
+        /// Parameters of Cloud Connector Rule
+        /// </summary>
+        [Input("parameters")]
+        public Input<Inputs.CloudConnectorRulesParametersGetArgs>? Parameters { get; set; }
+
         [Input("rules")]
         private InputList<Inputs.CloudConnectorRulesRuleGetArgs>? _rules;
 

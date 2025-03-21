@@ -131,18 +131,48 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountIdentifier;
         /// <summary>
+<<<<<<< HEAD
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+=======
+        /// Author of message
+        /// </summary>
+        public readonly string Author;
+        /// <summary>
+        /// Content of message
+        /// </summary>
+        public readonly string Content;
+        /// <summary>
+        /// Message creation time
+        /// </summary>
+        public readonly string Created;
+        /// <summary>
+        /// Message ID
+        /// </summary>
+        public readonly int Id;
+        /// <summary>
+        /// Whether the message is a follow-on request
+        /// </summary>
+        public readonly bool IsFollowOnRequest;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// UUID
         /// </summary>
         public readonly string RequestIdentifier;
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Message last updated time
+        /// </summary>
+        public readonly string Updated;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         [OutputConstructor]
         private GetCloudforceOneRequestMessageResult(
             string accountIdentifier,
 
+<<<<<<< HEAD
             string id,
 
             string requestIdentifier)
@@ -150,6 +180,30 @@ namespace Pulumi.Cloudflare
             AccountIdentifier = accountIdentifier;
             Id = id;
             RequestIdentifier = requestIdentifier;
+=======
+            string author,
+
+            string content,
+
+            string created,
+
+            int id,
+
+            bool isFollowOnRequest,
+
+            string requestIdentifier,
+
+            string updated)
+        {
+            AccountIdentifier = accountIdentifier;
+            Author = author;
+            Content = content;
+            Created = created;
+            Id = id;
+            IsFollowOnRequest = isFollowOnRequest;
+            RequestIdentifier = requestIdentifier;
+            Updated = updated;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
     }
 }

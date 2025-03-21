@@ -121,9 +121,36 @@ namespace Pulumi.Cloudflare
     public sealed class GetWaitingRoomRulesResult
     {
         /// <summary>
+<<<<<<< HEAD
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+=======
+        /// The action to take when the expression matches.
+        /// </summary>
+        public readonly string Action;
+        /// <summary>
+        /// The description of the rule.
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
+        /// When set to true, the rule is enabled.
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
+        /// Criteria defining when there is a match for the current rule.
+        /// </summary>
+        public readonly string Expression;
+        /// <summary>
+        /// The ID of the rule.
+        /// </summary>
+        public readonly string Id;
+        public readonly string LastUpdated;
+        /// <summary>
+        /// The version of the rule.
+        /// </summary>
+        public readonly string Version;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public readonly string WaitingRoomId;
         /// <summary>
         /// Identifier
@@ -132,13 +159,40 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWaitingRoomRulesResult(
+<<<<<<< HEAD
             string id,
 
+=======
+            string action,
+
+            string description,
+
+            bool enabled,
+
+            string expression,
+
+            string id,
+
+            string lastUpdated,
+
+            string version,
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             string waitingRoomId,
 
             string zoneId)
         {
+<<<<<<< HEAD
             Id = id;
+=======
+            Action = action;
+            Description = description;
+            Enabled = enabled;
+            Expression = expression;
+            Id = id;
+            LastUpdated = lastUpdated;
+            Version = version;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             WaitingRoomId = waitingRoomId;
             ZoneId = zoneId;
         }

@@ -109,6 +109,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+<<<<<<< HEAD
      * The unique ID of the item in the List.
      * 
      */
@@ -124,6 +125,8 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The unique ID of the list.
      * 
      */
@@ -344,6 +347,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+<<<<<<< HEAD
          * @param itemId The unique ID of the item in the List.
          * 
          * @return builder
@@ -365,6 +369,8 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param listId The unique ID of the list.
          * 
          * @return builder

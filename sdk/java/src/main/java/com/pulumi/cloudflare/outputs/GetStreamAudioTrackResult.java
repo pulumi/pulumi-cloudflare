@@ -5,17 +5,41 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+<<<<<<< HEAD
+=======
+import java.lang.Boolean;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetStreamAudioTrackResult.java
 public final class GetStreamAudioTrackResult {
     /**
      * @return The account identifier tag.
+========
+public final class GetStreamDownloadResult {
+    /**
+     * @return Identifier
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetStreamDownloadResult.java
+=======
+public final class GetStreamAudioTrackResult {
+    /**
+     * @return The account identifier tag.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     private String accountId;
     /**
+<<<<<<< HEAD
+=======
+     * @return Denotes whether the audio track will be played by default in a player.
+     * 
+     */
+    private Boolean default_;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -25,16 +49,54 @@ public final class GetStreamAudioTrackResult {
      * 
      */
     private String identifier;
+<<<<<<< HEAD
+
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetStreamAudioTrackResult.java
+    private GetStreamAudioTrackResult() {}
+    /**
+     * @return The account identifier tag.
+========
+    private GetStreamDownloadResult() {}
+    /**
+     * @return Identifier
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetStreamDownloadResult.java
+=======
+    /**
+     * @return A string to uniquely identify the track amongst other audio track labels for the specified video.
+     * 
+     */
+    private String label;
+    /**
+     * @return Specifies the processing status of the video.
+     * 
+     */
+    private String status;
+    /**
+     * @return A Cloudflare-generated unique identifier for a media item.
+     * 
+     */
+    private String uid;
 
     private GetStreamAudioTrackResult() {}
     /**
      * @return The account identifier tag.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
+<<<<<<< HEAD
+=======
+     * @return Denotes whether the audio track will be played by default in a player.
+     * 
+     */
+    public Boolean default_() {
+        return this.default_;
+    }
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -48,39 +110,121 @@ public final class GetStreamAudioTrackResult {
     public String identifier() {
         return this.identifier;
     }
+<<<<<<< HEAD
+=======
+    /**
+     * @return A string to uniquely identify the track amongst other audio track labels for the specified video.
+     * 
+     */
+    public String label() {
+        return this.label;
+    }
+    /**
+     * @return Specifies the processing status of the video.
+     * 
+     */
+    public String status() {
+        return this.status;
+    }
+    /**
+     * @return A Cloudflare-generated unique identifier for a media item.
+     * 
+     */
+    public String uid() {
+        return this.uid;
+    }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     public static Builder builder() {
         return new Builder();
     }
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetStreamAudioTrackResult.java
     public static Builder builder(GetStreamAudioTrackResult defaults) {
+========
+    public static Builder builder(GetStreamDownloadResult defaults) {
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetStreamDownloadResult.java
+=======
+    public static Builder builder(GetStreamAudioTrackResult defaults) {
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+<<<<<<< HEAD
         private String id;
         private String identifier;
         public Builder() {}
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetStreamAudioTrackResult.java
         public Builder(GetStreamAudioTrackResult defaults) {
+========
+        public Builder(GetStreamDownloadResult defaults) {
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetStreamDownloadResult.java
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
+=======
+        private Boolean default_;
+        private String id;
+        private String identifier;
+        private String label;
+        private String status;
+        private String uid;
+        public Builder() {}
+        public Builder(GetStreamAudioTrackResult defaults) {
+    	      Objects.requireNonNull(defaults);
+    	      this.accountId = defaults.accountId;
+    	      this.default_ = defaults.default_;
+    	      this.id = defaults.id;
+    	      this.identifier = defaults.identifier;
+    	      this.label = defaults.label;
+    	      this.status = defaults.status;
+    	      this.uid = defaults.uid;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
             if (accountId == null) {
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetStreamAudioTrackResult.java
               throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "accountId");
+========
+              throw new MissingRequiredPropertyException("GetStreamDownloadResult", "accountId");
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetStreamDownloadResult.java
+=======
+              throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "accountId");
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             }
             this.accountId = accountId;
+            return this;
+        }
+<<<<<<< HEAD
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetStreamAudioTrackResult.java
+              throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "id");
+========
+              throw new MissingRequiredPropertyException("GetStreamDownloadResult", "id");
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetStreamDownloadResult.java
+=======
+        @CustomType.Setter("default")
+        public Builder default_(Boolean default_) {
+            if (default_ == null) {
+              throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "default_");
+            }
+            this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "id");
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             }
             this.id = id;
             return this;
@@ -88,16 +232,65 @@ public final class GetStreamAudioTrackResult {
         @CustomType.Setter
         public Builder identifier(String identifier) {
             if (identifier == null) {
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetStreamAudioTrackResult.java
               throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "identifier");
+========
+              throw new MissingRequiredPropertyException("GetStreamDownloadResult", "identifier");
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetStreamDownloadResult.java
+=======
+              throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "identifier");
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             }
             this.identifier = identifier;
+            return this;
+        }
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetStreamAudioTrackResult.java
+        public GetStreamAudioTrackResult build() {
+            final var _resultValue = new GetStreamAudioTrackResult();
+========
+        public GetStreamDownloadResult build() {
+            final var _resultValue = new GetStreamDownloadResult();
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetStreamDownloadResult.java
+            _resultValue.accountId = accountId;
+            _resultValue.id = id;
+            _resultValue.identifier = identifier;
+=======
+        @CustomType.Setter
+        public Builder label(String label) {
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "label");
+            }
+            this.label = label;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder status(String status) {
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "status");
+            }
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder uid(String uid) {
+            if (uid == null) {
+              throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "uid");
+            }
+            this.uid = uid;
             return this;
         }
         public GetStreamAudioTrackResult build() {
             final var _resultValue = new GetStreamAudioTrackResult();
             _resultValue.accountId = accountId;
+            _resultValue.default_ = default_;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
+            _resultValue.label = label;
+            _resultValue.status = status;
+            _resultValue.uid = uid;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return _resultValue;
         }
     }

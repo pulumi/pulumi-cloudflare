@@ -22,9 +22,23 @@ public final class ZeroTrustDeviceManagedNetworksArgs extends com.pulumi.resourc
         return this.accountId;
     }
 
+<<<<<<< HEAD
     @Import(name="config", required=true)
     private Output<ZeroTrustDeviceManagedNetworksConfigArgs> config;
 
+=======
+    /**
+     * The configuration object containing information for the WARP client to detect the managed network.
+     * 
+     */
+    @Import(name="config", required=true)
+    private Output<ZeroTrustDeviceManagedNetworksConfigArgs> config;
+
+    /**
+     * @return The configuration object containing information for the WARP client to detect the managed network.
+     * 
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Output<ZeroTrustDeviceManagedNetworksConfigArgs> config() {
         return this.config;
     }
@@ -95,11 +109,29 @@ public final class ZeroTrustDeviceManagedNetworksArgs extends com.pulumi.resourc
             return accountId(Output.of(accountId));
         }
 
+<<<<<<< HEAD
+=======
+        /**
+         * @param config The configuration object containing information for the WARP client to detect the managed network.
+         * 
+         * @return builder
+         * 
+         */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder config(Output<ZeroTrustDeviceManagedNetworksConfigArgs> config) {
             $.config = config;
             return this;
         }
 
+<<<<<<< HEAD
+=======
+        /**
+         * @param config The configuration object containing information for the WARP client to detect the managed network.
+         * 
+         * @return builder
+         * 
+         */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder config(ZeroTrustDeviceManagedNetworksConfigArgs config) {
             return config(Output.of(config));
         }

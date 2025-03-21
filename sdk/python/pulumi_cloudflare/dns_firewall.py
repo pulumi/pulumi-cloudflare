@@ -22,11 +22,17 @@ __all__ = ['DnsFirewallArgs', 'DnsFirewall']
 class DnsFirewallArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
+<<<<<<< HEAD
+=======
+                 name: pulumi.Input[str],
+                 upstream_ips: pulumi.Input[Sequence[pulumi.Input[str]]],
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  attack_mitigation: Optional[pulumi.Input['DnsFirewallAttackMitigationArgs']] = None,
                  deprecate_any_requests: Optional[pulumi.Input[bool]] = None,
                  ecs_fallback: Optional[pulumi.Input[bool]] = None,
                  maximum_cache_ttl: Optional[pulumi.Input[float]] = None,
                  minimum_cache_ttl: Optional[pulumi.Input[float]] = None,
+<<<<<<< HEAD
                  name: Optional[pulumi.Input[str]] = None,
                  negative_cache_ttl: Optional[pulumi.Input[float]] = None,
                  ratelimit: Optional[pulumi.Input[float]] = None,
@@ -35,17 +41,34 @@ class DnsFirewallArgs:
         """
         The set of arguments for constructing a DnsFirewall resource.
         :param pulumi.Input[str] account_id: Identifier
+=======
+                 negative_cache_ttl: Optional[pulumi.Input[float]] = None,
+                 ratelimit: Optional[pulumi.Input[float]] = None,
+                 retries: Optional[pulumi.Input[float]] = None):
+        """
+        The set of arguments for constructing a DnsFirewall resource.
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[str] name: DNS Firewall cluster name
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input['DnsFirewallAttackMitigationArgs'] attack_mitigation: Attack mitigation settings
         :param pulumi.Input[bool] deprecate_any_requests: Whether to refuse to answer queries for the ANY type
         :param pulumi.Input[bool] ecs_fallback: Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
         :param pulumi.Input[float] maximum_cache_ttl: Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.
         :param pulumi.Input[float] minimum_cache_ttl: Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.
+<<<<<<< HEAD
         :param pulumi.Input[str] name: DNS Firewall cluster name
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[float] negative_cache_ttl: Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
         :param pulumi.Input[float] ratelimit: Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
         :param pulumi.Input[float] retries: Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
         """
         pulumi.set(__self__, "account_id", account_id)
+<<<<<<< HEAD
+=======
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "upstream_ips", upstream_ips)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if attack_mitigation is not None:
             pulumi.set(__self__, "attack_mitigation", attack_mitigation)
         if deprecate_any_requests is not None:
@@ -56,16 +79,22 @@ class DnsFirewallArgs:
             pulumi.set(__self__, "maximum_cache_ttl", maximum_cache_ttl)
         if minimum_cache_ttl is not None:
             pulumi.set(__self__, "minimum_cache_ttl", minimum_cache_ttl)
+<<<<<<< HEAD
         if name is not None:
             pulumi.set(__self__, "name", name)
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if negative_cache_ttl is not None:
             pulumi.set(__self__, "negative_cache_ttl", negative_cache_ttl)
         if ratelimit is not None:
             pulumi.set(__self__, "ratelimit", ratelimit)
         if retries is not None:
             pulumi.set(__self__, "retries", retries)
+<<<<<<< HEAD
         if upstream_ips is not None:
             pulumi.set(__self__, "upstream_ips", upstream_ips)
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     @property
     @pulumi.getter(name="accountId")
@@ -80,6 +109,30 @@ class DnsFirewallArgs:
         pulumi.set(self, "account_id", value)
 
     @property
+<<<<<<< HEAD
+=======
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        DNS Firewall cluster name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="upstreamIps")
+    def upstream_ips(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "upstream_ips")
+
+    @upstream_ips.setter
+    def upstream_ips(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "upstream_ips", value)
+
+    @property
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="attackMitigation")
     def attack_mitigation(self) -> Optional[pulumi.Input['DnsFirewallAttackMitigationArgs']]:
         """
@@ -140,6 +193,7 @@ class DnsFirewallArgs:
         pulumi.set(self, "minimum_cache_ttl", value)
 
     @property
+<<<<<<< HEAD
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -152,6 +206,8 @@ class DnsFirewallArgs:
         pulumi.set(self, "name", value)
 
     @property
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="negativeCacheTtl")
     def negative_cache_ttl(self) -> Optional[pulumi.Input[float]]:
         """
@@ -187,6 +243,7 @@ class DnsFirewallArgs:
     def retries(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "retries", value)
 
+<<<<<<< HEAD
     @property
     @pulumi.getter(name="upstreamIps")
     def upstream_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
@@ -196,6 +253,8 @@ class DnsFirewallArgs:
     def upstream_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "upstream_ips", value)
 
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 @pulumi.input_type
 class _DnsFirewallState:
@@ -502,10 +561,20 @@ class DnsFirewall(pulumi.CustomResource):
             __props__.__dict__["ecs_fallback"] = ecs_fallback
             __props__.__dict__["maximum_cache_ttl"] = maximum_cache_ttl
             __props__.__dict__["minimum_cache_ttl"] = minimum_cache_ttl
+<<<<<<< HEAD
+=======
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             __props__.__dict__["name"] = name
             __props__.__dict__["negative_cache_ttl"] = negative_cache_ttl
             __props__.__dict__["ratelimit"] = ratelimit
             __props__.__dict__["retries"] = retries
+<<<<<<< HEAD
+=======
+            if upstream_ips is None and not opts.urn:
+                raise TypeError("Missing required property 'upstream_ips'")
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             __props__.__dict__["upstream_ips"] = upstream_ips
             __props__.__dict__["dns_firewall_ips"] = None
             __props__.__dict__["modified_on"] = None
@@ -633,7 +702,11 @@ class DnsFirewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+<<<<<<< HEAD
     def name(self) -> pulumi.Output[Optional[str]]:
+=======
+    def name(self) -> pulumi.Output[str]:
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         DNS Firewall cluster name
         """
@@ -665,6 +738,10 @@ class DnsFirewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="upstreamIps")
+<<<<<<< HEAD
     def upstream_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
+=======
+    def upstream_ips(self) -> pulumi.Output[Sequence[str]]:
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return pulumi.get(self, "upstream_ips")
 

@@ -79,6 +79,15 @@ namespace Pulumi.Cloudflare
         public Output<string> Issuer { get; private set; } = null!;
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// The hostname certificate's private key.
+        /// </summary>
+        [Output("privateKey")]
+        public Output<string> PrivateKey { get; private set; } = null!;
+
+        /// <summary>
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// The serial number on the uploaded certificate.
         /// </summary>
         [Output("serialNumber")]
@@ -251,6 +260,15 @@ namespace Pulumi.Cloudflare
         public Input<string>? Issuer { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// The hostname certificate's private key.
+        /// </summary>
+        [Input("privateKey")]
+        public Input<string>? PrivateKey { get; set; }
+
+        /// <summary>
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// The serial number on the uploaded certificate.
         /// </summary>
         [Input("serialNumber")]

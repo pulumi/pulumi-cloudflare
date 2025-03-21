@@ -81,6 +81,37 @@ public class D1Database extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies the timestamp the resource was created as an ISO8601 string.
+<<<<<<< HEAD
+=======
+     * 
+     */
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    /**
+     * @return Specifies the timestamp the resource was created as an ISO8601 string.
+     * 
+     */
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * The D1 database&#39;s size, in bytes.
+     * 
+     */
+    @Export(name="fileSize", refs={Double.class}, tree="[0]")
+    private Output<Double> fileSize;
+
+    /**
+     * @return The D1 database&#39;s size, in bytes.
+     * 
+     */
+    public Output<Double> fileSize() {
+        return this.fileSize;
+    }
+    /**
+     * D1 database name.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
@@ -110,6 +141,13 @@ public class D1Database extends com.pulumi.resources.CustomResource {
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+<<<<<<< HEAD
+=======
+    /**
+     * @return D1 database name.
+     * 
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Output<String> name() {
         return this.name;
     }
@@ -133,9 +171,23 @@ public class D1Database extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> primaryLocationHint() {
         return Codegen.optional(this.primaryLocationHint);
     }
+<<<<<<< HEAD
     @Export(name="uuid", refs={String.class}, tree="[0]")
     private Output<String> uuid;
 
+=======
+    /**
+     * D1 database identifier (UUID).
+     * 
+     */
+    @Export(name="uuid", refs={String.class}, tree="[0]")
+    private Output<String> uuid;
+
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Output<String> uuid() {
         return this.uuid;
     }

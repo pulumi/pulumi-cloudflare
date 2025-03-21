@@ -6,6 +6,10 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+<<<<<<< HEAD
+=======
+import java.util.List;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.util.Map;
 import java.util.Objects;
 
@@ -26,6 +30,10 @@ public final class GetMagicTransitSiteLansResultStaticAddressingDhcpServer {
      * 
      */
     private String dnsServer;
+<<<<<<< HEAD
+=======
+    private List<String> dnsServers;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return Mapping of MAC addresses to IP addresses
      * 
@@ -54,6 +62,12 @@ public final class GetMagicTransitSiteLansResultStaticAddressingDhcpServer {
     public String dnsServer() {
         return this.dnsServer;
     }
+<<<<<<< HEAD
+=======
+    public List<String> dnsServers() {
+        return this.dnsServers;
+    }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return Mapping of MAC addresses to IP addresses
      * 
@@ -74,6 +88,10 @@ public final class GetMagicTransitSiteLansResultStaticAddressingDhcpServer {
         private String dhcpPoolEnd;
         private String dhcpPoolStart;
         private String dnsServer;
+<<<<<<< HEAD
+=======
+        private List<String> dnsServers;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private Map<String,String> reservations;
         public Builder() {}
         public Builder(GetMagicTransitSiteLansResultStaticAddressingDhcpServer defaults) {
@@ -81,6 +99,10 @@ public final class GetMagicTransitSiteLansResultStaticAddressingDhcpServer {
     	      this.dhcpPoolEnd = defaults.dhcpPoolEnd;
     	      this.dhcpPoolStart = defaults.dhcpPoolStart;
     	      this.dnsServer = defaults.dnsServer;
+<<<<<<< HEAD
+=======
+    	      this.dnsServers = defaults.dnsServers;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.reservations = defaults.reservations;
         }
 
@@ -109,6 +131,20 @@ public final class GetMagicTransitSiteLansResultStaticAddressingDhcpServer {
             return this;
         }
         @CustomType.Setter
+<<<<<<< HEAD
+=======
+        public Builder dnsServers(List<String> dnsServers) {
+            if (dnsServers == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteLansResultStaticAddressingDhcpServer", "dnsServers");
+            }
+            this.dnsServers = dnsServers;
+            return this;
+        }
+        public Builder dnsServers(String... dnsServers) {
+            return dnsServers(List.of(dnsServers));
+        }
+        @CustomType.Setter
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder reservations(Map<String,String> reservations) {
             if (reservations == null) {
               throw new MissingRequiredPropertyException("GetMagicTransitSiteLansResultStaticAddressingDhcpServer", "reservations");
@@ -121,6 +157,10 @@ public final class GetMagicTransitSiteLansResultStaticAddressingDhcpServer {
             _resultValue.dhcpPoolEnd = dhcpPoolEnd;
             _resultValue.dhcpPoolStart = dhcpPoolStart;
             _resultValue.dnsServer = dnsServer;
+<<<<<<< HEAD
+=======
+            _resultValue.dnsServers = dnsServers;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.reservations = reservations;
             return _resultValue;
         }

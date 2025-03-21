@@ -70,7 +70,11 @@ namespace Pulumi.Cloudflare
         /// DNS Firewall cluster name
         /// </summary>
         [Output("name")]
+<<<<<<< HEAD
         public Output<string?> Name { get; private set; } = null!;
+=======
+        public Output<string> Name { get; private set; } = null!;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
@@ -178,8 +182,13 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// DNS Firewall cluster name
         /// </summary>
+<<<<<<< HEAD
         [Input("name")]
         public Input<string>? Name { get; set; }
+=======
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
@@ -199,7 +208,11 @@ namespace Pulumi.Cloudflare
         [Input("retries")]
         public Input<double>? Retries { get; set; }
 
+<<<<<<< HEAD
         [Input("upstreamIps")]
+=======
+        [Input("upstreamIps", required: true)]
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private InputList<string>? _upstreamIps;
         public InputList<string> UpstreamIps
         {

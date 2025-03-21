@@ -26,6 +26,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? CloudflareBranding;
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Array of custom certificate and key pairs (1 or 2 pairs allowed)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.CustomHostnameSslCustomCertBundle> CustomCertBundles;
+        /// <summary>
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// If a custom uploaded certificate is used.
         /// </summary>
         public readonly string? CustomCertificate;
@@ -58,6 +65,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? cloudflareBranding,
 
+<<<<<<< HEAD
+=======
+            ImmutableArray<Outputs.CustomHostnameSslCustomCertBundle> customCertBundles,
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             string? customCertificate,
 
             string? customKey,
@@ -73,6 +85,10 @@ namespace Pulumi.Cloudflare.Outputs
             BundleMethod = bundleMethod;
             CertificateAuthority = certificateAuthority;
             CloudflareBranding = cloudflareBranding;
+<<<<<<< HEAD
+=======
+            CustomCertBundles = customCertBundles;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             CustomCertificate = customCertificate;
             CustomKey = customKey;
             Method = method;

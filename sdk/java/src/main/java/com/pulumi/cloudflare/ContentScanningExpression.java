@@ -13,7 +13,10 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+<<<<<<< HEAD
 import java.util.Optional;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import javax.annotation.Nullable;
 
 /**
@@ -61,6 +64,7 @@ import javax.annotation.Nullable;
 public class ContentScanningExpression extends com.pulumi.resources.CustomResource {
     @Export(name="bodies", refs={List.class,ContentScanningExpressionBody.class}, tree="[0,1]")
     private Output<List<ContentScanningExpressionBody>> bodies;
+<<<<<<< HEAD
 
     public Output<List<ContentScanningExpressionBody>> bodies() {
         return this.bodies;
@@ -81,6 +85,28 @@ public class ContentScanningExpression extends com.pulumi.resources.CustomResour
     }
     /**
      * Identifier
+=======
+
+    public Output<List<ContentScanningExpressionBody>> bodies() {
+        return this.bodies;
+    }
+    /**
+     * Ruleset expression to use in matching content objects
+     * 
+     */
+    @Export(name="payload", refs={String.class}, tree="[0]")
+    private Output<String> payload;
+
+    /**
+     * @return Ruleset expression to use in matching content objects
+     * 
+     */
+    public Output<String> payload() {
+        return this.payload;
+    }
+    /**
+     * Identifier
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")

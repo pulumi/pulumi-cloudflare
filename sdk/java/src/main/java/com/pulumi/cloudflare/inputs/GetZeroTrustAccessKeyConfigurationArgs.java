@@ -10,39 +10,63 @@ import java.lang.String;
 import java.util.Objects;
 
 
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetZeroTrustAccessKeyConfigurationArgs.java
 public final class GetZeroTrustAccessKeyConfigurationArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetZeroTrustAccessKeyConfigurationArgs Empty = new GetZeroTrustAccessKeyConfigurationArgs();
 
     /**
      * Identifier
+========
+public final class GetStreamWebhookArgs extends com.pulumi.resources.InvokeArgs {
+
+    public static final GetStreamWebhookArgs Empty = new GetStreamWebhookArgs();
+
+    /**
+     * The account identifier tag.
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookArgs.java
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetZeroTrustAccessKeyConfigurationArgs.java
      * @return Identifier
+========
+     * @return The account identifier tag.
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookArgs.java
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
 
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetZeroTrustAccessKeyConfigurationArgs.java
     private GetZeroTrustAccessKeyConfigurationArgs() {}
 
     private GetZeroTrustAccessKeyConfigurationArgs(GetZeroTrustAccessKeyConfigurationArgs $) {
+========
+    private GetStreamWebhookArgs() {}
+
+    private GetStreamWebhookArgs(GetStreamWebhookArgs $) {
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookArgs.java
         this.accountId = $.accountId;
     }
 
     public static Builder builder() {
         return new Builder();
     }
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetZeroTrustAccessKeyConfigurationArgs.java
     public static Builder builder(GetZeroTrustAccessKeyConfigurationArgs defaults) {
+========
+    public static Builder builder(GetStreamWebhookArgs defaults) {
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookArgs.java
         return new Builder(defaults);
     }
 
     public static final class Builder {
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetZeroTrustAccessKeyConfigurationArgs.java
         private GetZeroTrustAccessKeyConfigurationArgs $;
 
         public Builder() {
@@ -55,6 +79,20 @@ public final class GetZeroTrustAccessKeyConfigurationArgs extends com.pulumi.res
 
         /**
          * @param accountId Identifier
+========
+        private GetStreamWebhookArgs $;
+
+        public Builder() {
+            $ = new GetStreamWebhookArgs();
+        }
+
+        public Builder(GetStreamWebhookArgs defaults) {
+            $ = new GetStreamWebhookArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accountId The account identifier tag.
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookArgs.java
          * 
          * @return builder
          * 
@@ -65,7 +103,11 @@ public final class GetZeroTrustAccessKeyConfigurationArgs extends com.pulumi.res
         }
 
         /**
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetZeroTrustAccessKeyConfigurationArgs.java
          * @param accountId Identifier
+========
+         * @param accountId The account identifier tag.
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookArgs.java
          * 
          * @return builder
          * 
@@ -74,9 +116,15 @@ public final class GetZeroTrustAccessKeyConfigurationArgs extends com.pulumi.res
             return accountId(Output.of(accountId));
         }
 
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetZeroTrustAccessKeyConfigurationArgs.java
         public GetZeroTrustAccessKeyConfigurationArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustAccessKeyConfigurationArgs", "accountId");
+========
+        public GetStreamWebhookArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetStreamWebhookArgs", "accountId");
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookArgs.java
             }
             return $;
         }

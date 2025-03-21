@@ -20,13 +20,21 @@ __all__ = ['HostnameTlsSettingArgs', 'HostnameTlsSetting']
 class HostnameTlsSettingArgs:
     def __init__(__self__, *,
                  setting_id: pulumi.Input[str],
+<<<<<<< HEAD
                  value: pulumi.Input[float],
+=======
+                 value: Any,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  zone_id: pulumi.Input[str],
                  hostname: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a HostnameTlsSetting resource.
         :param pulumi.Input[str] setting_id: The TLS Setting name.
+<<<<<<< HEAD
         :param pulumi.Input[float] value: The tls setting value.
+=======
+        :param Any value: The tls setting value.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] zone_id: Identifier
         :param pulumi.Input[str] hostname: The hostname for which the tls settings are set.
         """
@@ -50,14 +58,22 @@ class HostnameTlsSettingArgs:
 
     @property
     @pulumi.getter
+<<<<<<< HEAD
     def value(self) -> pulumi.Input[float]:
+=======
+    def value(self) -> Any:
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         The tls setting value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
+<<<<<<< HEAD
     def value(self, value: pulumi.Input[float]):
+=======
+    def value(self, value: Any):
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         pulumi.set(self, "value", value)
 
     @property
@@ -93,7 +109,11 @@ class _HostnameTlsSettingState:
                  setting_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
                  value: Optional[pulumi.Input[float]] = None,
+=======
+                 value: Optional[Any] = None,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering HostnameTlsSetting resources.
@@ -102,7 +122,11 @@ class _HostnameTlsSettingState:
         :param pulumi.Input[str] setting_id: The TLS Setting name.
         :param pulumi.Input[str] status: Deployment status for the given tls setting.
         :param pulumi.Input[str] updated_at: This is the time the tls setting was updated.
+<<<<<<< HEAD
         :param pulumi.Input[float] value: The tls setting value.
+=======
+        :param Any value: The tls setting value.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] zone_id: Identifier
         """
         if created_at is not None:
@@ -182,14 +206,22 @@ class _HostnameTlsSettingState:
 
     @property
     @pulumi.getter
+<<<<<<< HEAD
     def value(self) -> Optional[pulumi.Input[float]]:
+=======
+    def value(self) -> Optional[Any]:
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         The tls setting value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
+<<<<<<< HEAD
     def value(self, value: Optional[pulumi.Input[float]]):
+=======
+    def value(self, value: Optional[Any]):
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         pulumi.set(self, "value", value)
 
     @property
@@ -212,12 +244,33 @@ class HostnameTlsSetting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  setting_id: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
                  value: Optional[pulumi.Input[float]] = None,
+=======
+                 value: Optional[Any] = None,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
 
+<<<<<<< HEAD
+=======
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_hostname_tls_setting = cloudflare.HostnameTlsSetting("example_hostname_tls_setting",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="ciphers",
+            hostname="app.example.com",
+            value=[
+                "ECDHE-RSA-AES128-GCM-SHA256",
+                "AES128-GCM-SHA256",
+            ])
+        ```
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ## Import
 
         ```sh
@@ -228,7 +281,11 @@ class HostnameTlsSetting(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] hostname: The hostname for which the tls settings are set.
         :param pulumi.Input[str] setting_id: The TLS Setting name.
+<<<<<<< HEAD
         :param pulumi.Input[float] value: The tls setting value.
+=======
+        :param Any value: The tls setting value.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] zone_id: Identifier
         """
         ...
@@ -240,6 +297,23 @@ class HostnameTlsSetting(pulumi.CustomResource):
         """
         ## Example Usage
 
+<<<<<<< HEAD
+=======
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_hostname_tls_setting = cloudflare.HostnameTlsSetting("example_hostname_tls_setting",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="ciphers",
+            hostname="app.example.com",
+            value=[
+                "ECDHE-RSA-AES128-GCM-SHA256",
+                "AES128-GCM-SHA256",
+            ])
+        ```
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ## Import
 
         ```sh
@@ -263,7 +337,11 @@ class HostnameTlsSetting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  setting_id: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
                  value: Optional[pulumi.Input[float]] = None,
+=======
+                 value: Optional[Any] = None,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -302,7 +380,11 @@ class HostnameTlsSetting(pulumi.CustomResource):
             setting_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
             value: Optional[pulumi.Input[float]] = None,
+=======
+            value: Optional[Any] = None,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             zone_id: Optional[pulumi.Input[str]] = None) -> 'HostnameTlsSetting':
         """
         Get an existing HostnameTlsSetting resource's state with the given name, id, and optional extra
@@ -316,7 +398,11 @@ class HostnameTlsSetting(pulumi.CustomResource):
         :param pulumi.Input[str] setting_id: The TLS Setting name.
         :param pulumi.Input[str] status: Deployment status for the given tls setting.
         :param pulumi.Input[str] updated_at: This is the time the tls setting was updated.
+<<<<<<< HEAD
         :param pulumi.Input[float] value: The tls setting value.
+=======
+        :param Any value: The tls setting value.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -374,7 +460,11 @@ class HostnameTlsSetting(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+<<<<<<< HEAD
     def value(self) -> pulumi.Output[float]:
+=======
+    def value(self) -> pulumi.Output[Any]:
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         The tls setting value.
         """

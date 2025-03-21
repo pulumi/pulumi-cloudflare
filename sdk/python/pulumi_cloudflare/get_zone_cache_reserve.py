@@ -26,7 +26,11 @@ class GetZoneCacheReserveResult:
     """
     A collection of values returned by getZoneCacheReserve.
     """
+<<<<<<< HEAD
     def __init__(__self__, editable=None, id=None, modified_on=None, value=None, zone_id=None, zone_setting_id=None):
+=======
+    def __init__(__self__, editable=None, id=None, modified_on=None, value=None, zone_id=None):
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if editable and not isinstance(editable, bool):
             raise TypeError("Expected argument 'editable' to be a bool")
         pulumi.set(__self__, "editable", editable)
@@ -58,7 +62,7 @@ class GetZoneCacheReserveResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        ID of the zone setting.
         """
         return pulumi.get(self, "id")
 
@@ -105,8 +109,12 @@ class AwaitableGetZoneCacheReserveResult(GetZoneCacheReserveResult):
             id=self.id,
             modified_on=self.modified_on,
             value=self.value,
+<<<<<<< HEAD
             zone_id=self.zone_id,
             zone_setting_id=self.zone_setting_id)
+=======
+            zone_id=self.zone_id)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 
 def get_zone_cache_reserve(zone_id: Optional[str] = None,
@@ -134,8 +142,12 @@ def get_zone_cache_reserve(zone_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         modified_on=pulumi.get(__ret__, 'modified_on'),
         value=pulumi.get(__ret__, 'value'),
+<<<<<<< HEAD
         zone_id=pulumi.get(__ret__, 'zone_id'),
         zone_setting_id=pulumi.get(__ret__, 'zone_setting_id'))
+=======
+        zone_id=pulumi.get(__ret__, 'zone_id'))
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 def get_zone_cache_reserve_output(zone_id: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneCacheReserveResult]:
     """
@@ -160,5 +172,9 @@ def get_zone_cache_reserve_output(zone_id: Optional[pulumi.Input[str]] = None,
         id=pulumi.get(__response__, 'id'),
         modified_on=pulumi.get(__response__, 'modified_on'),
         value=pulumi.get(__response__, 'value'),
+<<<<<<< HEAD
         zone_id=pulumi.get(__response__, 'zone_id'),
         zone_setting_id=pulumi.get(__response__, 'zone_setting_id')))
+=======
+        zone_id=pulumi.get(__response__, 'zone_id')))
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580

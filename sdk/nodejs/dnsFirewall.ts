@@ -75,7 +75,11 @@ export class DnsFirewall extends pulumi.CustomResource {
     /**
      * DNS Firewall cluster name
      */
+<<<<<<< HEAD
     public readonly name!: pulumi.Output<string | undefined>;
+=======
+    public readonly name!: pulumi.Output<string>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
      */
@@ -88,7 +92,11 @@ export class DnsFirewall extends pulumi.CustomResource {
      * Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
      */
     public readonly retries!: pulumi.Output<number>;
+<<<<<<< HEAD
     public readonly upstreamIps!: pulumi.Output<string[] | undefined>;
+=======
+    public readonly upstreamIps!: pulumi.Output<string[]>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      * Create a DnsFirewall resource with the given unique name, arguments, and options.
@@ -121,6 +129,15 @@ export class DnsFirewall extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
+<<<<<<< HEAD
+=======
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
+            if ((!args || args.upstreamIps === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'upstreamIps'");
+            }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["attackMitigation"] = args ? args.attackMitigation : undefined;
             resourceInputs["deprecateAnyRequests"] = args ? args.deprecateAnyRequests : undefined;
@@ -223,7 +240,11 @@ export interface DnsFirewallArgs {
     /**
      * DNS Firewall cluster name
      */
+<<<<<<< HEAD
     name?: pulumi.Input<string>;
+=======
+    name: pulumi.Input<string>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
      */
@@ -236,5 +257,9 @@ export interface DnsFirewallArgs {
      * Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
      */
     retries?: pulumi.Input<number>;
+<<<<<<< HEAD
     upstreamIps?: pulumi.Input<pulumi.Input<string>[]>;
+=======
+    upstreamIps: pulumi.Input<pulumi.Input<string>[]>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }

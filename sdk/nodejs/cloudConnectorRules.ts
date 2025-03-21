@@ -38,10 +38,28 @@ export class CloudConnectorRules extends pulumi.CustomResource {
     }
 
     /**
+<<<<<<< HEAD
      * List of Cloud Connector rules
      */
     public readonly rules!: pulumi.Output<outputs.CloudConnectorRulesRule[]>;
     /**
+=======
+     * Cloud Provider type
+     */
+    public /*out*/ readonly cloudProvider!: pulumi.Output<string>;
+    public /*out*/ readonly description!: pulumi.Output<string>;
+    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
+    public /*out*/ readonly expression!: pulumi.Output<string>;
+    /**
+     * Parameters of Cloud Connector Rule
+     */
+    public /*out*/ readonly parameters!: pulumi.Output<outputs.CloudConnectorRulesParameters>;
+    /**
+     * List of Cloud Connector rules
+     */
+    public readonly rules!: pulumi.Output<outputs.CloudConnectorRulesRule[]>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
@@ -59,6 +77,11 @@ export class CloudConnectorRules extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudConnectorRulesState | undefined;
+            resourceInputs["cloudProvider"] = state ? state.cloudProvider : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["expression"] = state ? state.expression : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -71,6 +94,11 @@ export class CloudConnectorRules extends pulumi.CustomResource {
             }
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["cloudProvider"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["enabled"] = undefined /*out*/;
+            resourceInputs["expression"] = undefined /*out*/;
+            resourceInputs["parameters"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CloudConnectorRules.__pulumiType, name, resourceInputs, opts);
@@ -82,6 +110,20 @@ export class CloudConnectorRules extends pulumi.CustomResource {
  */
 export interface CloudConnectorRulesState {
     /**
+<<<<<<< HEAD
+=======
+     * Cloud Provider type
+     */
+    cloudProvider?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    expression?: pulumi.Input<string>;
+    /**
+     * Parameters of Cloud Connector Rule
+     */
+    parameters?: pulumi.Input<inputs.CloudConnectorRulesParameters>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * List of Cloud Connector rules
      */
     rules?: pulumi.Input<pulumi.Input<inputs.CloudConnectorRulesRule>[]>;

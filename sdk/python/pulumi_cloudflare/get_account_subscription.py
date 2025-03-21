@@ -13,8 +13,15 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+<<<<<<< HEAD
 
 __all__ = [
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_account_subscription.py
+=======
+from . import outputs
+
+__all__ = [
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     'GetAccountSubscriptionResult',
     'AwaitableGetAccountSubscriptionResult',
     'get_account_subscription',
@@ -26,24 +33,93 @@ class GetAccountSubscriptionResult:
     """
     A collection of values returned by getAccountSubscription.
     """
+<<<<<<< HEAD
     def __init__(__self__, account_id=None, id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+========
+    'GetZeroTrustRiskBehaviorResult',
+    'AwaitableGetZeroTrustRiskBehaviorResult',
+    'get_zero_trust_risk_behavior',
+    'get_zero_trust_risk_behavior_output',
+]
+
+@pulumi.output_type
+class GetZeroTrustRiskBehaviorResult:
+    """
+    A collection of values returned by getZeroTrustRiskBehavior.
+    """
+    def __init__(__self__, account_id=None, behaviors=None, id=None):
+        if account_id and not isinstance(account_id, str):
+            raise TypeError("Expected argument 'account_id' to be a str")
+        pulumi.set(__self__, "account_id", account_id)
+        if behaviors and not isinstance(behaviors, dict):
+            raise TypeError("Expected argument 'behaviors' to be a dict")
+        pulumi.set(__self__, "behaviors", behaviors)
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+=======
+    def __init__(__self__, account_id=None, currency=None, current_period_end=None, current_period_start=None, frequency=None, id=None, price=None, rate_plan=None, state=None):
+        if account_id and not isinstance(account_id, str):
+            raise TypeError("Expected argument 'account_id' to be a str")
+        pulumi.set(__self__, "account_id", account_id)
+        if currency and not isinstance(currency, str):
+            raise TypeError("Expected argument 'currency' to be a str")
+        pulumi.set(__self__, "currency", currency)
+        if current_period_end and not isinstance(current_period_end, str):
+            raise TypeError("Expected argument 'current_period_end' to be a str")
+        pulumi.set(__self__, "current_period_end", current_period_end)
+        if current_period_start and not isinstance(current_period_start, str):
+            raise TypeError("Expected argument 'current_period_start' to be a str")
+        pulumi.set(__self__, "current_period_start", current_period_start)
+        if frequency and not isinstance(frequency, str):
+            raise TypeError("Expected argument 'frequency' to be a str")
+        pulumi.set(__self__, "frequency", frequency)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if price and not isinstance(price, float):
+            raise TypeError("Expected argument 'price' to be a float")
+        pulumi.set(__self__, "price", price)
+        if rate_plan and not isinstance(rate_plan, dict):
+            raise TypeError("Expected argument 'rate_plan' to be a dict")
+        pulumi.set(__self__, "rate_plan", rate_plan)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_account_subscription.py
         """
         Identifier
         """
+========
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
+=======
+        """
+        Identifier
+        """
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_account_subscription.py
+========
+    def behaviors(self) -> Mapping[str, 'outputs.GetZeroTrustRiskBehaviorBehaviorsResult']:
+        return pulumi.get(self, "behaviors")
+
+    @property
+    @pulumi.getter
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
     def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
@@ -51,18 +127,115 @@ class GetAccountSubscriptionResult:
         return pulumi.get(self, "id")
 
 
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_account_subscription.py
 class AwaitableGetAccountSubscriptionResult(GetAccountSubscriptionResult):
+========
+class AwaitableGetZeroTrustRiskBehaviorResult(GetZeroTrustRiskBehaviorResult):
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
+=======
+    def currency(self) -> str:
+        """
+        The monetary unit in which pricing information is displayed.
+        """
+        return pulumi.get(self, "currency")
+
+    @property
+    @pulumi.getter(name="currentPeriodEnd")
+    def current_period_end(self) -> str:
+        """
+        The end of the current period and also when the next billing is due.
+        """
+        return pulumi.get(self, "current_period_end")
+
+    @property
+    @pulumi.getter(name="currentPeriodStart")
+    def current_period_start(self) -> str:
+        """
+        When the current billing period started. May match initial*period*start if this is the first period.
+        """
+        return pulumi.get(self, "current_period_start")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> str:
+        """
+        How often the subscription is renewed automatically.
+        """
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Subscription identifier tag.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def price(self) -> float:
+        """
+        The price of the subscription that will be billed, in US dollars.
+        """
+        return pulumi.get(self, "price")
+
+    @property
+    @pulumi.getter(name="ratePlan")
+    def rate_plan(self) -> 'outputs.GetAccountSubscriptionRatePlanResult':
+        """
+        The rate plan applied to the subscription.
+        """
+        return pulumi.get(self, "rate_plan")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state that the subscription is in.
+        """
+        return pulumi.get(self, "state")
+
+
+class AwaitableGetAccountSubscriptionResult(GetAccountSubscriptionResult):
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_account_subscription.py
         return GetAccountSubscriptionResult(
             account_id=self.account_id,
             id=self.id)
+=======
+        return GetAccountSubscriptionResult(
+            account_id=self.account_id,
+            currency=self.currency,
+            current_period_end=self.current_period_end,
+            current_period_start=self.current_period_start,
+            frequency=self.frequency,
+            id=self.id,
+            price=self.price,
+            rate_plan=self.rate_plan,
+            state=self.state)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 
 def get_account_subscription(account_id: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountSubscriptionResult:
+<<<<<<< HEAD
+========
+        return GetZeroTrustRiskBehaviorResult(
+            account_id=self.account_id,
+            behaviors=self.behaviors,
+            id=self.id)
+
+
+def get_zero_trust_risk_behavior(account_id: Optional[str] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustRiskBehaviorResult:
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     """
     ## Example Usage
 
@@ -70,22 +243,60 @@ def get_account_subscription(account_id: Optional[str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_account_subscription.py
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     example_account_subscription = cloudflare.get_account_subscription(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param str account_id: Identifier
+<<<<<<< HEAD
+========
+    example_zero_trust_risk_behavior = cloudflare.get_zero_trust_risk_behavior(account_id="account_id")
+    ```
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_account_subscription.py
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getAccountSubscription:getAccountSubscription', __args__, opts=opts, typ=GetAccountSubscriptionResult).value
 
     return AwaitableGetAccountSubscriptionResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+<<<<<<< HEAD
         id=pulumi.get(__ret__, 'id'))
 def get_account_subscription_output(account_id: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountSubscriptionResult]:
+========
+    __ret__ = pulumi.runtime.invoke('cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior', __args__, opts=opts, typ=GetZeroTrustRiskBehaviorResult).value
+
+    return AwaitableGetZeroTrustRiskBehaviorResult(
+        account_id=pulumi.get(__ret__, 'account_id'),
+        behaviors=pulumi.get(__ret__, 'behaviors'),
+        id=pulumi.get(__ret__, 'id'))
+def get_zero_trust_risk_behavior_output(account_id: Optional[pulumi.Input[str]] = None,
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustRiskBehaviorResult]:
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
+=======
+        currency=pulumi.get(__ret__, 'currency'),
+        current_period_end=pulumi.get(__ret__, 'current_period_end'),
+        current_period_start=pulumi.get(__ret__, 'current_period_start'),
+        frequency=pulumi.get(__ret__, 'frequency'),
+        id=pulumi.get(__ret__, 'id'),
+        price=pulumi.get(__ret__, 'price'),
+        rate_plan=pulumi.get(__ret__, 'rate_plan'),
+        state=pulumi.get(__ret__, 'state'))
+def get_account_subscription_output(account_id: Optional[pulumi.Input[str]] = None,
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountSubscriptionResult]:
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     """
     ## Example Usage
 
@@ -93,16 +304,48 @@ def get_account_subscription_output(account_id: Optional[pulumi.Input[str]] = No
     import pulumi
     import pulumi_cloudflare as cloudflare
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_account_subscription.py
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     example_account_subscription = cloudflare.get_account_subscription(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param str account_id: Identifier
+<<<<<<< HEAD
+========
+    example_zero_trust_risk_behavior = cloudflare.get_zero_trust_risk_behavior(account_id="account_id")
+    ```
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_account_subscription.py
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAccountSubscription:getAccountSubscription', __args__, opts=opts, typ=GetAccountSubscriptionResult)
     return __ret__.apply(lambda __response__: GetAccountSubscriptionResult(
         account_id=pulumi.get(__response__, 'account_id'),
+========
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior', __args__, opts=opts, typ=GetZeroTrustRiskBehaviorResult)
+    return __ret__.apply(lambda __response__: GetZeroTrustRiskBehaviorResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        behaviors=pulumi.get(__response__, 'behaviors'),
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
         id=pulumi.get(__response__, 'id')))
+=======
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAccountSubscription:getAccountSubscription', __args__, opts=opts, typ=GetAccountSubscriptionResult)
+    return __ret__.apply(lambda __response__: GetAccountSubscriptionResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        currency=pulumi.get(__response__, 'currency'),
+        current_period_end=pulumi.get(__response__, 'current_period_end'),
+        current_period_start=pulumi.get(__response__, 'current_period_start'),
+        frequency=pulumi.get(__response__, 'frequency'),
+        id=pulumi.get(__response__, 'id'),
+        price=pulumi.get(__response__, 'price'),
+        rate_plan=pulumi.get(__response__, 'rate_plan'),
+        state=pulumi.get(__response__, 'state')))
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580

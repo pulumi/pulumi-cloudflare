@@ -24,6 +24,10 @@ class ZeroTrustDlpPredefinedProfileArgs:
                  account_id: pulumi.Input[str],
                  entries: pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpPredefinedProfileEntryArgs']]],
                  profile_id: pulumi.Input[str],
+<<<<<<< HEAD
+=======
+                 ai_context_enabled: Optional[pulumi.Input[bool]] = None,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  allowed_match_count: Optional[pulumi.Input[int]] = None,
                  confidence_threshold: Optional[pulumi.Input[str]] = None,
                  context_awareness: Optional[pulumi.Input['ZeroTrustDlpPredefinedProfileContextAwarenessArgs']] = None,
@@ -35,6 +39,11 @@ class ZeroTrustDlpPredefinedProfileArgs:
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "entries", entries)
         pulumi.set(__self__, "profile_id", profile_id)
+<<<<<<< HEAD
+=======
+        if ai_context_enabled is not None:
+            pulumi.set(__self__, "ai_context_enabled", ai_context_enabled)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if allowed_match_count is not None:
             pulumi.set(__self__, "allowed_match_count", allowed_match_count)
         if confidence_threshold is not None:
@@ -72,6 +81,18 @@ class ZeroTrustDlpPredefinedProfileArgs:
         pulumi.set(self, "profile_id", value)
 
     @property
+<<<<<<< HEAD
+=======
+    @pulumi.getter(name="aiContextEnabled")
+    def ai_context_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "ai_context_enabled")
+
+    @ai_context_enabled.setter
+    def ai_context_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ai_context_enabled", value)
+
+    @property
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="allowedMatchCount")
     def allowed_match_count(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "allowed_match_count")
@@ -115,6 +136,10 @@ class ZeroTrustDlpPredefinedProfileArgs:
 class _ZeroTrustDlpPredefinedProfileState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
+=======
+                 ai_context_enabled: Optional[pulumi.Input[bool]] = None,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  allowed_match_count: Optional[pulumi.Input[int]] = None,
                  confidence_threshold: Optional[pulumi.Input[str]] = None,
                  context_awareness: Optional[pulumi.Input['ZeroTrustDlpPredefinedProfileContextAwarenessArgs']] = None,
@@ -138,6 +163,11 @@ class _ZeroTrustDlpPredefinedProfileState:
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+<<<<<<< HEAD
+=======
+        if ai_context_enabled is not None:
+            pulumi.set(__self__, "ai_context_enabled", ai_context_enabled)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if allowed_match_count is not None:
             pulumi.set(__self__, "allowed_match_count", allowed_match_count)
         if confidence_threshold is not None:
@@ -173,6 +203,18 @@ class _ZeroTrustDlpPredefinedProfileState:
         pulumi.set(self, "account_id", value)
 
     @property
+<<<<<<< HEAD
+=======
+    @pulumi.getter(name="aiContextEnabled")
+    def ai_context_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "ai_context_enabled")
+
+    @ai_context_enabled.setter
+    def ai_context_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ai_context_enabled", value)
+
+    @property
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="allowedMatchCount")
     def allowed_match_count(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "allowed_match_count")
@@ -305,6 +347,10 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
+=======
+                 ai_context_enabled: Optional[pulumi.Input[bool]] = None,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  allowed_match_count: Optional[pulumi.Input[int]] = None,
                  confidence_threshold: Optional[pulumi.Input[str]] = None,
                  context_awareness: Optional[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileContextAwarenessArgs', 'ZeroTrustDlpPredefinedProfileContextAwarenessArgsDict']]] = None,
@@ -326,6 +372,10 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
                 "id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 "enabled": True,
             }],
+<<<<<<< HEAD
+=======
+            ai_context_enabled=True,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             allowed_match_count=0,
             confidence_threshold="confidence_threshold",
             context_awareness={
@@ -367,6 +417,10 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
                 "id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 "enabled": True,
             }],
+<<<<<<< HEAD
+=======
+            ai_context_enabled=True,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             allowed_match_count=0,
             confidence_threshold="confidence_threshold",
             context_awareness={
@@ -400,6 +454,10 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
+=======
+                 ai_context_enabled: Optional[pulumi.Input[bool]] = None,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  allowed_match_count: Optional[pulumi.Input[int]] = None,
                  confidence_threshold: Optional[pulumi.Input[str]] = None,
                  context_awareness: Optional[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileContextAwarenessArgs', 'ZeroTrustDlpPredefinedProfileContextAwarenessArgsDict']]] = None,
@@ -418,6 +476,10 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+<<<<<<< HEAD
+=======
+            __props__.__dict__["ai_context_enabled"] = ai_context_enabled
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             __props__.__dict__["allowed_match_count"] = allowed_match_count
             __props__.__dict__["confidence_threshold"] = confidence_threshold
             __props__.__dict__["context_awareness"] = context_awareness
@@ -445,6 +507,10 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
+=======
+            ai_context_enabled: Optional[pulumi.Input[bool]] = None,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             allowed_match_count: Optional[pulumi.Input[int]] = None,
             confidence_threshold: Optional[pulumi.Input[str]] = None,
             context_awareness: Optional[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileContextAwarenessArgs', 'ZeroTrustDlpPredefinedProfileContextAwarenessArgsDict']]] = None,
@@ -476,6 +542,10 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
         __props__ = _ZeroTrustDlpPredefinedProfileState.__new__(_ZeroTrustDlpPredefinedProfileState)
 
         __props__.__dict__["account_id"] = account_id
+<<<<<<< HEAD
+=======
+        __props__.__dict__["ai_context_enabled"] = ai_context_enabled
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         __props__.__dict__["allowed_match_count"] = allowed_match_count
         __props__.__dict__["confidence_threshold"] = confidence_threshold
         __props__.__dict__["context_awareness"] = context_awareness
@@ -496,6 +566,14 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
         return pulumi.get(self, "account_id")
 
     @property
+<<<<<<< HEAD
+=======
+    @pulumi.getter(name="aiContextEnabled")
+    def ai_context_enabled(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "ai_context_enabled")
+
+    @property
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="allowedMatchCount")
     def allowed_match_count(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "allowed_match_count")

@@ -49,6 +49,11 @@
         "d1database.ts",
         "dnsFirewall.ts",
         "dnsRecord.ts",
+<<<<<<< HEAD
+=======
+        "dnsSettings.ts",
+        "dnsSettingsInternalView.ts",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "dnsZoneTransfersAcl.ts",
         "dnsZoneTransfersIncoming.ts",
         "dnsZoneTransfersOutgoing.ts",
@@ -86,6 +91,10 @@
         "getApiShieldSchemaValidationSettings.ts",
         "getApiShieldSchemas.ts",
         "getApiToken.ts",
+<<<<<<< HEAD
+=======
+        "getApiTokenPermissionsGroups.ts",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "getApiTokenPermissionsGroupsList.ts",
         "getApiTokens.ts",
         "getArgoSmartRouting.ts",
@@ -94,6 +103,10 @@
         "getAuthenticatedOriginPullsCertificate.ts",
         "getAuthenticatedOriginPullsCertificates.ts",
         "getBotManagement.ts",
+<<<<<<< HEAD
+=======
+        "getBotnetFeedConfigAsn.ts",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "getByoIpPrefix.ts",
         "getByoIpPrefixes.ts",
         "getCallsSfuApp.ts",
@@ -121,6 +134,12 @@
         "getDnsFirewalls.ts",
         "getDnsRecord.ts",
         "getDnsRecords.ts",
+<<<<<<< HEAD
+=======
+        "getDnsSettings.ts",
+        "getDnsSettingsInternalView.ts",
+        "getDnsSettingsInternalViews.ts",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "getDnsZoneTransfersAcl.ts",
         "getDnsZoneTransfersAcls.ts",
         "getDnsZoneTransfersIncoming.ts",
@@ -154,6 +173,10 @@
         "getImage.ts",
         "getImageVariant.ts",
         "getImages.ts",
+<<<<<<< HEAD
+=======
+        "getIpRanges.ts",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "getKeylessCertificate.ts",
         "getKeylessCertificates.ts",
         "getLeakedCredentialCheck.ts",
@@ -218,6 +241,15 @@
         "getQueueConsumer.ts",
         "getQueues.ts",
         "getR2Bucket.ts",
+<<<<<<< HEAD
+=======
+        "getR2BucketCors.ts",
+        "getR2BucketEventNotification.ts",
+        "getR2BucketLifecycle.ts",
+        "getR2BucketLock.ts",
+        "getR2BucketSippy.ts",
+        "getR2CustomDomain.ts",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "getRateLimit.ts",
         "getRateLimits.ts",
         "getRegionalHostname.ts",
@@ -271,6 +303,11 @@
         "getWorkersKv.ts",
         "getWorkersKvNamespace.ts",
         "getWorkersKvNamespaces.ts",
+<<<<<<< HEAD
+=======
+        "getWorkersRoute.ts",
+        "getWorkersRoutes.ts",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "getWorkersScript.ts",
         "getWorkersScriptSubdomain.ts",
         "getWorkersScripts.ts",
@@ -324,6 +361,10 @@
         "getZeroTrustGatewayCategoriesList.ts",
         "getZeroTrustGatewayCertificate.ts",
         "getZeroTrustGatewayCertificates.ts",
+<<<<<<< HEAD
+=======
+        "getZeroTrustGatewayLogging.ts",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "getZeroTrustGatewayPolicies.ts",
         "getZeroTrustGatewayPolicy.ts",
         "getZeroTrustGatewayProxyEndpoint.ts",
@@ -338,6 +379,10 @@
         "getZeroTrustTunnelCloudflaredConfig.ts",
         "getZeroTrustTunnelCloudflaredRoute.ts",
         "getZeroTrustTunnelCloudflaredRoutes.ts",
+<<<<<<< HEAD
+=======
+        "getZeroTrustTunnelCloudflaredToken.ts",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "getZeroTrustTunnelCloudflaredVirtualNetwork.ts",
         "getZeroTrustTunnelCloudflaredVirtualNetworks.ts",
         "getZeroTrustTunnelCloudflareds.ts",
@@ -392,6 +437,13 @@
         "queue.ts",
         "queueConsumer.ts",
         "r2bucket.ts",
+        "r2bucketCors.ts",
+        "r2bucketEventNotification.ts",
+        "r2bucketLifecycle.ts",
+        "r2bucketLock.ts",
+        "r2bucketSippy.ts",
+        "r2customDomain.ts",
+        "r2managedDomain.ts",
         "rateLimit.ts",
         "record.ts",
         "regionalHostname.ts",
@@ -462,6 +514,7 @@
         "zeroTrustDlpPredefinedProfile.ts",
         "zeroTrustDnsLocation.ts",
         "zeroTrustGatewayCertificate.ts",
+        "zeroTrustGatewayLogging.ts",
         "zeroTrustGatewayPolicy.ts",
         "zeroTrustGatewayProxyEndpoint.ts",
         "zeroTrustGatewaySettings.ts",

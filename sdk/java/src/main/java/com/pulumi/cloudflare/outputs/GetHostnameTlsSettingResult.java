@@ -5,12 +5,29 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+<<<<<<< HEAD
+=======
+import java.lang.Double;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetHostnameTlsSettingResult {
     /**
+<<<<<<< HEAD
+=======
+     * @return This is the time the tls setting was originally created for this hostname.
+     * 
+     */
+    private String createdAt;
+    /**
+     * @return The hostname for which the tls settings are set.
+     * 
+     */
+    private String hostname;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -21,6 +38,24 @@ public final class GetHostnameTlsSettingResult {
      */
     private String settingId;
     /**
+<<<<<<< HEAD
+=======
+     * @return Deployment status for the given tls setting.
+     * 
+     */
+    private String status;
+    /**
+     * @return This is the time the tls setting was updated.
+     * 
+     */
+    private String updatedAt;
+    /**
+     * @return The tls setting value.
+     * 
+     */
+    private Double value;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return Identifier
      * 
      */
@@ -28,6 +63,23 @@ public final class GetHostnameTlsSettingResult {
 
     private GetHostnameTlsSettingResult() {}
     /**
+<<<<<<< HEAD
+=======
+     * @return This is the time the tls setting was originally created for this hostname.
+     * 
+     */
+    public String createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * @return The hostname for which the tls settings are set.
+     * 
+     */
+    public String hostname() {
+        return this.hostname;
+    }
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -42,6 +94,30 @@ public final class GetHostnameTlsSettingResult {
         return this.settingId;
     }
     /**
+<<<<<<< HEAD
+=======
+     * @return Deployment status for the given tls setting.
+     * 
+     */
+    public String status() {
+        return this.status;
+    }
+    /**
+     * @return This is the time the tls setting was updated.
+     * 
+     */
+    public String updatedAt() {
+        return this.updatedAt;
+    }
+    /**
+     * @return The tls setting value.
+     * 
+     */
+    public Double value() {
+        return this.value;
+    }
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return Identifier
      * 
      */
@@ -58,18 +134,57 @@ public final class GetHostnameTlsSettingResult {
     }
     @CustomType.Builder
     public static final class Builder {
+<<<<<<< HEAD
         private String id;
         private String settingId;
+=======
+        private String createdAt;
+        private String hostname;
+        private String id;
+        private String settingId;
+        private String status;
+        private String updatedAt;
+        private Double value;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private String zoneId;
         public Builder() {}
         public Builder(GetHostnameTlsSettingResult defaults) {
     	      Objects.requireNonNull(defaults);
+<<<<<<< HEAD
     	      this.id = defaults.id;
     	      this.settingId = defaults.settingId;
+=======
+    	      this.createdAt = defaults.createdAt;
+    	      this.hostname = defaults.hostname;
+    	      this.id = defaults.id;
+    	      this.settingId = defaults.settingId;
+    	      this.status = defaults.status;
+    	      this.updatedAt = defaults.updatedAt;
+    	      this.value = defaults.value;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.zoneId = defaults.zoneId;
         }
 
         @CustomType.Setter
+<<<<<<< HEAD
+=======
+        public Builder createdAt(String createdAt) {
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetHostnameTlsSettingResult", "createdAt");
+            }
+            this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostname(String hostname) {
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("GetHostnameTlsSettingResult", "hostname");
+            }
+            this.hostname = hostname;
+            return this;
+        }
+        @CustomType.Setter
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetHostnameTlsSettingResult", "id");
@@ -86,6 +201,33 @@ public final class GetHostnameTlsSettingResult {
             return this;
         }
         @CustomType.Setter
+<<<<<<< HEAD
+=======
+        public Builder status(String status) {
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetHostnameTlsSettingResult", "status");
+            }
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder updatedAt(String updatedAt) {
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetHostnameTlsSettingResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder value(Double value) {
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetHostnameTlsSettingResult", "value");
+            }
+            this.value = value;
+            return this;
+        }
+        @CustomType.Setter
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder zoneId(String zoneId) {
             if (zoneId == null) {
               throw new MissingRequiredPropertyException("GetHostnameTlsSettingResult", "zoneId");
@@ -95,8 +237,18 @@ public final class GetHostnameTlsSettingResult {
         }
         public GetHostnameTlsSettingResult build() {
             final var _resultValue = new GetHostnameTlsSettingResult();
+<<<<<<< HEAD
             _resultValue.id = id;
             _resultValue.settingId = settingId;
+=======
+            _resultValue.createdAt = createdAt;
+            _resultValue.hostname = hostname;
+            _resultValue.id = id;
+            _resultValue.settingId = settingId;
+            _resultValue.status = status;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.value = value;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

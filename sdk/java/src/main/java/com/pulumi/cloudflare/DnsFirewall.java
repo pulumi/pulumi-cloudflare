@@ -47,6 +47,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleDnsFirewall = new DnsFirewall("exampleDnsFirewall", DnsFirewallArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+<<<<<<< HEAD
+=======
+ *             .name("My Awesome DNS Firewall cluster")
+ *             .upstreamIps(            
+ *                 "192.0.2.1",
+ *                 "198.51.100.1",
+ *                 "2001:DB8:100::CF")
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  *             .attackMitigation(DnsFirewallAttackMitigationArgs.builder()
  *                 .enabled(true)
  *                 .only_when_upstream_unhealthy(false)
@@ -55,6 +63,7 @@ import javax.annotation.Nullable;
  *             .ecsFallback(false)
  *             .maximumCacheTtl(900)
  *             .minimumCacheTtl(60)
+<<<<<<< HEAD
  *             .name("My Awesome DNS Firewall cluster")
  *             .negativeCacheTtl(900)
  *             .ratelimit(600)
@@ -63,6 +72,11 @@ import javax.annotation.Nullable;
  *                 "192.0.2.1",
  *                 "198.51.100.1",
  *                 "string")
+=======
+ *             .negativeCacheTtl(900)
+ *             .ratelimit(600)
+ *             .retries(2)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  *             .build());
  * 
  *     }
@@ -189,14 +203,23 @@ public class DnsFirewall extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
+<<<<<<< HEAD
     private Output</* @Nullable */ String> name;
+=======
+    private Output<String> name;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      * @return DNS Firewall cluster name
      * 
      */
+<<<<<<< HEAD
     public Output<Optional<String>> name() {
         return Codegen.optional(this.name);
+=======
+    public Output<String> name() {
+        return this.name;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
     /**
      * Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
@@ -241,10 +264,17 @@ public class DnsFirewall extends com.pulumi.resources.CustomResource {
         return this.retries;
     }
     @Export(name="upstreamIps", refs={List.class,String.class}, tree="[0,1]")
+<<<<<<< HEAD
     private Output</* @Nullable */ List<String>> upstreamIps;
 
     public Output<Optional<List<String>>> upstreamIps() {
         return Codegen.optional(this.upstreamIps);
+=======
+    private Output<List<String>> upstreamIps;
+
+    public Output<List<String>> upstreamIps() {
+        return this.upstreamIps;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     /**

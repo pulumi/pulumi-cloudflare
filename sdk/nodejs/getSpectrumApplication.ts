@@ -32,11 +32,19 @@ export function getSpectrumApplication(args: GetSpectrumApplicationArgs, opts?: 
  */
 export interface GetSpectrumApplicationArgs {
     /**
+<<<<<<< HEAD
      * Identifier
      */
     appId: string;
     /**
      * Identifier
+=======
+     * App identifier.
+     */
+    appId: string;
+    /**
+     * Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     zoneId: string;
 }
@@ -46,7 +54,11 @@ export interface GetSpectrumApplicationArgs {
  */
 export interface GetSpectrumApplicationResult {
     /**
+<<<<<<< HEAD
      * Identifier
+=======
+     * App identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     readonly appId: string;
     /**
@@ -109,7 +121,11 @@ export interface GetSpectrumApplicationResult {
      */
     readonly trafficType: string;
     /**
+<<<<<<< HEAD
      * Identifier
+=======
+     * Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     readonly zoneId: string;
 }
@@ -139,11 +155,19 @@ export function getSpectrumApplicationOutput(args: GetSpectrumApplicationOutputA
  */
 export interface GetSpectrumApplicationOutputArgs {
     /**
+<<<<<<< HEAD
      * Identifier
      */
     appId: pulumi.Input<string>;
     /**
      * Identifier
+=======
+     * App identifier.
+     */
+    appId: pulumi.Input<string>;
+    /**
+     * Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     zoneId: pulumi.Input<string>;
 }

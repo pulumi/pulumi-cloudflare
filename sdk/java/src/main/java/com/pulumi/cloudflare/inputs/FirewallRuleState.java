@@ -110,6 +110,7 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+<<<<<<< HEAD
      * The unique identifier of the firewall rule.
      * 
      */
@@ -125,6 +126,8 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Identifier
      * 
      */
@@ -149,7 +152,10 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
         this.priority = $.priority;
         this.products = $.products;
         this.ref = $.ref;
+<<<<<<< HEAD
         this.ruleId = $.ruleId;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.zoneId = $.zoneId;
     }
 
@@ -299,6 +305,7 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+<<<<<<< HEAD
          * @param ruleId The unique identifier of the firewall rule.
          * 
          * @return builder
@@ -320,6 +327,8 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param zoneId Identifier
          * 
          * @return builder

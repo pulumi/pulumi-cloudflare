@@ -35,15 +35,25 @@ public final class GetMagicTransitSitesPlainArgs extends com.pulumi.resources.In
      * Identifier
      * 
      */
+<<<<<<< HEAD
     @Import(name="connectorIdentifier")
     private @Nullable String connectorIdentifier;
+=======
+    @Import(name="connectorid")
+    private @Nullable String connectorid;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      * @return Identifier
      * 
      */
+<<<<<<< HEAD
     public Optional<String> connectorIdentifier() {
         return Optional.ofNullable(this.connectorIdentifier);
+=======
+    public Optional<String> connectorid() {
+        return Optional.ofNullable(this.connectorid);
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     /**
@@ -65,7 +75,11 @@ public final class GetMagicTransitSitesPlainArgs extends com.pulumi.resources.In
 
     private GetMagicTransitSitesPlainArgs(GetMagicTransitSitesPlainArgs $) {
         this.accountId = $.accountId;
+<<<<<<< HEAD
         this.connectorIdentifier = $.connectorIdentifier;
+=======
+        this.connectorid = $.connectorid;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.maxItems = $.maxItems;
     }
 
@@ -99,13 +113,22 @@ public final class GetMagicTransitSitesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
+<<<<<<< HEAD
          * @param connectorIdentifier Identifier
+=======
+         * @param connectorid Identifier
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 
          */
+<<<<<<< HEAD
         public Builder connectorIdentifier(@Nullable String connectorIdentifier) {
             $.connectorIdentifier = connectorIdentifier;
+=======
+        public Builder connectorid(@Nullable String connectorid) {
+            $.connectorid = connectorid;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return this;
         }
 

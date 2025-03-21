@@ -64,7 +64,11 @@ export class PagesDomain extends pulumi.CustomResource {
     public /*out*/ readonly certificateAuthority!: pulumi.Output<string>;
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     public /*out*/ readonly domainId!: pulumi.Output<string>;
+<<<<<<< HEAD
     public readonly name!: pulumi.Output<string | undefined>;
+=======
+    public readonly name!: pulumi.Output<string>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Name of the project.
      */
@@ -102,6 +106,12 @@ export class PagesDomain extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
+<<<<<<< HEAD
+=======
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             if ((!args || args.projectName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
@@ -151,7 +161,11 @@ export interface PagesDomainArgs {
      * Identifier
      */
     accountId: pulumi.Input<string>;
+<<<<<<< HEAD
     name?: pulumi.Input<string>;
+=======
+    name: pulumi.Input<string>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Name of the project.
      */

@@ -32,6 +32,10 @@ namespace Pulumi.Cloudflare
     ///                 Enabled = true,
     ///             },
     ///         },
+<<<<<<< HEAD
+=======
+    ///         AiContextEnabled = true,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     ///         AllowedMatchCount = 0,
     ///         ConfidenceThreshold = "confidence_threshold",
     ///         ContextAwareness = new Cloudflare.Inputs.ZeroTrustDlpPredefinedProfileContextAwarenessArgs
@@ -60,6 +64,12 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+<<<<<<< HEAD
+=======
+        [Output("aiContextEnabled")]
+        public Output<bool?> AiContextEnabled { get; private set; } = null!;
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Output("allowedMatchCount")]
         public Output<int?> AllowedMatchCount { get; private set; } = null!;
 
@@ -163,6 +173,12 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+<<<<<<< HEAD
+=======
+        [Input("aiContextEnabled")]
+        public Input<bool>? AiContextEnabled { get; set; }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Input("allowedMatchCount")]
         public Input<int>? AllowedMatchCount { get; set; }
 
@@ -200,6 +216,12 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Input("aiContextEnabled")]
+        public Input<bool>? AiContextEnabled { get; set; }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Input("allowedMatchCount")]
         public Input<int>? AllowedMatchCount { get; set; }
 

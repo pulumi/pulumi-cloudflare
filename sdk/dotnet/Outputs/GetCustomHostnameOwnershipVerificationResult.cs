@@ -11,6 +11,7 @@ namespace Pulumi.Cloudflare.Outputs
 {
 
     [OutputType]
+<<<<<<<< HEAD:sdk/dotnet/Outputs/GetCustomHostnameOwnershipVerificationResult.cs
     public sealed class GetCustomHostnameOwnershipVerificationResult
     {
         /// <summary>
@@ -37,6 +38,34 @@ namespace Pulumi.Cloudflare.Outputs
             Name = name;
             Type = type;
             Value = value;
+========
+    public sealed class GetApiTokenPermissionsGroupsListResultResult
+    {
+        /// <summary>
+        /// Public ID.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
+        /// Permission Group Name
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// Resources to which the Permission Group is scoped
+        /// </summary>
+        public readonly ImmutableArray<string> Scopes;
+
+        [OutputConstructor]
+        private GetApiTokenPermissionsGroupsListResultResult(
+            string id,
+
+            string name,
+
+            ImmutableArray<string> scopes)
+        {
+            Id = id;
+            Name = name;
+            Scopes = scopes;
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/dotnet/Outputs/GetApiTokenPermissionsGroupsListResultResult.cs
         }
     }
 }

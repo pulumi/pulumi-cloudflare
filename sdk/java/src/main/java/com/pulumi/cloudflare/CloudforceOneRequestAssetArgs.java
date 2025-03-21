@@ -33,6 +33,7 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
     }
 
     /**
+<<<<<<< HEAD
      * UUID
      * 
      */
@@ -48,6 +49,8 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
     }
 
     /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Page number of results
      * 
      */
@@ -111,7 +114,10 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
 
     private CloudforceOneRequestAssetArgs(CloudforceOneRequestAssetArgs $) {
         this.accountIdentifier = $.accountIdentifier;
+<<<<<<< HEAD
         this.assetIdentifer = $.assetIdentifer;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.page = $.page;
         this.perPage = $.perPage;
         this.requestIdentifier = $.requestIdentifier;
@@ -158,6 +164,7 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
         }
 
         /**
+<<<<<<< HEAD
          * @param assetIdentifer UUID
          * 
          * @return builder
@@ -179,6 +186,8 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
         }
 
         /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param page Page number of results
          * 
          * @return builder

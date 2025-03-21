@@ -30,6 +30,17 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("dnsServer")]
         public Input<string>? DnsServer { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Input("dnsServers")]
+        private InputList<string>? _dnsServers;
+        public InputList<string> DnsServers
+        {
+            get => _dnsServers ?? (_dnsServers = new InputList<string>());
+            set => _dnsServers = value;
+        }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Input("reservations")]
         private InputMap<string>? _reservations;
 

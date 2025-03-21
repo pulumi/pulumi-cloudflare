@@ -6,7 +6,11 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+<<<<<<< HEAD
 import java.lang.Double;
+=======
+import java.lang.Object;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -52,13 +56,21 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
      * 
      */
     @Import(name="value", required=true)
+<<<<<<< HEAD
     private Output<Double> value;
+=======
+    private Output<Object> value;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      * @return The tls setting value.
      * 
      */
+<<<<<<< HEAD
     public Output<Double> value() {
+=======
+    public Output<Object> value() {
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return this.value;
     }
 
@@ -152,7 +164,11 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
+<<<<<<< HEAD
         public Builder value(Output<Double> value) {
+=======
+        public Builder value(Output<Object> value) {
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             $.value = value;
             return this;
         }
@@ -163,7 +179,11 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
+<<<<<<< HEAD
         public Builder value(Double value) {
+=======
+        public Builder value(Object value) {
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return value(Output.of(value));
         }
 

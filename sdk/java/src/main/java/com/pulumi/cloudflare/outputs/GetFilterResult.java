@@ -3,11 +3,20 @@
 
 package com.pulumi.cloudflare.outputs;
 
+<<<<<<< HEAD
+=======
+import com.pulumi.cloudflare.outputs.GetFilterFilter;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+<<<<<<< HEAD
+=======
+import java.util.Optional;
+import javax.annotation.Nullable;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 @CustomType
 public final class GetFilterResult {
@@ -21,11 +30,19 @@ public final class GetFilterResult {
      * 
      */
     private String expression;
+<<<<<<< HEAD
+=======
+    private @Nullable GetFilterFilter filter;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return The unique identifier of the filter.
      * 
      */
+<<<<<<< HEAD
     private String filterId;
+=======
+    private @Nullable String filterId;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return The unique identifier of the filter.
      * 
@@ -62,12 +79,23 @@ public final class GetFilterResult {
     public String expression() {
         return this.expression;
     }
+<<<<<<< HEAD
+=======
+    public Optional<GetFilterFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return The unique identifier of the filter.
      * 
      */
+<<<<<<< HEAD
     public String filterId() {
         return this.filterId;
+=======
+    public Optional<String> filterId() {
+        return Optional.ofNullable(this.filterId);
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
     /**
      * @return The unique identifier of the filter.
@@ -109,7 +137,12 @@ public final class GetFilterResult {
     public static final class Builder {
         private String description;
         private String expression;
+<<<<<<< HEAD
         private String filterId;
+=======
+        private @Nullable GetFilterFilter filter;
+        private @Nullable String filterId;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private String id;
         private Boolean paused;
         private String ref;
@@ -119,6 +152,10 @@ public final class GetFilterResult {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.expression = defaults.expression;
+<<<<<<< HEAD
+=======
+    	      this.filter = defaults.filter;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.filterId = defaults.filterId;
     	      this.id = defaults.id;
     	      this.paused = defaults.paused;
@@ -143,10 +180,21 @@ public final class GetFilterResult {
             return this;
         }
         @CustomType.Setter
+<<<<<<< HEAD
         public Builder filterId(String filterId) {
             if (filterId == null) {
               throw new MissingRequiredPropertyException("GetFilterResult", "filterId");
             }
+=======
+        public Builder filter(@Nullable GetFilterFilter filter) {
+
+            this.filter = filter;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filterId(@Nullable String filterId) {
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             this.filterId = filterId;
             return this;
         }
@@ -186,6 +234,10 @@ public final class GetFilterResult {
             final var _resultValue = new GetFilterResult();
             _resultValue.description = description;
             _resultValue.expression = expression;
+<<<<<<< HEAD
+=======
+            _resultValue.filter = filter;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.filterId = filterId;
             _resultValue.id = id;
             _resultValue.paused = paused;

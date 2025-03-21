@@ -13,6 +13,11 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+<<<<<<< HEAD
+=======
+import java.util.Optional;
+import javax.annotation.Nullable;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 @CustomType
 public final class GetMagicTransitSiteLanResult {
@@ -35,7 +40,11 @@ public final class GetMagicTransitSiteLanResult {
      * @return Identifier
      * 
      */
+<<<<<<< HEAD
     private String lanId;
+=======
+    private @Nullable String lanId;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     private String name;
     private GetMagicTransitSiteLanNat nat;
     private Integer physport;
@@ -82,8 +91,13 @@ public final class GetMagicTransitSiteLanResult {
      * @return Identifier
      * 
      */
+<<<<<<< HEAD
     public String lanId() {
         return this.lanId;
+=======
+    public Optional<String> lanId() {
+        return Optional.ofNullable(this.lanId);
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
     public String name() {
         return this.name;
@@ -131,7 +145,11 @@ public final class GetMagicTransitSiteLanResult {
         private String accountId;
         private Boolean haLink;
         private String id;
+<<<<<<< HEAD
         private String lanId;
+=======
+        private @Nullable String lanId;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private String name;
         private GetMagicTransitSiteLanNat nat;
         private Integer physport;
@@ -180,10 +198,15 @@ public final class GetMagicTransitSiteLanResult {
             return this;
         }
         @CustomType.Setter
+<<<<<<< HEAD
         public Builder lanId(String lanId) {
             if (lanId == null) {
               throw new MissingRequiredPropertyException("GetMagicTransitSiteLanResult", "lanId");
             }
+=======
+        public Builder lanId(@Nullable String lanId) {
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             this.lanId = lanId;
             return this;
         }

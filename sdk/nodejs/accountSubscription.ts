@@ -42,14 +42,43 @@ export class AccountSubscription extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
+<<<<<<< HEAD
+=======
+     * The monetary unit in which pricing information is displayed.
+     */
+    public /*out*/ readonly currency!: pulumi.Output<string>;
+    /**
+     * The end of the current period and also when the next billing is due.
+     */
+    public /*out*/ readonly currentPeriodEnd!: pulumi.Output<string>;
+    /**
+     * When the current billing period started. May match initial*period*start if this is the first period.
+     */
+    public /*out*/ readonly currentPeriodStart!: pulumi.Output<string>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * How often the subscription is renewed automatically.
      */
     public readonly frequency!: pulumi.Output<string | undefined>;
     /**
+<<<<<<< HEAD
+=======
+     * The price of the subscription that will be billed, in US dollars.
+     */
+    public /*out*/ readonly price!: pulumi.Output<number>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The rate plan applied to the subscription.
      */
     public readonly ratePlan!: pulumi.Output<outputs.AccountSubscriptionRatePlan>;
     /**
+<<<<<<< HEAD
+=======
+     * The state that the subscription is in.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Subscription identifier tag.
      */
     public readonly subscriptionIdentifier!: pulumi.Output<string | undefined>;
@@ -68,8 +97,18 @@ export class AccountSubscription extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccountSubscriptionState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+<<<<<<< HEAD
             resourceInputs["frequency"] = state ? state.frequency : undefined;
             resourceInputs["ratePlan"] = state ? state.ratePlan : undefined;
+=======
+            resourceInputs["currency"] = state ? state.currency : undefined;
+            resourceInputs["currentPeriodEnd"] = state ? state.currentPeriodEnd : undefined;
+            resourceInputs["currentPeriodStart"] = state ? state.currentPeriodStart : undefined;
+            resourceInputs["frequency"] = state ? state.frequency : undefined;
+            resourceInputs["price"] = state ? state.price : undefined;
+            resourceInputs["ratePlan"] = state ? state.ratePlan : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resourceInputs["subscriptionIdentifier"] = state ? state.subscriptionIdentifier : undefined;
         } else {
             const args = argsOrState as AccountSubscriptionArgs | undefined;
@@ -80,6 +119,14 @@ export class AccountSubscription extends pulumi.CustomResource {
             resourceInputs["frequency"] = args ? args.frequency : undefined;
             resourceInputs["ratePlan"] = args ? args.ratePlan : undefined;
             resourceInputs["subscriptionIdentifier"] = args ? args.subscriptionIdentifier : undefined;
+<<<<<<< HEAD
+=======
+            resourceInputs["currency"] = undefined /*out*/;
+            resourceInputs["currentPeriodEnd"] = undefined /*out*/;
+            resourceInputs["currentPeriodStart"] = undefined /*out*/;
+            resourceInputs["price"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccountSubscription.__pulumiType, name, resourceInputs, opts);
@@ -95,14 +142,43 @@ export interface AccountSubscriptionState {
      */
     accountId?: pulumi.Input<string>;
     /**
+<<<<<<< HEAD
+=======
+     * The monetary unit in which pricing information is displayed.
+     */
+    currency?: pulumi.Input<string>;
+    /**
+     * The end of the current period and also when the next billing is due.
+     */
+    currentPeriodEnd?: pulumi.Input<string>;
+    /**
+     * When the current billing period started. May match initial*period*start if this is the first period.
+     */
+    currentPeriodStart?: pulumi.Input<string>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * How often the subscription is renewed automatically.
      */
     frequency?: pulumi.Input<string>;
     /**
+<<<<<<< HEAD
+=======
+     * The price of the subscription that will be billed, in US dollars.
+     */
+    price?: pulumi.Input<number>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The rate plan applied to the subscription.
      */
     ratePlan?: pulumi.Input<inputs.AccountSubscriptionRatePlan>;
     /**
+<<<<<<< HEAD
+=======
+     * The state that the subscription is in.
+     */
+    state?: pulumi.Input<string>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Subscription identifier tag.
      */
     subscriptionIdentifier?: pulumi.Input<string>;

@@ -36,6 +36,12 @@ export interface GetD1DatabaseArgs {
      * Account identifier tag.
      */
     accountId: string;
+<<<<<<< HEAD
+=======
+    /**
+     * D1 database identifier (UUID).
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     databaseId?: string;
     filter?: inputs.GetD1DatabaseFilter;
 }
@@ -52,6 +58,12 @@ export interface GetD1DatabaseResult {
      * Specifies the timestamp the resource was created as an ISO8601 string.
      */
     readonly createdAt: string;
+<<<<<<< HEAD
+=======
+    /**
+     * D1 database identifier (UUID).
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     readonly databaseId?: string;
     /**
      * The D1 database's size, in bytes.
@@ -59,11 +71,25 @@ export interface GetD1DatabaseResult {
     readonly fileSize: number;
     readonly filter?: outputs.GetD1DatabaseFilter;
     /**
+<<<<<<< HEAD
      * The ID of this resource.
      */
     readonly id: string;
     readonly name: string;
     readonly numTables: number;
+=======
+     * D1 database identifier (UUID).
+     */
+    readonly id: string;
+    /**
+     * D1 database name.
+     */
+    readonly name: string;
+    readonly numTables: number;
+    /**
+     * D1 database identifier (UUID).
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     readonly uuid: string;
     readonly version: string;
 }
@@ -97,6 +123,12 @@ export interface GetD1DatabaseOutputArgs {
      * Account identifier tag.
      */
     accountId: pulumi.Input<string>;
+<<<<<<< HEAD
+=======
+    /**
+     * D1 database identifier (UUID).
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     databaseId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetD1DatabaseFilterArgs>;
 }

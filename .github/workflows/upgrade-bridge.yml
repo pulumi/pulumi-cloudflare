@@ -57,8 +57,25 @@ permissions:
 
 env:
   GH_TOKEN: ${{ secrets.PULUMI_PROVIDER_AUTOMATION_TOKEN || secrets.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
+  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
+  PUBLISH_REPO_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+  PUBLISH_REPO_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+  PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+  PULUMI_API: https://api.pulumi-staging.io
+  PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
+  PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
+  PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+  PYPI_USERNAME: __token__
+  SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
+  SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
+  SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
+  TF_APPEND_USER_AGENT: pulumi
+
 jobs:
   upgrade_provider:
     name: upgrade-provider
@@ -81,7 +98,7 @@ jobs:
         tools: pulumictl, pulumicli, nodejs, python, dotnet, go, java
     - name: Call upgrade provider action
       if: github.event_name == 'workflow_dispatch'
-      uses: pulumi/pulumi-upgrade-provider-action@699de04d401c93c74824805b8d3e2936369f97db # v0.0.14
+      uses: pulumi/pulumi-upgrade-provider-action@ff5cb5907aecba099e61146c4d4d074c7fd6ca99 # v0.0.15
       with:
         kind: ${{ inputs.kind }}
         email: bot@pulumi.com
@@ -94,7 +111,7 @@ jobs:
         pr-title-prefix: ${{ inputs.pr-title-prefix }}
     - name: Call upgrade provider action
       if: github.event_name == 'repository_dispatch'
-      uses: pulumi/pulumi-upgrade-provider-action@699de04d401c93c74824805b8d3e2936369f97db # v0.0.14
+      uses: pulumi/pulumi-upgrade-provider-action@ff5cb5907aecba099e61146c4d4d074c7fd6ca99 # v0.0.15
       with:
         kind: ${{ github.event.client_payload.kind || 'bridge' }}
         email: bot@pulumi.com

@@ -62,10 +62,13 @@ export class ListItem extends pulumi.CustomResource {
      */
     public readonly ip!: pulumi.Output<string | undefined>;
     /**
+<<<<<<< HEAD
      * The unique ID of the item in the List.
      */
     public /*out*/ readonly itemId!: pulumi.Output<string>;
     /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The unique ID of the list.
      */
     public readonly listId!: pulumi.Output<string>;
@@ -117,9 +120,13 @@ export class ListItem extends pulumi.CustomResource {
             resourceInputs["ip"] = args ? args.ip : undefined;
             resourceInputs["listId"] = args ? args.listId : undefined;
             resourceInputs["redirect"] = args ? args.redirect : undefined;
+<<<<<<< HEAD
             resourceInputs["comment"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["itemId"] = undefined /*out*/;
+=======
+            resourceInputs["createdOn"] = undefined /*out*/;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["operationId"] = undefined /*out*/;
         }
@@ -157,10 +164,13 @@ export interface ListItemState {
      */
     ip?: pulumi.Input<string>;
     /**
+<<<<<<< HEAD
      * The unique ID of the item in the List.
      */
     itemId?: pulumi.Input<string>;
     /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The unique ID of the list.
      */
     listId?: pulumi.Input<string>;
@@ -191,6 +201,13 @@ export interface ListItemArgs {
      */
     asn?: pulumi.Input<number>;
     /**
+<<<<<<< HEAD
+=======
+     * An informative summary of the list item.
+     */
+    comment?: pulumi.Input<string>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      */
     hostname?: pulumi.Input<inputs.ListItemHostname>;

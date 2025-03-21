@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -61,6 +62,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/snippetRules:SnippetRules")
 public class SnippetRules extends com.pulumi.resources.CustomResource {
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    public Output<String> description() {
+        return this.description;
+    }
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enabled;
+
+    public Output<Boolean> enabled() {
+        return this.enabled;
+    }
+    @Export(name="expression", refs={String.class}, tree="[0]")
+    private Output<String> expression;
+
+    public Output<String> expression() {
+        return this.expression;
+    }
     /**
      * List of snippet rules
      * 
@@ -76,6 +95,23 @@ public class SnippetRules extends com.pulumi.resources.CustomResource {
         return this.rules;
     }
     /**
+<<<<<<< HEAD
+=======
+     * Snippet identifying name
+     * 
+     */
+    @Export(name="snippetName", refs={String.class}, tree="[0]")
+    private Output<String> snippetName;
+
+    /**
+     * @return Snippet identifying name
+     * 
+     */
+    public Output<String> snippetName() {
+        return this.snippetName;
+    }
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Identifier
      * 
      */

@@ -43,6 +43,16 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? HostnameContains { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Filters for targets whose IP addresses look like the specified string.
+        /// Supports `*` as a wildcard character
+        /// </summary>
+        [Input("ipLike")]
+        public Input<string>? IpLike { get; set; }
+
+        /// <summary>
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// IPv4 address of the target
         /// </summary>
         [Input("ipV4")]
@@ -68,6 +78,37 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Defines an IPv4 filter range's ending value (inclusive). Requires
+        /// `ipv4_start` to be specified as well.
+        /// </summary>
+        [Input("ipv4End")]
+        public Input<string>? Ipv4End { get; set; }
+
+        /// <summary>
+        /// Defines an IPv4 filter range's starting value (inclusive). Requires
+        /// `ipv4_end` to be specified as well.
+        /// </summary>
+        [Input("ipv4Start")]
+        public Input<string>? Ipv4Start { get; set; }
+
+        /// <summary>
+        /// Defines an IPv6 filter range's ending value (inclusive). Requires
+        /// `ipv6_start` to be specified as well.
+        /// </summary>
+        [Input("ipv6End")]
+        public Input<string>? Ipv6End { get; set; }
+
+        /// <summary>
+        /// Defines an IPv6 filter range's starting value (inclusive). Requires
+        /// `ipv6_end` to be specified as well.
+        /// </summary>
+        [Input("ipv6Start")]
+        public Input<string>? Ipv6Start { get; set; }
+
+        /// <summary>
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// Date and time at which the target was modified after (inclusive)
         /// </summary>
         [Input("modifiedAfter")]
@@ -85,6 +126,23 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("order")]
         public Input<string>? Order { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Input("targetIds")]
+        private InputList<string>? _targetIds;
+
+        /// <summary>
+        /// Filters for targets that have any of the following UUIDs. Specify
+        /// `target_ids` multiple times in query parameter to build list of
+        /// candidates.
+        /// </summary>
+        public InputList<string> TargetIds
+        {
+            get => _targetIds ?? (_targetIds = new InputList<string>());
+            set => _targetIds = value;
+        }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// Private virtual network identifier of the target
         /// </summary>

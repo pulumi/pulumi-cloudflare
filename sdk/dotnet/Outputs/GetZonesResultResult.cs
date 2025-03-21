@@ -87,6 +87,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// An array of domains used for custom name servers. This is only available for Business and Enterprise plans.
         /// </summary>
         public readonly ImmutableArray<string> VanityNameServers;
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Verification key for partial zone setup.
+        /// </summary>
+        public readonly string VerificationKey;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         [OutputConstructor]
         private GetZonesResultResult(
@@ -122,7 +129,13 @@ namespace Pulumi.Cloudflare.Outputs
 
             string type,
 
+<<<<<<< HEAD
             ImmutableArray<string> vanityNameServers)
+=======
+            ImmutableArray<string> vanityNameServers,
+
+            string verificationKey)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         {
             Account = account;
             ActivatedOn = activatedOn;
@@ -141,6 +154,10 @@ namespace Pulumi.Cloudflare.Outputs
             Status = status;
             Type = type;
             VanityNameServers = vanityNameServers;
+<<<<<<< HEAD
+=======
+            VerificationKey = verificationKey;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
     }
 }

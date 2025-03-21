@@ -16,6 +16,10 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/zero_trust_device_custom_profile_local_domain_fallback.py
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 __all__ = ['ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs', 'ZeroTrustDeviceCustomProfileLocalDomainFallback']
 
 @pulumi.input_type
@@ -31,6 +35,23 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs:
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "domains", domains)
         pulumi.set(__self__, "policy_id", policy_id)
+<<<<<<< HEAD
+========
+__all__ = ['ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs', 'ZeroTrustDeviceDefaultProfileLocalDomainFallback']
+
+@pulumi.input_type
+class ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs:
+    def __init__(__self__, *,
+                 account_id: pulumi.Input[str],
+                 domains: pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs']]]):
+        """
+        The set of arguments for constructing a ZeroTrustDeviceDefaultProfileLocalDomainFallback resource.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "domains", domains)
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/zero_trust_device_default_profile_local_domain_fallback.py
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     @property
     @pulumi.getter(name="accountId")
@@ -43,6 +64,10 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs:
 
     @property
     @pulumi.getter
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/zero_trust_device_custom_profile_local_domain_fallback.py
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     def domains(self) -> pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs']]]:
         return pulumi.get(self, "domains")
 
@@ -67,18 +92,64 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs:
 class _ZeroTrustDeviceCustomProfileLocalDomainFallbackState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs']]]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDeviceCustomProfileLocalDomainFallback resources.
         :param pulumi.Input[str] policy_id: Device ID.
+========
+    def domains(self) -> pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs']]]:
+        return pulumi.get(self, "domains")
+
+    @domains.setter
+    def domains(self, value: pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs']]]):
+        pulumi.set(self, "domains", value)
+
+
+@pulumi.input_type
+class _ZeroTrustDeviceDefaultProfileLocalDomainFallbackState:
+    def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 domains: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs']]]] = None,
+                 suffix: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ZeroTrustDeviceDefaultProfileLocalDomainFallback resources.
+        :param pulumi.Input[str] description: A description of the fallback domain, displayed in the client UI.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: A list of IP addresses to handle domain resolution.
+        :param pulumi.Input[str] suffix: The domain suffix to match when resolving locally.
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/zero_trust_device_default_profile_local_domain_fallback.py
+=======
+                 description: Optional[pulumi.Input[str]] = None,
+                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 domains: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs']]]] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
+                 suffix: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ZeroTrustDeviceCustomProfileLocalDomainFallback resources.
+        :param pulumi.Input[str] description: A description of the fallback domain, displayed in the client UI.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: A list of IP addresses to handle domain resolution.
+        :param pulumi.Input[str] policy_id: Device ID.
+        :param pulumi.Input[str] suffix: The domain suffix to match when resolving locally.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if dns_servers is not None:
+            pulumi.set(__self__, "dns_servers", dns_servers)
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
+<<<<<<< HEAD
+=======
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
 
     @property
     @pulumi.getter(name="accountId")
@@ -91,6 +162,59 @@ class _ZeroTrustDeviceCustomProfileLocalDomainFallbackState:
 
     @property
     @pulumi.getter
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/zero_trust_device_custom_profile_local_domain_fallback.py
+    def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs']]]]:
+        return pulumi.get(self, "domains")
+
+    @domains.setter
+    def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs']]]]):
+========
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the fallback domain, displayed in the client UI.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IP addresses to handle domain resolution.
+        """
+        return pulumi.get(self, "dns_servers")
+
+    @dns_servers.setter
+    def dns_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dns_servers", value)
+
+    @property
+    @pulumi.getter
+<<<<<<< HEAD
+    def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs']]]]:
+        return pulumi.get(self, "domains")
+
+    @domains.setter
+    def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs']]]]):
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/zero_trust_device_default_profile_local_domain_fallback.py
+        pulumi.set(self, "domains", value)
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/zero_trust_device_custom_profile_local_domain_fallback.py
+        Device ID.
+========
+        The domain suffix to match when resolving locally.
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/zero_trust_device_default_profile_local_domain_fallback.py
+=======
     def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs']]]]:
         return pulumi.get(self, "domains")
 
@@ -110,13 +234,38 @@ class _ZeroTrustDeviceCustomProfileLocalDomainFallbackState:
     def policy_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "policy_id", value)
 
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain suffix to match when resolving locally.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+        """
+        return pulumi.get(self, "suffix")
 
+    @suffix.setter
+    def suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "suffix", value)
+
+
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/zero_trust_device_custom_profile_local_domain_fallback.py
 class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
+========
+class ZeroTrustDeviceDefaultProfileLocalDomainFallback(pulumi.CustomResource):
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/zero_trust_device_default_profile_local_domain_fallback.py
+=======
+class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/zero_trust_device_custom_profile_local_domain_fallback.py
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgsDict']]]]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -132,11 +281,27 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy_id: Device ID.
+<<<<<<< HEAD
+========
+                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgsDict']]]]] = None,
+                 __props__=None):
+        """
+        ## Example Usage
+
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/zero_trust_device_default_profile_local_domain_fallback.py
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/zero_trust_device_custom_profile_local_domain_fallback.py
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  args: ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -150,11 +315,31 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs args: The arguments to use to populate this resource's properties.
+<<<<<<< HEAD
+========
+                 args: ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Example Usage
+
+        :param str resource_name: The name of the resource.
+        :param ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs args: The arguments to use to populate this resource's properties.
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/zero_trust_device_default_profile_local_domain_fallback.py
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/zero_trust_device_custom_profile_local_domain_fallback.py
         resource_args, opts = _utilities.get_resource_args_opts(ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs, pulumi.ResourceOptions, *args, **kwargs)
+========
+        resource_args, opts = _utilities.get_resource_args_opts(ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs, pulumi.ResourceOptions, *args, **kwargs)
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/zero_trust_device_default_profile_local_domain_fallback.py
+=======
+        resource_args, opts = _utilities.get_resource_args_opts(ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs, pulumi.ResourceOptions, *args, **kwargs)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -164,8 +349,17 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/zero_trust_device_custom_profile_local_domain_fallback.py
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgsDict']]]]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
+========
+                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgsDict']]]]] = None,
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/zero_trust_device_default_profile_local_domain_fallback.py
+=======
+                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgsDict']]]]] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -173,7 +367,15 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/zero_trust_device_custom_profile_local_domain_fallback.py
             __props__ = ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs.__new__(ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs)
+========
+            __props__ = ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs.__new__(ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs)
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/zero_trust_device_default_profile_local_domain_fallback.py
+=======
+            __props__ = ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs.__new__(ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
@@ -181,11 +383,30 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
             if domains is None and not opts.urn:
                 raise TypeError("Missing required property 'domains'")
             __props__.__dict__["domains"] = domains
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/zero_trust_device_custom_profile_local_domain_fallback.py
             if policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_id'")
             __props__.__dict__["policy_id"] = policy_id
         super(ZeroTrustDeviceCustomProfileLocalDomainFallback, __self__).__init__(
             'cloudflare:index/zeroTrustDeviceCustomProfileLocalDomainFallback:ZeroTrustDeviceCustomProfileLocalDomainFallback',
+========
+            __props__.__dict__["description"] = None
+            __props__.__dict__["dns_servers"] = None
+            __props__.__dict__["suffix"] = None
+        super(ZeroTrustDeviceDefaultProfileLocalDomainFallback, __self__).__init__(
+            'cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback',
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/zero_trust_device_default_profile_local_domain_fallback.py
+=======
+            if policy_id is None and not opts.urn:
+                raise TypeError("Missing required property 'policy_id'")
+            __props__.__dict__["policy_id"] = policy_id
+            __props__.__dict__["description"] = None
+            __props__.__dict__["dns_servers"] = None
+            __props__.__dict__["suffix"] = None
+        super(ZeroTrustDeviceCustomProfileLocalDomainFallback, __self__).__init__(
+            'cloudflare:index/zeroTrustDeviceCustomProfileLocalDomainFallback:ZeroTrustDeviceCustomProfileLocalDomainFallback',
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resource_name,
             __props__,
             opts)
@@ -195,25 +416,77 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/zero_trust_device_custom_profile_local_domain_fallback.py
             domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgsDict']]]]] = None,
             policy_id: Optional[pulumi.Input[str]] = None) -> 'ZeroTrustDeviceCustomProfileLocalDomainFallback':
         """
         Get an existing ZeroTrustDeviceCustomProfileLocalDomainFallback resource's state with the given name, id, and optional extra
+========
+            description: Optional[pulumi.Input[str]] = None,
+            dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgsDict']]]]] = None,
+            suffix: Optional[pulumi.Input[str]] = None) -> 'ZeroTrustDeviceDefaultProfileLocalDomainFallback':
+        """
+        Get an existing ZeroTrustDeviceDefaultProfileLocalDomainFallback resource's state with the given name, id, and optional extra
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/zero_trust_device_default_profile_local_domain_fallback.py
+=======
+            description: Optional[pulumi.Input[str]] = None,
+            dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgsDict']]]]] = None,
+            policy_id: Optional[pulumi.Input[str]] = None,
+            suffix: Optional[pulumi.Input[str]] = None) -> 'ZeroTrustDeviceCustomProfileLocalDomainFallback':
+        """
+        Get an existing ZeroTrustDeviceCustomProfileLocalDomainFallback resource's state with the given name, id, and optional extra
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/zero_trust_device_custom_profile_local_domain_fallback.py
         :param pulumi.Input[str] policy_id: Device ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ZeroTrustDeviceCustomProfileLocalDomainFallbackState.__new__(_ZeroTrustDeviceCustomProfileLocalDomainFallbackState)
+========
+        :param pulumi.Input[str] description: A description of the fallback domain, displayed in the client UI.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: A list of IP addresses to handle domain resolution.
+=======
+        :param pulumi.Input[str] description: A description of the fallback domain, displayed in the client UI.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: A list of IP addresses to handle domain resolution.
+        :param pulumi.Input[str] policy_id: Device ID.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+        :param pulumi.Input[str] suffix: The domain suffix to match when resolving locally.
+        """
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
+
+<<<<<<< HEAD
+        __props__ = _ZeroTrustDeviceDefaultProfileLocalDomainFallbackState.__new__(_ZeroTrustDeviceDefaultProfileLocalDomainFallbackState)
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/zero_trust_device_default_profile_local_domain_fallback.py
+=======
+        __props__ = _ZeroTrustDeviceCustomProfileLocalDomainFallbackState.__new__(_ZeroTrustDeviceCustomProfileLocalDomainFallbackState)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["dns_servers"] = dns_servers
         __props__.__dict__["domains"] = domains
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/zero_trust_device_custom_profile_local_domain_fallback.py
         __props__.__dict__["policy_id"] = policy_id
         return ZeroTrustDeviceCustomProfileLocalDomainFallback(resource_name, opts=opts, __props__=__props__)
+========
+        __props__.__dict__["suffix"] = suffix
+        return ZeroTrustDeviceDefaultProfileLocalDomainFallback(resource_name, opts=opts, __props__=__props__)
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/zero_trust_device_default_profile_local_domain_fallback.py
+=======
+        __props__.__dict__["policy_id"] = policy_id
+        __props__.__dict__["suffix"] = suffix
+        return ZeroTrustDeviceCustomProfileLocalDomainFallback(resource_name, opts=opts, __props__=__props__)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     @property
     @pulumi.getter(name="accountId")
@@ -222,6 +495,41 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+<<<<<<< HEAD
+<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/zero_trust_device_custom_profile_local_domain_fallback.py
+    def domains(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain']]:
+        return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> pulumi.Output[str]:
+        """
+        Device ID.
+========
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+    def description(self) -> pulumi.Output[str]:
+        """
+        A description of the fallback domain, displayed in the client UI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of IP addresses to handle domain resolution.
+        """
+        return pulumi.get(self, "dns_servers")
+
+    @property
+    @pulumi.getter
+<<<<<<< HEAD
+    def domains(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomain']]:
+        return pulumi.get(self, "domains")
+
+    @property
+=======
     def domains(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain']]:
         return pulumi.get(self, "domains")
 
@@ -232,4 +540,17 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
         Device ID.
         """
         return pulumi.get(self, "policy_id")
+
+    @property
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+    @pulumi.getter
+    def suffix(self) -> pulumi.Output[str]:
+        """
+        The domain suffix to match when resolving locally.
+<<<<<<< HEAD
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/zero_trust_device_default_profile_local_domain_fallback.py
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+        """
+        return pulumi.get(self, "suffix")
 

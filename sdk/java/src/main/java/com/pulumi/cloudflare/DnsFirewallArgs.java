@@ -114,15 +114,25 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
      * DNS Firewall cluster name
      * 
      */
+<<<<<<< HEAD
     @Import(name="name")
     private @Nullable Output<String> name;
+=======
+    @Import(name="name", required=true)
+    private Output<String> name;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      * @return DNS Firewall cluster name
      * 
      */
+<<<<<<< HEAD
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+=======
+    public Output<String> name() {
+        return this.name;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     /**
@@ -170,11 +180,19 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.retries);
     }
 
+<<<<<<< HEAD
     @Import(name="upstreamIps")
     private @Nullable Output<List<String>> upstreamIps;
 
     public Optional<Output<List<String>>> upstreamIps() {
         return Optional.ofNullable(this.upstreamIps);
+=======
+    @Import(name="upstreamIps", required=true)
+    private Output<List<String>> upstreamIps;
+
+    public Output<List<String>> upstreamIps() {
+        return this.upstreamIps;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     private DnsFirewallArgs() {}
@@ -343,7 +361,11 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
+<<<<<<< HEAD
         public Builder name(@Nullable Output<String> name) {
+=======
+        public Builder name(Output<String> name) {
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             $.name = name;
             return this;
         }
@@ -421,7 +443,11 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
             return retries(Output.of(retries));
         }
 
+<<<<<<< HEAD
         public Builder upstreamIps(@Nullable Output<List<String>> upstreamIps) {
+=======
+        public Builder upstreamIps(Output<List<String>> upstreamIps) {
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             $.upstreamIps = upstreamIps;
             return this;
         }
@@ -438,6 +464,15 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("DnsFirewallArgs", "accountId");
             }
+<<<<<<< HEAD
+=======
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("DnsFirewallArgs", "name");
+            }
+            if ($.upstreamIps == null) {
+                throw new MissingRequiredPropertyException("DnsFirewallArgs", "upstreamIps");
+            }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return $;
         }
     }

@@ -15,15 +15,24 @@ public final class GetMagicTransitSiteFilter {
      * @return Identifier
      * 
      */
+<<<<<<< HEAD
     private @Nullable String connectorIdentifier;
+=======
+    private @Nullable String connectorid;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     private GetMagicTransitSiteFilter() {}
     /**
      * @return Identifier
      * 
      */
+<<<<<<< HEAD
     public Optional<String> connectorIdentifier() {
         return Optional.ofNullable(this.connectorIdentifier);
+=======
+    public Optional<String> connectorid() {
+        return Optional.ofNullable(this.connectorid);
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     public static Builder builder() {
@@ -35,6 +44,7 @@ public final class GetMagicTransitSiteFilter {
     }
     @CustomType.Builder
     public static final class Builder {
+<<<<<<< HEAD
         private @Nullable String connectorIdentifier;
         public Builder() {}
         public Builder(GetMagicTransitSiteFilter defaults) {
@@ -46,11 +56,28 @@ public final class GetMagicTransitSiteFilter {
         public Builder connectorIdentifier(@Nullable String connectorIdentifier) {
 
             this.connectorIdentifier = connectorIdentifier;
+=======
+        private @Nullable String connectorid;
+        public Builder() {}
+        public Builder(GetMagicTransitSiteFilter defaults) {
+    	      Objects.requireNonNull(defaults);
+    	      this.connectorid = defaults.connectorid;
+        }
+
+        @CustomType.Setter
+        public Builder connectorid(@Nullable String connectorid) {
+
+            this.connectorid = connectorid;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return this;
         }
         public GetMagicTransitSiteFilter build() {
             final var _resultValue = new GetMagicTransitSiteFilter();
+<<<<<<< HEAD
             _resultValue.connectorIdentifier = connectorIdentifier;
+=======
+            _resultValue.connectorid = connectorid;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return _resultValue;
         }
     }

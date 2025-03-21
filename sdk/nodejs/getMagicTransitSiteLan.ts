@@ -28,7 +28,11 @@ export interface GetMagicTransitSiteLanArgs {
     /**
      * Identifier
      */
+<<<<<<< HEAD
     lanId: string;
+=======
+    lanId?: string;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 /**
@@ -50,7 +54,11 @@ export interface GetMagicTransitSiteLanResult {
     /**
      * Identifier
      */
+<<<<<<< HEAD
     readonly lanId: string;
+=======
+    readonly lanId?: string;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     readonly name: string;
     readonly nat: outputs.GetMagicTransitSiteLanNat;
     readonly physport: number;
@@ -90,5 +98,9 @@ export interface GetMagicTransitSiteLanOutputArgs {
     /**
      * Identifier
      */
+<<<<<<< HEAD
     lanId: pulumi.Input<string>;
+=======
+    lanId?: pulumi.Input<string>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }

@@ -22,7 +22,12 @@ import (
 type ZeroTrustDlpCustomProfile struct {
 	pulumi.CustomResourceState
 
+<<<<<<< HEAD
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+=======
+	AccountId        pulumi.StringOutput  `pulumi:"accountId"`
+	AiContextEnabled pulumi.BoolPtrOutput `pulumi:"aiContextEnabled"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount   pulumi.IntOutput       `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold pulumi.StringPtrOutput `pulumi:"confidenceThreshold"`
@@ -78,7 +83,12 @@ func GetZeroTrustDlpCustomProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustDlpCustomProfile resources.
 type zeroTrustDlpCustomProfileState struct {
+<<<<<<< HEAD
 	AccountId *string `pulumi:"accountId"`
+=======
+	AccountId        *string `pulumi:"accountId"`
+	AiContextEnabled *bool   `pulumi:"aiContextEnabled"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount   *int    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
@@ -102,7 +112,12 @@ type zeroTrustDlpCustomProfileState struct {
 }
 
 type ZeroTrustDlpCustomProfileState struct {
+<<<<<<< HEAD
 	AccountId pulumi.StringPtrInput
+=======
+	AccountId        pulumi.StringPtrInput
+	AiContextEnabled pulumi.BoolPtrInput
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount   pulumi.IntPtrInput
 	ConfidenceThreshold pulumi.StringPtrInput
@@ -130,7 +145,12 @@ func (ZeroTrustDlpCustomProfileState) ElementType() reflect.Type {
 }
 
 type zeroTrustDlpCustomProfileArgs struct {
+<<<<<<< HEAD
 	AccountId string `pulumi:"accountId"`
+=======
+	AccountId        string `pulumi:"accountId"`
+	AiContextEnabled *bool  `pulumi:"aiContextEnabled"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount   *int    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
@@ -148,7 +168,12 @@ type zeroTrustDlpCustomProfileArgs struct {
 
 // The set of arguments for constructing a ZeroTrustDlpCustomProfile resource.
 type ZeroTrustDlpCustomProfileArgs struct {
+<<<<<<< HEAD
 	AccountId pulumi.StringInput
+=======
+	AccountId        pulumi.StringInput
+	AiContextEnabled pulumi.BoolPtrInput
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount   pulumi.IntPtrInput
 	ConfidenceThreshold pulumi.StringPtrInput
@@ -255,6 +280,13 @@ func (o ZeroTrustDlpCustomProfileOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+<<<<<<< HEAD
+=======
+func (o ZeroTrustDlpCustomProfileOutput) AiContextEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.BoolPtrOutput { return v.AiContextEnabled }).(pulumi.BoolPtrOutput)
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // Related DLP policies will trigger when the match count exceeds the number set.
 func (o ZeroTrustDlpCustomProfileOutput) AllowedMatchCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.IntOutput { return v.AllowedMatchCount }).(pulumi.IntOutput)

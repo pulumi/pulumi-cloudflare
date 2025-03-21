@@ -24,6 +24,12 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+<<<<<<< HEAD
+=======
+        [Output("aiContextEnabled")]
+        public Output<bool?> AiContextEnabled { get; private set; } = null!;
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// Related DLP policies will trigger when the match count exceeds the number set.
         /// </summary>
@@ -133,6 +139,12 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+<<<<<<< HEAD
+=======
+        [Input("aiContextEnabled")]
+        public Input<bool>? AiContextEnabled { get; set; }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// Related DLP policies will trigger when the match count exceeds the number set.
         /// </summary>
@@ -199,6 +211,12 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Input("aiContextEnabled")]
+        public Input<bool>? AiContextEnabled { get; set; }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// Related DLP policies will trigger when the match count exceeds the number set.
         /// </summary>

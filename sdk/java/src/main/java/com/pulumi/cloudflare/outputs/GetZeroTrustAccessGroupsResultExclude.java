@@ -21,6 +21,10 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultExcludeGroup;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultExcludeGsuite;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultExcludeIp;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultExcludeIpList;
+<<<<<<< HEAD
+=======
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultExcludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultExcludeOkta;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultExcludeSaml;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultExcludeServiceToken;
@@ -56,6 +60,10 @@ public final class GetZeroTrustAccessGroupsResultExclude {
     private GetZeroTrustAccessGroupsResultExcludeGsuite gsuite;
     private GetZeroTrustAccessGroupsResultExcludeIp ip;
     private GetZeroTrustAccessGroupsResultExcludeIpList ipList;
+<<<<<<< HEAD
+=======
+    private GetZeroTrustAccessGroupsResultExcludeLoginMethod loginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     private GetZeroTrustAccessGroupsResultExcludeOkta okta;
     private GetZeroTrustAccessGroupsResultExcludeSaml saml;
     private GetZeroTrustAccessGroupsResultExcludeServiceToken serviceToken;
@@ -123,6 +131,12 @@ public final class GetZeroTrustAccessGroupsResultExclude {
     public GetZeroTrustAccessGroupsResultExcludeIpList ipList() {
         return this.ipList;
     }
+<<<<<<< HEAD
+=======
+    public GetZeroTrustAccessGroupsResultExcludeLoginMethod loginMethod() {
+        return this.loginMethod;
+    }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public GetZeroTrustAccessGroupsResultExcludeOkta okta() {
         return this.okta;
     }
@@ -160,6 +174,10 @@ public final class GetZeroTrustAccessGroupsResultExclude {
         private GetZeroTrustAccessGroupsResultExcludeGsuite gsuite;
         private GetZeroTrustAccessGroupsResultExcludeIp ip;
         private GetZeroTrustAccessGroupsResultExcludeIpList ipList;
+<<<<<<< HEAD
+=======
+        private GetZeroTrustAccessGroupsResultExcludeLoginMethod loginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private GetZeroTrustAccessGroupsResultExcludeOkta okta;
         private GetZeroTrustAccessGroupsResultExcludeSaml saml;
         private GetZeroTrustAccessGroupsResultExcludeServiceToken serviceToken;
@@ -184,6 +202,10 @@ public final class GetZeroTrustAccessGroupsResultExclude {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
+<<<<<<< HEAD
+=======
+    	      this.loginMethod = defaults.loginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -334,6 +356,17 @@ public final class GetZeroTrustAccessGroupsResultExclude {
             return this;
         }
         @CustomType.Setter
+<<<<<<< HEAD
+=======
+        public Builder loginMethod(GetZeroTrustAccessGroupsResultExcludeLoginMethod loginMethod) {
+            if (loginMethod == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupsResultExclude", "loginMethod");
+            }
+            this.loginMethod = loginMethod;
+            return this;
+        }
+        @CustomType.Setter
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder okta(GetZeroTrustAccessGroupsResultExcludeOkta okta) {
             if (okta == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupsResultExclude", "okta");
@@ -377,6 +410,10 @@ public final class GetZeroTrustAccessGroupsResultExclude {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
+<<<<<<< HEAD
+=======
+            _resultValue.loginMethod = loginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

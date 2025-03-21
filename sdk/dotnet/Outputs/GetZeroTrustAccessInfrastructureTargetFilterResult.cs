@@ -34,6 +34,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? HostnameContains;
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Filters for targets whose IP addresses look like the specified string.
+        /// Supports `*` as a wildcard character
+        /// </summary>
+        public readonly string? IpLike;
+        /// <summary>
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// IPv4 address of the target
         /// </summary>
         public readonly string? IpV4;
@@ -47,6 +55,29 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Ips;
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Defines an IPv4 filter range's ending value (inclusive). Requires
+        /// `ipv4_start` to be specified as well.
+        /// </summary>
+        public readonly string? Ipv4End;
+        /// <summary>
+        /// Defines an IPv4 filter range's starting value (inclusive). Requires
+        /// `ipv4_end` to be specified as well.
+        /// </summary>
+        public readonly string? Ipv4Start;
+        /// <summary>
+        /// Defines an IPv6 filter range's ending value (inclusive). Requires
+        /// `ipv6_start` to be specified as well.
+        /// </summary>
+        public readonly string? Ipv6End;
+        /// <summary>
+        /// Defines an IPv6 filter range's starting value (inclusive). Requires
+        /// `ipv6_end` to be specified as well.
+        /// </summary>
+        public readonly string? Ipv6Start;
+        /// <summary>
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// Date and time at which the target was modified after (inclusive)
         /// </summary>
         public readonly string? ModifiedAfter;
@@ -59,6 +90,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Order;
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Filters for targets that have any of the following UUIDs. Specify
+        /// `target_ids` multiple times in query parameter to build list of
+        /// candidates.
+        /// </summary>
+        public readonly ImmutableArray<string> TargetIds;
+        /// <summary>
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// Private virtual network identifier of the target
         /// </summary>
         public readonly string? VirtualNetworkId;
@@ -75,18 +115,39 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? hostnameContains,
 
+<<<<<<< HEAD
+=======
+            string? ipLike,
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             string? ipV4,
 
             string? ipV6,
 
             ImmutableArray<string> ips,
 
+<<<<<<< HEAD
+=======
+            string? ipv4End,
+
+            string? ipv4Start,
+
+            string? ipv6End,
+
+            string? ipv6Start,
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             string? modifiedAfter,
 
             string? modifiedBefore,
 
             string? order,
 
+<<<<<<< HEAD
+=======
+            ImmutableArray<string> targetIds,
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             string? virtualNetworkId)
         {
             CreatedAfter = createdAfter;
@@ -94,12 +155,27 @@ namespace Pulumi.Cloudflare.Outputs
             Direction = direction;
             Hostname = hostname;
             HostnameContains = hostnameContains;
+<<<<<<< HEAD
             IpV4 = ipV4;
             IpV6 = ipV6;
             Ips = ips;
             ModifiedAfter = modifiedAfter;
             ModifiedBefore = modifiedBefore;
             Order = order;
+=======
+            IpLike = ipLike;
+            IpV4 = ipV4;
+            IpV6 = ipV6;
+            Ips = ips;
+            Ipv4End = ipv4End;
+            Ipv4Start = ipv4Start;
+            Ipv6End = ipv6End;
+            Ipv6Start = ipv6Start;
+            ModifiedAfter = modifiedAfter;
+            ModifiedBefore = modifiedBefore;
+            Order = order;
+            TargetIds = targetIds;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             VirtualNetworkId = virtualNetworkId;
         }
     }

@@ -56,7 +56,11 @@ type LookupZoneCacheReserveArgs struct {
 type LookupZoneCacheReserveResult struct {
 	// Whether the setting is editable
 	Editable bool `pulumi:"editable"`
+<<<<<<< HEAD
 	// The provider-assigned unique ID for this managed resource.
+=======
+	// ID of the zone setting.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	Id string `pulumi:"id"`
 	// Last time this setting was modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
@@ -107,7 +111,7 @@ func (o LookupZoneCacheReserveResultOutput) Editable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZoneCacheReserveResult) bool { return v.Editable }).(pulumi.BoolOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// ID of the zone setting.
 func (o LookupZoneCacheReserveResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneCacheReserveResult) string { return v.Id }).(pulumi.StringOutput)
 }

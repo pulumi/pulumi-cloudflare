@@ -27,7 +27,11 @@ type LookupMagicTransitSiteWanArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// Identifier
+<<<<<<< HEAD
 	WanId string `pulumi:"wanId"`
+=======
+	WanId *string `pulumi:"wanId"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // A collection of values returned by getMagicTransitSiteWan.
@@ -49,7 +53,11 @@ type LookupMagicTransitSiteWanResult struct {
 	// VLAN port number.
 	VlanTag int `pulumi:"vlanTag"`
 	// Identifier
+<<<<<<< HEAD
 	WanId string `pulumi:"wanId"`
+=======
+	WanId *string `pulumi:"wanId"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func LookupMagicTransitSiteWanOutput(ctx *pulumi.Context, args LookupMagicTransitSiteWanOutputArgs, opts ...pulumi.InvokeOption) LookupMagicTransitSiteWanResultOutput {
@@ -66,7 +74,11 @@ type LookupMagicTransitSiteWanOutputArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identifier
+<<<<<<< HEAD
 	WanId pulumi.StringInput `pulumi:"wanId"`
+=======
+	WanId pulumi.StringPtrInput `pulumi:"wanId"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func (LookupMagicTransitSiteWanOutputArgs) ElementType() reflect.Type {
@@ -134,8 +146,13 @@ func (o LookupMagicTransitSiteWanResultOutput) VlanTag() pulumi.IntOutput {
 }
 
 // Identifier
+<<<<<<< HEAD
 func (o LookupMagicTransitSiteWanResultOutput) WanId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMagicTransitSiteWanResult) string { return v.WanId }).(pulumi.StringOutput)
+=======
+func (o LookupMagicTransitSiteWanResultOutput) WanId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMagicTransitSiteWanResult) *string { return v.WanId }).(pulumi.StringPtrOutput)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func init() {

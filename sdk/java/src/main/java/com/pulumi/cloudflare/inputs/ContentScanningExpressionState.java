@@ -19,13 +19,35 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
 
     @Import(name="bodies")
     private @Nullable Output<List<ContentScanningExpressionBodyArgs>> bodies;
+<<<<<<< HEAD
+
+    public Optional<Output<List<ContentScanningExpressionBodyArgs>>> bodies() {
+        return Optional.ofNullable(this.bodies);
+=======
 
     public Optional<Output<List<ContentScanningExpressionBodyArgs>>> bodies() {
         return Optional.ofNullable(this.bodies);
     }
 
     /**
+     * Ruleset expression to use in matching content objects
+     * 
+     */
+    @Import(name="payload")
+    private @Nullable Output<String> payload;
+
+    /**
+     * @return Ruleset expression to use in matching content objects
+     * 
+     */
+    public Optional<Output<String>> payload() {
+        return Optional.ofNullable(this.payload);
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+    }
+
+    /**
      * Identifier
+<<<<<<< HEAD
      * 
      */
     @Import(name="expressionId")
@@ -41,6 +63,8 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
 
     /**
      * Identifier
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     @Import(name="zoneId")
@@ -58,7 +82,11 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
 
     private ContentScanningExpressionState(ContentScanningExpressionState $) {
         this.bodies = $.bodies;
+<<<<<<< HEAD
         this.expressionId = $.expressionId;
+=======
+        this.payload = $.payload;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.zoneId = $.zoneId;
     }
 
@@ -94,7 +122,11 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
         }
 
         /**
+<<<<<<< HEAD
          * @param expressionId Identifier
+=======
+         * @param payload Ruleset expression to use in matching content objects
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 
@@ -105,7 +137,11 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
         }
 
         /**
+<<<<<<< HEAD
          * @param expressionId Identifier
+=======
+         * @param payload Ruleset expression to use in matching content objects
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 

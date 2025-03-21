@@ -12,6 +12,7 @@ import (
 )
 
 // ## Example Usage
+<<<<<<< HEAD
 //
 // ```go
 // package main
@@ -38,6 +39,8 @@ import (
 //	}
 //
 // ```
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func LookupFirewallRule(ctx *pulumi.Context, args *LookupFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupFirewallRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallRuleResult
@@ -51,9 +54,13 @@ func LookupFirewallRule(ctx *pulumi.Context, args *LookupFirewallRuleArgs, opts 
 // A collection of arguments for invoking getFirewallRule.
 type LookupFirewallRuleArgs struct {
 	// The unique identifier of the firewall rule.
+<<<<<<< HEAD
 	Id *string `pulumi:"id"`
 	// The unique identifier of the firewall rule.
 	RuleId string `pulumi:"ruleId"`
+=======
+	RuleId *string `pulumi:"ruleId"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -63,8 +70,12 @@ type LookupFirewallRuleResult struct {
 	// The action to apply to a matched request. The `log` action is only available on an Enterprise plan.
 	Action string `pulumi:"action"`
 	// An informative summary of the firewall rule.
+<<<<<<< HEAD
 	Description string                `pulumi:"description"`
 	Filter      GetFirewallRuleFilter `pulumi:"filter"`
+=======
+	Description string `pulumi:"description"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The unique identifier of the firewall rule.
 	Id string `pulumi:"id"`
 	// When true, indicates that the firewall rule is currently paused.
@@ -75,7 +86,11 @@ type LookupFirewallRuleResult struct {
 	// A short reference tag. Allows you to select related firewall rules.
 	Ref string `pulumi:"ref"`
 	// The unique identifier of the firewall rule.
+<<<<<<< HEAD
 	RuleId string `pulumi:"ruleId"`
+=======
+	RuleId *string `pulumi:"ruleId"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -92,9 +107,13 @@ func LookupFirewallRuleOutput(ctx *pulumi.Context, args LookupFirewallRuleOutput
 // A collection of arguments for invoking getFirewallRule.
 type LookupFirewallRuleOutputArgs struct {
 	// The unique identifier of the firewall rule.
+<<<<<<< HEAD
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The unique identifier of the firewall rule.
 	RuleId pulumi.StringInput `pulumi:"ruleId"`
+=======
+	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -128,10 +147,13 @@ func (o LookupFirewallRuleResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+<<<<<<< HEAD
 func (o LookupFirewallRuleResultOutput) Filter() GetFirewallRuleFilterOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) GetFirewallRuleFilter { return v.Filter }).(GetFirewallRuleFilterOutput)
 }
 
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // The unique identifier of the firewall rule.
 func (o LookupFirewallRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.Id }).(pulumi.StringOutput)
@@ -157,8 +179,13 @@ func (o LookupFirewallRuleResultOutput) Ref() pulumi.StringOutput {
 }
 
 // The unique identifier of the firewall rule.
+<<<<<<< HEAD
 func (o LookupFirewallRuleResultOutput) RuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.RuleId }).(pulumi.StringOutput)
+=======
+func (o LookupFirewallRuleResultOutput) RuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupFirewallRuleResult) *string { return v.RuleId }).(pulumi.StringPtrOutput)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // Identifier

@@ -31,6 +31,15 @@ import * as utilities from "./utilities";
  *     tunnelProtocol: "wireguard",
  * });
  * ```
+<<<<<<< HEAD
+=======
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile example '<account_id>'
+ * ```
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  */
 export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
     /**

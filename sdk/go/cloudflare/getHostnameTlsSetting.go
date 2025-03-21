@@ -57,10 +57,26 @@ type LookupHostnameTlsSettingArgs struct {
 
 // A collection of values returned by getHostnameTlsSetting.
 type LookupHostnameTlsSettingResult struct {
+<<<<<<< HEAD
+=======
+	// This is the time the tls setting was originally created for this hostname.
+	CreatedAt string `pulumi:"createdAt"`
+	// The hostname for which the tls settings are set.
+	Hostname string `pulumi:"hostname"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The TLS Setting name.
 	SettingId string `pulumi:"settingId"`
+<<<<<<< HEAD
+=======
+	// Deployment status for the given tls setting.
+	Status string `pulumi:"status"`
+	// This is the time the tls setting was updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+	// The tls setting value.
+	Value float64 `pulumi:"value"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -101,6 +117,19 @@ func (o LookupHostnameTlsSettingResultOutput) ToLookupHostnameTlsSettingResultOu
 	return o
 }
 
+<<<<<<< HEAD
+=======
+// This is the time the tls setting was originally created for this hostname.
+func (o LookupHostnameTlsSettingResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostnameTlsSettingResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The hostname for which the tls settings are set.
+func (o LookupHostnameTlsSettingResultOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostnameTlsSettingResult) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // The provider-assigned unique ID for this managed resource.
 func (o LookupHostnameTlsSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostnameTlsSettingResult) string { return v.Id }).(pulumi.StringOutput)
@@ -111,6 +140,24 @@ func (o LookupHostnameTlsSettingResultOutput) SettingId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostnameTlsSettingResult) string { return v.SettingId }).(pulumi.StringOutput)
 }
 
+<<<<<<< HEAD
+=======
+// Deployment status for the given tls setting.
+func (o LookupHostnameTlsSettingResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostnameTlsSettingResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// This is the time the tls setting was updated.
+func (o LookupHostnameTlsSettingResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostnameTlsSettingResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The tls setting value.
+func (o LookupHostnameTlsSettingResultOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupHostnameTlsSettingResult) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // Identifier
 func (o LookupHostnameTlsSettingResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostnameTlsSettingResult) string { return v.ZoneId }).(pulumi.StringOutput)

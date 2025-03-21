@@ -231,12 +231,14 @@ class R2Bucket(pulumi.CustomResource):
             storage_class="Standard")
         ```
 
-        > Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/reference/data-location/#available-hints).
-
         ## Import
 
         ```sh
+<<<<<<< HEAD
         $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '<account_id>/<bucket_name>'
+=======
+        $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '<account_id>/<bucket_name>/<jurisdiction>'
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ```
 
         :param str resource_name: The name of the resource.
@@ -267,12 +269,14 @@ class R2Bucket(pulumi.CustomResource):
             storage_class="Standard")
         ```
 
-        > Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/reference/data-location/#available-hints).
-
         ## Import
 
         ```sh
+<<<<<<< HEAD
         $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '<account_id>/<bucket_name>'
+=======
+        $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '<account_id>/<bucket_name>/<jurisdiction>'
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ```
 
         :param str resource_name: The name of the resource.

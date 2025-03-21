@@ -27,6 +27,7 @@ class GetMagicTransitSitesResult:
     """
     A collection of values returned by getMagicTransitSites.
     """
+<<<<<<< HEAD
     def __init__(__self__, account_id=None, connector_identifier=None, id=None, max_items=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
@@ -34,6 +35,15 @@ class GetMagicTransitSitesResult:
         if connector_identifier and not isinstance(connector_identifier, str):
             raise TypeError("Expected argument 'connector_identifier' to be a str")
         pulumi.set(__self__, "connector_identifier", connector_identifier)
+=======
+    def __init__(__self__, account_id=None, connectorid=None, id=None, max_items=None, results=None):
+        if account_id and not isinstance(account_id, str):
+            raise TypeError("Expected argument 'account_id' to be a str")
+        pulumi.set(__self__, "account_id", account_id)
+        if connectorid and not isinstance(connectorid, str):
+            raise TypeError("Expected argument 'connectorid' to be a str")
+        pulumi.set(__self__, "connectorid", connectorid)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -53,12 +63,21 @@ class GetMagicTransitSitesResult:
         return pulumi.get(self, "account_id")
 
     @property
+<<<<<<< HEAD
     @pulumi.getter(name="connectorIdentifier")
     def connector_identifier(self) -> Optional[str]:
         """
         Identifier
         """
         return pulumi.get(self, "connector_identifier")
+=======
+    @pulumi.getter
+    def connectorid(self) -> Optional[str]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "connectorid")
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     @property
     @pulumi.getter
@@ -92,14 +111,22 @@ class AwaitableGetMagicTransitSitesResult(GetMagicTransitSitesResult):
             yield self
         return GetMagicTransitSitesResult(
             account_id=self.account_id,
+<<<<<<< HEAD
             connector_identifier=self.connector_identifier,
+=======
+            connectorid=self.connectorid,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             id=self.id,
             max_items=self.max_items,
             results=self.results)
 
 
 def get_magic_transit_sites(account_id: Optional[str] = None,
+<<<<<<< HEAD
                             connector_identifier: Optional[str] = None,
+=======
+                            connectorid: Optional[str] = None,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                             max_items: Optional[int] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMagicTransitSitesResult:
     """
@@ -110,29 +137,49 @@ def get_magic_transit_sites(account_id: Optional[str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_magic_transit_sites = cloudflare.get_magic_transit_sites(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+<<<<<<< HEAD
         connector_identifier="023e105f4ecef8ad9ca31a8372d0c353")
+=======
+        connectorid="023e105f4ecef8ad9ca31a8372d0c353")
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     ```
 
 
     :param str account_id: Identifier
+<<<<<<< HEAD
     :param str connector_identifier: Identifier
+=======
+    :param str connectorid: Identifier
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     :param int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+<<<<<<< HEAD
     __args__['connectorIdentifier'] = connector_identifier
+=======
+    __args__['connectorid'] = connectorid
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     __args__['maxItems'] = max_items
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getMagicTransitSites:getMagicTransitSites', __args__, opts=opts, typ=GetMagicTransitSitesResult).value
 
     return AwaitableGetMagicTransitSitesResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+<<<<<<< HEAD
         connector_identifier=pulumi.get(__ret__, 'connector_identifier'),
+=======
+        connectorid=pulumi.get(__ret__, 'connectorid'),
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'))
 def get_magic_transit_sites_output(account_id: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
                                    connector_identifier: Optional[pulumi.Input[Optional[str]]] = None,
+=======
+                                   connectorid: Optional[pulumi.Input[Optional[str]]] = None,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                                    max_items: Optional[pulumi.Input[Optional[int]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitSitesResult]:
     """
@@ -143,23 +190,39 @@ def get_magic_transit_sites_output(account_id: Optional[pulumi.Input[str]] = Non
     import pulumi_cloudflare as cloudflare
 
     example_magic_transit_sites = cloudflare.get_magic_transit_sites(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+<<<<<<< HEAD
         connector_identifier="023e105f4ecef8ad9ca31a8372d0c353")
+=======
+        connectorid="023e105f4ecef8ad9ca31a8372d0c353")
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     ```
 
 
     :param str account_id: Identifier
+<<<<<<< HEAD
     :param str connector_identifier: Identifier
+=======
+    :param str connectorid: Identifier
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     :param int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+<<<<<<< HEAD
     __args__['connectorIdentifier'] = connector_identifier
+=======
+    __args__['connectorid'] = connectorid
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     __args__['maxItems'] = max_items
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getMagicTransitSites:getMagicTransitSites', __args__, opts=opts, typ=GetMagicTransitSitesResult)
     return __ret__.apply(lambda __response__: GetMagicTransitSitesResult(
         account_id=pulumi.get(__response__, 'account_id'),
+<<<<<<< HEAD
         connector_identifier=pulumi.get(__response__, 'connector_identifier'),
+=======
+        connectorid=pulumi.get(__response__, 'connectorid'),
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results')))

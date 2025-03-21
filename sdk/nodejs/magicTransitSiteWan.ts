@@ -8,6 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+<<<<<<< HEAD
+=======
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan example '<account_id>/<site_id>/<wan_id>'
+ * ```
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  */
 export class MagicTransitSiteWan extends pulumi.CustomResource {
     /**
@@ -60,10 +69,13 @@ export class MagicTransitSiteWan extends pulumi.CustomResource {
      * VLAN port number.
      */
     public readonly vlanTag!: pulumi.Output<number>;
+<<<<<<< HEAD
     /**
      * Identifier
      */
     public readonly wanId!: pulumi.Output<string | undefined>;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      * Create a MagicTransitSiteWan resource with the given unique name, arguments, and options.
@@ -86,7 +98,10 @@ export class MagicTransitSiteWan extends pulumi.CustomResource {
             resourceInputs["siteId"] = state ? state.siteId : undefined;
             resourceInputs["staticAddressing"] = state ? state.staticAddressing : undefined;
             resourceInputs["vlanTag"] = state ? state.vlanTag : undefined;
+<<<<<<< HEAD
             resourceInputs["wanId"] = state ? state.wanId : undefined;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         } else {
             const args = argsOrState as MagicTransitSiteWanArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -108,7 +123,10 @@ export class MagicTransitSiteWan extends pulumi.CustomResource {
             resourceInputs["siteId"] = args ? args.siteId : undefined;
             resourceInputs["staticAddressing"] = args ? args.staticAddressing : undefined;
             resourceInputs["vlanTag"] = args ? args.vlanTag : undefined;
+<<<<<<< HEAD
             resourceInputs["wanId"] = args ? args.wanId : undefined;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resourceInputs["healthCheckRate"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -143,10 +161,13 @@ export interface MagicTransitSiteWanState {
      * VLAN port number.
      */
     vlanTag?: pulumi.Input<number>;
+<<<<<<< HEAD
     /**
      * Identifier
      */
     wanId?: pulumi.Input<string>;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 /**
@@ -172,8 +193,11 @@ export interface MagicTransitSiteWanArgs {
      * VLAN port number.
      */
     vlanTag: pulumi.Input<number>;
+<<<<<<< HEAD
     /**
      * Identifier
      */
     wanId?: pulumi.Input<string>;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }

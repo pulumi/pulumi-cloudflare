@@ -12,7 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+<<<<<<< HEAD
 // > `FirewallRule` is in a deprecation phase until January 15th, 2025.
+=======
+// > `FirewallRule` is in a deprecation phase until June 15th, 2025.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 //
 //	During this time period, this resource is still
 //	fully supported but you are strongly advised  to move to the
@@ -58,6 +62,15 @@ import (
 //	}
 //
 // ```
+<<<<<<< HEAD
+=======
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/firewallRule:FirewallRule example '<zone_id>/<rule_id>'
+// ```
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
@@ -73,8 +86,11 @@ type FirewallRule struct {
 	Products pulumi.StringArrayOutput `pulumi:"products"`
 	// A short reference tag. Allows you to select related firewall rules.
 	Ref pulumi.StringOutput `pulumi:"ref"`
+<<<<<<< HEAD
 	// The unique identifier of the firewall rule.
 	RuleId pulumi.StringPtrOutput `pulumi:"ruleId"`
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -130,8 +146,11 @@ type firewallRuleState struct {
 	Products []string `pulumi:"products"`
 	// A short reference tag. Allows you to select related firewall rules.
 	Ref *string `pulumi:"ref"`
+<<<<<<< HEAD
 	// The unique identifier of the firewall rule.
 	RuleId *string `pulumi:"ruleId"`
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -149,8 +168,11 @@ type FirewallRuleState struct {
 	Products pulumi.StringArrayInput
 	// A short reference tag. Allows you to select related firewall rules.
 	Ref pulumi.StringPtrInput
+<<<<<<< HEAD
 	// The unique identifier of the firewall rule.
 	RuleId pulumi.StringPtrInput
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
@@ -163,8 +185,11 @@ type firewallRuleArgs struct {
 	// The action to perform when the threshold of matched traffic within the configured period is exceeded.
 	Action FirewallRuleAction `pulumi:"action"`
 	Filter FirewallRuleFilter `pulumi:"filter"`
+<<<<<<< HEAD
 	// The unique identifier of the firewall rule.
 	RuleId *string `pulumi:"ruleId"`
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -174,8 +199,11 @@ type FirewallRuleArgs struct {
 	// The action to perform when the threshold of matched traffic within the configured period is exceeded.
 	Action FirewallRuleActionInput
 	Filter FirewallRuleFilterInput
+<<<<<<< HEAD
 	// The unique identifier of the firewall rule.
 	RuleId pulumi.StringPtrInput
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId pulumi.StringInput
 }
@@ -300,11 +328,14 @@ func (o FirewallRuleOutput) Ref() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.Ref }).(pulumi.StringOutput)
 }
 
+<<<<<<< HEAD
 // The unique identifier of the firewall rule.
 func (o FirewallRuleOutput) RuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringPtrOutput { return v.RuleId }).(pulumi.StringPtrOutput)
 }
 
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // Identifier
 func (o FirewallRuleOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)

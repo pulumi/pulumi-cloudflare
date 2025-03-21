@@ -53,12 +53,14 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * &gt; Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/reference/data-location/#available-hints).
- * 
  * ## Import
  * 
  * ```sh
+<<<<<<< HEAD
  * $ pulumi import cloudflare:index/r2Bucket:R2Bucket example &#39;&lt;account_id&gt;/&lt;bucket_name&gt;&#39;
+=======
+ * $ pulumi import cloudflare:index/r2Bucket:R2Bucket example &#39;&lt;account_id&gt;/&lt;bucket_name&gt;/&lt;jurisdiction&gt;&#39;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  * ```
  * 
  */

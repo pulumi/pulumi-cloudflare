@@ -28,7 +28,11 @@ class GetZoneResult:
     """
     A collection of values returned by getZone.
     """
+<<<<<<< HEAD
     def __init__(__self__, account=None, activated_on=None, created_on=None, development_mode=None, filter=None, id=None, meta=None, modified_on=None, name=None, name_servers=None, original_dnshost=None, original_name_servers=None, original_registrar=None, owner=None, paused=None, status=None, type=None, vanity_name_servers=None, zone_id=None):
+=======
+    def __init__(__self__, account=None, activated_on=None, created_on=None, development_mode=None, filter=None, id=None, meta=None, modified_on=None, name=None, name_servers=None, original_dnshost=None, original_name_servers=None, original_registrar=None, owner=None, paused=None, status=None, type=None, vanity_name_servers=None, verification_key=None, zone_id=None):
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if account and not isinstance(account, dict):
             raise TypeError("Expected argument 'account' to be a dict")
         pulumi.set(__self__, "account", account)
@@ -83,6 +87,9 @@ class GetZoneResult:
         if vanity_name_servers and not isinstance(vanity_name_servers, list):
             raise TypeError("Expected argument 'vanity_name_servers' to be a list")
         pulumi.set(__self__, "vanity_name_servers", vanity_name_servers)
+        if verification_key and not isinstance(verification_key, str):
+            raise TypeError("Expected argument 'verification_key' to be a str")
+        pulumi.set(__self__, "verification_key", verification_key)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -178,6 +185,11 @@ class GetZoneResult:
         return pulumi.get(self, "vanity_name_servers")
 
     @property
+    @pulumi.getter(name="verificationKey")
+    def verification_key(self) -> str:
+        return pulumi.get(self, "verification_key")
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[str]:
         return pulumi.get(self, "zone_id")
@@ -207,6 +219,7 @@ class AwaitableGetZoneResult(GetZoneResult):
             status=self.status,
             type=self.type,
             vanity_name_servers=self.vanity_name_servers,
+            verification_key=self.verification_key,
             zone_id=self.zone_id)
 
 
@@ -248,6 +261,7 @@ def get_zone(filter: Optional[Union['GetZoneFilterArgs', 'GetZoneFilterArgsDict'
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'),
         vanity_name_servers=pulumi.get(__ret__, 'vanity_name_servers'),
+        verification_key=pulumi.get(__ret__, 'verification_key'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zone_output(filter: Optional[pulumi.Input[Optional[Union['GetZoneFilterArgs', 'GetZoneFilterArgsDict']]]] = None,
                     zone_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -286,4 +300,5 @@ def get_zone_output(filter: Optional[pulumi.Input[Optional[Union['GetZoneFilterA
         status=pulumi.get(__response__, 'status'),
         type=pulumi.get(__response__, 'type'),
         vanity_name_servers=pulumi.get(__response__, 'vanity_name_servers'),
+        verification_key=pulumi.get(__response__, 'verification_key'),
         zone_id=pulumi.get(__response__, 'zone_id')))

@@ -127,7 +127,11 @@ class GetMagicTransitSiteWanResult:
 
     @property
     @pulumi.getter(name="wanId")
+<<<<<<< HEAD
     def wan_id(self) -> str:
+=======
+    def wan_id(self) -> Optional[str]:
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         Identifier
         """
@@ -180,7 +184,11 @@ def get_magic_transit_site_wan(account_id: Optional[str] = None,
         vlan_tag=pulumi.get(__ret__, 'vlan_tag'),
         wan_id=pulumi.get(__ret__, 'wan_id'))
 def get_magic_transit_site_wan_output(account_id: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
                                       wan_id: Optional[pulumi.Input[str]] = None,
+=======
+                                      wan_id: Optional[pulumi.Input[Optional[str]]] = None,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitSiteWanResult]:
     """
     ## Example Usage

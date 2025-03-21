@@ -557,6 +557,16 @@ export interface BotManagementStaleZoneConfiguration {
     suppressSessionScore: boolean;
 }
 
+<<<<<<< HEAD
+=======
+export interface CloudConnectorRulesParameters {
+    /**
+     * Host to perform Cloud Connection to
+     */
+    host: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface CloudConnectorRulesRule {
     /**
      * Cloud Provider type
@@ -626,6 +636,13 @@ export interface CustomHostnameSsl {
      */
     cloudflareBranding?: boolean;
     /**
+<<<<<<< HEAD
+=======
+     * Array of custom certificate and key pairs (1 or 2 pairs allowed)
+     */
+    customCertBundles?: outputs.CustomHostnameSslCustomCertBundle[];
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * If a custom uploaded certificate is used.
      */
     customCertificate?: string;
@@ -651,8 +668,24 @@ export interface CustomHostnameSsl {
     wildcard?: boolean;
 }
 
+<<<<<<< HEAD
 export interface CustomHostnameSslSettings {
     /**
+=======
+export interface CustomHostnameSslCustomCertBundle {
+    /**
+     * If a custom uploaded certificate is used.
+     */
+    customCertificate: string;
+    /**
+     * The key for a custom uploaded certificate.
+     */
+    customKey: string;
+}
+
+export interface CustomHostnameSslSettings {
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
      */
     ciphers?: string[];
@@ -771,7 +804,11 @@ export interface DnsRecordData {
     /**
      * Flags for the CAA record.
      */
+<<<<<<< HEAD
     flags?: any;
+=======
+    flags?: number;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Key Tag.
      */
@@ -905,6 +942,93 @@ export interface DnsRecordSettings {
     ipv6Only: boolean;
 }
 
+<<<<<<< HEAD
+=======
+export interface DnsSettingsZoneDefaults {
+    /**
+     * Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
+     */
+    flattenAllCnames?: boolean;
+    /**
+     * Whether to enable Foundation DNS Advanced Nameservers on the zone.
+     */
+    foundationDns?: boolean;
+    /**
+     * Settings for this internal zone.
+     */
+    internalDns: outputs.DnsSettingsZoneDefaultsInternalDns;
+    /**
+     * Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
+     */
+    multiProvider?: boolean;
+    /**
+     * Settings determining the nameservers through which the zone should be available.
+     */
+    nameservers: outputs.DnsSettingsZoneDefaultsNameservers;
+    /**
+     * The time to live (TTL) of the zone's nameserver (NS) records.
+     */
+    nsTtl?: number;
+    /**
+     * Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
+     */
+    secondaryOverrides?: boolean;
+    /**
+     * Components of the zone's SOA record.
+     */
+    soa: outputs.DnsSettingsZoneDefaultsSoa;
+    /**
+     * Whether the zone mode is a regular or CDN/DNS only zone.
+     */
+    zoneMode?: string;
+}
+
+export interface DnsSettingsZoneDefaultsInternalDns {
+    /**
+     * The ID of the zone to fallback to.
+     */
+    referenceZoneId?: string;
+}
+
+export interface DnsSettingsZoneDefaultsNameservers {
+    /**
+     * Nameserver type
+     */
+    type: string;
+}
+
+export interface DnsSettingsZoneDefaultsSoa {
+    /**
+     * Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
+     */
+    expire: number;
+    /**
+     * The time to live (TTL) for negative caching of records within the zone.
+     */
+    minTtl: number;
+    /**
+     * The primary nameserver, which may be used for outbound zone transfers.
+     */
+    mname: string;
+    /**
+     * Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
+     */
+    refresh: number;
+    /**
+     * Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
+     */
+    retry: number;
+    /**
+     * The email address of the zone administrator, with the first label representing the local part of the email address.
+     */
+    rname: string;
+    /**
+     * The time to live (TTL) of the SOA record itself.
+     */
+    ttl: number;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface EmailRoutingCatchAllAction {
     /**
      * Type of action for catch-all rule.
@@ -1883,6 +2007,40 @@ export interface GetAccountSettings {
     useAccountCustomNsByDefault: boolean;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetAccountSubscriptionRatePlan {
+    /**
+     * The currency applied to the rate plan subscription.
+     */
+    currency: string;
+    /**
+     * Whether this rate plan is managed externally from Cloudflare.
+     */
+    externallyManaged: boolean;
+    /**
+     * The ID of the rate plan.
+     */
+    id: string;
+    /**
+     * Whether a rate plan is enterprise-based (or newly adopted term contract).
+     */
+    isContract: boolean;
+    /**
+     * The full name of the rate plan.
+     */
+    publicName: string;
+    /**
+     * The scope that this rate plan applies to.
+     */
+    scope: string;
+    /**
+     * The list of sets this rate plan applies to.
+     */
+    sets: string[];
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetAccountTokenCondition {
     /**
      * Client IP restrictions.
@@ -2628,6 +2786,21 @@ export interface GetApiTokenFilter {
 }
 
 export interface GetApiTokenPermissionsGroupsListResult {
+<<<<<<< HEAD
+=======
+    /**
+     * Public ID.
+     */
+    id: string;
+    /**
+     * Permission Group Name
+     */
+    name: string;
+    /**
+     * Resources to which the Permission Group is scoped
+     */
+    scopes: string[];
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 export interface GetApiTokenPolicy {
@@ -3570,7 +3743,17 @@ export interface GetD1DatabasesResult {
      * Specifies the timestamp the resource was created as an ISO8601 string.
      */
     createdAt: string;
+<<<<<<< HEAD
     name: string;
+=======
+    /**
+     * D1 database name.
+     */
+    name: string;
+    /**
+     * D1 database identifier (UUID).
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     uuid: string;
     version: string;
 }
@@ -4260,6 +4443,178 @@ export interface GetDnsRecordsTag {
     startswith?: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetDnsSettingsInternalViewFilter {
+    /**
+     * Direction to order DNS views in.
+     */
+    direction: string;
+    /**
+     * Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead.
+     */
+    match: string;
+    name?: outputs.GetDnsSettingsInternalViewFilterName;
+    /**
+     * Field to order DNS views by.
+     */
+    order?: string;
+    /**
+     * A zone ID that exists in the zones list for the view.
+     */
+    zoneId?: string;
+    /**
+     * A zone name that exists in the zones list for the view.
+     */
+    zoneName?: string;
+}
+
+export interface GetDnsSettingsInternalViewFilterName {
+    /**
+     * Substring of the DNS view name.
+     */
+    contains?: string;
+    /**
+     * Suffix of the DNS view name.
+     */
+    endswith?: string;
+    /**
+     * Exact value of the DNS view name.
+     */
+    exact?: string;
+    /**
+     * Prefix of the DNS view name.
+     */
+    startswith?: string;
+}
+
+export interface GetDnsSettingsInternalViewsName {
+    /**
+     * Substring of the DNS view name.
+     */
+    contains?: string;
+    /**
+     * Suffix of the DNS view name.
+     */
+    endswith?: string;
+    /**
+     * Exact value of the DNS view name.
+     */
+    exact?: string;
+    /**
+     * Prefix of the DNS view name.
+     */
+    startswith?: string;
+}
+
+export interface GetDnsSettingsInternalViewsResult {
+    /**
+     * When the view was created.
+     */
+    createdTime: string;
+    /**
+     * Identifier
+     */
+    id: string;
+    /**
+     * When the view was last modified.
+     */
+    modifiedTime: string;
+    /**
+     * The name of the view.
+     */
+    name: string;
+    /**
+     * The list of zones linked to this view.
+     */
+    zones: string[];
+}
+
+export interface GetDnsSettingsZoneDefaults {
+    /**
+     * Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
+     */
+    flattenAllCnames: boolean;
+    /**
+     * Whether to enable Foundation DNS Advanced Nameservers on the zone.
+     */
+    foundationDns: boolean;
+    /**
+     * Settings for this internal zone.
+     */
+    internalDns: outputs.GetDnsSettingsZoneDefaultsInternalDns;
+    /**
+     * Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
+     */
+    multiProvider: boolean;
+    /**
+     * Settings determining the nameservers through which the zone should be available.
+     */
+    nameservers: outputs.GetDnsSettingsZoneDefaultsNameservers;
+    /**
+     * The time to live (TTL) of the zone's nameserver (NS) records.
+     */
+    nsTtl: number;
+    /**
+     * Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
+     */
+    secondaryOverrides: boolean;
+    /**
+     * Components of the zone's SOA record.
+     */
+    soa: outputs.GetDnsSettingsZoneDefaultsSoa;
+    /**
+     * Whether the zone mode is a regular or CDN/DNS only zone.
+     */
+    zoneMode: string;
+}
+
+export interface GetDnsSettingsZoneDefaultsInternalDns {
+    /**
+     * The ID of the zone to fallback to.
+     */
+    referenceZoneId: string;
+}
+
+export interface GetDnsSettingsZoneDefaultsNameservers {
+    /**
+     * Nameserver type
+     */
+    type: string;
+}
+
+export interface GetDnsSettingsZoneDefaultsSoa {
+    /**
+     * Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
+     */
+    expire: number;
+    /**
+     * The time to live (TTL) for negative caching of records within the zone.
+     */
+    minTtl: number;
+    /**
+     * The primary nameserver, which may be used for outbound zone transfers.
+     */
+    mname: string;
+    /**
+     * Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
+     */
+    refresh: number;
+    /**
+     * Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
+     */
+    retry: number;
+    /**
+     * The email address of the zone administrator, with the first label representing the local part of the email address.
+     */
+    rname: string;
+    /**
+     * The time to live (TTL) of the SOA record itself.
+     */
+    ttl: number;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetDnsZoneTransfersAclsResult {
     id: string;
     /**
@@ -4665,6 +5020,7 @@ export interface GetEmailSecurityTrustedDomainsListResult {
     pattern: string;
 }
 
+<<<<<<< HEAD
 export interface GetFiltersResult {
     /**
      * An informative summary of the filter.
@@ -4693,6 +5049,32 @@ export interface GetFirewallRuleFilter {
      * When true, indicates that the firewall rule was deleted.
      */
     deleted: boolean;
+=======
+export interface GetFilterFilter {
+    /**
+     * A case-insensitive string to find in the description.
+     */
+    description?: string;
+    /**
+     * A case-insensitive string to find in the expression.
+     */
+    expression?: string;
+    /**
+     * The unique identifier of the filter.
+     */
+    id?: string;
+    /**
+     * When true, indicates that the filter is currently paused.
+     */
+    paused?: boolean;
+    /**
+     * The filter ref (a short reference tag) to search for. Must be an exact match.
+     */
+    ref?: string;
+}
+
+export interface GetFiltersResult {
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * An informative summary of the filter.
      */
@@ -6143,6 +6525,60 @@ export interface GetLoadBalancersResultSessionAffinityAttributes {
     zeroDowntimeFailover: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetLogpushDatasetJobOutputOptions {
+    /**
+     * String to be prepended before each batch.
+     */
+    batchPrefix: string;
+    /**
+     * String to be appended after each batch.
+     */
+    batchSuffix: string;
+    /**
+     * If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
+     */
+    cve20214428: boolean;
+    /**
+     * String to join fields. This field be ignored when `recordTemplate` is set.
+     */
+    fieldDelimiter: string;
+    /**
+     * List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
+     */
+    fieldNames: string[];
+    /**
+     * Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+     */
+    outputType: string;
+    /**
+     * String to be inserted in-between the records as separator.
+     */
+    recordDelimiter: string;
+    /**
+     * String to be prepended before each record.
+     */
+    recordPrefix: string;
+    /**
+     * String to be appended after each record.
+     */
+    recordSuffix: string;
+    /**
+     * String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+     */
+    recordTemplate: string;
+    /**
+     * Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+     */
+    sampleRate: number;
+    /**
+     * String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+     */
+    timestampFormat: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetLogpushJobOutputOptions {
     /**
      * String to be prepended before each batch.
@@ -6496,7 +6932,11 @@ export interface GetMagicTransitSiteFilter {
     /**
      * Identifier
      */
+<<<<<<< HEAD
     connectorIdentifier?: string;
+=======
+    connectorid?: string;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 export interface GetMagicTransitSiteLanNat {
@@ -6562,6 +7002,10 @@ export interface GetMagicTransitSiteLanStaticAddressingDhcpServer {
      * A valid IPv4 address.
      */
     dnsServer: string;
+<<<<<<< HEAD
+=======
+    dnsServers: string[];
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Mapping of MAC addresses to IP addresses
      */
@@ -6658,6 +7102,10 @@ export interface GetMagicTransitSiteLansResultStaticAddressingDhcpServer {
      * A valid IPv4 address.
      */
     dnsServer: string;
+<<<<<<< HEAD
+=======
+    dnsServers: string[];
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Mapping of MAC addresses to IP addresses
      */
@@ -8711,6 +9159,26 @@ export interface GetPermissionGroupMeta {
 }
 
 export interface GetPermissionGroupsResult {
+<<<<<<< HEAD
+=======
+    /**
+     * Identifier of the group.
+     */
+    id: string;
+    /**
+     * Attributes associated to the permission group.
+     */
+    meta: outputs.GetPermissionGroupsResultMeta;
+    /**
+     * Name of the group.
+     */
+    name: string;
+}
+
+export interface GetPermissionGroupsResultMeta {
+    key: string;
+    value: string;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 export interface GetQueueConsumer {
@@ -8857,6 +9325,217 @@ export interface GetQueuesResultSettings {
     messageRetentionPeriod: number;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetR2BucketCorsRule {
+    /**
+     * Object specifying allowed origins, methods and headers for this CORS rule.
+     */
+    allowed: outputs.GetR2BucketCorsRuleAllowed;
+    /**
+     * Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
+     */
+    exposeHeaders: string[];
+    /**
+     * Identifier for this rule
+     */
+    id: string;
+    /**
+     * Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
+     */
+    maxAgeSeconds: number;
+}
+
+export interface GetR2BucketCorsRuleAllowed {
+    /**
+     * Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.
+     */
+    headers: string[];
+    /**
+     * Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.
+     */
+    methods: string[];
+    /**
+     * Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.
+     */
+    origins: string[];
+}
+
+export interface GetR2BucketEventNotificationQueue {
+    /**
+     * Queue ID
+     */
+    queueId: string;
+    /**
+     * Name of the queue
+     */
+    queueName: string;
+    rules: outputs.GetR2BucketEventNotificationQueueRule[];
+}
+
+export interface GetR2BucketEventNotificationQueueRule {
+    /**
+     * Array of R2 object actions that will trigger notifications
+     */
+    actions: string[];
+    /**
+     * Timestamp when the rule was created
+     */
+    createdAt: string;
+    /**
+     * A description that can be used to identify the event notification rule after creation
+     */
+    description: string;
+    /**
+     * Notifications will be sent only for objects with this prefix
+     */
+    prefix: string;
+    /**
+     * Rule ID
+     */
+    ruleId: string;
+    /**
+     * Notifications will be sent only for objects with this suffix
+     */
+    suffix: string;
+}
+
+export interface GetR2BucketLifecycleRule {
+    /**
+     * Transition to abort ongoing multipart uploads
+     */
+    abortMultipartUploadsTransition: outputs.GetR2BucketLifecycleRuleAbortMultipartUploadsTransition;
+    /**
+     * Conditions that apply to all transitions of this rule
+     */
+    conditions: outputs.GetR2BucketLifecycleRuleConditions;
+    /**
+     * Transition to delete objects
+     */
+    deleteObjectsTransition: outputs.GetR2BucketLifecycleRuleDeleteObjectsTransition;
+    /**
+     * Whether or not this rule is in effect
+     */
+    enabled: boolean;
+    /**
+     * Unique identifier for this rule
+     */
+    id: string;
+    /**
+     * Transitions to change the storage class of objects
+     */
+    storageClassTransitions: outputs.GetR2BucketLifecycleRuleStorageClassTransition[];
+}
+
+export interface GetR2BucketLifecycleRuleAbortMultipartUploadsTransition {
+    /**
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     */
+    condition: outputs.GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition;
+}
+
+export interface GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition {
+    maxAge: number;
+    type: string;
+}
+
+export interface GetR2BucketLifecycleRuleConditions {
+    /**
+     * Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     */
+    prefix: string;
+}
+
+export interface GetR2BucketLifecycleRuleDeleteObjectsTransition {
+    /**
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     */
+    condition: outputs.GetR2BucketLifecycleRuleDeleteObjectsTransitionCondition;
+}
+
+export interface GetR2BucketLifecycleRuleDeleteObjectsTransitionCondition {
+    date: string;
+    maxAge: number;
+    type: string;
+}
+
+export interface GetR2BucketLifecycleRuleStorageClassTransition {
+    /**
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     */
+    condition: outputs.GetR2BucketLifecycleRuleStorageClassTransitionCondition;
+    storageClass: string;
+}
+
+export interface GetR2BucketLifecycleRuleStorageClassTransitionCondition {
+    date: string;
+    maxAge: number;
+    type: string;
+}
+
+export interface GetR2BucketLockRule {
+    /**
+     * Condition to apply a lock rule to an object for how long in seconds
+     */
+    condition: outputs.GetR2BucketLockRuleCondition;
+    /**
+     * Whether or not this rule is in effect
+     */
+    enabled: boolean;
+    /**
+     * Unique identifier for this rule
+     */
+    id: string;
+    /**
+     * Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     */
+    prefix: string;
+}
+
+export interface GetR2BucketLockRuleCondition {
+    date: string;
+    maxAgeSeconds: number;
+    type: string;
+}
+
+export interface GetR2BucketSippyDestination {
+    /**
+     * ID of the Cloudflare API token used when writing objects to this
+     * bucket
+     */
+    accessKeyId: string;
+    account: string;
+    /**
+     * Name of the bucket on the provider
+     */
+    bucket: string;
+    provider: string;
+}
+
+export interface GetR2BucketSippySource {
+    /**
+     * Name of the bucket on the provider
+     */
+    bucket: string;
+    provider: string;
+    /**
+     * Region where the bucket resides (AWS only)
+     */
+    region: string;
+}
+
+export interface GetR2CustomDomainStatus {
+    /**
+     * Ownership status of the domain
+     */
+    ownership: string;
+    /**
+     * SSL certificate status
+     */
+    ssl: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetRateLimitAction {
     /**
      * The action to perform.
@@ -9224,6 +9903,48 @@ export interface GetResourceGroupScopeObject {
 }
 
 export interface GetResourceGroupsResult {
+<<<<<<< HEAD
+=======
+    /**
+     * Identifier of the group.
+     */
+    id: string;
+    /**
+     * Attributes associated to the resource group.
+     */
+    meta: outputs.GetResourceGroupsResultMeta;
+    /**
+     * Name of the resource group.
+     */
+    name: string;
+    /**
+     * The scope associated to the resource group
+     */
+    scopes: outputs.GetResourceGroupsResultScope[];
+}
+
+export interface GetResourceGroupsResultMeta {
+    key: string;
+    value: string;
+}
+
+export interface GetResourceGroupsResultScope {
+    /**
+     * This is a combination of pre-defined resource name and identifier (like Account ID etc.)
+     */
+    key: string;
+    /**
+     * A list of scope objects for additional context.
+     */
+    objects: outputs.GetResourceGroupsResultScopeObject[];
+}
+
+export interface GetResourceGroupsResultScopeObject {
+    /**
+     * This is a combination of pre-defined resource name and identifier (like Zone ID etc.)
+     */
+    key: string;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 export interface GetRulesetRule {
@@ -11119,6 +11840,21 @@ export interface GetWorkersKvNamespacesResult {
     title: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetWorkersRoutesResult {
+    /**
+     * Identifier
+     */
+    id: string;
+    pattern: string;
+    /**
+     * Name of the script, used in URLs and route configuration.
+     */
+    script: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetWorkersScriptsResult {
     /**
      * When the script was created.
@@ -11442,6 +12178,10 @@ export interface GetZeroTrustAccessApplicationPolicyExclude {
     gsuite: outputs.GetZeroTrustAccessApplicationPolicyExcludeGsuite;
     ip: outputs.GetZeroTrustAccessApplicationPolicyExcludeIp;
     ipList: outputs.GetZeroTrustAccessApplicationPolicyExcludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessApplicationPolicyExcludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessApplicationPolicyExcludeOkta;
     saml: outputs.GetZeroTrustAccessApplicationPolicyExcludeSaml;
     serviceToken: outputs.GetZeroTrustAccessApplicationPolicyExcludeServiceToken;
@@ -11589,6 +12329,16 @@ export interface GetZeroTrustAccessApplicationPolicyExcludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessApplicationPolicyExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessApplicationPolicyExcludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -11647,6 +12397,10 @@ export interface GetZeroTrustAccessApplicationPolicyInclude {
     gsuite: outputs.GetZeroTrustAccessApplicationPolicyIncludeGsuite;
     ip: outputs.GetZeroTrustAccessApplicationPolicyIncludeIp;
     ipList: outputs.GetZeroTrustAccessApplicationPolicyIncludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessApplicationPolicyIncludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessApplicationPolicyIncludeOkta;
     saml: outputs.GetZeroTrustAccessApplicationPolicyIncludeSaml;
     serviceToken: outputs.GetZeroTrustAccessApplicationPolicyIncludeServiceToken;
@@ -11794,6 +12548,16 @@ export interface GetZeroTrustAccessApplicationPolicyIncludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessApplicationPolicyIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessApplicationPolicyIncludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -11852,6 +12616,10 @@ export interface GetZeroTrustAccessApplicationPolicyRequire {
     gsuite: outputs.GetZeroTrustAccessApplicationPolicyRequireGsuite;
     ip: outputs.GetZeroTrustAccessApplicationPolicyRequireIp;
     ipList: outputs.GetZeroTrustAccessApplicationPolicyRequireIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessApplicationPolicyRequireLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessApplicationPolicyRequireOkta;
     saml: outputs.GetZeroTrustAccessApplicationPolicyRequireSaml;
     serviceToken: outputs.GetZeroTrustAccessApplicationPolicyRequireServiceToken;
@@ -11999,6 +12767,16 @@ export interface GetZeroTrustAccessApplicationPolicyRequireIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessApplicationPolicyRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessApplicationPolicyRequireOkta {
     /**
      * The ID of your Okta identity provider.
@@ -12145,6 +12923,7 @@ export interface GetZeroTrustAccessApplicationSaasAppCustomAttributeSource {
     /**
      * A mapping from IdP ID to attribute name.
      */
+<<<<<<< HEAD
     nameByIdp: {[key: string]: string};
 }
 
@@ -12156,6 +12935,30 @@ export interface GetZeroTrustAccessApplicationSaasAppCustomClaim {
     /**
      * If the claim is required when building an OIDC token.
      */
+=======
+    nameByIdps: outputs.GetZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp[];
+}
+
+export interface GetZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp {
+    /**
+     * The UID of the IdP.
+     */
+    idpId: string;
+    /**
+     * The name of the IdP provided attribute.
+     */
+    sourceName: string;
+}
+
+export interface GetZeroTrustAccessApplicationSaasAppCustomClaim {
+    /**
+     * The name of the claim.
+     */
+    name: string;
+    /**
+     * If the claim is required when building an OIDC token.
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     required: boolean;
     /**
      * The scope of the claim.
@@ -12669,6 +13472,10 @@ export interface GetZeroTrustAccessApplicationsResultPolicyExclude {
     gsuite: outputs.GetZeroTrustAccessApplicationsResultPolicyExcludeGsuite;
     ip: outputs.GetZeroTrustAccessApplicationsResultPolicyExcludeIp;
     ipList: outputs.GetZeroTrustAccessApplicationsResultPolicyExcludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessApplicationsResultPolicyExcludeOkta;
     saml: outputs.GetZeroTrustAccessApplicationsResultPolicyExcludeSaml;
     serviceToken: outputs.GetZeroTrustAccessApplicationsResultPolicyExcludeServiceToken;
@@ -12816,8 +13623,20 @@ export interface GetZeroTrustAccessApplicationsResultPolicyExcludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
 export interface GetZeroTrustAccessApplicationsResultPolicyExcludeOkta {
     /**
+=======
+export interface GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+export interface GetZeroTrustAccessApplicationsResultPolicyExcludeOkta {
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The ID of your Okta identity provider.
      */
     identityProviderId: string;
@@ -12874,6 +13693,10 @@ export interface GetZeroTrustAccessApplicationsResultPolicyInclude {
     gsuite: outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeGsuite;
     ip: outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeIp;
     ipList: outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeOkta;
     saml: outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeSaml;
     serviceToken: outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeServiceToken;
@@ -13021,6 +13844,16 @@ export interface GetZeroTrustAccessApplicationsResultPolicyIncludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessApplicationsResultPolicyIncludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -13079,6 +13912,10 @@ export interface GetZeroTrustAccessApplicationsResultPolicyRequire {
     gsuite: outputs.GetZeroTrustAccessApplicationsResultPolicyRequireGsuite;
     ip: outputs.GetZeroTrustAccessApplicationsResultPolicyRequireIp;
     ipList: outputs.GetZeroTrustAccessApplicationsResultPolicyRequireIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessApplicationsResultPolicyRequireLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessApplicationsResultPolicyRequireOkta;
     saml: outputs.GetZeroTrustAccessApplicationsResultPolicyRequireSaml;
     serviceToken: outputs.GetZeroTrustAccessApplicationsResultPolicyRequireServiceToken;
@@ -13226,6 +14063,16 @@ export interface GetZeroTrustAccessApplicationsResultPolicyRequireIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessApplicationsResultPolicyRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessApplicationsResultPolicyRequireOkta {
     /**
      * The ID of your Okta identity provider.
@@ -13372,7 +14219,22 @@ export interface GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSourc
     /**
      * A mapping from IdP ID to attribute name.
      */
+<<<<<<< HEAD
     nameByIdp: {[key: string]: string};
+=======
+    nameByIdps: outputs.GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSourceNameByIdp[];
+}
+
+export interface GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeSourceNameByIdp {
+    /**
+     * The UID of the IdP.
+     */
+    idpId: string;
+    /**
+     * The name of the IdP provided attribute.
+     */
+    sourceName: string;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 export interface GetZeroTrustAccessApplicationsResultSaasAppCustomClaim {
@@ -13589,6 +14451,10 @@ export interface GetZeroTrustAccessGroupExclude {
     gsuite: outputs.GetZeroTrustAccessGroupExcludeGsuite;
     ip: outputs.GetZeroTrustAccessGroupExcludeIp;
     ipList: outputs.GetZeroTrustAccessGroupExcludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessGroupExcludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessGroupExcludeOkta;
     saml: outputs.GetZeroTrustAccessGroupExcludeSaml;
     serviceToken: outputs.GetZeroTrustAccessGroupExcludeServiceToken;
@@ -13736,6 +14602,16 @@ export interface GetZeroTrustAccessGroupExcludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessGroupExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessGroupExcludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -13805,6 +14681,10 @@ export interface GetZeroTrustAccessGroupInclude {
     gsuite: outputs.GetZeroTrustAccessGroupIncludeGsuite;
     ip: outputs.GetZeroTrustAccessGroupIncludeIp;
     ipList: outputs.GetZeroTrustAccessGroupIncludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessGroupIncludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessGroupIncludeOkta;
     saml: outputs.GetZeroTrustAccessGroupIncludeSaml;
     serviceToken: outputs.GetZeroTrustAccessGroupIncludeServiceToken;
@@ -13952,6 +14832,16 @@ export interface GetZeroTrustAccessGroupIncludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessGroupIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessGroupIncludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -14010,6 +14900,10 @@ export interface GetZeroTrustAccessGroupIsDefault {
     gsuite: outputs.GetZeroTrustAccessGroupIsDefaultGsuite;
     ip: outputs.GetZeroTrustAccessGroupIsDefaultIp;
     ipList: outputs.GetZeroTrustAccessGroupIsDefaultIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessGroupIsDefaultLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessGroupIsDefaultOkta;
     saml: outputs.GetZeroTrustAccessGroupIsDefaultSaml;
     serviceToken: outputs.GetZeroTrustAccessGroupIsDefaultServiceToken;
@@ -14157,6 +15051,16 @@ export interface GetZeroTrustAccessGroupIsDefaultIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessGroupIsDefaultLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessGroupIsDefaultOkta {
     /**
      * The ID of your Okta identity provider.
@@ -14215,6 +15119,10 @@ export interface GetZeroTrustAccessGroupRequire {
     gsuite: outputs.GetZeroTrustAccessGroupRequireGsuite;
     ip: outputs.GetZeroTrustAccessGroupRequireIp;
     ipList: outputs.GetZeroTrustAccessGroupRequireIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessGroupRequireLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessGroupRequireOkta;
     saml: outputs.GetZeroTrustAccessGroupRequireSaml;
     serviceToken: outputs.GetZeroTrustAccessGroupRequireServiceToken;
@@ -14362,6 +15270,16 @@ export interface GetZeroTrustAccessGroupRequireIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessGroupRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessGroupRequireOkta {
     /**
      * The ID of your Okta identity provider.
@@ -14449,6 +15367,10 @@ export interface GetZeroTrustAccessGroupsResultExclude {
     gsuite: outputs.GetZeroTrustAccessGroupsResultExcludeGsuite;
     ip: outputs.GetZeroTrustAccessGroupsResultExcludeIp;
     ipList: outputs.GetZeroTrustAccessGroupsResultExcludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessGroupsResultExcludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessGroupsResultExcludeOkta;
     saml: outputs.GetZeroTrustAccessGroupsResultExcludeSaml;
     serviceToken: outputs.GetZeroTrustAccessGroupsResultExcludeServiceToken;
@@ -14596,6 +15518,16 @@ export interface GetZeroTrustAccessGroupsResultExcludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessGroupsResultExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessGroupsResultExcludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -14654,6 +15586,10 @@ export interface GetZeroTrustAccessGroupsResultInclude {
     gsuite: outputs.GetZeroTrustAccessGroupsResultIncludeGsuite;
     ip: outputs.GetZeroTrustAccessGroupsResultIncludeIp;
     ipList: outputs.GetZeroTrustAccessGroupsResultIncludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessGroupsResultIncludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessGroupsResultIncludeOkta;
     saml: outputs.GetZeroTrustAccessGroupsResultIncludeSaml;
     serviceToken: outputs.GetZeroTrustAccessGroupsResultIncludeServiceToken;
@@ -14801,6 +15737,16 @@ export interface GetZeroTrustAccessGroupsResultIncludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessGroupsResultIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessGroupsResultIncludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -14859,6 +15805,10 @@ export interface GetZeroTrustAccessGroupsResultIsDefault {
     gsuite: outputs.GetZeroTrustAccessGroupsResultIsDefaultGsuite;
     ip: outputs.GetZeroTrustAccessGroupsResultIsDefaultIp;
     ipList: outputs.GetZeroTrustAccessGroupsResultIsDefaultIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessGroupsResultIsDefaultLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessGroupsResultIsDefaultOkta;
     saml: outputs.GetZeroTrustAccessGroupsResultIsDefaultSaml;
     serviceToken: outputs.GetZeroTrustAccessGroupsResultIsDefaultServiceToken;
@@ -15006,6 +15956,16 @@ export interface GetZeroTrustAccessGroupsResultIsDefaultIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessGroupsResultIsDefaultLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessGroupsResultIsDefaultOkta {
     /**
      * The ID of your Okta identity provider.
@@ -15064,6 +16024,10 @@ export interface GetZeroTrustAccessGroupsResultRequire {
     gsuite: outputs.GetZeroTrustAccessGroupsResultRequireGsuite;
     ip: outputs.GetZeroTrustAccessGroupsResultRequireIp;
     ipList: outputs.GetZeroTrustAccessGroupsResultRequireIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessGroupsResultRequireLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessGroupsResultRequireOkta;
     saml: outputs.GetZeroTrustAccessGroupsResultRequireSaml;
     serviceToken: outputs.GetZeroTrustAccessGroupsResultRequireServiceToken;
@@ -15211,6 +16175,16 @@ export interface GetZeroTrustAccessGroupsResultRequireIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessGroupsResultRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessGroupsResultRequireOkta {
     /**
      * The ID of your Okta identity provider.
@@ -15595,6 +16569,14 @@ export interface GetZeroTrustAccessInfrastructureTargetFilter {
      */
     hostnameContains?: string;
     /**
+<<<<<<< HEAD
+=======
+     * Filters for targets whose IP addresses look like the specified string.
+     * Supports `*` as a wildcard character
+     */
+    ipLike?: string;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * IPv4 address of the target
      */
     ipV4?: string;
@@ -15608,6 +16590,29 @@ export interface GetZeroTrustAccessInfrastructureTargetFilter {
      */
     ips?: string[];
     /**
+<<<<<<< HEAD
+=======
+     * Defines an IPv4 filter range's ending value (inclusive). Requires
+     * `ipv4Start` to be specified as well.
+     */
+    ipv4End?: string;
+    /**
+     * Defines an IPv4 filter range's starting value (inclusive). Requires
+     * `ipv4End` to be specified as well.
+     */
+    ipv4Start?: string;
+    /**
+     * Defines an IPv6 filter range's ending value (inclusive). Requires
+     * `ipv6Start` to be specified as well.
+     */
+    ipv6End?: string;
+    /**
+     * Defines an IPv6 filter range's starting value (inclusive). Requires
+     * `ipv6End` to be specified as well.
+     */
+    ipv6Start?: string;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Date and time at which the target was modified after (inclusive)
      */
     modifiedAfter?: string;
@@ -15620,6 +16625,15 @@ export interface GetZeroTrustAccessInfrastructureTargetFilter {
      */
     order?: string;
     /**
+<<<<<<< HEAD
+=======
+     * Filters for targets that have any of the following UUIDs. Specify
+     * `targetIds` multiple times in query parameter to build list of
+     * candidates.
+     */
+    targetIds?: string[];
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Private virtual network identifier of the target
      */
     virtualNetworkId?: string;
@@ -15834,6 +16848,10 @@ export interface GetZeroTrustAccessPoliciesResultExclude {
     gsuite: outputs.GetZeroTrustAccessPoliciesResultExcludeGsuite;
     ip: outputs.GetZeroTrustAccessPoliciesResultExcludeIp;
     ipList: outputs.GetZeroTrustAccessPoliciesResultExcludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessPoliciesResultExcludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessPoliciesResultExcludeOkta;
     saml: outputs.GetZeroTrustAccessPoliciesResultExcludeSaml;
     serviceToken: outputs.GetZeroTrustAccessPoliciesResultExcludeServiceToken;
@@ -15981,6 +16999,16 @@ export interface GetZeroTrustAccessPoliciesResultExcludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessPoliciesResultExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessPoliciesResultExcludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -16039,6 +17067,10 @@ export interface GetZeroTrustAccessPoliciesResultInclude {
     gsuite: outputs.GetZeroTrustAccessPoliciesResultIncludeGsuite;
     ip: outputs.GetZeroTrustAccessPoliciesResultIncludeIp;
     ipList: outputs.GetZeroTrustAccessPoliciesResultIncludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessPoliciesResultIncludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessPoliciesResultIncludeOkta;
     saml: outputs.GetZeroTrustAccessPoliciesResultIncludeSaml;
     serviceToken: outputs.GetZeroTrustAccessPoliciesResultIncludeServiceToken;
@@ -16186,6 +17218,16 @@ export interface GetZeroTrustAccessPoliciesResultIncludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessPoliciesResultIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessPoliciesResultIncludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -16244,6 +17286,10 @@ export interface GetZeroTrustAccessPoliciesResultRequire {
     gsuite: outputs.GetZeroTrustAccessPoliciesResultRequireGsuite;
     ip: outputs.GetZeroTrustAccessPoliciesResultRequireIp;
     ipList: outputs.GetZeroTrustAccessPoliciesResultRequireIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessPoliciesResultRequireLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessPoliciesResultRequireOkta;
     saml: outputs.GetZeroTrustAccessPoliciesResultRequireSaml;
     serviceToken: outputs.GetZeroTrustAccessPoliciesResultRequireServiceToken;
@@ -16391,6 +17437,16 @@ export interface GetZeroTrustAccessPoliciesResultRequireIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessPoliciesResultRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessPoliciesResultRequireOkta {
     /**
      * The ID of your Okta identity provider.
@@ -16464,6 +17520,10 @@ export interface GetZeroTrustAccessPolicyExclude {
     gsuite: outputs.GetZeroTrustAccessPolicyExcludeGsuite;
     ip: outputs.GetZeroTrustAccessPolicyExcludeIp;
     ipList: outputs.GetZeroTrustAccessPolicyExcludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessPolicyExcludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessPolicyExcludeOkta;
     saml: outputs.GetZeroTrustAccessPolicyExcludeSaml;
     serviceToken: outputs.GetZeroTrustAccessPolicyExcludeServiceToken;
@@ -16611,6 +17671,16 @@ export interface GetZeroTrustAccessPolicyExcludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessPolicyExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessPolicyExcludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -16669,6 +17739,10 @@ export interface GetZeroTrustAccessPolicyInclude {
     gsuite: outputs.GetZeroTrustAccessPolicyIncludeGsuite;
     ip: outputs.GetZeroTrustAccessPolicyIncludeIp;
     ipList: outputs.GetZeroTrustAccessPolicyIncludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessPolicyIncludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessPolicyIncludeOkta;
     saml: outputs.GetZeroTrustAccessPolicyIncludeSaml;
     serviceToken: outputs.GetZeroTrustAccessPolicyIncludeServiceToken;
@@ -16816,6 +17890,16 @@ export interface GetZeroTrustAccessPolicyIncludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessPolicyIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessPolicyIncludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -16874,6 +17958,10 @@ export interface GetZeroTrustAccessPolicyRequire {
     gsuite: outputs.GetZeroTrustAccessPolicyRequireGsuite;
     ip: outputs.GetZeroTrustAccessPolicyRequireIp;
     ipList: outputs.GetZeroTrustAccessPolicyRequireIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.GetZeroTrustAccessPolicyRequireLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.GetZeroTrustAccessPolicyRequireOkta;
     saml: outputs.GetZeroTrustAccessPolicyRequireSaml;
     serviceToken: outputs.GetZeroTrustAccessPolicyRequireServiceToken;
@@ -17021,6 +18109,16 @@ export interface GetZeroTrustAccessPolicyRequireIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface GetZeroTrustAccessPolicyRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface GetZeroTrustAccessPolicyRequireOkta {
     /**
      * The ID of your Okta identity provider.
@@ -17449,7 +18547,11 @@ export interface GetZeroTrustDevicePostureIntegrationConfig {
 
 export interface GetZeroTrustDevicePostureIntegrationsResult {
     /**
+<<<<<<< HEAD
      * The Workspace One Config Response.
+=======
+     * The configuration object containing third-party integration information.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     config: outputs.GetZeroTrustDevicePostureIntegrationsResultConfig;
     /**
@@ -17995,6 +19097,10 @@ export interface GetZeroTrustDlpCustomProfileEntry {
 }
 
 export interface GetZeroTrustDlpCustomProfileEntryConfidence {
+<<<<<<< HEAD
+=======
+    aiContextAvailable: boolean;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
      * Profiles that use an entry with `available` set to true can use confidence thresholds
@@ -18068,6 +19174,10 @@ export interface GetZeroTrustDlpEntriesResult {
 }
 
 export interface GetZeroTrustDlpEntriesResultConfidence {
+<<<<<<< HEAD
+=======
+    aiContextAvailable: boolean;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
      * Profiles that use an entry with `available` set to true can use confidence thresholds
@@ -18081,6 +19191,10 @@ export interface GetZeroTrustDlpEntriesResultPattern {
 }
 
 export interface GetZeroTrustDlpEntryConfidence {
+<<<<<<< HEAD
+=======
+    aiContextAvailable: boolean;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
      * Profiles that use an entry with `available` set to true can use confidence thresholds
@@ -18126,6 +19240,10 @@ export interface GetZeroTrustDlpPredefinedProfileEntry {
 }
 
 export interface GetZeroTrustDlpPredefinedProfileEntryConfidence {
+<<<<<<< HEAD
+=======
+    aiContextAvailable: boolean;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
      * Profiles that use an entry with `available` set to true can use confidence thresholds
@@ -18455,6 +19573,7 @@ export interface GetZeroTrustGatewayCertificatesResult {
     uploadedOn: string;
 }
 
+<<<<<<< HEAD
 export interface GetZeroTrustGatewayPoliciesResult {
     /**
      * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
@@ -18466,6 +19585,34 @@ export interface GetZeroTrustGatewayPoliciesResult {
      */
     deletedAt: string;
     /**
+=======
+export interface GetZeroTrustGatewayLoggingSettingsByRuleType {
+    /**
+     * Logging settings for DNS firewall.
+     */
+    dns: string;
+    /**
+     * Logging settings for HTTP/HTTPS firewall.
+     */
+    http: string;
+    /**
+     * Logging settings for Network firewall.
+     */
+    l4: string;
+}
+
+export interface GetZeroTrustGatewayPoliciesResult {
+    /**
+     * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     */
+    action: string;
+    createdAt: string;
+    /**
+     * Date of deletion, if any.
+     */
+    deletedAt: string;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The description of the rule.
      */
     description: string;
@@ -20248,6 +21395,13 @@ export interface GetZonesResult {
      * An array of domains used for custom name servers. This is only available for Business and Enterprise plans.
      */
     vanityNameServers: string[];
+<<<<<<< HEAD
+=======
+    /**
+     * Verification key for partial zone setup.
+     */
+    verificationKey: string;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 export interface GetZonesResultAccount {
@@ -20969,6 +22123,10 @@ export interface MagicTransitSiteLanStaticAddressingDhcpServer {
      * A valid IPv4 address.
      */
     dnsServer?: string;
+<<<<<<< HEAD
+=======
+    dnsServers?: string[];
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Mapping of MAC addresses to IP addresses
      */
@@ -22995,6 +24153,257 @@ export interface QueueSettings {
      * Number of seconds after which an unconsumed message will be delayed.
      */
     messageRetentionPeriod?: number;
+<<<<<<< HEAD
+=======
+}
+
+export interface R2BucketCorsRule {
+    /**
+     * Object specifying allowed origins, methods and headers for this CORS rule.
+     */
+    allowed: outputs.R2BucketCorsRuleAllowed;
+    /**
+     * Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
+     */
+    exposeHeaders?: string[];
+    /**
+     * Identifier for this rule
+     */
+    id?: string;
+    /**
+     * Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
+     */
+    maxAgeSeconds?: number;
+}
+
+export interface R2BucketCorsRuleAllowed {
+    /**
+     * Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.
+     */
+    headers?: string[];
+    /**
+     * Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.
+     */
+    methods: string[];
+    /**
+     * Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.
+     */
+    origins: string[];
+}
+
+export interface R2BucketEventNotificationQueue {
+    /**
+     * Queue ID
+     */
+    queueId: string;
+    /**
+     * Name of the queue
+     */
+    queueName: string;
+    rules: outputs.R2BucketEventNotificationQueueRule[];
+}
+
+export interface R2BucketEventNotificationQueueRule {
+    /**
+     * Array of R2 object actions that will trigger notifications
+     */
+    actions: string[];
+    /**
+     * Timestamp when the rule was created
+     */
+    createdAt: string;
+    /**
+     * A description that can be used to identify the event notification rule after creation
+     */
+    description: string;
+    /**
+     * Notifications will be sent only for objects with this prefix
+     */
+    prefix: string;
+    /**
+     * Rule ID
+     */
+    ruleId: string;
+    /**
+     * Notifications will be sent only for objects with this suffix
+     */
+    suffix: string;
+}
+
+export interface R2BucketEventNotificationRule {
+    /**
+     * Array of R2 object actions that will trigger notifications
+     */
+    actions: string[];
+    /**
+     * A description that can be used to identify the event notification rule after creation
+     */
+    description?: string;
+    /**
+     * Notifications will be sent only for objects with this prefix
+     */
+    prefix?: string;
+    /**
+     * Notifications will be sent only for objects with this suffix
+     */
+    suffix?: string;
+}
+
+export interface R2BucketLifecycleRule {
+    /**
+     * Transition to abort ongoing multipart uploads
+     */
+    abortMultipartUploadsTransition: outputs.R2BucketLifecycleRuleAbortMultipartUploadsTransition;
+    /**
+     * Conditions that apply to all transitions of this rule
+     */
+    conditions: outputs.R2BucketLifecycleRuleConditions;
+    /**
+     * Transition to delete objects
+     */
+    deleteObjectsTransition: outputs.R2BucketLifecycleRuleDeleteObjectsTransition;
+    /**
+     * Whether or not this rule is in effect
+     */
+    enabled: boolean;
+    /**
+     * Unique identifier for this rule
+     */
+    id: string;
+    /**
+     * Transitions to change the storage class of objects
+     */
+    storageClassTransitions: outputs.R2BucketLifecycleRuleStorageClassTransition[];
+}
+
+export interface R2BucketLifecycleRuleAbortMultipartUploadsTransition {
+    /**
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     */
+    condition: outputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition;
+}
+
+export interface R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition {
+    maxAge: number;
+    type: string;
+}
+
+export interface R2BucketLifecycleRuleConditions {
+    /**
+     * Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     */
+    prefix: string;
+}
+
+export interface R2BucketLifecycleRuleDeleteObjectsTransition {
+    /**
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     */
+    condition: outputs.R2BucketLifecycleRuleDeleteObjectsTransitionCondition;
+}
+
+export interface R2BucketLifecycleRuleDeleteObjectsTransitionCondition {
+    date?: string;
+    maxAge?: number;
+    type: string;
+}
+
+export interface R2BucketLifecycleRuleStorageClassTransition {
+    /**
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     */
+    condition: outputs.R2BucketLifecycleRuleStorageClassTransitionCondition;
+    storageClass: string;
+}
+
+export interface R2BucketLifecycleRuleStorageClassTransitionCondition {
+    date?: string;
+    maxAge?: number;
+    type: string;
+}
+
+export interface R2BucketLockRule {
+    /**
+     * Condition to apply a lock rule to an object for how long in seconds
+     */
+    condition: outputs.R2BucketLockRuleCondition;
+    /**
+     * Whether or not this rule is in effect
+     */
+    enabled: boolean;
+    /**
+     * Unique identifier for this rule
+     */
+    id: string;
+    /**
+     * Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     */
+    prefix?: string;
+}
+
+export interface R2BucketLockRuleCondition {
+    date?: string;
+    maxAgeSeconds?: number;
+    type: string;
+}
+
+export interface R2BucketSippyDestination {
+    /**
+     * ID of a Cloudflare API token.
+     * This is the value labelled "Access Key ID" when creating an API
+     * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
+     */
+    accessKeyId?: string;
+    provider?: string;
+    /**
+     * Value of a Cloudflare API token.
+     * This is the value labelled "Secret Access Key" when creating an API
+     * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
+     *
+     * Sippy will use this token when writing objects to R2, so it is
+     * best to scope this token to the bucket you're enabling Sippy for.
+     */
+    secretAccessKey?: string;
+}
+
+export interface R2BucketSippySource {
+    /**
+     * Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+     */
+    accessKeyId?: string;
+    /**
+     * Name of the AWS S3 bucket
+     */
+    bucket?: string;
+    /**
+     * Client email of an IAM credential (ideally scoped to a single GCS bucket)
+     */
+    clientEmail?: string;
+    /**
+     * Private Key of an IAM credential (ideally scoped to a single GCS bucket)
+     */
+    privateKey?: string;
+    provider?: string;
+    /**
+     * Name of the AWS availability zone
+     */
+    region?: string;
+    /**
+     * Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+     */
+    secretAccessKey?: string;
+}
+
+export interface R2CustomDomainStatus {
+    /**
+     * Ownership status of the domain
+     */
+    ownership: string;
+    /**
+     * SSL certificate status
+     */
+    ssl: string;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 export interface RateLimitAction {
@@ -23105,7 +24514,11 @@ export interface RecordData {
     /**
      * Flags for the CAA record.
      */
+<<<<<<< HEAD
     flags?: any;
+=======
+    flags?: number;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Key Tag.
      */
@@ -23659,7 +25072,14 @@ export interface RulesetRuleActionParametersCacheReserve {
     /**
      * The minimum file size eligible for store in cache reserve.
      */
-    minimumFileSize?: number;
+    minimumFileSize: number;
+}
+
+export interface RulesetRuleActionParametersCookieField {
+    /**
+     * The name of the field.
+     */
+    name: string;
 }
 
 export interface RulesetRuleActionParametersCookieField {
@@ -24337,6 +25757,19 @@ export interface WorkersDeploymentVersion {
     versionId: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface WorkersRouteError {
+    code: number;
+    message: string;
+}
+
+export interface WorkersRouteMessage {
+    code: number;
+    message: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface WorkersScriptAssets {
     /**
      * Configuration for assets within a Worker.
@@ -24752,6 +26185,10 @@ export interface ZeroTrustAccessApplicationPolicyExclude {
     gsuite: outputs.ZeroTrustAccessApplicationPolicyExcludeGsuite;
     ip: outputs.ZeroTrustAccessApplicationPolicyExcludeIp;
     ipList: outputs.ZeroTrustAccessApplicationPolicyExcludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.ZeroTrustAccessApplicationPolicyExcludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.ZeroTrustAccessApplicationPolicyExcludeOkta;
     saml: outputs.ZeroTrustAccessApplicationPolicyExcludeSaml;
     serviceToken: outputs.ZeroTrustAccessApplicationPolicyExcludeServiceToken;
@@ -24899,6 +26336,16 @@ export interface ZeroTrustAccessApplicationPolicyExcludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessApplicationPolicyExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessApplicationPolicyExcludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -24957,6 +26404,10 @@ export interface ZeroTrustAccessApplicationPolicyInclude {
     gsuite: outputs.ZeroTrustAccessApplicationPolicyIncludeGsuite;
     ip: outputs.ZeroTrustAccessApplicationPolicyIncludeIp;
     ipList: outputs.ZeroTrustAccessApplicationPolicyIncludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.ZeroTrustAccessApplicationPolicyIncludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.ZeroTrustAccessApplicationPolicyIncludeOkta;
     saml: outputs.ZeroTrustAccessApplicationPolicyIncludeSaml;
     serviceToken: outputs.ZeroTrustAccessApplicationPolicyIncludeServiceToken;
@@ -25104,6 +26555,16 @@ export interface ZeroTrustAccessApplicationPolicyIncludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessApplicationPolicyIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessApplicationPolicyIncludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -25162,6 +26623,10 @@ export interface ZeroTrustAccessApplicationPolicyRequire {
     gsuite: outputs.ZeroTrustAccessApplicationPolicyRequireGsuite;
     ip: outputs.ZeroTrustAccessApplicationPolicyRequireIp;
     ipList: outputs.ZeroTrustAccessApplicationPolicyRequireIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.ZeroTrustAccessApplicationPolicyRequireLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.ZeroTrustAccessApplicationPolicyRequireOkta;
     saml: outputs.ZeroTrustAccessApplicationPolicyRequireSaml;
     serviceToken: outputs.ZeroTrustAccessApplicationPolicyRequireServiceToken;
@@ -25309,6 +26774,16 @@ export interface ZeroTrustAccessApplicationPolicyRequireIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessApplicationPolicyRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessApplicationPolicyRequireOkta {
     /**
      * The ID of your Okta identity provider.
@@ -25455,7 +26930,18 @@ export interface ZeroTrustAccessApplicationSaasAppCustomAttributeSource {
     /**
      * A mapping from IdP ID to attribute name.
      */
-    nameByIdp?: {[key: string]: string};
+    nameByIdps: outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp[];
+}
+
+export interface ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp {
+    /**
+     * The UID of the IdP.
+     */
+    idpId?: string;
+    /**
+     * The name of the IdP provided attribute.
+     */
+    sourceName?: string;
 }
 
 export interface ZeroTrustAccessApplicationSaasAppCustomClaim {
@@ -25651,6 +27137,10 @@ export interface ZeroTrustAccessGroupExclude {
     gsuite: outputs.ZeroTrustAccessGroupExcludeGsuite;
     ip: outputs.ZeroTrustAccessGroupExcludeIp;
     ipList: outputs.ZeroTrustAccessGroupExcludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.ZeroTrustAccessGroupExcludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.ZeroTrustAccessGroupExcludeOkta;
     saml: outputs.ZeroTrustAccessGroupExcludeSaml;
     serviceToken: outputs.ZeroTrustAccessGroupExcludeServiceToken;
@@ -25798,6 +27288,16 @@ export interface ZeroTrustAccessGroupExcludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessGroupExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessGroupExcludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -25856,6 +27356,10 @@ export interface ZeroTrustAccessGroupInclude {
     gsuite?: outputs.ZeroTrustAccessGroupIncludeGsuite;
     ip?: outputs.ZeroTrustAccessGroupIncludeIp;
     ipList?: outputs.ZeroTrustAccessGroupIncludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod?: outputs.ZeroTrustAccessGroupIncludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta?: outputs.ZeroTrustAccessGroupIncludeOkta;
     saml?: outputs.ZeroTrustAccessGroupIncludeSaml;
     serviceToken?: outputs.ZeroTrustAccessGroupIncludeServiceToken;
@@ -26003,6 +27507,16 @@ export interface ZeroTrustAccessGroupIncludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessGroupIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessGroupIncludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -26061,6 +27575,10 @@ export interface ZeroTrustAccessGroupRequire {
     gsuite: outputs.ZeroTrustAccessGroupRequireGsuite;
     ip: outputs.ZeroTrustAccessGroupRequireIp;
     ipList: outputs.ZeroTrustAccessGroupRequireIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.ZeroTrustAccessGroupRequireLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.ZeroTrustAccessGroupRequireOkta;
     saml: outputs.ZeroTrustAccessGroupRequireSaml;
     serviceToken: outputs.ZeroTrustAccessGroupRequireServiceToken;
@@ -26208,6 +27726,16 @@ export interface ZeroTrustAccessGroupRequireIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessGroupRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessGroupRequireOkta {
     /**
      * The ID of your Okta identity provider.
@@ -26479,6 +28007,10 @@ export interface ZeroTrustAccessPolicyExclude {
     gsuite: outputs.ZeroTrustAccessPolicyExcludeGsuite;
     ip: outputs.ZeroTrustAccessPolicyExcludeIp;
     ipList: outputs.ZeroTrustAccessPolicyExcludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.ZeroTrustAccessPolicyExcludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.ZeroTrustAccessPolicyExcludeOkta;
     saml: outputs.ZeroTrustAccessPolicyExcludeSaml;
     serviceToken: outputs.ZeroTrustAccessPolicyExcludeServiceToken;
@@ -26626,6 +28158,16 @@ export interface ZeroTrustAccessPolicyExcludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessPolicyExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessPolicyExcludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -26684,6 +28226,10 @@ export interface ZeroTrustAccessPolicyInclude {
     gsuite?: outputs.ZeroTrustAccessPolicyIncludeGsuite;
     ip?: outputs.ZeroTrustAccessPolicyIncludeIp;
     ipList?: outputs.ZeroTrustAccessPolicyIncludeIpList;
+<<<<<<< HEAD
+=======
+    loginMethod?: outputs.ZeroTrustAccessPolicyIncludeLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta?: outputs.ZeroTrustAccessPolicyIncludeOkta;
     saml?: outputs.ZeroTrustAccessPolicyIncludeSaml;
     serviceToken?: outputs.ZeroTrustAccessPolicyIncludeServiceToken;
@@ -26831,6 +28377,16 @@ export interface ZeroTrustAccessPolicyIncludeIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessPolicyIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessPolicyIncludeOkta {
     /**
      * The ID of your Okta identity provider.
@@ -26889,6 +28445,10 @@ export interface ZeroTrustAccessPolicyRequire {
     gsuite: outputs.ZeroTrustAccessPolicyRequireGsuite;
     ip: outputs.ZeroTrustAccessPolicyRequireIp;
     ipList: outputs.ZeroTrustAccessPolicyRequireIpList;
+<<<<<<< HEAD
+=======
+    loginMethod: outputs.ZeroTrustAccessPolicyRequireLoginMethod;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     okta: outputs.ZeroTrustAccessPolicyRequireOkta;
     saml: outputs.ZeroTrustAccessPolicyRequireSaml;
     serviceToken: outputs.ZeroTrustAccessPolicyRequireServiceToken;
@@ -27036,6 +28596,16 @@ export interface ZeroTrustAccessPolicyRequireIpList {
     id: string;
 }
 
+<<<<<<< HEAD
+=======
+export interface ZeroTrustAccessPolicyRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustAccessPolicyRequireOkta {
     /**
      * The ID of your Okta identity provider.
@@ -27060,6 +28630,7 @@ export interface ZeroTrustAccessPolicyRequireSaml {
      * The ID of your SAML identity provider.
      */
     identityProviderId: string;
+<<<<<<< HEAD
 }
 
 export interface ZeroTrustAccessPolicyRequireServiceToken {
@@ -27220,29 +28791,44 @@ export interface ZeroTrustDeviceDefaultProfileServiceModeV2 {
      * The port number when used with proxy mode.
      */
     port?: number;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
-export interface ZeroTrustDeviceManagedNetworksConfig {
+export interface ZeroTrustAccessPolicyRequireServiceToken {
     /**
-     * The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
+     * The ID of a Service Token.
      */
+<<<<<<< HEAD
     sha256?: string;
     /**
      * A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
      */
     tlsSockaddr: string;
+=======
+    tokenId: string;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
-export interface ZeroTrustDevicePostureIntegrationConfig {
+export interface ZeroTrustDeviceCustomProfileExclude {
     /**
+<<<<<<< HEAD
      * If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`
+=======
+     * The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
-    accessClientId?: string;
+    address: string;
     /**
+<<<<<<< HEAD
      * If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`
+=======
+     * A description of the Split Tunnel item, displayed in the client UI.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
-    accessClientSecret?: string;
+    description: string;
     /**
+<<<<<<< HEAD
      * The Workspace One API URL provided in the Workspace One Admin Dashboard.
      */
     apiUrl?: string;
@@ -28275,6 +29861,1265 @@ export interface ZeroTrustListItem {
     createdAt: string;
     /**
      * The description of the list item, if present
+=======
+     * The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+     */
+    host: string;
+}
+
+export interface ZeroTrustDeviceCustomProfileFallbackDomain {
+    /**
+     * A description of the fallback domain, displayed in the client UI.
+     */
+    description: string;
+    /**
+     * A list of IP addresses to handle domain resolution.
+     */
+    dnsServers: string[];
+    /**
+     * The domain suffix to match when resolving locally.
+     */
+    suffix: string;
+}
+
+export interface ZeroTrustDeviceCustomProfileInclude {
+    /**
+     * The address in CIDR format to include in the tunnel. If address is present, host must not be present.
+     */
+    address: string;
+    /**
+     * A description of the split tunnel item, displayed in the client UI.
+     */
+    description: string;
+    /**
+     * The domain name to include in the tunnel. If host is present, address must not be present.
+     */
+    host: string;
+}
+
+export interface ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain {
+    /**
+     * A description of the fallback domain, displayed in the client UI.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+     */
+    description?: string;
+    /**
+     * The value of the item in a list.
+     */
+<<<<<<< HEAD
+    value?: string;
+}
+
+export interface ZeroTrustOrganizationCustomPages {
+    /**
+     * The uid of the custom page to use when a user is denied access after failing a non-identity rule.
+     */
+    forbidden?: string;
+    /**
+     * The uid of the custom page to use when a user is denied access.
+     */
+    identityDenied?: string;
+}
+
+export interface ZeroTrustOrganizationLoginDesign {
+    /**
+     * The background color on your login page.
+     */
+    backgroundColor?: string;
+    /**
+     * The text at the bottom of your login page.
+     */
+    footerText?: string;
+    /**
+     * The text at the top of your login page.
+     */
+    headerText?: string;
+    /**
+     * The URL of the logo on your login page.
+     */
+    logoPath?: string;
+    /**
+     * The text color on your login page.
+     */
+    textColor?: string;
+}
+
+export interface ZeroTrustRiskBehaviorBehaviors {
+    enabled: boolean;
+    riskLevel: string;
+}
+
+=======
+    dnsServers?: string[];
+    /**
+     * The domain suffix to match when resolving locally.
+     */
+    suffix: string;
+}
+
+export interface ZeroTrustDeviceCustomProfileServiceModeV2 {
+    /**
+     * The mode to run the WARP client under.
+     */
+    mode?: string;
+    /**
+     * The port number when used with proxy mode.
+     */
+    port?: number;
+}
+
+export interface ZeroTrustDeviceCustomProfileTargetTest {
+    /**
+     * The id of the DEX test targeting this policy
+     */
+    id: string;
+    /**
+     * The name of the DEX test targeting this policy
+     */
+    name: string;
+}
+
+export interface ZeroTrustDeviceDefaultProfileExclude {
+    /**
+     * The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+     */
+    address: string;
+    /**
+     * A description of the Split Tunnel item, displayed in the client UI.
+     */
+    description: string;
+    /**
+     * The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+     */
+    host: string;
+}
+
+export interface ZeroTrustDeviceDefaultProfileFallbackDomain {
+    /**
+     * A description of the fallback domain, displayed in the client UI.
+     */
+    description: string;
+    /**
+     * A list of IP addresses to handle domain resolution.
+     */
+    dnsServers: string[];
+    /**
+     * The domain suffix to match when resolving locally.
+     */
+    suffix: string;
+}
+
+export interface ZeroTrustDeviceDefaultProfileInclude {
+    /**
+     * The address in CIDR format to include in the tunnel. If address is present, host must not be present.
+     */
+    address: string;
+    /**
+     * A description of the split tunnel item, displayed in the client UI.
+     */
+    description: string;
+    /**
+     * The domain name to include in the tunnel. If host is present, address must not be present.
+     */
+    host: string;
+}
+
+export interface ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomain {
+    /**
+     * A description of the fallback domain, displayed in the client UI.
+     */
+    description?: string;
+    /**
+     * A list of IP addresses to handle domain resolution.
+     */
+    dnsServers?: string[];
+    /**
+     * The domain suffix to match when resolving locally.
+     */
+    suffix: string;
+}
+
+export interface ZeroTrustDeviceDefaultProfileServiceModeV2 {
+    /**
+     * The mode to run the WARP client under.
+     */
+    mode?: string;
+    /**
+     * The port number when used with proxy mode.
+     */
+    port?: number;
+}
+
+export interface ZeroTrustDeviceManagedNetworksConfig {
+    /**
+     * The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
+     */
+    sha256?: string;
+    /**
+     * A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
+     */
+    tlsSockaddr: string;
+}
+
+export interface ZeroTrustDevicePostureIntegrationConfig {
+    /**
+     * If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`
+     */
+    accessClientId?: string;
+    /**
+     * If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`
+     */
+    accessClientSecret?: string;
+    /**
+     * The Workspace One API URL provided in the Workspace One Admin Dashboard.
+     */
+    apiUrl?: string;
+    /**
+     * The Workspace One Authorization URL depending on your region.
+     */
+    authUrl?: string;
+    /**
+     * The Workspace One client ID provided in the Workspace One Admin Dashboard.
+     */
+    clientId?: string;
+    /**
+     * The Uptycs client secret.
+     */
+    clientKey?: string;
+    /**
+     * The Workspace One client secret provided in the Workspace One Admin Dashboard.
+     */
+    clientSecret?: string;
+    /**
+     * The Crowdstrike customer ID.
+     */
+    customerId?: string;
+}
+
+export interface ZeroTrustDevicePostureRuleInput {
+    /**
+     * The Number of active threats.
+     */
+    activeThreats?: number;
+    /**
+     * UUID of Cloudflare managed certificate.
+     */
+    certificateId?: string;
+    /**
+     * List of volume names to be checked for encryption.
+     */
+    checkDisks?: string[];
+    /**
+     * Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.
+     */
+    checkPrivateKey?: boolean;
+    /**
+     * Common Name that is protected by the certificate
+     */
+    cn?: string;
+    /**
+     * Compliance Status
+     */
+    complianceStatus?: string;
+    /**
+     * Posture Integration ID.
+     */
+    connectionId?: string;
+    /**
+     * Count Operator
+     */
+    countOperator?: string;
+    /**
+     * Domain
+     */
+    domain?: string;
+    /**
+     * For more details on eid last seen, refer to the Tanium documentation.
+     */
+    eidLastSeen?: string;
+    /**
+     * Enabled
+     */
+    enabled?: boolean;
+    /**
+     * Whether or not file exists
+     */
+    exists?: boolean;
+    /**
+     * List of values indicating purposes for which the certificate public key can be used
+     */
+    extendedKeyUsages?: string[];
+    /**
+     * List ID.
+     */
+    id?: string;
+    /**
+     * Whether device is infected.
+     */
+    infected?: boolean;
+    /**
+     * Whether device is active.
+     */
+    isActive?: boolean;
+    /**
+     * The Number of Issues.
+     */
+    issueCount?: string;
+    /**
+     * For more details on last seen, please refer to the Crowdstrike documentation.
+     */
+    lastSeen?: string;
+    locations: outputs.ZeroTrustDevicePostureRuleInputLocations;
+    /**
+     * Network status of device.
+     */
+    networkStatus?: string;
+    /**
+     * Operating system
+     */
+    operatingSystem?: string;
+    /**
+     * Agent operational state.
+     */
+    operationalState?: string;
+    /**
+     * operator
+     */
+    operator?: string;
+    /**
+     * Os Version
+     */
+    os?: string;
+    /**
+     * Operating System Distribution Name (linux only)
+     */
+    osDistroName?: string;
+    /**
+     * Version of OS Distribution (linux only)
+     */
+    osDistroRevision?: string;
+    /**
+     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+     */
+    osVersionExtra?: string;
+    /**
+     * overall
+     */
+    overall?: string;
+    /**
+     * File path.
+     */
+    path?: string;
+    /**
+     * Whether to check all disks for encryption.
+     */
+    requireAll?: boolean;
+    /**
+     * For more details on risk level, refer to the Tanium documentation.
+     */
+    riskLevel?: string;
+    /**
+     * A value between 0-100 assigned to devices set by the 3rd party posture provider.
+     */
+    score?: number;
+    /**
+     * Score Operator
+     */
+    scoreOperator?: string;
+    /**
+     * SensorConfig
+     */
+    sensorConfig?: string;
+    /**
+     * SHA-256.
+     */
+    sha256?: string;
+    /**
+     * For more details on state, please refer to the Crowdstrike documentation.
+     */
+    state?: string;
+    /**
+     * Signing certificate thumbprint.
+     */
+    thumbprint?: string;
+    /**
+     * For more details on total score, refer to the Tanium documentation.
+     */
+    totalScore?: number;
+    /**
+     * Version of OS
+     */
+    version?: string;
+    /**
+     * Version Operator
+     */
+    versionOperator?: string;
+}
+
+export interface ZeroTrustDevicePostureRuleInputLocations {
+    /**
+     * List of paths to check for client certificate on linux.
+     */
+    paths?: string[];
+    /**
+     * List of trust stores to check for client certificate.
+     */
+    trustStores?: string[];
+}
+
+export interface ZeroTrustDevicePostureRuleMatch {
+    platform?: string;
+}
+
+export interface ZeroTrustDexTestData {
+    /**
+     * The desired endpoint to test.
+     */
+    host?: string;
+    /**
+     * The type of test.
+     */
+    kind?: string;
+    /**
+     * The HTTP request method type.
+     */
+    method?: string;
+}
+
+export interface ZeroTrustDexTestTargetPolicy {
+    /**
+     * Whether the profile is the account default
+     */
+    default?: boolean;
+    /**
+     * The id of the device settings profile
+     */
+    id?: string;
+    /**
+     * The name of the device settings profile
+     */
+    name?: string;
+}
+
+export interface ZeroTrustDlpCustomProfileContextAwareness {
+    /**
+     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
+     */
+    enabled: boolean;
+    /**
+     * Content types to exclude from context analysis and return all matches.
+     */
+    skip: outputs.ZeroTrustDlpCustomProfileContextAwarenessSkip;
+}
+
+export interface ZeroTrustDlpCustomProfileContextAwarenessSkip {
+    /**
+     * If the content type is a file, skip context analysis and return all matches.
+     */
+    files: boolean;
+}
+
+export interface ZeroTrustDlpCustomProfileEntry {
+    enabled: boolean;
+    name: string;
+    pattern: outputs.ZeroTrustDlpCustomProfileEntryPattern;
+    words?: string[];
+}
+
+export interface ZeroTrustDlpCustomProfileEntryPattern {
+    regex: string;
+    validation?: string;
+}
+
+export interface ZeroTrustDlpCustomProfileProfile {
+    aiContextEnabled?: boolean;
+    /**
+     * Related DLP policies will trigger when the match count exceeds the number set.
+     */
+    allowedMatchCount: number;
+    confidenceThreshold?: string;
+    /**
+     * Scan the context of predefined entries to only return matches surrounded by keywords.
+     */
+    contextAwareness: outputs.ZeroTrustDlpCustomProfileProfileContextAwareness;
+    /**
+     * The description of the profile
+     */
+    description?: string;
+    entries: outputs.ZeroTrustDlpCustomProfileProfileEntry[];
+    name: string;
+    ocrEnabled?: boolean;
+    /**
+     * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
+     */
+    sharedEntries: outputs.ZeroTrustDlpCustomProfileProfileSharedEntry[];
+}
+
+export interface ZeroTrustDlpCustomProfileProfileContextAwareness {
+    /**
+     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
+     */
+    enabled: boolean;
+    /**
+     * Content types to exclude from context analysis and return all matches.
+     */
+    skip: outputs.ZeroTrustDlpCustomProfileProfileContextAwarenessSkip;
+}
+
+export interface ZeroTrustDlpCustomProfileProfileContextAwarenessSkip {
+    /**
+     * If the content type is a file, skip context analysis and return all matches.
+     */
+    files: boolean;
+}
+
+export interface ZeroTrustDlpCustomProfileProfileEntry {
+    enabled: boolean;
+    name: string;
+    pattern?: outputs.ZeroTrustDlpCustomProfileProfileEntryPattern;
+    words?: string[];
+}
+
+export interface ZeroTrustDlpCustomProfileProfileEntryPattern {
+    regex: string;
+    validation?: string;
+}
+
+export interface ZeroTrustDlpCustomProfileProfileSharedEntry {
+    enabled: boolean;
+    entryId: string;
+    entryType: string;
+}
+
+export interface ZeroTrustDlpCustomProfileSharedEntry {
+    enabled: boolean;
+    entryId: string;
+    entryType: string;
+}
+
+export interface ZeroTrustDlpDatasetColumn {
+    entryId: string;
+    headerName: string;
+    numCells: number;
+    uploadStatus: string;
+}
+
+export interface ZeroTrustDlpDatasetDataset {
+    columns: outputs.ZeroTrustDlpDatasetDatasetColumn[];
+    createdAt: string;
+    /**
+     * The description of the dataset
+     */
+    description: string;
+    encodingVersion: number;
+    id: string;
+    name: string;
+    numCells: number;
+    secret: boolean;
+    status: string;
+    /**
+     * When the dataset was last updated.
+     */
+    updatedAt: string;
+    uploads: outputs.ZeroTrustDlpDatasetDatasetUpload[];
+}
+
+export interface ZeroTrustDlpDatasetDatasetColumn {
+    entryId: string;
+    headerName: string;
+    numCells: number;
+    uploadStatus: string;
+}
+
+export interface ZeroTrustDlpDatasetDatasetUpload {
+    numCells: number;
+    status: string;
+    version: number;
+}
+
+export interface ZeroTrustDlpDatasetUpload {
+    numCells: number;
+    status: string;
+    version: number;
+}
+
+export interface ZeroTrustDlpEntryConfidence {
+    aiContextAvailable: boolean;
+    /**
+     * Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
+     * Profiles that use an entry with `available` set to true can use confidence thresholds
+     */
+    available: boolean;
+}
+
+export interface ZeroTrustDlpEntryPattern {
+    regex: string;
+    validation?: string;
+}
+
+export interface ZeroTrustDlpPredefinedProfileContextAwareness {
+    /**
+     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
+     */
+    enabled: boolean;
+    /**
+     * Content types to exclude from context analysis and return all matches.
+     */
+    skip: outputs.ZeroTrustDlpPredefinedProfileContextAwarenessSkip;
+}
+
+export interface ZeroTrustDlpPredefinedProfileContextAwarenessSkip {
+    /**
+     * If the content type is a file, skip context analysis and return all matches.
+     */
+    files: boolean;
+}
+
+export interface ZeroTrustDlpPredefinedProfileEntry {
+    enabled: boolean;
+    id: string;
+}
+
+export interface ZeroTrustDnsLocationEndpoints {
+    doh: outputs.ZeroTrustDnsLocationEndpointsDoh;
+    dot: outputs.ZeroTrustDnsLocationEndpointsDot;
+    ipv4: outputs.ZeroTrustDnsLocationEndpointsIpv4;
+    ipv6: outputs.ZeroTrustDnsLocationEndpointsIpv6;
+}
+
+export interface ZeroTrustDnsLocationEndpointsDoh {
+    /**
+     * True if the endpoint is enabled for this location.
+     */
+    enabled?: boolean;
+    /**
+     * A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     */
+    networks: outputs.ZeroTrustDnsLocationEndpointsDohNetwork[];
+    /**
+     * True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+     */
+    requireToken?: boolean;
+}
+
+export interface ZeroTrustDnsLocationEndpointsDohNetwork {
+    /**
+     * The IP address or IP CIDR.
+     */
+    network: string;
+}
+
+export interface ZeroTrustDnsLocationEndpointsDot {
+    /**
+     * True if the endpoint is enabled for this location.
+     */
+    enabled?: boolean;
+    /**
+     * A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     */
+    networks: outputs.ZeroTrustDnsLocationEndpointsDotNetwork[];
+}
+
+export interface ZeroTrustDnsLocationEndpointsDotNetwork {
+    /**
+     * The IP address or IP CIDR.
+     */
+    network: string;
+}
+
+export interface ZeroTrustDnsLocationEndpointsIpv4 {
+    /**
+     * True if the endpoint is enabled for this location.
+     */
+    enabled?: boolean;
+}
+
+export interface ZeroTrustDnsLocationEndpointsIpv6 {
+    /**
+     * True if the endpoint is enabled for this location.
+     */
+    enabled?: boolean;
+    /**
+     * A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     */
+    networks: outputs.ZeroTrustDnsLocationEndpointsIpv6Network[];
+}
+
+export interface ZeroTrustDnsLocationEndpointsIpv6Network {
+    /**
+     * The IPv6 address or IPv6 CIDR.
+     */
+    network: string;
+}
+
+export interface ZeroTrustDnsLocationNetwork {
+    /**
+     * The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
+     */
+    network: string;
+}
+
+export interface ZeroTrustGatewayLoggingSettingsByRuleType {
+    /**
+     * Logging settings for DNS firewall.
+     */
+    dns?: string;
+    /**
+     * Logging settings for HTTP/HTTPS firewall.
+     */
+    http?: string;
+    /**
+     * Logging settings for Network firewall.
+     */
+    l4?: string;
+}
+
+export interface ZeroTrustGatewayPolicyExpiration {
+    /**
+     * The default duration a policy will be active in minutes. Must be set in order to use the `resetExpiration` endpoint on this rule.
+     */
+    duration?: number;
+    /**
+     * Whether the policy has expired.
+     */
+    expired?: boolean;
+    /**
+     * The time stamp at which the policy will expire and cease to be
+     * applied.
+     */
+    expiresAt: string;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettings {
+    /**
+     * Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
+     */
+    addHeaders?: {[key: string]: string};
+    /**
+     * Set by parent MSP accounts to enable their children to bypass this rule.
+     */
+    allowChildBypass?: boolean;
+    /**
+     * Settings for the Audit SSH action.
+     */
+    auditSsh: outputs.ZeroTrustGatewayPolicyRuleSettingsAuditSsh;
+    /**
+     * Configure how browser isolation behaves.
+     */
+    bisoAdminControls: outputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls;
+    /**
+     * Enable the custom block page.
+     */
+    blockPageEnabled?: boolean;
+    /**
+     * The text describing why this block occurred, displayed on the custom block page (if enabled).
+     */
+    blockReason?: string;
+    /**
+     * Set by children MSP accounts to bypass their parent's rules.
+     */
+    bypassParentRule?: boolean;
+    /**
+     * Configure how session check behaves.
+     */
+    checkSession: outputs.ZeroTrustGatewayPolicyRuleSettingsCheckSession;
+    /**
+     * Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.
+     */
+    dnsResolvers: outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolvers;
+    /**
+     * Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
+     */
+    egress: outputs.ZeroTrustGatewayPolicyRuleSettingsEgress;
+    /**
+     * Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
+     */
+    ignoreCnameCategoryMatches?: boolean;
+    /**
+     * INSECURE - disable DNSSEC validation (for Allow actions).
+     */
+    insecureDisableDnssecValidation?: boolean;
+    /**
+     * Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
+     */
+    ipCategories?: boolean;
+    /**
+     * Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+     */
+    ipIndicatorFeeds?: boolean;
+    /**
+     * Send matching traffic to the supplied destination IP address and port.
+     */
+    l4override: outputs.ZeroTrustGatewayPolicyRuleSettingsL4override;
+    /**
+     * Configure a notification to display on the user's device when this rule is matched.
+     */
+    notificationSettings: outputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettings;
+    /**
+     * Override matching DNS queries with a hostname.
+     */
+    overrideHost?: string;
+    /**
+     * Override matching DNS queries with an IP or set of IPs.
+     */
+    overrideIps?: string[];
+    /**
+     * Configure DLP payload logging.
+     */
+    payloadLog: outputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLog;
+    /**
+     * Settings that apply to quarantine rules
+     */
+    quarantine: outputs.ZeroTrustGatewayPolicyRuleSettingsQuarantine;
+    /**
+     * Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+     */
+    resolveDnsInternally: outputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally;
+    /**
+     * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns_internally' is set. Only valid when a rule's action is set to 'resolve'.
+     */
+    resolveDnsThroughCloudflare?: boolean;
+    /**
+     * Configure behavior when an upstream cert is invalid or an SSL error occurs.
+     */
+    untrustedCert: outputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCert;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsAuditSsh {
+    /**
+     * Enable to turn on SSH command logging.
+     */
+    commandLogging?: boolean;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
+    /**
+     * Configure whether copy is enabled or not. When set with "remoteOnly", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == "v2"`.
+     */
+    copy?: string;
+    /**
+     * Set to false to enable copy-pasting. Only applies when `version == "v1"`.
+     */
+    dcp?: boolean;
+    /**
+     * Set to false to enable downloading. Only applies when `version == "v1"`.
+     */
+    dd?: boolean;
+    /**
+     * Set to false to enable keyboard usage. Only applies when `version == "v1"`.
+     */
+    dk?: boolean;
+    /**
+     * Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
+     */
+    download?: string;
+    /**
+     * Set to false to enable printing. Only applies when `version == "v1"`.
+     */
+    dp?: boolean;
+    /**
+     * Set to false to enable uploading. Only applies when `version == "v1"`.
+     */
+    du?: boolean;
+    /**
+     * Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == "v2"`.
+     */
+    keyboard?: string;
+    /**
+     * Configure whether pasting is enabled or not. When set with "remoteOnly", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == "v2"`.
+     */
+    paste?: string;
+    /**
+     * Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == "v2"`.
+     */
+    printing?: string;
+    /**
+     * Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == "v2"`.
+     */
+    upload?: string;
+    /**
+     * Indicates which version of the browser isolation controls should apply.
+     */
+    version: string;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsCheckSession {
+    /**
+     * Configure how fresh the session needs to be to be considered valid.
+     */
+    duration?: string;
+    /**
+     * Set to true to enable session enforcement.
+     */
+    enforce?: boolean;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsDnsResolvers {
+    ipv4s: outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4[];
+    ipv6s: outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6[];
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4 {
+    /**
+     * IPv4 address of upstream resolver.
+     */
+    ip: string;
+    /**
+     * A port number to use for upstream resolver. Defaults to 53 if unspecified.
+     */
+    port?: number;
+    /**
+     * Whether to connect to this resolver over a private network. Must be set when vnetId is set.
+     */
+    routeThroughPrivateNetwork?: boolean;
+    /**
+     * Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     */
+    vnetId?: string;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6 {
+    /**
+     * IPv6 address of upstream resolver.
+     */
+    ip: string;
+    /**
+     * A port number to use for upstream resolver. Defaults to 53 if unspecified.
+     */
+    port?: number;
+    /**
+     * Whether to connect to this resolver over a private network. Must be set when vnetId is set.
+     */
+    routeThroughPrivateNetwork?: boolean;
+    /**
+     * Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     */
+    vnetId?: string;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsEgress {
+    /**
+     * The IPv4 address to be used for egress.
+     */
+    ipv4?: string;
+    /**
+     * The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.
+     */
+    ipv4Fallback?: string;
+    /**
+     * The IPv6 range to be used for egress.
+     */
+    ipv6?: string;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsL4override {
+    /**
+     * IPv4 or IPv6 address.
+     */
+    ip?: string;
+    /**
+     * A port number to use for TCP/UDP overrides.
+     */
+    port?: number;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
+    /**
+     * Set notification on
+     */
+    enabled?: boolean;
+    /**
+     * Customize the message shown in the notification.
+     */
+    msg?: string;
+    /**
+     * Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     */
+    supportUrl?: string;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsPayloadLog {
+    /**
+     * Set to true to enable DLP payload logging for this rule.
+     */
+    enabled?: boolean;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsQuarantine {
+    /**
+     * Types of files to sandbox.
+     */
+    fileTypes?: string[];
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally {
+    /**
+     * The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+     */
+    fallback: string;
+    /**
+     * The internal DNS view identifier that's passed to the internal DNS service.
+     */
+    viewId?: string;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsUntrustedCert {
+    /**
+     * The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+     */
+    action?: string;
+}
+
+export interface ZeroTrustGatewayPolicySchedule {
+    /**
+     * The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.
+     */
+    fri?: string;
+    /**
+     * The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.
+     */
+    mon?: string;
+    /**
+     * The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.
+     */
+    sat?: string;
+    /**
+     * The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.
+     */
+    sun?: string;
+    /**
+     * The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.
+     */
+    thu?: string;
+    /**
+     * The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.
+     */
+    timeZone?: string;
+    /**
+     * The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.
+     */
+    tue?: string;
+    /**
+     * The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.
+     */
+    wed?: string;
+}
+
+export interface ZeroTrustGatewaySettingsSettings {
+    /**
+     * Activity log settings.
+     */
+    activityLog: outputs.ZeroTrustGatewaySettingsSettingsActivityLog;
+    /**
+     * Anti-virus settings.
+     */
+    antivirus: outputs.ZeroTrustGatewaySettingsSettingsAntivirus;
+    /**
+     * Block page layout settings.
+     */
+    blockPage: outputs.ZeroTrustGatewaySettingsSettingsBlockPage;
+    /**
+     * DLP body scanning settings.
+     */
+    bodyScanning: outputs.ZeroTrustGatewaySettingsSettingsBodyScanning;
+    /**
+     * Browser isolation settings.
+     */
+    browserIsolation: outputs.ZeroTrustGatewaySettingsSettingsBrowserIsolation;
+    /**
+     * Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+     */
+    certificate: outputs.ZeroTrustGatewaySettingsSettingsCertificate;
+    /**
+     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     */
+    customCertificate: outputs.ZeroTrustGatewaySettingsSettingsCustomCertificate;
+    /**
+     * Extended e-mail matching settings.
+     */
+    extendedEmailMatching: outputs.ZeroTrustGatewaySettingsSettingsExtendedEmailMatching;
+    /**
+     * FIPS settings.
+     */
+    fips: outputs.ZeroTrustGatewaySettingsSettingsFips;
+    /**
+     * Protocol Detection settings.
+     */
+    protocolDetection: outputs.ZeroTrustGatewaySettingsSettingsProtocolDetection;
+    /**
+     * Sandbox settings.
+     */
+    sandbox: outputs.ZeroTrustGatewaySettingsSettingsSandbox;
+    /**
+     * TLS interception settings.
+     */
+    tlsDecrypt: outputs.ZeroTrustGatewaySettingsSettingsTlsDecrypt;
+}
+
+export interface ZeroTrustGatewaySettingsSettingsActivityLog {
+    /**
+     * Enable activity logging.
+     */
+    enabled?: boolean;
+}
+
+export interface ZeroTrustGatewaySettingsSettingsAntivirus {
+    /**
+     * Enable anti-virus scanning on downloads.
+     */
+    enabledDownloadPhase?: boolean;
+    /**
+     * Enable anti-virus scanning on uploads.
+     */
+    enabledUploadPhase?: boolean;
+    /**
+     * Block requests for files that cannot be scanned.
+     */
+    failClosed?: boolean;
+    /**
+     * Configure a message to display on the user's device when an antivirus search is performed.
+     */
+    notificationSettings: outputs.ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings;
+}
+
+export interface ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings {
+    /**
+     * Set notification on
+     */
+    enabled?: boolean;
+    /**
+     * Customize the message shown in the notification.
+     */
+    msg?: string;
+    /**
+     * Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     */
+    supportUrl?: string;
+}
+
+export interface ZeroTrustGatewaySettingsSettingsBlockPage {
+    /**
+     * Block page background color in #rrggbb format.
+     */
+    backgroundColor?: string;
+    /**
+     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     */
+    enabled?: boolean;
+    /**
+     * Block page footer text.
+     */
+    footerText?: string;
+    /**
+     * Block page header text.
+     */
+    headerText?: string;
+    /**
+     * Full URL to the logo file.
+     */
+    logoPath?: string;
+    /**
+     * Admin email for users to contact.
+     */
+    mailtoAddress?: string;
+    /**
+     * Subject line for emails created from block page.
+     */
+    mailtoSubject?: string;
+    /**
+     * Block page title.
+     */
+    name?: string;
+    /**
+     * Suppress detailed info at the bottom of the block page.
+     */
+    suppressFooter?: boolean;
+}
+
+export interface ZeroTrustGatewaySettingsSettingsBodyScanning {
+    /**
+     * Set the inspection mode to either `deep` or `shallow`.
+     */
+    inspectionMode?: string;
+}
+
+export interface ZeroTrustGatewaySettingsSettingsBrowserIsolation {
+    /**
+     * Enable non-identity onramp support for Browser Isolation.
+     */
+    nonIdentityEnabled?: boolean;
+    /**
+     * Enable Clientless Browser Isolation.
+     */
+    urlBrowserIsolationEnabled?: boolean;
+}
+
+export interface ZeroTrustGatewaySettingsSettingsCertificate {
+    /**
+     * UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+     */
+    id: string;
+}
+
+export interface ZeroTrustGatewaySettingsSettingsCustomCertificate {
+    /**
+     * Certificate status (internal).
+     */
+    bindingStatus: string;
+    /**
+     * Enable use of custom certificate authority for signing Gateway traffic.
+     */
+    enabled: boolean;
+    /**
+     * UUID of certificate (ID from MTLS certificate store).
+     */
+    id?: string;
+    updatedAt: string;
+}
+
+export interface ZeroTrustGatewaySettingsSettingsExtendedEmailMatching {
+    /**
+     * Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+     */
+    enabled?: boolean;
+}
+
+export interface ZeroTrustGatewaySettingsSettingsFips {
+    /**
+     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     */
+    tls?: boolean;
+}
+
+export interface ZeroTrustGatewaySettingsSettingsProtocolDetection {
+    /**
+     * Enable detecting protocol on initial bytes of client traffic.
+     */
+    enabled?: boolean;
+}
+
+export interface ZeroTrustGatewaySettingsSettingsSandbox {
+    /**
+     * Enable sandbox.
+     */
+    enabled?: boolean;
+    /**
+     * Action to take when the file cannot be scanned.
+     */
+    fallbackAction?: string;
+}
+
+export interface ZeroTrustGatewaySettingsSettingsTlsDecrypt {
+    /**
+     * Enable inspecting encrypted HTTP traffic.
+     */
+    enabled?: boolean;
+}
+
+export interface ZeroTrustListItem {
+    createdAt: string;
+    /**
+     * The description of the list item, if present
      */
     description?: string;
     /**
@@ -28322,6 +31167,7 @@ export interface ZeroTrustRiskBehaviorBehaviors {
     riskLevel: string;
 }
 
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 export interface ZeroTrustTunnelCloudflaredConfigConfig {
     /**
      * List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.

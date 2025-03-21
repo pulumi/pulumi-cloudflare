@@ -284,10 +284,17 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
         example_email_security_trusted_domains = cloudflare.EmailSecurityTrustedDomains("example_email_security_trusted_domains",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             is_recent=True,
+<<<<<<< HEAD
             is_regex=False,
             is_similarity=False,
             pattern="example.com",
             comments=None)
+=======
+            is_regex=True,
+            is_similarity=True,
+            pattern="x",
+            comments="comments")
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ```
 
         ## Import
@@ -321,10 +328,17 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
         example_email_security_trusted_domains = cloudflare.EmailSecurityTrustedDomains("example_email_security_trusted_domains",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             is_recent=True,
+<<<<<<< HEAD
             is_regex=False,
             is_similarity=False,
             pattern="example.com",
             comments=None)
+=======
+            is_regex=True,
+            is_similarity=True,
+            pattern="x",
+            comments="comments")
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ```
 
         ## Import

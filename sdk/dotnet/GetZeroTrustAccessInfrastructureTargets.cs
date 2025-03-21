@@ -30,15 +30,33 @@ namespace Pulumi.Cloudflare
         ///         Direction = "asc",
         ///         Hostname = "hostname",
         ///         HostnameContains = "hostname_contains",
+<<<<<<< HEAD
+=======
+        ///         IpLike = "ip_like",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ///         IpV4 = "ip_v4",
         ///         IpV6 = "ip_v6",
         ///         Ips = new[]
         ///         {
         ///             "string",
         ///         },
+<<<<<<< HEAD
         ///         ModifiedAfter = "2019-12-27T18:11:19.117Z",
         ///         ModifiedBefore = "2019-12-27T18:11:19.117Z",
         ///         Order = "hostname",
+=======
+        ///         Ipv4End = "ipv4_end",
+        ///         Ipv4Start = "ipv4_start",
+        ///         Ipv6End = "ipv6_end",
+        ///         Ipv6Start = "ipv6_start",
+        ///         ModifiedAfter = "2019-12-27T18:11:19.117Z",
+        ///         ModifiedBefore = "2019-12-27T18:11:19.117Z",
+        ///         Order = "hostname",
+        ///         TargetIds = new[]
+        ///         {
+        ///             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        ///         },
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ///         VirtualNetworkId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         ///     });
         /// 
@@ -67,15 +85,33 @@ namespace Pulumi.Cloudflare
         ///         Direction = "asc",
         ///         Hostname = "hostname",
         ///         HostnameContains = "hostname_contains",
+<<<<<<< HEAD
+=======
+        ///         IpLike = "ip_like",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ///         IpV4 = "ip_v4",
         ///         IpV6 = "ip_v6",
         ///         Ips = new[]
         ///         {
         ///             "string",
         ///         },
+<<<<<<< HEAD
         ///         ModifiedAfter = "2019-12-27T18:11:19.117Z",
         ///         ModifiedBefore = "2019-12-27T18:11:19.117Z",
         ///         Order = "hostname",
+=======
+        ///         Ipv4End = "ipv4_end",
+        ///         Ipv4Start = "ipv4_start",
+        ///         Ipv6End = "ipv6_end",
+        ///         Ipv6Start = "ipv6_start",
+        ///         ModifiedAfter = "2019-12-27T18:11:19.117Z",
+        ///         ModifiedBefore = "2019-12-27T18:11:19.117Z",
+        ///         Order = "hostname",
+        ///         TargetIds = new[]
+        ///         {
+        ///             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        ///         },
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ///         VirtualNetworkId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         ///     });
         /// 
@@ -104,15 +140,33 @@ namespace Pulumi.Cloudflare
         ///         Direction = "asc",
         ///         Hostname = "hostname",
         ///         HostnameContains = "hostname_contains",
+<<<<<<< HEAD
+=======
+        ///         IpLike = "ip_like",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ///         IpV4 = "ip_v4",
         ///         IpV6 = "ip_v6",
         ///         Ips = new[]
         ///         {
         ///             "string",
         ///         },
+<<<<<<< HEAD
         ///         ModifiedAfter = "2019-12-27T18:11:19.117Z",
         ///         ModifiedBefore = "2019-12-27T18:11:19.117Z",
         ///         Order = "hostname",
+=======
+        ///         Ipv4End = "ipv4_end",
+        ///         Ipv4Start = "ipv4_start",
+        ///         Ipv6End = "ipv6_end",
+        ///         Ipv6Start = "ipv6_start",
+        ///         ModifiedAfter = "2019-12-27T18:11:19.117Z",
+        ///         ModifiedBefore = "2019-12-27T18:11:19.117Z",
+        ///         Order = "hostname",
+        ///         TargetIds = new[]
+        ///         {
+        ///             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        ///         },
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ///         VirtualNetworkId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         ///     });
         /// 
@@ -163,6 +217,16 @@ namespace Pulumi.Cloudflare
         public string? HostnameContains { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Filters for targets whose IP addresses look like the specified string.
+        /// Supports `*` as a wildcard character
+        /// </summary>
+        [Input("ipLike")]
+        public string? IpLike { get; set; }
+
+        /// <summary>
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// IPv4 address of the target
         /// </summary>
         [Input("ipV4")]
@@ -188,6 +252,37 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Defines an IPv4 filter range's ending value (inclusive). Requires
+        /// `ipv4_start` to be specified as well.
+        /// </summary>
+        [Input("ipv4End")]
+        public string? Ipv4End { get; set; }
+
+        /// <summary>
+        /// Defines an IPv4 filter range's starting value (inclusive). Requires
+        /// `ipv4_end` to be specified as well.
+        /// </summary>
+        [Input("ipv4Start")]
+        public string? Ipv4Start { get; set; }
+
+        /// <summary>
+        /// Defines an IPv6 filter range's ending value (inclusive). Requires
+        /// `ipv6_start` to be specified as well.
+        /// </summary>
+        [Input("ipv6End")]
+        public string? Ipv6End { get; set; }
+
+        /// <summary>
+        /// Defines an IPv6 filter range's starting value (inclusive). Requires
+        /// `ipv6_end` to be specified as well.
+        /// </summary>
+        [Input("ipv6Start")]
+        public string? Ipv6Start { get; set; }
+
+        /// <summary>
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
@@ -211,6 +306,23 @@ namespace Pulumi.Cloudflare
         [Input("order")]
         public string? Order { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Input("targetIds")]
+        private List<string>? _targetIds;
+
+        /// <summary>
+        /// Filters for targets that have any of the following UUIDs. Specify
+        /// `target_ids` multiple times in query parameter to build list of
+        /// candidates.
+        /// </summary>
+        public List<string> TargetIds
+        {
+            get => _targetIds ?? (_targetIds = new List<string>());
+            set => _targetIds = value;
+        }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// Private virtual network identifier of the target
         /// </summary>
@@ -262,6 +374,16 @@ namespace Pulumi.Cloudflare
         public Input<string>? HostnameContains { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Filters for targets whose IP addresses look like the specified string.
+        /// Supports `*` as a wildcard character
+        /// </summary>
+        [Input("ipLike")]
+        public Input<string>? IpLike { get; set; }
+
+        /// <summary>
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// IPv4 address of the target
         /// </summary>
         [Input("ipV4")]
@@ -287,6 +409,37 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Defines an IPv4 filter range's ending value (inclusive). Requires
+        /// `ipv4_start` to be specified as well.
+        /// </summary>
+        [Input("ipv4End")]
+        public Input<string>? Ipv4End { get; set; }
+
+        /// <summary>
+        /// Defines an IPv4 filter range's starting value (inclusive). Requires
+        /// `ipv4_end` to be specified as well.
+        /// </summary>
+        [Input("ipv4Start")]
+        public Input<string>? Ipv4Start { get; set; }
+
+        /// <summary>
+        /// Defines an IPv6 filter range's ending value (inclusive). Requires
+        /// `ipv6_start` to be specified as well.
+        /// </summary>
+        [Input("ipv6End")]
+        public Input<string>? Ipv6End { get; set; }
+
+        /// <summary>
+        /// Defines an IPv6 filter range's starting value (inclusive). Requires
+        /// `ipv6_end` to be specified as well.
+        /// </summary>
+        [Input("ipv6Start")]
+        public Input<string>? Ipv6Start { get; set; }
+
+        /// <summary>
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
@@ -310,6 +463,23 @@ namespace Pulumi.Cloudflare
         [Input("order")]
         public Input<string>? Order { get; set; }
 
+<<<<<<< HEAD
+=======
+        [Input("targetIds")]
+        private InputList<string>? _targetIds;
+
+        /// <summary>
+        /// Filters for targets that have any of the following UUIDs. Specify
+        /// `target_ids` multiple times in query parameter to build list of
+        /// candidates.
+        /// </summary>
+        public InputList<string> TargetIds
+        {
+            get => _targetIds ?? (_targetIds = new InputList<string>());
+            set => _targetIds = value;
+        }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// Private virtual network identifier of the target
         /// </summary>
@@ -355,6 +525,14 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Filters for targets whose IP addresses look like the specified string.
+        /// Supports `*` as a wildcard character
+        /// </summary>
+        public readonly string? IpLike;
+        /// <summary>
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// IPv4 address of the target
         /// </summary>
         public readonly string? IpV4;
@@ -368,6 +546,29 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<string> Ips;
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Defines an IPv4 filter range's ending value (inclusive). Requires
+        /// `ipv4_start` to be specified as well.
+        /// </summary>
+        public readonly string? Ipv4End;
+        /// <summary>
+        /// Defines an IPv4 filter range's starting value (inclusive). Requires
+        /// `ipv4_end` to be specified as well.
+        /// </summary>
+        public readonly string? Ipv4Start;
+        /// <summary>
+        /// Defines an IPv6 filter range's ending value (inclusive). Requires
+        /// `ipv6_start` to be specified as well.
+        /// </summary>
+        public readonly string? Ipv6End;
+        /// <summary>
+        /// Defines an IPv6 filter range's starting value (inclusive). Requires
+        /// `ipv6_end` to be specified as well.
+        /// </summary>
+        public readonly string? Ipv6Start;
+        /// <summary>
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -388,6 +589,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustAccessInfrastructureTargetsResultResult> Results;
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Filters for targets that have any of the following UUIDs. Specify
+        /// `target_ids` multiple times in query parameter to build list of
+        /// candidates.
+        /// </summary>
+        public readonly ImmutableArray<string> TargetIds;
+        /// <summary>
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// Private virtual network identifier of the target
         /// </summary>
         public readonly string? VirtualNetworkId;
@@ -408,12 +618,28 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+<<<<<<< HEAD
+=======
+            string? ipLike,
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             string? ipV4,
 
             string? ipV6,
 
             ImmutableArray<string> ips,
 
+<<<<<<< HEAD
+=======
+            string? ipv4End,
+
+            string? ipv4Start,
+
+            string? ipv6End,
+
+            string? ipv6Start,
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             int? maxItems,
 
             string? modifiedAfter,
@@ -424,6 +650,11 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetZeroTrustAccessInfrastructureTargetsResultResult> results,
 
+<<<<<<< HEAD
+=======
+            ImmutableArray<string> targetIds,
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             string? virtualNetworkId)
         {
             AccountId = accountId;
@@ -433,14 +664,29 @@ namespace Pulumi.Cloudflare
             Hostname = hostname;
             HostnameContains = hostnameContains;
             Id = id;
+<<<<<<< HEAD
             IpV4 = ipV4;
             IpV6 = ipV6;
             Ips = ips;
+=======
+            IpLike = ipLike;
+            IpV4 = ipV4;
+            IpV6 = ipV6;
+            Ips = ips;
+            Ipv4End = ipv4End;
+            Ipv4Start = ipv4Start;
+            Ipv6End = ipv6End;
+            Ipv6Start = ipv6Start;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             MaxItems = maxItems;
             ModifiedAfter = modifiedAfter;
             ModifiedBefore = modifiedBefore;
             Order = order;
             Results = results;
+<<<<<<< HEAD
+=======
+            TargetIds = targetIds;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             VirtualNetworkId = virtualNetworkId;
         }
     }

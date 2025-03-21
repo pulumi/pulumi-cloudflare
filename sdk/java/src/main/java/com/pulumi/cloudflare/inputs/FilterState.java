@@ -47,6 +47,7 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+<<<<<<< HEAD
      * The unique identifier of the filter.
      * 
      */
@@ -62,6 +63,8 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * When true, indicates that the filter is currently paused.
      * 
      */
@@ -178,6 +181,7 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+<<<<<<< HEAD
          * @param filterId The unique identifier of the filter.
          * 
          * @return builder
@@ -199,6 +203,8 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param paused When true, indicates that the filter is currently paused.
          * 
          * @return builder

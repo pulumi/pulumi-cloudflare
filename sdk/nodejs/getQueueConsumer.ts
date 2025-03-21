@@ -2,10 +2,16 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+<<<<<<< HEAD
+=======
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+<<<<<<< HEAD
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -16,12 +22,17 @@ import * as utilities from "./utilities";
  *     queueId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  */
 export function getQueueConsumer(args: GetQueueConsumerArgs, opts?: pulumi.InvokeOptions): Promise<GetQueueConsumerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getQueueConsumer:getQueueConsumer", {
         "accountId": args.accountId,
+<<<<<<< HEAD
         "queueId": args.queueId,
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }, opts);
 }
 
@@ -33,10 +44,13 @@ export interface GetQueueConsumerArgs {
      * A Resource identifier.
      */
     accountId: string;
+<<<<<<< HEAD
     /**
      * A Resource identifier.
      */
     queueId: string;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 /**
@@ -48,6 +62,14 @@ export interface GetQueueConsumerResult {
      */
     readonly accountId: string;
     /**
+<<<<<<< HEAD
+=======
+     * A Resource identifier.
+     */
+    readonly consumerId: string;
+    readonly createdOn: string;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -55,6 +77,7 @@ export interface GetQueueConsumerResult {
      * A Resource identifier.
      */
     readonly queueId: string;
+<<<<<<< HEAD
 }
 /**
  * ## Example Usage
@@ -68,12 +91,30 @@ export interface GetQueueConsumerResult {
  *     queueId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
+=======
+    /**
+     * Name of a Worker
+     */
+    readonly script: string;
+    /**
+     * Name of a Worker
+     */
+    readonly scriptName: string;
+    readonly settings: outputs.GetQueueConsumerSettings;
+    readonly type: string;
+}
+/**
+ * ## Example Usage
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  */
 export function getQueueConsumerOutput(args: GetQueueConsumerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQueueConsumerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getQueueConsumer:getQueueConsumer", {
         "accountId": args.accountId,
+<<<<<<< HEAD
         "queueId": args.queueId,
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }, opts);
 }
 
@@ -85,8 +126,11 @@ export interface GetQueueConsumerOutputArgs {
      * A Resource identifier.
      */
     accountId: pulumi.Input<string>;
+<<<<<<< HEAD
     /**
      * A Resource identifier.
      */
     queueId: pulumi.Input<string>;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }

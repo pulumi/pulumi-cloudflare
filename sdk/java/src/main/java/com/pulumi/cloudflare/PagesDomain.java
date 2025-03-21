@@ -99,10 +99,17 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
         return this.domainId;
     }
     @Export(name="name", refs={String.class}, tree="[0]")
+<<<<<<< HEAD
     private Output</* @Nullable */ String> name;
 
     public Output<Optional<String>> name() {
         return Codegen.optional(this.name);
+=======
+    private Output<String> name;
+
+    public Output<String> name() {
+        return this.name;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
     /**
      * Name of the project.

@@ -12,11 +12,14 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+<<<<<<< HEAD
  * &gt; `cloudflare.Filter` is in a deprecation phase until January 15th, 2025.
+=======
+ * &gt; `cloudflare.Filter` is in a deprecation phase until June 15th, 2025.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  *   During this time period, this resource is still fully
  *   supported but you are strongly advised to move to the
  *   `cloudflare.Ruleset` resource. Full details can be found in the
@@ -58,6 +61,15 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+<<<<<<< HEAD
+=======
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/filter:Filter example &#39;&lt;zone_id&gt;/&lt;filter_id&gt;&#39;
+ * ```
+ * 
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  */
 @ResourceType(type="cloudflare:index/filter:Filter")
 public class Filter extends com.pulumi.resources.CustomResource {
@@ -90,6 +102,7 @@ public class Filter extends com.pulumi.resources.CustomResource {
         return this.expression;
     }
     /**
+<<<<<<< HEAD
      * The unique identifier of the filter.
      * 
      */
@@ -104,6 +117,8 @@ public class Filter extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.filterId);
     }
     /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * When true, indicates that the filter is currently paused.
      * 
      */

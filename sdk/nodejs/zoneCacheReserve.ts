@@ -99,7 +99,10 @@ export class ZoneCacheReserve extends pulumi.CustomResource {
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["editable"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
+<<<<<<< HEAD
             resourceInputs["zoneSettingId"] = undefined /*out*/;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZoneCacheReserve.__pulumiType, name, resourceInputs, opts);

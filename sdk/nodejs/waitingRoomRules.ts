@@ -24,6 +24,15 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+<<<<<<< HEAD
+=======
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules example '<zone_id>/<waiting_room_id>'
+ * ```
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  */
 export class WaitingRoomRules extends pulumi.CustomResource {
     /**
@@ -54,10 +63,34 @@ export class WaitingRoomRules extends pulumi.CustomResource {
     }
 
     /**
+<<<<<<< HEAD
      * The ID of the rule.
      */
     public readonly ruleId!: pulumi.Output<string | undefined>;
     public readonly rules!: pulumi.Output<outputs.WaitingRoomRulesRule[]>;
+=======
+     * The action to take when the expression matches.
+     */
+    public /*out*/ readonly action!: pulumi.Output<string>;
+    /**
+     * The description of the rule.
+     */
+    public /*out*/ readonly description!: pulumi.Output<string>;
+    /**
+     * When set to true, the rule is enabled.
+     */
+    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
+    /**
+     * Criteria defining when there is a match for the current rule.
+     */
+    public /*out*/ readonly expression!: pulumi.Output<string>;
+    public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
+    public readonly rules!: pulumi.Output<outputs.WaitingRoomRulesRule[]>;
+    /**
+     * The version of the rule.
+     */
+    public /*out*/ readonly version!: pulumi.Output<string>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public readonly waitingRoomId!: pulumi.Output<string>;
     /**
      * Identifier
@@ -77,8 +110,17 @@ export class WaitingRoomRules extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WaitingRoomRulesState | undefined;
+<<<<<<< HEAD
             resourceInputs["ruleId"] = state ? state.ruleId : undefined;
+=======
+            resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["expression"] = state ? state.expression : undefined;
+            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
             resourceInputs["waitingRoomId"] = state ? state.waitingRoomId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -96,6 +138,12 @@ export class WaitingRoomRules extends pulumi.CustomResource {
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["waitingRoomId"] = args ? args.waitingRoomId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["action"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["enabled"] = undefined /*out*/;
+            resourceInputs["expression"] = undefined /*out*/;
+            resourceInputs["lastUpdated"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WaitingRoomRules.__pulumiType, name, resourceInputs, opts);
@@ -107,10 +155,34 @@ export class WaitingRoomRules extends pulumi.CustomResource {
  */
 export interface WaitingRoomRulesState {
     /**
+<<<<<<< HEAD
      * The ID of the rule.
      */
     ruleId?: pulumi.Input<string>;
     rules?: pulumi.Input<pulumi.Input<inputs.WaitingRoomRulesRule>[]>;
+=======
+     * The action to take when the expression matches.
+     */
+    action?: pulumi.Input<string>;
+    /**
+     * The description of the rule.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * When set to true, the rule is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Criteria defining when there is a match for the current rule.
+     */
+    expression?: pulumi.Input<string>;
+    lastUpdated?: pulumi.Input<string>;
+    rules?: pulumi.Input<pulumi.Input<inputs.WaitingRoomRulesRule>[]>;
+    /**
+     * The version of the rule.
+     */
+    version?: pulumi.Input<string>;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     waitingRoomId?: pulumi.Input<string>;
     /**
      * Identifier
@@ -122,10 +194,13 @@ export interface WaitingRoomRulesState {
  * The set of arguments for constructing a WaitingRoomRules resource.
  */
 export interface WaitingRoomRulesArgs {
+<<<<<<< HEAD
     /**
      * The ID of the rule.
      */
     ruleId?: pulumi.Input<string>;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     rules: pulumi.Input<pulumi.Input<inputs.WaitingRoomRulesRule>[]>;
     waitingRoomId: pulumi.Input<string>;
     /**

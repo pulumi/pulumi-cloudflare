@@ -82,6 +82,10 @@ class _AuthenticatedOriginPullsState:
                  expires_on: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  issuer: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
+=======
+                 private_key: Optional[pulumi.Input[str]] = None,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  serial_number: Optional[pulumi.Input[str]] = None,
                  signature: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -99,6 +103,10 @@ class _AuthenticatedOriginPullsState:
         :param pulumi.Input[str] expires_on: The date when the certificate expires.
         :param pulumi.Input[str] hostname: The hostname on the origin for which the client certificate uploaded will be used.
         :param pulumi.Input[str] issuer: The certificate authority that issued the certificate.
+<<<<<<< HEAD
+=======
+        :param pulumi.Input[str] private_key: The hostname certificate's private key.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] serial_number: The serial number on the uploaded certificate.
         :param pulumi.Input[str] signature: The type of hash used for the certificate.
         :param pulumi.Input[str] status: Status of the certificate or the association.
@@ -127,6 +135,11 @@ class _AuthenticatedOriginPullsState:
             pulumi.set(__self__, "hostname", hostname)
         if issuer is not None:
             pulumi.set(__self__, "issuer", issuer)
+<<<<<<< HEAD
+=======
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if serial_number is not None:
             pulumi.set(__self__, "serial_number", serial_number)
         if signature is not None:
@@ -268,6 +281,21 @@ class _AuthenticatedOriginPullsState:
         pulumi.set(self, "issuer", value)
 
     @property
+<<<<<<< HEAD
+=======
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hostname certificate's private key.
+        """
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key", value)
+
+    @property
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="serialNumber")
     def serial_number(self) -> Optional[pulumi.Input[str]]:
         """
@@ -397,6 +425,10 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
             __props__.__dict__["enabled"] = None
             __props__.__dict__["expires_on"] = None
             __props__.__dict__["issuer"] = None
+<<<<<<< HEAD
+=======
+            __props__.__dict__["private_key"] = None
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             __props__.__dict__["serial_number"] = None
             __props__.__dict__["signature"] = None
             __props__.__dict__["status"] = None
@@ -422,6 +454,10 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
             expires_on: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             issuer: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
+=======
+            private_key: Optional[pulumi.Input[str]] = None,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             serial_number: Optional[pulumi.Input[str]] = None,
             signature: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -444,6 +480,10 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         :param pulumi.Input[str] expires_on: The date when the certificate expires.
         :param pulumi.Input[str] hostname: The hostname on the origin for which the client certificate uploaded will be used.
         :param pulumi.Input[str] issuer: The certificate authority that issued the certificate.
+<<<<<<< HEAD
+=======
+        :param pulumi.Input[str] private_key: The hostname certificate's private key.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] serial_number: The serial number on the uploaded certificate.
         :param pulumi.Input[str] signature: The type of hash used for the certificate.
         :param pulumi.Input[str] status: Status of the certificate or the association.
@@ -465,6 +505,10 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         __props__.__dict__["expires_on"] = expires_on
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["issuer"] = issuer
+<<<<<<< HEAD
+=======
+        __props__.__dict__["private_key"] = private_key
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         __props__.__dict__["serial_number"] = serial_number
         __props__.__dict__["signature"] = signature
         __props__.__dict__["status"] = status
@@ -558,6 +602,17 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         return pulumi.get(self, "issuer")
 
     @property
+<<<<<<< HEAD
+=======
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> pulumi.Output[str]:
+        """
+        The hostname certificate's private key.
+        """
+        return pulumi.get(self, "private_key")
+
+    @property
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="serialNumber")
     def serial_number(self) -> pulumi.Output[str]:
         """

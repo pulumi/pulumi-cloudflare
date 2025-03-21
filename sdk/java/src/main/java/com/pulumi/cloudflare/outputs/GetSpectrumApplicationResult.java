@@ -17,7 +17,11 @@ import java.util.Objects;
 @CustomType
 public final class GetSpectrumApplicationResult {
     /**
+<<<<<<< HEAD
      * @return Identifier
+=======
+     * @return App identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     private String appId;
@@ -95,14 +99,22 @@ public final class GetSpectrumApplicationResult {
      */
     private String trafficType;
     /**
+<<<<<<< HEAD
      * @return Identifier
+=======
+     * @return Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     private String zoneId;
 
     private GetSpectrumApplicationResult() {}
     /**
+<<<<<<< HEAD
      * @return Identifier
+=======
+     * @return App identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public String appId() {
@@ -210,7 +222,11 @@ public final class GetSpectrumApplicationResult {
         return this.trafficType;
     }
     /**
+<<<<<<< HEAD
      * @return Identifier
+=======
+     * @return Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public String zoneId() {

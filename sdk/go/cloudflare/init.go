@@ -89,6 +89,13 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DnsFirewall{}
 	case "cloudflare:index/dnsRecord:DnsRecord":
 		r = &DnsRecord{}
+<<<<<<< HEAD
+=======
+	case "cloudflare:index/dnsSettings:DnsSettings":
+		r = &DnsSettings{}
+	case "cloudflare:index/dnsSettingsInternalView:DnsSettingsInternalView":
+		r = &DnsSettingsInternalView{}
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	case "cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl":
 		r = &DnsZoneTransfersAcl{}
 	case "cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming":
@@ -197,6 +204,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &QueueConsumer{}
 	case "cloudflare:index/r2Bucket:R2Bucket":
 		r = &R2Bucket{}
+	case "cloudflare:index/r2BucketCors:R2BucketCors":
+		r = &R2BucketCors{}
+	case "cloudflare:index/r2BucketEventNotification:R2BucketEventNotification":
+		r = &R2BucketEventNotification{}
+	case "cloudflare:index/r2BucketLifecycle:R2BucketLifecycle":
+		r = &R2BucketLifecycle{}
+	case "cloudflare:index/r2BucketLock:R2BucketLock":
+		r = &R2BucketLock{}
+	case "cloudflare:index/r2BucketSippy:R2BucketSippy":
+		r = &R2BucketSippy{}
+	case "cloudflare:index/r2CustomDomain:R2CustomDomain":
+		r = &R2CustomDomain{}
+	case "cloudflare:index/r2ManagedDomain:R2ManagedDomain":
+		r = &R2ManagedDomain{}
 	case "cloudflare:index/rateLimit:RateLimit":
 		r = &RateLimit{}
 	case "cloudflare:index/record:Record":
@@ -329,6 +350,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustDnsLocation{}
 	case "cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate":
 		r = &ZeroTrustGatewayCertificate{}
+	case "cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging":
+		r = &ZeroTrustGatewayLogging{}
 	case "cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy":
 		r = &ZeroTrustGatewayPolicy{}
 	case "cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint":
@@ -570,16 +593,44 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+<<<<<<< HEAD
 		"index/dnsZoneTransfersAcl",
+=======
+		"index/dnsSettings",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+<<<<<<< HEAD
 		"index/dnsZoneTransfersIncoming",
+=======
+		"index/dnsSettingsInternalView",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+<<<<<<< HEAD
+		"index/dnsZoneTransfersOutgoing",
+=======
+		"index/dnsZoneTransfersAcl",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+<<<<<<< HEAD
+		"index/dnsZoneTransfersPeer",
+=======
+		"index/dnsZoneTransfersIncoming",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+<<<<<<< HEAD
+=======
 		"index/dnsZoneTransfersOutgoing",
 		&module{version},
 	)
@@ -590,6 +641,7 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 		"index/dnsZoneTransfersTsig",
 		&module{version},
 	)
@@ -840,6 +892,41 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/r2BucketCors",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/r2BucketEventNotification",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/r2BucketLifecycle",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/r2BucketLock",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/r2BucketSippy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/r2CustomDomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/r2ManagedDomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/rateLimit",
 		&module{version},
 	)
@@ -1030,6 +1117,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/workersScriptSubdomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/workersSecret",
 		&module{version},
 	)
@@ -1166,6 +1258,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zeroTrustGatewayCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustGatewayLogging",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

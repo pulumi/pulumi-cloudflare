@@ -115,16 +115,39 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustGatewayProxyEndpointResult
     {
         public readonly string AccountId;
+<<<<<<< HEAD
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string ProxyEndpointId;
+=======
+        public readonly string CreatedAt;
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
+        /// A list of CIDRs to restrict ingress connections.
+        /// </summary>
+        public readonly ImmutableArray<string> Ips;
+        /// <summary>
+        /// The name of the proxy endpoint.
+        /// </summary>
+        public readonly string Name;
+        public readonly string ProxyEndpointId;
+        /// <summary>
+        /// The subdomain to be used as the destination in the proxy client.
+        /// </summary>
+        public readonly string Subdomain;
+        public readonly string UpdatedAt;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         [OutputConstructor]
         private GetZeroTrustGatewayProxyEndpointResult(
             string accountId,
 
+<<<<<<< HEAD
             string id,
 
             string proxyEndpointId)
@@ -132,6 +155,30 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             Id = id;
             ProxyEndpointId = proxyEndpointId;
+=======
+            string createdAt,
+
+            string id,
+
+            ImmutableArray<string> ips,
+
+            string name,
+
+            string proxyEndpointId,
+
+            string subdomain,
+
+            string updatedAt)
+        {
+            AccountId = accountId;
+            CreatedAt = createdAt;
+            Id = id;
+            Ips = ips;
+            Name = name;
+            ProxyEndpointId = proxyEndpointId;
+            Subdomain = subdomain;
+            UpdatedAt = updatedAt;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
     }
 }

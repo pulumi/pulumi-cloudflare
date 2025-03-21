@@ -31,9 +31,23 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         return this.accountId;
     }
 
+<<<<<<< HEAD
     @Import(name="name", required=true)
     private Output<String> name;
 
+=======
+    /**
+     * D1 database name.
+     * 
+     */
+    @Import(name="name", required=true)
+    private Output<String> name;
+
+    /**
+     * @return D1 database name.
+     * 
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Output<String> name() {
         return this.name;
     }
@@ -100,6 +114,15 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
             return accountId(Output.of(accountId));
         }
 
+<<<<<<< HEAD
+=======
+        /**
+         * @param name D1 database name.
+         * 
+         * @return builder
+         * 
+         */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
@@ -107,6 +130,31 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+<<<<<<< HEAD
+         * @param primaryLocationHint Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+=======
+         * @param name D1 database name.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryLocationHint(@Nullable Output<String> primaryLocationHint) {
+            $.primaryLocationHint = primaryLocationHint;
+            return this;
+        }
+
+        /**
+         * @param primaryLocationHint Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryLocationHint(String primaryLocationHint) {
+            return primaryLocationHint(Output.of(primaryLocationHint));
         }
 
         /**

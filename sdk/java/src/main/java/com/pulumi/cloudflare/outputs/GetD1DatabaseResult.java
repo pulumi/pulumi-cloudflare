@@ -24,6 +24,13 @@ public final class GetD1DatabaseResult {
      * 
      */
     private String createdAt;
+<<<<<<< HEAD
+=======
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     private @Nullable String databaseId;
     /**
      * @return The D1 database&#39;s size, in bytes.
@@ -32,12 +39,29 @@ public final class GetD1DatabaseResult {
     private Double fileSize;
     private @Nullable GetD1DatabaseFilter filter;
     /**
+<<<<<<< HEAD
      * @return The ID of this resource.
      * 
      */
     private String id;
     private String name;
     private Double numTables;
+=======
+     * @return D1 database identifier (UUID).
+     * 
+     */
+    private String id;
+    /**
+     * @return D1 database name.
+     * 
+     */
+    private String name;
+    private Double numTables;
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     private String uuid;
     private String version;
 
@@ -56,6 +80,13 @@ public final class GetD1DatabaseResult {
     public String createdAt() {
         return this.createdAt;
     }
+<<<<<<< HEAD
+=======
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Optional<String> databaseId() {
         return Optional.ofNullable(this.databaseId);
     }
@@ -70,18 +101,36 @@ public final class GetD1DatabaseResult {
         return Optional.ofNullable(this.filter);
     }
     /**
+<<<<<<< HEAD
      * @return The ID of this resource.
+=======
+     * @return D1 database identifier (UUID).
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public String id() {
         return this.id;
     }
+<<<<<<< HEAD
+=======
+    /**
+     * @return D1 database name.
+     * 
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public String name() {
         return this.name;
     }
     public Double numTables() {
         return this.numTables;
     }
+<<<<<<< HEAD
+=======
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public String uuid() {
         return this.uuid;
     }

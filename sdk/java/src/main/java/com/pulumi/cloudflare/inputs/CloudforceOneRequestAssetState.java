@@ -32,6 +32,7 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
     }
 
     /**
+<<<<<<< HEAD
      * UUID
      * 
      */
@@ -47,6 +48,8 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
     }
 
     /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Asset creation time
      * 
      */
@@ -170,7 +173,10 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
 
     private CloudforceOneRequestAssetState(CloudforceOneRequestAssetState $) {
         this.accountIdentifier = $.accountIdentifier;
+<<<<<<< HEAD
         this.assetIdentifer = $.assetIdentifer;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.created = $.created;
         this.description = $.description;
         this.fileType = $.fileType;
@@ -221,6 +227,7 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
         }
 
         /**
+<<<<<<< HEAD
          * @param assetIdentifer UUID
          * 
          * @return builder
@@ -242,6 +249,8 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
         }
 
         /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param created Asset creation time
          * 
          * @return builder

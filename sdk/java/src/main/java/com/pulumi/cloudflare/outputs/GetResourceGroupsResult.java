@@ -3,12 +3,74 @@
 
 package com.pulumi.cloudflare.outputs;
 
+<<<<<<< HEAD
 import com.pulumi.core.annotations.CustomType;
+=======
+import com.pulumi.cloudflare.outputs.GetResourceGroupsResultMeta;
+import com.pulumi.cloudflare.outputs.GetResourceGroupsResultScope;
+import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.String;
+import java.util.List;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.util.Objects;
 
 @CustomType
 public final class GetResourceGroupsResult {
+<<<<<<< HEAD
     private GetResourceGroupsResult() {}
+=======
+    /**
+     * @return Identifier of the group.
+     * 
+     */
+    private String id;
+    /**
+     * @return Attributes associated to the resource group.
+     * 
+     */
+    private GetResourceGroupsResultMeta meta;
+    /**
+     * @return Name of the resource group.
+     * 
+     */
+    private String name;
+    /**
+     * @return The scope associated to the resource group
+     * 
+     */
+    private List<GetResourceGroupsResultScope> scopes;
+
+    private GetResourceGroupsResult() {}
+    /**
+     * @return Identifier of the group.
+     * 
+     */
+    public String id() {
+        return this.id;
+    }
+    /**
+     * @return Attributes associated to the resource group.
+     * 
+     */
+    public GetResourceGroupsResultMeta meta() {
+        return this.meta;
+    }
+    /**
+     * @return Name of the resource group.
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return The scope associated to the resource group
+     * 
+     */
+    public List<GetResourceGroupsResultScope> scopes() {
+        return this.scopes;
+    }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     public static Builder builder() {
         return new Builder();
@@ -19,6 +81,7 @@ public final class GetResourceGroupsResult {
     }
     @CustomType.Builder
     public static final class Builder {
+<<<<<<< HEAD
         public Builder() {}
         public Builder(GetResourceGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -26,6 +89,62 @@ public final class GetResourceGroupsResult {
 
         public GetResourceGroupsResult build() {
             final var _resultValue = new GetResourceGroupsResult();
+=======
+        private String id;
+        private GetResourceGroupsResultMeta meta;
+        private String name;
+        private List<GetResourceGroupsResultScope> scopes;
+        public Builder() {}
+        public Builder(GetResourceGroupsResult defaults) {
+    	      Objects.requireNonNull(defaults);
+    	      this.id = defaults.id;
+    	      this.meta = defaults.meta;
+    	      this.name = defaults.name;
+    	      this.scopes = defaults.scopes;
+        }
+
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsResult", "id");
+            }
+            this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder meta(GetResourceGroupsResultMeta meta) {
+            if (meta == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsResult", "meta");
+            }
+            this.meta = meta;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsResult", "name");
+            }
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder scopes(List<GetResourceGroupsResultScope> scopes) {
+            if (scopes == null) {
+              throw new MissingRequiredPropertyException("GetResourceGroupsResult", "scopes");
+            }
+            this.scopes = scopes;
+            return this;
+        }
+        public Builder scopes(GetResourceGroupsResultScope... scopes) {
+            return scopes(List.of(scopes));
+        }
+        public GetResourceGroupsResult build() {
+            final var _resultValue = new GetResourceGroupsResult();
+            _resultValue.id = id;
+            _resultValue.meta = meta;
+            _resultValue.name = name;
+            _resultValue.scopes = scopes;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return _resultValue;
         }
     }

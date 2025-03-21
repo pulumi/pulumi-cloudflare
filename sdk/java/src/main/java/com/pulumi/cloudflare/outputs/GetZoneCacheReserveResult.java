@@ -17,7 +17,7 @@ public final class GetZoneCacheReserveResult {
      */
     private Boolean editable;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return ID of the zone setting.
      * 
      */
     private String id;
@@ -51,7 +51,7 @@ public final class GetZoneCacheReserveResult {
         return this.editable;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return ID of the zone setting.
      * 
      */
     public String id() {

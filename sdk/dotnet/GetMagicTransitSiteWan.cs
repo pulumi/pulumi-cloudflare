@@ -42,8 +42,13 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
+<<<<<<< HEAD
         [Input("wanId", required: true)]
         public string WanId { get; set; } = null!;
+=======
+        [Input("wanId")]
+        public string? WanId { get; set; }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         public GetMagicTransitSiteWanArgs()
         {
@@ -62,8 +67,13 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
+<<<<<<< HEAD
         [Input("wanId", required: true)]
         public Input<string> WanId { get; set; } = null!;
+=======
+        [Input("wanId")]
+        public Input<string>? WanId { get; set; }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         public GetMagicTransitSiteWanInvokeArgs()
         {
@@ -108,7 +118,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
+<<<<<<< HEAD
         public readonly string WanId;
+=======
+        public readonly string? WanId;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         [OutputConstructor]
         private GetMagicTransitSiteWanResult(
@@ -130,7 +144,11 @@ namespace Pulumi.Cloudflare
 
             int vlanTag,
 
+<<<<<<< HEAD
             string wanId)
+=======
+            string? wanId)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         {
             AccountId = accountId;
             HealthCheckRate = healthCheckRate;

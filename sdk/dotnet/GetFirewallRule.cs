@@ -13,6 +13,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// ## Example Usage
+<<<<<<< HEAD
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -31,12 +32,15 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         public static Task<GetFirewallRuleResult> InvokeAsync(GetFirewallRuleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFirewallRuleResult>("cloudflare:index/getFirewallRule:getFirewallRule", args ?? new GetFirewallRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+<<<<<<< HEAD
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -55,12 +59,15 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         public static Output<GetFirewallRuleResult> Invoke(GetFirewallRuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFirewallRuleResult>("cloudflare:index/getFirewallRule:getFirewallRule", args ?? new GetFirewallRuleInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+<<<<<<< HEAD
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -79,6 +86,8 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         public static Output<GetFirewallRuleResult> Invoke(GetFirewallRuleInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetFirewallRuleResult>("cloudflare:index/getFirewallRule:getFirewallRule", args ?? new GetFirewallRuleInvokeArgs(), options.WithDefaults());
@@ -90,6 +99,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier of the firewall rule.
         /// </summary>
+<<<<<<< HEAD
         [Input("id")]
         public string? Id { get; set; }
 
@@ -98,6 +108,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("ruleId", required: true)]
         public string RuleId { get; set; } = null!;
+=======
+        [Input("ruleId")]
+        public string? RuleId { get; set; }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Identifier
@@ -116,6 +130,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier of the firewall rule.
         /// </summary>
+<<<<<<< HEAD
         [Input("id")]
         public Input<string>? Id { get; set; }
 
@@ -124,6 +139,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("ruleId", required: true)]
         public Input<string> RuleId { get; set; } = null!;
+=======
+        [Input("ruleId")]
+        public Input<string>? RuleId { get; set; }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Identifier
@@ -149,7 +168,10 @@ namespace Pulumi.Cloudflare
         /// An informative summary of the firewall rule.
         /// </summary>
         public readonly string Description;
+<<<<<<< HEAD
         public readonly Outputs.GetFirewallRuleFilterResult Filter;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// The unique identifier of the firewall rule.
         /// </summary>
@@ -170,7 +192,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique identifier of the firewall rule.
         /// </summary>
+<<<<<<< HEAD
         public readonly string RuleId;
+=======
+        public readonly string? RuleId;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// Identifier
         /// </summary>
@@ -182,8 +208,11 @@ namespace Pulumi.Cloudflare
 
             string description,
 
+<<<<<<< HEAD
             Outputs.GetFirewallRuleFilterResult filter,
 
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             string id,
 
             bool paused,
@@ -194,13 +223,20 @@ namespace Pulumi.Cloudflare
 
             string @ref,
 
+<<<<<<< HEAD
             string ruleId,
+=======
+            string? ruleId,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
             string zoneId)
         {
             Action = action;
             Description = description;
+<<<<<<< HEAD
             Filter = filter;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             Id = id;
             Paused = paused;
             Priority = priority;

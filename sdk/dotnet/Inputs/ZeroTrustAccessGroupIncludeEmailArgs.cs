@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
+<<<<<<<< HEAD:sdk/dotnet/Inputs/ZeroTrustAccessGroupIncludeEmailArgs.cs
     public sealed class ZeroTrustAccessGroupIncludeEmailArgs : global::Pulumi.ResourceArgs
+========
+    public sealed class ZeroTrustAccessGroupExcludeEmailArgs : global::Pulumi.ResourceArgs
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/dotnet/Inputs/ZeroTrustAccessGroupExcludeEmailArgs.cs
     {
         /// <summary>
         /// The email of the user.
@@ -18,9 +22,16 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
 
+<<<<<<<< HEAD:sdk/dotnet/Inputs/ZeroTrustAccessGroupIncludeEmailArgs.cs
         public ZeroTrustAccessGroupIncludeEmailArgs()
         {
         }
         public static new ZeroTrustAccessGroupIncludeEmailArgs Empty => new ZeroTrustAccessGroupIncludeEmailArgs();
+========
+        public ZeroTrustAccessGroupExcludeEmailArgs()
+        {
+        }
+        public static new ZeroTrustAccessGroupExcludeEmailArgs Empty => new ZeroTrustAccessGroupExcludeEmailArgs();
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/dotnet/Inputs/ZeroTrustAccessGroupExcludeEmailArgs.cs
     }
 }

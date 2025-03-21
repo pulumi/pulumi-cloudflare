@@ -35,6 +35,7 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
+<<<<<<< HEAD
  * public class App }{{@code
  *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
@@ -51,6 +52,24 @@ import javax.annotation.Nullable;
  * 
  *     }}{@code
  * }}{@code
+=======
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleEmailSecurityBlockSender = new EmailSecurityBlockSender("exampleEmailSecurityBlockSender", EmailSecurityBlockSenderArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .isRegex(true)
+ *             .pattern("x")
+ *             .patternType("EMAIL")
+ *             .comments("comments")
+ *             .build());
+ * 
+ *     }
+ * }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;

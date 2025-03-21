@@ -31,12 +31,14 @@ namespace Pulumi.Cloudflare
     /// });
     /// ```
     /// 
-    /// &gt; Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/reference/data-location/#available-hints).
-    /// 
     /// ## Import
     /// 
     /// ```sh
+<<<<<<< HEAD
     /// $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '&lt;account_id&gt;/&lt;bucket_name&gt;'
+=======
+    /// $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '&lt;account_id&gt;/&lt;bucket_name&gt;/&lt;jurisdiction&gt;'
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/r2Bucket:R2Bucket")]

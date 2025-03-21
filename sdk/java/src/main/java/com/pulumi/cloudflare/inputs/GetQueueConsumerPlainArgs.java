@@ -9,25 +9,49 @@ import java.lang.String;
 import java.util.Objects;
 
 
+<<<<<<< HEAD
+=======
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamKeyPlainArgs.java
+public final class GetStreamKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
+
+    public static final GetStreamKeyPlainArgs Empty = new GetStreamKeyPlainArgs();
+
+    /**
+     * Identifier
+========
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 public final class GetQueueConsumerPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetQueueConsumerPlainArgs Empty = new GetQueueConsumerPlainArgs();
 
     /**
      * A Resource identifier.
+<<<<<<< HEAD
+=======
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetQueueConsumerPlainArgs.java
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
+<<<<<<< HEAD
      * @return A Resource identifier.
+=======
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamKeyPlainArgs.java
+     * @return Identifier
+========
+     * @return A Resource identifier.
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetQueueConsumerPlainArgs.java
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public String accountId() {
         return this.accountId;
     }
 
+<<<<<<< HEAD
     /**
      * A Resource identifier.
      * 
@@ -48,16 +72,53 @@ public final class GetQueueConsumerPlainArgs extends com.pulumi.resources.Invoke
     private GetQueueConsumerPlainArgs(GetQueueConsumerPlainArgs $) {
         this.accountId = $.accountId;
         this.queueId = $.queueId;
+=======
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamKeyPlainArgs.java
+    private GetStreamKeyPlainArgs() {}
+
+    private GetStreamKeyPlainArgs(GetStreamKeyPlainArgs $) {
+========
+    private GetQueueConsumerPlainArgs() {}
+
+    private GetQueueConsumerPlainArgs(GetQueueConsumerPlainArgs $) {
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetQueueConsumerPlainArgs.java
+        this.accountId = $.accountId;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     public static Builder builder() {
         return new Builder();
     }
+<<<<<<< HEAD
     public static Builder builder(GetQueueConsumerPlainArgs defaults) {
+=======
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamKeyPlainArgs.java
+    public static Builder builder(GetStreamKeyPlainArgs defaults) {
+========
+    public static Builder builder(GetQueueConsumerPlainArgs defaults) {
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetQueueConsumerPlainArgs.java
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return new Builder(defaults);
     }
 
     public static final class Builder {
+<<<<<<< HEAD
+=======
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamKeyPlainArgs.java
+        private GetStreamKeyPlainArgs $;
+
+        public Builder() {
+            $ = new GetStreamKeyPlainArgs();
+        }
+
+        public Builder(GetStreamKeyPlainArgs defaults) {
+            $ = new GetStreamKeyPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accountId Identifier
+========
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private GetQueueConsumerPlainArgs $;
 
         public Builder() {
@@ -70,6 +131,10 @@ public final class GetQueueConsumerPlainArgs extends com.pulumi.resources.Invoke
 
         /**
          * @param accountId A Resource identifier.
+<<<<<<< HEAD
+=======
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetQueueConsumerPlainArgs.java
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 
@@ -79,6 +144,7 @@ public final class GetQueueConsumerPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
+<<<<<<< HEAD
         /**
          * @param queueId A Resource identifier.
          * 
@@ -96,6 +162,17 @@ public final class GetQueueConsumerPlainArgs extends com.pulumi.resources.Invoke
             }
             if ($.queueId == null) {
                 throw new MissingRequiredPropertyException("GetQueueConsumerPlainArgs", "queueId");
+=======
+<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamKeyPlainArgs.java
+        public GetStreamKeyPlainArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetStreamKeyPlainArgs", "accountId");
+========
+        public GetQueueConsumerPlainArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetQueueConsumerPlainArgs", "accountId");
+>>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetQueueConsumerPlainArgs.java
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             }
             return $;
         }

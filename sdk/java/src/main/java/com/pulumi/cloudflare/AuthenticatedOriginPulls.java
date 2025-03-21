@@ -209,6 +209,23 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
         return this.issuer;
     }
     /**
+<<<<<<< HEAD
+=======
+     * The hostname certificate&#39;s private key.
+     * 
+     */
+    @Export(name="privateKey", refs={String.class}, tree="[0]")
+    private Output<String> privateKey;
+
+    /**
+     * @return The hostname certificate&#39;s private key.
+     * 
+     */
+    public Output<String> privateKey() {
+        return this.privateKey;
+    }
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The serial number on the uploaded certificate.
      * 
      */

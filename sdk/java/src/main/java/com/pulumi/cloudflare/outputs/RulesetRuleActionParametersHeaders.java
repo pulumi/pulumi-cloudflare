@@ -4,6 +4,10 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+<<<<<<< HEAD
+=======
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,7 +20,11 @@ public final class RulesetRuleActionParametersHeaders {
      * 
      */
     private @Nullable String expression;
+<<<<<<< HEAD
     private @Nullable String operation;
+=======
+    private String operation;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return Static value for the header.
      * 
@@ -31,8 +39,13 @@ public final class RulesetRuleActionParametersHeaders {
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
+<<<<<<< HEAD
     public Optional<String> operation() {
         return Optional.ofNullable(this.operation);
+=======
+    public String operation() {
+        return this.operation;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
     /**
      * @return Static value for the header.
@@ -52,7 +65,11 @@ public final class RulesetRuleActionParametersHeaders {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String expression;
+<<<<<<< HEAD
         private @Nullable String operation;
+=======
+        private String operation;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private @Nullable String value;
         public Builder() {}
         public Builder(RulesetRuleActionParametersHeaders defaults) {
@@ -69,8 +86,15 @@ public final class RulesetRuleActionParametersHeaders {
             return this;
         }
         @CustomType.Setter
+<<<<<<< HEAD
         public Builder operation(@Nullable String operation) {
 
+=======
+        public Builder operation(String operation) {
+            if (operation == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleActionParametersHeaders", "operation");
+            }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             this.operation = operation;
             return this;
         }

@@ -200,10 +200,17 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
 
         example_email_security_block_sender = cloudflare.EmailSecurityBlockSender("example_email_security_block_sender",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
+<<<<<<< HEAD
             is_regex=False,
             pattern="test@example.com",
             pattern_type="EMAIL",
             comments="block sender with email test@example.com")
+=======
+            is_regex=True,
+            pattern="x",
+            pattern_type="EMAIL",
+            comments="comments")
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ```
 
         ## Import
@@ -231,10 +238,17 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
 
         example_email_security_block_sender = cloudflare.EmailSecurityBlockSender("example_email_security_block_sender",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
+<<<<<<< HEAD
             is_regex=False,
             pattern="test@example.com",
             pattern_type="EMAIL",
             comments="block sender with email test@example.com")
+=======
+            is_regex=True,
+            pattern="x",
+            pattern_type="EMAIL",
+            comments="comments")
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ```
 
         ## Import

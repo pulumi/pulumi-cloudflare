@@ -14,6 +14,39 @@ import (
 
 // ## Example Usage
 //
+<<<<<<< HEAD
+=======
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewHostnameTlsSetting(ctx, "example_hostname_tls_setting", &cloudflare.HostnameTlsSettingArgs{
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SettingId: pulumi.String("ciphers"),
+//				Hostname:  pulumi.String("app.example.com"),
+//				Value: pulumi.Any{
+//					"ECDHE-RSA-AES128-GCM-SHA256",
+//					"AES128-GCM-SHA256",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // ## Import
 //
 // ```sh
@@ -33,7 +66,11 @@ type HostnameTlsSetting struct {
 	// This is the time the tls setting was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// The tls setting value.
+<<<<<<< HEAD
 	Value pulumi.Float64Output `pulumi:"value"`
+=======
+	Value pulumi.AnyOutput `pulumi:"value"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -88,7 +125,11 @@ type hostnameTlsSettingState struct {
 	// This is the time the tls setting was updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// The tls setting value.
+<<<<<<< HEAD
 	Value *float64 `pulumi:"value"`
+=======
+	Value interface{} `pulumi:"value"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -105,7 +146,11 @@ type HostnameTlsSettingState struct {
 	// This is the time the tls setting was updated.
 	UpdatedAt pulumi.StringPtrInput
 	// The tls setting value.
+<<<<<<< HEAD
 	Value pulumi.Float64PtrInput
+=======
+	Value pulumi.Input
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
@@ -120,7 +165,11 @@ type hostnameTlsSettingArgs struct {
 	// The TLS Setting name.
 	SettingId string `pulumi:"settingId"`
 	// The tls setting value.
+<<<<<<< HEAD
 	Value float64 `pulumi:"value"`
+=======
+	Value interface{} `pulumi:"value"`
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -132,7 +181,11 @@ type HostnameTlsSettingArgs struct {
 	// The TLS Setting name.
 	SettingId pulumi.StringInput
 	// The tls setting value.
+<<<<<<< HEAD
 	Value pulumi.Float64Input
+=======
+	Value pulumi.Input
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId pulumi.StringInput
 }
@@ -250,8 +303,13 @@ func (o HostnameTlsSettingOutput) UpdatedAt() pulumi.StringOutput {
 }
 
 // The tls setting value.
+<<<<<<< HEAD
 func (o HostnameTlsSettingOutput) Value() pulumi.Float64Output {
 	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.Float64Output { return v.Value }).(pulumi.Float64Output)
+=======
+func (o HostnameTlsSettingOutput) Value() pulumi.AnyOutput {
+	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.AnyOutput { return v.Value }).(pulumi.AnyOutput)
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // Identifier

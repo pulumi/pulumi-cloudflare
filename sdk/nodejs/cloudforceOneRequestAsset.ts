@@ -18,6 +18,15 @@ import * as utilities from "./utilities";
  *     perPage: 10,
  * });
  * ```
+<<<<<<< HEAD
+=======
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example '<account_identifier>/<request_identifier>/<asset_identifer>'
+ * ```
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  */
 export class CloudforceOneRequestAsset extends pulumi.CustomResource {
     /**
@@ -52,10 +61,13 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
      */
     public readonly accountIdentifier!: pulumi.Output<string>;
     /**
+<<<<<<< HEAD
      * UUID
      */
     public readonly assetIdentifer!: pulumi.Output<string | undefined>;
     /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Asset creation time
      */
     public /*out*/ readonly created!: pulumi.Output<string>;
@@ -102,7 +114,10 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CloudforceOneRequestAssetState | undefined;
             resourceInputs["accountIdentifier"] = state ? state.accountIdentifier : undefined;
+<<<<<<< HEAD
             resourceInputs["assetIdentifer"] = state ? state.assetIdentifer : undefined;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["fileType"] = state ? state.fileType : undefined;
@@ -126,7 +141,10 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
                 throw new Error("Missing required property 'requestIdentifier'");
             }
             resourceInputs["accountIdentifier"] = args ? args.accountIdentifier : undefined;
+<<<<<<< HEAD
             resourceInputs["assetIdentifer"] = args ? args.assetIdentifer : undefined;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resourceInputs["page"] = args ? args.page : undefined;
             resourceInputs["perPage"] = args ? args.perPage : undefined;
             resourceInputs["requestIdentifier"] = args ? args.requestIdentifier : undefined;
@@ -150,10 +168,13 @@ export interface CloudforceOneRequestAssetState {
      */
     accountIdentifier?: pulumi.Input<string>;
     /**
+<<<<<<< HEAD
      * UUID
      */
     assetIdentifer?: pulumi.Input<string>;
     /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Asset creation time
      */
     created?: pulumi.Input<string>;
@@ -196,10 +217,13 @@ export interface CloudforceOneRequestAssetArgs {
      */
     accountIdentifier: pulumi.Input<string>;
     /**
+<<<<<<< HEAD
      * UUID
      */
     assetIdentifer?: pulumi.Input<string>;
     /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Page number of results
      */
     page: pulumi.Input<number>;

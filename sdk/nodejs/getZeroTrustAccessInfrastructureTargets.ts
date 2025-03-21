@@ -20,12 +20,27 @@ import * as utilities from "./utilities";
  *     direction: "asc",
  *     hostname: "hostname",
  *     hostnameContains: "hostname_contains",
+<<<<<<< HEAD
  *     ipV4: "ip_v4",
  *     ipV6: "ip_v6",
  *     ips: ["string"],
  *     modifiedAfter: "2019-12-27T18:11:19.117Z",
  *     modifiedBefore: "2019-12-27T18:11:19.117Z",
  *     order: "hostname",
+=======
+ *     ipLike: "ip_like",
+ *     ipV4: "ip_v4",
+ *     ipV6: "ip_v6",
+ *     ips: ["string"],
+ *     ipv4End: "ipv4_end",
+ *     ipv4Start: "ipv4_start",
+ *     ipv6End: "ipv6_end",
+ *     ipv6Start: "ipv6_start",
+ *     modifiedAfter: "2019-12-27T18:11:19.117Z",
+ *     modifiedBefore: "2019-12-27T18:11:19.117Z",
+ *     order: "hostname",
+ *     targetIds: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  *     virtualNetworkId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
@@ -39,13 +54,28 @@ export function getZeroTrustAccessInfrastructureTargets(args: GetZeroTrustAccess
         "direction": args.direction,
         "hostname": args.hostname,
         "hostnameContains": args.hostnameContains,
+<<<<<<< HEAD
         "ipV4": args.ipV4,
         "ipV6": args.ipV6,
         "ips": args.ips,
+=======
+        "ipLike": args.ipLike,
+        "ipV4": args.ipV4,
+        "ipV6": args.ipV6,
+        "ips": args.ips,
+        "ipv4End": args.ipv4End,
+        "ipv4Start": args.ipv4Start,
+        "ipv6End": args.ipv6End,
+        "ipv6Start": args.ipv6Start,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "maxItems": args.maxItems,
         "modifiedAfter": args.modifiedAfter,
         "modifiedBefore": args.modifiedBefore,
         "order": args.order,
+<<<<<<< HEAD
+=======
+        "targetIds": args.targetIds,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "virtualNetworkId": args.virtualNetworkId,
     }, opts);
 }
@@ -79,6 +109,14 @@ export interface GetZeroTrustAccessInfrastructureTargetsArgs {
      */
     hostnameContains?: string;
     /**
+<<<<<<< HEAD
+=======
+     * Filters for targets whose IP addresses look like the specified string.
+     * Supports `*` as a wildcard character
+     */
+    ipLike?: string;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * IPv4 address of the target
      */
     ipV4?: string;
@@ -92,6 +130,29 @@ export interface GetZeroTrustAccessInfrastructureTargetsArgs {
      */
     ips?: string[];
     /**
+<<<<<<< HEAD
+=======
+     * Defines an IPv4 filter range's ending value (inclusive). Requires
+     * `ipv4Start` to be specified as well.
+     */
+    ipv4End?: string;
+    /**
+     * Defines an IPv4 filter range's starting value (inclusive). Requires
+     * `ipv4End` to be specified as well.
+     */
+    ipv4Start?: string;
+    /**
+     * Defines an IPv6 filter range's ending value (inclusive). Requires
+     * `ipv6Start` to be specified as well.
+     */
+    ipv6End?: string;
+    /**
+     * Defines an IPv6 filter range's starting value (inclusive). Requires
+     * `ipv6End` to be specified as well.
+     */
+    ipv6Start?: string;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
@@ -108,6 +169,15 @@ export interface GetZeroTrustAccessInfrastructureTargetsArgs {
      */
     order?: string;
     /**
+<<<<<<< HEAD
+=======
+     * Filters for targets that have any of the following UUIDs. Specify
+     * `targetIds` multiple times in query parameter to build list of
+     * candidates.
+     */
+    targetIds?: string[];
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Private virtual network identifier of the target
      */
     virtualNetworkId?: string;
@@ -146,6 +216,14 @@ export interface GetZeroTrustAccessInfrastructureTargetsResult {
      */
     readonly id: string;
     /**
+<<<<<<< HEAD
+=======
+     * Filters for targets whose IP addresses look like the specified string.
+     * Supports `*` as a wildcard character
+     */
+    readonly ipLike?: string;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * IPv4 address of the target
      */
     readonly ipV4?: string;
@@ -159,6 +237,29 @@ export interface GetZeroTrustAccessInfrastructureTargetsResult {
      */
     readonly ips?: string[];
     /**
+<<<<<<< HEAD
+=======
+     * Defines an IPv4 filter range's ending value (inclusive). Requires
+     * `ipv4Start` to be specified as well.
+     */
+    readonly ipv4End?: string;
+    /**
+     * Defines an IPv4 filter range's starting value (inclusive). Requires
+     * `ipv4End` to be specified as well.
+     */
+    readonly ipv4Start?: string;
+    /**
+     * Defines an IPv6 filter range's ending value (inclusive). Requires
+     * `ipv6Start` to be specified as well.
+     */
+    readonly ipv6End?: string;
+    /**
+     * Defines an IPv6 filter range's starting value (inclusive). Requires
+     * `ipv6End` to be specified as well.
+     */
+    readonly ipv6Start?: string;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;
@@ -179,6 +280,15 @@ export interface GetZeroTrustAccessInfrastructureTargetsResult {
      */
     readonly results: outputs.GetZeroTrustAccessInfrastructureTargetsResult[];
     /**
+<<<<<<< HEAD
+=======
+     * Filters for targets that have any of the following UUIDs. Specify
+     * `targetIds` multiple times in query parameter to build list of
+     * candidates.
+     */
+    readonly targetIds?: string[];
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Private virtual network identifier of the target
      */
     readonly virtualNetworkId?: string;
@@ -197,12 +307,27 @@ export interface GetZeroTrustAccessInfrastructureTargetsResult {
  *     direction: "asc",
  *     hostname: "hostname",
  *     hostnameContains: "hostname_contains",
+<<<<<<< HEAD
  *     ipV4: "ip_v4",
  *     ipV6: "ip_v6",
  *     ips: ["string"],
  *     modifiedAfter: "2019-12-27T18:11:19.117Z",
  *     modifiedBefore: "2019-12-27T18:11:19.117Z",
  *     order: "hostname",
+=======
+ *     ipLike: "ip_like",
+ *     ipV4: "ip_v4",
+ *     ipV6: "ip_v6",
+ *     ips: ["string"],
+ *     ipv4End: "ipv4_end",
+ *     ipv4Start: "ipv4_start",
+ *     ipv6End: "ipv6_end",
+ *     ipv6Start: "ipv6_start",
+ *     modifiedAfter: "2019-12-27T18:11:19.117Z",
+ *     modifiedBefore: "2019-12-27T18:11:19.117Z",
+ *     order: "hostname",
+ *     targetIds: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  *     virtualNetworkId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
@@ -216,13 +341,28 @@ export function getZeroTrustAccessInfrastructureTargetsOutput(args: GetZeroTrust
         "direction": args.direction,
         "hostname": args.hostname,
         "hostnameContains": args.hostnameContains,
+<<<<<<< HEAD
         "ipV4": args.ipV4,
         "ipV6": args.ipV6,
         "ips": args.ips,
+=======
+        "ipLike": args.ipLike,
+        "ipV4": args.ipV4,
+        "ipV6": args.ipV6,
+        "ips": args.ips,
+        "ipv4End": args.ipv4End,
+        "ipv4Start": args.ipv4Start,
+        "ipv6End": args.ipv6End,
+        "ipv6Start": args.ipv6Start,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "maxItems": args.maxItems,
         "modifiedAfter": args.modifiedAfter,
         "modifiedBefore": args.modifiedBefore,
         "order": args.order,
+<<<<<<< HEAD
+=======
+        "targetIds": args.targetIds,
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "virtualNetworkId": args.virtualNetworkId,
     }, opts);
 }
@@ -256,6 +396,14 @@ export interface GetZeroTrustAccessInfrastructureTargetsOutputArgs {
      */
     hostnameContains?: pulumi.Input<string>;
     /**
+<<<<<<< HEAD
+=======
+     * Filters for targets whose IP addresses look like the specified string.
+     * Supports `*` as a wildcard character
+     */
+    ipLike?: pulumi.Input<string>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * IPv4 address of the target
      */
     ipV4?: pulumi.Input<string>;
@@ -269,6 +417,29 @@ export interface GetZeroTrustAccessInfrastructureTargetsOutputArgs {
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+<<<<<<< HEAD
+=======
+     * Defines an IPv4 filter range's ending value (inclusive). Requires
+     * `ipv4Start` to be specified as well.
+     */
+    ipv4End?: pulumi.Input<string>;
+    /**
+     * Defines an IPv4 filter range's starting value (inclusive). Requires
+     * `ipv4End` to be specified as well.
+     */
+    ipv4Start?: pulumi.Input<string>;
+    /**
+     * Defines an IPv6 filter range's ending value (inclusive). Requires
+     * `ipv6Start` to be specified as well.
+     */
+    ipv6End?: pulumi.Input<string>;
+    /**
+     * Defines an IPv6 filter range's starting value (inclusive). Requires
+     * `ipv6End` to be specified as well.
+     */
+    ipv6Start?: pulumi.Input<string>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number>;
@@ -285,6 +456,15 @@ export interface GetZeroTrustAccessInfrastructureTargetsOutputArgs {
      */
     order?: pulumi.Input<string>;
     /**
+<<<<<<< HEAD
+=======
+     * Filters for targets that have any of the following UUIDs. Specify
+     * `targetIds` multiple times in query parameter to build list of
+     * candidates.
+     */
+    targetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Private virtual network identifier of the target
      */
     virtualNetworkId?: pulumi.Input<string>;

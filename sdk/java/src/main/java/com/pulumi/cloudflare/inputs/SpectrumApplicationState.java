@@ -223,14 +223,22 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
     }
 
     /**
+<<<<<<< HEAD
      * Identifier
+=======
+     * Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
+<<<<<<< HEAD
      * @return Identifier
+=======
+     * @return Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -564,7 +572,11 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
+<<<<<<< HEAD
          * @param zoneId Identifier
+=======
+         * @param zoneId Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 
@@ -575,7 +587,11 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
+<<<<<<< HEAD
          * @param zoneId Identifier
+=======
+         * @param zoneId Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 

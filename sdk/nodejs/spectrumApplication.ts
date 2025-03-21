@@ -129,7 +129,11 @@ export class SpectrumApplication extends pulumi.CustomResource {
      */
     public readonly trafficType!: pulumi.Output<string>;
     /**
+<<<<<<< HEAD
      * Identifier
+=======
+     * Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -251,7 +255,11 @@ export interface SpectrumApplicationState {
      */
     trafficType?: pulumi.Input<string>;
     /**
+<<<<<<< HEAD
      * Identifier
+=======
+     * Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -308,7 +316,11 @@ export interface SpectrumApplicationArgs {
      */
     trafficType?: pulumi.Input<string>;
     /**
+<<<<<<< HEAD
      * Identifier
+=======
+     * Zone identifier.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     zoneId: pulumi.Input<string>;
 }

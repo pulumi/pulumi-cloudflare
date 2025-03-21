@@ -8,6 +8,11 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+<<<<<<< HEAD
+=======
+import java.util.Optional;
+import javax.annotation.Nullable;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 
 public final class GetMagicTransitSiteLanArgs extends com.pulumi.resources.InvokeArgs {
@@ -33,15 +38,25 @@ public final class GetMagicTransitSiteLanArgs extends com.pulumi.resources.Invok
      * Identifier
      * 
      */
+<<<<<<< HEAD
     @Import(name="lanId", required=true)
     private Output<String> lanId;
+=======
+    @Import(name="lanId")
+    private @Nullable Output<String> lanId;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      * @return Identifier
      * 
      */
+<<<<<<< HEAD
     public Output<String> lanId() {
         return this.lanId;
+=======
+    public Optional<Output<String>> lanId() {
+        return Optional.ofNullable(this.lanId);
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     private GetMagicTransitSiteLanArgs() {}
@@ -96,7 +111,11 @@ public final class GetMagicTransitSiteLanArgs extends com.pulumi.resources.Invok
          * @return builder
          * 
          */
+<<<<<<< HEAD
         public Builder lanId(Output<String> lanId) {
+=======
+        public Builder lanId(@Nullable Output<String> lanId) {
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             $.lanId = lanId;
             return this;
         }
@@ -115,9 +134,12 @@ public final class GetMagicTransitSiteLanArgs extends com.pulumi.resources.Invok
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetMagicTransitSiteLanArgs", "accountId");
             }
+<<<<<<< HEAD
             if ($.lanId == null) {
                 throw new MissingRequiredPropertyException("GetMagicTransitSiteLanArgs", "lanId");
             }
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return $;
         }
     }

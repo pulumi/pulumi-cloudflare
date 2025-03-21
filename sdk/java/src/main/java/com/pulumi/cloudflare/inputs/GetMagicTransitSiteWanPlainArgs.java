@@ -7,6 +7,11 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+<<<<<<< HEAD
+=======
+import java.util.Optional;
+import javax.annotation.Nullable;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 
 public final class GetMagicTransitSiteWanPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -32,15 +37,25 @@ public final class GetMagicTransitSiteWanPlainArgs extends com.pulumi.resources.
      * Identifier
      * 
      */
+<<<<<<< HEAD
     @Import(name="wanId", required=true)
     private String wanId;
+=======
+    @Import(name="wanId")
+    private @Nullable String wanId;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      * @return Identifier
      * 
      */
+<<<<<<< HEAD
     public String wanId() {
         return this.wanId;
+=======
+    public Optional<String> wanId() {
+        return Optional.ofNullable(this.wanId);
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     private GetMagicTransitSiteWanPlainArgs() {}
@@ -85,7 +100,11 @@ public final class GetMagicTransitSiteWanPlainArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
+<<<<<<< HEAD
         public Builder wanId(String wanId) {
+=======
+        public Builder wanId(@Nullable String wanId) {
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             $.wanId = wanId;
             return this;
         }
@@ -94,9 +113,12 @@ public final class GetMagicTransitSiteWanPlainArgs extends com.pulumi.resources.
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetMagicTransitSiteWanPlainArgs", "accountId");
             }
+<<<<<<< HEAD
             if ($.wanId == null) {
                 throw new MissingRequiredPropertyException("GetMagicTransitSiteWanPlainArgs", "wanId");
             }
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return $;
         }
     }

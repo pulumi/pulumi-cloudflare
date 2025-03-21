@@ -40,6 +40,10 @@ export interface GetZeroTrustDlpCustomProfileArgs {
  */
 export interface GetZeroTrustDlpCustomProfileResult {
     readonly accountId: string;
+<<<<<<< HEAD
+=======
+    readonly aiContextEnabled: boolean;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
      */

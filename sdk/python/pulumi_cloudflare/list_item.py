@@ -32,6 +32,10 @@ class ListItemArgs:
         :param pulumi.Input[str] list_id: The unique ID of the list.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[int] asn: A non-negative 32 bit integer
+<<<<<<< HEAD
+=======
+        :param pulumi.Input[str] comment: An informative summary of the list item.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input['ListItemHostnameArgs'] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         :param pulumi.Input[str] ip: An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
         :param pulumi.Input['ListItemRedirectArgs'] redirect: The definition of the redirect.
@@ -86,6 +90,21 @@ class ListItemArgs:
 
     @property
     @pulumi.getter
+<<<<<<< HEAD
+=======
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        An informative summary of the list item.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     def hostname(self) -> Optional[pulumi.Input['ListItemHostnameArgs']]:
         """
         Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
@@ -143,7 +162,10 @@ class _ListItemState:
         :param pulumi.Input[str] created_on: The RFC 3339 timestamp of when the item was created.
         :param pulumi.Input['ListItemHostnameArgs'] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         :param pulumi.Input[str] ip: An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+<<<<<<< HEAD
         :param pulumi.Input[str] item_id: The unique ID of the item in the List.
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] list_id: The unique ID of the list.
         :param pulumi.Input[str] modified_on: The RFC 3339 timestamp of when the item was last modified.
         :param pulumi.Input[str] operation_id: The unique operation ID of the asynchronous action.
@@ -324,6 +346,10 @@ class ListItem(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[int] asn: A non-negative 32 bit integer
+<<<<<<< HEAD
+=======
+        :param pulumi.Input[str] comment: An informative summary of the list item.
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         :param pulumi.Input[str] ip: An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
         :param pulumi.Input[str] list_id: The unique ID of the list.
@@ -376,9 +402,13 @@ class ListItem(pulumi.CustomResource):
                 raise TypeError("Missing required property 'list_id'")
             __props__.__dict__["list_id"] = list_id
             __props__.__dict__["redirect"] = redirect
+<<<<<<< HEAD
             __props__.__dict__["comment"] = None
             __props__.__dict__["created_on"] = None
             __props__.__dict__["item_id"] = None
+=======
+            __props__.__dict__["created_on"] = None
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             __props__.__dict__["modified_on"] = None
             __props__.__dict__["operation_id"] = None
         super(ListItem, __self__).__init__(
@@ -415,7 +445,10 @@ class ListItem(pulumi.CustomResource):
         :param pulumi.Input[str] created_on: The RFC 3339 timestamp of when the item was created.
         :param pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         :param pulumi.Input[str] ip: An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+<<<<<<< HEAD
         :param pulumi.Input[str] item_id: The unique ID of the item in the List.
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] list_id: The unique ID of the list.
         :param pulumi.Input[str] modified_on: The RFC 3339 timestamp of when the item was last modified.
         :param pulumi.Input[str] operation_id: The unique operation ID of the asynchronous action.

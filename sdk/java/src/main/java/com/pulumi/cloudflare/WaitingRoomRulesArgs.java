@@ -10,14 +10,13 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WaitingRoomRulesArgs Empty = new WaitingRoomRulesArgs();
 
+<<<<<<< HEAD
     /**
      * The ID of the rule.
      * 
@@ -36,6 +35,11 @@ public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArg
     @Import(name="rules", required=true)
     private Output<List<WaitingRoomRulesRuleArgs>> rules;
 
+=======
+    @Import(name="rules", required=true)
+    private Output<List<WaitingRoomRulesRuleArgs>> rules;
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Output<List<WaitingRoomRulesRuleArgs>> rules() {
         return this.rules;
     }
@@ -89,6 +93,7 @@ public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArg
             $ = new WaitingRoomRulesArgs(Objects.requireNonNull(defaults));
         }
 
+<<<<<<< HEAD
         /**
          * @param ruleId The ID of the rule.
          * 
@@ -115,6 +120,13 @@ public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArg
             return this;
         }
 
+=======
+        public Builder rules(Output<List<WaitingRoomRulesRuleArgs>> rules) {
+            $.rules = rules;
+            return this;
+        }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder rules(List<WaitingRoomRulesRuleArgs> rules) {
             return rules(Output.of(rules));
         }

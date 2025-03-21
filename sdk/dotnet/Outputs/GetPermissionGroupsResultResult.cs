@@ -13,9 +13,36 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetPermissionGroupsResultResult
     {
+<<<<<<< HEAD
         [OutputConstructor]
         private GetPermissionGroupsResultResult()
         {
+=======
+        /// <summary>
+        /// Identifier of the group.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
+        /// Attributes associated to the permission group.
+        /// </summary>
+        public readonly Outputs.GetPermissionGroupsResultMetaResult Meta;
+        /// <summary>
+        /// Name of the group.
+        /// </summary>
+        public readonly string Name;
+
+        [OutputConstructor]
+        private GetPermissionGroupsResultResult(
+            string id,
+
+            Outputs.GetPermissionGroupsResultMetaResult meta,
+
+            string name)
+        {
+            Id = id;
+            Meta = meta;
+            Name = name;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
     }
 }

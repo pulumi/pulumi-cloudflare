@@ -48,13 +48,42 @@ export interface GetCloudforceOneRequestMessageResult {
      */
     readonly accountIdentifier: string;
     /**
+<<<<<<< HEAD
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+=======
+     * Author of message
+     */
+    readonly author: string;
+    /**
+     * Content of message
+     */
+    readonly content: string;
+    /**
+     * Message creation time
+     */
+    readonly created: string;
+    /**
+     * Message ID
+     */
+    readonly id: number;
+    /**
+     * Whether the message is a follow-on request
+     */
+    readonly isFollowOnRequest: boolean;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * UUID
      */
     readonly requestIdentifier: string;
+<<<<<<< HEAD
+=======
+    /**
+     * Message last updated time
+     */
+    readonly updated: string;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 /**
  * ## Example Usage

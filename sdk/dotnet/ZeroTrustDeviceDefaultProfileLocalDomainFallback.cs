@@ -18,9 +18,33 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+<<<<<<< HEAD
         [Output("domains")]
         public Output<ImmutableArray<Outputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomain>> Domains { get; private set; } = null!;
 
+=======
+        /// <summary>
+        /// A description of the fallback domain, displayed in the client UI.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of IP addresses to handle domain resolution.
+        /// </summary>
+        [Output("dnsServers")]
+        public Output<ImmutableArray<string>> DnsServers { get; private set; } = null!;
+
+        [Output("domains")]
+        public Output<ImmutableArray<Outputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomain>> Domains { get; private set; } = null!;
+
+        /// <summary>
+        /// The domain suffix to match when resolving locally.
+        /// </summary>
+        [Output("suffix")]
+        public Output<string> Suffix { get; private set; } = null!;
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Create a ZeroTrustDeviceDefaultProfileLocalDomainFallback resource with the given unique name, arguments, and options.
@@ -89,6 +113,27 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// A description of the fallback domain, displayed in the client UI.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("dnsServers")]
+        private InputList<string>? _dnsServers;
+
+        /// <summary>
+        /// A list of IP addresses to handle domain resolution.
+        /// </summary>
+        public InputList<string> DnsServers
+        {
+            get => _dnsServers ?? (_dnsServers = new InputList<string>());
+            set => _dnsServers = value;
+        }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Input("domains")]
         private InputList<Inputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainGetArgs>? _domains;
         public InputList<Inputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainGetArgs> Domains
@@ -97,6 +142,15 @@ namespace Pulumi.Cloudflare
             set => _domains = value;
         }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// The domain suffix to match when resolving locally.
+        /// </summary>
+        [Input("suffix")]
+        public Input<string>? Suffix { get; set; }
+
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public ZeroTrustDeviceDefaultProfileLocalDomainFallbackState()
         {
         }

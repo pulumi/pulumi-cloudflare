@@ -47,7 +47,7 @@ runs:
 
     - name: Install Pulumi CLI
       if: inputs.tools == 'all' || contains(inputs.tools, 'pulumicli')
-      uses: pulumi/actions@13b8b7177d6fb736766875dac9b78aab07bd785f # v6
+      uses: pulumi/actions@9519177da243fd32cab35cdbf19cce1ab7472fcc # v6
       with:
         pulumi-version: "dev"
 
@@ -59,7 +59,7 @@ runs:
 
     - name: Setup Node
       if: inputs.tools == 'all' || contains(inputs.tools, 'nodejs')
-      uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4
+      uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4
       with:
         node-version: 20.x
         registry-url: https://registry.npmjs.org
@@ -68,7 +68,7 @@ runs:
       if: inputs.tools == 'all' || contains(inputs.tools, 'dotnet')
       uses: actions/setup-dotnet@3951f0dfe7a07e2313ec93c75700083e2005cbab # v4.3.0
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 8.0.x
 
     - name: Setup Python
       if: inputs.tools == 'all' || contains(inputs.tools, 'python')

@@ -32,9 +32,23 @@ public final class GetD1DatabaseArgs extends com.pulumi.resources.InvokeArgs {
         return this.accountId;
     }
 
+<<<<<<< HEAD
     @Import(name="databaseId")
     private @Nullable Output<String> databaseId;
 
+=======
+    /**
+     * D1 database identifier (UUID).
+     * 
+     */
+    @Import(name="databaseId")
+    private @Nullable Output<String> databaseId;
+
+    /**
+     * @return D1 database identifier (UUID).
+     * 
+     */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Optional<Output<String>> databaseId() {
         return Optional.ofNullable(this.databaseId);
     }
@@ -93,11 +107,29 @@ public final class GetD1DatabaseArgs extends com.pulumi.resources.InvokeArgs {
             return accountId(Output.of(accountId));
         }
 
+<<<<<<< HEAD
+=======
+        /**
+         * @param databaseId D1 database identifier (UUID).
+         * 
+         * @return builder
+         * 
+         */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder databaseId(@Nullable Output<String> databaseId) {
             $.databaseId = databaseId;
             return this;
         }
 
+<<<<<<< HEAD
+=======
+        /**
+         * @param databaseId D1 database identifier (UUID).
+         * 
+         * @return builder
+         * 
+         */
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder databaseId(String databaseId) {
             return databaseId(Output.of(databaseId));
         }

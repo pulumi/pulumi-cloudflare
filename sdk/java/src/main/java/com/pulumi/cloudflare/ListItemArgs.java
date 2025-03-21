@@ -50,6 +50,24 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * An informative summary of the list item.
+     * 
+     */
+    @Import(name="comment")
+    private @Nullable Output<String> comment;
+
+    /**
+     * @return An informative summary of the list item.
+     * 
+     */
+    public Optional<Output<String>> comment() {
+        return Optional.ofNullable(this.comment);
+    }
+
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      * 
      */
@@ -181,6 +199,30 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+<<<<<<< HEAD
+=======
+         * @param comment An informative summary of the list item.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder comment(@Nullable Output<String> comment) {
+            $.comment = comment;
+            return this;
+        }
+
+        /**
+         * @param comment An informative summary of the list item.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder comment(String comment) {
+            return comment(Output.of(comment));
+        }
+
+        /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param hostname Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
          * 
          * @return builder

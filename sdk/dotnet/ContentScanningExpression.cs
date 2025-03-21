@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     {
         [Output("bodies")]
         public Output<ImmutableArray<Outputs.ContentScanningExpressionBody>> Bodies { get; private set; } = null!;
+<<<<<<< HEAD
 
         /// <summary>
         /// Identifier
@@ -49,6 +50,17 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Identifier
+=======
+
+        /// <summary>
+        /// Ruleset expression to use in matching content objects
+        /// </summary>
+        [Output("payload")]
+        public Output<string> Payload { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -109,12 +121,15 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Identifier
+<<<<<<< HEAD
         /// </summary>
         [Input("expressionId")]
         public Input<string>? ExpressionId { get; set; }
 
         /// <summary>
         /// Identifier
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -134,6 +149,7 @@ namespace Pulumi.Cloudflare
             get => _bodies ?? (_bodies = new InputList<Inputs.ContentScanningExpressionBodyGetArgs>());
             set => _bodies = value;
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// Identifier
@@ -143,6 +159,17 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Identifier
+=======
+
+        /// <summary>
+        /// Ruleset expression to use in matching content objects
+        /// </summary>
+        [Input("payload")]
+        public Input<string>? Payload { get; set; }
+
+        /// <summary>
+        /// Identifier
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

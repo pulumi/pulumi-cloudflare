@@ -5,6 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+<<<<<<< HEAD
+=======
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,11 +34,19 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
         return Optional.ofNullable(this.expression);
     }
 
+<<<<<<< HEAD
     @Import(name="operation")
     private @Nullable Output<String> operation;
 
     public Optional<Output<String>> operation() {
         return Optional.ofNullable(this.operation);
+=======
+    @Import(name="operation", required=true)
+    private Output<String> operation;
+
+    public Output<String> operation() {
+        return this.operation;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     /**
@@ -99,7 +111,11 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
             return expression(Output.of(expression));
         }
 
+<<<<<<< HEAD
         public Builder operation(@Nullable Output<String> operation) {
+=======
+        public Builder operation(Output<String> operation) {
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             $.operation = operation;
             return this;
         }
@@ -130,6 +146,12 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
         }
 
         public RulesetRuleActionParametersHeadersArgs build() {
+<<<<<<< HEAD
+=======
+            if ($.operation == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleActionParametersHeadersArgs", "operation");
+            }
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return $;
         }
     }

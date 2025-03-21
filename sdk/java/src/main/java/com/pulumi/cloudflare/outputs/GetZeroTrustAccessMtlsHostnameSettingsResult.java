@@ -5,6 +5,10 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+<<<<<<< HEAD
+=======
+import java.lang.Boolean;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,6 +22,24 @@ public final class GetZeroTrustAccessMtlsHostnameSettingsResult {
      */
     private @Nullable String accountId;
     /**
+<<<<<<< HEAD
+=======
+     * @return Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+     * 
+     */
+    private Boolean chinaNetwork;
+    /**
+     * @return Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+     * 
+     */
+    private Boolean clientCertificateForwarding;
+    /**
+     * @return The hostname that these settings apply to.
+     * 
+     */
+    private String hostname;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -37,6 +59,30 @@ public final class GetZeroTrustAccessMtlsHostnameSettingsResult {
         return Optional.ofNullable(this.accountId);
     }
     /**
+<<<<<<< HEAD
+=======
+     * @return Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+     * 
+     */
+    public Boolean chinaNetwork() {
+        return this.chinaNetwork;
+    }
+    /**
+     * @return Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+     * 
+     */
+    public Boolean clientCertificateForwarding() {
+        return this.clientCertificateForwarding;
+    }
+    /**
+     * @return The hostname that these settings apply to.
+     * 
+     */
+    public String hostname() {
+        return this.hostname;
+    }
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -61,12 +107,24 @@ public final class GetZeroTrustAccessMtlsHostnameSettingsResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
+<<<<<<< HEAD
+=======
+        private Boolean chinaNetwork;
+        private Boolean clientCertificateForwarding;
+        private String hostname;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private String id;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetZeroTrustAccessMtlsHostnameSettingsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+<<<<<<< HEAD
+=======
+    	      this.chinaNetwork = defaults.chinaNetwork;
+    	      this.clientCertificateForwarding = defaults.clientCertificateForwarding;
+    	      this.hostname = defaults.hostname;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.id = defaults.id;
     	      this.zoneId = defaults.zoneId;
         }
@@ -78,6 +136,33 @@ public final class GetZeroTrustAccessMtlsHostnameSettingsResult {
             return this;
         }
         @CustomType.Setter
+<<<<<<< HEAD
+=======
+        public Builder chinaNetwork(Boolean chinaNetwork) {
+            if (chinaNetwork == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessMtlsHostnameSettingsResult", "chinaNetwork");
+            }
+            this.chinaNetwork = chinaNetwork;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clientCertificateForwarding(Boolean clientCertificateForwarding) {
+            if (clientCertificateForwarding == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessMtlsHostnameSettingsResult", "clientCertificateForwarding");
+            }
+            this.clientCertificateForwarding = clientCertificateForwarding;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostname(String hostname) {
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessMtlsHostnameSettingsResult", "hostname");
+            }
+            this.hostname = hostname;
+            return this;
+        }
+        @CustomType.Setter
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessMtlsHostnameSettingsResult", "id");
@@ -94,6 +179,12 @@ public final class GetZeroTrustAccessMtlsHostnameSettingsResult {
         public GetZeroTrustAccessMtlsHostnameSettingsResult build() {
             final var _resultValue = new GetZeroTrustAccessMtlsHostnameSettingsResult();
             _resultValue.accountId = accountId;
+<<<<<<< HEAD
+=======
+            _resultValue.chinaNetwork = chinaNetwork;
+            _resultValue.clientCertificateForwarding = clientCertificateForwarding;
+            _resultValue.hostname = hostname;
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.id = id;
             _resultValue.zoneId = zoneId;
             return _resultValue;

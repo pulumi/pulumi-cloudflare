@@ -61,15 +61,22 @@ class _ZoneCacheReserveState:
                  editable: Optional[pulumi.Input[bool]] = None,
                  modified_on: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
                  zone_id: Optional[pulumi.Input[str]] = None,
                  zone_setting_id: Optional[pulumi.Input[str]] = None):
+=======
+                 zone_id: Optional[pulumi.Input[str]] = None):
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         Input properties used for looking up and filtering ZoneCacheReserve resources.
         :param pulumi.Input[bool] editable: Whether the setting is editable
         :param pulumi.Input[str] modified_on: Last time this setting was modified.
         :param pulumi.Input[str] value: Value of the Cache Reserve zone setting.
         :param pulumi.Input[str] zone_id: Identifier
+<<<<<<< HEAD
         :param pulumi.Input[str] zone_setting_id: ID of the zone setting.
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         if editable is not None:
             pulumi.set(__self__, "editable", editable)
@@ -230,7 +237,10 @@ class ZoneCacheReserve(pulumi.CustomResource):
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["editable"] = None
             __props__.__dict__["modified_on"] = None
+<<<<<<< HEAD
             __props__.__dict__["zone_setting_id"] = None
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         super(ZoneCacheReserve, __self__).__init__(
             'cloudflare:index/zoneCacheReserve:ZoneCacheReserve',
             resource_name,
@@ -244,8 +254,12 @@ class ZoneCacheReserve(pulumi.CustomResource):
             editable: Optional[pulumi.Input[bool]] = None,
             modified_on: Optional[pulumi.Input[str]] = None,
             value: Optional[pulumi.Input[str]] = None,
+<<<<<<< HEAD
             zone_id: Optional[pulumi.Input[str]] = None,
             zone_setting_id: Optional[pulumi.Input[str]] = None) -> 'ZoneCacheReserve':
+=======
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'ZoneCacheReserve':
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         Get an existing ZoneCacheReserve resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -257,7 +271,10 @@ class ZoneCacheReserve(pulumi.CustomResource):
         :param pulumi.Input[str] modified_on: Last time this setting was modified.
         :param pulumi.Input[str] value: Value of the Cache Reserve zone setting.
         :param pulumi.Input[str] zone_id: Identifier
+<<<<<<< HEAD
         :param pulumi.Input[str] zone_setting_id: ID of the zone setting.
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

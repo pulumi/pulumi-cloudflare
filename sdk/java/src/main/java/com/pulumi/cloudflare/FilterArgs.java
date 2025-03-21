@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
@@ -32,6 +30,7 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+<<<<<<< HEAD
      * The unique identifier of the filter.
      * 
      */
@@ -47,6 +46,8 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Identifier
      * 
      */
@@ -65,7 +66,10 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
 
     private FilterArgs(FilterArgs $) {
         this.expression = $.expression;
+<<<<<<< HEAD
         this.filterId = $.filterId;
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.zoneId = $.zoneId;
     }
 
@@ -109,6 +113,7 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+<<<<<<< HEAD
          * @param filterId The unique identifier of the filter.
          * 
          * @return builder
@@ -130,6 +135,8 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+=======
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param zoneId Identifier
          * 
          * @return builder

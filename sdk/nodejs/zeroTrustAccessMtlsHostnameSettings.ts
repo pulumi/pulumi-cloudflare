@@ -41,8 +41,25 @@ export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
+<<<<<<< HEAD
     public readonly settings!: pulumi.Output<outputs.ZeroTrustAccessMtlsHostnameSettingsSetting[]>;
     /**
+=======
+    /**
+     * Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+     */
+    public /*out*/ readonly chinaNetwork!: pulumi.Output<boolean>;
+    /**
+     * Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+     */
+    public /*out*/ readonly clientCertificateForwarding!: pulumi.Output<boolean>;
+    /**
+     * The hostname that these settings apply to.
+     */
+    public /*out*/ readonly hostname!: pulumi.Output<string>;
+    public readonly settings!: pulumi.Output<outputs.ZeroTrustAccessMtlsHostnameSettingsSetting[]>;
+    /**
+>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
@@ -61,6 +78,9 @@ export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustAccessMtlsHostnameSettingsState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["chinaNetwork"] = state ? state.chinaNetwork : undefined;
+            resourceInputs["clientCertificateForwarding"] = state ? state.clientCertificateForwarding : undefined;
+            resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["settings"] = state ? state.settings : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -71,6 +91,9 @@ export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["settings"] = args ? args.settings : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["chinaNetwork"] = undefined /*out*/;
+            resourceInputs["clientCertificateForwarding"] = undefined /*out*/;
+            resourceInputs["hostname"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZeroTrustAccessMtlsHostnameSettings.__pulumiType, name, resourceInputs, opts);
@@ -85,6 +108,18 @@ export interface ZeroTrustAccessMtlsHostnameSettingsState {
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+     */
+    chinaNetwork?: pulumi.Input<boolean>;
+    /**
+     * Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+     */
+    clientCertificateForwarding?: pulumi.Input<boolean>;
+    /**
+     * The hostname that these settings apply to.
+     */
+    hostname?: pulumi.Input<string>;
     settings?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessMtlsHostnameSettingsSetting>[]>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
