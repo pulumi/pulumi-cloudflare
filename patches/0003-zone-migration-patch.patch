@@ -220,7 +220,7 @@ index afe7595ab..b507ff14f 100644
 +	}
  }
 diff --git a/internal/services/zone/schema.go b/internal/services/zone/schema.go
-index c2618603b..7d241b6d1 100644
+index 554d38dda..6d5eee661 100644
 --- a/internal/services/zone/schema.go
 +++ b/internal/services/zone/schema.go
 @@ -23,6 +23,7 @@ var _ resource.ResourceWithConfigValidators = (*ZoneResource)(nil)
