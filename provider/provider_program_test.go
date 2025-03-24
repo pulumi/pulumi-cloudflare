@@ -5,9 +5,10 @@ package cloudflare
 
 import (
 	"context"
-	_ "embed"
 	"os"
 	"testing"
+
+	_ "embed"
 
 	"github.com/pulumi/providertest"
 	"github.com/pulumi/providertest/optproviderupgrade"
@@ -15,12 +16,13 @@ import (
 	"github.com/pulumi/providertest/pulumitest"
 	"github.com/pulumi/providertest/pulumitest/assertpreview"
 	"github.com/pulumi/providertest/pulumitest/opttest"
-	"github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi/sdk/v3/go/auto"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
+
+	"github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/version"
 )
 
 const (
