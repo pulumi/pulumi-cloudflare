@@ -11,29 +11,13 @@ namespace Pulumi.Cloudflare.Outputs
 {
 
     [OutputType]
-<<<<<<<< HEAD:sdk/dotnet/Outputs/WorkersScriptMigrationsTransferredClass.cs
-    public sealed class WorkersScriptMigrationsTransferredClass
-    {
-        public readonly string? From;
-        public readonly string? FromScript;
-        public readonly string? To;
-
-        [OutputConstructor]
-        private WorkersScriptMigrationsTransferredClass(
-            string? from,
-
-            string? fromScript,
-
-            string? to)
-        {
-            From = from;
-            FromScript = fromScript;
-            To = to;
-========
     public sealed class GetR2BucketLockRuleConditionResult
     {
         public readonly string Date;
         public readonly int MaxAgeSeconds;
+        /// <summary>
+        /// Available values: "Age".
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
@@ -47,7 +31,6 @@ namespace Pulumi.Cloudflare.Outputs
             Date = date;
             MaxAgeSeconds = maxAgeSeconds;
             Type = type;
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/dotnet/Outputs/GetR2BucketLockRuleConditionResult.cs
         }
     }
 }

@@ -18,6 +18,7 @@ public final class GetZoneCacheVariantsResult {
     private Boolean editable;
     /**
      * @return ID of the zone setting.
+     * Available values: &#34;variants&#34;.
      * 
      */
     private String id;
@@ -47,6 +48,7 @@ public final class GetZoneCacheVariantsResult {
     }
     /**
      * @return ID of the zone setting.
+     * Available values: &#34;variants&#34;.
      * 
      */
     public String id() {

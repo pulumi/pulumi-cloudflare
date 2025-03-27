@@ -7,11 +7,13 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustDeviceManagedNetworksArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceManagedNetworksState;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceManagedNetworksConfig;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -44,11 +46,7 @@ import javax.annotation.Nullable;
  *         var exampleZeroTrustDeviceManagedNetworks = new ZeroTrustDeviceManagedNetworks("exampleZeroTrustDeviceManagedNetworks", ZeroTrustDeviceManagedNetworksArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .config(ZeroTrustDeviceManagedNetworksConfigArgs.builder()
-<<<<<<< HEAD
- *                 .tls_sockaddr("foobar:1234")
-=======
  *                 .tls_sockaddr("foo.bar:1234")
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  *                 .sha256("b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c")
  *                 .build())
  *             .name("managed-network-1")
@@ -76,11 +74,6 @@ public class ZeroTrustDeviceManagedNetworks extends com.pulumi.resources.CustomR
     public Output<String> accountId() {
         return this.accountId;
     }
-<<<<<<< HEAD
-    @Export(name="config", refs={ZeroTrustDeviceManagedNetworksConfig.class}, tree="[0]")
-    private Output<ZeroTrustDeviceManagedNetworksConfig> config;
-
-=======
     /**
      * The configuration object containing information for the WARP client to detect the managed network.
      * 
@@ -92,7 +85,6 @@ public class ZeroTrustDeviceManagedNetworks extends com.pulumi.resources.CustomR
      * @return The configuration object containing information for the WARP client to detect the managed network.
      * 
      */
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Output<ZeroTrustDeviceManagedNetworksConfig> config() {
         return this.config;
     }
@@ -126,6 +118,7 @@ public class ZeroTrustDeviceManagedNetworks extends com.pulumi.resources.CustomR
     }
     /**
      * The type of device managed network.
+     * Available values: &#34;tls&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -133,6 +126,7 @@ public class ZeroTrustDeviceManagedNetworks extends com.pulumi.resources.CustomR
 
     /**
      * @return The type of device managed network.
+     * Available values: &#34;tls&#34;.
      * 
      */
     public Output<String> type() {
@@ -178,6 +172,9 @@ public class ZeroTrustDeviceManagedNetworks extends com.pulumi.resources.CustomR
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -62,6 +62,7 @@ type EmailRoutingDns struct {
 	// Flag to check if the user skipped the configuration wizard.
 	SkipWizard pulumi.BoolOutput `pulumi:"skipWizard"`
 	// Show the state of your account, and the type or configuration error.
+	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Whether the API call was successful
 	Success pulumi.BoolOutput `pulumi:"success"`
@@ -122,6 +123,7 @@ type emailRoutingDnsState struct {
 	// Flag to check if the user skipped the configuration wizard.
 	SkipWizard *bool `pulumi:"skipWizard"`
 	// Show the state of your account, and the type or configuration error.
+	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status *string `pulumi:"status"`
 	// Whether the API call was successful
 	Success *bool `pulumi:"success"`
@@ -147,6 +149,7 @@ type EmailRoutingDnsState struct {
 	// Flag to check if the user skipped the configuration wizard.
 	SkipWizard pulumi.BoolPtrInput
 	// Show the state of your account, and the type or configuration error.
+	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status pulumi.StringPtrInput
 	// Whether the API call was successful
 	Success pulumi.BoolPtrInput
@@ -304,6 +307,7 @@ func (o EmailRoutingDnsOutput) SkipWizard() pulumi.BoolOutput {
 }
 
 // Show the state of your account, and the type or configuration error.
+// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 func (o EmailRoutingDnsOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingDns) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

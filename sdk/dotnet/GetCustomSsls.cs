@@ -86,6 +86,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Whether to match all search requirements or at least one (any).
+        /// Available values: "any", "all".
         /// </summary>
         [Input("match")]
         public string? Match { get; set; }
@@ -98,6 +99,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the zone's custom SSL.
+        /// Available values: "active", "expired", "deleted", "pending", "initializing".
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -118,6 +120,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Whether to match all search requirements or at least one (any).
+        /// Available values: "any", "all".
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -130,6 +133,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the zone's custom SSL.
+        /// Available values: "active", "expired", "deleted", "pending", "initializing".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -156,6 +160,7 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         /// <summary>
         /// Whether to match all search requirements or at least one (any).
+        /// Available values: "any", "all".
         /// </summary>
         public readonly string Match;
         /// <summary>
@@ -168,6 +173,7 @@ namespace Pulumi.Cloudflare
         public readonly ImmutableArray<Outputs.GetCustomSslsResultResult> Results;
         /// <summary>
         /// Status of the zone's custom SSL.
+        /// Available values: "active", "expired", "deleted", "pending", "initializing".
         /// </summary>
         public readonly string? Status;
         /// <summary>

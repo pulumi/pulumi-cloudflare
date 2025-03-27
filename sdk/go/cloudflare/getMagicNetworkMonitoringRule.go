@@ -61,17 +61,30 @@ type LookupMagicNetworkMonitoringRuleResult struct {
 	AutomaticAdvertisement bool `pulumi:"automaticAdvertisement"`
 	// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	BandwidthThreshold float64 `pulumi:"bandwidthThreshold"`
-	// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+	// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+	// Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
 	Duration string `pulumi:"duration"`
 	// The id of the rule. Must be unique.
 	Id string `pulumi:"id"`
 	// The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
 	Name string `pulumi:"name"`
 	// The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-	PacketThreshold float64  `pulumi:"packetThreshold"`
-	Prefixes        []string `pulumi:"prefixes"`
+	PacketThreshold float64 `pulumi:"packetThreshold"`
+	// Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
+	// Available values: "exact", "subnet", "supernet".
+	PrefixMatch string   `pulumi:"prefixMatch"`
+	Prefixes    []string `pulumi:"prefixes"`
 	// The id of the rule. Must be unique.
 	RuleId *string `pulumi:"ruleId"`
+	// MNM rule type.
+	// Available values: "threshold", "zscore", "advancedDdos".
+	Type string `pulumi:"type"`
+	// Level of sensitivity set for zscore rules.
+	// Available values: "low", "medium", "high".
+	ZscoreSensitivity string `pulumi:"zscoreSensitivity"`
+	// Target of the zscore rule analysis.
+	// Available values: "bits", "packets".
+	ZscoreTarget string `pulumi:"zscoreTarget"`
 }
 
 func LookupMagicNetworkMonitoringRuleOutput(ctx *pulumi.Context, args LookupMagicNetworkMonitoringRuleOutputArgs, opts ...pulumi.InvokeOption) LookupMagicNetworkMonitoringRuleResultOutput {
@@ -123,7 +136,8 @@ func (o LookupMagicNetworkMonitoringRuleResultOutput) BandwidthThreshold() pulum
 	return o.ApplyT(func(v LookupMagicNetworkMonitoringRuleResult) float64 { return v.BandwidthThreshold }).(pulumi.Float64Output)
 }
 
-// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+// Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
 func (o LookupMagicNetworkMonitoringRuleResultOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMagicNetworkMonitoringRuleResult) string { return v.Duration }).(pulumi.StringOutput)
 }
@@ -143,6 +157,12 @@ func (o LookupMagicNetworkMonitoringRuleResultOutput) PacketThreshold() pulumi.F
 	return o.ApplyT(func(v LookupMagicNetworkMonitoringRuleResult) float64 { return v.PacketThreshold }).(pulumi.Float64Output)
 }
 
+// Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
+// Available values: "exact", "subnet", "supernet".
+func (o LookupMagicNetworkMonitoringRuleResultOutput) PrefixMatch() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMagicNetworkMonitoringRuleResult) string { return v.PrefixMatch }).(pulumi.StringOutput)
+}
+
 func (o LookupMagicNetworkMonitoringRuleResultOutput) Prefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupMagicNetworkMonitoringRuleResult) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
 }
@@ -150,6 +170,24 @@ func (o LookupMagicNetworkMonitoringRuleResultOutput) Prefixes() pulumi.StringAr
 // The id of the rule. Must be unique.
 func (o LookupMagicNetworkMonitoringRuleResultOutput) RuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMagicNetworkMonitoringRuleResult) *string { return v.RuleId }).(pulumi.StringPtrOutput)
+}
+
+// MNM rule type.
+// Available values: "threshold", "zscore", "advancedDdos".
+func (o LookupMagicNetworkMonitoringRuleResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMagicNetworkMonitoringRuleResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Level of sensitivity set for zscore rules.
+// Available values: "low", "medium", "high".
+func (o LookupMagicNetworkMonitoringRuleResultOutput) ZscoreSensitivity() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMagicNetworkMonitoringRuleResult) string { return v.ZscoreSensitivity }).(pulumi.StringOutput)
+}
+
+// Target of the zscore rule analysis.
+// Available values: "bits", "packets".
+func (o LookupMagicNetworkMonitoringRuleResultOutput) ZscoreTarget() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMagicNetworkMonitoringRuleResult) string { return v.ZscoreTarget }).(pulumi.StringOutput)
 }
 
 func init() {

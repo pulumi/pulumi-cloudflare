@@ -32,9 +32,17 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+     * 
+     */
     @Import(name="certificateAuthority")
     private @Nullable Output<String> certificateAuthority;
 
+    /**
+     * @return Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+     * 
+     */
     public Optional<Output<String>> certificateAuthority() {
         return Optional.ofNullable(this.certificateAuthority);
     }
@@ -75,9 +83,17 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.projectName);
     }
 
+    /**
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -157,11 +173,23 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param certificateAuthority Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certificateAuthority(@Nullable Output<String> certificateAuthority) {
             $.certificateAuthority = certificateAuthority;
             return this;
         }
 
+        /**
+         * @param certificateAuthority Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certificateAuthority(String certificateAuthority) {
             return certificateAuthority(Output.of(certificateAuthority));
         }
@@ -214,11 +242,23 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
             return projectName(Output.of(projectName));
         }
 
+        /**
+         * @param status Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

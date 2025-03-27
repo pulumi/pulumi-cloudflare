@@ -42,6 +42,7 @@ public final class GetLogpushJobResult {
     private String errorMessage;
     /**
      * @return This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+     * Available values: &#34;high&#34;, &#34;low&#34;.
      * 
      */
     private String frequency;
@@ -57,6 +58,7 @@ public final class GetLogpushJobResult {
     private @Nullable Integer jobId;
     /**
      * @return The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+     * Available values: &#34;edge&#34;.
      * 
      */
     private String kind;
@@ -144,6 +146,7 @@ public final class GetLogpushJobResult {
     }
     /**
      * @return This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+     * Available values: &#34;high&#34;, &#34;low&#34;.
      * 
      */
     public String frequency() {
@@ -165,6 +168,7 @@ public final class GetLogpushJobResult {
     }
     /**
      * @return The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+     * Available values: &#34;edge&#34;.
      * 
      */
     public String kind() {

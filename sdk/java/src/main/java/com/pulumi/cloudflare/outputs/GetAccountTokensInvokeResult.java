@@ -22,6 +22,7 @@ public final class GetAccountTokensInvokeResult {
     private String accountId;
     /**
      * @return Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
@@ -51,6 +52,7 @@ public final class GetAccountTokensInvokeResult {
     }
     /**
      * @return Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {

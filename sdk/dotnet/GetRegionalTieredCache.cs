@@ -117,6 +117,7 @@ namespace Pulumi.Cloudflare
         public readonly bool Editable;
         /// <summary>
         /// ID of the zone setting.
+        /// Available values: "tc_regional".
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -125,6 +126,7 @@ namespace Pulumi.Cloudflare
         public readonly string ModifiedOn;
         /// <summary>
         /// The value of the feature
+        /// Available values: "on", "off".
         /// </summary>
         public readonly string Value;
         /// <summary>

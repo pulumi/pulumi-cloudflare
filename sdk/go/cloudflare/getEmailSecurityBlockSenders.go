@@ -55,11 +55,14 @@ type LookupEmailSecurityBlockSendersArgs struct {
 	// Account Identifier
 	AccountId string `pulumi:"accountId"`
 	// The sorting direction.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The field to sort by.
-	Order       *string `pulumi:"order"`
+	// Available values: "pattern", "createdAt".
+	Order *string `pulumi:"order"`
+	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType *string `pulumi:"patternType"`
 	// Allows searching in multiple properties of a record simultaneously.
 	// This parameter is intended for human users, not automation. Its exact
@@ -73,13 +76,16 @@ type LookupEmailSecurityBlockSendersResult struct {
 	// Account Identifier
 	AccountId string `pulumi:"accountId"`
 	// The sorting direction.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The field to sort by.
-	Order       *string `pulumi:"order"`
+	// Available values: "pattern", "createdAt".
+	Order *string `pulumi:"order"`
+	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType *string `pulumi:"patternType"`
 	// The items returned by the data source
 	Results []GetEmailSecurityBlockSendersResult `pulumi:"results"`
@@ -104,11 +110,14 @@ type LookupEmailSecurityBlockSendersOutputArgs struct {
 	// Account Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The sorting direction.
+	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// The field to sort by.
-	Order       pulumi.StringPtrInput `pulumi:"order"`
+	// Available values: "pattern", "createdAt".
+	Order pulumi.StringPtrInput `pulumi:"order"`
+	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType pulumi.StringPtrInput `pulumi:"patternType"`
 	// Allows searching in multiple properties of a record simultaneously.
 	// This parameter is intended for human users, not automation. Its exact
@@ -142,6 +151,7 @@ func (o LookupEmailSecurityBlockSendersResultOutput) AccountId() pulumi.StringOu
 }
 
 // The sorting direction.
+// Available values: "asc", "desc".
 func (o LookupEmailSecurityBlockSendersResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
@@ -157,10 +167,12 @@ func (o LookupEmailSecurityBlockSendersResultOutput) MaxItems() pulumi.IntPtrOut
 }
 
 // The field to sort by.
+// Available values: "pattern", "createdAt".
 func (o LookupEmailSecurityBlockSendersResultOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) *string { return v.Order }).(pulumi.StringPtrOutput)
 }
 
+// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 func (o LookupEmailSecurityBlockSendersResultOutput) PatternType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) *string { return v.PatternType }).(pulumi.StringPtrOutput)
 }

@@ -66,6 +66,7 @@ export class CertificatePack extends pulumi.CustomResource {
 
     /**
      * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Available values: "google", "lets*encrypt", "ssl*com".
      */
     public readonly certificateAuthority!: pulumi.Output<string>;
     /**
@@ -78,18 +79,22 @@ export class CertificatePack extends pulumi.CustomResource {
     public readonly hosts!: pulumi.Output<string[]>;
     /**
      * Status of certificate pack.
+     * Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Type of certificate pack.
+     * Available values: "advanced".
      */
     public readonly type!: pulumi.Output<string>;
     /**
      * Validation Method selected for the order.
+     * Available values: "txt", "http", "email".
      */
     public readonly validationMethod!: pulumi.Output<string>;
     /**
      * Validity Days selected for the order.
+     * Available values: 14, 30, 90, 365.
      */
     public readonly validityDays!: pulumi.Output<number>;
     /**
@@ -158,6 +163,7 @@ export class CertificatePack extends pulumi.CustomResource {
 export interface CertificatePackState {
     /**
      * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Available values: "google", "lets*encrypt", "ssl*com".
      */
     certificateAuthority?: pulumi.Input<string>;
     /**
@@ -170,18 +176,22 @@ export interface CertificatePackState {
     hosts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Status of certificate pack.
+     * Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
      */
     status?: pulumi.Input<string>;
     /**
      * Type of certificate pack.
+     * Available values: "advanced".
      */
     type?: pulumi.Input<string>;
     /**
      * Validation Method selected for the order.
+     * Available values: "txt", "http", "email".
      */
     validationMethod?: pulumi.Input<string>;
     /**
      * Validity Days selected for the order.
+     * Available values: 14, 30, 90, 365.
      */
     validityDays?: pulumi.Input<number>;
     /**
@@ -196,6 +206,7 @@ export interface CertificatePackState {
 export interface CertificatePackArgs {
     /**
      * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Available values: "google", "lets*encrypt", "ssl*com".
      */
     certificateAuthority: pulumi.Input<string>;
     /**
@@ -208,14 +219,17 @@ export interface CertificatePackArgs {
     hosts: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Type of certificate pack.
+     * Available values: "advanced".
      */
     type: pulumi.Input<string>;
     /**
      * Validation Method selected for the order.
+     * Available values: "txt", "http", "email".
      */
     validationMethod: pulumi.Input<string>;
     /**
      * Validity Days selected for the order.
+     * Available values: 14, 30, 90, 365.
      */
     validityDays: pulumi.Input<number>;
     /**

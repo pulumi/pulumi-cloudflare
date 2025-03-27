@@ -3,16 +3,14 @@
 
 package com.pulumi.cloudflare;
 
-<<<<<<< HEAD
-=======
 import com.pulumi.cloudflare.inputs.MagicWanStaticRouteRouteArgs;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import com.pulumi.cloudflare.inputs.MagicWanStaticRouteScopeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -95,8 +93,6 @@ public final class MagicWanStaticRouteArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<Integer>> priority() {
         return Optional.ofNullable(this.priority);
-<<<<<<< HEAD
-=======
     }
 
     @Import(name="route")
@@ -104,7 +100,6 @@ public final class MagicWanStaticRouteArgs extends com.pulumi.resources.Resource
 
     public Optional<Output<MagicWanStaticRouteRouteArgs>> route() {
         return Optional.ofNullable(this.route);
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     /**
@@ -122,8 +117,6 @@ public final class MagicWanStaticRouteArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.routeId);
     }
 
-<<<<<<< HEAD
-=======
     @Import(name="routes")
     private @Nullable Output<List<MagicWanStaticRouteRouteArgs>> routes;
 
@@ -131,7 +124,6 @@ public final class MagicWanStaticRouteArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.routes);
     }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Used only for ECMP routes.
      * 
@@ -170,13 +162,9 @@ public final class MagicWanStaticRouteArgs extends com.pulumi.resources.Resource
         this.nexthop = $.nexthop;
         this.prefix = $.prefix;
         this.priority = $.priority;
-<<<<<<< HEAD
-        this.routeId = $.routeId;
-=======
         this.route = $.route;
         this.routeId = $.routeId;
         this.routes = $.routes;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.scope = $.scope;
         this.weight = $.weight;
     }
@@ -334,8 +322,6 @@ public final class MagicWanStaticRouteArgs extends com.pulumi.resources.Resource
             return routeId(Output.of(routeId));
         }
 
-<<<<<<< HEAD
-=======
         public Builder routes(@Nullable Output<List<MagicWanStaticRouteRouteArgs>> routes) {
             $.routes = routes;
             return this;
@@ -349,7 +335,6 @@ public final class MagicWanStaticRouteArgs extends com.pulumi.resources.Resource
             return routes(List.of(routes));
         }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /**
          * @param scope Used only for ECMP routes.
          * 

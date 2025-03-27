@@ -13,6 +13,10 @@ import java.util.Objects;
 public final class GetR2BucketLifecycleRuleStorageClassTransitionCondition {
     private String date;
     private Integer maxAge;
+    /**
+     * @return Available values: &#34;Age&#34;.
+     * 
+     */
     private String type;
 
     private GetR2BucketLifecycleRuleStorageClassTransitionCondition() {}
@@ -22,6 +26,10 @@ public final class GetR2BucketLifecycleRuleStorageClassTransitionCondition {
     public Integer maxAge() {
         return this.maxAge;
     }
+    /**
+     * @return Available values: &#34;Age&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }

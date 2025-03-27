@@ -22,11 +22,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
-<<<<<<< HEAD
- * $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '<account_id>/<bucket_name>'
-=======
  * $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '<account_id>/<bucket_name>/<jurisdiction>'
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  * ```
  */
 export class R2Bucket extends pulumi.CustomResource {
@@ -71,6 +67,7 @@ export class R2Bucket extends pulumi.CustomResource {
     public readonly jurisdiction!: pulumi.Output<string>;
     /**
      * Location of the bucket
+     * Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
@@ -79,6 +76,7 @@ export class R2Bucket extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * Storage class for newly uploaded objects, unless specified otherwise.
+     * Available values: "Standard", "InfrequentAccess".
      */
     public readonly storageClass!: pulumi.Output<string>;
 
@@ -139,6 +137,7 @@ export interface R2BucketState {
     jurisdiction?: pulumi.Input<string>;
     /**
      * Location of the bucket
+     * Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
      */
     location?: pulumi.Input<string>;
     /**
@@ -147,6 +146,7 @@ export interface R2BucketState {
     name?: pulumi.Input<string>;
     /**
      * Storage class for newly uploaded objects, unless specified otherwise.
+     * Available values: "Standard", "InfrequentAccess".
      */
     storageClass?: pulumi.Input<string>;
 }
@@ -165,6 +165,7 @@ export interface R2BucketArgs {
     jurisdiction?: pulumi.Input<string>;
     /**
      * Location of the bucket
+     * Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
      */
     location?: pulumi.Input<string>;
     /**
@@ -173,6 +174,7 @@ export interface R2BucketArgs {
     name: pulumi.Input<string>;
     /**
      * Storage class for newly uploaded objects, unless specified otherwise.
+     * Available values: "Standard", "InfrequentAccess".
      */
     storageClass?: pulumi.Input<string>;
 }

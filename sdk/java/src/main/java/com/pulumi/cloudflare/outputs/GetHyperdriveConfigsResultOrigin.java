@@ -43,6 +43,7 @@ public final class GetHyperdriveConfigsResultOrigin {
     private Integer port;
     /**
      * @return Specifies the URL scheme used to connect to your origin database.
+     * Available values: &#34;postgres&#34;, &#34;postgresql&#34;.
      * 
      */
     private String scheme;
@@ -97,6 +98,7 @@ public final class GetHyperdriveConfigsResultOrigin {
     }
     /**
      * @return Specifies the URL scheme used to connect to your origin database.
+     * Available values: &#34;postgres&#34;, &#34;postgresql&#34;.
      * 
      */
     public String scheme() {

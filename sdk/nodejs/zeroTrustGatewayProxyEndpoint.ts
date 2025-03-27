@@ -106,6 +106,8 @@ export class ZeroTrustGatewayProxyEndpoint extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustGatewayProxyEndpoint.__pulumiType, name, resourceInputs, opts);
     }
 }

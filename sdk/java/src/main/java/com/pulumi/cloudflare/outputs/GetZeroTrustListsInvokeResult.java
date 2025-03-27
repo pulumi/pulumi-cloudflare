@@ -33,6 +33,7 @@ public final class GetZeroTrustListsInvokeResult {
     private List<GetZeroTrustListsResult> results;
     /**
      * @return The type of list.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
     private @Nullable String type;
@@ -64,6 +65,7 @@ public final class GetZeroTrustListsInvokeResult {
     }
     /**
      * @return The type of list.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
     public Optional<String> type() {

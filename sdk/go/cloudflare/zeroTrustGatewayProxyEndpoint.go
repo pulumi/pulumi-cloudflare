@@ -77,6 +77,12 @@ func NewZeroTrustGatewayProxyEndpoint(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustGatewayProxyEndpoint
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint", name, args, &resource, opts...)

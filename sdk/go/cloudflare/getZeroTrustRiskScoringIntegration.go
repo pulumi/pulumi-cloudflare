@@ -63,9 +63,10 @@ type LookupZeroTrustRiskScoringIntegrationResult struct {
 	// When the integration was created in RFC3339 format.
 	CreatedAt string `pulumi:"createdAt"`
 	// The ID of this resource.
-	Id              string  `pulumi:"id"`
-	IntegrationId   *string `pulumi:"integrationId"`
-	IntegrationType string  `pulumi:"integrationType"`
+	Id            string  `pulumi:"id"`
+	IntegrationId *string `pulumi:"integrationId"`
+	// Available values: "Okta".
+	IntegrationType string `pulumi:"integrationType"`
 	// A reference ID defined by the client.
 	// Should be set to the Access-Okta IDP integration ID.
 	// Useful when the risk-score integration needs to be associated with a secondary asset and recalled using that ID.
@@ -138,6 +139,7 @@ func (o LookupZeroTrustRiskScoringIntegrationResultOutput) IntegrationId() pulum
 	return o.ApplyT(func(v LookupZeroTrustRiskScoringIntegrationResult) *string { return v.IntegrationId }).(pulumi.StringPtrOutput)
 }
 
+// Available values: "Okta".
 func (o LookupZeroTrustRiskScoringIntegrationResultOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustRiskScoringIntegrationResult) string { return v.IntegrationType }).(pulumi.StringOutput)
 }

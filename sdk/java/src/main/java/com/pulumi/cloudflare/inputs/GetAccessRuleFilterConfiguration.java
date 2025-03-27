@@ -16,6 +16,7 @@ public final class GetAccessRuleFilterConfiguration extends com.pulumi.resources
 
     /**
      * The target to search in existing rules.
+     * Available values: &#34;ip&#34;, &#34;ip_range&#34;, &#34;asn&#34;, &#34;country&#34;.
      * 
      */
     @Import(name="target")
@@ -23,6 +24,7 @@ public final class GetAccessRuleFilterConfiguration extends com.pulumi.resources
 
     /**
      * @return The target to search in existing rules.
+     * Available values: &#34;ip&#34;, &#34;ip_range&#34;, &#34;asn&#34;, &#34;country&#34;.
      * 
      */
     public Optional<String> target() {
@@ -73,6 +75,7 @@ public final class GetAccessRuleFilterConfiguration extends com.pulumi.resources
 
         /**
          * @param target The target to search in existing rules.
+         * Available values: &#34;ip&#34;, &#34;ip_range&#34;, &#34;asn&#34;, &#34;country&#34;.
          * 
          * @return builder
          * 

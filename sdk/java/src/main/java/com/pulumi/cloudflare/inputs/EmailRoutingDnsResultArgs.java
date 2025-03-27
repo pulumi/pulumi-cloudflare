@@ -95,6 +95,7 @@ public final class EmailRoutingDnsResultArgs extends com.pulumi.resources.Resour
 
     /**
      * DNS record type.
+     * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CNAME&#34;, &#34;HTTPS&#34;, &#34;TXT&#34;, &#34;SRV&#34;, &#34;LOC&#34;, &#34;MX&#34;, &#34;NS&#34;, &#34;CERT&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;NAPTR&#34;, &#34;SMIMEA&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;URI&#34;.
      * 
      */
     @Import(name="type")
@@ -102,6 +103,7 @@ public final class EmailRoutingDnsResultArgs extends com.pulumi.resources.Resour
 
     /**
      * @return DNS record type.
+     * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CNAME&#34;, &#34;HTTPS&#34;, &#34;TXT&#34;, &#34;SRV&#34;, &#34;LOC&#34;, &#34;MX&#34;, &#34;NS&#34;, &#34;CERT&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;NAPTR&#34;, &#34;SMIMEA&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;URI&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -250,6 +252,7 @@ public final class EmailRoutingDnsResultArgs extends com.pulumi.resources.Resour
 
         /**
          * @param type DNS record type.
+         * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CNAME&#34;, &#34;HTTPS&#34;, &#34;TXT&#34;, &#34;SRV&#34;, &#34;LOC&#34;, &#34;MX&#34;, &#34;NS&#34;, &#34;CERT&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;NAPTR&#34;, &#34;SMIMEA&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;URI&#34;.
          * 
          * @return builder
          * 
@@ -261,6 +264,7 @@ public final class EmailRoutingDnsResultArgs extends com.pulumi.resources.Resour
 
         /**
          * @param type DNS record type.
+         * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CNAME&#34;, &#34;HTTPS&#34;, &#34;TXT&#34;, &#34;SRV&#34;, &#34;LOC&#34;, &#34;MX&#34;, &#34;NS&#34;, &#34;CERT&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;NAPTR&#34;, &#34;SMIMEA&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;URI&#34;.
          * 
          * @return builder
          * 

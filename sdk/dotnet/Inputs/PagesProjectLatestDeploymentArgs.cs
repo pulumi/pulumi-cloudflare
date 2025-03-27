@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputMap<Inputs.PagesProjectLatestDeploymentEnvVarsArgs>? _envVars;
 
         /// <summary>
-        /// A dict of env variables to build this deploy.
+        /// Environment variables used for builds and Pages Functions.
         /// </summary>
         public InputMap<Inputs.PagesProjectLatestDeploymentEnvVarsArgs> EnvVars
         {
@@ -56,6 +56,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Type of deploy.
+        /// Available values: "preview", "production".
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }

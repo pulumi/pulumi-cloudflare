@@ -18,6 +18,9 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string CreatedOn;
         public readonly string Id;
         public readonly string Source;
+        /// <summary>
+        /// Available values: "percentage".
+        /// </summary>
         public readonly string Strategy;
         public readonly ImmutableArray<Outputs.GetWorkersDeploymentDeploymentVersionResult> Versions;
 

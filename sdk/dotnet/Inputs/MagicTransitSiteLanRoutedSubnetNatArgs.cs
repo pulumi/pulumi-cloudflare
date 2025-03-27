@@ -10,7 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-<<<<<<<< HEAD:sdk/dotnet/Inputs/MagicTransitSiteLanRoutedSubnetNatArgs.cs
     public sealed class MagicTransitSiteLanRoutedSubnetNatArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
@@ -23,19 +22,5 @@ namespace Pulumi.Cloudflare.Inputs
         {
         }
         public static new MagicTransitSiteLanRoutedSubnetNatArgs Empty => new MagicTransitSiteLanRoutedSubnetNatArgs();
-========
-    public sealed class DnsSettingsZoneDefaultsInternalDnsArgs : global::Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ID of the zone to fallback to.
-        /// </summary>
-        [Input("referenceZoneId")]
-        public Input<string>? ReferenceZoneId { get; set; }
-
-        public DnsSettingsZoneDefaultsInternalDnsArgs()
-        {
-        }
-        public static new DnsSettingsZoneDefaultsInternalDnsArgs Empty => new DnsSettingsZoneDefaultsInternalDnsArgs();
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/dotnet/Inputs/DnsSettingsZoneDefaultsInternalDnsArgs.cs
     }
 }

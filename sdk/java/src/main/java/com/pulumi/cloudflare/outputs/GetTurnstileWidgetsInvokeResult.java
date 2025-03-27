@@ -22,6 +22,7 @@ public final class GetTurnstileWidgetsInvokeResult {
     private String accountId;
     /**
      * @return Direction to order widgets.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
@@ -37,6 +38,7 @@ public final class GetTurnstileWidgetsInvokeResult {
     private @Nullable Integer maxItems;
     /**
      * @return Field to order widgets by.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
      * 
      */
     private @Nullable String order;
@@ -56,6 +58,7 @@ public final class GetTurnstileWidgetsInvokeResult {
     }
     /**
      * @return Direction to order widgets.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -77,6 +80,7 @@ public final class GetTurnstileWidgetsInvokeResult {
     }
     /**
      * @return Field to order widgets by.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
      * 
      */
     public Optional<String> order() {

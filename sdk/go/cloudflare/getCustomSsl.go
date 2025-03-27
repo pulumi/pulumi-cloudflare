@@ -12,6 +12,31 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.LookupCustomSsl(ctx, &cloudflare.LookupCustomSslArgs{
+//				ZoneId:              "023e105f4ecef8ad9ca31a8372d0c353",
+//				CustomCertificateId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupCustomSsl(ctx *pulumi.Context, args *LookupCustomSslArgs, opts ...pulumi.InvokeOption) (*LookupCustomSslResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomSslResult
@@ -27,11 +52,14 @@ type LookupCustomSslArgs struct {
 	// Identifier
 	CustomCertificateId *string             `pulumi:"customCertificateId"`
 	Filter              *GetCustomSslFilter `pulumi:"filter"`
+	// Identifier
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getCustomSsl.
 type LookupCustomSslResult struct {
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod string `pulumi:"bundleMethod"`
 	// Identifier
 	CustomCertificateId *string `pulumi:"customCertificateId"`
@@ -55,6 +83,7 @@ type LookupCustomSslResult struct {
 	// The type of hash used for the certificate.
 	Signature string `pulumi:"signature"`
 	// Status of the zone's custom SSL.
+	// Available values: "active", "expired", "deleted", "pending", "initializing".
 	Status string `pulumi:"status"`
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn string `pulumi:"uploadedOn"`
@@ -76,6 +105,8 @@ type LookupCustomSslOutputArgs struct {
 	// Identifier
 	CustomCertificateId pulumi.StringPtrInput      `pulumi:"customCertificateId"`
 	Filter              GetCustomSslFilterPtrInput `pulumi:"filter"`
+	// Identifier
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
 func (LookupCustomSslOutputArgs) ElementType() reflect.Type {
@@ -98,6 +129,7 @@ func (o LookupCustomSslResultOutput) ToLookupCustomSslResultOutputWithContext(ct
 }
 
 // A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+// Available values: "ubiquitous", "optimal", "force".
 func (o LookupCustomSslResultOutput) BundleMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomSslResult) string { return v.BundleMethod }).(pulumi.StringOutput)
 }
@@ -160,6 +192,7 @@ func (o LookupCustomSslResultOutput) Signature() pulumi.StringOutput {
 }
 
 // Status of the zone's custom SSL.
+// Available values: "active", "expired", "deleted", "pending", "initializing".
 func (o LookupCustomSslResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomSslResult) string { return v.Status }).(pulumi.StringOutput)
 }

@@ -41,12 +41,18 @@ export interface GetBotManagementArgs {
 export interface GetBotManagementResult {
     /**
      * Enable rule to block AI Scrapers and Crawlers.
+     * Available values: "block", "disabled".
      */
     readonly aiBotsProtection: string;
     /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      */
     readonly autoUpdateModel: boolean;
+    /**
+     * Enable rule to punish AI Scrapers and Crawlers via a link maze.
+     * Available values: "enabled", "disabled".
+     */
+    readonly crawlerProtection: string;
     /**
      * Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
      */
@@ -65,10 +71,12 @@ export interface GetBotManagementResult {
     readonly optimizeWordpress: boolean;
     /**
      * Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+     * Available values: "allow", "block", "managedChallenge".
      */
     readonly sbfmDefinitelyAutomated: string;
     /**
      * Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+     * Available values: "allow", "block", "managedChallenge".
      */
     readonly sbfmLikelyAutomated: string;
     /**
@@ -79,6 +87,7 @@ export interface GetBotManagementResult {
     readonly sbfmStaticResourceProtection: boolean;
     /**
      * Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+     * Available values: "allow", "block".
      */
     readonly sbfmVerifiedBots: string;
     /**

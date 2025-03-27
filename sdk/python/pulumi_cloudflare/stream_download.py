@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/stream_download.py
 __all__ = ['StreamDownloadArgs', 'StreamDownload']
 
 @pulumi.input_type
@@ -29,35 +28,12 @@ class StreamDownloadArgs:
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "identifier", identifier)
-========
-__all__ = ['R2BucketCorsArgs', 'R2BucketCors']
-
-@pulumi.input_type
-class R2BucketCorsArgs:
-    def __init__(__self__, *,
-                 account_id: pulumi.Input[str],
-                 bucket_name: pulumi.Input[str],
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]] = None):
-        """
-        The set of arguments for constructing a R2BucketCors resource.
-        :param pulumi.Input[str] account_id: Account ID
-        :param pulumi.Input[str] bucket_name: Name of the bucket
-        """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "bucket_name", bucket_name)
-        if rules is not None:
-            pulumi.set(__self__, "rules", rules)
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/r2_bucket_cors.py
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/stream_download.py
         Identifier
-========
-        Account ID
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/r2_bucket_cors.py
         """
         return pulumi.get(self, "account_id")
 
@@ -66,7 +42,6 @@ class R2BucketCorsArgs:
         pulumi.set(self, "account_id", value)
 
     @property
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/stream_download.py
     @pulumi.getter
     def identifier(self) -> pulumi.Input[str]:
         """
@@ -93,56 +68,12 @@ class _StreamDownloadState:
             pulumi.set(__self__, "account_id", account_id)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
-========
-    @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> pulumi.Input[str]:
-        """
-        Name of the bucket
-        """
-        return pulumi.get(self, "bucket_name")
-
-    @bucket_name.setter
-    def bucket_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "bucket_name", value)
-
-    @property
-    @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]]:
-        return pulumi.get(self, "rules")
-
-    @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]]):
-        pulumi.set(self, "rules", value)
-
-
-@pulumi.input_type
-class _R2BucketCorsState:
-    def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[str]] = None,
-                 bucket_name: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]] = None):
-        """
-        Input properties used for looking up and filtering R2BucketCors resources.
-        :param pulumi.Input[str] account_id: Account ID
-        :param pulumi.Input[str] bucket_name: Name of the bucket
-        """
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
-        if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
-        if rules is not None:
-            pulumi.set(__self__, "rules", rules)
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/r2_bucket_cors.py
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/stream_download.py
         Identifier
-========
-        Account ID
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/r2_bucket_cors.py
         """
         return pulumi.get(self, "account_id")
 
@@ -151,20 +82,7 @@ class _R2BucketCorsState:
         pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the bucket
-        """
-        return pulumi.get(self, "bucket_name")
-
-    @bucket_name.setter
-    def bucket_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "bucket_name", value)
-
-    @property
     @pulumi.getter
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/stream_download.py
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
         A Cloudflare-generated unique identifier for a media item.
@@ -177,23 +95,11 @@ class _R2BucketCorsState:
 
 
 class StreamDownload(pulumi.CustomResource):
-========
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]]:
-        return pulumi.get(self, "rules")
-
-    @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]]):
-        pulumi.set(self, "rules", value)
-
-
-class R2BucketCors(pulumi.CustomResource):
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/r2_bucket_cors.py
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/stream_download.py
                  identifier: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -212,24 +118,11 @@ class R2BucketCors(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] identifier: A Cloudflare-generated unique identifier for a media item.
-========
-                 bucket_name: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['R2BucketCorsRuleArgs', 'R2BucketCorsRuleArgsDict']]]]] = None,
-                 __props__=None):
-        """
-        ## Example Usage
-
-        :param str resource_name: The name of the resource.
-        :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account ID
-        :param pulumi.Input[str] bucket_name: Name of the bucket
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/r2_bucket_cors.py
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/stream_download.py
                  args: StreamDownloadArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -246,24 +139,11 @@ class R2BucketCors(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param StreamDownloadArgs args: The arguments to use to populate this resource's properties.
-========
-                 args: R2BucketCorsArgs,
-                 opts: Optional[pulumi.ResourceOptions] = None):
-        """
-        ## Example Usage
-
-        :param str resource_name: The name of the resource.
-        :param R2BucketCorsArgs args: The arguments to use to populate this resource's properties.
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/r2_bucket_cors.py
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/stream_download.py
         resource_args, opts = _utilities.get_resource_args_opts(StreamDownloadArgs, pulumi.ResourceOptions, *args, **kwargs)
-========
-        resource_args, opts = _utilities.get_resource_args_opts(R2BucketCorsArgs, pulumi.ResourceOptions, *args, **kwargs)
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/r2_bucket_cors.py
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -273,12 +153,7 @@ class R2BucketCors(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/stream_download.py
                  identifier: Optional[pulumi.Input[str]] = None,
-========
-                 bucket_name: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['R2BucketCorsRuleArgs', 'R2BucketCorsRuleArgsDict']]]]] = None,
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/r2_bucket_cors.py
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -286,29 +161,16 @@ class R2BucketCors(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/stream_download.py
             __props__ = StreamDownloadArgs.__new__(StreamDownloadArgs)
-========
-            __props__ = R2BucketCorsArgs.__new__(R2BucketCorsArgs)
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/r2_bucket_cors.py
 
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/stream_download.py
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
         super(StreamDownload, __self__).__init__(
             'cloudflare:index/streamDownload:StreamDownload',
-========
-            if bucket_name is None and not opts.urn:
-                raise TypeError("Missing required property 'bucket_name'")
-            __props__.__dict__["bucket_name"] = bucket_name
-            __props__.__dict__["rules"] = rules
-        super(R2BucketCors, __self__).__init__(
-            'cloudflare:index/r2BucketCors:R2BucketCors',
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/r2_bucket_cors.py
             resource_name,
             __props__,
             opts)
@@ -318,22 +180,14 @@ class R2BucketCors(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/stream_download.py
             identifier: Optional[pulumi.Input[str]] = None) -> 'StreamDownload':
         """
         Get an existing StreamDownload resource's state with the given name, id, and optional extra
-========
-            bucket_name: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['R2BucketCorsRuleArgs', 'R2BucketCorsRuleArgsDict']]]]] = None) -> 'R2BucketCors':
-        """
-        Get an existing R2BucketCors resource's state with the given name, id, and optional extra
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/r2_bucket_cors.py
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/stream_download.py
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] identifier: A Cloudflare-generated unique identifier for a media item.
         """
@@ -344,51 +198,20 @@ class R2BucketCors(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["identifier"] = identifier
         return StreamDownload(resource_name, opts=opts, __props__=__props__)
-========
-        :param pulumi.Input[str] account_id: Account ID
-        :param pulumi.Input[str] bucket_name: Name of the bucket
-        """
-        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
-
-        __props__ = _R2BucketCorsState.__new__(_R2BucketCorsState)
-
-        __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["bucket_name"] = bucket_name
-        __props__.__dict__["rules"] = rules
-        return R2BucketCors(resource_name, opts=opts, __props__=__props__)
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/r2_bucket_cors.py
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/stream_download.py
         Identifier
-========
-        Account ID
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/r2_bucket_cors.py
         """
         return pulumi.get(self, "account_id")
 
     @property
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/stream_download.py
     @pulumi.getter
     def identifier(self) -> pulumi.Output[str]:
         """
         A Cloudflare-generated unique identifier for a media item.
         """
         return pulumi.get(self, "identifier")
-========
-    @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> pulumi.Output[str]:
-        """
-        Name of the bucket
-        """
-        return pulumi.get(self, "bucket_name")
-
-    @property
-    @pulumi.getter
-    def rules(self) -> pulumi.Output[Sequence['outputs.R2BucketCorsRule']]:
-        return pulumi.get(self, "rules")
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/r2_bucket_cors.py
 

@@ -18,6 +18,7 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
 
     /**
      * The IP versions supported for inbound connections on Spectrum anycast IPs.
+     * Available values: &#34;all&#34;, &#34;ipv4&#34;, &#34;ipv6&#34;.
      * 
      */
     @Import(name="connectivity")
@@ -25,6 +26,7 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
 
     /**
      * @return The IP versions supported for inbound connections on Spectrum anycast IPs.
+     * Available values: &#34;all&#34;, &#34;ipv4&#34;, &#34;ipv6&#34;.
      * 
      */
     public Optional<Output<String>> connectivity() {
@@ -48,6 +50,7 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
 
     /**
      * The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
+     * Available values: &#34;dynamic&#34;.
      * 
      */
     @Import(name="type")
@@ -55,6 +58,7 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
 
     /**
      * @return The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
+     * Available values: &#34;dynamic&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -89,6 +93,7 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
 
         /**
          * @param connectivity The IP versions supported for inbound connections on Spectrum anycast IPs.
+         * Available values: &#34;all&#34;, &#34;ipv4&#34;, &#34;ipv6&#34;.
          * 
          * @return builder
          * 
@@ -100,6 +105,7 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
 
         /**
          * @param connectivity The IP versions supported for inbound connections on Spectrum anycast IPs.
+         * Available values: &#34;all&#34;, &#34;ipv4&#34;, &#34;ipv6&#34;.
          * 
          * @return builder
          * 
@@ -141,6 +147,7 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
 
         /**
          * @param type The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
+         * Available values: &#34;dynamic&#34;.
          * 
          * @return builder
          * 
@@ -152,6 +159,7 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
 
         /**
          * @param type The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
+         * Available values: &#34;dynamic&#34;.
          * 
          * @return builder
          * 

@@ -35,6 +35,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableDictionary<string, ImmutableArray<string>> Header;
         /// <summary>
         /// The HTTP method to use for the health check.
+        /// Available values: "GET", "HEAD".
         /// </summary>
         public readonly string Method;
         /// <summary>

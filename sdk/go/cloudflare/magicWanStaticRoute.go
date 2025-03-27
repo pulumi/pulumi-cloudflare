@@ -72,6 +72,12 @@ func NewMagicWanStaticRoute(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/staticRoute:StaticRoute"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MagicWanStaticRoute
 	err := ctx.RegisterResource("cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute", name, args, &resource, opts...)
@@ -154,17 +160,11 @@ type magicWanStaticRouteArgs struct {
 	// IP Prefix in Classless Inter-Domain Routing format.
 	Prefix *string `pulumi:"prefix"`
 	// Priority of the static route.
-<<<<<<< HEAD
-	Priority *int `pulumi:"priority"`
-	// Identifier
-	RouteId *string `pulumi:"routeId"`
-=======
 	Priority *int                      `pulumi:"priority"`
 	Route    *MagicWanStaticRouteRoute `pulumi:"route"`
 	// Identifier
 	RouteId *string                    `pulumi:"routeId"`
 	Routes  []MagicWanStaticRouteRoute `pulumi:"routes"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Used only for ECMP routes.
 	Scope *MagicWanStaticRouteScope `pulumi:"scope"`
 	// Optional weight of the ECMP scope - if provided.
@@ -183,15 +183,10 @@ type MagicWanStaticRouteArgs struct {
 	Prefix pulumi.StringPtrInput
 	// Priority of the static route.
 	Priority pulumi.IntPtrInput
-<<<<<<< HEAD
-	// Identifier
-	RouteId pulumi.StringPtrInput
-=======
 	Route    MagicWanStaticRouteRoutePtrInput
 	// Identifier
 	RouteId pulumi.StringPtrInput
 	Routes  MagicWanStaticRouteRouteArrayInput
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Used only for ECMP routes.
 	Scope MagicWanStaticRouteScopePtrInput
 	// Optional weight of the ECMP scope - if provided.

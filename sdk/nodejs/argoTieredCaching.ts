@@ -61,6 +61,7 @@ export class ArgoTieredCaching extends pulumi.CustomResource {
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
      * Enables Tiered Caching.
+     * Available values: "on", "off".
      */
     public readonly value!: pulumi.Output<string>;
     /**
@@ -117,6 +118,7 @@ export interface ArgoTieredCachingState {
     modifiedOn?: pulumi.Input<string>;
     /**
      * Enables Tiered Caching.
+     * Available values: "on", "off".
      */
     value?: pulumi.Input<string>;
     /**
@@ -131,6 +133,7 @@ export interface ArgoTieredCachingState {
 export interface ArgoTieredCachingArgs {
     /**
      * Enables Tiered Caching.
+     * Available values: "on", "off".
      */
     value: pulumi.Input<string>;
     /**

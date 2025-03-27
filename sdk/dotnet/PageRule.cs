@@ -10,22 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare page rule resource.
+    /// ## Example Usage
     /// 
     /// ## Import
     /// 
-    /// Page rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.
-    /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/pageRule:PageRule default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
+    /// $ pulumi import cloudflare:index/pageRule:PageRule example '&lt;zone_id&gt;/&lt;pagerule_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/pageRule:PageRule")]
     public partial class PageRule : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The actions taken by the page rule, options given below.
-        /// </summary>
         [Output("actions")]
         public Output<Outputs.PageRuleActions> Actions { get; private set; } = null!;
 
@@ -42,25 +37,27 @@ namespace Pulumi.Cloudflare
         public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+        /// The priority of the rule, used to define which Page Rule is processed
+        /// over another. A higher number indicates a higher priority. For example,
+        /// if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+        /// specific Page Rule to take precedence (rule B: `/images/special/*`),
+        /// specify a higher priority for rule B so it overrides rule A.
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the page rule is active or disabled.
+        /// The status of the Page Rule.
+        /// Available values: "active", "disabled".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
-        /// <summary>
-        /// The URL pattern to target with the page rule.
-        /// </summary>
         [Output("target")]
         public Output<string> Target { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone ID to which the page rule should be added.
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -111,32 +108,31 @@ namespace Pulumi.Cloudflare
 
     public sealed class PageRuleArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The actions taken by the page rule, options given below.
-        /// </summary>
         [Input("actions", required: true)]
         public Input<Inputs.PageRuleActionsArgs> Actions { get; set; } = null!;
 
         /// <summary>
-        /// The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+        /// The priority of the rule, used to define which Page Rule is processed
+        /// over another. A higher number indicates a higher priority. For example,
+        /// if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+        /// specific Page Rule to take precedence (rule B: `/images/special/*`),
+        /// specify a higher priority for rule B so it overrides rule A.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// Whether the page rule is active or disabled.
+        /// The status of the Page Rule.
+        /// Available values: "active", "disabled".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
-        /// <summary>
-        /// The URL pattern to target with the page rule.
-        /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
 
         /// <summary>
-        /// The DNS zone ID to which the page rule should be added.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -149,9 +145,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class PageRuleState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The actions taken by the page rule, options given below.
-        /// </summary>
         [Input("actions")]
         public Input<Inputs.PageRuleActionsGetArgs>? Actions { get; set; }
 
@@ -168,25 +161,27 @@ namespace Pulumi.Cloudflare
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+        /// The priority of the rule, used to define which Page Rule is processed
+        /// over another. A higher number indicates a higher priority. For example,
+        /// if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+        /// specific Page Rule to take precedence (rule B: `/images/special/*`),
+        /// specify a higher priority for rule B so it overrides rule A.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// Whether the page rule is active or disabled.
+        /// The status of the Page Rule.
+        /// Available values: "active", "disabled".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
-        /// <summary>
-        /// The URL pattern to target with the page rule.
-        /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// The DNS zone ID to which the page rule should be added.
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

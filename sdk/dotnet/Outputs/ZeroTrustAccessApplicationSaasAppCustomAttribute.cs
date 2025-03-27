@@ -23,6 +23,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Name;
         /// <summary>
         /// A globally unique name for an identity or service provider.
+        /// Available values: "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified", "urn:oasis:names:tc:SAML:2.0:attrname-format:basic", "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
         /// </summary>
         public readonly string? NameFormat;
         /// <summary>

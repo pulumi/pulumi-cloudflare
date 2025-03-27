@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,30 +20,30 @@ public final class ZeroTrustDeviceDefaultProfileExcludeArgs extends com.pulumi.r
      * The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
      * 
      */
-    @Import(name="address")
-    private @Nullable Output<String> address;
+    @Import(name="address", required=true)
+    private Output<String> address;
 
     /**
      * @return The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
      * 
      */
-    public Optional<Output<String>> address() {
-        return Optional.ofNullable(this.address);
+    public Output<String> address() {
+        return this.address;
     }
 
     /**
      * A description of the Split Tunnel item, displayed in the client UI.
      * 
      */
-    @Import(name="description")
-    private @Nullable Output<String> description;
+    @Import(name="description", required=true)
+    private Output<String> description;
 
     /**
      * @return A description of the Split Tunnel item, displayed in the client UI.
      * 
      */
-    public Optional<Output<String>> description() {
-        return Optional.ofNullable(this.description);
+    public Output<String> description() {
+        return this.description;
     }
 
     /**
@@ -92,7 +93,7 @@ public final class ZeroTrustDeviceDefaultProfileExcludeArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder address(@Nullable Output<String> address) {
+        public Builder address(Output<String> address) {
             $.address = address;
             return this;
         }
@@ -113,7 +114,7 @@ public final class ZeroTrustDeviceDefaultProfileExcludeArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder description(@Nullable Output<String> description) {
+        public Builder description(Output<String> description) {
             $.description = description;
             return this;
         }
@@ -150,6 +151,12 @@ public final class ZeroTrustDeviceDefaultProfileExcludeArgs extends com.pulumi.r
         }
 
         public ZeroTrustDeviceDefaultProfileExcludeArgs build() {
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustDeviceDefaultProfileExcludeArgs", "address");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustDeviceDefaultProfileExcludeArgs", "description");
+            }
             return $;
         }
     }

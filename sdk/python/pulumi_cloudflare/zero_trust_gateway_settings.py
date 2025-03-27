@@ -181,6 +181,8 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
             __props__.__dict__["settings"] = settings
             __props__.__dict__["created_at"] = None
             __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/teamsAccount:TeamsAccount")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustGatewaySettings, __self__).__init__(
             'cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings',
             resource_name,

@@ -83,18 +83,17 @@ type Zone struct {
 	// benefits.
 	Paused pulumi.BoolOutput `pulumi:"paused"`
 	// The zone status on Cloudflare.
+	// Available values: "initializing", "pending", "active", "moved".
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
 	// typically a partner-hosted zone or a CNAME setup.
+	// Available values: "full", "partial", "secondary".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// An array of domains used for custom name servers. This is only
 	// available for Business and Enterprise plans.
 	VanityNameServers pulumi.StringArrayOutput `pulumi:"vanityNameServers"`
-<<<<<<< HEAD
-=======
 	// Verification key for partial zone setup.
 	VerificationKey pulumi.StringOutput `pulumi:"verificationKey"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // NewZone registers a new resource with the given unique name, arguments, and options.
@@ -164,18 +163,17 @@ type zoneState struct {
 	// benefits.
 	Paused *bool `pulumi:"paused"`
 	// The zone status on Cloudflare.
+	// Available values: "initializing", "pending", "active", "moved".
 	Status *string `pulumi:"status"`
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
 	// typically a partner-hosted zone or a CNAME setup.
+	// Available values: "full", "partial", "secondary".
 	Type *string `pulumi:"type"`
 	// An array of domains used for custom name servers. This is only
 	// available for Business and Enterprise plans.
 	VanityNameServers []string `pulumi:"vanityNameServers"`
-<<<<<<< HEAD
-=======
 	// Verification key for partial zone setup.
 	VerificationKey *string `pulumi:"verificationKey"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 type ZoneState struct {
@@ -210,18 +208,17 @@ type ZoneState struct {
 	// benefits.
 	Paused pulumi.BoolPtrInput
 	// The zone status on Cloudflare.
+	// Available values: "initializing", "pending", "active", "moved".
 	Status pulumi.StringPtrInput
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
 	// typically a partner-hosted zone or a CNAME setup.
+	// Available values: "full", "partial", "secondary".
 	Type pulumi.StringPtrInput
 	// An array of domains used for custom name servers. This is only
 	// available for Business and Enterprise plans.
 	VanityNameServers pulumi.StringArrayInput
-<<<<<<< HEAD
-=======
 	// Verification key for partial zone setup.
 	VerificationKey pulumi.StringPtrInput
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func (ZoneState) ElementType() reflect.Type {
@@ -234,6 +231,7 @@ type zoneArgs struct {
 	Name string `pulumi:"name"`
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
 	// typically a partner-hosted zone or a CNAME setup.
+	// Available values: "full", "partial", "secondary".
 	Type *string `pulumi:"type"`
 	// An array of domains used for custom name servers. This is only
 	// available for Business and Enterprise plans.
@@ -247,6 +245,7 @@ type ZoneArgs struct {
 	Name pulumi.StringInput
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
 	// typically a partner-hosted zone or a CNAME setup.
+	// Available values: "full", "partial", "secondary".
 	Type pulumi.StringPtrInput
 	// An array of domains used for custom name servers. This is only
 	// available for Business and Enterprise plans.
@@ -410,12 +409,14 @@ func (o ZoneOutput) Paused() pulumi.BoolOutput {
 }
 
 // The zone status on Cloudflare.
+// Available values: "initializing", "pending", "active", "moved".
 func (o ZoneOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // A full zone implies that DNS is hosted with Cloudflare. A partial zone is
 // typically a partner-hosted zone or a CNAME setup.
+// Available values: "full", "partial", "secondary".
 func (o ZoneOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -426,14 +427,11 @@ func (o ZoneOutput) VanityNameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringArrayOutput { return v.VanityNameServers }).(pulumi.StringArrayOutput)
 }
 
-<<<<<<< HEAD
-=======
 // Verification key for partial zone setup.
 func (o ZoneOutput) VerificationKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.VerificationKey }).(pulumi.StringOutput)
 }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 type ZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (ZoneArrayOutput) ElementType() reflect.Type {

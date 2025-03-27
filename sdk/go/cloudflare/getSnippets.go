@@ -12,6 +12,31 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.LookupSnippets(ctx, &cloudflare.LookupSnippetsArgs{
+//				ZoneId:      "023e105f4ecef8ad9ca31a8372d0c353",
+//				SnippetName: "snippet_name_01",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupSnippets(ctx *pulumi.Context, args *LookupSnippetsArgs, opts ...pulumi.InvokeOption) (*LookupSnippetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnippetsResult
@@ -24,6 +49,8 @@ func LookupSnippets(ctx *pulumi.Context, args *LookupSnippetsArgs, opts ...pulum
 
 // A collection of arguments for invoking getSnippets.
 type LookupSnippetsArgs struct {
+	// Snippet identifying name
+	SnippetName string `pulumi:"snippetName"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -53,6 +80,8 @@ func LookupSnippetsOutput(ctx *pulumi.Context, args LookupSnippetsOutputArgs, op
 
 // A collection of arguments for invoking getSnippets.
 type LookupSnippetsOutputArgs struct {
+	// Snippet identifying name
+	SnippetName pulumi.StringInput `pulumi:"snippetName"`
 	// Identifier
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }

@@ -24,6 +24,7 @@ public final class GetZeroTrustAccessApplicationsResultSaasAppCustomClaim {
     private Boolean required;
     /**
      * @return The scope of the claim.
+     * Available values: &#34;groups&#34;, &#34;profile&#34;, &#34;email&#34;, &#34;openid&#34;.
      * 
      */
     private String scope;
@@ -46,6 +47,7 @@ public final class GetZeroTrustAccessApplicationsResultSaasAppCustomClaim {
     }
     /**
      * @return The scope of the claim.
+     * Available values: &#34;groups&#34;, &#34;profile&#34;, &#34;email&#34;, &#34;openid&#34;.
      * 
      */
     public String scope() {

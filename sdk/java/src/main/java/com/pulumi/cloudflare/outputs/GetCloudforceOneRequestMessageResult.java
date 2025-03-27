@@ -5,11 +5,8 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-<<<<<<< HEAD
-=======
 import java.lang.Boolean;
 import java.lang.Integer;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 
@@ -21,12 +18,6 @@ public final class GetCloudforceOneRequestMessageResult {
      */
     private String accountIdentifier;
     /**
-<<<<<<< HEAD
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-=======
      * @return Author of message
      * 
      */
@@ -51,20 +42,16 @@ public final class GetCloudforceOneRequestMessageResult {
      * 
      */
     private Boolean isFollowOnRequest;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return UUID
      * 
      */
     private String requestIdentifier;
-<<<<<<< HEAD
-=======
     /**
      * @return Message last updated time
      * 
      */
     private String updated;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     private GetCloudforceOneRequestMessageResult() {}
     /**
@@ -75,15 +62,6 @@ public final class GetCloudforceOneRequestMessageResult {
         return this.accountIdentifier;
     }
     /**
-<<<<<<< HEAD
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
-=======
      * @return Author of message
      * 
      */
@@ -119,15 +97,12 @@ public final class GetCloudforceOneRequestMessageResult {
         return this.isFollowOnRequest;
     }
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return UUID
      * 
      */
     public String requestIdentifier() {
         return this.requestIdentifier;
     }
-<<<<<<< HEAD
-=======
     /**
      * @return Message last updated time
      * 
@@ -135,7 +110,6 @@ public final class GetCloudforceOneRequestMessageResult {
     public String updated() {
         return this.updated;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     public static Builder builder() {
         return new Builder();
@@ -147,10 +121,6 @@ public final class GetCloudforceOneRequestMessageResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountIdentifier;
-<<<<<<< HEAD
-        private String id;
-        private String requestIdentifier;
-=======
         private String author;
         private String content;
         private String created;
@@ -158,15 +128,10 @@ public final class GetCloudforceOneRequestMessageResult {
         private Boolean isFollowOnRequest;
         private String requestIdentifier;
         private String updated;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder() {}
         public Builder(GetCloudforceOneRequestMessageResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountIdentifier = defaults.accountIdentifier;
-<<<<<<< HEAD
-    	      this.id = defaults.id;
-    	      this.requestIdentifier = defaults.requestIdentifier;
-=======
     	      this.author = defaults.author;
     	      this.content = defaults.content;
     	      this.created = defaults.created;
@@ -174,7 +139,6 @@ public final class GetCloudforceOneRequestMessageResult {
     	      this.isFollowOnRequest = defaults.isFollowOnRequest;
     	      this.requestIdentifier = defaults.requestIdentifier;
     	      this.updated = defaults.updated;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
 
         @CustomType.Setter
@@ -186,9 +150,6 @@ public final class GetCloudforceOneRequestMessageResult {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-        public Builder id(String id) {
-=======
         public Builder author(String author) {
             if (author == null) {
               throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageResult", "author");
@@ -214,7 +175,6 @@ public final class GetCloudforceOneRequestMessageResult {
         }
         @CustomType.Setter
         public Builder id(Integer id) {
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             if (id == null) {
               throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageResult", "id");
             }
@@ -222,8 +182,6 @@ public final class GetCloudforceOneRequestMessageResult {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder isFollowOnRequest(Boolean isFollowOnRequest) {
             if (isFollowOnRequest == null) {
               throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageResult", "isFollowOnRequest");
@@ -232,7 +190,6 @@ public final class GetCloudforceOneRequestMessageResult {
             return this;
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder requestIdentifier(String requestIdentifier) {
             if (requestIdentifier == null) {
               throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageResult", "requestIdentifier");
@@ -240,13 +197,6 @@ public final class GetCloudforceOneRequestMessageResult {
             this.requestIdentifier = requestIdentifier;
             return this;
         }
-<<<<<<< HEAD
-        public GetCloudforceOneRequestMessageResult build() {
-            final var _resultValue = new GetCloudforceOneRequestMessageResult();
-            _resultValue.accountIdentifier = accountIdentifier;
-            _resultValue.id = id;
-            _resultValue.requestIdentifier = requestIdentifier;
-=======
         @CustomType.Setter
         public Builder updated(String updated) {
             if (updated == null) {
@@ -265,7 +215,6 @@ public final class GetCloudforceOneRequestMessageResult {
             _resultValue.isFollowOnRequest = isFollowOnRequest;
             _resultValue.requestIdentifier = requestIdentifier;
             _resultValue.updated = updated;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return _resultValue;
         }
     }

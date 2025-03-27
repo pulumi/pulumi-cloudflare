@@ -14,12 +14,14 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Ownership status of the domain
+        /// Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
         /// </summary>
         [Input("ownership")]
         public Input<string>? Ownership { get; set; }
 
         /// <summary>
         /// SSL certificate status
+        /// Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
         /// </summary>
         [Input("ssl")]
         public Input<string>? Ssl { get; set; }

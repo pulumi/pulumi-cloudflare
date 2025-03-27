@@ -13,6 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RateLimitBypass
     {
+        /// <summary>
+        /// Available values: "url".
+        /// </summary>
         public readonly string? Name;
         /// <summary>
         /// The URL to bypass.

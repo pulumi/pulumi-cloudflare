@@ -3,23 +3,16 @@
 
 package com.pulumi.cloudflare.outputs;
 
-<<<<<<< HEAD
-import com.pulumi.core.annotations.CustomType;
-=======
 import com.pulumi.cloudflare.outputs.GetResourceGroupsResultMeta;
 import com.pulumi.cloudflare.outputs.GetResourceGroupsResultScope;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.util.Objects;
 
 @CustomType
 public final class GetResourceGroupsResult {
-<<<<<<< HEAD
-    private GetResourceGroupsResult() {}
-=======
     /**
      * @return Identifier of the group.
      * 
@@ -70,7 +63,6 @@ public final class GetResourceGroupsResult {
     public List<GetResourceGroupsResultScope> scopes() {
         return this.scopes;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     public static Builder builder() {
         return new Builder();
@@ -81,15 +73,6 @@ public final class GetResourceGroupsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-<<<<<<< HEAD
-        public Builder() {}
-        public Builder(GetResourceGroupsResult defaults) {
-    	      Objects.requireNonNull(defaults);
-        }
-
-        public GetResourceGroupsResult build() {
-            final var _resultValue = new GetResourceGroupsResult();
-=======
         private String id;
         private GetResourceGroupsResultMeta meta;
         private String name;
@@ -144,7 +127,6 @@ public final class GetResourceGroupsResult {
             _resultValue.meta = meta;
             _resultValue.name = name;
             _resultValue.scopes = scopes;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return _resultValue;
         }
     }

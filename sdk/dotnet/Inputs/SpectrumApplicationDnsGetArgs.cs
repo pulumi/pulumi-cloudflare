@@ -20,6 +20,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The type of DNS record associated with the application.
+        /// Available values: "CNAME", "ADDRESS".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

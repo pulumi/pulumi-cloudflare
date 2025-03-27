@@ -534,6 +534,8 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
             __props__.__dict__["ipsec_tunnels"] = None
             __props__.__dict__["modified"] = None
             __props__.__dict__["modified_ipsec_tunnel"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/ipsecTunnel:IpsecTunnel")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(MagicWanIpsecTunnel, __self__).__init__(
             'cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel',
             resource_name,

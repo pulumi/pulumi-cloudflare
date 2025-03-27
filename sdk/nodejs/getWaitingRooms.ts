@@ -14,13 +14,16 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleWaitingRooms = cloudflare.getWaitingRooms({
- *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     accountId: "account_id",
+ *     zoneId: "zone_id",
  * });
  * ```
  */
-export function getWaitingRooms(args: GetWaitingRoomsArgs, opts?: pulumi.InvokeOptions): Promise<GetWaitingRoomsResult> {
+export function getWaitingRooms(args?: GetWaitingRoomsArgs, opts?: pulumi.InvokeOptions): Promise<GetWaitingRoomsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWaitingRooms:getWaitingRooms", {
+        "accountId": args.accountId,
         "maxItems": args.maxItems,
         "zoneId": args.zoneId,
     }, opts);
@@ -31,19 +34,27 @@ export function getWaitingRooms(args: GetWaitingRoomsArgs, opts?: pulumi.InvokeO
  */
 export interface GetWaitingRoomsArgs {
     /**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     */
+    accountId?: string;
+    /**
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
     /**
-     * Identifier
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
  * A collection of values returned by getWaitingRooms.
  */
 export interface GetWaitingRoomsResult {
+    /**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     */
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -57,9 +68,9 @@ export interface GetWaitingRoomsResult {
      */
     readonly results: outputs.GetWaitingRoomsResult[];
     /**
-     * Identifier
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
  * ## Example Usage
@@ -69,13 +80,16 @@ export interface GetWaitingRoomsResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleWaitingRooms = cloudflare.getWaitingRooms({
- *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     accountId: "account_id",
+ *     zoneId: "zone_id",
  * });
  * ```
  */
-export function getWaitingRoomsOutput(args: GetWaitingRoomsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWaitingRoomsResult> {
+export function getWaitingRoomsOutput(args?: GetWaitingRoomsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWaitingRoomsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWaitingRooms:getWaitingRooms", {
+        "accountId": args.accountId,
         "maxItems": args.maxItems,
         "zoneId": args.zoneId,
     }, opts);
@@ -86,11 +100,15 @@ export function getWaitingRoomsOutput(args: GetWaitingRoomsOutputArgs, opts?: pu
  */
 export interface GetWaitingRoomsOutputArgs {
     /**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number>;
     /**
-     * Identifier
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

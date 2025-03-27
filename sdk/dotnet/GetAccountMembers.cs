@@ -98,6 +98,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Direction to order results.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
@@ -110,12 +111,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Field to order results by.
+        /// Available values: "user.first*name", "user.last*name", "user.email", "status".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
         /// <summary>
         /// A member's status in the account.
+        /// Available values: "accepted", "pending", "rejected".
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -136,6 +139,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Direction to order results.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -148,12 +152,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Field to order results by.
+        /// Available values: "user.first*name", "user.last*name", "user.email", "status".
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
 
         /// <summary>
         /// A member's status in the account.
+        /// Available values: "accepted", "pending", "rejected".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -174,6 +180,7 @@ namespace Pulumi.Cloudflare
         public readonly string AccountId;
         /// <summary>
         /// Direction to order results.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
@@ -186,6 +193,7 @@ namespace Pulumi.Cloudflare
         public readonly int? MaxItems;
         /// <summary>
         /// Field to order results by.
+        /// Available values: "user.first*name", "user.last*name", "user.email", "status".
         /// </summary>
         public readonly string? Order;
         /// <summary>
@@ -194,6 +202,7 @@ namespace Pulumi.Cloudflare
         public readonly ImmutableArray<Outputs.GetAccountMembersResultResult> Results;
         /// <summary>
         /// A member's status in the account.
+        /// Available values: "accepted", "pending", "rejected".
         /// </summary>
         public readonly string? Status;
 

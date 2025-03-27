@@ -29,6 +29,7 @@ class ZeroTrustDlpEntryArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ZeroTrustDlpEntry resource.
+        :param pulumi.Input[str] type: Available values: "custom".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "enabled", enabled)
@@ -86,6 +87,9 @@ class ZeroTrustDlpEntryArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Available values: "custom".
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -109,6 +113,7 @@ class _ZeroTrustDlpEntryState:
                  word_list: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDlpEntry resources.
+        :param pulumi.Input[str] type: Available values: "custom".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -208,6 +213,9 @@ class _ZeroTrustDlpEntryState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Available values: "custom".
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -271,6 +279,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] type: Available values: "custom".
         """
         ...
     @overload
@@ -381,6 +390,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] type: Available values: "custom".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -442,6 +452,9 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Available values: "custom".
+        """
         return pulumi.get(self, "type")
 
     @property

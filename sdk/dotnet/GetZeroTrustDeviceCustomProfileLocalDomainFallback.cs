@@ -122,8 +122,6 @@ namespace Pulumi.Cloudflare
     {
         public readonly string AccountId;
         /// <summary>
-<<<<<<< HEAD
-=======
         /// A description of the fallback domain, displayed in the client UI.
         /// </summary>
         public readonly string Description;
@@ -132,7 +130,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<string> DnsServers;
         /// <summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -140,27 +137,15 @@ namespace Pulumi.Cloudflare
         /// Device ID.
         /// </summary>
         public readonly string PolicyId;
-<<<<<<< HEAD
-=======
         /// <summary>
         /// The domain suffix to match when resolving locally.
         /// </summary>
         public readonly string Suffix;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         [OutputConstructor]
         private GetZeroTrustDeviceCustomProfileLocalDomainFallbackResult(
             string accountId,
 
-<<<<<<< HEAD
-            string id,
-
-            string policyId)
-        {
-            AccountId = accountId;
-            Id = id;
-            PolicyId = policyId;
-=======
             string description,
 
             ImmutableArray<string> dnsServers,
@@ -177,7 +162,6 @@ namespace Pulumi.Cloudflare
             Id = id;
             PolicyId = policyId;
             Suffix = suffix;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
     }
 }

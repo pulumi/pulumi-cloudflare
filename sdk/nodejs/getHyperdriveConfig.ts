@@ -38,7 +38,7 @@ export interface GetHyperdriveConfigArgs {
     /**
      * Identifier
      */
-    hyperdriveId: string;
+    hyperdriveId?: string;
 }
 
 /**
@@ -57,7 +57,7 @@ export interface GetHyperdriveConfigResult {
     /**
      * Identifier
      */
-    readonly hyperdriveId: string;
+    readonly hyperdriveId?: string;
     /**
      * Identifier
      */
@@ -101,5 +101,5 @@ export interface GetHyperdriveConfigOutputArgs {
     /**
      * Identifier
      */
-    hyperdriveId: pulumi.Input<string>;
+    hyperdriveId?: pulumi.Input<string>;
 }

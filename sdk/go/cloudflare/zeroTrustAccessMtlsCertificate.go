@@ -81,6 +81,12 @@ func NewZeroTrustAccessMtlsCertificate(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/cloudflareAccessMutualTlsCertificate:AccessMutualTlsCertificate"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustAccessMtlsCertificate
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate", name, args, &resource, opts...)

@@ -64,6 +64,7 @@ class GetApiShieldOperationsResult:
     def direction(self) -> Optional[str]:
         """
         Direction to order results.
+        Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
 
@@ -120,6 +121,7 @@ class GetApiShieldOperationsResult:
     def order(self) -> Optional[str]:
         """
         Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+        Available values: "method", "host", "endpoint", "thresholds.$key".
         """
         return pulumi.get(self, "order")
 
@@ -185,12 +187,14 @@ def get_api_shield_operations(direction: Optional[str] = None,
 
 
     :param str direction: Direction to order results.
+           Available values: "asc", "desc".
     :param str endpoint: Filter results to only include endpoints containing this pattern.
     :param Sequence[str] features: Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning.
     :param Sequence[str] hosts: Filter results to only include the specified hosts.
     :param int max_items: Max items to fetch, default: 1000
     :param Sequence[str] methods: Filter results to only include the specified HTTP methods.
     :param str order: Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+           Available values: "method", "host", "endpoint", "thresholds.$key".
     :param str zone_id: Identifier
     """
     __args__ = dict()
@@ -243,12 +247,14 @@ def get_api_shield_operations_output(direction: Optional[pulumi.Input[Optional[s
 
 
     :param str direction: Direction to order results.
+           Available values: "asc", "desc".
     :param str endpoint: Filter results to only include endpoints containing this pattern.
     :param Sequence[str] features: Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning.
     :param Sequence[str] hosts: Filter results to only include the specified hosts.
     :param int max_items: Max items to fetch, default: 1000
     :param Sequence[str] methods: Filter results to only include the specified HTTP methods.
     :param str order: Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+           Available values: "method", "host", "endpoint", "thresholds.$key".
     :param str zone_id: Identifier
     """
     __args__ = dict()

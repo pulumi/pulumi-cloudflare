@@ -18,11 +18,21 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("customCertificate", required: true)]
         public Input<string> CustomCertificate { get; set; } = null!;
 
+        [Input("customKey", required: true)]
+        private Input<string>? _customKey;
+
         /// <summary>
         /// The key for a custom uploaded certificate.
         /// </summary>
-        [Input("customKey", required: true)]
-        public Input<string> CustomKey { get; set; } = null!;
+        public Input<string>? CustomKey
+        {
+            get => _customKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _customKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public CustomHostnameSslCustomCertBundleGetArgs()
         {

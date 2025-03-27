@@ -26,18 +26,6 @@ class GetCloudforceOneRequestMessageResult:
     """
     A collection of values returned by getCloudforceOneRequestMessage.
     """
-<<<<<<< HEAD
-    def __init__(__self__, account_identifier=None, id=None, request_identifier=None):
-        if account_identifier and not isinstance(account_identifier, str):
-            raise TypeError("Expected argument 'account_identifier' to be a str")
-        pulumi.set(__self__, "account_identifier", account_identifier)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
-        if request_identifier and not isinstance(request_identifier, str):
-            raise TypeError("Expected argument 'request_identifier' to be a str")
-        pulumi.set(__self__, "request_identifier", request_identifier)
-=======
     def __init__(__self__, account_identifier=None, author=None, content=None, created=None, id=None, is_follow_on_request=None, request_identifier=None, updated=None):
         if account_identifier and not isinstance(account_identifier, str):
             raise TypeError("Expected argument 'account_identifier' to be a str")
@@ -63,7 +51,6 @@ class GetCloudforceOneRequestMessageResult:
         if updated and not isinstance(updated, str):
             raise TypeError("Expected argument 'updated' to be a str")
         pulumi.set(__self__, "updated", updated)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     @property
     @pulumi.getter(name="accountIdentifier")
@@ -75,11 +62,6 @@ class GetCloudforceOneRequestMessageResult:
 
     @property
     @pulumi.getter
-<<<<<<< HEAD
-    def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-=======
     def author(self) -> str:
         """
         Author of message
@@ -107,13 +89,10 @@ class GetCloudforceOneRequestMessageResult:
     def id(self) -> int:
         """
         Message ID
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         return pulumi.get(self, "id")
 
     @property
-<<<<<<< HEAD
-=======
     @pulumi.getter(name="isFollowOnRequest")
     def is_follow_on_request(self) -> bool:
         """
@@ -122,7 +101,6 @@ class GetCloudforceOneRequestMessageResult:
         return pulumi.get(self, "is_follow_on_request")
 
     @property
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="requestIdentifier")
     def request_identifier(self) -> str:
         """
@@ -130,8 +108,6 @@ class GetCloudforceOneRequestMessageResult:
         """
         return pulumi.get(self, "request_identifier")
 
-<<<<<<< HEAD
-=======
     @property
     @pulumi.getter
     def updated(self) -> str:
@@ -140,7 +116,6 @@ class GetCloudforceOneRequestMessageResult:
         """
         return pulumi.get(self, "updated")
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 class AwaitableGetCloudforceOneRequestMessageResult(GetCloudforceOneRequestMessageResult):
     # pylint: disable=using-constant-test
@@ -149,10 +124,6 @@ class AwaitableGetCloudforceOneRequestMessageResult(GetCloudforceOneRequestMessa
             yield self
         return GetCloudforceOneRequestMessageResult(
             account_identifier=self.account_identifier,
-<<<<<<< HEAD
-            id=self.id,
-            request_identifier=self.request_identifier)
-=======
             author=self.author,
             content=self.content,
             created=self.created,
@@ -160,7 +131,6 @@ class AwaitableGetCloudforceOneRequestMessageResult(GetCloudforceOneRequestMessa
             is_follow_on_request=self.is_follow_on_request,
             request_identifier=self.request_identifier,
             updated=self.updated)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 
 def get_cloudforce_one_request_message(account_identifier: Optional[str] = None,
@@ -189,10 +159,6 @@ def get_cloudforce_one_request_message(account_identifier: Optional[str] = None,
 
     return AwaitableGetCloudforceOneRequestMessageResult(
         account_identifier=pulumi.get(__ret__, 'account_identifier'),
-<<<<<<< HEAD
-        id=pulumi.get(__ret__, 'id'),
-        request_identifier=pulumi.get(__ret__, 'request_identifier'))
-=======
         author=pulumi.get(__ret__, 'author'),
         content=pulumi.get(__ret__, 'content'),
         created=pulumi.get(__ret__, 'created'),
@@ -200,7 +166,6 @@ def get_cloudforce_one_request_message(account_identifier: Optional[str] = None,
         is_follow_on_request=pulumi.get(__ret__, 'is_follow_on_request'),
         request_identifier=pulumi.get(__ret__, 'request_identifier'),
         updated=pulumi.get(__ret__, 'updated'))
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 def get_cloudforce_one_request_message_output(account_identifier: Optional[pulumi.Input[str]] = None,
                                               request_identifier: Optional[pulumi.Input[str]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudforceOneRequestMessageResult]:
@@ -226,10 +191,6 @@ def get_cloudforce_one_request_message_output(account_identifier: Optional[pulum
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage', __args__, opts=opts, typ=GetCloudforceOneRequestMessageResult)
     return __ret__.apply(lambda __response__: GetCloudforceOneRequestMessageResult(
         account_identifier=pulumi.get(__response__, 'account_identifier'),
-<<<<<<< HEAD
-        id=pulumi.get(__response__, 'id'),
-        request_identifier=pulumi.get(__response__, 'request_identifier')))
-=======
         author=pulumi.get(__response__, 'author'),
         content=pulumi.get(__response__, 'content'),
         created=pulumi.get(__response__, 'created'),
@@ -237,4 +198,3 @@ def get_cloudforce_one_request_message_output(account_identifier: Optional[pulum
         is_follow_on_request=pulumi.get(__response__, 'is_follow_on_request'),
         request_identifier=pulumi.get(__response__, 'request_identifier'),
         updated=pulumi.get(__response__, 'updated')))
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580

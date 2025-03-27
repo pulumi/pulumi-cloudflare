@@ -26,15 +26,6 @@ class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult:
     """
     A collection of values returned by getZeroTrustDeviceDefaultProfileLocalDomainFallback.
     """
-<<<<<<< HEAD
-    def __init__(__self__, account_id=None, id=None):
-        if account_id and not isinstance(account_id, str):
-            raise TypeError("Expected argument 'account_id' to be a str")
-        pulumi.set(__self__, "account_id", account_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
-=======
     def __init__(__self__, account_id=None, description=None, dns_servers=None, id=None, suffix=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
@@ -51,7 +42,6 @@ class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult:
         if suffix and not isinstance(suffix, str):
             raise TypeError("Expected argument 'suffix' to be a str")
         pulumi.set(__self__, "suffix", suffix)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     @property
     @pulumi.getter(name="accountId")
@@ -60,8 +50,6 @@ class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult:
 
     @property
     @pulumi.getter
-<<<<<<< HEAD
-=======
     def description(self) -> str:
         """
         A description of the fallback domain, displayed in the client UI.
@@ -78,15 +66,12 @@ class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult:
 
     @property
     @pulumi.getter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
 
-<<<<<<< HEAD
-=======
     @property
     @pulumi.getter
     def suffix(self) -> str:
@@ -95,7 +80,6 @@ class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult:
         """
         return pulumi.get(self, "suffix")
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 class AwaitableGetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult(GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult):
     # pylint: disable=using-constant-test
@@ -104,14 +88,10 @@ class AwaitableGetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult(GetZero
             yield self
         return GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult(
             account_id=self.account_id,
-<<<<<<< HEAD
-            id=self.id)
-=======
             description=self.description,
             dns_servers=self.dns_servers,
             id=self.id,
             suffix=self.suffix)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 
 def get_zero_trust_device_default_profile_local_domain_fallback(account_id: Optional[str] = None,
@@ -133,14 +113,10 @@ def get_zero_trust_device_default_profile_local_domain_fallback(account_id: Opti
 
     return AwaitableGetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-<<<<<<< HEAD
-        id=pulumi.get(__ret__, 'id'))
-=======
         description=pulumi.get(__ret__, 'description'),
         dns_servers=pulumi.get(__ret__, 'dns_servers'),
         id=pulumi.get(__ret__, 'id'),
         suffix=pulumi.get(__ret__, 'suffix'))
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 def get_zero_trust_device_default_profile_local_domain_fallback_output(account_id: Optional[pulumi.Input[str]] = None,
                                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult]:
     """
@@ -159,11 +135,7 @@ def get_zero_trust_device_default_profile_local_domain_fallback_output(account_i
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustDeviceDefaultProfileLocalDomainFallback:getZeroTrustDeviceDefaultProfileLocalDomainFallback', __args__, opts=opts, typ=GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult)
     return __ret__.apply(lambda __response__: GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult(
         account_id=pulumi.get(__response__, 'account_id'),
-<<<<<<< HEAD
-        id=pulumi.get(__response__, 'id')))
-=======
         description=pulumi.get(__response__, 'description'),
         dns_servers=pulumi.get(__response__, 'dns_servers'),
         id=pulumi.get(__response__, 'id'),
         suffix=pulumi.get(__response__, 'suffix')))
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580

@@ -16,10 +16,6 @@ import (
 type ZeroTrustDeviceDefaultProfileLocalDomainFallback struct {
 	pulumi.CustomResourceState
 
-<<<<<<< HEAD
-	AccountId pulumi.StringOutput                                               `pulumi:"accountId"`
-	Domains   ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArrayOutput `pulumi:"domains"`
-=======
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// A description of the fallback domain, displayed in the client UI.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -28,7 +24,6 @@ type ZeroTrustDeviceDefaultProfileLocalDomainFallback struct {
 	Domains    ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArrayOutput `pulumi:"domains"`
 	// The domain suffix to match when resolving locally.
 	Suffix pulumi.StringOutput `pulumi:"suffix"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // NewZeroTrustDeviceDefaultProfileLocalDomainFallback registers a new resource with the given unique name, arguments, and options.
@@ -67,10 +62,6 @@ func GetZeroTrustDeviceDefaultProfileLocalDomainFallback(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustDeviceDefaultProfileLocalDomainFallback resources.
 type zeroTrustDeviceDefaultProfileLocalDomainFallbackState struct {
-<<<<<<< HEAD
-	AccountId *string                                                  `pulumi:"accountId"`
-	Domains   []ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomain `pulumi:"domains"`
-=======
 	AccountId *string `pulumi:"accountId"`
 	// A description of the fallback domain, displayed in the client UI.
 	Description *string `pulumi:"description"`
@@ -79,14 +70,10 @@ type zeroTrustDeviceDefaultProfileLocalDomainFallbackState struct {
 	Domains    []ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomain `pulumi:"domains"`
 	// The domain suffix to match when resolving locally.
 	Suffix *string `pulumi:"suffix"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 type ZeroTrustDeviceDefaultProfileLocalDomainFallbackState struct {
 	AccountId pulumi.StringPtrInput
-<<<<<<< HEAD
-	Domains   ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArrayInput
-=======
 	// A description of the fallback domain, displayed in the client UI.
 	Description pulumi.StringPtrInput
 	// A list of IP addresses to handle domain resolution.
@@ -94,7 +81,6 @@ type ZeroTrustDeviceDefaultProfileLocalDomainFallbackState struct {
 	Domains    ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArrayInput
 	// The domain suffix to match when resolving locally.
 	Suffix pulumi.StringPtrInput
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func (ZeroTrustDeviceDefaultProfileLocalDomainFallbackState) ElementType() reflect.Type {
@@ -203,8 +189,6 @@ func (o ZeroTrustDeviceDefaultProfileLocalDomainFallbackOutput) AccountId() pulu
 	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfileLocalDomainFallback) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-=======
 // A description of the fallback domain, displayed in the client UI.
 func (o ZeroTrustDeviceDefaultProfileLocalDomainFallbackOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfileLocalDomainFallback) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -217,21 +201,17 @@ func (o ZeroTrustDeviceDefaultProfileLocalDomainFallbackOutput) DnsServers() pul
 	}).(pulumi.StringArrayOutput)
 }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func (o ZeroTrustDeviceDefaultProfileLocalDomainFallbackOutput) Domains() ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfileLocalDomainFallback) ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArrayOutput {
 		return v.Domains
 	}).(ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArrayOutput)
 }
 
-<<<<<<< HEAD
-=======
 // The domain suffix to match when resolving locally.
 func (o ZeroTrustDeviceDefaultProfileLocalDomainFallbackOutput) Suffix() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfileLocalDomainFallback) pulumi.StringOutput { return v.Suffix }).(pulumi.StringOutput)
 }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 type ZeroTrustDeviceDefaultProfileLocalDomainFallbackArrayOutput struct{ *pulumi.OutputState }
 
 func (ZeroTrustDeviceDefaultProfileLocalDomainFallbackArrayOutput) ElementType() reflect.Type {

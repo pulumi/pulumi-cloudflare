@@ -27,6 +27,7 @@ public final class GetStreamsResultStatus {
     private String pctComplete;
     /**
      * @return Specifies the processing status for all quality levels for a video.
+     * Available values: &#34;pendingupload&#34;, &#34;downloading&#34;, &#34;queued&#34;, &#34;inprogress&#34;, &#34;ready&#34;, &#34;error&#34;.
      * 
      */
     private String state;
@@ -55,6 +56,7 @@ public final class GetStreamsResultStatus {
     }
     /**
      * @return Specifies the processing status for all quality levels for a video.
+     * Available values: &#34;pendingupload&#34;, &#34;downloading&#34;, &#34;queued&#34;, &#34;inprogress&#34;, &#34;ready&#34;, &#34;error&#34;.
      * 
      */
     public String state() {

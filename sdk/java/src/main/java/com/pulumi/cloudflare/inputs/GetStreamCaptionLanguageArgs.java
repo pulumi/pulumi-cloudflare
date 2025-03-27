@@ -44,11 +44,27 @@ public final class GetStreamCaptionLanguageArgs extends com.pulumi.resources.Inv
         return this.identifier;
     }
 
+    /**
+     * The language tag in BCP 47 format.
+     * 
+     */
+    @Import(name="language", required=true)
+    private Output<String> language;
+
+    /**
+     * @return The language tag in BCP 47 format.
+     * 
+     */
+    public Output<String> language() {
+        return this.language;
+    }
+
     private GetStreamCaptionLanguageArgs() {}
 
     private GetStreamCaptionLanguageArgs(GetStreamCaptionLanguageArgs $) {
         this.accountId = $.accountId;
         this.identifier = $.identifier;
+        this.language = $.language;
     }
 
     public static Builder builder() {
@@ -111,12 +127,36 @@ public final class GetStreamCaptionLanguageArgs extends com.pulumi.resources.Inv
             return identifier(Output.of(identifier));
         }
 
+        /**
+         * @param language The language tag in BCP 47 format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder language(Output<String> language) {
+            $.language = language;
+            return this;
+        }
+
+        /**
+         * @param language The language tag in BCP 47 format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder language(String language) {
+            return language(Output.of(language));
+        }
+
         public GetStreamCaptionLanguageArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetStreamCaptionLanguageArgs", "accountId");
             }
             if ($.identifier == null) {
                 throw new MissingRequiredPropertyException("GetStreamCaptionLanguageArgs", "identifier");
+            }
+            if ($.language == null) {
+                throw new MissingRequiredPropertyException("GetStreamCaptionLanguageArgs", "language");
             }
             return $;
         }

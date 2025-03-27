@@ -48,6 +48,21 @@ public final class R2BucketLifecycleArgs extends com.pulumi.resources.ResourceAr
         return this.bucketName;
     }
 
+    /**
+     * Jurisdiction of the bucket
+     * 
+     */
+    @Import(name="jurisdiction")
+    private @Nullable Output<String> jurisdiction;
+
+    /**
+     * @return Jurisdiction of the bucket
+     * 
+     */
+    public Optional<Output<String>> jurisdiction() {
+        return Optional.ofNullable(this.jurisdiction);
+    }
+
     @Import(name="rules")
     private @Nullable Output<List<R2BucketLifecycleRuleArgs>> rules;
 
@@ -60,6 +75,7 @@ public final class R2BucketLifecycleArgs extends com.pulumi.resources.ResourceAr
     private R2BucketLifecycleArgs(R2BucketLifecycleArgs $) {
         this.accountId = $.accountId;
         this.bucketName = $.bucketName;
+        this.jurisdiction = $.jurisdiction;
         this.rules = $.rules;
     }
 
@@ -121,6 +137,27 @@ public final class R2BucketLifecycleArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder bucketName(String bucketName) {
             return bucketName(Output.of(bucketName));
+        }
+
+        /**
+         * @param jurisdiction Jurisdiction of the bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(@Nullable Output<String> jurisdiction) {
+            $.jurisdiction = jurisdiction;
+            return this;
+        }
+
+        /**
+         * @param jurisdiction Jurisdiction of the bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(String jurisdiction) {
+            return jurisdiction(Output.of(jurisdiction));
         }
 
         public Builder rules(@Nullable Output<List<R2BucketLifecycleRuleArgs>> rules) {

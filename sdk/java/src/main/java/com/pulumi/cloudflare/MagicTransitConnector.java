@@ -68,17 +68,9 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/magicTransitConnector:MagicTransitConnector")
 public class MagicTransitConnector extends com.pulumi.resources.CustomResource {
-    /**
-     * Account identifier
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return Account identifier
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }

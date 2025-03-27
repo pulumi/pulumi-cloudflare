@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetPagesProjectsResultEnvVarsResult
     {
         /// <summary>
-        /// The type of environment variable.
+        /// Available values: "plain_text".
         /// </summary>
         public readonly string Type;
         /// <summary>

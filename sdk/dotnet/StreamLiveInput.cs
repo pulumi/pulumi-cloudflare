@@ -89,6 +89,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The connection status of a live input.
+        /// Available values: "connected", "reconnected", "reconnecting", "client*disconnect", "ttl*exceeded", "failed*to*connect", "failed*to*reconnect", "new*configuration*accepted".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -275,6 +276,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The connection status of a live input.
+        /// Available values: "connected", "reconnected", "reconnecting", "client*disconnect", "ttl*exceeded", "failed*to*connect", "failed*to*reconnect", "new*configuration*accepted".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

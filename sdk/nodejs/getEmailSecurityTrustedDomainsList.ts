@@ -46,6 +46,7 @@ export interface GetEmailSecurityTrustedDomainsListArgs {
     accountId: string;
     /**
      * The sorting direction.
+     * Available values: "asc", "desc".
      */
     direction?: string;
     isRecent?: boolean;
@@ -56,6 +57,7 @@ export interface GetEmailSecurityTrustedDomainsListArgs {
     maxItems?: number;
     /**
      * The field to sort by.
+     * Available values: "pattern", "createdAt".
      */
     order?: string;
     /**
@@ -77,6 +79,7 @@ export interface GetEmailSecurityTrustedDomainsListResult {
     readonly accountId: string;
     /**
      * The sorting direction.
+     * Available values: "asc", "desc".
      */
     readonly direction?: string;
     /**
@@ -91,6 +94,7 @@ export interface GetEmailSecurityTrustedDomainsListResult {
     readonly maxItems?: number;
     /**
      * The field to sort by.
+     * Available values: "pattern", "createdAt".
      */
     readonly order?: string;
     /**
@@ -145,6 +149,7 @@ export interface GetEmailSecurityTrustedDomainsListOutputArgs {
     accountId: pulumi.Input<string>;
     /**
      * The sorting direction.
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     isRecent?: pulumi.Input<boolean>;
@@ -155,6 +160,7 @@ export interface GetEmailSecurityTrustedDomainsListOutputArgs {
     maxItems?: pulumi.Input<number>;
     /**
      * The field to sort by.
+     * Available values: "pattern", "createdAt".
      */
     order?: pulumi.Input<string>;
     /**

@@ -82,6 +82,12 @@ func NewManagedTransforms(ctx *pulumi.Context,
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/managedHeaders:ManagedHeaders"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ManagedTransforms
 	err := ctx.RegisterResource("cloudflare:index/managedTransforms:ManagedTransforms", name, args, &resource, opts...)

@@ -193,6 +193,8 @@ class WorkersCronTrigger(pulumi.CustomResource):
             if script_name is None and not opts.urn:
                 raise TypeError("Missing required property 'script_name'")
             __props__.__dict__["script_name"] = script_name
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/workerCronTrigger:WorkerCronTrigger")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(WorkersCronTrigger, __self__).__init__(
             'cloudflare:index/workersCronTrigger:WorkersCronTrigger',
             resource_name,

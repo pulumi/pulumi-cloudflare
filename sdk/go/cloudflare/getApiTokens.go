@@ -49,6 +49,7 @@ func LookupApiTokens(ctx *pulumi.Context, args *LookupApiTokensArgs, opts ...pul
 // A collection of arguments for invoking getApiTokens.
 type LookupApiTokensArgs struct {
 	// Direction to order results.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -57,6 +58,7 @@ type LookupApiTokensArgs struct {
 // A collection of values returned by getApiTokens.
 type LookupApiTokensResult struct {
 	// Direction to order results.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -78,6 +80,7 @@ func LookupApiTokensOutput(ctx *pulumi.Context, args LookupApiTokensOutputArgs, 
 // A collection of arguments for invoking getApiTokens.
 type LookupApiTokensOutputArgs struct {
 	// Direction to order results.
+	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
@@ -103,6 +106,7 @@ func (o LookupApiTokensResultOutput) ToLookupApiTokensResultOutputWithContext(ct
 }
 
 // Direction to order results.
+// Available values: "asc", "desc".
 func (o LookupApiTokensResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiTokensResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }

@@ -39,6 +39,7 @@ export interface GetTotalTlsArgs {
 export interface GetTotalTlsResult {
     /**
      * The Certificate Authority that Total TLS certificates will be issued through.
+     * Available values: "google", "lets*encrypt", "ssl*com".
      */
     readonly certificateAuthority: string;
     /**
@@ -51,6 +52,7 @@ export interface GetTotalTlsResult {
     readonly id: string;
     /**
      * The validity period in days for the certificates ordered via Total TLS.
+     * Available values: 90.
      */
     readonly validityPeriod: number;
     /**

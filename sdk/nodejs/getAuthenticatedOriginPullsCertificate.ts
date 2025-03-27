@@ -77,6 +77,7 @@ export interface GetAuthenticatedOriginPullsCertificateResult {
     readonly signature: string;
     /**
      * Status of the certificate activation.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
      */
     readonly status: string;
     /**

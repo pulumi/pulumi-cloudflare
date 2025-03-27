@@ -6,8 +6,11 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersResponseFieldArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,10 +32,26 @@ public final class RulesetRuleActionParametersResponseFieldArgs extends com.pulu
         return this.name;
     }
 
+    /**
+     * Whether to log duplicate values of the same header.
+     * 
+     */
+    @Import(name="preserveDuplicates")
+    private @Nullable Output<Boolean> preserveDuplicates;
+
+    /**
+     * @return Whether to log duplicate values of the same header.
+     * 
+     */
+    public Optional<Output<Boolean>> preserveDuplicates() {
+        return Optional.ofNullable(this.preserveDuplicates);
+    }
+
     private RulesetRuleActionParametersResponseFieldArgs() {}
 
     private RulesetRuleActionParametersResponseFieldArgs(RulesetRuleActionParametersResponseFieldArgs $) {
         this.name = $.name;
+        this.preserveDuplicates = $.preserveDuplicates;
     }
 
     public static Builder builder() {
@@ -72,6 +91,27 @@ public final class RulesetRuleActionParametersResponseFieldArgs extends com.pulu
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param preserveDuplicates Whether to log duplicate values of the same header.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preserveDuplicates(@Nullable Output<Boolean> preserveDuplicates) {
+            $.preserveDuplicates = preserveDuplicates;
+            return this;
+        }
+
+        /**
+         * @param preserveDuplicates Whether to log duplicate values of the same header.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preserveDuplicates(Boolean preserveDuplicates) {
+            return preserveDuplicates(Output.of(preserveDuplicates));
         }
 
         public RulesetRuleActionParametersResponseFieldArgs build() {

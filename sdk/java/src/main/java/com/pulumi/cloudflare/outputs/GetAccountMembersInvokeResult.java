@@ -22,6 +22,7 @@ public final class GetAccountMembersInvokeResult {
     private String accountId;
     /**
      * @return Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
@@ -37,6 +38,7 @@ public final class GetAccountMembersInvokeResult {
     private @Nullable Integer maxItems;
     /**
      * @return Field to order results by.
+     * Available values: &#34;user.first*name&#34;, &#34;user.last*name&#34;, &#34;user.email&#34;, &#34;status&#34;.
      * 
      */
     private @Nullable String order;
@@ -47,6 +49,7 @@ public final class GetAccountMembersInvokeResult {
     private List<GetAccountMembersResult> results;
     /**
      * @return A member&#39;s status in the account.
+     * Available values: &#34;accepted&#34;, &#34;pending&#34;, &#34;rejected&#34;.
      * 
      */
     private @Nullable String status;
@@ -61,6 +64,7 @@ public final class GetAccountMembersInvokeResult {
     }
     /**
      * @return Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -82,6 +86,7 @@ public final class GetAccountMembersInvokeResult {
     }
     /**
      * @return Field to order results by.
+     * Available values: &#34;user.first*name&#34;, &#34;user.last*name&#34;, &#34;user.email&#34;, &#34;status&#34;.
      * 
      */
     public Optional<String> order() {
@@ -96,6 +101,7 @@ public final class GetAccountMembersInvokeResult {
     }
     /**
      * @return A member&#39;s status in the account.
+     * Available values: &#34;accepted&#34;, &#34;pending&#34;, &#34;rejected&#34;.
      * 
      */
     public Optional<String> status() {

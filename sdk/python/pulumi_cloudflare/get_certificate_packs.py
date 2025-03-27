@@ -73,6 +73,7 @@ class GetCertificatePacksResult:
     def status(self) -> Optional[str]:
         """
         Include Certificate Packs of all statuses, not just active ones.
+        Available values: "all".
         """
         return pulumi.get(self, "status")
 
@@ -116,6 +117,7 @@ def get_certificate_packs(max_items: Optional[int] = None,
 
     :param int max_items: Max items to fetch, default: 1000
     :param str status: Include Certificate Packs of all statuses, not just active ones.
+           Available values: "all".
     :param str zone_id: Identifier
     """
     __args__ = dict()
@@ -149,6 +151,7 @@ def get_certificate_packs_output(max_items: Optional[pulumi.Input[Optional[int]]
 
     :param int max_items: Max items to fetch, default: 1000
     :param str status: Include Certificate Packs of all statuses, not just active ones.
+           Available values: "all".
     :param str zone_id: Identifier
     """
     __args__ = dict()

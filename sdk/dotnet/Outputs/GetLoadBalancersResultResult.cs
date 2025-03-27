@@ -92,6 +92,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
         /// </summary>
         public readonly double Ttl;
+        public readonly string ZoneName;
 
         [OutputConstructor]
         private GetLoadBalancersResultResult(
@@ -137,7 +138,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             string steeringPolicy,
 
-            double ttl)
+            double ttl,
+
+            string zoneName)
         {
             AdaptiveRouting = adaptiveRouting;
             CountryPools = countryPools;
@@ -161,6 +164,7 @@ namespace Pulumi.Cloudflare.Outputs
             SessionAffinityTtl = sessionAffinityTtl;
             SteeringPolicy = steeringPolicy;
             Ttl = ttl;
+            ZoneName = zoneName;
         }
     }
 }

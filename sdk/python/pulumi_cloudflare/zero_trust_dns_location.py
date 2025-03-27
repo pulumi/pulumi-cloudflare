@@ -525,6 +525,8 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
             __props__.__dict__["ipv4_destination"] = None
             __props__.__dict__["ipv4_destination_backup"] = None
             __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/teamsLocation:TeamsLocation")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustDnsLocation, __self__).__init__(
             'cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation',
             resource_name,

@@ -78,6 +78,7 @@ export interface GetStreamsArgs {
     start?: string;
     /**
      * Specifies the processing status for all quality levels for a video.
+     * Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error".
      */
     status?: string;
     /**
@@ -132,6 +133,7 @@ export interface GetStreamsResult {
     readonly start?: string;
     /**
      * Specifies the processing status for all quality levels for a video.
+     * Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error".
      */
     readonly status?: string;
     /**
@@ -211,6 +213,7 @@ export interface GetStreamsOutputArgs {
     start?: pulumi.Input<string>;
     /**
      * Specifies the processing status for all quality levels for a video.
+     * Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error".
      */
     status?: pulumi.Input<string>;
     /**

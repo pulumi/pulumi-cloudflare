@@ -19,6 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool Enabled;
         /// <summary>
         /// Action to take when the file cannot be scanned.
+        /// Available values: "allow", "block".
         /// </summary>
         public readonly string FallbackAction;
 

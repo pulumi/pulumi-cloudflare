@@ -54,8 +54,12 @@ type WebAnalyticsSite struct {
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall pulumi.BoolPtrOutput `pulumi:"autoInstall"`
 	Created     pulumi.StringOutput  `pulumi:"created"`
+	// Enables or disables RUM. This option can be used only when autoInstall is set to true.
+	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// The hostname to use for gray-clouded sites.
 	Host pulumi.StringPtrOutput `pulumi:"host"`
+	// If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+	Lite pulumi.BoolPtrOutput `pulumi:"lite"`
 	// A list of rules.
 	Rules   WebAnalyticsSiteRuleArrayOutput `pulumi:"rules"`
 	Ruleset WebAnalyticsSiteRulesetOutput   `pulumi:"ruleset"`
@@ -107,8 +111,12 @@ type webAnalyticsSiteState struct {
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall *bool   `pulumi:"autoInstall"`
 	Created     *string `pulumi:"created"`
+	// Enables or disables RUM. This option can be used only when autoInstall is set to true.
+	Enabled *bool `pulumi:"enabled"`
 	// The hostname to use for gray-clouded sites.
 	Host *string `pulumi:"host"`
+	// If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+	Lite *bool `pulumi:"lite"`
 	// A list of rules.
 	Rules   []WebAnalyticsSiteRule   `pulumi:"rules"`
 	Ruleset *WebAnalyticsSiteRuleset `pulumi:"ruleset"`
@@ -128,8 +136,12 @@ type WebAnalyticsSiteState struct {
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall pulumi.BoolPtrInput
 	Created     pulumi.StringPtrInput
+	// Enables or disables RUM. This option can be used only when autoInstall is set to true.
+	Enabled pulumi.BoolPtrInput
 	// The hostname to use for gray-clouded sites.
 	Host pulumi.StringPtrInput
+	// If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+	Lite pulumi.BoolPtrInput
 	// A list of rules.
 	Rules   WebAnalyticsSiteRuleArrayInput
 	Ruleset WebAnalyticsSiteRulesetPtrInput
@@ -152,8 +164,12 @@ type webAnalyticsSiteArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall *bool `pulumi:"autoInstall"`
+	// Enables or disables RUM. This option can be used only when autoInstall is set to true.
+	Enabled *bool `pulumi:"enabled"`
 	// The hostname to use for gray-clouded sites.
 	Host *string `pulumi:"host"`
+	// If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+	Lite *bool `pulumi:"lite"`
 	// The zone identifier.
 	ZoneTag *string `pulumi:"zoneTag"`
 }
@@ -164,8 +180,12 @@ type WebAnalyticsSiteArgs struct {
 	AccountId pulumi.StringInput
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall pulumi.BoolPtrInput
+	// Enables or disables RUM. This option can be used only when autoInstall is set to true.
+	Enabled pulumi.BoolPtrInput
 	// The hostname to use for gray-clouded sites.
 	Host pulumi.StringPtrInput
+	// If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+	Lite pulumi.BoolPtrInput
 	// The zone identifier.
 	ZoneTag pulumi.StringPtrInput
 }
@@ -271,9 +291,19 @@ func (o WebAnalyticsSiteOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAnalyticsSite) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
 
+// Enables or disables RUM. This option can be used only when autoInstall is set to true.
+func (o WebAnalyticsSiteOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WebAnalyticsSite) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
 // The hostname to use for gray-clouded sites.
 func (o WebAnalyticsSiteOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAnalyticsSite) pulumi.StringPtrOutput { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+func (o WebAnalyticsSiteOutput) Lite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WebAnalyticsSite) pulumi.BoolPtrOutput { return v.Lite }).(pulumi.BoolPtrOutput)
 }
 
 // A list of rules.

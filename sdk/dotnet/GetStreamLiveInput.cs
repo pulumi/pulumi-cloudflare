@@ -176,6 +176,7 @@ namespace Pulumi.Cloudflare
         public readonly Outputs.GetStreamLiveInputSrtPlaybackResult SrtPlayback;
         /// <summary>
         /// The connection status of a live input.
+        /// Available values: "connected", "reconnected", "reconnecting", "client*disconnect", "ttl*exceeded", "failed*to*connect", "failed*to*reconnect", "new*configuration*accepted".
         /// </summary>
         public readonly string Status;
         /// <summary>

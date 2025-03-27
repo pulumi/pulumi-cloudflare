@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 public final class CloudConnectorRulesRule {
     /**
      * @return Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
      * 
      */
     private @Nullable String cloudProvider;
@@ -31,6 +32,7 @@ public final class CloudConnectorRulesRule {
     private CloudConnectorRulesRule() {}
     /**
      * @return Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
      * 
      */
     public Optional<String> cloudProvider() {

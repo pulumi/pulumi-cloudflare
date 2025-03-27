@@ -65,6 +65,9 @@ export interface GetEmailSecurityBlockSenderResult {
      * The unique identifier for the allow policy.
      */
     readonly patternId?: number;
+    /**
+     * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+     */
     readonly patternType: string;
 }
 /**

@@ -65,10 +65,12 @@ export class LogpushJob extends pulumi.CustomResource {
     public /*out*/ readonly errorMessage!: pulumi.Output<string>;
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+     * Available values: "high", "low".
      */
     public readonly frequency!: pulumi.Output<string>;
     /**
      * The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
+     * Available values: "edge".
      */
     public readonly kind!: pulumi.Output<string | undefined>;
     /**
@@ -159,13 +161,15 @@ export class LogpushJob extends pulumi.CustomResource {
             resourceInputs["maxUploadRecords"] = args ? args.maxUploadRecords : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["outputOptions"] = args ? args.outputOptions : undefined;
-            resourceInputs["ownershipChallenge"] = args ? args.ownershipChallenge : undefined;
+            resourceInputs["ownershipChallenge"] = args?.ownershipChallenge ? pulumi.secret(args.ownershipChallenge) : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["errorMessage"] = undefined /*out*/;
             resourceInputs["lastComplete"] = undefined /*out*/;
             resourceInputs["lastError"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["ownershipChallenge"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(LogpushJob.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -196,10 +200,12 @@ export interface LogpushJobState {
     errorMessage?: pulumi.Input<string>;
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+     * Available values: "high", "low".
      */
     frequency?: pulumi.Input<string>;
     /**
      * The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
+     * Available values: "edge".
      */
     kind?: pulumi.Input<string>;
     /**
@@ -266,10 +272,12 @@ export interface LogpushJobArgs {
     enabled?: pulumi.Input<boolean>;
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+     * Available values: "high", "low".
      */
     frequency?: pulumi.Input<string>;
     /**
      * The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
+     * Available values: "edge".
      */
     kind?: pulumi.Input<string>;
     /**

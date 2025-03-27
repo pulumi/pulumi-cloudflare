@@ -89,6 +89,7 @@ class GetZeroTrustDeviceManagedNetworksResult:
     def type(self) -> str:
         """
         The type of device managed network.
+        Available values: "tls".
         """
         return pulumi.get(self, "type")
 

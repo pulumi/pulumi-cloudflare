@@ -45,6 +45,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The action to apply to a matched request.
+        /// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
@@ -115,6 +116,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The action to apply to a matched request.
+        /// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;
@@ -147,6 +149,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The action to apply to a matched request.
+        /// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

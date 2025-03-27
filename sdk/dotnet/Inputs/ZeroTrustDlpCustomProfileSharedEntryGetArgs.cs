@@ -18,6 +18,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("entryId", required: true)]
         public Input<string> EntryId { get; set; } = null!;
 
+        /// <summary>
+        /// Available values: "custom".
+        /// </summary>
         [Input("entryType", required: true)]
         public Input<string> EntryType { get; set; } = null!;
 

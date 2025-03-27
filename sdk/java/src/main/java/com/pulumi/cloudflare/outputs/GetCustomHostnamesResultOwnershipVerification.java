@@ -17,6 +17,7 @@ public final class GetCustomHostnamesResultOwnershipVerification {
     private String name;
     /**
      * @return DNS Record type.
+     * Available values: &#34;txt&#34;.
      * 
      */
     private String type;
@@ -36,6 +37,7 @@ public final class GetCustomHostnamesResultOwnershipVerification {
     }
     /**
      * @return DNS Record type.
+     * Available values: &#34;txt&#34;.
      * 
      */
     public String type() {

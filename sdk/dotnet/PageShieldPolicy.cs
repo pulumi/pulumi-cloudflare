@@ -23,6 +23,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The action to take if the expression matches
+        /// Available values: "allow", "log".
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -105,6 +106,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The action to take if the expression matches
+        /// Available values: "allow", "log".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -149,6 +151,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The action to take if the expression matches
+        /// Available values: "allow", "log".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

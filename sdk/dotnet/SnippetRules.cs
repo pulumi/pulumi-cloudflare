@@ -31,15 +31,12 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.SnippetRulesRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-<<<<<<< HEAD
-=======
         /// Snippet identifying name
         /// </summary>
         [Output("snippetName")]
         public Output<string> SnippetName { get; private set; } = null!;
 
         /// <summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// Identifier
         /// </summary>
         [Output("zoneId")]
@@ -139,15 +136,12 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-<<<<<<< HEAD
-=======
         /// Snippet identifying name
         /// </summary>
         [Input("snippetName")]
         public Input<string>? SnippetName { get; set; }
 
         /// <summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// Identifier
         /// </summary>
         [Input("zoneId")]

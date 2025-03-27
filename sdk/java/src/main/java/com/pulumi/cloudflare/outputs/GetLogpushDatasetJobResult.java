@@ -3,16 +3,11 @@
 
 package com.pulumi.cloudflare.outputs;
 
-<<<<<<< HEAD
-import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
-=======
 import com.pulumi.cloudflare.outputs.GetLogpushDatasetJobOutputOptions;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,14 +24,6 @@ public final class GetLogpushDatasetJobResult {
      * @return Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
      * 
      */
-<<<<<<< HEAD
-    private String datasetId;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-=======
     private String dataset;
     /**
      * @return Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
@@ -60,6 +47,7 @@ public final class GetLogpushDatasetJobResult {
     private String errorMessage;
     /**
      * @return This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+     * Available values: &#34;high&#34;, &#34;low&#34;.
      * 
      */
     private String frequency;
@@ -70,6 +58,7 @@ public final class GetLogpushDatasetJobResult {
     private Integer id;
     /**
      * @return The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+     * Available values: &#34;edge&#34;.
      * 
      */
     private String kind;
@@ -113,7 +102,6 @@ public final class GetLogpushDatasetJobResult {
      * 
      */
     private GetLogpushDatasetJobOutputOptions outputOptions;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
@@ -132,8 +120,6 @@ public final class GetLogpushDatasetJobResult {
      * @return Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
      * 
      */
-<<<<<<< HEAD
-=======
     public String dataset() {
         return this.dataset;
     }
@@ -141,20 +127,10 @@ public final class GetLogpushDatasetJobResult {
      * @return Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
      * 
      */
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public String datasetId() {
         return this.datasetId;
     }
     /**
-<<<<<<< HEAD
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
-=======
      * @return Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
      * 
      */
@@ -177,6 +153,7 @@ public final class GetLogpushDatasetJobResult {
     }
     /**
      * @return This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+     * Available values: &#34;high&#34;, &#34;low&#34;.
      * 
      */
     public String frequency() {
@@ -191,6 +168,7 @@ public final class GetLogpushDatasetJobResult {
     }
     /**
      * @return The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+     * Available values: &#34;edge&#34;.
      * 
      */
     public String kind() {
@@ -253,7 +231,6 @@ public final class GetLogpushDatasetJobResult {
         return this.outputOptions;
     }
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
@@ -271,10 +248,6 @@ public final class GetLogpushDatasetJobResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
-<<<<<<< HEAD
-        private String datasetId;
-        private String id;
-=======
         private String dataset;
         private String datasetId;
         private String destinationConf;
@@ -291,16 +264,11 @@ public final class GetLogpushDatasetJobResult {
         private Integer maxUploadRecords;
         private String name;
         private GetLogpushDatasetJobOutputOptions outputOptions;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetLogpushDatasetJobResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-<<<<<<< HEAD
-    	      this.datasetId = defaults.datasetId;
-    	      this.id = defaults.id;
-=======
     	      this.dataset = defaults.dataset;
     	      this.datasetId = defaults.datasetId;
     	      this.destinationConf = defaults.destinationConf;
@@ -317,7 +285,6 @@ public final class GetLogpushDatasetJobResult {
     	      this.maxUploadRecords = defaults.maxUploadRecords;
     	      this.name = defaults.name;
     	      this.outputOptions = defaults.outputOptions;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -328,8 +295,6 @@ public final class GetLogpushDatasetJobResult {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder dataset(String dataset) {
             if (dataset == null) {
               throw new MissingRequiredPropertyException("GetLogpushDatasetJobResult", "dataset");
@@ -338,7 +303,6 @@ public final class GetLogpushDatasetJobResult {
             return this;
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder datasetId(String datasetId) {
             if (datasetId == null) {
               throw new MissingRequiredPropertyException("GetLogpushDatasetJobResult", "datasetId");
@@ -347,9 +311,6 @@ public final class GetLogpushDatasetJobResult {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-        public Builder id(String id) {
-=======
         public Builder destinationConf(String destinationConf) {
             if (destinationConf == null) {
               throw new MissingRequiredPropertyException("GetLogpushDatasetJobResult", "destinationConf");
@@ -383,7 +344,6 @@ public final class GetLogpushDatasetJobResult {
         }
         @CustomType.Setter
         public Builder id(Integer id) {
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             if (id == null) {
               throw new MissingRequiredPropertyException("GetLogpushDatasetJobResult", "id");
             }
@@ -391,8 +351,6 @@ public final class GetLogpushDatasetJobResult {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder kind(String kind) {
             if (kind == null) {
               throw new MissingRequiredPropertyException("GetLogpushDatasetJobResult", "kind");
@@ -465,7 +423,6 @@ public final class GetLogpushDatasetJobResult {
             return this;
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder zoneId(@Nullable String zoneId) {
 
             this.zoneId = zoneId;
@@ -474,10 +431,6 @@ public final class GetLogpushDatasetJobResult {
         public GetLogpushDatasetJobResult build() {
             final var _resultValue = new GetLogpushDatasetJobResult();
             _resultValue.accountId = accountId;
-<<<<<<< HEAD
-            _resultValue.datasetId = datasetId;
-            _resultValue.id = id;
-=======
             _resultValue.dataset = dataset;
             _resultValue.datasetId = datasetId;
             _resultValue.destinationConf = destinationConf;
@@ -494,7 +447,6 @@ public final class GetLogpushDatasetJobResult {
             _resultValue.maxUploadRecords = maxUploadRecords;
             _resultValue.name = name;
             _resultValue.outputOptions = outputOptions;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

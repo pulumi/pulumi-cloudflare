@@ -17,18 +17,21 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The direction used to sort returned rules.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
         /// When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+        /// Available values: "any", "all".
         /// </summary>
         [Input("match", required: true)]
         public Input<string> Match { get; set; } = null!;
 
         /// <summary>
         /// The action to apply to a matched request.
+        /// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -42,6 +45,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The field used to sort returned rules.
+        /// Available values: "configuration.target", "configuration.value", "mode".
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

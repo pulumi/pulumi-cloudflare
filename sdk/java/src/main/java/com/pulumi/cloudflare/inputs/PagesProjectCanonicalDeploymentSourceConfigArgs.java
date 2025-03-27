@@ -66,9 +66,17 @@ public final class PagesProjectCanonicalDeploymentSourceConfigArgs extends com.p
         return Optional.ofNullable(this.previewBranchIncludes);
     }
 
+    /**
+     * Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
+     * 
+     */
     @Import(name="previewDeploymentSetting")
     private @Nullable Output<String> previewDeploymentSetting;
 
+    /**
+     * @return Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
+     * 
+     */
     public Optional<Output<String>> previewDeploymentSetting() {
         return Optional.ofNullable(this.previewDeploymentSetting);
     }
@@ -207,11 +215,23 @@ public final class PagesProjectCanonicalDeploymentSourceConfigArgs extends com.p
             return previewBranchIncludes(List.of(previewBranchIncludes));
         }
 
+        /**
+         * @param previewDeploymentSetting Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder previewDeploymentSetting(@Nullable Output<String> previewDeploymentSetting) {
             $.previewDeploymentSetting = previewDeploymentSetting;
             return this;
         }
 
+        /**
+         * @param previewDeploymentSetting Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder previewDeploymentSetting(String previewDeploymentSetting) {
             return previewDeploymentSetting(Output.of(previewDeploymentSetting));
         }

@@ -158,6 +158,7 @@ public final class DnsRecordArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Record type.
+     * Available values: &#34;A&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -165,6 +166,7 @@ public final class DnsRecordArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Record type.
+     * Available values: &#34;A&#34;.
      * 
      */
     public Output<String> type() {
@@ -421,6 +423,7 @@ public final class DnsRecordArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type Record type.
+         * Available values: &#34;A&#34;.
          * 
          * @return builder
          * 
@@ -432,6 +435,7 @@ public final class DnsRecordArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type Record type.
+         * Available values: &#34;A&#34;.
          * 
          * @return builder
          * 

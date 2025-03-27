@@ -22,24 +22,13 @@ __all__ = ['ContentScanningExpressionArgs', 'ContentScanningExpression']
 class ContentScanningExpressionArgs:
     def __init__(__self__, *,
                  bodies: pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]],
-<<<<<<< HEAD
-                 zone_id: pulumi.Input[str],
-                 expression_id: Optional[pulumi.Input[str]] = None):
-        """
-        The set of arguments for constructing a ContentScanningExpression resource.
-        :param pulumi.Input[str] zone_id: Identifier
-        :param pulumi.Input[str] expression_id: Identifier
-=======
                  zone_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a ContentScanningExpression resource.
         :param pulumi.Input[str] zone_id: Identifier
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         pulumi.set(__self__, "bodies", bodies)
         pulumi.set(__self__, "zone_id", zone_id)
-        if expression_id is not None:
-            pulumi.set(__self__, "expression_id", expression_id)
 
     @property
     @pulumi.getter
@@ -62,47 +51,22 @@ class ContentScanningExpressionArgs:
     def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
 
-    @property
-    @pulumi.getter(name="expressionId")
-    def expression_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "expression_id")
-
-    @expression_id.setter
-    def expression_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "expression_id", value)
-
 
 @pulumi.input_type
 class _ContentScanningExpressionState:
     def __init__(__self__, *,
                  bodies: Optional[pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]] = None,
-<<<<<<< HEAD
-                 expression_id: Optional[pulumi.Input[str]] = None,
-                 zone_id: Optional[pulumi.Input[str]] = None):
-        """
-        Input properties used for looking up and filtering ContentScanningExpression resources.
-        :param pulumi.Input[str] expression_id: Identifier
-=======
                  payload: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ContentScanningExpression resources.
         :param pulumi.Input[str] payload: Ruleset expression to use in matching content objects
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] zone_id: Identifier
         """
         if bodies is not None:
             pulumi.set(__self__, "bodies", bodies)
-<<<<<<< HEAD
-        if expression_id is not None:
-            pulumi.set(__self__, "expression_id", expression_id)
-=======
         if payload is not None:
             pulumi.set(__self__, "payload", payload)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -110,8 +74,6 @@ class _ContentScanningExpressionState:
     @pulumi.getter
     def bodies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]]:
         return pulumi.get(self, "bodies")
-<<<<<<< HEAD
-=======
 
     @bodies.setter
     def bodies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]]):
@@ -124,23 +86,10 @@ class _ContentScanningExpressionState:
         Ruleset expression to use in matching content objects
         """
         return pulumi.get(self, "payload")
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
-    @bodies.setter
-    def bodies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]]):
-        pulumi.set(self, "bodies", value)
-
-    @property
-    @pulumi.getter(name="expressionId")
-    def expression_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "expression_id")
-
-    @expression_id.setter
-    def expression_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "expression_id", value)
+    @payload.setter
+    def payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload", value)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -161,10 +110,6 @@ class ContentScanningExpression(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bodies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContentScanningExpressionBodyArgs', 'ContentScanningExpressionBodyArgsDict']]]]] = None,
-<<<<<<< HEAD
-                 expression_id: Optional[pulumi.Input[str]] = None,
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -183,10 +128,6 @@ class ContentScanningExpression(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-<<<<<<< HEAD
-        :param pulumi.Input[str] expression_id: Identifier
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] zone_id: Identifier
         """
         ...
@@ -225,10 +166,6 @@ class ContentScanningExpression(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bodies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContentScanningExpressionBodyArgs', 'ContentScanningExpressionBodyArgsDict']]]]] = None,
-<<<<<<< HEAD
-                 expression_id: Optional[pulumi.Input[str]] = None,
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -242,10 +179,6 @@ class ContentScanningExpression(pulumi.CustomResource):
             if bodies is None and not opts.urn:
                 raise TypeError("Missing required property 'bodies'")
             __props__.__dict__["bodies"] = bodies
-<<<<<<< HEAD
-            __props__.__dict__["expression_id"] = expression_id
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
@@ -261,11 +194,7 @@ class ContentScanningExpression(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bodies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContentScanningExpressionBodyArgs', 'ContentScanningExpressionBodyArgsDict']]]]] = None,
-<<<<<<< HEAD
-            expression_id: Optional[pulumi.Input[str]] = None,
-=======
             payload: Optional[pulumi.Input[str]] = None,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ContentScanningExpression':
         """
         Get an existing ContentScanningExpression resource's state with the given name, id, and optional extra
@@ -274,11 +203,7 @@ class ContentScanningExpression(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-<<<<<<< HEAD
-        :param pulumi.Input[str] expression_id: Identifier
-=======
         :param pulumi.Input[str] payload: Ruleset expression to use in matching content objects
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -286,11 +211,7 @@ class ContentScanningExpression(pulumi.CustomResource):
         __props__ = _ContentScanningExpressionState.__new__(_ContentScanningExpressionState)
 
         __props__.__dict__["bodies"] = bodies
-<<<<<<< HEAD
-        __props__.__dict__["expression_id"] = expression_id
-=======
         __props__.__dict__["payload"] = payload
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         __props__.__dict__["zone_id"] = zone_id
         return ContentScanningExpression(resource_name, opts=opts, __props__=__props__)
 
@@ -300,19 +221,12 @@ class ContentScanningExpression(pulumi.CustomResource):
         return pulumi.get(self, "bodies")
 
     @property
-<<<<<<< HEAD
-    @pulumi.getter(name="expressionId")
-    def expression_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        Identifier
-=======
     @pulumi.getter
     def payload(self) -> pulumi.Output[str]:
         """
         Ruleset expression to use in matching content objects
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
-        return pulumi.get(self, "expression_id")
+        return pulumi.get(self, "payload")
 
     @property
     @pulumi.getter(name="zoneId")

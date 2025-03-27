@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * const exampleR2CustomDomain = cloudflare.getR2CustomDomain({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
- *     domainName: "example-domain/custom-domain.com",
+ *     domain: "example-domain/custom-domain.com",
  * });
  * ```
  */
@@ -25,7 +25,7 @@ export function getR2CustomDomain(args: GetR2CustomDomainArgs, opts?: pulumi.Inv
     return pulumi.runtime.invoke("cloudflare:index/getR2CustomDomain:getR2CustomDomain", {
         "accountId": args.accountId,
         "bucketName": args.bucketName,
-        "domainName": args.domainName,
+        "domain": args.domain,
     }, opts);
 }
 
@@ -44,7 +44,7 @@ export interface GetR2CustomDomainArgs {
     /**
      * Name of the custom domain
      */
-    domainName: string;
+    domain: string;
 }
 
 /**
@@ -60,13 +60,9 @@ export interface GetR2CustomDomainResult {
      */
     readonly bucketName: string;
     /**
-     * Domain name of the custom domain to be added
-     */
-    readonly domain: string;
-    /**
      * Name of the custom domain
      */
-    readonly domainName: string;
+    readonly domain: string;
     /**
      * Whether this bucket is publicly accessible at the specified custom domain
      */
@@ -77,6 +73,7 @@ export interface GetR2CustomDomainResult {
     readonly id: string;
     /**
      * Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+     * Available values: "1.0", "1.1", "1.2", "1.3".
      */
     readonly minTls: string;
     readonly status: outputs.GetR2CustomDomainStatus;
@@ -99,7 +96,7 @@ export interface GetR2CustomDomainResult {
  * const exampleR2CustomDomain = cloudflare.getR2CustomDomain({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
- *     domainName: "example-domain/custom-domain.com",
+ *     domain: "example-domain/custom-domain.com",
  * });
  * ```
  */
@@ -108,7 +105,7 @@ export function getR2CustomDomainOutput(args: GetR2CustomDomainOutputArgs, opts?
     return pulumi.runtime.invokeOutput("cloudflare:index/getR2CustomDomain:getR2CustomDomain", {
         "accountId": args.accountId,
         "bucketName": args.bucketName,
-        "domainName": args.domainName,
+        "domain": args.domain,
     }, opts);
 }
 
@@ -127,5 +124,5 @@ export interface GetR2CustomDomainOutputArgs {
     /**
      * Name of the custom domain
      */
-    domainName: pulumi.Input<string>;
+    domain: pulumi.Input<string>;
 }

@@ -16,6 +16,7 @@ public final class ArgoSmartRoutingArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Enables Argo Smart Routing.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     @Import(name="value", required=true)
@@ -23,6 +24,7 @@ public final class ArgoSmartRoutingArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Enables Argo Smart Routing.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public Output<String> value() {
@@ -71,6 +73,7 @@ public final class ArgoSmartRoutingArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param value Enables Argo Smart Routing.
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 
@@ -82,6 +85,7 @@ public final class ArgoSmartRoutingArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param value Enables Argo Smart Routing.
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 

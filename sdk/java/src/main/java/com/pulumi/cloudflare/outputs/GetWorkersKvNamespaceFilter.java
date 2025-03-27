@@ -13,11 +13,13 @@ import javax.annotation.Nullable;
 public final class GetWorkersKvNamespaceFilter {
     /**
      * @return Direction to order namespaces.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
     /**
      * @return Field to order results by.
+     * Available values: &#34;id&#34;, &#34;title&#34;.
      * 
      */
     private @Nullable String order;
@@ -25,6 +27,7 @@ public final class GetWorkersKvNamespaceFilter {
     private GetWorkersKvNamespaceFilter() {}
     /**
      * @return Direction to order namespaces.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -32,6 +35,7 @@ public final class GetWorkersKvNamespaceFilter {
     }
     /**
      * @return Field to order results by.
+     * Available values: &#34;id&#34;, &#34;title&#34;.
      * 
      */
     public Optional<String> order() {

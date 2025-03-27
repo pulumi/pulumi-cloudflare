@@ -76,6 +76,7 @@ type LookupWorkersSecretResult struct {
 	// A JavaScript variable name for the secret binding.
 	SecretName *string `pulumi:"secretName"`
 	// The type of secret.
+	// Available values: "secretText".
 	Type string `pulumi:"type"`
 }
 
@@ -150,6 +151,7 @@ func (o LookupWorkersSecretResultOutput) SecretName() pulumi.StringPtrOutput {
 }
 
 // The type of secret.
+// Available values: "secretText".
 func (o LookupWorkersSecretResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersSecretResult) string { return v.Type }).(pulumi.StringOutput)
 }

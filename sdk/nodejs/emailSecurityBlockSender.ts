@@ -13,17 +13,10 @@ import * as utilities from "./utilities";
  *
  * const exampleEmailSecurityBlockSender = new cloudflare.EmailSecurityBlockSender("example_email_security_block_sender", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
-<<<<<<< HEAD
- *     isRegex: false,
- *     pattern: "test@example.com",
- *     patternType: "EMAIL",
- *     comments: "block sender with email test@example.com",
-=======
  *     isRegex: true,
  *     pattern: "x",
  *     patternType: "EMAIL",
  *     comments: "comments",
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  * });
  * ```
  *
@@ -70,6 +63,9 @@ export class EmailSecurityBlockSender extends pulumi.CustomResource {
     public readonly isRegex!: pulumi.Output<boolean>;
     public /*out*/ readonly lastModified!: pulumi.Output<string>;
     public readonly pattern!: pulumi.Output<string>;
+    /**
+     * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+     */
     public readonly patternType!: pulumi.Output<string>;
 
     /**
@@ -132,6 +128,9 @@ export interface EmailSecurityBlockSenderState {
     isRegex?: pulumi.Input<boolean>;
     lastModified?: pulumi.Input<string>;
     pattern?: pulumi.Input<string>;
+    /**
+     * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+     */
     patternType?: pulumi.Input<string>;
 }
 
@@ -146,5 +145,8 @@ export interface EmailSecurityBlockSenderArgs {
     comments?: pulumi.Input<string>;
     isRegex: pulumi.Input<boolean>;
     pattern: pulumi.Input<string>;
+    /**
+     * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+     */
     patternType: pulumi.Input<string>;
 }

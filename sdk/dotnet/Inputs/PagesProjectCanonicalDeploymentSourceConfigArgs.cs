@@ -53,6 +53,9 @@ namespace Pulumi.Cloudflare.Inputs
             set => _previewBranchIncludes = value;
         }
 
+        /// <summary>
+        /// Available values: "all", "none", "custom".
+        /// </summary>
         [Input("previewDeploymentSetting")]
         public Input<string>? PreviewDeploymentSetting { get; set; }
 

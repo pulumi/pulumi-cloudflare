@@ -12,15 +12,14 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ZeroTrustDlpEntryConfidenceArgs : global::Pulumi.ResourceArgs
     {
-<<<<<<< HEAD
-=======
+        /// <summary>
+        /// Indicates whether this entry has AI remote service validation
+        /// </summary>
         [Input("aiContextAvailable")]
         public Input<bool>? AiContextAvailable { get; set; }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
-        /// Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
-        /// Profiles that use an entry with `available` set to true can use confidence thresholds
+        /// Indicates whether this entry has any form of validation that is not an AI remote service
         /// </summary>
         [Input("available")]
         public Input<bool>? Available { get; set; }

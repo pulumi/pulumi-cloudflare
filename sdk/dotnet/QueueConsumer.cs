@@ -54,6 +54,9 @@ namespace Pulumi.Cloudflare
         [Output("settings")]
         public Output<Outputs.QueueConsumerSettings> Settings { get; private set; } = null!;
 
+        /// <summary>
+        /// Available values: "worker".
+        /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
 
@@ -133,6 +136,9 @@ namespace Pulumi.Cloudflare
         [Input("settings")]
         public Input<Inputs.QueueConsumerSettingsArgs>? Settings { get; set; }
 
+        /// <summary>
+        /// Available values: "worker".
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
@@ -183,6 +189,9 @@ namespace Pulumi.Cloudflare
         [Input("settings")]
         public Input<Inputs.QueueConsumerSettingsGetArgs>? Settings { get; set; }
 
+        /// <summary>
+        /// Available values: "worker".
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

@@ -35,6 +35,7 @@ export function getCustomSsls(args: GetCustomSslsArgs, opts?: pulumi.InvokeOptio
 export interface GetCustomSslsArgs {
     /**
      * Whether to match all search requirements or at least one (any).
+     * Available values: "any", "all".
      */
     match?: string;
     /**
@@ -43,6 +44,7 @@ export interface GetCustomSslsArgs {
     maxItems?: number;
     /**
      * Status of the zone's custom SSL.
+     * Available values: "active", "expired", "deleted", "pending", "initializing".
      */
     status?: string;
     /**
@@ -61,6 +63,7 @@ export interface GetCustomSslsResult {
     readonly id: string;
     /**
      * Whether to match all search requirements or at least one (any).
+     * Available values: "any", "all".
      */
     readonly match: string;
     /**
@@ -73,6 +76,7 @@ export interface GetCustomSslsResult {
     readonly results: outputs.GetCustomSslsResult[];
     /**
      * Status of the zone's custom SSL.
+     * Available values: "active", "expired", "deleted", "pending", "initializing".
      */
     readonly status?: string;
     /**
@@ -109,6 +113,7 @@ export function getCustomSslsOutput(args: GetCustomSslsOutputArgs, opts?: pulumi
 export interface GetCustomSslsOutputArgs {
     /**
      * Whether to match all search requirements or at least one (any).
+     * Available values: "any", "all".
      */
     match?: pulumi.Input<string>;
     /**
@@ -117,6 +122,7 @@ export interface GetCustomSslsOutputArgs {
     maxItems?: pulumi.Input<number>;
     /**
      * Status of the zone's custom SSL.
+     * Available values: "active", "expired", "deleted", "pending", "initializing".
      */
     status?: pulumi.Input<string>;
     /**

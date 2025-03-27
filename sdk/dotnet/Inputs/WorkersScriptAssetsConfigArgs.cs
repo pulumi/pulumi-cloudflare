@@ -14,12 +14,14 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Determines the redirects and rewrites of requests for HTML content.
+        /// Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
         /// </summary>
         [Input("htmlHandling")]
         public Input<string>? HtmlHandling { get; set; }
 
         /// <summary>
         /// Determines the response when a request does not match a static asset, and there is no Worker script.
+        /// Available values: "none", "404-page", "single-page-application".
         /// </summary>
         [Input("notFoundHandling")]
         public Input<string>? NotFoundHandling { get; set; }

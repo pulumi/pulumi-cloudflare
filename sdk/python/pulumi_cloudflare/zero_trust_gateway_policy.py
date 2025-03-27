@@ -37,6 +37,7 @@ class ZeroTrustGatewayPolicyArgs:
         """
         The set of arguments for constructing a ZeroTrustGatewayPolicy resource.
         :param pulumi.Input[str] action: The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
         :param pulumi.Input[str] name: The name of the rule.
         :param pulumi.Input[str] description: The description of the rule.
         :param pulumi.Input[str] device_posture: The wirefilter expression used for device posture check matching.
@@ -89,6 +90,7 @@ class ZeroTrustGatewayPolicyArgs:
     def action(self) -> pulumi.Input[str]:
         """
         The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
         """
         return pulumi.get(self, "action")
 
@@ -254,6 +256,7 @@ class _ZeroTrustGatewayPolicyState:
         """
         Input properties used for looking up and filtering ZeroTrustGatewayPolicy resources.
         :param pulumi.Input[str] action: The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
         :param pulumi.Input[str] deleted_at: Date of deletion, if any.
         :param pulumi.Input[str] description: The description of the rule.
         :param pulumi.Input[str] device_posture: The wirefilter expression used for device posture check matching.
@@ -319,6 +322,7 @@ class _ZeroTrustGatewayPolicyState:
     def action(self) -> Optional[pulumi.Input[str]]:
         """
         The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
         """
         return pulumi.get(self, "action")
 
@@ -534,6 +538,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
         :param pulumi.Input[str] description: The description of the rule.
         :param pulumi.Input[str] device_posture: The wirefilter expression used for device posture check matching.
         :param pulumi.Input[bool] enabled: True if the rule is enabled.
@@ -623,6 +628,8 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
             __props__.__dict__["deleted_at"] = None
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["version"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/teamsRule:TeamsRule")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustGatewayPolicy, __self__).__init__(
             'cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy',
             resource_name,
@@ -658,6 +665,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
         :param pulumi.Input[str] deleted_at: Date of deletion, if any.
         :param pulumi.Input[str] description: The description of the rule.
         :param pulumi.Input[str] device_posture: The wirefilter expression used for device posture check matching.
@@ -707,6 +715,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
     def action(self) -> pulumi.Output[str]:
         """
         The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
         """
         return pulumi.get(self, "action")
 

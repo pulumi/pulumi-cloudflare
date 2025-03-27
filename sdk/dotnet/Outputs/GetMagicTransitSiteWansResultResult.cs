@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+        /// Available values: "low", "mid", "high".
         /// </summary>
         public readonly string HealthCheckRate;
         /// <summary>

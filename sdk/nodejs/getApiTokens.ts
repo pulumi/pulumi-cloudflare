@@ -33,6 +33,7 @@ export function getApiTokens(args?: GetApiTokensArgs, opts?: pulumi.InvokeOption
 export interface GetApiTokensArgs {
     /**
      * Direction to order results.
+     * Available values: "asc", "desc".
      */
     direction?: string;
     /**
@@ -47,6 +48,7 @@ export interface GetApiTokensArgs {
 export interface GetApiTokensResult {
     /**
      * Direction to order results.
+     * Available values: "asc", "desc".
      */
     readonly direction?: string;
     /**
@@ -89,6 +91,7 @@ export function getApiTokensOutput(args?: GetApiTokensOutputArgs, opts?: pulumi.
 export interface GetApiTokensOutputArgs {
     /**
      * Direction to order results.
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**

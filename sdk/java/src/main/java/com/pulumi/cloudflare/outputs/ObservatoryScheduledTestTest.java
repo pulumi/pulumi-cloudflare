@@ -37,6 +37,7 @@ public final class ObservatoryScheduledTestTest {
     private @Nullable ObservatoryScheduledTestTestRegion region;
     /**
      * @return The frequency of the test.
+     * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
      * 
      */
     private @Nullable String scheduleFrequency;
@@ -80,6 +81,7 @@ public final class ObservatoryScheduledTestTest {
     }
     /**
      * @return The frequency of the test.
+     * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
      * 
      */
     public Optional<String> scheduleFrequency() {

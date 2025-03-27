@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// The action to take when the expression matches.
+        /// Available values: "bypass*waiting*room".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;

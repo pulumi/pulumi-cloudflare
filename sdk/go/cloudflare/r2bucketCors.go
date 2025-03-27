@@ -19,8 +19,10 @@ type R2BucketCors struct {
 	// Account ID
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Name of the bucket
-	BucketName pulumi.StringOutput         `pulumi:"bucketName"`
-	Rules      R2BucketCorsRuleArrayOutput `pulumi:"rules"`
+	BucketName pulumi.StringOutput `pulumi:"bucketName"`
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringOutput         `pulumi:"jurisdiction"`
+	Rules        R2BucketCorsRuleArrayOutput `pulumi:"rules"`
 }
 
 // NewR2BucketCors registers a new resource with the given unique name, arguments, and options.
@@ -62,8 +64,10 @@ type r2bucketCorsState struct {
 	// Account ID
 	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket
-	BucketName *string            `pulumi:"bucketName"`
-	Rules      []R2BucketCorsRule `pulumi:"rules"`
+	BucketName *string `pulumi:"bucketName"`
+	// Jurisdiction of the bucket
+	Jurisdiction *string            `pulumi:"jurisdiction"`
+	Rules        []R2BucketCorsRule `pulumi:"rules"`
 }
 
 type R2BucketCorsState struct {
@@ -71,7 +75,9 @@ type R2BucketCorsState struct {
 	AccountId pulumi.StringPtrInput
 	// Name of the bucket
 	BucketName pulumi.StringPtrInput
-	Rules      R2BucketCorsRuleArrayInput
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringPtrInput
+	Rules        R2BucketCorsRuleArrayInput
 }
 
 func (R2BucketCorsState) ElementType() reflect.Type {
@@ -82,8 +88,10 @@ type r2bucketCorsArgs struct {
 	// Account ID
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket
-	BucketName string             `pulumi:"bucketName"`
-	Rules      []R2BucketCorsRule `pulumi:"rules"`
+	BucketName string `pulumi:"bucketName"`
+	// Jurisdiction of the bucket
+	Jurisdiction *string            `pulumi:"jurisdiction"`
+	Rules        []R2BucketCorsRule `pulumi:"rules"`
 }
 
 // The set of arguments for constructing a R2BucketCors resource.
@@ -92,7 +100,9 @@ type R2BucketCorsArgs struct {
 	AccountId pulumi.StringInput
 	// Name of the bucket
 	BucketName pulumi.StringInput
-	Rules      R2BucketCorsRuleArrayInput
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringPtrInput
+	Rules        R2BucketCorsRuleArrayInput
 }
 
 func (R2BucketCorsArgs) ElementType() reflect.Type {
@@ -190,6 +200,11 @@ func (o R2BucketCorsOutput) AccountId() pulumi.StringOutput {
 // Name of the bucket
 func (o R2BucketCorsOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2BucketCors) pulumi.StringOutput { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Jurisdiction of the bucket
+func (o R2BucketCorsOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v *R2BucketCors) pulumi.StringOutput { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
 func (o R2BucketCorsOutput) Rules() R2BucketCorsRuleArrayOutput {

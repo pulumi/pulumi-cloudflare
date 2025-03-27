@@ -53,6 +53,7 @@ func LookupCustomHostnames(ctx *pulumi.Context, args *LookupCustomHostnamesArgs,
 // A collection of arguments for invoking getCustomHostnames.
 type LookupCustomHostnamesArgs struct {
 	// Direction to order hostnames.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
 	Hostname *string `pulumi:"hostname"`
@@ -61,8 +62,10 @@ type LookupCustomHostnamesArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Field to order hostnames by.
+	// Available values: "ssl", "sslStatus".
 	Order *string `pulumi:"order"`
 	// Whether to filter hostnames based on if they have SSL enabled.
+	// Available values: 0, 1.
 	Ssl *float64 `pulumi:"ssl"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -71,6 +74,7 @@ type LookupCustomHostnamesArgs struct {
 // A collection of values returned by getCustomHostnames.
 type LookupCustomHostnamesResult struct {
 	// Direction to order hostnames.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
 	Hostname *string `pulumi:"hostname"`
@@ -79,10 +83,12 @@ type LookupCustomHostnamesResult struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Field to order hostnames by.
+	// Available values: "ssl", "sslStatus".
 	Order string `pulumi:"order"`
 	// The items returned by the data source
 	Results []GetCustomHostnamesResult `pulumi:"results"`
 	// Whether to filter hostnames based on if they have SSL enabled.
+	// Available values: 0, 1.
 	Ssl *float64 `pulumi:"ssl"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -100,6 +106,7 @@ func LookupCustomHostnamesOutput(ctx *pulumi.Context, args LookupCustomHostnames
 // A collection of arguments for invoking getCustomHostnames.
 type LookupCustomHostnamesOutputArgs struct {
 	// Direction to order hostnames.
+	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
@@ -108,8 +115,10 @@ type LookupCustomHostnamesOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Field to order hostnames by.
+	// Available values: "ssl", "sslStatus".
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// Whether to filter hostnames based on if they have SSL enabled.
+	// Available values: 0, 1.
 	Ssl pulumi.Float64PtrInput `pulumi:"ssl"`
 	// Identifier
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -135,6 +144,7 @@ func (o LookupCustomHostnamesResultOutput) ToLookupCustomHostnamesResultOutputWi
 }
 
 // Direction to order hostnames.
+// Available values: "asc", "desc".
 func (o LookupCustomHostnamesResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomHostnamesResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
@@ -155,6 +165,7 @@ func (o LookupCustomHostnamesResultOutput) MaxItems() pulumi.IntPtrOutput {
 }
 
 // Field to order hostnames by.
+// Available values: "ssl", "sslStatus".
 func (o LookupCustomHostnamesResultOutput) Order() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomHostnamesResult) string { return v.Order }).(pulumi.StringOutput)
 }
@@ -165,6 +176,7 @@ func (o LookupCustomHostnamesResultOutput) Results() GetCustomHostnamesResultArr
 }
 
 // Whether to filter hostnames based on if they have SSL enabled.
+// Available values: 0, 1.
 func (o LookupCustomHostnamesResultOutput) Ssl() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupCustomHostnamesResult) *float64 { return v.Ssl }).(pulumi.Float64PtrOutput)
 }

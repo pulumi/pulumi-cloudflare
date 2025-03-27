@@ -27,6 +27,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? PctComplete;
         /// <summary>
         /// Specifies the processing status for all quality levels for a video.
+        /// Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error".
         /// </summary>
         public readonly string? State;
 

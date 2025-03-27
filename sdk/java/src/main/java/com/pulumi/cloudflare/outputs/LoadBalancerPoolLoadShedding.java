@@ -19,6 +19,7 @@ public final class LoadBalancerPoolLoadShedding {
     private @Nullable Double defaultPercent;
     /**
      * @return The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.
+     * Available values: &#34;random&#34;, &#34;hash&#34;.
      * 
      */
     private @Nullable String defaultPolicy;
@@ -29,6 +30,7 @@ public final class LoadBalancerPoolLoadShedding {
     private @Nullable Double sessionPercent;
     /**
      * @return Only the hash policy is supported for existing sessions (to avoid exponential decay).
+     * Available values: &#34;hash&#34;.
      * 
      */
     private @Nullable String sessionPolicy;
@@ -43,6 +45,7 @@ public final class LoadBalancerPoolLoadShedding {
     }
     /**
      * @return The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.
+     * Available values: &#34;random&#34;, &#34;hash&#34;.
      * 
      */
     public Optional<String> defaultPolicy() {
@@ -57,6 +60,7 @@ public final class LoadBalancerPoolLoadShedding {
     }
     /**
      * @return Only the hash policy is supported for existing sessions (to avoid exponential decay).
+     * Available values: &#34;hash&#34;.
      * 
      */
     public Optional<String> sessionPolicy() {

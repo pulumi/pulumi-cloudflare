@@ -31,6 +31,13 @@ public final class GetApiShieldSchemaPlainArgs extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.omitSource);
     }
 
+    @Import(name="schemaId", required=true)
+    private String schemaId;
+
+    public String schemaId() {
+        return this.schemaId;
+    }
+
     /**
      * Identifier
      * 
@@ -50,6 +57,7 @@ public final class GetApiShieldSchemaPlainArgs extends com.pulumi.resources.Invo
 
     private GetApiShieldSchemaPlainArgs(GetApiShieldSchemaPlainArgs $) {
         this.omitSource = $.omitSource;
+        this.schemaId = $.schemaId;
         this.zoneId = $.zoneId;
     }
 
@@ -82,6 +90,11 @@ public final class GetApiShieldSchemaPlainArgs extends com.pulumi.resources.Invo
             return this;
         }
 
+        public Builder schemaId(String schemaId) {
+            $.schemaId = schemaId;
+            return this;
+        }
+
         /**
          * @param zoneId Identifier
          * 
@@ -94,6 +107,9 @@ public final class GetApiShieldSchemaPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetApiShieldSchemaPlainArgs build() {
+            if ($.schemaId == null) {
+                throw new MissingRequiredPropertyException("GetApiShieldSchemaPlainArgs", "schemaId");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetApiShieldSchemaPlainArgs", "zoneId");
             }

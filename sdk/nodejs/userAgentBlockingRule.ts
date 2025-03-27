@@ -57,6 +57,7 @@ export class UserAgentBlockingRule extends pulumi.CustomResource {
     public readonly configuration!: pulumi.Output<outputs.UserAgentBlockingRuleConfiguration>;
     /**
      * The action to apply to a matched request.
+     * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
     public readonly mode!: pulumi.Output<string>;
     /**
@@ -116,6 +117,7 @@ export interface UserAgentBlockingRuleState {
     configuration?: pulumi.Input<inputs.UserAgentBlockingRuleConfiguration>;
     /**
      * The action to apply to a matched request.
+     * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
     mode?: pulumi.Input<string>;
     /**
@@ -138,6 +140,7 @@ export interface UserAgentBlockingRuleArgs {
     configuration: pulumi.Input<inputs.UserAgentBlockingRuleConfiguration>;
     /**
      * The action to apply to a matched request.
+     * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
     mode: pulumi.Input<string>;
     /**

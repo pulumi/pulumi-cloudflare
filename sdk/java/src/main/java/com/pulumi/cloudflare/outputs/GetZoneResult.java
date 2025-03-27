@@ -37,10 +37,7 @@ public final class GetZoneResult {
     private String status;
     private String type;
     private List<String> vanityNameServers;
-<<<<<<< HEAD
-=======
     private String verificationKey;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     private @Nullable String zoneId;
 
     private GetZoneResult() {}
@@ -98,12 +95,9 @@ public final class GetZoneResult {
     public List<String> vanityNameServers() {
         return this.vanityNameServers;
     }
-<<<<<<< HEAD
-=======
     public String verificationKey() {
         return this.verificationKey;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }
@@ -135,10 +129,7 @@ public final class GetZoneResult {
         private String status;
         private String type;
         private List<String> vanityNameServers;
-<<<<<<< HEAD
-=======
         private String verificationKey;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetZoneResult defaults) {
@@ -317,8 +308,6 @@ public final class GetZoneResult {
             return vanityNameServers(List.of(vanityNameServers));
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder verificationKey(String verificationKey) {
             if (verificationKey == null) {
               throw new MissingRequiredPropertyException("GetZoneResult", "verificationKey");
@@ -327,7 +316,6 @@ public final class GetZoneResult {
             return this;
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder zoneId(@Nullable String zoneId) {
 
             this.zoneId = zoneId;

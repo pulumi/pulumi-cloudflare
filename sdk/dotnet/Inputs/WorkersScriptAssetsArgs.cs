@@ -18,11 +18,21 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("config")]
         public Input<Inputs.WorkersScriptAssetsConfigArgs>? Config { get; set; }
 
+        [Input("jwt")]
+        private Input<string>? _jwt;
+
         /// <summary>
         /// Token provided upon successful upload of all files from a registered manifest.
         /// </summary>
-        [Input("jwt")]
-        public Input<string>? Jwt { get; set; }
+        public Input<string>? Jwt
+        {
+            get => _jwt;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _jwt = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public WorkersScriptAssetsArgs()
         {

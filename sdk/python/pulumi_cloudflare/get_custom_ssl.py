@@ -83,6 +83,7 @@ class GetCustomSslResult:
     def bundle_method(self) -> str:
         """
         A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        Available values: "ubiquitous", "optimal", "force".
         """
         return pulumi.get(self, "bundle_method")
 
@@ -178,6 +179,7 @@ class GetCustomSslResult:
     def status(self) -> str:
         """
         Status of the zone's custom SSL.
+        Available values: "active", "expired", "deleted", "pending", "initializing".
         """
         return pulumi.get(self, "status")
 
@@ -224,16 +226,27 @@ class AwaitableGetCustomSslResult(GetCustomSslResult):
 
 def get_custom_ssl(custom_certificate_id: Optional[str] = None,
                    filter: Optional[Union['GetCustomSslFilterArgs', 'GetCustomSslFilterArgsDict']] = None,
+                   zone_id: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomSslResult:
     """
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_custom_ssl = cloudflare.get_custom_ssl(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+        custom_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
+    ```
+
 
     :param str custom_certificate_id: Identifier
+    :param str zone_id: Identifier
     """
     __args__ = dict()
     __args__['customCertificateId'] = custom_certificate_id
     __args__['filter'] = filter
+    __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getCustomSsl:getCustomSsl', __args__, opts=opts, typ=GetCustomSslResult).value
 
@@ -256,16 +269,27 @@ def get_custom_ssl(custom_certificate_id: Optional[str] = None,
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_custom_ssl_output(custom_certificate_id: Optional[pulumi.Input[Optional[str]]] = None,
                           filter: Optional[pulumi.Input[Optional[Union['GetCustomSslFilterArgs', 'GetCustomSslFilterArgsDict']]]] = None,
+                          zone_id: Optional[pulumi.Input[str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomSslResult]:
     """
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_custom_ssl = cloudflare.get_custom_ssl(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+        custom_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
+    ```
+
 
     :param str custom_certificate_id: Identifier
+    :param str zone_id: Identifier
     """
     __args__ = dict()
     __args__['customCertificateId'] = custom_certificate_id
     __args__['filter'] = filter
+    __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getCustomSsl:getCustomSsl', __args__, opts=opts, typ=GetCustomSslResult)
     return __ret__.apply(lambda __response__: GetCustomSslResult(

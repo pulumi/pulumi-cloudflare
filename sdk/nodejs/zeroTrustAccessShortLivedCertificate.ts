@@ -102,6 +102,8 @@ export class ZeroTrustAccessShortLivedCertificate extends pulumi.CustomResource 
             resourceInputs["publicKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessCaCertificate:AccessCaCertificate" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustAccessShortLivedCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -38,6 +38,7 @@ export interface GetEmailRoutingAddressesArgs {
     accountId: string;
     /**
      * Sorts results in an ascending or descending order.
+     * Available values: "asc", "desc".
      */
     direction?: string;
     /**
@@ -60,6 +61,7 @@ export interface GetEmailRoutingAddressesResult {
     readonly accountId: string;
     /**
      * Sorts results in an ascending or descending order.
+     * Available values: "asc", "desc".
      */
     readonly direction: string;
     /**
@@ -111,6 +113,7 @@ export interface GetEmailRoutingAddressesOutputArgs {
     accountId: pulumi.Input<string>;
     /**
      * Sorts results in an ascending or descending order.
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**

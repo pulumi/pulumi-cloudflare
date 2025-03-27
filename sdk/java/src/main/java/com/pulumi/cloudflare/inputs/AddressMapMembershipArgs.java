@@ -55,6 +55,7 @@ public final class AddressMapMembershipArgs extends com.pulumi.resources.Resourc
 
     /**
      * The type of the membership.
+     * Available values: &#34;zone&#34;, &#34;account&#34;.
      * 
      */
     @Import(name="kind")
@@ -62,6 +63,7 @@ public final class AddressMapMembershipArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The type of the membership.
+     * Available values: &#34;zone&#34;, &#34;account&#34;.
      * 
      */
     public Optional<Output<String>> kind() {
@@ -148,6 +150,7 @@ public final class AddressMapMembershipArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param kind The type of the membership.
+         * Available values: &#34;zone&#34;, &#34;account&#34;.
          * 
          * @return builder
          * 
@@ -159,6 +162,7 @@ public final class AddressMapMembershipArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param kind The type of the membership.
+         * Available values: &#34;zone&#34;, &#34;account&#34;.
          * 
          * @return builder
          * 

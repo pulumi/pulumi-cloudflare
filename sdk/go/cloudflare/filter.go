@@ -12,11 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-<<<<<<< HEAD
-// > `Filter` is in a deprecation phase until January 15th, 2025.
-=======
 // > `Filter` is in a deprecation phase until June 15th, 2025.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 //
 //	During this time period, this resource is still fully
 //	supported but you are strongly advised to move to the
@@ -49,15 +45,12 @@ import (
 //	}
 //
 // ```
-<<<<<<< HEAD
-=======
 //
 // ## Import
 //
 // ```sh
 // $ pulumi import cloudflare:index/filter:Filter example '<zone_id>/<filter_id>'
 // ```
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 type Filter struct {
 	pulumi.CustomResourceState
 
@@ -65,11 +58,6 @@ type Filter struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	Expression pulumi.StringOutput `pulumi:"expression"`
-<<<<<<< HEAD
-	// The unique identifier of the filter.
-	FilterId pulumi.StringPtrOutput `pulumi:"filterId"`
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// When true, indicates that the filter is currently paused.
 	Paused pulumi.BoolOutput `pulumi:"paused"`
 	// A short reference tag. Allows you to select related filters.
@@ -118,11 +106,6 @@ type filterState struct {
 	Description *string `pulumi:"description"`
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	Expression *string `pulumi:"expression"`
-<<<<<<< HEAD
-	// The unique identifier of the filter.
-	FilterId *string `pulumi:"filterId"`
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// When true, indicates that the filter is currently paused.
 	Paused *bool `pulumi:"paused"`
 	// A short reference tag. Allows you to select related filters.
@@ -136,11 +119,6 @@ type FilterState struct {
 	Description pulumi.StringPtrInput
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	Expression pulumi.StringPtrInput
-<<<<<<< HEAD
-	// The unique identifier of the filter.
-	FilterId pulumi.StringPtrInput
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// When true, indicates that the filter is currently paused.
 	Paused pulumi.BoolPtrInput
 	// A short reference tag. Allows you to select related filters.
@@ -156,11 +134,6 @@ func (FilterState) ElementType() reflect.Type {
 type filterArgs struct {
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	Expression string `pulumi:"expression"`
-<<<<<<< HEAD
-	// The unique identifier of the filter.
-	FilterId *string `pulumi:"filterId"`
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -169,11 +142,6 @@ type filterArgs struct {
 type FilterArgs struct {
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	Expression pulumi.StringInput
-<<<<<<< HEAD
-	// The unique identifier of the filter.
-	FilterId pulumi.StringPtrInput
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId pulumi.StringInput
 }
@@ -275,12 +243,6 @@ func (o FilterOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-// The unique identifier of the filter.
-func (o FilterOutput) FilterId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Filter) pulumi.StringPtrOutput { return v.FilterId }).(pulumi.StringPtrOutput)
-}
-
 // When true, indicates that the filter is currently paused.
 func (o FilterOutput) Paused() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Filter) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
@@ -291,18 +253,6 @@ func (o FilterOutput) Ref() pulumi.StringOutput {
 	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.Ref }).(pulumi.StringOutput)
 }
 
-=======
-// When true, indicates that the filter is currently paused.
-func (o FilterOutput) Paused() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Filter) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
-}
-
-// A short reference tag. Allows you to select related filters.
-func (o FilterOutput) Ref() pulumi.StringOutput {
-	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.Ref }).(pulumi.StringOutput)
-}
-
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // Identifier
 func (o FilterOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)

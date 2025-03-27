@@ -200,6 +200,12 @@ class HyperdriveConfig(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example '<account_id>/<hyperdrive_id>'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Identifier
@@ -231,6 +237,12 @@ class HyperdriveConfig(pulumi.CustomResource):
             caching={
                 "disabled": True,
             })
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example '<account_id>/<hyperdrive_id>'
         ```
 
         :param str resource_name: The name of the resource.

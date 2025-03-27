@@ -15,10 +15,12 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Direction to order namespaces.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
         /// Field to order results by.
+        /// Available values: "id", "title".
         /// </summary>
         public readonly string? Order;
 

@@ -38,6 +38,7 @@ export interface GetCertificatePacksArgs {
     maxItems?: number;
     /**
      * Include Certificate Packs of all statuses, not just active ones.
+     * Available values: "all".
      */
     status?: string;
     /**
@@ -64,6 +65,7 @@ export interface GetCertificatePacksResult {
     readonly results: outputs.GetCertificatePacksResult[];
     /**
      * Include Certificate Packs of all statuses, not just active ones.
+     * Available values: "all".
      */
     readonly status?: string;
     /**
@@ -103,6 +105,7 @@ export interface GetCertificatePacksOutputArgs {
     maxItems?: pulumi.Input<number>;
     /**
      * Include Certificate Packs of all statuses, not just active ones.
+     * Available values: "all".
      */
     status?: pulumi.Input<string>;
     /**

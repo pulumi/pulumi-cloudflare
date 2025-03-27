@@ -104,6 +104,7 @@ class _StreamCaptionLanguageState:
         :param pulumi.Input[str] label: The language label displayed in the native language to users.
         :param pulumi.Input[str] language: The language tag in BCP 47 format.
         :param pulumi.Input[str] status: The status of a generated caption.
+               Available values: "ready", "inprogress", "error".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -197,6 +198,7 @@ class _StreamCaptionLanguageState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         The status of a generated caption.
+        Available values: "ready", "inprogress", "error".
         """
         return pulumi.get(self, "status")
 
@@ -326,6 +328,7 @@ class StreamCaptionLanguage(pulumi.CustomResource):
         :param pulumi.Input[str] label: The language label displayed in the native language to users.
         :param pulumi.Input[str] language: The language tag in BCP 47 format.
         :param pulumi.Input[str] status: The status of a generated caption.
+               Available values: "ready", "inprogress", "error".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -393,6 +396,7 @@ class StreamCaptionLanguage(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         The status of a generated caption.
+        Available values: "ready", "inprogress", "error".
         """
         return pulumi.get(self, "status")
 

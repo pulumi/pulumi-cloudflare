@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustDeviceCustomProfileInclude {
     /**
-     * @return The address in CIDR format to include in the tunnel. If address is present, host must not be present.
+     * @return The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
      * 
      */
-    private @Nullable String address;
+    private String address;
     /**
-     * @return A description of the split tunnel item, displayed in the client UI.
+     * @return A description of the Split Tunnel item, displayed in the client UI.
      * 
      */
-    private @Nullable String description;
+    private String description;
     /**
-     * @return The domain name to include in the tunnel. If host is present, address must not be present.
+     * @return The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
      * 
      */
     private @Nullable String host;
 
     private ZeroTrustDeviceCustomProfileInclude() {}
     /**
-     * @return The address in CIDR format to include in the tunnel. If address is present, host must not be present.
+     * @return The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
      * 
      */
-    public Optional<String> address() {
-        return Optional.ofNullable(this.address);
+    public String address() {
+        return this.address;
     }
     /**
-     * @return A description of the split tunnel item, displayed in the client UI.
+     * @return A description of the Split Tunnel item, displayed in the client UI.
      * 
      */
-    public Optional<String> description() {
-        return Optional.ofNullable(this.description);
+    public String description() {
+        return this.description;
     }
     /**
-     * @return The domain name to include in the tunnel. If host is present, address must not be present.
+     * @return The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
      * 
      */
     public Optional<String> host() {
@@ -59,8 +60,8 @@ public final class ZeroTrustDeviceCustomProfileInclude {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String address;
-        private @Nullable String description;
+        private String address;
+        private String description;
         private @Nullable String host;
         public Builder() {}
         public Builder(ZeroTrustDeviceCustomProfileInclude defaults) {
@@ -71,14 +72,18 @@ public final class ZeroTrustDeviceCustomProfileInclude {
         }
 
         @CustomType.Setter
-        public Builder address(@Nullable String address) {
-
+        public Builder address(String address) {
+            if (address == null) {
+              throw new MissingRequiredPropertyException("ZeroTrustDeviceCustomProfileInclude", "address");
+            }
             this.address = address;
             return this;
         }
         @CustomType.Setter
-        public Builder description(@Nullable String description) {
-
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("ZeroTrustDeviceCustomProfileInclude", "description");
+            }
             this.description = description;
             return this;
         }

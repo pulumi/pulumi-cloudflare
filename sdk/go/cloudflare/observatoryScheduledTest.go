@@ -48,8 +48,10 @@ type ObservatoryScheduledTest struct {
 	pulumi.CustomResourceState
 
 	// The frequency of the test.
+	// Available values: "DAILY", "WEEKLY".
 	Frequency pulumi.StringOutput `pulumi:"frequency"`
 	// A test region.
+	// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The test schedule.
 	Schedule ObservatoryScheduledTestScheduleOutput `pulumi:"schedule"`
@@ -97,8 +99,10 @@ func GetObservatoryScheduledTest(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ObservatoryScheduledTest resources.
 type observatoryScheduledTestState struct {
 	// The frequency of the test.
+	// Available values: "DAILY", "WEEKLY".
 	Frequency *string `pulumi:"frequency"`
 	// A test region.
+	// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
 	Region *string `pulumi:"region"`
 	// The test schedule.
 	Schedule *ObservatoryScheduledTestSchedule `pulumi:"schedule"`
@@ -111,8 +115,10 @@ type observatoryScheduledTestState struct {
 
 type ObservatoryScheduledTestState struct {
 	// The frequency of the test.
+	// Available values: "DAILY", "WEEKLY".
 	Frequency pulumi.StringPtrInput
 	// A test region.
+	// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
 	Region pulumi.StringPtrInput
 	// The test schedule.
 	Schedule ObservatoryScheduledTestSchedulePtrInput
@@ -230,11 +236,13 @@ func (o ObservatoryScheduledTestOutput) ToObservatoryScheduledTestOutputWithCont
 }
 
 // The frequency of the test.
+// Available values: "DAILY", "WEEKLY".
 func (o ObservatoryScheduledTestOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObservatoryScheduledTest) pulumi.StringOutput { return v.Frequency }).(pulumi.StringOutput)
 }
 
 // A test region.
+// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
 func (o ObservatoryScheduledTestOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObservatoryScheduledTest) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

@@ -34,7 +34,7 @@ public final class GetOriginCaCertificatesInvokeResult {
      * @return Identifier
      * 
      */
-    private @Nullable String zoneId;
+    private String zoneId;
 
     private GetOriginCaCertificatesInvokeResult() {}
     /**
@@ -62,8 +62,8 @@ public final class GetOriginCaCertificatesInvokeResult {
      * @return Identifier
      * 
      */
-    public Optional<String> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public String zoneId() {
+        return this.zoneId;
     }
 
     public static Builder builder() {
@@ -78,7 +78,7 @@ public final class GetOriginCaCertificatesInvokeResult {
         private String id;
         private @Nullable Integer maxItems;
         private List<GetOriginCaCertificatesResult> results;
-        private @Nullable String zoneId;
+        private String zoneId;
         public Builder() {}
         public Builder(GetOriginCaCertificatesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -114,8 +114,10 @@ public final class GetOriginCaCertificatesInvokeResult {
             return results(List.of(results));
         }
         @CustomType.Setter
-        public Builder zoneId(@Nullable String zoneId) {
-
+        public Builder zoneId(String zoneId) {
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetOriginCaCertificatesInvokeResult", "zoneId");
+            }
             this.zoneId = zoneId;
             return this;
         }

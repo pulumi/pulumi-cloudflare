@@ -45,6 +45,7 @@ export interface GetPageShieldPolicyArgs {
 export interface GetPageShieldPolicyResult {
     /**
      * The action to take if the expression matches
+     * Available values: "allow", "log".
      */
     readonly action: string;
     /**

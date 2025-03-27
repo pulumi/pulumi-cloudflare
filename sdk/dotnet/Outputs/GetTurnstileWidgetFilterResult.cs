@@ -15,10 +15,12 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Direction to order widgets.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
         /// Field to order widgets by.
+        /// Available values: "id", "sitekey", "name", "created*on", "modified*on".
         /// </summary>
         public readonly string? Order;
 

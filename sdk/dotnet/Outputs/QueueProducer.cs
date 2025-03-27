@@ -15,6 +15,9 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly string? BucketName;
         public readonly string? Script;
+        /// <summary>
+        /// Available values: "worker".
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

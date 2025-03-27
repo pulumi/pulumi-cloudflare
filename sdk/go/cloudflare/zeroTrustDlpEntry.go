@@ -61,9 +61,10 @@ type ZeroTrustDlpEntry struct {
 	Pattern    ZeroTrustDlpEntryPatternOutput    `pulumi:"pattern"`
 	ProfileId  pulumi.StringOutput               `pulumi:"profileId"`
 	Secret     pulumi.BoolOutput                 `pulumi:"secret"`
-	Type       pulumi.StringPtrOutput            `pulumi:"type"`
-	UpdatedAt  pulumi.StringOutput               `pulumi:"updatedAt"`
-	WordList   pulumi.StringOutput               `pulumi:"wordList"`
+	// Available values: "custom".
+	Type      pulumi.StringPtrOutput `pulumi:"type"`
+	UpdatedAt pulumi.StringOutput    `pulumi:"updatedAt"`
+	WordList  pulumi.StringOutput    `pulumi:"wordList"`
 }
 
 // NewZeroTrustDlpEntry registers a new resource with the given unique name, arguments, and options.
@@ -119,9 +120,10 @@ type zeroTrustDlpEntryState struct {
 	Pattern    *ZeroTrustDlpEntryPattern    `pulumi:"pattern"`
 	ProfileId  *string                      `pulumi:"profileId"`
 	Secret     *bool                        `pulumi:"secret"`
-	Type       *string                      `pulumi:"type"`
-	UpdatedAt  *string                      `pulumi:"updatedAt"`
-	WordList   *string                      `pulumi:"wordList"`
+	// Available values: "custom".
+	Type      *string `pulumi:"type"`
+	UpdatedAt *string `pulumi:"updatedAt"`
+	WordList  *string `pulumi:"wordList"`
 }
 
 type ZeroTrustDlpEntryState struct {
@@ -133,9 +135,10 @@ type ZeroTrustDlpEntryState struct {
 	Pattern    ZeroTrustDlpEntryPatternPtrInput
 	ProfileId  pulumi.StringPtrInput
 	Secret     pulumi.BoolPtrInput
-	Type       pulumi.StringPtrInput
-	UpdatedAt  pulumi.StringPtrInput
-	WordList   pulumi.StringPtrInput
+	// Available values: "custom".
+	Type      pulumi.StringPtrInput
+	UpdatedAt pulumi.StringPtrInput
+	WordList  pulumi.StringPtrInput
 }
 
 func (ZeroTrustDlpEntryState) ElementType() reflect.Type {
@@ -148,7 +151,8 @@ type zeroTrustDlpEntryArgs struct {
 	Name      string                   `pulumi:"name"`
 	Pattern   ZeroTrustDlpEntryPattern `pulumi:"pattern"`
 	ProfileId string                   `pulumi:"profileId"`
-	Type      *string                  `pulumi:"type"`
+	// Available values: "custom".
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a ZeroTrustDlpEntry resource.
@@ -158,7 +162,8 @@ type ZeroTrustDlpEntryArgs struct {
 	Name      pulumi.StringInput
 	Pattern   ZeroTrustDlpEntryPatternInput
 	ProfileId pulumi.StringInput
-	Type      pulumi.StringPtrInput
+	// Available values: "custom".
+	Type pulumi.StringPtrInput
 }
 
 func (ZeroTrustDlpEntryArgs) ElementType() reflect.Type {
@@ -280,6 +285,7 @@ func (o ZeroTrustDlpEntryOutput) Secret() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpEntry) pulumi.BoolOutput { return v.Secret }).(pulumi.BoolOutput)
 }
 
+// Available values: "custom".
 func (o ZeroTrustDlpEntryOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpEntry) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

@@ -13,6 +13,32 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewListItem(ctx, "example_list_item", &cloudflare.ListItemArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				ListId:    pulumi.String("2c0fc9fa937b11eaa1b71c4d701ab86e"),
+//				Ip:        pulumi.String("10.0.0.1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ListItem struct {
 	pulumi.CustomResourceState
 
@@ -21,22 +47,13 @@ type ListItem struct {
 	// A non-negative 32 bit integer
 	Asn pulumi.IntPtrOutput `pulumi:"asn"`
 	// An informative summary of the list item.
-<<<<<<< HEAD
-	Comment pulumi.StringOutput `pulumi:"comment"`
-=======
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The RFC 3339 timestamp of when the item was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
 	Hostname ListItemHostnamePtrOutput `pulumi:"hostname"`
 	// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
 	Ip pulumi.StringPtrOutput `pulumi:"ip"`
-<<<<<<< HEAD
-	// The unique ID of the item in the List.
-	ItemId pulumi.StringOutput `pulumi:"itemId"`
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The unique ID of the list.
 	ListId pulumi.StringOutput `pulumi:"listId"`
 	// The RFC 3339 timestamp of when the item was last modified.
@@ -92,11 +109,6 @@ type listItemState struct {
 	Hostname *ListItemHostname `pulumi:"hostname"`
 	// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
 	Ip *string `pulumi:"ip"`
-<<<<<<< HEAD
-	// The unique ID of the item in the List.
-	ItemId *string `pulumi:"itemId"`
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The unique ID of the list.
 	ListId *string `pulumi:"listId"`
 	// The RFC 3339 timestamp of when the item was last modified.
@@ -120,11 +132,6 @@ type ListItemState struct {
 	Hostname ListItemHostnamePtrInput
 	// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
 	Ip pulumi.StringPtrInput
-<<<<<<< HEAD
-	// The unique ID of the item in the List.
-	ItemId pulumi.StringPtrInput
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The unique ID of the list.
 	ListId pulumi.StringPtrInput
 	// The RFC 3339 timestamp of when the item was last modified.
@@ -144,11 +151,8 @@ type listItemArgs struct {
 	AccountId *string `pulumi:"accountId"`
 	// A non-negative 32 bit integer
 	Asn *int `pulumi:"asn"`
-<<<<<<< HEAD
-=======
 	// An informative summary of the list item.
 	Comment *string `pulumi:"comment"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
 	Hostname *ListItemHostname `pulumi:"hostname"`
 	// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
@@ -165,11 +169,8 @@ type ListItemArgs struct {
 	AccountId pulumi.StringPtrInput
 	// A non-negative 32 bit integer
 	Asn pulumi.IntPtrInput
-<<<<<<< HEAD
-=======
 	// An informative summary of the list item.
 	Comment pulumi.StringPtrInput
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
 	Hostname ListItemHostnamePtrInput
 	// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
@@ -278,13 +279,8 @@ func (o ListItemOutput) Asn() pulumi.IntPtrOutput {
 }
 
 // An informative summary of the list item.
-<<<<<<< HEAD
-func (o ListItemOutput) Comment() pulumi.StringOutput {
-	return o.ApplyT(func(v *ListItem) pulumi.StringOutput { return v.Comment }).(pulumi.StringOutput)
-=======
 func (o ListItemOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListItem) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // The RFC 3339 timestamp of when the item was created.
@@ -302,14 +298,6 @@ func (o ListItemOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListItem) pulumi.StringPtrOutput { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
-<<<<<<< HEAD
-// The unique ID of the item in the List.
-func (o ListItemOutput) ItemId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ListItem) pulumi.StringOutput { return v.ItemId }).(pulumi.StringOutput)
-}
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // The unique ID of the list.
 func (o ListItemOutput) ListId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListItem) pulumi.StringOutput { return v.ListId }).(pulumi.StringOutput)

@@ -11,7 +11,7 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// &gt; A DNS record for the domain is not automatically created. You need to create
-    ///    a `cloudflare.Record` resource for the domain you want to use.
+    ///    a `cloudflare_record` resource for the domain you want to use.
     /// 
     /// ## Example Usage
     /// 
@@ -48,6 +48,9 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// Available values: "google", "lets_encrypt".
+        /// </summary>
         [Output("certificateAuthority")]
         public Output<string> CertificateAuthority { get; private set; } = null!;
 
@@ -58,11 +61,7 @@ namespace Pulumi.Cloudflare
         public Output<string> DomainId { get; private set; } = null!;
 
         [Output("name")]
-<<<<<<< HEAD
-        public Output<string?> Name { get; private set; } = null!;
-=======
         public Output<string> Name { get; private set; } = null!;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Name of the project.
@@ -70,6 +69,9 @@ namespace Pulumi.Cloudflare
         [Output("projectName")]
         public Output<string> ProjectName { get; private set; } = null!;
 
+        /// <summary>
+        /// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -134,13 +136,8 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-<<<<<<< HEAD
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-=======
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Name of the project.
@@ -162,6 +159,9 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// Available values: "google", "lets_encrypt".
+        /// </summary>
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }
 
@@ -180,6 +180,9 @@ namespace Pulumi.Cloudflare
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }
 
+        /// <summary>
+        /// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

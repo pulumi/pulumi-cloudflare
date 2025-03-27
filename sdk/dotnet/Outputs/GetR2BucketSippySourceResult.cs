@@ -17,6 +17,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// Name of the bucket on the provider
         /// </summary>
         public readonly string Bucket;
+        /// <summary>
+        /// Available values: "aws", "gcs".
+        /// </summary>
         public readonly string Provider;
         /// <summary>
         /// Region where the bucket resides (AWS only)

@@ -34,6 +34,7 @@ public final class AccountSubscriptionArgs extends com.pulumi.resources.Resource
 
     /**
      * How often the subscription is renewed automatically.
+     * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
      * 
      */
     @Import(name="frequency")
@@ -41,6 +42,7 @@ public final class AccountSubscriptionArgs extends com.pulumi.resources.Resource
 
     /**
      * @return How often the subscription is renewed automatically.
+     * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
      * 
      */
     public Optional<Output<String>> frequency() {
@@ -127,6 +129,7 @@ public final class AccountSubscriptionArgs extends com.pulumi.resources.Resource
 
         /**
          * @param frequency How often the subscription is renewed automatically.
+         * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
          * 
          * @return builder
          * 
@@ -138,6 +141,7 @@ public final class AccountSubscriptionArgs extends com.pulumi.resources.Resource
 
         /**
          * @param frequency How often the subscription is renewed automatically.
+         * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
          * 
          * @return builder
          * 

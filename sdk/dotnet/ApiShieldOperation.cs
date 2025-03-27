@@ -60,6 +60,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The HTTP method used to access the endpoint.
+        /// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         /// </summary>
         [Output("method")]
         public Output<string> Method { get; private set; } = null!;
@@ -136,6 +137,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The HTTP method used to access the endpoint.
+        /// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         /// </summary>
         [Input("method", required: true)]
         public Input<string> Method { get; set; } = null!;
@@ -174,6 +176,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The HTTP method used to access the endpoint.
+        /// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }

@@ -44,6 +44,7 @@ export interface GetEmailSecurityImpersonationRegistriesArgs {
     accountId: string;
     /**
      * The sorting direction.
+     * Available values: "asc", "desc".
      */
     direction?: string;
     /**
@@ -52,8 +53,12 @@ export interface GetEmailSecurityImpersonationRegistriesArgs {
     maxItems?: number;
     /**
      * The field to sort by.
+     * Available values: "name", "email", "createdAt".
      */
     order?: string;
+    /**
+     * Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+     */
     provenance?: string;
     /**
      * Allows searching in multiple properties of a record simultaneously.
@@ -74,6 +79,7 @@ export interface GetEmailSecurityImpersonationRegistriesResult {
     readonly accountId: string;
     /**
      * The sorting direction.
+     * Available values: "asc", "desc".
      */
     readonly direction?: string;
     /**
@@ -86,8 +92,12 @@ export interface GetEmailSecurityImpersonationRegistriesResult {
     readonly maxItems?: number;
     /**
      * The field to sort by.
+     * Available values: "name", "email", "createdAt".
      */
     readonly order?: string;
+    /**
+     * Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+     */
     readonly provenance?: string;
     /**
      * The items returned by the data source
@@ -139,6 +149,7 @@ export interface GetEmailSecurityImpersonationRegistriesOutputArgs {
     accountId: pulumi.Input<string>;
     /**
      * The sorting direction.
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**
@@ -147,8 +158,12 @@ export interface GetEmailSecurityImpersonationRegistriesOutputArgs {
     maxItems?: pulumi.Input<number>;
     /**
      * The field to sort by.
+     * Available values: "name", "email", "createdAt".
      */
     order?: pulumi.Input<string>;
+    /**
+     * Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+     */
     provenance?: pulumi.Input<string>;
     /**
      * Allows searching in multiple properties of a record simultaneously.

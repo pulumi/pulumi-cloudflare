@@ -29,10 +29,14 @@ class CertificatePackArgs:
         """
         The set of arguments for constructing a CertificatePack resource.
         :param pulumi.Input[str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+               Available values: "google", "lets*encrypt", "ssl*com".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         :param pulumi.Input[str] type: Type of certificate pack.
+               Available values: "advanced".
         :param pulumi.Input[str] validation_method: Validation Method selected for the order.
+               Available values: "txt", "http", "email".
         :param pulumi.Input[int] validity_days: Validity Days selected for the order.
+               Available values: 14, 30, 90, 365.
         :param pulumi.Input[str] zone_id: Identifier
         :param pulumi.Input[bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         """
@@ -50,6 +54,7 @@ class CertificatePackArgs:
     def certificate_authority(self) -> pulumi.Input[str]:
         """
         Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        Available values: "google", "lets*encrypt", "ssl*com".
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -74,6 +79,7 @@ class CertificatePackArgs:
     def type(self) -> pulumi.Input[str]:
         """
         Type of certificate pack.
+        Available values: "advanced".
         """
         return pulumi.get(self, "type")
 
@@ -86,6 +92,7 @@ class CertificatePackArgs:
     def validation_method(self) -> pulumi.Input[str]:
         """
         Validation Method selected for the order.
+        Available values: "txt", "http", "email".
         """
         return pulumi.get(self, "validation_method")
 
@@ -98,6 +105,7 @@ class CertificatePackArgs:
     def validity_days(self) -> pulumi.Input[int]:
         """
         Validity Days selected for the order.
+        Available values: 14, 30, 90, 365.
         """
         return pulumi.get(self, "validity_days")
 
@@ -144,12 +152,17 @@ class _CertificatePackState:
         """
         Input properties used for looking up and filtering CertificatePack resources.
         :param pulumi.Input[str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+               Available values: "google", "lets*encrypt", "ssl*com".
         :param pulumi.Input[bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         :param pulumi.Input[str] status: Status of certificate pack.
+               Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
         :param pulumi.Input[str] type: Type of certificate pack.
+               Available values: "advanced".
         :param pulumi.Input[str] validation_method: Validation Method selected for the order.
+               Available values: "txt", "http", "email".
         :param pulumi.Input[int] validity_days: Validity Days selected for the order.
+               Available values: 14, 30, 90, 365.
         :param pulumi.Input[str] zone_id: Identifier
         """
         if certificate_authority is not None:
@@ -174,6 +187,7 @@ class _CertificatePackState:
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
         """
         Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        Available values: "google", "lets*encrypt", "ssl*com".
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -210,6 +224,7 @@ class _CertificatePackState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         Status of certificate pack.
+        Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
         """
         return pulumi.get(self, "status")
 
@@ -222,6 +237,7 @@ class _CertificatePackState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         Type of certificate pack.
+        Available values: "advanced".
         """
         return pulumi.get(self, "type")
 
@@ -234,6 +250,7 @@ class _CertificatePackState:
     def validation_method(self) -> Optional[pulumi.Input[str]]:
         """
         Validation Method selected for the order.
+        Available values: "txt", "http", "email".
         """
         return pulumi.get(self, "validation_method")
 
@@ -246,6 +263,7 @@ class _CertificatePackState:
     def validity_days(self) -> Optional[pulumi.Input[int]]:
         """
         Validity Days selected for the order.
+        Available values: 14, 30, 90, 365.
         """
         return pulumi.get(self, "validity_days")
 
@@ -313,11 +331,15 @@ class CertificatePack(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+               Available values: "google", "lets*encrypt", "ssl*com".
         :param pulumi.Input[bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         :param pulumi.Input[str] type: Type of certificate pack.
+               Available values: "advanced".
         :param pulumi.Input[str] validation_method: Validation Method selected for the order.
+               Available values: "txt", "http", "email".
         :param pulumi.Input[int] validity_days: Validity Days selected for the order.
+               Available values: 14, 30, 90, 365.
         :param pulumi.Input[str] zone_id: Identifier
         """
         ...
@@ -434,12 +456,17 @@ class CertificatePack(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+               Available values: "google", "lets*encrypt", "ssl*com".
         :param pulumi.Input[bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         :param pulumi.Input[str] status: Status of certificate pack.
+               Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
         :param pulumi.Input[str] type: Type of certificate pack.
+               Available values: "advanced".
         :param pulumi.Input[str] validation_method: Validation Method selected for the order.
+               Available values: "txt", "http", "email".
         :param pulumi.Input[int] validity_days: Validity Days selected for the order.
+               Available values: 14, 30, 90, 365.
         :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -461,6 +488,7 @@ class CertificatePack(pulumi.CustomResource):
     def certificate_authority(self) -> pulumi.Output[str]:
         """
         Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        Available values: "google", "lets*encrypt", "ssl*com".
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -485,6 +513,7 @@ class CertificatePack(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         Status of certificate pack.
+        Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
         """
         return pulumi.get(self, "status")
 
@@ -493,6 +522,7 @@ class CertificatePack(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         Type of certificate pack.
+        Available values: "advanced".
         """
         return pulumi.get(self, "type")
 
@@ -501,6 +531,7 @@ class CertificatePack(pulumi.CustomResource):
     def validation_method(self) -> pulumi.Output[str]:
         """
         Validation Method selected for the order.
+        Available values: "txt", "http", "email".
         """
         return pulumi.get(self, "validation_method")
 
@@ -509,6 +540,7 @@ class CertificatePack(pulumi.CustomResource):
     def validity_days(self) -> pulumi.Output[int]:
         """
         Validity Days selected for the order.
+        Available values: 14, 30, 90, 365.
         """
         return pulumi.get(self, "validity_days")
 

@@ -144,6 +144,7 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         /// <summary>
         /// Location of the bucket
+        /// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         /// </summary>
         public readonly string Location;
         /// <summary>
@@ -152,6 +153,7 @@ namespace Pulumi.Cloudflare
         public readonly string Name;
         /// <summary>
         /// Storage class for newly uploaded objects, unless specified otherwise.
+        /// Available values: "Standard", "InfrequentAccess".
         /// </summary>
         public readonly string StorageClass;
 

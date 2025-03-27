@@ -14,12 +14,14 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Field for type matcher.
+        /// Available values: "to".
         /// </summary>
         [Input("field", required: true)]
         public Input<string> Field { get; set; } = null!;
 
         /// <summary>
         /// Type of matcher.
+        /// Available values: "literal".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

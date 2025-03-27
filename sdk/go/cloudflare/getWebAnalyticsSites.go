@@ -54,6 +54,7 @@ type LookupWebAnalyticsSitesArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The property used to sort the list of results.
+	// Available values: "host", "created".
 	OrderBy *string `pulumi:"orderBy"`
 }
 
@@ -66,6 +67,7 @@ type LookupWebAnalyticsSitesResult struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The property used to sort the list of results.
+	// Available values: "host", "created".
 	OrderBy *string `pulumi:"orderBy"`
 	// The items returned by the data source
 	Results []GetWebAnalyticsSitesResult `pulumi:"results"`
@@ -87,6 +89,7 @@ type LookupWebAnalyticsSitesOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// The property used to sort the list of results.
+	// Available values: "host", "created".
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 }
 
@@ -125,6 +128,7 @@ func (o LookupWebAnalyticsSitesResultOutput) MaxItems() pulumi.IntPtrOutput {
 }
 
 // The property used to sort the list of results.
+// Available values: "host", "created".
 func (o LookupWebAnalyticsSitesResultOutput) OrderBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAnalyticsSitesResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }

@@ -64,6 +64,7 @@ export interface GetZeroTrustAccessPolicyResult {
     readonly createdAt: string;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: "allow", "deny", "nonIdentity", "bypass".
      */
     readonly decision: string;
     /**

@@ -40,11 +40,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Flags for the CAA record.
         /// </summary>
-<<<<<<< HEAD
-        public readonly object? Flags;
-=======
         public readonly double? Flags;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// Key Tag.
         /// </summary>
@@ -55,6 +51,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double? LatDegrees;
         /// <summary>
         /// Latitude direction.
+        /// Available values: "N", "S".
         /// </summary>
         public readonly string? LatDirection;
         /// <summary>
@@ -71,6 +68,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double? LongDegrees;
         /// <summary>
         /// Longitude direction.
+        /// Available values: "E", "W".
         /// </summary>
         public readonly string? LongDirection;
         /// <summary>
@@ -176,11 +174,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? fingerprint,
 
-<<<<<<< HEAD
-            object? flags,
-=======
             double? flags,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
             double? keyTag,
 

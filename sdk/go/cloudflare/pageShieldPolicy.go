@@ -23,6 +23,7 @@ type PageShieldPolicy struct {
 	pulumi.CustomResourceState
 
 	// The action to take if the expression matches
+	// Available values: "allow", "log".
 	Action pulumi.StringOutput `pulumi:"action"`
 	// A description for the policy
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -85,6 +86,7 @@ func GetPageShieldPolicy(ctx *pulumi.Context,
 // Input properties used for looking up and filtering PageShieldPolicy resources.
 type pageShieldPolicyState struct {
 	// The action to take if the expression matches
+	// Available values: "allow", "log".
 	Action *string `pulumi:"action"`
 	// A description for the policy
 	Description *string `pulumi:"description"`
@@ -100,6 +102,7 @@ type pageShieldPolicyState struct {
 
 type PageShieldPolicyState struct {
 	// The action to take if the expression matches
+	// Available values: "allow", "log".
 	Action pulumi.StringPtrInput
 	// A description for the policy
 	Description pulumi.StringPtrInput
@@ -119,6 +122,7 @@ func (PageShieldPolicyState) ElementType() reflect.Type {
 
 type pageShieldPolicyArgs struct {
 	// The action to take if the expression matches
+	// Available values: "allow", "log".
 	Action string `pulumi:"action"`
 	// A description for the policy
 	Description string `pulumi:"description"`
@@ -135,6 +139,7 @@ type pageShieldPolicyArgs struct {
 // The set of arguments for constructing a PageShieldPolicy resource.
 type PageShieldPolicyArgs struct {
 	// The action to take if the expression matches
+	// Available values: "allow", "log".
 	Action pulumi.StringInput
 	// A description for the policy
 	Description pulumi.StringInput
@@ -236,6 +241,7 @@ func (o PageShieldPolicyOutput) ToPageShieldPolicyOutputWithContext(ctx context.
 }
 
 // The action to take if the expression matches
+// Available values: "allow", "log".
 func (o PageShieldPolicyOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *PageShieldPolicy) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }

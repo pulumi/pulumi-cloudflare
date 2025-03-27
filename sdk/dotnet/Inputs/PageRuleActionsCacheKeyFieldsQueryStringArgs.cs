@@ -14,10 +14,6 @@ namespace Pulumi.Cloudflare.Inputs
     {
         [Input("excludes")]
         private InputList<string>? _excludes;
-
-        /// <summary>
-        /// Exclude these query string parameters from Cache Key.
-        /// </summary>
         public InputList<string> Excludes
         {
             get => _excludes ?? (_excludes = new InputList<string>());
@@ -26,10 +22,6 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("includes")]
         private InputList<string>? _includes;
-
-        /// <summary>
-        /// Only use values of specified query string parameters in Cache Key.
-        /// </summary>
         public InputList<string> Includes
         {
             get => _includes ?? (_includes = new InputList<string>());

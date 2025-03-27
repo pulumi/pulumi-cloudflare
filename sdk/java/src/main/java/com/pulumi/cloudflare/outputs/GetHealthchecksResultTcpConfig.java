@@ -13,6 +13,7 @@ import java.util.Objects;
 public final class GetHealthchecksResultTcpConfig {
     /**
      * @return The TCP connection method to use for the health check.
+     * Available values: &#34;connection_established&#34;.
      * 
      */
     private String method;
@@ -25,6 +26,7 @@ public final class GetHealthchecksResultTcpConfig {
     private GetHealthchecksResultTcpConfig() {}
     /**
      * @return The TCP connection method to use for the health check.
+     * Available values: &#34;connection_established&#34;.
      * 
      */
     public String method() {

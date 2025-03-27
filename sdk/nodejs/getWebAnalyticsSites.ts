@@ -42,6 +42,7 @@ export interface GetWebAnalyticsSitesArgs {
     maxItems?: number;
     /**
      * The property used to sort the list of results.
+     * Available values: "host", "created".
      */
     orderBy?: string;
 }
@@ -64,6 +65,7 @@ export interface GetWebAnalyticsSitesResult {
     readonly maxItems?: number;
     /**
      * The property used to sort the list of results.
+     * Available values: "host", "created".
      */
     readonly orderBy?: string;
     /**
@@ -107,6 +109,7 @@ export interface GetWebAnalyticsSitesOutputArgs {
     maxItems?: pulumi.Input<number>;
     /**
      * The property used to sort the list of results.
+     * Available values: "host", "created".
      */
     orderBy?: pulumi.Input<string>;
 }

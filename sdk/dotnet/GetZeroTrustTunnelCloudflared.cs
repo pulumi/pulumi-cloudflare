@@ -179,10 +179,12 @@ namespace Pulumi.Cloudflare
         public readonly bool RemoteConfig;
         /// <summary>
         /// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+        /// Available values: "inactive", "degraded", "healthy", "down".
         /// </summary>
         public readonly string Status;
         /// <summary>
         /// The type of tunnel.
+        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
         /// </summary>
         public readonly string TunType;
         /// <summary>

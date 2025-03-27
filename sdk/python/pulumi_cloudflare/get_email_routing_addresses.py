@@ -60,6 +60,7 @@ class GetEmailRoutingAddressesResult:
     def direction(self) -> str:
         """
         Sorts results in an ascending or descending order.
+        Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
 
@@ -128,6 +129,7 @@ def get_email_routing_addresses(account_id: Optional[str] = None,
 
     :param str account_id: Identifier
     :param str direction: Sorts results in an ascending or descending order.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     :param bool verified: Filter by verified destination addresses.
     """
@@ -164,6 +166,7 @@ def get_email_routing_addresses_output(account_id: Optional[pulumi.Input[str]] =
 
     :param str account_id: Identifier
     :param str direction: Sorts results in an ascending or descending order.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     :param bool verified: Filter by verified destination addresses.
     """

@@ -21,17 +21,20 @@ public final class GetDnsRecordFilter {
     private @Nullable GetDnsRecordFilterContent content;
     /**
      * @return Direction to order DNS records in.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private String direction;
     /**
      * @return Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     private String match;
     private @Nullable GetDnsRecordFilterName name;
     /**
      * @return Field to order DNS records by.
+     * Available values: &#34;type&#34;, &#34;name&#34;, &#34;content&#34;, &#34;ttl&#34;, &#34;proxied&#34;.
      * 
      */
     private String order;
@@ -48,11 +51,13 @@ public final class GetDnsRecordFilter {
     private @Nullable GetDnsRecordFilterTag tag;
     /**
      * @return Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren&#39;t related to tags.
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     private String tagMatch;
     /**
      * @return Record type.
+     * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CAA&#34;, &#34;CERT&#34;, &#34;CNAME&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;HTTPS&#34;, &#34;LOC&#34;, &#34;MX&#34;, &#34;NAPTR&#34;, &#34;NS&#34;, &#34;OPENPGPKEY&#34;, &#34;PTR&#34;, &#34;SMIMEA&#34;, &#34;SRV&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;TXT&#34;, &#34;URI&#34;.
      * 
      */
     private @Nullable String type;
@@ -66,6 +71,7 @@ public final class GetDnsRecordFilter {
     }
     /**
      * @return Direction to order DNS records in.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public String direction() {
@@ -73,6 +79,7 @@ public final class GetDnsRecordFilter {
     }
     /**
      * @return Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     public String match() {
@@ -83,6 +90,7 @@ public final class GetDnsRecordFilter {
     }
     /**
      * @return Field to order DNS records by.
+     * Available values: &#34;type&#34;, &#34;name&#34;, &#34;content&#34;, &#34;ttl&#34;, &#34;proxied&#34;.
      * 
      */
     public String order() {
@@ -107,6 +115,7 @@ public final class GetDnsRecordFilter {
     }
     /**
      * @return Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren&#39;t related to tags.
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     public String tagMatch() {
@@ -114,6 +123,7 @@ public final class GetDnsRecordFilter {
     }
     /**
      * @return Record type.
+     * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CAA&#34;, &#34;CERT&#34;, &#34;CNAME&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;HTTPS&#34;, &#34;LOC&#34;, &#34;MX&#34;, &#34;NAPTR&#34;, &#34;NS&#34;, &#34;OPENPGPKEY&#34;, &#34;PTR&#34;, &#34;SMIMEA&#34;, &#34;SRV&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;TXT&#34;, &#34;URI&#34;.
      * 
      */
     public Optional<String> type() {

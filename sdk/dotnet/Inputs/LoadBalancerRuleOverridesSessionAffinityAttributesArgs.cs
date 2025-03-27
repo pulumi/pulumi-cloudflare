@@ -38,12 +38,14 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
+        /// Available values: "Auto", "Lax", "None", "Strict".
         /// </summary>
         [Input("samesite")]
         public Input<string>? Samesite { get; set; }
 
         /// <summary>
         /// Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
+        /// Available values: "Auto", "Always", "Never".
         /// </summary>
         [Input("secure")]
         public Input<string>? Secure { get; set; }

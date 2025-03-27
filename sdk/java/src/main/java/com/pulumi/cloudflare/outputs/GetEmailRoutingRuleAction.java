@@ -13,6 +13,7 @@ import java.util.Objects;
 public final class GetEmailRoutingRuleAction {
     /**
      * @return Type of supported action.
+     * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
      * 
      */
     private String type;
@@ -21,6 +22,7 @@ public final class GetEmailRoutingRuleAction {
     private GetEmailRoutingRuleAction() {}
     /**
      * @return Type of supported action.
+     * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
      * 
      */
     public String type() {

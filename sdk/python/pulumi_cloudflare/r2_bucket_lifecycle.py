@@ -23,14 +23,18 @@ class R2BucketLifecycleArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  bucket_name: pulumi.Input[str],
+                 jurisdiction: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketLifecycleRuleArgs']]]] = None):
         """
         The set of arguments for constructing a R2BucketLifecycle resource.
         :param pulumi.Input[str] account_id: Account ID
         :param pulumi.Input[str] bucket_name: Name of the bucket
+        :param pulumi.Input[str] jurisdiction: Jurisdiction of the bucket
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "bucket_name", bucket_name)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
 
@@ -60,6 +64,18 @@ class R2BucketLifecycleArgs:
 
     @property
     @pulumi.getter
+    def jurisdiction(self) -> Optional[pulumi.Input[str]]:
+        """
+        Jurisdiction of the bucket
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jurisdiction", value)
+
+    @property
+    @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketLifecycleRuleArgs']]]]:
         return pulumi.get(self, "rules")
 
@@ -73,16 +89,20 @@ class _R2BucketLifecycleState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
+                 jurisdiction: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketLifecycleRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering R2BucketLifecycle resources.
         :param pulumi.Input[str] account_id: Account ID
         :param pulumi.Input[str] bucket_name: Name of the bucket
+        :param pulumi.Input[str] jurisdiction: Jurisdiction of the bucket
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
 
@@ -112,6 +132,18 @@ class _R2BucketLifecycleState:
 
     @property
     @pulumi.getter
+    def jurisdiction(self) -> Optional[pulumi.Input[str]]:
+        """
+        Jurisdiction of the bucket
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jurisdiction", value)
+
+    @property
+    @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketLifecycleRuleArgs']]]]:
         return pulumi.get(self, "rules")
 
@@ -127,6 +159,7 @@ class R2BucketLifecycle(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
+                 jurisdiction: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['R2BucketLifecycleRuleArgs', 'R2BucketLifecycleRuleArgsDict']]]]] = None,
                  __props__=None):
         """
@@ -136,6 +169,7 @@ class R2BucketLifecycle(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account ID
         :param pulumi.Input[str] bucket_name: Name of the bucket
+        :param pulumi.Input[str] jurisdiction: Jurisdiction of the bucket
         """
         ...
     @overload
@@ -163,6 +197,7 @@ class R2BucketLifecycle(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
+                 jurisdiction: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['R2BucketLifecycleRuleArgs', 'R2BucketLifecycleRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -179,6 +214,7 @@ class R2BucketLifecycle(pulumi.CustomResource):
             if bucket_name is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_name'")
             __props__.__dict__["bucket_name"] = bucket_name
+            __props__.__dict__["jurisdiction"] = jurisdiction
             __props__.__dict__["rules"] = rules
         super(R2BucketLifecycle, __self__).__init__(
             'cloudflare:index/r2BucketLifecycle:R2BucketLifecycle',
@@ -192,6 +228,7 @@ class R2BucketLifecycle(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             bucket_name: Optional[pulumi.Input[str]] = None,
+            jurisdiction: Optional[pulumi.Input[str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['R2BucketLifecycleRuleArgs', 'R2BucketLifecycleRuleArgsDict']]]]] = None) -> 'R2BucketLifecycle':
         """
         Get an existing R2BucketLifecycle resource's state with the given name, id, and optional extra
@@ -202,6 +239,7 @@ class R2BucketLifecycle(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account ID
         :param pulumi.Input[str] bucket_name: Name of the bucket
+        :param pulumi.Input[str] jurisdiction: Jurisdiction of the bucket
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -209,6 +247,7 @@ class R2BucketLifecycle(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["bucket_name"] = bucket_name
+        __props__.__dict__["jurisdiction"] = jurisdiction
         __props__.__dict__["rules"] = rules
         return R2BucketLifecycle(resource_name, opts=opts, __props__=__props__)
 
@@ -227,6 +266,14 @@ class R2BucketLifecycle(pulumi.CustomResource):
         Name of the bucket
         """
         return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter
+    def jurisdiction(self) -> pulumi.Output[str]:
+        """
+        Jurisdiction of the bucket
+        """
+        return pulumi.get(self, "jurisdiction")
 
     @property
     @pulumi.getter

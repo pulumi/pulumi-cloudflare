@@ -57,10 +57,12 @@ type LookupArgoTieredCachingResult struct {
 	// Whether the setting is editable
 	Editable bool `pulumi:"editable"`
 	// ID of the zone setting.
+	// Available values: "tieredCaching".
 	Id string `pulumi:"id"`
 	// Last time this setting was modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
 	// The value of the feature
+	// Available values: "on", "off".
 	Value string `pulumi:"value"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -106,6 +108,7 @@ func (o LookupArgoTieredCachingResultOutput) Editable() pulumi.BoolOutput {
 }
 
 // ID of the zone setting.
+// Available values: "tieredCaching".
 func (o LookupArgoTieredCachingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArgoTieredCachingResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -116,6 +119,7 @@ func (o LookupArgoTieredCachingResultOutput) ModifiedOn() pulumi.StringOutput {
 }
 
 // The value of the feature
+// Available values: "on", "off".
 func (o LookupArgoTieredCachingResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArgoTieredCachingResult) string { return v.Value }).(pulumi.StringOutput)
 }

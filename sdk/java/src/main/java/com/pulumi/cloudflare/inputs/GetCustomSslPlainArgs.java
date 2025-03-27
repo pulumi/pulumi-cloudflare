@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetCustomSslFilter;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -37,11 +38,27 @@ public final class GetCustomSslPlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.filter);
     }
 
+    /**
+     * Identifier
+     * 
+     */
+    @Import(name="zoneId", required=true)
+    private String zoneId;
+
+    /**
+     * @return Identifier
+     * 
+     */
+    public String zoneId() {
+        return this.zoneId;
+    }
+
     private GetCustomSslPlainArgs() {}
 
     private GetCustomSslPlainArgs(GetCustomSslPlainArgs $) {
         this.customCertificateId = $.customCertificateId;
         this.filter = $.filter;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -78,7 +95,21 @@ public final class GetCustomSslPlainArgs extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
+        /**
+         * @param zoneId Identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(String zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
         public GetCustomSslPlainArgs build() {
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("GetCustomSslPlainArgs", "zoneId");
+            }
             return $;
         }
     }

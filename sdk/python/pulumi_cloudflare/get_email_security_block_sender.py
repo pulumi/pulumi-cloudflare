@@ -117,6 +117,9 @@ class GetEmailSecurityBlockSenderResult:
     @property
     @pulumi.getter(name="patternType")
     def pattern_type(self) -> str:
+        """
+        Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        """
         return pulumi.get(self, "pattern_type")
 
 

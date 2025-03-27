@@ -99,6 +99,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        /// Available values: "ubiquitous", "optimal", "force".
         /// </summary>
         [Output("bundleMethod")]
         public Output<string> BundleMethod { get; private set; } = null!;
@@ -165,12 +166,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the zone's custom SSL.
+        /// Available values: "active", "expired", "deleted", "pending", "initializing".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        /// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        /// Available values: "legacy*custom", "sni_custom".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -210,6 +213,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "privateKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -235,6 +242,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        /// Available values: "ubiquitous", "optimal", "force".
         /// </summary>
         [Input("bundleMethod")]
         public Input<string>? BundleMethod { get; set; }
@@ -257,14 +265,25 @@ namespace Pulumi.Cloudflare
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
+        [Input("privateKey", required: true)]
+        private Input<string>? _privateKey;
+
         /// <summary>
         /// The zone's private key.
         /// </summary>
-        [Input("privateKey", required: true)]
-        public Input<string> PrivateKey { get; set; } = null!;
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
-        /// The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        /// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        /// Available values: "legacy*custom", "sni_custom".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -285,6 +304,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        /// Available values: "ubiquitous", "optimal", "force".
         /// </summary>
         [Input("bundleMethod")]
         public Input<string>? BundleMethod { get; set; }
@@ -342,11 +362,21 @@ namespace Pulumi.Cloudflare
         [Input("priority")]
         public Input<double>? Priority { get; set; }
 
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
+
         /// <summary>
         /// The zone's private key.
         /// </summary>
-        [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The type of hash used for the certificate.
@@ -356,12 +386,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the zone's custom SSL.
+        /// Available values: "active", "expired", "deleted", "pending", "initializing".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        /// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        /// Available values: "legacy*custom", "sni_custom".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

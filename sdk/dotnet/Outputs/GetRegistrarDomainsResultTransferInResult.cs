@@ -15,10 +15,12 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Form of authorization has been accepted by the registrant.
+        /// Available values: "needed", "ok".
         /// </summary>
         public readonly string AcceptFoa;
         /// <summary>
         /// Shows transfer status with the registry.
+        /// Available values: "needed", "ok", "pending", "trying", "rejected", "unknown".
         /// </summary>
         public readonly string ApproveTransfer;
         /// <summary>
@@ -27,14 +29,17 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool CanCancelTransfer;
         /// <summary>
         /// Privacy guards are disabled at the foreign registrar.
+        /// Available values: "needed", "ok", "unknown".
         /// </summary>
         public readonly string DisablePrivacy;
         /// <summary>
         /// Auth code has been entered and verified.
+        /// Available values: "needed", "ok", "pending", "trying", "rejected".
         /// </summary>
         public readonly string EnterAuthCode;
         /// <summary>
         /// Domain is unlocked at the foreign registrar.
+        /// Available values: "needed", "ok", "pending", "trying", "unknown".
         /// </summary>
         public readonly string UnlockDomain;
 

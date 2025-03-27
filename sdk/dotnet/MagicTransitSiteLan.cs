@@ -11,15 +11,12 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
-<<<<<<< HEAD
-=======
     /// 
     /// ## Import
     /// 
     /// ```sh
     /// $ pulumi import cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan example '&lt;account_id&gt;/&lt;site_id&gt;/&lt;lan_id&gt;'
     /// ```
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /// </summary>
     [CloudflareResourceType("cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan")]
     public partial class MagicTransitSiteLan : global::Pulumi.CustomResource
@@ -36,15 +33,6 @@ namespace Pulumi.Cloudflare
         [Output("haLink")]
         public Output<bool?> HaLink { get; private set; } = null!;
 
-<<<<<<< HEAD
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Output("lanId")]
-        public Output<string?> LanId { get; private set; } = null!;
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Output("name")]
         public Output<string?> Name { get; private set; } = null!;
 
@@ -133,15 +121,6 @@ namespace Pulumi.Cloudflare
         [Input("haLink")]
         public Input<bool>? HaLink { get; set; }
 
-<<<<<<< HEAD
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Input("lanId")]
-        public Input<string>? LanId { get; set; }
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -197,15 +176,6 @@ namespace Pulumi.Cloudflare
         [Input("haLink")]
         public Input<bool>? HaLink { get; set; }
 
-<<<<<<< HEAD
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Input("lanId")]
-        public Input<string>? LanId { get; set; }
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Input("name")]
         public Input<string>? Name { get; set; }
 

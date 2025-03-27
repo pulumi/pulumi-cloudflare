@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
+        /// Available values: "ip".
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

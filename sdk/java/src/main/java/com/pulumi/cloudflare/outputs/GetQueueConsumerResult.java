@@ -3,63 +3,35 @@
 
 package com.pulumi.cloudflare.outputs;
 
-<<<<<<< HEAD
-import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
-=======
 import com.pulumi.cloudflare.outputs.GetQueueConsumerSettings;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-<<<<<<< HEAD
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetQueueConsumerResult.java
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 public final class GetQueueConsumerResult {
     /**
      * @return A Resource identifier.
      * 
      */
     private String accountId;
-<<<<<<< HEAD
-========
-public final class GetBotnetFeedConfigAsnResult {
-    /**
-     * @return Identifier
-     * 
-     */
-    private String accountId;
-    private Integer asn;
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetBotnetFeedConfigAsnResult.java
-=======
     /**
      * @return A Resource identifier.
      * 
      */
     private String consumerId;
     private String createdOn;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-<<<<<<< HEAD
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetQueueConsumerResult.java
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return A Resource identifier.
      * 
      */
     private String queueId;
-<<<<<<< HEAD
-=======
     /**
      * @return Name of a Worker
      * 
@@ -71,34 +43,20 @@ public final class GetBotnetFeedConfigAsnResult {
      */
     private String scriptName;
     private GetQueueConsumerSettings settings;
+    /**
+     * @return Available values: &#34;worker&#34;.
+     * 
+     */
     private String type;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     private GetQueueConsumerResult() {}
     /**
      * @return A Resource identifier.
-<<<<<<< HEAD
-========
-
-    private GetBotnetFeedConfigAsnResult() {}
-    /**
-     * @return Identifier
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetBotnetFeedConfigAsnResult.java
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public String accountId() {
         return this.accountId;
     }
-<<<<<<< HEAD
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetQueueConsumerResult.java
-========
-    public Integer asn() {
-        return this.asn;
-    }
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetBotnetFeedConfigAsnResult.java
-=======
     /**
      * @return A Resource identifier.
      * 
@@ -109,7 +67,6 @@ public final class GetBotnetFeedConfigAsnResult {
     public String createdOn() {
         return this.createdOn;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -124,8 +81,6 @@ public final class GetBotnetFeedConfigAsnResult {
     public String queueId() {
         return this.queueId;
     }
-<<<<<<< HEAD
-=======
     /**
      * @return Name of a Worker
      * 
@@ -143,50 +98,24 @@ public final class GetBotnetFeedConfigAsnResult {
     public GetQueueConsumerSettings settings() {
         return this.settings;
     }
+    /**
+     * @return Available values: &#34;worker&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     public static Builder builder() {
         return new Builder();
     }
 
-<<<<<<< HEAD
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetQueueConsumerResult.java
     public static Builder builder(GetQueueConsumerResult defaults) {
-========
-    public static Builder builder(GetBotnetFeedConfigAsnResult defaults) {
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetBotnetFeedConfigAsnResult.java
-=======
-    public static Builder builder(GetQueueConsumerResult defaults) {
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-<<<<<<< HEAD
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetQueueConsumerResult.java
-========
-        private Integer asn;
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetBotnetFeedConfigAsnResult.java
-        private String id;
-        private String queueId;
-        public Builder() {}
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetQueueConsumerResult.java
-        public Builder(GetQueueConsumerResult defaults) {
-    	      Objects.requireNonNull(defaults);
-    	      this.accountId = defaults.accountId;
-========
-        public Builder(GetBotnetFeedConfigAsnResult defaults) {
-    	      Objects.requireNonNull(defaults);
-    	      this.accountId = defaults.accountId;
-    	      this.asn = defaults.asn;
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetBotnetFeedConfigAsnResult.java
-    	      this.id = defaults.id;
-    	      this.queueId = defaults.queueId;
-=======
         private String consumerId;
         private String createdOn;
         private String id;
@@ -207,38 +136,17 @@ public final class GetBotnetFeedConfigAsnResult {
     	      this.scriptName = defaults.scriptName;
     	      this.settings = defaults.settings;
     	      this.type = defaults.type;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
             if (accountId == null) {
-<<<<<<< HEAD
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetQueueConsumerResult.java
               throw new MissingRequiredPropertyException("GetQueueConsumerResult", "accountId");
-========
-              throw new MissingRequiredPropertyException("GetBotnetFeedConfigAsnResult", "accountId");
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetBotnetFeedConfigAsnResult.java
-=======
-              throw new MissingRequiredPropertyException("GetQueueConsumerResult", "accountId");
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             }
             this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetQueueConsumerResult.java
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetQueueConsumerResult", "id");
-========
-        public Builder asn(Integer asn) {
-            if (asn == null) {
-              throw new MissingRequiredPropertyException("GetBotnetFeedConfigAsnResult", "asn");
-            }
-            this.asn = asn;
-=======
         public Builder consumerId(String consumerId) {
             if (consumerId == null) {
               throw new MissingRequiredPropertyException("GetQueueConsumerResult", "consumerId");
@@ -252,26 +160,16 @@ public final class GetBotnetFeedConfigAsnResult {
               throw new MissingRequiredPropertyException("GetQueueConsumerResult", "createdOn");
             }
             this.createdOn = createdOn;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
-<<<<<<< HEAD
-              throw new MissingRequiredPropertyException("GetBotnetFeedConfigAsnResult", "id");
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetBotnetFeedConfigAsnResult.java
-=======
               throw new MissingRequiredPropertyException("GetQueueConsumerResult", "id");
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             }
             this.id = id;
             return this;
         }
-<<<<<<< HEAD
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetQueueConsumerResult.java
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         @CustomType.Setter
         public Builder queueId(String queueId) {
             if (queueId == null) {
@@ -280,19 +178,6 @@ public final class GetBotnetFeedConfigAsnResult {
             this.queueId = queueId;
             return this;
         }
-<<<<<<< HEAD
-        public GetQueueConsumerResult build() {
-            final var _resultValue = new GetQueueConsumerResult();
-            _resultValue.accountId = accountId;
-========
-        public GetBotnetFeedConfigAsnResult build() {
-            final var _resultValue = new GetBotnetFeedConfigAsnResult();
-            _resultValue.accountId = accountId;
-            _resultValue.asn = asn;
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetBotnetFeedConfigAsnResult.java
-            _resultValue.id = id;
-            _resultValue.queueId = queueId;
-=======
         @CustomType.Setter
         public Builder script(String script) {
             if (script == null) {
@@ -336,7 +221,6 @@ public final class GetBotnetFeedConfigAsnResult {
             _resultValue.scriptName = scriptName;
             _resultValue.settings = settings;
             _resultValue.type = type;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return _resultValue;
         }
     }

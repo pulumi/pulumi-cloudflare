@@ -19,6 +19,7 @@ public final class ZoneSubscriptionArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * How often the subscription is renewed automatically.
+     * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
      * 
      */
     @Import(name="frequency")
@@ -26,6 +27,7 @@ public final class ZoneSubscriptionArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return How often the subscription is renewed automatically.
+     * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
      * 
      */
     public Optional<Output<String>> frequency() {
@@ -90,6 +92,7 @@ public final class ZoneSubscriptionArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param frequency How often the subscription is renewed automatically.
+         * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
          * 
          * @return builder
          * 
@@ -101,6 +104,7 @@ public final class ZoneSubscriptionArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param frequency How often the subscription is renewed automatically.
+         * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
          * 
          * @return builder
          * 

@@ -124,9 +124,17 @@ public final class ZeroTrustDlpDatasetState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.secret);
     }
 
+    /**
+     * Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -347,11 +355,23 @@ public final class ZeroTrustDlpDatasetState extends com.pulumi.resources.Resourc
             return secret(Output.of(secret));
         }
 
+        /**
+         * @param status Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

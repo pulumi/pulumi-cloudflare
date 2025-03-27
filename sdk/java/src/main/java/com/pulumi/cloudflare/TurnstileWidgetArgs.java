@@ -53,6 +53,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
     /**
      * If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
      * this setting can determine the clearance level to be set
+     * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
      * 
      */
     @Import(name="clearanceLevel")
@@ -61,6 +62,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
      * this setting can determine the clearance level to be set
+     * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
      * 
      */
     public Optional<Output<String>> clearanceLevel() {
@@ -91,6 +93,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * Widget Mode
+     * Available values: &#34;non-interactive&#34;, &#34;invisible&#34;, &#34;managed&#34;.
      * 
      */
     @Import(name="mode", required=true)
@@ -98,6 +101,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Widget Mode
+     * Available values: &#34;non-interactive&#34;, &#34;invisible&#34;, &#34;managed&#34;.
      * 
      */
     public Output<String> mode() {
@@ -140,6 +144,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * Region where this widget can be used.
+     * Available values: &#34;world&#34;.
      * 
      */
     @Import(name="region")
@@ -147,6 +152,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Region where this widget can be used.
+     * Available values: &#34;world&#34;.
      * 
      */
     public Optional<Output<String>> region() {
@@ -232,6 +238,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param clearanceLevel If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
          * this setting can determine the clearance level to be set
+         * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
          * 
          * @return builder
          * 
@@ -244,6 +251,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param clearanceLevel If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
          * this setting can determine the clearance level to be set
+         * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
          * 
          * @return builder
          * 
@@ -288,6 +296,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param mode Widget Mode
+         * Available values: &#34;non-interactive&#34;, &#34;invisible&#34;, &#34;managed&#34;.
          * 
          * @return builder
          * 
@@ -299,6 +308,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param mode Widget Mode
+         * Available values: &#34;non-interactive&#34;, &#34;invisible&#34;, &#34;managed&#34;.
          * 
          * @return builder
          * 
@@ -355,6 +365,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param region Region where this widget can be used.
+         * Available values: &#34;world&#34;.
          * 
          * @return builder
          * 
@@ -366,6 +377,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param region Region where this widget can be used.
+         * Available values: &#34;world&#34;.
          * 
          * @return builder
          * 

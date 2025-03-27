@@ -32,6 +32,7 @@ public final class GetCertificatePacksInvokeResult {
     private List<GetCertificatePacksResult> results;
     /**
      * @return Include Certificate Packs of all statuses, not just active ones.
+     * Available values: &#34;all&#34;.
      * 
      */
     private @Nullable String status;
@@ -65,6 +66,7 @@ public final class GetCertificatePacksInvokeResult {
     }
     /**
      * @return Include Certificate Packs of all statuses, not just active ones.
+     * Available values: &#34;all&#34;.
      * 
      */
     public Optional<String> status() {

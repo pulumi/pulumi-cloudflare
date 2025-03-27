@@ -98,7 +98,7 @@ type AuthenticatedOriginPullsCertificate struct {
 	// The zone's leaf certificate.
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
 	// Identifier
-	CertificateId pulumi.StringPtrOutput `pulumi:"certificateId"`
+	CertificateId pulumi.StringOutput `pulumi:"certificateId"`
 	// Indicates whether zone-level authenticated origin pulls is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// When the certificate from the authority expires.
@@ -110,6 +110,7 @@ type AuthenticatedOriginPullsCertificate struct {
 	// The type of hash used for the certificate.
 	Signature pulumi.StringOutput `pulumi:"signature"`
 	// Status of the certificate activation.
+	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 	Status pulumi.StringOutput `pulumi:"status"`
 	// This is the time the certificate was uploaded.
 	UploadedOn pulumi.StringOutput `pulumi:"uploadedOn"`
@@ -133,6 +134,13 @@ func NewAuthenticatedOriginPullsCertificate(ctx *pulumi.Context,
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	if args.PrivateKey != nil {
+		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"privateKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AuthenticatedOriginPullsCertificate
 	err := ctx.RegisterResource("cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate", name, args, &resource, opts...)
@@ -171,6 +179,7 @@ type authenticatedOriginPullsCertificateState struct {
 	// The type of hash used for the certificate.
 	Signature *string `pulumi:"signature"`
 	// Status of the certificate activation.
+	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 	Status *string `pulumi:"status"`
 	// This is the time the certificate was uploaded.
 	UploadedOn *string `pulumi:"uploadedOn"`
@@ -194,6 +203,7 @@ type AuthenticatedOriginPullsCertificateState struct {
 	// The type of hash used for the certificate.
 	Signature pulumi.StringPtrInput
 	// Status of the certificate activation.
+	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 	Status pulumi.StringPtrInput
 	// This is the time the certificate was uploaded.
 	UploadedOn pulumi.StringPtrInput
@@ -208,8 +218,6 @@ func (AuthenticatedOriginPullsCertificateState) ElementType() reflect.Type {
 type authenticatedOriginPullsCertificateArgs struct {
 	// The zone's leaf certificate.
 	Certificate string `pulumi:"certificate"`
-	// Identifier
-	CertificateId *string `pulumi:"certificateId"`
 	// The zone's private key.
 	PrivateKey string `pulumi:"privateKey"`
 	// Identifier
@@ -220,8 +228,6 @@ type authenticatedOriginPullsCertificateArgs struct {
 type AuthenticatedOriginPullsCertificateArgs struct {
 	// The zone's leaf certificate.
 	Certificate pulumi.StringInput
-	// Identifier
-	CertificateId pulumi.StringPtrInput
 	// The zone's private key.
 	PrivateKey pulumi.StringInput
 	// Identifier
@@ -321,8 +327,8 @@ func (o AuthenticatedOriginPullsCertificateOutput) Certificate() pulumi.StringOu
 }
 
 // Identifier
-func (o AuthenticatedOriginPullsCertificateOutput) CertificateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringPtrOutput { return v.CertificateId }).(pulumi.StringPtrOutput)
+func (o AuthenticatedOriginPullsCertificateOutput) CertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.CertificateId }).(pulumi.StringOutput)
 }
 
 // Indicates whether zone-level authenticated origin pulls is enabled.
@@ -351,6 +357,7 @@ func (o AuthenticatedOriginPullsCertificateOutput) Signature() pulumi.StringOutp
 }
 
 // Status of the certificate activation.
+// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 func (o AuthenticatedOriginPullsCertificateOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

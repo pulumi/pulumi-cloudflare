@@ -15,6 +15,8 @@
     "files": [
         "accessRule.ts",
         "account.ts",
+        "accountDnsSettings.ts",
+        "accountDnsSettingsInternalView.ts",
         "accountMember.ts",
         "accountSubscription.ts",
         "accountToken.ts",
@@ -30,6 +32,7 @@
         "argoTieredCaching.ts",
         "authenticatedOriginPulls.ts",
         "authenticatedOriginPullsCertificate.ts",
+        "authenticatedOriginPullsSettings.ts",
         "botManagement.ts",
         "byoIpPrefix.ts",
         "callsSfuApp.ts",
@@ -45,15 +48,11 @@
         "contentScanningExpression.ts",
         "customHostname.ts",
         "customHostnameFallbackOrigin.ts",
+        "customPages.ts",
         "customSsl.ts",
         "d1database.ts",
         "dnsFirewall.ts",
         "dnsRecord.ts",
-<<<<<<< HEAD
-=======
-        "dnsSettings.ts",
-        "dnsSettingsInternalView.ts",
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "dnsZoneTransfersAcl.ts",
         "dnsZoneTransfersIncoming.ts",
         "dnsZoneTransfersOutgoing.ts",
@@ -72,8 +71,15 @@
         "getAccessRule.ts",
         "getAccessRules.ts",
         "getAccount.ts",
+        "getAccountApiTokenPermissionGroups.ts",
+        "getAccountApiTokenPermissionGroupsList.ts",
+        "getAccountDnsSettings.ts",
+        "getAccountDnsSettingsInternalView.ts",
+        "getAccountDnsSettingsInternalViews.ts",
         "getAccountMember.ts",
         "getAccountMembers.ts",
+        "getAccountPermissionGroup.ts",
+        "getAccountPermissionGroups.ts",
         "getAccountRole.ts",
         "getAccountRoles.ts",
         "getAccountSubscription.ts",
@@ -91,22 +97,16 @@
         "getApiShieldSchemaValidationSettings.ts",
         "getApiShieldSchemas.ts",
         "getApiToken.ts",
-<<<<<<< HEAD
-=======
-        "getApiTokenPermissionsGroups.ts",
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
-        "getApiTokenPermissionsGroupsList.ts",
+        "getApiTokenPermissionGroupsList.ts",
         "getApiTokens.ts",
         "getArgoSmartRouting.ts",
         "getArgoTieredCaching.ts",
         "getAuthenticatedOriginPulls.ts",
         "getAuthenticatedOriginPullsCertificate.ts",
         "getAuthenticatedOriginPullsCertificates.ts",
+        "getAuthenticatedOriginPullsSettings.ts",
         "getBotManagement.ts",
-<<<<<<< HEAD
-=======
         "getBotnetFeedConfigAsn.ts",
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "getByoIpPrefix.ts",
         "getByoIpPrefixes.ts",
         "getCallsSfuApp.ts",
@@ -125,6 +125,8 @@
         "getCustomHostname.ts",
         "getCustomHostnameFallbackOrigin.ts",
         "getCustomHostnames.ts",
+        "getCustomPages.ts",
+        "getCustomPagesList.ts",
         "getCustomSsl.ts",
         "getCustomSsls.ts",
         "getD1Database.ts",
@@ -134,12 +136,6 @@
         "getDnsFirewalls.ts",
         "getDnsRecord.ts",
         "getDnsRecords.ts",
-<<<<<<< HEAD
-=======
-        "getDnsSettings.ts",
-        "getDnsSettingsInternalView.ts",
-        "getDnsSettingsInternalViews.ts",
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "getDnsZoneTransfersAcl.ts",
         "getDnsZoneTransfersAcls.ts",
         "getDnsZoneTransfersIncoming.ts",
@@ -173,10 +169,7 @@
         "getImage.ts",
         "getImageVariant.ts",
         "getImages.ts",
-<<<<<<< HEAD
-=======
         "getIpRanges.ts",
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "getKeylessCertificate.ts",
         "getKeylessCertificates.ts",
         "getLeakedCredentialCheck.ts",
@@ -235,21 +228,16 @@
         "getPagesDomains.ts",
         "getPagesProject.ts",
         "getPagesProjects.ts",
-        "getPermissionGroup.ts",
-        "getPermissionGroups.ts",
         "getQueue.ts",
         "getQueueConsumer.ts",
         "getQueues.ts",
         "getR2Bucket.ts",
-<<<<<<< HEAD
-=======
         "getR2BucketCors.ts",
         "getR2BucketEventNotification.ts",
         "getR2BucketLifecycle.ts",
         "getR2BucketLock.ts",
         "getR2BucketSippy.ts",
         "getR2CustomDomain.ts",
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "getRateLimit.ts",
         "getRateLimits.ts",
         "getRegionalHostname.ts",
@@ -303,11 +291,8 @@
         "getWorkersKv.ts",
         "getWorkersKvNamespace.ts",
         "getWorkersKvNamespaces.ts",
-<<<<<<< HEAD
-=======
         "getWorkersRoute.ts",
         "getWorkersRoutes.ts",
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "getWorkersScript.ts",
         "getWorkersScriptSubdomain.ts",
         "getWorkersScripts.ts",
@@ -361,10 +346,7 @@
         "getZeroTrustGatewayCategoriesList.ts",
         "getZeroTrustGatewayCertificate.ts",
         "getZeroTrustGatewayCertificates.ts",
-<<<<<<< HEAD
-=======
         "getZeroTrustGatewayLogging.ts",
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "getZeroTrustGatewayPolicies.ts",
         "getZeroTrustGatewayPolicy.ts",
         "getZeroTrustGatewayProxyEndpoint.ts",
@@ -379,16 +361,14 @@
         "getZeroTrustTunnelCloudflaredConfig.ts",
         "getZeroTrustTunnelCloudflaredRoute.ts",
         "getZeroTrustTunnelCloudflaredRoutes.ts",
-<<<<<<< HEAD
-=======
         "getZeroTrustTunnelCloudflaredToken.ts",
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "getZeroTrustTunnelCloudflaredVirtualNetwork.ts",
         "getZeroTrustTunnelCloudflaredVirtualNetworks.ts",
         "getZeroTrustTunnelCloudflareds.ts",
         "getZone.ts",
         "getZoneCacheReserve.ts",
         "getZoneCacheVariants.ts",
+        "getZoneDnsSettings.ts",
         "getZoneDnssec.ts",
         "getZoneHold.ts",
         "getZoneLockdown.ts",
@@ -445,7 +425,6 @@
         "r2customDomain.ts",
         "r2managedDomain.ts",
         "rateLimit.ts",
-        "record.ts",
         "regionalHostname.ts",
         "regionalTieredCache.ts",
         "registrarDomain.ts",
@@ -484,6 +463,7 @@
         "workersForPlatformsDispatchNamespace.ts",
         "workersKv.ts",
         "workersKvNamespace.ts",
+        "workersRoute.ts",
         "workersScript.ts",
         "workersScriptSubdomain.ts",
         "workersSecret.ts",
@@ -529,6 +509,7 @@
         "zone.ts",
         "zoneCacheReserve.ts",
         "zoneCacheVariants.ts",
+        "zoneDnsSettings.ts",
         "zoneDnssec.ts",
         "zoneHold.ts",
         "zoneLockdown.ts",

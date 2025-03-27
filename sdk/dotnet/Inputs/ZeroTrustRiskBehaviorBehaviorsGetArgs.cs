@@ -15,6 +15,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        /// <summary>
+        /// Available values: "low", "medium", "high".
+        /// </summary>
         [Input("riskLevel", required: true)]
         public Input<string> RiskLevel { get; set; } = null!;
 

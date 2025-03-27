@@ -29,9 +29,17 @@ public final class ZeroTrustDlpCustomProfileSharedEntryArgs extends com.pulumi.r
         return this.entryId;
     }
 
+    /**
+     * Available values: &#34;custom&#34;.
+     * 
+     */
     @Import(name="entryType", required=true)
     private Output<String> entryType;
 
+    /**
+     * @return Available values: &#34;custom&#34;.
+     * 
+     */
     public Output<String> entryType() {
         return this.entryType;
     }
@@ -80,11 +88,23 @@ public final class ZeroTrustDlpCustomProfileSharedEntryArgs extends com.pulumi.r
             return entryId(Output.of(entryId));
         }
 
+        /**
+         * @param entryType Available values: &#34;custom&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder entryType(Output<String> entryType) {
             $.entryType = entryType;
             return this;
         }
 
+        /**
+         * @param entryType Available values: &#34;custom&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder entryType(String entryType) {
             return entryType(Output.of(entryType));
         }

@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class GetZeroTrustTunnelCloudflaredFilter {
     private @Nullable String excludePrefix;
     /**
-     * @return If provided, include only tunnels that were created (and not deleted) before this time.
+     * @return If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      * 
      */
     private @Nullable String existedAt;
@@ -31,6 +31,7 @@ public final class GetZeroTrustTunnelCloudflaredFilter {
     private @Nullable String name;
     /**
      * @return The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+     * Available values: &#34;inactive&#34;, &#34;degraded&#34;, &#34;healthy&#34;, &#34;down&#34;.
      * 
      */
     private @Nullable String status;
@@ -47,7 +48,7 @@ public final class GetZeroTrustTunnelCloudflaredFilter {
         return Optional.ofNullable(this.excludePrefix);
     }
     /**
-     * @return If provided, include only tunnels that were created (and not deleted) before this time.
+     * @return If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      * 
      */
     public Optional<String> existedAt() {
@@ -72,6 +73,7 @@ public final class GetZeroTrustTunnelCloudflaredFilter {
     }
     /**
      * @return The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+     * Available values: &#34;inactive&#34;, &#34;degraded&#34;, &#34;healthy&#34;, &#34;down&#34;.
      * 
      */
     public Optional<String> status() {

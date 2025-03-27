@@ -95,6 +95,7 @@ class GetListResult:
     def kind(self) -> str:
         """
         The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+        Available values: "ip", "redirect", "hostname", "asn".
         """
         return pulumi.get(self, "kind")
 

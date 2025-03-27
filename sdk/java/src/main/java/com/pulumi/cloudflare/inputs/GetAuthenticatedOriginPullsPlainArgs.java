@@ -14,6 +14,21 @@ public final class GetAuthenticatedOriginPullsPlainArgs extends com.pulumi.resou
     public static final GetAuthenticatedOriginPullsPlainArgs Empty = new GetAuthenticatedOriginPullsPlainArgs();
 
     /**
+     * The hostname on the origin for which the client certificate uploaded will be used.
+     * 
+     */
+    @Import(name="hostname", required=true)
+    private String hostname;
+
+    /**
+     * @return The hostname on the origin for which the client certificate uploaded will be used.
+     * 
+     */
+    public String hostname() {
+        return this.hostname;
+    }
+
+    /**
      * Identifier
      * 
      */
@@ -31,6 +46,7 @@ public final class GetAuthenticatedOriginPullsPlainArgs extends com.pulumi.resou
     private GetAuthenticatedOriginPullsPlainArgs() {}
 
     private GetAuthenticatedOriginPullsPlainArgs(GetAuthenticatedOriginPullsPlainArgs $) {
+        this.hostname = $.hostname;
         this.zoneId = $.zoneId;
     }
 
@@ -53,6 +69,17 @@ public final class GetAuthenticatedOriginPullsPlainArgs extends com.pulumi.resou
         }
 
         /**
+         * @param hostname The hostname on the origin for which the client certificate uploaded will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(String hostname) {
+            $.hostname = hostname;
+            return this;
+        }
+
+        /**
          * @param zoneId Identifier
          * 
          * @return builder
@@ -64,6 +91,9 @@ public final class GetAuthenticatedOriginPullsPlainArgs extends com.pulumi.resou
         }
 
         public GetAuthenticatedOriginPullsPlainArgs build() {
+            if ($.hostname == null) {
+                throw new MissingRequiredPropertyException("GetAuthenticatedOriginPullsPlainArgs", "hostname");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetAuthenticatedOriginPullsPlainArgs", "zoneId");
             }

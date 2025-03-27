@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
         /// Identifier
         /// </summary>
         [Output("certificateId")]
-        public Output<string?> CertificateId { get; private set; } = null!;
+        public Output<string> CertificateId { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether zone-level authenticated origin pulls is enabled.
@@ -128,6 +128,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the certificate activation.
+        /// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -167,6 +168,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "privateKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -196,17 +201,21 @@ namespace Pulumi.Cloudflare
         [Input("certificate", required: true)]
         public Input<string> Certificate { get; set; } = null!;
 
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Input("certificateId")]
-        public Input<string>? CertificateId { get; set; }
+        [Input("privateKey", required: true)]
+        private Input<string>? _privateKey;
 
         /// <summary>
         /// The zone's private key.
         /// </summary>
-        [Input("privateKey", required: true)]
-        public Input<string> PrivateKey { get; set; } = null!;
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Identifier
@@ -252,11 +261,21 @@ namespace Pulumi.Cloudflare
         [Input("issuer")]
         public Input<string>? Issuer { get; set; }
 
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
+
         /// <summary>
         /// The zone's private key.
         /// </summary>
-        [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The type of hash used for the certificate.
@@ -266,6 +285,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the certificate activation.
+        /// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

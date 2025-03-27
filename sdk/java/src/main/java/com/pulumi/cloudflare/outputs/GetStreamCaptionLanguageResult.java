@@ -43,6 +43,7 @@ public final class GetStreamCaptionLanguageResult {
     private String language;
     /**
      * @return The status of a generated caption.
+     * Available values: &#34;ready&#34;, &#34;inprogress&#34;, &#34;error&#34;.
      * 
      */
     private String status;
@@ -92,6 +93,7 @@ public final class GetStreamCaptionLanguageResult {
     }
     /**
      * @return The status of a generated caption.
+     * Available values: &#34;ready&#34;, &#34;inprogress&#34;, &#34;error&#34;.
      * 
      */
     public String status() {

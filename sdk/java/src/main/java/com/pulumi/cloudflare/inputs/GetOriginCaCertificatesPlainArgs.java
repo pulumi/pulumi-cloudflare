@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -34,15 +35,15 @@ public final class GetOriginCaCertificatesPlainArgs extends com.pulumi.resources
      * Identifier
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable String zoneId;
+    @Import(name="zoneId", required=true)
+    private String zoneId;
 
     /**
      * @return Identifier
      * 
      */
-    public Optional<String> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public String zoneId() {
+        return this.zoneId;
     }
 
     private GetOriginCaCertificatesPlainArgs() {}
@@ -87,12 +88,15 @@ public final class GetOriginCaCertificatesPlainArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable String zoneId) {
+        public Builder zoneId(String zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
         public GetOriginCaCertificatesPlainArgs build() {
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("GetOriginCaCertificatesPlainArgs", "zoneId");
+            }
             return $;
         }
     }

@@ -26,12 +26,15 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         Comment = "Example comment for this route.",
-        ///         ExistedAt = "2019-10-12T07:20:50.52Z",
+        ///         ExistedAt = "2019-10-12T07%3A20%3A50.52Z",
         ///         IsDeleted = true,
         ///         NetworkSubset = "172.16.0.0/16",
         ///         NetworkSuperset = "172.16.0.0/16",
         ///         RouteId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-        ///         TunTypes = "cfd_tunnel,warp_connector",
+        ///         TunTypes = new[]
+        ///         {
+        ///             "cfd_tunnel",
+        ///         },
         ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
         ///         VirtualNetworkId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
         ///     });
@@ -57,12 +60,15 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         Comment = "Example comment for this route.",
-        ///         ExistedAt = "2019-10-12T07:20:50.52Z",
+        ///         ExistedAt = "2019-10-12T07%3A20%3A50.52Z",
         ///         IsDeleted = true,
         ///         NetworkSubset = "172.16.0.0/16",
         ///         NetworkSuperset = "172.16.0.0/16",
         ///         RouteId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-        ///         TunTypes = "cfd_tunnel,warp_connector",
+        ///         TunTypes = new[]
+        ///         {
+        ///             "cfd_tunnel",
+        ///         },
         ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
         ///         VirtualNetworkId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
         ///     });
@@ -88,12 +94,15 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         Comment = "Example comment for this route.",
-        ///         ExistedAt = "2019-10-12T07:20:50.52Z",
+        ///         ExistedAt = "2019-10-12T07%3A20%3A50.52Z",
         ///         IsDeleted = true,
         ///         NetworkSubset = "172.16.0.0/16",
         ///         NetworkSuperset = "172.16.0.0/16",
         ///         RouteId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-        ///         TunTypes = "cfd_tunnel,warp_connector",
+        ///         TunTypes = new[]
+        ///         {
+        ///             "cfd_tunnel",
+        ///         },
         ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
         ///         VirtualNetworkId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
         ///     });
@@ -121,7 +130,7 @@ namespace Pulumi.Cloudflare
         public string? Comment { get; set; }
 
         /// <summary>
-        /// If provided, include only tunnels that were created (and not deleted) before this time.
+        /// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
         /// </summary>
         [Input("existedAt")]
         public string? ExistedAt { get; set; }
@@ -156,11 +165,17 @@ namespace Pulumi.Cloudflare
         [Input("routeId")]
         public string? RouteId { get; set; }
 
-        /// <summary>
-        /// The types of tunnels to filter separated by a comma.
-        /// </summary>
         [Input("tunTypes")]
-        public string? TunTypes { get; set; }
+        private List<string>? _tunTypes;
+
+        /// <summary>
+        /// The types of tunnels to filter by, separated by commas.
+        /// </summary>
+        public List<string> TunTypes
+        {
+            get => _tunTypes ?? (_tunTypes = new List<string>());
+            set => _tunTypes = value;
+        }
 
         /// <summary>
         /// UUID of the tunnel.
@@ -195,7 +210,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// If provided, include only tunnels that were created (and not deleted) before this time.
+        /// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
         /// </summary>
         [Input("existedAt")]
         public Input<string>? ExistedAt { get; set; }
@@ -230,11 +245,17 @@ namespace Pulumi.Cloudflare
         [Input("routeId")]
         public Input<string>? RouteId { get; set; }
 
-        /// <summary>
-        /// The types of tunnels to filter separated by a comma.
-        /// </summary>
         [Input("tunTypes")]
-        public Input<string>? TunTypes { get; set; }
+        private InputList<string>? _tunTypes;
+
+        /// <summary>
+        /// The types of tunnels to filter by, separated by commas.
+        /// </summary>
+        public InputList<string> TunTypes
+        {
+            get => _tunTypes ?? (_tunTypes = new InputList<string>());
+            set => _tunTypes = value;
+        }
 
         /// <summary>
         /// UUID of the tunnel.
@@ -267,7 +288,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? Comment;
         /// <summary>
-        /// If provided, include only tunnels that were created (and not deleted) before this time.
+        /// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
         /// </summary>
         public readonly string? ExistedAt;
         /// <summary>
@@ -299,9 +320,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? RouteId;
         /// <summary>
-        /// The types of tunnels to filter separated by a comma.
+        /// The types of tunnels to filter by, separated by commas.
         /// </summary>
-        public readonly string? TunTypes;
+        public readonly ImmutableArray<string> TunTypes;
         /// <summary>
         /// UUID of the tunnel.
         /// </summary>
@@ -333,7 +354,7 @@ namespace Pulumi.Cloudflare
 
             string? routeId,
 
-            string? tunTypes,
+            ImmutableArray<string> tunTypes,
 
             string? tunnelId,
 

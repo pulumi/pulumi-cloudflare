@@ -242,6 +242,7 @@ public class StreamLiveInput extends com.pulumi.resources.CustomResource {
     }
     /**
      * The connection status of a live input.
+     * Available values: &#34;connected&#34;, &#34;reconnected&#34;, &#34;reconnecting&#34;, &#34;client*disconnect&#34;, &#34;ttl*exceeded&#34;, &#34;failed*to*connect&#34;, &#34;failed*to*reconnect&#34;, &#34;new*configuration*accepted&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -249,6 +250,7 @@ public class StreamLiveInput extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The connection status of a live input.
+     * Available values: &#34;connected&#34;, &#34;reconnected&#34;, &#34;reconnecting&#34;, &#34;client*disconnect&#34;, &#34;ttl*exceeded&#34;, &#34;failed*to*connect&#34;, &#34;failed*to*reconnect&#34;, &#34;new*configuration*accepted&#34;.
      * 
      */
     public Output<String> status() {

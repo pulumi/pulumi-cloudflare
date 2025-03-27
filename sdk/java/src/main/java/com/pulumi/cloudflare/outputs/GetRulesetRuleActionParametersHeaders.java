@@ -15,6 +15,10 @@ public final class GetRulesetRuleActionParametersHeaders {
      * 
      */
     private String expression;
+    /**
+     * @return Available values: &#34;remove&#34;.
+     * 
+     */
     private String operation;
     /**
      * @return Static value for the header.
@@ -30,6 +34,10 @@ public final class GetRulesetRuleActionParametersHeaders {
     public String expression() {
         return this.expression;
     }
+    /**
+     * @return Available values: &#34;remove&#34;.
+     * 
+     */
     public String operation() {
         return this.operation;
     }

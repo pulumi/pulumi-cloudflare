@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// The property used to sort the list of results.
+        /// Available values: "host", "created".
         /// </summary>
         public readonly string? OrderBy;
 

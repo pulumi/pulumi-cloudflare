@@ -60,6 +60,7 @@ export function getPageShieldCookiesList(args: GetPageShieldCookiesListArgs, opt
 export interface GetPageShieldCookiesListArgs {
     /**
      * The direction used to sort returned cookies.'
+     * Available values: "asc", "desc".
      */
     direction?: string;
     /**
@@ -68,6 +69,7 @@ export interface GetPageShieldCookiesListArgs {
     domain?: string;
     /**
      * Export the list of cookies as a file.
+     * Available values: "csv".
      */
     export?: string;
     /**
@@ -97,6 +99,7 @@ export interface GetPageShieldCookiesListArgs {
 export interface GetPageShieldCookiesListResult {
     /**
      * The direction used to sort returned cookies.'
+     * Available values: "asc", "desc".
      */
     readonly direction?: string;
     /**
@@ -105,6 +108,7 @@ export interface GetPageShieldCookiesListResult {
     readonly domain?: string;
     /**
      * Export the list of cookies as a file.
+     * Available values: "csv".
      */
     readonly export?: string;
     /**
@@ -186,6 +190,7 @@ export function getPageShieldCookiesListOutput(args: GetPageShieldCookiesListOut
 export interface GetPageShieldCookiesListOutputArgs {
     /**
      * The direction used to sort returned cookies.'
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**
@@ -194,6 +199,7 @@ export interface GetPageShieldCookiesListOutputArgs {
     domain?: pulumi.Input<string>;
     /**
      * Export the list of cookies as a file.
+     * Available values: "csv".
      */
     export?: pulumi.Input<string>;
     /**

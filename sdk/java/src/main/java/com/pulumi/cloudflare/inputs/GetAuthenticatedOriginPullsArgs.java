@@ -15,6 +15,21 @@ public final class GetAuthenticatedOriginPullsArgs extends com.pulumi.resources.
     public static final GetAuthenticatedOriginPullsArgs Empty = new GetAuthenticatedOriginPullsArgs();
 
     /**
+     * The hostname on the origin for which the client certificate uploaded will be used.
+     * 
+     */
+    @Import(name="hostname", required=true)
+    private Output<String> hostname;
+
+    /**
+     * @return The hostname on the origin for which the client certificate uploaded will be used.
+     * 
+     */
+    public Output<String> hostname() {
+        return this.hostname;
+    }
+
+    /**
      * Identifier
      * 
      */
@@ -32,6 +47,7 @@ public final class GetAuthenticatedOriginPullsArgs extends com.pulumi.resources.
     private GetAuthenticatedOriginPullsArgs() {}
 
     private GetAuthenticatedOriginPullsArgs(GetAuthenticatedOriginPullsArgs $) {
+        this.hostname = $.hostname;
         this.zoneId = $.zoneId;
     }
 
@@ -51,6 +67,27 @@ public final class GetAuthenticatedOriginPullsArgs extends com.pulumi.resources.
 
         public Builder(GetAuthenticatedOriginPullsArgs defaults) {
             $ = new GetAuthenticatedOriginPullsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param hostname The hostname on the origin for which the client certificate uploaded will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(Output<String> hostname) {
+            $.hostname = hostname;
+            return this;
+        }
+
+        /**
+         * @param hostname The hostname on the origin for which the client certificate uploaded will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(String hostname) {
+            return hostname(Output.of(hostname));
         }
 
         /**
@@ -75,6 +112,9 @@ public final class GetAuthenticatedOriginPullsArgs extends com.pulumi.resources.
         }
 
         public GetAuthenticatedOriginPullsArgs build() {
+            if ($.hostname == null) {
+                throw new MissingRequiredPropertyException("GetAuthenticatedOriginPullsArgs", "hostname");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetAuthenticatedOriginPullsArgs", "zoneId");
             }

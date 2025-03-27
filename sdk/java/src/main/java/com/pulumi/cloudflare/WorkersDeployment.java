@@ -131,9 +131,17 @@ public class WorkersDeployment extends com.pulumi.resources.CustomResource {
     public Output<String> source() {
         return this.source;
     }
+    /**
+     * Available values: &#34;percentage&#34;.
+     * 
+     */
     @Export(name="strategy", refs={String.class}, tree="[0]")
     private Output<String> strategy;
 
+    /**
+     * @return Available values: &#34;percentage&#34;.
+     * 
+     */
     public Output<String> strategy() {
         return this.strategy;
     }

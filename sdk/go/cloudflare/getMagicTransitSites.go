@@ -26,13 +26,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupMagicTransitSites(ctx, &cloudflare.LookupMagicTransitSitesArgs{
-<<<<<<< HEAD
-//				AccountId:           "023e105f4ecef8ad9ca31a8372d0c353",
-//				ConnectorIdentifier: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-=======
 //				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //				Connectorid: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -57,11 +52,7 @@ type LookupMagicTransitSitesArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// Identifier
-<<<<<<< HEAD
-	ConnectorIdentifier *string `pulumi:"connectorIdentifier"`
-=======
 	Connectorid *string `pulumi:"connectorid"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -71,11 +62,7 @@ type LookupMagicTransitSitesResult struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// Identifier
-<<<<<<< HEAD
-	ConnectorIdentifier *string `pulumi:"connectorIdentifier"`
-=======
 	Connectorid *string `pulumi:"connectorid"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -98,11 +85,7 @@ type LookupMagicTransitSitesOutputArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identifier
-<<<<<<< HEAD
-	ConnectorIdentifier pulumi.StringPtrInput `pulumi:"connectorIdentifier"`
-=======
 	Connectorid pulumi.StringPtrInput `pulumi:"connectorid"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -132,13 +115,8 @@ func (o LookupMagicTransitSitesResultOutput) AccountId() pulumi.StringOutput {
 }
 
 // Identifier
-<<<<<<< HEAD
-func (o LookupMagicTransitSitesResultOutput) ConnectorIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMagicTransitSitesResult) *string { return v.ConnectorIdentifier }).(pulumi.StringPtrOutput)
-=======
 func (o LookupMagicTransitSitesResultOutput) Connectorid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMagicTransitSitesResult) *string { return v.Connectorid }).(pulumi.StringPtrOutput)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // The provider-assigned unique ID for this managed resource.

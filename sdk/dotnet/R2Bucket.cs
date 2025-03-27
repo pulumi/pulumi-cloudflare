@@ -34,11 +34,7 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-<<<<<<< HEAD
-    /// $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '&lt;account_id&gt;/&lt;bucket_name&gt;'
-=======
     /// $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '&lt;account_id&gt;/&lt;bucket_name&gt;/&lt;jurisdiction&gt;'
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/r2Bucket:R2Bucket")]
@@ -64,6 +60,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Location of the bucket
+        /// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
@@ -76,6 +73,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Storage class for newly uploaded objects, unless specified otherwise.
+        /// Available values: "Standard", "InfrequentAccess".
         /// </summary>
         [Output("storageClass")]
         public Output<string> StorageClass { get; private set; } = null!;
@@ -140,6 +138,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Location of the bucket
+        /// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -152,6 +151,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Storage class for newly uploaded objects, unless specified otherwise.
+        /// Available values: "Standard", "InfrequentAccess".
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }
@@ -184,6 +184,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Location of the bucket
+        /// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -196,6 +197,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Storage class for newly uploaded objects, unless specified otherwise.
+        /// Available values: "Standard", "InfrequentAccess".
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }

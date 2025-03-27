@@ -65,6 +65,7 @@ import javax.annotation.Nullable;
 public class TotalTls extends com.pulumi.resources.CustomResource {
     /**
      * The Certificate Authority that Total TLS certificates will be issued through.
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     @Export(name="certificateAuthority", refs={String.class}, tree="[0]")
@@ -72,6 +73,7 @@ public class TotalTls extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The Certificate Authority that Total TLS certificates will be issued through.
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     public Output<Optional<String>> certificateAuthority() {
@@ -93,6 +95,7 @@ public class TotalTls extends com.pulumi.resources.CustomResource {
     }
     /**
      * The validity period in days for the certificates ordered via Total TLS.
+     * Available values: 90.
      * 
      */
     @Export(name="validityPeriod", refs={Integer.class}, tree="[0]")
@@ -100,6 +103,7 @@ public class TotalTls extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The validity period in days for the certificates ordered via Total TLS.
+     * Available values: 90.
      * 
      */
     public Output<Integer> validityPeriod() {

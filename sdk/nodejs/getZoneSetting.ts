@@ -53,6 +53,7 @@ export interface GetZoneSettingResult {
     readonly enabled: boolean;
     /**
      * ID of the zone setting.
+     * Available values: "0rtt".
      */
     readonly id: string;
     /**
@@ -70,6 +71,7 @@ export interface GetZoneSettingResult {
     readonly timeRemaining: number;
     /**
      * Current value of the zone setting.
+     * Available values: "on", "off".
      */
     readonly value: string;
     /**

@@ -28,7 +28,7 @@ public final class LogpushJobOutputOptions {
      * @return If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
      * 
      */
-    private @Nullable Boolean cve20214428;
+    private @Nullable Boolean cve202144228;
     /**
      * @return String to join fields. This field be ignored when `record_template` is set.
      * 
@@ -41,6 +41,7 @@ public final class LogpushJobOutputOptions {
     private @Nullable List<String> fieldNames;
     /**
      * @return Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+     * Available values: &#34;ndjson&#34;, &#34;csv&#34;.
      * 
      */
     private @Nullable String outputType;
@@ -71,6 +72,7 @@ public final class LogpushJobOutputOptions {
     private @Nullable Double sampleRate;
     /**
      * @return String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+     * Available values: &#34;unixnano&#34;, &#34;unix&#34;, &#34;rfc3339&#34;.
      * 
      */
     private @Nullable String timestampFormat;
@@ -94,8 +96,8 @@ public final class LogpushJobOutputOptions {
      * @return If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
      * 
      */
-    public Optional<Boolean> cve20214428() {
-        return Optional.ofNullable(this.cve20214428);
+    public Optional<Boolean> cve202144228() {
+        return Optional.ofNullable(this.cve202144228);
     }
     /**
      * @return String to join fields. This field be ignored when `record_template` is set.
@@ -113,6 +115,7 @@ public final class LogpushJobOutputOptions {
     }
     /**
      * @return Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+     * Available values: &#34;ndjson&#34;, &#34;csv&#34;.
      * 
      */
     public Optional<String> outputType() {
@@ -155,6 +158,7 @@ public final class LogpushJobOutputOptions {
     }
     /**
      * @return String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+     * Available values: &#34;unixnano&#34;, &#34;unix&#34;, &#34;rfc3339&#34;.
      * 
      */
     public Optional<String> timestampFormat() {
@@ -172,7 +176,7 @@ public final class LogpushJobOutputOptions {
     public static final class Builder {
         private @Nullable String batchPrefix;
         private @Nullable String batchSuffix;
-        private @Nullable Boolean cve20214428;
+        private @Nullable Boolean cve202144228;
         private @Nullable String fieldDelimiter;
         private @Nullable List<String> fieldNames;
         private @Nullable String outputType;
@@ -187,7 +191,7 @@ public final class LogpushJobOutputOptions {
     	      Objects.requireNonNull(defaults);
     	      this.batchPrefix = defaults.batchPrefix;
     	      this.batchSuffix = defaults.batchSuffix;
-    	      this.cve20214428 = defaults.cve20214428;
+    	      this.cve202144228 = defaults.cve202144228;
     	      this.fieldDelimiter = defaults.fieldDelimiter;
     	      this.fieldNames = defaults.fieldNames;
     	      this.outputType = defaults.outputType;
@@ -212,9 +216,9 @@ public final class LogpushJobOutputOptions {
             return this;
         }
         @CustomType.Setter
-        public Builder cve20214428(@Nullable Boolean cve20214428) {
+        public Builder cve202144228(@Nullable Boolean cve202144228) {
 
-            this.cve20214428 = cve20214428;
+            this.cve202144228 = cve202144228;
             return this;
         }
         @CustomType.Setter
@@ -278,7 +282,7 @@ public final class LogpushJobOutputOptions {
             final var _resultValue = new LogpushJobOutputOptions();
             _resultValue.batchPrefix = batchPrefix;
             _resultValue.batchSuffix = batchSuffix;
-            _resultValue.cve20214428 = cve20214428;
+            _resultValue.cve202144228 = cve202144228;
             _resultValue.fieldDelimiter = fieldDelimiter;
             _resultValue.fieldNames = fieldNames;
             _resultValue.outputType = outputType;

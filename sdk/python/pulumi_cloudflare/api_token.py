@@ -34,6 +34,7 @@ class ApiTokenArgs:
         :param pulumi.Input[str] expires_on: The expiration time on or after which the JWT MUST NOT be accepted for processing.
         :param pulumi.Input[str] not_before: The time before which the token MUST NOT be accepted for processing.
         :param pulumi.Input[str] status: Status of the token.
+               Available values: "active", "disabled", "expired".
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "policies", policies)
@@ -108,6 +109,7 @@ class ApiTokenArgs:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         Status of the token.
+        Available values: "active", "disabled", "expired".
         """
         return pulumi.get(self, "status")
 
@@ -139,6 +141,7 @@ class _ApiTokenState:
         :param pulumi.Input[str] not_before: The time before which the token MUST NOT be accepted for processing.
         :param pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]] policies: List of access policies assigned to the token.
         :param pulumi.Input[str] status: Status of the token.
+               Available values: "active", "disabled", "expired".
         :param pulumi.Input[str] value: The token value.
         """
         if condition is not None:
@@ -260,6 +263,7 @@ class _ApiTokenState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         Status of the token.
+        Available values: "active", "disabled", "expired".
         """
         return pulumi.get(self, "status")
 
@@ -308,6 +312,7 @@ class ApiToken(pulumi.CustomResource):
         :param pulumi.Input[str] not_before: The time before which the token MUST NOT be accepted for processing.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict']]]] policies: List of access policies assigned to the token.
         :param pulumi.Input[str] status: Status of the token.
+               Available values: "active", "disabled", "expired".
         """
         ...
     @overload
@@ -368,6 +373,8 @@ class ApiToken(pulumi.CustomResource):
             __props__.__dict__["last_used_on"] = None
             __props__.__dict__["modified_on"] = None
             __props__.__dict__["value"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ApiToken, __self__).__init__(
             'cloudflare:index/apiToken:ApiToken',
             resource_name,
@@ -403,6 +410,7 @@ class ApiToken(pulumi.CustomResource):
         :param pulumi.Input[str] not_before: The time before which the token MUST NOT be accepted for processing.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict']]]] policies: List of access policies assigned to the token.
         :param pulumi.Input[str] status: Status of the token.
+               Available values: "active", "disabled", "expired".
         :param pulumi.Input[str] value: The token value.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -487,6 +495,7 @@ class ApiToken(pulumi.CustomResource):
     def status(self) -> pulumi.Output[Optional[str]]:
         """
         Status of the token.
+        Available values: "active", "disabled", "expired".
         """
         return pulumi.get(self, "status")
 

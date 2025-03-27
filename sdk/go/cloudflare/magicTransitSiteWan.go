@@ -13,21 +13,19 @@ import (
 )
 
 // ## Example Usage
-<<<<<<< HEAD
-=======
 //
 // ## Import
 //
 // ```sh
 // $ pulumi import cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan example '<account_id>/<site_id>/<wan_id>'
 // ```
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 type MagicTransitSiteWan struct {
 	pulumi.CustomResourceState
 
 	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+	// Available values: "low", "mid", "high".
 	HealthCheckRate pulumi.StringOutput    `pulumi:"healthCheckRate"`
 	Name            pulumi.StringPtrOutput `pulumi:"name"`
 	Physport        pulumi.IntOutput       `pulumi:"physport"`
@@ -38,11 +36,6 @@ type MagicTransitSiteWan struct {
 	StaticAddressing MagicTransitSiteWanStaticAddressingOutput `pulumi:"staticAddressing"`
 	// VLAN port number.
 	VlanTag pulumi.IntOutput `pulumi:"vlanTag"`
-<<<<<<< HEAD
-	// Identifier
-	WanId pulumi.StringPtrOutput `pulumi:"wanId"`
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // NewMagicTransitSiteWan registers a new resource with the given unique name, arguments, and options.
@@ -90,6 +83,7 @@ type magicTransitSiteWanState struct {
 	// Identifier
 	AccountId *string `pulumi:"accountId"`
 	// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+	// Available values: "low", "mid", "high".
 	HealthCheckRate *string `pulumi:"healthCheckRate"`
 	Name            *string `pulumi:"name"`
 	Physport        *int    `pulumi:"physport"`
@@ -100,17 +94,13 @@ type magicTransitSiteWanState struct {
 	StaticAddressing *MagicTransitSiteWanStaticAddressing `pulumi:"staticAddressing"`
 	// VLAN port number.
 	VlanTag *int `pulumi:"vlanTag"`
-<<<<<<< HEAD
-	// Identifier
-	WanId *string `pulumi:"wanId"`
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 type MagicTransitSiteWanState struct {
 	// Identifier
 	AccountId pulumi.StringPtrInput
 	// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+	// Available values: "low", "mid", "high".
 	HealthCheckRate pulumi.StringPtrInput
 	Name            pulumi.StringPtrInput
 	Physport        pulumi.IntPtrInput
@@ -121,11 +111,6 @@ type MagicTransitSiteWanState struct {
 	StaticAddressing MagicTransitSiteWanStaticAddressingPtrInput
 	// VLAN port number.
 	VlanTag pulumi.IntPtrInput
-<<<<<<< HEAD
-	// Identifier
-	WanId pulumi.StringPtrInput
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func (MagicTransitSiteWanState) ElementType() reflect.Type {
@@ -144,11 +129,6 @@ type magicTransitSiteWanArgs struct {
 	StaticAddressing *MagicTransitSiteWanStaticAddressing `pulumi:"staticAddressing"`
 	// VLAN port number.
 	VlanTag int `pulumi:"vlanTag"`
-<<<<<<< HEAD
-	// Identifier
-	WanId *string `pulumi:"wanId"`
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // The set of arguments for constructing a MagicTransitSiteWan resource.
@@ -164,11 +144,6 @@ type MagicTransitSiteWanArgs struct {
 	StaticAddressing MagicTransitSiteWanStaticAddressingPtrInput
 	// VLAN port number.
 	VlanTag pulumi.IntInput
-<<<<<<< HEAD
-	// Identifier
-	WanId pulumi.StringPtrInput
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func (MagicTransitSiteWanArgs) ElementType() reflect.Type {
@@ -264,6 +239,7 @@ func (o MagicTransitSiteWanOutput) AccountId() pulumi.StringOutput {
 }
 
 // Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+// Available values: "low", "mid", "high".
 func (o MagicTransitSiteWanOutput) HealthCheckRate() pulumi.StringOutput {
 	return o.ApplyT(func(v *MagicTransitSiteWan) pulumi.StringOutput { return v.HealthCheckRate }).(pulumi.StringOutput)
 }
@@ -295,14 +271,6 @@ func (o MagicTransitSiteWanOutput) VlanTag() pulumi.IntOutput {
 	return o.ApplyT(func(v *MagicTransitSiteWan) pulumi.IntOutput { return v.VlanTag }).(pulumi.IntOutput)
 }
 
-<<<<<<< HEAD
-// Identifier
-func (o MagicTransitSiteWanOutput) WanId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicTransitSiteWan) pulumi.StringPtrOutput { return v.WanId }).(pulumi.StringPtrOutput)
-}
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 type MagicTransitSiteWanArrayOutput struct{ *pulumi.OutputState }
 
 func (MagicTransitSiteWanArrayOutput) ElementType() reflect.Type {

@@ -86,6 +86,12 @@ func NewWorkersCustomDomain(ctx *pulumi.Context,
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/workerDomain:WorkerDomain"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkersCustomDomain
 	err := ctx.RegisterResource("cloudflare:index/workersCustomDomain:WorkersCustomDomain", name, args, &resource, opts...)

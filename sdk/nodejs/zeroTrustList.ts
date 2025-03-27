@@ -79,6 +79,7 @@ export class ZeroTrustList extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The type of list.
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
      */
     public readonly type!: pulumi.Output<string>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
@@ -125,6 +126,8 @@ export class ZeroTrustList extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/teamsList:TeamsList" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustList.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -153,6 +156,7 @@ export interface ZeroTrustListState {
     name?: pulumi.Input<string>;
     /**
      * The type of list.
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
      */
     type?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
@@ -177,6 +181,7 @@ export interface ZeroTrustListArgs {
     name: pulumi.Input<string>;
     /**
      * The type of list.
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
      */
     type: pulumi.Input<string>;
 }

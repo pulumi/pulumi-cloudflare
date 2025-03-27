@@ -17,6 +17,9 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool PreservePathSuffix;
         public readonly bool PreserveQueryString;
         public readonly string SourceUrl;
+        /// <summary>
+        /// Available values: 301, 302, 307, 308.
+        /// </summary>
         public readonly int StatusCode;
         public readonly bool SubpathMatching;
         public readonly string TargetUrl;

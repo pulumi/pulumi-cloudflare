@@ -35,6 +35,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The kind of the ruleset.
+        /// Available values: "managed", "custom", "root", "zone".
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -47,6 +48,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The phase of the ruleset.
+        /// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         /// </summary>
         [Output("phase")]
         public Output<string> Phase { get; private set; } = null!;
@@ -123,6 +125,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The kind of the ruleset.
+        /// Available values: "managed", "custom", "root", "zone".
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -135,11 +138,12 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The phase of the ruleset.
+        /// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         /// </summary>
         [Input("phase", required: true)]
         public Input<string> Phase { get; set; } = null!;
 
-        [Input("rules", required: true)]
+        [Input("rules")]
         private InputList<Inputs.RulesetRuleArgs>? _rules;
 
         /// <summary>
@@ -179,6 +183,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The kind of the ruleset.
+        /// Available values: "managed", "custom", "root", "zone".
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -191,6 +196,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The phase of the ruleset.
+        /// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         /// </summary>
         [Input("phase")]
         public Input<string>? Phase { get; set; }

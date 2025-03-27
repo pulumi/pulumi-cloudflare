@@ -104,6 +104,7 @@ public class CustomHostnameFallbackOrigin extends com.pulumi.resources.CustomRes
     }
     /**
      * Status of the fallback origin&#39;s activation.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -111,6 +112,7 @@ public class CustomHostnameFallbackOrigin extends com.pulumi.resources.CustomRes
 
     /**
      * @return Status of the fallback origin&#39;s activation.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     public Output<String> status() {

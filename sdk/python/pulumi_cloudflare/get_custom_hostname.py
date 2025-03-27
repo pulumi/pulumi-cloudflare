@@ -159,6 +159,7 @@ class GetCustomHostnameResult:
     def status(self) -> str:
         """
         Status of the hostname's activation.
+        Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "test_failed", "provisioned", "blocked".
         """
         return pulumi.get(self, "status")
 

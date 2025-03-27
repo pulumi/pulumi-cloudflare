@@ -59,24 +59,19 @@ type LookupStreamAudioTrackArgs struct {
 type LookupStreamAudioTrackResult struct {
 	// The account identifier tag.
 	AccountId string `pulumi:"accountId"`
-<<<<<<< HEAD
-=======
 	// Denotes whether the audio track will be played by default in a player.
 	Default bool `pulumi:"default"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier string `pulumi:"identifier"`
-<<<<<<< HEAD
-=======
 	// A string to uniquely identify the track amongst other audio track labels for the specified video.
 	Label string `pulumi:"label"`
 	// Specifies the processing status of the video.
+	// Available values: "queued", "ready", "error".
 	Status string `pulumi:"status"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Uid string `pulumi:"uid"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func LookupStreamAudioTrackOutput(ctx *pulumi.Context, args LookupStreamAudioTrackOutputArgs, opts ...pulumi.InvokeOption) LookupStreamAudioTrackResultOutput {
@@ -120,14 +115,11 @@ func (o LookupStreamAudioTrackResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamAudioTrackResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-=======
 // Denotes whether the audio track will be played by default in a player.
 func (o LookupStreamAudioTrackResultOutput) Default() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupStreamAudioTrackResult) bool { return v.Default }).(pulumi.BoolOutput)
 }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // The provider-assigned unique ID for this managed resource.
 func (o LookupStreamAudioTrackResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamAudioTrackResult) string { return v.Id }).(pulumi.StringOutput)
@@ -138,14 +130,13 @@ func (o LookupStreamAudioTrackResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamAudioTrackResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-=======
 // A string to uniquely identify the track amongst other audio track labels for the specified video.
 func (o LookupStreamAudioTrackResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamAudioTrackResult) string { return v.Label }).(pulumi.StringOutput)
 }
 
 // Specifies the processing status of the video.
+// Available values: "queued", "ready", "error".
 func (o LookupStreamAudioTrackResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamAudioTrackResult) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -155,7 +146,6 @@ func (o LookupStreamAudioTrackResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamAudioTrackResult) string { return v.Uid }).(pulumi.StringOutput)
 }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func init() {
 	pulumi.RegisterOutputType(LookupStreamAudioTrackResultOutput{})
 }

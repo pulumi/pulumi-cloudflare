@@ -56,6 +56,7 @@ type List struct {
 	// An informative summary of the list.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+	// Available values: "ip", "redirect", "hostname", "asn".
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The RFC 3339 timestamp of when the list was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
@@ -113,6 +114,7 @@ type listState struct {
 	// An informative summary of the list.
 	Description *string `pulumi:"description"`
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+	// Available values: "ip", "redirect", "hostname", "asn".
 	Kind *string `pulumi:"kind"`
 	// The RFC 3339 timestamp of when the list was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
@@ -132,6 +134,7 @@ type ListState struct {
 	// An informative summary of the list.
 	Description pulumi.StringPtrInput
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+	// Available values: "ip", "redirect", "hostname", "asn".
 	Kind pulumi.StringPtrInput
 	// The RFC 3339 timestamp of when the list was last modified.
 	ModifiedOn pulumi.StringPtrInput
@@ -153,6 +156,7 @@ type listArgs struct {
 	// An informative summary of the list.
 	Description *string `pulumi:"description"`
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+	// Available values: "ip", "redirect", "hostname", "asn".
 	Kind string `pulumi:"kind"`
 	// An informative name for the list. Use this name in filter and rule expressions.
 	Name string `pulumi:"name"`
@@ -165,6 +169,7 @@ type ListArgs struct {
 	// An informative summary of the list.
 	Description pulumi.StringPtrInput
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+	// Available values: "ip", "redirect", "hostname", "asn".
 	Kind pulumi.StringInput
 	// An informative name for the list. Use this name in filter and rule expressions.
 	Name pulumi.StringInput
@@ -273,6 +278,7 @@ func (o ListOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+// Available values: "ip", "redirect", "hostname", "asn".
 func (o ListOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *List) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }

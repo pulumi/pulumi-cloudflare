@@ -19,6 +19,7 @@ public final class EmailRoutingCatchAllActionArgs extends com.pulumi.resources.R
 
     /**
      * Type of action for catch-all rule.
+     * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -26,6 +27,7 @@ public final class EmailRoutingCatchAllActionArgs extends com.pulumi.resources.R
 
     /**
      * @return Type of action for catch-all rule.
+     * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
      * 
      */
     public Output<String> type() {
@@ -66,6 +68,7 @@ public final class EmailRoutingCatchAllActionArgs extends com.pulumi.resources.R
 
         /**
          * @param type Type of action for catch-all rule.
+         * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
          * 
          * @return builder
          * 
@@ -77,6 +80,7 @@ public final class EmailRoutingCatchAllActionArgs extends com.pulumi.resources.R
 
         /**
          * @param type Type of action for catch-all rule.
+         * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
          * 
          * @return builder
          * 

@@ -81,9 +81,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetMagicTransitConnectorsArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Account identifier
-        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
@@ -101,9 +98,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetMagicTransitConnectorsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Account identifier
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
@@ -123,9 +117,6 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetMagicTransitConnectorsResult
     {
-        /// <summary>
-        /// Account identifier
-        /// </summary>
         public readonly string AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

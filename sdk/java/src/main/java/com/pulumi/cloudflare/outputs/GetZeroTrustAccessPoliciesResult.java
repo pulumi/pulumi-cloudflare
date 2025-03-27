@@ -35,6 +35,7 @@ public final class GetZeroTrustAccessPoliciesResult {
     private String createdAt;
     /**
      * @return The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
      * 
      */
     private String decision;
@@ -113,6 +114,7 @@ public final class GetZeroTrustAccessPoliciesResult {
     }
     /**
      * @return The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
      * 
      */
     public String decision() {

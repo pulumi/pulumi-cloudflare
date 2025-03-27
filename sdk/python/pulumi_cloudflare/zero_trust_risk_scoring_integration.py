@@ -26,6 +26,7 @@ class ZeroTrustRiskScoringIntegrationArgs:
                  reference_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ZeroTrustRiskScoringIntegration resource.
+        :param pulumi.Input[str] integration_type: Available values: "Okta".
         :param pulumi.Input[str] tenant_url: The base url of the tenant, e.g. "https://tenant.okta.com"
         :param pulumi.Input[bool] active: Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
         :param pulumi.Input[str] reference_id: A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
@@ -51,6 +52,9 @@ class ZeroTrustRiskScoringIntegrationArgs:
     @property
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> pulumi.Input[str]:
+        """
+        Available values: "Okta".
+        """
         return pulumi.get(self, "integration_type")
 
     @integration_type.setter
@@ -111,6 +115,7 @@ class _ZeroTrustRiskScoringIntegrationState:
         :param pulumi.Input[str] account_tag: The Cloudflare account tag.
         :param pulumi.Input[bool] active: Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
         :param pulumi.Input[str] created_at: When the integration was created in RFC3339 format.
+        :param pulumi.Input[str] integration_type: Available values: "Okta".
         :param pulumi.Input[str] reference_id: A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
                https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
         :param pulumi.Input[str] tenant_url: The base url of the tenant, e.g. "https://tenant.okta.com"
@@ -181,6 +186,9 @@ class _ZeroTrustRiskScoringIntegrationState:
     @property
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Available values: "Okta".
+        """
         return pulumi.get(self, "integration_type")
 
     @integration_type.setter
@@ -259,6 +267,7 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
+        :param pulumi.Input[str] integration_type: Available values: "Okta".
         :param pulumi.Input[str] reference_id: A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
                https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
         :param pulumi.Input[str] tenant_url: The base url of the tenant, e.g. "https://tenant.okta.com"
@@ -360,6 +369,7 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
         :param pulumi.Input[str] account_tag: The Cloudflare account tag.
         :param pulumi.Input[bool] active: Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
         :param pulumi.Input[str] created_at: When the integration was created in RFC3339 format.
+        :param pulumi.Input[str] integration_type: Available values: "Okta".
         :param pulumi.Input[str] reference_id: A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
                https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
         :param pulumi.Input[str] tenant_url: The base url of the tenant, e.g. "https://tenant.okta.com"
@@ -411,6 +421,9 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
     @property
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> pulumi.Output[str]:
+        """
+        Available values: "Okta".
+        """
         return pulumi.get(self, "integration_type")
 
     @property

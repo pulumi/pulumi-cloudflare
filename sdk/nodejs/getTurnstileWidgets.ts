@@ -40,6 +40,7 @@ export interface GetTurnstileWidgetsArgs {
     accountId: string;
     /**
      * Direction to order widgets.
+     * Available values: "asc", "desc".
      */
     direction?: string;
     /**
@@ -48,6 +49,7 @@ export interface GetTurnstileWidgetsArgs {
     maxItems?: number;
     /**
      * Field to order widgets by.
+     * Available values: "id", "sitekey", "name", "created*on", "modified*on".
      */
     order?: string;
 }
@@ -62,6 +64,7 @@ export interface GetTurnstileWidgetsResult {
     readonly accountId: string;
     /**
      * Direction to order widgets.
+     * Available values: "asc", "desc".
      */
     readonly direction?: string;
     /**
@@ -74,6 +77,7 @@ export interface GetTurnstileWidgetsResult {
     readonly maxItems?: number;
     /**
      * Field to order widgets by.
+     * Available values: "id", "sitekey", "name", "created*on", "modified*on".
      */
     readonly order?: string;
     /**
@@ -115,6 +119,7 @@ export interface GetTurnstileWidgetsOutputArgs {
     accountId: pulumi.Input<string>;
     /**
      * Direction to order widgets.
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**
@@ -123,6 +128,7 @@ export interface GetTurnstileWidgetsOutputArgs {
     maxItems?: pulumi.Input<number>;
     /**
      * Field to order widgets by.
+     * Available values: "id", "sitekey", "name", "created*on", "modified*on".
      */
     order?: pulumi.Input<string>;
 }

@@ -33,6 +33,7 @@ public final class GetWorkersKvNamespacesPlainArgs extends com.pulumi.resources.
 
     /**
      * Direction to order namespaces.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -40,6 +41,7 @@ public final class GetWorkersKvNamespacesPlainArgs extends com.pulumi.resources.
 
     /**
      * @return Direction to order namespaces.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -63,6 +65,7 @@ public final class GetWorkersKvNamespacesPlainArgs extends com.pulumi.resources.
 
     /**
      * Field to order results by.
+     * Available values: &#34;id&#34;, &#34;title&#34;.
      * 
      */
     @Import(name="order")
@@ -70,6 +73,7 @@ public final class GetWorkersKvNamespacesPlainArgs extends com.pulumi.resources.
 
     /**
      * @return Field to order results by.
+     * Available values: &#34;id&#34;, &#34;title&#34;.
      * 
      */
     public Optional<String> order() {
@@ -116,6 +120,7 @@ public final class GetWorkersKvNamespacesPlainArgs extends com.pulumi.resources.
 
         /**
          * @param direction Direction to order namespaces.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -138,6 +143,7 @@ public final class GetWorkersKvNamespacesPlainArgs extends com.pulumi.resources.
 
         /**
          * @param order Field to order results by.
+         * Available values: &#34;id&#34;, &#34;title&#34;.
          * 
          * @return builder
          * 

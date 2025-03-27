@@ -3,6 +3,8 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileExcludeArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileIncludeArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileServiceModeV2Args;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -10,6 +12,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -131,6 +134,51 @@ public final class ZeroTrustDeviceDefaultProfileArgs extends com.pulumi.resource
         return Optional.ofNullable(this.excludeOfficeIps);
     }
 
+    /**
+     * List of routes excluded in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
+     * 
+     */
+    @Import(name="excludes")
+    private @Nullable Output<List<ZeroTrustDeviceDefaultProfileExcludeArgs>> excludes;
+
+    /**
+     * @return List of routes excluded in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
+     * 
+     */
+    public Optional<Output<List<ZeroTrustDeviceDefaultProfileExcludeArgs>>> excludes() {
+        return Optional.ofNullable(this.excludes);
+    }
+
+    /**
+     * List of routes included in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
+     * 
+     */
+    @Import(name="includes")
+    private @Nullable Output<List<ZeroTrustDeviceDefaultProfileIncludeArgs>> includes;
+
+    /**
+     * @return List of routes included in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
+     * 
+     */
+    public Optional<Output<List<ZeroTrustDeviceDefaultProfileIncludeArgs>>> includes() {
+        return Optional.ofNullable(this.includes);
+    }
+
+    /**
+     * Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
+     * 
+     */
+    @Import(name="registerInterfaceIpWithDns")
+    private @Nullable Output<Boolean> registerInterfaceIpWithDns;
+
+    /**
+     * @return Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
+     * 
+     */
+    public Optional<Output<Boolean>> registerInterfaceIpWithDns() {
+        return Optional.ofNullable(this.registerInterfaceIpWithDns);
+    }
+
     @Import(name="serviceModeV2")
     private @Nullable Output<ZeroTrustDeviceDefaultProfileServiceModeV2Args> serviceModeV2;
 
@@ -194,6 +242,9 @@ public final class ZeroTrustDeviceDefaultProfileArgs extends com.pulumi.resource
         this.captivePortal = $.captivePortal;
         this.disableAutoFallback = $.disableAutoFallback;
         this.excludeOfficeIps = $.excludeOfficeIps;
+        this.excludes = $.excludes;
+        this.includes = $.includes;
+        this.registerInterfaceIpWithDns = $.registerInterfaceIpWithDns;
         this.serviceModeV2 = $.serviceModeV2;
         this.supportUrl = $.supportUrl;
         this.switchLocked = $.switchLocked;
@@ -372,6 +423,89 @@ public final class ZeroTrustDeviceDefaultProfileArgs extends com.pulumi.resource
          */
         public Builder excludeOfficeIps(Boolean excludeOfficeIps) {
             return excludeOfficeIps(Output.of(excludeOfficeIps));
+        }
+
+        /**
+         * @param excludes List of routes excluded in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludes(@Nullable Output<List<ZeroTrustDeviceDefaultProfileExcludeArgs>> excludes) {
+            $.excludes = excludes;
+            return this;
+        }
+
+        /**
+         * @param excludes List of routes excluded in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludes(List<ZeroTrustDeviceDefaultProfileExcludeArgs> excludes) {
+            return excludes(Output.of(excludes));
+        }
+
+        /**
+         * @param excludes List of routes excluded in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludes(ZeroTrustDeviceDefaultProfileExcludeArgs... excludes) {
+            return excludes(List.of(excludes));
+        }
+
+        /**
+         * @param includes List of routes included in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includes(@Nullable Output<List<ZeroTrustDeviceDefaultProfileIncludeArgs>> includes) {
+            $.includes = includes;
+            return this;
+        }
+
+        /**
+         * @param includes List of routes included in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includes(List<ZeroTrustDeviceDefaultProfileIncludeArgs> includes) {
+            return includes(Output.of(includes));
+        }
+
+        /**
+         * @param includes List of routes included in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includes(ZeroTrustDeviceDefaultProfileIncludeArgs... includes) {
+            return includes(List.of(includes));
+        }
+
+        /**
+         * @param registerInterfaceIpWithDns Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registerInterfaceIpWithDns(@Nullable Output<Boolean> registerInterfaceIpWithDns) {
+            $.registerInterfaceIpWithDns = registerInterfaceIpWithDns;
+            return this;
+        }
+
+        /**
+         * @param registerInterfaceIpWithDns Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registerInterfaceIpWithDns(Boolean registerInterfaceIpWithDns) {
+            return registerInterfaceIpWithDns(Output.of(registerInterfaceIpWithDns));
         }
 
         public Builder serviceModeV2(@Nullable Output<ZeroTrustDeviceDefaultProfileServiceModeV2Args> serviceModeV2) {

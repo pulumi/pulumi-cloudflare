@@ -24,6 +24,7 @@ class ArgoSmartRoutingArgs:
         """
         The set of arguments for constructing a ArgoSmartRouting resource.
         :param pulumi.Input[str] value: Enables Argo Smart Routing.
+               Available values: "on", "off".
         :param pulumi.Input[str] zone_id: Identifier
         """
         pulumi.set(__self__, "value", value)
@@ -34,6 +35,7 @@ class ArgoSmartRoutingArgs:
     def value(self) -> pulumi.Input[str]:
         """
         Enables Argo Smart Routing.
+        Available values: "on", "off".
         """
         return pulumi.get(self, "value")
 
@@ -62,6 +64,7 @@ class _ArgoSmartRoutingState:
         """
         Input properties used for looking up and filtering ArgoSmartRouting resources.
         :param pulumi.Input[str] value: Enables Argo Smart Routing.
+               Available values: "on", "off".
         :param pulumi.Input[str] zone_id: Identifier
         """
         if value is not None:
@@ -74,6 +77,7 @@ class _ArgoSmartRoutingState:
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         Enables Argo Smart Routing.
+        Available values: "on", "off".
         """
         return pulumi.get(self, "value")
 
@@ -123,6 +127,7 @@ class ArgoSmartRouting(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] value: Enables Argo Smart Routing.
+               Available values: "on", "off".
         :param pulumi.Input[str] zone_id: Identifier
         """
         ...
@@ -201,6 +206,7 @@ class ArgoSmartRouting(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] value: Enables Argo Smart Routing.
+               Available values: "on", "off".
         :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -216,6 +222,7 @@ class ArgoSmartRouting(pulumi.CustomResource):
     def value(self) -> pulumi.Output[str]:
         """
         Enables Argo Smart Routing.
+        Available values: "on", "off".
         """
         return pulumi.get(self, "value")
 

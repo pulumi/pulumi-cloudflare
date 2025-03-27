@@ -150,6 +150,7 @@ class GetStreamsResult:
     def status(self) -> Optional[str]:
         """
         Specifies the processing status for all quality levels for a video.
+        Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error".
         """
         return pulumi.get(self, "status")
 
@@ -219,6 +220,7 @@ def get_streams(account_id: Optional[str] = None,
     :param str search: Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
     :param str start: Lists videos created after the specified date.
     :param str status: Specifies the processing status for all quality levels for a video.
+           Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error".
     :param str type: Specifies whether the video is `vod` or `live`.
     """
     __args__ = dict()
@@ -285,6 +287,7 @@ def get_streams_output(account_id: Optional[pulumi.Input[str]] = None,
     :param str search: Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
     :param str start: Lists videos created after the specified date.
     :param str status: Specifies the processing status for all quality levels for a video.
+           Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error".
     :param str type: Specifies whether the video is `vod` or `live`.
     """
     __args__ = dict()

@@ -17,6 +17,7 @@ public final class GetAccountTokenFilterArgs extends com.pulumi.resources.Resour
 
     /**
      * Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -24,6 +25,7 @@ public final class GetAccountTokenFilterArgs extends com.pulumi.resources.Resour
 
     /**
      * @return Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -56,6 +58,7 @@ public final class GetAccountTokenFilterArgs extends com.pulumi.resources.Resour
 
         /**
          * @param direction Direction to order results.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -67,6 +70,7 @@ public final class GetAccountTokenFilterArgs extends com.pulumi.resources.Resour
 
         /**
          * @param direction Direction to order results.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 

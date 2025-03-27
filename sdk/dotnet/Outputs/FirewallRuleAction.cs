@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// The action to perform.
+        /// Available values: "simulate", "ban", "challenge", "js*challenge", "managed*challenge".
         /// </summary>
         public readonly string? Mode;
         /// <summary>

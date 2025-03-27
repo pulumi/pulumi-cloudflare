@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 public final class FirewallRuleAction {
     /**
      * @return The action to perform.
+     * Available values: &#34;simulate&#34;, &#34;ban&#34;, &#34;challenge&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     private @Nullable String mode;
@@ -34,6 +35,7 @@ public final class FirewallRuleAction {
     private FirewallRuleAction() {}
     /**
      * @return The action to perform.
+     * Available values: &#34;simulate&#34;, &#34;ban&#34;, &#34;challenge&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     public Optional<String> mode() {

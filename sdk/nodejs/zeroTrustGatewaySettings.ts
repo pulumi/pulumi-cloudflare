@@ -79,6 +79,8 @@ export class ZeroTrustGatewaySettings extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/teamsAccount:TeamsAccount" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustGatewaySettings.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -71,7 +71,7 @@ public class ApiShieldDiscoveryOperation extends com.pulumi.resources.CustomReso
     }
     /**
      * Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-     * ignored
+     * ignored Available values: &#34;review&#34;, &#34;ignored&#34;.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
@@ -79,7 +79,7 @@ public class ApiShieldDiscoveryOperation extends com.pulumi.resources.CustomReso
 
     /**
      * @return Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-     * ignored
+     * ignored Available values: &#34;review&#34;, &#34;ignored&#34;.
      * 
      */
     public Output<Optional<String>> state() {

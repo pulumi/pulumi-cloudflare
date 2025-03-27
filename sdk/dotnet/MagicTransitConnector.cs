@@ -43,9 +43,6 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/magicTransitConnector:MagicTransitConnector")]
     public partial class MagicTransitConnector : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Account identifier
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
@@ -125,9 +122,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class MagicTransitConnectorArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Account identifier
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
@@ -157,9 +151,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class MagicTransitConnectorState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Account identifier
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 

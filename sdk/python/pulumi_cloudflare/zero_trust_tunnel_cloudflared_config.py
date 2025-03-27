@@ -31,6 +31,7 @@ class ZeroTrustTunnelCloudflaredConfigArgs:
         :param pulumi.Input[str] tunnel_id: UUID of the tunnel.
         :param pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigArgs'] config: The tunnel configuration and ingress rules.
         :param pulumi.Input[str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+               Available values: "local", "cloudflare".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "tunnel_id", tunnel_id)
@@ -80,6 +81,7 @@ class ZeroTrustTunnelCloudflaredConfigArgs:
     def source(self) -> Optional[pulumi.Input[str]]:
         """
         Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        Available values: "local", "cloudflare".
         """
         return pulumi.get(self, "source")
 
@@ -102,6 +104,7 @@ class _ZeroTrustTunnelCloudflaredConfigState:
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigArgs'] config: The tunnel configuration and ingress rules.
         :param pulumi.Input[str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+               Available values: "local", "cloudflare".
         :param pulumi.Input[str] tunnel_id: UUID of the tunnel.
         :param pulumi.Input[int] version: The version of the Tunnel Configuration.
         """
@@ -156,6 +159,7 @@ class _ZeroTrustTunnelCloudflaredConfigState:
     def source(self) -> Optional[pulumi.Input[str]]:
         """
         Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        Available values: "local", "cloudflare".
         """
         return pulumi.get(self, "source")
 
@@ -212,6 +216,7 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict']] config: The tunnel configuration and ingress rules.
         :param pulumi.Input[str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+               Available values: "local", "cloudflare".
         :param pulumi.Input[str] tunnel_id: UUID of the tunnel.
         """
         ...
@@ -267,6 +272,8 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
             __props__.__dict__["tunnel_id"] = tunnel_id
             __props__.__dict__["created_at"] = None
             __props__.__dict__["version"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/tunnelConfig:TunnelConfig")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustTunnelCloudflaredConfig, __self__).__init__(
             'cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig',
             resource_name,
@@ -293,6 +300,7 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict']] config: The tunnel configuration and ingress rules.
         :param pulumi.Input[str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+               Available values: "local", "cloudflare".
         :param pulumi.Input[str] tunnel_id: UUID of the tunnel.
         :param pulumi.Input[int] version: The version of the Tunnel Configuration.
         """
@@ -334,6 +342,7 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
     def source(self) -> pulumi.Output[str]:
         """
         Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        Available values: "local", "cloudflare".
         """
         return pulumi.get(self, "source")
 

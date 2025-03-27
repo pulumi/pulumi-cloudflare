@@ -90,6 +90,7 @@ class GetDnsRecordsResult:
     def direction(self) -> str:
         """
         Direction to order DNS records in.
+        Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
 
@@ -106,6 +107,7 @@ class GetDnsRecordsResult:
     def match(self) -> str:
         """
         Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+        Available values: "any", "all".
         """
         return pulumi.get(self, "match")
 
@@ -127,6 +129,7 @@ class GetDnsRecordsResult:
     def order(self) -> str:
         """
         Field to order DNS records by.
+        Available values: "type", "name", "content", "ttl", "proxied".
         """
         return pulumi.get(self, "order")
 
@@ -164,6 +167,7 @@ class GetDnsRecordsResult:
     def tag_match(self) -> str:
         """
         Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
+        Available values: "any", "all".
         """
         return pulumi.get(self, "tag_match")
 
@@ -172,6 +176,7 @@ class GetDnsRecordsResult:
     def type(self) -> Optional[str]:
         """
         Record type.
+        Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
         """
         return pulumi.get(self, "type")
 
@@ -263,13 +268,18 @@ def get_dns_records(comment: Optional[Union['GetDnsRecordsCommentArgs', 'GetDnsR
 
 
     :param str direction: Direction to order DNS records in.
+           Available values: "asc", "desc".
     :param str match: Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+           Available values: "any", "all".
     :param int max_items: Max items to fetch, default: 1000
     :param str order: Field to order DNS records by.
+           Available values: "type", "name", "content", "ttl", "proxied".
     :param bool proxied: Whether the record is receiving the performance and security benefits of Cloudflare.
     :param str search: Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.
     :param str tag_match: Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
+           Available values: "any", "all".
     :param str type: Record type.
+           Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
     :param str zone_id: Identifier
     """
     __args__ = dict()
@@ -361,13 +371,18 @@ def get_dns_records_output(comment: Optional[pulumi.Input[Optional[Union['GetDns
 
 
     :param str direction: Direction to order DNS records in.
+           Available values: "asc", "desc".
     :param str match: Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+           Available values: "any", "all".
     :param int max_items: Max items to fetch, default: 1000
     :param str order: Field to order DNS records by.
+           Available values: "type", "name", "content", "ttl", "proxied".
     :param bool proxied: Whether the record is receiving the performance and security benefits of Cloudflare.
     :param str search: Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.
     :param str tag_match: Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
+           Available values: "any", "all".
     :param str type: Record type.
+           Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
     :param str zone_id: Identifier
     """
     __args__ = dict()

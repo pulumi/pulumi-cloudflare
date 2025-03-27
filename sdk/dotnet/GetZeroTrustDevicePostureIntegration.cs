@@ -122,11 +122,7 @@ namespace Pulumi.Cloudflare
     {
         public readonly string AccountId;
         /// <summary>
-<<<<<<< HEAD
-        /// The Workspace One Config Response.
-=======
         /// The configuration object containing third-party integration information.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         public readonly Outputs.GetZeroTrustDevicePostureIntegrationConfigResult Config;
         /// <summary>
@@ -147,6 +143,7 @@ namespace Pulumi.Cloudflare
         public readonly string Name;
         /// <summary>
         /// The type of device posture integration.
+        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
         /// </summary>
         public readonly string Type;
 

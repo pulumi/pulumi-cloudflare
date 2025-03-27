@@ -14,7 +14,13 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class PagesDomainValidationData
     {
         public readonly string? ErrorMessage;
+        /// <summary>
+        /// Available values: "http", "txt".
+        /// </summary>
         public readonly string? Method;
+        /// <summary>
+        /// Available values: "initializing", "pending", "active", "deactivated", "error".
+        /// </summary>
         public readonly string? Status;
         public readonly string? TxtName;
         public readonly string? TxtValue;

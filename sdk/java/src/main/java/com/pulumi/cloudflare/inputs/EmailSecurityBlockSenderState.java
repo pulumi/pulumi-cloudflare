@@ -66,9 +66,17 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
         return Optional.ofNullable(this.pattern);
     }
 
+    /**
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * 
+     */
     @Import(name="patternType")
     private @Nullable Output<String> patternType;
 
+    /**
+     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * 
+     */
     public Optional<Output<String>> patternType() {
         return Optional.ofNullable(this.patternType);
     }
@@ -169,11 +177,23 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
             return pattern(Output.of(pattern));
         }
 
+        /**
+         * @param patternType Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder patternType(@Nullable Output<String> patternType) {
             $.patternType = patternType;
             return this;
         }
 
+        /**
+         * @param patternType Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder patternType(String patternType) {
             return patternType(Output.of(patternType));
         }

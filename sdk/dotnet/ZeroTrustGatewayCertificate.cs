@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        /// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         /// </summary>
         [Output("bindingStatus")]
         public Output<string> BindingStatus { get; private set; } = null!;
@@ -85,6 +86,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+        /// Available values: "custom", "gateway_managed".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -169,6 +171,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        /// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         /// </summary>
         [Input("bindingStatus")]
         public Input<string>? BindingStatus { get; set; }
@@ -211,6 +214,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+        /// Available values: "custom", "gateway_managed".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -14,12 +14,14 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`.
+        /// Available values: "auto", "lax", "none", "strict".
         /// </summary>
         [Input("samesite")]
         public Input<string>? Samesite { get; set; }
 
         /// <summary>
         /// Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled.
+        /// Available values: "auto", "always", "never".
         /// </summary>
         [Input("secure")]
         public Input<string>? Secure { get; set; }

@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// The error code of the Lighthouse result.
+        /// Available values: "NOT*REACHABLE", "DNS*FAILURE", "NOT*HTML", "LIGHTHOUSE*TIMEOUT", "UNKNOWN".
         /// </summary>
         [Input("code")]
         public Input<string>? Code { get; set; }

@@ -17,6 +17,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// Condition for lifecycle transitions to apply after an object reaches an age in seconds
         /// </summary>
         public readonly Outputs.GetR2BucketLifecycleRuleStorageClassTransitionConditionResult Condition;
+        /// <summary>
+        /// Available values: "InfrequentAccess".
+        /// </summary>
         public readonly string StorageClass;
 
         [OutputConstructor]

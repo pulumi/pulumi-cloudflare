@@ -76,7 +76,7 @@ class GetHyperdriveConfigResult:
 
     @property
     @pulumi.getter(name="hyperdriveId")
-    def hyperdrive_id(self) -> str:
+    def hyperdrive_id(self) -> Optional[str]:
         """
         Identifier
         """
@@ -159,7 +159,7 @@ def get_hyperdrive_config(account_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         origin=pulumi.get(__ret__, 'origin'))
 def get_hyperdrive_config_output(account_id: Optional[pulumi.Input[str]] = None,
-                                 hyperdrive_id: Optional[pulumi.Input[str]] = None,
+                                 hyperdrive_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHyperdriveConfigResult]:
     """
     ## Example Usage

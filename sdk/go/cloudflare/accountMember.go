@@ -58,8 +58,9 @@ type AccountMember struct {
 	// Array of policies associated with this member.
 	Policies AccountMemberPolicyArrayOutput `pulumi:"policies"`
 	// Array of roles associated with this member.
-	Roles  pulumi.StringArrayOutput `pulumi:"roles"`
-	Status pulumi.StringOutput      `pulumi:"status"`
+	Roles pulumi.StringArrayOutput `pulumi:"roles"`
+	// Available values: "accepted", "pending".
+	Status pulumi.StringOutput `pulumi:"status"`
 	// Details of the user associated to the membership.
 	User AccountMemberUserOutput `pulumi:"user"`
 }
@@ -107,8 +108,9 @@ type accountMemberState struct {
 	// Array of policies associated with this member.
 	Policies []AccountMemberPolicy `pulumi:"policies"`
 	// Array of roles associated with this member.
-	Roles  []string `pulumi:"roles"`
-	Status *string  `pulumi:"status"`
+	Roles []string `pulumi:"roles"`
+	// Available values: "accepted", "pending".
+	Status *string `pulumi:"status"`
 	// Details of the user associated to the membership.
 	User *AccountMemberUser `pulumi:"user"`
 }
@@ -121,7 +123,8 @@ type AccountMemberState struct {
 	// Array of policies associated with this member.
 	Policies AccountMemberPolicyArrayInput
 	// Array of roles associated with this member.
-	Roles  pulumi.StringArrayInput
+	Roles pulumi.StringArrayInput
+	// Available values: "accepted", "pending".
 	Status pulumi.StringPtrInput
 	// Details of the user associated to the membership.
 	User AccountMemberUserPtrInput
@@ -139,8 +142,9 @@ type accountMemberArgs struct {
 	// Array of policies associated with this member.
 	Policies []AccountMemberPolicy `pulumi:"policies"`
 	// Array of roles associated with this member.
-	Roles  []string `pulumi:"roles"`
-	Status *string  `pulumi:"status"`
+	Roles []string `pulumi:"roles"`
+	// Available values: "accepted", "pending".
+	Status *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a AccountMember resource.
@@ -152,7 +156,8 @@ type AccountMemberArgs struct {
 	// Array of policies associated with this member.
 	Policies AccountMemberPolicyArrayInput
 	// Array of roles associated with this member.
-	Roles  pulumi.StringArrayInput
+	Roles pulumi.StringArrayInput
+	// Available values: "accepted", "pending".
 	Status pulumi.StringPtrInput
 }
 
@@ -263,6 +268,7 @@ func (o AccountMemberOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccountMember) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
+// Available values: "accepted", "pending".
 func (o AccountMemberOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountMember) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

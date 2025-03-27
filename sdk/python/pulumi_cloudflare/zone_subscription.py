@@ -28,6 +28,7 @@ class ZoneSubscriptionArgs:
         The set of arguments for constructing a ZoneSubscription resource.
         :param pulumi.Input[str] identifier: Subscription identifier tag.
         :param pulumi.Input[str] frequency: How often the subscription is renewed automatically.
+               Available values: "weekly", "monthly", "quarterly", "yearly".
         :param pulumi.Input['ZoneSubscriptionRatePlanArgs'] rate_plan: The rate plan applied to the subscription.
         """
         pulumi.set(__self__, "identifier", identifier)
@@ -53,6 +54,7 @@ class ZoneSubscriptionArgs:
     def frequency(self) -> Optional[pulumi.Input[str]]:
         """
         How often the subscription is renewed automatically.
+        Available values: "weekly", "monthly", "quarterly", "yearly".
         """
         return pulumi.get(self, "frequency")
 
@@ -82,6 +84,7 @@ class _ZoneSubscriptionState:
         """
         Input properties used for looking up and filtering ZoneSubscription resources.
         :param pulumi.Input[str] frequency: How often the subscription is renewed automatically.
+               Available values: "weekly", "monthly", "quarterly", "yearly".
         :param pulumi.Input[str] identifier: Subscription identifier tag.
         :param pulumi.Input['ZoneSubscriptionRatePlanArgs'] rate_plan: The rate plan applied to the subscription.
         """
@@ -97,6 +100,7 @@ class _ZoneSubscriptionState:
     def frequency(self) -> Optional[pulumi.Input[str]]:
         """
         How often the subscription is renewed automatically.
+        Available values: "weekly", "monthly", "quarterly", "yearly".
         """
         return pulumi.get(self, "frequency")
 
@@ -144,6 +148,7 @@ class ZoneSubscription(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] frequency: How often the subscription is renewed automatically.
+               Available values: "weekly", "monthly", "quarterly", "yearly".
         :param pulumi.Input[str] identifier: Subscription identifier tag.
         :param pulumi.Input[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict']] rate_plan: The rate plan applied to the subscription.
         """
@@ -209,6 +214,7 @@ class ZoneSubscription(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] frequency: How often the subscription is renewed automatically.
+               Available values: "weekly", "monthly", "quarterly", "yearly".
         :param pulumi.Input[str] identifier: Subscription identifier tag.
         :param pulumi.Input[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict']] rate_plan: The rate plan applied to the subscription.
         """
@@ -226,6 +232,7 @@ class ZoneSubscription(pulumi.CustomResource):
     def frequency(self) -> pulumi.Output[Optional[str]]:
         """
         How often the subscription is renewed automatically.
+        Available values: "weekly", "monthly", "quarterly", "yearly".
         """
         return pulumi.get(self, "frequency")
 

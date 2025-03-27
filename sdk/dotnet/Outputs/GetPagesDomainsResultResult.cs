@@ -13,11 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetPagesDomainsResultResult
     {
+        /// <summary>
+        /// Available values: "google", "lets_encrypt".
+        /// </summary>
         public readonly string CertificateAuthority;
         public readonly string CreatedOn;
         public readonly string DomainId;
         public readonly string Id;
         public readonly string Name;
+        /// <summary>
+        /// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
+        /// </summary>
         public readonly string Status;
         public readonly Outputs.GetPagesDomainsResultValidationDataResult ValidationData;
         public readonly Outputs.GetPagesDomainsResultVerificationDataResult VerificationData;

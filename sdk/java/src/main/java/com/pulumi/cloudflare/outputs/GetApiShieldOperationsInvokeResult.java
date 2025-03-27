@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 public final class GetApiShieldOperationsInvokeResult {
     /**
      * @return Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
@@ -52,6 +53,7 @@ public final class GetApiShieldOperationsInvokeResult {
     private @Nullable List<String> methods;
     /**
      * @return Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+     * Available values: &#34;method&#34;, &#34;host&#34;, &#34;endpoint&#34;, &#34;thresholds.$key&#34;.
      * 
      */
     private @Nullable String order;
@@ -69,6 +71,7 @@ public final class GetApiShieldOperationsInvokeResult {
     private GetApiShieldOperationsInvokeResult() {}
     /**
      * @return Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -118,6 +121,7 @@ public final class GetApiShieldOperationsInvokeResult {
     }
     /**
      * @return Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+     * Available values: &#34;method&#34;, &#34;host&#34;, &#34;endpoint&#34;, &#34;thresholds.$key&#34;.
      * 
      */
     public Optional<String> order() {

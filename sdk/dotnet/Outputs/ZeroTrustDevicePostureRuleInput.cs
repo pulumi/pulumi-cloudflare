@@ -35,6 +35,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Cn;
         /// <summary>
         /// Compliance Status
+        /// Available values: "compliant", "noncompliant", "unknown".
         /// </summary>
         public readonly string? ComplianceStatus;
         /// <summary>
@@ -43,6 +44,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? ConnectionId;
         /// <summary>
         /// Count Operator
+        /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         public readonly string? CountOperator;
         /// <summary>
@@ -88,18 +90,22 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.ZeroTrustDevicePostureRuleInputLocations? Locations;
         /// <summary>
         /// Network status of device.
+        /// Available values: "connected", "disconnected", "disconnecting", "connecting".
         /// </summary>
         public readonly string? NetworkStatus;
         /// <summary>
         /// Operating system
+        /// Available values: "windows", "linux", "mac".
         /// </summary>
         public readonly string? OperatingSystem;
         /// <summary>
         /// Agent operational state.
+        /// Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
         /// </summary>
         public readonly string? OperationalState;
         /// <summary>
         /// operator
+        /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         public readonly string? Operator;
         /// <summary>
@@ -132,6 +138,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool? RequireAll;
         /// <summary>
         /// For more details on risk level, refer to the Tanium documentation.
+        /// Available values: "low", "medium", "high", "critical".
         /// </summary>
         public readonly string? RiskLevel;
         /// <summary>
@@ -140,6 +147,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double? Score;
         /// <summary>
         /// Score Operator
+        /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         public readonly string? ScoreOperator;
         /// <summary>
@@ -152,6 +160,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Sha256;
         /// <summary>
         /// For more details on state, please refer to the Crowdstrike documentation.
+        /// Available values: "online", "offline", "unknown".
         /// </summary>
         public readonly string? State;
         /// <summary>
@@ -168,6 +177,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Version;
         /// <summary>
         /// Version Operator
+        /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         public readonly string? VersionOperator;
 

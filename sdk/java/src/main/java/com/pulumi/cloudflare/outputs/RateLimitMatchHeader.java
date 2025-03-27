@@ -18,6 +18,7 @@ public final class RateLimitMatchHeader {
     private @Nullable String name;
     /**
      * @return The operator used when matching: `eq` means &#34;equal&#34; and `ne` means &#34;not equal&#34;.
+     * Available values: &#34;eq&#34;, &#34;ne&#34;.
      * 
      */
     private @Nullable String op;
@@ -37,6 +38,7 @@ public final class RateLimitMatchHeader {
     }
     /**
      * @return The operator used when matching: `eq` means &#34;equal&#34; and `ne` means &#34;not equal&#34;.
+     * Available values: &#34;eq&#34;, &#34;ne&#34;.
      * 
      */
     public Optional<String> op() {

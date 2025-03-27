@@ -18,6 +18,7 @@ public final class GetTieredCacheResult {
     private Boolean editable;
     /**
      * @return ID of the zone setting.
+     * Available values: &#34;tiered*cache*smart*topology*enable&#34;.
      * 
      */
     private String id;
@@ -28,6 +29,7 @@ public final class GetTieredCacheResult {
     private String modifiedOn;
     /**
      * @return The value of the feature
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     private String value;
@@ -47,6 +49,7 @@ public final class GetTieredCacheResult {
     }
     /**
      * @return ID of the zone setting.
+     * Available values: &#34;tiered*cache*smart*topology*enable&#34;.
      * 
      */
     public String id() {
@@ -61,6 +64,7 @@ public final class GetTieredCacheResult {
     }
     /**
      * @return The value of the feature
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public String value() {

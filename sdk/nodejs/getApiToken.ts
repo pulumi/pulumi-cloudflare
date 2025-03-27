@@ -78,6 +78,7 @@ export interface GetApiTokenResult {
     readonly policies: outputs.GetApiTokenPolicy[];
     /**
      * Status of the token.
+     * Available values: "active", "disabled", "expired".
      */
     readonly status: string;
     /**

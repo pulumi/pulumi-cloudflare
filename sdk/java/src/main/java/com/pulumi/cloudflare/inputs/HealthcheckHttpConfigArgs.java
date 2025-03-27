@@ -96,6 +96,7 @@ public final class HealthcheckHttpConfigArgs extends com.pulumi.resources.Resour
 
     /**
      * The HTTP method to use for the health check.
+     * Available values: &#34;GET&#34;, &#34;HEAD&#34;.
      * 
      */
     @Import(name="method")
@@ -103,6 +104,7 @@ public final class HealthcheckHttpConfigArgs extends com.pulumi.resources.Resour
 
     /**
      * @return The HTTP method to use for the health check.
+     * Available values: &#34;GET&#34;, &#34;HEAD&#34;.
      * 
      */
     public Optional<Output<String>> method() {
@@ -287,6 +289,7 @@ public final class HealthcheckHttpConfigArgs extends com.pulumi.resources.Resour
 
         /**
          * @param method The HTTP method to use for the health check.
+         * Available values: &#34;GET&#34;, &#34;HEAD&#34;.
          * 
          * @return builder
          * 
@@ -298,6 +301,7 @@ public final class HealthcheckHttpConfigArgs extends com.pulumi.resources.Resour
 
         /**
          * @param method The HTTP method to use for the health check.
+         * Available values: &#34;GET&#34;, &#34;HEAD&#34;.
          * 
          * @return builder
          * 

@@ -19,6 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool Beta;
         /// <summary>
         /// Which account types are allowed to create policies based on this category. `blocked` categories are blocked unconditionally for all accounts. `removalPending` categories can be removed from policies but not added. `noBlock` categories cannot be blocked.
+        /// Available values: "free", "premium", "blocked", "removalPending", "noBlock".
         /// </summary>
         public readonly string Class;
         /// <summary>

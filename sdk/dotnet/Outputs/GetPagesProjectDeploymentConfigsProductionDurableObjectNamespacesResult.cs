@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetPagesProjectDeploymentConfigsProductionDurableObjectNamespacesResult
     {
         /// <summary>
-        /// ID of the Durabble Object namespace.
+        /// ID of the Durable Object namespace.
         /// </summary>
         public readonly string NamespaceId;
 

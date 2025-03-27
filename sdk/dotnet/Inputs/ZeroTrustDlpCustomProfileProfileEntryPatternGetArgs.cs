@@ -15,6 +15,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("regex", required: true)]
         public Input<string> Regex { get; set; } = null!;
 
+        /// <summary>
+        /// Available values: "luhn".
+        /// </summary>
         [Input("validation")]
         public Input<string>? Validation { get; set; }
 

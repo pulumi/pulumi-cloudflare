@@ -111,9 +111,17 @@ public class ZeroTrustRiskScoringIntegration extends com.pulumi.resources.Custom
     public Output<String> createdAt() {
         return this.createdAt;
     }
+    /**
+     * Available values: &#34;Okta&#34;.
+     * 
+     */
     @Export(name="integrationType", refs={String.class}, tree="[0]")
     private Output<String> integrationType;
 
+    /**
+     * @return Available values: &#34;Okta&#34;.
+     * 
+     */
     public Output<String> integrationType() {
         return this.integrationType;
     }

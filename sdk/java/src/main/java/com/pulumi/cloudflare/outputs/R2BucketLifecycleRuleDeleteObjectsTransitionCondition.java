@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 public final class R2BucketLifecycleRuleDeleteObjectsTransitionCondition {
     private @Nullable String date;
     private @Nullable Integer maxAge;
+    /**
+     * @return Available values: &#34;Age&#34;.
+     * 
+     */
     private String type;
 
     private R2BucketLifecycleRuleDeleteObjectsTransitionCondition() {}
@@ -24,6 +28,10 @@ public final class R2BucketLifecycleRuleDeleteObjectsTransitionCondition {
     public Optional<Integer> maxAge() {
         return Optional.ofNullable(this.maxAge);
     }
+    /**
+     * @return Available values: &#34;Age&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }

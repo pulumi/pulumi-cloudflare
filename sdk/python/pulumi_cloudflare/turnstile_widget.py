@@ -32,6 +32,7 @@ class TurnstileWidgetArgs:
         The set of arguments for constructing a TurnstileWidget resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] mode: Widget Mode
+               Available values: "non-interactive", "invisible", "managed".
         :param pulumi.Input[str] name: Human readable widget name. Not unique. Cloudflare suggests that you
                set this to a meaningful string to make it easier to identify your
                widget, and where it is used.
@@ -39,9 +40,11 @@ class TurnstileWidgetArgs:
                expensive challenges in response to malicious bots (ENT only).
         :param pulumi.Input[str] clearance_level: If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
                this setting can determine the clearance level to be set
+               Available values: "no_clearance", "jschallenge", "managed", "interactive".
         :param pulumi.Input[bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
         :param pulumi.Input[bool] offlabel: Do not show any Cloudflare branding on the widget (ENT only).
         :param pulumi.Input[str] region: Region where this widget can be used.
+               Available values: "world".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "domains", domains)
@@ -84,6 +87,7 @@ class TurnstileWidgetArgs:
     def mode(self) -> pulumi.Input[str]:
         """
         Widget Mode
+        Available values: "non-interactive", "invisible", "managed".
         """
         return pulumi.get(self, "mode")
 
@@ -124,6 +128,7 @@ class TurnstileWidgetArgs:
         """
         If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
         this setting can determine the clearance level to be set
+        Available values: "no_clearance", "jschallenge", "managed", "interactive".
         """
         return pulumi.get(self, "clearance_level")
 
@@ -160,6 +165,7 @@ class TurnstileWidgetArgs:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         Region where this widget can be used.
+        Available values: "world".
         """
         return pulumi.get(self, "region")
 
@@ -191,15 +197,18 @@ class _TurnstileWidgetState:
                expensive challenges in response to malicious bots (ENT only).
         :param pulumi.Input[str] clearance_level: If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
                this setting can determine the clearance level to be set
+               Available values: "no_clearance", "jschallenge", "managed", "interactive".
         :param pulumi.Input[str] created_on: When the widget was created.
         :param pulumi.Input[bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
         :param pulumi.Input[str] mode: Widget Mode
+               Available values: "non-interactive", "invisible", "managed".
         :param pulumi.Input[str] modified_on: When the widget was modified.
         :param pulumi.Input[str] name: Human readable widget name. Not unique. Cloudflare suggests that you
                set this to a meaningful string to make it easier to identify your
                widget, and where it is used.
         :param pulumi.Input[bool] offlabel: Do not show any Cloudflare branding on the widget (ENT only).
         :param pulumi.Input[str] region: Region where this widget can be used.
+               Available values: "world".
         :param pulumi.Input[str] secret: Secret key for this widget.
         :param pulumi.Input[str] sitekey: Widget item identifier tag.
         """
@@ -261,6 +270,7 @@ class _TurnstileWidgetState:
         """
         If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
         this setting can determine the clearance level to be set
+        Available values: "no_clearance", "jschallenge", "managed", "interactive".
         """
         return pulumi.get(self, "clearance_level")
 
@@ -306,6 +316,7 @@ class _TurnstileWidgetState:
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
         Widget Mode
+        Available values: "non-interactive", "invisible", "managed".
         """
         return pulumi.get(self, "mode")
 
@@ -356,6 +367,7 @@ class _TurnstileWidgetState:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         Region where this widget can be used.
+        Available values: "world".
         """
         return pulumi.get(self, "region")
 
@@ -439,13 +451,16 @@ class TurnstileWidget(pulumi.CustomResource):
                expensive challenges in response to malicious bots (ENT only).
         :param pulumi.Input[str] clearance_level: If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
                this setting can determine the clearance level to be set
+               Available values: "no_clearance", "jschallenge", "managed", "interactive".
         :param pulumi.Input[bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
         :param pulumi.Input[str] mode: Widget Mode
+               Available values: "non-interactive", "invisible", "managed".
         :param pulumi.Input[str] name: Human readable widget name. Not unique. Cloudflare suggests that you
                set this to a meaningful string to make it easier to identify your
                widget, and where it is used.
         :param pulumi.Input[bool] offlabel: Do not show any Cloudflare branding on the widget (ENT only).
         :param pulumi.Input[str] region: Region where this widget can be used.
+               Available values: "world".
         """
         ...
     @overload
@@ -571,15 +586,18 @@ class TurnstileWidget(pulumi.CustomResource):
                expensive challenges in response to malicious bots (ENT only).
         :param pulumi.Input[str] clearance_level: If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
                this setting can determine the clearance level to be set
+               Available values: "no_clearance", "jschallenge", "managed", "interactive".
         :param pulumi.Input[str] created_on: When the widget was created.
         :param pulumi.Input[bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
         :param pulumi.Input[str] mode: Widget Mode
+               Available values: "non-interactive", "invisible", "managed".
         :param pulumi.Input[str] modified_on: When the widget was modified.
         :param pulumi.Input[str] name: Human readable widget name. Not unique. Cloudflare suggests that you
                set this to a meaningful string to make it easier to identify your
                widget, and where it is used.
         :param pulumi.Input[bool] offlabel: Do not show any Cloudflare branding on the widget (ENT only).
         :param pulumi.Input[str] region: Region where this widget can be used.
+               Available values: "world".
         :param pulumi.Input[str] secret: Secret key for this widget.
         :param pulumi.Input[str] sitekey: Widget item identifier tag.
         """
@@ -625,6 +643,7 @@ class TurnstileWidget(pulumi.CustomResource):
         """
         If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
         this setting can determine the clearance level to be set
+        Available values: "no_clearance", "jschallenge", "managed", "interactive".
         """
         return pulumi.get(self, "clearance_level")
 
@@ -654,6 +673,7 @@ class TurnstileWidget(pulumi.CustomResource):
     def mode(self) -> pulumi.Output[str]:
         """
         Widget Mode
+        Available values: "non-interactive", "invisible", "managed".
         """
         return pulumi.get(self, "mode")
 
@@ -688,6 +708,7 @@ class TurnstileWidget(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         Region where this widget can be used.
+        Available values: "world".
         """
         return pulumi.get(self, "region")
 

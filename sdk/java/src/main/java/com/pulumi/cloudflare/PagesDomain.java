@@ -13,12 +13,11 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * &gt; A DNS record for the domain is not automatically created. You need to create
- *    a `cloudflare.Record` resource for the domain you want to use.
+ *    a `cloudflare_record` resource for the domain you want to use.
  * 
  * ## Example Usage
  * 
@@ -80,9 +79,17 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
     public Output<String> accountId() {
         return this.accountId;
     }
+    /**
+     * Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+     * 
+     */
     @Export(name="certificateAuthority", refs={String.class}, tree="[0]")
     private Output<String> certificateAuthority;
 
+    /**
+     * @return Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+     * 
+     */
     public Output<String> certificateAuthority() {
         return this.certificateAuthority;
     }
@@ -99,17 +106,10 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
         return this.domainId;
     }
     @Export(name="name", refs={String.class}, tree="[0]")
-<<<<<<< HEAD
-    private Output</* @Nullable */ String> name;
-
-    public Output<Optional<String>> name() {
-        return Codegen.optional(this.name);
-=======
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
     /**
      * Name of the project.
@@ -125,9 +125,17 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
     public Output<String> projectName() {
         return this.projectName;
     }
+    /**
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
+     * 
+     */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
+    /**
+     * @return Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }

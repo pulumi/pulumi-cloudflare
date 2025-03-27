@@ -23,6 +23,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool? LearnedAvailable;
         /// <summary>
         /// Action taken on requests failing validation.
+        /// Available values: "none", "log", "block".
         /// </summary>
         public readonly string? MitigationAction;
 

@@ -16,6 +16,7 @@ import java.util.Objects;
 public final class GetFirewallRulesResult {
     /**
      * @return The action to apply to a matched request. The `log` action is only available on an Enterprise plan.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;, &#34;allow&#34;, &#34;log&#34;, &#34;bypass&#34;.
      * 
      */
     private String action;
@@ -50,6 +51,7 @@ public final class GetFirewallRulesResult {
     private GetFirewallRulesResult() {}
     /**
      * @return The action to apply to a matched request. The `log` action is only available on an Enterprise plan.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;, &#34;allow&#34;, &#34;log&#34;, &#34;bypass&#34;.
      * 
      */
     public String action() {

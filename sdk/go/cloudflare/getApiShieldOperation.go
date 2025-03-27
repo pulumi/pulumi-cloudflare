@@ -47,6 +47,7 @@ type LookupApiShieldOperationResult struct {
 	Id          string `pulumi:"id"`
 	LastUpdated string `pulumi:"lastUpdated"`
 	// The HTTP method used to access the endpoint.
+	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method string `pulumi:"method"`
 	// UUID
 	OperationId string `pulumi:"operationId"`
@@ -126,6 +127,7 @@ func (o LookupApiShieldOperationResultOutput) LastUpdated() pulumi.StringOutput 
 }
 
 // The HTTP method used to access the endpoint.
+// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 func (o LookupApiShieldOperationResultOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiShieldOperationResult) string { return v.Method }).(pulumi.StringOutput)
 }

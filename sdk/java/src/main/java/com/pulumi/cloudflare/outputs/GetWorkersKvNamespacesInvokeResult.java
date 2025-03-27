@@ -22,6 +22,7 @@ public final class GetWorkersKvNamespacesInvokeResult {
     private String accountId;
     /**
      * @return Direction to order namespaces.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
@@ -37,6 +38,7 @@ public final class GetWorkersKvNamespacesInvokeResult {
     private @Nullable Integer maxItems;
     /**
      * @return Field to order results by.
+     * Available values: &#34;id&#34;, &#34;title&#34;.
      * 
      */
     private @Nullable String order;
@@ -56,6 +58,7 @@ public final class GetWorkersKvNamespacesInvokeResult {
     }
     /**
      * @return Direction to order namespaces.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -77,6 +80,7 @@ public final class GetWorkersKvNamespacesInvokeResult {
     }
     /**
      * @return Field to order results by.
+     * Available values: &#34;id&#34;, &#34;title&#34;.
      * 
      */
     public Optional<String> order() {

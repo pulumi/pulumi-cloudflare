@@ -13,18 +13,72 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleMagicTransitSiteLan = Cloudflare.GetMagicTransitSiteLan.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         LanId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetMagicTransitSiteLanResult> InvokeAsync(GetMagicTransitSiteLanArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMagicTransitSiteLanResult>("cloudflare:index/getMagicTransitSiteLan:getMagicTransitSiteLan", args ?? new GetMagicTransitSiteLanArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleMagicTransitSiteLan = Cloudflare.GetMagicTransitSiteLan.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         LanId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetMagicTransitSiteLanResult> Invoke(GetMagicTransitSiteLanInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMagicTransitSiteLanResult>("cloudflare:index/getMagicTransitSiteLan:getMagicTransitSiteLan", args ?? new GetMagicTransitSiteLanInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleMagicTransitSiteLan = Cloudflare.GetMagicTransitSiteLan.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         LanId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetMagicTransitSiteLanResult> Invoke(GetMagicTransitSiteLanInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMagicTransitSiteLanResult>("cloudflare:index/getMagicTransitSiteLan:getMagicTransitSiteLan", args ?? new GetMagicTransitSiteLanInvokeArgs(), options.WithDefaults());
@@ -42,13 +96,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-<<<<<<< HEAD
-        [Input("lanId", required: true)]
-        public string LanId { get; set; } = null!;
-=======
         [Input("lanId")]
         public string? LanId { get; set; }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+
+        /// <summary>
+        /// Identifier
+        /// </summary>
+        [Input("siteId", required: true)]
+        public string SiteId { get; set; } = null!;
 
         public GetMagicTransitSiteLanArgs()
         {
@@ -67,13 +122,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-<<<<<<< HEAD
-        [Input("lanId", required: true)]
-        public Input<string> LanId { get; set; } = null!;
-=======
         [Input("lanId")]
         public Input<string>? LanId { get; set; }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+
+        /// <summary>
+        /// Identifier
+        /// </summary>
+        [Input("siteId", required: true)]
+        public Input<string> SiteId { get; set; } = null!;
 
         public GetMagicTransitSiteLanInvokeArgs()
         {
@@ -100,11 +156,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-<<<<<<< HEAD
-        public readonly string LanId;
-=======
         public readonly string? LanId;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public readonly string Name;
         public readonly Outputs.GetMagicTransitSiteLanNatResult Nat;
         public readonly int Physport;
@@ -130,11 +182,7 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-<<<<<<< HEAD
-            string lanId,
-=======
             string? lanId,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
             string name,
 

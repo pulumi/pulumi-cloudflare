@@ -18,7 +18,8 @@ public final class ZeroTrustAccessIdentityProviderScimConfig {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Indicates how a SCIM event updates a user identity used for policy evaluation. Use &#34;automatic&#34; to automatically update a user&#39;s identity and augment it with fields from the SCIM user resource. Use &#34;reauth&#34; to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With &#34;reauth&#34; identities will not contain fields from the SCIM user resource. With &#34;no_action&#34; identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+     * @return Indicates how a SCIM event updates a user identity used for policy evaluation. Use &#34;automatic&#34; to automatically update a user&#39;s identity and augment it with fields from the SCIM user resource. Use &#34;reauth&#34; to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With &#34;reauth&#34; identities will not contain fields from the SCIM user resource. With &#34;no*action&#34; identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+     * Available values: &#34;automatic&#34;, &#34;reauth&#34;, &#34;no*action&#34;.
      * 
      */
     private @Nullable String identityUpdateBehavior;
@@ -52,7 +53,8 @@ public final class ZeroTrustAccessIdentityProviderScimConfig {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Indicates how a SCIM event updates a user identity used for policy evaluation. Use &#34;automatic&#34; to automatically update a user&#39;s identity and augment it with fields from the SCIM user resource. Use &#34;reauth&#34; to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With &#34;reauth&#34; identities will not contain fields from the SCIM user resource. With &#34;no_action&#34; identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+     * @return Indicates how a SCIM event updates a user identity used for policy evaluation. Use &#34;automatic&#34; to automatically update a user&#39;s identity and augment it with fields from the SCIM user resource. Use &#34;reauth&#34; to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With &#34;reauth&#34; identities will not contain fields from the SCIM user resource. With &#34;no*action&#34; identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+     * Available values: &#34;automatic&#34;, &#34;reauth&#34;, &#34;no*action&#34;.
      * 
      */
     public Optional<String> identityUpdateBehavior() {

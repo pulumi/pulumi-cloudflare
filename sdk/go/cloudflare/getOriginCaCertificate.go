@@ -69,8 +69,10 @@ type LookupOriginCaCertificateResult struct {
 	// Identifier
 	Id string `pulumi:"id"`
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 	RequestType string `pulumi:"requestType"`
 	// The number of days for which the certificate should be valid.
+	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	RequestedValidity float64 `pulumi:"requestedValidity"`
 }
 
@@ -144,11 +146,13 @@ func (o LookupOriginCaCertificateResultOutput) Id() pulumi.StringOutput {
 }
 
 // Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 func (o LookupOriginCaCertificateResultOutput) RequestType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginCaCertificateResult) string { return v.RequestType }).(pulumi.StringOutput)
 }
 
 // The number of days for which the certificate should be valid.
+// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 func (o LookupOriginCaCertificateResultOutput) RequestedValidity() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupOriginCaCertificateResult) float64 { return v.RequestedValidity }).(pulumi.Float64Output)
 }

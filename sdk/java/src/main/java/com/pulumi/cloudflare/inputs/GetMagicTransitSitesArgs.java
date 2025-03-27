@@ -36,25 +36,15 @@ public final class GetMagicTransitSitesArgs extends com.pulumi.resources.InvokeA
      * Identifier
      * 
      */
-<<<<<<< HEAD
-    @Import(name="connectorIdentifier")
-    private @Nullable Output<String> connectorIdentifier;
-=======
     @Import(name="connectorid")
     private @Nullable Output<String> connectorid;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      * @return Identifier
      * 
      */
-<<<<<<< HEAD
-    public Optional<Output<String>> connectorIdentifier() {
-        return Optional.ofNullable(this.connectorIdentifier);
-=======
     public Optional<Output<String>> connectorid() {
         return Optional.ofNullable(this.connectorid);
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     /**
@@ -76,11 +66,7 @@ public final class GetMagicTransitSitesArgs extends com.pulumi.resources.InvokeA
 
     private GetMagicTransitSitesArgs(GetMagicTransitSitesArgs $) {
         this.accountId = $.accountId;
-<<<<<<< HEAD
-        this.connectorIdentifier = $.connectorIdentifier;
-=======
         this.connectorid = $.connectorid;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.maxItems = $.maxItems;
     }
 
@@ -124,42 +110,24 @@ public final class GetMagicTransitSitesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-<<<<<<< HEAD
-         * @param connectorIdentifier Identifier
-=======
          * @param connectorid Identifier
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 
          */
-<<<<<<< HEAD
-        public Builder connectorIdentifier(@Nullable Output<String> connectorIdentifier) {
-            $.connectorIdentifier = connectorIdentifier;
-=======
         public Builder connectorid(@Nullable Output<String> connectorid) {
             $.connectorid = connectorid;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return this;
         }
 
         /**
-<<<<<<< HEAD
-         * @param connectorIdentifier Identifier
-=======
          * @param connectorid Identifier
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 
          */
-<<<<<<< HEAD
-        public Builder connectorIdentifier(String connectorIdentifier) {
-            return connectorIdentifier(Output.of(connectorIdentifier));
-=======
         public Builder connectorid(String connectorid) {
             return connectorid(Output.of(connectorid));
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
 
         /**

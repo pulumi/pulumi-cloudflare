@@ -142,6 +142,7 @@ class GetKeylessCertificateResult:
     def status(self) -> str:
         """
         Status of the Keyless SSL.
+        Available values: "active", "deleted".
         """
         return pulumi.get(self, "status")
 

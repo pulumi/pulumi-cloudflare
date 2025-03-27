@@ -32,6 +32,7 @@ public final class PagesProjectLatestDeploymentLatestStageArgs extends com.pulum
 
     /**
      * The current build stage.
+     * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;clone_repo&#34;, &#34;build&#34;, &#34;deploy&#34;.
      * 
      */
     @Import(name="name")
@@ -39,6 +40,7 @@ public final class PagesProjectLatestDeploymentLatestStageArgs extends com.pulum
 
     /**
      * @return The current build stage.
+     * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;clone_repo&#34;, &#34;build&#34;, &#34;deploy&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -62,6 +64,7 @@ public final class PagesProjectLatestDeploymentLatestStageArgs extends com.pulum
 
     /**
      * State of the current stage.
+     * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;.
      * 
      */
     @Import(name="status")
@@ -69,6 +72,7 @@ public final class PagesProjectLatestDeploymentLatestStageArgs extends com.pulum
 
     /**
      * @return State of the current stage.
+     * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -125,6 +129,7 @@ public final class PagesProjectLatestDeploymentLatestStageArgs extends com.pulum
 
         /**
          * @param name The current build stage.
+         * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;clone_repo&#34;, &#34;build&#34;, &#34;deploy&#34;.
          * 
          * @return builder
          * 
@@ -136,6 +141,7 @@ public final class PagesProjectLatestDeploymentLatestStageArgs extends com.pulum
 
         /**
          * @param name The current build stage.
+         * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;clone_repo&#34;, &#34;build&#34;, &#34;deploy&#34;.
          * 
          * @return builder
          * 
@@ -167,6 +173,7 @@ public final class PagesProjectLatestDeploymentLatestStageArgs extends com.pulum
 
         /**
          * @param status State of the current stage.
+         * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;.
          * 
          * @return builder
          * 
@@ -178,6 +185,7 @@ public final class PagesProjectLatestDeploymentLatestStageArgs extends com.pulum
 
         /**
          * @param status State of the current stage.
+         * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;.
          * 
          * @return builder
          * 

@@ -108,6 +108,7 @@ type CustomSsl struct {
 	pulumi.CustomResourceState
 
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod pulumi.StringOutput `pulumi:"bundleMethod"`
 	// The zone's SSL certificate or certificate and the intermediate(s).
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
@@ -130,8 +131,10 @@ type CustomSsl struct {
 	// The type of hash used for the certificate.
 	Signature pulumi.StringOutput `pulumi:"signature"`
 	// Status of the zone's custom SSL.
+	// Available values: "active", "expired", "deleted", "pending", "initializing".
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// Available values: "legacy*custom", "sniCustom".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn pulumi.StringOutput `pulumi:"uploadedOn"`
@@ -155,6 +158,13 @@ func NewCustomSsl(ctx *pulumi.Context,
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	if args.PrivateKey != nil {
+		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"privateKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CustomSsl
 	err := ctx.RegisterResource("cloudflare:index/customSsl:CustomSsl", name, args, &resource, opts...)
@@ -179,6 +189,7 @@ func GetCustomSsl(ctx *pulumi.Context,
 // Input properties used for looking up and filtering CustomSsl resources.
 type customSslState struct {
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod *string `pulumi:"bundleMethod"`
 	// The zone's SSL certificate or certificate and the intermediate(s).
 	Certificate *string `pulumi:"certificate"`
@@ -201,8 +212,10 @@ type customSslState struct {
 	// The type of hash used for the certificate.
 	Signature *string `pulumi:"signature"`
 	// Status of the zone's custom SSL.
+	// Available values: "active", "expired", "deleted", "pending", "initializing".
 	Status *string `pulumi:"status"`
-	// The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// Available values: "legacy*custom", "sniCustom".
 	Type *string `pulumi:"type"`
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn *string `pulumi:"uploadedOn"`
@@ -212,6 +225,7 @@ type customSslState struct {
 
 type CustomSslState struct {
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod pulumi.StringPtrInput
 	// The zone's SSL certificate or certificate and the intermediate(s).
 	Certificate pulumi.StringPtrInput
@@ -234,8 +248,10 @@ type CustomSslState struct {
 	// The type of hash used for the certificate.
 	Signature pulumi.StringPtrInput
 	// Status of the zone's custom SSL.
+	// Available values: "active", "expired", "deleted", "pending", "initializing".
 	Status pulumi.StringPtrInput
-	// The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// Available values: "legacy*custom", "sniCustom".
 	Type pulumi.StringPtrInput
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn pulumi.StringPtrInput
@@ -249,6 +265,7 @@ func (CustomSslState) ElementType() reflect.Type {
 
 type customSslArgs struct {
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod *string `pulumi:"bundleMethod"`
 	// The zone's SSL certificate or certificate and the intermediate(s).
 	Certificate string `pulumi:"certificate"`
@@ -258,7 +275,8 @@ type customSslArgs struct {
 	Policy *string `pulumi:"policy"`
 	// The zone's private key.
 	PrivateKey string `pulumi:"privateKey"`
-	// The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// Available values: "legacy*custom", "sniCustom".
 	Type *string `pulumi:"type"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -267,6 +285,7 @@ type customSslArgs struct {
 // The set of arguments for constructing a CustomSsl resource.
 type CustomSslArgs struct {
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod pulumi.StringPtrInput
 	// The zone's SSL certificate or certificate and the intermediate(s).
 	Certificate pulumi.StringInput
@@ -276,7 +295,8 @@ type CustomSslArgs struct {
 	Policy pulumi.StringPtrInput
 	// The zone's private key.
 	PrivateKey pulumi.StringInput
-	// The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// Available values: "legacy*custom", "sniCustom".
 	Type pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringInput
@@ -370,6 +390,7 @@ func (o CustomSslOutput) ToCustomSslOutputWithContext(ctx context.Context) Custo
 }
 
 // A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+// Available values: "ubiquitous", "optimal", "force".
 func (o CustomSslOutput) BundleMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.BundleMethod }).(pulumi.StringOutput)
 }
@@ -428,11 +449,13 @@ func (o CustomSslOutput) Signature() pulumi.StringOutput {
 }
 
 // Status of the zone's custom SSL.
+// Available values: "active", "expired", "deleted", "pending", "initializing".
 func (o CustomSslOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+// Available values: "legacy*custom", "sniCustom".
 func (o CustomSslOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

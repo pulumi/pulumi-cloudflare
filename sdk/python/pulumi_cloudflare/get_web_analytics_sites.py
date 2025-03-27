@@ -73,6 +73,7 @@ class GetWebAnalyticsSitesResult:
     def order_by(self) -> Optional[str]:
         """
         The property used to sort the list of results.
+        Available values: "host", "created".
         """
         return pulumi.get(self, "order_by")
 
@@ -117,6 +118,7 @@ def get_web_analytics_sites(account_id: Optional[str] = None,
     :param str account_id: Identifier
     :param int max_items: Max items to fetch, default: 1000
     :param str order_by: The property used to sort the list of results.
+           Available values: "host", "created".
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -150,6 +152,7 @@ def get_web_analytics_sites_output(account_id: Optional[pulumi.Input[str]] = Non
     :param str account_id: Identifier
     :param int max_items: Max items to fetch, default: 1000
     :param str order_by: The property used to sort the list of results.
+           Available values: "host", "created".
     """
     __args__ = dict()
     __args__['accountId'] = account_id

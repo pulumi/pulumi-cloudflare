@@ -29,6 +29,7 @@ class AccountSubscriptionArgs:
         The set of arguments for constructing a AccountSubscription resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] frequency: How often the subscription is renewed automatically.
+               Available values: "weekly", "monthly", "quarterly", "yearly".
         :param pulumi.Input['AccountSubscriptionRatePlanArgs'] rate_plan: The rate plan applied to the subscription.
         :param pulumi.Input[str] subscription_identifier: Subscription identifier tag.
         """
@@ -57,6 +58,7 @@ class AccountSubscriptionArgs:
     def frequency(self) -> Optional[pulumi.Input[str]]:
         """
         How often the subscription is renewed automatically.
+        Available values: "weekly", "monthly", "quarterly", "yearly".
         """
         return pulumi.get(self, "frequency")
 
@@ -93,10 +95,6 @@ class AccountSubscriptionArgs:
 class _AccountSubscriptionState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
-<<<<<<< HEAD
-                 frequency: Optional[pulumi.Input[str]] = None,
-                 rate_plan: Optional[pulumi.Input['AccountSubscriptionRatePlanArgs']] = None,
-=======
                  currency: Optional[pulumi.Input[str]] = None,
                  current_period_end: Optional[pulumi.Input[str]] = None,
                  current_period_start: Optional[pulumi.Input[str]] = None,
@@ -104,33 +102,23 @@ class _AccountSubscriptionState:
                  price: Optional[pulumi.Input[float]] = None,
                  rate_plan: Optional[pulumi.Input['AccountSubscriptionRatePlanArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  subscription_identifier: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccountSubscription resources.
         :param pulumi.Input[str] account_id: Identifier
-<<<<<<< HEAD
-        :param pulumi.Input[str] frequency: How often the subscription is renewed automatically.
-        :param pulumi.Input['AccountSubscriptionRatePlanArgs'] rate_plan: The rate plan applied to the subscription.
-=======
         :param pulumi.Input[str] currency: The monetary unit in which pricing information is displayed.
         :param pulumi.Input[str] current_period_end: The end of the current period and also when the next billing is due.
         :param pulumi.Input[str] current_period_start: When the current billing period started. May match initial*period*start if this is the first period.
         :param pulumi.Input[str] frequency: How often the subscription is renewed automatically.
+               Available values: "weekly", "monthly", "quarterly", "yearly".
         :param pulumi.Input[float] price: The price of the subscription that will be billed, in US dollars.
         :param pulumi.Input['AccountSubscriptionRatePlanArgs'] rate_plan: The rate plan applied to the subscription.
         :param pulumi.Input[str] state: The state that the subscription is in.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+               Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
         :param pulumi.Input[str] subscription_identifier: Subscription identifier tag.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-<<<<<<< HEAD
-        if frequency is not None:
-            pulumi.set(__self__, "frequency", frequency)
-        if rate_plan is not None:
-            pulumi.set(__self__, "rate_plan", rate_plan)
-=======
         if currency is not None:
             pulumi.set(__self__, "currency", currency)
         if current_period_end is not None:
@@ -145,7 +133,6 @@ class _AccountSubscriptionState:
             pulumi.set(__self__, "rate_plan", rate_plan)
         if state is not None:
             pulumi.set(__self__, "state", state)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if subscription_identifier is not None:
             pulumi.set(__self__, "subscription_identifier", subscription_identifier)
 
@@ -163,8 +150,6 @@ class _AccountSubscriptionState:
 
     @property
     @pulumi.getter
-<<<<<<< HEAD
-=======
     def currency(self) -> Optional[pulumi.Input[str]]:
         """
         The monetary unit in which pricing information is displayed.
@@ -201,10 +186,10 @@ class _AccountSubscriptionState:
 
     @property
     @pulumi.getter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     def frequency(self) -> Optional[pulumi.Input[str]]:
         """
         How often the subscription is renewed automatically.
+        Available values: "weekly", "monthly", "quarterly", "yearly".
         """
         return pulumi.get(self, "frequency")
 
@@ -213,8 +198,6 @@ class _AccountSubscriptionState:
         pulumi.set(self, "frequency", value)
 
     @property
-<<<<<<< HEAD
-=======
     @pulumi.getter
     def price(self) -> Optional[pulumi.Input[float]]:
         """
@@ -227,7 +210,6 @@ class _AccountSubscriptionState:
         pulumi.set(self, "price", value)
 
     @property
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="ratePlan")
     def rate_plan(self) -> Optional[pulumi.Input['AccountSubscriptionRatePlanArgs']]:
         """
@@ -240,12 +222,11 @@ class _AccountSubscriptionState:
         pulumi.set(self, "rate_plan", value)
 
     @property
-<<<<<<< HEAD
-=======
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         The state that the subscription is in.
+        Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
         """
         return pulumi.get(self, "state")
 
@@ -254,7 +235,6 @@ class _AccountSubscriptionState:
         pulumi.set(self, "state", value)
 
     @property
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="subscriptionIdentifier")
     def subscription_identifier(self) -> Optional[pulumi.Input[str]]:
         """
@@ -284,6 +264,7 @@ class AccountSubscription(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] frequency: How often the subscription is renewed automatically.
+               Available values: "weekly", "monthly", "quarterly", "yearly".
         :param pulumi.Input[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']] rate_plan: The rate plan applied to the subscription.
         :param pulumi.Input[str] subscription_identifier: Subscription identifier tag.
         """
@@ -330,14 +311,11 @@ class AccountSubscription(pulumi.CustomResource):
             __props__.__dict__["frequency"] = frequency
             __props__.__dict__["rate_plan"] = rate_plan
             __props__.__dict__["subscription_identifier"] = subscription_identifier
-<<<<<<< HEAD
-=======
             __props__.__dict__["currency"] = None
             __props__.__dict__["current_period_end"] = None
             __props__.__dict__["current_period_start"] = None
             __props__.__dict__["price"] = None
             __props__.__dict__["state"] = None
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         super(AccountSubscription, __self__).__init__(
             'cloudflare:index/accountSubscription:AccountSubscription',
             resource_name,
@@ -349,10 +327,6 @@ class AccountSubscription(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-<<<<<<< HEAD
-            frequency: Optional[pulumi.Input[str]] = None,
-            rate_plan: Optional[pulumi.Input[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']]] = None,
-=======
             currency: Optional[pulumi.Input[str]] = None,
             current_period_end: Optional[pulumi.Input[str]] = None,
             current_period_start: Optional[pulumi.Input[str]] = None,
@@ -360,7 +334,6 @@ class AccountSubscription(pulumi.CustomResource):
             price: Optional[pulumi.Input[float]] = None,
             rate_plan: Optional[pulumi.Input[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             subscription_identifier: Optional[pulumi.Input[str]] = None) -> 'AccountSubscription':
         """
         Get an existing AccountSubscription resource's state with the given name, id, and optional extra
@@ -370,18 +343,15 @@ class AccountSubscription(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Identifier
-<<<<<<< HEAD
-        :param pulumi.Input[str] frequency: How often the subscription is renewed automatically.
-        :param pulumi.Input[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']] rate_plan: The rate plan applied to the subscription.
-=======
         :param pulumi.Input[str] currency: The monetary unit in which pricing information is displayed.
         :param pulumi.Input[str] current_period_end: The end of the current period and also when the next billing is due.
         :param pulumi.Input[str] current_period_start: When the current billing period started. May match initial*period*start if this is the first period.
         :param pulumi.Input[str] frequency: How often the subscription is renewed automatically.
+               Available values: "weekly", "monthly", "quarterly", "yearly".
         :param pulumi.Input[float] price: The price of the subscription that will be billed, in US dollars.
         :param pulumi.Input[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']] rate_plan: The rate plan applied to the subscription.
         :param pulumi.Input[str] state: The state that the subscription is in.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+               Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
         :param pulumi.Input[str] subscription_identifier: Subscription identifier tag.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -389,10 +359,6 @@ class AccountSubscription(pulumi.CustomResource):
         __props__ = _AccountSubscriptionState.__new__(_AccountSubscriptionState)
 
         __props__.__dict__["account_id"] = account_id
-<<<<<<< HEAD
-        __props__.__dict__["frequency"] = frequency
-        __props__.__dict__["rate_plan"] = rate_plan
-=======
         __props__.__dict__["currency"] = currency
         __props__.__dict__["current_period_end"] = current_period_end
         __props__.__dict__["current_period_start"] = current_period_start
@@ -400,7 +366,6 @@ class AccountSubscription(pulumi.CustomResource):
         __props__.__dict__["price"] = price
         __props__.__dict__["rate_plan"] = rate_plan
         __props__.__dict__["state"] = state
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         __props__.__dict__["subscription_identifier"] = subscription_identifier
         return AccountSubscription(resource_name, opts=opts, __props__=__props__)
 
@@ -414,8 +379,6 @@ class AccountSubscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-<<<<<<< HEAD
-=======
     def currency(self) -> pulumi.Output[str]:
         """
         The monetary unit in which pricing information is displayed.
@@ -440,16 +403,14 @@ class AccountSubscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     def frequency(self) -> pulumi.Output[Optional[str]]:
         """
         How often the subscription is renewed automatically.
+        Available values: "weekly", "monthly", "quarterly", "yearly".
         """
         return pulumi.get(self, "frequency")
 
     @property
-<<<<<<< HEAD
-=======
     @pulumi.getter
     def price(self) -> pulumi.Output[float]:
         """
@@ -458,7 +419,6 @@ class AccountSubscription(pulumi.CustomResource):
         return pulumi.get(self, "price")
 
     @property
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="ratePlan")
     def rate_plan(self) -> pulumi.Output['outputs.AccountSubscriptionRatePlan']:
         """
@@ -467,17 +427,15 @@ class AccountSubscription(pulumi.CustomResource):
         return pulumi.get(self, "rate_plan")
 
     @property
-<<<<<<< HEAD
-=======
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
         The state that the subscription is in.
+        Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
         """
         return pulumi.get(self, "state")
 
     @property
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="subscriptionIdentifier")
     def subscription_identifier(self) -> pulumi.Output[Optional[str]]:
         """

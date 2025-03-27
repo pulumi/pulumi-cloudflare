@@ -20,6 +20,7 @@ public final class RulesetRuleActionParametersFromValue {
     private @Nullable Boolean preserveQueryString;
     /**
      * @return The status code to be used for the redirect.
+     * Available values: 301, 302, 303, 307, 308.
      * 
      */
     private @Nullable Double statusCode;
@@ -39,6 +40,7 @@ public final class RulesetRuleActionParametersFromValue {
     }
     /**
      * @return The status code to be used for the redirect.
+     * Available values: 301, 302, 303, 307, 308.
      * 
      */
     public Optional<Double> statusCode() {

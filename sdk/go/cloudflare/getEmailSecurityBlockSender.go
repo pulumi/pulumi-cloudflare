@@ -69,7 +69,8 @@ type LookupEmailSecurityBlockSenderResult struct {
 	LastModified string `pulumi:"lastModified"`
 	Pattern      string `pulumi:"pattern"`
 	// The unique identifier for the allow policy.
-	PatternId   *int   `pulumi:"patternId"`
+	PatternId *int `pulumi:"patternId"`
+	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType string `pulumi:"patternType"`
 }
 
@@ -149,6 +150,7 @@ func (o LookupEmailSecurityBlockSenderResultOutput) PatternId() pulumi.IntPtrOut
 	return o.ApplyT(func(v LookupEmailSecurityBlockSenderResult) *int { return v.PatternId }).(pulumi.IntPtrOutput)
 }
 
+// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 func (o LookupEmailSecurityBlockSenderResultOutput) PatternType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityBlockSenderResult) string { return v.PatternType }).(pulumi.StringOutput)
 }

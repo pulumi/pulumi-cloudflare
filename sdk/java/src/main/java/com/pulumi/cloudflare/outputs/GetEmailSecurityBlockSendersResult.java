@@ -22,6 +22,10 @@ public final class GetEmailSecurityBlockSendersResult {
     private Boolean isRegex;
     private String lastModified;
     private String pattern;
+    /**
+     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * 
+     */
     private String patternType;
 
     private GetEmailSecurityBlockSendersResult() {}
@@ -47,6 +51,10 @@ public final class GetEmailSecurityBlockSendersResult {
     public String pattern() {
         return this.pattern;
     }
+    /**
+     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * 
+     */
     public String patternType() {
         return this.patternType;
     }

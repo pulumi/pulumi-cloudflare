@@ -76,6 +76,9 @@ class GetPagesDomainResult:
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> str:
+        """
+        Available values: "google", "lets_encrypt".
+        """
         return pulumi.get(self, "certificate_authority")
 
     @property
@@ -120,6 +123,9 @@ class GetPagesDomainResult:
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
+        """
         return pulumi.get(self, "status")
 
     @property

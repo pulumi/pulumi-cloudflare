@@ -81,6 +81,7 @@ export interface GetWorkersSecretResult {
     readonly secretName?: string;
     /**
      * The type of secret.
+     * Available values: "secretText".
      */
     readonly type: string;
 }

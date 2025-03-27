@@ -65,6 +65,7 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: "allow", "deny", "nonIdentity", "bypass".
      */
     public readonly decision!: pulumi.Output<string>;
     /**
@@ -163,6 +164,8 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessPolicy:AccessPolicy" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustAccessPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -190,6 +193,7 @@ export interface ZeroTrustAccessPolicyState {
     createdAt?: pulumi.Input<string>;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: "allow", "deny", "nonIdentity", "bypass".
      */
     decision?: pulumi.Input<string>;
     /**
@@ -246,6 +250,7 @@ export interface ZeroTrustAccessPolicyArgs {
     approvalRequired?: pulumi.Input<boolean>;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: "allow", "deny", "nonIdentity", "bypass".
      */
     decision: pulumi.Input<string>;
     /**

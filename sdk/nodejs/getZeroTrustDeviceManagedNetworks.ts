@@ -61,6 +61,7 @@ export interface GetZeroTrustDeviceManagedNetworksResult {
     readonly networkId: string;
     /**
      * The type of device managed network.
+     * Available values: "tls".
      */
     readonly type: string;
 }

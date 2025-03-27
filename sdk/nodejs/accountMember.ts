@@ -71,6 +71,9 @@ export class AccountMember extends pulumi.CustomResource {
      * Array of roles associated with this member.
      */
     public readonly roles!: pulumi.Output<string[] | undefined>;
+    /**
+     * Available values: "accepted", "pending".
+     */
     public readonly status!: pulumi.Output<string>;
     /**
      * Details of the user associated to the membership.
@@ -136,6 +139,9 @@ export interface AccountMemberState {
      * Array of roles associated with this member.
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Available values: "accepted", "pending".
+     */
     status?: pulumi.Input<string>;
     /**
      * Details of the user associated to the membership.
@@ -163,5 +169,8 @@ export interface AccountMemberArgs {
      * Array of roles associated with this member.
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Available values: "accepted", "pending".
+     */
     status?: pulumi.Input<string>;
 }

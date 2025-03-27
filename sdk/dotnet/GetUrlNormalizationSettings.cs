@@ -117,10 +117,12 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         /// <summary>
         /// The scope of the URL normalization.
+        /// Available values: "incoming", "both".
         /// </summary>
         public readonly string Scope;
         /// <summary>
         /// The type of URL normalization performed by Cloudflare.
+        /// Available values: "cloudflare", "rfc3986".
         /// </summary>
         public readonly string Type;
         /// <summary>

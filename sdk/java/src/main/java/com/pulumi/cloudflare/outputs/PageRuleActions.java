@@ -16,413 +16,141 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PageRuleActions {
-    /**
-     * @return Boolean of whether this action is enabled. Default: false.
-     * 
-     */
     private @Nullable Boolean alwaysUseHttps;
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     private @Nullable String automaticHttpsRewrites;
-    /**
-     * @return The Time To Live for the browser cache. `0` means &#39;Respect Existing Headers&#39;
-     * 
-     */
     private @Nullable Integer browserCacheTtl;
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     private @Nullable String browserCheck;
-    /**
-     * @return String value of cookie name to conditionally bypass cache the page.
-     * 
-     */
     private @Nullable String bypassCacheOnCookie;
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     private @Nullable String cacheByDeviceType;
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     private @Nullable String cacheDeceptionArmor;
-    /**
-     * @return Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
-     * 
-     */
     private @Nullable PageRuleActionsCacheKeyFields cacheKeyFields;
-    /**
-     * @return Whether to set the cache level to `&#34;bypass&#34;`, `&#34;basic&#34;`, `&#34;simplified&#34;`, `&#34;aggressive&#34;`, or `&#34;cache_everything&#34;`.
-     * 
-     */
     private @Nullable String cacheLevel;
-    /**
-     * @return String value of cookie name to conditionally cache the page.
-     * 
-     */
     private @Nullable String cacheOnCookie;
-    /**
-     * @return Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
-     * 
-     */
     private @Nullable Object cacheTtlByStatus;
-    /**
-     * @return Boolean of whether this action is enabled. Default: false.
-     * 
-     */
     private @Nullable Boolean disableApps;
-    /**
-     * @return Boolean of whether this action is enabled. Default: false.
-     * 
-     */
     private @Nullable Boolean disablePerformance;
-    /**
-     * @return Boolean of whether this action is enabled. Default: false.
-     * 
-     */
     private @Nullable Boolean disableSecurity;
-    /**
-     * @return Boolean of whether this action is enabled. Default: false.
-     * 
-     */
     private @Nullable Boolean disableZaraz;
-    /**
-     * @return The Time To Live for the edge cache.
-     * 
-     */
     private @Nullable Integer edgeCacheTtl;
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     private @Nullable String emailObfuscation;
-    /**
-     * @return Whether origin Cache-Control action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     private @Nullable String explicitCacheControl;
-    /**
-     * @return The URL to forward to, and with what status. See below.
-     * 
-     */
     private @Nullable PageRuleActionsForwardingUrl forwardingUrl;
-    /**
-     * @return Value of the Host header to send.
-     * 
-     */
     private @Nullable String hostHeaderOverride;
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     private @Nullable String ipGeolocation;
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     private @Nullable String mirage;
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     private @Nullable String opportunisticEncryption;
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     private @Nullable String originErrorPagePassThru;
-    /**
-     * @return Whether this action is `&#34;off&#34;`, `&#34;lossless&#34;` or `&#34;lossy&#34;`.
-     * 
-     */
     private @Nullable String polish;
-    /**
-     * @return Overridden origin server name.
-     * 
-     */
     private @Nullable String resolveOverride;
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     private @Nullable String respectStrongEtag;
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     private @Nullable String responseBuffering;
-    /**
-     * @return Whether to set the rocket loader to `&#34;on&#34;`, `&#34;off&#34;`.
-     * 
-     */
     private @Nullable String rocketLoader;
-    /**
-     * @return Whether to set the security level to `&#34;off&#34;`, `&#34;essentially_off&#34;`, `&#34;low&#34;`, `&#34;medium&#34;`, `&#34;high&#34;`, or `&#34;under_attack&#34;`.
-     * 
-     */
     private @Nullable String securityLevel;
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     private @Nullable String sortQueryStringForCache;
-    /**
-     * @return Whether to set the SSL mode to `&#34;off&#34;`, `&#34;flexible&#34;`, `&#34;full&#34;`, `&#34;strict&#34;`, or `&#34;origin_pull&#34;`.
-     * 
-     */
     private @Nullable String ssl;
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     private @Nullable String trueClientIpHeader;
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     private @Nullable String waf;
 
     private PageRuleActions() {}
-    /**
-     * @return Boolean of whether this action is enabled. Default: false.
-     * 
-     */
     public Optional<Boolean> alwaysUseHttps() {
         return Optional.ofNullable(this.alwaysUseHttps);
     }
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     public Optional<String> automaticHttpsRewrites() {
         return Optional.ofNullable(this.automaticHttpsRewrites);
     }
-    /**
-     * @return The Time To Live for the browser cache. `0` means &#39;Respect Existing Headers&#39;
-     * 
-     */
     public Optional<Integer> browserCacheTtl() {
         return Optional.ofNullable(this.browserCacheTtl);
     }
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     public Optional<String> browserCheck() {
         return Optional.ofNullable(this.browserCheck);
     }
-    /**
-     * @return String value of cookie name to conditionally bypass cache the page.
-     * 
-     */
     public Optional<String> bypassCacheOnCookie() {
         return Optional.ofNullable(this.bypassCacheOnCookie);
     }
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     public Optional<String> cacheByDeviceType() {
         return Optional.ofNullable(this.cacheByDeviceType);
     }
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     public Optional<String> cacheDeceptionArmor() {
         return Optional.ofNullable(this.cacheDeceptionArmor);
     }
-    /**
-     * @return Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
-     * 
-     */
     public Optional<PageRuleActionsCacheKeyFields> cacheKeyFields() {
         return Optional.ofNullable(this.cacheKeyFields);
     }
-    /**
-     * @return Whether to set the cache level to `&#34;bypass&#34;`, `&#34;basic&#34;`, `&#34;simplified&#34;`, `&#34;aggressive&#34;`, or `&#34;cache_everything&#34;`.
-     * 
-     */
     public Optional<String> cacheLevel() {
         return Optional.ofNullable(this.cacheLevel);
     }
-    /**
-     * @return String value of cookie name to conditionally cache the page.
-     * 
-     */
     public Optional<String> cacheOnCookie() {
         return Optional.ofNullable(this.cacheOnCookie);
     }
-    /**
-     * @return Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
-     * 
-     */
     public Optional<Object> cacheTtlByStatus() {
         return Optional.ofNullable(this.cacheTtlByStatus);
     }
-    /**
-     * @return Boolean of whether this action is enabled. Default: false.
-     * 
-     */
     public Optional<Boolean> disableApps() {
         return Optional.ofNullable(this.disableApps);
     }
-    /**
-     * @return Boolean of whether this action is enabled. Default: false.
-     * 
-     */
     public Optional<Boolean> disablePerformance() {
         return Optional.ofNullable(this.disablePerformance);
     }
-    /**
-     * @return Boolean of whether this action is enabled. Default: false.
-     * 
-     */
     public Optional<Boolean> disableSecurity() {
         return Optional.ofNullable(this.disableSecurity);
     }
-    /**
-     * @return Boolean of whether this action is enabled. Default: false.
-     * 
-     */
     public Optional<Boolean> disableZaraz() {
         return Optional.ofNullable(this.disableZaraz);
     }
-    /**
-     * @return The Time To Live for the edge cache.
-     * 
-     */
     public Optional<Integer> edgeCacheTtl() {
         return Optional.ofNullable(this.edgeCacheTtl);
     }
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     public Optional<String> emailObfuscation() {
         return Optional.ofNullable(this.emailObfuscation);
     }
-    /**
-     * @return Whether origin Cache-Control action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     public Optional<String> explicitCacheControl() {
         return Optional.ofNullable(this.explicitCacheControl);
     }
-    /**
-     * @return The URL to forward to, and with what status. See below.
-     * 
-     */
     public Optional<PageRuleActionsForwardingUrl> forwardingUrl() {
         return Optional.ofNullable(this.forwardingUrl);
     }
-    /**
-     * @return Value of the Host header to send.
-     * 
-     */
     public Optional<String> hostHeaderOverride() {
         return Optional.ofNullable(this.hostHeaderOverride);
     }
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     public Optional<String> ipGeolocation() {
         return Optional.ofNullable(this.ipGeolocation);
     }
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     public Optional<String> mirage() {
         return Optional.ofNullable(this.mirage);
     }
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     public Optional<String> opportunisticEncryption() {
         return Optional.ofNullable(this.opportunisticEncryption);
     }
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     public Optional<String> originErrorPagePassThru() {
         return Optional.ofNullable(this.originErrorPagePassThru);
     }
-    /**
-     * @return Whether this action is `&#34;off&#34;`, `&#34;lossless&#34;` or `&#34;lossy&#34;`.
-     * 
-     */
     public Optional<String> polish() {
         return Optional.ofNullable(this.polish);
     }
-    /**
-     * @return Overridden origin server name.
-     * 
-     */
     public Optional<String> resolveOverride() {
         return Optional.ofNullable(this.resolveOverride);
     }
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     public Optional<String> respectStrongEtag() {
         return Optional.ofNullable(this.respectStrongEtag);
     }
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     public Optional<String> responseBuffering() {
         return Optional.ofNullable(this.responseBuffering);
     }
-    /**
-     * @return Whether to set the rocket loader to `&#34;on&#34;`, `&#34;off&#34;`.
-     * 
-     */
     public Optional<String> rocketLoader() {
         return Optional.ofNullable(this.rocketLoader);
     }
-    /**
-     * @return Whether to set the security level to `&#34;off&#34;`, `&#34;essentially_off&#34;`, `&#34;low&#34;`, `&#34;medium&#34;`, `&#34;high&#34;`, or `&#34;under_attack&#34;`.
-     * 
-     */
     public Optional<String> securityLevel() {
         return Optional.ofNullable(this.securityLevel);
     }
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     public Optional<String> sortQueryStringForCache() {
         return Optional.ofNullable(this.sortQueryStringForCache);
     }
-    /**
-     * @return Whether to set the SSL mode to `&#34;off&#34;`, `&#34;flexible&#34;`, `&#34;full&#34;`, `&#34;strict&#34;`, or `&#34;origin_pull&#34;`.
-     * 
-     */
     public Optional<String> ssl() {
         return Optional.ofNullable(this.ssl);
     }
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     public Optional<String> trueClientIpHeader() {
         return Optional.ofNullable(this.trueClientIpHeader);
     }
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     public Optional<String> waf() {
         return Optional.ofNullable(this.waf);
     }

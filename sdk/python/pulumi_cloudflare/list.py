@@ -27,6 +27,7 @@ class ListArgs:
         The set of arguments for constructing a List resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+               Available values: "ip", "redirect", "hostname", "asn".
         :param pulumi.Input[str] name: An informative name for the list. Use this name in filter and rule expressions.
         :param pulumi.Input[str] description: An informative summary of the list.
         """
@@ -53,6 +54,7 @@ class ListArgs:
     def kind(self) -> pulumi.Input[str]:
         """
         The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+        Available values: "ip", "redirect", "hostname", "asn".
         """
         return pulumi.get(self, "kind")
 
@@ -102,6 +104,7 @@ class _ListState:
         :param pulumi.Input[str] created_on: The RFC 3339 timestamp of when the list was created.
         :param pulumi.Input[str] description: An informative summary of the list.
         :param pulumi.Input[str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+               Available values: "ip", "redirect", "hostname", "asn".
         :param pulumi.Input[str] modified_on: The RFC 3339 timestamp of when the list was last modified.
         :param pulumi.Input[str] name: An informative name for the list. Use this name in filter and rule expressions.
         :param pulumi.Input[float] num_items: The number of items in the list.
@@ -165,6 +168,7 @@ class _ListState:
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+        Available values: "ip", "redirect", "hostname", "asn".
         """
         return pulumi.get(self, "kind")
 
@@ -256,6 +260,7 @@ class List(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] description: An informative summary of the list.
         :param pulumi.Input[str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+               Available values: "ip", "redirect", "hostname", "asn".
         :param pulumi.Input[str] name: An informative name for the list. Use this name in filter and rule expressions.
         """
         ...
@@ -355,6 +360,7 @@ class List(pulumi.CustomResource):
         :param pulumi.Input[str] created_on: The RFC 3339 timestamp of when the list was created.
         :param pulumi.Input[str] description: An informative summary of the list.
         :param pulumi.Input[str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+               Available values: "ip", "redirect", "hostname", "asn".
         :param pulumi.Input[str] modified_on: The RFC 3339 timestamp of when the list was last modified.
         :param pulumi.Input[str] name: An informative name for the list. Use this name in filter and rule expressions.
         :param pulumi.Input[float] num_items: The number of items in the list.
@@ -403,6 +409,7 @@ class List(pulumi.CustomResource):
     def kind(self) -> pulumi.Output[str]:
         """
         The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+        Available values: "ip", "redirect", "hostname", "asn".
         """
         return pulumi.get(self, "kind")
 

@@ -53,6 +53,7 @@ class GetUrlNormalizationSettingsResult:
     def scope(self) -> str:
         """
         The scope of the URL normalization.
+        Available values: "incoming", "both".
         """
         return pulumi.get(self, "scope")
 
@@ -61,6 +62,7 @@ class GetUrlNormalizationSettingsResult:
     def type(self) -> str:
         """
         The type of URL normalization performed by Cloudflare.
+        Available values: "cloudflare", "rfc3986".
         """
         return pulumi.get(self, "type")
 

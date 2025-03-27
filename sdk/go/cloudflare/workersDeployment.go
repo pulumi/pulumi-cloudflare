@@ -29,10 +29,11 @@ type WorkersDeployment struct {
 	CreatedOn   pulumi.StringOutput                    `pulumi:"createdOn"`
 	Deployments WorkersDeploymentDeploymentArrayOutput `pulumi:"deployments"`
 	// Name of the script.
-	ScriptName pulumi.StringOutput                 `pulumi:"scriptName"`
-	Source     pulumi.StringOutput                 `pulumi:"source"`
-	Strategy   pulumi.StringOutput                 `pulumi:"strategy"`
-	Versions   WorkersDeploymentVersionArrayOutput `pulumi:"versions"`
+	ScriptName pulumi.StringOutput `pulumi:"scriptName"`
+	Source     pulumi.StringOutput `pulumi:"source"`
+	// Available values: "percentage".
+	Strategy pulumi.StringOutput                 `pulumi:"strategy"`
+	Versions WorkersDeploymentVersionArrayOutput `pulumi:"versions"`
 }
 
 // NewWorkersDeployment registers a new resource with the given unique name, arguments, and options.
@@ -84,10 +85,11 @@ type workersDeploymentState struct {
 	CreatedOn   *string                       `pulumi:"createdOn"`
 	Deployments []WorkersDeploymentDeployment `pulumi:"deployments"`
 	// Name of the script.
-	ScriptName *string                    `pulumi:"scriptName"`
-	Source     *string                    `pulumi:"source"`
-	Strategy   *string                    `pulumi:"strategy"`
-	Versions   []WorkersDeploymentVersion `pulumi:"versions"`
+	ScriptName *string `pulumi:"scriptName"`
+	Source     *string `pulumi:"source"`
+	// Available values: "percentage".
+	Strategy *string                    `pulumi:"strategy"`
+	Versions []WorkersDeploymentVersion `pulumi:"versions"`
 }
 
 type WorkersDeploymentState struct {
@@ -100,8 +102,9 @@ type WorkersDeploymentState struct {
 	// Name of the script.
 	ScriptName pulumi.StringPtrInput
 	Source     pulumi.StringPtrInput
-	Strategy   pulumi.StringPtrInput
-	Versions   WorkersDeploymentVersionArrayInput
+	// Available values: "percentage".
+	Strategy pulumi.StringPtrInput
+	Versions WorkersDeploymentVersionArrayInput
 }
 
 func (WorkersDeploymentState) ElementType() reflect.Type {
@@ -113,9 +116,10 @@ type workersDeploymentArgs struct {
 	AccountId   string                        `pulumi:"accountId"`
 	Annotations *WorkersDeploymentAnnotations `pulumi:"annotations"`
 	// Name of the script.
-	ScriptName string                     `pulumi:"scriptName"`
-	Strategy   string                     `pulumi:"strategy"`
-	Versions   []WorkersDeploymentVersion `pulumi:"versions"`
+	ScriptName string `pulumi:"scriptName"`
+	// Available values: "percentage".
+	Strategy string                     `pulumi:"strategy"`
+	Versions []WorkersDeploymentVersion `pulumi:"versions"`
 }
 
 // The set of arguments for constructing a WorkersDeployment resource.
@@ -125,8 +129,9 @@ type WorkersDeploymentArgs struct {
 	Annotations WorkersDeploymentAnnotationsPtrInput
 	// Name of the script.
 	ScriptName pulumi.StringInput
-	Strategy   pulumi.StringInput
-	Versions   WorkersDeploymentVersionArrayInput
+	// Available values: "percentage".
+	Strategy pulumi.StringInput
+	Versions WorkersDeploymentVersionArrayInput
 }
 
 func (WorkersDeploymentArgs) ElementType() reflect.Type {
@@ -246,6 +251,7 @@ func (o WorkersDeploymentOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersDeployment) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
 }
 
+// Available values: "percentage".
 func (o WorkersDeploymentOutput) Strategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersDeployment) pulumi.StringOutput { return v.Strategy }).(pulumi.StringOutput)
 }

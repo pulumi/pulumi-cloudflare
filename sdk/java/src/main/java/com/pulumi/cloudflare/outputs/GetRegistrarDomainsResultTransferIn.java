@@ -13,11 +13,13 @@ import java.util.Objects;
 public final class GetRegistrarDomainsResultTransferIn {
     /**
      * @return Form of authorization has been accepted by the registrant.
+     * Available values: &#34;needed&#34;, &#34;ok&#34;.
      * 
      */
     private String acceptFoa;
     /**
      * @return Shows transfer status with the registry.
+     * Available values: &#34;needed&#34;, &#34;ok&#34;, &#34;pending&#34;, &#34;trying&#34;, &#34;rejected&#34;, &#34;unknown&#34;.
      * 
      */
     private String approveTransfer;
@@ -28,16 +30,19 @@ public final class GetRegistrarDomainsResultTransferIn {
     private Boolean canCancelTransfer;
     /**
      * @return Privacy guards are disabled at the foreign registrar.
+     * Available values: &#34;needed&#34;, &#34;ok&#34;, &#34;unknown&#34;.
      * 
      */
     private String disablePrivacy;
     /**
      * @return Auth code has been entered and verified.
+     * Available values: &#34;needed&#34;, &#34;ok&#34;, &#34;pending&#34;, &#34;trying&#34;, &#34;rejected&#34;.
      * 
      */
     private String enterAuthCode;
     /**
      * @return Domain is unlocked at the foreign registrar.
+     * Available values: &#34;needed&#34;, &#34;ok&#34;, &#34;pending&#34;, &#34;trying&#34;, &#34;unknown&#34;.
      * 
      */
     private String unlockDomain;
@@ -45,6 +50,7 @@ public final class GetRegistrarDomainsResultTransferIn {
     private GetRegistrarDomainsResultTransferIn() {}
     /**
      * @return Form of authorization has been accepted by the registrant.
+     * Available values: &#34;needed&#34;, &#34;ok&#34;.
      * 
      */
     public String acceptFoa() {
@@ -52,6 +58,7 @@ public final class GetRegistrarDomainsResultTransferIn {
     }
     /**
      * @return Shows transfer status with the registry.
+     * Available values: &#34;needed&#34;, &#34;ok&#34;, &#34;pending&#34;, &#34;trying&#34;, &#34;rejected&#34;, &#34;unknown&#34;.
      * 
      */
     public String approveTransfer() {
@@ -66,6 +73,7 @@ public final class GetRegistrarDomainsResultTransferIn {
     }
     /**
      * @return Privacy guards are disabled at the foreign registrar.
+     * Available values: &#34;needed&#34;, &#34;ok&#34;, &#34;unknown&#34;.
      * 
      */
     public String disablePrivacy() {
@@ -73,6 +81,7 @@ public final class GetRegistrarDomainsResultTransferIn {
     }
     /**
      * @return Auth code has been entered and verified.
+     * Available values: &#34;needed&#34;, &#34;ok&#34;, &#34;pending&#34;, &#34;trying&#34;, &#34;rejected&#34;.
      * 
      */
     public String enterAuthCode() {
@@ -80,6 +89,7 @@ public final class GetRegistrarDomainsResultTransferIn {
     }
     /**
      * @return Domain is unlocked at the foreign registrar.
+     * Available values: &#34;needed&#34;, &#34;ok&#34;, &#34;pending&#34;, &#34;trying&#34;, &#34;unknown&#34;.
      * 
      */
     public String unlockDomain() {

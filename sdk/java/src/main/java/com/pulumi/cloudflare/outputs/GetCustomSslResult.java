@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
 public final class GetCustomSslResult {
     /**
      * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     private String bundleMethod;
@@ -72,6 +73,7 @@ public final class GetCustomSslResult {
     private String signature;
     /**
      * @return Status of the zone&#39;s custom SSL.
+     * Available values: &#34;active&#34;, &#34;expired&#34;, &#34;deleted&#34;, &#34;pending&#34;, &#34;initializing&#34;.
      * 
      */
     private String status;
@@ -89,6 +91,7 @@ public final class GetCustomSslResult {
     private GetCustomSslResult() {}
     /**
      * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     public String bundleMethod() {
@@ -168,6 +171,7 @@ public final class GetCustomSslResult {
     }
     /**
      * @return Status of the zone&#39;s custom SSL.
+     * Available values: &#34;active&#34;, &#34;expired&#34;, &#34;deleted&#34;, &#34;pending&#34;, &#34;initializing&#34;.
      * 
      */
     public String status() {

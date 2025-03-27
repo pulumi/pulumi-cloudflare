@@ -54,6 +54,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        /// Available values: "google", "lets*encrypt", "ssl*com".
         /// </summary>
         [Output("certificateAuthority")]
         public Output<string> CertificateAuthority { get; private set; } = null!;
@@ -72,24 +73,28 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of certificate pack.
+        /// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// Type of certificate pack.
+        /// Available values: "advanced".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
         /// Validation Method selected for the order.
+        /// Available values: "txt", "http", "email".
         /// </summary>
         [Output("validationMethod")]
         public Output<string> ValidationMethod { get; private set; } = null!;
 
         /// <summary>
         /// Validity Days selected for the order.
+        /// Available values: 14, 30, 90, 365.
         /// </summary>
         [Output("validityDays")]
         public Output<int> ValidityDays { get; private set; } = null!;
@@ -148,6 +153,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        /// Available values: "google", "lets*encrypt", "ssl*com".
         /// </summary>
         [Input("certificateAuthority", required: true)]
         public Input<string> CertificateAuthority { get; set; } = null!;
@@ -172,18 +178,21 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Type of certificate pack.
+        /// Available values: "advanced".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
         /// Validation Method selected for the order.
+        /// Available values: "txt", "http", "email".
         /// </summary>
         [Input("validationMethod", required: true)]
         public Input<string> ValidationMethod { get; set; } = null!;
 
         /// <summary>
         /// Validity Days selected for the order.
+        /// Available values: 14, 30, 90, 365.
         /// </summary>
         [Input("validityDays", required: true)]
         public Input<int> ValidityDays { get; set; } = null!;
@@ -204,6 +213,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        /// Available values: "google", "lets*encrypt", "ssl*com".
         /// </summary>
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }
@@ -228,24 +238,28 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of certificate pack.
+        /// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
         /// Type of certificate pack.
+        /// Available values: "advanced".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
         /// Validation Method selected for the order.
+        /// Available values: "txt", "http", "email".
         /// </summary>
         [Input("validationMethod")]
         public Input<string>? ValidationMethod { get; set; }
 
         /// <summary>
         /// Validity Days selected for the order.
+        /// Available values: 14, 30, 90, 365.
         /// </summary>
         [Input("validityDays")]
         public Input<int>? ValidityDays { get; set; }

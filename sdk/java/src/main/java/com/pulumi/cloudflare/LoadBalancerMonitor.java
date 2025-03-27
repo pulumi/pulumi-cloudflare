@@ -320,6 +320,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
     }
     /**
      * The protocol to use for the health check. Currently supported protocols are &#39;HTTP&#39;,&#39;HTTPS&#39;, &#39;TCP&#39;, &#39;ICMP-PING&#39;, &#39;UDP-ICMP&#39;, and &#39;SMTP&#39;.
+     * Available values: &#34;http&#34;, &#34;https&#34;, &#34;tcp&#34;, &#34;udp*icmp&#34;, &#34;icmp*ping&#34;, &#34;smtp&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -327,6 +328,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The protocol to use for the health check. Currently supported protocols are &#39;HTTP&#39;,&#39;HTTPS&#39;, &#39;TCP&#39;, &#39;ICMP-PING&#39;, &#39;UDP-ICMP&#39;, and &#39;SMTP&#39;.
+     * Available values: &#34;http&#34;, &#34;https&#34;, &#34;tcp&#34;, &#34;udp*icmp&#34;, &#34;icmp*ping&#34;, &#34;smtp&#34;.
      * 
      */
     public Output<String> type() {

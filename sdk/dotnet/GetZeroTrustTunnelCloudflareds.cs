@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         ExcludePrefix = "vpc1-",
-        ///         ExistedAt = "2019-10-12T07:20:50.52Z",
+        ///         ExistedAt = "2019-10-12T07%3A20%3A50.52Z",
         ///         IncludePrefix = "vpc1-",
         ///         IsDeleted = true,
         ///         Name = "blog",
@@ -57,7 +57,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         ExcludePrefix = "vpc1-",
-        ///         ExistedAt = "2019-10-12T07:20:50.52Z",
+        ///         ExistedAt = "2019-10-12T07%3A20%3A50.52Z",
         ///         IncludePrefix = "vpc1-",
         ///         IsDeleted = true,
         ///         Name = "blog",
@@ -88,7 +88,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         ExcludePrefix = "vpc1-",
-        ///         ExistedAt = "2019-10-12T07:20:50.52Z",
+        ///         ExistedAt = "2019-10-12T07%3A20%3A50.52Z",
         ///         IncludePrefix = "vpc1-",
         ///         IsDeleted = true,
         ///         Name = "blog",
@@ -118,7 +118,7 @@ namespace Pulumi.Cloudflare
         public string? ExcludePrefix { get; set; }
 
         /// <summary>
-        /// If provided, include only tunnels that were created (and not deleted) before this time.
+        /// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
         /// </summary>
         [Input("existedAt")]
         public string? ExistedAt { get; set; }
@@ -146,6 +146,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+        /// Available values: "inactive", "degraded", "healthy", "down".
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -180,7 +181,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ExcludePrefix { get; set; }
 
         /// <summary>
-        /// If provided, include only tunnels that were created (and not deleted) before this time.
+        /// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
         /// </summary>
         [Input("existedAt")]
         public Input<string>? ExistedAt { get; set; }
@@ -208,6 +209,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+        /// Available values: "inactive", "degraded", "healthy", "down".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -240,7 +242,7 @@ namespace Pulumi.Cloudflare
         public readonly string AccountId;
         public readonly string? ExcludePrefix;
         /// <summary>
-        /// If provided, include only tunnels that were created (and not deleted) before this time.
+        /// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
         /// </summary>
         public readonly string? ExistedAt;
         /// <summary>
@@ -266,6 +268,7 @@ namespace Pulumi.Cloudflare
         public readonly ImmutableArray<Outputs.GetZeroTrustTunnelCloudflaredsResultResult> Results;
         /// <summary>
         /// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+        /// Available values: "inactive", "degraded", "healthy", "down".
         /// </summary>
         public readonly string? Status;
         /// <summary>

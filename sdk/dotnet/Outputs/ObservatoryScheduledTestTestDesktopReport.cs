@@ -19,6 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double? Cls;
         /// <summary>
         /// The type of device.
+        /// Available values: "DESKTOP", "MOBILE".
         /// </summary>
         public readonly string? DeviceType;
         public readonly Outputs.ObservatoryScheduledTestTestDesktopReportError? Error;
@@ -44,6 +45,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double? Si;
         /// <summary>
         /// The state of the Lighthouse report.
+        /// Available values: "RUNNING", "COMPLETE", "FAILED".
         /// </summary>
         public readonly string? State;
         /// <summary>

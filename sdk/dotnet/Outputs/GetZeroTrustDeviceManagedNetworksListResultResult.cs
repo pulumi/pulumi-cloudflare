@@ -27,6 +27,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string NetworkId;
         /// <summary>
         /// The type of device managed network.
+        /// Available values: "tls".
         /// </summary>
         public readonly string Type;
 

@@ -44,6 +44,7 @@ public final class GetWorkersSecretResult {
     private @Nullable String secretName;
     /**
      * @return The type of secret.
+     * Available values: &#34;secret_text&#34;.
      * 
      */
     private String type;
@@ -93,6 +94,7 @@ public final class GetWorkersSecretResult {
     }
     /**
      * @return The type of secret.
+     * Available values: &#34;secret_text&#34;.
      * 
      */
     public String type() {

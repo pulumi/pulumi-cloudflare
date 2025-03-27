@@ -128,6 +128,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The action to take if the expression matches
+        /// Available values: "allow", "log".
         /// </summary>
         public readonly string Action;
         /// <summary>

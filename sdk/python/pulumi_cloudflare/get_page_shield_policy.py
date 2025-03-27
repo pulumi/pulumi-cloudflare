@@ -57,6 +57,7 @@ class GetPageShieldPolicyResult:
     def action(self) -> str:
         """
         The action to take if the expression matches
+        Available values: "allow", "log".
         """
         return pulumi.get(self, "action")
 

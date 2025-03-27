@@ -78,6 +78,7 @@ export class AccountToken extends pulumi.CustomResource {
     public readonly policies!: pulumi.Output<outputs.AccountTokenPolicy[]>;
     /**
      * Status of the token.
+     * Available values: "active", "disabled", "expired".
      */
     public readonly status!: pulumi.Output<string | undefined>;
     /**
@@ -133,6 +134,8 @@ export class AccountToken extends pulumi.CustomResource {
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["value"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AccountToken.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -176,6 +179,7 @@ export interface AccountTokenState {
     policies?: pulumi.Input<pulumi.Input<inputs.AccountTokenPolicy>[]>;
     /**
      * Status of the token.
+     * Available values: "active", "disabled", "expired".
      */
     status?: pulumi.Input<string>;
     /**
@@ -211,6 +215,7 @@ export interface AccountTokenArgs {
     policies: pulumi.Input<pulumi.Input<inputs.AccountTokenPolicy>[]>;
     /**
      * Status of the token.
+     * Available values: "active", "disabled", "expired".
      */
     status?: pulumi.Input<string>;
 }

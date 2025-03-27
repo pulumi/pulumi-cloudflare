@@ -34,6 +34,7 @@ class QueueConsumerInitArgs:
         :param pulumi.Input[str] queue_id: A Resource identifier.
         :param pulumi.Input[str] consumer_id: A Resource identifier.
         :param pulumi.Input[str] script_name: Name of a Worker
+        :param pulumi.Input[str] type: Available values: "worker".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "queue_id", queue_id)
@@ -117,6 +118,9 @@ class QueueConsumerInitArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Available values: "worker".
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -143,6 +147,7 @@ class _QueueConsumerState:
         :param pulumi.Input[str] queue_id: A Resource identifier.
         :param pulumi.Input[str] script: Name of a Worker
         :param pulumi.Input[str] script_name: Name of a Worker
+        :param pulumi.Input[str] type: Available values: "worker".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -253,6 +258,9 @@ class _QueueConsumerState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Available values: "worker".
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -282,6 +290,7 @@ class QueueConsumer(pulumi.CustomResource):
         :param pulumi.Input[str] consumer_id: A Resource identifier.
         :param pulumi.Input[str] queue_id: A Resource identifier.
         :param pulumi.Input[str] script_name: Name of a Worker
+        :param pulumi.Input[str] type: Available values: "worker".
         """
         ...
     @overload
@@ -367,6 +376,7 @@ class QueueConsumer(pulumi.CustomResource):
         :param pulumi.Input[str] queue_id: A Resource identifier.
         :param pulumi.Input[str] script: Name of a Worker
         :param pulumi.Input[str] script_name: Name of a Worker
+        :param pulumi.Input[str] type: Available values: "worker".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -441,5 +451,8 @@ class QueueConsumer(pulumi.CustomResource):
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Available values: "worker".
+        """
         return pulumi.get(self, "type")
 

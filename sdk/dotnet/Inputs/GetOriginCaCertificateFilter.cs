@@ -15,8 +15,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("zoneId")]
-        public string? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public string ZoneId { get; set; } = null!;
 
         public GetOriginCaCertificateFilterArgs()
         {

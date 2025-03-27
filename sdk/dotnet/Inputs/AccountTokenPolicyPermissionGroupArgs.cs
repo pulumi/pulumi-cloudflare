@@ -15,13 +15,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Identifier of the group.
         /// </summary>
-<<<<<<< HEAD
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-=======
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Attributes associated to the permission group.

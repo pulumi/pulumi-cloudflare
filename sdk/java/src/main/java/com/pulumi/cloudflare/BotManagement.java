@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  *         var exampleBotManagement = new BotManagement("exampleBotManagement", BotManagementArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .aiBotsProtection("block")
+ *             .crawlerProtection("enabled")
  *             .enableJs(true)
  *             .fightMode(true)
  *             .build());
@@ -66,6 +67,7 @@ import javax.annotation.Nullable;
 public class BotManagement extends com.pulumi.resources.CustomResource {
     /**
      * Enable rule to block AI Scrapers and Crawlers.
+     * Available values: &#34;block&#34;, &#34;disabled&#34;.
      * 
      */
     @Export(name="aiBotsProtection", refs={String.class}, tree="[0]")
@@ -73,6 +75,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Enable rule to block AI Scrapers and Crawlers.
+     * Available values: &#34;block&#34;, &#34;disabled&#34;.
      * 
      */
     public Output<Optional<String>> aiBotsProtection() {
@@ -91,6 +94,22 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> autoUpdateModel() {
         return Codegen.optional(this.autoUpdateModel);
+    }
+    /**
+     * Enable rule to punish AI Scrapers and Crawlers via a link maze.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    @Export(name="crawlerProtection", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> crawlerProtection;
+
+    /**
+     * @return Enable rule to punish AI Scrapers and Crawlers via a link maze.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    public Output<Optional<String>> crawlerProtection() {
+        return Codegen.optional(this.crawlerProtection);
     }
     /**
      * Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
@@ -136,6 +155,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
     }
     /**
      * Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
      * 
      */
     @Export(name="sbfmDefinitelyAutomated", refs={String.class}, tree="[0]")
@@ -143,6 +163,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
      * 
      */
     public Output<Optional<String>> sbfmDefinitelyAutomated() {
@@ -150,6 +171,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
     }
     /**
      * Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
      * 
      */
     @Export(name="sbfmLikelyAutomated", refs={String.class}, tree="[0]")
@@ -157,6 +179,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
      * 
      */
     public Output<Optional<String>> sbfmLikelyAutomated() {
@@ -182,6 +205,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
     }
     /**
      * Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */
     @Export(name="sbfmVerifiedBots", refs={String.class}, tree="[0]")
@@ -189,6 +213,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */
     public Output<Optional<String>> sbfmVerifiedBots() {

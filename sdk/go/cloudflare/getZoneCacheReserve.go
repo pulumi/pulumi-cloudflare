@@ -56,20 +56,16 @@ type LookupZoneCacheReserveArgs struct {
 type LookupZoneCacheReserveResult struct {
 	// Whether the setting is editable
 	Editable bool `pulumi:"editable"`
-<<<<<<< HEAD
-	// The provider-assigned unique ID for this managed resource.
-=======
 	// ID of the zone setting.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+	// Available values: "cacheReserve".
 	Id string `pulumi:"id"`
 	// Last time this setting was modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
 	// The value of the feature
+	// Available values: "on", "off".
 	Value string `pulumi:"value"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
-	// ID of the zone setting.
-	ZoneSettingId string `pulumi:"zoneSettingId"`
 }
 
 func LookupZoneCacheReserveOutput(ctx *pulumi.Context, args LookupZoneCacheReserveOutputArgs, opts ...pulumi.InvokeOption) LookupZoneCacheReserveResultOutput {
@@ -112,6 +108,7 @@ func (o LookupZoneCacheReserveResultOutput) Editable() pulumi.BoolOutput {
 }
 
 // ID of the zone setting.
+// Available values: "cacheReserve".
 func (o LookupZoneCacheReserveResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneCacheReserveResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -122,6 +119,7 @@ func (o LookupZoneCacheReserveResultOutput) ModifiedOn() pulumi.StringOutput {
 }
 
 // The value of the feature
+// Available values: "on", "off".
 func (o LookupZoneCacheReserveResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneCacheReserveResult) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -129,11 +127,6 @@ func (o LookupZoneCacheReserveResultOutput) Value() pulumi.StringOutput {
 // Identifier
 func (o LookupZoneCacheReserveResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneCacheReserveResult) string { return v.ZoneId }).(pulumi.StringOutput)
-}
-
-// ID of the zone setting.
-func (o LookupZoneCacheReserveResultOutput) ZoneSettingId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZoneCacheReserveResult) string { return v.ZoneSettingId }).(pulumi.StringOutput)
 }
 
 func init() {

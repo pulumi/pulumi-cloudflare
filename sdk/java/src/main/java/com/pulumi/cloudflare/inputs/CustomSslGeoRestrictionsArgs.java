@@ -15,9 +15,17 @@ public final class CustomSslGeoRestrictionsArgs extends com.pulumi.resources.Res
 
     public static final CustomSslGeoRestrictionsArgs Empty = new CustomSslGeoRestrictionsArgs();
 
+    /**
+     * Available values: &#34;us&#34;, &#34;eu&#34;, &#34;highest_security&#34;.
+     * 
+     */
     @Import(name="label")
     private @Nullable Output<String> label;
 
+    /**
+     * @return Available values: &#34;us&#34;, &#34;eu&#34;, &#34;highest_security&#34;.
+     * 
+     */
     public Optional<Output<String>> label() {
         return Optional.ofNullable(this.label);
     }
@@ -46,11 +54,23 @@ public final class CustomSslGeoRestrictionsArgs extends com.pulumi.resources.Res
             $ = new CustomSslGeoRestrictionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param label Available values: &#34;us&#34;, &#34;eu&#34;, &#34;highest_security&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(@Nullable Output<String> label) {
             $.label = label;
             return this;
         }
 
+        /**
+         * @param label Available values: &#34;us&#34;, &#34;eu&#34;, &#34;highest_security&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(String label) {
             return label(Output.of(label));
         }

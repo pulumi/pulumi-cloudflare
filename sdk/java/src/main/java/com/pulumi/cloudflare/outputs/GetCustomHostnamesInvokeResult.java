@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 public final class GetCustomHostnamesInvokeResult {
     /**
      * @return Direction to order hostnames.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
@@ -38,6 +39,7 @@ public final class GetCustomHostnamesInvokeResult {
     private @Nullable Integer maxItems;
     /**
      * @return Field to order hostnames by.
+     * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
      * 
      */
     private String order;
@@ -48,6 +50,7 @@ public final class GetCustomHostnamesInvokeResult {
     private List<GetCustomHostnamesResult> results;
     /**
      * @return Whether to filter hostnames based on if they have SSL enabled.
+     * Available values: 0, 1.
      * 
      */
     private @Nullable Double ssl;
@@ -60,6 +63,7 @@ public final class GetCustomHostnamesInvokeResult {
     private GetCustomHostnamesInvokeResult() {}
     /**
      * @return Direction to order hostnames.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -88,6 +92,7 @@ public final class GetCustomHostnamesInvokeResult {
     }
     /**
      * @return Field to order hostnames by.
+     * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
      * 
      */
     public String order() {
@@ -102,6 +107,7 @@ public final class GetCustomHostnamesInvokeResult {
     }
     /**
      * @return Whether to filter hostnames based on if they have SSL enabled.
+     * Available values: 0, 1.
      * 
      */
     public Optional<Double> ssl() {

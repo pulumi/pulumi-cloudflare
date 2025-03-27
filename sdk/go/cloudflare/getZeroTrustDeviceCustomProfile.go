@@ -76,12 +76,14 @@ type LookupZeroTrustDeviceCustomProfileResult struct {
 	// Whether the policy will be applied to matching devices.
 	Enabled bool `pulumi:"enabled"`
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
-	ExcludeOfficeIps bool                                            `pulumi:"excludeOfficeIps"`
-	Excludes         []GetZeroTrustDeviceCustomProfileExclude        `pulumi:"excludes"`
-	FallbackDomains  []GetZeroTrustDeviceCustomProfileFallbackDomain `pulumi:"fallbackDomains"`
-	GatewayUniqueId  string                                          `pulumi:"gatewayUniqueId"`
+	ExcludeOfficeIps bool `pulumi:"excludeOfficeIps"`
+	// List of routes excluded in the WARP client's tunnel.
+	Excludes        []GetZeroTrustDeviceCustomProfileExclude        `pulumi:"excludes"`
+	FallbackDomains []GetZeroTrustDeviceCustomProfileFallbackDomain `pulumi:"fallbackDomains"`
+	GatewayUniqueId string                                          `pulumi:"gatewayUniqueId"`
 	// Device ID.
-	Id       string                                   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// List of routes included in the WARP client's tunnel.
 	Includes []GetZeroTrustDeviceCustomProfileInclude `pulumi:"includes"`
 	// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
 	LanAllowMinutes float64 `pulumi:"lanAllowMinutes"`
@@ -94,8 +96,10 @@ type LookupZeroTrustDeviceCustomProfileResult struct {
 	// Device ID.
 	PolicyId string `pulumi:"policyId"`
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
-	Precedence    float64                                      `pulumi:"precedence"`
-	ServiceModeV2 GetZeroTrustDeviceCustomProfileServiceModeV2 `pulumi:"serviceModeV2"`
+	Precedence float64 `pulumi:"precedence"`
+	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+	RegisterInterfaceIpWithDns bool                                         `pulumi:"registerInterfaceIpWithDns"`
+	ServiceModeV2              GetZeroTrustDeviceCustomProfileServiceModeV2 `pulumi:"serviceModeV2"`
 	// The URL to launch when the Send Feedback button is clicked.
 	SupportUrl string `pulumi:"supportUrl"`
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
@@ -194,6 +198,7 @@ func (o LookupZeroTrustDeviceCustomProfileResultOutput) ExcludeOfficeIps() pulum
 	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) bool { return v.ExcludeOfficeIps }).(pulumi.BoolOutput)
 }
 
+// List of routes excluded in the WARP client's tunnel.
 func (o LookupZeroTrustDeviceCustomProfileResultOutput) Excludes() GetZeroTrustDeviceCustomProfileExcludeArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) []GetZeroTrustDeviceCustomProfileExclude {
 		return v.Excludes
@@ -215,6 +220,7 @@ func (o LookupZeroTrustDeviceCustomProfileResultOutput) Id() pulumi.StringOutput
 	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// List of routes included in the WARP client's tunnel.
 func (o LookupZeroTrustDeviceCustomProfileResultOutput) Includes() GetZeroTrustDeviceCustomProfileIncludeArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) []GetZeroTrustDeviceCustomProfileInclude {
 		return v.Includes
@@ -249,6 +255,11 @@ func (o LookupZeroTrustDeviceCustomProfileResultOutput) PolicyId() pulumi.String
 // The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 func (o LookupZeroTrustDeviceCustomProfileResultOutput) Precedence() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) float64 { return v.Precedence }).(pulumi.Float64Output)
+}
+
+// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+func (o LookupZeroTrustDeviceCustomProfileResultOutput) RegisterInterfaceIpWithDns() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) bool { return v.RegisterInterfaceIpWithDns }).(pulumi.BoolOutput)
 }
 
 func (o LookupZeroTrustDeviceCustomProfileResultOutput) ServiceModeV2() GetZeroTrustDeviceCustomProfileServiceModeV2Output {

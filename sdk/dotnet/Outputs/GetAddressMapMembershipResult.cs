@@ -24,6 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Identifier;
         /// <summary>
         /// The type of the membership.
+        /// Available values: "zone", "account".
         /// </summary>
         public readonly string Kind;
 

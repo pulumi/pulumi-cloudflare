@@ -30,24 +30,6 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-<<<<<<< HEAD
-     * The unique identifier of the filter.
-     * 
-     */
-    @Import(name="filterId")
-    private @Nullable Output<String> filterId;
-
-    /**
-     * @return The unique identifier of the filter.
-     * 
-     */
-    public Optional<Output<String>> filterId() {
-        return Optional.ofNullable(this.filterId);
-    }
-
-    /**
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Identifier
      * 
      */
@@ -66,10 +48,6 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
 
     private FilterArgs(FilterArgs $) {
         this.expression = $.expression;
-<<<<<<< HEAD
-        this.filterId = $.filterId;
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.zoneId = $.zoneId;
     }
 
@@ -113,30 +91,6 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-<<<<<<< HEAD
-         * @param filterId The unique identifier of the filter.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder filterId(@Nullable Output<String> filterId) {
-            $.filterId = filterId;
-            return this;
-        }
-
-        /**
-         * @param filterId The unique identifier of the filter.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder filterId(String filterId) {
-            return filterId(Output.of(filterId));
-        }
-
-        /**
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param zoneId Identifier
          * 
          * @return builder

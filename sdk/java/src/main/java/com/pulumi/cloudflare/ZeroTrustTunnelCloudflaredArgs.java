@@ -33,6 +33,7 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
 
     /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
      * 
      */
     @Import(name="configSrc")
@@ -40,6 +41,7 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
 
     /**
      * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
      * 
      */
     public Optional<Output<String>> configSrc() {
@@ -126,6 +128,7 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
 
         /**
          * @param configSrc Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+         * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
          * 
          * @return builder
          * 
@@ -137,6 +140,7 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
 
         /**
          * @param configSrc Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+         * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
          * 
          * @return builder
          * 

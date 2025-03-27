@@ -37,6 +37,7 @@ class DnsRecordArgs:
         :param pulumi.Input[str] name: DNS record name (or @ for the zone apex) in Punycode.
         :param pulumi.Input[float] ttl: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
         :param pulumi.Input[str] type: Record type.
+               Available values: "A".
         :param pulumi.Input[str] zone_id: Identifier
         :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[str] content: A valid IPv4 address.
@@ -94,6 +95,7 @@ class DnsRecordArgs:
     def type(self) -> pulumi.Input[str]:
         """
         Record type.
+        Available values: "A".
         """
         return pulumi.get(self, "type")
 
@@ -236,6 +238,7 @@ class _DnsRecordState:
         :param pulumi.Input[str] tags_modified_on: When the record tags were last modified. Omitted if there are no tags.
         :param pulumi.Input[float] ttl: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
         :param pulumi.Input[str] type: Record type.
+               Available values: "A".
         :param pulumi.Input[str] zone_id: Identifier
         """
         if comment is not None:
@@ -458,6 +461,7 @@ class _DnsRecordState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         Record type.
+        Available values: "A".
         """
         return pulumi.get(self, "type")
 
@@ -516,6 +520,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Custom tags for the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[float] ttl: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
         :param pulumi.Input[str] type: Record type.
+               Available values: "A".
         :param pulumi.Input[str] zone_id: Identifier
         """
         ...
@@ -593,6 +598,8 @@ class DnsRecord(pulumi.CustomResource):
             __props__.__dict__["modified_on"] = None
             __props__.__dict__["proxiable"] = None
             __props__.__dict__["tags_modified_on"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/record:Record")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(DnsRecord, __self__).__init__(
             'cloudflare:index/dnsRecord:DnsRecord',
             resource_name,
@@ -643,6 +650,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[str] tags_modified_on: When the record tags were last modified. Omitted if there are no tags.
         :param pulumi.Input[float] ttl: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
         :param pulumi.Input[str] type: Record type.
+               Available values: "A".
         :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -793,6 +801,7 @@ class DnsRecord(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         Record type.
+        Available values: "A".
         """
         return pulumi.get(self, "type")
 

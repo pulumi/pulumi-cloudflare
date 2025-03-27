@@ -40,12 +40,13 @@ public final class GetPagesProjectCanonicalDeployment {
      */
     private GetPagesProjectCanonicalDeploymentDeploymentTrigger deploymentTrigger;
     /**
-     * @return A dict of env variables to build this deploy.
+     * @return Environment variables used for builds and Pages Functions.
      * 
      */
     private Map<String,GetPagesProjectCanonicalDeploymentEnvVars> envVars;
     /**
      * @return Type of deploy.
+     * Available values: &#34;preview&#34;, &#34;production&#34;.
      * 
      */
     private String environment;
@@ -126,7 +127,7 @@ public final class GetPagesProjectCanonicalDeployment {
         return this.deploymentTrigger;
     }
     /**
-     * @return A dict of env variables to build this deploy.
+     * @return Environment variables used for builds and Pages Functions.
      * 
      */
     public Map<String,GetPagesProjectCanonicalDeploymentEnvVars> envVars() {
@@ -134,6 +135,7 @@ public final class GetPagesProjectCanonicalDeployment {
     }
     /**
      * @return Type of deploy.
+     * Available values: &#34;preview&#34;, &#34;production&#34;.
      * 
      */
     public String environment() {

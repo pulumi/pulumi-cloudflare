@@ -24,6 +24,7 @@ public final class GetZoneSettingResult {
     private Boolean enabled;
     /**
      * @return ID of the zone setting.
+     * Available values: &#34;0rtt&#34;.
      * 
      */
     private String id;
@@ -45,6 +46,7 @@ public final class GetZoneSettingResult {
     private Double timeRemaining;
     /**
      * @return Current value of the zone setting.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     private String value;
@@ -71,6 +73,7 @@ public final class GetZoneSettingResult {
     }
     /**
      * @return ID of the zone setting.
+     * Available values: &#34;0rtt&#34;.
      * 
      */
     public String id() {
@@ -100,6 +103,7 @@ public final class GetZoneSettingResult {
     }
     /**
      * @return Current value of the zone setting.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public String value() {

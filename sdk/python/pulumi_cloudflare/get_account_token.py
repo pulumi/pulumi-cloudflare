@@ -156,6 +156,7 @@ class GetAccountTokenResult:
     def status(self) -> str:
         """
         Status of the token.
+        Available values: "active", "disabled", "expired".
         """
         return pulumi.get(self, "status")
 

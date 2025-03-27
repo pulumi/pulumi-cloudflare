@@ -281,6 +281,7 @@ class _HealthcheckState:
         :param pulumi.Input[str] name: A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
         :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
         :param pulumi.Input[str] status: The current status of the origin server according to the health check.
+               Available values: "unknown", "healthy", "unhealthy", "suspended".
         :param pulumi.Input[bool] suspended: If suspended, no health checks are sent to the origin.
         :param pulumi.Input['HealthcheckTcpConfigArgs'] tcp_config: Parameters specific to TCP health check.
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed.
@@ -467,6 +468,7 @@ class _HealthcheckState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         The current status of the origin server according to the health check.
+        Available values: "unknown", "healthy", "unhealthy", "suspended".
         """
         return pulumi.get(self, "status")
 
@@ -704,6 +706,7 @@ class Healthcheck(pulumi.CustomResource):
         :param pulumi.Input[str] name: A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
         :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
         :param pulumi.Input[str] status: The current status of the origin server according to the health check.
+               Available values: "unknown", "healthy", "unhealthy", "suspended".
         :param pulumi.Input[bool] suspended: If suspended, no health checks are sent to the origin.
         :param pulumi.Input[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict']] tcp_config: Parameters specific to TCP health check.
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed.
@@ -829,6 +832,7 @@ class Healthcheck(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         The current status of the origin server according to the health check.
+        Available values: "unknown", "healthy", "unhealthy", "suspended".
         """
         return pulumi.get(self, "status")
 

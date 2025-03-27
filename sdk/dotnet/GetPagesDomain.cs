@@ -145,6 +145,9 @@ namespace Pulumi.Cloudflare
         /// Identifier
         /// </summary>
         public readonly string AccountId;
+        /// <summary>
+        /// Available values: "google", "lets_encrypt".
+        /// </summary>
         public readonly string CertificateAuthority;
         public readonly string CreatedOn;
         public readonly string DomainId;
@@ -161,6 +164,9 @@ namespace Pulumi.Cloudflare
         /// Name of the project.
         /// </summary>
         public readonly string ProjectName;
+        /// <summary>
+        /// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
+        /// </summary>
         public readonly string Status;
         public readonly Outputs.GetPagesDomainValidationDataResult ValidationData;
         public readonly Outputs.GetPagesDomainVerificationDataResult VerificationData;

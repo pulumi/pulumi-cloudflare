@@ -66,6 +66,7 @@ type LookupZeroTrustDeviceManagedNetworksResult struct {
 	// API UUID.
 	NetworkId string `pulumi:"networkId"`
 	// The type of device managed network.
+	// Available values: "tls".
 	Type string `pulumi:"type"`
 }
 
@@ -131,6 +132,7 @@ func (o LookupZeroTrustDeviceManagedNetworksResultOutput) NetworkId() pulumi.Str
 }
 
 // The type of device managed network.
+// Available values: "tls".
 func (o LookupZeroTrustDeviceManagedNetworksResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceManagedNetworksResult) string { return v.Type }).(pulumi.StringOutput)
 }

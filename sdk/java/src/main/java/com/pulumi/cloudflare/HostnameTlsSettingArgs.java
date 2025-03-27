@@ -6,15 +6,9 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-<<<<<<< HEAD
-import java.lang.Double;
-=======
 import java.lang.Object;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceArgs {
@@ -25,19 +19,20 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
      * The hostname for which the tls settings are set.
      * 
      */
-    @Import(name="hostname")
-    private @Nullable Output<String> hostname;
+    @Import(name="hostname", required=true)
+    private Output<String> hostname;
 
     /**
      * @return The hostname for which the tls settings are set.
      * 
      */
-    public Optional<Output<String>> hostname() {
-        return Optional.ofNullable(this.hostname);
+    public Output<String> hostname() {
+        return this.hostname;
     }
 
     /**
      * The TLS Setting name.
+     * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
      * 
      */
     @Import(name="settingId", required=true)
@@ -45,6 +40,7 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The TLS Setting name.
+     * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
      * 
      */
     public Output<String> settingId() {
@@ -56,21 +52,13 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
      * 
      */
     @Import(name="value", required=true)
-<<<<<<< HEAD
-    private Output<Double> value;
-=======
     private Output<Object> value;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      * @return The tls setting value.
      * 
      */
-<<<<<<< HEAD
-    public Output<Double> value() {
-=======
     public Output<Object> value() {
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return this.value;
     }
 
@@ -122,7 +110,7 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder hostname(@Nullable Output<String> hostname) {
+        public Builder hostname(Output<String> hostname) {
             $.hostname = hostname;
             return this;
         }
@@ -139,6 +127,7 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param settingId The TLS Setting name.
+         * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
          * 
          * @return builder
          * 
@@ -150,6 +139,7 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param settingId The TLS Setting name.
+         * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
          * 
          * @return builder
          * 
@@ -164,11 +154,7 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-<<<<<<< HEAD
-        public Builder value(Output<Double> value) {
-=======
         public Builder value(Output<Object> value) {
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             $.value = value;
             return this;
         }
@@ -179,11 +165,7 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-<<<<<<< HEAD
-        public Builder value(Double value) {
-=======
         public Builder value(Object value) {
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return value(Output.of(value));
         }
 
@@ -209,6 +191,9 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
         }
 
         public HostnameTlsSettingArgs build() {
+            if ($.hostname == null) {
+                throw new MissingRequiredPropertyException("HostnameTlsSettingArgs", "hostname");
+            }
             if ($.settingId == null) {
                 throw new MissingRequiredPropertyException("HostnameTlsSettingArgs", "settingId");
             }

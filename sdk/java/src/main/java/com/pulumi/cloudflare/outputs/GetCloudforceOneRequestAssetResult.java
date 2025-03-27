@@ -5,10 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-<<<<<<< HEAD
-=======
 import java.lang.Integer;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 
@@ -25,12 +22,6 @@ public final class GetCloudforceOneRequestAssetResult {
      */
     private String assetIdentifer;
     /**
-<<<<<<< HEAD
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-=======
      * @return Asset creation time
      * 
      */
@@ -55,7 +46,6 @@ public final class GetCloudforceOneRequestAssetResult {
      * 
      */
     private String name;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return UUID
      * 
@@ -78,15 +68,6 @@ public final class GetCloudforceOneRequestAssetResult {
         return this.assetIdentifer;
     }
     /**
-<<<<<<< HEAD
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
-=======
      * @return Asset creation time
      * 
      */
@@ -122,7 +103,6 @@ public final class GetCloudforceOneRequestAssetResult {
         return this.name;
     }
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return UUID
      * 
      */
@@ -141,30 +121,22 @@ public final class GetCloudforceOneRequestAssetResult {
     public static final class Builder {
         private String accountIdentifier;
         private String assetIdentifer;
-<<<<<<< HEAD
-        private String id;
-=======
         private String created;
         private String description;
         private String fileType;
         private Integer id;
         private String name;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private String requestIdentifier;
         public Builder() {}
         public Builder(GetCloudforceOneRequestAssetResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountIdentifier = defaults.accountIdentifier;
     	      this.assetIdentifer = defaults.assetIdentifer;
-<<<<<<< HEAD
-    	      this.id = defaults.id;
-=======
     	      this.created = defaults.created;
     	      this.description = defaults.description;
     	      this.fileType = defaults.fileType;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.requestIdentifier = defaults.requestIdentifier;
         }
 
@@ -185,9 +157,6 @@ public final class GetCloudforceOneRequestAssetResult {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-        public Builder id(String id) {
-=======
         public Builder created(String created) {
             if (created == null) {
               throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetResult", "created");
@@ -213,7 +182,6 @@ public final class GetCloudforceOneRequestAssetResult {
         }
         @CustomType.Setter
         public Builder id(Integer id) {
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             if (id == null) {
               throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetResult", "id");
             }
@@ -221,8 +189,6 @@ public final class GetCloudforceOneRequestAssetResult {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetResult", "name");
@@ -231,7 +197,6 @@ public final class GetCloudforceOneRequestAssetResult {
             return this;
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder requestIdentifier(String requestIdentifier) {
             if (requestIdentifier == null) {
               throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetResult", "requestIdentifier");
@@ -243,15 +208,11 @@ public final class GetCloudforceOneRequestAssetResult {
             final var _resultValue = new GetCloudforceOneRequestAssetResult();
             _resultValue.accountIdentifier = accountIdentifier;
             _resultValue.assetIdentifer = assetIdentifer;
-<<<<<<< HEAD
-            _resultValue.id = id;
-=======
             _resultValue.created = created;
             _resultValue.description = description;
             _resultValue.fileType = fileType;
             _resultValue.id = id;
             _resultValue.name = name;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.requestIdentifier = requestIdentifier;
             return _resultValue;
         }

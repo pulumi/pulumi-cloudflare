@@ -10,11 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-<<<<<<<< HEAD:sdk/dotnet/Inputs/ApiShieldMessageGetArgs.cs
     public sealed class ApiShieldMessageGetArgs : global::Pulumi.ResourceArgs
-========
-    public sealed class WorkersRouteErrorArgs : global::Pulumi.ResourceArgs
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/dotnet/Inputs/WorkersRouteErrorArgs.cs
     {
         [Input("code")]
         public Input<int>? Code { get; set; }
@@ -22,16 +18,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("message")]
         public Input<string>? Message { get; set; }
 
-<<<<<<<< HEAD:sdk/dotnet/Inputs/ApiShieldMessageGetArgs.cs
         public ApiShieldMessageGetArgs()
         {
         }
         public static new ApiShieldMessageGetArgs Empty => new ApiShieldMessageGetArgs();
-========
-        public WorkersRouteErrorArgs()
-        {
-        }
-        public static new WorkersRouteErrorArgs Empty => new WorkersRouteErrorArgs();
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/dotnet/Inputs/WorkersRouteErrorArgs.cs
     }
 }

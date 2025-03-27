@@ -48,6 +48,7 @@ public final class ZoneCacheReserveState extends com.pulumi.resources.ResourceAr
 
     /**
      * Value of the Cache Reserve zone setting.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     @Import(name="value")
@@ -55,6 +56,7 @@ public final class ZoneCacheReserveState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Value of the Cache Reserve zone setting.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public Optional<Output<String>> value() {
@@ -76,21 +78,6 @@ public final class ZoneCacheReserveState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.zoneId);
     }
 
-    /**
-     * ID of the zone setting.
-     * 
-     */
-    @Import(name="zoneSettingId")
-    private @Nullable Output<String> zoneSettingId;
-
-    /**
-     * @return ID of the zone setting.
-     * 
-     */
-    public Optional<Output<String>> zoneSettingId() {
-        return Optional.ofNullable(this.zoneSettingId);
-    }
-
     private ZoneCacheReserveState() {}
 
     private ZoneCacheReserveState(ZoneCacheReserveState $) {
@@ -98,7 +85,6 @@ public final class ZoneCacheReserveState extends com.pulumi.resources.ResourceAr
         this.modifiedOn = $.modifiedOn;
         this.value = $.value;
         this.zoneId = $.zoneId;
-        this.zoneSettingId = $.zoneSettingId;
     }
 
     public static Builder builder() {
@@ -163,6 +149,7 @@ public final class ZoneCacheReserveState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param value Value of the Cache Reserve zone setting.
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 
@@ -174,6 +161,7 @@ public final class ZoneCacheReserveState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param value Value of the Cache Reserve zone setting.
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 
@@ -201,27 +189,6 @@ public final class ZoneCacheReserveState extends com.pulumi.resources.ResourceAr
          */
         public Builder zoneId(String zoneId) {
             return zoneId(Output.of(zoneId));
-        }
-
-        /**
-         * @param zoneSettingId ID of the zone setting.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneSettingId(@Nullable Output<String> zoneSettingId) {
-            $.zoneSettingId = zoneSettingId;
-            return this;
-        }
-
-        /**
-         * @param zoneSettingId ID of the zone setting.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneSettingId(String zoneSettingId) {
-            return zoneSettingId(Output.of(zoneSettingId));
         }
 
         public ZoneCacheReserveState build() {

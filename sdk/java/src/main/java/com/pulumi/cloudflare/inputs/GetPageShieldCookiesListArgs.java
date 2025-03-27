@@ -21,6 +21,7 @@ public final class GetPageShieldCookiesListArgs extends com.pulumi.resources.Inv
 
     /**
      * The direction used to sort returned cookies.&#39;
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -28,6 +29,7 @@ public final class GetPageShieldCookiesListArgs extends com.pulumi.resources.Inv
 
     /**
      * @return The direction used to sort returned cookies.&#39;
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -51,6 +53,7 @@ public final class GetPageShieldCookiesListArgs extends com.pulumi.resources.Inv
 
     /**
      * Export the list of cookies as a file.
+     * Available values: &#34;csv&#34;.
      * 
      */
     @Import(name="export")
@@ -58,6 +61,7 @@ public final class GetPageShieldCookiesListArgs extends com.pulumi.resources.Inv
 
     /**
      * @return Export the list of cookies as a file.
+     * Available values: &#34;csv&#34;.
      * 
      */
     public Optional<Output<String>> export() {
@@ -212,6 +216,7 @@ public final class GetPageShieldCookiesListArgs extends com.pulumi.resources.Inv
 
         /**
          * @param direction The direction used to sort returned cookies.&#39;
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -223,6 +228,7 @@ public final class GetPageShieldCookiesListArgs extends com.pulumi.resources.Inv
 
         /**
          * @param direction The direction used to sort returned cookies.&#39;
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -254,6 +260,7 @@ public final class GetPageShieldCookiesListArgs extends com.pulumi.resources.Inv
 
         /**
          * @param export Export the list of cookies as a file.
+         * Available values: &#34;csv&#34;.
          * 
          * @return builder
          * 
@@ -265,6 +272,7 @@ public final class GetPageShieldCookiesListArgs extends com.pulumi.resources.Inv
 
         /**
          * @param export Export the list of cookies as a file.
+         * Available values: &#34;csv&#34;.
          * 
          * @return builder
          * 

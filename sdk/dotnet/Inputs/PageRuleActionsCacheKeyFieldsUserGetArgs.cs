@@ -12,23 +12,12 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class PageRuleActionsCacheKeyFieldsUserGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
-        /// </summary>
         [Input("deviceType")]
         public Input<bool>? DeviceType { get; set; }
 
-        /// <summary>
-        /// `true` - includes the client’s country, derived from the IP address; defaults to `false`.
-        /// </summary>
         [Input("geo")]
         public Input<bool>? Geo { get; set; }
 
-        /// <summary>
-        /// `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
-        /// 
-        /// Example:
-        /// </summary>
         [Input("lang")]
         public Input<bool>? Lang { get; set; }
 

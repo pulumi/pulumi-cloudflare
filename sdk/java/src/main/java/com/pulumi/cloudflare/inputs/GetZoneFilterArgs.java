@@ -26,6 +26,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Direction to order zones.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -33,6 +34,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Direction to order zones.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -41,6 +43,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether to match all search requirements or at least one (any).
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     @Import(name="match", required=true)
@@ -48,6 +51,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether to match all search requirements or at least one (any).
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     public Output<String> match() {
@@ -87,6 +91,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Field to order zones by.
+     * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;.
      * 
      */
     @Import(name="order")
@@ -94,6 +99,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Field to order zones by.
+     * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;.
      * 
      */
     public Optional<Output<String>> order() {
@@ -102,6 +108,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A zone status
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
     @Import(name="status")
@@ -109,6 +116,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A zone status
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -155,6 +163,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param direction Direction to order zones.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -166,6 +175,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param direction Direction to order zones.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -176,6 +186,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param match Whether to match all search requirements or at least one (any).
+         * Available values: &#34;any&#34;, &#34;all&#34;.
          * 
          * @return builder
          * 
@@ -187,6 +198,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param match Whether to match all search requirements or at least one (any).
+         * Available values: &#34;any&#34;, &#34;all&#34;.
          * 
          * @return builder
          * 
@@ -234,6 +246,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param order Field to order zones by.
+         * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;.
          * 
          * @return builder
          * 
@@ -245,6 +258,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param order Field to order zones by.
+         * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;.
          * 
          * @return builder
          * 
@@ -255,6 +269,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status A zone status
+         * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
          * 
          * @return builder
          * 
@@ -266,6 +281,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status A zone status
+         * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
          * 
          * @return builder
          * 

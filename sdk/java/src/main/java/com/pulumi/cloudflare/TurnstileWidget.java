@@ -105,6 +105,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
     /**
      * If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
      * this setting can determine the clearance level to be set
+     * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
      * 
      */
     @Export(name="clearanceLevel", refs={String.class}, tree="[0]")
@@ -113,6 +114,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
     /**
      * @return If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
      * this setting can determine the clearance level to be set
+     * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
      * 
      */
     public Output<Optional<String>> clearanceLevel() {
@@ -154,6 +156,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
     }
     /**
      * Widget Mode
+     * Available values: &#34;non-interactive&#34;, &#34;invisible&#34;, &#34;managed&#34;.
      * 
      */
     @Export(name="mode", refs={String.class}, tree="[0]")
@@ -161,6 +164,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Widget Mode
+     * Available values: &#34;non-interactive&#34;, &#34;invisible&#34;, &#34;managed&#34;.
      * 
      */
     public Output<String> mode() {
@@ -214,6 +218,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
     }
     /**
      * Region where this widget can be used.
+     * Available values: &#34;world&#34;.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
@@ -221,6 +226,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Region where this widget can be used.
+     * Available values: &#34;world&#34;.
      * 
      */
     public Output<String> region() {

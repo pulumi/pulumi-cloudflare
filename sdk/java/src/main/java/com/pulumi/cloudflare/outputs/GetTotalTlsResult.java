@@ -14,6 +14,7 @@ import java.util.Objects;
 public final class GetTotalTlsResult {
     /**
      * @return The Certificate Authority that Total TLS certificates will be issued through.
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     private String certificateAuthority;
@@ -29,6 +30,7 @@ public final class GetTotalTlsResult {
     private String id;
     /**
      * @return The validity period in days for the certificates ordered via Total TLS.
+     * Available values: 90.
      * 
      */
     private Integer validityPeriod;
@@ -41,6 +43,7 @@ public final class GetTotalTlsResult {
     private GetTotalTlsResult() {}
     /**
      * @return The Certificate Authority that Total TLS certificates will be issued through.
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     public String certificateAuthority() {
@@ -62,6 +65,7 @@ public final class GetTotalTlsResult {
     }
     /**
      * @return The validity period in days for the certificates ordered via Total TLS.
+     * Available values: 90.
      * 
      */
     public Integer validityPeriod() {

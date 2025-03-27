@@ -9,63 +9,39 @@ import java.lang.String;
 import java.util.Objects;
 
 
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookPlainArgs.java
 public final class GetStreamWebhookPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetStreamWebhookPlainArgs Empty = new GetStreamWebhookPlainArgs();
 
     /**
      * The account identifier tag.
-========
-public final class GetStreamKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
-
-    public static final GetStreamKeyPlainArgs Empty = new GetStreamKeyPlainArgs();
-
-    /**
-     * Identifier
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamKeyPlainArgs.java
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookPlainArgs.java
      * @return The account identifier tag.
-========
-     * @return Identifier
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamKeyPlainArgs.java
      * 
      */
     public String accountId() {
         return this.accountId;
     }
 
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookPlainArgs.java
     private GetStreamWebhookPlainArgs() {}
 
     private GetStreamWebhookPlainArgs(GetStreamWebhookPlainArgs $) {
-========
-    private GetStreamKeyPlainArgs() {}
-
-    private GetStreamKeyPlainArgs(GetStreamKeyPlainArgs $) {
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamKeyPlainArgs.java
         this.accountId = $.accountId;
     }
 
     public static Builder builder() {
         return new Builder();
     }
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookPlainArgs.java
     public static Builder builder(GetStreamWebhookPlainArgs defaults) {
-========
-    public static Builder builder(GetStreamKeyPlainArgs defaults) {
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamKeyPlainArgs.java
         return new Builder(defaults);
     }
 
     public static final class Builder {
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookPlainArgs.java
         private GetStreamWebhookPlainArgs $;
 
         public Builder() {
@@ -78,20 +54,6 @@ public final class GetStreamKeyPlainArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param accountId The account identifier tag.
-========
-        private GetStreamKeyPlainArgs $;
-
-        public Builder() {
-            $ = new GetStreamKeyPlainArgs();
-        }
-
-        public Builder(GetStreamKeyPlainArgs defaults) {
-            $ = new GetStreamKeyPlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param accountId Identifier
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamKeyPlainArgs.java
          * 
          * @return builder
          * 
@@ -101,15 +63,9 @@ public final class GetStreamKeyPlainArgs extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookPlainArgs.java
         public GetStreamWebhookPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetStreamWebhookPlainArgs", "accountId");
-========
-        public GetStreamKeyPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetStreamKeyPlainArgs", "accountId");
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamKeyPlainArgs.java
             }
             return $;
         }

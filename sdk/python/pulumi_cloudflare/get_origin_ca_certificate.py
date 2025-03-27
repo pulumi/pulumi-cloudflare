@@ -115,6 +115,7 @@ class GetOriginCaCertificateResult:
     def request_type(self) -> str:
         """
         Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+        Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         """
         return pulumi.get(self, "request_type")
 
@@ -123,6 +124,7 @@ class GetOriginCaCertificateResult:
     def requested_validity(self) -> float:
         """
         The number of days for which the certificate should be valid.
+        Available values: 7, 30, 90, 365, 730, 1095, 5475.
         """
         return pulumi.get(self, "requested_validity")
 

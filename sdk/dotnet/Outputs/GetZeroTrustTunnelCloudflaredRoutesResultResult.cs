@@ -35,6 +35,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Network;
         /// <summary>
         /// The type of tunnel.
+        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
         /// </summary>
         public readonly string TunType;
         /// <summary>

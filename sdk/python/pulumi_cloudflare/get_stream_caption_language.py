@@ -102,6 +102,7 @@ class GetStreamCaptionLanguageResult:
     def status(self) -> str:
         """
         The status of a generated caption.
+        Available values: "ready", "inprogress", "error".
         """
         return pulumi.get(self, "status")
 
@@ -123,17 +124,29 @@ class AwaitableGetStreamCaptionLanguageResult(GetStreamCaptionLanguageResult):
 
 def get_stream_caption_language(account_id: Optional[str] = None,
                                 identifier: Optional[str] = None,
+                                language: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStreamCaptionLanguageResult:
     """
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_stream_caption_language = cloudflare.get_stream_caption_language(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        identifier="ea95132c15732412d22c1476fa83f27a",
+        language="tr")
+    ```
+
 
     :param str account_id: Identifier
     :param str identifier: A Cloudflare-generated unique identifier for a media item.
+    :param str language: The language tag in BCP 47 format.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['identifier'] = identifier
+    __args__['language'] = language
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage', __args__, opts=opts, typ=GetStreamCaptionLanguageResult).value
 
@@ -147,17 +160,29 @@ def get_stream_caption_language(account_id: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'))
 def get_stream_caption_language_output(account_id: Optional[pulumi.Input[str]] = None,
                                        identifier: Optional[pulumi.Input[str]] = None,
+                                       language: Optional[pulumi.Input[str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamCaptionLanguageResult]:
     """
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_stream_caption_language = cloudflare.get_stream_caption_language(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        identifier="ea95132c15732412d22c1476fa83f27a",
+        language="tr")
+    ```
+
 
     :param str account_id: Identifier
     :param str identifier: A Cloudflare-generated unique identifier for a media item.
+    :param str language: The language tag in BCP 47 format.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['identifier'] = identifier
+    __args__['language'] = language
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage', __args__, opts=opts, typ=GetStreamCaptionLanguageResult)
     return __ret__.apply(lambda __response__: GetStreamCaptionLanguageResult(

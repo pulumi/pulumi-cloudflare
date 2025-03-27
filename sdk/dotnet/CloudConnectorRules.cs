@@ -16,9 +16,8 @@ namespace Pulumi.Cloudflare
     public partial class CloudConnectorRules : global::Pulumi.CustomResource
     {
         /// <summary>
-<<<<<<< HEAD
-=======
         /// Cloud Provider type
+        /// Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
         /// </summary>
         [Output("cloudProvider")]
         public Output<string> CloudProvider { get; private set; } = null!;
@@ -39,7 +38,6 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.CloudConnectorRulesParameters> Parameters { get; private set; } = null!;
 
         /// <summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// List of Cloud Connector rules
         /// </summary>
         [Output("rules")]
@@ -97,7 +95,7 @@ namespace Pulumi.Cloudflare
 
     public sealed class CloudConnectorRulesArgs : global::Pulumi.ResourceArgs
     {
-        [Input("rules", required: true)]
+        [Input("rules")]
         private InputList<Inputs.CloudConnectorRulesRuleArgs>? _rules;
 
         /// <summary>
@@ -125,6 +123,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Cloud Provider type
+        /// Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
         /// </summary>
         [Input("cloudProvider")]
         public Input<string>? CloudProvider { get; set; }

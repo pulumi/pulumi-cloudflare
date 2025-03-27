@@ -66,6 +66,9 @@ export class ZeroTrustRiskScoringIntegration extends pulumi.CustomResource {
      * When the integration was created in RFC3339 format.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Available values: "Okta".
+     */
     public readonly integrationType!: pulumi.Output<string>;
     /**
      * A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
@@ -144,6 +147,9 @@ export interface ZeroTrustRiskScoringIntegrationState {
      * When the integration was created in RFC3339 format.
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * Available values: "Okta".
+     */
     integrationType?: pulumi.Input<string>;
     /**
      * A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
@@ -169,6 +175,9 @@ export interface ZeroTrustRiskScoringIntegrationArgs {
      * Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
      */
     active?: pulumi.Input<boolean>;
+    /**
+     * Available values: "Okta".
+     */
     integrationType: pulumi.Input<string>;
     /**
      * A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).

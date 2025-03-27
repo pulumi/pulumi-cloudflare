@@ -66,6 +66,7 @@ type WorkersScript struct {
 	// List of Workers that will consume logs from the attached Worker.
 	TailConsumers WorkersScriptTailConsumerArrayOutput `pulumi:"tailConsumers"`
 	// Usage model for the Worker invocations.
+	// Available values: "standard".
 	UsageModel pulumi.StringOutput `pulumi:"usageModel"`
 }
 
@@ -85,6 +86,12 @@ func NewWorkersScript(ctx *pulumi.Context,
 	if args.ScriptName == nil {
 		return nil, errors.New("invalid value for required argument 'ScriptName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/workerScript:WorkerScript"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkersScript
 	err := ctx.RegisterResource("cloudflare:index/workersScript:WorkersScript", name, args, &resource, opts...)
@@ -152,6 +159,7 @@ type workersScriptState struct {
 	// List of Workers that will consume logs from the attached Worker.
 	TailConsumers []WorkersScriptTailConsumer `pulumi:"tailConsumers"`
 	// Usage model for the Worker invocations.
+	// Available values: "standard".
 	UsageModel *string `pulumi:"usageModel"`
 }
 
@@ -200,6 +208,7 @@ type WorkersScriptState struct {
 	// List of Workers that will consume logs from the attached Worker.
 	TailConsumers WorkersScriptTailConsumerArrayInput
 	// Usage model for the Worker invocations.
+	// Available values: "standard".
 	UsageModel pulumi.StringPtrInput
 }
 
@@ -226,6 +235,8 @@ type workersScriptArgs struct {
 	KeepAssets *bool `pulumi:"keepAssets"`
 	// List of binding types to keep from previous_upload.
 	KeepBindings []string `pulumi:"keepBindings"`
+	// Whether Logpush is turned on for the Worker.
+	Logpush *bool `pulumi:"logpush"`
 	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 	MainModule *string `pulumi:"mainModule"`
 	// Migrations to apply for Durable Objects associated with this Worker.
@@ -238,6 +249,9 @@ type workersScriptArgs struct {
 	ScriptName string `pulumi:"scriptName"`
 	// List of Workers that will consume logs from the attached Worker.
 	TailConsumers []WorkersScriptTailConsumer `pulumi:"tailConsumers"`
+	// Usage model for the Worker invocations.
+	// Available values: "standard".
+	UsageModel *string `pulumi:"usageModel"`
 }
 
 // The set of arguments for constructing a WorkersScript resource.
@@ -260,6 +274,8 @@ type WorkersScriptArgs struct {
 	KeepAssets pulumi.BoolPtrInput
 	// List of binding types to keep from previous_upload.
 	KeepBindings pulumi.StringArrayInput
+	// Whether Logpush is turned on for the Worker.
+	Logpush pulumi.BoolPtrInput
 	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 	MainModule pulumi.StringPtrInput
 	// Migrations to apply for Durable Objects associated with this Worker.
@@ -272,6 +288,9 @@ type WorkersScriptArgs struct {
 	ScriptName pulumi.StringInput
 	// List of Workers that will consume logs from the attached Worker.
 	TailConsumers WorkersScriptTailConsumerArrayInput
+	// Usage model for the Worker invocations.
+	// Available values: "standard".
+	UsageModel pulumi.StringPtrInput
 }
 
 func (WorkersScriptArgs) ElementType() reflect.Type {
@@ -471,6 +490,7 @@ func (o WorkersScriptOutput) TailConsumers() WorkersScriptTailConsumerArrayOutpu
 }
 
 // Usage model for the Worker invocations.
+// Available values: "standard".
 func (o WorkersScriptOutput) UsageModel() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersScript) pulumi.StringOutput { return v.UsageModel }).(pulumi.StringOutput)
 }

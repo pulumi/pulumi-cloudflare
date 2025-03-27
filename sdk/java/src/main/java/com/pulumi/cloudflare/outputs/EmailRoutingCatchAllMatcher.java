@@ -12,6 +12,7 @@ import java.util.Objects;
 public final class EmailRoutingCatchAllMatcher {
     /**
      * @return Type of matcher. Default is &#39;all&#39;.
+     * Available values: &#34;all&#34;.
      * 
      */
     private String type;
@@ -19,6 +20,7 @@ public final class EmailRoutingCatchAllMatcher {
     private EmailRoutingCatchAllMatcher() {}
     /**
      * @return Type of matcher. Default is &#39;all&#39;.
+     * Available values: &#34;all&#34;.
      * 
      */
     public String type() {

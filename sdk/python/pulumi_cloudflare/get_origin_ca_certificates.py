@@ -67,7 +67,7 @@ class GetOriginCaCertificatesResult:
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[str]:
+    def zone_id(self) -> str:
         """
         Identifier
         """
@@ -115,7 +115,7 @@ def get_origin_ca_certificates(max_items: Optional[int] = None,
         results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_origin_ca_certificates_output(max_items: Optional[pulumi.Input[Optional[int]]] = None,
-                                      zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      zone_id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOriginCaCertificatesResult]:
     """
     ## Example Usage

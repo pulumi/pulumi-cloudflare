@@ -6,10 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.AccountTokenPolicyPermissionGroupMetaArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-<<<<<<< HEAD
-=======
 import com.pulumi.exceptions.MissingRequiredPropertyException;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -24,25 +21,15 @@ public final class AccountTokenPolicyPermissionGroupArgs extends com.pulumi.reso
      * Identifier of the group.
      * 
      */
-<<<<<<< HEAD
-    @Import(name="id")
-    private @Nullable Output<String> id;
-=======
     @Import(name="id", required=true)
     private Output<String> id;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      * @return Identifier of the group.
      * 
      */
-<<<<<<< HEAD
-    public Optional<Output<String>> id() {
-        return Optional.ofNullable(this.id);
-=======
     public Output<String> id() {
         return this.id;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     /**
@@ -107,11 +94,7 @@ public final class AccountTokenPolicyPermissionGroupArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-<<<<<<< HEAD
-        public Builder id(@Nullable Output<String> id) {
-=======
         public Builder id(Output<String> id) {
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             $.id = id;
             return this;
         }
@@ -169,12 +152,9 @@ public final class AccountTokenPolicyPermissionGroupArgs extends com.pulumi.reso
         }
 
         public AccountTokenPolicyPermissionGroupArgs build() {
-<<<<<<< HEAD
-=======
             if ($.id == null) {
                 throw new MissingRequiredPropertyException("AccountTokenPolicyPermissionGroupArgs", "id");
             }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return $;
         }
     }

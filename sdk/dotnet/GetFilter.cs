@@ -84,13 +84,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetFilterArgs : global::Pulumi.InvokeArgs
     {
-<<<<<<< HEAD
-        /// <summary>
-        /// The unique identifier of the filter.
-        /// </summary>
-        [Input("filterId", required: true)]
-        public string FilterId { get; set; } = null!;
-=======
         [Input("filter")]
         public Inputs.GetFilterFilterArgs? Filter { get; set; }
 
@@ -99,7 +92,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("filterId")]
         public string? FilterId { get; set; }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Identifier
@@ -115,13 +107,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetFilterInvokeArgs : global::Pulumi.InvokeArgs
     {
-<<<<<<< HEAD
-        /// <summary>
-        /// The unique identifier of the filter.
-        /// </summary>
-        [Input("filterId", required: true)]
-        public Input<string> FilterId { get; set; } = null!;
-=======
         [Input("filter")]
         public Input<Inputs.GetFilterFilterInputArgs>? Filter { get; set; }
 
@@ -130,7 +115,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("filterId")]
         public Input<string>? FilterId { get; set; }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Identifier
@@ -156,18 +140,11 @@ namespace Pulumi.Cloudflare
         /// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
         /// </summary>
         public readonly string Expression;
-<<<<<<< HEAD
-        /// <summary>
-        /// The unique identifier of the filter.
-        /// </summary>
-        public readonly string FilterId;
-=======
         public readonly Outputs.GetFilterFilterResult? Filter;
         /// <summary>
         /// The unique identifier of the filter.
         /// </summary>
         public readonly string? FilterId;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// The unique identifier of the filter.
         /// </summary>
@@ -191,13 +168,9 @@ namespace Pulumi.Cloudflare
 
             string expression,
 
-<<<<<<< HEAD
-            string filterId,
-=======
             Outputs.GetFilterFilterResult? filter,
 
             string? filterId,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
             string id,
 
@@ -209,10 +182,7 @@ namespace Pulumi.Cloudflare
         {
             Description = description;
             Expression = expression;
-<<<<<<< HEAD
-=======
             Filter = filter;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             FilterId = filterId;
             Id = id;
             Paused = paused;

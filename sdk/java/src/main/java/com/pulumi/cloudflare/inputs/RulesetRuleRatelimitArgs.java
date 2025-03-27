@@ -66,6 +66,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
 
     /**
      * Period in seconds over which the counter is being incremented.
+     * Available values: 10, 60, 600, 3600.
      * 
      */
     @Import(name="period", required=true)
@@ -73,6 +74,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Period in seconds over which the counter is being incremented.
+     * Available values: 10, 60, 600, 3600.
      * 
      */
     public Output<Integer> period() {
@@ -245,6 +247,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param period Period in seconds over which the counter is being incremented.
+         * Available values: 10, 60, 600, 3600.
          * 
          * @return builder
          * 
@@ -256,6 +259,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param period Period in seconds over which the counter is being incremented.
+         * Available values: 10, 60, 600, 3600.
          * 
          * @return builder
          * 

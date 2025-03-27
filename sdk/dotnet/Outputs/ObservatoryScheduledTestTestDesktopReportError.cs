@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// The error code of the Lighthouse result.
+        /// Available values: "NOT*REACHABLE", "DNS*FAILURE", "NOT*HTML", "LIGHTHOUSE*TIMEOUT", "UNKNOWN".
         /// </summary>
         public readonly string? Code;
         /// <summary>

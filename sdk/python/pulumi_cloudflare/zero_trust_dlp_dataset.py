@@ -134,6 +134,7 @@ class _ZeroTrustDlpDatasetState:
         :param pulumi.Input[int] encoding_version: Dataset encoding version
         :param pulumi.Input[bool] secret: Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
                response has no secret and the dataset is uploaded in plaintext.
+        :param pulumi.Input[str] status: Available values: "empty", "uploading", "processing", "failed", "complete".
         :param pulumi.Input[str] updated_at: When the dataset was last updated. This includes name or description changes as well as uploads.
         :param pulumi.Input[int] version: The version to use when uploading the dataset.
         """
@@ -280,6 +281,9 @@ class _ZeroTrustDlpDatasetState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Available values: "empty", "uploading", "processing", "failed", "complete".
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -460,6 +464,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
         :param pulumi.Input[int] encoding_version: Dataset encoding version
         :param pulumi.Input[bool] secret: Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
                response has no secret and the dataset is uploaded in plaintext.
+        :param pulumi.Input[str] status: Available values: "empty", "uploading", "processing", "failed", "complete".
         :param pulumi.Input[str] updated_at: When the dataset was last updated. This includes name or description changes as well as uploads.
         :param pulumi.Input[int] version: The version to use when uploading the dataset.
         """
@@ -552,6 +557,9 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        Available values: "empty", "uploading", "processing", "failed", "complete".
+        """
         return pulumi.get(self, "status")
 
     @property

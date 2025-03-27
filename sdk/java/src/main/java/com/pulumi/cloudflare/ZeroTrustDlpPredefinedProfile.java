@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.ZeroTrustDlpPredefinedProfileArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedProfileState;
 import com.pulumi.cloudflare.outputs.ZeroTrustDlpPredefinedProfileContextAwareness;
 import com.pulumi.cloudflare.outputs.ZeroTrustDlpPredefinedProfileEntry;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -55,10 +56,7 @@ import javax.annotation.Nullable;
  *                 .id("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
  *                 .enabled(true)
  *                 .build())
-<<<<<<< HEAD
-=======
  *             .aiContextEnabled(true)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  *             .allowedMatchCount(0)
  *             .confidenceThreshold("confidence_threshold")
  *             .contextAwareness(ZeroTrustDlpPredefinedProfileContextAwarenessArgs.builder()
@@ -91,15 +89,12 @@ public class ZeroTrustDlpPredefinedProfile extends com.pulumi.resources.CustomRe
     public Output<String> accountId() {
         return this.accountId;
     }
-<<<<<<< HEAD
-=======
     @Export(name="aiContextEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> aiContextEnabled;
 
     public Output<Optional<Boolean>> aiContextEnabled() {
         return Codegen.optional(this.aiContextEnabled);
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @Export(name="allowedMatchCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> allowedMatchCount;
 
@@ -200,9 +195,17 @@ public class ZeroTrustDlpPredefinedProfile extends com.pulumi.resources.CustomRe
     public Output<String> profileId() {
         return this.profileId;
     }
+    /**
+     * Available values: &#34;custom&#34;.
+     * 
+     */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
+    /**
+     * @return Available values: &#34;custom&#34;.
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
@@ -260,6 +263,9 @@ public class ZeroTrustDlpPredefinedProfile extends com.pulumi.resources.CustomRe
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

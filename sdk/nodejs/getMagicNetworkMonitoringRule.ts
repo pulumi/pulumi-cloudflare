@@ -50,7 +50,8 @@ export interface GetMagicNetworkMonitoringRuleResult {
      */
     readonly bandwidthThreshold: number;
     /**
-     * The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+     * The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+     * Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
      */
     readonly duration: string;
     /**
@@ -65,11 +66,31 @@ export interface GetMagicNetworkMonitoringRuleResult {
      * The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
      */
     readonly packetThreshold: number;
+    /**
+     * Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
+     * Available values: "exact", "subnet", "supernet".
+     */
+    readonly prefixMatch: string;
     readonly prefixes: string[];
     /**
      * The id of the rule. Must be unique.
      */
     readonly ruleId?: string;
+    /**
+     * MNM rule type.
+     * Available values: "threshold", "zscore", "advancedDdos".
+     */
+    readonly type: string;
+    /**
+     * Level of sensitivity set for zscore rules.
+     * Available values: "low", "medium", "high".
+     */
+    readonly zscoreSensitivity: string;
+    /**
+     * Target of the zscore rule analysis.
+     * Available values: "bits", "packets".
+     */
+    readonly zscoreTarget: string;
 }
 /**
  * ## Example Usage

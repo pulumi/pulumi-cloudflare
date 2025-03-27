@@ -32,6 +32,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.ObservatoryScheduledTestTestRegion? Region;
         /// <summary>
         /// The frequency of the test.
+        /// Available values: "DAILY", "WEEKLY".
         /// </summary>
         public readonly string? ScheduleFrequency;
         /// <summary>

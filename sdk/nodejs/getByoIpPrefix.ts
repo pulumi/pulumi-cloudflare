@@ -6,11 +6,21 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleByoIpPrefix = cloudflare.getByoIpPrefix({
+ *     accountId: "258def64c72dae45f3e4c8516e2111f2",
+ *     prefixId: "2af39739cc4e3b5910c918468bb89828",
+ * });
+ * ```
  */
-export function getByoIpPrefix(args?: GetByoIpPrefixArgs, opts?: pulumi.InvokeOptions): Promise<GetByoIpPrefixResult> {
-    args = args || {};
+export function getByoIpPrefix(args: GetByoIpPrefixArgs, opts?: pulumi.InvokeOptions): Promise<GetByoIpPrefixResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getByoIpPrefix:getByoIpPrefix", {
+        "accountId": args.accountId,
         "prefixId": args.prefixId,
     }, opts);
 }
@@ -19,6 +29,10 @@ export function getByoIpPrefix(args?: GetByoIpPrefixArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getByoIpPrefix.
  */
 export interface GetByoIpPrefixArgs {
+    /**
+     * Identifier of a Cloudflare account.
+     */
+    accountId: string;
     /**
      * Identifier of an IP Prefix.
      */
@@ -82,11 +96,21 @@ export interface GetByoIpPrefixResult {
 }
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleByoIpPrefix = cloudflare.getByoIpPrefix({
+ *     accountId: "258def64c72dae45f3e4c8516e2111f2",
+ *     prefixId: "2af39739cc4e3b5910c918468bb89828",
+ * });
+ * ```
  */
-export function getByoIpPrefixOutput(args?: GetByoIpPrefixOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetByoIpPrefixResult> {
-    args = args || {};
+export function getByoIpPrefixOutput(args: GetByoIpPrefixOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetByoIpPrefixResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getByoIpPrefix:getByoIpPrefix", {
+        "accountId": args.accountId,
         "prefixId": args.prefixId,
     }, opts);
 }
@@ -95,6 +119,10 @@ export function getByoIpPrefixOutput(args?: GetByoIpPrefixOutputArgs, opts?: pul
  * A collection of arguments for invoking getByoIpPrefix.
  */
 export interface GetByoIpPrefixOutputArgs {
+    /**
+     * Identifier of a Cloudflare account.
+     */
+    accountId: pulumi.Input<string>;
     /**
      * Identifier of an IP Prefix.
      */

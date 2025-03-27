@@ -101,6 +101,20 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
         return this.created;
     }
     /**
+     * Enables or disables RUM. This option can be used only when auto_install is set to true.
+     * 
+     */
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enabled;
+
+    /**
+     * @return Enables or disables RUM. This option can be used only when auto_install is set to true.
+     * 
+     */
+    public Output<Optional<Boolean>> enabled() {
+        return Codegen.optional(this.enabled);
+    }
+    /**
      * The hostname to use for gray-clouded sites.
      * 
      */
@@ -113,6 +127,20 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> host() {
         return Codegen.optional(this.host);
+    }
+    /**
+     * If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+     * 
+     */
+    @Export(name="lite", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> lite;
+
+    /**
+     * @return If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+     * 
+     */
+    public Output<Optional<Boolean>> lite() {
+        return Codegen.optional(this.lite);
     }
     /**
      * A list of rules.

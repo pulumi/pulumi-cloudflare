@@ -37,11 +37,7 @@ class SpectrumApplicationArgs:
         The set of arguments for constructing a SpectrumApplication resource.
         :param pulumi.Input['SpectrumApplicationDnsArgs'] dns: The name and type of DNS record for the Spectrum application.
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
-<<<<<<< HEAD
-        :param pulumi.Input[str] zone_id: Identifier
-=======
         :param pulumi.Input[str] zone_id: Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[bool] argo_smart_routing: Enables Argo Smart Routing for this application.
                Notes: Only available for TCP applications with traffic_type set to "direct".
         :param pulumi.Input['SpectrumApplicationEdgeIpsArgs'] edge_ips: The anycast edge IP configuration for the hostname of this application.
@@ -52,8 +48,11 @@ class SpectrumApplicationArgs:
         :param Any origin_port: The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
                Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
         :param pulumi.Input[str] proxy_protocol: Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+               Available values: "off", "v1", "v2", "simple".
         :param pulumi.Input[str] tls: The type of TLS termination associated with the application.
+               Available values: "off", "flexible", "full", "strict".
         :param pulumi.Input[str] traffic_type: Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+               Available values: "direct", "http", "https".
         """
         pulumi.set(__self__, "dns", dns)
         pulumi.set(__self__, "protocol", protocol)
@@ -105,11 +104,7 @@ class SpectrumApplicationArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-<<<<<<< HEAD
-        Identifier
-=======
         Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         return pulumi.get(self, "zone_id")
 
@@ -197,6 +192,7 @@ class SpectrumApplicationArgs:
     def proxy_protocol(self) -> Optional[pulumi.Input[str]]:
         """
         Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+        Available values: "off", "v1", "v2", "simple".
         """
         return pulumi.get(self, "proxy_protocol")
 
@@ -209,6 +205,7 @@ class SpectrumApplicationArgs:
     def tls(self) -> Optional[pulumi.Input[str]]:
         """
         The type of TLS termination associated with the application.
+        Available values: "off", "flexible", "full", "strict".
         """
         return pulumi.get(self, "tls")
 
@@ -221,6 +218,7 @@ class SpectrumApplicationArgs:
     def traffic_type(self) -> Optional[pulumi.Input[str]]:
         """
         Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+        Available values: "direct", "http", "https".
         """
         return pulumi.get(self, "traffic_type")
 
@@ -262,13 +260,12 @@ class _SpectrumApplicationState:
                Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
         :param pulumi.Input[str] proxy_protocol: Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+               Available values: "off", "v1", "v2", "simple".
         :param pulumi.Input[str] tls: The type of TLS termination associated with the application.
+               Available values: "off", "flexible", "full", "strict".
         :param pulumi.Input[str] traffic_type: Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
-<<<<<<< HEAD
-        :param pulumi.Input[str] zone_id: Identifier
-=======
+               Available values: "direct", "http", "https".
         :param pulumi.Input[str] zone_id: Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         if argo_smart_routing is not None:
             pulumi.set(__self__, "argo_smart_routing", argo_smart_routing)
@@ -427,6 +424,7 @@ class _SpectrumApplicationState:
     def proxy_protocol(self) -> Optional[pulumi.Input[str]]:
         """
         Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+        Available values: "off", "v1", "v2", "simple".
         """
         return pulumi.get(self, "proxy_protocol")
 
@@ -439,6 +437,7 @@ class _SpectrumApplicationState:
     def tls(self) -> Optional[pulumi.Input[str]]:
         """
         The type of TLS termination associated with the application.
+        Available values: "off", "flexible", "full", "strict".
         """
         return pulumi.get(self, "tls")
 
@@ -451,6 +450,7 @@ class _SpectrumApplicationState:
     def traffic_type(self) -> Optional[pulumi.Input[str]]:
         """
         Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+        Available values: "direct", "http", "https".
         """
         return pulumi.get(self, "traffic_type")
 
@@ -462,11 +462,7 @@ class _SpectrumApplicationState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-<<<<<<< HEAD
-        Identifier
-=======
         Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         return pulumi.get(self, "zone_id")
 
@@ -545,13 +541,12 @@ class SpectrumApplication(pulumi.CustomResource):
                Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
         :param pulumi.Input[str] proxy_protocol: Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+               Available values: "off", "v1", "v2", "simple".
         :param pulumi.Input[str] tls: The type of TLS termination associated with the application.
+               Available values: "off", "flexible", "full", "strict".
         :param pulumi.Input[str] traffic_type: Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
-<<<<<<< HEAD
-        :param pulumi.Input[str] zone_id: Identifier
-=======
+               Available values: "direct", "http", "https".
         :param pulumi.Input[str] zone_id: Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         ...
     @overload
@@ -698,13 +693,12 @@ class SpectrumApplication(pulumi.CustomResource):
                Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
         :param pulumi.Input[str] proxy_protocol: Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+               Available values: "off", "v1", "v2", "simple".
         :param pulumi.Input[str] tls: The type of TLS termination associated with the application.
+               Available values: "off", "flexible", "full", "strict".
         :param pulumi.Input[str] traffic_type: Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
-<<<<<<< HEAD
-        :param pulumi.Input[str] zone_id: Identifier
-=======
+               Available values: "direct", "http", "https".
         :param pulumi.Input[str] zone_id: Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -814,6 +808,7 @@ class SpectrumApplication(pulumi.CustomResource):
     def proxy_protocol(self) -> pulumi.Output[str]:
         """
         Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+        Available values: "off", "v1", "v2", "simple".
         """
         return pulumi.get(self, "proxy_protocol")
 
@@ -822,6 +817,7 @@ class SpectrumApplication(pulumi.CustomResource):
     def tls(self) -> pulumi.Output[Optional[str]]:
         """
         The type of TLS termination associated with the application.
+        Available values: "off", "flexible", "full", "strict".
         """
         return pulumi.get(self, "tls")
 
@@ -830,6 +826,7 @@ class SpectrumApplication(pulumi.CustomResource):
     def traffic_type(self) -> pulumi.Output[str]:
         """
         Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+        Available values: "direct", "http", "https".
         """
         return pulumi.get(self, "traffic_type")
 
@@ -837,11 +834,7 @@ class SpectrumApplication(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-<<<<<<< HEAD
-        Identifier
-=======
         Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         return pulumi.get(self, "zone_id")
 

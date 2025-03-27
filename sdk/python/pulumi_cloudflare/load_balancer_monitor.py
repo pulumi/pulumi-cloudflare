@@ -55,6 +55,7 @@ class LoadBalancerMonitorArgs:
         :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed.
         :param pulumi.Input[str] type: The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+               Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
         """
         pulumi.set(__self__, "account_id", account_id)
         if allow_insecure is not None:
@@ -287,6 +288,7 @@ class LoadBalancerMonitorArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+        Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
         """
         return pulumi.get(self, "type")
 
@@ -336,6 +338,7 @@ class _LoadBalancerMonitorState:
         :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed.
         :param pulumi.Input[str] type: The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+               Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -591,6 +594,7 @@ class _LoadBalancerMonitorState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+        Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
         """
         return pulumi.get(self, "type")
 
@@ -677,6 +681,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed.
         :param pulumi.Input[str] type: The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+               Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
         """
         ...
     @overload
@@ -835,6 +840,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed.
         :param pulumi.Input[str] type: The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+               Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1004,6 +1010,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+        Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
         """
         return pulumi.get(self, "type")
 

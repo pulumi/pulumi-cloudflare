@@ -93,6 +93,8 @@ export class StreamKey extends pulumi.CustomResource {
             resourceInputs["pem"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["jwk", "pem"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(StreamKey.__pulumiType, name, resourceInputs, opts);
     }
 }

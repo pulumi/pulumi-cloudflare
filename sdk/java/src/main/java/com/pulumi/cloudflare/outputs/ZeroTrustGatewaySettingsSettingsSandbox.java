@@ -19,6 +19,7 @@ public final class ZeroTrustGatewaySettingsSettingsSandbox {
     private @Nullable Boolean enabled;
     /**
      * @return Action to take when the file cannot be scanned.
+     * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */
     private @Nullable String fallbackAction;
@@ -33,6 +34,7 @@ public final class ZeroTrustGatewaySettingsSettingsSandbox {
     }
     /**
      * @return Action to take when the file cannot be scanned.
+     * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */
     public Optional<String> fallbackAction() {

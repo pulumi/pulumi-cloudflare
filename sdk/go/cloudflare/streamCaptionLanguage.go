@@ -55,6 +55,7 @@ type StreamCaptionLanguage struct {
 	// The language tag in BCP 47 format.
 	Language pulumi.StringOutput `pulumi:"language"`
 	// The status of a generated caption.
+	// Available values: "ready", "inprogress", "error".
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -110,6 +111,7 @@ type streamCaptionLanguageState struct {
 	// The language tag in BCP 47 format.
 	Language *string `pulumi:"language"`
 	// The status of a generated caption.
+	// Available values: "ready", "inprogress", "error".
 	Status *string `pulumi:"status"`
 }
 
@@ -127,6 +129,7 @@ type StreamCaptionLanguageState struct {
 	// The language tag in BCP 47 format.
 	Language pulumi.StringPtrInput
 	// The status of a generated caption.
+	// Available values: "ready", "inprogress", "error".
 	Status pulumi.StringPtrInput
 }
 
@@ -275,6 +278,7 @@ func (o StreamCaptionLanguageOutput) Language() pulumi.StringOutput {
 }
 
 // The status of a generated caption.
+// Available values: "ready", "inprogress", "error".
 func (o StreamCaptionLanguageOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *StreamCaptionLanguage) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

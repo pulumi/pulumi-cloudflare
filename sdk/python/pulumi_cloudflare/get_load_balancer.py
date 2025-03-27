@@ -27,7 +27,7 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, adaptive_routing=None, country_pools=None, created_on=None, default_pools=None, description=None, enabled=None, fallback_pool=None, id=None, load_balancer_id=None, location_strategy=None, modified_on=None, name=None, networks=None, pop_pools=None, proxied=None, random_steering=None, region_pools=None, rules=None, session_affinity=None, session_affinity_attributes=None, session_affinity_ttl=None, steering_policy=None, ttl=None, zone_id=None):
+    def __init__(__self__, adaptive_routing=None, country_pools=None, created_on=None, default_pools=None, description=None, enabled=None, fallback_pool=None, id=None, load_balancer_id=None, location_strategy=None, modified_on=None, name=None, networks=None, pop_pools=None, proxied=None, random_steering=None, region_pools=None, rules=None, session_affinity=None, session_affinity_attributes=None, session_affinity_ttl=None, steering_policy=None, ttl=None, zone_id=None, zone_name=None):
         if adaptive_routing and not isinstance(adaptive_routing, dict):
             raise TypeError("Expected argument 'adaptive_routing' to be a dict")
         pulumi.set(__self__, "adaptive_routing", adaptive_routing)
@@ -100,6 +100,9 @@ class GetLoadBalancerResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
+        if zone_name and not isinstance(zone_name, str):
+            raise TypeError("Expected argument 'zone_name' to be a str")
+        pulumi.set(__self__, "zone_name", zone_name)
 
     @property
     @pulumi.getter(name="adaptiveRouting")
@@ -281,6 +284,11 @@ class GetLoadBalancerResult:
     def zone_id(self) -> str:
         return pulumi.get(self, "zone_id")
 
+    @property
+    @pulumi.getter(name="zoneName")
+    def zone_name(self) -> str:
+        return pulumi.get(self, "zone_name")
+
 
 class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
     # pylint: disable=using-constant-test
@@ -311,7 +319,8 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             session_affinity_ttl=self.session_affinity_ttl,
             steering_policy=self.steering_policy,
             ttl=self.ttl,
-            zone_id=self.zone_id)
+            zone_id=self.zone_id,
+            zone_name=self.zone_name)
 
 
 def get_load_balancer(country_pools: Optional[Mapping[str, Sequence[str]]] = None,
@@ -378,7 +387,8 @@ def get_load_balancer(country_pools: Optional[Mapping[str, Sequence[str]]] = Non
         session_affinity_ttl=pulumi.get(__ret__, 'session_affinity_ttl'),
         steering_policy=pulumi.get(__ret__, 'steering_policy'),
         ttl=pulumi.get(__ret__, 'ttl'),
-        zone_id=pulumi.get(__ret__, 'zone_id'))
+        zone_id=pulumi.get(__ret__, 'zone_id'),
+        zone_name=pulumi.get(__ret__, 'zone_name'))
 def get_load_balancer_output(country_pools: Optional[pulumi.Input[Optional[Mapping[str, Sequence[str]]]]] = None,
                              load_balancer_id: Optional[pulumi.Input[Optional[str]]] = None,
                              pop_pools: Optional[pulumi.Input[Optional[Mapping[str, Sequence[str]]]]] = None,
@@ -442,4 +452,5 @@ def get_load_balancer_output(country_pools: Optional[pulumi.Input[Optional[Mappi
         session_affinity_ttl=pulumi.get(__response__, 'session_affinity_ttl'),
         steering_policy=pulumi.get(__response__, 'steering_policy'),
         ttl=pulumi.get(__response__, 'ttl'),
-        zone_id=pulumi.get(__response__, 'zone_id')))
+        zone_id=pulumi.get(__response__, 'zone_id'),
+        zone_name=pulumi.get(__response__, 'zone_name')))

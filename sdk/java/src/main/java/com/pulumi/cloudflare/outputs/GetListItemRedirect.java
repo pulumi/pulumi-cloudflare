@@ -16,6 +16,10 @@ public final class GetListItemRedirect {
     private Boolean preservePathSuffix;
     private Boolean preserveQueryString;
     private String sourceUrl;
+    /**
+     * @return Available values: 301, 302, 307, 308.
+     * 
+     */
     private Integer statusCode;
     private Boolean subpathMatching;
     private String targetUrl;
@@ -33,6 +37,10 @@ public final class GetListItemRedirect {
     public String sourceUrl() {
         return this.sourceUrl;
     }
+    /**
+     * @return Available values: 301, 302, 307, 308.
+     * 
+     */
     public Integer statusCode() {
         return this.statusCode;
     }

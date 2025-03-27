@@ -13,12 +13,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustDlpEntryPattern {
     private String regex;
+    /**
+     * @return Available values: &#34;luhn&#34;.
+     * 
+     */
     private @Nullable String validation;
 
     private ZeroTrustDlpEntryPattern() {}
     public String regex() {
         return this.regex;
     }
+    /**
+     * @return Available values: &#34;luhn&#34;.
+     * 
+     */
     public Optional<String> validation() {
         return Optional.ofNullable(this.validation);
     }

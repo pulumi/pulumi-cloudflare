@@ -108,6 +108,7 @@ public final class StreamCaptionLanguageState extends com.pulumi.resources.Resou
 
     /**
      * The status of a generated caption.
+     * Available values: &#34;ready&#34;, &#34;inprogress&#34;, &#34;error&#34;.
      * 
      */
     @Import(name="status")
@@ -115,6 +116,7 @@ public final class StreamCaptionLanguageState extends com.pulumi.resources.Resou
 
     /**
      * @return The status of a generated caption.
+     * Available values: &#34;ready&#34;, &#34;inprogress&#34;, &#34;error&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -279,6 +281,7 @@ public final class StreamCaptionLanguageState extends com.pulumi.resources.Resou
 
         /**
          * @param status The status of a generated caption.
+         * Available values: &#34;ready&#34;, &#34;inprogress&#34;, &#34;error&#34;.
          * 
          * @return builder
          * 
@@ -290,6 +293,7 @@ public final class StreamCaptionLanguageState extends com.pulumi.resources.Resou
 
         /**
          * @param status The status of a generated caption.
+         * Available values: &#34;ready&#34;, &#34;inprogress&#34;, &#34;error&#34;.
          * 
          * @return builder
          * 

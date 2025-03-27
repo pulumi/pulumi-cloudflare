@@ -330,6 +330,8 @@ class ZeroTrustTunnelCloudflaredRoute(pulumi.CustomResource):
             __props__.__dict__["virtual_network_id"] = virtual_network_id
             __props__.__dict__["created_at"] = None
             __props__.__dict__["deleted_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/tunnelRoute:TunnelRoute")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustTunnelCloudflaredRoute, __self__).__init__(
             'cloudflare:index/zeroTrustTunnelCloudflaredRoute:ZeroTrustTunnelCloudflaredRoute',
             resource_name,

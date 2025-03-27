@@ -24,6 +24,7 @@ public final class GetZeroTrustAccessApplicationSaasAppCustomAttribute {
     private String name;
     /**
      * @return A globally unique name for an identity or service provider.
+     * Available values: &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&#34;, &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:basic&#34;, &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:uri&#34;.
      * 
      */
     private String nameFormat;
@@ -51,6 +52,7 @@ public final class GetZeroTrustAccessApplicationSaasAppCustomAttribute {
     }
     /**
      * @return A globally unique name for an identity or service provider.
+     * Available values: &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&#34;, &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:basic&#34;, &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:uri&#34;.
      * 
      */
     public String nameFormat() {

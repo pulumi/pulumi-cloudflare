@@ -17,6 +17,7 @@ public final class GetEmailSecurityTrustedDomainsFilter extends com.pulumi.resou
 
     /**
      * The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -24,6 +25,7 @@ public final class GetEmailSecurityTrustedDomainsFilter extends com.pulumi.resou
 
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -46,6 +48,7 @@ public final class GetEmailSecurityTrustedDomainsFilter extends com.pulumi.resou
 
     /**
      * The field to sort by.
+     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
      * 
      */
     @Import(name="order")
@@ -53,6 +56,7 @@ public final class GetEmailSecurityTrustedDomainsFilter extends com.pulumi.resou
 
     /**
      * @return The field to sort by.
+     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
      * 
      */
     public Optional<String> order() {
@@ -110,6 +114,7 @@ public final class GetEmailSecurityTrustedDomainsFilter extends com.pulumi.resou
 
         /**
          * @param direction The sorting direction.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -131,6 +136,7 @@ public final class GetEmailSecurityTrustedDomainsFilter extends com.pulumi.resou
 
         /**
          * @param order The field to sort by.
+         * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
          * 
          * @return builder
          * 

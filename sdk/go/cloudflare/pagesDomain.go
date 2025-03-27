@@ -14,7 +14,7 @@ import (
 
 // > A DNS record for the domain is not automatically created. You need to create
 //
-//	a `Record` resource for the domain you want to use.
+//	a `cloudflareRecord` resource for the domain you want to use.
 //
 // ## Example Usage
 //
@@ -53,21 +53,15 @@ type PagesDomain struct {
 	pulumi.CustomResourceState
 
 	// Identifier
-<<<<<<< HEAD
-	AccountId            pulumi.StringOutput    `pulumi:"accountId"`
-	CertificateAuthority pulumi.StringOutput    `pulumi:"certificateAuthority"`
-	CreatedOn            pulumi.StringOutput    `pulumi:"createdOn"`
-	DomainId             pulumi.StringOutput    `pulumi:"domainId"`
-	Name                 pulumi.StringPtrOutput `pulumi:"name"`
-=======
-	AccountId            pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Available values: "google", "letsEncrypt".
 	CertificateAuthority pulumi.StringOutput `pulumi:"certificateAuthority"`
 	CreatedOn            pulumi.StringOutput `pulumi:"createdOn"`
 	DomainId             pulumi.StringOutput `pulumi:"domainId"`
 	Name                 pulumi.StringOutput `pulumi:"name"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Name of the project.
-	ProjectName      pulumi.StringOutput               `pulumi:"projectName"`
+	ProjectName pulumi.StringOutput `pulumi:"projectName"`
+	// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
 	Status           pulumi.StringOutput               `pulumi:"status"`
 	ValidationData   PagesDomainValidationDataOutput   `pulumi:"validationData"`
 	VerificationData PagesDomainVerificationDataOutput `pulumi:"verificationData"`
@@ -84,12 +78,9 @@ func NewPagesDomain(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-<<<<<<< HEAD
-=======
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	if args.ProjectName == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectName'")
 	}
@@ -117,13 +108,15 @@ func GetPagesDomain(ctx *pulumi.Context,
 // Input properties used for looking up and filtering PagesDomain resources.
 type pagesDomainState struct {
 	// Identifier
-	AccountId            *string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
+	// Available values: "google", "letsEncrypt".
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	CreatedOn            *string `pulumi:"createdOn"`
 	DomainId             *string `pulumi:"domainId"`
 	Name                 *string `pulumi:"name"`
 	// Name of the project.
-	ProjectName      *string                      `pulumi:"projectName"`
+	ProjectName *string `pulumi:"projectName"`
+	// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
 	Status           *string                      `pulumi:"status"`
 	ValidationData   *PagesDomainValidationData   `pulumi:"validationData"`
 	VerificationData *PagesDomainVerificationData `pulumi:"verificationData"`
@@ -132,13 +125,15 @@ type pagesDomainState struct {
 
 type PagesDomainState struct {
 	// Identifier
-	AccountId            pulumi.StringPtrInput
+	AccountId pulumi.StringPtrInput
+	// Available values: "google", "letsEncrypt".
 	CertificateAuthority pulumi.StringPtrInput
 	CreatedOn            pulumi.StringPtrInput
 	DomainId             pulumi.StringPtrInput
 	Name                 pulumi.StringPtrInput
 	// Name of the project.
-	ProjectName      pulumi.StringPtrInput
+	ProjectName pulumi.StringPtrInput
+	// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
 	Status           pulumi.StringPtrInput
 	ValidationData   PagesDomainValidationDataPtrInput
 	VerificationData PagesDomainVerificationDataPtrInput
@@ -151,13 +146,8 @@ func (PagesDomainState) ElementType() reflect.Type {
 
 type pagesDomainArgs struct {
 	// Identifier
-<<<<<<< HEAD
-	AccountId string  `pulumi:"accountId"`
-	Name      *string `pulumi:"name"`
-=======
 	AccountId string `pulumi:"accountId"`
 	Name      string `pulumi:"name"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Name of the project.
 	ProjectName string `pulumi:"projectName"`
 }
@@ -166,11 +156,7 @@ type pagesDomainArgs struct {
 type PagesDomainArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput
-<<<<<<< HEAD
-	Name      pulumi.StringPtrInput
-=======
 	Name      pulumi.StringInput
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Name of the project.
 	ProjectName pulumi.StringInput
 }
@@ -267,6 +253,7 @@ func (o PagesDomainOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Available values: "google", "letsEncrypt".
 func (o PagesDomainOutput) CertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.CertificateAuthority }).(pulumi.StringOutput)
 }
@@ -279,13 +266,8 @@ func (o PagesDomainOutput) DomainId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-func (o PagesDomainOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PagesDomain) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
-=======
 func (o PagesDomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // Name of the project.
@@ -293,6 +275,7 @@ func (o PagesDomainOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
 }
 
+// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
 func (o PagesDomainOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

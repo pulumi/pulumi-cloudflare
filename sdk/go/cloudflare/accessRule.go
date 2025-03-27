@@ -61,6 +61,7 @@ type AccessRule struct {
 	// The timestamp of when the rule was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// The timestamp of when the rule was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
@@ -117,6 +118,7 @@ type accessRuleState struct {
 	// The timestamp of when the rule was created.
 	CreatedOn *string `pulumi:"createdOn"`
 	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 	Mode *string `pulumi:"mode"`
 	// The timestamp of when the rule was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
@@ -138,6 +140,7 @@ type AccessRuleState struct {
 	// The timestamp of when the rule was created.
 	CreatedOn pulumi.StringPtrInput
 	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 	Mode pulumi.StringPtrInput
 	// The timestamp of when the rule was last modified.
 	ModifiedOn pulumi.StringPtrInput
@@ -159,6 +162,7 @@ type accessRuleArgs struct {
 	// The rule configuration.
 	Configuration AccessRuleConfiguration `pulumi:"configuration"`
 	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 	Mode string `pulumi:"mode"`
 	// An informative summary of the rule, typically used as a reminder or explanation.
 	Notes *string `pulumi:"notes"`
@@ -173,6 +177,7 @@ type AccessRuleArgs struct {
 	// The rule configuration.
 	Configuration AccessRuleConfigurationInput
 	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 	Mode pulumi.StringInput
 	// An informative summary of the rule, typically used as a reminder or explanation.
 	Notes pulumi.StringPtrInput
@@ -288,6 +293,7 @@ func (o AccessRuleOutput) CreatedOn() pulumi.StringOutput {
 }
 
 // The action to apply to a matched request.
+// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 func (o AccessRuleOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }

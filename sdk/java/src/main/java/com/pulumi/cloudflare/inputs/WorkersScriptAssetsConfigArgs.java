@@ -18,6 +18,7 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
 
     /**
      * Determines the redirects and rewrites of requests for HTML content.
+     * Available values: &#34;auto-trailing-slash&#34;, &#34;force-trailing-slash&#34;, &#34;drop-trailing-slash&#34;, &#34;none&#34;.
      * 
      */
     @Import(name="htmlHandling")
@@ -25,6 +26,7 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
 
     /**
      * @return Determines the redirects and rewrites of requests for HTML content.
+     * Available values: &#34;auto-trailing-slash&#34;, &#34;force-trailing-slash&#34;, &#34;drop-trailing-slash&#34;, &#34;none&#34;.
      * 
      */
     public Optional<Output<String>> htmlHandling() {
@@ -33,6 +35,7 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
 
     /**
      * Determines the response when a request does not match a static asset, and there is no Worker script.
+     * Available values: &#34;none&#34;, &#34;404-page&#34;, &#34;single-page-application&#34;.
      * 
      */
     @Import(name="notFoundHandling")
@@ -40,6 +43,7 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
 
     /**
      * @return Determines the response when a request does not match a static asset, and there is no Worker script.
+     * Available values: &#34;none&#34;, &#34;404-page&#34;, &#34;single-page-application&#34;.
      * 
      */
     public Optional<Output<String>> notFoundHandling() {
@@ -105,6 +109,7 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param htmlHandling Determines the redirects and rewrites of requests for HTML content.
+         * Available values: &#34;auto-trailing-slash&#34;, &#34;force-trailing-slash&#34;, &#34;drop-trailing-slash&#34;, &#34;none&#34;.
          * 
          * @return builder
          * 
@@ -116,6 +121,7 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param htmlHandling Determines the redirects and rewrites of requests for HTML content.
+         * Available values: &#34;auto-trailing-slash&#34;, &#34;force-trailing-slash&#34;, &#34;drop-trailing-slash&#34;, &#34;none&#34;.
          * 
          * @return builder
          * 
@@ -126,6 +132,7 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param notFoundHandling Determines the response when a request does not match a static asset, and there is no Worker script.
+         * Available values: &#34;none&#34;, &#34;404-page&#34;, &#34;single-page-application&#34;.
          * 
          * @return builder
          * 
@@ -137,6 +144,7 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param notFoundHandling Determines the response when a request does not match a static asset, and there is no Worker script.
+         * Available values: &#34;none&#34;, &#34;404-page&#34;, &#34;single-page-application&#34;.
          * 
          * @return builder
          * 

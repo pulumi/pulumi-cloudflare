@@ -82,6 +82,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Show the state of your account, and the type or configuration error.
+        /// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -224,6 +225,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Show the state of your account, and the type or configuration error.
+        /// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

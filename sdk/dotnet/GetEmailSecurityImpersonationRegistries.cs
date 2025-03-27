@@ -101,6 +101,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The sorting direction.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
@@ -113,10 +114,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The field to sort by.
+        /// Available values: "name", "email", "created_at".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
+        /// <summary>
+        /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        /// </summary>
         [Input("provenance")]
         public string? Provenance { get; set; }
 
@@ -145,6 +150,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The sorting direction.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -157,10 +163,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The field to sort by.
+        /// Available values: "name", "email", "created_at".
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
 
+        /// <summary>
+        /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        /// </summary>
         [Input("provenance")]
         public Input<string>? Provenance { get; set; }
 
@@ -189,6 +199,7 @@ namespace Pulumi.Cloudflare
         public readonly string AccountId;
         /// <summary>
         /// The sorting direction.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
@@ -201,8 +212,12 @@ namespace Pulumi.Cloudflare
         public readonly int? MaxItems;
         /// <summary>
         /// The field to sort by.
+        /// Available values: "name", "email", "created_at".
         /// </summary>
         public readonly string? Order;
+        /// <summary>
+        /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        /// </summary>
         public readonly string? Provenance;
         /// <summary>
         /// The items returned by the data source

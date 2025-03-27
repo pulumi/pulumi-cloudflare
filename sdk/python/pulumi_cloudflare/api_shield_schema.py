@@ -31,9 +31,11 @@ class ApiShieldSchemaArgs:
         The set of arguments for constructing a ApiShieldSchema resource.
         :param pulumi.Input[str] file: Schema file bytes
         :param pulumi.Input[str] kind: Kind of schema
+               Available values: "openapi_v3".
         :param pulumi.Input[str] zone_id: Identifier
         :param pulumi.Input[str] name: Name of the schema
         :param pulumi.Input[str] validation_enabled: Flag whether schema is enabled for validation.
+               Available values: "true", "false".
         """
         pulumi.set(__self__, "file", file)
         pulumi.set(__self__, "kind", kind)
@@ -62,6 +64,7 @@ class ApiShieldSchemaArgs:
     def kind(self) -> pulumi.Input[str]:
         """
         Kind of schema
+        Available values: "openapi_v3".
         """
         return pulumi.get(self, "kind")
 
@@ -107,6 +110,7 @@ class ApiShieldSchemaArgs:
     def validation_enabled(self) -> Optional[pulumi.Input[str]]:
         """
         Flag whether schema is enabled for validation.
+        Available values: "true", "false".
         """
         return pulumi.get(self, "validation_enabled")
 
@@ -132,9 +136,11 @@ class _ApiShieldSchemaState:
         Input properties used for looking up and filtering ApiShieldSchema resources.
         :param pulumi.Input[str] file: Schema file bytes
         :param pulumi.Input[str] kind: Kind of schema
+               Available values: "openapi_v3".
         :param pulumi.Input[str] name: Name of the schema
         :param pulumi.Input[str] source: Source of the schema
         :param pulumi.Input[str] validation_enabled: Flag whether schema is enabled for validation.
+               Available values: "true", "false".
         :param pulumi.Input[str] zone_id: Identifier
         """
         if created_at is not None:
@@ -184,6 +190,7 @@ class _ApiShieldSchemaState:
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
         Kind of schema
+        Available values: "openapi_v3".
         """
         return pulumi.get(self, "kind")
 
@@ -247,6 +254,7 @@ class _ApiShieldSchemaState:
     def validation_enabled(self) -> Optional[pulumi.Input[str]]:
         """
         Flag whether schema is enabled for validation.
+        Available values: "true", "false".
         """
         return pulumi.get(self, "validation_enabled")
 
@@ -298,8 +306,10 @@ class ApiShieldSchema(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] file: Schema file bytes
         :param pulumi.Input[str] kind: Kind of schema
+               Available values: "openapi_v3".
         :param pulumi.Input[str] name: Name of the schema
         :param pulumi.Input[str] validation_enabled: Flag whether schema is enabled for validation.
+               Available values: "true", "false".
         :param pulumi.Input[str] zone_id: Identifier
         """
         ...
@@ -398,9 +408,11 @@ class ApiShieldSchema(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] file: Schema file bytes
         :param pulumi.Input[str] kind: Kind of schema
+               Available values: "openapi_v3".
         :param pulumi.Input[str] name: Name of the schema
         :param pulumi.Input[str] source: Source of the schema
         :param pulumi.Input[str] validation_enabled: Flag whether schema is enabled for validation.
+               Available values: "true", "false".
         :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -437,6 +449,7 @@ class ApiShieldSchema(pulumi.CustomResource):
     def kind(self) -> pulumi.Output[str]:
         """
         Kind of schema
+        Available values: "openapi_v3".
         """
         return pulumi.get(self, "kind")
 
@@ -476,6 +489,7 @@ class ApiShieldSchema(pulumi.CustomResource):
     def validation_enabled(self) -> pulumi.Output[Optional[str]]:
         """
         Flag whether schema is enabled for validation.
+        Available values: "true", "false".
         """
         return pulumi.get(self, "validation_enabled")
 

@@ -24,6 +24,7 @@ public final class GetAddressMapMembership {
     private String identifier;
     /**
      * @return The type of the membership.
+     * Available values: &#34;zone&#34;, &#34;account&#34;.
      * 
      */
     private String kind;
@@ -48,6 +49,7 @@ public final class GetAddressMapMembership {
     }
     /**
      * @return The type of the membership.
+     * Available values: &#34;zone&#34;, &#34;account&#34;.
      * 
      */
     public String kind() {

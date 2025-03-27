@@ -22,6 +22,7 @@ public final class GetAccessRuleScope {
     private String id;
     /**
      * @return The scope of the rule.
+     * Available values: &#34;user&#34;, &#34;organization&#34;.
      * 
      */
     private String type;
@@ -43,6 +44,7 @@ public final class GetAccessRuleScope {
     }
     /**
      * @return The scope of the rule.
+     * Available values: &#34;user&#34;, &#34;organization&#34;.
      * 
      */
     public String type() {

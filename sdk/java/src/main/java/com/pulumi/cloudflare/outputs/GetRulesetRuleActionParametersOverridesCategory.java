@@ -28,6 +28,7 @@ public final class GetRulesetRuleActionParametersOverridesCategory {
     private Boolean enabled;
     /**
      * @return The sensitivity level to use for rules in the category.
+     * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */
     private String sensitivityLevel;
@@ -56,6 +57,7 @@ public final class GetRulesetRuleActionParametersOverridesCategory {
     }
     /**
      * @return The sensitivity level to use for rules in the category.
+     * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */
     public String sensitivityLevel() {

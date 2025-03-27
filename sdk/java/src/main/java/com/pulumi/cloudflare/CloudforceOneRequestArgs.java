@@ -93,6 +93,7 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
 
     /**
      * The CISA defined Traffic Light Protocol (TLP)
+     * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
     @Import(name="tlp")
@@ -100,6 +101,7 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The CISA defined Traffic Light Protocol (TLP)
+     * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
     public Optional<Output<String>> tlp() {
@@ -242,6 +244,7 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param tlp The CISA defined Traffic Light Protocol (TLP)
+         * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
          * 
          * @return builder
          * 
@@ -253,6 +256,7 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param tlp The CISA defined Traffic Light Protocol (TLP)
+         * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
          * 
          * @return builder
          * 

@@ -90,6 +90,7 @@ public class ArgoTieredCaching extends com.pulumi.resources.CustomResource {
     }
     /**
      * Enables Tiered Caching.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     @Export(name="value", refs={String.class}, tree="[0]")
@@ -97,6 +98,7 @@ public class ArgoTieredCaching extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Enables Tiered Caching.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public Output<String> value() {

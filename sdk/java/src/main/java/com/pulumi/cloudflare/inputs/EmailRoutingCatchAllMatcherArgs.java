@@ -16,6 +16,7 @@ public final class EmailRoutingCatchAllMatcherArgs extends com.pulumi.resources.
 
     /**
      * Type of matcher. Default is &#39;all&#39;.
+     * Available values: &#34;all&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -23,6 +24,7 @@ public final class EmailRoutingCatchAllMatcherArgs extends com.pulumi.resources.
 
     /**
      * @return Type of matcher. Default is &#39;all&#39;.
+     * Available values: &#34;all&#34;.
      * 
      */
     public Output<String> type() {
@@ -55,6 +57,7 @@ public final class EmailRoutingCatchAllMatcherArgs extends com.pulumi.resources.
 
         /**
          * @param type Type of matcher. Default is &#39;all&#39;.
+         * Available values: &#34;all&#34;.
          * 
          * @return builder
          * 
@@ -66,6 +69,7 @@ public final class EmailRoutingCatchAllMatcherArgs extends com.pulumi.resources.
 
         /**
          * @param type Type of matcher. Default is &#39;all&#39;.
+         * Available values: &#34;all&#34;.
          * 
          * @return builder
          * 

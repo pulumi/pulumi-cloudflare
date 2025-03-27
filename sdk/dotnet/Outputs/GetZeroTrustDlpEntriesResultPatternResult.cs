@@ -14,6 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustDlpEntriesResultPatternResult
     {
         public readonly string Regex;
+        /// <summary>
+        /// Available values: "luhn".
+        /// </summary>
         public readonly string Validation;
 
         [OutputConstructor]

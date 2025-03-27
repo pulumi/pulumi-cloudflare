@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// The IP versions supported for inbound connections on Spectrum anycast IPs.
+        /// Available values: "all", "ipv4", "ipv6".
         /// </summary>
         [Input("connectivity")]
         public Input<string>? Connectivity { get; set; }
@@ -32,6 +33,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
+        /// Available values: "dynamic".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

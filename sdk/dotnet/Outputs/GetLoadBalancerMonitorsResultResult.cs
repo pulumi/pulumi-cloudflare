@@ -78,6 +78,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly int Timeout;
         /// <summary>
         /// The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+        /// Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
         /// </summary>
         public readonly string Type;
 

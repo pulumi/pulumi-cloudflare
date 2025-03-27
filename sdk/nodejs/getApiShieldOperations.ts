@@ -44,6 +44,7 @@ export function getApiShieldOperations(args: GetApiShieldOperationsArgs, opts?: 
 export interface GetApiShieldOperationsArgs {
     /**
      * Direction to order results.
+     * Available values: "asc", "desc".
      */
     direction?: string;
     /**
@@ -68,6 +69,7 @@ export interface GetApiShieldOperationsArgs {
     methods?: string[];
     /**
      * Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+     * Available values: "method", "host", "endpoint", "thresholds.$key".
      */
     order?: string;
     /**
@@ -82,6 +84,7 @@ export interface GetApiShieldOperationsArgs {
 export interface GetApiShieldOperationsResult {
     /**
      * Direction to order results.
+     * Available values: "asc", "desc".
      */
     readonly direction?: string;
     /**
@@ -110,6 +113,7 @@ export interface GetApiShieldOperationsResult {
     readonly methods?: string[];
     /**
      * Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+     * Available values: "method", "host", "endpoint", "thresholds.$key".
      */
     readonly order?: string;
     /**
@@ -159,6 +163,7 @@ export function getApiShieldOperationsOutput(args: GetApiShieldOperationsOutputA
 export interface GetApiShieldOperationsOutputArgs {
     /**
      * Direction to order results.
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**
@@ -183,6 +188,7 @@ export interface GetApiShieldOperationsOutputArgs {
     methods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+     * Available values: "method", "host", "endpoint", "thresholds.$key".
      */
     order?: pulumi.Input<string>;
     /**

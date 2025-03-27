@@ -49,6 +49,21 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Jurisdiction of the bucket
+     * 
+     */
+    @Import(name="jurisdiction")
+    private @Nullable Output<String> jurisdiction;
+
+    /**
+     * @return Jurisdiction of the bucket
+     * 
+     */
+    public Optional<Output<String>> jurisdiction() {
+        return Optional.ofNullable(this.jurisdiction);
+    }
+
+    /**
      * Queue ID
      * 
      */
@@ -83,6 +98,7 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
     private R2BucketEventNotificationArgs(R2BucketEventNotificationArgs $) {
         this.accountId = $.accountId;
         this.bucketName = $.bucketName;
+        this.jurisdiction = $.jurisdiction;
         this.queueId = $.queueId;
         this.rules = $.rules;
     }
@@ -145,6 +161,27 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
          */
         public Builder bucketName(String bucketName) {
             return bucketName(Output.of(bucketName));
+        }
+
+        /**
+         * @param jurisdiction Jurisdiction of the bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(@Nullable Output<String> jurisdiction) {
+            $.jurisdiction = jurisdiction;
+            return this;
+        }
+
+        /**
+         * @param jurisdiction Jurisdiction of the bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(String jurisdiction) {
+            return jurisdiction(Output.of(jurisdiction));
         }
 
         /**

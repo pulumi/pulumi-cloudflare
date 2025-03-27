@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// If provided, include only tunnels that were created (and not deleted) before this time.
+        /// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
         /// </summary>
         [Input("existedAt")]
         public Input<string>? ExistedAt { get; set; }
@@ -48,11 +48,17 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("routeId")]
         public Input<string>? RouteId { get; set; }
 
-        /// <summary>
-        /// The types of tunnels to filter separated by a comma.
-        /// </summary>
         [Input("tunTypes")]
-        public Input<string>? TunTypes { get; set; }
+        private InputList<string>? _tunTypes;
+
+        /// <summary>
+        /// The types of tunnels to filter by, separated by commas.
+        /// </summary>
+        public InputList<string> TunTypes
+        {
+            get => _tunTypes ?? (_tunTypes = new InputList<string>());
+            set => _tunTypes = value;
+        }
 
         /// <summary>
         /// UUID of the tunnel.

@@ -50,6 +50,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// A sensitivity level to set for all rules. This option has lower precedence than rule and category overrides and is only applicable for DDoS phases.
+        /// Available values: "default", "medium", "low", "eoff".
         /// </summary>
         [Input("sensitivityLevel")]
         public Input<string>? SensitivityLevel { get; set; }

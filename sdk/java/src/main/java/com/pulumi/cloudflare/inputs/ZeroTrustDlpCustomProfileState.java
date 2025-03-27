@@ -29,8 +29,6 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
         return Optional.ofNullable(this.accountId);
     }
 
-<<<<<<< HEAD
-=======
     @Import(name="aiContextEnabled")
     private @Nullable Output<Boolean> aiContextEnabled;
 
@@ -38,7 +36,6 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
         return Optional.ofNullable(this.aiContextEnabled);
     }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
      * 
@@ -164,9 +161,17 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
         return Optional.ofNullable(this.sharedEntries);
     }
 
+    /**
+     * Available values: &#34;custom&#34;.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return Available values: &#34;custom&#34;.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -190,10 +195,7 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
 
     private ZeroTrustDlpCustomProfileState(ZeroTrustDlpCustomProfileState $) {
         this.accountId = $.accountId;
-<<<<<<< HEAD
-=======
         this.aiContextEnabled = $.aiContextEnabled;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.allowedMatchCount = $.allowedMatchCount;
         this.confidenceThreshold = $.confidenceThreshold;
         this.contextAwareness = $.contextAwareness;
@@ -236,8 +238,6 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
             return accountId(Output.of(accountId));
         }
 
-<<<<<<< HEAD
-=======
         public Builder aiContextEnabled(@Nullable Output<Boolean> aiContextEnabled) {
             $.aiContextEnabled = aiContextEnabled;
             return this;
@@ -247,7 +247,6 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
             return aiContextEnabled(Output.of(aiContextEnabled));
         }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /**
          * @param allowedMatchCount Related DLP policies will trigger when the match count exceeds the number set.
          * 
@@ -437,11 +436,23 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
             return sharedEntries(List.of(sharedEntries));
         }
 
+        /**
+         * @param type Available values: &#34;custom&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Available values: &#34;custom&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

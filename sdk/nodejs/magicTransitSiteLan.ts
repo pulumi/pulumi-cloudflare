@@ -8,15 +8,12 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
-<<<<<<< HEAD
-=======
  *
  * ## Import
  *
  * ```sh
  * $ pulumi import cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan example '<account_id>/<site_id>/<lan_id>'
  * ```
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  */
 export class MagicTransitSiteLan extends pulumi.CustomResource {
     /**
@@ -54,13 +51,6 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      */
     public readonly haLink!: pulumi.Output<boolean | undefined>;
-<<<<<<< HEAD
-    /**
-     * Identifier
-     */
-    public readonly lanId!: pulumi.Output<string | undefined>;
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public readonly name!: pulumi.Output<string | undefined>;
     public readonly nat!: pulumi.Output<outputs.MagicTransitSiteLanNat>;
     public readonly physport!: pulumi.Output<number>;
@@ -93,10 +83,6 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
             const state = argsOrState as MagicTransitSiteLanState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["haLink"] = state ? state.haLink : undefined;
-<<<<<<< HEAD
-            resourceInputs["lanId"] = state ? state.lanId : undefined;
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nat"] = state ? state.nat : undefined;
             resourceInputs["physport"] = state ? state.physport : undefined;
@@ -120,10 +106,6 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["haLink"] = args ? args.haLink : undefined;
-<<<<<<< HEAD
-            resourceInputs["lanId"] = args ? args.lanId : undefined;
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nat"] = args ? args.nat : undefined;
             resourceInputs["physport"] = args ? args.physport : undefined;
@@ -149,13 +131,6 @@ export interface MagicTransitSiteLanState {
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      */
     haLink?: pulumi.Input<boolean>;
-<<<<<<< HEAD
-    /**
-     * Identifier
-     */
-    lanId?: pulumi.Input<string>;
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     name?: pulumi.Input<string>;
     nat?: pulumi.Input<inputs.MagicTransitSiteLanNat>;
     physport?: pulumi.Input<number>;
@@ -186,13 +161,6 @@ export interface MagicTransitSiteLanArgs {
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      */
     haLink?: pulumi.Input<boolean>;
-<<<<<<< HEAD
-    /**
-     * Identifier
-     */
-    lanId?: pulumi.Input<string>;
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     name?: pulumi.Input<string>;
     nat?: pulumi.Input<inputs.MagicTransitSiteLanNat>;
     physport: pulumi.Input<number>;

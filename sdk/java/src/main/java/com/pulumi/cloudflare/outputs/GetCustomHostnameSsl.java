@@ -17,11 +17,13 @@ import java.util.Objects;
 public final class GetCustomHostnameSsl {
     /**
      * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     private String bundleMethod;
     /**
      * @return The Certificate Authority that will issue the certificate
+     * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     private String certificateAuthority;
@@ -62,6 +64,7 @@ public final class GetCustomHostnameSsl {
     private String issuer;
     /**
      * @return Domain control validation (DCV) method used for this hostname.
+     * Available values: &#34;http&#34;, &#34;txt&#34;, &#34;email&#34;.
      * 
      */
     private String method;
@@ -78,11 +81,13 @@ public final class GetCustomHostnameSsl {
     private String signature;
     /**
      * @return Status of the hostname&#39;s SSL certificates.
+     * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
      * 
      */
     private String status;
     /**
      * @return Level of validation to be used for this hostname. Domain validation (dv) must be used.
+     * Available values: &#34;dv&#34;.
      * 
      */
     private String type;
@@ -106,6 +111,7 @@ public final class GetCustomHostnameSsl {
     private GetCustomHostnameSsl() {}
     /**
      * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     public String bundleMethod() {
@@ -113,6 +119,7 @@ public final class GetCustomHostnameSsl {
     }
     /**
      * @return The Certificate Authority that will issue the certificate
+     * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     public String certificateAuthority() {
@@ -169,6 +176,7 @@ public final class GetCustomHostnameSsl {
     }
     /**
      * @return Domain control validation (DCV) method used for this hostname.
+     * Available values: &#34;http&#34;, &#34;txt&#34;, &#34;email&#34;.
      * 
      */
     public String method() {
@@ -193,6 +201,7 @@ public final class GetCustomHostnameSsl {
     }
     /**
      * @return Status of the hostname&#39;s SSL certificates.
+     * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
      * 
      */
     public String status() {
@@ -200,6 +209,7 @@ public final class GetCustomHostnameSsl {
     }
     /**
      * @return Level of validation to be used for this hostname. Domain validation (dv) must be used.
+     * Available values: &#34;dv&#34;.
      * 
      */
     public String type() {

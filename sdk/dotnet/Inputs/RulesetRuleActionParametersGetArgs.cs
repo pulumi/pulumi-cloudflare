@@ -86,6 +86,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Content-type header to set with the response.
+        /// Available values: "application/json", "text/xml", "text/plain", "text/html".
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -242,6 +243,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Configure the Polish level.
+        /// Available values: "off", "lossless", "lossy".
         /// </summary>
         [Input("polish")]
         public Input<string>? Polish { get; set; }
@@ -258,6 +260,18 @@ namespace Pulumi.Cloudflare.Inputs
             set => _products = value;
         }
 
+        [Input("rawResponseFields")]
+        private InputList<Inputs.RulesetRuleActionParametersRawResponseFieldGetArgs>? _rawResponseFields;
+
+        /// <summary>
+        /// The raw response fields to log.
+        /// </summary>
+        public InputList<Inputs.RulesetRuleActionParametersRawResponseFieldGetArgs> RawResponseFields
+        {
+            get => _rawResponseFields ?? (_rawResponseFields = new InputList<Inputs.RulesetRuleActionParametersRawResponseFieldGetArgs>());
+            set => _rawResponseFields = value;
+        }
+
         /// <summary>
         /// Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
         /// </summary>
@@ -268,7 +282,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<Inputs.RulesetRuleActionParametersRequestFieldGetArgs>? _requestFields;
 
         /// <summary>
-        /// The request fields to log.
+        /// The raw request fields to log.
         /// </summary>
         public InputList<Inputs.RulesetRuleActionParametersRequestFieldGetArgs> RequestFields
         {
@@ -292,7 +306,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<Inputs.RulesetRuleActionParametersResponseFieldGetArgs>? _responseFields;
 
         /// <summary>
-        /// The response fields to log.
+        /// The transformed response fields to log.
         /// </summary>
         public InputList<Inputs.RulesetRuleActionParametersResponseFieldGetArgs> ResponseFields
         {
@@ -320,6 +334,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+        /// Available values: "current".
         /// </summary>
         [Input("ruleset")]
         public Input<string>? Ruleset { get; set; }
@@ -338,6 +353,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Configure the Security Level.
+        /// Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
         /// </summary>
         [Input("securityLevel")]
         public Input<string>? SecurityLevel { get; set; }
@@ -362,6 +378,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Configure the SSL level.
+        /// Available values: "off", "flexible", "full", "strict", "origin_pull".
         /// </summary>
         [Input("ssl")]
         public Input<string>? Ssl { get; set; }
@@ -377,6 +394,18 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("sxg")]
         public Input<bool>? Sxg { get; set; }
+
+        [Input("transformedRequestFields")]
+        private InputList<Inputs.RulesetRuleActionParametersTransformedRequestFieldGetArgs>? _transformedRequestFields;
+
+        /// <summary>
+        /// The transformed request fields to log.
+        /// </summary>
+        public InputList<Inputs.RulesetRuleActionParametersTransformedRequestFieldGetArgs> TransformedRequestFields
+        {
+            get => _transformedRequestFields ?? (_transformedRequestFields = new InputList<Inputs.RulesetRuleActionParametersTransformedRequestFieldGetArgs>());
+            set => _transformedRequestFields = value;
+        }
 
         /// <summary>
         /// URI to rewrite the request to.

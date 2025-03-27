@@ -81,13 +81,16 @@ type LookupDnsRecordsArgs struct {
 	Comment *GetDnsRecordsComment `pulumi:"comment"`
 	Content *GetDnsRecordsContent `pulumi:"content"`
 	// Direction to order DNS records in.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+	// Available values: "any", "all".
 	Match *string `pulumi:"match"`
 	// Max items to fetch, default: 1000
 	MaxItems *int               `pulumi:"maxItems"`
 	Name     *GetDnsRecordsName `pulumi:"name"`
 	// Field to order DNS records by.
+	// Available values: "type", "name", "content", "ttl", "proxied".
 	Order *string `pulumi:"order"`
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	Proxied *bool `pulumi:"proxied"`
@@ -95,8 +98,10 @@ type LookupDnsRecordsArgs struct {
 	Search *string           `pulumi:"search"`
 	Tag    *GetDnsRecordsTag `pulumi:"tag"`
 	// Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
+	// Available values: "any", "all".
 	TagMatch *string `pulumi:"tagMatch"`
 	// Record type.
+	// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
 	Type *string `pulumi:"type"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -107,15 +112,18 @@ type LookupDnsRecordsResult struct {
 	Comment *GetDnsRecordsComment `pulumi:"comment"`
 	Content *GetDnsRecordsContent `pulumi:"content"`
 	// Direction to order DNS records in.
+	// Available values: "asc", "desc".
 	Direction string `pulumi:"direction"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+	// Available values: "any", "all".
 	Match string `pulumi:"match"`
 	// Max items to fetch, default: 1000
 	MaxItems *int               `pulumi:"maxItems"`
 	Name     *GetDnsRecordsName `pulumi:"name"`
 	// Field to order DNS records by.
+	// Available values: "type", "name", "content", "ttl", "proxied".
 	Order string `pulumi:"order"`
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	Proxied bool `pulumi:"proxied"`
@@ -125,8 +133,10 @@ type LookupDnsRecordsResult struct {
 	Search *string           `pulumi:"search"`
 	Tag    *GetDnsRecordsTag `pulumi:"tag"`
 	// Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
+	// Available values: "any", "all".
 	TagMatch string `pulumi:"tagMatch"`
 	// Record type.
+	// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
 	Type *string `pulumi:"type"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -146,13 +156,16 @@ type LookupDnsRecordsOutputArgs struct {
 	Comment GetDnsRecordsCommentPtrInput `pulumi:"comment"`
 	Content GetDnsRecordsContentPtrInput `pulumi:"content"`
 	// Direction to order DNS records in.
+	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+	// Available values: "any", "all".
 	Match pulumi.StringPtrInput `pulumi:"match"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput        `pulumi:"maxItems"`
 	Name     GetDnsRecordsNamePtrInput `pulumi:"name"`
 	// Field to order DNS records by.
+	// Available values: "type", "name", "content", "ttl", "proxied".
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	Proxied pulumi.BoolPtrInput `pulumi:"proxied"`
@@ -160,8 +173,10 @@ type LookupDnsRecordsOutputArgs struct {
 	Search pulumi.StringPtrInput    `pulumi:"search"`
 	Tag    GetDnsRecordsTagPtrInput `pulumi:"tag"`
 	// Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
+	// Available values: "any", "all".
 	TagMatch pulumi.StringPtrInput `pulumi:"tagMatch"`
 	// Record type.
+	// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Identifier
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -195,6 +210,7 @@ func (o LookupDnsRecordsResultOutput) Content() GetDnsRecordsContentPtrOutput {
 }
 
 // Direction to order DNS records in.
+// Available values: "asc", "desc".
 func (o LookupDnsRecordsResultOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordsResult) string { return v.Direction }).(pulumi.StringOutput)
 }
@@ -205,6 +221,7 @@ func (o LookupDnsRecordsResultOutput) Id() pulumi.StringOutput {
 }
 
 // Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+// Available values: "any", "all".
 func (o LookupDnsRecordsResultOutput) Match() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordsResult) string { return v.Match }).(pulumi.StringOutput)
 }
@@ -219,6 +236,7 @@ func (o LookupDnsRecordsResultOutput) Name() GetDnsRecordsNamePtrOutput {
 }
 
 // Field to order DNS records by.
+// Available values: "type", "name", "content", "ttl", "proxied".
 func (o LookupDnsRecordsResultOutput) Order() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordsResult) string { return v.Order }).(pulumi.StringOutput)
 }
@@ -243,11 +261,13 @@ func (o LookupDnsRecordsResultOutput) Tag() GetDnsRecordsTagPtrOutput {
 }
 
 // Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
+// Available values: "any", "all".
 func (o LookupDnsRecordsResultOutput) TagMatch() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordsResult) string { return v.TagMatch }).(pulumi.StringOutput)
 }
 
 // Record type.
+// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
 func (o LookupDnsRecordsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDnsRecordsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

@@ -61,6 +61,8 @@ type GetZeroTrustTunnelCloudflaredTokenResult struct {
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.
+	Token string `pulumi:"token"`
 	// UUID of the tunnel.
 	TunnelId string `pulumi:"tunnelId"`
 }
@@ -109,6 +111,11 @@ func (o GetZeroTrustTunnelCloudflaredTokenResultOutput) AccountId() pulumi.Strin
 // The provider-assigned unique ID for this managed resource.
 func (o GetZeroTrustTunnelCloudflaredTokenResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustTunnelCloudflaredTokenResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.
+func (o GetZeroTrustTunnelCloudflaredTokenResultOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustTunnelCloudflaredTokenResult) string { return v.Token }).(pulumi.StringOutput)
 }
 
 // UUID of the tunnel.

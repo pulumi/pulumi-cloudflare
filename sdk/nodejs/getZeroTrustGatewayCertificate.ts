@@ -43,6 +43,7 @@ export interface GetZeroTrustGatewayCertificateResult {
     readonly accountId: string;
     /**
      * The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+     * Available values: "pending*deployment", "available", "pending*deletion", "inactive".
      */
     readonly bindingStatus: string;
     /**
@@ -77,6 +78,7 @@ export interface GetZeroTrustGatewayCertificateResult {
     readonly issuerRaw: string;
     /**
      * The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * Available values: "custom", "gatewayManaged".
      */
     readonly type: string;
     readonly updatedAt: string;

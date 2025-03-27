@@ -70,6 +70,7 @@ export class StreamAudioTrack extends pulumi.CustomResource {
     public readonly label!: pulumi.Output<string | undefined>;
     /**
      * Specifies the processing status of the video.
+     * Available values: "queued", "ready", "error".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -144,6 +145,7 @@ export interface StreamAudioTrackState {
     label?: pulumi.Input<string>;
     /**
      * Specifies the processing status of the video.
+     * Available values: "queued", "ready", "error".
      */
     status?: pulumi.Input<string>;
     /**

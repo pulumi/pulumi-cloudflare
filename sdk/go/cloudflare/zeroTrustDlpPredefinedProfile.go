@@ -35,10 +35,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
-<<<<<<< HEAD
-=======
 //				AiContextEnabled:    pulumi.Bool(true),
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 //				AllowedMatchCount:   pulumi.Int(0),
 //				ConfidenceThreshold: pulumi.String("confidence_threshold"),
 //				ContextAwareness: &cloudflare.ZeroTrustDlpPredefinedProfileContextAwarenessArgs{
@@ -67,10 +64,7 @@ type ZeroTrustDlpPredefinedProfile struct {
 	pulumi.CustomResourceState
 
 	AccountId           pulumi.StringOutput    `pulumi:"accountId"`
-<<<<<<< HEAD
-=======
 	AiContextEnabled    pulumi.BoolPtrOutput   `pulumi:"aiContextEnabled"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	AllowedMatchCount   pulumi.IntPtrOutput    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold pulumi.StringPtrOutput `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
@@ -86,7 +80,8 @@ type ZeroTrustDlpPredefinedProfile struct {
 	// Whether this profile can be accessed by anyone
 	OpenAccess pulumi.BoolOutput   `pulumi:"openAccess"`
 	ProfileId  pulumi.StringOutput `pulumi:"profileId"`
-	Type       pulumi.StringOutput `pulumi:"type"`
+	// Available values: "custom".
+	Type pulumi.StringOutput `pulumi:"type"`
 	// When the profile was lasted updated
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
@@ -107,6 +102,12 @@ func NewZeroTrustDlpPredefinedProfile(ctx *pulumi.Context,
 	if args.ProfileId == nil {
 		return nil, errors.New("invalid value for required argument 'ProfileId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustDlpPredefinedProfile
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile", name, args, &resource, opts...)
@@ -131,10 +132,7 @@ func GetZeroTrustDlpPredefinedProfile(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ZeroTrustDlpPredefinedProfile resources.
 type zeroTrustDlpPredefinedProfileState struct {
 	AccountId           *string `pulumi:"accountId"`
-<<<<<<< HEAD
-=======
 	AiContextEnabled    *bool   `pulumi:"aiContextEnabled"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	AllowedMatchCount   *int    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
@@ -150,17 +148,15 @@ type zeroTrustDlpPredefinedProfileState struct {
 	// Whether this profile can be accessed by anyone
 	OpenAccess *bool   `pulumi:"openAccess"`
 	ProfileId  *string `pulumi:"profileId"`
-	Type       *string `pulumi:"type"`
+	// Available values: "custom".
+	Type *string `pulumi:"type"`
 	// When the profile was lasted updated
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type ZeroTrustDlpPredefinedProfileState struct {
 	AccountId           pulumi.StringPtrInput
-<<<<<<< HEAD
-=======
 	AiContextEnabled    pulumi.BoolPtrInput
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	AllowedMatchCount   pulumi.IntPtrInput
 	ConfidenceThreshold pulumi.StringPtrInput
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
@@ -176,7 +172,8 @@ type ZeroTrustDlpPredefinedProfileState struct {
 	// Whether this profile can be accessed by anyone
 	OpenAccess pulumi.BoolPtrInput
 	ProfileId  pulumi.StringPtrInput
-	Type       pulumi.StringPtrInput
+	// Available values: "custom".
+	Type pulumi.StringPtrInput
 	// When the profile was lasted updated
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -187,10 +184,7 @@ func (ZeroTrustDlpPredefinedProfileState) ElementType() reflect.Type {
 
 type zeroTrustDlpPredefinedProfileArgs struct {
 	AccountId           string  `pulumi:"accountId"`
-<<<<<<< HEAD
-=======
 	AiContextEnabled    *bool   `pulumi:"aiContextEnabled"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	AllowedMatchCount   *int    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
@@ -203,10 +197,7 @@ type zeroTrustDlpPredefinedProfileArgs struct {
 // The set of arguments for constructing a ZeroTrustDlpPredefinedProfile resource.
 type ZeroTrustDlpPredefinedProfileArgs struct {
 	AccountId           pulumi.StringInput
-<<<<<<< HEAD
-=======
 	AiContextEnabled    pulumi.BoolPtrInput
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	AllowedMatchCount   pulumi.IntPtrInput
 	ConfidenceThreshold pulumi.StringPtrInput
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
@@ -307,13 +298,10 @@ func (o ZeroTrustDlpPredefinedProfileOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpPredefinedProfile) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-=======
 func (o ZeroTrustDlpPredefinedProfileOutput) AiContextEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpPredefinedProfile) pulumi.BoolPtrOutput { return v.AiContextEnabled }).(pulumi.BoolPtrOutput)
 }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func (o ZeroTrustDlpPredefinedProfileOutput) AllowedMatchCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpPredefinedProfile) pulumi.IntPtrOutput { return v.AllowedMatchCount }).(pulumi.IntPtrOutput)
 }
@@ -361,6 +349,7 @@ func (o ZeroTrustDlpPredefinedProfileOutput) ProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpPredefinedProfile) pulumi.StringOutput { return v.ProfileId }).(pulumi.StringOutput)
 }
 
+// Available values: "custom".
 func (o ZeroTrustDlpPredefinedProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpPredefinedProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

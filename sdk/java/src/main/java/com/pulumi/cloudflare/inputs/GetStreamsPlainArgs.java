@@ -139,6 +139,7 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * Specifies the processing status for all quality levels for a video.
+     * Available values: &#34;pendingupload&#34;, &#34;downloading&#34;, &#34;queued&#34;, &#34;inprogress&#34;, &#34;ready&#34;, &#34;error&#34;.
      * 
      */
     @Import(name="status")
@@ -146,6 +147,7 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Specifies the processing status for all quality levels for a video.
+     * Available values: &#34;pendingupload&#34;, &#34;downloading&#34;, &#34;queued&#34;, &#34;inprogress&#34;, &#34;ready&#34;, &#34;error&#34;.
      * 
      */
     public Optional<String> status() {
@@ -290,6 +292,7 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param status Specifies the processing status for all quality levels for a video.
+         * Available values: &#34;pendingupload&#34;, &#34;downloading&#34;, &#34;queued&#34;, &#34;inprogress&#34;, &#34;ready&#34;, &#34;error&#34;.
          * 
          * @return builder
          * 

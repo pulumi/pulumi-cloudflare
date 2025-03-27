@@ -70,10 +70,12 @@ export class Web3Hostname extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * Status of the hostname's activation.
+     * Available values: "active", "pending", "deleting", "error".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Target gateway of the hostname.
+     * Available values: "ethereum", "ipfs", "ipfs*universal*path".
      */
     public readonly target!: pulumi.Output<string>;
     /**
@@ -147,10 +149,12 @@ export interface Web3HostnameState {
     name?: pulumi.Input<string>;
     /**
      * Status of the hostname's activation.
+     * Available values: "active", "pending", "deleting", "error".
      */
     status?: pulumi.Input<string>;
     /**
      * Target gateway of the hostname.
+     * Available values: "ethereum", "ipfs", "ipfs*universal*path".
      */
     target?: pulumi.Input<string>;
     /**
@@ -177,6 +181,7 @@ export interface Web3HostnameArgs {
     name: pulumi.Input<string>;
     /**
      * Target gateway of the hostname.
+     * Available values: "ethereum", "ipfs", "ipfs*universal*path".
      */
     target: pulumi.Input<string>;
     /**

@@ -52,6 +52,7 @@ type ArgoTieredCaching struct {
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// Enables Tiered Caching.
+	// Available values: "on", "off".
 	Value pulumi.StringOutput `pulumi:"value"`
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -98,6 +99,7 @@ type argoTieredCachingState struct {
 	// Last time this setting was modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// Enables Tiered Caching.
+	// Available values: "on", "off".
 	Value *string `pulumi:"value"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
@@ -109,6 +111,7 @@ type ArgoTieredCachingState struct {
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringPtrInput
 	// Enables Tiered Caching.
+	// Available values: "on", "off".
 	Value pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
@@ -120,6 +123,7 @@ func (ArgoTieredCachingState) ElementType() reflect.Type {
 
 type argoTieredCachingArgs struct {
 	// Enables Tiered Caching.
+	// Available values: "on", "off".
 	Value string `pulumi:"value"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -128,6 +132,7 @@ type argoTieredCachingArgs struct {
 // The set of arguments for constructing a ArgoTieredCaching resource.
 type ArgoTieredCachingArgs struct {
 	// Enables Tiered Caching.
+	// Available values: "on", "off".
 	Value pulumi.StringInput
 	// Identifier
 	ZoneId pulumi.StringInput
@@ -231,6 +236,7 @@ func (o ArgoTieredCachingOutput) ModifiedOn() pulumi.StringOutput {
 }
 
 // Enables Tiered Caching.
+// Available values: "on", "off".
 func (o ArgoTieredCachingOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArgoTieredCaching) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

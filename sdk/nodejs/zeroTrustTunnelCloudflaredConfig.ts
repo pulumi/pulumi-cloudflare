@@ -54,6 +54,7 @@ export class ZeroTrustTunnelCloudflaredConfig extends pulumi.CustomResource {
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+     * Available values: "local", "cloudflare".
      */
     public readonly source!: pulumi.Output<string>;
     /**
@@ -100,6 +101,8 @@ export class ZeroTrustTunnelCloudflaredConfig extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/tunnelConfig:TunnelConfig" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustTunnelCloudflaredConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -119,6 +122,7 @@ export interface ZeroTrustTunnelCloudflaredConfigState {
     createdAt?: pulumi.Input<string>;
     /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+     * Available values: "local", "cloudflare".
      */
     source?: pulumi.Input<string>;
     /**
@@ -145,6 +149,7 @@ export interface ZeroTrustTunnelCloudflaredConfigArgs {
     config?: pulumi.Input<inputs.ZeroTrustTunnelCloudflaredConfigConfig>;
     /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+     * Available values: "local", "cloudflare".
      */
     source?: pulumi.Input<string>;
     /**

@@ -60,6 +60,12 @@ namespace Pulumi.Cloudflare
         public Output<string> BucketName { get; private set; } = null!;
 
         /// <summary>
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Output("jurisdiction")]
+        public Output<string> Jurisdiction { get; private set; } = null!;
+
+        /// <summary>
         /// Queue ID
         /// </summary>
         [Output("queueId")]
@@ -136,6 +142,12 @@ namespace Pulumi.Cloudflare
         public Input<string> BucketName { get; set; } = null!;
 
         /// <summary>
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
+
+        /// <summary>
         /// Queue ID
         /// </summary>
         [Input("queueId")]
@@ -172,6 +184,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
+
+        /// <summary>
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
 
         /// <summary>
         /// Queue ID

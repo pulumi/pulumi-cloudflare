@@ -86,6 +86,7 @@ class GetR2BucketResult:
     def location(self) -> str:
         """
         Location of the bucket
+        Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         """
         return pulumi.get(self, "location")
 
@@ -102,6 +103,7 @@ class GetR2BucketResult:
     def storage_class(self) -> str:
         """
         Storage class for newly uploaded objects, unless specified otherwise.
+        Available values: "Standard", "InfrequentAccess".
         """
         return pulumi.get(self, "storage_class")
 

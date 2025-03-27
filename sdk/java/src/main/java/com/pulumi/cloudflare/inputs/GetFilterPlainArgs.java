@@ -3,27 +3,19 @@
 
 package com.pulumi.cloudflare.inputs;
 
-<<<<<<< HEAD
-=======
 import com.pulumi.cloudflare.inputs.GetFilterFilter;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-<<<<<<< HEAD
-=======
 import java.util.Optional;
 import javax.annotation.Nullable;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 
 public final class GetFilterPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetFilterPlainArgs Empty = new GetFilterPlainArgs();
 
-<<<<<<< HEAD
-=======
     @Import(name="filter")
     private @Nullable GetFilterFilter filter;
 
@@ -31,30 +23,19 @@ public final class GetFilterPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.filter);
     }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * The unique identifier of the filter.
      * 
      */
-<<<<<<< HEAD
-    @Import(name="filterId", required=true)
-    private String filterId;
-=======
     @Import(name="filterId")
     private @Nullable String filterId;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      * @return The unique identifier of the filter.
      * 
      */
-<<<<<<< HEAD
-    public String filterId() {
-        return this.filterId;
-=======
     public Optional<String> filterId() {
         return Optional.ofNullable(this.filterId);
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     /**
@@ -75,10 +56,7 @@ public final class GetFilterPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetFilterPlainArgs() {}
 
     private GetFilterPlainArgs(GetFilterPlainArgs $) {
-<<<<<<< HEAD
-=======
         this.filter = $.filter;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.filterId = $.filterId;
         this.zoneId = $.zoneId;
     }
@@ -101,25 +79,18 @@ public final class GetFilterPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetFilterPlainArgs(Objects.requireNonNull(defaults));
         }
 
-<<<<<<< HEAD
-=======
         public Builder filter(@Nullable GetFilterFilter filter) {
             $.filter = filter;
             return this;
         }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /**
          * @param filterId The unique identifier of the filter.
          * 
          * @return builder
          * 
          */
-<<<<<<< HEAD
-        public Builder filterId(String filterId) {
-=======
         public Builder filterId(@Nullable String filterId) {
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             $.filterId = filterId;
             return this;
         }
@@ -136,12 +107,6 @@ public final class GetFilterPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetFilterPlainArgs build() {
-<<<<<<< HEAD
-            if ($.filterId == null) {
-                throw new MissingRequiredPropertyException("GetFilterPlainArgs", "filterId");
-            }
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetFilterPlainArgs", "zoneId");
             }

@@ -13,18 +13,72 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleStreamCaptionLanguage = Cloudflare.GetStreamCaptionLanguage.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Identifier = "ea95132c15732412d22c1476fa83f27a",
+        ///         Language = "tr",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetStreamCaptionLanguageResult> InvokeAsync(GetStreamCaptionLanguageArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStreamCaptionLanguageResult>("cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage", args ?? new GetStreamCaptionLanguageArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleStreamCaptionLanguage = Cloudflare.GetStreamCaptionLanguage.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Identifier = "ea95132c15732412d22c1476fa83f27a",
+        ///         Language = "tr",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetStreamCaptionLanguageResult> Invoke(GetStreamCaptionLanguageInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStreamCaptionLanguageResult>("cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage", args ?? new GetStreamCaptionLanguageInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleStreamCaptionLanguage = Cloudflare.GetStreamCaptionLanguage.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Identifier = "ea95132c15732412d22c1476fa83f27a",
+        ///         Language = "tr",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetStreamCaptionLanguageResult> Invoke(GetStreamCaptionLanguageInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetStreamCaptionLanguageResult>("cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage", args ?? new GetStreamCaptionLanguageInvokeArgs(), options.WithDefaults());
@@ -45,6 +99,12 @@ namespace Pulumi.Cloudflare
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
+        /// <summary>
+        /// The language tag in BCP 47 format.
+        /// </summary>
+        [Input("language", required: true)]
+        public string Language { get; set; } = null!;
+
         public GetStreamCaptionLanguageArgs()
         {
         }
@@ -64,6 +124,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
+
+        /// <summary>
+        /// The language tag in BCP 47 format.
+        /// </summary>
+        [Input("language", required: true)]
+        public Input<string> Language { get; set; } = null!;
 
         public GetStreamCaptionLanguageInvokeArgs()
         {
@@ -101,6 +167,7 @@ namespace Pulumi.Cloudflare
         public readonly string Language;
         /// <summary>
         /// The status of a generated caption.
+        /// Available values: "ready", "inprogress", "error".
         /// </summary>
         public readonly string Status;
 

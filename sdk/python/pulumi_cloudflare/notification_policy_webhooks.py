@@ -105,6 +105,7 @@ class _NotificationPolicyWebhooksState:
         :param pulumi.Input[str] name: The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
         :param pulumi.Input[str] secret: Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
         :param pulumi.Input[str] type: Type of webhook endpoint.
+               Available values: "slack", "generic", "gchat".
         :param pulumi.Input[str] url: The POST endpoint to call when dispatching a notification.
         """
         if account_id is not None:
@@ -201,6 +202,7 @@ class _NotificationPolicyWebhooksState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         Type of webhook endpoint.
+        Available values: "slack", "generic", "gchat".
         """
         return pulumi.get(self, "type")
 
@@ -318,7 +320,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            __props__.__dict__["secret"] = secret
+            __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__.__dict__["url"] = url
@@ -326,6 +328,8 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
             __props__.__dict__["last_failure"] = None
             __props__.__dict__["last_success"] = None
             __props__.__dict__["type"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(NotificationPolicyWebhooks, __self__).__init__(
             'cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks',
             resource_name,
@@ -358,6 +362,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
         :param pulumi.Input[str] secret: Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
         :param pulumi.Input[str] type: Type of webhook endpoint.
+               Available values: "slack", "generic", "gchat".
         :param pulumi.Input[str] url: The POST endpoint to call when dispatching a notification.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -427,6 +432,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         Type of webhook endpoint.
+        Available values: "slack", "generic", "gchat".
         """
         return pulumi.get(self, "type")
 

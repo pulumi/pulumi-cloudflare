@@ -65,6 +65,12 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example &#39;&lt;account_id&gt;/&lt;hyperdrive_id&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/hyperdriveConfig:HyperdriveConfig")
 public class HyperdriveConfig extends com.pulumi.resources.CustomResource {

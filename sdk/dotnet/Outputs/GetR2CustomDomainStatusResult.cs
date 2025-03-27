@@ -15,10 +15,12 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Ownership status of the domain
+        /// Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
         /// </summary>
         public readonly string Ownership;
         /// <summary>
         /// SSL certificate status
+        /// Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
         /// </summary>
         public readonly string Ssl;
 

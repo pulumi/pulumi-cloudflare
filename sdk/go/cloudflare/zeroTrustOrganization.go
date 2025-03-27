@@ -49,6 +49,12 @@ func NewZeroTrustOrganization(ctx *pulumi.Context,
 		args = &ZeroTrustOrganizationArgs{}
 	}
 
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/accessOrganization:AccessOrganization"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustOrganization
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization", name, args, &resource, opts...)

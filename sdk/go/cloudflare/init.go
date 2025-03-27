@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccessRule{}
 	case "cloudflare:index/account:Account":
 		r = &Account{}
+	case "cloudflare:index/accountDnsSettings:AccountDnsSettings":
+		r = &AccountDnsSettings{}
+	case "cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView":
+		r = &AccountDnsSettingsInternalView{}
 	case "cloudflare:index/accountMember:AccountMember":
 		r = &AccountMember{}
 	case "cloudflare:index/accountSubscription:AccountSubscription":
@@ -55,6 +59,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AuthenticatedOriginPulls{}
 	case "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate":
 		r = &AuthenticatedOriginPullsCertificate{}
+	case "cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings":
+		r = &AuthenticatedOriginPullsSettings{}
 	case "cloudflare:index/botManagement:BotManagement":
 		r = &BotManagement{}
 	case "cloudflare:index/byoIpPrefix:ByoIpPrefix":
@@ -81,6 +87,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomHostname{}
 	case "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin":
 		r = &CustomHostnameFallbackOrigin{}
+	case "cloudflare:index/customPages:CustomPages":
+		r = &CustomPages{}
 	case "cloudflare:index/customSsl:CustomSsl":
 		r = &CustomSsl{}
 	case "cloudflare:index/d1Database:D1Database":
@@ -89,13 +97,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DnsFirewall{}
 	case "cloudflare:index/dnsRecord:DnsRecord":
 		r = &DnsRecord{}
-<<<<<<< HEAD
-=======
-	case "cloudflare:index/dnsSettings:DnsSettings":
-		r = &DnsSettings{}
-	case "cloudflare:index/dnsSettingsInternalView:DnsSettingsInternalView":
-		r = &DnsSettingsInternalView{}
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	case "cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl":
 		r = &DnsZoneTransfersAcl{}
 	case "cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming":
@@ -220,8 +221,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &R2ManagedDomain{}
 	case "cloudflare:index/rateLimit:RateLimit":
 		r = &RateLimit{}
-	case "cloudflare:index/record:Record":
-		r = &Record{}
 	case "cloudflare:index/regionalHostname:RegionalHostname":
 		r = &RegionalHostname{}
 	case "cloudflare:index/regionalTieredCache:RegionalTieredCache":
@@ -290,6 +289,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkersKv{}
 	case "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
 		r = &WorkersKvNamespace{}
+	case "cloudflare:index/workersRoute:WorkersRoute":
+		r = &WorkersRoute{}
 	case "cloudflare:index/workersScript:WorkersScript":
 		r = &WorkersScript{}
 	case "cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain":
@@ -380,6 +381,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZoneCacheReserve{}
 	case "cloudflare:index/zoneCacheVariants:ZoneCacheVariants":
 		r = &ZoneCacheVariants{}
+	case "cloudflare:index/zoneDnsSettings:ZoneDnsSettings":
+		r = &ZoneDnsSettings{}
 	case "cloudflare:index/zoneDnssec:ZoneDnssec":
 		r = &ZoneDnssec{}
 	case "cloudflare:index/zoneHold:ZoneHold":
@@ -429,6 +432,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/account",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accountDnsSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accountDnsSettingsInternalView",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -508,6 +521,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/authenticatedOriginPullsSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/botManagement",
 		&module{version},
 	)
@@ -573,6 +591,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/customPages",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/customSsl",
 		&module{version},
 	)
@@ -593,44 +616,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
-<<<<<<< HEAD
 		"index/dnsZoneTransfersAcl",
-=======
-		"index/dnsSettings",
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
-<<<<<<< HEAD
 		"index/dnsZoneTransfersIncoming",
-=======
-		"index/dnsSettingsInternalView",
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
-<<<<<<< HEAD
-		"index/dnsZoneTransfersOutgoing",
-=======
-		"index/dnsZoneTransfersAcl",
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
-<<<<<<< HEAD
-		"index/dnsZoneTransfersPeer",
-=======
-		"index/dnsZoneTransfersIncoming",
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
-<<<<<<< HEAD
-=======
 		"index/dnsZoneTransfersOutgoing",
 		&module{version},
 	)
@@ -641,7 +636,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 		"index/dnsZoneTransfersTsig",
 		&module{version},
 	)
@@ -932,11 +926,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
-		"index/record",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
 		"index/regionalHostname",
 		&module{version},
 	)
@@ -1107,12 +1096,12 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
-		"index/workersScript",
+		"index/workersRoute",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
-		"index/workersScriptSubdomain",
+		"index/workersScript",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1333,6 +1322,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zoneCacheVariants",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zoneDnsSettings",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

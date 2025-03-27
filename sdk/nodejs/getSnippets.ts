@@ -6,10 +6,21 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleSnippets = cloudflare.getSnippets({
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     snippetName: "snippet_name_01",
+ * });
+ * ```
  */
 export function getSnippets(args: GetSnippetsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnippetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSnippets:getSnippets", {
+        "snippetName": args.snippetName,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -18,6 +29,10 @@ export function getSnippets(args: GetSnippetsArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getSnippets.
  */
 export interface GetSnippetsArgs {
+    /**
+     * Snippet identifying name
+     */
+    snippetName: string;
     /**
      * Identifier
      */
@@ -51,10 +66,21 @@ export interface GetSnippetsResult {
 }
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleSnippets = cloudflare.getSnippets({
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     snippetName: "snippet_name_01",
+ * });
+ * ```
  */
 export function getSnippetsOutput(args: GetSnippetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSnippetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSnippets:getSnippets", {
+        "snippetName": args.snippetName,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -63,6 +89,10 @@ export function getSnippetsOutput(args: GetSnippetsOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getSnippets.
  */
 export interface GetSnippetsOutputArgs {
+    /**
+     * Snippet identifying name
+     */
+    snippetName: pulumi.Input<string>;
     /**
      * Identifier
      */

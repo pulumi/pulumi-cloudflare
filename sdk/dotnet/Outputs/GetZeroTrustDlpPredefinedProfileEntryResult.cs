@@ -21,6 +21,9 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetZeroTrustDlpPredefinedProfileEntryPatternResult Pattern;
         public readonly string ProfileId;
         public readonly bool Secret;
+        /// <summary>
+        /// Available values: "custom".
+        /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;
         public readonly string WordList;

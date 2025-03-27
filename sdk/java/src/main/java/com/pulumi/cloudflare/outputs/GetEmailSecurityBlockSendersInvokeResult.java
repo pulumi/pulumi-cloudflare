@@ -22,6 +22,7 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
     private String accountId;
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
@@ -37,9 +38,14 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
     private @Nullable Integer maxItems;
     /**
      * @return The field to sort by.
+     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
      * 
      */
     private @Nullable String order;
+    /**
+     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * 
+     */
     private @Nullable String patternType;
     /**
      * @return The items returned by the data source
@@ -65,6 +71,7 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
     }
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -86,11 +93,16 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
     }
     /**
      * @return The field to sort by.
+     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
      * 
      */
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
+    /**
+     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * 
+     */
     public Optional<String> patternType() {
         return Optional.ofNullable(this.patternType);
     }

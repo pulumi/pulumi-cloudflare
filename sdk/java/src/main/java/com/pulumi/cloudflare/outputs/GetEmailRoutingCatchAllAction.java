@@ -13,6 +13,7 @@ import java.util.Objects;
 public final class GetEmailRoutingCatchAllAction {
     /**
      * @return Type of action for catch-all rule.
+     * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
      * 
      */
     private String type;
@@ -21,6 +22,7 @@ public final class GetEmailRoutingCatchAllAction {
     private GetEmailRoutingCatchAllAction() {}
     /**
      * @return Type of action for catch-all rule.
+     * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
      * 
      */
     public String type() {

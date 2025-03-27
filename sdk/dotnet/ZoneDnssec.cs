@@ -119,7 +119,7 @@ namespace Pulumi.Cloudflare
         public Output<string> PublicKey { get; private set; } = null!;
 
         /// <summary>
-        /// Status of DNSSEC, based on user-desired state and presence of necessary records.
+        /// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
         /// </summary>
         [Output("status")]
         public Output<string?> Status { get; private set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? DnssecPresigned { get; set; }
 
         /// <summary>
-        /// Status of DNSSEC, based on user-desired state and presence of necessary records.
+        /// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -293,7 +293,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? PublicKey { get; set; }
 
         /// <summary>
-        /// Status of DNSSEC, based on user-desired state and presence of necessary records.
+        /// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

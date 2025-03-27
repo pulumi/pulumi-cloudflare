@@ -77,6 +77,7 @@ export class CustomHostname extends pulumi.CustomResource {
     public readonly ssl!: pulumi.Output<outputs.CustomHostnameSsl>;
     /**
      * Status of the hostname's activation.
+     * Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -178,6 +179,7 @@ export interface CustomHostnameState {
     ssl?: pulumi.Input<inputs.CustomHostnameSsl>;
     /**
      * Status of the hostname's activation.
+     * Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
      */
     status?: pulumi.Input<string>;
     /**

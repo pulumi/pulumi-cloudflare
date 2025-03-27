@@ -98,6 +98,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The property used to sort the list of results.
+        /// Available values: "host", "created".
         /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
@@ -124,6 +125,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The property used to sort the list of results.
+        /// Available values: "host", "created".
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
@@ -152,6 +154,7 @@ namespace Pulumi.Cloudflare
         public readonly int? MaxItems;
         /// <summary>
         /// The property used to sort the list of results.
+        /// Available values: "host", "created".
         /// </summary>
         public readonly string? OrderBy;
         /// <summary>

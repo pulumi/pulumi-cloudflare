@@ -13,18 +13,72 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleApiShieldSchema = Cloudflare.GetApiShieldSchema.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         SchemaId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         OmitSource = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetApiShieldSchemaResult> InvokeAsync(GetApiShieldSchemaArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiShieldSchemaResult>("cloudflare:index/getApiShieldSchema:getApiShieldSchema", args ?? new GetApiShieldSchemaArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleApiShieldSchema = Cloudflare.GetApiShieldSchema.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         SchemaId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         OmitSource = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetApiShieldSchemaResult> Invoke(GetApiShieldSchemaInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApiShieldSchemaResult>("cloudflare:index/getApiShieldSchema:getApiShieldSchema", args ?? new GetApiShieldSchemaInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleApiShieldSchema = Cloudflare.GetApiShieldSchema.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         SchemaId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         OmitSource = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetApiShieldSchemaResult> Invoke(GetApiShieldSchemaInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetApiShieldSchemaResult>("cloudflare:index/getApiShieldSchema:getApiShieldSchema", args ?? new GetApiShieldSchemaInvokeArgs(), options.WithDefaults());
@@ -38,6 +92,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("omitSource")]
         public bool? OmitSource { get; set; }
+
+        [Input("schemaId", required: true)]
+        public string SchemaId { get; set; } = null!;
 
         /// <summary>
         /// Identifier
@@ -58,6 +115,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("omitSource")]
         public Input<bool>? OmitSource { get; set; }
+
+        [Input("schemaId", required: true)]
+        public Input<string> SchemaId { get; set; } = null!;
 
         /// <summary>
         /// Identifier
@@ -82,6 +142,7 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         /// <summary>
         /// Kind of schema
+        /// Available values: "openapi_v3".
         /// </summary>
         public readonly string Kind;
         /// <summary>

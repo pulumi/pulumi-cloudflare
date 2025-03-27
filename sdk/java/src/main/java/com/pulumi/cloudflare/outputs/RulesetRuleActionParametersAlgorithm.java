@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class RulesetRuleActionParametersAlgorithm {
     /**
      * @return Name of compression algorithm to enable.
+     * Available values: &#34;none&#34;, &#34;auto&#34;, &#34;default&#34;, &#34;gzip&#34;, &#34;brotli&#34;.
      * 
      */
     private @Nullable String name;
@@ -20,6 +21,7 @@ public final class RulesetRuleActionParametersAlgorithm {
     private RulesetRuleActionParametersAlgorithm() {}
     /**
      * @return Name of compression algorithm to enable.
+     * Available values: &#34;none&#34;, &#34;auto&#34;, &#34;default&#34;, &#34;gzip&#34;, &#34;brotli&#34;.
      * 
      */
     public Optional<String> name() {

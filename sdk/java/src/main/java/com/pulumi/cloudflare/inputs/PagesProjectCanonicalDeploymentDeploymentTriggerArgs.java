@@ -33,6 +33,7 @@ public final class PagesProjectCanonicalDeploymentDeploymentTriggerArgs extends 
 
     /**
      * What caused the deployment.
+     * Available values: &#34;push&#34;, &#34;ad_hoc&#34;.
      * 
      */
     @Import(name="type")
@@ -40,6 +41,7 @@ public final class PagesProjectCanonicalDeploymentDeploymentTriggerArgs extends 
 
     /**
      * @return What caused the deployment.
+     * Available values: &#34;push&#34;, &#34;ad_hoc&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -94,6 +96,7 @@ public final class PagesProjectCanonicalDeploymentDeploymentTriggerArgs extends 
 
         /**
          * @param type What caused the deployment.
+         * Available values: &#34;push&#34;, &#34;ad_hoc&#34;.
          * 
          * @return builder
          * 
@@ -105,6 +108,7 @@ public final class PagesProjectCanonicalDeploymentDeploymentTriggerArgs extends 
 
         /**
          * @param type What caused the deployment.
+         * Available values: &#34;push&#34;, &#34;ad_hoc&#34;.
          * 
          * @return builder
          * 

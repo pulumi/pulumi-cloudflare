@@ -27,7 +27,7 @@ class ApiShieldDiscoveryOperationArgs:
         :param pulumi.Input[str] operation_id: UUID
         :param pulumi.Input[str] zone_id: Identifier
         :param pulumi.Input[str] state: Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-               ignored
+               ignored Available values: "review", "ignored".
         """
         pulumi.set(__self__, "operation_id", operation_id)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -63,7 +63,7 @@ class ApiShieldDiscoveryOperationArgs:
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-        ignored
+        ignored Available values: "review", "ignored".
         """
         return pulumi.get(self, "state")
 
@@ -82,7 +82,7 @@ class _ApiShieldDiscoveryOperationState:
         Input properties used for looking up and filtering ApiShieldDiscoveryOperation resources.
         :param pulumi.Input[str] operation_id: UUID
         :param pulumi.Input[str] state: Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-               ignored
+               ignored Available values: "review", "ignored".
         :param pulumi.Input[str] zone_id: Identifier
         """
         if operation_id is not None:
@@ -109,7 +109,7 @@ class _ApiShieldDiscoveryOperationState:
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-        ignored
+        ignored Available values: "review", "ignored".
         """
         return pulumi.get(self, "state")
 
@@ -156,7 +156,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] operation_id: UUID
         :param pulumi.Input[str] state: Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-               ignored
+               ignored Available values: "review", "ignored".
         :param pulumi.Input[str] zone_id: Identifier
         """
         ...
@@ -234,7 +234,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] operation_id: UUID
         :param pulumi.Input[str] state: Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-               ignored
+               ignored Available values: "review", "ignored".
         :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -259,7 +259,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
     def state(self) -> pulumi.Output[Optional[str]]:
         """
         Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-        ignored
+        ignored Available values: "review", "ignored".
         """
         return pulumi.get(self, "state")
 

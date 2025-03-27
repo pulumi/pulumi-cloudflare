@@ -13,18 +13,69 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleByoIpPrefix = Cloudflare.GetByoIpPrefix.Invoke(new()
+        ///     {
+        ///         AccountId = "258def64c72dae45f3e4c8516e2111f2",
+        ///         PrefixId = "2af39739cc4e3b5910c918468bb89828",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Task<GetByoIpPrefixResult> InvokeAsync(GetByoIpPrefixArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetByoIpPrefixResult> InvokeAsync(GetByoIpPrefixArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetByoIpPrefixResult>("cloudflare:index/getByoIpPrefix:getByoIpPrefix", args ?? new GetByoIpPrefixArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleByoIpPrefix = Cloudflare.GetByoIpPrefix.Invoke(new()
+        ///     {
+        ///         AccountId = "258def64c72dae45f3e4c8516e2111f2",
+        ///         PrefixId = "2af39739cc4e3b5910c918468bb89828",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetByoIpPrefixResult> Invoke(GetByoIpPrefixInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetByoIpPrefixResult> Invoke(GetByoIpPrefixInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetByoIpPrefixResult>("cloudflare:index/getByoIpPrefix:getByoIpPrefix", args ?? new GetByoIpPrefixInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleByoIpPrefix = Cloudflare.GetByoIpPrefix.Invoke(new()
+        ///     {
+        ///         AccountId = "258def64c72dae45f3e4c8516e2111f2",
+        ///         PrefixId = "2af39739cc4e3b5910c918468bb89828",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetByoIpPrefixResult> Invoke(GetByoIpPrefixInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetByoIpPrefixResult>("cloudflare:index/getByoIpPrefix:getByoIpPrefix", args ?? new GetByoIpPrefixInvokeArgs(), options.WithDefaults());
@@ -33,6 +84,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetByoIpPrefixArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifier of a Cloudflare account.
+        /// </summary>
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
+
         /// <summary>
         /// Identifier of an IP Prefix.
         /// </summary>
@@ -47,6 +104,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetByoIpPrefixInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifier of a Cloudflare account.
+        /// </summary>
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
+
         /// <summary>
         /// Identifier of an IP Prefix.
         /// </summary>

@@ -18,30 +18,30 @@ public final class PageRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PageRuleArgs Empty = new PageRuleArgs();
 
-    /**
-     * The actions taken by the page rule, options given below.
-     * 
-     */
     @Import(name="actions", required=true)
     private Output<PageRuleActionsArgs> actions;
 
-    /**
-     * @return The actions taken by the page rule, options given below.
-     * 
-     */
     public Output<PageRuleActionsArgs> actions() {
         return this.actions;
     }
 
     /**
-     * The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+     * The priority of the rule, used to define which Page Rule is processed
+     * over another. A higher number indicates a higher priority. For example,
+     * if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+     * specific Page Rule to take precedence (rule B: `/images/special/*`),
+     * specify a higher priority for rule B so it overrides rule A.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+     * @return The priority of the rule, used to define which Page Rule is processed
+     * over another. A higher number indicates a higher priority. For example,
+     * if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+     * specific Page Rule to take precedence (rule B: `/images/special/*`),
+     * specify a higher priority for rule B so it overrides rule A.
      * 
      */
     public Optional<Output<Integer>> priority() {
@@ -49,44 +49,38 @@ public final class PageRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the page rule is active or disabled.
+     * The status of the Page Rule.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Whether the page rule is active or disabled.
+     * @return The status of the Page Rule.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
-    /**
-     * The URL pattern to target with the page rule.
-     * 
-     */
     @Import(name="target", required=true)
     private Output<String> target;
 
-    /**
-     * @return The URL pattern to target with the page rule.
-     * 
-     */
     public Output<String> target() {
         return this.target;
     }
 
     /**
-     * The DNS zone ID to which the page rule should be added.
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The DNS zone ID to which the page rule should be added.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -121,29 +115,21 @@ public final class PageRuleArgs extends com.pulumi.resources.ResourceArgs {
             $ = new PageRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param actions The actions taken by the page rule, options given below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder actions(Output<PageRuleActionsArgs> actions) {
             $.actions = actions;
             return this;
         }
 
-        /**
-         * @param actions The actions taken by the page rule, options given below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder actions(PageRuleActionsArgs actions) {
             return actions(Output.of(actions));
         }
 
         /**
-         * @param priority The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+         * @param priority The priority of the rule, used to define which Page Rule is processed
+         * over another. A higher number indicates a higher priority. For example,
+         * if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+         * specific Page Rule to take precedence (rule B: `/images/special/*`),
+         * specify a higher priority for rule B so it overrides rule A.
          * 
          * @return builder
          * 
@@ -154,7 +140,11 @@ public final class PageRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+         * @param priority The priority of the rule, used to define which Page Rule is processed
+         * over another. A higher number indicates a higher priority. For example,
+         * if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+         * specific Page Rule to take precedence (rule B: `/images/special/*`),
+         * specify a higher priority for rule B so it overrides rule A.
          * 
          * @return builder
          * 
@@ -164,7 +154,8 @@ public final class PageRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Whether the page rule is active or disabled.
+         * @param status The status of the Page Rule.
+         * Available values: &#34;active&#34;, &#34;disabled&#34;.
          * 
          * @return builder
          * 
@@ -175,7 +166,8 @@ public final class PageRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Whether the page rule is active or disabled.
+         * @param status The status of the Page Rule.
+         * Available values: &#34;active&#34;, &#34;disabled&#34;.
          * 
          * @return builder
          * 
@@ -184,29 +176,17 @@ public final class PageRuleArgs extends com.pulumi.resources.ResourceArgs {
             return status(Output.of(status));
         }
 
-        /**
-         * @param target The URL pattern to target with the page rule.
-         * 
-         * @return builder
-         * 
-         */
         public Builder target(Output<String> target) {
             $.target = target;
             return this;
         }
 
-        /**
-         * @param target The URL pattern to target with the page rule.
-         * 
-         * @return builder
-         * 
-         */
         public Builder target(String target) {
             return target(Output.of(target));
         }
 
         /**
-         * @param zoneId The DNS zone ID to which the page rule should be added.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -217,7 +197,7 @@ public final class PageRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The DNS zone ID to which the page rule should be added.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

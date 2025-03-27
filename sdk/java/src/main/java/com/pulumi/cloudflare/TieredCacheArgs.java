@@ -16,6 +16,7 @@ public final class TieredCacheArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Enable or disable the Smart Tiered Cache
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     @Import(name="value", required=true)
@@ -23,6 +24,7 @@ public final class TieredCacheArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Enable or disable the Smart Tiered Cache
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public Output<String> value() {
@@ -71,6 +73,7 @@ public final class TieredCacheArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param value Enable or disable the Smart Tiered Cache
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 
@@ -82,6 +85,7 @@ public final class TieredCacheArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param value Enable or disable the Smart Tiered Cache
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 

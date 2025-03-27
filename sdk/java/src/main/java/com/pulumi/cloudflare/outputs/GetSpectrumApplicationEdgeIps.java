@@ -13,6 +13,7 @@ import java.util.Objects;
 public final class GetSpectrumApplicationEdgeIps {
     /**
      * @return The IP versions supported for inbound connections on Spectrum anycast IPs.
+     * Available values: &#34;all&#34;, &#34;ipv4&#34;, &#34;ipv6&#34;.
      * 
      */
     private String connectivity;
@@ -23,6 +24,7 @@ public final class GetSpectrumApplicationEdgeIps {
     private List<String> ips;
     /**
      * @return The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
+     * Available values: &#34;dynamic&#34;.
      * 
      */
     private String type;
@@ -30,6 +32,7 @@ public final class GetSpectrumApplicationEdgeIps {
     private GetSpectrumApplicationEdgeIps() {}
     /**
      * @return The IP versions supported for inbound connections on Spectrum anycast IPs.
+     * Available values: &#34;all&#34;, &#34;ipv4&#34;, &#34;ipv6&#34;.
      * 
      */
     public String connectivity() {
@@ -44,6 +47,7 @@ public final class GetSpectrumApplicationEdgeIps {
     }
     /**
      * @return The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
+     * Available values: &#34;dynamic&#34;.
      * 
      */
     public String type() {

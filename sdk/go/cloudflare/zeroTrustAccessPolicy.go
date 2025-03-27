@@ -36,6 +36,7 @@ type ZeroTrustAccessPolicy struct {
 	ApprovalRequired pulumi.BoolOutput   `pulumi:"approvalRequired"`
 	CreatedAt        pulumi.StringOutput `pulumi:"createdAt"`
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision pulumi.StringOutput `pulumi:"decision"`
 	// Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
 	Excludes ZeroTrustAccessPolicyExcludeArrayOutput `pulumi:"excludes"`
@@ -76,6 +77,12 @@ func NewZeroTrustAccessPolicy(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/accessPolicy:AccessPolicy"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustAccessPolicy
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy", name, args, &resource, opts...)
@@ -109,6 +116,7 @@ type zeroTrustAccessPolicyState struct {
 	ApprovalRequired *bool   `pulumi:"approvalRequired"`
 	CreatedAt        *string `pulumi:"createdAt"`
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision *string `pulumi:"decision"`
 	// Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
 	Excludes []ZeroTrustAccessPolicyExclude `pulumi:"excludes"`
@@ -141,6 +149,7 @@ type ZeroTrustAccessPolicyState struct {
 	ApprovalRequired pulumi.BoolPtrInput
 	CreatedAt        pulumi.StringPtrInput
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision pulumi.StringPtrInput
 	// Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
 	Excludes ZeroTrustAccessPolicyExcludeArrayInput
@@ -174,6 +183,7 @@ type zeroTrustAccessPolicyArgs struct {
 	// Requires the user to request access from an administrator at the start of each session.
 	ApprovalRequired *bool `pulumi:"approvalRequired"`
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision string `pulumi:"decision"`
 	// Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
 	Excludes []ZeroTrustAccessPolicyExclude `pulumi:"excludes"`
@@ -202,6 +212,7 @@ type ZeroTrustAccessPolicyArgs struct {
 	// Requires the user to request access from an administrator at the start of each session.
 	ApprovalRequired pulumi.BoolPtrInput
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision pulumi.StringInput
 	// Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
 	Excludes ZeroTrustAccessPolicyExcludeArrayInput
@@ -333,6 +344,7 @@ func (o ZeroTrustAccessPolicyOutput) CreatedAt() pulumi.StringOutput {
 }
 
 // The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+// Available values: "allow", "deny", "nonIdentity", "bypass".
 func (o ZeroTrustAccessPolicyOutput) Decision() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringOutput { return v.Decision }).(pulumi.StringOutput)
 }

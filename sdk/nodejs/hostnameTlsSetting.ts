@@ -7,8 +7,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
-<<<<<<< HEAD
-=======
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -24,7 +22,6 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  * ## Import
  *
  * ```sh
@@ -66,9 +63,10 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
     /**
      * The hostname for which the tls settings are set.
      */
-    public readonly hostname!: pulumi.Output<string | undefined>;
+    public readonly hostname!: pulumi.Output<string>;
     /**
      * The TLS Setting name.
+     * Available values: "ciphers", "min*tls*version", "http2".
      */
     public readonly settingId!: pulumi.Output<string>;
     /**
@@ -82,11 +80,7 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
     /**
      * The tls setting value.
      */
-<<<<<<< HEAD
-    public readonly value!: pulumi.Output<number>;
-=======
     public readonly value!: pulumi.Output<any>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Identifier
      */
@@ -114,6 +108,9 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as HostnameTlsSettingArgs | undefined;
+            if ((!args || args.hostname === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'hostname'");
+            }
             if ((!args || args.settingId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'settingId'");
             }
@@ -150,6 +147,7 @@ export interface HostnameTlsSettingState {
     hostname?: pulumi.Input<string>;
     /**
      * The TLS Setting name.
+     * Available values: "ciphers", "min*tls*version", "http2".
      */
     settingId?: pulumi.Input<string>;
     /**
@@ -163,11 +161,7 @@ export interface HostnameTlsSettingState {
     /**
      * The tls setting value.
      */
-<<<<<<< HEAD
-    value?: pulumi.Input<number>;
-=======
     value?: any;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Identifier
      */
@@ -181,19 +175,16 @@ export interface HostnameTlsSettingArgs {
     /**
      * The hostname for which the tls settings are set.
      */
-    hostname?: pulumi.Input<string>;
+    hostname: pulumi.Input<string>;
     /**
      * The TLS Setting name.
+     * Available values: "ciphers", "min*tls*version", "http2".
      */
     settingId: pulumi.Input<string>;
     /**
      * The tls setting value.
      */
-<<<<<<< HEAD
-    value: pulumi.Input<number>;
-=======
     value: any;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Identifier
      */

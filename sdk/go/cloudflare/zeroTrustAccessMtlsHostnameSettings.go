@@ -17,10 +17,6 @@ type ZeroTrustAccessMtlsHostnameSettings struct {
 	pulumi.CustomResourceState
 
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-<<<<<<< HEAD
-	AccountId pulumi.StringPtrOutput                                `pulumi:"accountId"`
-	Settings  ZeroTrustAccessMtlsHostnameSettingsSettingArrayOutput `pulumi:"settings"`
-=======
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
 	ChinaNetwork pulumi.BoolOutput `pulumi:"chinaNetwork"`
@@ -29,7 +25,6 @@ type ZeroTrustAccessMtlsHostnameSettings struct {
 	// The hostname that these settings apply to.
 	Hostname pulumi.StringOutput                                   `pulumi:"hostname"`
 	Settings ZeroTrustAccessMtlsHostnameSettingsSettingArrayOutput `pulumi:"settings"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
@@ -44,6 +39,12 @@ func NewZeroTrustAccessMtlsHostnameSettings(ctx *pulumi.Context,
 	if args.Settings == nil {
 		return nil, errors.New("invalid value for required argument 'Settings'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustAccessMtlsHostnameSettings
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings", name, args, &resource, opts...)
@@ -68,10 +69,6 @@ func GetZeroTrustAccessMtlsHostnameSettings(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ZeroTrustAccessMtlsHostnameSettings resources.
 type zeroTrustAccessMtlsHostnameSettingsState struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-<<<<<<< HEAD
-	AccountId *string                                      `pulumi:"accountId"`
-	Settings  []ZeroTrustAccessMtlsHostnameSettingsSetting `pulumi:"settings"`
-=======
 	AccountId *string `pulumi:"accountId"`
 	// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
 	ChinaNetwork *bool `pulumi:"chinaNetwork"`
@@ -80,7 +77,6 @@ type zeroTrustAccessMtlsHostnameSettingsState struct {
 	// The hostname that these settings apply to.
 	Hostname *string                                      `pulumi:"hostname"`
 	Settings []ZeroTrustAccessMtlsHostnameSettingsSetting `pulumi:"settings"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -88,9 +84,6 @@ type zeroTrustAccessMtlsHostnameSettingsState struct {
 type ZeroTrustAccessMtlsHostnameSettingsState struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-<<<<<<< HEAD
-	Settings  ZeroTrustAccessMtlsHostnameSettingsSettingArrayInput
-=======
 	// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
 	ChinaNetwork pulumi.BoolPtrInput
 	// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
@@ -98,7 +91,6 @@ type ZeroTrustAccessMtlsHostnameSettingsState struct {
 	// The hostname that these settings apply to.
 	Hostname pulumi.StringPtrInput
 	Settings ZeroTrustAccessMtlsHostnameSettingsSettingArrayInput
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }

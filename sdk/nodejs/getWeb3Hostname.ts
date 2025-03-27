@@ -67,10 +67,12 @@ export interface GetWeb3HostnameResult {
     readonly name: string;
     /**
      * Status of the hostname's activation.
+     * Available values: "active", "pending", "deleting", "error".
      */
     readonly status: string;
     /**
      * Target gateway of the hostname.
+     * Available values: "ethereum", "ipfs", "ipfs*universal*path".
      */
     readonly target: string;
     /**

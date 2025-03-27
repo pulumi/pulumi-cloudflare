@@ -34,6 +34,7 @@ public final class GetEmailRoutingAddressesPlainArgs extends com.pulumi.resource
 
     /**
      * Sorts results in an ascending or descending order.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -41,6 +42,7 @@ public final class GetEmailRoutingAddressesPlainArgs extends com.pulumi.resource
 
     /**
      * @return Sorts results in an ascending or descending order.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -117,6 +119,7 @@ public final class GetEmailRoutingAddressesPlainArgs extends com.pulumi.resource
 
         /**
          * @param direction Sorts results in an ascending or descending order.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 

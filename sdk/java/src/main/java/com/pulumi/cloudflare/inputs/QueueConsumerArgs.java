@@ -90,9 +90,17 @@ public final class QueueConsumerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.settings);
     }
 
+    /**
+     * Available values: &#34;worker&#34;.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return Available values: &#34;worker&#34;.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -229,11 +237,23 @@ public final class QueueConsumerArgs extends com.pulumi.resources.ResourceArgs {
             return settings(Output.of(settings));
         }
 
+        /**
+         * @param type Available values: &#34;worker&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Available values: &#34;worker&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

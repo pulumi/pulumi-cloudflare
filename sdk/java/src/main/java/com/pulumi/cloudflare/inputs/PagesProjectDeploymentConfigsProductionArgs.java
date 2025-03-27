@@ -122,14 +122,14 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
     }
 
     /**
-     * Durabble Object namespaces used for Pages Functions.
+     * Durable Object namespaces used for Pages Functions.
      * 
      */
     @Import(name="durableObjectNamespaces")
     private @Nullable Output<Map<String,PagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs>> durableObjectNamespaces;
 
     /**
-     * @return Durabble Object namespaces used for Pages Functions.
+     * @return Durable Object namespaces used for Pages Functions.
      * 
      */
     public Optional<Output<Map<String,PagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs>>> durableObjectNamespaces() {
@@ -137,14 +137,14 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
     }
 
     /**
-     * Environment variables for build configs.
+     * Environment variables used for builds and Pages Functions.
      * 
      */
     @Import(name="envVars")
     private @Nullable Output<Map<String,PagesProjectDeploymentConfigsProductionEnvVarsArgs>> envVars;
 
     /**
-     * @return Environment variables for build configs.
+     * @return Environment variables used for builds and Pages Functions.
      * 
      */
     public Optional<Output<Map<String,PagesProjectDeploymentConfigsProductionEnvVarsArgs>>> envVars() {
@@ -447,7 +447,7 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
         }
 
         /**
-         * @param durableObjectNamespaces Durabble Object namespaces used for Pages Functions.
+         * @param durableObjectNamespaces Durable Object namespaces used for Pages Functions.
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
         }
 
         /**
-         * @param durableObjectNamespaces Durabble Object namespaces used for Pages Functions.
+         * @param durableObjectNamespaces Durable Object namespaces used for Pages Functions.
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
         }
 
         /**
-         * @param envVars Environment variables for build configs.
+         * @param envVars Environment variables used for builds and Pages Functions.
          * 
          * @return builder
          * 
@@ -479,7 +479,7 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
         }
 
         /**
-         * @param envVars Environment variables for build configs.
+         * @param envVars Environment variables used for builds and Pages Functions.
          * 
          * @return builder
          * 

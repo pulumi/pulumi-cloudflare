@@ -76,6 +76,7 @@ export class AccessRule extends pulumi.CustomResource {
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
      * The action to apply to a matched request.
+     * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
     public readonly mode!: pulumi.Output<string>;
     /**
@@ -162,6 +163,7 @@ export interface AccessRuleState {
     createdOn?: pulumi.Input<string>;
     /**
      * The action to apply to a matched request.
+     * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
     mode?: pulumi.Input<string>;
     /**
@@ -196,6 +198,7 @@ export interface AccessRuleArgs {
     configuration: pulumi.Input<inputs.AccessRuleConfiguration>;
     /**
      * The action to apply to a matched request.
+     * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
     mode: pulumi.Input<string>;
     /**

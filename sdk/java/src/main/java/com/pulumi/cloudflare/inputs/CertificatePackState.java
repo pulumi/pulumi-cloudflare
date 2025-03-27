@@ -20,6 +20,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
     /**
      * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     @Import(name="certificateAuthority")
@@ -27,6 +28,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     public Optional<Output<String>> certificateAuthority() {
@@ -65,6 +67,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
     /**
      * Status of certificate pack.
+     * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
      * 
      */
     @Import(name="status")
@@ -72,6 +75,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Status of certificate pack.
+     * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -80,6 +84,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
     /**
      * Type of certificate pack.
+     * Available values: &#34;advanced&#34;.
      * 
      */
     @Import(name="type")
@@ -87,6 +92,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Type of certificate pack.
+     * Available values: &#34;advanced&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -95,6 +101,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
     /**
      * Validation Method selected for the order.
+     * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
      * 
      */
     @Import(name="validationMethod")
@@ -102,6 +109,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Validation Method selected for the order.
+     * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
      * 
      */
     public Optional<Output<String>> validationMethod() {
@@ -110,6 +118,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
     /**
      * Validity Days selected for the order.
+     * Available values: 14, 30, 90, 365.
      * 
      */
     @Import(name="validityDays")
@@ -117,6 +126,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Validity Days selected for the order.
+     * Available values: 14, 30, 90, 365.
      * 
      */
     public Optional<Output<Integer>> validityDays() {
@@ -171,6 +181,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param certificateAuthority Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+         * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
          * 
@@ -182,6 +193,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param certificateAuthority Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+         * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
          * 
@@ -244,6 +256,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param status Status of certificate pack.
+         * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
          * 
          * @return builder
          * 
@@ -255,6 +268,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param status Status of certificate pack.
+         * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
          * 
          * @return builder
          * 
@@ -265,6 +279,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param type Type of certificate pack.
+         * Available values: &#34;advanced&#34;.
          * 
          * @return builder
          * 
@@ -276,6 +291,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param type Type of certificate pack.
+         * Available values: &#34;advanced&#34;.
          * 
          * @return builder
          * 
@@ -286,6 +302,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param validationMethod Validation Method selected for the order.
+         * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
          * 
          * @return builder
          * 
@@ -297,6 +314,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param validationMethod Validation Method selected for the order.
+         * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
          * 
          * @return builder
          * 
@@ -307,6 +325,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param validityDays Validity Days selected for the order.
+         * Available values: 14, 30, 90, 365.
          * 
          * @return builder
          * 
@@ -318,6 +337,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param validityDays Validity Days selected for the order.
+         * Available values: 14, 30, 90, 365.
          * 
          * @return builder
          * 

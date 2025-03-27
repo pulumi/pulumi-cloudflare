@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -15,6 +16,11 @@ public final class GetRulesetRuleActionParametersResponseField {
      * 
      */
     private String name;
+    /**
+     * @return Whether to log duplicate values of the same header.
+     * 
+     */
+    private Boolean preserveDuplicates;
 
     private GetRulesetRuleActionParametersResponseField() {}
     /**
@@ -23,6 +29,13 @@ public final class GetRulesetRuleActionParametersResponseField {
      */
     public String name() {
         return this.name;
+    }
+    /**
+     * @return Whether to log duplicate values of the same header.
+     * 
+     */
+    public Boolean preserveDuplicates() {
+        return this.preserveDuplicates;
     }
 
     public static Builder builder() {
@@ -35,10 +48,12 @@ public final class GetRulesetRuleActionParametersResponseField {
     @CustomType.Builder
     public static final class Builder {
         private String name;
+        private Boolean preserveDuplicates;
         public Builder() {}
         public Builder(GetRulesetRuleActionParametersResponseField defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
+    	      this.preserveDuplicates = defaults.preserveDuplicates;
         }
 
         @CustomType.Setter
@@ -49,9 +64,18 @@ public final class GetRulesetRuleActionParametersResponseField {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder preserveDuplicates(Boolean preserveDuplicates) {
+            if (preserveDuplicates == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParametersResponseField", "preserveDuplicates");
+            }
+            this.preserveDuplicates = preserveDuplicates;
+            return this;
+        }
         public GetRulesetRuleActionParametersResponseField build() {
             final var _resultValue = new GetRulesetRuleActionParametersResponseField();
             _resultValue.name = name;
+            _resultValue.preserveDuplicates = preserveDuplicates;
             return _resultValue;
         }
     }

@@ -15,9 +15,17 @@ public final class ZeroTrustDevicePostureRuleMatchArgs extends com.pulumi.resour
 
     public static final ZeroTrustDevicePostureRuleMatchArgs Empty = new ZeroTrustDevicePostureRuleMatchArgs();
 
+    /**
+     * Available values: &#34;windows&#34;, &#34;mac&#34;, &#34;linux&#34;, &#34;android&#34;, &#34;ios&#34;.
+     * 
+     */
     @Import(name="platform")
     private @Nullable Output<String> platform;
 
+    /**
+     * @return Available values: &#34;windows&#34;, &#34;mac&#34;, &#34;linux&#34;, &#34;android&#34;, &#34;ios&#34;.
+     * 
+     */
     public Optional<Output<String>> platform() {
         return Optional.ofNullable(this.platform);
     }
@@ -46,11 +54,23 @@ public final class ZeroTrustDevicePostureRuleMatchArgs extends com.pulumi.resour
             $ = new ZeroTrustDevicePostureRuleMatchArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param platform Available values: &#34;windows&#34;, &#34;mac&#34;, &#34;linux&#34;, &#34;android&#34;, &#34;ios&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder platform(@Nullable Output<String> platform) {
             $.platform = platform;
             return this;
         }
 
+        /**
+         * @param platform Available values: &#34;windows&#34;, &#34;mac&#34;, &#34;linux&#34;, &#34;android&#34;, &#34;ios&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder platform(String platform) {
             return platform(Output.of(platform));
         }

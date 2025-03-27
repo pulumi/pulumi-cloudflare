@@ -16,14 +16,14 @@ public final class PagesProjectDeploymentConfigsProductionDurableObjectNamespace
     public static final PagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs Empty = new PagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs();
 
     /**
-     * ID of the Durabble Object namespace.
+     * ID of the Durable Object namespace.
      * 
      */
     @Import(name="namespaceId")
     private @Nullable Output<String> namespaceId;
 
     /**
-     * @return ID of the Durabble Object namespace.
+     * @return ID of the Durable Object namespace.
      * 
      */
     public Optional<Output<String>> namespaceId() {
@@ -55,7 +55,7 @@ public final class PagesProjectDeploymentConfigsProductionDurableObjectNamespace
         }
 
         /**
-         * @param namespaceId ID of the Durabble Object namespace.
+         * @param namespaceId ID of the Durable Object namespace.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class PagesProjectDeploymentConfigsProductionDurableObjectNamespace
         }
 
         /**
-         * @param namespaceId ID of the Durabble Object namespace.
+         * @param namespaceId ID of the Durable Object namespace.
          * 
          * @return builder
          * 

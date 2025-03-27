@@ -13,6 +13,10 @@ import javax.annotation.Nullable;
 public final class QueueProducer {
     private @Nullable String bucketName;
     private @Nullable String script;
+    /**
+     * @return Available values: &#34;worker&#34;.
+     * 
+     */
     private @Nullable String type;
 
     private QueueProducer() {}
@@ -22,6 +26,10 @@ public final class QueueProducer {
     public Optional<String> script() {
         return Optional.ofNullable(this.script);
     }
+    /**
+     * @return Available values: &#34;worker&#34;.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

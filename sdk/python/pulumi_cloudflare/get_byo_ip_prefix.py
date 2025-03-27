@@ -199,15 +199,26 @@ class AwaitableGetByoIpPrefixResult(GetByoIpPrefixResult):
             prefix_id=self.prefix_id)
 
 
-def get_byo_ip_prefix(prefix_id: Optional[str] = None,
+def get_byo_ip_prefix(account_id: Optional[str] = None,
+                      prefix_id: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetByoIpPrefixResult:
     """
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
 
+    example_byo_ip_prefix = cloudflare.get_byo_ip_prefix(account_id="258def64c72dae45f3e4c8516e2111f2",
+        prefix_id="2af39739cc4e3b5910c918468bb89828")
+    ```
+
+
+    :param str account_id: Identifier of a Cloudflare account.
     :param str prefix_id: Identifier of an IP Prefix.
     """
     __args__ = dict()
+    __args__['accountId'] = account_id
     __args__['prefixId'] = prefix_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getByoIpPrefix:getByoIpPrefix', __args__, opts=opts, typ=GetByoIpPrefixResult).value
@@ -227,15 +238,26 @@ def get_byo_ip_prefix(prefix_id: Optional[str] = None,
         on_demand_enabled=pulumi.get(__ret__, 'on_demand_enabled'),
         on_demand_locked=pulumi.get(__ret__, 'on_demand_locked'),
         prefix_id=pulumi.get(__ret__, 'prefix_id'))
-def get_byo_ip_prefix_output(prefix_id: Optional[pulumi.Input[Optional[str]]] = None,
+def get_byo_ip_prefix_output(account_id: Optional[pulumi.Input[str]] = None,
+                             prefix_id: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetByoIpPrefixResult]:
     """
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
 
+    example_byo_ip_prefix = cloudflare.get_byo_ip_prefix(account_id="258def64c72dae45f3e4c8516e2111f2",
+        prefix_id="2af39739cc4e3b5910c918468bb89828")
+    ```
+
+
+    :param str account_id: Identifier of a Cloudflare account.
     :param str prefix_id: Identifier of an IP Prefix.
     """
     __args__ = dict()
+    __args__['accountId'] = account_id
     __args__['prefixId'] = prefix_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getByoIpPrefix:getByoIpPrefix', __args__, opts=opts, typ=GetByoIpPrefixResult)

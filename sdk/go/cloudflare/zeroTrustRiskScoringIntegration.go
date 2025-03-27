@@ -55,7 +55,8 @@ type ZeroTrustRiskScoringIntegration struct {
 	// Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
 	Active pulumi.BoolPtrOutput `pulumi:"active"`
 	// When the integration was created in RFC3339 format.
-	CreatedAt       pulumi.StringOutput `pulumi:"createdAt"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Available values: "Okta".
 	IntegrationType pulumi.StringOutput `pulumi:"integrationType"`
 	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
 	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
@@ -111,7 +112,8 @@ type zeroTrustRiskScoringIntegrationState struct {
 	// Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
 	Active *bool `pulumi:"active"`
 	// When the integration was created in RFC3339 format.
-	CreatedAt       *string `pulumi:"createdAt"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// Available values: "Okta".
 	IntegrationType *string `pulumi:"integrationType"`
 	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
 	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
@@ -129,7 +131,8 @@ type ZeroTrustRiskScoringIntegrationState struct {
 	// Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
 	Active pulumi.BoolPtrInput
 	// When the integration was created in RFC3339 format.
-	CreatedAt       pulumi.StringPtrInput
+	CreatedAt pulumi.StringPtrInput
+	// Available values: "Okta".
 	IntegrationType pulumi.StringPtrInput
 	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
 	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
@@ -147,7 +150,8 @@ func (ZeroTrustRiskScoringIntegrationState) ElementType() reflect.Type {
 type zeroTrustRiskScoringIntegrationArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
-	Active          *bool  `pulumi:"active"`
+	Active *bool `pulumi:"active"`
+	// Available values: "Okta".
 	IntegrationType string `pulumi:"integrationType"`
 	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
 	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
@@ -160,7 +164,8 @@ type zeroTrustRiskScoringIntegrationArgs struct {
 type ZeroTrustRiskScoringIntegrationArgs struct {
 	AccountId pulumi.StringInput
 	// Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
-	Active          pulumi.BoolPtrInput
+	Active pulumi.BoolPtrInput
+	// Available values: "Okta".
 	IntegrationType pulumi.StringInput
 	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
 	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
@@ -275,6 +280,7 @@ func (o ZeroTrustRiskScoringIntegrationOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustRiskScoringIntegration) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Available values: "Okta".
 func (o ZeroTrustRiskScoringIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustRiskScoringIntegration) pulumi.StringOutput { return v.IntegrationType }).(pulumi.StringOutput)
 }

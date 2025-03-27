@@ -99,6 +99,8 @@ export class ZeroTrustAccessKeyConfiguration extends pulumi.CustomResource {
             resourceInputs["lastKeyRotationAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustAccessKeyConfiguration.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -95,6 +95,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Direction to order hostnames.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
@@ -119,12 +120,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Field to order hostnames by.
+        /// Available values: "ssl", "ssl_status".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
         /// <summary>
         /// Whether to filter hostnames based on if they have SSL enabled.
+        /// Available values: 0, 1.
         /// </summary>
         [Input("ssl")]
         public double? Ssl { get; set; }
@@ -145,6 +148,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Direction to order hostnames.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -169,12 +173,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Field to order hostnames by.
+        /// Available values: "ssl", "ssl_status".
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
 
         /// <summary>
         /// Whether to filter hostnames based on if they have SSL enabled.
+        /// Available values: 0, 1.
         /// </summary>
         [Input("ssl")]
         public Input<double>? Ssl { get; set; }
@@ -197,6 +203,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Direction to order hostnames.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
@@ -213,6 +220,7 @@ namespace Pulumi.Cloudflare
         public readonly int? MaxItems;
         /// <summary>
         /// Field to order hostnames by.
+        /// Available values: "ssl", "ssl_status".
         /// </summary>
         public readonly string Order;
         /// <summary>
@@ -221,6 +229,7 @@ namespace Pulumi.Cloudflare
         public readonly ImmutableArray<Outputs.GetCustomHostnamesResultResult> Results;
         /// <summary>
         /// Whether to filter hostnames based on if they have SSL enabled.
+        /// Available values: 0, 1.
         /// </summary>
         public readonly double? Ssl;
         /// <summary>

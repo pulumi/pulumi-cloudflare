@@ -35,6 +35,7 @@ class KeylessCertificateArgs:
         :param pulumi.Input[str] host: The keyless SSL name.
         :param pulumi.Input[str] zone_id: Identifier
         :param pulumi.Input[str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+               Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input[bool] enabled: Whether or not the Keyless SSL is on or off.
         :param pulumi.Input[str] name: The keyless SSL name.
         :param pulumi.Input[float] port: The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
@@ -95,6 +96,7 @@ class KeylessCertificateArgs:
     def bundle_method(self) -> Optional[pulumi.Input[str]]:
         """
         A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        Available values: "ubiquitous", "optimal", "force".
         """
         return pulumi.get(self, "bundle_method")
 
@@ -169,6 +171,7 @@ class _KeylessCertificateState:
         """
         Input properties used for looking up and filtering KeylessCertificate resources.
         :param pulumi.Input[str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+               Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input[str] certificate: The zone's SSL certificate or SSL certificate and intermediate(s).
         :param pulumi.Input[str] created_on: When the Keyless SSL was created.
         :param pulumi.Input[bool] enabled: Whether or not the Keyless SSL is on or off.
@@ -178,6 +181,7 @@ class _KeylessCertificateState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: Available permissions for the Keyless SSL for the current user requesting the item.
         :param pulumi.Input[float] port: The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
         :param pulumi.Input[str] status: Status of the Keyless SSL.
+               Available values: "active", "deleted".
         :param pulumi.Input['KeylessCertificateTunnelArgs'] tunnel: Configuration for using Keyless SSL through a Cloudflare Tunnel
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -211,6 +215,7 @@ class _KeylessCertificateState:
     def bundle_method(self) -> Optional[pulumi.Input[str]]:
         """
         A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        Available values: "ubiquitous", "optimal", "force".
         """
         return pulumi.get(self, "bundle_method")
 
@@ -319,6 +324,7 @@ class _KeylessCertificateState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         Status of the Keyless SSL.
+        Available values: "active", "deleted".
         """
         return pulumi.get(self, "status")
 
@@ -377,6 +383,7 @@ class KeylessCertificate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+               Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input[str] certificate: The zone's SSL certificate or SSL certificate and intermediate(s).
         :param pulumi.Input[bool] enabled: Whether or not the Keyless SSL is on or off.
         :param pulumi.Input[str] host: The keyless SSL name.
@@ -480,6 +487,7 @@ class KeylessCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+               Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input[str] certificate: The zone's SSL certificate or SSL certificate and intermediate(s).
         :param pulumi.Input[str] created_on: When the Keyless SSL was created.
         :param pulumi.Input[bool] enabled: Whether or not the Keyless SSL is on or off.
@@ -489,6 +497,7 @@ class KeylessCertificate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: Available permissions for the Keyless SSL for the current user requesting the item.
         :param pulumi.Input[float] port: The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
         :param pulumi.Input[str] status: Status of the Keyless SSL.
+               Available values: "active", "deleted".
         :param pulumi.Input[Union['KeylessCertificateTunnelArgs', 'KeylessCertificateTunnelArgsDict']] tunnel: Configuration for using Keyless SSL through a Cloudflare Tunnel
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -515,6 +524,7 @@ class KeylessCertificate(pulumi.CustomResource):
     def bundle_method(self) -> pulumi.Output[str]:
         """
         A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        Available values: "ubiquitous", "optimal", "force".
         """
         return pulumi.get(self, "bundle_method")
 
@@ -587,6 +597,7 @@ class KeylessCertificate(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         Status of the Keyless SSL.
+        Available values: "active", "deleted".
         """
         return pulumi.get(self, "status")
 

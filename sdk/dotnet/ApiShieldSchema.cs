@@ -46,6 +46,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Kind of schema
+        /// Available values: "openapi_v3".
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -73,6 +74,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Flag whether schema is enabled for validation.
+        /// Available values: "true", "false".
         /// </summary>
         [Output("validationEnabled")]
         public Output<string?> ValidationEnabled { get; private set; } = null!;
@@ -137,6 +139,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Kind of schema
+        /// Available values: "openapi_v3".
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -152,6 +155,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Flag whether schema is enabled for validation.
+        /// Available values: "true", "false".
         /// </summary>
         [Input("validationEnabled")]
         public Input<string>? ValidationEnabled { get; set; }
@@ -181,6 +185,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Kind of schema
+        /// Available values: "openapi_v3".
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -208,6 +213,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Flag whether schema is enabled for validation.
+        /// Available values: "true", "false".
         /// </summary>
         [Input("validationEnabled")]
         public Input<string>? ValidationEnabled { get; set; }

@@ -24,6 +24,7 @@ public final class SpectrumApplicationOriginDns {
     private @Nullable Integer ttl;
     /**
      * @return The type of DNS record associated with the origin. &#34;&#34; is used to specify a combination of A/AAAA records.
+     * Available values: &#34;&#34;, &#34;A&#34;, &#34;AAAA&#34;, &#34;SRV&#34;.
      * 
      */
     private @Nullable String type;
@@ -45,6 +46,7 @@ public final class SpectrumApplicationOriginDns {
     }
     /**
      * @return The type of DNS record associated with the origin. &#34;&#34; is used to specify a combination of A/AAAA records.
+     * Available values: &#34;&#34;, &#34;A&#34;, &#34;AAAA&#34;, &#34;SRV&#34;.
      * 
      */
     public Optional<String> type() {

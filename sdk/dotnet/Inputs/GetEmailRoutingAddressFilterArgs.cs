@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Sorts results in an ascending or descending order.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction", required: true)]
         public Input<string> Direction { get; set; } = null!;

@@ -79,7 +79,7 @@ type ZoneDnssec struct {
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// Public key for DS record.
 	PublicKey pulumi.StringOutput `pulumi:"publicKey"`
-	// Status of DNSSEC, based on user-desired state and presence of necessary records.
+	// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -148,7 +148,7 @@ type zoneDnssecState struct {
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// Public key for DS record.
 	PublicKey *string `pulumi:"publicKey"`
-	// Status of DNSSEC, based on user-desired state and presence of necessary records.
+	// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
 	Status *string `pulumi:"status"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
@@ -185,7 +185,7 @@ type ZoneDnssecState struct {
 	ModifiedOn pulumi.StringPtrInput
 	// Public key for DS record.
 	PublicKey pulumi.StringPtrInput
-	// Status of DNSSEC, based on user-desired state and presence of necessary records.
+	// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
 	Status pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
@@ -206,7 +206,7 @@ type zoneDnssecArgs struct {
 	// Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
 	// details.
 	DnssecPresigned *bool `pulumi:"dnssecPresigned"`
-	// Status of DNSSEC, based on user-desired state and presence of necessary records.
+	// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
 	Status *string `pulumi:"status"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -224,7 +224,7 @@ type ZoneDnssecArgs struct {
 	// Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
 	// details.
 	DnssecPresigned pulumi.BoolPtrInput
-	// Status of DNSSEC, based on user-desired state and presence of necessary records.
+	// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
 	Status pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringInput
@@ -383,7 +383,7 @@ func (o ZoneDnssecOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneDnssec) pulumi.StringOutput { return v.PublicKey }).(pulumi.StringOutput)
 }
 
-// Status of DNSSEC, based on user-desired state and presence of necessary records.
+// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
 func (o ZoneDnssecOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneDnssec) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }

@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class R2ManagedDomainArgs extends com.pulumi.resources.ResourceArgs {
@@ -60,12 +62,28 @@ public final class R2ManagedDomainArgs extends com.pulumi.resources.ResourceArgs
         return this.enabled;
     }
 
+    /**
+     * Jurisdiction of the bucket
+     * 
+     */
+    @Import(name="jurisdiction")
+    private @Nullable Output<String> jurisdiction;
+
+    /**
+     * @return Jurisdiction of the bucket
+     * 
+     */
+    public Optional<Output<String>> jurisdiction() {
+        return Optional.ofNullable(this.jurisdiction);
+    }
+
     private R2ManagedDomainArgs() {}
 
     private R2ManagedDomainArgs(R2ManagedDomainArgs $) {
         this.accountId = $.accountId;
         this.bucketName = $.bucketName;
         this.enabled = $.enabled;
+        this.jurisdiction = $.jurisdiction;
     }
 
     public static Builder builder() {
@@ -147,6 +165,27 @@ public final class R2ManagedDomainArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param jurisdiction Jurisdiction of the bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(@Nullable Output<String> jurisdiction) {
+            $.jurisdiction = jurisdiction;
+            return this;
+        }
+
+        /**
+         * @param jurisdiction Jurisdiction of the bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(String jurisdiction) {
+            return jurisdiction(Output.of(jurisdiction));
         }
 
         public R2ManagedDomainArgs build() {

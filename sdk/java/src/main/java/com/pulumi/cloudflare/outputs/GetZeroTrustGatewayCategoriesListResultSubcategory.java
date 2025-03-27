@@ -19,6 +19,7 @@ public final class GetZeroTrustGatewayCategoriesListResultSubcategory {
     private Boolean beta;
     /**
      * @return Which account types are allowed to create policies based on this category. `blocked` categories are blocked unconditionally for all accounts. `removalPending` categories can be removed from policies but not added. `noBlock` categories cannot be blocked.
+     * Available values: &#34;free&#34;, &#34;premium&#34;, &#34;blocked&#34;, &#34;removalPending&#34;, &#34;noBlock&#34;.
      * 
      */
     private String class_;
@@ -48,6 +49,7 @@ public final class GetZeroTrustGatewayCategoriesListResultSubcategory {
     }
     /**
      * @return Which account types are allowed to create policies based on this category. `blocked` categories are blocked unconditionally for all accounts. `removalPending` categories can be removed from policies but not added. `noBlock` categories cannot be blocked.
+     * Available values: &#34;free&#34;, &#34;premium&#34;, &#34;blocked&#34;, &#34;removalPending&#34;, &#34;noBlock&#34;.
      * 
      */
     public String class_() {

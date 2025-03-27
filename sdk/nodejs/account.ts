@@ -70,6 +70,7 @@ export class Account extends pulumi.CustomResource {
     public readonly settings!: pulumi.Output<outputs.AccountSettings>;
     /**
      * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+     * Available values: "standard", "enterprise".
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -132,6 +133,7 @@ export interface AccountState {
     settings?: pulumi.Input<inputs.AccountSettings>;
     /**
      * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+     * Available values: "standard", "enterprise".
      */
     type?: pulumi.Input<string>;
     /**
@@ -154,6 +156,7 @@ export interface AccountArgs {
     settings?: pulumi.Input<inputs.AccountSettings>;
     /**
      * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+     * Available values: "standard", "enterprise".
      */
     type: pulumi.Input<string>;
     /**

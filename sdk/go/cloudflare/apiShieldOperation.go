@@ -56,6 +56,7 @@ type ApiShieldOperation struct {
 	Host        pulumi.StringOutput `pulumi:"host"`
 	LastUpdated pulumi.StringOutput `pulumi:"lastUpdated"`
 	// The HTTP method used to access the endpoint.
+	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method pulumi.StringOutput `pulumi:"method"`
 	// UUID
 	OperationId pulumi.StringOutput `pulumi:"operationId"`
@@ -112,6 +113,7 @@ type apiShieldOperationState struct {
 	Host        *string `pulumi:"host"`
 	LastUpdated *string `pulumi:"lastUpdated"`
 	// The HTTP method used to access the endpoint.
+	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method *string `pulumi:"method"`
 	// UUID
 	OperationId *string `pulumi:"operationId"`
@@ -127,6 +129,7 @@ type ApiShieldOperationState struct {
 	Host        pulumi.StringPtrInput
 	LastUpdated pulumi.StringPtrInput
 	// The HTTP method used to access the endpoint.
+	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method pulumi.StringPtrInput
 	// UUID
 	OperationId pulumi.StringPtrInput
@@ -144,6 +147,7 @@ type apiShieldOperationArgs struct {
 	// RFC3986-compliant host.
 	Host string `pulumi:"host"`
 	// The HTTP method used to access the endpoint.
+	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method string `pulumi:"method"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -156,6 +160,7 @@ type ApiShieldOperationArgs struct {
 	// RFC3986-compliant host.
 	Host pulumi.StringInput
 	// The HTTP method used to access the endpoint.
+	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method pulumi.StringInput
 	// Identifier
 	ZoneId pulumi.StringInput
@@ -267,6 +272,7 @@ func (o ApiShieldOperationOutput) LastUpdated() pulumi.StringOutput {
 }
 
 // The HTTP method used to access the endpoint.
+// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 func (o ApiShieldOperationOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldOperation) pulumi.StringOutput { return v.Method }).(pulumi.StringOutput)
 }

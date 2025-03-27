@@ -23,6 +23,7 @@ public final class AccessRuleScope {
     private @Nullable String id;
     /**
      * @return The scope of the rule.
+     * Available values: &#34;user&#34;, &#34;organization&#34;.
      * 
      */
     private @Nullable String type;
@@ -44,6 +45,7 @@ public final class AccessRuleScope {
     }
     /**
      * @return The scope of the rule.
+     * Available values: &#34;user&#34;, &#34;organization&#34;.
      * 
      */
     public Optional<String> type() {

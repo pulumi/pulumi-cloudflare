@@ -16,12 +16,12 @@ import * as utilities from "./utilities";
  * const exampleZeroTrustTunnelCloudflaredRoutes = cloudflare.getZeroTrustTunnelCloudflaredRoutes({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     comment: "Example comment for this route.",
- *     existedAt: "2019-10-12T07:20:50.52Z",
+ *     existedAt: "2019-10-12T07%3A20%3A50.52Z",
  *     isDeleted: true,
  *     networkSubset: "172.16.0.0/16",
  *     networkSuperset: "172.16.0.0/16",
  *     routeId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
- *     tunTypes: "cfd_tunnel,warp_connector",
+ *     tunTypes: ["cfd_tunnel"],
  *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  *     virtualNetworkId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  * });
@@ -57,7 +57,7 @@ export interface GetZeroTrustTunnelCloudflaredRoutesArgs {
      */
     comment?: string;
     /**
-     * If provided, include only tunnels that were created (and not deleted) before this time.
+     * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      */
     existedAt?: string;
     /**
@@ -81,9 +81,9 @@ export interface GetZeroTrustTunnelCloudflaredRoutesArgs {
      */
     routeId?: string;
     /**
-     * The types of tunnels to filter separated by a comma.
+     * The types of tunnels to filter by, separated by commas.
      */
-    tunTypes?: string;
+    tunTypes?: string[];
     /**
      * UUID of the tunnel.
      */
@@ -107,7 +107,7 @@ export interface GetZeroTrustTunnelCloudflaredRoutesResult {
      */
     readonly comment?: string;
     /**
-     * If provided, include only tunnels that were created (and not deleted) before this time.
+     * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      */
     readonly existedAt?: string;
     /**
@@ -139,9 +139,9 @@ export interface GetZeroTrustTunnelCloudflaredRoutesResult {
      */
     readonly routeId?: string;
     /**
-     * The types of tunnels to filter separated by a comma.
+     * The types of tunnels to filter by, separated by commas.
      */
-    readonly tunTypes?: string;
+    readonly tunTypes?: string[];
     /**
      * UUID of the tunnel.
      */
@@ -161,12 +161,12 @@ export interface GetZeroTrustTunnelCloudflaredRoutesResult {
  * const exampleZeroTrustTunnelCloudflaredRoutes = cloudflare.getZeroTrustTunnelCloudflaredRoutes({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     comment: "Example comment for this route.",
- *     existedAt: "2019-10-12T07:20:50.52Z",
+ *     existedAt: "2019-10-12T07%3A20%3A50.52Z",
  *     isDeleted: true,
  *     networkSubset: "172.16.0.0/16",
  *     networkSuperset: "172.16.0.0/16",
  *     routeId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
- *     tunTypes: "cfd_tunnel,warp_connector",
+ *     tunTypes: ["cfd_tunnel"],
  *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  *     virtualNetworkId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  * });
@@ -202,7 +202,7 @@ export interface GetZeroTrustTunnelCloudflaredRoutesOutputArgs {
      */
     comment?: pulumi.Input<string>;
     /**
-     * If provided, include only tunnels that were created (and not deleted) before this time.
+     * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      */
     existedAt?: pulumi.Input<string>;
     /**
@@ -226,9 +226,9 @@ export interface GetZeroTrustTunnelCloudflaredRoutesOutputArgs {
      */
     routeId?: pulumi.Input<string>;
     /**
-     * The types of tunnels to filter separated by a comma.
+     * The types of tunnels to filter by, separated by commas.
      */
-    tunTypes?: pulumi.Input<string>;
+    tunTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * UUID of the tunnel.
      */

@@ -119,6 +119,7 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
     }
     /**
      * Status of the hostname&#39;s activation.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -126,6 +127,7 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Status of the hostname&#39;s activation.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
      * 
      */
     public Output<String> status() {
@@ -133,6 +135,7 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
     }
     /**
      * Target gateway of the hostname.
+     * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
      * 
      */
     @Export(name="target", refs={String.class}, tree="[0]")
@@ -140,6 +143,7 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Target gateway of the hostname.
+     * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
      * 
      */
     public Output<String> target() {

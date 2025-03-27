@@ -22,26 +22,16 @@ __all__ = ['PagesDomainArgs', 'PagesDomain']
 class PagesDomainArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
-<<<<<<< HEAD
-                 project_name: pulumi.Input[str],
-                 name: Optional[pulumi.Input[str]] = None):
-=======
                  name: pulumi.Input[str],
                  project_name: pulumi.Input[str]):
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         The set of arguments for constructing a PagesDomain resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] project_name: Name of the project.
         """
         pulumi.set(__self__, "account_id", account_id)
-<<<<<<< HEAD
-=======
         pulumi.set(__self__, "name", name)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         pulumi.set(__self__, "project_name", project_name)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="accountId")
@@ -56,8 +46,6 @@ class PagesDomainArgs:
         pulumi.set(self, "account_id", value)
 
     @property
-<<<<<<< HEAD
-=======
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
@@ -67,7 +55,6 @@ class PagesDomainArgs:
         pulumi.set(self, "name", value)
 
     @property
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="projectName")
     def project_name(self) -> pulumi.Input[str]:
         """
@@ -78,15 +65,6 @@ class PagesDomainArgs:
     @project_name.setter
     def project_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_name", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -105,7 +83,9 @@ class _PagesDomainState:
         """
         Input properties used for looking up and filtering PagesDomain resources.
         :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[str] certificate_authority: Available values: "google", "lets_encrypt".
         :param pulumi.Input[str] project_name: Name of the project.
+        :param pulumi.Input[str] status: Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -143,6 +123,9 @@ class _PagesDomainState:
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        Available values: "google", "lets_encrypt".
+        """
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
@@ -191,6 +174,9 @@ class _PagesDomainState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -236,7 +222,7 @@ class PagesDomain(pulumi.CustomResource):
                  __props__=None):
         """
         > A DNS record for the domain is not automatically created. You need to create
-           a `Record` resource for the domain you want to use.
+           a `cloudflare_record` resource for the domain you want to use.
 
         ## Example Usage
 
@@ -269,7 +255,7 @@ class PagesDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         > A DNS record for the domain is not automatically created. You need to create
-           a `Record` resource for the domain you want to use.
+           a `cloudflare_record` resource for the domain you want to use.
 
         ## Example Usage
 
@@ -319,11 +305,8 @@ class PagesDomain(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-<<<<<<< HEAD
-=======
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             __props__.__dict__["name"] = name
             if project_name is None and not opts.urn:
                 raise TypeError("Missing required property 'project_name'")
@@ -363,7 +346,9 @@ class PagesDomain(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[str] certificate_authority: Available values: "google", "lets_encrypt".
         :param pulumi.Input[str] project_name: Name of the project.
+        :param pulumi.Input[str] status: Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -392,6 +377,9 @@ class PagesDomain(pulumi.CustomResource):
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Output[str]:
+        """
+        Available values: "google", "lets_encrypt".
+        """
         return pulumi.get(self, "certificate_authority")
 
     @property
@@ -406,11 +394,7 @@ class PagesDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-<<<<<<< HEAD
-    def name(self) -> pulumi.Output[Optional[str]]:
-=======
     def name(self) -> pulumi.Output[str]:
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return pulumi.get(self, "name")
 
     @property
@@ -424,6 +408,9 @@ class PagesDomain(pulumi.CustomResource):
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
+        """
         return pulumi.get(self, "status")
 
     @property

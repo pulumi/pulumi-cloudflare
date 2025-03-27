@@ -12,11 +12,21 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class StreamLiveInputRtmpsGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("streamKey")]
+        private Input<string>? _streamKey;
+
         /// <summary>
         /// The secret key to use when streaming via RTMPS to a live input.
         /// </summary>
-        [Input("streamKey")]
-        public Input<string>? StreamKey { get; set; }
+        public Input<string>? StreamKey
+        {
+            get => _streamKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _streamKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The RTMPS URL you provide to the broadcaster, which they stream live video to.

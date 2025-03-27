@@ -36,6 +36,7 @@ class AccountTokenArgs:
         :param pulumi.Input[str] expires_on: The expiration time on or after which the JWT MUST NOT be accepted for processing.
         :param pulumi.Input[str] not_before: The time before which the token MUST NOT be accepted for processing.
         :param pulumi.Input[str] status: Status of the token.
+               Available values: "active", "disabled", "expired".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -123,6 +124,7 @@ class AccountTokenArgs:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         Status of the token.
+        Available values: "active", "disabled", "expired".
         """
         return pulumi.get(self, "status")
 
@@ -156,6 +158,7 @@ class _AccountTokenState:
         :param pulumi.Input[str] not_before: The time before which the token MUST NOT be accepted for processing.
         :param pulumi.Input[Sequence[pulumi.Input['AccountTokenPolicyArgs']]] policies: List of access policies assigned to the token.
         :param pulumi.Input[str] status: Status of the token.
+               Available values: "active", "disabled", "expired".
         :param pulumi.Input[str] value: The token value.
         """
         if account_id is not None:
@@ -291,6 +294,7 @@ class _AccountTokenState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         Status of the token.
+        Available values: "active", "disabled", "expired".
         """
         return pulumi.get(self, "status")
 
@@ -341,6 +345,7 @@ class AccountToken(pulumi.CustomResource):
         :param pulumi.Input[str] not_before: The time before which the token MUST NOT be accepted for processing.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccountTokenPolicyArgs', 'AccountTokenPolicyArgsDict']]]] policies: List of access policies assigned to the token.
         :param pulumi.Input[str] status: Status of the token.
+               Available values: "active", "disabled", "expired".
         """
         ...
     @overload
@@ -405,6 +410,8 @@ class AccountToken(pulumi.CustomResource):
             __props__.__dict__["last_used_on"] = None
             __props__.__dict__["modified_on"] = None
             __props__.__dict__["value"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AccountToken, __self__).__init__(
             'cloudflare:index/accountToken:AccountToken',
             resource_name,
@@ -442,6 +449,7 @@ class AccountToken(pulumi.CustomResource):
         :param pulumi.Input[str] not_before: The time before which the token MUST NOT be accepted for processing.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccountTokenPolicyArgs', 'AccountTokenPolicyArgsDict']]]] policies: List of access policies assigned to the token.
         :param pulumi.Input[str] status: Status of the token.
+               Available values: "active", "disabled", "expired".
         :param pulumi.Input[str] value: The token value.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -535,6 +543,7 @@ class AccountToken(pulumi.CustomResource):
     def status(self) -> pulumi.Output[Optional[str]]:
         """
         Status of the token.
+        Available values: "active", "disabled", "expired".
         """
         return pulumi.get(self, "status")
 

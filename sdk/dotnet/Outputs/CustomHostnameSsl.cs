@@ -15,10 +15,12 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        /// Available values: "ubiquitous", "optimal", "force".
         /// </summary>
         public readonly string? BundleMethod;
         /// <summary>
         /// The Certificate Authority that will issue the certificate
+        /// Available values: "digicert", "google", "lets*encrypt", "ssl*com".
         /// </summary>
         public readonly string? CertificateAuthority;
         /// <summary>
@@ -26,13 +28,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? CloudflareBranding;
         /// <summary>
-<<<<<<< HEAD
-=======
         /// Array of custom certificate and key pairs (1 or 2 pairs allowed)
         /// </summary>
         public readonly ImmutableArray<Outputs.CustomHostnameSslCustomCertBundle> CustomCertBundles;
         /// <summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// If a custom uploaded certificate is used.
         /// </summary>
         public readonly string? CustomCertificate;
@@ -42,6 +41,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? CustomKey;
         /// <summary>
         /// Domain control validation (DCV) method used for this hostname.
+        /// Available values: "http", "txt", "email".
         /// </summary>
         public readonly string? Method;
         /// <summary>
@@ -50,6 +50,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.CustomHostnameSslSettings? Settings;
         /// <summary>
         /// Level of validation to be used for this hostname. Domain validation (dv) must be used.
+        /// Available values: "dv".
         /// </summary>
         public readonly string? Type;
         /// <summary>
@@ -65,11 +66,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? cloudflareBranding,
 
-<<<<<<< HEAD
-=======
             ImmutableArray<Outputs.CustomHostnameSslCustomCertBundle> customCertBundles,
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             string? customCertificate,
 
             string? customKey,
@@ -85,10 +83,7 @@ namespace Pulumi.Cloudflare.Outputs
             BundleMethod = bundleMethod;
             CertificateAuthority = certificateAuthority;
             CloudflareBranding = cloudflareBranding;
-<<<<<<< HEAD
-=======
             CustomCertBundles = customCertBundles;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             CustomCertificate = customCertificate;
             CustomKey = customKey;
             Method = method;

@@ -21,6 +21,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     @Import(name="certificateAuthority", required=true)
@@ -28,6 +29,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     public Output<String> certificateAuthority() {
@@ -66,6 +68,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * Type of certificate pack.
+     * Available values: &#34;advanced&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -73,6 +76,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Type of certificate pack.
+     * Available values: &#34;advanced&#34;.
      * 
      */
     public Output<String> type() {
@@ -81,6 +85,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * Validation Method selected for the order.
+     * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
      * 
      */
     @Import(name="validationMethod", required=true)
@@ -88,6 +93,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Validation Method selected for the order.
+     * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
      * 
      */
     public Output<String> validationMethod() {
@@ -96,6 +102,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * Validity Days selected for the order.
+     * Available values: 14, 30, 90, 365.
      * 
      */
     @Import(name="validityDays", required=true)
@@ -103,6 +110,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Validity Days selected for the order.
+     * Available values: 14, 30, 90, 365.
      * 
      */
     public Output<Integer> validityDays() {
@@ -156,6 +164,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param certificateAuthority Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+         * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
          * 
@@ -167,6 +176,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param certificateAuthority Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+         * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
          * 
@@ -229,6 +239,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param type Type of certificate pack.
+         * Available values: &#34;advanced&#34;.
          * 
          * @return builder
          * 
@@ -240,6 +251,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param type Type of certificate pack.
+         * Available values: &#34;advanced&#34;.
          * 
          * @return builder
          * 
@@ -250,6 +262,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param validationMethod Validation Method selected for the order.
+         * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
          * 
          * @return builder
          * 
@@ -261,6 +274,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param validationMethod Validation Method selected for the order.
+         * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
          * 
          * @return builder
          * 
@@ -271,6 +285,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param validityDays Validity Days selected for the order.
+         * Available values: 14, 30, 90, 365.
          * 
          * @return builder
          * 
@@ -282,6 +297,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param validityDays Validity Days selected for the order.
+         * Available values: 14, 30, 90, 365.
          * 
          * @return builder
          * 

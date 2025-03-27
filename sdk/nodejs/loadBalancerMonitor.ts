@@ -137,6 +137,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
     public readonly timeout!: pulumi.Output<number>;
     /**
      * The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+     * Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -274,6 +275,7 @@ export interface LoadBalancerMonitorState {
     timeout?: pulumi.Input<number>;
     /**
      * The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+     * Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
      */
     type?: pulumi.Input<string>;
 }
@@ -348,6 +350,7 @@ export interface LoadBalancerMonitorArgs {
     timeout?: pulumi.Input<number>;
     /**
      * The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+     * Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
      */
     type?: pulumi.Input<string>;
 }

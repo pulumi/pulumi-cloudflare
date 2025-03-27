@@ -29,6 +29,7 @@ public final class GetTurnstileWidgetResult {
     /**
      * @return If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
      * this setting can determine the clearance level to be set
+     * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
      * 
      */
     private String clearanceLevel;
@@ -51,6 +52,7 @@ public final class GetTurnstileWidgetResult {
     private String id;
     /**
      * @return Widget Mode
+     * Available values: &#34;non-interactive&#34;, &#34;invisible&#34;, &#34;managed&#34;.
      * 
      */
     private String mode;
@@ -73,6 +75,7 @@ public final class GetTurnstileWidgetResult {
     private Boolean offlabel;
     /**
      * @return Region where this widget can be used.
+     * Available values: &#34;world&#34;.
      * 
      */
     private String region;
@@ -106,6 +109,7 @@ public final class GetTurnstileWidgetResult {
     /**
      * @return If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
      * this setting can determine the clearance level to be set
+     * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
      * 
      */
     public String clearanceLevel() {
@@ -140,6 +144,7 @@ public final class GetTurnstileWidgetResult {
     }
     /**
      * @return Widget Mode
+     * Available values: &#34;non-interactive&#34;, &#34;invisible&#34;, &#34;managed&#34;.
      * 
      */
     public String mode() {
@@ -170,6 +175,7 @@ public final class GetTurnstileWidgetResult {
     }
     /**
      * @return Region where this widget can be used.
+     * Available values: &#34;world&#34;.
      * 
      */
     public String region() {

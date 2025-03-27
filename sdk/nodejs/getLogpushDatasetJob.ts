@@ -2,11 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-<<<<<<< HEAD
-=======
 import * as inputs from "./types/input";
 import * as outputs from "./types/output";
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import * as utilities from "./utilities";
 
 /**
@@ -61,13 +58,6 @@ export interface GetLogpushDatasetJobResult {
     /**
      * Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
      */
-<<<<<<< HEAD
-    readonly datasetId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-=======
     readonly dataset: string;
     /**
      * Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
@@ -87,6 +77,7 @@ export interface GetLogpushDatasetJobResult {
     readonly errorMessage: string;
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+     * Available values: "high", "low".
      */
     readonly frequency: string;
     /**
@@ -95,6 +86,7 @@ export interface GetLogpushDatasetJobResult {
     readonly id: number;
     /**
      * The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
+     * Available values: "edge".
      */
     readonly kind: string;
     /**
@@ -129,7 +121,6 @@ export interface GetLogpushDatasetJobResult {
      * The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.
      */
     readonly outputOptions: outputs.GetLogpushDatasetJobOutputOptions;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */

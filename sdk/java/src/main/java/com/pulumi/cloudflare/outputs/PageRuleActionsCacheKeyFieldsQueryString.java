@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PageRuleActionsCacheKeyFieldsQueryString {
-    /**
-     * @return Exclude these query string parameters from Cache Key.
-     * 
-     */
     private @Nullable List<String> excludes;
-    /**
-     * @return Only use values of specified query string parameters in Cache Key.
-     * 
-     */
     private @Nullable List<String> includes;
 
     private PageRuleActionsCacheKeyFieldsQueryString() {}
-    /**
-     * @return Exclude these query string parameters from Cache Key.
-     * 
-     */
     public List<String> excludes() {
         return this.excludes == null ? List.of() : this.excludes;
     }
-    /**
-     * @return Only use values of specified query string parameters in Cache Key.
-     * 
-     */
     public List<String> includes() {
         return this.includes == null ? List.of() : this.includes;
     }

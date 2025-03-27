@@ -59,8 +59,10 @@ type Web3Hostname struct {
 	// The hostname that will point to the target gateway via CNAME.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Status of the hostname's activation.
+	// Available values: "active", "pending", "deleting", "error".
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Target gateway of the hostname.
+	// Available values: "ethereum", "ipfs", "ipfs*universal*path".
 	Target pulumi.StringOutput `pulumi:"target"`
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -114,8 +116,10 @@ type web3HostnameState struct {
 	// The hostname that will point to the target gateway via CNAME.
 	Name *string `pulumi:"name"`
 	// Status of the hostname's activation.
+	// Available values: "active", "pending", "deleting", "error".
 	Status *string `pulumi:"status"`
 	// Target gateway of the hostname.
+	// Available values: "ethereum", "ipfs", "ipfs*universal*path".
 	Target *string `pulumi:"target"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
@@ -131,8 +135,10 @@ type Web3HostnameState struct {
 	// The hostname that will point to the target gateway via CNAME.
 	Name pulumi.StringPtrInput
 	// Status of the hostname's activation.
+	// Available values: "active", "pending", "deleting", "error".
 	Status pulumi.StringPtrInput
 	// Target gateway of the hostname.
+	// Available values: "ethereum", "ipfs", "ipfs*universal*path".
 	Target pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
@@ -150,6 +156,7 @@ type web3HostnameArgs struct {
 	// The hostname that will point to the target gateway via CNAME.
 	Name string `pulumi:"name"`
 	// Target gateway of the hostname.
+	// Available values: "ethereum", "ipfs", "ipfs*universal*path".
 	Target string `pulumi:"target"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -164,6 +171,7 @@ type Web3HostnameArgs struct {
 	// The hostname that will point to the target gateway via CNAME.
 	Name pulumi.StringInput
 	// Target gateway of the hostname.
+	// Available values: "ethereum", "ipfs", "ipfs*universal*path".
 	Target pulumi.StringInput
 	// Identifier
 	ZoneId pulumi.StringInput
@@ -280,11 +288,13 @@ func (o Web3HostnameOutput) Name() pulumi.StringOutput {
 }
 
 // Status of the hostname's activation.
+// Available values: "active", "pending", "deleting", "error".
 func (o Web3HostnameOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Web3Hostname) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // Target gateway of the hostname.
+// Available values: "ethereum", "ipfs", "ipfs*universal*path".
 func (o Web3HostnameOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v *Web3Hostname) pulumi.StringOutput { return v.Target }).(pulumi.StringOutput)
 }

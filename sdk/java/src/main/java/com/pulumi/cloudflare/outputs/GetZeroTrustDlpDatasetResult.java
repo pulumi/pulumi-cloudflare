@@ -33,6 +33,10 @@ public final class GetZeroTrustDlpDatasetResult {
     private String name;
     private Integer numCells;
     private Boolean secret;
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
     private String status;
     /**
      * @return When the dataset was last updated.
@@ -80,6 +84,10 @@ public final class GetZeroTrustDlpDatasetResult {
     public Boolean secret() {
         return this.secret;
     }
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
     public String status() {
         return this.status;
     }

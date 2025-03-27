@@ -8,11 +8,13 @@ import com.pulumi.cloudflare.ZeroTrustAccessIdentityProviderArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessIdentityProviderState;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessIdentityProviderConfig;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessIdentityProviderScimConfig;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -142,6 +144,7 @@ public class ZeroTrustAccessIdentityProvider extends com.pulumi.resources.Custom
     }
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -149,6 +152,7 @@ public class ZeroTrustAccessIdentityProvider extends com.pulumi.resources.Custom
 
     /**
      * @return The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
      * 
      */
     public Output<String> type() {
@@ -208,6 +212,9 @@ public class ZeroTrustAccessIdentityProvider extends com.pulumi.resources.Custom
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/accessIdentityProvider:AccessIdentityProvider").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

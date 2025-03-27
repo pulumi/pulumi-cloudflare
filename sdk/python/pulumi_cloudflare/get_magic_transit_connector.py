@@ -68,9 +68,6 @@ class GetMagicTransitConnectorResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
-        """
-        Account identifier
-        """
         return pulumi.get(self, "account_id")
 
     @property
@@ -165,9 +162,6 @@ def get_magic_transit_connector(account_id: Optional[str] = None,
     example_magic_transit_connector = cloudflare.get_magic_transit_connector(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         connector_id="connector_id")
     ```
-
-
-    :param str account_id: Account identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -201,9 +195,6 @@ def get_magic_transit_connector_output(account_id: Optional[pulumi.Input[str]] =
     example_magic_transit_connector = cloudflare.get_magic_transit_connector(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         connector_id="connector_id")
     ```
-
-
-    :param str account_id: Account identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id

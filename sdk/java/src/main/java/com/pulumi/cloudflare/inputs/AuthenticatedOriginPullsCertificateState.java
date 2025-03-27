@@ -123,6 +123,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
 
     /**
      * Status of the certificate activation.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     @Import(name="status")
@@ -130,6 +131,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
 
     /**
      * @return Status of the certificate activation.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -348,6 +350,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
 
         /**
          * @param status Status of the certificate activation.
+         * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
          * 
          * @return builder
          * 
@@ -359,6 +362,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
 
         /**
          * @param status Status of the certificate activation.
+         * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
          * 
          * @return builder
          * 

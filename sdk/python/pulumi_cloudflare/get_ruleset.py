@@ -27,7 +27,7 @@ class GetRulesetResult:
     """
     A collection of values returned by getRuleset.
     """
-    def __init__(__self__, account_id=None, description=None, id=None, kind=None, name=None, phase=None, rules=None, ruleset_id=None, zone_id=None):
+    def __init__(__self__, account_id=None, description=None, id=None, kind=None, last_updated=None, name=None, phase=None, rules=None, ruleset_id=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,6 +40,9 @@ class GetRulesetResult:
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
+        if last_updated and not isinstance(last_updated, str):
+            raise TypeError("Expected argument 'last_updated' to be a str")
+        pulumi.set(__self__, "last_updated", last_updated)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -85,8 +88,17 @@ class GetRulesetResult:
     def kind(self) -> str:
         """
         The kind of the ruleset.
+        Available values: "managed", "custom", "root", "zone".
         """
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="lastUpdated")
+    def last_updated(self) -> str:
+        """
+        The timestamp of when the ruleset was last modified.
+        """
+        return pulumi.get(self, "last_updated")
 
     @property
     @pulumi.getter
@@ -101,6 +113,7 @@ class GetRulesetResult:
     def phase(self) -> str:
         """
         The phase of the ruleset.
+        Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         """
         return pulumi.get(self, "phase")
 
@@ -139,6 +152,7 @@ class AwaitableGetRulesetResult(GetRulesetResult):
             description=self.description,
             id=self.id,
             kind=self.kind,
+            last_updated=self.last_updated,
             name=self.name,
             phase=self.phase,
             rules=self.rules,
@@ -179,6 +193,7 @@ def get_ruleset(account_id: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         kind=pulumi.get(__ret__, 'kind'),
+        last_updated=pulumi.get(__ret__, 'last_updated'),
         name=pulumi.get(__ret__, 'name'),
         phase=pulumi.get(__ret__, 'phase'),
         rules=pulumi.get(__ret__, 'rules'),
@@ -216,6 +231,7 @@ def get_ruleset_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         kind=pulumi.get(__response__, 'kind'),
+        last_updated=pulumi.get(__response__, 'last_updated'),
         name=pulumi.get(__response__, 'name'),
         phase=pulumi.get(__response__, 'phase'),
         rules=pulumi.get(__response__, 'rules'),

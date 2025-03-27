@@ -127,6 +127,20 @@ public class R2BucketSippy extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
+     * Jurisdiction of the bucket
+     * 
+     */
+    @Export(name="jurisdiction", refs={String.class}, tree="[0]")
+    private Output<String> jurisdiction;
+
+    /**
+     * @return Jurisdiction of the bucket
+     * 
+     */
+    public Output<String> jurisdiction() {
+        return this.jurisdiction;
+    }
+    /**
      * AWS S3 bucket to copy objects from
      * 
      */

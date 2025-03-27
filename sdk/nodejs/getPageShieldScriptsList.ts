@@ -56,6 +56,7 @@ export function getPageShieldScriptsList(args: GetPageShieldScriptsListArgs, opt
 export interface GetPageShieldScriptsListArgs {
     /**
      * The direction used to sort returned scripts.
+     * Available values: "asc", "desc".
      */
     direction?: string;
     /**
@@ -74,6 +75,7 @@ export interface GetPageShieldScriptsListArgs {
     excludeUrls?: string;
     /**
      * Export the list of scripts as a file.
+     * Available values: "csv".
      */
     export?: string;
     /**
@@ -100,6 +102,7 @@ export interface GetPageShieldScriptsListArgs {
 export interface GetPageShieldScriptsListResult {
     /**
      * The direction used to sort returned scripts.
+     * Available values: "asc", "desc".
      */
     readonly direction?: string;
     /**
@@ -118,6 +121,7 @@ export interface GetPageShieldScriptsListResult {
     readonly excludeUrls?: string;
     /**
      * Export the list of scripts as a file.
+     * Available values: "csv".
      */
     readonly export?: string;
     /**
@@ -192,6 +196,7 @@ export function getPageShieldScriptsListOutput(args: GetPageShieldScriptsListOut
 export interface GetPageShieldScriptsListOutputArgs {
     /**
      * The direction used to sort returned scripts.
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**
@@ -210,6 +215,7 @@ export interface GetPageShieldScriptsListOutputArgs {
     excludeUrls?: pulumi.Input<string>;
     /**
      * Export the list of scripts as a file.
+     * Available values: "csv".
      */
     export?: pulumi.Input<string>;
     /**

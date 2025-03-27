@@ -24,6 +24,7 @@ public final class ZeroTrustAccessApplicationPolicy {
     private @Nullable ZeroTrustAccessApplicationPolicyConnectionRules connectionRules;
     /**
      * @return The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
      * 
      */
     private @Nullable String decision;
@@ -68,6 +69,7 @@ public final class ZeroTrustAccessApplicationPolicy {
     }
     /**
      * @return The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
      * 
      */
     public Optional<String> decision() {

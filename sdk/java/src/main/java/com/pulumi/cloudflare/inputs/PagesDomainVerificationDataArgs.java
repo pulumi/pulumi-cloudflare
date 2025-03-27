@@ -22,9 +22,17 @@ public final class PagesDomainVerificationDataArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.errorMessage);
     }
 
+    /**
+     * Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -63,11 +71,23 @@ public final class PagesDomainVerificationDataArgs extends com.pulumi.resources.
             return errorMessage(Output.of(errorMessage));
         }
 
+        /**
+         * @param status Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

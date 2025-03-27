@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class AccessRuleConfiguration {
     /**
      * @return The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+     * Available values: &#34;ip&#34;.
      * 
      */
     private @Nullable String target;
@@ -25,6 +26,7 @@ public final class AccessRuleConfiguration {
     private AccessRuleConfiguration() {}
     /**
      * @return The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+     * Available values: &#34;ip&#34;.
      * 
      */
     public Optional<String> target() {

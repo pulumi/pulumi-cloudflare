@@ -18,6 +18,7 @@ public final class GetRulesetRuleActionParametersBrowserTtl {
     private Integer default_;
     /**
      * @return Determines which browser ttl mode to use.
+     * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
      * 
      */
     private String mode;
@@ -32,6 +33,7 @@ public final class GetRulesetRuleActionParametersBrowserTtl {
     }
     /**
      * @return Determines which browser ttl mode to use.
+     * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
      * 
      */
     public String mode() {

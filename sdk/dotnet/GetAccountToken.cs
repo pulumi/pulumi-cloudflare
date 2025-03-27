@@ -172,6 +172,7 @@ namespace Pulumi.Cloudflare
         public readonly ImmutableArray<Outputs.GetAccountTokenPolicyResult> Policies;
         /// <summary>
         /// Status of the token.
+        /// Available values: "active", "disabled", "expired".
         /// </summary>
         public readonly string Status;
         /// <summary>

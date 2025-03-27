@@ -34,6 +34,10 @@ public final class QueueConsumer {
      */
     private @Nullable String scriptName;
     private @Nullable QueueConsumerSettings settings;
+    /**
+     * @return Available values: &#34;worker&#34;.
+     * 
+     */
     private @Nullable String type;
 
     private QueueConsumer() {}
@@ -71,6 +75,10 @@ public final class QueueConsumer {
     public Optional<QueueConsumerSettings> settings() {
         return Optional.ofNullable(this.settings);
     }
+    /**
+     * @return Available values: &#34;worker&#34;.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

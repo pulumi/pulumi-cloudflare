@@ -32,6 +32,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string CustomPageHtml;
         /// <summary>
         /// The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used.
+        /// Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
         /// </summary>
         public readonly string DefaultTemplateLanguage;
         /// <summary>
@@ -174,10 +175,12 @@ namespace Pulumi.Cloudflare.Outputs
         /// 2. `random`: Random queue where customers gain access randomly, regardless of arrival time.
         /// 3. `passthrough`: Users will pass directly through the waiting room and into the origin website. As a result, any configured limits will not be respected while this is enabled. This method can be used as an alternative to disabling a waiting room (with `suspended`) so that analytics are still reported. This can be used if you wish to allow all traffic normally, but want to restrict traffic during a waiting room event, or vice versa.
         /// 4. `reject`: Users will be immediately rejected from the waiting room. As a result, no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`, `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is prequeueing, the waiting room page **will not refresh automatically**.
+        /// Available values: "fifo", "random", "passthrough", "reject".
         /// </summary>
         public readonly string QueueingMethod;
         /// <summary>
         /// HTTP status code returned to a user while in the queue.
+        /// Available values: 200, 202, 429.
         /// </summary>
         public readonly int QueueingStatusCode;
         /// <summary>
@@ -198,6 +201,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// bots are detected in Waiting Room Analytics. `infinite_queue` will send
         /// bots to a false queueing state, where they will never reach your
         /// origin. `infinite_queue` requires Advanced Waiting Room.
+        /// Available values: "log", "infinite_queue".
         /// </summary>
         public readonly string TurnstileAction;
         /// <summary>
@@ -206,6 +210,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// for the definitions of these widget types. Set to `off` to disable the
         /// Turnstile integration entirely. Setting this to anything other than
         /// `off` or `invisible` requires Advanced Waiting Room.
+        /// Available values: "off", "invisible", "visible_non_interactive", "visible_managed".
         /// </summary>
         public readonly string TurnstileMode;
 

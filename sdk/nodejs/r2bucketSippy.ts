@@ -54,6 +54,10 @@ export class R2BucketSippy extends pulumi.CustomResource {
      */
     public /*out*/ readonly enabled!: pulumi.Output<boolean>;
     /**
+     * Jurisdiction of the bucket
+     */
+    public readonly jurisdiction!: pulumi.Output<string>;
+    /**
      * AWS S3 bucket to copy objects from
      */
     public readonly source!: pulumi.Output<outputs.R2BucketSippySource>;
@@ -75,6 +79,7 @@ export class R2BucketSippy extends pulumi.CustomResource {
             resourceInputs["bucketName"] = state ? state.bucketName : undefined;
             resourceInputs["destination"] = state ? state.destination : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["jurisdiction"] = state ? state.jurisdiction : undefined;
             resourceInputs["source"] = state ? state.source : undefined;
         } else {
             const args = argsOrState as R2BucketSippyArgs | undefined;
@@ -87,6 +92,7 @@ export class R2BucketSippy extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["bucketName"] = args ? args.bucketName : undefined;
             resourceInputs["destination"] = args ? args.destination : undefined;
+            resourceInputs["jurisdiction"] = args ? args.jurisdiction : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["enabled"] = undefined /*out*/;
         }
@@ -116,6 +122,10 @@ export interface R2BucketSippyState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
+     * Jurisdiction of the bucket
+     */
+    jurisdiction?: pulumi.Input<string>;
+    /**
      * AWS S3 bucket to copy objects from
      */
     source?: pulumi.Input<inputs.R2BucketSippySource>;
@@ -137,6 +147,10 @@ export interface R2BucketSippyArgs {
      * R2 bucket to copy objects to
      */
     destination?: pulumi.Input<inputs.R2BucketSippyDestination>;
+    /**
+     * Jurisdiction of the bucket
+     */
+    jurisdiction?: pulumi.Input<string>;
     /**
      * AWS S3 bucket to copy objects from
      */

@@ -52,11 +52,10 @@ type ZoneCacheReserve struct {
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// Value of the Cache Reserve zone setting.
+	// Available values: "on", "off".
 	Value pulumi.StringOutput `pulumi:"value"`
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
-	// ID of the zone setting.
-	ZoneSettingId pulumi.StringOutput `pulumi:"zoneSettingId"`
 }
 
 // NewZoneCacheReserve registers a new resource with the given unique name, arguments, and options.
@@ -97,11 +96,10 @@ type zoneCacheReserveState struct {
 	// Last time this setting was modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// Value of the Cache Reserve zone setting.
+	// Available values: "on", "off".
 	Value *string `pulumi:"value"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
-	// ID of the zone setting.
-	ZoneSettingId *string `pulumi:"zoneSettingId"`
 }
 
 type ZoneCacheReserveState struct {
@@ -110,11 +108,10 @@ type ZoneCacheReserveState struct {
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringPtrInput
 	// Value of the Cache Reserve zone setting.
+	// Available values: "on", "off".
 	Value pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
-	// ID of the zone setting.
-	ZoneSettingId pulumi.StringPtrInput
 }
 
 func (ZoneCacheReserveState) ElementType() reflect.Type {
@@ -123,6 +120,7 @@ func (ZoneCacheReserveState) ElementType() reflect.Type {
 
 type zoneCacheReserveArgs struct {
 	// Value of the Cache Reserve zone setting.
+	// Available values: "on", "off".
 	Value *string `pulumi:"value"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -131,6 +129,7 @@ type zoneCacheReserveArgs struct {
 // The set of arguments for constructing a ZoneCacheReserve resource.
 type ZoneCacheReserveArgs struct {
 	// Value of the Cache Reserve zone setting.
+	// Available values: "on", "off".
 	Value pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringInput
@@ -234,6 +233,7 @@ func (o ZoneCacheReserveOutput) ModifiedOn() pulumi.StringOutput {
 }
 
 // Value of the Cache Reserve zone setting.
+// Available values: "on", "off".
 func (o ZoneCacheReserveOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneCacheReserve) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }
@@ -241,11 +241,6 @@ func (o ZoneCacheReserveOutput) Value() pulumi.StringOutput {
 // Identifier
 func (o ZoneCacheReserveOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneCacheReserve) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
-}
-
-// ID of the zone setting.
-func (o ZoneCacheReserveOutput) ZoneSettingId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZoneCacheReserve) pulumi.StringOutput { return v.ZoneSettingId }).(pulumi.StringOutput)
 }
 
 type ZoneCacheReserveArrayOutput struct{ *pulumi.OutputState }

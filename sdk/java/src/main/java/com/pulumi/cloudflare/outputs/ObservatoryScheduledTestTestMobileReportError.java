@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class ObservatoryScheduledTestTestMobileReportError {
     /**
      * @return The error code of the Lighthouse result.
+     * Available values: &#34;NOT*REACHABLE&#34;, &#34;DNS*FAILURE&#34;, &#34;NOT*HTML&#34;, &#34;LIGHTHOUSE*TIMEOUT&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     private @Nullable String code;
@@ -30,6 +31,7 @@ public final class ObservatoryScheduledTestTestMobileReportError {
     private ObservatoryScheduledTestTestMobileReportError() {}
     /**
      * @return The error code of the Lighthouse result.
+     * Available values: &#34;NOT*REACHABLE&#34;, &#34;DNS*FAILURE&#34;, &#34;NOT*HTML&#34;, &#34;LIGHTHOUSE*TIMEOUT&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     public Optional<String> code() {

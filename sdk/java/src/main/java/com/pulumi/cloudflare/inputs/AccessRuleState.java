@@ -80,6 +80,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     @Import(name="mode")
@@ -87,6 +88,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -281,6 +283,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param mode The action to apply to a matched request.
+         * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
          * 
          * @return builder
          * 
@@ -292,6 +295,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param mode The action to apply to a matched request.
+         * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
          * 
          * @return builder
          * 

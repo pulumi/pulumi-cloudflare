@@ -150,6 +150,9 @@ namespace Pulumi.Cloudflare
         /// The unique identifier for the allow policy.
         /// </summary>
         public readonly int? PatternId;
+        /// <summary>
+        /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        /// </summary>
         public readonly string PatternType;
 
         [OutputConstructor]

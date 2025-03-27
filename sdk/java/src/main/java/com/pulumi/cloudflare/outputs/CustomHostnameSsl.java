@@ -3,14 +3,12 @@
 
 package com.pulumi.cloudflare.outputs;
 
-<<<<<<< HEAD
-=======
 import com.pulumi.cloudflare.outputs.CustomHostnameSslCustomCertBundle;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import com.pulumi.cloudflare.outputs.CustomHostnameSslSettings;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,11 +17,13 @@ import javax.annotation.Nullable;
 public final class CustomHostnameSsl {
     /**
      * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     private @Nullable String bundleMethod;
     /**
      * @return The Certificate Authority that will issue the certificate
+     * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     private @Nullable String certificateAuthority;
@@ -33,14 +33,11 @@ public final class CustomHostnameSsl {
      */
     private @Nullable Boolean cloudflareBranding;
     /**
-<<<<<<< HEAD
-=======
      * @return Array of custom certificate and key pairs (1 or 2 pairs allowed)
      * 
      */
     private @Nullable List<CustomHostnameSslCustomCertBundle> customCertBundles;
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return If a custom uploaded certificate is used.
      * 
      */
@@ -52,6 +49,7 @@ public final class CustomHostnameSsl {
     private @Nullable String customKey;
     /**
      * @return Domain control validation (DCV) method used for this hostname.
+     * Available values: &#34;http&#34;, &#34;txt&#34;, &#34;email&#34;.
      * 
      */
     private @Nullable String method;
@@ -62,6 +60,7 @@ public final class CustomHostnameSsl {
     private @Nullable CustomHostnameSslSettings settings;
     /**
      * @return Level of validation to be used for this hostname. Domain validation (dv) must be used.
+     * Available values: &#34;dv&#34;.
      * 
      */
     private @Nullable String type;
@@ -74,6 +73,7 @@ public final class CustomHostnameSsl {
     private CustomHostnameSsl() {}
     /**
      * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     public Optional<String> bundleMethod() {
@@ -81,6 +81,7 @@ public final class CustomHostnameSsl {
     }
     /**
      * @return The Certificate Authority that will issue the certificate
+     * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     public Optional<String> certificateAuthority() {
@@ -94,8 +95,6 @@ public final class CustomHostnameSsl {
         return Optional.ofNullable(this.cloudflareBranding);
     }
     /**
-<<<<<<< HEAD
-=======
      * @return Array of custom certificate and key pairs (1 or 2 pairs allowed)
      * 
      */
@@ -103,7 +102,6 @@ public final class CustomHostnameSsl {
         return this.customCertBundles == null ? List.of() : this.customCertBundles;
     }
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return If a custom uploaded certificate is used.
      * 
      */
@@ -119,6 +117,7 @@ public final class CustomHostnameSsl {
     }
     /**
      * @return Domain control validation (DCV) method used for this hostname.
+     * Available values: &#34;http&#34;, &#34;txt&#34;, &#34;email&#34;.
      * 
      */
     public Optional<String> method() {
@@ -133,6 +132,7 @@ public final class CustomHostnameSsl {
     }
     /**
      * @return Level of validation to be used for this hostname. Domain validation (dv) must be used.
+     * Available values: &#34;dv&#34;.
      * 
      */
     public Optional<String> type() {
@@ -158,10 +158,7 @@ public final class CustomHostnameSsl {
         private @Nullable String bundleMethod;
         private @Nullable String certificateAuthority;
         private @Nullable Boolean cloudflareBranding;
-<<<<<<< HEAD
-=======
         private @Nullable List<CustomHostnameSslCustomCertBundle> customCertBundles;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private @Nullable String customCertificate;
         private @Nullable String customKey;
         private @Nullable String method;
@@ -174,10 +171,7 @@ public final class CustomHostnameSsl {
     	      this.bundleMethod = defaults.bundleMethod;
     	      this.certificateAuthority = defaults.certificateAuthority;
     	      this.cloudflareBranding = defaults.cloudflareBranding;
-<<<<<<< HEAD
-=======
     	      this.customCertBundles = defaults.customCertBundles;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.customCertificate = defaults.customCertificate;
     	      this.customKey = defaults.customKey;
     	      this.method = defaults.method;
@@ -205,8 +199,6 @@ public final class CustomHostnameSsl {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder customCertBundles(@Nullable List<CustomHostnameSslCustomCertBundle> customCertBundles) {
 
             this.customCertBundles = customCertBundles;
@@ -216,7 +208,6 @@ public final class CustomHostnameSsl {
             return customCertBundles(List.of(customCertBundles));
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder customCertificate(@Nullable String customCertificate) {
 
             this.customCertificate = customCertificate;
@@ -257,10 +248,7 @@ public final class CustomHostnameSsl {
             _resultValue.bundleMethod = bundleMethod;
             _resultValue.certificateAuthority = certificateAuthority;
             _resultValue.cloudflareBranding = cloudflareBranding;
-<<<<<<< HEAD
-=======
             _resultValue.customCertBundles = customCertBundles;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.customCertificate = customCertificate;
             _resultValue.customKey = customKey;
             _resultValue.method = method;

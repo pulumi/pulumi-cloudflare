@@ -19,6 +19,7 @@ public final class TotalTlsArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The Certificate Authority that Total TLS certificates will be issued through.
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     @Import(name="certificateAuthority")
@@ -26,6 +27,7 @@ public final class TotalTlsArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The Certificate Authority that Total TLS certificates will be issued through.
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     public Optional<Output<String>> certificateAuthority() {
@@ -90,6 +92,7 @@ public final class TotalTlsArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through.
+         * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
          * 
@@ -101,6 +104,7 @@ public final class TotalTlsArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through.
+         * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
          * 

@@ -50,6 +50,7 @@ func LookupAccounts(ctx *pulumi.Context, args *LookupAccountsArgs, opts ...pulum
 // A collection of arguments for invoking getAccounts.
 type LookupAccountsArgs struct {
 	// Direction to order results.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -60,6 +61,7 @@ type LookupAccountsArgs struct {
 // A collection of values returned by getAccounts.
 type LookupAccountsResult struct {
 	// Direction to order results.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -83,6 +85,7 @@ func LookupAccountsOutput(ctx *pulumi.Context, args LookupAccountsOutputArgs, op
 // A collection of arguments for invoking getAccounts.
 type LookupAccountsOutputArgs struct {
 	// Direction to order results.
+	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
@@ -110,6 +113,7 @@ func (o LookupAccountsResultOutput) ToLookupAccountsResultOutputWithContext(ctx 
 }
 
 // Direction to order results.
+// Available values: "asc", "desc".
 func (o LookupAccountsResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountsResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }

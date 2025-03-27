@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class GetWebAnalyticsSiteFilter {
     /**
      * @return The property used to sort the list of results.
+     * Available values: &#34;host&#34;, &#34;created&#34;.
      * 
      */
     private @Nullable String orderBy;
@@ -20,6 +21,7 @@ public final class GetWebAnalyticsSiteFilter {
     private GetWebAnalyticsSiteFilter() {}
     /**
      * @return The property used to sort the list of results.
+     * Available values: &#34;host&#34;, &#34;created&#34;.
      * 
      */
     public Optional<String> orderBy() {

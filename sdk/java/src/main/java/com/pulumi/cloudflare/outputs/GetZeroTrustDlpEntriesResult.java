@@ -21,6 +21,10 @@ public final class GetZeroTrustDlpEntriesResult {
     private GetZeroTrustDlpEntriesResultPattern pattern;
     private String profileId;
     private Boolean secret;
+    /**
+     * @return Available values: &#34;custom&#34;.
+     * 
+     */
     private String type;
     private String updatedAt;
     private String wordList;
@@ -50,6 +54,10 @@ public final class GetZeroTrustDlpEntriesResult {
     public Boolean secret() {
         return this.secret;
     }
+    /**
+     * @return Available values: &#34;custom&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }

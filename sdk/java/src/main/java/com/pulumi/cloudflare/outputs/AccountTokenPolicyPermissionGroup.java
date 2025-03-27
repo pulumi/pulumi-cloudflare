@@ -5,10 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.AccountTokenPolicyPermissionGroupMeta;
 import com.pulumi.core.annotations.CustomType;
-<<<<<<< HEAD
-=======
 import com.pulumi.exceptions.MissingRequiredPropertyException;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,11 +17,7 @@ public final class AccountTokenPolicyPermissionGroup {
      * @return Identifier of the group.
      * 
      */
-<<<<<<< HEAD
-    private @Nullable String id;
-=======
     private String id;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return Attributes associated to the permission group.
      * 
@@ -41,13 +34,8 @@ public final class AccountTokenPolicyPermissionGroup {
      * @return Identifier of the group.
      * 
      */
-<<<<<<< HEAD
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
-=======
     public String id() {
         return this.id;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
     /**
      * @return Attributes associated to the permission group.
@@ -73,11 +61,7 @@ public final class AccountTokenPolicyPermissionGroup {
     }
     @CustomType.Builder
     public static final class Builder {
-<<<<<<< HEAD
-        private @Nullable String id;
-=======
         private String id;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private @Nullable AccountTokenPolicyPermissionGroupMeta meta;
         private @Nullable String name;
         public Builder() {}
@@ -89,15 +73,10 @@ public final class AccountTokenPolicyPermissionGroup {
         }
 
         @CustomType.Setter
-<<<<<<< HEAD
-        public Builder id(@Nullable String id) {
-
-=======
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("AccountTokenPolicyPermissionGroup", "id");
             }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             this.id = id;
             return this;
         }

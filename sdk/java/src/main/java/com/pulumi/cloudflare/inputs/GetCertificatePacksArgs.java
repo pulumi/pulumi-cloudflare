@@ -34,6 +34,7 @@ public final class GetCertificatePacksArgs extends com.pulumi.resources.InvokeAr
 
     /**
      * Include Certificate Packs of all statuses, not just active ones.
+     * Available values: &#34;all&#34;.
      * 
      */
     @Import(name="status")
@@ -41,6 +42,7 @@ public final class GetCertificatePacksArgs extends com.pulumi.resources.InvokeAr
 
     /**
      * @return Include Certificate Packs of all statuses, not just active ones.
+     * Available values: &#34;all&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -111,6 +113,7 @@ public final class GetCertificatePacksArgs extends com.pulumi.resources.InvokeAr
 
         /**
          * @param status Include Certificate Packs of all statuses, not just active ones.
+         * Available values: &#34;all&#34;.
          * 
          * @return builder
          * 
@@ -122,6 +125,7 @@ public final class GetCertificatePacksArgs extends com.pulumi.resources.InvokeAr
 
         /**
          * @param status Include Certificate Packs of all statuses, not just active ones.
+         * Available values: &#34;all&#34;.
          * 
          * @return builder
          * 

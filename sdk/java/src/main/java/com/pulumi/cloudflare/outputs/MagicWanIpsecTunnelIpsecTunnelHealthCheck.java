@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 public final class MagicWanIpsecTunnelIpsecTunnelHealthCheck {
     /**
      * @return The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
+     * Available values: &#34;unidirectional&#34;, &#34;bidirectional&#34;.
      * 
      */
     private @Nullable String direction;
@@ -25,6 +26,7 @@ public final class MagicWanIpsecTunnelIpsecTunnelHealthCheck {
     private @Nullable Boolean enabled;
     /**
      * @return How frequent the health check is run. The default value is `mid`.
+     * Available values: &#34;low&#34;, &#34;mid&#34;, &#34;high&#34;.
      * 
      */
     private @Nullable String rate;
@@ -35,6 +37,7 @@ public final class MagicWanIpsecTunnelIpsecTunnelHealthCheck {
     private @Nullable MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget target;
     /**
      * @return The type of healthcheck to run, reply or request. The default value is `reply`.
+     * Available values: &#34;reply&#34;, &#34;request&#34;.
      * 
      */
     private @Nullable String type;
@@ -42,6 +45,7 @@ public final class MagicWanIpsecTunnelIpsecTunnelHealthCheck {
     private MagicWanIpsecTunnelIpsecTunnelHealthCheck() {}
     /**
      * @return The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
+     * Available values: &#34;unidirectional&#34;, &#34;bidirectional&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -56,6 +60,7 @@ public final class MagicWanIpsecTunnelIpsecTunnelHealthCheck {
     }
     /**
      * @return How frequent the health check is run. The default value is `mid`.
+     * Available values: &#34;low&#34;, &#34;mid&#34;, &#34;high&#34;.
      * 
      */
     public Optional<String> rate() {
@@ -70,6 +75,7 @@ public final class MagicWanIpsecTunnelIpsecTunnelHealthCheck {
     }
     /**
      * @return The type of healthcheck to run, reply or request. The default value is `reply`.
+     * Available values: &#34;reply&#34;, &#34;request&#34;.
      * 
      */
     public Optional<String> type() {

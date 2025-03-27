@@ -7,11 +7,13 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustDevicePostureIntegrationArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDevicePostureIntegrationState;
 import com.pulumi.cloudflare.outputs.ZeroTrustDevicePostureIntegrationConfig;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -119,6 +121,7 @@ public class ZeroTrustDevicePostureIntegration extends com.pulumi.resources.Cust
     }
     /**
      * The type of device posture integration.
+     * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -126,6 +129,7 @@ public class ZeroTrustDevicePostureIntegration extends com.pulumi.resources.Cust
 
     /**
      * @return The type of device posture integration.
+     * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
      * 
      */
     public Output<String> type() {
@@ -171,6 +175,9 @@ public class ZeroTrustDevicePostureIntegration extends com.pulumi.resources.Cust
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/devicePostureIntegration:DevicePostureIntegration").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

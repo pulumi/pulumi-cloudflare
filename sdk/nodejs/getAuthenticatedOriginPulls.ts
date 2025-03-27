@@ -6,10 +6,21 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleAuthenticatedOriginPulls = cloudflare.getAuthenticatedOriginPulls({
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     hostname: "app.example.com",
+ * });
+ * ```
  */
 export function getAuthenticatedOriginPulls(args: GetAuthenticatedOriginPullsArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthenticatedOriginPullsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAuthenticatedOriginPulls:getAuthenticatedOriginPulls", {
+        "hostname": args.hostname,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -18,6 +29,10 @@ export function getAuthenticatedOriginPulls(args: GetAuthenticatedOriginPullsArg
  * A collection of arguments for invoking getAuthenticatedOriginPulls.
  */
 export interface GetAuthenticatedOriginPullsArgs {
+    /**
+     * The hostname on the origin for which the client certificate uploaded will be used.
+     */
+    hostname: string;
     /**
      * Identifier
      */
@@ -34,6 +49,7 @@ export interface GetAuthenticatedOriginPullsResult {
     readonly certId: string;
     /**
      * Status of the certificate or the association.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
      */
     readonly certStatus: string;
     /**
@@ -82,6 +98,7 @@ export interface GetAuthenticatedOriginPullsResult {
     readonly signature: string;
     /**
      * Status of the certificate or the association.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
      */
     readonly status: string;
     /**
@@ -95,10 +112,21 @@ export interface GetAuthenticatedOriginPullsResult {
 }
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleAuthenticatedOriginPulls = cloudflare.getAuthenticatedOriginPulls({
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     hostname: "app.example.com",
+ * });
+ * ```
  */
 export function getAuthenticatedOriginPullsOutput(args: GetAuthenticatedOriginPullsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthenticatedOriginPullsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAuthenticatedOriginPulls:getAuthenticatedOriginPulls", {
+        "hostname": args.hostname,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -107,6 +135,10 @@ export function getAuthenticatedOriginPullsOutput(args: GetAuthenticatedOriginPu
  * A collection of arguments for invoking getAuthenticatedOriginPulls.
  */
 export interface GetAuthenticatedOriginPullsOutputArgs {
+    /**
+     * The hostname on the origin for which the client certificate uploaded will be used.
+     */
+    hostname: pulumi.Input<string>;
     /**
      * Identifier
      */

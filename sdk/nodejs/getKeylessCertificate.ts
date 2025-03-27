@@ -83,6 +83,7 @@ export interface GetKeylessCertificateResult {
     readonly port: number;
     /**
      * Status of the Keyless SSL.
+     * Available values: "active", "deleted".
      */
     readonly status: string;
     /**

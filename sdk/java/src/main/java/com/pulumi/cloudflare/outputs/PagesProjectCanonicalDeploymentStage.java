@@ -18,6 +18,7 @@ public final class PagesProjectCanonicalDeploymentStage {
     private @Nullable String endedOn;
     /**
      * @return The current build stage.
+     * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;clone_repo&#34;, &#34;build&#34;, &#34;deploy&#34;.
      * 
      */
     private @Nullable String name;
@@ -28,6 +29,7 @@ public final class PagesProjectCanonicalDeploymentStage {
     private @Nullable String startedOn;
     /**
      * @return State of the current stage.
+     * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;.
      * 
      */
     private @Nullable String status;
@@ -42,6 +44,7 @@ public final class PagesProjectCanonicalDeploymentStage {
     }
     /**
      * @return The current build stage.
+     * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;clone_repo&#34;, &#34;build&#34;, &#34;deploy&#34;.
      * 
      */
     public Optional<String> name() {
@@ -56,6 +59,7 @@ public final class PagesProjectCanonicalDeploymentStage {
     }
     /**
      * @return State of the current stage.
+     * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;.
      * 
      */
     public Optional<String> status() {

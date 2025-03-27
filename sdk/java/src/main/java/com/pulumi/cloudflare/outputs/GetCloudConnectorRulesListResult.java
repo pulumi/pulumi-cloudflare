@@ -14,6 +14,7 @@ import java.util.Objects;
 public final class GetCloudConnectorRulesListResult {
     /**
      * @return Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
      * 
      */
     private String cloudProvider;
@@ -30,6 +31,7 @@ public final class GetCloudConnectorRulesListResult {
     private GetCloudConnectorRulesListResult() {}
     /**
      * @return Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
      * 
      */
     public String cloudProvider() {

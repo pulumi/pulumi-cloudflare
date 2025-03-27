@@ -34,6 +34,7 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
 
     /**
      * The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -41,6 +42,7 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
 
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -78,6 +80,7 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
 
     /**
      * The field to sort by.
+     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
      * 
      */
     @Import(name="order")
@@ -85,6 +88,7 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
 
     /**
      * @return The field to sort by.
+     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
      * 
      */
     public Optional<String> order() {
@@ -155,6 +159,7 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
 
         /**
          * @param direction The sorting direction.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -187,6 +192,7 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
 
         /**
          * @param order The field to sort by.
+         * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
          * 
          * @return builder
          * 

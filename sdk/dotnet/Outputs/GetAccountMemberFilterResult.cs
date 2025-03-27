@@ -15,14 +15,17 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Direction to order results.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
         /// Field to order results by.
+        /// Available values: "user.first*name", "user.last*name", "user.email", "status".
         /// </summary>
         public readonly string? Order;
         /// <summary>
         /// A member's status in the account.
+        /// Available values: "accepted", "pending", "rejected".
         /// </summary>
         public readonly string? Status;
 

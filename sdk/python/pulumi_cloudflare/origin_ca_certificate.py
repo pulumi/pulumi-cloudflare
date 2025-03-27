@@ -28,7 +28,9 @@ class OriginCaCertificateArgs:
         :param pulumi.Input[str] csr: The Certificate Signing Request (CSR). Must be newline-encoded.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
         :param pulumi.Input[str] request_type: Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+               Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         :param pulumi.Input[float] requested_validity: The number of days for which the certificate should be valid.
+               Available values: 7, 30, 90, 365, 730, 1095, 5475.
         """
         if csr is not None:
             pulumi.set(__self__, "csr", csr)
@@ -68,6 +70,7 @@ class OriginCaCertificateArgs:
     def request_type(self) -> Optional[pulumi.Input[str]]:
         """
         Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+        Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         """
         return pulumi.get(self, "request_type")
 
@@ -80,6 +83,7 @@ class OriginCaCertificateArgs:
     def requested_validity(self) -> Optional[pulumi.Input[float]]:
         """
         The number of days for which the certificate should be valid.
+        Available values: 7, 30, 90, 365, 730, 1095, 5475.
         """
         return pulumi.get(self, "requested_validity")
 
@@ -104,7 +108,9 @@ class _OriginCaCertificateState:
         :param pulumi.Input[str] expires_on: When the certificate will expire.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
         :param pulumi.Input[str] request_type: Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+               Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         :param pulumi.Input[float] requested_validity: The number of days for which the certificate should be valid.
+               Available values: 7, 30, 90, 365, 730, 1095, 5475.
         """
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
@@ -172,6 +178,7 @@ class _OriginCaCertificateState:
     def request_type(self) -> Optional[pulumi.Input[str]]:
         """
         Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+        Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         """
         return pulumi.get(self, "request_type")
 
@@ -184,6 +191,7 @@ class _OriginCaCertificateState:
     def requested_validity(self) -> Optional[pulumi.Input[float]]:
         """
         The number of days for which the certificate should be valid.
+        Available values: 7, 30, 90, 365, 730, 1095, 5475.
         """
         return pulumi.get(self, "requested_validity")
 
@@ -203,13 +211,6 @@ class OriginCaCertificate(pulumi.CustomResource):
                  requested_validity: Optional[pulumi.Input[float]] = None,
                  __props__=None):
         """
-<<<<<<< HEAD
-        > Since v3.32.0
-           all authentication schemes are supported for managing Origin CA certificates.
-           Versions prior to v3.32.0 will still need to use `api_user_service_key`.
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ## Example Usage
 
         ```python
@@ -254,7 +255,9 @@ class OriginCaCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] csr: The Certificate Signing Request (CSR). Must be newline-encoded.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
         :param pulumi.Input[str] request_type: Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+               Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         :param pulumi.Input[float] requested_validity: The number of days for which the certificate should be valid.
+               Available values: 7, 30, 90, 365, 730, 1095, 5475.
         """
         ...
     @overload
@@ -263,13 +266,6 @@ class OriginCaCertificate(pulumi.CustomResource):
                  args: Optional[OriginCaCertificateArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-<<<<<<< HEAD
-        > Since v3.32.0
-           all authentication schemes are supported for managing Origin CA certificates.
-           Versions prior to v3.32.0 will still need to use `api_user_service_key`.
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ## Example Usage
 
         ```python
@@ -371,7 +367,9 @@ class OriginCaCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] expires_on: When the certificate will expire.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
         :param pulumi.Input[str] request_type: Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+               Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         :param pulumi.Input[float] requested_validity: The number of days for which the certificate should be valid.
+               Available values: 7, 30, 90, 365, 730, 1095, 5475.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -422,6 +420,7 @@ class OriginCaCertificate(pulumi.CustomResource):
     def request_type(self) -> pulumi.Output[Optional[str]]:
         """
         Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+        Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         """
         return pulumi.get(self, "request_type")
 
@@ -430,6 +429,7 @@ class OriginCaCertificate(pulumi.CustomResource):
     def requested_validity(self) -> pulumi.Output[float]:
         """
         The number of days for which the certificate should be valid.
+        Available values: 7, 30, 90, 365, 730, 1095, 5475.
         """
         return pulumi.get(self, "requested_validity")
 

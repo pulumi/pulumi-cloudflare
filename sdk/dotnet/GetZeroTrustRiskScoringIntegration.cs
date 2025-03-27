@@ -132,6 +132,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         public readonly string? IntegrationId;
+        /// <summary>
+        /// Available values: "Okta".
+        /// </summary>
         public readonly string IntegrationType;
         /// <summary>
         /// A reference ID defined by the client.

@@ -61,6 +61,7 @@ export class RegionalTieredCache extends pulumi.CustomResource {
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
      * Value of the Regional Tiered Cache zone setting.
+     * Available values: "on", "off".
      */
     public readonly value!: pulumi.Output<string>;
     /**
@@ -114,6 +115,7 @@ export interface RegionalTieredCacheState {
     modifiedOn?: pulumi.Input<string>;
     /**
      * Value of the Regional Tiered Cache zone setting.
+     * Available values: "on", "off".
      */
     value?: pulumi.Input<string>;
     /**
@@ -128,6 +130,7 @@ export interface RegionalTieredCacheState {
 export interface RegionalTieredCacheArgs {
     /**
      * Value of the Regional Tiered Cache zone setting.
+     * Available values: "on", "off".
      */
     value?: pulumi.Input<string>;
     /**

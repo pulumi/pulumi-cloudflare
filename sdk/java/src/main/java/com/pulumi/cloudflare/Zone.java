@@ -258,6 +258,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
     }
     /**
      * The zone status on Cloudflare.
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -265,6 +266,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The zone status on Cloudflare.
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
     public Output<String> status() {
@@ -273,6 +275,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
     /**
      * A full zone implies that DNS is hosted with Cloudflare. A partial zone is
      * typically a partner-hosted zone or a CNAME setup.
+     * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -281,6 +284,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
     /**
      * @return A full zone implies that DNS is hosted with Cloudflare. A partial zone is
      * typically a partner-hosted zone or a CNAME setup.
+     * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;.
      * 
      */
     public Output<String> type() {
@@ -302,8 +306,6 @@ public class Zone extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> vanityNameServers() {
         return Codegen.optional(this.vanityNameServers);
     }
-<<<<<<< HEAD
-=======
     /**
      * Verification key for partial zone setup.
      * 
@@ -318,7 +320,6 @@ public class Zone extends com.pulumi.resources.CustomResource {
     public Output<String> verificationKey() {
         return this.verificationKey;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      *

@@ -70,6 +70,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Custom page type.
+        /// Available values: "identity_denied", "forbidden".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -106,6 +107,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/accessCustomPage:AccessCustomPage" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -155,6 +160,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Custom page type.
+        /// Available values: "identity_denied", "forbidden".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -196,6 +202,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Custom page type.
+        /// Available values: "identity_denied", "forbidden".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -20,6 +20,7 @@ public final class GetPageShieldConnectionsListPlainArgs extends com.pulumi.reso
 
     /**
      * The direction used to sort returned connections.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -27,6 +28,7 @@ public final class GetPageShieldConnectionsListPlainArgs extends com.pulumi.reso
 
     /**
      * @return The direction used to sort returned connections.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -65,6 +67,7 @@ public final class GetPageShieldConnectionsListPlainArgs extends com.pulumi.reso
 
     /**
      * Export the list of connections as a file.
+     * Available values: &#34;csv&#34;.
      * 
      */
     @Import(name="export")
@@ -72,6 +75,7 @@ public final class GetPageShieldConnectionsListPlainArgs extends com.pulumi.reso
 
     /**
      * @return Export the list of connections as a file.
+     * Available values: &#34;csv&#34;.
      * 
      */
     public Optional<String> export() {
@@ -203,6 +207,7 @@ public final class GetPageShieldConnectionsListPlainArgs extends com.pulumi.reso
 
         /**
          * @param direction The direction used to sort returned connections.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -236,6 +241,7 @@ public final class GetPageShieldConnectionsListPlainArgs extends com.pulumi.reso
 
         /**
          * @param export Export the list of connections as a file.
+         * Available values: &#34;csv&#34;.
          * 
          * @return builder
          * 

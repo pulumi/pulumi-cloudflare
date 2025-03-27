@@ -27,11 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupFilter(ctx, &cloudflare.LookupFilterArgs{
 //				ZoneId:   "023e105f4ecef8ad9ca31a8372d0c353",
-<<<<<<< HEAD
-//				FilterId: "372e67954025e0ba6aaa6d586b9e0b61",
-=======
 //				FilterId: pulumi.StringRef("372e67954025e0ba6aaa6d586b9e0b61"),
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -53,14 +49,9 @@ func LookupFilter(ctx *pulumi.Context, args *LookupFilterArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getFilter.
 type LookupFilterArgs struct {
-<<<<<<< HEAD
-	// The unique identifier of the filter.
-	FilterId string `pulumi:"filterId"`
-=======
 	Filter *GetFilterFilter `pulumi:"filter"`
 	// The unique identifier of the filter.
 	FilterId *string `pulumi:"filterId"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -70,16 +61,10 @@ type LookupFilterResult struct {
 	// An informative summary of the filter.
 	Description string `pulumi:"description"`
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
-<<<<<<< HEAD
-	Expression string `pulumi:"expression"`
-	// The unique identifier of the filter.
-	FilterId string `pulumi:"filterId"`
-=======
 	Expression string           `pulumi:"expression"`
 	Filter     *GetFilterFilter `pulumi:"filter"`
 	// The unique identifier of the filter.
 	FilterId *string `pulumi:"filterId"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The unique identifier of the filter.
 	Id string `pulumi:"id"`
 	// When true, indicates that the filter is currently paused.
@@ -101,14 +86,9 @@ func LookupFilterOutput(ctx *pulumi.Context, args LookupFilterOutputArgs, opts .
 
 // A collection of arguments for invoking getFilter.
 type LookupFilterOutputArgs struct {
-<<<<<<< HEAD
-	// The unique identifier of the filter.
-	FilterId pulumi.StringInput `pulumi:"filterId"`
-=======
 	Filter GetFilterFilterPtrInput `pulumi:"filter"`
 	// The unique identifier of the filter.
 	FilterId pulumi.StringPtrInput `pulumi:"filterId"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -142,11 +122,6 @@ func (o LookupFilterResultOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFilterResult) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-// The unique identifier of the filter.
-func (o LookupFilterResultOutput) FilterId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFilterResult) string { return v.FilterId }).(pulumi.StringOutput)
-=======
 func (o LookupFilterResultOutput) Filter() GetFilterFilterPtrOutput {
 	return o.ApplyT(func(v LookupFilterResult) *GetFilterFilter { return v.Filter }).(GetFilterFilterPtrOutput)
 }
@@ -154,7 +129,6 @@ func (o LookupFilterResultOutput) Filter() GetFilterFilterPtrOutput {
 // The unique identifier of the filter.
 func (o LookupFilterResultOutput) FilterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFilterResult) *string { return v.FilterId }).(pulumi.StringPtrOutput)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // The unique identifier of the filter.

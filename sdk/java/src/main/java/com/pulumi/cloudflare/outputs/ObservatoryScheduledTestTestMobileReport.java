@@ -20,6 +20,7 @@ public final class ObservatoryScheduledTestTestMobileReport {
     private @Nullable Double cls;
     /**
      * @return The type of device.
+     * Available values: &#34;DESKTOP&#34;, &#34;MOBILE&#34;.
      * 
      */
     private @Nullable String deviceType;
@@ -51,6 +52,7 @@ public final class ObservatoryScheduledTestTestMobileReport {
     private @Nullable Double si;
     /**
      * @return The state of the Lighthouse report.
+     * Available values: &#34;RUNNING&#34;, &#34;COMPLETE&#34;, &#34;FAILED&#34;.
      * 
      */
     private @Nullable String state;
@@ -80,6 +82,7 @@ public final class ObservatoryScheduledTestTestMobileReport {
     }
     /**
      * @return The type of device.
+     * Available values: &#34;DESKTOP&#34;, &#34;MOBILE&#34;.
      * 
      */
     public Optional<String> deviceType() {
@@ -125,6 +128,7 @@ public final class ObservatoryScheduledTestTestMobileReport {
     }
     /**
      * @return The state of the Lighthouse report.
+     * Available values: &#34;RUNNING&#34;, &#34;COMPLETE&#34;, &#34;FAILED&#34;.
      * 
      */
     public Optional<String> state() {

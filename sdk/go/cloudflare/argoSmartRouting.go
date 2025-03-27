@@ -48,6 +48,7 @@ type ArgoSmartRouting struct {
 	pulumi.CustomResourceState
 
 	// Enables Argo Smart Routing.
+	// Available values: "on", "off".
 	Value pulumi.StringOutput `pulumi:"value"`
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -90,6 +91,7 @@ func GetArgoSmartRouting(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ArgoSmartRouting resources.
 type argoSmartRoutingState struct {
 	// Enables Argo Smart Routing.
+	// Available values: "on", "off".
 	Value *string `pulumi:"value"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
@@ -97,6 +99,7 @@ type argoSmartRoutingState struct {
 
 type ArgoSmartRoutingState struct {
 	// Enables Argo Smart Routing.
+	// Available values: "on", "off".
 	Value pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
@@ -108,6 +111,7 @@ func (ArgoSmartRoutingState) ElementType() reflect.Type {
 
 type argoSmartRoutingArgs struct {
 	// Enables Argo Smart Routing.
+	// Available values: "on", "off".
 	Value string `pulumi:"value"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -116,6 +120,7 @@ type argoSmartRoutingArgs struct {
 // The set of arguments for constructing a ArgoSmartRouting resource.
 type ArgoSmartRoutingArgs struct {
 	// Enables Argo Smart Routing.
+	// Available values: "on", "off".
 	Value pulumi.StringInput
 	// Identifier
 	ZoneId pulumi.StringInput
@@ -209,6 +214,7 @@ func (o ArgoSmartRoutingOutput) ToArgoSmartRoutingOutputWithContext(ctx context.
 }
 
 // Enables Argo Smart Routing.
+// Available values: "on", "off".
 func (o ArgoSmartRoutingOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArgoSmartRouting) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

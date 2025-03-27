@@ -13,7 +13,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     /**
-     * @return Configure whether copy is enabled or not. When set with &#34;remote_only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure whether copy is enabled or not. When set with &#34;remote*only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
     private @Nullable String copy;
@@ -34,6 +35,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     private @Nullable Boolean dk;
     /**
      * @return Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     private @Nullable String download;
@@ -49,33 +51,39 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     private @Nullable Boolean du;
     /**
      * @return Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     private @Nullable String keyboard;
     /**
-     * @return Configure whether pasting is enabled or not. When set with &#34;remote_only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure whether pasting is enabled or not. When set with &#34;remote*only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
     private @Nullable String paste;
     /**
      * @return Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     private @Nullable String printing;
     /**
      * @return Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     private @Nullable String upload;
     /**
      * @return Indicates which version of the browser isolation controls should apply.
+     * Available values: &#34;v1&#34;, &#34;v2&#34;.
      * 
      */
     private @Nullable String version;
 
     private ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls() {}
     /**
-     * @return Configure whether copy is enabled or not. When set with &#34;remote_only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure whether copy is enabled or not. When set with &#34;remote*only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
     public Optional<String> copy() {
@@ -104,6 +112,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     }
     /**
      * @return Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     public Optional<String> download() {
@@ -125,13 +134,15 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     }
     /**
      * @return Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     public Optional<String> keyboard() {
         return Optional.ofNullable(this.keyboard);
     }
     /**
-     * @return Configure whether pasting is enabled or not. When set with &#34;remote_only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure whether pasting is enabled or not. When set with &#34;remote*only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
     public Optional<String> paste() {
@@ -139,6 +150,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     }
     /**
      * @return Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     public Optional<String> printing() {
@@ -146,6 +158,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     }
     /**
      * @return Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     public Optional<String> upload() {
@@ -153,6 +166,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     }
     /**
      * @return Indicates which version of the browser isolation controls should apply.
+     * Available values: &#34;v1&#34;, &#34;v2&#34;.
      * 
      */
     public Optional<String> version() {

@@ -18,6 +18,7 @@ public final class ImageVariantVariantOptionsArgs extends com.pulumi.resources.R
 
     /**
      * The fit property describes how the width and height dimensions should be interpreted.
+     * Available values: &#34;scale-down&#34;, &#34;contain&#34;, &#34;cover&#34;, &#34;crop&#34;, &#34;pad&#34;.
      * 
      */
     @Import(name="fit")
@@ -25,6 +26,7 @@ public final class ImageVariantVariantOptionsArgs extends com.pulumi.resources.R
 
     /**
      * @return The fit property describes how the width and height dimensions should be interpreted.
+     * Available values: &#34;scale-down&#34;, &#34;contain&#34;, &#34;cover&#34;, &#34;crop&#34;, &#34;pad&#34;.
      * 
      */
     public Optional<Output<String>> fit() {
@@ -48,6 +50,7 @@ public final class ImageVariantVariantOptionsArgs extends com.pulumi.resources.R
 
     /**
      * What EXIF data should be preserved in the output image.
+     * Available values: &#34;keep&#34;, &#34;copyright&#34;, &#34;none&#34;.
      * 
      */
     @Import(name="metadata")
@@ -55,6 +58,7 @@ public final class ImageVariantVariantOptionsArgs extends com.pulumi.resources.R
 
     /**
      * @return What EXIF data should be preserved in the output image.
+     * Available values: &#34;keep&#34;, &#34;copyright&#34;, &#34;none&#34;.
      * 
      */
     public Optional<Output<String>> metadata() {
@@ -105,6 +109,7 @@ public final class ImageVariantVariantOptionsArgs extends com.pulumi.resources.R
 
         /**
          * @param fit The fit property describes how the width and height dimensions should be interpreted.
+         * Available values: &#34;scale-down&#34;, &#34;contain&#34;, &#34;cover&#34;, &#34;crop&#34;, &#34;pad&#34;.
          * 
          * @return builder
          * 
@@ -116,6 +121,7 @@ public final class ImageVariantVariantOptionsArgs extends com.pulumi.resources.R
 
         /**
          * @param fit The fit property describes how the width and height dimensions should be interpreted.
+         * Available values: &#34;scale-down&#34;, &#34;contain&#34;, &#34;cover&#34;, &#34;crop&#34;, &#34;pad&#34;.
          * 
          * @return builder
          * 
@@ -147,6 +153,7 @@ public final class ImageVariantVariantOptionsArgs extends com.pulumi.resources.R
 
         /**
          * @param metadata What EXIF data should be preserved in the output image.
+         * Available values: &#34;keep&#34;, &#34;copyright&#34;, &#34;none&#34;.
          * 
          * @return builder
          * 
@@ -158,6 +165,7 @@ public final class ImageVariantVariantOptionsArgs extends com.pulumi.resources.R
 
         /**
          * @param metadata What EXIF data should be preserved in the output image.
+         * Available values: &#34;keep&#34;, &#34;copyright&#34;, &#34;none&#34;.
          * 
          * @return builder
          * 

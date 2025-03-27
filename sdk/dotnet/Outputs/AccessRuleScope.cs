@@ -23,6 +23,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Id;
         /// <summary>
         /// The scope of the rule.
+        /// Available values: "user", "organization".
         /// </summary>
         public readonly string? Type;
 

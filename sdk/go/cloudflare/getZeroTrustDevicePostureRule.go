@@ -74,6 +74,7 @@ type LookupZeroTrustDevicePostureRuleResult struct {
 	// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
 	Schedule string `pulumi:"schedule"`
 	// The type of device posture rule.
+	// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "customS2s".
 	Type string `pulumi:"type"`
 }
 
@@ -157,6 +158,7 @@ func (o LookupZeroTrustDevicePostureRuleResultOutput) Schedule() pulumi.StringOu
 }
 
 // The type of device posture rule.
+// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "customS2s".
 func (o LookupZeroTrustDevicePostureRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDevicePostureRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

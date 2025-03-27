@@ -34,6 +34,7 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
 
     /**
      * The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -41,6 +42,7 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
 
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -64,6 +66,7 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
 
     /**
      * The field to sort by.
+     * Available values: &#34;name&#34;, &#34;email&#34;, &#34;created_at&#34;.
      * 
      */
     @Import(name="order")
@@ -71,15 +74,24 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
 
     /**
      * @return The field to sort by.
+     * Available values: &#34;name&#34;, &#34;email&#34;, &#34;created_at&#34;.
      * 
      */
     public Optional<Output<String>> order() {
         return Optional.ofNullable(this.order);
     }
 
+    /**
+     * Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * 
+     */
     @Import(name="provenance")
     private @Nullable Output<String> provenance;
 
+    /**
+     * @return Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * 
+     */
     public Optional<Output<String>> provenance() {
         return Optional.ofNullable(this.provenance);
     }
@@ -157,6 +169,7 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
 
         /**
          * @param direction The sorting direction.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -168,6 +181,7 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
 
         /**
          * @param direction The sorting direction.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -199,6 +213,7 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
 
         /**
          * @param order The field to sort by.
+         * Available values: &#34;name&#34;, &#34;email&#34;, &#34;created_at&#34;.
          * 
          * @return builder
          * 
@@ -210,6 +225,7 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
 
         /**
          * @param order The field to sort by.
+         * Available values: &#34;name&#34;, &#34;email&#34;, &#34;created_at&#34;.
          * 
          * @return builder
          * 
@@ -218,11 +234,23 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
             return order(Output.of(order));
         }
 
+        /**
+         * @param provenance Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provenance(@Nullable Output<String> provenance) {
             $.provenance = provenance;
             return this;
         }
 
+        /**
+         * @param provenance Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provenance(String provenance) {
             return provenance(Output.of(provenance));
         }

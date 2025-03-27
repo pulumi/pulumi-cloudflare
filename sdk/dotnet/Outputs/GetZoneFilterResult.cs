@@ -16,10 +16,12 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetZoneFilterAccountResult? Account;
         /// <summary>
         /// Direction to order zones.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
         /// Whether to match all search requirements or at least one (any).
+        /// Available values: "any", "all".
         /// </summary>
         public readonly string Match;
         /// <summary>
@@ -36,10 +38,12 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Name;
         /// <summary>
         /// Field to order zones by.
+        /// Available values: "name", "status", "account.id", "account.name".
         /// </summary>
         public readonly string? Order;
         /// <summary>
         /// A zone status
+        /// Available values: "initializing", "pending", "active", "moved".
         /// </summary>
         public readonly string? Status;
 

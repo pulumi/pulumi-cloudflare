@@ -34,9 +34,17 @@ public final class R2BucketSippyDestinationArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.accessKeyId);
     }
 
+    /**
+     * Available values: &#34;r2&#34;.
+     * 
+     */
     @Import(name="provider")
     private @Nullable Output<String> provider;
 
+    /**
+     * @return Available values: &#34;r2&#34;.
+     * 
+     */
     public Optional<Output<String>> provider() {
         return Optional.ofNullable(this.provider);
     }
@@ -117,11 +125,23 @@ public final class R2BucketSippyDestinationArgs extends com.pulumi.resources.Res
             return accessKeyId(Output.of(accessKeyId));
         }
 
+        /**
+         * @param provider Available values: &#34;r2&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provider(@Nullable Output<String> provider) {
             $.provider = provider;
             return this;
         }
 
+        /**
+         * @param provider Available values: &#34;r2&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provider(String provider) {
             return provider(Output.of(provider));
         }

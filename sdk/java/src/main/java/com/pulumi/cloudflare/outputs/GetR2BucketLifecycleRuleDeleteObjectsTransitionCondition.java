@@ -13,6 +13,10 @@ import java.util.Objects;
 public final class GetR2BucketLifecycleRuleDeleteObjectsTransitionCondition {
     private String date;
     private Integer maxAge;
+    /**
+     * @return Available values: &#34;Age&#34;.
+     * 
+     */
     private String type;
 
     private GetR2BucketLifecycleRuleDeleteObjectsTransitionCondition() {}
@@ -22,6 +26,10 @@ public final class GetR2BucketLifecycleRuleDeleteObjectsTransitionCondition {
     public Integer maxAge() {
         return this.maxAge;
     }
+    /**
+     * @return Available values: &#34;Age&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }

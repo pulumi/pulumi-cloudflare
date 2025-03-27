@@ -153,6 +153,7 @@ public final class CloudforceOneRequestPriorityState extends com.pulumi.resource
 
     /**
      * Request Status
+     * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
      * 
      */
     @Import(name="status")
@@ -160,6 +161,7 @@ public final class CloudforceOneRequestPriorityState extends com.pulumi.resource
 
     /**
      * @return Request Status
+     * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -183,6 +185,7 @@ public final class CloudforceOneRequestPriorityState extends com.pulumi.resource
 
     /**
      * The CISA defined Traffic Light Protocol (TLP)
+     * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
     @Import(name="tlp")
@@ -190,6 +193,7 @@ public final class CloudforceOneRequestPriorityState extends com.pulumi.resource
 
     /**
      * @return The CISA defined Traffic Light Protocol (TLP)
+     * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
     public Optional<Output<String>> tlp() {
@@ -454,6 +458,7 @@ public final class CloudforceOneRequestPriorityState extends com.pulumi.resource
 
         /**
          * @param status Request Status
+         * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
          * 
          * @return builder
          * 
@@ -465,6 +470,7 @@ public final class CloudforceOneRequestPriorityState extends com.pulumi.resource
 
         /**
          * @param status Request Status
+         * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
          * 
          * @return builder
          * 
@@ -496,6 +502,7 @@ public final class CloudforceOneRequestPriorityState extends com.pulumi.resource
 
         /**
          * @param tlp The CISA defined Traffic Light Protocol (TLP)
+         * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
          * 
          * @return builder
          * 
@@ -507,6 +514,7 @@ public final class CloudforceOneRequestPriorityState extends com.pulumi.resource
 
         /**
          * @param tlp The CISA defined Traffic Light Protocol (TLP)
+         * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
          * 
          * @return builder
          * 

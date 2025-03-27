@@ -63,6 +63,12 @@ func NewZeroTrustRiskBehavior(ctx *pulumi.Context,
 	if args.Behaviors == nil {
 		return nil, errors.New("invalid value for required argument 'Behaviors'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/riskBehavior:RiskBehavior"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustRiskBehavior
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior", name, args, &resource, opts...)

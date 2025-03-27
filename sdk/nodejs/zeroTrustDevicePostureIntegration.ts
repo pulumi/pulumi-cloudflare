@@ -58,6 +58,7 @@ export class ZeroTrustDevicePostureIntegration extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The type of device posture integration.
+     * Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -103,6 +104,8 @@ export class ZeroTrustDevicePostureIntegration extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/devicePostureIntegration:DevicePostureIntegration" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustDevicePostureIntegration.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -126,6 +129,7 @@ export interface ZeroTrustDevicePostureIntegrationState {
     name?: pulumi.Input<string>;
     /**
      * The type of device posture integration.
+     * Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
      */
     type?: pulumi.Input<string>;
 }
@@ -149,6 +153,7 @@ export interface ZeroTrustDevicePostureIntegrationArgs {
     name: pulumi.Input<string>;
     /**
      * The type of device posture integration.
+     * Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
      */
     type: pulumi.Input<string>;
 }

@@ -46,9 +46,17 @@ public final class ListItemRedirectArgs extends com.pulumi.resources.ResourceArg
         return this.sourceUrl;
     }
 
+    /**
+     * Available values: 301, 302, 307, 308.
+     * 
+     */
     @Import(name="statusCode")
     private @Nullable Output<Integer> statusCode;
 
+    /**
+     * @return Available values: 301, 302, 307, 308.
+     * 
+     */
     public Optional<Output<Integer>> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
@@ -133,11 +141,23 @@ public final class ListItemRedirectArgs extends com.pulumi.resources.ResourceArg
             return sourceUrl(Output.of(sourceUrl));
         }
 
+        /**
+         * @param statusCode Available values: 301, 302, 307, 308.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusCode(@Nullable Output<Integer> statusCode) {
             $.statusCode = statusCode;
             return this;
         }
 
+        /**
+         * @param statusCode Available values: 301, 302, 307, 308.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusCode(Integer statusCode) {
             return statusCode(Output.of(statusCode));
         }

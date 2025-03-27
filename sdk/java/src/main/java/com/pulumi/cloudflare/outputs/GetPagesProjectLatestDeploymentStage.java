@@ -17,6 +17,7 @@ public final class GetPagesProjectLatestDeploymentStage {
     private String endedOn;
     /**
      * @return The current build stage.
+     * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;clone_repo&#34;, &#34;build&#34;, &#34;deploy&#34;.
      * 
      */
     private String name;
@@ -27,6 +28,7 @@ public final class GetPagesProjectLatestDeploymentStage {
     private String startedOn;
     /**
      * @return State of the current stage.
+     * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;.
      * 
      */
     private String status;
@@ -41,6 +43,7 @@ public final class GetPagesProjectLatestDeploymentStage {
     }
     /**
      * @return The current build stage.
+     * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;clone_repo&#34;, &#34;build&#34;, &#34;deploy&#34;.
      * 
      */
     public String name() {
@@ -55,6 +58,7 @@ public final class GetPagesProjectLatestDeploymentStage {
     }
     /**
      * @return State of the current stage.
+     * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;.
      * 
      */
     public String status() {

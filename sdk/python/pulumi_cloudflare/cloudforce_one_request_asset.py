@@ -23,10 +23,6 @@ class CloudforceOneRequestAssetArgs:
                  page: pulumi.Input[int],
                  per_page: pulumi.Input[int],
                  request_identifier: pulumi.Input[str],
-<<<<<<< HEAD
-                 asset_identifer: Optional[pulumi.Input[str]] = None,
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  source: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CloudforceOneRequestAsset resource.
@@ -34,21 +30,12 @@ class CloudforceOneRequestAssetArgs:
         :param pulumi.Input[int] page: Page number of results
         :param pulumi.Input[int] per_page: Number of results per page
         :param pulumi.Input[str] request_identifier: UUID
-<<<<<<< HEAD
-        :param pulumi.Input[str] asset_identifer: UUID
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] source: Asset file to upload
         """
         pulumi.set(__self__, "account_identifier", account_identifier)
         pulumi.set(__self__, "page", page)
         pulumi.set(__self__, "per_page", per_page)
         pulumi.set(__self__, "request_identifier", request_identifier)
-<<<<<<< HEAD
-        if asset_identifer is not None:
-            pulumi.set(__self__, "asset_identifer", asset_identifer)
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if source is not None:
             pulumi.set(__self__, "source", source)
 
@@ -101,21 +88,6 @@ class CloudforceOneRequestAssetArgs:
         pulumi.set(self, "request_identifier", value)
 
     @property
-<<<<<<< HEAD
-    @pulumi.getter(name="assetIdentifer")
-    def asset_identifer(self) -> Optional[pulumi.Input[str]]:
-        """
-        UUID
-        """
-        return pulumi.get(self, "asset_identifer")
-
-    @asset_identifer.setter
-    def asset_identifer(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "asset_identifer", value)
-
-    @property
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
         """
@@ -132,10 +104,6 @@ class CloudforceOneRequestAssetArgs:
 class _CloudforceOneRequestAssetState:
     def __init__(__self__, *,
                  account_identifier: Optional[pulumi.Input[str]] = None,
-<<<<<<< HEAD
-                 asset_identifer: Optional[pulumi.Input[str]] = None,
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  created: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_type: Optional[pulumi.Input[str]] = None,
@@ -147,10 +115,6 @@ class _CloudforceOneRequestAssetState:
         """
         Input properties used for looking up and filtering CloudforceOneRequestAsset resources.
         :param pulumi.Input[str] account_identifier: Identifier
-<<<<<<< HEAD
-        :param pulumi.Input[str] asset_identifer: UUID
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] created: Asset creation time
         :param pulumi.Input[str] description: Asset description
         :param pulumi.Input[str] file_type: Asset file type
@@ -162,11 +126,6 @@ class _CloudforceOneRequestAssetState:
         """
         if account_identifier is not None:
             pulumi.set(__self__, "account_identifier", account_identifier)
-<<<<<<< HEAD
-        if asset_identifer is not None:
-            pulumi.set(__self__, "asset_identifer", asset_identifer)
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if created is not None:
             pulumi.set(__self__, "created", created)
         if description is not None:
@@ -197,21 +156,6 @@ class _CloudforceOneRequestAssetState:
         pulumi.set(self, "account_identifier", value)
 
     @property
-<<<<<<< HEAD
-    @pulumi.getter(name="assetIdentifer")
-    def asset_identifer(self) -> Optional[pulumi.Input[str]]:
-        """
-        UUID
-        """
-        return pulumi.get(self, "asset_identifer")
-
-    @asset_identifer.setter
-    def asset_identifer(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "asset_identifer", value)
-
-    @property
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter
     def created(self) -> Optional[pulumi.Input[str]]:
         """
@@ -314,10 +258,6 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_identifier: Optional[pulumi.Input[str]] = None,
-<<<<<<< HEAD
-                 asset_identifer: Optional[pulumi.Input[str]] = None,
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  page: Optional[pulumi.Input[int]] = None,
                  per_page: Optional[pulumi.Input[int]] = None,
                  request_identifier: Optional[pulumi.Input[str]] = None,
@@ -337,12 +277,6 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
             per_page=10)
         ```
 
-<<<<<<< HEAD
-        :param str resource_name: The name of the resource.
-        :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_identifier: Identifier
-        :param pulumi.Input[str] asset_identifer: UUID
-=======
         ## Import
 
         ```sh
@@ -352,7 +286,6 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_identifier: Identifier
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[int] page: Page number of results
         :param pulumi.Input[int] per_page: Number of results per page
         :param pulumi.Input[str] request_identifier: UUID
@@ -378,15 +311,12 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
             per_page=10)
         ```
 
-<<<<<<< HEAD
-=======
         ## Import
 
         ```sh
         $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example '<account_identifier>/<request_identifier>/<asset_identifer>'
         ```
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param str resource_name: The name of the resource.
         :param CloudforceOneRequestAssetArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -403,10 +333,6 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_identifier: Optional[pulumi.Input[str]] = None,
-<<<<<<< HEAD
-                 asset_identifer: Optional[pulumi.Input[str]] = None,
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  page: Optional[pulumi.Input[int]] = None,
                  per_page: Optional[pulumi.Input[int]] = None,
                  request_identifier: Optional[pulumi.Input[str]] = None,
@@ -423,10 +349,6 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
             if account_identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'account_identifier'")
             __props__.__dict__["account_identifier"] = account_identifier
-<<<<<<< HEAD
-            __props__.__dict__["asset_identifer"] = asset_identifer
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             if page is None and not opts.urn:
                 raise TypeError("Missing required property 'page'")
             __props__.__dict__["page"] = page
@@ -452,10 +374,6 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_identifier: Optional[pulumi.Input[str]] = None,
-<<<<<<< HEAD
-            asset_identifer: Optional[pulumi.Input[str]] = None,
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             created: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             file_type: Optional[pulumi.Input[str]] = None,
@@ -472,10 +390,6 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_identifier: Identifier
-<<<<<<< HEAD
-        :param pulumi.Input[str] asset_identifer: UUID
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] created: Asset creation time
         :param pulumi.Input[str] description: Asset description
         :param pulumi.Input[str] file_type: Asset file type
@@ -490,10 +404,6 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
         __props__ = _CloudforceOneRequestAssetState.__new__(_CloudforceOneRequestAssetState)
 
         __props__.__dict__["account_identifier"] = account_identifier
-<<<<<<< HEAD
-        __props__.__dict__["asset_identifer"] = asset_identifer
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         __props__.__dict__["created"] = created
         __props__.__dict__["description"] = description
         __props__.__dict__["file_type"] = file_type
@@ -513,17 +423,6 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
         return pulumi.get(self, "account_identifier")
 
     @property
-<<<<<<< HEAD
-    @pulumi.getter(name="assetIdentifer")
-    def asset_identifer(self) -> pulumi.Output[Optional[str]]:
-        """
-        UUID
-        """
-        return pulumi.get(self, "asset_identifer")
-
-    @property
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter
     def created(self) -> pulumi.Output[str]:
         """

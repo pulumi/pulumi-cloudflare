@@ -16,11 +16,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
         /// </summary>
-        public readonly string? Address;
+        public readonly string Address;
         /// <summary>
         /// A description of the Split Tunnel item, displayed in the client UI.
         /// </summary>
-        public readonly string? Description;
+        public readonly string Description;
         /// <summary>
         /// The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
         /// </summary>
@@ -28,9 +28,9 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private ZeroTrustDeviceCustomProfileExclude(
-            string? address,
+            string address,
 
-            string? description,
+            string description,
 
             string? host)
         {

@@ -13,13 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class PageRuleActionsCacheKeyFieldsQueryString
     {
-        /// <summary>
-        /// Exclude these query string parameters from Cache Key.
-        /// </summary>
         public readonly ImmutableArray<string> Excludes;
-        /// <summary>
-        /// Only use values of specified query string parameters in Cache Key.
-        /// </summary>
         public readonly ImmutableArray<string> Includes;
 
         [OutputConstructor]

@@ -12,11 +12,13 @@ import java.util.Objects;
 public final class GetWorkersScriptsResultPlacement {
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;smart&#34;.
      * 
      */
     private String mode;
     /**
      * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
      */
     private String status;
@@ -24,6 +26,7 @@ public final class GetWorkersScriptsResultPlacement {
     private GetWorkersScriptsResultPlacement() {}
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;smart&#34;.
      * 
      */
     public String mode() {
@@ -31,6 +34,7 @@ public final class GetWorkersScriptsResultPlacement {
     }
     /**
      * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
      */
     public String status() {

@@ -46,15 +46,6 @@ import (
 //	}
 //
 // ```
-<<<<<<< HEAD
-type WaitingRoomRules struct {
-	pulumi.CustomResourceState
-
-	// The ID of the rule.
-	RuleId        pulumi.StringPtrOutput          `pulumi:"ruleId"`
-	Rules         WaitingRoomRulesRuleArrayOutput `pulumi:"rules"`
-	WaitingRoomId pulumi.StringOutput             `pulumi:"waitingRoomId"`
-=======
 //
 // ## Import
 //
@@ -65,6 +56,7 @@ type WaitingRoomRules struct {
 	pulumi.CustomResourceState
 
 	// The action to take when the expression matches.
+	// Available values: "bypass*waiting*room".
 	Action pulumi.StringOutput `pulumi:"action"`
 	// The description of the rule.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -77,7 +69,6 @@ type WaitingRoomRules struct {
 	// The version of the rule.
 	Version       pulumi.StringOutput `pulumi:"version"`
 	WaitingRoomId pulumi.StringOutput `pulumi:"waitingRoomId"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -121,13 +112,8 @@ func GetWaitingRoomRules(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WaitingRoomRules resources.
 type waitingRoomRulesState struct {
-<<<<<<< HEAD
-	// The ID of the rule.
-	RuleId        *string                `pulumi:"ruleId"`
-	Rules         []WaitingRoomRulesRule `pulumi:"rules"`
-	WaitingRoomId *string                `pulumi:"waitingRoomId"`
-=======
 	// The action to take when the expression matches.
+	// Available values: "bypass*waiting*room".
 	Action *string `pulumi:"action"`
 	// The description of the rule.
 	Description *string `pulumi:"description"`
@@ -140,18 +126,13 @@ type waitingRoomRulesState struct {
 	// The version of the rule.
 	Version       *string `pulumi:"version"`
 	WaitingRoomId *string `pulumi:"waitingRoomId"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type WaitingRoomRulesState struct {
-<<<<<<< HEAD
-	// The ID of the rule.
-	RuleId        pulumi.StringPtrInput
-	Rules         WaitingRoomRulesRuleArrayInput
-=======
 	// The action to take when the expression matches.
+	// Available values: "bypass*waiting*room".
 	Action pulumi.StringPtrInput
 	// The description of the rule.
 	Description pulumi.StringPtrInput
@@ -163,7 +144,6 @@ type WaitingRoomRulesState struct {
 	Rules       WaitingRoomRulesRuleArrayInput
 	// The version of the rule.
 	Version       pulumi.StringPtrInput
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	WaitingRoomId pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
@@ -174,11 +154,6 @@ func (WaitingRoomRulesState) ElementType() reflect.Type {
 }
 
 type waitingRoomRulesArgs struct {
-<<<<<<< HEAD
-	// The ID of the rule.
-	RuleId        *string                `pulumi:"ruleId"`
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	Rules         []WaitingRoomRulesRule `pulumi:"rules"`
 	WaitingRoomId string                 `pulumi:"waitingRoomId"`
 	// Identifier
@@ -187,11 +162,6 @@ type waitingRoomRulesArgs struct {
 
 // The set of arguments for constructing a WaitingRoomRules resource.
 type WaitingRoomRulesArgs struct {
-<<<<<<< HEAD
-	// The ID of the rule.
-	RuleId        pulumi.StringPtrInput
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	Rules         WaitingRoomRulesRuleArrayInput
 	WaitingRoomId pulumi.StringInput
 	// Identifier
@@ -285,12 +255,8 @@ func (o WaitingRoomRulesOutput) ToWaitingRoomRulesOutputWithContext(ctx context.
 	return o
 }
 
-<<<<<<< HEAD
-// The ID of the rule.
-func (o WaitingRoomRulesOutput) RuleId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringPtrOutput { return v.RuleId }).(pulumi.StringPtrOutput)
-=======
 // The action to take when the expression matches.
+// Available values: "bypass*waiting*room".
 func (o WaitingRoomRulesOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
@@ -312,21 +278,17 @@ func (o WaitingRoomRulesOutput) Expression() pulumi.StringOutput {
 
 func (o WaitingRoomRulesOutput) LastUpdated() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.LastUpdated }).(pulumi.StringOutput)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func (o WaitingRoomRulesOutput) Rules() WaitingRoomRulesRuleArrayOutput {
 	return o.ApplyT(func(v *WaitingRoomRules) WaitingRoomRulesRuleArrayOutput { return v.Rules }).(WaitingRoomRulesRuleArrayOutput)
 }
 
-<<<<<<< HEAD
-=======
 // The version of the rule.
 func (o WaitingRoomRulesOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func (o WaitingRoomRulesOutput) WaitingRoomId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.WaitingRoomId }).(pulumi.StringOutput)
 }

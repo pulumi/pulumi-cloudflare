@@ -44,11 +44,7 @@ import (
 // ## Import
 //
 // ```sh
-<<<<<<< HEAD
-// $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '<account_id>/<bucket_name>'
-=======
 // $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '<account_id>/<bucket_name>/<jurisdiction>'
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // ```
 type R2Bucket struct {
 	pulumi.CustomResourceState
@@ -60,10 +56,12 @@ type R2Bucket struct {
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringOutput `pulumi:"jurisdiction"`
 	// Location of the bucket
+	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Name of the bucket
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Storage class for newly uploaded objects, unless specified otherwise.
+	// Available values: "Standard", "InfrequentAccess".
 	StorageClass pulumi.StringOutput `pulumi:"storageClass"`
 }
 
@@ -110,10 +108,12 @@ type r2bucketState struct {
 	// Jurisdiction of the bucket
 	Jurisdiction *string `pulumi:"jurisdiction"`
 	// Location of the bucket
+	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
 	Location *string `pulumi:"location"`
 	// Name of the bucket
 	Name *string `pulumi:"name"`
 	// Storage class for newly uploaded objects, unless specified otherwise.
+	// Available values: "Standard", "InfrequentAccess".
 	StorageClass *string `pulumi:"storageClass"`
 }
 
@@ -125,10 +125,12 @@ type R2BucketState struct {
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringPtrInput
 	// Location of the bucket
+	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
 	Location pulumi.StringPtrInput
 	// Name of the bucket
 	Name pulumi.StringPtrInput
 	// Storage class for newly uploaded objects, unless specified otherwise.
+	// Available values: "Standard", "InfrequentAccess".
 	StorageClass pulumi.StringPtrInput
 }
 
@@ -142,10 +144,12 @@ type r2bucketArgs struct {
 	// Jurisdiction of the bucket
 	Jurisdiction *string `pulumi:"jurisdiction"`
 	// Location of the bucket
+	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
 	Location *string `pulumi:"location"`
 	// Name of the bucket
 	Name string `pulumi:"name"`
 	// Storage class for newly uploaded objects, unless specified otherwise.
+	// Available values: "Standard", "InfrequentAccess".
 	StorageClass *string `pulumi:"storageClass"`
 }
 
@@ -156,10 +160,12 @@ type R2BucketArgs struct {
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringPtrInput
 	// Location of the bucket
+	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
 	Location pulumi.StringPtrInput
 	// Name of the bucket
 	Name pulumi.StringInput
 	// Storage class for newly uploaded objects, unless specified otherwise.
+	// Available values: "Standard", "InfrequentAccess".
 	StorageClass pulumi.StringPtrInput
 }
 
@@ -266,6 +272,7 @@ func (o R2BucketOutput) Jurisdiction() pulumi.StringOutput {
 }
 
 // Location of the bucket
+// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
 func (o R2BucketOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *R2Bucket) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -276,6 +283,7 @@ func (o R2BucketOutput) Name() pulumi.StringOutput {
 }
 
 // Storage class for newly uploaded objects, unless specified otherwise.
+// Available values: "Standard", "InfrequentAccess".
 func (o R2BucketOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2Bucket) pulumi.StringOutput { return v.StorageClass }).(pulumi.StringOutput)
 }

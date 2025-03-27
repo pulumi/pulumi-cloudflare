@@ -70,6 +70,7 @@ export class ZeroTrustDevicePostureRule extends pulumi.CustomResource {
     public readonly schedule!: pulumi.Output<string | undefined>;
     /**
      * The type of device posture rule.
+     * Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "customS2s".
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -115,6 +116,8 @@ export class ZeroTrustDevicePostureRule extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/devicePostureRule:DevicePostureRule" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustDevicePostureRule.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -150,6 +153,7 @@ export interface ZeroTrustDevicePostureRuleState {
     schedule?: pulumi.Input<string>;
     /**
      * The type of device posture rule.
+     * Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "customS2s".
      */
     type?: pulumi.Input<string>;
 }
@@ -185,6 +189,7 @@ export interface ZeroTrustDevicePostureRuleArgs {
     schedule?: pulumi.Input<string>;
     /**
      * The type of device posture rule.
+     * Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "customS2s".
      */
     type: pulumi.Input<string>;
 }

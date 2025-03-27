@@ -131,8 +131,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
-<<<<<<< HEAD
-=======
         /// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
         /// </summary>
         public readonly bool ChinaNetwork;
@@ -145,7 +143,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Hostname;
         /// <summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -158,26 +155,20 @@ namespace Pulumi.Cloudflare
         private GetZeroTrustAccessMtlsHostnameSettingsResult(
             string? accountId,
 
-<<<<<<< HEAD
-=======
             bool chinaNetwork,
 
             bool clientCertificateForwarding,
 
             string hostname,
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             string id,
 
             string? zoneId)
         {
             AccountId = accountId;
-<<<<<<< HEAD
-=======
             ChinaNetwork = chinaNetwork;
             ClientCertificateForwarding = clientCertificateForwarding;
             Hostname = hostname;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             Id = id;
             ZoneId = zoneId;
         }

@@ -67,12 +67,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the hostname's activation.
+        /// Available values: "active", "pending", "deleting", "error".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// Target gateway of the hostname.
+        /// Available values: "ethereum", "ipfs", "ipfs*universal*path".
         /// </summary>
         [Output("target")]
         public Output<string> Target { get; private set; } = null!;
@@ -149,6 +151,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Target gateway of the hostname.
+        /// Available values: "ethereum", "ipfs", "ipfs*universal*path".
         /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
@@ -193,12 +196,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the hostname's activation.
+        /// Available values: "active", "pending", "deleting", "error".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
         /// Target gateway of the hostname.
+        /// Available values: "ethereum", "ipfs", "ipfs*universal*path".
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

@@ -22,16 +22,32 @@ public final class PagesDomainValidationDataArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.errorMessage);
     }
 
+    /**
+     * Available values: &#34;http&#34;, &#34;txt&#34;.
+     * 
+     */
     @Import(name="method")
     private @Nullable Output<String> method;
 
+    /**
+     * @return Available values: &#34;http&#34;, &#34;txt&#34;.
+     * 
+     */
     public Optional<Output<String>> method() {
         return Optional.ofNullable(this.method);
     }
 
+    /**
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;error&#34;.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;error&#34;.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -87,20 +103,44 @@ public final class PagesDomainValidationDataArgs extends com.pulumi.resources.Re
             return errorMessage(Output.of(errorMessage));
         }
 
+        /**
+         * @param method Available values: &#34;http&#34;, &#34;txt&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder method(@Nullable Output<String> method) {
             $.method = method;
             return this;
         }
 
+        /**
+         * @param method Available values: &#34;http&#34;, &#34;txt&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder method(String method) {
             return method(Output.of(method));
         }
 
+        /**
+         * @param status Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;error&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;error&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

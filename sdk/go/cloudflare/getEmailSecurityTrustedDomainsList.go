@@ -56,12 +56,14 @@ type LookupEmailSecurityTrustedDomainsListArgs struct {
 	// Account Identifier
 	AccountId string `pulumi:"accountId"`
 	// The sorting direction.
+	// Available values: "asc", "desc".
 	Direction    *string `pulumi:"direction"`
 	IsRecent     *bool   `pulumi:"isRecent"`
 	IsSimilarity *bool   `pulumi:"isSimilarity"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The field to sort by.
+	// Available values: "pattern", "createdAt".
 	Order *string `pulumi:"order"`
 	// Allows searching in multiple properties of a record simultaneously.
 	// This parameter is intended for human users, not automation. Its exact
@@ -75,6 +77,7 @@ type LookupEmailSecurityTrustedDomainsListResult struct {
 	// Account Identifier
 	AccountId string `pulumi:"accountId"`
 	// The sorting direction.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// The provider-assigned unique ID for this managed resource.
 	Id           string `pulumi:"id"`
@@ -83,6 +86,7 @@ type LookupEmailSecurityTrustedDomainsListResult struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The field to sort by.
+	// Available values: "pattern", "createdAt".
 	Order *string `pulumi:"order"`
 	// The items returned by the data source
 	Results []GetEmailSecurityTrustedDomainsListResult `pulumi:"results"`
@@ -107,12 +111,14 @@ type LookupEmailSecurityTrustedDomainsListOutputArgs struct {
 	// Account Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The sorting direction.
+	// Available values: "asc", "desc".
 	Direction    pulumi.StringPtrInput `pulumi:"direction"`
 	IsRecent     pulumi.BoolPtrInput   `pulumi:"isRecent"`
 	IsSimilarity pulumi.BoolPtrInput   `pulumi:"isSimilarity"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// The field to sort by.
+	// Available values: "pattern", "createdAt".
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// Allows searching in multiple properties of a record simultaneously.
 	// This parameter is intended for human users, not automation. Its exact
@@ -146,6 +152,7 @@ func (o LookupEmailSecurityTrustedDomainsListResultOutput) AccountId() pulumi.St
 }
 
 // The sorting direction.
+// Available values: "asc", "desc".
 func (o LookupEmailSecurityTrustedDomainsListResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsListResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
@@ -169,6 +176,7 @@ func (o LookupEmailSecurityTrustedDomainsListResultOutput) MaxItems() pulumi.Int
 }
 
 // The field to sort by.
+// Available values: "pattern", "createdAt".
 func (o LookupEmailSecurityTrustedDomainsListResultOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsListResult) *string { return v.Order }).(pulumi.StringPtrOutput)
 }

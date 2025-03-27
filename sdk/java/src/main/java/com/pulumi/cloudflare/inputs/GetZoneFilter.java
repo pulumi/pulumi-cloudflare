@@ -25,6 +25,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
 
     /**
      * Direction to order zones.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -32,6 +33,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Direction to order zones.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -40,6 +42,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
 
     /**
      * Whether to match all search requirements or at least one (any).
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     @Import(name="match", required=true)
@@ -47,6 +50,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Whether to match all search requirements or at least one (any).
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     public String match() {
@@ -86,6 +90,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
 
     /**
      * Field to order zones by.
+     * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;.
      * 
      */
     @Import(name="order")
@@ -93,6 +98,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Field to order zones by.
+     * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;.
      * 
      */
     public Optional<String> order() {
@@ -101,6 +107,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
 
     /**
      * A zone status
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
     @Import(name="status")
@@ -108,6 +115,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return A zone status
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
     public Optional<String> status() {
@@ -150,6 +158,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param direction Direction to order zones.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -161,6 +170,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param match Whether to match all search requirements or at least one (any).
+         * Available values: &#34;any&#34;, &#34;all&#34;.
          * 
          * @return builder
          * 
@@ -191,6 +201,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param order Field to order zones by.
+         * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;.
          * 
          * @return builder
          * 
@@ -202,6 +213,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param status A zone status
+         * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
          * 
          * @return builder
          * 

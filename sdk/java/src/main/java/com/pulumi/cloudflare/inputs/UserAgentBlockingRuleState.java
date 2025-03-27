@@ -33,6 +33,7 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
 
     /**
      * The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     @Import(name="mode")
@@ -40,6 +41,7 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
 
     /**
      * @return The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -126,6 +128,7 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
 
         /**
          * @param mode The action to apply to a matched request.
+         * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
          * 
          * @return builder
          * 
@@ -137,6 +140,7 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
 
         /**
          * @param mode The action to apply to a matched request.
+         * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
          * 
          * @return builder
          * 

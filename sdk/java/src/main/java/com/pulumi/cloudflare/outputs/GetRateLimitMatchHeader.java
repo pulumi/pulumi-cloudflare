@@ -17,6 +17,7 @@ public final class GetRateLimitMatchHeader {
     private String name;
     /**
      * @return The operator used when matching: `eq` means &#34;equal&#34; and `ne` means &#34;not equal&#34;.
+     * Available values: &#34;eq&#34;, &#34;ne&#34;.
      * 
      */
     private String op;
@@ -36,6 +37,7 @@ public final class GetRateLimitMatchHeader {
     }
     /**
      * @return The operator used when matching: `eq` means &#34;equal&#34; and `ne` means &#34;not equal&#34;.
+     * Available values: &#34;eq&#34;, &#34;ne&#34;.
      * 
      */
     public String op() {

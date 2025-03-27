@@ -21,6 +21,7 @@ public final class GetPageShieldConnectionsListArgs extends com.pulumi.resources
 
     /**
      * The direction used to sort returned connections.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -28,6 +29,7 @@ public final class GetPageShieldConnectionsListArgs extends com.pulumi.resources
 
     /**
      * @return The direction used to sort returned connections.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -66,6 +68,7 @@ public final class GetPageShieldConnectionsListArgs extends com.pulumi.resources
 
     /**
      * Export the list of connections as a file.
+     * Available values: &#34;csv&#34;.
      * 
      */
     @Import(name="export")
@@ -73,6 +76,7 @@ public final class GetPageShieldConnectionsListArgs extends com.pulumi.resources
 
     /**
      * @return Export the list of connections as a file.
+     * Available values: &#34;csv&#34;.
      * 
      */
     public Optional<Output<String>> export() {
@@ -204,6 +208,7 @@ public final class GetPageShieldConnectionsListArgs extends com.pulumi.resources
 
         /**
          * @param direction The direction used to sort returned connections.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -215,6 +220,7 @@ public final class GetPageShieldConnectionsListArgs extends com.pulumi.resources
 
         /**
          * @param direction The direction used to sort returned connections.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -267,6 +273,7 @@ public final class GetPageShieldConnectionsListArgs extends com.pulumi.resources
 
         /**
          * @param export Export the list of connections as a file.
+         * Available values: &#34;csv&#34;.
          * 
          * @return builder
          * 
@@ -278,6 +285,7 @@ public final class GetPageShieldConnectionsListArgs extends com.pulumi.resources
 
         /**
          * @param export Export the list of connections as a file.
+         * Available values: &#34;csv&#34;.
          * 
          * @return builder
          * 

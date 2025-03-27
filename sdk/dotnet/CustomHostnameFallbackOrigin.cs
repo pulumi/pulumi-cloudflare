@@ -58,6 +58,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the fallback origin's activation.
+        /// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -166,6 +167,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the fallback origin's activation.
+        /// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

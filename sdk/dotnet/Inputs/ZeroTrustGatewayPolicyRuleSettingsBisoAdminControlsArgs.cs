@@ -13,7 +13,8 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configure whether copy is enabled or not. When set with "remote_only", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == "v2"`.
+        /// Configure whether copy is enabled or not. When set with "remote*only", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled", "remote*only".
         /// </summary>
         [Input("copy")]
         public Input<string>? Copy { get; set; }
@@ -38,6 +39,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled".
         /// </summary>
         [Input("download")]
         public Input<string>? Download { get; set; }
@@ -56,30 +58,35 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled".
         /// </summary>
         [Input("keyboard")]
         public Input<string>? Keyboard { get; set; }
 
         /// <summary>
-        /// Configure whether pasting is enabled or not. When set with "remote_only", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == "v2"`.
+        /// Configure whether pasting is enabled or not. When set with "remote*only", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled", "remote*only".
         /// </summary>
         [Input("paste")]
         public Input<string>? Paste { get; set; }
 
         /// <summary>
         /// Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled".
         /// </summary>
         [Input("printing")]
         public Input<string>? Printing { get; set; }
 
         /// <summary>
         /// Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled".
         /// </summary>
         [Input("upload")]
         public Input<string>? Upload { get; set; }
 
         /// <summary>
         /// Indicates which version of the browser isolation controls should apply.
+        /// Available values: "v1", "v2".
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

@@ -10,13 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-<<<<<<< HEAD
-    /// &gt; Since v3.32.0
-    ///    all authentication schemes are supported for managing Origin CA certificates.
-    ///    Versions prior to v3.32.0 will still need to use `api_user_service_key`.
-    /// 
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -94,12 +87,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+        /// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         /// </summary>
         [Output("requestType")]
         public Output<string?> RequestType { get; private set; } = null!;
 
         /// <summary>
         /// The number of days for which the certificate should be valid.
+        /// Available values: 7, 30, 90, 365, 730, 1095, 5475.
         /// </summary>
         [Output("requestedValidity")]
         public Output<double> RequestedValidity { get; private set; } = null!;
@@ -170,12 +165,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+        /// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         /// </summary>
         [Input("requestType")]
         public Input<string>? RequestType { get; set; }
 
         /// <summary>
         /// The number of days for which the certificate should be valid.
+        /// Available values: 7, 30, 90, 365, 730, 1095, 5475.
         /// </summary>
         [Input("requestedValidity")]
         public Input<double>? RequestedValidity { get; set; }
@@ -220,12 +217,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+        /// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         /// </summary>
         [Input("requestType")]
         public Input<string>? RequestType { get; set; }
 
         /// <summary>
         /// The number of days for which the certificate should be valid.
+        /// Available values: 7, 30, 90, 365, 730, 1095, 5475.
         /// </summary>
         [Input("requestedValidity")]
         public Input<double>? RequestedValidity { get; set; }

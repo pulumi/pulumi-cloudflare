@@ -39,6 +39,12 @@ func NewZeroTrustGatewaySettings(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/teamsAccount:TeamsAccount"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustGatewaySettings
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings", name, args, &resource, opts...)

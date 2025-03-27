@@ -56,9 +56,17 @@ public final class WorkersDeploymentArgs extends com.pulumi.resources.ResourceAr
         return this.scriptName;
     }
 
+    /**
+     * Available values: &#34;percentage&#34;.
+     * 
+     */
     @Import(name="strategy", required=true)
     private Output<String> strategy;
 
+    /**
+     * @return Available values: &#34;percentage&#34;.
+     * 
+     */
     public Output<String> strategy() {
         return this.strategy;
     }
@@ -149,11 +157,23 @@ public final class WorkersDeploymentArgs extends com.pulumi.resources.ResourceAr
             return scriptName(Output.of(scriptName));
         }
 
+        /**
+         * @param strategy Available values: &#34;percentage&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder strategy(Output<String> strategy) {
             $.strategy = strategy;
             return this;
         }
 
+        /**
+         * @param strategy Available values: &#34;percentage&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder strategy(String strategy) {
             return strategy(Output.of(strategy));
         }

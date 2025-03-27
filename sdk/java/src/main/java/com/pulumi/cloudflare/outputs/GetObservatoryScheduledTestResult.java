@@ -12,6 +12,7 @@ import java.util.Objects;
 public final class GetObservatoryScheduledTestResult {
     /**
      * @return The frequency of the test.
+     * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
      * 
      */
     private String frequency;
@@ -22,6 +23,7 @@ public final class GetObservatoryScheduledTestResult {
     private String id;
     /**
      * @return A test region.
+     * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
      * 
      */
     private String region;
@@ -39,6 +41,7 @@ public final class GetObservatoryScheduledTestResult {
     private GetObservatoryScheduledTestResult() {}
     /**
      * @return The frequency of the test.
+     * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
      * 
      */
     public String frequency() {
@@ -53,6 +56,7 @@ public final class GetObservatoryScheduledTestResult {
     }
     /**
      * @return A test region.
+     * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
      * 
      */
     public String region() {

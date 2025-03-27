@@ -16,6 +16,7 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
 
     /**
      * The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -23,6 +24,7 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
 
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -31,6 +33,7 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
 
     /**
      * The field to sort by.
+     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
      * 
      */
     @Import(name="order")
@@ -38,15 +41,24 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
 
     /**
      * @return The field to sort by.
+     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
      * 
      */
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
 
+    /**
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * 
+     */
     @Import(name="patternType")
     private @Nullable String patternType;
 
+    /**
+     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * 
+     */
     public Optional<String> patternType() {
         return Optional.ofNullable(this.patternType);
     }
@@ -101,6 +113,7 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
 
         /**
          * @param direction The sorting direction.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -112,6 +125,7 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
 
         /**
          * @param order The field to sort by.
+         * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
          * 
          * @return builder
          * 
@@ -121,6 +135,12 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
             return this;
         }
 
+        /**
+         * @param patternType Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder patternType(@Nullable String patternType) {
             $.patternType = patternType;
             return this;

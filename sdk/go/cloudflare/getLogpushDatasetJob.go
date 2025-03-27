@@ -63,11 +63,6 @@ type GetLogpushDatasetJobResult struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
 	// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-<<<<<<< HEAD
-	DatasetId string `pulumi:"datasetId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-=======
 	Dataset string `pulumi:"dataset"`
 	// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
 	DatasetId string `pulumi:"datasetId"`
@@ -78,10 +73,12 @@ type GetLogpushDatasetJobResult struct {
 	// If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
 	ErrorMessage string `pulumi:"errorMessage"`
 	// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+	// Available values: "high", "low".
 	Frequency string `pulumi:"frequency"`
 	// Unique id of the job.
 	Id int `pulumi:"id"`
 	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
+	// Available values: "edge".
 	Kind string `pulumi:"kind"`
 	// Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
 	LastComplete string `pulumi:"lastComplete"`
@@ -99,7 +96,6 @@ type GetLogpushDatasetJobResult struct {
 	Name string `pulumi:"name"`
 	// The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.
 	OutputOptions GetLogpushDatasetJobOutputOptions `pulumi:"outputOptions"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -148,23 +144,15 @@ func (o GetLogpushDatasetJobResultOutput) AccountId() pulumi.StringPtrOutput {
 }
 
 // Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-<<<<<<< HEAD
-=======
 func (o GetLogpushDatasetJobResultOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushDatasetJobResult) string { return v.Dataset }).(pulumi.StringOutput)
 }
 
 // Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func (o GetLogpushDatasetJobResultOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushDatasetJobResult) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-// The provider-assigned unique ID for this managed resource.
-func (o GetLogpushDatasetJobResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLogpushDatasetJobResult) string { return v.Id }).(pulumi.StringOutput)
-=======
 // Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
 func (o GetLogpushDatasetJobResultOutput) DestinationConf() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushDatasetJobResult) string { return v.DestinationConf }).(pulumi.StringOutput)
@@ -181,6 +169,7 @@ func (o GetLogpushDatasetJobResultOutput) ErrorMessage() pulumi.StringOutput {
 }
 
 // This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+// Available values: "high", "low".
 func (o GetLogpushDatasetJobResultOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushDatasetJobResult) string { return v.Frequency }).(pulumi.StringOutput)
 }
@@ -191,6 +180,7 @@ func (o GetLogpushDatasetJobResultOutput) Id() pulumi.IntOutput {
 }
 
 // The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
+// Available values: "edge".
 func (o GetLogpushDatasetJobResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushDatasetJobResult) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -233,7 +223,6 @@ func (o GetLogpushDatasetJobResultOutput) Name() pulumi.StringOutput {
 // The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.
 func (o GetLogpushDatasetJobResultOutput) OutputOptions() GetLogpushDatasetJobOutputOptionsOutput {
 	return o.ApplyT(func(v GetLogpushDatasetJobResult) GetLogpushDatasetJobOutputOptions { return v.OutputOptions }).(GetLogpushDatasetJobOutputOptionsOutput)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

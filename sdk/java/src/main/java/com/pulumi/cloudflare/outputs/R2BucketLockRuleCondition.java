@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 public final class R2BucketLockRuleCondition {
     private @Nullable String date;
     private @Nullable Integer maxAgeSeconds;
+    /**
+     * @return Available values: &#34;Age&#34;.
+     * 
+     */
     private String type;
 
     private R2BucketLockRuleCondition() {}
@@ -24,6 +28,10 @@ public final class R2BucketLockRuleCondition {
     public Optional<Integer> maxAgeSeconds() {
         return Optional.ofNullable(this.maxAgeSeconds);
     }
+    /**
+     * @return Available values: &#34;Age&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }

@@ -113,6 +113,7 @@ export class CustomSsl extends pulumi.CustomResource {
 
     /**
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: "ubiquitous", "optimal", "force".
      */
     public readonly bundleMethod!: pulumi.Output<string>;
     /**
@@ -155,10 +156,12 @@ export class CustomSsl extends pulumi.CustomResource {
     public /*out*/ readonly signature!: pulumi.Output<string>;
     /**
      * Status of the zone's custom SSL.
+     * Available values: "active", "expired", "deleted", "pending", "initializing".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+     * The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+     * Available values: "legacy*custom", "sniCustom".
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -214,7 +217,7 @@ export class CustomSsl extends pulumi.CustomResource {
             resourceInputs["certificate"] = args ? args.certificate : undefined;
             resourceInputs["geoRestrictions"] = args ? args.geoRestrictions : undefined;
             resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["expiresOn"] = undefined /*out*/;
@@ -228,6 +231,8 @@ export class CustomSsl extends pulumi.CustomResource {
             resourceInputs["uploadedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["privateKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(CustomSsl.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -238,6 +243,7 @@ export class CustomSsl extends pulumi.CustomResource {
 export interface CustomSslState {
     /**
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: "ubiquitous", "optimal", "force".
      */
     bundleMethod?: pulumi.Input<string>;
     /**
@@ -280,10 +286,12 @@ export interface CustomSslState {
     signature?: pulumi.Input<string>;
     /**
      * Status of the zone's custom SSL.
+     * Available values: "active", "expired", "deleted", "pending", "initializing".
      */
     status?: pulumi.Input<string>;
     /**
-     * The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+     * The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+     * Available values: "legacy*custom", "sniCustom".
      */
     type?: pulumi.Input<string>;
     /**
@@ -302,6 +310,7 @@ export interface CustomSslState {
 export interface CustomSslArgs {
     /**
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: "ubiquitous", "optimal", "force".
      */
     bundleMethod?: pulumi.Input<string>;
     /**
@@ -321,7 +330,8 @@ export interface CustomSslArgs {
      */
     privateKey: pulumi.Input<string>;
     /**
-     * The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+     * The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+     * Available values: "legacy*custom", "sniCustom".
      */
     type?: pulumi.Input<string>;
     /**

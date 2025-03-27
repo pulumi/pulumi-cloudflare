@@ -8,12 +8,14 @@ import com.pulumi.cloudflare.ZeroTrustOrganizationArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationState;
 import com.pulumi.cloudflare.outputs.ZeroTrustOrganizationCustomPages;
 import com.pulumi.cloudflare.outputs.ZeroTrustOrganizationLoginDesign;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -288,6 +290,9 @@ public class ZeroTrustOrganization extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/accessOrganization:AccessOrganization").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -54,12 +54,15 @@ type LookupAccountMembersArgs struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
 	// Direction to order results.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Field to order results by.
+	// Available values: "user.first*name", "user.last*name", "user.email", "status".
 	Order *string `pulumi:"order"`
 	// A member's status in the account.
+	// Available values: "accepted", "pending", "rejected".
 	Status *string `pulumi:"status"`
 }
 
@@ -68,16 +71,19 @@ type LookupAccountMembersResult struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
 	// Direction to order results.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Field to order results by.
+	// Available values: "user.first*name", "user.last*name", "user.email", "status".
 	Order *string `pulumi:"order"`
 	// The items returned by the data source
 	Results []GetAccountMembersResult `pulumi:"results"`
 	// A member's status in the account.
+	// Available values: "accepted", "pending", "rejected".
 	Status *string `pulumi:"status"`
 }
 
@@ -95,12 +101,15 @@ type LookupAccountMembersOutputArgs struct {
 	// Account identifier tag.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Direction to order results.
+	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Field to order results by.
+	// Available values: "user.first*name", "user.last*name", "user.email", "status".
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// A member's status in the account.
+	// Available values: "accepted", "pending", "rejected".
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -129,6 +138,7 @@ func (o LookupAccountMembersResultOutput) AccountId() pulumi.StringOutput {
 }
 
 // Direction to order results.
+// Available values: "asc", "desc".
 func (o LookupAccountMembersResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountMembersResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
@@ -144,6 +154,7 @@ func (o LookupAccountMembersResultOutput) MaxItems() pulumi.IntPtrOutput {
 }
 
 // Field to order results by.
+// Available values: "user.first*name", "user.last*name", "user.email", "status".
 func (o LookupAccountMembersResultOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountMembersResult) *string { return v.Order }).(pulumi.StringPtrOutput)
 }
@@ -154,6 +165,7 @@ func (o LookupAccountMembersResultOutput) Results() GetAccountMembersResultArray
 }
 
 // A member's status in the account.
+// Available values: "accepted", "pending", "rejected".
 func (o LookupAccountMembersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountMembersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

@@ -12,11 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-<<<<<<< HEAD
-// > `RateLimit` is in a deprecation phase until January 15th, 2025.
-=======
 // > `RateLimit` is in a deprecation phase until June 15th, 2025.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 //
 //	During this time period, this resource is still
 //	fully supported but you are strongly advised to move to the

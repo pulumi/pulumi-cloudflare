@@ -13,11 +13,6 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetResourceGroupsResultResult
     {
-<<<<<<< HEAD
-        [OutputConstructor]
-        private GetResourceGroupsResultResult()
-        {
-=======
         /// <summary>
         /// Identifier of the group.
         /// </summary>
@@ -49,7 +44,6 @@ namespace Pulumi.Cloudflare.Outputs
             Meta = meta;
             Name = name;
             Scopes = scopes;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
     }
 }

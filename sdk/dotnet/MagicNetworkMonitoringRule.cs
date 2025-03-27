@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare
     ///     var exampleMagicNetworkMonitoringRule = new Cloudflare.MagicNetworkMonitoringRule("example_magic_network_monitoring_rule", new()
     ///     {
     ///         AccountId = "6f91088a406011ed95aed352566e8d4c",
-    ///         Duration = "300s",
+    ///         Duration = "1m",
     ///         Name = "my_rule_1",
     ///         AutomaticAdvertisement = true,
     ///         Bandwidth = 1000,
@@ -68,7 +68,8 @@ namespace Pulumi.Cloudflare
         public Output<double> BandwidthThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+        /// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+        /// Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
         /// </summary>
         [Output("duration")]
         public Output<string> Duration { get; private set; } = null!;
@@ -85,8 +86,36 @@ namespace Pulumi.Cloudflare
         [Output("packetThreshold")]
         public Output<double?> PacketThreshold { get; private set; } = null!;
 
+        /// <summary>
+        /// Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+        /// Available values: "exact", "subnet", "supernet".
+        /// </summary>
+        [Output("prefixMatch")]
+        public Output<string> PrefixMatch { get; private set; } = null!;
+
         [Output("prefixes")]
         public Output<ImmutableArray<string>> Prefixes { get; private set; } = null!;
+
+        /// <summary>
+        /// MNM rule type.
+        /// Available values: "threshold", "zscore", "advanced_ddos".
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// Level of sensitivity set for zscore rules.
+        /// Available values: "low", "medium", "high".
+        /// </summary>
+        [Output("zscoreSensitivity")]
+        public Output<string> ZscoreSensitivity { get; private set; } = null!;
+
+        /// <summary>
+        /// Target of the zscore rule analysis.
+        /// Available values: "bits", "packets".
+        /// </summary>
+        [Output("zscoreTarget")]
+        public Output<string> ZscoreTarget { get; private set; } = null!;
 
 
         /// <summary>
@@ -150,7 +179,8 @@ namespace Pulumi.Cloudflare
         public Input<double>? Bandwidth { get; set; }
 
         /// <summary>
-        /// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+        /// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+        /// Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
@@ -205,7 +235,8 @@ namespace Pulumi.Cloudflare
         public Input<double>? BandwidthThreshold { get; set; }
 
         /// <summary>
-        /// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+        /// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+        /// Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
@@ -222,6 +253,13 @@ namespace Pulumi.Cloudflare
         [Input("packetThreshold")]
         public Input<double>? PacketThreshold { get; set; }
 
+        /// <summary>
+        /// Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+        /// Available values: "exact", "subnet", "supernet".
+        /// </summary>
+        [Input("prefixMatch")]
+        public Input<string>? PrefixMatch { get; set; }
+
         [Input("prefixes")]
         private InputList<string>? _prefixes;
         public InputList<string> Prefixes
@@ -229,6 +267,27 @@ namespace Pulumi.Cloudflare
             get => _prefixes ?? (_prefixes = new InputList<string>());
             set => _prefixes = value;
         }
+
+        /// <summary>
+        /// MNM rule type.
+        /// Available values: "threshold", "zscore", "advanced_ddos".
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// Level of sensitivity set for zscore rules.
+        /// Available values: "low", "medium", "high".
+        /// </summary>
+        [Input("zscoreSensitivity")]
+        public Input<string>? ZscoreSensitivity { get; set; }
+
+        /// <summary>
+        /// Target of the zscore rule analysis.
+        /// Available values: "bits", "packets".
+        /// </summary>
+        [Input("zscoreTarget")]
+        public Input<string>? ZscoreTarget { get; set; }
 
         public MagicNetworkMonitoringRuleState()
         {

@@ -73,6 +73,9 @@ export interface GetZeroTrustDeviceDefaultProfileResult {
      * Whether to add Microsoft IPs to Split Tunnel exclusions.
      */
     readonly excludeOfficeIps: boolean;
+    /**
+     * List of routes excluded in the WARP client's tunnel.
+     */
     readonly excludes: outputs.GetZeroTrustDeviceDefaultProfileExclude[];
     readonly fallbackDomains: outputs.GetZeroTrustDeviceDefaultProfileFallbackDomain[];
     readonly gatewayUniqueId: string;
@@ -80,7 +83,14 @@ export interface GetZeroTrustDeviceDefaultProfileResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * List of routes included in the WARP client's tunnel.
+     */
     readonly includes: outputs.GetZeroTrustDeviceDefaultProfileInclude[];
+    /**
+     * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+     */
+    readonly registerInterfaceIpWithDns: boolean;
     readonly serviceModeV2: outputs.GetZeroTrustDeviceDefaultProfileServiceModeV2;
     /**
      * The URL to launch when the Send Feedback button is clicked.

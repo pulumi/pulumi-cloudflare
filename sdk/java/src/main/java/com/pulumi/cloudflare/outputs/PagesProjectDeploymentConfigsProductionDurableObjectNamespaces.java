@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PagesProjectDeploymentConfigsProductionDurableObjectNamespaces {
     /**
-     * @return ID of the Durabble Object namespace.
+     * @return ID of the Durable Object namespace.
      * 
      */
     private @Nullable String namespaceId;
 
     private PagesProjectDeploymentConfigsProductionDurableObjectNamespaces() {}
     /**
-     * @return ID of the Durabble Object namespace.
+     * @return ID of the Durable Object namespace.
      * 
      */
     public Optional<String> namespaceId() {

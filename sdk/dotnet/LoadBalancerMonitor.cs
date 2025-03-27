@@ -167,6 +167,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+        /// Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -321,6 +322,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+        /// Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -443,6 +445,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+        /// Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -125,6 +125,12 @@ func NewZeroTrustDnsLocation(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/teamsLocation:TeamsLocation"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustDnsLocation
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation", name, args, &resource, opts...)

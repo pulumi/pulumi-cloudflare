@@ -96,6 +96,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * Compliance Status
+     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
      * 
      */
     @Import(name="complianceStatus")
@@ -103,6 +104,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * @return Compliance Status
+     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
      * 
      */
     public Optional<Output<String>> complianceStatus() {
@@ -126,6 +128,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * Count Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     @Import(name="countOperator")
@@ -133,6 +136,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * @return Count Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public Optional<Output<String>> countOperator() {
@@ -298,6 +302,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * Network status of device.
+     * Available values: &#34;connected&#34;, &#34;disconnected&#34;, &#34;disconnecting&#34;, &#34;connecting&#34;.
      * 
      */
     @Import(name="networkStatus")
@@ -305,6 +310,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * @return Network status of device.
+     * Available values: &#34;connected&#34;, &#34;disconnected&#34;, &#34;disconnecting&#34;, &#34;connecting&#34;.
      * 
      */
     public Optional<Output<String>> networkStatus() {
@@ -313,6 +319,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * Operating system
+     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
      * 
      */
     @Import(name="operatingSystem")
@@ -320,6 +327,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * @return Operating system
+     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
      * 
      */
     public Optional<Output<String>> operatingSystem() {
@@ -328,6 +336,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * Agent operational state.
+     * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
      * 
      */
     @Import(name="operationalState")
@@ -335,6 +344,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * @return Agent operational state.
+     * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
      * 
      */
     public Optional<Output<String>> operationalState() {
@@ -343,6 +353,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     @Import(name="operator")
@@ -350,6 +361,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * @return operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public Optional<Output<String>> operator() {
@@ -463,6 +475,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * For more details on risk level, refer to the Tanium documentation.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;critical&#34;.
      * 
      */
     @Import(name="riskLevel")
@@ -470,6 +483,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * @return For more details on risk level, refer to the Tanium documentation.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;critical&#34;.
      * 
      */
     public Optional<Output<String>> riskLevel() {
@@ -493,6 +507,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * Score Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     @Import(name="scoreOperator")
@@ -500,6 +515,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * @return Score Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public Optional<Output<String>> scoreOperator() {
@@ -538,6 +554,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * For more details on state, please refer to the Crowdstrike documentation.
+     * Available values: &#34;online&#34;, &#34;offline&#34;, &#34;unknown&#34;.
      * 
      */
     @Import(name="state")
@@ -545,6 +562,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * @return For more details on state, please refer to the Crowdstrike documentation.
+     * Available values: &#34;online&#34;, &#34;offline&#34;, &#34;unknown&#34;.
      * 
      */
     public Optional<Output<String>> state() {
@@ -598,6 +616,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * Version Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     @Import(name="versionOperator")
@@ -605,6 +624,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     /**
      * @return Version Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public Optional<Output<String>> versionOperator() {
@@ -791,6 +811,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param complianceStatus Compliance Status
+         * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
          * 
          * @return builder
          * 
@@ -802,6 +823,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param complianceStatus Compliance Status
+         * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
          * 
          * @return builder
          * 
@@ -833,6 +855,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param countOperator Count Operator
+         * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
          * 
@@ -844,6 +867,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param countOperator Count Operator
+         * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
          * 
@@ -1083,6 +1107,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param networkStatus Network status of device.
+         * Available values: &#34;connected&#34;, &#34;disconnected&#34;, &#34;disconnecting&#34;, &#34;connecting&#34;.
          * 
          * @return builder
          * 
@@ -1094,6 +1119,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param networkStatus Network status of device.
+         * Available values: &#34;connected&#34;, &#34;disconnected&#34;, &#34;disconnecting&#34;, &#34;connecting&#34;.
          * 
          * @return builder
          * 
@@ -1104,6 +1130,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param operatingSystem Operating system
+         * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
          * 
          * @return builder
          * 
@@ -1115,6 +1142,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param operatingSystem Operating system
+         * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
          * 
          * @return builder
          * 
@@ -1125,6 +1153,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param operationalState Agent operational state.
+         * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
          * 
          * @return builder
          * 
@@ -1136,6 +1165,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param operationalState Agent operational state.
+         * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
          * 
          * @return builder
          * 
@@ -1146,6 +1176,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param operator operator
+         * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
          * 
@@ -1157,6 +1188,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param operator operator
+         * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
          * 
@@ -1314,6 +1346,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param riskLevel For more details on risk level, refer to the Tanium documentation.
+         * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;critical&#34;.
          * 
          * @return builder
          * 
@@ -1325,6 +1358,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param riskLevel For more details on risk level, refer to the Tanium documentation.
+         * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;critical&#34;.
          * 
          * @return builder
          * 
@@ -1356,6 +1390,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param scoreOperator Score Operator
+         * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
          * 
@@ -1367,6 +1402,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param scoreOperator Score Operator
+         * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
          * 
@@ -1419,6 +1455,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param state For more details on state, please refer to the Crowdstrike documentation.
+         * Available values: &#34;online&#34;, &#34;offline&#34;, &#34;unknown&#34;.
          * 
          * @return builder
          * 
@@ -1430,6 +1467,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param state For more details on state, please refer to the Crowdstrike documentation.
+         * Available values: &#34;online&#34;, &#34;offline&#34;, &#34;unknown&#34;.
          * 
          * @return builder
          * 
@@ -1503,6 +1541,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param versionOperator Version Operator
+         * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
          * 
@@ -1514,6 +1553,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
         /**
          * @param versionOperator Version Operator
+         * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
          * 

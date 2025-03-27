@@ -16,11 +16,13 @@ import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersHeaders;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersMatchedData;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersOrigin;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersOverrides;
+import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersRawResponseField;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersRequestField;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersResponse;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersResponseField;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersServeStale;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersSni;
+import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersTransformedRequestField;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersUri;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -86,6 +88,7 @@ public final class GetRulesetRuleActionParameters {
     private String content;
     /**
      * @return Content-type header to set with the response.
+     * Available values: &#34;application/json&#34;, &#34;text/xml&#34;, &#34;text/plain&#34;, &#34;text/html&#34;.
      * 
      */
     private String contentType;
@@ -201,6 +204,7 @@ public final class GetRulesetRuleActionParameters {
     private List<String> phases;
     /**
      * @return Configure the Polish level.
+     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
      * 
      */
     private String polish;
@@ -210,12 +214,17 @@ public final class GetRulesetRuleActionParameters {
      */
     private List<String> products;
     /**
+     * @return The raw response fields to log.
+     * 
+     */
+    private List<GetRulesetRuleActionParametersRawResponseField> rawResponseFields;
+    /**
      * @return Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
      * 
      */
     private Integer readTimeout;
     /**
-     * @return The request fields to log.
+     * @return The raw request fields to log.
      * 
      */
     private List<GetRulesetRuleActionParametersRequestField> requestFields;
@@ -230,7 +239,7 @@ public final class GetRulesetRuleActionParameters {
      */
     private GetRulesetRuleActionParametersResponse response;
     /**
-     * @return The response fields to log.
+     * @return The transformed response fields to log.
      * 
      */
     private List<GetRulesetRuleActionParametersResponseField> responseFields;
@@ -246,6 +255,7 @@ public final class GetRulesetRuleActionParameters {
     private Map<String,List<String>> rules;
     /**
      * @return A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+     * Available values: &#34;current&#34;.
      * 
      */
     private String ruleset;
@@ -256,6 +266,7 @@ public final class GetRulesetRuleActionParameters {
     private List<String> rulesets;
     /**
      * @return Configure the Security Level.
+     * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
      * 
      */
     private String securityLevel;
@@ -276,6 +287,7 @@ public final class GetRulesetRuleActionParameters {
     private GetRulesetRuleActionParametersSni sni;
     /**
      * @return Configure the SSL level.
+     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
      * 
      */
     private String ssl;
@@ -289,6 +301,11 @@ public final class GetRulesetRuleActionParameters {
      * 
      */
     private Boolean sxg;
+    /**
+     * @return The transformed request fields to log.
+     * 
+     */
+    private List<GetRulesetRuleActionParametersTransformedRequestField> transformedRequestFields;
     /**
      * @return URI to rewrite the request to.
      * 
@@ -368,6 +385,7 @@ public final class GetRulesetRuleActionParameters {
     }
     /**
      * @return Content-type header to set with the response.
+     * Available values: &#34;application/json&#34;, &#34;text/xml&#34;, &#34;text/plain&#34;, &#34;text/html&#34;.
      * 
      */
     public String contentType() {
@@ -529,6 +547,7 @@ public final class GetRulesetRuleActionParameters {
     }
     /**
      * @return Configure the Polish level.
+     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
      * 
      */
     public String polish() {
@@ -542,6 +561,13 @@ public final class GetRulesetRuleActionParameters {
         return this.products;
     }
     /**
+     * @return The raw response fields to log.
+     * 
+     */
+    public List<GetRulesetRuleActionParametersRawResponseField> rawResponseFields() {
+        return this.rawResponseFields;
+    }
+    /**
      * @return Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
      * 
      */
@@ -549,7 +575,7 @@ public final class GetRulesetRuleActionParameters {
         return this.readTimeout;
     }
     /**
-     * @return The request fields to log.
+     * @return The raw request fields to log.
      * 
      */
     public List<GetRulesetRuleActionParametersRequestField> requestFields() {
@@ -570,7 +596,7 @@ public final class GetRulesetRuleActionParameters {
         return this.response;
     }
     /**
-     * @return The response fields to log.
+     * @return The transformed response fields to log.
      * 
      */
     public List<GetRulesetRuleActionParametersResponseField> responseFields() {
@@ -592,6 +618,7 @@ public final class GetRulesetRuleActionParameters {
     }
     /**
      * @return A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+     * Available values: &#34;current&#34;.
      * 
      */
     public String ruleset() {
@@ -606,6 +633,7 @@ public final class GetRulesetRuleActionParameters {
     }
     /**
      * @return Configure the Security Level.
+     * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
      * 
      */
     public String securityLevel() {
@@ -634,6 +662,7 @@ public final class GetRulesetRuleActionParameters {
     }
     /**
      * @return Configure the SSL level.
+     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
      * 
      */
     public String ssl() {
@@ -652,6 +681,13 @@ public final class GetRulesetRuleActionParameters {
      */
     public Boolean sxg() {
         return this.sxg;
+    }
+    /**
+     * @return The transformed request fields to log.
+     * 
+     */
+    public List<GetRulesetRuleActionParametersTransformedRequestField> transformedRequestFields() {
+        return this.transformedRequestFields;
     }
     /**
      * @return URI to rewrite the request to.
@@ -705,6 +741,7 @@ public final class GetRulesetRuleActionParameters {
         private List<String> phases;
         private String polish;
         private List<String> products;
+        private List<GetRulesetRuleActionParametersRawResponseField> rawResponseFields;
         private Integer readTimeout;
         private List<GetRulesetRuleActionParametersRequestField> requestFields;
         private Boolean respectStrongEtags;
@@ -721,6 +758,7 @@ public final class GetRulesetRuleActionParameters {
         private String ssl;
         private Double statusCode;
         private Boolean sxg;
+        private List<GetRulesetRuleActionParametersTransformedRequestField> transformedRequestFields;
         private GetRulesetRuleActionParametersUri uri;
         public Builder() {}
         public Builder(GetRulesetRuleActionParameters defaults) {
@@ -760,6 +798,7 @@ public final class GetRulesetRuleActionParameters {
     	      this.phases = defaults.phases;
     	      this.polish = defaults.polish;
     	      this.products = defaults.products;
+    	      this.rawResponseFields = defaults.rawResponseFields;
     	      this.readTimeout = defaults.readTimeout;
     	      this.requestFields = defaults.requestFields;
     	      this.respectStrongEtags = defaults.respectStrongEtags;
@@ -776,6 +815,7 @@ public final class GetRulesetRuleActionParameters {
     	      this.ssl = defaults.ssl;
     	      this.statusCode = defaults.statusCode;
     	      this.sxg = defaults.sxg;
+    	      this.transformedRequestFields = defaults.transformedRequestFields;
     	      this.uri = defaults.uri;
         }
 
@@ -1075,6 +1115,17 @@ public final class GetRulesetRuleActionParameters {
             return products(List.of(products));
         }
         @CustomType.Setter
+        public Builder rawResponseFields(List<GetRulesetRuleActionParametersRawResponseField> rawResponseFields) {
+            if (rawResponseFields == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "rawResponseFields");
+            }
+            this.rawResponseFields = rawResponseFields;
+            return this;
+        }
+        public Builder rawResponseFields(GetRulesetRuleActionParametersRawResponseField... rawResponseFields) {
+            return rawResponseFields(List.of(rawResponseFields));
+        }
+        @CustomType.Setter
         public Builder readTimeout(Integer readTimeout) {
             if (readTimeout == null) {
               throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "readTimeout");
@@ -1212,6 +1263,17 @@ public final class GetRulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
+        public Builder transformedRequestFields(List<GetRulesetRuleActionParametersTransformedRequestField> transformedRequestFields) {
+            if (transformedRequestFields == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "transformedRequestFields");
+            }
+            this.transformedRequestFields = transformedRequestFields;
+            return this;
+        }
+        public Builder transformedRequestFields(GetRulesetRuleActionParametersTransformedRequestField... transformedRequestFields) {
+            return transformedRequestFields(List.of(transformedRequestFields));
+        }
+        @CustomType.Setter
         public Builder uri(GetRulesetRuleActionParametersUri uri) {
             if (uri == null) {
               throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "uri");
@@ -1256,6 +1318,7 @@ public final class GetRulesetRuleActionParameters {
             _resultValue.phases = phases;
             _resultValue.polish = polish;
             _resultValue.products = products;
+            _resultValue.rawResponseFields = rawResponseFields;
             _resultValue.readTimeout = readTimeout;
             _resultValue.requestFields = requestFields;
             _resultValue.respectStrongEtags = respectStrongEtags;
@@ -1272,6 +1335,7 @@ public final class GetRulesetRuleActionParameters {
             _resultValue.ssl = ssl;
             _resultValue.statusCode = statusCode;
             _resultValue.sxg = sxg;
+            _resultValue.transformedRequestFields = transformedRequestFields;
             _resultValue.uri = uri;
             return _resultValue;
         }

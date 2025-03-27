@@ -67,6 +67,7 @@ type LookupEmailRoutingSettingsResult struct {
 	// Flag to check if the user skipped the configuration wizard.
 	SkipWizard bool `pulumi:"skipWizard"`
 	// Show the state of your account, and the type or configuration error.
+	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status string `pulumi:"status"`
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
 	Tag string `pulumi:"tag"`
@@ -139,6 +140,7 @@ func (o LookupEmailRoutingSettingsResultOutput) SkipWizard() pulumi.BoolOutput {
 }
 
 // Show the state of your account, and the type or configuration error.
+// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 func (o LookupEmailRoutingSettingsResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingSettingsResult) string { return v.Status }).(pulumi.StringOutput)
 }

@@ -65,15 +65,17 @@ type GetPageShieldCookiesResult struct {
 	Host              string `pulumi:"host"`
 	HttpOnlyAttribute bool   `pulumi:"httpOnlyAttribute"`
 	// Identifier
-	Id                string   `pulumi:"id"`
-	LastSeenAt        string   `pulumi:"lastSeenAt"`
-	MaxAgeAttribute   int      `pulumi:"maxAgeAttribute"`
-	Name              string   `pulumi:"name"`
-	PageUrls          []string `pulumi:"pageUrls"`
-	PathAttribute     string   `pulumi:"pathAttribute"`
-	SameSiteAttribute string   `pulumi:"sameSiteAttribute"`
-	SecureAttribute   bool     `pulumi:"secureAttribute"`
-	Type              string   `pulumi:"type"`
+	Id              string   `pulumi:"id"`
+	LastSeenAt      string   `pulumi:"lastSeenAt"`
+	MaxAgeAttribute int      `pulumi:"maxAgeAttribute"`
+	Name            string   `pulumi:"name"`
+	PageUrls        []string `pulumi:"pageUrls"`
+	PathAttribute   string   `pulumi:"pathAttribute"`
+	// Available values: "lax", "strict", "none".
+	SameSiteAttribute string `pulumi:"sameSiteAttribute"`
+	SecureAttribute   bool   `pulumi:"secureAttribute"`
+	// Available values: "firstParty", "unknown".
+	Type string `pulumi:"type"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -164,6 +166,7 @@ func (o GetPageShieldCookiesResultOutput) PathAttribute() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPageShieldCookiesResult) string { return v.PathAttribute }).(pulumi.StringOutput)
 }
 
+// Available values: "lax", "strict", "none".
 func (o GetPageShieldCookiesResultOutput) SameSiteAttribute() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPageShieldCookiesResult) string { return v.SameSiteAttribute }).(pulumi.StringOutput)
 }
@@ -172,6 +175,7 @@ func (o GetPageShieldCookiesResultOutput) SecureAttribute() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetPageShieldCookiesResult) bool { return v.SecureAttribute }).(pulumi.BoolOutput)
 }
 
+// Available values: "firstParty", "unknown".
 func (o GetPageShieldCookiesResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPageShieldCookiesResult) string { return v.Type }).(pulumi.StringOutput)
 }

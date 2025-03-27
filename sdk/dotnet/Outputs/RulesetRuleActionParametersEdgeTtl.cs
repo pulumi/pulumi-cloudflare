@@ -19,6 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly int? Default;
         /// <summary>
         /// edge ttl options
+        /// Available values: "respect*origin", "bypass*by*default", "override*origin".
         /// </summary>
         public readonly string Mode;
         /// <summary>

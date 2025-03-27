@@ -12,6 +12,31 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.LookupAuthenticatedOriginPulls(ctx, &cloudflare.LookupAuthenticatedOriginPullsArgs{
+//				ZoneId:   "023e105f4ecef8ad9ca31a8372d0c353",
+//				Hostname: "app.example.com",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAuthenticatedOriginPulls(ctx *pulumi.Context, args *LookupAuthenticatedOriginPullsArgs, opts ...pulumi.InvokeOption) (*LookupAuthenticatedOriginPullsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAuthenticatedOriginPullsResult
@@ -24,6 +49,8 @@ func LookupAuthenticatedOriginPulls(ctx *pulumi.Context, args *LookupAuthenticat
 
 // A collection of arguments for invoking getAuthenticatedOriginPulls.
 type LookupAuthenticatedOriginPullsArgs struct {
+	// The hostname on the origin for which the client certificate uploaded will be used.
+	Hostname string `pulumi:"hostname"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -33,6 +60,7 @@ type LookupAuthenticatedOriginPullsResult struct {
 	// Identifier
 	CertId string `pulumi:"certId"`
 	// Status of the certificate or the association.
+	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 	CertStatus string `pulumi:"certStatus"`
 	// The time when the certificate was updated.
 	CertUpdatedAt string `pulumi:"certUpdatedAt"`
@@ -57,6 +85,7 @@ type LookupAuthenticatedOriginPullsResult struct {
 	// The type of hash used for the certificate.
 	Signature string `pulumi:"signature"`
 	// Status of the certificate or the association.
+	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 	Status string `pulumi:"status"`
 	// The time when the certificate was updated.
 	UpdatedAt string `pulumi:"updatedAt"`
@@ -75,6 +104,8 @@ func LookupAuthenticatedOriginPullsOutput(ctx *pulumi.Context, args LookupAuthen
 
 // A collection of arguments for invoking getAuthenticatedOriginPulls.
 type LookupAuthenticatedOriginPullsOutputArgs struct {
+	// The hostname on the origin for which the client certificate uploaded will be used.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
 	// Identifier
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -104,6 +135,7 @@ func (o LookupAuthenticatedOriginPullsResultOutput) CertId() pulumi.StringOutput
 }
 
 // Status of the certificate or the association.
+// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 func (o LookupAuthenticatedOriginPullsResultOutput) CertStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsResult) string { return v.CertStatus }).(pulumi.StringOutput)
 }
@@ -164,6 +196,7 @@ func (o LookupAuthenticatedOriginPullsResultOutput) Signature() pulumi.StringOut
 }
 
 // Status of the certificate or the association.
+// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 func (o LookupAuthenticatedOriginPullsResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsResult) string { return v.Status }).(pulumi.StringOutput)
 }

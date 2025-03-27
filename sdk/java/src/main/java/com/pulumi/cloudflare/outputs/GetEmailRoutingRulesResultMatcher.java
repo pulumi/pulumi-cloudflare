@@ -12,11 +12,13 @@ import java.util.Objects;
 public final class GetEmailRoutingRulesResultMatcher {
     /**
      * @return Field for type matcher.
+     * Available values: &#34;to&#34;.
      * 
      */
     private String field;
     /**
      * @return Type of matcher.
+     * Available values: &#34;literal&#34;.
      * 
      */
     private String type;
@@ -29,6 +31,7 @@ public final class GetEmailRoutingRulesResultMatcher {
     private GetEmailRoutingRulesResultMatcher() {}
     /**
      * @return Field for type matcher.
+     * Available values: &#34;to&#34;.
      * 
      */
     public String field() {
@@ -36,6 +39,7 @@ public final class GetEmailRoutingRulesResultMatcher {
     }
     /**
      * @return Type of matcher.
+     * Available values: &#34;literal&#34;.
      * 
      */
     public String type() {

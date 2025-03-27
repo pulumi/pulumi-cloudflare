@@ -68,9 +68,17 @@ public final class ZeroTrustRiskScoringIntegrationState extends com.pulumi.resou
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * Available values: &#34;Okta&#34;.
+     * 
+     */
     @Import(name="integrationType")
     private @Nullable Output<String> integrationType;
 
+    /**
+     * @return Available values: &#34;Okta&#34;.
+     * 
+     */
     public Optional<Output<String>> integrationType() {
         return Optional.ofNullable(this.integrationType);
     }
@@ -225,11 +233,23 @@ public final class ZeroTrustRiskScoringIntegrationState extends com.pulumi.resou
             return createdAt(Output.of(createdAt));
         }
 
+        /**
+         * @param integrationType Available values: &#34;Okta&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationType(@Nullable Output<String> integrationType) {
             $.integrationType = integrationType;
             return this;
         }
 
+        /**
+         * @param integrationType Available values: &#34;Okta&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationType(String integrationType) {
             return integrationType(Output.of(integrationType));
         }

@@ -182,6 +182,8 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/teamsLocation:TeamsLocation" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustDnsLocation.__pulumiType, name, resourceInputs, opts);
     }
 }

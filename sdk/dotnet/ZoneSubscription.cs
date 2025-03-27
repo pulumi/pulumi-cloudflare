@@ -17,6 +17,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// How often the subscription is renewed automatically.
+        /// Available values: "weekly", "monthly", "quarterly", "yearly".
         /// </summary>
         [Output("frequency")]
         public Output<string?> Frequency { get; private set; } = null!;
@@ -81,6 +82,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// How often the subscription is renewed automatically.
+        /// Available values: "weekly", "monthly", "quarterly", "yearly".
         /// </summary>
         [Input("frequency")]
         public Input<string>? Frequency { get; set; }
@@ -107,6 +109,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// How often the subscription is renewed automatically.
+        /// Available values: "weekly", "monthly", "quarterly", "yearly".
         /// </summary>
         [Input("frequency")]
         public Input<string>? Frequency { get; set; }

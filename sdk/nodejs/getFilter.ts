@@ -2,11 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-<<<<<<< HEAD
-=======
 import * as inputs from "./types/input";
 import * as outputs from "./types/output";
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import * as utilities from "./utilities";
 
 /**
@@ -25,10 +22,7 @@ import * as utilities from "./utilities";
 export function getFilter(args: GetFilterArgs, opts?: pulumi.InvokeOptions): Promise<GetFilterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getFilter:getFilter", {
-<<<<<<< HEAD
-=======
         "filter": args.filter,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "filterId": args.filterId,
         "zoneId": args.zoneId,
     }, opts);
@@ -38,18 +32,11 @@ export function getFilter(args: GetFilterArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getFilter.
  */
 export interface GetFilterArgs {
-<<<<<<< HEAD
-    /**
-     * The unique identifier of the filter.
-     */
-    filterId: string;
-=======
     filter?: inputs.GetFilterFilter;
     /**
      * The unique identifier of the filter.
      */
     filterId?: string;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Identifier
      */
@@ -68,18 +55,11 @@ export interface GetFilterResult {
      * The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
      */
     readonly expression: string;
-<<<<<<< HEAD
-    /**
-     * The unique identifier of the filter.
-     */
-    readonly filterId: string;
-=======
     readonly filter?: outputs.GetFilterFilter;
     /**
      * The unique identifier of the filter.
      */
     readonly filterId?: string;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * The unique identifier of the filter.
      */
@@ -113,10 +93,7 @@ export interface GetFilterResult {
 export function getFilterOutput(args: GetFilterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFilterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getFilter:getFilter", {
-<<<<<<< HEAD
-=======
         "filter": args.filter,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "filterId": args.filterId,
         "zoneId": args.zoneId,
     }, opts);
@@ -126,18 +103,11 @@ export function getFilterOutput(args: GetFilterOutputArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getFilter.
  */
 export interface GetFilterOutputArgs {
-<<<<<<< HEAD
-    /**
-     * The unique identifier of the filter.
-     */
-    filterId: pulumi.Input<string>;
-=======
     filter?: pulumi.Input<inputs.GetFilterFilterArgs>;
     /**
      * The unique identifier of the filter.
      */
     filterId?: pulumi.Input<string>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Identifier
      */

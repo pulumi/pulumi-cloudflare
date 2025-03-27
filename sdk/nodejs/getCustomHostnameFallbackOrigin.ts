@@ -55,6 +55,7 @@ export interface GetCustomHostnameFallbackOriginResult {
     readonly origin: string;
     /**
      * Status of the fallback origin's activation.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
      */
     readonly status: string;
     /**

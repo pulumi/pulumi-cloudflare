@@ -14,8 +14,6 @@ import (
 
 // ## Example Usage
 //
-<<<<<<< HEAD
-=======
 // ```go
 // package main
 //
@@ -46,7 +44,6 @@ import (
 //
 // ```
 //
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // ## Import
 //
 // ```sh
@@ -58,19 +55,16 @@ type HostnameTlsSetting struct {
 	// This is the time the tls setting was originally created for this hostname.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The hostname for which the tls settings are set.
-	Hostname pulumi.StringPtrOutput `pulumi:"hostname"`
+	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// The TLS Setting name.
+	// Available values: "ciphers", "min*tls*version", "http2".
 	SettingId pulumi.StringOutput `pulumi:"settingId"`
 	// Deployment status for the given tls setting.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// This is the time the tls setting was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// The tls setting value.
-<<<<<<< HEAD
-	Value pulumi.Float64Output `pulumi:"value"`
-=======
 	Value pulumi.AnyOutput `pulumi:"value"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -82,6 +76,9 @@ func NewHostnameTlsSetting(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Hostname == nil {
+		return nil, errors.New("invalid value for required argument 'Hostname'")
+	}
 	if args.SettingId == nil {
 		return nil, errors.New("invalid value for required argument 'SettingId'")
 	}
@@ -119,17 +116,14 @@ type hostnameTlsSettingState struct {
 	// The hostname for which the tls settings are set.
 	Hostname *string `pulumi:"hostname"`
 	// The TLS Setting name.
+	// Available values: "ciphers", "min*tls*version", "http2".
 	SettingId *string `pulumi:"settingId"`
 	// Deployment status for the given tls setting.
 	Status *string `pulumi:"status"`
 	// This is the time the tls setting was updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// The tls setting value.
-<<<<<<< HEAD
-	Value *float64 `pulumi:"value"`
-=======
 	Value interface{} `pulumi:"value"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -140,17 +134,14 @@ type HostnameTlsSettingState struct {
 	// The hostname for which the tls settings are set.
 	Hostname pulumi.StringPtrInput
 	// The TLS Setting name.
+	// Available values: "ciphers", "min*tls*version", "http2".
 	SettingId pulumi.StringPtrInput
 	// Deployment status for the given tls setting.
 	Status pulumi.StringPtrInput
 	// This is the time the tls setting was updated.
 	UpdatedAt pulumi.StringPtrInput
 	// The tls setting value.
-<<<<<<< HEAD
-	Value pulumi.Float64PtrInput
-=======
 	Value pulumi.Input
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
@@ -161,15 +152,12 @@ func (HostnameTlsSettingState) ElementType() reflect.Type {
 
 type hostnameTlsSettingArgs struct {
 	// The hostname for which the tls settings are set.
-	Hostname *string `pulumi:"hostname"`
+	Hostname string `pulumi:"hostname"`
 	// The TLS Setting name.
+	// Available values: "ciphers", "min*tls*version", "http2".
 	SettingId string `pulumi:"settingId"`
 	// The tls setting value.
-<<<<<<< HEAD
-	Value float64 `pulumi:"value"`
-=======
 	Value interface{} `pulumi:"value"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -177,15 +165,12 @@ type hostnameTlsSettingArgs struct {
 // The set of arguments for constructing a HostnameTlsSetting resource.
 type HostnameTlsSettingArgs struct {
 	// The hostname for which the tls settings are set.
-	Hostname pulumi.StringPtrInput
+	Hostname pulumi.StringInput
 	// The TLS Setting name.
+	// Available values: "ciphers", "min*tls*version", "http2".
 	SettingId pulumi.StringInput
 	// The tls setting value.
-<<<<<<< HEAD
-	Value pulumi.Float64Input
-=======
 	Value pulumi.Input
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId pulumi.StringInput
 }
@@ -283,11 +268,12 @@ func (o HostnameTlsSettingOutput) CreatedAt() pulumi.StringOutput {
 }
 
 // The hostname for which the tls settings are set.
-func (o HostnameTlsSettingOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.StringPtrOutput { return v.Hostname }).(pulumi.StringPtrOutput)
+func (o HostnameTlsSettingOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
 // The TLS Setting name.
+// Available values: "ciphers", "min*tls*version", "http2".
 func (o HostnameTlsSettingOutput) SettingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.StringOutput { return v.SettingId }).(pulumi.StringOutput)
 }
@@ -303,13 +289,8 @@ func (o HostnameTlsSettingOutput) UpdatedAt() pulumi.StringOutput {
 }
 
 // The tls setting value.
-<<<<<<< HEAD
-func (o HostnameTlsSettingOutput) Value() pulumi.Float64Output {
-	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.Float64Output { return v.Value }).(pulumi.Float64Output)
-=======
 func (o HostnameTlsSettingOutput) Value() pulumi.AnyOutput {
 	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.AnyOutput { return v.Value }).(pulumi.AnyOutput)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // Identifier

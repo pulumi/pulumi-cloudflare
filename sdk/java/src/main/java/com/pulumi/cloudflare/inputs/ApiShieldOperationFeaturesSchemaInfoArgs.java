@@ -49,6 +49,7 @@ public final class ApiShieldOperationFeaturesSchemaInfoArgs extends com.pulumi.r
 
     /**
      * Action taken on requests failing validation.
+     * Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
      * 
      */
     @Import(name="mitigationAction")
@@ -56,6 +57,7 @@ public final class ApiShieldOperationFeaturesSchemaInfoArgs extends com.pulumi.r
 
     /**
      * @return Action taken on requests failing validation.
+     * Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
      * 
      */
     public Optional<Output<String>> mitigationAction() {
@@ -132,6 +134,7 @@ public final class ApiShieldOperationFeaturesSchemaInfoArgs extends com.pulumi.r
 
         /**
          * @param mitigationAction Action taken on requests failing validation.
+         * Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
          * 
          * @return builder
          * 
@@ -143,6 +146,7 @@ public final class ApiShieldOperationFeaturesSchemaInfoArgs extends com.pulumi.r
 
         /**
          * @param mitigationAction Action taken on requests failing validation.
+         * Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
          * 
          * @return builder
          * 

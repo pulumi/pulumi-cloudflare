@@ -14,6 +14,7 @@ import java.util.Objects;
 public final class GetBotManagementResult {
     /**
      * @return Enable rule to block AI Scrapers and Crawlers.
+     * Available values: &#34;block&#34;, &#34;disabled&#34;.
      * 
      */
     private String aiBotsProtection;
@@ -22,6 +23,12 @@ public final class GetBotManagementResult {
      * 
      */
     private Boolean autoUpdateModel;
+    /**
+     * @return Enable rule to punish AI Scrapers and Crawlers via a link maze.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    private String crawlerProtection;
     /**
      * @return Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
      * 
@@ -44,11 +51,13 @@ public final class GetBotManagementResult {
     private Boolean optimizeWordpress;
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
      * 
      */
     private String sbfmDefinitelyAutomated;
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
      * 
      */
     private String sbfmLikelyAutomated;
@@ -61,6 +70,7 @@ public final class GetBotManagementResult {
     private Boolean sbfmStaticResourceProtection;
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */
     private String sbfmVerifiedBots;
@@ -88,6 +98,7 @@ public final class GetBotManagementResult {
     private GetBotManagementResult() {}
     /**
      * @return Enable rule to block AI Scrapers and Crawlers.
+     * Available values: &#34;block&#34;, &#34;disabled&#34;.
      * 
      */
     public String aiBotsProtection() {
@@ -99,6 +110,14 @@ public final class GetBotManagementResult {
      */
     public Boolean autoUpdateModel() {
         return this.autoUpdateModel;
+    }
+    /**
+     * @return Enable rule to punish AI Scrapers and Crawlers via a link maze.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    public String crawlerProtection() {
+        return this.crawlerProtection;
     }
     /**
      * @return Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
@@ -130,6 +149,7 @@ public final class GetBotManagementResult {
     }
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
      * 
      */
     public String sbfmDefinitelyAutomated() {
@@ -137,6 +157,7 @@ public final class GetBotManagementResult {
     }
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
      * 
      */
     public String sbfmLikelyAutomated() {
@@ -153,6 +174,7 @@ public final class GetBotManagementResult {
     }
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */
     public String sbfmVerifiedBots() {
@@ -198,6 +220,7 @@ public final class GetBotManagementResult {
     public static final class Builder {
         private String aiBotsProtection;
         private Boolean autoUpdateModel;
+        private String crawlerProtection;
         private Boolean enableJs;
         private Boolean fightMode;
         private String id;
@@ -215,6 +238,7 @@ public final class GetBotManagementResult {
     	      Objects.requireNonNull(defaults);
     	      this.aiBotsProtection = defaults.aiBotsProtection;
     	      this.autoUpdateModel = defaults.autoUpdateModel;
+    	      this.crawlerProtection = defaults.crawlerProtection;
     	      this.enableJs = defaults.enableJs;
     	      this.fightMode = defaults.fightMode;
     	      this.id = defaults.id;
@@ -243,6 +267,14 @@ public final class GetBotManagementResult {
               throw new MissingRequiredPropertyException("GetBotManagementResult", "autoUpdateModel");
             }
             this.autoUpdateModel = autoUpdateModel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder crawlerProtection(String crawlerProtection) {
+            if (crawlerProtection == null) {
+              throw new MissingRequiredPropertyException("GetBotManagementResult", "crawlerProtection");
+            }
+            this.crawlerProtection = crawlerProtection;
             return this;
         }
         @CustomType.Setter
@@ -345,6 +377,7 @@ public final class GetBotManagementResult {
             final var _resultValue = new GetBotManagementResult();
             _resultValue.aiBotsProtection = aiBotsProtection;
             _resultValue.autoUpdateModel = autoUpdateModel;
+            _resultValue.crawlerProtection = crawlerProtection;
             _resultValue.enableJs = enableJs;
             _resultValue.fightMode = fightMode;
             _resultValue.id = id;

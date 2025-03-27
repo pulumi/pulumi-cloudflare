@@ -17,12 +17,14 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Direction to order zones.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
 
         /// <summary>
         /// Whether to match all search requirements or at least one (any).
+        /// Available values: "any", "all".
         /// </summary>
         [Input("match", required: true)]
         public string Match { get; set; } = null!;
@@ -43,12 +45,14 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Field to order zones by.
+        /// Available values: "name", "status", "account.id", "account.name".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
         /// <summary>
         /// A zone status
+        /// Available values: "initializing", "pending", "active", "moved".
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }

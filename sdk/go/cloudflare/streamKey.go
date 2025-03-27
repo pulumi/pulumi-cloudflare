@@ -66,6 +66,11 @@ func NewStreamKey(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"jwk",
+		"pem",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource StreamKey
 	err := ctx.RegisterResource("cloudflare:index/streamKey:StreamKey", name, args, &resource, opts...)

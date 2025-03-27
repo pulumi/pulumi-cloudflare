@@ -6,10 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.AccountSubscriptionRatePlanArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-<<<<<<< HEAD
-=======
 import java.lang.Double;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -36,8 +33,6 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
     }
 
     /**
-<<<<<<< HEAD
-=======
      * The monetary unit in which pricing information is displayed.
      * 
      */
@@ -83,8 +78,8 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
     }
 
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * How often the subscription is renewed automatically.
+     * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
      * 
      */
     @Import(name="frequency")
@@ -92,6 +87,7 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
 
     /**
      * @return How often the subscription is renewed automatically.
+     * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
      * 
      */
     public Optional<Output<String>> frequency() {
@@ -99,8 +95,6 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
     }
 
     /**
-<<<<<<< HEAD
-=======
      * The price of the subscription that will be billed, in US dollars.
      * 
      */
@@ -116,7 +110,6 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
     }
 
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The rate plan applied to the subscription.
      * 
      */
@@ -132,9 +125,8 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
     }
 
     /**
-<<<<<<< HEAD
-=======
      * The state that the subscription is in.
+     * Available values: &#34;Trial&#34;, &#34;Provisioned&#34;, &#34;Paid&#34;, &#34;AwaitingPayment&#34;, &#34;Cancelled&#34;, &#34;Failed&#34;, &#34;Expired&#34;.
      * 
      */
     @Import(name="state")
@@ -142,6 +134,7 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
 
     /**
      * @return The state that the subscription is in.
+     * Available values: &#34;Trial&#34;, &#34;Provisioned&#34;, &#34;Paid&#34;, &#34;AwaitingPayment&#34;, &#34;Cancelled&#34;, &#34;Failed&#34;, &#34;Expired&#34;.
      * 
      */
     public Optional<Output<String>> state() {
@@ -149,7 +142,6 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
     }
 
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Subscription identifier tag.
      * 
      */
@@ -168,10 +160,6 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
 
     private AccountSubscriptionState(AccountSubscriptionState $) {
         this.accountId = $.accountId;
-<<<<<<< HEAD
-        this.frequency = $.frequency;
-        this.ratePlan = $.ratePlan;
-=======
         this.currency = $.currency;
         this.currentPeriodEnd = $.currentPeriodEnd;
         this.currentPeriodStart = $.currentPeriodStart;
@@ -179,7 +167,6 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
         this.price = $.price;
         this.ratePlan = $.ratePlan;
         this.state = $.state;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.subscriptionIdentifier = $.subscriptionIdentifier;
     }
 
@@ -223,8 +210,6 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
         }
 
         /**
-<<<<<<< HEAD
-=======
          * @param currency The monetary unit in which pricing information is displayed.
          * 
          * @return builder
@@ -288,8 +273,8 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
         }
 
         /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param frequency How often the subscription is renewed automatically.
+         * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
          * 
          * @return builder
          * 
@@ -301,6 +286,7 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
 
         /**
          * @param frequency How often the subscription is renewed automatically.
+         * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
          * 
          * @return builder
          * 
@@ -310,8 +296,6 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
         }
 
         /**
-<<<<<<< HEAD
-=======
          * @param price The price of the subscription that will be billed, in US dollars.
          * 
          * @return builder
@@ -333,7 +317,6 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
         }
 
         /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param ratePlan The rate plan applied to the subscription.
          * 
          * @return builder
@@ -355,9 +338,8 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
         }
 
         /**
-<<<<<<< HEAD
-=======
          * @param state The state that the subscription is in.
+         * Available values: &#34;Trial&#34;, &#34;Provisioned&#34;, &#34;Paid&#34;, &#34;AwaitingPayment&#34;, &#34;Cancelled&#34;, &#34;Failed&#34;, &#34;Expired&#34;.
          * 
          * @return builder
          * 
@@ -369,6 +351,7 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
 
         /**
          * @param state The state that the subscription is in.
+         * Available values: &#34;Trial&#34;, &#34;Provisioned&#34;, &#34;Paid&#34;, &#34;AwaitingPayment&#34;, &#34;Cancelled&#34;, &#34;Failed&#34;, &#34;Expired&#34;.
          * 
          * @return builder
          * 
@@ -378,7 +361,6 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
         }
 
         /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param subscriptionIdentifier Subscription identifier tag.
          * 
          * @return builder

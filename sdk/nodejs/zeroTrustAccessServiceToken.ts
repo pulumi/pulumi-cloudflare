@@ -121,6 +121,10 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessServiceToken:AccessServiceToken" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
+        const secretOpts = { additionalSecretOutputs: ["clientSecret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ZeroTrustAccessServiceToken.__pulumiType, name, resourceInputs, opts);
     }
 }

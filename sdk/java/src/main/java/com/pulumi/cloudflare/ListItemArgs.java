@@ -50,8 +50,6 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-<<<<<<< HEAD
-=======
      * An informative summary of the list item.
      * 
      */
@@ -67,7 +65,6 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      * 
      */
@@ -132,6 +129,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
     private ListItemArgs(ListItemArgs $) {
         this.accountId = $.accountId;
         this.asn = $.asn;
+        this.comment = $.comment;
         this.hostname = $.hostname;
         this.ip = $.ip;
         this.listId = $.listId;
@@ -199,8 +197,6 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-<<<<<<< HEAD
-=======
          * @param comment An informative summary of the list item.
          * 
          * @return builder
@@ -222,7 +218,6 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param hostname Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
          * 
          * @return builder

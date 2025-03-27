@@ -14,22 +14,14 @@ public final class GetSpectrumApplicationPlainArgs extends com.pulumi.resources.
     public static final GetSpectrumApplicationPlainArgs Empty = new GetSpectrumApplicationPlainArgs();
 
     /**
-<<<<<<< HEAD
-     * Identifier
-=======
      * App identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     @Import(name="appId", required=true)
     private String appId;
 
     /**
-<<<<<<< HEAD
-     * @return Identifier
-=======
      * @return App identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public String appId() {
@@ -37,22 +29,14 @@ public final class GetSpectrumApplicationPlainArgs extends com.pulumi.resources.
     }
 
     /**
-<<<<<<< HEAD
-     * Identifier
-=======
      * Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-<<<<<<< HEAD
-     * @return Identifier
-=======
      * @return Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public String zoneId() {
@@ -85,11 +69,7 @@ public final class GetSpectrumApplicationPlainArgs extends com.pulumi.resources.
         }
 
         /**
-<<<<<<< HEAD
-         * @param appId Identifier
-=======
          * @param appId App identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 
@@ -100,11 +80,7 @@ public final class GetSpectrumApplicationPlainArgs extends com.pulumi.resources.
         }
 
         /**
-<<<<<<< HEAD
-         * @param zoneId Identifier
-=======
          * @param zoneId Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 

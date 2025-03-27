@@ -30,6 +30,7 @@ class ZeroTrustListArgs:
         The set of arguments for constructing a ZeroTrustList resource.
         :param pulumi.Input[str] name: The name of the list.
         :param pulumi.Input[str] type: The type of list.
+               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         :param pulumi.Input[str] description: The description of the list.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemArgs']]] items: The items in the list.
         """
@@ -67,6 +68,7 @@ class ZeroTrustListArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The type of list.
+        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         """
         return pulumi.get(self, "type")
 
@@ -117,6 +119,7 @@ class _ZeroTrustListState:
         :param pulumi.Input[float] list_count: The number of items in the list.
         :param pulumi.Input[str] name: The name of the list.
         :param pulumi.Input[str] type: The type of list.
+               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -206,6 +209,7 @@ class _ZeroTrustListState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of list.
+        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         """
         return pulumi.get(self, "type")
 
@@ -264,6 +268,7 @@ class ZeroTrustList(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustListItemArgs', 'ZeroTrustListItemArgsDict']]]] items: The items in the list.
         :param pulumi.Input[str] name: The name of the list.
         :param pulumi.Input[str] type: The type of list.
+               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         """
         ...
     @overload
@@ -338,6 +343,8 @@ class ZeroTrustList(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["list_count"] = None
             __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/teamsList:TeamsList")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustList, __self__).__init__(
             'cloudflare:index/zeroTrustList:ZeroTrustList',
             resource_name,
@@ -368,6 +375,7 @@ class ZeroTrustList(pulumi.CustomResource):
         :param pulumi.Input[float] list_count: The number of items in the list.
         :param pulumi.Input[str] name: The name of the list.
         :param pulumi.Input[str] type: The type of list.
+               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -430,6 +438,7 @@ class ZeroTrustList(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         The type of list.
+        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         """
         return pulumi.get(self, "type")
 

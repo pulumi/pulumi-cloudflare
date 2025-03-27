@@ -17,6 +17,7 @@ public final class ZoneLockdownConfigurationArgs extends com.pulumi.resources.Re
 
     /**
      * The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
+     * Available values: &#34;ip&#34;.
      * 
      */
     @Import(name="target")
@@ -24,6 +25,7 @@ public final class ZoneLockdownConfigurationArgs extends com.pulumi.resources.Re
 
     /**
      * @return The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
+     * Available values: &#34;ip&#34;.
      * 
      */
     public Optional<Output<String>> target() {
@@ -72,6 +74,7 @@ public final class ZoneLockdownConfigurationArgs extends com.pulumi.resources.Re
 
         /**
          * @param target The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
+         * Available values: &#34;ip&#34;.
          * 
          * @return builder
          * 
@@ -83,6 +86,7 @@ public final class ZoneLockdownConfigurationArgs extends com.pulumi.resources.Re
 
         /**
          * @param target The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
+         * Available values: &#34;ip&#34;.
          * 
          * @return builder
          * 

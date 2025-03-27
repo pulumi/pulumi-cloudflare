@@ -63,6 +63,12 @@ namespace Pulumi.Cloudflare
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Output("jurisdiction")]
+        public Output<string> Jurisdiction { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a R2ManagedDomain resource with the given unique name, arguments, and options.
@@ -127,6 +133,12 @@ namespace Pulumi.Cloudflare
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        /// <summary>
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
+
         public R2ManagedDomainArgs()
         {
         }
@@ -164,6 +176,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
 
         public R2ManagedDomainState()
         {

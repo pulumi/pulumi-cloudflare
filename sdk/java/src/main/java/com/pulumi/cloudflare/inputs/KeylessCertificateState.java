@@ -21,6 +21,7 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
 
     /**
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     @Import(name="bundleMethod")
@@ -28,6 +29,7 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
 
     /**
      * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     public Optional<Output<String>> bundleMethod() {
@@ -156,6 +158,7 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
 
     /**
      * Status of the Keyless SSL.
+     * Available values: &#34;active&#34;, &#34;deleted&#34;.
      * 
      */
     @Import(name="status")
@@ -163,6 +166,7 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
 
     /**
      * @return Status of the Keyless SSL.
+     * Available values: &#34;active&#34;, &#34;deleted&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -236,6 +240,7 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
 
         /**
          * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+         * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
          * 
          * @return builder
          * 
@@ -247,6 +252,7 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
 
         /**
          * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+         * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
          * 
          * @return builder
          * 
@@ -435,6 +441,7 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
 
         /**
          * @param status Status of the Keyless SSL.
+         * Available values: &#34;active&#34;, &#34;deleted&#34;.
          * 
          * @return builder
          * 
@@ -446,6 +453,7 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
 
         /**
          * @param status Status of the Keyless SSL.
+         * Available values: &#34;active&#34;, &#34;deleted&#34;.
          * 
          * @return builder
          * 

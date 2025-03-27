@@ -82,10 +82,7 @@ class _AuthenticatedOriginPullsState:
                  expires_on: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  issuer: Optional[pulumi.Input[str]] = None,
-<<<<<<< HEAD
-=======
                  private_key: Optional[pulumi.Input[str]] = None,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  serial_number: Optional[pulumi.Input[str]] = None,
                  signature: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -95,6 +92,7 @@ class _AuthenticatedOriginPullsState:
         Input properties used for looking up and filtering AuthenticatedOriginPulls resources.
         :param pulumi.Input[str] cert_id: Identifier
         :param pulumi.Input[str] cert_status: Status of the certificate or the association.
+               Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         :param pulumi.Input[str] cert_updated_at: The time when the certificate was updated.
         :param pulumi.Input[str] cert_uploaded_on: The time when the certificate was uploaded.
         :param pulumi.Input[str] certificate: The hostname certificate.
@@ -103,13 +101,11 @@ class _AuthenticatedOriginPullsState:
         :param pulumi.Input[str] expires_on: The date when the certificate expires.
         :param pulumi.Input[str] hostname: The hostname on the origin for which the client certificate uploaded will be used.
         :param pulumi.Input[str] issuer: The certificate authority that issued the certificate.
-<<<<<<< HEAD
-=======
         :param pulumi.Input[str] private_key: The hostname certificate's private key.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] serial_number: The serial number on the uploaded certificate.
         :param pulumi.Input[str] signature: The type of hash used for the certificate.
         :param pulumi.Input[str] status: Status of the certificate or the association.
+               Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         :param pulumi.Input[str] updated_at: The time when the certificate was updated.
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -135,11 +131,8 @@ class _AuthenticatedOriginPullsState:
             pulumi.set(__self__, "hostname", hostname)
         if issuer is not None:
             pulumi.set(__self__, "issuer", issuer)
-<<<<<<< HEAD
-=======
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if serial_number is not None:
             pulumi.set(__self__, "serial_number", serial_number)
         if signature is not None:
@@ -168,6 +161,7 @@ class _AuthenticatedOriginPullsState:
     def cert_status(self) -> Optional[pulumi.Input[str]]:
         """
         Status of the certificate or the association.
+        Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         """
         return pulumi.get(self, "cert_status")
 
@@ -281,8 +275,6 @@ class _AuthenticatedOriginPullsState:
         pulumi.set(self, "issuer", value)
 
     @property
-<<<<<<< HEAD
-=======
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[str]]:
         """
@@ -295,7 +287,6 @@ class _AuthenticatedOriginPullsState:
         pulumi.set(self, "private_key", value)
 
     @property
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="serialNumber")
     def serial_number(self) -> Optional[pulumi.Input[str]]:
         """
@@ -324,6 +315,7 @@ class _AuthenticatedOriginPullsState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         Status of the certificate or the association.
+        Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         """
         return pulumi.get(self, "status")
 
@@ -425,14 +417,13 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
             __props__.__dict__["enabled"] = None
             __props__.__dict__["expires_on"] = None
             __props__.__dict__["issuer"] = None
-<<<<<<< HEAD
-=======
             __props__.__dict__["private_key"] = None
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             __props__.__dict__["serial_number"] = None
             __props__.__dict__["signature"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["privateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AuthenticatedOriginPulls, __self__).__init__(
             'cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls',
             resource_name,
@@ -454,10 +445,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
             expires_on: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             issuer: Optional[pulumi.Input[str]] = None,
-<<<<<<< HEAD
-=======
             private_key: Optional[pulumi.Input[str]] = None,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             serial_number: Optional[pulumi.Input[str]] = None,
             signature: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -472,6 +460,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cert_id: Identifier
         :param pulumi.Input[str] cert_status: Status of the certificate or the association.
+               Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         :param pulumi.Input[str] cert_updated_at: The time when the certificate was updated.
         :param pulumi.Input[str] cert_uploaded_on: The time when the certificate was uploaded.
         :param pulumi.Input[str] certificate: The hostname certificate.
@@ -480,13 +469,11 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         :param pulumi.Input[str] expires_on: The date when the certificate expires.
         :param pulumi.Input[str] hostname: The hostname on the origin for which the client certificate uploaded will be used.
         :param pulumi.Input[str] issuer: The certificate authority that issued the certificate.
-<<<<<<< HEAD
-=======
         :param pulumi.Input[str] private_key: The hostname certificate's private key.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] serial_number: The serial number on the uploaded certificate.
         :param pulumi.Input[str] signature: The type of hash used for the certificate.
         :param pulumi.Input[str] status: Status of the certificate or the association.
+               Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         :param pulumi.Input[str] updated_at: The time when the certificate was updated.
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -505,10 +492,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         __props__.__dict__["expires_on"] = expires_on
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["issuer"] = issuer
-<<<<<<< HEAD
-=======
         __props__.__dict__["private_key"] = private_key
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         __props__.__dict__["serial_number"] = serial_number
         __props__.__dict__["signature"] = signature
         __props__.__dict__["status"] = status
@@ -529,6 +513,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
     def cert_status(self) -> pulumi.Output[str]:
         """
         Status of the certificate or the association.
+        Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         """
         return pulumi.get(self, "cert_status")
 
@@ -602,8 +587,6 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         return pulumi.get(self, "issuer")
 
     @property
-<<<<<<< HEAD
-=======
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Output[str]:
         """
@@ -612,7 +595,6 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         return pulumi.get(self, "private_key")
 
     @property
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="serialNumber")
     def serial_number(self) -> pulumi.Output[str]:
         """
@@ -633,6 +615,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         Status of the certificate or the association.
+        Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         """
         return pulumi.get(self, "status")
 

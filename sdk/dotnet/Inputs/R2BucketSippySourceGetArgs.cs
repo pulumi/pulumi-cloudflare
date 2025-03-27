@@ -30,12 +30,25 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("clientEmail")]
         public Input<string>? ClientEmail { get; set; }
 
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
+
         /// <summary>
         /// Private Key of an IAM credential (ideally scoped to a single GCS bucket)
         /// </summary>
-        [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
+        /// <summary>
+        /// Available values: "aws".
+        /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
 
@@ -45,11 +58,21 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("secretAccessKey")]
+        private Input<string>? _secretAccessKey;
+
         /// <summary>
         /// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
         /// </summary>
-        [Input("secretAccessKey")]
-        public Input<string>? SecretAccessKey { get; set; }
+        public Input<string>? SecretAccessKey
+        {
+            get => _secretAccessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretAccessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public R2BucketSippySourceGetArgs()
         {

@@ -23,20 +23,28 @@ class WebAnalyticsSiteArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  auto_install: Optional[pulumi.Input[bool]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
+                 lite: Optional[pulumi.Input[bool]] = None,
                  zone_tag: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WebAnalyticsSite resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[bool] auto_install: If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
+        :param pulumi.Input[bool] enabled: Enables or disables RUM. This option can be used only when auto_install is set to true.
         :param pulumi.Input[str] host: The hostname to use for gray-clouded sites.
+        :param pulumi.Input[bool] lite: If enabled, the JavaScript snippet will not be injected for visitors from the EU.
         :param pulumi.Input[str] zone_tag: The zone identifier.
         """
         pulumi.set(__self__, "account_id", account_id)
         if auto_install is not None:
             pulumi.set(__self__, "auto_install", auto_install)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if host is not None:
             pulumi.set(__self__, "host", host)
+        if lite is not None:
+            pulumi.set(__self__, "lite", lite)
         if zone_tag is not None:
             pulumi.set(__self__, "zone_tag", zone_tag)
 
@@ -66,6 +74,18 @@ class WebAnalyticsSiteArgs:
 
     @property
     @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables or disables RUM. This option can be used only when auto_install is set to true.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
         The hostname to use for gray-clouded sites.
@@ -75,6 +95,18 @@ class WebAnalyticsSiteArgs:
     @host.setter
     def host(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def lite(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+        """
+        return pulumi.get(self, "lite")
+
+    @lite.setter
+    def lite(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "lite", value)
 
     @property
     @pulumi.getter(name="zoneTag")
@@ -95,7 +127,9 @@ class _WebAnalyticsSiteState:
                  account_id: Optional[pulumi.Input[str]] = None,
                  auto_install: Optional[pulumi.Input[bool]] = None,
                  created: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
+                 lite: Optional[pulumi.Input[bool]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WebAnalyticsSiteRuleArgs']]]] = None,
                  ruleset: Optional[pulumi.Input['WebAnalyticsSiteRulesetArgs']] = None,
                  site_tag: Optional[pulumi.Input[str]] = None,
@@ -106,7 +140,9 @@ class _WebAnalyticsSiteState:
         Input properties used for looking up and filtering WebAnalyticsSite resources.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[bool] auto_install: If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
+        :param pulumi.Input[bool] enabled: Enables or disables RUM. This option can be used only when auto_install is set to true.
         :param pulumi.Input[str] host: The hostname to use for gray-clouded sites.
+        :param pulumi.Input[bool] lite: If enabled, the JavaScript snippet will not be injected for visitors from the EU.
         :param pulumi.Input[Sequence[pulumi.Input['WebAnalyticsSiteRuleArgs']]] rules: A list of rules.
         :param pulumi.Input[str] site_tag: The Web Analytics site identifier.
         :param pulumi.Input[str] site_token: The Web Analytics site token.
@@ -119,8 +155,12 @@ class _WebAnalyticsSiteState:
             pulumi.set(__self__, "auto_install", auto_install)
         if created is not None:
             pulumi.set(__self__, "created", created)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if host is not None:
             pulumi.set(__self__, "host", host)
+        if lite is not None:
+            pulumi.set(__self__, "lite", lite)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if ruleset is not None:
@@ -169,6 +209,18 @@ class _WebAnalyticsSiteState:
 
     @property
     @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables or disables RUM. This option can be used only when auto_install is set to true.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
         The hostname to use for gray-clouded sites.
@@ -178,6 +230,18 @@ class _WebAnalyticsSiteState:
     @host.setter
     def host(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def lite(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+        """
+        return pulumi.get(self, "lite")
+
+    @lite.setter
+    def lite(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "lite", value)
 
     @property
     @pulumi.getter
@@ -256,7 +320,9 @@ class WebAnalyticsSite(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  auto_install: Optional[pulumi.Input[bool]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
+                 lite: Optional[pulumi.Input[bool]] = None,
                  zone_tag: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -283,7 +349,9 @@ class WebAnalyticsSite(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[bool] auto_install: If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
+        :param pulumi.Input[bool] enabled: Enables or disables RUM. This option can be used only when auto_install is set to true.
         :param pulumi.Input[str] host: The hostname to use for gray-clouded sites.
+        :param pulumi.Input[bool] lite: If enabled, the JavaScript snippet will not be injected for visitors from the EU.
         :param pulumi.Input[str] zone_tag: The zone identifier.
         """
         ...
@@ -329,7 +397,9 @@ class WebAnalyticsSite(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  auto_install: Optional[pulumi.Input[bool]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
+                 lite: Optional[pulumi.Input[bool]] = None,
                  zone_tag: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -344,7 +414,9 @@ class WebAnalyticsSite(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["auto_install"] = auto_install
+            __props__.__dict__["enabled"] = enabled
             __props__.__dict__["host"] = host
+            __props__.__dict__["lite"] = lite
             __props__.__dict__["zone_tag"] = zone_tag
             __props__.__dict__["created"] = None
             __props__.__dict__["rules"] = None
@@ -365,7 +437,9 @@ class WebAnalyticsSite(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             auto_install: Optional[pulumi.Input[bool]] = None,
             created: Optional[pulumi.Input[str]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
             host: Optional[pulumi.Input[str]] = None,
+            lite: Optional[pulumi.Input[bool]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WebAnalyticsSiteRuleArgs', 'WebAnalyticsSiteRuleArgsDict']]]]] = None,
             ruleset: Optional[pulumi.Input[Union['WebAnalyticsSiteRulesetArgs', 'WebAnalyticsSiteRulesetArgsDict']]] = None,
             site_tag: Optional[pulumi.Input[str]] = None,
@@ -381,7 +455,9 @@ class WebAnalyticsSite(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[bool] auto_install: If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
+        :param pulumi.Input[bool] enabled: Enables or disables RUM. This option can be used only when auto_install is set to true.
         :param pulumi.Input[str] host: The hostname to use for gray-clouded sites.
+        :param pulumi.Input[bool] lite: If enabled, the JavaScript snippet will not be injected for visitors from the EU.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WebAnalyticsSiteRuleArgs', 'WebAnalyticsSiteRuleArgsDict']]]] rules: A list of rules.
         :param pulumi.Input[str] site_tag: The Web Analytics site identifier.
         :param pulumi.Input[str] site_token: The Web Analytics site token.
@@ -395,7 +471,9 @@ class WebAnalyticsSite(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["auto_install"] = auto_install
         __props__.__dict__["created"] = created
+        __props__.__dict__["enabled"] = enabled
         __props__.__dict__["host"] = host
+        __props__.__dict__["lite"] = lite
         __props__.__dict__["rules"] = rules
         __props__.__dict__["ruleset"] = ruleset
         __props__.__dict__["site_tag"] = site_tag
@@ -427,11 +505,27 @@ class WebAnalyticsSite(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enables or disables RUM. This option can be used only when auto_install is set to true.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
     def host(self) -> pulumi.Output[Optional[str]]:
         """
         The hostname to use for gray-clouded sites.
         """
         return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def lite(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+        """
+        return pulumi.get(self, "lite")
 
     @property
     @pulumi.getter

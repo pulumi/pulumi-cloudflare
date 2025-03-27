@@ -3,15 +3,10 @@
 
 package com.pulumi.cloudflare.outputs;
 
-<<<<<<< HEAD
-import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
-=======
 import com.pulumi.cloudflare.outputs.GetAccountSubscriptionRatePlan;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 
@@ -23,12 +18,6 @@ public final class GetAccountSubscriptionResult {
      */
     private String accountId;
     /**
-<<<<<<< HEAD
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-=======
      * @return The monetary unit in which pricing information is displayed.
      * 
      */
@@ -45,6 +34,7 @@ public final class GetAccountSubscriptionResult {
     private String currentPeriodStart;
     /**
      * @return How often the subscription is renewed automatically.
+     * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
      * 
      */
     private String frequency;
@@ -65,10 +55,10 @@ public final class GetAccountSubscriptionResult {
     private GetAccountSubscriptionRatePlan ratePlan;
     /**
      * @return The state that the subscription is in.
+     * Available values: &#34;Trial&#34;, &#34;Provisioned&#34;, &#34;Paid&#34;, &#34;AwaitingPayment&#34;, &#34;Cancelled&#34;, &#34;Failed&#34;, &#34;Expired&#34;.
      * 
      */
     private String state;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     private GetAccountSubscriptionResult() {}
     /**
@@ -79,9 +69,6 @@ public final class GetAccountSubscriptionResult {
         return this.accountId;
     }
     /**
-<<<<<<< HEAD
-     * @return The provider-assigned unique ID for this managed resource.
-=======
      * @return The monetary unit in which pricing information is displayed.
      * 
      */
@@ -104,6 +91,7 @@ public final class GetAccountSubscriptionResult {
     }
     /**
      * @return How often the subscription is renewed automatically.
+     * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
      * 
      */
     public String frequency() {
@@ -111,14 +99,11 @@ public final class GetAccountSubscriptionResult {
     }
     /**
      * @return Subscription identifier tag.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public String id() {
         return this.id;
     }
-<<<<<<< HEAD
-=======
     /**
      * @return The price of the subscription that will be billed, in US dollars.
      * 
@@ -135,12 +120,12 @@ public final class GetAccountSubscriptionResult {
     }
     /**
      * @return The state that the subscription is in.
+     * Available values: &#34;Trial&#34;, &#34;Provisioned&#34;, &#34;Paid&#34;, &#34;AwaitingPayment&#34;, &#34;Cancelled&#34;, &#34;Failed&#34;, &#34;Expired&#34;.
      * 
      */
     public String state() {
         return this.state;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     public static Builder builder() {
         return new Builder();
@@ -152,9 +137,6 @@ public final class GetAccountSubscriptionResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-<<<<<<< HEAD
-        private String id;
-=======
         private String currency;
         private String currentPeriodEnd;
         private String currentPeriodStart;
@@ -163,14 +145,10 @@ public final class GetAccountSubscriptionResult {
         private Double price;
         private GetAccountSubscriptionRatePlan ratePlan;
         private String state;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder() {}
         public Builder(GetAccountSubscriptionResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-<<<<<<< HEAD
-    	      this.id = defaults.id;
-=======
     	      this.currency = defaults.currency;
     	      this.currentPeriodEnd = defaults.currentPeriodEnd;
     	      this.currentPeriodStart = defaults.currentPeriodStart;
@@ -179,7 +157,6 @@ public final class GetAccountSubscriptionResult {
     	      this.price = defaults.price;
     	      this.ratePlan = defaults.ratePlan;
     	      this.state = defaults.state;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
 
         @CustomType.Setter
@@ -191,8 +168,6 @@ public final class GetAccountSubscriptionResult {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder currency(String currency) {
             if (currency == null) {
               throw new MissingRequiredPropertyException("GetAccountSubscriptionResult", "currency");
@@ -225,7 +200,6 @@ public final class GetAccountSubscriptionResult {
             return this;
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetAccountSubscriptionResult", "id");
@@ -233,12 +207,6 @@ public final class GetAccountSubscriptionResult {
             this.id = id;
             return this;
         }
-<<<<<<< HEAD
-        public GetAccountSubscriptionResult build() {
-            final var _resultValue = new GetAccountSubscriptionResult();
-            _resultValue.accountId = accountId;
-            _resultValue.id = id;
-=======
         @CustomType.Setter
         public Builder price(Double price) {
             if (price == null) {
@@ -274,7 +242,6 @@ public final class GetAccountSubscriptionResult {
             _resultValue.price = price;
             _resultValue.ratePlan = ratePlan;
             _resultValue.state = state;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return _resultValue;
         }
     }

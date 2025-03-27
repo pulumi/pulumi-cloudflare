@@ -3,15 +3,9 @@
 
 package com.pulumi.cloudflare;
 
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/DnsZoneTransfersTsig.java
 import com.pulumi.cloudflare.DnsZoneTransfersTsigArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.DnsZoneTransfersTsigState;
-========
-import com.pulumi.cloudflare.DnsSettingsInternalViewArgs;
-import com.pulumi.cloudflare.Utilities;
-import com.pulumi.cloudflare.inputs.DnsSettingsInternalViewState;
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/DnsSettingsInternalView.java
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -30,13 +24,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/DnsZoneTransfersTsig.java
  * import com.pulumi.cloudflare.DnsZoneTransfersTsig;
  * import com.pulumi.cloudflare.DnsZoneTransfersTsigArgs;
-========
- * import com.pulumi.cloudflare.DnsSettingsInternalView;
- * import com.pulumi.cloudflare.DnsSettingsInternalViewArgs;
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/DnsSettingsInternalView.java
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,18 +39,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/DnsZoneTransfersTsig.java
  *         var exampleDnsZoneTransfersTsig = new DnsZoneTransfersTsig("exampleDnsZoneTransfersTsig", DnsZoneTransfersTsigArgs.builder()
  *             .accountId("01a7362d577a6c3019a474fd6f485823")
  *             .algo("hmac-sha512.")
  *             .name("tsig.customer.cf.")
  *             .secret("caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c")
-========
- *         var exampleDnsSettingsInternalView = new DnsSettingsInternalView("exampleDnsSettingsInternalView", DnsSettingsInternalViewArgs.builder()
- *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .name("my view")
- *             .zones("372e67954025e0ba6aaa6d586b9e0b59")
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/DnsSettingsInternalView.java
  *             .build());
  * 
  *     }
@@ -73,7 +55,6 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/DnsZoneTransfersTsig.java
  * $ pulumi import cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig example &#39;&lt;account_id&gt;/&lt;tsig_id&gt;&#39;
  * ```
  * 
@@ -83,30 +64,10 @@ public class DnsZoneTransfersTsig extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-========
- * $ pulumi import cloudflare:index/dnsSettingsInternalView:DnsSettingsInternalView example &#39;&lt;account_id&gt;/&lt;view_id&gt;&#39;
- * ```
- * 
- */
-@ResourceType(type="cloudflare:index/dnsSettingsInternalView:DnsSettingsInternalView")
-public class DnsSettingsInternalView extends com.pulumi.resources.CustomResource {
-    /**
-     * Identifier
-     * 
-     */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
-
-    /**
-     * @return Identifier
-     * 
-     */
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/DnsSettingsInternalView.java
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/DnsZoneTransfersTsig.java
      * TSIG algorithm.
      * 
      */
@@ -122,55 +83,19 @@ public class DnsSettingsInternalView extends com.pulumi.resources.CustomResource
     }
     /**
      * TSIG key name.
-========
-     * When the view was created.
-     * 
-     */
-    @Export(name="createdTime", refs={String.class}, tree="[0]")
-    private Output<String> createdTime;
-
-    /**
-     * @return When the view was created.
-     * 
-     */
-    public Output<String> createdTime() {
-        return this.createdTime;
-    }
-    /**
-     * When the view was last modified.
-     * 
-     */
-    @Export(name="modifiedTime", refs={String.class}, tree="[0]")
-    private Output<String> modifiedTime;
-
-    /**
-     * @return When the view was last modified.
-     * 
-     */
-    public Output<String> modifiedTime() {
-        return this.modifiedTime;
-    }
-    /**
-     * The name of the view.
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/DnsSettingsInternalView.java
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/DnsZoneTransfersTsig.java
      * @return TSIG key name.
-========
-     * @return The name of the view.
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/DnsSettingsInternalView.java
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/DnsZoneTransfersTsig.java
      * TSIG secret.
      * 
      */
@@ -183,44 +108,21 @@ public class DnsSettingsInternalView extends com.pulumi.resources.CustomResource
      */
     public Output<String> secret() {
         return this.secret;
-========
-     * The list of zones linked to this view.
-     * 
-     */
-    @Export(name="zones", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> zones;
-
-    /**
-     * @return The list of zones linked to this view.
-     * 
-     */
-    public Output<List<String>> zones() {
-        return this.zones;
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/DnsSettingsInternalView.java
     }
 
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      */
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/DnsZoneTransfersTsig.java
     public DnsZoneTransfersTsig(java.lang.String name) {
         this(name, DnsZoneTransfersTsigArgs.Empty);
-========
-    public DnsSettingsInternalView(java.lang.String name) {
-        this(name, DnsSettingsInternalViewArgs.Empty);
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/DnsSettingsInternalView.java
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/DnsZoneTransfersTsig.java
     public DnsZoneTransfersTsig(java.lang.String name, DnsZoneTransfersTsigArgs args) {
-========
-    public DnsSettingsInternalView(java.lang.String name, DnsSettingsInternalViewArgs args) {
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/DnsSettingsInternalView.java
         this(name, args, null);
     }
     /**
@@ -229,7 +131,6 @@ public class DnsSettingsInternalView extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/DnsZoneTransfersTsig.java
     public DnsZoneTransfersTsig(java.lang.String name, DnsZoneTransfersTsigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
@@ -243,21 +144,6 @@ public class DnsSettingsInternalView extends com.pulumi.resources.CustomResource
             return null;
         }
         return args == null ? DnsZoneTransfersTsigArgs.Empty : args;
-========
-    public DnsSettingsInternalView(java.lang.String name, DnsSettingsInternalViewArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/dnsSettingsInternalView:DnsSettingsInternalView", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
-    }
-
-    private DnsSettingsInternalView(java.lang.String name, Output<java.lang.String> id, @Nullable DnsSettingsInternalViewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/dnsSettingsInternalView:DnsSettingsInternalView", name, state, makeResourceOptions(options, id), false);
-    }
-
-    private static DnsSettingsInternalViewArgs makeArgs(DnsSettingsInternalViewArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        if (options != null && options.getUrn().isPresent()) {
-            return null;
-        }
-        return args == null ? DnsSettingsInternalViewArgs.Empty : args;
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/DnsSettingsInternalView.java
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
@@ -276,12 +162,7 @@ public class DnsSettingsInternalView extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/DnsZoneTransfersTsig.java
     public static DnsZoneTransfersTsig get(java.lang.String name, Output<java.lang.String> id, @Nullable DnsZoneTransfersTsigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DnsZoneTransfersTsig(name, id, state, options);
-========
-    public static DnsSettingsInternalView get(java.lang.String name, Output<java.lang.String> id, @Nullable DnsSettingsInternalViewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new DnsSettingsInternalView(name, id, state, options);
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/DnsSettingsInternalView.java
     }
 }

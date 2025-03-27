@@ -18,6 +18,7 @@ import java.util.Objects;
 public final class GetRulesetRule {
     /**
      * @return The action to perform when the rule matches.
+     * Available values: &#34;block&#34;.
      * 
      */
     private String action;
@@ -57,6 +58,11 @@ public final class GetRulesetRule {
      */
     private String id;
     /**
+     * @return The timestamp of when the rule was last modified.
+     * 
+     */
+    private String lastUpdated;
+    /**
      * @return An object configuring the rule&#39;s logging behavior.
      * 
      */
@@ -71,10 +77,16 @@ public final class GetRulesetRule {
      * 
      */
     private String ref;
+    /**
+     * @return The version of the rule.
+     * 
+     */
+    private String version;
 
     private GetRulesetRule() {}
     /**
      * @return The action to perform when the rule matches.
+     * Available values: &#34;block&#34;.
      * 
      */
     public String action() {
@@ -130,6 +142,13 @@ public final class GetRulesetRule {
         return this.id;
     }
     /**
+     * @return The timestamp of when the rule was last modified.
+     * 
+     */
+    public String lastUpdated() {
+        return this.lastUpdated;
+    }
+    /**
      * @return An object configuring the rule&#39;s logging behavior.
      * 
      */
@@ -150,6 +169,13 @@ public final class GetRulesetRule {
     public String ref() {
         return this.ref;
     }
+    /**
+     * @return The version of the rule.
+     * 
+     */
+    public String version() {
+        return this.version;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -168,9 +194,11 @@ public final class GetRulesetRule {
         private GetRulesetRuleExposedCredentialCheck exposedCredentialCheck;
         private String expression;
         private String id;
+        private String lastUpdated;
         private GetRulesetRuleLogging logging;
         private GetRulesetRuleRatelimit ratelimit;
         private String ref;
+        private String version;
         public Builder() {}
         public Builder(GetRulesetRule defaults) {
     	      Objects.requireNonNull(defaults);
@@ -182,9 +210,11 @@ public final class GetRulesetRule {
     	      this.exposedCredentialCheck = defaults.exposedCredentialCheck;
     	      this.expression = defaults.expression;
     	      this.id = defaults.id;
+    	      this.lastUpdated = defaults.lastUpdated;
     	      this.logging = defaults.logging;
     	      this.ratelimit = defaults.ratelimit;
     	      this.ref = defaults.ref;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -255,6 +285,14 @@ public final class GetRulesetRule {
             return this;
         }
         @CustomType.Setter
+        public Builder lastUpdated(String lastUpdated) {
+            if (lastUpdated == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRule", "lastUpdated");
+            }
+            this.lastUpdated = lastUpdated;
+            return this;
+        }
+        @CustomType.Setter
         public Builder logging(GetRulesetRuleLogging logging) {
             if (logging == null) {
               throw new MissingRequiredPropertyException("GetRulesetRule", "logging");
@@ -278,6 +316,14 @@ public final class GetRulesetRule {
             this.ref = ref;
             return this;
         }
+        @CustomType.Setter
+        public Builder version(String version) {
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRule", "version");
+            }
+            this.version = version;
+            return this;
+        }
         public GetRulesetRule build() {
             final var _resultValue = new GetRulesetRule();
             _resultValue.action = action;
@@ -288,9 +334,11 @@ public final class GetRulesetRule {
             _resultValue.exposedCredentialCheck = exposedCredentialCheck;
             _resultValue.expression = expression;
             _resultValue.id = id;
+            _resultValue.lastUpdated = lastUpdated;
             _resultValue.logging = logging;
             _resultValue.ratelimit = ratelimit;
             _resultValue.ref = ref;
+            _resultValue.version = version;
             return _resultValue;
         }
     }

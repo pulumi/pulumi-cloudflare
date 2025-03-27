@@ -118,22 +118,21 @@ export class SpectrumApplication extends pulumi.CustomResource {
     public readonly protocol!: pulumi.Output<string>;
     /**
      * Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+     * Available values: "off", "v1", "v2", "simple".
      */
     public readonly proxyProtocol!: pulumi.Output<string>;
     /**
      * The type of TLS termination associated with the application.
+     * Available values: "off", "flexible", "full", "strict".
      */
     public readonly tls!: pulumi.Output<string | undefined>;
     /**
      * Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+     * Available values: "direct", "http", "https".
      */
     public readonly trafficType!: pulumi.Output<string>;
     /**
-<<<<<<< HEAD
-     * Identifier
-=======
      * Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -244,22 +243,21 @@ export interface SpectrumApplicationState {
     protocol?: pulumi.Input<string>;
     /**
      * Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+     * Available values: "off", "v1", "v2", "simple".
      */
     proxyProtocol?: pulumi.Input<string>;
     /**
      * The type of TLS termination associated with the application.
+     * Available values: "off", "flexible", "full", "strict".
      */
     tls?: pulumi.Input<string>;
     /**
      * Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+     * Available values: "direct", "http", "https".
      */
     trafficType?: pulumi.Input<string>;
     /**
-<<<<<<< HEAD
-     * Identifier
-=======
      * Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -305,22 +303,21 @@ export interface SpectrumApplicationArgs {
     protocol: pulumi.Input<string>;
     /**
      * Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+     * Available values: "off", "v1", "v2", "simple".
      */
     proxyProtocol?: pulumi.Input<string>;
     /**
      * The type of TLS termination associated with the application.
+     * Available values: "off", "flexible", "full", "strict".
      */
     tls?: pulumi.Input<string>;
     /**
      * Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+     * Available values: "direct", "http", "https".
      */
     trafficType?: pulumi.Input<string>;
     /**
-<<<<<<< HEAD
-     * Identifier
-=======
      * Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     zoneId: pulumi.Input<string>;
 }

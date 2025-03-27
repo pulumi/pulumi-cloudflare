@@ -43,6 +43,7 @@ export interface GetZoneCacheVariantsResult {
     readonly editable: boolean;
     /**
      * ID of the zone setting.
+     * Available values: "variants".
      */
     readonly id: string;
     /**

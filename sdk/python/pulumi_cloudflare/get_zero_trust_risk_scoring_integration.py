@@ -103,6 +103,9 @@ class GetZeroTrustRiskScoringIntegrationResult:
     @property
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> str:
+        """
+        Available values: "Okta".
+        """
         return pulumi.get(self, "integration_type")
 
     @property

@@ -19,6 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Name;
         /// <summary>
         /// The type of DNS record associated with the application.
+        /// Available values: "CNAME", "ADDRESS".
         /// </summary>
         public readonly string Type;
 

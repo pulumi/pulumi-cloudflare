@@ -30,6 +30,7 @@ class ZeroTrustTunnelCloudflaredArgs:
         :param pulumi.Input[str] account_id: Cloudflare account ID
         :param pulumi.Input[str] name: A user-friendly name for a tunnel.
         :param pulumi.Input[str] config_src: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+               Available values: "local", "cloudflare".
         :param pulumi.Input[str] tunnel_secret: Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -68,6 +69,7 @@ class ZeroTrustTunnelCloudflaredArgs:
     def config_src(self) -> Optional[pulumi.Input[str]]:
         """
         Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+        Available values: "local", "cloudflare".
         """
         return pulumi.get(self, "config_src")
 
@@ -110,6 +112,7 @@ class _ZeroTrustTunnelCloudflaredState:
         :param pulumi.Input[str] account_id: Cloudflare account ID
         :param pulumi.Input[str] account_tag: Cloudflare account ID
         :param pulumi.Input[str] config_src: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+               Available values: "local", "cloudflare".
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustTunnelCloudflaredConnectionArgs']]] connections: The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
         :param pulumi.Input[str] conns_active_at: Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
         :param pulumi.Input[str] conns_inactive_at: Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
@@ -119,7 +122,9 @@ class _ZeroTrustTunnelCloudflaredState:
         :param pulumi.Input[str] name: A user-friendly name for a tunnel.
         :param pulumi.Input[bool] remote_config: If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
         :param pulumi.Input[str] status: The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+               Available values: "inactive", "degraded", "healthy", "down".
         :param pulumi.Input[str] tun_type: The type of tunnel.
+               Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
         :param pulumi.Input[str] tunnel_secret: Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
         """
         if account_id is not None:
@@ -180,6 +185,7 @@ class _ZeroTrustTunnelCloudflaredState:
     def config_src(self) -> Optional[pulumi.Input[str]]:
         """
         Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+        Available values: "local", "cloudflare".
         """
         return pulumi.get(self, "config_src")
 
@@ -288,6 +294,7 @@ class _ZeroTrustTunnelCloudflaredState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+        Available values: "inactive", "degraded", "healthy", "down".
         """
         return pulumi.get(self, "status")
 
@@ -300,6 +307,7 @@ class _ZeroTrustTunnelCloudflaredState:
     def tun_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of tunnel.
+        Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
         """
         return pulumi.get(self, "tun_type")
 
@@ -354,6 +362,7 @@ class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Cloudflare account ID
         :param pulumi.Input[str] config_src: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+               Available values: "local", "cloudflare".
         :param pulumi.Input[str] name: A user-friendly name for a tunnel.
         :param pulumi.Input[str] tunnel_secret: Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
         """
@@ -418,7 +427,7 @@ class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            __props__.__dict__["tunnel_secret"] = tunnel_secret
+            __props__.__dict__["tunnel_secret"] = None if tunnel_secret is None else pulumi.Output.secret(tunnel_secret)
             __props__.__dict__["account_tag"] = None
             __props__.__dict__["connections"] = None
             __props__.__dict__["conns_active_at"] = None
@@ -429,6 +438,10 @@ class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
             __props__.__dict__["remote_config"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["tun_type"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/tunnel:Tunnel")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["tunnelSecret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ZeroTrustTunnelCloudflared, __self__).__init__(
             'cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared',
             resource_name,
@@ -463,6 +476,7 @@ class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Cloudflare account ID
         :param pulumi.Input[str] account_tag: Cloudflare account ID
         :param pulumi.Input[str] config_src: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+               Available values: "local", "cloudflare".
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustTunnelCloudflaredConnectionArgs', 'ZeroTrustTunnelCloudflaredConnectionArgsDict']]]] connections: The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
         :param pulumi.Input[str] conns_active_at: Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
         :param pulumi.Input[str] conns_inactive_at: Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
@@ -472,7 +486,9 @@ class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
         :param pulumi.Input[str] name: A user-friendly name for a tunnel.
         :param pulumi.Input[bool] remote_config: If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
         :param pulumi.Input[str] status: The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+               Available values: "inactive", "degraded", "healthy", "down".
         :param pulumi.Input[str] tun_type: The type of tunnel.
+               Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
         :param pulumi.Input[str] tunnel_secret: Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -516,6 +532,7 @@ class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
     def config_src(self) -> pulumi.Output[str]:
         """
         Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+        Available values: "local", "cloudflare".
         """
         return pulumi.get(self, "config_src")
 
@@ -588,6 +605,7 @@ class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+        Available values: "inactive", "degraded", "healthy", "down".
         """
         return pulumi.get(self, "status")
 
@@ -596,6 +614,7 @@ class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
     def tun_type(self) -> pulumi.Output[str]:
         """
         The type of tunnel.
+        Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
         """
         return pulumi.get(self, "tun_type")
 

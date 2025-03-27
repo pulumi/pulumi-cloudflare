@@ -17,9 +17,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// Specifies the timestamp the resource was created as an ISO8601 string.
         /// </summary>
         public readonly string CreatedAt;
-<<<<<<< HEAD
-        public readonly string Name;
-=======
         /// <summary>
         /// D1 database name.
         /// </summary>
@@ -27,7 +24,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// D1 database identifier (UUID).
         /// </summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public readonly string Uuid;
         public readonly string Version;
 

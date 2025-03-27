@@ -106,6 +106,7 @@ public final class GetDnsRecordResult {
     private Double ttl;
     /**
      * @return Record type.
+     * Available values: &#34;A&#34;.
      * 
      */
     private String type;
@@ -240,6 +241,7 @@ public final class GetDnsRecordResult {
     }
     /**
      * @return Record type.
+     * Available values: &#34;A&#34;.
      * 
      */
     public String type() {

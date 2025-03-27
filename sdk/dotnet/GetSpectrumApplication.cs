@@ -85,21 +85,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetSpectrumApplicationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-<<<<<<< HEAD
-        /// Identifier
-=======
         /// App identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
 
         /// <summary>
-<<<<<<< HEAD
-        /// Identifier
-=======
         /// Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -113,21 +105,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetSpectrumApplicationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-<<<<<<< HEAD
-        /// Identifier
-=======
         /// App identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
 
         /// <summary>
-<<<<<<< HEAD
-        /// Identifier
-=======
         /// Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -143,11 +127,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetSpectrumApplicationResult
     {
         /// <summary>
-<<<<<<< HEAD
-        /// Identifier
-=======
         /// App identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         public readonly string AppId;
         /// <summary>
@@ -199,22 +179,21 @@ namespace Pulumi.Cloudflare
         public readonly string Protocol;
         /// <summary>
         /// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+        /// Available values: "off", "v1", "v2", "simple".
         /// </summary>
         public readonly string ProxyProtocol;
         /// <summary>
         /// The type of TLS termination associated with the application.
+        /// Available values: "off", "flexible", "full", "strict".
         /// </summary>
         public readonly string Tls;
         /// <summary>
         /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+        /// Available values: "direct", "http", "https".
         /// </summary>
         public readonly string TrafficType;
         /// <summary>
-<<<<<<< HEAD
-        /// Identifier
-=======
         /// Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         public readonly string ZoneId;
 

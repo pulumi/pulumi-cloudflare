@@ -19,6 +19,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Enable rule to block AI Scrapers and Crawlers.
+     * Available values: &#34;block&#34;, &#34;disabled&#34;.
      * 
      */
     @Import(name="aiBotsProtection")
@@ -26,6 +27,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Enable rule to block AI Scrapers and Crawlers.
+     * Available values: &#34;block&#34;, &#34;disabled&#34;.
      * 
      */
     public Optional<Output<String>> aiBotsProtection() {
@@ -45,6 +47,23 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<Boolean>> autoUpdateModel() {
         return Optional.ofNullable(this.autoUpdateModel);
+    }
+
+    /**
+     * Enable rule to punish AI Scrapers and Crawlers via a link maze.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    @Import(name="crawlerProtection")
+    private @Nullable Output<String> crawlerProtection;
+
+    /**
+     * @return Enable rule to punish AI Scrapers and Crawlers via a link maze.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    public Optional<Output<String>> crawlerProtection() {
+        return Optional.ofNullable(this.crawlerProtection);
     }
 
     /**
@@ -94,6 +113,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
      * 
      */
     @Import(name="sbfmDefinitelyAutomated")
@@ -101,6 +121,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
      * 
      */
     public Optional<Output<String>> sbfmDefinitelyAutomated() {
@@ -109,6 +130,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
      * 
      */
     @Import(name="sbfmLikelyAutomated")
@@ -116,6 +138,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
      * 
      */
     public Optional<Output<String>> sbfmLikelyAutomated() {
@@ -143,6 +166,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */
     @Import(name="sbfmVerifiedBots")
@@ -150,6 +174,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+     * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */
     public Optional<Output<String>> sbfmVerifiedBots() {
@@ -221,6 +246,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
     private BotManagementState(BotManagementState $) {
         this.aiBotsProtection = $.aiBotsProtection;
         this.autoUpdateModel = $.autoUpdateModel;
+        this.crawlerProtection = $.crawlerProtection;
         this.enableJs = $.enableJs;
         this.fightMode = $.fightMode;
         this.optimizeWordpress = $.optimizeWordpress;
@@ -254,6 +280,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param aiBotsProtection Enable rule to block AI Scrapers and Crawlers.
+         * Available values: &#34;block&#34;, &#34;disabled&#34;.
          * 
          * @return builder
          * 
@@ -265,6 +292,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param aiBotsProtection Enable rule to block AI Scrapers and Crawlers.
+         * Available values: &#34;block&#34;, &#34;disabled&#34;.
          * 
          * @return builder
          * 
@@ -292,6 +320,29 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder autoUpdateModel(Boolean autoUpdateModel) {
             return autoUpdateModel(Output.of(autoUpdateModel));
+        }
+
+        /**
+         * @param crawlerProtection Enable rule to punish AI Scrapers and Crawlers via a link maze.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crawlerProtection(@Nullable Output<String> crawlerProtection) {
+            $.crawlerProtection = crawlerProtection;
+            return this;
+        }
+
+        /**
+         * @param crawlerProtection Enable rule to punish AI Scrapers and Crawlers via a link maze.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crawlerProtection(String crawlerProtection) {
+            return crawlerProtection(Output.of(crawlerProtection));
         }
 
         /**
@@ -359,6 +410,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param sbfmDefinitelyAutomated Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+         * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
          * 
          * @return builder
          * 
@@ -370,6 +422,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param sbfmDefinitelyAutomated Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+         * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
          * 
          * @return builder
          * 
@@ -380,6 +433,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param sbfmLikelyAutomated Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+         * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
          * 
          * @return builder
          * 
@@ -391,6 +445,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param sbfmLikelyAutomated Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+         * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
          * 
          * @return builder
          * 
@@ -426,6 +481,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param sbfmVerifiedBots Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+         * Available values: &#34;allow&#34;, &#34;block&#34;.
          * 
          * @return builder
          * 
@@ -437,6 +493,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param sbfmVerifiedBots Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+         * Available values: &#34;allow&#34;, &#34;block&#34;.
          * 
          * @return builder
          * 

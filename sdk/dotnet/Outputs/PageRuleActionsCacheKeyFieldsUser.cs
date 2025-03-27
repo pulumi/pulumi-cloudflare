@@ -13,19 +13,8 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class PageRuleActionsCacheKeyFieldsUser
     {
-        /// <summary>
-        /// `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
-        /// </summary>
         public readonly bool? DeviceType;
-        /// <summary>
-        /// `true` - includes the client’s country, derived from the IP address; defaults to `false`.
-        /// </summary>
         public readonly bool? Geo;
-        /// <summary>
-        /// `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
-        /// 
-        /// Example:
-        /// </summary>
         public readonly bool? Lang;
 
         [OutputConstructor]

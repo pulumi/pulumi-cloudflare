@@ -73,6 +73,7 @@ class GetZoneSettingResult:
     def id(self) -> str:
         """
         ID of the zone setting.
+        Available values: "0rtt".
         """
         return pulumi.get(self, "id")
 
@@ -106,6 +107,7 @@ class GetZoneSettingResult:
     def value(self) -> str:
         """
         Current value of the zone setting.
+        Available values: "on", "off".
         """
         return pulumi.get(self, "value")
 

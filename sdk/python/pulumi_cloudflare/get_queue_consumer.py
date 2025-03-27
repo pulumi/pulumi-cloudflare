@@ -13,10 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
-<<<<<<< HEAD
-=======
 from . import outputs
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 __all__ = [
     'GetQueueConsumerResult',
@@ -30,12 +27,6 @@ class GetQueueConsumerResult:
     """
     A collection of values returned by getQueueConsumer.
     """
-<<<<<<< HEAD
-    def __init__(__self__, account_id=None, id=None, queue_id=None):
-        if account_id and not isinstance(account_id, str):
-            raise TypeError("Expected argument 'account_id' to be a str")
-        pulumi.set(__self__, "account_id", account_id)
-=======
     def __init__(__self__, account_id=None, consumer_id=None, created_on=None, id=None, queue_id=None, script=None, script_name=None, settings=None, type=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
@@ -46,15 +37,12 @@ class GetQueueConsumerResult:
         if created_on and not isinstance(created_on, str):
             raise TypeError("Expected argument 'created_on' to be a str")
         pulumi.set(__self__, "created_on", created_on)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if queue_id and not isinstance(queue_id, str):
             raise TypeError("Expected argument 'queue_id' to be a str")
         pulumi.set(__self__, "queue_id", queue_id)
-<<<<<<< HEAD
-=======
         if script and not isinstance(script, str):
             raise TypeError("Expected argument 'script' to be a str")
         pulumi.set(__self__, "script", script)
@@ -67,7 +55,6 @@ class GetQueueConsumerResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     @property
     @pulumi.getter(name="accountId")
@@ -78,8 +65,6 @@ class GetQueueConsumerResult:
         return pulumi.get(self, "account_id")
 
     @property
-<<<<<<< HEAD
-=======
     @pulumi.getter(name="consumerId")
     def consumer_id(self) -> str:
         """
@@ -93,7 +78,6 @@ class GetQueueConsumerResult:
         return pulumi.get(self, "created_on")
 
     @property
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter
     def id(self) -> str:
         """
@@ -109,8 +93,6 @@ class GetQueueConsumerResult:
         """
         return pulumi.get(self, "queue_id")
 
-<<<<<<< HEAD
-=======
     @property
     @pulumi.getter
     def script(self) -> str:
@@ -135,9 +117,11 @@ class GetQueueConsumerResult:
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Available values: "worker".
+        """
         return pulumi.get(self, "type")
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 class AwaitableGetQueueConsumerResult(GetQueueConsumerResult):
     # pylint: disable=using-constant-test
@@ -146,14 +130,6 @@ class AwaitableGetQueueConsumerResult(GetQueueConsumerResult):
             yield self
         return GetQueueConsumerResult(
             account_id=self.account_id,
-<<<<<<< HEAD
-            id=self.id,
-            queue_id=self.queue_id)
-
-
-def get_queue_consumer(account_id: Optional[str] = None,
-                       queue_id: Optional[str] = None,
-=======
             consumer_id=self.consumer_id,
             created_on=self.created_on,
             id=self.id,
@@ -165,12 +141,11 @@ def get_queue_consumer(account_id: Optional[str] = None,
 
 
 def get_queue_consumer(account_id: Optional[str] = None,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+                       queue_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQueueConsumerResult:
     """
     ## Example Usage
 
-<<<<<<< HEAD
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -186,24 +161,11 @@ def get_queue_consumer(account_id: Optional[str] = None,
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['queueId'] = queue_id
-=======
-
-    :param str account_id: A Resource identifier.
-    """
-    __args__ = dict()
-    __args__['accountId'] = account_id
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getQueueConsumer:getQueueConsumer', __args__, opts=opts, typ=GetQueueConsumerResult).value
 
     return AwaitableGetQueueConsumerResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-<<<<<<< HEAD
-        id=pulumi.get(__ret__, 'id'),
-        queue_id=pulumi.get(__ret__, 'queue_id'))
-def get_queue_consumer_output(account_id: Optional[pulumi.Input[str]] = None,
-                              queue_id: Optional[pulumi.Input[str]] = None,
-=======
         consumer_id=pulumi.get(__ret__, 'consumer_id'),
         created_on=pulumi.get(__ret__, 'created_on'),
         id=pulumi.get(__ret__, 'id'),
@@ -213,12 +175,11 @@ def get_queue_consumer_output(account_id: Optional[pulumi.Input[str]] = None,
         settings=pulumi.get(__ret__, 'settings'),
         type=pulumi.get(__ret__, 'type'))
 def get_queue_consumer_output(account_id: Optional[pulumi.Input[str]] = None,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+                              queue_id: Optional[pulumi.Input[str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQueueConsumerResult]:
     """
     ## Example Usage
 
-<<<<<<< HEAD
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -234,21 +195,10 @@ def get_queue_consumer_output(account_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['queueId'] = queue_id
-=======
-
-    :param str account_id: A Resource identifier.
-    """
-    __args__ = dict()
-    __args__['accountId'] = account_id
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getQueueConsumer:getQueueConsumer', __args__, opts=opts, typ=GetQueueConsumerResult)
     return __ret__.apply(lambda __response__: GetQueueConsumerResult(
         account_id=pulumi.get(__response__, 'account_id'),
-<<<<<<< HEAD
-        id=pulumi.get(__response__, 'id'),
-        queue_id=pulumi.get(__response__, 'queue_id')))
-=======
         consumer_id=pulumi.get(__response__, 'consumer_id'),
         created_on=pulumi.get(__response__, 'created_on'),
         id=pulumi.get(__response__, 'id'),
@@ -257,4 +207,3 @@ def get_queue_consumer_output(account_id: Optional[pulumi.Input[str]] = None,
         script_name=pulumi.get(__response__, 'script_name'),
         settings=pulumi.get(__response__, 'settings'),
         type=pulumi.get(__response__, 'type')))
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580

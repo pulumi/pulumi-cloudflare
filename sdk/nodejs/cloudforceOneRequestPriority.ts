@@ -93,6 +93,7 @@ export class CloudforceOneRequestPriority extends pulumi.CustomResource {
     public readonly requirement!: pulumi.Output<string>;
     /**
      * Request Status
+     * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -101,6 +102,7 @@ export class CloudforceOneRequestPriority extends pulumi.CustomResource {
     public /*out*/ readonly summary!: pulumi.Output<string>;
     /**
      * The CISA defined Traffic Light Protocol (TLP)
+     * Available values: "clear", "amber", "amber-strict", "green", "red".
      */
     public readonly tlp!: pulumi.Output<string>;
     /**
@@ -215,6 +217,7 @@ export interface CloudforceOneRequestPriorityState {
     requirement?: pulumi.Input<string>;
     /**
      * Request Status
+     * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
      */
     status?: pulumi.Input<string>;
     /**
@@ -223,6 +226,7 @@ export interface CloudforceOneRequestPriorityState {
     summary?: pulumi.Input<string>;
     /**
      * The CISA defined Traffic Light Protocol (TLP)
+     * Available values: "clear", "amber", "amber-strict", "green", "red".
      */
     tlp?: pulumi.Input<string>;
     /**
@@ -254,6 +258,7 @@ export interface CloudforceOneRequestPriorityArgs {
     requirement: pulumi.Input<string>;
     /**
      * The CISA defined Traffic Light Protocol (TLP)
+     * Available values: "clear", "amber", "amber-strict", "green", "red".
      */
     tlp: pulumi.Input<string>;
 }

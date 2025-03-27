@@ -33,6 +33,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
 
     /**
      * The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.
+     * Available values: &#34;random&#34;, &#34;hash&#34;.
      * 
      */
     @Import(name="defaultPolicy")
@@ -40,6 +41,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
 
     /**
      * @return The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.
+     * Available values: &#34;random&#34;, &#34;hash&#34;.
      * 
      */
     public Optional<Output<String>> defaultPolicy() {
@@ -63,6 +65,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
 
     /**
      * Only the hash policy is supported for existing sessions (to avoid exponential decay).
+     * Available values: &#34;hash&#34;.
      * 
      */
     @Import(name="sessionPolicy")
@@ -70,6 +73,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
 
     /**
      * @return Only the hash policy is supported for existing sessions (to avoid exponential decay).
+     * Available values: &#34;hash&#34;.
      * 
      */
     public Optional<Output<String>> sessionPolicy() {
@@ -126,6 +130,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
 
         /**
          * @param defaultPolicy The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.
+         * Available values: &#34;random&#34;, &#34;hash&#34;.
          * 
          * @return builder
          * 
@@ -137,6 +142,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
 
         /**
          * @param defaultPolicy The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.
+         * Available values: &#34;random&#34;, &#34;hash&#34;.
          * 
          * @return builder
          * 
@@ -168,6 +174,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
 
         /**
          * @param sessionPolicy Only the hash policy is supported for existing sessions (to avoid exponential decay).
+         * Available values: &#34;hash&#34;.
          * 
          * @return builder
          * 
@@ -179,6 +186,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
 
         /**
          * @param sessionPolicy Only the hash policy is supported for existing sessions (to avoid exponential decay).
+         * Available values: &#34;hash&#34;.
          * 
          * @return builder
          * 

@@ -68,6 +68,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
 
     /**
      * Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is &#34;saml&#34;
+     * Available values: &#34;saml&#34;, &#34;oidc&#34;.
      * 
      */
     @Import(name="authType")
@@ -75,6 +76,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
 
     /**
      * @return Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is &#34;saml&#34;
+     * Available values: &#34;saml&#34;, &#34;oidc&#34;.
      * 
      */
     public Optional<Output<String>> authType() {
@@ -216,6 +218,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
 
     /**
      * The format of the name identifier sent to the SaaS application.
+     * Available values: &#34;id&#34;, &#34;email&#34;.
      * 
      */
     @Import(name="nameIdFormat")
@@ -223,6 +226,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
 
     /**
      * @return The format of the name identifier sent to the SaaS application.
+     * Available values: &#34;id&#34;, &#34;email&#34;.
      * 
      */
     public Optional<Output<String>> nameIdFormat() {
@@ -461,6 +465,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
 
         /**
          * @param authType Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is &#34;saml&#34;
+         * Available values: &#34;saml&#34;, &#34;oidc&#34;.
          * 
          * @return builder
          * 
@@ -472,6 +477,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
 
         /**
          * @param authType Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is &#34;saml&#34;
+         * Available values: &#34;saml&#34;, &#34;oidc&#34;.
          * 
          * @return builder
          * 
@@ -683,6 +689,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
 
         /**
          * @param nameIdFormat The format of the name identifier sent to the SaaS application.
+         * Available values: &#34;id&#34;, &#34;email&#34;.
          * 
          * @return builder
          * 
@@ -694,6 +701,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
 
         /**
          * @param nameIdFormat The format of the name identifier sent to the SaaS application.
+         * Available values: &#34;id&#34;, &#34;email&#34;.
          * 
          * @return builder
          * 

@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 public final class SpectrumApplicationEdgeIps {
     /**
      * @return The IP versions supported for inbound connections on Spectrum anycast IPs.
+     * Available values: &#34;all&#34;, &#34;ipv4&#34;, &#34;ipv6&#34;.
      * 
      */
     private @Nullable String connectivity;
@@ -24,6 +25,7 @@ public final class SpectrumApplicationEdgeIps {
     private @Nullable List<String> ips;
     /**
      * @return The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
+     * Available values: &#34;dynamic&#34;.
      * 
      */
     private @Nullable String type;
@@ -31,6 +33,7 @@ public final class SpectrumApplicationEdgeIps {
     private SpectrumApplicationEdgeIps() {}
     /**
      * @return The IP versions supported for inbound connections on Spectrum anycast IPs.
+     * Available values: &#34;all&#34;, &#34;ipv4&#34;, &#34;ipv6&#34;.
      * 
      */
     public Optional<String> connectivity() {
@@ -45,6 +48,7 @@ public final class SpectrumApplicationEdgeIps {
     }
     /**
      * @return The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
+     * Available values: &#34;dynamic&#34;.
      * 
      */
     public Optional<String> type() {

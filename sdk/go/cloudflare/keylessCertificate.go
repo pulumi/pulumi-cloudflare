@@ -23,6 +23,7 @@ type KeylessCertificate struct {
 	pulumi.CustomResourceState
 
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod pulumi.StringOutput `pulumi:"bundleMethod"`
 	// The zone's SSL certificate or SSL certificate and intermediate(s).
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
@@ -41,6 +42,7 @@ type KeylessCertificate struct {
 	// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
 	Port pulumi.Float64Output `pulumi:"port"`
 	// Status of the Keyless SSL.
+	// Available values: "active", "deleted".
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Configuration for using Keyless SSL through a Cloudflare Tunnel
 	Tunnel KeylessCertificateTunnelOutput `pulumi:"tunnel"`
@@ -88,6 +90,7 @@ func GetKeylessCertificate(ctx *pulumi.Context,
 // Input properties used for looking up and filtering KeylessCertificate resources.
 type keylessCertificateState struct {
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod *string `pulumi:"bundleMethod"`
 	// The zone's SSL certificate or SSL certificate and intermediate(s).
 	Certificate *string `pulumi:"certificate"`
@@ -106,6 +109,7 @@ type keylessCertificateState struct {
 	// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
 	Port *float64 `pulumi:"port"`
 	// Status of the Keyless SSL.
+	// Available values: "active", "deleted".
 	Status *string `pulumi:"status"`
 	// Configuration for using Keyless SSL through a Cloudflare Tunnel
 	Tunnel *KeylessCertificateTunnel `pulumi:"tunnel"`
@@ -115,6 +119,7 @@ type keylessCertificateState struct {
 
 type KeylessCertificateState struct {
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod pulumi.StringPtrInput
 	// The zone's SSL certificate or SSL certificate and intermediate(s).
 	Certificate pulumi.StringPtrInput
@@ -133,6 +138,7 @@ type KeylessCertificateState struct {
 	// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
 	Port pulumi.Float64PtrInput
 	// Status of the Keyless SSL.
+	// Available values: "active", "deleted".
 	Status pulumi.StringPtrInput
 	// Configuration for using Keyless SSL through a Cloudflare Tunnel
 	Tunnel KeylessCertificateTunnelPtrInput
@@ -146,6 +152,7 @@ func (KeylessCertificateState) ElementType() reflect.Type {
 
 type keylessCertificateArgs struct {
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod *string `pulumi:"bundleMethod"`
 	// The zone's SSL certificate or SSL certificate and intermediate(s).
 	Certificate string `pulumi:"certificate"`
@@ -166,6 +173,7 @@ type keylessCertificateArgs struct {
 // The set of arguments for constructing a KeylessCertificate resource.
 type KeylessCertificateArgs struct {
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod pulumi.StringPtrInput
 	// The zone's SSL certificate or SSL certificate and intermediate(s).
 	Certificate pulumi.StringInput
@@ -271,6 +279,7 @@ func (o KeylessCertificateOutput) ToKeylessCertificateOutputWithContext(ctx cont
 }
 
 // A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+// Available values: "ubiquitous", "optimal", "force".
 func (o KeylessCertificateOutput) BundleMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeylessCertificate) pulumi.StringOutput { return v.BundleMethod }).(pulumi.StringOutput)
 }
@@ -316,6 +325,7 @@ func (o KeylessCertificateOutput) Port() pulumi.Float64Output {
 }
 
 // Status of the Keyless SSL.
+// Available values: "active", "deleted".
 func (o KeylessCertificateOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeylessCertificate) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

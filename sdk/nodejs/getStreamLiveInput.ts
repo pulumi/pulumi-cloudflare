@@ -95,6 +95,7 @@ export interface GetStreamLiveInputResult {
     readonly srtPlayback: outputs.GetStreamLiveInputSrtPlayback;
     /**
      * The connection status of a live input.
+     * Available values: "connected", "reconnected", "reconnecting", "client*disconnect", "ttl*exceeded", "failed*to*connect", "failed*to*reconnect", "new*configuration*accepted".
      */
     readonly status: string;
     /**

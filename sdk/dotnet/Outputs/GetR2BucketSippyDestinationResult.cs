@@ -23,6 +23,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// Name of the bucket on the provider
         /// </summary>
         public readonly string Bucket;
+        /// <summary>
+        /// Available values: "r2".
+        /// </summary>
         public readonly string Provider;
 
         [OutputConstructor]

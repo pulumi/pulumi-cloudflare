@@ -52,15 +52,15 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
      * If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
      * 
      */
-    @Import(name="cve20214428")
-    private @Nullable Output<Boolean> cve20214428;
+    @Import(name="cve202144228")
+    private @Nullable Output<Boolean> cve202144228;
 
     /**
      * @return If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
      * 
      */
-    public Optional<Output<Boolean>> cve20214428() {
-        return Optional.ofNullable(this.cve20214428);
+    public Optional<Output<Boolean>> cve202144228() {
+        return Optional.ofNullable(this.cve202144228);
     }
 
     /**
@@ -95,6 +95,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
 
     /**
      * Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+     * Available values: &#34;ndjson&#34;, &#34;csv&#34;.
      * 
      */
     @Import(name="outputType")
@@ -102,6 +103,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
 
     /**
      * @return Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+     * Available values: &#34;ndjson&#34;, &#34;csv&#34;.
      * 
      */
     public Optional<Output<String>> outputType() {
@@ -185,6 +187,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
 
     /**
      * String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+     * Available values: &#34;unixnano&#34;, &#34;unix&#34;, &#34;rfc3339&#34;.
      * 
      */
     @Import(name="timestampFormat")
@@ -192,6 +195,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
 
     /**
      * @return String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+     * Available values: &#34;unixnano&#34;, &#34;unix&#34;, &#34;rfc3339&#34;.
      * 
      */
     public Optional<Output<String>> timestampFormat() {
@@ -203,7 +207,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
     private LogpushJobOutputOptionsArgs(LogpushJobOutputOptionsArgs $) {
         this.batchPrefix = $.batchPrefix;
         this.batchSuffix = $.batchSuffix;
-        this.cve20214428 = $.cve20214428;
+        this.cve202144228 = $.cve202144228;
         this.fieldDelimiter = $.fieldDelimiter;
         this.fieldNames = $.fieldNames;
         this.outputType = $.outputType;
@@ -276,24 +280,24 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param cve20214428 If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
+         * @param cve202144228 If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
          * 
          * @return builder
          * 
          */
-        public Builder cve20214428(@Nullable Output<Boolean> cve20214428) {
-            $.cve20214428 = cve20214428;
+        public Builder cve202144228(@Nullable Output<Boolean> cve202144228) {
+            $.cve202144228 = cve202144228;
             return this;
         }
 
         /**
-         * @param cve20214428 If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
+         * @param cve202144228 If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
          * 
          * @return builder
          * 
          */
-        public Builder cve20214428(Boolean cve20214428) {
-            return cve20214428(Output.of(cve20214428));
+        public Builder cve202144228(Boolean cve202144228) {
+            return cve202144228(Output.of(cve202144228));
         }
 
         /**
@@ -350,6 +354,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
 
         /**
          * @param outputType Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+         * Available values: &#34;ndjson&#34;, &#34;csv&#34;.
          * 
          * @return builder
          * 
@@ -361,6 +366,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
 
         /**
          * @param outputType Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+         * Available values: &#34;ndjson&#34;, &#34;csv&#34;.
          * 
          * @return builder
          * 
@@ -476,6 +482,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
 
         /**
          * @param timestampFormat String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+         * Available values: &#34;unixnano&#34;, &#34;unix&#34;, &#34;rfc3339&#34;.
          * 
          * @return builder
          * 
@@ -487,6 +494,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
 
         /**
          * @param timestampFormat String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+         * Available values: &#34;unixnano&#34;, &#34;unix&#34;, &#34;rfc3339&#34;.
          * 
          * @return builder
          * 

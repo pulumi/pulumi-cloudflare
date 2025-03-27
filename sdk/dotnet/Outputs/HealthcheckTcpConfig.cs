@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// The TCP connection method to use for the health check.
+        /// Available values: "connection_established".
         /// </summary>
         public readonly string? Method;
         /// <summary>

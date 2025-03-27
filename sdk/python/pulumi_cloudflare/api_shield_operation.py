@@ -30,6 +30,7 @@ class ApiShieldOperationArgs:
         :param pulumi.Input[str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
         :param pulumi.Input[str] host: RFC3986-compliant host.
         :param pulumi.Input[str] method: The HTTP method used to access the endpoint.
+               Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         :param pulumi.Input[str] zone_id: Identifier
         """
         pulumi.set(__self__, "endpoint", endpoint)
@@ -66,6 +67,7 @@ class ApiShieldOperationArgs:
     def method(self) -> pulumi.Input[str]:
         """
         The HTTP method used to access the endpoint.
+        Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         """
         return pulumi.get(self, "method")
 
@@ -101,6 +103,7 @@ class _ApiShieldOperationState:
         :param pulumi.Input[str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
         :param pulumi.Input[str] host: RFC3986-compliant host.
         :param pulumi.Input[str] method: The HTTP method used to access the endpoint.
+               Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         :param pulumi.Input[str] operation_id: UUID
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -166,6 +169,7 @@ class _ApiShieldOperationState:
     def method(self) -> Optional[pulumi.Input[str]]:
         """
         The HTTP method used to access the endpoint.
+        Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         """
         return pulumi.get(self, "method")
 
@@ -233,6 +237,7 @@ class ApiShieldOperation(pulumi.CustomResource):
         :param pulumi.Input[str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
         :param pulumi.Input[str] host: RFC3986-compliant host.
         :param pulumi.Input[str] method: The HTTP method used to access the endpoint.
+               Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         :param pulumi.Input[str] zone_id: Identifier
         """
         ...
@@ -331,6 +336,7 @@ class ApiShieldOperation(pulumi.CustomResource):
         :param pulumi.Input[str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
         :param pulumi.Input[str] host: RFC3986-compliant host.
         :param pulumi.Input[str] method: The HTTP method used to access the endpoint.
+               Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         :param pulumi.Input[str] operation_id: UUID
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -378,6 +384,7 @@ class ApiShieldOperation(pulumi.CustomResource):
     def method(self) -> pulumi.Output[str]:
         """
         The HTTP method used to access the endpoint.
+        Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         """
         return pulumi.get(self, "method")
 

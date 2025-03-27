@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleMagicNetworkMonitoringRule = new MagicNetworkMonitoringRule("exampleMagicNetworkMonitoringRule", MagicNetworkMonitoringRuleArgs.builder()
  *             .accountId("6f91088a406011ed95aed352566e8d4c")
- *             .duration("300s")
+ *             .duration("1m")
  *             .name("my_rule_1")
  *             .automaticAdvertisement(true)
  *             .bandwidth(1000)
@@ -117,14 +117,16 @@ public class MagicNetworkMonitoringRule extends com.pulumi.resources.CustomResou
         return this.bandwidthThreshold;
     }
     /**
-     * The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [&#34;1m&#34;,&#34;5m&#34;,&#34;10m&#34;,&#34;15m&#34;,&#34;20m&#34;,&#34;30m&#34;,&#34;45m&#34;,&#34;60m&#34;]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+     * The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [&#34;1m&#34;,&#34;5m&#34;,&#34;10m&#34;,&#34;15m&#34;,&#34;20m&#34;,&#34;30m&#34;,&#34;45m&#34;,&#34;60m&#34;].
+     * Available values: &#34;1m&#34;, &#34;5m&#34;, &#34;10m&#34;, &#34;15m&#34;, &#34;20m&#34;, &#34;30m&#34;, &#34;45m&#34;, &#34;60m&#34;.
      * 
      */
     @Export(name="duration", refs={String.class}, tree="[0]")
     private Output<String> duration;
 
     /**
-     * @return The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [&#34;1m&#34;,&#34;5m&#34;,&#34;10m&#34;,&#34;15m&#34;,&#34;20m&#34;,&#34;30m&#34;,&#34;45m&#34;,&#34;60m&#34;]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+     * @return The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [&#34;1m&#34;,&#34;5m&#34;,&#34;10m&#34;,&#34;15m&#34;,&#34;20m&#34;,&#34;30m&#34;,&#34;45m&#34;,&#34;60m&#34;].
+     * Available values: &#34;1m&#34;, &#34;5m&#34;, &#34;10m&#34;, &#34;15m&#34;, &#34;20m&#34;, &#34;30m&#34;, &#34;45m&#34;, &#34;60m&#34;.
      * 
      */
     public Output<String> duration() {
@@ -158,11 +160,75 @@ public class MagicNetworkMonitoringRule extends com.pulumi.resources.CustomResou
     public Output<Optional<Double>> packetThreshold() {
         return Codegen.optional(this.packetThreshold);
     }
+    /**
+     * Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+     * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
+     * 
+     */
+    @Export(name="prefixMatch", refs={String.class}, tree="[0]")
+    private Output<String> prefixMatch;
+
+    /**
+     * @return Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+     * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
+     * 
+     */
+    public Output<String> prefixMatch() {
+        return this.prefixMatch;
+    }
     @Export(name="prefixes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> prefixes;
 
     public Output<Optional<List<String>>> prefixes() {
         return Codegen.optional(this.prefixes);
+    }
+    /**
+     * MNM rule type.
+     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advanced_ddos&#34;.
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output<String> type;
+
+    /**
+     * @return MNM rule type.
+     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advanced_ddos&#34;.
+     * 
+     */
+    public Output<String> type() {
+        return this.type;
+    }
+    /**
+     * Level of sensitivity set for zscore rules.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+     * 
+     */
+    @Export(name="zscoreSensitivity", refs={String.class}, tree="[0]")
+    private Output<String> zscoreSensitivity;
+
+    /**
+     * @return Level of sensitivity set for zscore rules.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+     * 
+     */
+    public Output<String> zscoreSensitivity() {
+        return this.zscoreSensitivity;
+    }
+    /**
+     * Target of the zscore rule analysis.
+     * Available values: &#34;bits&#34;, &#34;packets&#34;.
+     * 
+     */
+    @Export(name="zscoreTarget", refs={String.class}, tree="[0]")
+    private Output<String> zscoreTarget;
+
+    /**
+     * @return Target of the zscore rule analysis.
+     * Available values: &#34;bits&#34;, &#34;packets&#34;.
+     * 
+     */
+    public Output<String> zscoreTarget() {
+        return this.zscoreTarget;
     }
 
     /**

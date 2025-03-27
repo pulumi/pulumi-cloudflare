@@ -21,6 +21,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
         /// this setting can determine the clearance level to be set
+        /// Available values: "no_clearance", "jschallenge", "managed", "interactive".
         /// </summary>
         public readonly string ClearanceLevel;
         /// <summary>
@@ -34,6 +35,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool EphemeralId;
         /// <summary>
         /// Widget Mode
+        /// Available values: "non-interactive", "invisible", "managed".
         /// </summary>
         public readonly string Mode;
         /// <summary>
@@ -52,6 +54,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool Offlabel;
         /// <summary>
         /// Region where this widget can be used.
+        /// Available values: "world".
         /// </summary>
         public readonly string Region;
         /// <summary>

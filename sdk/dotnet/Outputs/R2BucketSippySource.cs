@@ -29,6 +29,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// Private Key of an IAM credential (ideally scoped to a single GCS bucket)
         /// </summary>
         public readonly string? PrivateKey;
+        /// <summary>
+        /// Available values: "aws".
+        /// </summary>
         public readonly string? Provider;
         /// <summary>
         /// Name of the AWS availability zone

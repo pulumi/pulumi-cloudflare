@@ -95,6 +95,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Direction to order widgets.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
@@ -107,6 +108,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Field to order widgets by.
+        /// Available values: "id", "sitekey", "name", "created*on", "modified*on".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -127,6 +129,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Direction to order widgets.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -139,6 +142,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Field to order widgets by.
+        /// Available values: "id", "sitekey", "name", "created*on", "modified*on".
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
@@ -159,6 +163,7 @@ namespace Pulumi.Cloudflare
         public readonly string AccountId;
         /// <summary>
         /// Direction to order widgets.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
@@ -171,6 +176,7 @@ namespace Pulumi.Cloudflare
         public readonly int? MaxItems;
         /// <summary>
         /// Field to order widgets by.
+        /// Available values: "id", "sitekey", "name", "created*on", "modified*on".
         /// </summary>
         public readonly string? Order;
         /// <summary>

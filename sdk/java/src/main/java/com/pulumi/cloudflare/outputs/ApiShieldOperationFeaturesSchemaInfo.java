@@ -25,6 +25,7 @@ public final class ApiShieldOperationFeaturesSchemaInfo {
     private @Nullable Boolean learnedAvailable;
     /**
      * @return Action taken on requests failing validation.
+     * Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
      * 
      */
     private @Nullable String mitigationAction;
@@ -46,6 +47,7 @@ public final class ApiShieldOperationFeaturesSchemaInfo {
     }
     /**
      * @return Action taken on requests failing validation.
+     * Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
      * 
      */
     public Optional<String> mitigationAction() {

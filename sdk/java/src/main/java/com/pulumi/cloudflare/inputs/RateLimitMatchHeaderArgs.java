@@ -32,6 +32,7 @@ public final class RateLimitMatchHeaderArgs extends com.pulumi.resources.Resourc
 
     /**
      * The operator used when matching: `eq` means &#34;equal&#34; and `ne` means &#34;not equal&#34;.
+     * Available values: &#34;eq&#34;, &#34;ne&#34;.
      * 
      */
     @Import(name="op")
@@ -39,6 +40,7 @@ public final class RateLimitMatchHeaderArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The operator used when matching: `eq` means &#34;equal&#34; and `ne` means &#34;not equal&#34;.
+     * Available values: &#34;eq&#34;, &#34;ne&#34;.
      * 
      */
     public Optional<Output<String>> op() {
@@ -109,6 +111,7 @@ public final class RateLimitMatchHeaderArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param op The operator used when matching: `eq` means &#34;equal&#34; and `ne` means &#34;not equal&#34;.
+         * Available values: &#34;eq&#34;, &#34;ne&#34;.
          * 
          * @return builder
          * 
@@ -120,6 +123,7 @@ public final class RateLimitMatchHeaderArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param op The operator used when matching: `eq` means &#34;equal&#34; and `ne` means &#34;not equal&#34;.
+         * Available values: &#34;eq&#34;, &#34;ne&#34;.
          * 
          * @return builder
          * 

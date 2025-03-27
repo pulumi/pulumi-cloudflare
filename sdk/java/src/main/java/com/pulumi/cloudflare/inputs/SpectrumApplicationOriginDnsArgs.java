@@ -48,6 +48,7 @@ public final class SpectrumApplicationOriginDnsArgs extends com.pulumi.resources
 
     /**
      * The type of DNS record associated with the origin. &#34;&#34; is used to specify a combination of A/AAAA records.
+     * Available values: &#34;&#34;, &#34;A&#34;, &#34;AAAA&#34;, &#34;SRV&#34;.
      * 
      */
     @Import(name="type")
@@ -55,6 +56,7 @@ public final class SpectrumApplicationOriginDnsArgs extends com.pulumi.resources
 
     /**
      * @return The type of DNS record associated with the origin. &#34;&#34; is used to specify a combination of A/AAAA records.
+     * Available values: &#34;&#34;, &#34;A&#34;, &#34;AAAA&#34;, &#34;SRV&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -131,6 +133,7 @@ public final class SpectrumApplicationOriginDnsArgs extends com.pulumi.resources
 
         /**
          * @param type The type of DNS record associated with the origin. &#34;&#34; is used to specify a combination of A/AAAA records.
+         * Available values: &#34;&#34;, &#34;A&#34;, &#34;AAAA&#34;, &#34;SRV&#34;.
          * 
          * @return builder
          * 
@@ -142,6 +145,7 @@ public final class SpectrumApplicationOriginDnsArgs extends com.pulumi.resources
 
         /**
          * @param type The type of DNS record associated with the origin. &#34;&#34; is used to specify a combination of A/AAAA records.
+         * Available values: &#34;&#34;, &#34;A&#34;, &#34;AAAA&#34;, &#34;SRV&#34;.
          * 
          * @return builder
          * 

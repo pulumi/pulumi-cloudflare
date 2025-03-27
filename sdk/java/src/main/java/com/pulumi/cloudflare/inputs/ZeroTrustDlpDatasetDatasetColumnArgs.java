@@ -37,9 +37,17 @@ public final class ZeroTrustDlpDatasetDatasetColumnArgs extends com.pulumi.resou
         return Optional.ofNullable(this.numCells);
     }
 
+    /**
+     * Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
     @Import(name="uploadStatus")
     private @Nullable Output<String> uploadStatus;
 
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
     public Optional<Output<String>> uploadStatus() {
         return Optional.ofNullable(this.uploadStatus);
     }
@@ -98,11 +106,23 @@ public final class ZeroTrustDlpDatasetDatasetColumnArgs extends com.pulumi.resou
             return numCells(Output.of(numCells));
         }
 
+        /**
+         * @param uploadStatus Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uploadStatus(@Nullable Output<String> uploadStatus) {
             $.uploadStatus = uploadStatus;
             return this;
         }
 
+        /**
+         * @param uploadStatus Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uploadStatus(String uploadStatus) {
             return uploadStatus(Output.of(uploadStatus));
         }

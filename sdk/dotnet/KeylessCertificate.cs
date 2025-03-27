@@ -23,6 +23,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        /// Available values: "ubiquitous", "optimal", "force".
         /// </summary>
         [Output("bundleMethod")]
         public Output<string> BundleMethod { get; private set; } = null!;
@@ -77,6 +78,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the Keyless SSL.
+        /// Available values: "active", "deleted".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -141,6 +143,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        /// Available values: "ubiquitous", "optimal", "force".
         /// </summary>
         [Input("bundleMethod")]
         public Input<string>? BundleMethod { get; set; }
@@ -197,6 +200,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        /// Available values: "ubiquitous", "optimal", "force".
         /// </summary>
         [Input("bundleMethod")]
         public Input<string>? BundleMethod { get; set; }
@@ -257,6 +261,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the Keyless SSL.
+        /// Available values: "active", "deleted".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

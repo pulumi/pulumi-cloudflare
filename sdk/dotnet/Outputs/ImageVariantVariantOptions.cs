@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// The fit property describes how the width and height dimensions should be interpreted.
+        /// Available values: "scale-down", "contain", "cover", "crop", "pad".
         /// </summary>
         public readonly string? Fit;
         /// <summary>
@@ -23,6 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double? Height;
         /// <summary>
         /// What EXIF data should be preserved in the output image.
+        /// Available values: "keep", "copyright", "none".
         /// </summary>
         public readonly string? Metadata;
         /// <summary>

@@ -131,13 +131,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-<<<<<<< HEAD
-=======
         /// Denotes whether the audio track will be played by default in a player.
         /// </summary>
         public readonly bool Default;
         /// <summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -145,35 +142,24 @@ namespace Pulumi.Cloudflare
         /// A Cloudflare-generated unique identifier for a media item.
         /// </summary>
         public readonly string Identifier;
-<<<<<<< HEAD
-=======
         /// <summary>
         /// A string to uniquely identify the track amongst other audio track labels for the specified video.
         /// </summary>
         public readonly string Label;
         /// <summary>
         /// Specifies the processing status of the video.
+        /// Available values: "queued", "ready", "error".
         /// </summary>
         public readonly string Status;
         /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
         /// </summary>
         public readonly string Uid;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         [OutputConstructor]
         private GetStreamAudioTrackResult(
             string accountId,
 
-<<<<<<< HEAD
-            string id,
-
-            string identifier)
-        {
-            AccountId = accountId;
-            Id = id;
-            Identifier = identifier;
-=======
             bool @default,
 
             string id,
@@ -193,7 +179,6 @@ namespace Pulumi.Cloudflare
             Label = label;
             Status = status;
             Uid = uid;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
     }
 }

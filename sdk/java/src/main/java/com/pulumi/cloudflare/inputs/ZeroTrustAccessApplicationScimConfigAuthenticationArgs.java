@@ -79,6 +79,7 @@ public final class ZeroTrustAccessApplicationScimConfigAuthenticationArgs extend
 
     /**
      * The authentication scheme to use when making SCIM requests to this application.
+     * Available values: &#34;httpbasic&#34;.
      * 
      */
     @Import(name="scheme", required=true)
@@ -86,6 +87,7 @@ public final class ZeroTrustAccessApplicationScimConfigAuthenticationArgs extend
 
     /**
      * @return The authentication scheme to use when making SCIM requests to this application.
+     * Available values: &#34;httpbasic&#34;.
      * 
      */
     public Output<String> scheme() {
@@ -270,6 +272,7 @@ public final class ZeroTrustAccessApplicationScimConfigAuthenticationArgs extend
 
         /**
          * @param scheme The authentication scheme to use when making SCIM requests to this application.
+         * Available values: &#34;httpbasic&#34;.
          * 
          * @return builder
          * 
@@ -281,6 +284,7 @@ public final class ZeroTrustAccessApplicationScimConfigAuthenticationArgs extend
 
         /**
          * @param scheme The authentication scheme to use when making SCIM requests to this application.
+         * Available values: &#34;httpbasic&#34;.
          * 
          * @return builder
          * 

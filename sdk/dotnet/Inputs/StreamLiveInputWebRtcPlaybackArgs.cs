@@ -10,7 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-<<<<<<<< HEAD:sdk/dotnet/Inputs/StreamLiveInputWebRtcPlaybackArgs.cs
     public sealed class StreamLiveInputWebRtcPlaybackArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
@@ -23,19 +22,5 @@ namespace Pulumi.Cloudflare.Inputs
         {
         }
         public static new StreamLiveInputWebRtcPlaybackArgs Empty => new StreamLiveInputWebRtcPlaybackArgs();
-========
-    public sealed class CloudConnectorRulesParametersArgs : global::Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Host to perform Cloud Connection to
-        /// </summary>
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
-        public CloudConnectorRulesParametersArgs()
-        {
-        }
-        public static new CloudConnectorRulesParametersArgs Empty => new CloudConnectorRulesParametersArgs();
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/dotnet/Inputs/CloudConnectorRulesParametersArgs.cs
     }
 }

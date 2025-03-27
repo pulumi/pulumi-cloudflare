@@ -124,6 +124,9 @@ class GetZeroTrustDlpEntryResult:
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Available values: "custom".
+        """
         return pulumi.get(self, "type")
 
     @property

@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class GetApiTokenFilter {
     /**
      * @return Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
@@ -20,6 +21,7 @@ public final class GetApiTokenFilter {
     private GetApiTokenFilter() {}
     /**
      * @return Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {

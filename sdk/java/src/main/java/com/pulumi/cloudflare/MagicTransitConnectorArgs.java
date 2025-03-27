@@ -18,17 +18,9 @@ public final class MagicTransitConnectorArgs extends com.pulumi.resources.Resour
 
     public static final MagicTransitConnectorArgs Empty = new MagicTransitConnectorArgs();
 
-    /**
-     * Account identifier
-     * 
-     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
-    /**
-     * @return Account identifier
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
@@ -105,23 +97,11 @@ public final class MagicTransitConnectorArgs extends com.pulumi.resources.Resour
             $ = new MagicTransitConnectorArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId Account identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId Account identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }

@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.ZeroTrustDevicePostureRuleArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDevicePostureRuleState;
 import com.pulumi.cloudflare.outputs.ZeroTrustDevicePostureRuleInput;
 import com.pulumi.cloudflare.outputs.ZeroTrustDevicePostureRuleMatch;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -171,6 +172,7 @@ public class ZeroTrustDevicePostureRule extends com.pulumi.resources.CustomResou
     }
     /**
      * The type of device posture rule.
+     * Available values: &#34;file&#34;, &#34;application&#34;, &#34;tanium&#34;, &#34;gateway&#34;, &#34;warp&#34;, &#34;disk*encryption&#34;, &#34;sentinelone&#34;, &#34;carbonblack&#34;, &#34;firewall&#34;, &#34;os*version&#34;, &#34;domain*joined&#34;, &#34;client*certificate&#34;, &#34;client*certificate*v2&#34;, &#34;unique*client*id&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;crowdstrike*s2s&#34;, &#34;intune&#34;, &#34;workspace*one&#34;, &#34;sentinelone*s2s&#34;, &#34;custom_s2s&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -178,6 +180,7 @@ public class ZeroTrustDevicePostureRule extends com.pulumi.resources.CustomResou
 
     /**
      * @return The type of device posture rule.
+     * Available values: &#34;file&#34;, &#34;application&#34;, &#34;tanium&#34;, &#34;gateway&#34;, &#34;warp&#34;, &#34;disk*encryption&#34;, &#34;sentinelone&#34;, &#34;carbonblack&#34;, &#34;firewall&#34;, &#34;os*version&#34;, &#34;domain*joined&#34;, &#34;client*certificate&#34;, &#34;client*certificate*v2&#34;, &#34;unique*client*id&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;crowdstrike*s2s&#34;, &#34;intune&#34;, &#34;workspace*one&#34;, &#34;sentinelone*s2s&#34;, &#34;custom_s2s&#34;.
      * 
      */
     public Output<String> type() {
@@ -223,6 +226,9 @@ public class ZeroTrustDevicePostureRule extends com.pulumi.resources.CustomResou
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/devicePostureRule:DevicePostureRule").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -18,6 +18,7 @@ public final class GetCustomHostnameFilter extends com.pulumi.resources.InvokeAr
 
     /**
      * Direction to order hostnames.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -25,6 +26,7 @@ public final class GetCustomHostnameFilter extends com.pulumi.resources.InvokeAr
 
     /**
      * @return Direction to order hostnames.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -63,6 +65,7 @@ public final class GetCustomHostnameFilter extends com.pulumi.resources.InvokeAr
 
     /**
      * Field to order hostnames by.
+     * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
      * 
      */
     @Import(name="order", required=true)
@@ -70,6 +73,7 @@ public final class GetCustomHostnameFilter extends com.pulumi.resources.InvokeAr
 
     /**
      * @return Field to order hostnames by.
+     * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
      * 
      */
     public String order() {
@@ -78,6 +82,7 @@ public final class GetCustomHostnameFilter extends com.pulumi.resources.InvokeAr
 
     /**
      * Whether to filter hostnames based on if they have SSL enabled.
+     * Available values: 0, 1.
      * 
      */
     @Import(name="ssl")
@@ -85,6 +90,7 @@ public final class GetCustomHostnameFilter extends com.pulumi.resources.InvokeAr
 
     /**
      * @return Whether to filter hostnames based on if they have SSL enabled.
+     * Available values: 0, 1.
      * 
      */
     public Optional<Double> ssl() {
@@ -121,6 +127,7 @@ public final class GetCustomHostnameFilter extends com.pulumi.resources.InvokeAr
 
         /**
          * @param direction Direction to order hostnames.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -154,6 +161,7 @@ public final class GetCustomHostnameFilter extends com.pulumi.resources.InvokeAr
 
         /**
          * @param order Field to order hostnames by.
+         * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
          * 
          * @return builder
          * 
@@ -165,6 +173,7 @@ public final class GetCustomHostnameFilter extends com.pulumi.resources.InvokeAr
 
         /**
          * @param ssl Whether to filter hostnames based on if they have SSL enabled.
+         * Available values: 0, 1.
          * 
          * @return builder
          * 

@@ -63,6 +63,10 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
      * 
      */
     private Boolean excludeOfficeIps;
+    /**
+     * @return List of routes excluded in the WARP client&#39;s tunnel.
+     * 
+     */
     private List<GetZeroTrustDeviceDefaultProfileExclude> excludes;
     private List<GetZeroTrustDeviceDefaultProfileFallbackDomain> fallbackDomains;
     private String gatewayUniqueId;
@@ -71,7 +75,16 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
      * 
      */
     private String id;
+    /**
+     * @return List of routes included in the WARP client&#39;s tunnel.
+     * 
+     */
     private List<GetZeroTrustDeviceDefaultProfileInclude> includes;
+    /**
+     * @return Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
+     * 
+     */
+    private Boolean registerInterfaceIpWithDns;
     private GetZeroTrustDeviceDefaultProfileServiceModeV2 serviceModeV2;
     /**
      * @return The URL to launch when the Send Feedback button is clicked.
@@ -156,6 +169,10 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
     public Boolean excludeOfficeIps() {
         return this.excludeOfficeIps;
     }
+    /**
+     * @return List of routes excluded in the WARP client&#39;s tunnel.
+     * 
+     */
     public List<GetZeroTrustDeviceDefaultProfileExclude> excludes() {
         return this.excludes;
     }
@@ -172,8 +189,19 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return List of routes included in the WARP client&#39;s tunnel.
+     * 
+     */
     public List<GetZeroTrustDeviceDefaultProfileInclude> includes() {
         return this.includes;
+    }
+    /**
+     * @return Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
+     * 
+     */
+    public Boolean registerInterfaceIpWithDns() {
+        return this.registerInterfaceIpWithDns;
     }
     public GetZeroTrustDeviceDefaultProfileServiceModeV2 serviceModeV2() {
         return this.serviceModeV2;
@@ -224,6 +252,7 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
         private String gatewayUniqueId;
         private String id;
         private List<GetZeroTrustDeviceDefaultProfileInclude> includes;
+        private Boolean registerInterfaceIpWithDns;
         private GetZeroTrustDeviceDefaultProfileServiceModeV2 serviceModeV2;
         private String supportUrl;
         private Boolean switchLocked;
@@ -246,6 +275,7 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
     	      this.gatewayUniqueId = defaults.gatewayUniqueId;
     	      this.id = defaults.id;
     	      this.includes = defaults.includes;
+    	      this.registerInterfaceIpWithDns = defaults.registerInterfaceIpWithDns;
     	      this.serviceModeV2 = defaults.serviceModeV2;
     	      this.supportUrl = defaults.supportUrl;
     	      this.switchLocked = defaults.switchLocked;
@@ -382,6 +412,14 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
             return includes(List.of(includes));
         }
         @CustomType.Setter
+        public Builder registerInterfaceIpWithDns(Boolean registerInterfaceIpWithDns) {
+            if (registerInterfaceIpWithDns == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceDefaultProfileResult", "registerInterfaceIpWithDns");
+            }
+            this.registerInterfaceIpWithDns = registerInterfaceIpWithDns;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceModeV2(GetZeroTrustDeviceDefaultProfileServiceModeV2 serviceModeV2) {
             if (serviceModeV2 == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDeviceDefaultProfileResult", "serviceModeV2");
@@ -430,6 +468,7 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
             _resultValue.gatewayUniqueId = gatewayUniqueId;
             _resultValue.id = id;
             _resultValue.includes = includes;
+            _resultValue.registerInterfaceIpWithDns = registerInterfaceIpWithDns;
             _resultValue.serviceModeV2 = serviceModeV2;
             _resultValue.supportUrl = supportUrl;
             _resultValue.switchLocked = switchLocked;

@@ -79,6 +79,7 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
     public readonly secret!: pulumi.Output<string | undefined>;
     /**
      * Type of webhook endpoint.
+     * Available values: "slack", "generic", "gchat".
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -120,7 +121,7 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["secret"] = args ? args.secret : undefined;
+            resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lastFailure"] = undefined /*out*/;
@@ -128,6 +129,8 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["secret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(NotificationPolicyWebhooks.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -162,6 +165,7 @@ export interface NotificationPolicyWebhooksState {
     secret?: pulumi.Input<string>;
     /**
      * Type of webhook endpoint.
+     * Available values: "slack", "generic", "gchat".
      */
     type?: pulumi.Input<string>;
     /**

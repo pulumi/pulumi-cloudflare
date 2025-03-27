@@ -20,8 +20,14 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("accessKeyId")]
         public Input<string>? AccessKeyId { get; set; }
 
+        /// <summary>
+        /// Available values: "r2".
+        /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
+
+        [Input("secretAccessKey")]
+        private Input<string>? _secretAccessKey;
 
         /// <summary>
         /// Value of a Cloudflare API token.
@@ -31,8 +37,15 @@ namespace Pulumi.Cloudflare.Inputs
         /// Sippy will use this token when writing objects to R2, so it is
         /// best to scope this token to the bucket you're enabling Sippy for.
         /// </summary>
-        [Input("secretAccessKey")]
-        public Input<string>? SecretAccessKey { get; set; }
+        public Input<string>? SecretAccessKey
+        {
+            get => _secretAccessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretAccessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public R2BucketSippyDestinationArgs()
         {

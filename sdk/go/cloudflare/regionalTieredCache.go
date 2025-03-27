@@ -52,6 +52,7 @@ type RegionalTieredCache struct {
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// Value of the Regional Tiered Cache zone setting.
+	// Available values: "on", "off".
 	Value pulumi.StringOutput `pulumi:"value"`
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -95,6 +96,7 @@ type regionalTieredCacheState struct {
 	// Last time this setting was modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// Value of the Regional Tiered Cache zone setting.
+	// Available values: "on", "off".
 	Value *string `pulumi:"value"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
@@ -106,6 +108,7 @@ type RegionalTieredCacheState struct {
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringPtrInput
 	// Value of the Regional Tiered Cache zone setting.
+	// Available values: "on", "off".
 	Value pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
@@ -117,6 +120,7 @@ func (RegionalTieredCacheState) ElementType() reflect.Type {
 
 type regionalTieredCacheArgs struct {
 	// Value of the Regional Tiered Cache zone setting.
+	// Available values: "on", "off".
 	Value *string `pulumi:"value"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -125,6 +129,7 @@ type regionalTieredCacheArgs struct {
 // The set of arguments for constructing a RegionalTieredCache resource.
 type RegionalTieredCacheArgs struct {
 	// Value of the Regional Tiered Cache zone setting.
+	// Available values: "on", "off".
 	Value pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringInput
@@ -228,6 +233,7 @@ func (o RegionalTieredCacheOutput) ModifiedOn() pulumi.StringOutput {
 }
 
 // Value of the Regional Tiered Cache zone setting.
+// Available values: "on", "off".
 func (o RegionalTieredCacheOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalTieredCache) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

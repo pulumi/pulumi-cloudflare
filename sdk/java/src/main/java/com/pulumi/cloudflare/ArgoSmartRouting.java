@@ -61,6 +61,7 @@ import javax.annotation.Nullable;
 public class ArgoSmartRouting extends com.pulumi.resources.CustomResource {
     /**
      * Enables Argo Smart Routing.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     @Export(name="value", refs={String.class}, tree="[0]")
@@ -68,6 +69,7 @@ public class ArgoSmartRouting extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Enables Argo Smart Routing.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public Output<String> value() {

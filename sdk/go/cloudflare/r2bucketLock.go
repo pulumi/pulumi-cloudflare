@@ -55,8 +55,10 @@ type R2BucketLock struct {
 	// Account ID
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Name of the bucket
-	BucketName pulumi.StringOutput         `pulumi:"bucketName"`
-	Rules      R2BucketLockRuleArrayOutput `pulumi:"rules"`
+	BucketName pulumi.StringOutput `pulumi:"bucketName"`
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringOutput         `pulumi:"jurisdiction"`
+	Rules        R2BucketLockRuleArrayOutput `pulumi:"rules"`
 }
 
 // NewR2BucketLock registers a new resource with the given unique name, arguments, and options.
@@ -98,8 +100,10 @@ type r2bucketLockState struct {
 	// Account ID
 	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket
-	BucketName *string            `pulumi:"bucketName"`
-	Rules      []R2BucketLockRule `pulumi:"rules"`
+	BucketName *string `pulumi:"bucketName"`
+	// Jurisdiction of the bucket
+	Jurisdiction *string            `pulumi:"jurisdiction"`
+	Rules        []R2BucketLockRule `pulumi:"rules"`
 }
 
 type R2BucketLockState struct {
@@ -107,7 +111,9 @@ type R2BucketLockState struct {
 	AccountId pulumi.StringPtrInput
 	// Name of the bucket
 	BucketName pulumi.StringPtrInput
-	Rules      R2BucketLockRuleArrayInput
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringPtrInput
+	Rules        R2BucketLockRuleArrayInput
 }
 
 func (R2BucketLockState) ElementType() reflect.Type {
@@ -118,8 +124,10 @@ type r2bucketLockArgs struct {
 	// Account ID
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket
-	BucketName string             `pulumi:"bucketName"`
-	Rules      []R2BucketLockRule `pulumi:"rules"`
+	BucketName string `pulumi:"bucketName"`
+	// Jurisdiction of the bucket
+	Jurisdiction *string            `pulumi:"jurisdiction"`
+	Rules        []R2BucketLockRule `pulumi:"rules"`
 }
 
 // The set of arguments for constructing a R2BucketLock resource.
@@ -128,7 +136,9 @@ type R2BucketLockArgs struct {
 	AccountId pulumi.StringInput
 	// Name of the bucket
 	BucketName pulumi.StringInput
-	Rules      R2BucketLockRuleArrayInput
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringPtrInput
+	Rules        R2BucketLockRuleArrayInput
 }
 
 func (R2BucketLockArgs) ElementType() reflect.Type {
@@ -226,6 +236,11 @@ func (o R2BucketLockOutput) AccountId() pulumi.StringOutput {
 // Name of the bucket
 func (o R2BucketLockOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2BucketLock) pulumi.StringOutput { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Jurisdiction of the bucket
+func (o R2BucketLockOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v *R2BucketLock) pulumi.StringOutput { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
 func (o R2BucketLockOutput) Rules() R2BucketLockRuleArrayOutput {

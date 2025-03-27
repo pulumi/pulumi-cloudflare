@@ -18,6 +18,7 @@ public final class GetCustomSslFilterArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Whether to match all search requirements or at least one (any).
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     @Import(name="match", required=true)
@@ -25,6 +26,7 @@ public final class GetCustomSslFilterArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Whether to match all search requirements or at least one (any).
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     public Output<String> match() {
@@ -33,6 +35,7 @@ public final class GetCustomSslFilterArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Status of the zone&#39;s custom SSL.
+     * Available values: &#34;active&#34;, &#34;expired&#34;, &#34;deleted&#34;, &#34;pending&#34;, &#34;initializing&#34;.
      * 
      */
     @Import(name="status")
@@ -40,6 +43,7 @@ public final class GetCustomSslFilterArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Status of the zone&#39;s custom SSL.
+     * Available values: &#34;active&#34;, &#34;expired&#34;, &#34;deleted&#34;, &#34;pending&#34;, &#34;initializing&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -73,6 +77,7 @@ public final class GetCustomSslFilterArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param match Whether to match all search requirements or at least one (any).
+         * Available values: &#34;any&#34;, &#34;all&#34;.
          * 
          * @return builder
          * 
@@ -84,6 +89,7 @@ public final class GetCustomSslFilterArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param match Whether to match all search requirements or at least one (any).
+         * Available values: &#34;any&#34;, &#34;all&#34;.
          * 
          * @return builder
          * 
@@ -94,6 +100,7 @@ public final class GetCustomSslFilterArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param status Status of the zone&#39;s custom SSL.
+         * Available values: &#34;active&#34;, &#34;expired&#34;, &#34;deleted&#34;, &#34;pending&#34;, &#34;initializing&#34;.
          * 
          * @return builder
          * 
@@ -105,6 +112,7 @@ public final class GetCustomSslFilterArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param status Status of the zone&#39;s custom SSL.
+         * Available values: &#34;active&#34;, &#34;expired&#34;, &#34;deleted&#34;, &#34;pending&#34;, &#34;initializing&#34;.
          * 
          * @return builder
          * 

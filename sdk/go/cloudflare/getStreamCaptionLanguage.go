@@ -12,6 +12,32 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.LookupStreamCaptionLanguage(ctx, &cloudflare.LookupStreamCaptionLanguageArgs{
+//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				Identifier: "ea95132c15732412d22c1476fa83f27a",
+//				Language:   "tr",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupStreamCaptionLanguage(ctx *pulumi.Context, args *LookupStreamCaptionLanguageArgs, opts ...pulumi.InvokeOption) (*LookupStreamCaptionLanguageResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupStreamCaptionLanguageResult
@@ -28,6 +54,8 @@ type LookupStreamCaptionLanguageArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier string `pulumi:"identifier"`
+	// The language tag in BCP 47 format.
+	Language string `pulumi:"language"`
 }
 
 // A collection of values returned by getStreamCaptionLanguage.
@@ -45,6 +73,7 @@ type LookupStreamCaptionLanguageResult struct {
 	// The language tag in BCP 47 format.
 	Language string `pulumi:"language"`
 	// The status of a generated caption.
+	// Available values: "ready", "inprogress", "error".
 	Status string `pulumi:"status"`
 }
 
@@ -63,6 +92,8 @@ type LookupStreamCaptionLanguageOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// The language tag in BCP 47 format.
+	Language pulumi.StringInput `pulumi:"language"`
 }
 
 func (LookupStreamCaptionLanguageOutputArgs) ElementType() reflect.Type {
@@ -115,6 +146,7 @@ func (o LookupStreamCaptionLanguageResultOutput) Language() pulumi.StringOutput 
 }
 
 // The status of a generated caption.
+// Available values: "ready", "inprogress", "error".
 func (o LookupStreamCaptionLanguageResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamCaptionLanguageResult) string { return v.Status }).(pulumi.StringOutput)
 }

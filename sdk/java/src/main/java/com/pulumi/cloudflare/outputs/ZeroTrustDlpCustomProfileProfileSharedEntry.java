@@ -13,6 +13,10 @@ import java.util.Objects;
 public final class ZeroTrustDlpCustomProfileProfileSharedEntry {
     private Boolean enabled;
     private String entryId;
+    /**
+     * @return Available values: &#34;custom&#34;.
+     * 
+     */
     private String entryType;
 
     private ZeroTrustDlpCustomProfileProfileSharedEntry() {}
@@ -22,6 +26,10 @@ public final class ZeroTrustDlpCustomProfileProfileSharedEntry {
     public String entryId() {
         return this.entryId;
     }
+    /**
+     * @return Available values: &#34;custom&#34;.
+     * 
+     */
     public String entryType() {
         return this.entryType;
     }

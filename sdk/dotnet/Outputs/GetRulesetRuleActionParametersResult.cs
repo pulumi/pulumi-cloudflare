@@ -55,6 +55,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Content;
         /// <summary>
         /// Content-type header to set with the response.
+        /// Available values: "application/json", "text/xml", "text/plain", "text/html".
         /// </summary>
         public readonly string ContentType;
         /// <summary>
@@ -147,6 +148,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<string> Phases;
         /// <summary>
         /// Configure the Polish level.
+        /// Available values: "off", "lossless", "lossy".
         /// </summary>
         public readonly string Polish;
         /// <summary>
@@ -154,11 +156,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Products;
         /// <summary>
+        /// The raw response fields to log.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRulesetRuleActionParametersRawResponseFieldResult> RawResponseFields;
+        /// <summary>
         /// Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
         /// </summary>
         public readonly int ReadTimeout;
         /// <summary>
-        /// The request fields to log.
+        /// The raw request fields to log.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesetRuleActionParametersRequestFieldResult> RequestFields;
         /// <summary>
@@ -170,7 +176,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetRulesetRuleActionParametersResponseResult Response;
         /// <summary>
-        /// The response fields to log.
+        /// The transformed response fields to log.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesetRuleActionParametersResponseFieldResult> ResponseFields;
         /// <summary>
@@ -183,6 +189,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableDictionary<string, ImmutableArray<string>> Rules;
         /// <summary>
         /// A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+        /// Available values: "current".
         /// </summary>
         public readonly string Ruleset;
         /// <summary>
@@ -191,6 +198,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<string> Rulesets;
         /// <summary>
         /// Configure the Security Level.
+        /// Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
         /// </summary>
         public readonly string SecurityLevel;
         /// <summary>
@@ -207,6 +215,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetRulesetRuleActionParametersSniResult Sni;
         /// <summary>
         /// Configure the SSL level.
+        /// Available values: "off", "flexible", "full", "strict", "origin_pull".
         /// </summary>
         public readonly string Ssl;
         /// <summary>
@@ -217,6 +226,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Turn on or off Signed Exchanges (SXG).
         /// </summary>
         public readonly bool Sxg;
+        /// <summary>
+        /// The transformed request fields to log.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRulesetRuleActionParametersTransformedRequestFieldResult> TransformedRequestFields;
         /// <summary>
         /// URI to rewrite the request to.
         /// </summary>
@@ -294,6 +307,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> products,
 
+            ImmutableArray<Outputs.GetRulesetRuleActionParametersRawResponseFieldResult> rawResponseFields,
+
             int readTimeout,
 
             ImmutableArray<Outputs.GetRulesetRuleActionParametersRequestFieldResult> requestFields,
@@ -325,6 +340,8 @@ namespace Pulumi.Cloudflare.Outputs
             double statusCode,
 
             bool sxg,
+
+            ImmutableArray<Outputs.GetRulesetRuleActionParametersTransformedRequestFieldResult> transformedRequestFields,
 
             Outputs.GetRulesetRuleActionParametersUriResult uri)
         {
@@ -363,6 +380,7 @@ namespace Pulumi.Cloudflare.Outputs
             Phases = phases;
             Polish = polish;
             Products = products;
+            RawResponseFields = rawResponseFields;
             ReadTimeout = readTimeout;
             RequestFields = requestFields;
             RespectStrongEtags = respectStrongEtags;
@@ -379,6 +397,7 @@ namespace Pulumi.Cloudflare.Outputs
             Ssl = ssl;
             StatusCode = statusCode;
             Sxg = sxg;
+            TransformedRequestFields = transformedRequestFields;
             Uri = uri;
         }
     }

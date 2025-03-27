@@ -25,6 +25,7 @@ class RegionalTieredCacheArgs:
         The set of arguments for constructing a RegionalTieredCache resource.
         :param pulumi.Input[str] zone_id: Identifier
         :param pulumi.Input[str] value: Value of the Regional Tiered Cache zone setting.
+               Available values: "on", "off".
         """
         pulumi.set(__self__, "zone_id", zone_id)
         if value is not None:
@@ -47,6 +48,7 @@ class RegionalTieredCacheArgs:
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         Value of the Regional Tiered Cache zone setting.
+        Available values: "on", "off".
         """
         return pulumi.get(self, "value")
 
@@ -67,6 +69,7 @@ class _RegionalTieredCacheState:
         :param pulumi.Input[bool] editable: Whether the setting is editable
         :param pulumi.Input[str] modified_on: Last time this setting was modified.
         :param pulumi.Input[str] value: Value of the Regional Tiered Cache zone setting.
+               Available values: "on", "off".
         :param pulumi.Input[str] zone_id: Identifier
         """
         if editable is not None:
@@ -107,6 +110,7 @@ class _RegionalTieredCacheState:
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         Value of the Regional Tiered Cache zone setting.
+        Available values: "on", "off".
         """
         return pulumi.get(self, "value")
 
@@ -156,6 +160,7 @@ class RegionalTieredCache(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] value: Value of the Regional Tiered Cache zone setting.
+               Available values: "on", "off".
         :param pulumi.Input[str] zone_id: Identifier
         """
         ...
@@ -238,6 +243,7 @@ class RegionalTieredCache(pulumi.CustomResource):
         :param pulumi.Input[bool] editable: Whether the setting is editable
         :param pulumi.Input[str] modified_on: Last time this setting was modified.
         :param pulumi.Input[str] value: Value of the Regional Tiered Cache zone setting.
+               Available values: "on", "off".
         :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -271,6 +277,7 @@ class RegionalTieredCache(pulumi.CustomResource):
     def value(self) -> pulumi.Output[str]:
         """
         Value of the Regional Tiered Cache zone setting.
+        Available values: "on", "off".
         """
         return pulumi.get(self, "value")
 

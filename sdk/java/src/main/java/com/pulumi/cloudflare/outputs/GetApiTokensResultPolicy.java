@@ -15,6 +15,7 @@ import java.util.Objects;
 public final class GetApiTokensResultPolicy {
     /**
      * @return Allow or deny operations against the resources.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;.
      * 
      */
     private String effect;
@@ -37,6 +38,7 @@ public final class GetApiTokensResultPolicy {
     private GetApiTokensResultPolicy() {}
     /**
      * @return Allow or deny operations against the resources.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;.
      * 
      */
     public String effect() {

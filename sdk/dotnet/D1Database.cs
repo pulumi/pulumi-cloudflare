@@ -50,8 +50,6 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specifies the timestamp the resource was created as an ISO8601 string.
-<<<<<<< HEAD
-=======
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -64,17 +62,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// D1 database name.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
-        [Output("createdAt")]
-        public Output<string> CreatedAt { get; private set; } = null!;
-
-        /// <summary>
-        /// The D1 database's size, in bytes.
-        /// </summary>
-        [Output("fileSize")]
-        public Output<double> FileSize { get; private set; } = null!;
-
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -83,16 +71,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+        /// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
         /// </summary>
         [Output("primaryLocationHint")]
         public Output<string?> PrimaryLocationHint { get; private set; } = null!;
 
-<<<<<<< HEAD
-=======
         /// <summary>
         /// D1 database identifier (UUID).
         /// </summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Output("uuid")]
         public Output<string> Uuid { get; private set; } = null!;
 
@@ -151,17 +137,15 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-<<<<<<< HEAD
-=======
         /// <summary>
         /// D1 database name.
         /// </summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+        /// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
         /// </summary>
         [Input("primaryLocationHint")]
         public Input<string>? PrimaryLocationHint { get; set; }
@@ -182,8 +166,6 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specifies the timestamp the resource was created as an ISO8601 string.
-<<<<<<< HEAD
-=======
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -196,17 +178,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// D1 database name.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
-        /// <summary>
-        /// The D1 database's size, in bytes.
-        /// </summary>
-        [Input("fileSize")]
-        public Input<double>? FileSize { get; set; }
-
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -215,16 +187,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+        /// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
         /// </summary>
         [Input("primaryLocationHint")]
         public Input<string>? PrimaryLocationHint { get; set; }
 
-<<<<<<< HEAD
-=======
         /// <summary>
         /// D1 database identifier (UUID).
         /// </summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 

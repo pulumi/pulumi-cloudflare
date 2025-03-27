@@ -153,6 +153,7 @@ export interface GetLoadBalancerResult {
      */
     readonly ttl: number;
     readonly zoneId: string;
+    readonly zoneName: string;
 }
 /**
  * ## Example Usage

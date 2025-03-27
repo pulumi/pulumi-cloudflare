@@ -13,16 +13,26 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class PagesProjectCanonicalDeploymentEnvVarsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of environment variable.
+        /// Available values: "plain_text".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        [Input("value")]
+        private Input<string>? _value;
+
         /// <summary>
         /// Environment variable value.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public PagesProjectCanonicalDeploymentEnvVarsArgs()
         {

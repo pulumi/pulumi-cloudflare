@@ -61,18 +61,23 @@ type CertificatePack struct {
 	pulumi.CustomResourceState
 
 	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority pulumi.StringOutput `pulumi:"certificateAuthority"`
 	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 	CloudflareBranding pulumi.BoolPtrOutput `pulumi:"cloudflareBranding"`
 	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	Hosts pulumi.StringArrayOutput `pulumi:"hosts"`
 	// Status of certificate pack.
+	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Type of certificate pack.
+	// Available values: "advanced".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Validation Method selected for the order.
+	// Available values: "txt", "http", "email".
 	ValidationMethod pulumi.StringOutput `pulumi:"validationMethod"`
 	// Validity Days selected for the order.
+	// Available values: 14, 30, 90, 365.
 	ValidityDays pulumi.IntOutput `pulumi:"validityDays"`
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -127,18 +132,23 @@ func GetCertificatePack(ctx *pulumi.Context,
 // Input properties used for looking up and filtering CertificatePack resources.
 type certificatePackState struct {
 	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 	CloudflareBranding *bool `pulumi:"cloudflareBranding"`
 	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	Hosts []string `pulumi:"hosts"`
 	// Status of certificate pack.
+	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
 	Status *string `pulumi:"status"`
 	// Type of certificate pack.
+	// Available values: "advanced".
 	Type *string `pulumi:"type"`
 	// Validation Method selected for the order.
+	// Available values: "txt", "http", "email".
 	ValidationMethod *string `pulumi:"validationMethod"`
 	// Validity Days selected for the order.
+	// Available values: 14, 30, 90, 365.
 	ValidityDays *int `pulumi:"validityDays"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
@@ -146,18 +156,23 @@ type certificatePackState struct {
 
 type CertificatePackState struct {
 	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority pulumi.StringPtrInput
 	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 	CloudflareBranding pulumi.BoolPtrInput
 	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	Hosts pulumi.StringArrayInput
 	// Status of certificate pack.
+	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
 	Status pulumi.StringPtrInput
 	// Type of certificate pack.
+	// Available values: "advanced".
 	Type pulumi.StringPtrInput
 	// Validation Method selected for the order.
+	// Available values: "txt", "http", "email".
 	ValidationMethod pulumi.StringPtrInput
 	// Validity Days selected for the order.
+	// Available values: 14, 30, 90, 365.
 	ValidityDays pulumi.IntPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
@@ -169,16 +184,20 @@ func (CertificatePackState) ElementType() reflect.Type {
 
 type certificatePackArgs struct {
 	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority string `pulumi:"certificateAuthority"`
 	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 	CloudflareBranding *bool `pulumi:"cloudflareBranding"`
 	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	Hosts []string `pulumi:"hosts"`
 	// Type of certificate pack.
+	// Available values: "advanced".
 	Type string `pulumi:"type"`
 	// Validation Method selected for the order.
+	// Available values: "txt", "http", "email".
 	ValidationMethod string `pulumi:"validationMethod"`
 	// Validity Days selected for the order.
+	// Available values: 14, 30, 90, 365.
 	ValidityDays int `pulumi:"validityDays"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -187,16 +206,20 @@ type certificatePackArgs struct {
 // The set of arguments for constructing a CertificatePack resource.
 type CertificatePackArgs struct {
 	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority pulumi.StringInput
 	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
 	CloudflareBranding pulumi.BoolPtrInput
 	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	Hosts pulumi.StringArrayInput
 	// Type of certificate pack.
+	// Available values: "advanced".
 	Type pulumi.StringInput
 	// Validation Method selected for the order.
+	// Available values: "txt", "http", "email".
 	ValidationMethod pulumi.StringInput
 	// Validity Days selected for the order.
+	// Available values: 14, 30, 90, 365.
 	ValidityDays pulumi.IntInput
 	// Identifier
 	ZoneId pulumi.StringInput
@@ -290,6 +313,7 @@ func (o CertificatePackOutput) ToCertificatePackOutputWithContext(ctx context.Co
 }
 
 // Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+// Available values: "google", "lets*encrypt", "ssl*com".
 func (o CertificatePackOutput) CertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.StringOutput { return v.CertificateAuthority }).(pulumi.StringOutput)
 }
@@ -305,21 +329,25 @@ func (o CertificatePackOutput) Hosts() pulumi.StringArrayOutput {
 }
 
 // Status of certificate pack.
+// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
 func (o CertificatePackOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // Type of certificate pack.
+// Available values: "advanced".
 func (o CertificatePackOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 // Validation Method selected for the order.
+// Available values: "txt", "http", "email".
 func (o CertificatePackOutput) ValidationMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.StringOutput { return v.ValidationMethod }).(pulumi.StringOutput)
 }
 
 // Validity Days selected for the order.
+// Available values: 14, 30, 90, 365.
 func (o CertificatePackOutput) ValidityDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.IntOutput { return v.ValidityDays }).(pulumi.IntOutput)
 }

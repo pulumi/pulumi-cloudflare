@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 public final class GetSpectrumApplicationsInvokeResult {
     /**
      * @return Sets the direction by which results are ordered.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private String direction;
@@ -32,6 +33,7 @@ public final class GetSpectrumApplicationsInvokeResult {
     private @Nullable Integer maxItems;
     /**
      * @return Application field by which results are ordered.
+     * Available values: &#34;protocol&#34;, &#34;app*id&#34;, &#34;created*on&#34;, &#34;modified_on&#34;, &#34;dns&#34;.
      * 
      */
     private String order;
@@ -41,11 +43,7 @@ public final class GetSpectrumApplicationsInvokeResult {
      */
     private List<GetSpectrumApplicationsResult> results;
     /**
-<<<<<<< HEAD
-     * @return Identifier
-=======
      * @return Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     private String zoneId;
@@ -53,6 +51,7 @@ public final class GetSpectrumApplicationsInvokeResult {
     private GetSpectrumApplicationsInvokeResult() {}
     /**
      * @return Sets the direction by which results are ordered.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public String direction() {
@@ -74,6 +73,7 @@ public final class GetSpectrumApplicationsInvokeResult {
     }
     /**
      * @return Application field by which results are ordered.
+     * Available values: &#34;protocol&#34;, &#34;app*id&#34;, &#34;created*on&#34;, &#34;modified_on&#34;, &#34;dns&#34;.
      * 
      */
     public String order() {
@@ -87,11 +87,7 @@ public final class GetSpectrumApplicationsInvokeResult {
         return this.results;
     }
     /**
-<<<<<<< HEAD
-     * @return Identifier
-=======
      * @return Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public String zoneId() {

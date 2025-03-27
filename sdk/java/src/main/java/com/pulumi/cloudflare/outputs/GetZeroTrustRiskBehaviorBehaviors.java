@@ -14,6 +14,10 @@ public final class GetZeroTrustRiskBehaviorBehaviors {
     private String description;
     private Boolean enabled;
     private String name;
+    /**
+     * @return Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+     * 
+     */
     private String riskLevel;
 
     private GetZeroTrustRiskBehaviorBehaviors() {}
@@ -26,6 +30,10 @@ public final class GetZeroTrustRiskBehaviorBehaviors {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+     * 
+     */
     public String riskLevel() {
         return this.riskLevel;
     }

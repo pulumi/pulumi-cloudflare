@@ -64,10 +64,6 @@ type LookupCloudforceOneRequestAssetResult struct {
 	AccountIdentifier string `pulumi:"accountIdentifier"`
 	// UUID
 	AssetIdentifer string `pulumi:"assetIdentifer"`
-<<<<<<< HEAD
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-=======
 	// Asset creation time
 	Created string `pulumi:"created"`
 	// Asset description
@@ -78,7 +74,6 @@ type LookupCloudforceOneRequestAssetResult struct {
 	Id int `pulumi:"id"`
 	// Asset name
 	Name string `pulumi:"name"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// UUID
 	RequestIdentifier string `pulumi:"requestIdentifier"`
 }
@@ -131,11 +126,6 @@ func (o LookupCloudforceOneRequestAssetResultOutput) AssetIdentifer() pulumi.Str
 	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.AssetIdentifer }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-// The provider-assigned unique ID for this managed resource.
-func (o LookupCloudforceOneRequestAssetResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.Id }).(pulumi.StringOutput)
-=======
 // Asset creation time
 func (o LookupCloudforceOneRequestAssetResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.Created }).(pulumi.StringOutput)
@@ -159,7 +149,6 @@ func (o LookupCloudforceOneRequestAssetResultOutput) Id() pulumi.IntOutput {
 // Asset name
 func (o LookupCloudforceOneRequestAssetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.Name }).(pulumi.StringOutput)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // UUID

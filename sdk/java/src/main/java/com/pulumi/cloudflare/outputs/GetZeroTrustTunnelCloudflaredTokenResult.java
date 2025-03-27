@@ -21,6 +21,11 @@ public final class GetZeroTrustTunnelCloudflaredTokenResult {
      */
     private String id;
     /**
+     * @return The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.
+     * 
+     */
+    private String token;
+    /**
      * @return UUID of the tunnel.
      * 
      */
@@ -42,6 +47,13 @@ public final class GetZeroTrustTunnelCloudflaredTokenResult {
         return this.id;
     }
     /**
+     * @return The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.
+     * 
+     */
+    public String token() {
+        return this.token;
+    }
+    /**
      * @return UUID of the tunnel.
      * 
      */
@@ -60,12 +72,14 @@ public final class GetZeroTrustTunnelCloudflaredTokenResult {
     public static final class Builder {
         private String accountId;
         private String id;
+        private String token;
         private String tunnelId;
         public Builder() {}
         public Builder(GetZeroTrustTunnelCloudflaredTokenResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.id = defaults.id;
+    	      this.token = defaults.token;
     	      this.tunnelId = defaults.tunnelId;
         }
 
@@ -86,6 +100,14 @@ public final class GetZeroTrustTunnelCloudflaredTokenResult {
             return this;
         }
         @CustomType.Setter
+        public Builder token(String token) {
+            if (token == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredTokenResult", "token");
+            }
+            this.token = token;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tunnelId(String tunnelId) {
             if (tunnelId == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredTokenResult", "tunnelId");
@@ -97,6 +119,7 @@ public final class GetZeroTrustTunnelCloudflaredTokenResult {
             final var _resultValue = new GetZeroTrustTunnelCloudflaredTokenResult();
             _resultValue.accountId = accountId;
             _resultValue.id = id;
+            _resultValue.token = token;
             _resultValue.tunnelId = tunnelId;
             return _resultValue;
         }

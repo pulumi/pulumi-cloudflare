@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetPagesProjectDeploymentConfigsProductionDurableObjectNamespaces {
     /**
-     * @return ID of the Durabble Object namespace.
+     * @return ID of the Durable Object namespace.
      * 
      */
     private String namespaceId;
 
     private GetPagesProjectDeploymentConfigsProductionDurableObjectNamespaces() {}
     /**
-     * @return ID of the Durabble Object namespace.
+     * @return ID of the Durable Object namespace.
      * 
      */
     public String namespaceId() {

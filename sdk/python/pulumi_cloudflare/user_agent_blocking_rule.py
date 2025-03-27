@@ -29,6 +29,7 @@ class UserAgentBlockingRuleArgs:
         The set of arguments for constructing a UserAgentBlockingRule resource.
         :param pulumi.Input['UserAgentBlockingRuleConfigurationArgs'] configuration: The rule configuration.
         :param pulumi.Input[str] mode: The action to apply to a matched request.
+               Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         :param pulumi.Input[str] zone_id: Identifier
         :param pulumi.Input[str] ua_rule_id: The unique identifier of the User Agent Blocking rule.
         """
@@ -55,6 +56,7 @@ class UserAgentBlockingRuleArgs:
     def mode(self) -> pulumi.Input[str]:
         """
         The action to apply to a matched request.
+        Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         """
         return pulumi.get(self, "mode")
 
@@ -98,6 +100,7 @@ class _UserAgentBlockingRuleState:
         Input properties used for looking up and filtering UserAgentBlockingRule resources.
         :param pulumi.Input['UserAgentBlockingRuleConfigurationArgs'] configuration: The rule configuration.
         :param pulumi.Input[str] mode: The action to apply to a matched request.
+               Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         :param pulumi.Input[str] ua_rule_id: The unique identifier of the User Agent Blocking rule.
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -127,6 +130,7 @@ class _UserAgentBlockingRuleState:
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
         The action to apply to a matched request.
+        Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         """
         return pulumi.get(self, "mode")
 
@@ -189,6 +193,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['UserAgentBlockingRuleConfigurationArgs', 'UserAgentBlockingRuleConfigurationArgsDict']] configuration: The rule configuration.
         :param pulumi.Input[str] mode: The action to apply to a matched request.
+               Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         :param pulumi.Input[str] ua_rule_id: The unique identifier of the User Agent Blocking rule.
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -275,6 +280,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['UserAgentBlockingRuleConfigurationArgs', 'UserAgentBlockingRuleConfigurationArgsDict']] configuration: The rule configuration.
         :param pulumi.Input[str] mode: The action to apply to a matched request.
+               Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         :param pulumi.Input[str] ua_rule_id: The unique identifier of the User Agent Blocking rule.
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -301,6 +307,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
     def mode(self) -> pulumi.Output[str]:
         """
         The action to apply to a matched request.
+        Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         """
         return pulumi.get(self, "mode")
 

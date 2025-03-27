@@ -37,6 +37,7 @@ class ZeroTrustAccessPolicyArgs:
         The set of arguments for constructing a ZeroTrustAccessPolicy resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+               Available values: "allow", "deny", "non_identity", "bypass".
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeArgs']]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         :param pulumi.Input[str] name: The name of the Access policy.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyApprovalGroupArgs']]] approval_groups: Administrators who can approve a temporary authentication request.
@@ -86,6 +87,7 @@ class ZeroTrustAccessPolicyArgs:
     def decision(self) -> pulumi.Input[str]:
         """
         The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+        Available values: "allow", "deny", "non_identity", "bypass".
         """
         return pulumi.get(self, "decision")
 
@@ -240,6 +242,7 @@ class _ZeroTrustAccessPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyApprovalGroupArgs']]] approval_groups: Administrators who can approve a temporary authentication request.
         :param pulumi.Input[bool] approval_required: Requires the user to request access from an administrator at the start of each session.
         :param pulumi.Input[str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+               Available values: "allow", "deny", "non_identity", "bypass".
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeArgs']]] excludes: Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeArgs']]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         :param pulumi.Input[bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
@@ -344,6 +347,7 @@ class _ZeroTrustAccessPolicyState:
     def decision(self) -> Optional[pulumi.Input[str]]:
         """
         The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+        Available values: "allow", "deny", "non_identity", "bypass".
         """
         return pulumi.get(self, "decision")
 
@@ -502,6 +506,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyApprovalGroupArgs', 'ZeroTrustAccessPolicyApprovalGroupArgsDict']]]] approval_groups: Administrators who can approve a temporary authentication request.
         :param pulumi.Input[bool] approval_required: Requires the user to request access from an administrator at the start of each session.
         :param pulumi.Input[str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+               Available values: "allow", "deny", "non_identity", "bypass".
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyExcludeArgs', 'ZeroTrustAccessPolicyExcludeArgsDict']]]] excludes: Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyIncludeArgs', 'ZeroTrustAccessPolicyIncludeArgsDict']]]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         :param pulumi.Input[bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
@@ -589,6 +594,8 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["reusable"] = None
             __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessPolicy:AccessPolicy")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustAccessPolicy, __self__).__init__(
             'cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy',
             resource_name,
@@ -627,6 +634,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyApprovalGroupArgs', 'ZeroTrustAccessPolicyApprovalGroupArgsDict']]]] approval_groups: Administrators who can approve a temporary authentication request.
         :param pulumi.Input[bool] approval_required: Requires the user to request access from an administrator at the start of each session.
         :param pulumi.Input[str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+               Available values: "allow", "deny", "non_identity", "bypass".
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyExcludeArgs', 'ZeroTrustAccessPolicyExcludeArgsDict']]]] excludes: Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyIncludeArgs', 'ZeroTrustAccessPolicyIncludeArgsDict']]]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         :param pulumi.Input[bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
@@ -700,6 +708,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
     def decision(self) -> pulumi.Output[str]:
         """
         The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+        Available values: "allow", "deny", "non_identity", "bypass".
         """
         return pulumi.get(self, "decision")
 

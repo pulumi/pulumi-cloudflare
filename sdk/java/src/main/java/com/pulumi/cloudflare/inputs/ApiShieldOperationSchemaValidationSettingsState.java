@@ -19,7 +19,7 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
      * When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
      * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
      * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-     * Level Schema Validation Settings for mitigation action that will be applied
+     * Level Schema Validation Settings for mitigation action that will be applied Available values: &#34;log&#34;, &#34;block&#34;, &#34;none&#34;.
      * 
      */
     @Import(name="mitigationAction")
@@ -29,7 +29,7 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
      * @return When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
      * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
      * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-     * Level Schema Validation Settings for mitigation action that will be applied
+     * Level Schema Validation Settings for mitigation action that will be applied Available values: &#34;log&#34;, &#34;block&#34;, &#34;none&#34;.
      * 
      */
     public Optional<Output<String>> mitigationAction() {
@@ -96,7 +96,7 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
          * @param mitigationAction When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
          * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
          * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-         * Level Schema Validation Settings for mitigation action that will be applied
+         * Level Schema Validation Settings for mitigation action that will be applied Available values: &#34;log&#34;, &#34;block&#34;, &#34;none&#34;.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
          * @param mitigationAction When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
          * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
          * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-         * Level Schema Validation Settings for mitigation action that will be applied
+         * Level Schema Validation Settings for mitigation action that will be applied Available values: &#34;log&#34;, &#34;block&#34;, &#34;none&#34;.
          * 
          * @return builder
          * 

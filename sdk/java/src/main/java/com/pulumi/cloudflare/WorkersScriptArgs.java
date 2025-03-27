@@ -160,6 +160,21 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether Logpush is turned on for the Worker.
+     * 
+     */
+    @Import(name="logpush")
+    private @Nullable Output<Boolean> logpush;
+
+    /**
+     * @return Whether Logpush is turned on for the Worker.
+     * 
+     */
+    public Optional<Output<Boolean>> logpush() {
+        return Optional.ofNullable(this.logpush);
+    }
+
+    /**
      * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      * 
      */
@@ -249,6 +264,23 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tailConsumers);
     }
 
+    /**
+     * Usage model for the Worker invocations.
+     * Available values: &#34;standard&#34;.
+     * 
+     */
+    @Import(name="usageModel")
+    private @Nullable Output<String> usageModel;
+
+    /**
+     * @return Usage model for the Worker invocations.
+     * Available values: &#34;standard&#34;.
+     * 
+     */
+    public Optional<Output<String>> usageModel() {
+        return Optional.ofNullable(this.usageModel);
+    }
+
     private WorkersScriptArgs() {}
 
     private WorkersScriptArgs(WorkersScriptArgs $) {
@@ -261,12 +293,14 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         this.content = $.content;
         this.keepAssets = $.keepAssets;
         this.keepBindings = $.keepBindings;
+        this.logpush = $.logpush;
         this.mainModule = $.mainModule;
         this.migrations = $.migrations;
         this.observability = $.observability;
         this.placement = $.placement;
         this.scriptName = $.scriptName;
         this.tailConsumers = $.tailConsumers;
+        this.usageModel = $.usageModel;
     }
 
     public static Builder builder() {
@@ -507,6 +541,27 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param logpush Whether Logpush is turned on for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logpush(@Nullable Output<Boolean> logpush) {
+            $.logpush = logpush;
+            return this;
+        }
+
+        /**
+         * @param logpush Whether Logpush is turned on for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logpush(Boolean logpush) {
+            return logpush(Output.of(logpush));
+        }
+
+        /**
          * @param mainModule Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
          * 
          * @return builder
@@ -640,6 +695,29 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tailConsumers(WorkersScriptTailConsumerArgs... tailConsumers) {
             return tailConsumers(List.of(tailConsumers));
+        }
+
+        /**
+         * @param usageModel Usage model for the Worker invocations.
+         * Available values: &#34;standard&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usageModel(@Nullable Output<String> usageModel) {
+            $.usageModel = usageModel;
+            return this;
+        }
+
+        /**
+         * @param usageModel Usage model for the Worker invocations.
+         * Available values: &#34;standard&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usageModel(String usageModel) {
+            return usageModel(Output.of(usageModel));
         }
 
         public WorkersScriptArgs build() {

@@ -403,13 +403,15 @@ class MtlsCertificate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'certificates'")
             __props__.__dict__["certificates"] = certificates
             __props__.__dict__["name"] = name
-            __props__.__dict__["private_key"] = private_key
+            __props__.__dict__["private_key"] = None if private_key is None else pulumi.Output.secret(private_key)
             __props__.__dict__["expires_on"] = None
             __props__.__dict__["issuer"] = None
             __props__.__dict__["serial_number"] = None
             __props__.__dict__["signature"] = None
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["uploaded_on"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["privateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(MtlsCertificate, __self__).__init__(
             'cloudflare:index/mtlsCertificate:MtlsCertificate',
             resource_name,

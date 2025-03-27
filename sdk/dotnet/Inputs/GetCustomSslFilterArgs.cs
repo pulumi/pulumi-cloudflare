@@ -14,12 +14,14 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Whether to match all search requirements or at least one (any).
+        /// Available values: "any", "all".
         /// </summary>
         [Input("match", required: true)]
         public Input<string> Match { get; set; } = null!;
 
         /// <summary>
         /// Status of the zone's custom SSL.
+        /// Available values: "active", "expired", "deleted", "pending", "initializing".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

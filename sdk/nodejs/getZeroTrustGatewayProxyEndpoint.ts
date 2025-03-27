@@ -38,13 +38,6 @@ export interface GetZeroTrustGatewayProxyEndpointArgs {
  */
 export interface GetZeroTrustGatewayProxyEndpointResult {
     readonly accountId: string;
-<<<<<<< HEAD
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    readonly proxyEndpointId: string;
-=======
     readonly createdAt: string;
     /**
      * The ID of this resource.
@@ -64,7 +57,6 @@ export interface GetZeroTrustGatewayProxyEndpointResult {
      */
     readonly subdomain: string;
     readonly updatedAt: string;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 /**
  * ## Example Usage

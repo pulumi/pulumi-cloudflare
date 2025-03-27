@@ -74,6 +74,7 @@ type LookupAuthenticatedOriginPullsCertificateResult struct {
 	// The type of hash used for the certificate.
 	Signature string `pulumi:"signature"`
 	// Status of the certificate activation.
+	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 	Status string `pulumi:"status"`
 	// This is the time the certificate was uploaded.
 	UploadedOn string `pulumi:"uploadedOn"`
@@ -158,6 +159,7 @@ func (o LookupAuthenticatedOriginPullsCertificateResultOutput) Signature() pulum
 }
 
 // Status of the certificate activation.
+// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 func (o LookupAuthenticatedOriginPullsCertificateResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsCertificateResult) string { return v.Status }).(pulumi.StringOutput)
 }

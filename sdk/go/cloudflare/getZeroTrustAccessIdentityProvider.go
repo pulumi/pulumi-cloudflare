@@ -75,6 +75,7 @@ type LookupZeroTrustAccessIdentityProviderResult struct {
 	// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
 	ScimConfig GetZeroTrustAccessIdentityProviderScimConfig `pulumi:"scimConfig"`
 	// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+	// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
 	Type string `pulumi:"type"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
@@ -160,6 +161,7 @@ func (o LookupZeroTrustAccessIdentityProviderResultOutput) ScimConfig() GetZeroT
 }
 
 // The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
 func (o LookupZeroTrustAccessIdentityProviderResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) string { return v.Type }).(pulumi.StringOutput)
 }

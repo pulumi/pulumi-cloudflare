@@ -39,24 +39,6 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-<<<<<<< HEAD
-     * The unique identifier of the firewall rule.
-     * 
-     */
-    @Import(name="ruleId")
-    private @Nullable Output<String> ruleId;
-
-    /**
-     * @return The unique identifier of the firewall rule.
-     * 
-     */
-    public Optional<Output<String>> ruleId() {
-        return Optional.ofNullable(this.ruleId);
-    }
-
-    /**
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Identifier
      * 
      */
@@ -76,10 +58,6 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
     private FirewallRuleArgs(FirewallRuleArgs $) {
         this.action = $.action;
         this.filter = $.filter;
-<<<<<<< HEAD
-        this.ruleId = $.ruleId;
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.zoneId = $.zoneId;
     }
 
@@ -124,40 +102,11 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder filter(Output<FirewallRuleFilterArgs> filter) {
             $.filter = filter;
-<<<<<<< HEAD
             return this;
         }
 
         public Builder filter(FirewallRuleFilterArgs filter) {
             return filter(Output.of(filter));
-        }
-
-        /**
-         * @param ruleId The unique identifier of the firewall rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ruleId(@Nullable Output<String> ruleId) {
-            $.ruleId = ruleId;
-            return this;
-        }
-
-        /**
-         * @param ruleId The unique identifier of the firewall rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ruleId(String ruleId) {
-            return ruleId(Output.of(ruleId));
-=======
-            return this;
-        }
-
-        public Builder filter(FirewallRuleFilterArgs filter) {
-            return filter(Output.of(filter));
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
 
         /**

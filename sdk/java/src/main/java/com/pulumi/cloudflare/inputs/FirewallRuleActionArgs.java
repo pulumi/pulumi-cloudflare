@@ -19,6 +19,7 @@ public final class FirewallRuleActionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * The action to perform.
+     * Available values: &#34;simulate&#34;, &#34;ban&#34;, &#34;challenge&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     @Import(name="mode")
@@ -26,6 +27,7 @@ public final class FirewallRuleActionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The action to perform.
+     * Available values: &#34;simulate&#34;, &#34;ban&#34;, &#34;challenge&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -94,6 +96,7 @@ public final class FirewallRuleActionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param mode The action to perform.
+         * Available values: &#34;simulate&#34;, &#34;ban&#34;, &#34;challenge&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
          * 
          * @return builder
          * 
@@ -105,6 +108,7 @@ public final class FirewallRuleActionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param mode The action to perform.
+         * Available values: &#34;simulate&#34;, &#34;ban&#34;, &#34;challenge&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
          * 
          * @return builder
          * 

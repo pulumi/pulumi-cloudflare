@@ -22,6 +22,10 @@ public final class GetR2BucketSippyDestination {
      * 
      */
     private String bucket;
+    /**
+     * @return Available values: &#34;r2&#34;.
+     * 
+     */
     private String provider;
 
     private GetR2BucketSippyDestination() {}
@@ -43,6 +47,10 @@ public final class GetR2BucketSippyDestination {
     public String bucket() {
         return this.bucket;
     }
+    /**
+     * @return Available values: &#34;r2&#34;.
+     * 
+     */
     public String provider() {
         return this.provider;
     }

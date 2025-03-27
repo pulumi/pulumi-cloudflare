@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Comment;
         /// <summary>
-        /// If provided, include only tunnels that were created (and not deleted) before this time.
+        /// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
         /// </summary>
         public readonly string? ExistedAt;
         /// <summary>
@@ -38,9 +38,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? RouteId;
         /// <summary>
-        /// The types of tunnels to filter separated by a comma.
+        /// The types of tunnels to filter by, separated by commas.
         /// </summary>
-        public readonly string? TunTypes;
+        public readonly ImmutableArray<string> TunTypes;
         /// <summary>
         /// UUID of the tunnel.
         /// </summary>
@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? routeId,
 
-            string? tunTypes,
+            ImmutableArray<string> tunTypes,
 
             string? tunnelId,
 

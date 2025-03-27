@@ -50,11 +50,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeSource {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
-<<<<<<< HEAD
-        private @Nullable Map<String,String> nameByIdp;
-=======
         private @Nullable List<ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp> nameByIdps;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder() {}
         public Builder(ZeroTrustAccessApplicationSaasAppCustomAttributeSource defaults) {
     	      Objects.requireNonNull(defaults);

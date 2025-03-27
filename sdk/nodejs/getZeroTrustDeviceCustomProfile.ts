@@ -83,6 +83,9 @@ export interface GetZeroTrustDeviceCustomProfileResult {
      * Whether to add Microsoft IPs to Split Tunnel exclusions.
      */
     readonly excludeOfficeIps: boolean;
+    /**
+     * List of routes excluded in the WARP client's tunnel.
+     */
     readonly excludes: outputs.GetZeroTrustDeviceCustomProfileExclude[];
     readonly fallbackDomains: outputs.GetZeroTrustDeviceCustomProfileFallbackDomain[];
     readonly gatewayUniqueId: string;
@@ -90,6 +93,9 @@ export interface GetZeroTrustDeviceCustomProfileResult {
      * Device ID.
      */
     readonly id: string;
+    /**
+     * List of routes included in the WARP client's tunnel.
+     */
     readonly includes: outputs.GetZeroTrustDeviceCustomProfileInclude[];
     /**
      * The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
@@ -115,6 +121,10 @@ export interface GetZeroTrustDeviceCustomProfileResult {
      * The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
      */
     readonly precedence: number;
+    /**
+     * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+     */
+    readonly registerInterfaceIpWithDns: boolean;
     readonly serviceModeV2: outputs.GetZeroTrustDeviceCustomProfileServiceModeV2;
     /**
      * The URL to launch when the Send Feedback button is clicked.

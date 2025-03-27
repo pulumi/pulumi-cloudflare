@@ -77,6 +77,12 @@ func NewWorkersForPlatformsDispatchNamespace(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkersForPlatformsDispatchNamespace
 	err := ctx.RegisterResource("cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace", name, args, &resource, opts...)

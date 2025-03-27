@@ -41,11 +41,13 @@ public final class GetWeb3HostnameResult {
     private String name;
     /**
      * @return Status of the hostname&#39;s activation.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
      * 
      */
     private String status;
     /**
      * @return Target gateway of the hostname.
+     * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
      * 
      */
     private String target;
@@ -99,6 +101,7 @@ public final class GetWeb3HostnameResult {
     }
     /**
      * @return Status of the hostname&#39;s activation.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
      * 
      */
     public String status() {
@@ -106,6 +109,7 @@ public final class GetWeb3HostnameResult {
     }
     /**
      * @return Target gateway of the hostname.
+     * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
      * 
      */
     public String target() {

@@ -161,6 +161,7 @@ public class EmailRoutingDns extends com.pulumi.resources.CustomResource {
     }
     /**
      * Show the state of your account, and the type or configuration error.
+     * Available values: &#34;ready&#34;, &#34;unconfigured&#34;, &#34;misconfigured&#34;, &#34;misconfigured/locked&#34;, &#34;unlocked&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -168,6 +169,7 @@ public class EmailRoutingDns extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Show the state of your account, and the type or configuration error.
+     * Available values: &#34;ready&#34;, &#34;unconfigured&#34;, &#34;misconfigured&#34;, &#34;misconfigured/locked&#34;, &#34;unlocked&#34;.
      * 
      */
     public Output<String> status() {

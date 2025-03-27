@@ -23,6 +23,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the certificate or the association.
+        /// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         /// </summary>
         [Output("certStatus")]
         public Output<string> CertStatus { get; private set; } = null!;
@@ -79,15 +80,12 @@ namespace Pulumi.Cloudflare
         public Output<string> Issuer { get; private set; } = null!;
 
         /// <summary>
-<<<<<<< HEAD
-=======
         /// The hostname certificate's private key.
         /// </summary>
         [Output("privateKey")]
         public Output<string> PrivateKey { get; private set; } = null!;
 
         /// <summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// The serial number on the uploaded certificate.
         /// </summary>
         [Output("serialNumber")]
@@ -101,6 +99,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the certificate or the association.
+        /// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -140,6 +139,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "privateKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -199,6 +202,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the certificate or the association.
+        /// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         /// </summary>
         [Input("certStatus")]
         public Input<string>? CertStatus { get; set; }
@@ -259,16 +263,23 @@ namespace Pulumi.Cloudflare
         [Input("issuer")]
         public Input<string>? Issuer { get; set; }
 
-        /// <summary>
-<<<<<<< HEAD
-=======
-        /// The hostname certificate's private key.
-        /// </summary>
         [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        private Input<string>? _privateKey;
 
         /// <summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+        /// The hostname certificate's private key.
+        /// </summary>
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
         /// The serial number on the uploaded certificate.
         /// </summary>
         [Input("serialNumber")]
@@ -282,6 +293,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the certificate or the association.
+        /// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

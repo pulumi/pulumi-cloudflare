@@ -42,6 +42,7 @@ export interface GetAccountMembersArgs {
     accountId: string;
     /**
      * Direction to order results.
+     * Available values: "asc", "desc".
      */
     direction?: string;
     /**
@@ -50,10 +51,12 @@ export interface GetAccountMembersArgs {
     maxItems?: number;
     /**
      * Field to order results by.
+     * Available values: "user.first*name", "user.last*name", "user.email", "status".
      */
     order?: string;
     /**
      * A member's status in the account.
+     * Available values: "accepted", "pending", "rejected".
      */
     status?: string;
 }
@@ -68,6 +71,7 @@ export interface GetAccountMembersResult {
     readonly accountId: string;
     /**
      * Direction to order results.
+     * Available values: "asc", "desc".
      */
     readonly direction?: string;
     /**
@@ -80,6 +84,7 @@ export interface GetAccountMembersResult {
     readonly maxItems?: number;
     /**
      * Field to order results by.
+     * Available values: "user.first*name", "user.last*name", "user.email", "status".
      */
     readonly order?: string;
     /**
@@ -88,6 +93,7 @@ export interface GetAccountMembersResult {
     readonly results: outputs.GetAccountMembersResult[];
     /**
      * A member's status in the account.
+     * Available values: "accepted", "pending", "rejected".
      */
     readonly status?: string;
 }
@@ -127,6 +133,7 @@ export interface GetAccountMembersOutputArgs {
     accountId: pulumi.Input<string>;
     /**
      * Direction to order results.
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**
@@ -135,10 +142,12 @@ export interface GetAccountMembersOutputArgs {
     maxItems?: pulumi.Input<number>;
     /**
      * Field to order results by.
+     * Available values: "user.first*name", "user.last*name", "user.email", "status".
      */
     order?: pulumi.Input<string>;
     /**
      * A member's status in the account.
+     * Available values: "accepted", "pending", "rejected".
      */
     status?: pulumi.Input<string>;
 }

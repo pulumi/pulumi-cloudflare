@@ -20,9 +20,8 @@ public final class CloudConnectorRulesState extends com.pulumi.resources.Resourc
     public static final CloudConnectorRulesState Empty = new CloudConnectorRulesState();
 
     /**
-<<<<<<< HEAD
-=======
      * Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
      * 
      */
     @Import(name="cloudProvider")
@@ -30,6 +29,7 @@ public final class CloudConnectorRulesState extends com.pulumi.resources.Resourc
 
     /**
      * @return Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
      * 
      */
     public Optional<Output<String>> cloudProvider() {
@@ -73,7 +73,6 @@ public final class CloudConnectorRulesState extends com.pulumi.resources.Resourc
     }
 
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * List of Cloud Connector rules
      * 
      */
@@ -134,9 +133,8 @@ public final class CloudConnectorRulesState extends com.pulumi.resources.Resourc
         }
 
         /**
-<<<<<<< HEAD
-=======
          * @param cloudProvider Cloud Provider type
+         * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
          * 
          * @return builder
          * 
@@ -148,6 +146,7 @@ public final class CloudConnectorRulesState extends com.pulumi.resources.Resourc
 
         /**
          * @param cloudProvider Cloud Provider type
+         * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
          * 
          * @return builder
          * 
@@ -205,7 +204,6 @@ public final class CloudConnectorRulesState extends com.pulumi.resources.Resourc
         }
 
         /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param rules List of Cloud Connector rules
          * 
          * @return builder

@@ -31,6 +31,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersOverridesRule> Rules;
         /// <summary>
         /// A sensitivity level to set for all rules. This option has lower precedence than rule and category overrides and is only applicable for DDoS phases.
+        /// Available values: "default", "medium", "low", "eoff".
         /// </summary>
         public readonly string? SensitivityLevel;
 

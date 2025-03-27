@@ -12,7 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -128,14 +128,14 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
      * 
      */
     @Export(name="certificateId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> certificateId;
+    private Output<String> certificateId;
 
     /**
      * @return Identifier
      * 
      */
-    public Output<Optional<String>> certificateId() {
-        return Codegen.optional(this.certificateId);
+    public Output<String> certificateId() {
+        return this.certificateId;
     }
     /**
      * Indicates whether zone-level authenticated origin pulls is enabled.
@@ -209,6 +209,7 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
     }
     /**
      * Status of the certificate activation.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -216,6 +217,7 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
 
     /**
      * @return Status of the certificate activation.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     public Output<String> status() {
@@ -289,6 +291,9 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "privateKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -13,28 +13,22 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetZeroTrustDlpEntryConfidenceResult
     {
-<<<<<<< HEAD
-=======
-        public readonly bool AiContextAvailable;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
-        /// Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
-        /// Profiles that use an entry with `available` set to true can use confidence thresholds
+        /// Indicates whether this entry has AI remote service validation
+        /// </summary>
+        public readonly bool AiContextAvailable;
+        /// <summary>
+        /// Indicates whether this entry has any form of validation that is not an AI remote service
         /// </summary>
         public readonly bool Available;
 
         [OutputConstructor]
-<<<<<<< HEAD
-        private GetZeroTrustDlpEntryConfidenceResult(bool available)
-        {
-=======
         private GetZeroTrustDlpEntryConfidenceResult(
             bool aiContextAvailable,
 
             bool available)
         {
             AiContextAvailable = aiContextAvailable;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             Available = available;
         }
     }

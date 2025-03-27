@@ -5,8 +5,11 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersResponseField {
@@ -15,6 +18,11 @@ public final class RulesetRuleActionParametersResponseField {
      * 
      */
     private String name;
+    /**
+     * @return Whether to log duplicate values of the same header.
+     * 
+     */
+    private @Nullable Boolean preserveDuplicates;
 
     private RulesetRuleActionParametersResponseField() {}
     /**
@@ -23,6 +31,13 @@ public final class RulesetRuleActionParametersResponseField {
      */
     public String name() {
         return this.name;
+    }
+    /**
+     * @return Whether to log duplicate values of the same header.
+     * 
+     */
+    public Optional<Boolean> preserveDuplicates() {
+        return Optional.ofNullable(this.preserveDuplicates);
     }
 
     public static Builder builder() {
@@ -35,10 +50,12 @@ public final class RulesetRuleActionParametersResponseField {
     @CustomType.Builder
     public static final class Builder {
         private String name;
+        private @Nullable Boolean preserveDuplicates;
         public Builder() {}
         public Builder(RulesetRuleActionParametersResponseField defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
+    	      this.preserveDuplicates = defaults.preserveDuplicates;
         }
 
         @CustomType.Setter
@@ -49,9 +66,16 @@ public final class RulesetRuleActionParametersResponseField {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder preserveDuplicates(@Nullable Boolean preserveDuplicates) {
+
+            this.preserveDuplicates = preserveDuplicates;
+            return this;
+        }
         public RulesetRuleActionParametersResponseField build() {
             final var _resultValue = new RulesetRuleActionParametersResponseField();
             _resultValue.name = name;
+            _resultValue.preserveDuplicates = preserveDuplicates;
             return _resultValue;
         }
     }

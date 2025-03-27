@@ -10,6 +10,7 @@ import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyApprovalGroup;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyInclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyRequire;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -179,6 +180,7 @@ public class ZeroTrustAccessPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
      * 
      */
     @Export(name="decision", refs={String.class}, tree="[0]")
@@ -186,6 +188,7 @@ public class ZeroTrustAccessPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
      * 
      */
     public Output<String> decision() {
@@ -355,6 +358,9 @@ public class ZeroTrustAccessPolicy extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/accessPolicy:AccessPolicy").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

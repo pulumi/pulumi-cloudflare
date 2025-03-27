@@ -113,6 +113,7 @@ class GetWeb3HostnameResult:
     def status(self) -> str:
         """
         Status of the hostname's activation.
+        Available values: "active", "pending", "deleting", "error".
         """
         return pulumi.get(self, "status")
 
@@ -121,6 +122,7 @@ class GetWeb3HostnameResult:
     def target(self) -> str:
         """
         Target gateway of the hostname.
+        Available values: "ethereum", "ipfs", "ipfs*universal*path".
         """
         return pulumi.get(self, "target")
 

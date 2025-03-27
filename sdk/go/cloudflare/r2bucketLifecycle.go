@@ -19,8 +19,10 @@ type R2BucketLifecycle struct {
 	// Account ID
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Name of the bucket
-	BucketName pulumi.StringOutput              `pulumi:"bucketName"`
-	Rules      R2BucketLifecycleRuleArrayOutput `pulumi:"rules"`
+	BucketName pulumi.StringOutput `pulumi:"bucketName"`
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringOutput              `pulumi:"jurisdiction"`
+	Rules        R2BucketLifecycleRuleArrayOutput `pulumi:"rules"`
 }
 
 // NewR2BucketLifecycle registers a new resource with the given unique name, arguments, and options.
@@ -62,8 +64,10 @@ type r2bucketLifecycleState struct {
 	// Account ID
 	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket
-	BucketName *string                 `pulumi:"bucketName"`
-	Rules      []R2BucketLifecycleRule `pulumi:"rules"`
+	BucketName *string `pulumi:"bucketName"`
+	// Jurisdiction of the bucket
+	Jurisdiction *string                 `pulumi:"jurisdiction"`
+	Rules        []R2BucketLifecycleRule `pulumi:"rules"`
 }
 
 type R2BucketLifecycleState struct {
@@ -71,7 +75,9 @@ type R2BucketLifecycleState struct {
 	AccountId pulumi.StringPtrInput
 	// Name of the bucket
 	BucketName pulumi.StringPtrInput
-	Rules      R2BucketLifecycleRuleArrayInput
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringPtrInput
+	Rules        R2BucketLifecycleRuleArrayInput
 }
 
 func (R2BucketLifecycleState) ElementType() reflect.Type {
@@ -82,8 +88,10 @@ type r2bucketLifecycleArgs struct {
 	// Account ID
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket
-	BucketName string                  `pulumi:"bucketName"`
-	Rules      []R2BucketLifecycleRule `pulumi:"rules"`
+	BucketName string `pulumi:"bucketName"`
+	// Jurisdiction of the bucket
+	Jurisdiction *string                 `pulumi:"jurisdiction"`
+	Rules        []R2BucketLifecycleRule `pulumi:"rules"`
 }
 
 // The set of arguments for constructing a R2BucketLifecycle resource.
@@ -92,7 +100,9 @@ type R2BucketLifecycleArgs struct {
 	AccountId pulumi.StringInput
 	// Name of the bucket
 	BucketName pulumi.StringInput
-	Rules      R2BucketLifecycleRuleArrayInput
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringPtrInput
+	Rules        R2BucketLifecycleRuleArrayInput
 }
 
 func (R2BucketLifecycleArgs) ElementType() reflect.Type {
@@ -190,6 +200,11 @@ func (o R2BucketLifecycleOutput) AccountId() pulumi.StringOutput {
 // Name of the bucket
 func (o R2BucketLifecycleOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2BucketLifecycle) pulumi.StringOutput { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Jurisdiction of the bucket
+func (o R2BucketLifecycleOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v *R2BucketLifecycle) pulumi.StringOutput { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
 func (o R2BucketLifecycleOutput) Rules() R2BucketLifecycleRuleArrayOutput {

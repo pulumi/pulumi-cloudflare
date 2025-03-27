@@ -20,6 +20,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The communication protocol your application secures.
+        /// Available values: "ssh".
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;

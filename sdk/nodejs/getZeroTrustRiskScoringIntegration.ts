@@ -55,6 +55,9 @@ export interface GetZeroTrustRiskScoringIntegrationResult {
      */
     readonly id: string;
     readonly integrationId?: string;
+    /**
+     * Available values: "Okta".
+     */
     readonly integrationType: string;
     /**
      * A reference ID defined by the client.

@@ -28,6 +28,7 @@ class PageShieldPolicyArgs:
         """
         The set of arguments for constructing a PageShieldPolicy resource.
         :param pulumi.Input[str] action: The action to take if the expression matches
+               Available values: "allow", "log".
         :param pulumi.Input[str] description: A description for the policy
         :param pulumi.Input[bool] enabled: Whether the policy is enabled
         :param pulumi.Input[str] expression: The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax
@@ -46,6 +47,7 @@ class PageShieldPolicyArgs:
     def action(self) -> pulumi.Input[str]:
         """
         The action to take if the expression matches
+        Available values: "allow", "log".
         """
         return pulumi.get(self, "action")
 
@@ -126,6 +128,7 @@ class _PageShieldPolicyState:
         """
         Input properties used for looking up and filtering PageShieldPolicy resources.
         :param pulumi.Input[str] action: The action to take if the expression matches
+               Available values: "allow", "log".
         :param pulumi.Input[str] description: A description for the policy
         :param pulumi.Input[bool] enabled: Whether the policy is enabled
         :param pulumi.Input[str] expression: The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax
@@ -150,6 +153,7 @@ class _PageShieldPolicyState:
     def action(self) -> Optional[pulumi.Input[str]]:
         """
         The action to take if the expression matches
+        Available values: "allow", "log".
         """
         return pulumi.get(self, "action")
 
@@ -242,6 +246,7 @@ class PageShieldPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The action to take if the expression matches
+               Available values: "allow", "log".
         :param pulumi.Input[str] description: A description for the policy
         :param pulumi.Input[bool] enabled: Whether the policy is enabled
         :param pulumi.Input[str] expression: The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax
@@ -335,6 +340,7 @@ class PageShieldPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The action to take if the expression matches
+               Available values: "allow", "log".
         :param pulumi.Input[str] description: A description for the policy
         :param pulumi.Input[bool] enabled: Whether the policy is enabled
         :param pulumi.Input[str] expression: The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax
@@ -358,6 +364,7 @@ class PageShieldPolicy(pulumi.CustomResource):
     def action(self) -> pulumi.Output[str]:
         """
         The action to take if the expression matches
+        Available values: "allow", "log".
         """
         return pulumi.get(self, "action")
 

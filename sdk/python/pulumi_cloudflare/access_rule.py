@@ -30,6 +30,7 @@ class AccessRuleArgs:
         The set of arguments for constructing a AccessRule resource.
         :param pulumi.Input['AccessRuleConfigurationArgs'] configuration: The rule configuration.
         :param pulumi.Input[str] mode: The action to apply to a matched request.
+               Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         :param pulumi.Input[str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[str] notes: An informative summary of the rule, typically used as a reminder or explanation.
         :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -60,6 +61,7 @@ class AccessRuleArgs:
     def mode(self) -> pulumi.Input[str]:
         """
         The action to apply to a matched request.
+        Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         """
         return pulumi.get(self, "mode")
 
@@ -123,6 +125,7 @@ class _AccessRuleState:
         :param pulumi.Input['AccessRuleConfigurationArgs'] configuration: The rule configuration.
         :param pulumi.Input[str] created_on: The timestamp of when the rule was created.
         :param pulumi.Input[str] mode: The action to apply to a matched request.
+               Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         :param pulumi.Input[str] modified_on: The timestamp of when the rule was last modified.
         :param pulumi.Input[str] notes: An informative summary of the rule, typically used as a reminder or explanation.
         :param pulumi.Input['AccessRuleScopeArgs'] scope: All zones owned by the user will have the rule applied.
@@ -200,6 +203,7 @@ class _AccessRuleState:
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
         The action to apply to a matched request.
+        Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         """
         return pulumi.get(self, "mode")
 
@@ -295,6 +299,7 @@ class AccessRule(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict']] configuration: The rule configuration.
         :param pulumi.Input[str] mode: The action to apply to a matched request.
+               Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         :param pulumi.Input[str] notes: An informative summary of the rule, typically used as a reminder or explanation.
         :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
@@ -400,6 +405,7 @@ class AccessRule(pulumi.CustomResource):
         :param pulumi.Input[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict']] configuration: The rule configuration.
         :param pulumi.Input[str] created_on: The timestamp of when the rule was created.
         :param pulumi.Input[str] mode: The action to apply to a matched request.
+               Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         :param pulumi.Input[str] modified_on: The timestamp of when the rule was last modified.
         :param pulumi.Input[str] notes: An informative summary of the rule, typically used as a reminder or explanation.
         :param pulumi.Input[Union['AccessRuleScopeArgs', 'AccessRuleScopeArgsDict']] scope: All zones owned by the user will have the rule applied.
@@ -457,6 +463,7 @@ class AccessRule(pulumi.CustomResource):
     def mode(self) -> pulumi.Output[str]:
         """
         The action to apply to a matched request.
+        Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         """
         return pulumi.get(self, "mode")
 

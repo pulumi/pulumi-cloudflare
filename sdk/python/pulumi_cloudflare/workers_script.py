@@ -31,11 +31,13 @@ class WorkersScriptArgs:
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  keep_assets: Optional[pulumi.Input[bool]] = None,
                  keep_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 logpush: Optional[pulumi.Input[bool]] = None,
                  main_module: Optional[pulumi.Input[str]] = None,
                  migrations: Optional[pulumi.Input['WorkersScriptMigrationsArgs']] = None,
                  observability: Optional[pulumi.Input['WorkersScriptObservabilityArgs']] = None,
                  placement: Optional[pulumi.Input['WorkersScriptPlacementArgs']] = None,
-                 tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptTailConsumerArgs']]]] = None):
+                 tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptTailConsumerArgs']]]] = None,
+                 usage_model: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkersScript resource.
         :param pulumi.Input[str] account_id: Identifier
@@ -48,11 +50,14 @@ class WorkersScriptArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] keep_bindings: List of binding types to keep from previous_upload.
+        :param pulumi.Input[bool] logpush: Whether Logpush is turned on for the Worker.
         :param pulumi.Input[str] main_module: Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         :param pulumi.Input['WorkersScriptMigrationsArgs'] migrations: Migrations to apply for Durable Objects associated with this Worker.
         :param pulumi.Input['WorkersScriptObservabilityArgs'] observability: Observability settings for the Worker.
         :param pulumi.Input['WorkersScriptPlacementArgs'] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptTailConsumerArgs']]] tail_consumers: List of Workers that will consume logs from the attached Worker.
+        :param pulumi.Input[str] usage_model: Usage model for the Worker invocations.
+               Available values: "standard".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "content", content)
@@ -71,6 +76,8 @@ class WorkersScriptArgs:
             pulumi.set(__self__, "keep_assets", keep_assets)
         if keep_bindings is not None:
             pulumi.set(__self__, "keep_bindings", keep_bindings)
+        if logpush is not None:
+            pulumi.set(__self__, "logpush", logpush)
         if main_module is not None:
             pulumi.set(__self__, "main_module", main_module)
         if migrations is not None:
@@ -81,6 +88,8 @@ class WorkersScriptArgs:
             pulumi.set(__self__, "placement", placement)
         if tail_consumers is not None:
             pulumi.set(__self__, "tail_consumers", tail_consumers)
+        if usage_model is not None:
+            pulumi.set(__self__, "usage_model", usage_model)
 
     @property
     @pulumi.getter(name="accountId")
@@ -203,6 +212,18 @@ class WorkersScriptArgs:
         pulumi.set(self, "keep_bindings", value)
 
     @property
+    @pulumi.getter
+    def logpush(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether Logpush is turned on for the Worker.
+        """
+        return pulumi.get(self, "logpush")
+
+    @logpush.setter
+    def logpush(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "logpush", value)
+
+    @property
     @pulumi.getter(name="mainModule")
     def main_module(self) -> Optional[pulumi.Input[str]]:
         """
@@ -262,6 +283,19 @@ class WorkersScriptArgs:
     def tail_consumers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptTailConsumerArgs']]]]):
         pulumi.set(self, "tail_consumers", value)
 
+    @property
+    @pulumi.getter(name="usageModel")
+    def usage_model(self) -> Optional[pulumi.Input[str]]:
+        """
+        Usage model for the Worker invocations.
+        Available values: "standard".
+        """
+        return pulumi.get(self, "usage_model")
+
+    @usage_model.setter
+    def usage_model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "usage_model", value)
+
 
 @pulumi.input_type
 class _WorkersScriptState:
@@ -313,6 +347,7 @@ class _WorkersScriptState:
         :param pulumi.Input[str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptTailConsumerArgs']]] tail_consumers: List of Workers that will consume logs from the attached Worker.
         :param pulumi.Input[str] usage_model: Usage model for the Worker invocations.
+               Available values: "standard".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -627,6 +662,7 @@ class _WorkersScriptState:
     def usage_model(self) -> Optional[pulumi.Input[str]]:
         """
         Usage model for the Worker invocations.
+        Available values: "standard".
         """
         return pulumi.get(self, "usage_model")
 
@@ -649,12 +685,14 @@ class WorkersScript(pulumi.CustomResource):
                  content: Optional[pulumi.Input[str]] = None,
                  keep_assets: Optional[pulumi.Input[bool]] = None,
                  keep_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 logpush: Optional[pulumi.Input[bool]] = None,
                  main_module: Optional[pulumi.Input[str]] = None,
                  migrations: Optional[pulumi.Input[Union['WorkersScriptMigrationsArgs', 'WorkersScriptMigrationsArgsDict']]] = None,
                  observability: Optional[pulumi.Input[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict']]] = None,
                  placement: Optional[pulumi.Input[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']]] = None,
                  script_name: Optional[pulumi.Input[str]] = None,
                  tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptTailConsumerArgs', 'WorkersScriptTailConsumerArgsDict']]]]] = None,
+                 usage_model: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -676,12 +714,15 @@ class WorkersScript(pulumi.CustomResource):
         :param pulumi.Input[str] content: Module or Service Worker contents of the Worker.
         :param pulumi.Input[bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] keep_bindings: List of binding types to keep from previous_upload.
+        :param pulumi.Input[bool] logpush: Whether Logpush is turned on for the Worker.
         :param pulumi.Input[str] main_module: Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         :param pulumi.Input[Union['WorkersScriptMigrationsArgs', 'WorkersScriptMigrationsArgsDict']] migrations: Migrations to apply for Durable Objects associated with this Worker.
         :param pulumi.Input[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict']] observability: Observability settings for the Worker.
         :param pulumi.Input[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         :param pulumi.Input[str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptTailConsumerArgs', 'WorkersScriptTailConsumerArgsDict']]]] tail_consumers: List of Workers that will consume logs from the attached Worker.
+        :param pulumi.Input[str] usage_model: Usage model for the Worker invocations.
+               Available values: "standard".
         """
         ...
     @overload
@@ -722,12 +763,14 @@ class WorkersScript(pulumi.CustomResource):
                  content: Optional[pulumi.Input[str]] = None,
                  keep_assets: Optional[pulumi.Input[bool]] = None,
                  keep_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 logpush: Optional[pulumi.Input[bool]] = None,
                  main_module: Optional[pulumi.Input[str]] = None,
                  migrations: Optional[pulumi.Input[Union['WorkersScriptMigrationsArgs', 'WorkersScriptMigrationsArgsDict']]] = None,
                  observability: Optional[pulumi.Input[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict']]] = None,
                  placement: Optional[pulumi.Input[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']]] = None,
                  script_name: Optional[pulumi.Input[str]] = None,
                  tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptTailConsumerArgs', 'WorkersScriptTailConsumerArgsDict']]]]] = None,
+                 usage_model: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -750,6 +793,7 @@ class WorkersScript(pulumi.CustomResource):
             __props__.__dict__["content"] = content
             __props__.__dict__["keep_assets"] = keep_assets
             __props__.__dict__["keep_bindings"] = keep_bindings
+            __props__.__dict__["logpush"] = logpush
             __props__.__dict__["main_module"] = main_module
             __props__.__dict__["migrations"] = migrations
             __props__.__dict__["observability"] = observability
@@ -758,14 +802,15 @@ class WorkersScript(pulumi.CustomResource):
                 raise TypeError("Missing required property 'script_name'")
             __props__.__dict__["script_name"] = script_name
             __props__.__dict__["tail_consumers"] = tail_consumers
+            __props__.__dict__["usage_model"] = usage_model
             __props__.__dict__["created_on"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["has_assets"] = None
             __props__.__dict__["has_modules"] = None
-            __props__.__dict__["logpush"] = None
             __props__.__dict__["modified_on"] = None
             __props__.__dict__["startup_time_ms"] = None
-            __props__.__dict__["usage_model"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/workerScript:WorkerScript")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(WorkersScript, __self__).__init__(
             'cloudflare:index/workersScript:WorkersScript',
             resource_name,
@@ -828,6 +873,7 @@ class WorkersScript(pulumi.CustomResource):
         :param pulumi.Input[str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptTailConsumerArgs', 'WorkersScriptTailConsumerArgsDict']]]] tail_consumers: List of Workers that will consume logs from the attached Worker.
         :param pulumi.Input[str] usage_model: Usage model for the Worker invocations.
+               Available values: "standard".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1036,6 +1082,7 @@ class WorkersScript(pulumi.CustomResource):
     def usage_model(self) -> pulumi.Output[str]:
         """
         Usage model for the Worker invocations.
+        Available values: "standard".
         """
         return pulumi.get(self, "usage_model")
 

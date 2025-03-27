@@ -54,6 +54,7 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
     public readonly accountId!: pulumi.Output<string>;
     /**
      * The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+     * Available values: "pending*deployment", "available", "pending*deletion", "inactive".
      */
     public /*out*/ readonly bindingStatus!: pulumi.Output<string>;
     /**
@@ -80,6 +81,7 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
     public /*out*/ readonly issuerRaw!: pulumi.Output<string>;
     /**
      * The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * Available values: "custom", "gatewayManaged".
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
@@ -146,6 +148,7 @@ export interface ZeroTrustGatewayCertificateState {
     accountId?: pulumi.Input<string>;
     /**
      * The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+     * Available values: "pending*deployment", "available", "pending*deletion", "inactive".
      */
     bindingStatus?: pulumi.Input<string>;
     /**
@@ -172,6 +175,7 @@ export interface ZeroTrustGatewayCertificateState {
     issuerRaw?: pulumi.Input<string>;
     /**
      * The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * Available values: "custom", "gatewayManaged".
      */
     type?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;

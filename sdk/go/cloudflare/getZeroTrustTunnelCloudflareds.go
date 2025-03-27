@@ -28,7 +28,7 @@ import (
 //			_, err := cloudflare.LookupZeroTrustTunnelCloudflareds(ctx, &cloudflare.LookupZeroTrustTunnelCloudflaredsArgs{
 //				AccountId:     "699d98642c564d2e855e9661899b7252",
 //				ExcludePrefix: pulumi.StringRef("vpc1-"),
-//				ExistedAt:     pulumi.StringRef("2019-10-12T07:20:50.52Z"),
+//				ExistedAt:     pulumi.StringRef("2019-10-12T07%3A20%3A50.52Z"),
 //				IncludePrefix: pulumi.StringRef("vpc1-"),
 //				IsDeleted:     pulumi.BoolRef(true),
 //				Name:          pulumi.StringRef("blog"),
@@ -60,7 +60,7 @@ type LookupZeroTrustTunnelCloudflaredsArgs struct {
 	// Cloudflare account ID
 	AccountId     string  `pulumi:"accountId"`
 	ExcludePrefix *string `pulumi:"excludePrefix"`
-	// If provided, include only tunnels that were created (and not deleted) before this time.
+	// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
 	ExistedAt     *string `pulumi:"existedAt"`
 	IncludePrefix *string `pulumi:"includePrefix"`
 	// If `true`, only include deleted tunnels. If `false`, exclude deleted tunnels. If empty, all tunnels will be included.
@@ -70,6 +70,7 @@ type LookupZeroTrustTunnelCloudflaredsArgs struct {
 	// A user-friendly name for a tunnel.
 	Name *string `pulumi:"name"`
 	// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+	// Available values: "inactive", "degraded", "healthy", "down".
 	Status *string `pulumi:"status"`
 	// UUID of the tunnel.
 	Uuid          *string `pulumi:"uuid"`
@@ -82,7 +83,7 @@ type LookupZeroTrustTunnelCloudflaredsResult struct {
 	// Cloudflare account ID
 	AccountId     string  `pulumi:"accountId"`
 	ExcludePrefix *string `pulumi:"excludePrefix"`
-	// If provided, include only tunnels that were created (and not deleted) before this time.
+	// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
 	ExistedAt *string `pulumi:"existedAt"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string  `pulumi:"id"`
@@ -96,6 +97,7 @@ type LookupZeroTrustTunnelCloudflaredsResult struct {
 	// The items returned by the data source
 	Results []GetZeroTrustTunnelCloudflaredsResult `pulumi:"results"`
 	// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+	// Available values: "inactive", "degraded", "healthy", "down".
 	Status *string `pulumi:"status"`
 	// UUID of the tunnel.
 	Uuid          *string `pulumi:"uuid"`
@@ -117,7 +119,7 @@ type LookupZeroTrustTunnelCloudflaredsOutputArgs struct {
 	// Cloudflare account ID
 	AccountId     pulumi.StringInput    `pulumi:"accountId"`
 	ExcludePrefix pulumi.StringPtrInput `pulumi:"excludePrefix"`
-	// If provided, include only tunnels that were created (and not deleted) before this time.
+	// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
 	ExistedAt     pulumi.StringPtrInput `pulumi:"existedAt"`
 	IncludePrefix pulumi.StringPtrInput `pulumi:"includePrefix"`
 	// If `true`, only include deleted tunnels. If `false`, exclude deleted tunnels. If empty, all tunnels will be included.
@@ -127,6 +129,7 @@ type LookupZeroTrustTunnelCloudflaredsOutputArgs struct {
 	// A user-friendly name for a tunnel.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+	// Available values: "inactive", "degraded", "healthy", "down".
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// UUID of the tunnel.
 	Uuid          pulumi.StringPtrInput `pulumi:"uuid"`
@@ -162,7 +165,7 @@ func (o LookupZeroTrustTunnelCloudflaredsResultOutput) ExcludePrefix() pulumi.St
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredsResult) *string { return v.ExcludePrefix }).(pulumi.StringPtrOutput)
 }
 
-// If provided, include only tunnels that were created (and not deleted) before this time.
+// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
 func (o LookupZeroTrustTunnelCloudflaredsResultOutput) ExistedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredsResult) *string { return v.ExistedAt }).(pulumi.StringPtrOutput)
 }
@@ -199,6 +202,7 @@ func (o LookupZeroTrustTunnelCloudflaredsResultOutput) Results() GetZeroTrustTun
 }
 
 // The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+// Available values: "inactive", "degraded", "healthy", "down".
 func (o LookupZeroTrustTunnelCloudflaredsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

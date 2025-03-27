@@ -44,6 +44,7 @@ public final class GetAccessRuleResult {
     private String id;
     /**
      * @return The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     private String mode;
@@ -114,6 +115,7 @@ public final class GetAccessRuleResult {
     }
     /**
      * @return The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     public String mode() {

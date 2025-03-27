@@ -61,8 +61,14 @@ export interface GetPageShieldCookiesResult {
     readonly name: string;
     readonly pageUrls: string[];
     readonly pathAttribute: string;
+    /**
+     * Available values: "lax", "strict", "none".
+     */
     readonly sameSiteAttribute: string;
     readonly secureAttribute: boolean;
+    /**
+     * Available values: "firstParty", "unknown".
+     */
     readonly type: string;
     /**
      * Identifier

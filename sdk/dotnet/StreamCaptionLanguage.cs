@@ -71,6 +71,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The status of a generated caption.
+        /// Available values: "ready", "inprogress", "error".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -191,6 +192,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The status of a generated caption.
+        /// Available values: "ready", "inprogress", "error".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

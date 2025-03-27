@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,6 +14,21 @@ import javax.annotation.Nullable;
 public final class GetByoIpPrefixPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetByoIpPrefixPlainArgs Empty = new GetByoIpPrefixPlainArgs();
+
+    /**
+     * Identifier of a Cloudflare account.
+     * 
+     */
+    @Import(name="accountId", required=true)
+    private String accountId;
+
+    /**
+     * @return Identifier of a Cloudflare account.
+     * 
+     */
+    public String accountId() {
+        return this.accountId;
+    }
 
     /**
      * Identifier of an IP Prefix.
@@ -32,6 +48,7 @@ public final class GetByoIpPrefixPlainArgs extends com.pulumi.resources.InvokeAr
     private GetByoIpPrefixPlainArgs() {}
 
     private GetByoIpPrefixPlainArgs(GetByoIpPrefixPlainArgs $) {
+        this.accountId = $.accountId;
         this.prefixId = $.prefixId;
     }
 
@@ -54,6 +71,17 @@ public final class GetByoIpPrefixPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
+         * @param accountId Identifier of a Cloudflare account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(String accountId) {
+            $.accountId = accountId;
+            return this;
+        }
+
+        /**
          * @param prefixId Identifier of an IP Prefix.
          * 
          * @return builder
@@ -65,6 +93,9 @@ public final class GetByoIpPrefixPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetByoIpPrefixPlainArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetByoIpPrefixPlainArgs", "accountId");
+            }
             return $;
         }
     }

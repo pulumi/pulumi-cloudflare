@@ -191,6 +191,8 @@ class StreamKey(pulumi.CustomResource):
             __props__.__dict__["created"] = None
             __props__.__dict__["jwk"] = None
             __props__.__dict__["pem"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["jwk", "pem"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(StreamKey, __self__).__init__(
             'cloudflare:index/streamKey:StreamKey',
             resource_name,

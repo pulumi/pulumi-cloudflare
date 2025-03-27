@@ -5,11 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-<<<<<<< HEAD
-import java.lang.Double;
-=======
 import java.lang.Object;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -52,6 +48,7 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
 
     /**
      * The TLS Setting name.
+     * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
      * 
      */
     @Import(name="settingId")
@@ -59,6 +56,7 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
 
     /**
      * @return The TLS Setting name.
+     * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
      * 
      */
     public Optional<Output<String>> settingId() {
@@ -100,21 +98,13 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
      * 
      */
     @Import(name="value")
-<<<<<<< HEAD
-    private @Nullable Output<Double> value;
-=======
     private @Nullable Output<Object> value;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      * @return The tls setting value.
      * 
      */
-<<<<<<< HEAD
-    public Optional<Output<Double>> value() {
-=======
     public Optional<Output<Object>> value() {
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return Optional.ofNullable(this.value);
     }
 
@@ -207,6 +197,7 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
 
         /**
          * @param settingId The TLS Setting name.
+         * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
          * 
          * @return builder
          * 
@@ -218,6 +209,7 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
 
         /**
          * @param settingId The TLS Setting name.
+         * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
          * 
          * @return builder
          * 
@@ -274,11 +266,7 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-<<<<<<< HEAD
-        public Builder value(@Nullable Output<Double> value) {
-=======
         public Builder value(@Nullable Output<Object> value) {
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             $.value = value;
             return this;
         }
@@ -289,11 +277,7 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-<<<<<<< HEAD
-        public Builder value(Double value) {
-=======
         public Builder value(Object value) {
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return value(Output.of(value));
         }
 

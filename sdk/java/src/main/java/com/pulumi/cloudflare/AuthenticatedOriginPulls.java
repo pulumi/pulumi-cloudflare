@@ -78,6 +78,7 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
     }
     /**
      * Status of the certificate or the association.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     @Export(name="certStatus", refs={String.class}, tree="[0]")
@@ -85,6 +86,7 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
 
     /**
      * @return Status of the certificate or the association.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     public Output<String> certStatus() {
@@ -209,8 +211,6 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
         return this.issuer;
     }
     /**
-<<<<<<< HEAD
-=======
      * The hostname certificate&#39;s private key.
      * 
      */
@@ -225,7 +225,6 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
         return this.privateKey;
     }
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The serial number on the uploaded certificate.
      * 
      */
@@ -255,6 +254,7 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
     }
     /**
      * Status of the certificate or the association.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -262,6 +262,7 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
 
     /**
      * @return Status of the certificate or the association.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     public Output<String> status() {
@@ -335,6 +336,9 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "privateKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -27,6 +27,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool Enabled;
         /// <summary>
         /// The sensitivity level to use for rules in the category.
+        /// Available values: "default", "medium", "low", "eoff".
         /// </summary>
         public readonly string SensitivityLevel;
 

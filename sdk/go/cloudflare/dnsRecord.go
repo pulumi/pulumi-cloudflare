@@ -53,6 +53,7 @@ type DnsRecord struct {
 	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	Ttl pulumi.Float64Output `pulumi:"ttl"`
 	// Record type.
+	// Available values: "A".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -77,6 +78,12 @@ func NewDnsRecord(ctx *pulumi.Context,
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/record:Record"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DnsRecord
 	err := ctx.RegisterResource("cloudflare:index/dnsRecord:DnsRecord", name, args, &resource, opts...)
@@ -131,6 +138,7 @@ type dnsRecordState struct {
 	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	Ttl *float64 `pulumi:"ttl"`
 	// Record type.
+	// Available values: "A".
 	Type *string `pulumi:"type"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
@@ -168,6 +176,7 @@ type DnsRecordState struct {
 	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	Ttl pulumi.Float64PtrInput
 	// Record type.
+	// Available values: "A".
 	Type pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
@@ -197,6 +206,7 @@ type dnsRecordArgs struct {
 	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	Ttl float64 `pulumi:"ttl"`
 	// Record type.
+	// Available values: "A".
 	Type string `pulumi:"type"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -223,6 +233,7 @@ type DnsRecordArgs struct {
 	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	Ttl pulumi.Float64Input
 	// Record type.
+	// Available values: "A".
 	Type pulumi.StringInput
 	// Identifier
 	ZoneId pulumi.StringInput
@@ -391,6 +402,7 @@ func (o DnsRecordOutput) Ttl() pulumi.Float64Output {
 }
 
 // Record type.
+// Available values: "A".
 func (o DnsRecordOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsRecord) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

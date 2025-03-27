@@ -118,6 +118,7 @@ export interface GetDnsRecordResult {
     readonly ttl: number;
     /**
      * Record type.
+     * Available values: "A".
      */
     readonly type: string;
     /**

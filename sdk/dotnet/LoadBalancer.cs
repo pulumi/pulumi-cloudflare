@@ -144,6 +144,9 @@ namespace Pulumi.Cloudflare
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
 
+        [Output("zoneName")]
+        public Output<string> ZoneName { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -509,6 +512,9 @@ namespace Pulumi.Cloudflare
 
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
+
+        [Input("zoneName")]
+        public Input<string>? ZoneName { get; set; }
 
         public LoadBalancerState()
         {

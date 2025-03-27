@@ -12,12 +12,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PagesDomainVerificationData {
     private @Nullable String errorMessage;
+    /**
+     * @return Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
+     * 
+     */
     private @Nullable String status;
 
     private PagesDomainVerificationData() {}
     public Optional<String> errorMessage() {
         return Optional.ofNullable(this.errorMessage);
     }
+    /**
+     * @return Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

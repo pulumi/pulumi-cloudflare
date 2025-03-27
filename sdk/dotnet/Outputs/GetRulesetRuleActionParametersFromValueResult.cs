@@ -19,6 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool PreserveQueryString;
         /// <summary>
         /// The status code to be used for the redirect.
+        /// Available values: 301, 302, 303, 307, 308.
         /// </summary>
         public readonly double StatusCode;
         /// <summary>

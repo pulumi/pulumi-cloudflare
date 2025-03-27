@@ -8,12 +8,24 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleMagicTransitSiteLan = cloudflare.getMagicTransitSiteLan({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     siteId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     lanId: "023e105f4ecef8ad9ca31a8372d0c353",
+ * });
+ * ```
  */
 export function getMagicTransitSiteLan(args: GetMagicTransitSiteLanArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicTransitSiteLanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicTransitSiteLan:getMagicTransitSiteLan", {
         "accountId": args.accountId,
         "lanId": args.lanId,
+        "siteId": args.siteId,
     }, opts);
 }
 
@@ -28,11 +40,11 @@ export interface GetMagicTransitSiteLanArgs {
     /**
      * Identifier
      */
-<<<<<<< HEAD
-    lanId: string;
-=======
     lanId?: string;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+    /**
+     * Identifier
+     */
+    siteId: string;
 }
 
 /**
@@ -54,11 +66,7 @@ export interface GetMagicTransitSiteLanResult {
     /**
      * Identifier
      */
-<<<<<<< HEAD
-    readonly lanId: string;
-=======
     readonly lanId?: string;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     readonly name: string;
     readonly nat: outputs.GetMagicTransitSiteLanNat;
     readonly physport: number;
@@ -78,12 +86,24 @@ export interface GetMagicTransitSiteLanResult {
 }
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleMagicTransitSiteLan = cloudflare.getMagicTransitSiteLan({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     siteId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     lanId: "023e105f4ecef8ad9ca31a8372d0c353",
+ * });
+ * ```
  */
 export function getMagicTransitSiteLanOutput(args: GetMagicTransitSiteLanOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicTransitSiteLanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicTransitSiteLan:getMagicTransitSiteLan", {
         "accountId": args.accountId,
         "lanId": args.lanId,
+        "siteId": args.siteId,
     }, opts);
 }
 
@@ -98,9 +118,9 @@ export interface GetMagicTransitSiteLanOutputArgs {
     /**
      * Identifier
      */
-<<<<<<< HEAD
-    lanId: pulumi.Input<string>;
-=======
     lanId?: pulumi.Input<string>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+    /**
+     * Identifier
+     */
+    siteId: pulumi.Input<string>;
 }

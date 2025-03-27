@@ -43,6 +43,7 @@ public final class GetEmailRoutingSettingsResult {
     private Boolean skipWizard;
     /**
      * @return Show the state of your account, and the type or configuration error.
+     * Available values: &#34;ready&#34;, &#34;unconfigured&#34;, &#34;misconfigured&#34;, &#34;misconfigured/locked&#34;, &#34;unlocked&#34;.
      * 
      */
     private String status;
@@ -102,6 +103,7 @@ public final class GetEmailRoutingSettingsResult {
     }
     /**
      * @return Show the state of your account, and the type or configuration error.
+     * Available values: &#34;ready&#34;, &#34;unconfigured&#34;, &#34;misconfigured&#34;, &#34;misconfigured/locked&#34;, &#34;unlocked&#34;.
      * 
      */
     public String status() {

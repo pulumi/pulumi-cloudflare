@@ -17,11 +17,7 @@ import java.util.Objects;
 @CustomType
 public final class GetSpectrumApplicationResult {
     /**
-<<<<<<< HEAD
-     * @return Identifier
-=======
      * @return App identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     private String appId;
@@ -85,36 +81,31 @@ public final class GetSpectrumApplicationResult {
     private String protocol;
     /**
      * @return Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+     * Available values: &#34;off&#34;, &#34;v1&#34;, &#34;v2&#34;, &#34;simple&#34;.
      * 
      */
     private String proxyProtocol;
     /**
      * @return The type of TLS termination associated with the application.
+     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;.
      * 
      */
     private String tls;
     /**
      * @return Determines how data travels from the edge to your origin. When set to &#34;direct&#34;, Spectrum will send traffic directly to your origin, and the application&#39;s type is derived from the `protocol`. When set to &#34;http&#34; or &#34;https&#34;, Spectrum will apply Cloudflare&#39;s HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+     * Available values: &#34;direct&#34;, &#34;http&#34;, &#34;https&#34;.
      * 
      */
     private String trafficType;
     /**
-<<<<<<< HEAD
-     * @return Identifier
-=======
      * @return Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     private String zoneId;
 
     private GetSpectrumApplicationResult() {}
     /**
-<<<<<<< HEAD
-     * @return Identifier
-=======
      * @return App identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public String appId() {
@@ -202,6 +193,7 @@ public final class GetSpectrumApplicationResult {
     }
     /**
      * @return Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+     * Available values: &#34;off&#34;, &#34;v1&#34;, &#34;v2&#34;, &#34;simple&#34;.
      * 
      */
     public String proxyProtocol() {
@@ -209,6 +201,7 @@ public final class GetSpectrumApplicationResult {
     }
     /**
      * @return The type of TLS termination associated with the application.
+     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;.
      * 
      */
     public String tls() {
@@ -216,17 +209,14 @@ public final class GetSpectrumApplicationResult {
     }
     /**
      * @return Determines how data travels from the edge to your origin. When set to &#34;direct&#34;, Spectrum will send traffic directly to your origin, and the application&#39;s type is derived from the `protocol`. When set to &#34;http&#34; or &#34;https&#34;, Spectrum will apply Cloudflare&#39;s HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+     * Available values: &#34;direct&#34;, &#34;http&#34;, &#34;https&#34;.
      * 
      */
     public String trafficType() {
         return this.trafficType;
     }
     /**
-<<<<<<< HEAD
-     * @return Identifier
-=======
      * @return Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public String zoneId() {

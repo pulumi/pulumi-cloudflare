@@ -150,6 +150,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
 
     /**
      * Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+     * Available values: &#34;off&#34;, &#34;v1&#34;, &#34;v2&#34;, &#34;simple&#34;.
      * 
      */
     @Import(name="proxyProtocol")
@@ -157,6 +158,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
 
     /**
      * @return Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+     * Available values: &#34;off&#34;, &#34;v1&#34;, &#34;v2&#34;, &#34;simple&#34;.
      * 
      */
     public Optional<Output<String>> proxyProtocol() {
@@ -165,6 +167,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
 
     /**
      * The type of TLS termination associated with the application.
+     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;.
      * 
      */
     @Import(name="tls")
@@ -172,6 +175,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
 
     /**
      * @return The type of TLS termination associated with the application.
+     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;.
      * 
      */
     public Optional<Output<String>> tls() {
@@ -180,6 +184,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
 
     /**
      * Determines how data travels from the edge to your origin. When set to &#34;direct&#34;, Spectrum will send traffic directly to your origin, and the application&#39;s type is derived from the `protocol`. When set to &#34;http&#34; or &#34;https&#34;, Spectrum will apply Cloudflare&#39;s HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+     * Available values: &#34;direct&#34;, &#34;http&#34;, &#34;https&#34;.
      * 
      */
     @Import(name="trafficType")
@@ -187,6 +192,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
 
     /**
      * @return Determines how data travels from the edge to your origin. When set to &#34;direct&#34;, Spectrum will send traffic directly to your origin, and the application&#39;s type is derived from the `protocol`. When set to &#34;http&#34; or &#34;https&#34;, Spectrum will apply Cloudflare&#39;s HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+     * Available values: &#34;direct&#34;, &#34;http&#34;, &#34;https&#34;.
      * 
      */
     public Optional<Output<String>> trafficType() {
@@ -194,22 +200,14 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-<<<<<<< HEAD
-     * Identifier
-=======
      * Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-<<<<<<< HEAD
-     * @return Identifier
-=======
      * @return Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public Output<String> zoneId() {
@@ -437,6 +435,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
 
         /**
          * @param proxyProtocol Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+         * Available values: &#34;off&#34;, &#34;v1&#34;, &#34;v2&#34;, &#34;simple&#34;.
          * 
          * @return builder
          * 
@@ -448,6 +447,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
 
         /**
          * @param proxyProtocol Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+         * Available values: &#34;off&#34;, &#34;v1&#34;, &#34;v2&#34;, &#34;simple&#34;.
          * 
          * @return builder
          * 
@@ -458,6 +458,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
 
         /**
          * @param tls The type of TLS termination associated with the application.
+         * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;.
          * 
          * @return builder
          * 
@@ -469,6 +470,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
 
         /**
          * @param tls The type of TLS termination associated with the application.
+         * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;.
          * 
          * @return builder
          * 
@@ -479,6 +481,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
 
         /**
          * @param trafficType Determines how data travels from the edge to your origin. When set to &#34;direct&#34;, Spectrum will send traffic directly to your origin, and the application&#39;s type is derived from the `protocol`. When set to &#34;http&#34; or &#34;https&#34;, Spectrum will apply Cloudflare&#39;s HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+         * Available values: &#34;direct&#34;, &#34;http&#34;, &#34;https&#34;.
          * 
          * @return builder
          * 
@@ -490,6 +493,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
 
         /**
          * @param trafficType Determines how data travels from the edge to your origin. When set to &#34;direct&#34;, Spectrum will send traffic directly to your origin, and the application&#39;s type is derived from the `protocol`. When set to &#34;http&#34; or &#34;https&#34;, Spectrum will apply Cloudflare&#39;s HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+         * Available values: &#34;direct&#34;, &#34;http&#34;, &#34;https&#34;.
          * 
          * @return builder
          * 
@@ -499,11 +503,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-<<<<<<< HEAD
-         * @param zoneId Identifier
-=======
          * @param zoneId Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 
@@ -514,11 +514,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-<<<<<<< HEAD
-         * @param zoneId Identifier
-=======
          * @param zoneId Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 

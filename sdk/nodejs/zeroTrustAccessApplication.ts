@@ -280,6 +280,8 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessApplication:AccessApplication" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustAccessApplication.__pulumiType, name, resourceInputs, opts);
     }
 }

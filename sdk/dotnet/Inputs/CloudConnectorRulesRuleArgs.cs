@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Cloud Provider type
+        /// Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
         /// </summary>
         [Input("cloudProvider")]
         public Input<string>? CloudProvider { get; set; }

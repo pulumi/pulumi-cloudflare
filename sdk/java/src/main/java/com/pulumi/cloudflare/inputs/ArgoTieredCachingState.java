@@ -48,6 +48,7 @@ public final class ArgoTieredCachingState extends com.pulumi.resources.ResourceA
 
     /**
      * Enables Tiered Caching.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     @Import(name="value")
@@ -55,6 +56,7 @@ public final class ArgoTieredCachingState extends com.pulumi.resources.ResourceA
 
     /**
      * @return Enables Tiered Caching.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public Optional<Output<String>> value() {
@@ -147,6 +149,7 @@ public final class ArgoTieredCachingState extends com.pulumi.resources.ResourceA
 
         /**
          * @param value Enables Tiered Caching.
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 
@@ -158,6 +161,7 @@ public final class ArgoTieredCachingState extends com.pulumi.resources.ResourceA
 
         /**
          * @param value Enables Tiered Caching.
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 

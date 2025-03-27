@@ -62,6 +62,7 @@ type WorkersSecret struct {
 	// The value of the secret.
 	Text pulumi.StringPtrOutput `pulumi:"text"`
 	// The type of secret to put.
+	// Available values: "secretText".
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -84,6 +85,19 @@ func NewWorkersSecret(ctx *pulumi.Context,
 	if args.ScriptName == nil {
 		return nil, errors.New("invalid value for required argument 'ScriptName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/workerSecret:WorkerSecret"),
+		},
+	})
+	opts = append(opts, aliases)
+	if args.Text != nil {
+		args.Text = pulumi.ToSecret(args.Text).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"text",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkersSecret
 	err := ctx.RegisterResource("cloudflare:index/workersSecret:WorkersSecret", name, args, &resource, opts...)
@@ -118,6 +132,7 @@ type workersSecretState struct {
 	// The value of the secret.
 	Text *string `pulumi:"text"`
 	// The type of secret to put.
+	// Available values: "secretText".
 	Type *string `pulumi:"type"`
 }
 
@@ -133,6 +148,7 @@ type WorkersSecretState struct {
 	// The value of the secret.
 	Text pulumi.StringPtrInput
 	// The type of secret to put.
+	// Available values: "secretText".
 	Type pulumi.StringPtrInput
 }
 
@@ -152,6 +168,7 @@ type workersSecretArgs struct {
 	// The value of the secret.
 	Text *string `pulumi:"text"`
 	// The type of secret to put.
+	// Available values: "secretText".
 	Type *string `pulumi:"type"`
 }
 
@@ -168,6 +185,7 @@ type WorkersSecretArgs struct {
 	// The value of the secret.
 	Text pulumi.StringPtrInput
 	// The type of secret to put.
+	// Available values: "secretText".
 	Type pulumi.StringPtrInput
 }
 
@@ -284,6 +302,7 @@ func (o WorkersSecretOutput) Text() pulumi.StringPtrOutput {
 }
 
 // The type of secret to put.
+// Available values: "secretText".
 func (o WorkersSecretOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkersSecret) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

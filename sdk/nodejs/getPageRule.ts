@@ -69,6 +69,7 @@ export interface GetPageRuleResult {
     readonly priority: number;
     /**
      * The status of the Page Rule.
+     * Available values: "active", "disabled".
      */
     readonly status: string;
     /**

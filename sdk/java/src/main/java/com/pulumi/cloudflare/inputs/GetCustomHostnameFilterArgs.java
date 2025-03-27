@@ -19,6 +19,7 @@ public final class GetCustomHostnameFilterArgs extends com.pulumi.resources.Reso
 
     /**
      * Direction to order hostnames.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -26,6 +27,7 @@ public final class GetCustomHostnameFilterArgs extends com.pulumi.resources.Reso
 
     /**
      * @return Direction to order hostnames.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -64,6 +66,7 @@ public final class GetCustomHostnameFilterArgs extends com.pulumi.resources.Reso
 
     /**
      * Field to order hostnames by.
+     * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
      * 
      */
     @Import(name="order", required=true)
@@ -71,6 +74,7 @@ public final class GetCustomHostnameFilterArgs extends com.pulumi.resources.Reso
 
     /**
      * @return Field to order hostnames by.
+     * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
      * 
      */
     public Output<String> order() {
@@ -79,6 +83,7 @@ public final class GetCustomHostnameFilterArgs extends com.pulumi.resources.Reso
 
     /**
      * Whether to filter hostnames based on if they have SSL enabled.
+     * Available values: 0, 1.
      * 
      */
     @Import(name="ssl")
@@ -86,6 +91,7 @@ public final class GetCustomHostnameFilterArgs extends com.pulumi.resources.Reso
 
     /**
      * @return Whether to filter hostnames based on if they have SSL enabled.
+     * Available values: 0, 1.
      * 
      */
     public Optional<Output<Double>> ssl() {
@@ -122,6 +128,7 @@ public final class GetCustomHostnameFilterArgs extends com.pulumi.resources.Reso
 
         /**
          * @param direction Direction to order hostnames.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -133,6 +140,7 @@ public final class GetCustomHostnameFilterArgs extends com.pulumi.resources.Reso
 
         /**
          * @param direction Direction to order hostnames.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -185,6 +193,7 @@ public final class GetCustomHostnameFilterArgs extends com.pulumi.resources.Reso
 
         /**
          * @param order Field to order hostnames by.
+         * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
          * 
          * @return builder
          * 
@@ -196,6 +205,7 @@ public final class GetCustomHostnameFilterArgs extends com.pulumi.resources.Reso
 
         /**
          * @param order Field to order hostnames by.
+         * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
          * 
          * @return builder
          * 
@@ -206,6 +216,7 @@ public final class GetCustomHostnameFilterArgs extends com.pulumi.resources.Reso
 
         /**
          * @param ssl Whether to filter hostnames based on if they have SSL enabled.
+         * Available values: 0, 1.
          * 
          * @return builder
          * 
@@ -217,6 +228,7 @@ public final class GetCustomHostnameFilterArgs extends com.pulumi.resources.Reso
 
         /**
          * @param ssl Whether to filter hostnames based on if they have SSL enabled.
+         * Available values: 0, 1.
          * 
          * @return builder
          * 

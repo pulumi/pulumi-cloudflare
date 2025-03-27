@@ -192,6 +192,7 @@ public class CloudforceOneRequestPriority extends com.pulumi.resources.CustomRes
     }
     /**
      * Request Status
+     * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -199,6 +200,7 @@ public class CloudforceOneRequestPriority extends com.pulumi.resources.CustomRes
 
     /**
      * @return Request Status
+     * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
      * 
      */
     public Output<String> status() {
@@ -220,6 +222,7 @@ public class CloudforceOneRequestPriority extends com.pulumi.resources.CustomRes
     }
     /**
      * The CISA defined Traffic Light Protocol (TLP)
+     * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
     @Export(name="tlp", refs={String.class}, tree="[0]")
@@ -227,6 +230,7 @@ public class CloudforceOneRequestPriority extends com.pulumi.resources.CustomRes
 
     /**
      * @return The CISA defined Traffic Light Protocol (TLP)
+     * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
     public Output<String> tlp() {

@@ -80,6 +80,7 @@ public final class ZeroTrustAccessApplicationScimConfigMappingArgs extends com.p
 
     /**
      * The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+     * Available values: &#34;strict&#34;, &#34;passthrough&#34;.
      * 
      */
     @Import(name="strictness")
@@ -87,6 +88,7 @@ public final class ZeroTrustAccessApplicationScimConfigMappingArgs extends com.p
 
     /**
      * @return The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+     * Available values: &#34;strict&#34;, &#34;passthrough&#34;.
      * 
      */
     public Optional<Output<String>> strictness() {
@@ -223,6 +225,7 @@ public final class ZeroTrustAccessApplicationScimConfigMappingArgs extends com.p
 
         /**
          * @param strictness The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+         * Available values: &#34;strict&#34;, &#34;passthrough&#34;.
          * 
          * @return builder
          * 
@@ -234,6 +237,7 @@ public final class ZeroTrustAccessApplicationScimConfigMappingArgs extends com.p
 
         /**
          * @param strictness The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+         * Available values: &#34;strict&#34;, &#34;passthrough&#34;.
          * 
          * @return builder
          * 

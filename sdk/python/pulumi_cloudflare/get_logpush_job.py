@@ -128,6 +128,7 @@ class GetLogpushJobResult:
     def frequency(self) -> str:
         """
         This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+        Available values: "high", "low".
         """
         return pulumi.get(self, "frequency")
 
@@ -152,6 +153,7 @@ class GetLogpushJobResult:
     def kind(self) -> str:
         """
         The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+        Available values: "edge".
         """
         return pulumi.get(self, "kind")
 

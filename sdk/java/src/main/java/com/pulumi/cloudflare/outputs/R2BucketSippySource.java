@@ -31,6 +31,10 @@ public final class R2BucketSippySource {
      * 
      */
     private @Nullable String privateKey;
+    /**
+     * @return Available values: &#34;aws&#34;.
+     * 
+     */
     private @Nullable String provider;
     /**
      * @return Name of the AWS availability zone
@@ -72,6 +76,10 @@ public final class R2BucketSippySource {
     public Optional<String> privateKey() {
         return Optional.ofNullable(this.privateKey);
     }
+    /**
+     * @return Available values: &#34;aws&#34;.
+     * 
+     */
     public Optional<String> provider() {
         return Optional.ofNullable(this.provider);
     }

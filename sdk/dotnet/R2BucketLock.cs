@@ -58,6 +58,12 @@ namespace Pulumi.Cloudflare
         [Output("bucketName")]
         public Output<string> BucketName { get; private set; } = null!;
 
+        /// <summary>
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Output("jurisdiction")]
+        public Output<string> Jurisdiction { get; private set; } = null!;
+
         [Output("rules")]
         public Output<ImmutableArray<Outputs.R2BucketLockRule>> Rules { get; private set; } = null!;
 
@@ -119,6 +125,12 @@ namespace Pulumi.Cloudflare
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
+        /// <summary>
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
+
         [Input("rules")]
         private InputList<Inputs.R2BucketLockRuleArgs>? _rules;
         public InputList<Inputs.R2BucketLockRuleArgs> Rules
@@ -146,6 +158,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
+
+        /// <summary>
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
 
         [Input("rules")]
         private InputList<Inputs.R2BucketLockRuleGetArgs>? _rules;

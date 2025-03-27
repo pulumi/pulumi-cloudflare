@@ -59,6 +59,7 @@ public final class GetDnsRecordData {
     private Double latDegrees;
     /**
      * @return Latitude direction.
+     * Available values: &#34;N&#34;, &#34;S&#34;.
      * 
      */
     private String latDirection;
@@ -79,6 +80,7 @@ public final class GetDnsRecordData {
     private Double longDegrees;
     /**
      * @return Longitude direction.
+     * Available values: &#34;E&#34;, &#34;W&#34;.
      * 
      */
     private String longDirection;
@@ -259,6 +261,7 @@ public final class GetDnsRecordData {
     }
     /**
      * @return Latitude direction.
+     * Available values: &#34;N&#34;, &#34;S&#34;.
      * 
      */
     public String latDirection() {
@@ -287,6 +290,7 @@ public final class GetDnsRecordData {
     }
     /**
      * @return Longitude direction.
+     * Available values: &#34;E&#34;, &#34;W&#34;.
      * 
      */
     public String longDirection() {

@@ -12,7 +12,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PagesDomainValidationData {
     private @Nullable String errorMessage;
+    /**
+     * @return Available values: &#34;http&#34;, &#34;txt&#34;.
+     * 
+     */
     private @Nullable String method;
+    /**
+     * @return Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;error&#34;.
+     * 
+     */
     private @Nullable String status;
     private @Nullable String txtName;
     private @Nullable String txtValue;
@@ -21,9 +29,17 @@ public final class PagesDomainValidationData {
     public Optional<String> errorMessage() {
         return Optional.ofNullable(this.errorMessage);
     }
+    /**
+     * @return Available values: &#34;http&#34;, &#34;txt&#34;.
+     * 
+     */
     public Optional<String> method() {
         return Optional.ofNullable(this.method);
     }
+    /**
+     * @return Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;error&#34;.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

@@ -13,21 +13,113 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustTunnelCloudflaredConfig = Cloudflare.GetZeroTrustTunnelCloudflaredConfig.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Task<GetZeroTrustTunnelCloudflaredConfigResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustTunnelCloudflaredConfigResult>("cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetZeroTrustTunnelCloudflaredConfigResult> InvokeAsync(GetZeroTrustTunnelCloudflaredConfigArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustTunnelCloudflaredConfigResult>("cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig", args ?? new GetZeroTrustTunnelCloudflaredConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustTunnelCloudflaredConfig = Cloudflare.GetZeroTrustTunnelCloudflaredConfig.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetZeroTrustTunnelCloudflaredConfigResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustTunnelCloudflaredConfigResult>("cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetZeroTrustTunnelCloudflaredConfigResult> Invoke(GetZeroTrustTunnelCloudflaredConfigInvokeArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustTunnelCloudflaredConfigResult>("cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig", args ?? new GetZeroTrustTunnelCloudflaredConfigInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustTunnelCloudflaredConfig = Cloudflare.GetZeroTrustTunnelCloudflaredConfig.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetZeroTrustTunnelCloudflaredConfigResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustTunnelCloudflaredConfigResult>("cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetZeroTrustTunnelCloudflaredConfigResult> Invoke(GetZeroTrustTunnelCloudflaredConfigInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustTunnelCloudflaredConfigResult>("cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig", args ?? new GetZeroTrustTunnelCloudflaredConfigInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetZeroTrustTunnelCloudflaredConfigArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Identifier
+        /// </summary>
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// UUID of the tunnel.
+        /// </summary>
+        [Input("tunnelId", required: true)]
+        public string TunnelId { get; set; } = null!;
+
+        public GetZeroTrustTunnelCloudflaredConfigArgs()
+        {
+        }
+        public static new GetZeroTrustTunnelCloudflaredConfigArgs Empty => new GetZeroTrustTunnelCloudflaredConfigArgs();
+    }
+
+    public sealed class GetZeroTrustTunnelCloudflaredConfigInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Identifier
+        /// </summary>
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// UUID of the tunnel.
+        /// </summary>
+        [Input("tunnelId", required: true)]
+        public Input<string> TunnelId { get; set; } = null!;
+
+        public GetZeroTrustTunnelCloudflaredConfigInvokeArgs()
+        {
+        }
+        public static new GetZeroTrustTunnelCloudflaredConfigInvokeArgs Empty => new GetZeroTrustTunnelCloudflaredConfigInvokeArgs();
     }
 
 
@@ -49,6 +141,7 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         /// <summary>
         /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        /// Available values: "local", "cloudflare".
         /// </summary>
         public readonly string Source;
         /// <summary>

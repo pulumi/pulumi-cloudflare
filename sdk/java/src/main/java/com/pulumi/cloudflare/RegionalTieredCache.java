@@ -90,6 +90,7 @@ public class RegionalTieredCache extends com.pulumi.resources.CustomResource {
     }
     /**
      * Value of the Regional Tiered Cache zone setting.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     @Export(name="value", refs={String.class}, tree="[0]")
@@ -97,6 +98,7 @@ public class RegionalTieredCache extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Value of the Regional Tiered Cache zone setting.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public Output<String> value() {

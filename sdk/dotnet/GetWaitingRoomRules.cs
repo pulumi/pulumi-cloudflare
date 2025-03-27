@@ -121,12 +121,8 @@ namespace Pulumi.Cloudflare
     public sealed class GetWaitingRoomRulesResult
     {
         /// <summary>
-<<<<<<< HEAD
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-=======
         /// The action to take when the expression matches.
+        /// Available values: "bypass*waiting*room".
         /// </summary>
         public readonly string Action;
         /// <summary>
@@ -150,7 +146,6 @@ namespace Pulumi.Cloudflare
         /// The version of the rule.
         /// </summary>
         public readonly string Version;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public readonly string WaitingRoomId;
         /// <summary>
         /// Identifier
@@ -159,10 +154,6 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWaitingRoomRulesResult(
-<<<<<<< HEAD
-            string id,
-
-=======
             string action,
 
             string description,
@@ -177,14 +168,10 @@ namespace Pulumi.Cloudflare
 
             string version,
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             string waitingRoomId,
 
             string zoneId)
         {
-<<<<<<< HEAD
-            Id = id;
-=======
             Action = action;
             Description = description;
             Enabled = enabled;
@@ -192,7 +179,6 @@ namespace Pulumi.Cloudflare
             Id = id;
             LastUpdated = lastUpdated;
             Version = version;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             WaitingRoomId = waitingRoomId;
             ZoneId = zoneId;
         }

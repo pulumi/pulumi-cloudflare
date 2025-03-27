@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
 public final class GetPageShieldConnectionsListInvokeResult {
     /**
      * @return The direction used to sort returned connections.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
@@ -34,6 +35,7 @@ public final class GetPageShieldConnectionsListInvokeResult {
     private @Nullable String excludeUrls;
     /**
      * @return Export the list of connections as a file.
+     * Available values: &#34;csv&#34;.
      * 
      */
     private @Nullable String export;
@@ -65,6 +67,7 @@ public final class GetPageShieldConnectionsListInvokeResult {
     private GetPageShieldConnectionsListInvokeResult() {}
     /**
      * @return The direction used to sort returned connections.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -86,6 +89,7 @@ public final class GetPageShieldConnectionsListInvokeResult {
     }
     /**
      * @return Export the list of connections as a file.
+     * Available values: &#34;csv&#34;.
      * 
      */
     public Optional<String> export() {

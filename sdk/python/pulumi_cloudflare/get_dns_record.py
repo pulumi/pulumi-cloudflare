@@ -236,6 +236,7 @@ class GetDnsRecordResult:
     def type(self) -> str:
         """
         Record type.
+        Available values: "A".
         """
         return pulumi.get(self, "type")
 

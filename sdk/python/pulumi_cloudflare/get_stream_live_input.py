@@ -178,6 +178,7 @@ class GetStreamLiveInputResult:
     def status(self) -> str:
         """
         The connection status of a live input.
+        Available values: "connected", "reconnected", "reconnecting", "client*disconnect", "ttl*exceeded", "failed*to*connect", "failed*to*reconnect", "new*configuration*accepted".
         """
         return pulumi.get(self, "status")
 

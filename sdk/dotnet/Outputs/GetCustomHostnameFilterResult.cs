@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Direction to order hostnames.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
@@ -27,10 +28,12 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Id;
         /// <summary>
         /// Field to order hostnames by.
+        /// Available values: "ssl", "ssl_status".
         /// </summary>
         public readonly string Order;
         /// <summary>
         /// Whether to filter hostnames based on if they have SSL enabled.
+        /// Available values: 0, 1.
         /// </summary>
         public readonly double? Ssl;
 

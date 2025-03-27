@@ -126,6 +126,7 @@ namespace Pulumi.Cloudflare
         public readonly string LastUpdated;
         /// <summary>
         /// The HTTP method used to access the endpoint.
+        /// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         /// </summary>
         public readonly string Method;
         /// <summary>

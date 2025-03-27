@@ -25,6 +25,7 @@ public final class AccountSubscriptionRatePlan {
     private @Nullable Boolean externallyManaged;
     /**
      * @return The ID of the rate plan.
+     * Available values: &#34;free&#34;, &#34;lite&#34;, &#34;pro&#34;, &#34;pro*plus&#34;, &#34;business&#34;, &#34;enterprise&#34;, &#34;partners*free&#34;, &#34;partners*pro&#34;, &#34;partners*business&#34;, &#34;partners_enterprise&#34;.
      * 
      */
     private @Nullable String id;
@@ -66,6 +67,7 @@ public final class AccountSubscriptionRatePlan {
     }
     /**
      * @return The ID of the rate plan.
+     * Available values: &#34;free&#34;, &#34;lite&#34;, &#34;pro&#34;, &#34;pro*plus&#34;, &#34;business&#34;, &#34;enterprise&#34;, &#34;partners*free&#34;, &#34;partners*pro&#34;, &#34;partners*business&#34;, &#34;partners_enterprise&#34;.
      * 
      */
     public Optional<String> id() {

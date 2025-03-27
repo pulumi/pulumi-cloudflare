@@ -54,10 +54,6 @@ type LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs struct {
 // A collection of values returned by getZeroTrustDeviceDefaultProfileLocalDomainFallback.
 type LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResult struct {
 	AccountId string `pulumi:"accountId"`
-<<<<<<< HEAD
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-=======
 	// A description of the fallback domain, displayed in the client UI.
 	Description string `pulumi:"description"`
 	// A list of IP addresses to handle domain resolution.
@@ -66,7 +62,6 @@ type LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResult struct {
 	Id string `pulumi:"id"`
 	// The domain suffix to match when resolving locally.
 	Suffix string `pulumi:"suffix"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackOutput(ctx *pulumi.Context, args LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResultOutput {
@@ -106,8 +101,6 @@ func (o LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResultOutput) Acco
 	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-=======
 // A description of the fallback domain, displayed in the client UI.
 func (o LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResult) string { return v.Description }).(pulumi.StringOutput)
@@ -118,20 +111,16 @@ func (o LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResultOutput) DnsS
 	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResult) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
 }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // The provider-assigned unique ID for this managed resource.
 func (o LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-=======
 // The domain suffix to match when resolving locally.
 func (o LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResultOutput) Suffix() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResult) string { return v.Suffix }).(pulumi.StringOutput)
 }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func init() {
 	pulumi.RegisterOutputType(LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResultOutput{})
 }

@@ -13,18 +13,69 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleSnippets = Cloudflare.GetSnippets.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         SnippetName = "snippet_name_01",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetSnippetsResult> InvokeAsync(GetSnippetsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnippetsResult>("cloudflare:index/getSnippets:getSnippets", args ?? new GetSnippetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleSnippets = Cloudflare.GetSnippets.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         SnippetName = "snippet_name_01",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSnippetsResult> Invoke(GetSnippetsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnippetsResult>("cloudflare:index/getSnippets:getSnippets", args ?? new GetSnippetsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleSnippets = Cloudflare.GetSnippets.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         SnippetName = "snippet_name_01",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSnippetsResult> Invoke(GetSnippetsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnippetsResult>("cloudflare:index/getSnippets:getSnippets", args ?? new GetSnippetsInvokeArgs(), options.WithDefaults());
@@ -33,6 +84,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetSnippetsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Snippet identifying name
+        /// </summary>
+        [Input("snippetName", required: true)]
+        public string SnippetName { get; set; } = null!;
+
         /// <summary>
         /// Identifier
         /// </summary>
@@ -47,6 +104,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetSnippetsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Snippet identifying name
+        /// </summary>
+        [Input("snippetName", required: true)]
+        public Input<string> SnippetName { get; set; } = null!;
+
         /// <summary>
         /// Identifier
         /// </summary>

@@ -82,6 +82,7 @@ type LookupStreamLiveInputResult struct {
 	// Details for playback from an live input using SRT.
 	SrtPlayback GetStreamLiveInputSrtPlayback `pulumi:"srtPlayback"`
 	// The connection status of a live input.
+	// Available values: "connected", "reconnected", "reconnecting", "client*disconnect", "ttl*exceeded", "failed*to*connect", "failed*to*reconnect", "new*configuration*accepted".
 	Status string `pulumi:"status"`
 	// A unique identifier for a live input.
 	Uid string `pulumi:"uid"`
@@ -188,6 +189,7 @@ func (o LookupStreamLiveInputResultOutput) SrtPlayback() GetStreamLiveInputSrtPl
 }
 
 // The connection status of a live input.
+// Available values: "connected", "reconnected", "reconnecting", "client*disconnect", "ttl*exceeded", "failed*to*connect", "failed*to*reconnect", "new*configuration*accepted".
 func (o LookupStreamLiveInputResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamLiveInputResult) string { return v.Status }).(pulumi.StringOutput)
 }

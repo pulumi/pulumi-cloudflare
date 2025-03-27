@@ -41,6 +41,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The frequency of the test.
+        /// Available values: "DAILY", "WEEKLY".
         /// </summary>
         [Input("scheduleFrequency")]
         public Input<string>? ScheduleFrequency { get; set; }

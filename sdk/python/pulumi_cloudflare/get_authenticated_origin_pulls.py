@@ -89,6 +89,7 @@ class GetAuthenticatedOriginPullsResult:
     def cert_status(self) -> str:
         """
         Status of the certificate or the association.
+        Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         """
         return pulumi.get(self, "cert_status")
 
@@ -185,6 +186,7 @@ class GetAuthenticatedOriginPullsResult:
     def status(self) -> str:
         """
         Status of the certificate or the association.
+        Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         """
         return pulumi.get(self, "status")
 
@@ -229,15 +231,26 @@ class AwaitableGetAuthenticatedOriginPullsResult(GetAuthenticatedOriginPullsResu
             zone_id=self.zone_id)
 
 
-def get_authenticated_origin_pulls(zone_id: Optional[str] = None,
+def get_authenticated_origin_pulls(hostname: Optional[str] = None,
+                                   zone_id: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAuthenticatedOriginPullsResult:
     """
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
 
+    example_authenticated_origin_pulls = cloudflare.get_authenticated_origin_pulls(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+        hostname="app.example.com")
+    ```
+
+
+    :param str hostname: The hostname on the origin for which the client certificate uploaded will be used.
     :param str zone_id: Identifier
     """
     __args__ = dict()
+    __args__['hostname'] = hostname
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getAuthenticatedOriginPulls:getAuthenticatedOriginPulls', __args__, opts=opts, typ=GetAuthenticatedOriginPullsResult).value
@@ -259,15 +272,26 @@ def get_authenticated_origin_pulls(zone_id: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_authenticated_origin_pulls_output(zone_id: Optional[pulumi.Input[str]] = None,
+def get_authenticated_origin_pulls_output(hostname: Optional[pulumi.Input[str]] = None,
+                                          zone_id: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAuthenticatedOriginPullsResult]:
     """
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
 
+    example_authenticated_origin_pulls = cloudflare.get_authenticated_origin_pulls(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+        hostname="app.example.com")
+    ```
+
+
+    :param str hostname: The hostname on the origin for which the client certificate uploaded will be used.
     :param str zone_id: Identifier
     """
     __args__ = dict()
+    __args__['hostname'] = hostname
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAuthenticatedOriginPulls:getAuthenticatedOriginPulls', __args__, opts=opts, typ=GetAuthenticatedOriginPullsResult)

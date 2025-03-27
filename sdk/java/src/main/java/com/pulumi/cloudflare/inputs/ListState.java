@@ -63,6 +63,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+     * Available values: &#34;ip&#34;, &#34;redirect&#34;, &#34;hostname&#34;, &#34;asn&#34;.
      * 
      */
     @Import(name="kind")
@@ -70,6 +71,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+     * Available values: &#34;ip&#34;, &#34;redirect&#34;, &#34;hostname&#34;, &#34;asn&#34;.
      * 
      */
     public Optional<Output<String>> kind() {
@@ -232,6 +234,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param kind The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+         * Available values: &#34;ip&#34;, &#34;redirect&#34;, &#34;hostname&#34;, &#34;asn&#34;.
          * 
          * @return builder
          * 
@@ -243,6 +246,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param kind The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+         * Available values: &#34;ip&#34;, &#34;redirect&#34;, &#34;hostname&#34;, &#34;asn&#34;.
          * 
          * @return builder
          * 

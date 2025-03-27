@@ -130,6 +130,7 @@ public class StreamAudioTrack extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies the processing status of the video.
+     * Available values: &#34;queued&#34;, &#34;ready&#34;, &#34;error&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -137,6 +138,7 @@ public class StreamAudioTrack extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies the processing status of the video.
+     * Available values: &#34;queued&#34;, &#34;ready&#34;, &#34;error&#34;.
      * 
      */
     public Output<String> status() {

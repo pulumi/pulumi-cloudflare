@@ -19,6 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Name;
         /// <summary>
         /// The type of secret.
+        /// Available values: "secret_text".
         /// </summary>
         public readonly string Type;
 

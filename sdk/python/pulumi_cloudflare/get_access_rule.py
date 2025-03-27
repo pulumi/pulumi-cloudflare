@@ -116,6 +116,7 @@ class GetAccessRuleResult:
     def mode(self) -> str:
         """
         The action to apply to a matched request.
+        Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         """
         return pulumi.get(self, "mode")
 

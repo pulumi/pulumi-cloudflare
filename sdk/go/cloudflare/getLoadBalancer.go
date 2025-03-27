@@ -109,8 +109,9 @@ type LookupLoadBalancerResult struct {
 	// Steering Policy for this load balancer.
 	SteeringPolicy string `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
-	Ttl    float64 `pulumi:"ttl"`
-	ZoneId string  `pulumi:"zoneId"`
+	Ttl      float64 `pulumi:"ttl"`
+	ZoneId   string  `pulumi:"zoneId"`
+	ZoneName string  `pulumi:"zoneName"`
 }
 
 func LookupLoadBalancerOutput(ctx *pulumi.Context, args LookupLoadBalancerOutputArgs, opts ...pulumi.InvokeOption) LookupLoadBalancerResultOutput {
@@ -275,6 +276,10 @@ func (o LookupLoadBalancerResultOutput) Ttl() pulumi.Float64Output {
 
 func (o LookupLoadBalancerResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) ZoneName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.ZoneName }).(pulumi.StringOutput)
 }
 
 func init() {

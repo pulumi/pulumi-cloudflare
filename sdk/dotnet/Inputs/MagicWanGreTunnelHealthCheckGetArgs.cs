@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
+        /// Available values: "unidirectional", "bidirectional".
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -26,6 +27,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// How frequent the health check is run. The default value is `mid`.
+        /// Available values: "low", "mid", "high".
         /// </summary>
         [Input("rate")]
         public Input<string>? Rate { get; set; }
@@ -38,6 +40,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The type of healthcheck to run, reply or request. The default value is `reply`.
+        /// Available values: "reply", "request".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

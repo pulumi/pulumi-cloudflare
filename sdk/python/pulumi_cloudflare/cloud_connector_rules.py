@@ -21,27 +21,16 @@ __all__ = ['CloudConnectorRulesArgs', 'CloudConnectorRules']
 @pulumi.input_type
 class CloudConnectorRulesArgs:
     def __init__(__self__, *,
-                 rules: pulumi.Input[Sequence[pulumi.Input['CloudConnectorRulesRuleArgs']]],
-                 zone_id: pulumi.Input[str]):
+                 zone_id: pulumi.Input[str],
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['CloudConnectorRulesRuleArgs']]]] = None):
         """
         The set of arguments for constructing a CloudConnectorRules resource.
-        :param pulumi.Input[Sequence[pulumi.Input['CloudConnectorRulesRuleArgs']]] rules: List of Cloud Connector rules
         :param pulumi.Input[str] zone_id: Identifier
+        :param pulumi.Input[Sequence[pulumi.Input['CloudConnectorRulesRuleArgs']]] rules: List of Cloud Connector rules
         """
-        pulumi.set(__self__, "rules", rules)
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @property
-    @pulumi.getter
-    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['CloudConnectorRulesRuleArgs']]]:
-        """
-        List of Cloud Connector rules
-        """
-        return pulumi.get(self, "rules")
-
-    @rules.setter
-    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['CloudConnectorRulesRuleArgs']]]):
-        pulumi.set(self, "rules", value)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -54,6 +43,18 @@ class CloudConnectorRulesArgs:
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudConnectorRulesRuleArgs']]]]:
+        """
+        List of Cloud Connector rules
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudConnectorRulesRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
 
 
 @pulumi.input_type
@@ -68,11 +69,9 @@ class _CloudConnectorRulesState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CloudConnectorRules resources.
-<<<<<<< HEAD
-=======
         :param pulumi.Input[str] cloud_provider: Cloud Provider type
+               Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
         :param pulumi.Input['CloudConnectorRulesParametersArgs'] parameters: Parameters of Cloud Connector Rule
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[Sequence[pulumi.Input['CloudConnectorRulesRuleArgs']]] rules: List of Cloud Connector rules
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -96,6 +95,7 @@ class _CloudConnectorRulesState:
     def cloud_provider(self) -> Optional[pulumi.Input[str]]:
         """
         Cloud Provider type
+        Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
         """
         return pulumi.get(self, "cloud_provider")
 
@@ -218,8 +218,6 @@ class CloudConnectorRules(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CloudConnectorRulesArgs.__new__(CloudConnectorRulesArgs)
 
-            if rules is None and not opts.urn:
-                raise TypeError("Missing required property 'rules'")
             __props__.__dict__["rules"] = rules
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
@@ -253,11 +251,9 @@ class CloudConnectorRules(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-<<<<<<< HEAD
-=======
         :param pulumi.Input[str] cloud_provider: Cloud Provider type
+               Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
         :param pulumi.Input[Union['CloudConnectorRulesParametersArgs', 'CloudConnectorRulesParametersArgsDict']] parameters: Parameters of Cloud Connector Rule
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[Sequence[pulumi.Input[Union['CloudConnectorRulesRuleArgs', 'CloudConnectorRulesRuleArgsDict']]]] rules: List of Cloud Connector rules
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -275,15 +271,11 @@ class CloudConnectorRules(pulumi.CustomResource):
         return CloudConnectorRules(resource_name, opts=opts, __props__=__props__)
 
     @property
-<<<<<<< HEAD
-    @pulumi.getter
-    def rules(self) -> pulumi.Output[Sequence['outputs.CloudConnectorRulesRule']]:
-        """
-=======
     @pulumi.getter(name="cloudProvider")
     def cloud_provider(self) -> pulumi.Output[str]:
         """
         Cloud Provider type
+        Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
         """
         return pulumi.get(self, "cloud_provider")
 
@@ -314,7 +306,6 @@ class CloudConnectorRules(pulumi.CustomResource):
     @pulumi.getter
     def rules(self) -> pulumi.Output[Sequence['outputs.CloudConnectorRulesRule']]:
         """
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         List of Cloud Connector rules
         """
         return pulumi.get(self, "rules")

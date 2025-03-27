@@ -14,6 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustDlpDatasetsResultUploadResult
     {
         public readonly int NumCells;
+        /// <summary>
+        /// Available values: "empty", "uploading", "processing", "failed", "complete".
+        /// </summary>
         public readonly string Status;
         public readonly int Version;
 

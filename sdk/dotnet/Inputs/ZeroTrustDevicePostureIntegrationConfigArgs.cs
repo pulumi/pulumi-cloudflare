@@ -18,11 +18,21 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("accessClientId")]
         public Input<string>? AccessClientId { get; set; }
 
+        [Input("accessClientSecret")]
+        private Input<string>? _accessClientSecret;
+
         /// <summary>
         /// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`
         /// </summary>
-        [Input("accessClientSecret")]
-        public Input<string>? AccessClientSecret { get; set; }
+        public Input<string>? AccessClientSecret
+        {
+            get => _accessClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The Workspace One API URL provided in the Workspace One Admin Dashboard.
@@ -48,11 +58,21 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
 
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
+
         /// <summary>
         /// The Workspace One client secret provided in the Workspace One Admin Dashboard.
         /// </summary>
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The Crowdstrike customer ID.

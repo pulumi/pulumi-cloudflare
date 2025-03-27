@@ -36,6 +36,10 @@ public final class GetEmailSecurityBlockSenderResult {
      * 
      */
     private @Nullable Integer patternId;
+    /**
+     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * 
+     */
     private String patternType;
 
     private GetEmailSecurityBlockSenderResult() {}
@@ -78,6 +82,10 @@ public final class GetEmailSecurityBlockSenderResult {
     public Optional<Integer> patternId() {
         return Optional.ofNullable(this.patternId);
     }
+    /**
+     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * 
+     */
     public String patternType() {
         return this.patternType;
     }

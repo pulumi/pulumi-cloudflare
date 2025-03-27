@@ -6,23 +6,12 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-<<<<<<< HEAD
-=======
 import java.util.List;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustGatewayProxyEndpointResult {
     private String accountId;
-<<<<<<< HEAD
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    private String proxyEndpointId;
-=======
     private String createdAt;
     /**
      * @return The ID of this resource.
@@ -46,32 +35,21 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
      */
     private String subdomain;
     private String updatedAt;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     private GetZeroTrustGatewayProxyEndpointResult() {}
     public String accountId() {
         return this.accountId;
     }
-<<<<<<< HEAD
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-=======
     public String createdAt() {
         return this.createdAt;
     }
     /**
      * @return The ID of this resource.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public String id() {
         return this.id;
     }
-<<<<<<< HEAD
-    public String proxyEndpointId() {
-        return this.proxyEndpointId;
-    }
-=======
     /**
      * @return A list of CIDRs to restrict ingress connections.
      * 
@@ -99,7 +77,6 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
     public String updatedAt() {
         return this.updatedAt;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     public static Builder builder() {
         return new Builder();
@@ -111,10 +88,6 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-<<<<<<< HEAD
-        private String id;
-        private String proxyEndpointId;
-=======
         private String createdAt;
         private String id;
         private List<String> ips;
@@ -122,15 +95,10 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
         private String proxyEndpointId;
         private String subdomain;
         private String updatedAt;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder() {}
         public Builder(GetZeroTrustGatewayProxyEndpointResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-<<<<<<< HEAD
-    	      this.id = defaults.id;
-    	      this.proxyEndpointId = defaults.proxyEndpointId;
-=======
     	      this.createdAt = defaults.createdAt;
     	      this.id = defaults.id;
     	      this.ips = defaults.ips;
@@ -138,7 +106,6 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
     	      this.proxyEndpointId = defaults.proxyEndpointId;
     	      this.subdomain = defaults.subdomain;
     	      this.updatedAt = defaults.updatedAt;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
 
         @CustomType.Setter
@@ -150,8 +117,6 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder createdAt(String createdAt) {
             if (createdAt == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayProxyEndpointResult", "createdAt");
@@ -160,7 +125,6 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
             return this;
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayProxyEndpointResult", "id");
@@ -169,8 +133,6 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder ips(List<String> ips) {
             if (ips == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayProxyEndpointResult", "ips");
@@ -190,7 +152,6 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
             return this;
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder proxyEndpointId(String proxyEndpointId) {
             if (proxyEndpointId == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayProxyEndpointResult", "proxyEndpointId");
@@ -198,13 +159,6 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
             this.proxyEndpointId = proxyEndpointId;
             return this;
         }
-<<<<<<< HEAD
-        public GetZeroTrustGatewayProxyEndpointResult build() {
-            final var _resultValue = new GetZeroTrustGatewayProxyEndpointResult();
-            _resultValue.accountId = accountId;
-            _resultValue.id = id;
-            _resultValue.proxyEndpointId = proxyEndpointId;
-=======
         @CustomType.Setter
         public Builder subdomain(String subdomain) {
             if (subdomain == null) {
@@ -231,7 +185,6 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
             _resultValue.proxyEndpointId = proxyEndpointId;
             _resultValue.subdomain = subdomain;
             _resultValue.updatedAt = updatedAt;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return _resultValue;
         }
     }

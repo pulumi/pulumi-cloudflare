@@ -88,11 +88,7 @@ class GetMagicTransitSiteLanResult:
 
     @property
     @pulumi.getter(name="lanId")
-<<<<<<< HEAD
-    def lan_id(self) -> str:
-=======
     def lan_id(self) -> Optional[str]:
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         Identifier
         """
@@ -164,17 +160,29 @@ class AwaitableGetMagicTransitSiteLanResult(GetMagicTransitSiteLanResult):
 
 def get_magic_transit_site_lan(account_id: Optional[str] = None,
                                lan_id: Optional[str] = None,
+                               site_id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMagicTransitSiteLanResult:
     """
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_magic_transit_site_lan = cloudflare.get_magic_transit_site_lan(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        site_id="023e105f4ecef8ad9ca31a8372d0c353",
+        lan_id="023e105f4ecef8ad9ca31a8372d0c353")
+    ```
+
 
     :param str account_id: Identifier
     :param str lan_id: Identifier
+    :param str site_id: Identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['lanId'] = lan_id
+    __args__['siteId'] = site_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getMagicTransitSiteLan:getMagicTransitSiteLan', __args__, opts=opts, typ=GetMagicTransitSiteLanResult).value
 
@@ -191,22 +199,30 @@ def get_magic_transit_site_lan(account_id: Optional[str] = None,
         static_addressing=pulumi.get(__ret__, 'static_addressing'),
         vlan_tag=pulumi.get(__ret__, 'vlan_tag'))
 def get_magic_transit_site_lan_output(account_id: Optional[pulumi.Input[str]] = None,
-<<<<<<< HEAD
-                                      lan_id: Optional[pulumi.Input[str]] = None,
-=======
                                       lan_id: Optional[pulumi.Input[Optional[str]]] = None,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+                                      site_id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitSiteLanResult]:
     """
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_magic_transit_site_lan = cloudflare.get_magic_transit_site_lan(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        site_id="023e105f4ecef8ad9ca31a8372d0c353",
+        lan_id="023e105f4ecef8ad9ca31a8372d0c353")
+    ```
+
 
     :param str account_id: Identifier
     :param str lan_id: Identifier
+    :param str site_id: Identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['lanId'] = lan_id
+    __args__['siteId'] = site_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getMagicTransitSiteLan:getMagicTransitSiteLan', __args__, opts=opts, typ=GetMagicTransitSiteLanResult)
     return __ret__.apply(lambda __response__: GetMagicTransitSiteLanResult(

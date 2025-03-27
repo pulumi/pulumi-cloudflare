@@ -81,6 +81,7 @@ class GetAccessRulesResult:
     def direction(self) -> Optional[str]:
         """
         The direction used to sort returned rules.
+        Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
 
@@ -97,6 +98,7 @@ class GetAccessRulesResult:
     def match(self) -> str:
         """
         When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+        Available values: "any", "all".
         """
         return pulumi.get(self, "match")
 
@@ -113,6 +115,7 @@ class GetAccessRulesResult:
     def mode(self) -> Optional[str]:
         """
         The action to apply to a matched request.
+        Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         """
         return pulumi.get(self, "mode")
 
@@ -130,6 +133,7 @@ class GetAccessRulesResult:
     def order(self) -> Optional[str]:
         """
         The field used to sort returned rules.
+        Available values: "configuration.target", "configuration.value", "mode".
         """
         return pulumi.get(self, "order")
 
@@ -201,12 +205,16 @@ def get_access_rules(account_id: Optional[str] = None,
 
     :param str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
     :param str direction: The direction used to sort returned rules.
+           Available values: "asc", "desc".
     :param str match: When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+           Available values: "any", "all".
     :param int max_items: Max items to fetch, default: 1000
     :param str mode: The action to apply to a matched request.
+           Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
     :param str notes: The string to search for in the notes of existing IP Access rules.
            Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
     :param str order: The field used to sort returned rules.
+           Available values: "configuration.target", "configuration.value", "mode".
     :param str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
@@ -266,12 +274,16 @@ def get_access_rules_output(account_id: Optional[pulumi.Input[Optional[str]]] = 
 
     :param str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
     :param str direction: The direction used to sort returned rules.
+           Available values: "asc", "desc".
     :param str match: When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+           Available values: "any", "all".
     :param int max_items: Max items to fetch, default: 1000
     :param str mode: The action to apply to a matched request.
+           Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
     :param str notes: The string to search for in the notes of existing IP Access rules.
            Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
     :param str order: The field used to sort returned rules.
+           Available values: "configuration.target", "configuration.value", "mode".
     :param str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()

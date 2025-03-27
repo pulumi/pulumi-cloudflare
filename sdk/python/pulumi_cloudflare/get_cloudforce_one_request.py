@@ -149,6 +149,7 @@ class GetCloudforceOneRequestResult:
     def status(self) -> str:
         """
         Request Status
+        Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         """
         return pulumi.get(self, "status")
 
@@ -165,6 +166,7 @@ class GetCloudforceOneRequestResult:
     def tlp(self) -> str:
         """
         The CISA defined Traffic Light Protocol (TLP)
+        Available values: "clear", "amber", "amber-strict", "green", "red".
         """
         return pulumi.get(self, "tlp")
 

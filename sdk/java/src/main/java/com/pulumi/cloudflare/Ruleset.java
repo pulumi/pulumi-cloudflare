@@ -49,6 +49,8 @@ import javax.annotation.Nullable;
  *             .kind("managed")
  *             .name("My ruleset")
  *             .phase("ddos_l4")
+ *             .zoneId("zone_id")
+ *             .description("My ruleset to execute managed rulesets")
  *             .rules(RulesetRuleArgs.builder()
  *                 .id("3a03d665bac047339bb530ecb439a90d")
  *                 .action("block")
@@ -72,8 +74,6 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .ref("my_ref")
  *                 .build())
- *             .zoneId("zone_id")
- *             .description("My ruleset to execute managed rulesets")
  *             .build());
  * 
  *     }
@@ -121,6 +121,7 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
     }
     /**
      * The kind of the ruleset.
+     * Available values: &#34;managed&#34;, &#34;custom&#34;, &#34;root&#34;, &#34;zone&#34;.
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
@@ -128,6 +129,7 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The kind of the ruleset.
+     * Available values: &#34;managed&#34;, &#34;custom&#34;, &#34;root&#34;, &#34;zone&#34;.
      * 
      */
     public Output<String> kind() {
@@ -149,6 +151,7 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
     }
     /**
      * The phase of the ruleset.
+     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
      * 
      */
     @Export(name="phase", refs={String.class}, tree="[0]")
@@ -156,6 +159,7 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The phase of the ruleset.
+     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
      * 
      */
     public Output<String> phase() {

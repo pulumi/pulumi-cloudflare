@@ -252,6 +252,7 @@ public class Healthcheck extends com.pulumi.resources.CustomResource {
     }
     /**
      * The current status of the origin server according to the health check.
+     * Available values: &#34;unknown&#34;, &#34;healthy&#34;, &#34;unhealthy&#34;, &#34;suspended&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -259,6 +260,7 @@ public class Healthcheck extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The current status of the origin server according to the health check.
+     * Available values: &#34;unknown&#34;, &#34;healthy&#34;, &#34;unhealthy&#34;, &#34;suspended&#34;.
      * 
      */
     public Output<String> status() {

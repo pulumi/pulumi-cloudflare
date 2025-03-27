@@ -53,6 +53,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+        /// Available values: "allow", "deny", "non_identity", "bypass".
         /// </summary>
         [Output("decision")]
         public Output<string> Decision { get; private set; } = null!;
@@ -134,6 +135,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/accessPolicy:AccessPolicy" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -183,6 +188,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+        /// Available values: "allow", "deny", "non_identity", "bypass".
         /// </summary>
         [Input("decision", required: true)]
         public Input<string> Decision { get; set; } = null!;
@@ -296,6 +302,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+        /// Available values: "allow", "deny", "non_identity", "bypass".
         /// </summary>
         [Input("decision")]
         public Input<string>? Decision { get; set; }

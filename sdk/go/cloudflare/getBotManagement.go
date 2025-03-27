@@ -55,9 +55,13 @@ type LookupBotManagementArgs struct {
 // A collection of values returned by getBotManagement.
 type LookupBotManagementResult struct {
 	// Enable rule to block AI Scrapers and Crawlers.
+	// Available values: "block", "disabled".
 	AiBotsProtection string `pulumi:"aiBotsProtection"`
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel bool `pulumi:"autoUpdateModel"`
+	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
+	// Available values: "enabled", "disabled".
+	CrawlerProtection string `pulumi:"crawlerProtection"`
 	// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
 	EnableJs bool `pulumi:"enableJs"`
 	// Whether to enable Bot Fight Mode.
@@ -67,14 +71,17 @@ type LookupBotManagementResult struct {
 	// Whether to optimize Super Bot Fight Mode protections for Wordpress.
 	OptimizeWordpress bool `pulumi:"optimizeWordpress"`
 	// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+	// Available values: "allow", "block", "managedChallenge".
 	SbfmDefinitelyAutomated string `pulumi:"sbfmDefinitelyAutomated"`
 	// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+	// Available values: "allow", "block", "managedChallenge".
 	SbfmLikelyAutomated string `pulumi:"sbfmLikelyAutomated"`
 	// Super Bot Fight Mode (SBFM) to enable static resource protection.
 	// Enable if static resources on your application need bot protection.
 	// Note: Static resource protection can also result in legitimate traffic being blocked.
 	SbfmStaticResourceProtection bool `pulumi:"sbfmStaticResourceProtection"`
 	// Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+	// Available values: "allow", "block".
 	SbfmVerifiedBots string `pulumi:"sbfmVerifiedBots"`
 	// A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
 	StaleZoneConfiguration GetBotManagementStaleZoneConfiguration `pulumi:"staleZoneConfiguration"`
@@ -121,6 +128,7 @@ func (o LookupBotManagementResultOutput) ToLookupBotManagementResultOutputWithCo
 }
 
 // Enable rule to block AI Scrapers and Crawlers.
+// Available values: "block", "disabled".
 func (o LookupBotManagementResultOutput) AiBotsProtection() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotManagementResult) string { return v.AiBotsProtection }).(pulumi.StringOutput)
 }
@@ -128,6 +136,12 @@ func (o LookupBotManagementResultOutput) AiBotsProtection() pulumi.StringOutput 
 // Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 func (o LookupBotManagementResultOutput) AutoUpdateModel() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBotManagementResult) bool { return v.AutoUpdateModel }).(pulumi.BoolOutput)
+}
+
+// Enable rule to punish AI Scrapers and Crawlers via a link maze.
+// Available values: "enabled", "disabled".
+func (o LookupBotManagementResultOutput) CrawlerProtection() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBotManagementResult) string { return v.CrawlerProtection }).(pulumi.StringOutput)
 }
 
 // Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
@@ -151,11 +165,13 @@ func (o LookupBotManagementResultOutput) OptimizeWordpress() pulumi.BoolOutput {
 }
 
 // Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+// Available values: "allow", "block", "managedChallenge".
 func (o LookupBotManagementResultOutput) SbfmDefinitelyAutomated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotManagementResult) string { return v.SbfmDefinitelyAutomated }).(pulumi.StringOutput)
 }
 
 // Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+// Available values: "allow", "block", "managedChallenge".
 func (o LookupBotManagementResultOutput) SbfmLikelyAutomated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotManagementResult) string { return v.SbfmLikelyAutomated }).(pulumi.StringOutput)
 }
@@ -168,6 +184,7 @@ func (o LookupBotManagementResultOutput) SbfmStaticResourceProtection() pulumi.B
 }
 
 // Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+// Available values: "allow", "block".
 func (o LookupBotManagementResultOutput) SbfmVerifiedBots() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotManagementResult) string { return v.SbfmVerifiedBots }).(pulumi.StringOutput)
 }

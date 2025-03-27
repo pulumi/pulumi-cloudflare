@@ -41,6 +41,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     private String cn;
     /**
      * @return Compliance Status
+     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
      * 
      */
     private String complianceStatus;
@@ -51,6 +52,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     private String connectionId;
     /**
      * @return Count Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     private String countOperator;
@@ -107,21 +109,25 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     private GetZeroTrustDevicePostureRulesResultInputLocations locations;
     /**
      * @return Network status of device.
+     * Available values: &#34;connected&#34;, &#34;disconnected&#34;, &#34;disconnecting&#34;, &#34;connecting&#34;.
      * 
      */
     private String networkStatus;
     /**
      * @return Operating system
+     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
      * 
      */
     private String operatingSystem;
     /**
      * @return Agent operational state.
+     * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
      * 
      */
     private String operationalState;
     /**
      * @return operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     private String operator;
@@ -162,6 +168,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     private Boolean requireAll;
     /**
      * @return For more details on risk level, refer to the Tanium documentation.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;critical&#34;.
      * 
      */
     private String riskLevel;
@@ -172,6 +179,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     private Double score;
     /**
      * @return Score Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     private String scoreOperator;
@@ -187,6 +195,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     private String sha256;
     /**
      * @return For more details on state, please refer to the Crowdstrike documentation.
+     * Available values: &#34;online&#34;, &#34;offline&#34;, &#34;unknown&#34;.
      * 
      */
     private String state;
@@ -207,6 +216,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     private String version;
     /**
      * @return Version Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     private String versionOperator;
@@ -249,6 +259,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     }
     /**
      * @return Compliance Status
+     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
      * 
      */
     public String complianceStatus() {
@@ -263,6 +274,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     }
     /**
      * @return Count Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public String countOperator() {
@@ -343,6 +355,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     }
     /**
      * @return Network status of device.
+     * Available values: &#34;connected&#34;, &#34;disconnected&#34;, &#34;disconnecting&#34;, &#34;connecting&#34;.
      * 
      */
     public String networkStatus() {
@@ -350,6 +363,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     }
     /**
      * @return Operating system
+     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
      * 
      */
     public String operatingSystem() {
@@ -357,6 +371,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     }
     /**
      * @return Agent operational state.
+     * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
      * 
      */
     public String operationalState() {
@@ -364,6 +379,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     }
     /**
      * @return operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public String operator() {
@@ -420,6 +436,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     }
     /**
      * @return For more details on risk level, refer to the Tanium documentation.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;critical&#34;.
      * 
      */
     public String riskLevel() {
@@ -434,6 +451,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     }
     /**
      * @return Score Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public String scoreOperator() {
@@ -455,6 +473,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     }
     /**
      * @return For more details on state, please refer to the Crowdstrike documentation.
+     * Available values: &#34;online&#34;, &#34;offline&#34;, &#34;unknown&#34;.
      * 
      */
     public String state() {
@@ -483,6 +502,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     }
     /**
      * @return Version Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public String versionOperator() {

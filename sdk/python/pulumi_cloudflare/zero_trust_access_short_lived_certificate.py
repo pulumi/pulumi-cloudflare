@@ -250,6 +250,8 @@ class ZeroTrustAccessShortLivedCertificate(pulumi.CustomResource):
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["aud"] = None
             __props__.__dict__["public_key"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessCaCertificate:AccessCaCertificate")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustAccessShortLivedCertificate, __self__).__init__(
             'cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate',
             resource_name,

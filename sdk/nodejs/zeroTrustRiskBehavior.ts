@@ -82,6 +82,8 @@ export class ZeroTrustRiskBehavior extends pulumi.CustomResource {
             resourceInputs["behaviors"] = args ? args.behaviors : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/riskBehavior:RiskBehavior" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustRiskBehavior.__pulumiType, name, resourceInputs, opts);
     }
 }

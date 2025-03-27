@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCustomSslsResultGeoRestrictions {
+    /**
+     * @return Available values: &#34;us&#34;, &#34;eu&#34;, &#34;highest_security&#34;.
+     * 
+     */
     private String label;
 
     private GetCustomSslsResultGeoRestrictions() {}
+    /**
+     * @return Available values: &#34;us&#34;, &#34;eu&#34;, &#34;highest_security&#34;.
+     * 
+     */
     public String label() {
         return this.label;
     }

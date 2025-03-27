@@ -24,12 +24,9 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-<<<<<<< HEAD
-=======
         /// <summary>
         /// The configuration object containing information for the WARP client to detect the managed network.
         /// </summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Output("config")]
         public Output<Outputs.ZeroTrustDeviceManagedNetworksConfig> Config { get; private set; } = null!;
 
@@ -47,6 +44,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of device managed network.
+        /// Available values: "tls".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -74,6 +72,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -100,12 +102,9 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-<<<<<<< HEAD
-=======
         /// <summary>
         /// The configuration object containing information for the WARP client to detect the managed network.
         /// </summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Input("config", required: true)]
         public Input<Inputs.ZeroTrustDeviceManagedNetworksConfigArgs> Config { get; set; } = null!;
 
@@ -117,6 +116,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of device managed network.
+        /// Available values: "tls".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -132,12 +132,9 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-<<<<<<< HEAD
-=======
         /// <summary>
         /// The configuration object containing information for the WARP client to detect the managed network.
         /// </summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Input("config")]
         public Input<Inputs.ZeroTrustDeviceManagedNetworksConfigGetArgs>? Config { get; set; }
 
@@ -155,6 +152,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of device managed network.
+        /// Available values: "tls".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

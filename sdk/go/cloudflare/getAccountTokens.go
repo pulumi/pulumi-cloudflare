@@ -52,6 +52,7 @@ type LookupAccountTokensArgs struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
 	// Direction to order results.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -62,6 +63,7 @@ type LookupAccountTokensResult struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
 	// Direction to order results.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -85,6 +87,7 @@ type LookupAccountTokensOutputArgs struct {
 	// Account identifier tag.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Direction to order results.
+	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
@@ -115,6 +118,7 @@ func (o LookupAccountTokensResultOutput) AccountId() pulumi.StringOutput {
 }
 
 // Direction to order results.
+// Available values: "asc", "desc".
 func (o LookupAccountTokensResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountTokensResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }

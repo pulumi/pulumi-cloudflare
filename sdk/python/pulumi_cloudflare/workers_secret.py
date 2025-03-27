@@ -33,6 +33,7 @@ class WorkersSecretArgs:
         :param pulumi.Input[str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[str] text: The value of the secret.
         :param pulumi.Input[str] type: The type of secret to put.
+               Available values: "secret_text".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "dispatch_namespace", dispatch_namespace)
@@ -108,6 +109,7 @@ class WorkersSecretArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of secret to put.
+        Available values: "secret_text".
         """
         return pulumi.get(self, "type")
 
@@ -133,6 +135,7 @@ class _WorkersSecretState:
         :param pulumi.Input[str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[str] text: The value of the secret.
         :param pulumi.Input[str] type: The type of secret to put.
+               Available values: "secret_text".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -212,6 +215,7 @@ class _WorkersSecretState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of secret to put.
+        Available values: "secret_text".
         """
         return pulumi.get(self, "type")
 
@@ -262,6 +266,7 @@ class WorkersSecret(pulumi.CustomResource):
         :param pulumi.Input[str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[str] text: The value of the secret.
         :param pulumi.Input[str] type: The type of secret to put.
+               Available values: "secret_text".
         """
         ...
     @overload
@@ -333,8 +338,12 @@ class WorkersSecret(pulumi.CustomResource):
             if script_name is None and not opts.urn:
                 raise TypeError("Missing required property 'script_name'")
             __props__.__dict__["script_name"] = script_name
-            __props__.__dict__["text"] = text
+            __props__.__dict__["text"] = None if text is None else pulumi.Output.secret(text)
             __props__.__dict__["type"] = type
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/workerSecret:WorkerSecret")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["text"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(WorkersSecret, __self__).__init__(
             'cloudflare:index/workersSecret:WorkersSecret',
             resource_name,
@@ -364,6 +373,7 @@ class WorkersSecret(pulumi.CustomResource):
         :param pulumi.Input[str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[str] text: The value of the secret.
         :param pulumi.Input[str] type: The type of secret to put.
+               Available values: "secret_text".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -422,6 +432,7 @@ class WorkersSecret(pulumi.CustomResource):
     def type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of secret to put.
+        Available values: "secret_text".
         """
         return pulumi.get(self, "type")
 

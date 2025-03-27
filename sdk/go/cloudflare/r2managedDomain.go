@@ -52,6 +52,8 @@ type R2ManagedDomain struct {
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Whether to enable public bucket access at the r2.dev domain
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringOutput `pulumi:"jurisdiction"`
 }
 
 // NewR2ManagedDomain registers a new resource with the given unique name, arguments, and options.
@@ -103,6 +105,8 @@ type r2managedDomainState struct {
 	Domain *string `pulumi:"domain"`
 	// Whether to enable public bucket access at the r2.dev domain
 	Enabled *bool `pulumi:"enabled"`
+	// Jurisdiction of the bucket
+	Jurisdiction *string `pulumi:"jurisdiction"`
 }
 
 type R2ManagedDomainState struct {
@@ -116,6 +120,8 @@ type R2ManagedDomainState struct {
 	Domain pulumi.StringPtrInput
 	// Whether to enable public bucket access at the r2.dev domain
 	Enabled pulumi.BoolPtrInput
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringPtrInput
 }
 
 func (R2ManagedDomainState) ElementType() reflect.Type {
@@ -129,6 +135,8 @@ type r2managedDomainArgs struct {
 	BucketName string `pulumi:"bucketName"`
 	// Whether to enable public bucket access at the r2.dev domain
 	Enabled bool `pulumi:"enabled"`
+	// Jurisdiction of the bucket
+	Jurisdiction *string `pulumi:"jurisdiction"`
 }
 
 // The set of arguments for constructing a R2ManagedDomain resource.
@@ -139,6 +147,8 @@ type R2ManagedDomainArgs struct {
 	BucketName pulumi.StringInput
 	// Whether to enable public bucket access at the r2.dev domain
 	Enabled pulumi.BoolInput
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringPtrInput
 }
 
 func (R2ManagedDomainArgs) ElementType() reflect.Type {
@@ -251,6 +261,11 @@ func (o R2ManagedDomainOutput) Domain() pulumi.StringOutput {
 // Whether to enable public bucket access at the r2.dev domain
 func (o R2ManagedDomainOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *R2ManagedDomain) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Jurisdiction of the bucket
+func (o R2ManagedDomainOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v *R2ManagedDomain) pulumi.StringOutput { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
 type R2ManagedDomainArrayOutput struct{ *pulumi.OutputState }

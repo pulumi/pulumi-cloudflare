@@ -161,6 +161,9 @@ namespace Pulumi.Cloudflare
         /// Whether to add Microsoft IPs to Split Tunnel exclusions.
         /// </summary>
         public readonly bool ExcludeOfficeIps;
+        /// <summary>
+        /// List of routes excluded in the WARP client's tunnel.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfileExcludeResult> Excludes;
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfileFallbackDomainResult> FallbackDomains;
         public readonly string GatewayUniqueId;
@@ -168,6 +171,9 @@ namespace Pulumi.Cloudflare
         /// Device ID.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// List of routes included in the WARP client's tunnel.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfileIncludeResult> Includes;
         /// <summary>
         /// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
@@ -193,6 +199,10 @@ namespace Pulumi.Cloudflare
         /// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
         /// </summary>
         public readonly double Precedence;
+        /// <summary>
+        /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        /// </summary>
+        public readonly bool RegisterInterfaceIpWithDns;
         public readonly Outputs.GetZeroTrustDeviceCustomProfileServiceModeV2Result ServiceModeV2;
         /// <summary>
         /// The URL to launch when the Send Feedback button is clicked.
@@ -254,6 +264,8 @@ namespace Pulumi.Cloudflare
 
             double precedence,
 
+            bool registerInterfaceIpWithDns,
+
             Outputs.GetZeroTrustDeviceCustomProfileServiceModeV2Result serviceModeV2,
 
             string supportUrl,
@@ -286,6 +298,7 @@ namespace Pulumi.Cloudflare
             Name = name;
             PolicyId = policyId;
             Precedence = precedence;
+            RegisterInterfaceIpWithDns = registerInterfaceIpWithDns;
             ServiceModeV2 = serviceModeV2;
             SupportUrl = supportUrl;
             SwitchLocked = switchLocked;

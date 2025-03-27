@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetPagesProjectCanonicalDeploymentEnvVars {
     /**
-     * @return The type of environment variable.
+     * @return Available values: &#34;plain_text&#34;.
      * 
      */
     private String type;
@@ -23,7 +23,7 @@ public final class GetPagesProjectCanonicalDeploymentEnvVars {
 
     private GetPagesProjectCanonicalDeploymentEnvVars() {}
     /**
-     * @return The type of environment variable.
+     * @return Available values: &#34;plain_text&#34;.
      * 
      */
     public String type() {

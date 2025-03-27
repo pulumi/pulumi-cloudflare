@@ -37,10 +37,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetZeroTrustAccessPoliciesResultExcludeGsuiteResult Gsuite;
         public readonly Outputs.GetZeroTrustAccessPoliciesResultExcludeIpResult Ip;
         public readonly Outputs.GetZeroTrustAccessPoliciesResultExcludeIpListResult IpList;
-<<<<<<< HEAD
-=======
         public readonly Outputs.GetZeroTrustAccessPoliciesResultExcludeLoginMethodResult LoginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public readonly Outputs.GetZeroTrustAccessPoliciesResultExcludeOktaResult Okta;
         public readonly Outputs.GetZeroTrustAccessPoliciesResultExcludeSamlResult Saml;
         public readonly Outputs.GetZeroTrustAccessPoliciesResultExcludeServiceTokenResult ServiceToken;
@@ -83,11 +80,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.GetZeroTrustAccessPoliciesResultExcludeIpListResult ipList,
 
-<<<<<<< HEAD
-=======
             Outputs.GetZeroTrustAccessPoliciesResultExcludeLoginMethodResult loginMethod,
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             Outputs.GetZeroTrustAccessPoliciesResultExcludeOktaResult okta,
 
             Outputs.GetZeroTrustAccessPoliciesResultExcludeSamlResult saml,
@@ -112,10 +106,7 @@ namespace Pulumi.Cloudflare.Outputs
             Gsuite = gsuite;
             Ip = ip;
             IpList = ipList;
-<<<<<<< HEAD
-=======
             LoginMethod = loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             Okta = okta;
             Saml = saml;
             ServiceToken = serviceToken;

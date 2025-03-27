@@ -16,14 +16,14 @@ public final class PagesProjectCanonicalDeploymentEnvVarsArgs extends com.pulumi
     public static final PagesProjectCanonicalDeploymentEnvVarsArgs Empty = new PagesProjectCanonicalDeploymentEnvVarsArgs();
 
     /**
-     * The type of environment variable.
+     * Available values: &#34;plain_text&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of environment variable.
+     * @return Available values: &#34;plain_text&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -71,7 +71,7 @@ public final class PagesProjectCanonicalDeploymentEnvVarsArgs extends com.pulumi
         }
 
         /**
-         * @param type The type of environment variable.
+         * @param type Available values: &#34;plain_text&#34;.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class PagesProjectCanonicalDeploymentEnvVarsArgs extends com.pulumi
         }
 
         /**
-         * @param type The type of environment variable.
+         * @param type Available values: &#34;plain_text&#34;.
          * 
          * @return builder
          * 

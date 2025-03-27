@@ -42,6 +42,7 @@ public final class GetPageRuleResult {
     private Integer priority;
     /**
      * @return The status of the Page Rule.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;.
      * 
      */
     private String status;
@@ -93,6 +94,7 @@ public final class GetPageRuleResult {
     }
     /**
      * @return The status of the Page Rule.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;.
      * 
      */
     public String status() {

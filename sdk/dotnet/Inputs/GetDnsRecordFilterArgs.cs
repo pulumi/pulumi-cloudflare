@@ -20,12 +20,14 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Direction to order DNS records in.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction", required: true)]
         public Input<string> Direction { get; set; } = null!;
 
         /// <summary>
         /// Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+        /// Available values: "any", "all".
         /// </summary>
         [Input("match", required: true)]
         public Input<string> Match { get; set; } = null!;
@@ -35,6 +37,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Field to order DNS records by.
+        /// Available values: "type", "name", "content", "ttl", "proxied".
         /// </summary>
         [Input("order", required: true)]
         public Input<string> Order { get; set; } = null!;
@@ -56,12 +59,14 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
+        /// Available values: "any", "all".
         /// </summary>
         [Input("tagMatch", required: true)]
         public Input<string> TagMatch { get; set; } = null!;
 
         /// <summary>
         /// Record type.
+        /// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

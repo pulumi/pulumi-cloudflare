@@ -70,6 +70,12 @@ func NewZeroTrustAccessKeyConfiguration(ctx *pulumi.Context,
 	if args.KeyRotationIntervalDays == nil {
 		return nil, errors.New("invalid value for required argument 'KeyRotationIntervalDays'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustAccessKeyConfiguration
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration", name, args, &resource, opts...)

@@ -21,10 +21,7 @@ import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeGroup;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeGsuite;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeIp;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeIpList;
-<<<<<<< HEAD
-=======
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeLoginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeOkta;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeSaml;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeServiceToken;
@@ -61,10 +58,7 @@ public final class ZeroTrustAccessPolicyExclude {
     private @Nullable ZeroTrustAccessPolicyExcludeGsuite gsuite;
     private @Nullable ZeroTrustAccessPolicyExcludeIp ip;
     private @Nullable ZeroTrustAccessPolicyExcludeIpList ipList;
-<<<<<<< HEAD
-=======
     private @Nullable ZeroTrustAccessPolicyExcludeLoginMethod loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     private @Nullable ZeroTrustAccessPolicyExcludeOkta okta;
     private @Nullable ZeroTrustAccessPolicyExcludeSaml saml;
     private @Nullable ZeroTrustAccessPolicyExcludeServiceToken serviceToken;
@@ -132,14 +126,6 @@ public final class ZeroTrustAccessPolicyExclude {
     public Optional<ZeroTrustAccessPolicyExcludeIpList> ipList() {
         return Optional.ofNullable(this.ipList);
     }
-<<<<<<< HEAD
-    public Optional<ZeroTrustAccessPolicyExcludeOkta> okta() {
-        return Optional.ofNullable(this.okta);
-    }
-    public Optional<ZeroTrustAccessPolicyExcludeSaml> saml() {
-        return Optional.ofNullable(this.saml);
-    }
-=======
     public Optional<ZeroTrustAccessPolicyExcludeLoginMethod> loginMethod() {
         return Optional.ofNullable(this.loginMethod);
     }
@@ -149,7 +135,6 @@ public final class ZeroTrustAccessPolicyExclude {
     public Optional<ZeroTrustAccessPolicyExcludeSaml> saml() {
         return Optional.ofNullable(this.saml);
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Optional<ZeroTrustAccessPolicyExcludeServiceToken> serviceToken() {
         return Optional.ofNullable(this.serviceToken);
     }
@@ -181,10 +166,7 @@ public final class ZeroTrustAccessPolicyExclude {
         private @Nullable ZeroTrustAccessPolicyExcludeGsuite gsuite;
         private @Nullable ZeroTrustAccessPolicyExcludeIp ip;
         private @Nullable ZeroTrustAccessPolicyExcludeIpList ipList;
-<<<<<<< HEAD
-=======
         private @Nullable ZeroTrustAccessPolicyExcludeLoginMethod loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private @Nullable ZeroTrustAccessPolicyExcludeOkta okta;
         private @Nullable ZeroTrustAccessPolicyExcludeSaml saml;
         private @Nullable ZeroTrustAccessPolicyExcludeServiceToken serviceToken;
@@ -209,10 +191,7 @@ public final class ZeroTrustAccessPolicyExclude {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
-<<<<<<< HEAD
-=======
     	      this.loginMethod = defaults.loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -327,25 +306,6 @@ public final class ZeroTrustAccessPolicyExclude {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-        public Builder okta(@Nullable ZeroTrustAccessPolicyExcludeOkta okta) {
-
-            this.okta = okta;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder saml(@Nullable ZeroTrustAccessPolicyExcludeSaml saml) {
-
-            this.saml = saml;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder serviceToken(@Nullable ZeroTrustAccessPolicyExcludeServiceToken serviceToken) {
-
-            this.serviceToken = serviceToken;
-            return this;
-        }
-=======
         public Builder loginMethod(@Nullable ZeroTrustAccessPolicyExcludeLoginMethod loginMethod) {
 
             this.loginMethod = loginMethod;
@@ -369,7 +329,6 @@ public final class ZeroTrustAccessPolicyExclude {
             this.serviceToken = serviceToken;
             return this;
         }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public ZeroTrustAccessPolicyExclude build() {
             final var _resultValue = new ZeroTrustAccessPolicyExclude();
             _resultValue.anyValidServiceToken = anyValidServiceToken;
@@ -390,10 +349,7 @@ public final class ZeroTrustAccessPolicyExclude {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
-<<<<<<< HEAD
-=======
             _resultValue.loginMethod = loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

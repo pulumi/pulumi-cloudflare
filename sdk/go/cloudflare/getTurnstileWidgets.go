@@ -53,10 +53,12 @@ type LookupTurnstileWidgetsArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// Direction to order widgets.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Field to order widgets by.
+	// Available values: "id", "sitekey", "name", "created*on", "modified*on".
 	Order *string `pulumi:"order"`
 }
 
@@ -65,12 +67,14 @@ type LookupTurnstileWidgetsResult struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// Direction to order widgets.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Field to order widgets by.
+	// Available values: "id", "sitekey", "name", "created*on", "modified*on".
 	Order *string `pulumi:"order"`
 	// The items returned by the data source
 	Results []GetTurnstileWidgetsResult `pulumi:"results"`
@@ -90,10 +94,12 @@ type LookupTurnstileWidgetsOutputArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Direction to order widgets.
+	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Field to order widgets by.
+	// Available values: "id", "sitekey", "name", "created*on", "modified*on".
 	Order pulumi.StringPtrInput `pulumi:"order"`
 }
 
@@ -122,6 +128,7 @@ func (o LookupTurnstileWidgetsResultOutput) AccountId() pulumi.StringOutput {
 }
 
 // Direction to order widgets.
+// Available values: "asc", "desc".
 func (o LookupTurnstileWidgetsResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetsResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
@@ -137,6 +144,7 @@ func (o LookupTurnstileWidgetsResultOutput) MaxItems() pulumi.IntPtrOutput {
 }
 
 // Field to order widgets by.
+// Available values: "id", "sitekey", "name", "created*on", "modified*on".
 func (o LookupTurnstileWidgetsResultOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetsResult) *string { return v.Order }).(pulumi.StringPtrOutput)
 }

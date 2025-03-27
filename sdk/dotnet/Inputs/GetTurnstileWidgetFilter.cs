@@ -14,12 +14,14 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Direction to order widgets.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
 
         /// <summary>
         /// Field to order widgets by.
+        /// Available values: "id", "sitekey", "name", "created*on", "modified*on".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }

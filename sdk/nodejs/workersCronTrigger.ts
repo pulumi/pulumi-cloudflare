@@ -85,6 +85,8 @@ export class WorkersCronTrigger extends pulumi.CustomResource {
             resourceInputs["scriptName"] = args ? args.scriptName : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/workerCronTrigger:WorkerCronTrigger" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkersCronTrigger.__pulumiType, name, resourceInputs, opts);
     }
 }

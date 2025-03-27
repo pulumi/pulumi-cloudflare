@@ -14,6 +14,21 @@ public final class GetSnippetsPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetSnippetsPlainArgs Empty = new GetSnippetsPlainArgs();
 
     /**
+     * Snippet identifying name
+     * 
+     */
+    @Import(name="snippetName", required=true)
+    private String snippetName;
+
+    /**
+     * @return Snippet identifying name
+     * 
+     */
+    public String snippetName() {
+        return this.snippetName;
+    }
+
+    /**
      * Identifier
      * 
      */
@@ -31,6 +46,7 @@ public final class GetSnippetsPlainArgs extends com.pulumi.resources.InvokeArgs 
     private GetSnippetsPlainArgs() {}
 
     private GetSnippetsPlainArgs(GetSnippetsPlainArgs $) {
+        this.snippetName = $.snippetName;
         this.zoneId = $.zoneId;
     }
 
@@ -53,6 +69,17 @@ public final class GetSnippetsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
+         * @param snippetName Snippet identifying name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snippetName(String snippetName) {
+            $.snippetName = snippetName;
+            return this;
+        }
+
+        /**
          * @param zoneId Identifier
          * 
          * @return builder
@@ -64,6 +91,9 @@ public final class GetSnippetsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetSnippetsPlainArgs build() {
+            if ($.snippetName == null) {
+                throw new MissingRequiredPropertyException("GetSnippetsPlainArgs", "snippetName");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetSnippetsPlainArgs", "zoneId");
             }

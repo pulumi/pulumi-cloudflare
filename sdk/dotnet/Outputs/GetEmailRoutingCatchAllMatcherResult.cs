@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Type of matcher. Default is 'all'.
+        /// Available values: "all".
         /// </summary>
         public readonly string Type;
 

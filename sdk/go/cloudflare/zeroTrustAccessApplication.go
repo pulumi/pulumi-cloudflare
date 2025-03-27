@@ -103,6 +103,12 @@ func NewZeroTrustAccessApplication(ctx *pulumi.Context,
 		args = &ZeroTrustAccessApplicationArgs{}
 	}
 
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/accessApplication:AccessApplication"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustAccessApplication
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication", name, args, &resource, opts...)

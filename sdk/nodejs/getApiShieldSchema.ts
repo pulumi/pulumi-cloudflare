@@ -6,11 +6,23 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleApiShieldSchema = cloudflare.getApiShieldSchema({
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     schemaId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     omitSource: true,
+ * });
+ * ```
  */
 export function getApiShieldSchema(args: GetApiShieldSchemaArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldSchemaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiShieldSchema:getApiShieldSchema", {
         "omitSource": args.omitSource,
+        "schemaId": args.schemaId,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -23,6 +35,7 @@ export interface GetApiShieldSchemaArgs {
      * Omit the source-files of schemas and only retrieve their meta-data.
      */
     omitSource?: boolean;
+    schemaId: string;
     /**
      * Identifier
      */
@@ -40,6 +53,7 @@ export interface GetApiShieldSchemaResult {
     readonly id: string;
     /**
      * Kind of schema
+     * Available values: "openapiV3".
      */
     readonly kind: string;
     /**
@@ -66,11 +80,23 @@ export interface GetApiShieldSchemaResult {
 }
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleApiShieldSchema = cloudflare.getApiShieldSchema({
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     schemaId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     omitSource: true,
+ * });
+ * ```
  */
 export function getApiShieldSchemaOutput(args: GetApiShieldSchemaOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldSchemaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiShieldSchema:getApiShieldSchema", {
         "omitSource": args.omitSource,
+        "schemaId": args.schemaId,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -83,6 +109,7 @@ export interface GetApiShieldSchemaOutputArgs {
      * Omit the source-files of schemas and only retrieve their meta-data.
      */
     omitSource?: pulumi.Input<boolean>;
+    schemaId: pulumi.Input<string>;
     /**
      * Identifier
      */

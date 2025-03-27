@@ -73,6 +73,7 @@ export interface GetNotificationPolicyWebhooksResult {
     readonly secret: string;
     /**
      * Type of webhook endpoint.
+     * Available values: "slack", "generic", "gchat".
      */
     readonly type: string;
     /**

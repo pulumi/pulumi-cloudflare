@@ -33,10 +33,12 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Name;
         /// <summary>
         /// Status of the hostname's activation.
+        /// Available values: "active", "pending", "deleting", "error".
         /// </summary>
         public readonly string Status;
         /// <summary>
         /// Target gateway of the hostname.
+        /// Available values: "ethereum", "ipfs", "ipfs*universal*path".
         /// </summary>
         public readonly string Target;
 

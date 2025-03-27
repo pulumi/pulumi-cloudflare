@@ -41,6 +41,7 @@ public final class ApiShieldSchemaState extends com.pulumi.resources.ResourceArg
 
     /**
      * Kind of schema
+     * Available values: &#34;openapi_v3&#34;.
      * 
      */
     @Import(name="kind")
@@ -48,6 +49,7 @@ public final class ApiShieldSchemaState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Kind of schema
+     * Available values: &#34;openapi_v3&#34;.
      * 
      */
     public Optional<Output<String>> kind() {
@@ -107,6 +109,7 @@ public final class ApiShieldSchemaState extends com.pulumi.resources.ResourceArg
 
     /**
      * Flag whether schema is enabled for validation.
+     * Available values: &#34;true&#34;, &#34;false&#34;.
      * 
      */
     @Import(name="validationEnabled")
@@ -114,6 +117,7 @@ public final class ApiShieldSchemaState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Flag whether schema is enabled for validation.
+     * Available values: &#34;true&#34;, &#34;false&#34;.
      * 
      */
     public Optional<Output<String>> validationEnabled() {
@@ -200,6 +204,7 @@ public final class ApiShieldSchemaState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param kind Kind of schema
+         * Available values: &#34;openapi_v3&#34;.
          * 
          * @return builder
          * 
@@ -211,6 +216,7 @@ public final class ApiShieldSchemaState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param kind Kind of schema
+         * Available values: &#34;openapi_v3&#34;.
          * 
          * @return builder
          * 
@@ -290,6 +296,7 @@ public final class ApiShieldSchemaState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param validationEnabled Flag whether schema is enabled for validation.
+         * Available values: &#34;true&#34;, &#34;false&#34;.
          * 
          * @return builder
          * 
@@ -301,6 +308,7 @@ public final class ApiShieldSchemaState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param validationEnabled Flag whether schema is enabled for validation.
+         * Available values: &#34;true&#34;, &#34;false&#34;.
          * 
          * @return builder
          * 

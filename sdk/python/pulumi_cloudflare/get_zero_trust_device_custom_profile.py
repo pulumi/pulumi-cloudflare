@@ -27,7 +27,7 @@ class GetZeroTrustDeviceCustomProfileResult:
     """
     A collection of values returned by getZeroTrustDeviceCustomProfile.
     """
-    def __init__(__self__, account_id=None, allow_mode_switch=None, allow_updates=None, allowed_to_leave=None, auto_connect=None, captive_portal=None, default=None, description=None, disable_auto_fallback=None, enabled=None, exclude_office_ips=None, excludes=None, fallback_domains=None, gateway_unique_id=None, id=None, includes=None, lan_allow_minutes=None, lan_allow_subnet_size=None, match=None, name=None, policy_id=None, precedence=None, service_mode_v2=None, support_url=None, switch_locked=None, target_tests=None, tunnel_protocol=None):
+    def __init__(__self__, account_id=None, allow_mode_switch=None, allow_updates=None, allowed_to_leave=None, auto_connect=None, captive_portal=None, default=None, description=None, disable_auto_fallback=None, enabled=None, exclude_office_ips=None, excludes=None, fallback_domains=None, gateway_unique_id=None, id=None, includes=None, lan_allow_minutes=None, lan_allow_subnet_size=None, match=None, name=None, policy_id=None, precedence=None, register_interface_ip_with_dns=None, service_mode_v2=None, support_url=None, switch_locked=None, target_tests=None, tunnel_protocol=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -94,6 +94,9 @@ class GetZeroTrustDeviceCustomProfileResult:
         if precedence and not isinstance(precedence, float):
             raise TypeError("Expected argument 'precedence' to be a float")
         pulumi.set(__self__, "precedence", precedence)
+        if register_interface_ip_with_dns and not isinstance(register_interface_ip_with_dns, bool):
+            raise TypeError("Expected argument 'register_interface_ip_with_dns' to be a bool")
+        pulumi.set(__self__, "register_interface_ip_with_dns", register_interface_ip_with_dns)
         if service_mode_v2 and not isinstance(service_mode_v2, dict):
             raise TypeError("Expected argument 'service_mode_v2' to be a dict")
         pulumi.set(__self__, "service_mode_v2", service_mode_v2)
@@ -198,6 +201,9 @@ class GetZeroTrustDeviceCustomProfileResult:
     @property
     @pulumi.getter
     def excludes(self) -> Sequence['outputs.GetZeroTrustDeviceCustomProfileExcludeResult']:
+        """
+        List of routes excluded in the WARP client's tunnel.
+        """
         return pulumi.get(self, "excludes")
 
     @property
@@ -221,6 +227,9 @@ class GetZeroTrustDeviceCustomProfileResult:
     @property
     @pulumi.getter
     def includes(self) -> Sequence['outputs.GetZeroTrustDeviceCustomProfileIncludeResult']:
+        """
+        List of routes included in the WARP client's tunnel.
+        """
         return pulumi.get(self, "includes")
 
     @property
@@ -270,6 +279,14 @@ class GetZeroTrustDeviceCustomProfileResult:
         The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
         """
         return pulumi.get(self, "precedence")
+
+    @property
+    @pulumi.getter(name="registerInterfaceIpWithDns")
+    def register_interface_ip_with_dns(self) -> bool:
+        """
+        Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        """
+        return pulumi.get(self, "register_interface_ip_with_dns")
 
     @property
     @pulumi.getter(name="serviceModeV2")
@@ -334,6 +351,7 @@ class AwaitableGetZeroTrustDeviceCustomProfileResult(GetZeroTrustDeviceCustomPro
             name=self.name,
             policy_id=self.policy_id,
             precedence=self.precedence,
+            register_interface_ip_with_dns=self.register_interface_ip_with_dns,
             service_mode_v2=self.service_mode_v2,
             support_url=self.support_url,
             switch_locked=self.switch_locked,
@@ -387,6 +405,7 @@ def get_zero_trust_device_custom_profile(account_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         policy_id=pulumi.get(__ret__, 'policy_id'),
         precedence=pulumi.get(__ret__, 'precedence'),
+        register_interface_ip_with_dns=pulumi.get(__ret__, 'register_interface_ip_with_dns'),
         service_mode_v2=pulumi.get(__ret__, 'service_mode_v2'),
         support_url=pulumi.get(__ret__, 'support_url'),
         switch_locked=pulumi.get(__ret__, 'switch_locked'),
@@ -437,6 +456,7 @@ def get_zero_trust_device_custom_profile_output(account_id: Optional[pulumi.Inpu
         name=pulumi.get(__response__, 'name'),
         policy_id=pulumi.get(__response__, 'policy_id'),
         precedence=pulumi.get(__response__, 'precedence'),
+        register_interface_ip_with_dns=pulumi.get(__response__, 'register_interface_ip_with_dns'),
         service_mode_v2=pulumi.get(__response__, 'service_mode_v2'),
         support_url=pulumi.get(__response__, 'support_url'),
         switch_locked=pulumi.get(__response__, 'switch_locked'),

@@ -29,6 +29,12 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example '<account_id>/<hyperdrive_id>'
+ * ```
  */
 export class HyperdriveConfig extends pulumi.CustomResource {
     /**

@@ -17,6 +17,7 @@ public final class GetWebAnalyticsSiteFilterArgs extends com.pulumi.resources.Re
 
     /**
      * The property used to sort the list of results.
+     * Available values: &#34;host&#34;, &#34;created&#34;.
      * 
      */
     @Import(name="orderBy")
@@ -24,6 +25,7 @@ public final class GetWebAnalyticsSiteFilterArgs extends com.pulumi.resources.Re
 
     /**
      * @return The property used to sort the list of results.
+     * Available values: &#34;host&#34;, &#34;created&#34;.
      * 
      */
     public Optional<Output<String>> orderBy() {
@@ -56,6 +58,7 @@ public final class GetWebAnalyticsSiteFilterArgs extends com.pulumi.resources.Re
 
         /**
          * @param orderBy The property used to sort the list of results.
+         * Available values: &#34;host&#34;, &#34;created&#34;.
          * 
          * @return builder
          * 
@@ -67,6 +70,7 @@ public final class GetWebAnalyticsSiteFilterArgs extends com.pulumi.resources.Re
 
         /**
          * @param orderBy The property used to sort the list of results.
+         * Available values: &#34;host&#34;, &#34;created&#34;.
          * 
          * @return builder
          * 

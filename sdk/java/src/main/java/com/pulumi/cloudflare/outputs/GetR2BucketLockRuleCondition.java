@@ -13,6 +13,10 @@ import java.util.Objects;
 public final class GetR2BucketLockRuleCondition {
     private String date;
     private Integer maxAgeSeconds;
+    /**
+     * @return Available values: &#34;Age&#34;.
+     * 
+     */
     private String type;
 
     private GetR2BucketLockRuleCondition() {}
@@ -22,6 +26,10 @@ public final class GetR2BucketLockRuleCondition {
     public Integer maxAgeSeconds() {
         return this.maxAgeSeconds;
     }
+    /**
+     * @return Available values: &#34;Age&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }

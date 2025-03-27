@@ -17,6 +17,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// Expression for the header value.
         /// </summary>
         public readonly string Expression;
+        /// <summary>
+        /// Available values: "remove".
+        /// </summary>
         public readonly string Operation;
         /// <summary>
         /// Static value for the header.

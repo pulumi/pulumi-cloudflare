@@ -19,21 +19,25 @@ public final class CustomHostnameSslSettings {
     private @Nullable List<String> ciphers;
     /**
      * @return Whether or not Early Hints is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     private @Nullable String earlyHints;
     /**
      * @return Whether or not HTTP2 is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     private @Nullable String http2;
     /**
      * @return The minimum TLS version supported.
+     * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
      * 
      */
     private @Nullable String minTlsVersion;
     /**
      * @return Whether or not TLS 1.3 is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     private @Nullable String tls13;
@@ -48,6 +52,7 @@ public final class CustomHostnameSslSettings {
     }
     /**
      * @return Whether or not Early Hints is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public Optional<String> earlyHints() {
@@ -55,6 +60,7 @@ public final class CustomHostnameSslSettings {
     }
     /**
      * @return Whether or not HTTP2 is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public Optional<String> http2() {
@@ -62,6 +68,7 @@ public final class CustomHostnameSslSettings {
     }
     /**
      * @return The minimum TLS version supported.
+     * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
      * 
      */
     public Optional<String> minTlsVersion() {
@@ -69,6 +76,7 @@ public final class CustomHostnameSslSettings {
     }
     /**
      * @return Whether or not TLS 1.3 is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public Optional<String> tls13() {

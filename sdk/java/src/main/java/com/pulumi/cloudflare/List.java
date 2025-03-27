@@ -107,6 +107,7 @@ public class List extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+     * Available values: &#34;ip&#34;, &#34;redirect&#34;, &#34;hostname&#34;, &#34;asn&#34;.
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
@@ -114,6 +115,7 @@ public class List extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+     * Available values: &#34;ip&#34;, &#34;redirect&#34;, &#34;hostname&#34;, &#34;asn&#34;.
      * 
      */
     public Output<String> kind() {

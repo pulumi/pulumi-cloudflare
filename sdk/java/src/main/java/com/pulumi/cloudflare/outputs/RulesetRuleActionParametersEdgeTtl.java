@@ -22,6 +22,7 @@ public final class RulesetRuleActionParametersEdgeTtl {
     private @Nullable Integer default_;
     /**
      * @return edge ttl options
+     * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
      * 
      */
     private String mode;
@@ -41,6 +42,7 @@ public final class RulesetRuleActionParametersEdgeTtl {
     }
     /**
      * @return edge ttl options
+     * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
      * 
      */
     public String mode() {

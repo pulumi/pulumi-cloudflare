@@ -21,10 +21,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultIsDefaultGrou
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultIsDefaultGsuite;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultIsDefaultIp;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultIsDefaultIpList;
-<<<<<<< HEAD
-=======
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultIsDefaultLoginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultIsDefaultOkta;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultIsDefaultSaml;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultIsDefaultServiceToken;
@@ -60,10 +57,7 @@ public final class GetZeroTrustAccessGroupsResultIsDefault {
     private GetZeroTrustAccessGroupsResultIsDefaultGsuite gsuite;
     private GetZeroTrustAccessGroupsResultIsDefaultIp ip;
     private GetZeroTrustAccessGroupsResultIsDefaultIpList ipList;
-<<<<<<< HEAD
-=======
     private GetZeroTrustAccessGroupsResultIsDefaultLoginMethod loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     private GetZeroTrustAccessGroupsResultIsDefaultOkta okta;
     private GetZeroTrustAccessGroupsResultIsDefaultSaml saml;
     private GetZeroTrustAccessGroupsResultIsDefaultServiceToken serviceToken;
@@ -131,12 +125,9 @@ public final class GetZeroTrustAccessGroupsResultIsDefault {
     public GetZeroTrustAccessGroupsResultIsDefaultIpList ipList() {
         return this.ipList;
     }
-<<<<<<< HEAD
-=======
     public GetZeroTrustAccessGroupsResultIsDefaultLoginMethod loginMethod() {
         return this.loginMethod;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public GetZeroTrustAccessGroupsResultIsDefaultOkta okta() {
         return this.okta;
     }
@@ -174,10 +165,7 @@ public final class GetZeroTrustAccessGroupsResultIsDefault {
         private GetZeroTrustAccessGroupsResultIsDefaultGsuite gsuite;
         private GetZeroTrustAccessGroupsResultIsDefaultIp ip;
         private GetZeroTrustAccessGroupsResultIsDefaultIpList ipList;
-<<<<<<< HEAD
-=======
         private GetZeroTrustAccessGroupsResultIsDefaultLoginMethod loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private GetZeroTrustAccessGroupsResultIsDefaultOkta okta;
         private GetZeroTrustAccessGroupsResultIsDefaultSaml saml;
         private GetZeroTrustAccessGroupsResultIsDefaultServiceToken serviceToken;
@@ -202,10 +190,7 @@ public final class GetZeroTrustAccessGroupsResultIsDefault {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
-<<<<<<< HEAD
-=======
     	      this.loginMethod = defaults.loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -356,8 +341,6 @@ public final class GetZeroTrustAccessGroupsResultIsDefault {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder loginMethod(GetZeroTrustAccessGroupsResultIsDefaultLoginMethod loginMethod) {
             if (loginMethod == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupsResultIsDefault", "loginMethod");
@@ -366,7 +349,6 @@ public final class GetZeroTrustAccessGroupsResultIsDefault {
             return this;
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder okta(GetZeroTrustAccessGroupsResultIsDefaultOkta okta) {
             if (okta == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupsResultIsDefault", "okta");
@@ -410,10 +392,7 @@ public final class GetZeroTrustAccessGroupsResultIsDefault {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
-<<<<<<< HEAD
-=======
             _resultValue.loginMethod = loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

@@ -69,6 +69,10 @@ public final class GetZeroTrustDeviceCustomProfileResult {
      * 
      */
     private Boolean excludeOfficeIps;
+    /**
+     * @return List of routes excluded in the WARP client&#39;s tunnel.
+     * 
+     */
     private List<GetZeroTrustDeviceCustomProfileExclude> excludes;
     private List<GetZeroTrustDeviceCustomProfileFallbackDomain> fallbackDomains;
     private String gatewayUniqueId;
@@ -77,6 +81,10 @@ public final class GetZeroTrustDeviceCustomProfileResult {
      * 
      */
     private String id;
+    /**
+     * @return List of routes included in the WARP client&#39;s tunnel.
+     * 
+     */
     private List<GetZeroTrustDeviceCustomProfileInclude> includes;
     /**
      * @return The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
@@ -108,6 +116,11 @@ public final class GetZeroTrustDeviceCustomProfileResult {
      * 
      */
     private Double precedence;
+    /**
+     * @return Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
+     * 
+     */
+    private Boolean registerInterfaceIpWithDns;
     private GetZeroTrustDeviceCustomProfileServiceModeV2 serviceModeV2;
     /**
      * @return The URL to launch when the Send Feedback button is clicked.
@@ -200,6 +213,10 @@ public final class GetZeroTrustDeviceCustomProfileResult {
     public Boolean excludeOfficeIps() {
         return this.excludeOfficeIps;
     }
+    /**
+     * @return List of routes excluded in the WARP client&#39;s tunnel.
+     * 
+     */
     public List<GetZeroTrustDeviceCustomProfileExclude> excludes() {
         return this.excludes;
     }
@@ -216,6 +233,10 @@ public final class GetZeroTrustDeviceCustomProfileResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return List of routes included in the WARP client&#39;s tunnel.
+     * 
+     */
     public List<GetZeroTrustDeviceCustomProfileInclude> includes() {
         return this.includes;
     }
@@ -260,6 +281,13 @@ public final class GetZeroTrustDeviceCustomProfileResult {
      */
     public Double precedence() {
         return this.precedence;
+    }
+    /**
+     * @return Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
+     * 
+     */
+    public Boolean registerInterfaceIpWithDns() {
+        return this.registerInterfaceIpWithDns;
     }
     public GetZeroTrustDeviceCustomProfileServiceModeV2 serviceModeV2() {
         return this.serviceModeV2;
@@ -320,6 +348,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
         private String name;
         private String policyId;
         private Double precedence;
+        private Boolean registerInterfaceIpWithDns;
         private GetZeroTrustDeviceCustomProfileServiceModeV2 serviceModeV2;
         private String supportUrl;
         private Boolean switchLocked;
@@ -350,6 +379,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
     	      this.name = defaults.name;
     	      this.policyId = defaults.policyId;
     	      this.precedence = defaults.precedence;
+    	      this.registerInterfaceIpWithDns = defaults.registerInterfaceIpWithDns;
     	      this.serviceModeV2 = defaults.serviceModeV2;
     	      this.supportUrl = defaults.supportUrl;
     	      this.switchLocked = defaults.switchLocked;
@@ -543,6 +573,14 @@ public final class GetZeroTrustDeviceCustomProfileResult {
             return this;
         }
         @CustomType.Setter
+        public Builder registerInterfaceIpWithDns(Boolean registerInterfaceIpWithDns) {
+            if (registerInterfaceIpWithDns == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfileResult", "registerInterfaceIpWithDns");
+            }
+            this.registerInterfaceIpWithDns = registerInterfaceIpWithDns;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceModeV2(GetZeroTrustDeviceCustomProfileServiceModeV2 serviceModeV2) {
             if (serviceModeV2 == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfileResult", "serviceModeV2");
@@ -609,6 +647,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
             _resultValue.name = name;
             _resultValue.policyId = policyId;
             _resultValue.precedence = precedence;
+            _resultValue.registerInterfaceIpWithDns = registerInterfaceIpWithDns;
             _resultValue.serviceModeV2 = serviceModeV2;
             _resultValue.supportUrl = supportUrl;
             _resultValue.switchLocked = switchLocked;

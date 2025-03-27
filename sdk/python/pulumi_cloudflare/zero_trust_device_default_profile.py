@@ -29,6 +29,9 @@ class ZeroTrustDeviceDefaultProfileArgs:
                  captive_portal: Optional[pulumi.Input[float]] = None,
                  disable_auto_fallback: Optional[pulumi.Input[bool]] = None,
                  exclude_office_ips: Optional[pulumi.Input[bool]] = None,
+                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]] = None,
+                 includes: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]] = None,
+                 register_interface_ip_with_dns: Optional[pulumi.Input[bool]] = None,
                  service_mode_v2: Optional[pulumi.Input['ZeroTrustDeviceDefaultProfileServiceModeV2Args']] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
                  switch_locked: Optional[pulumi.Input[bool]] = None,
@@ -42,6 +45,9 @@ class ZeroTrustDeviceDefaultProfileArgs:
         :param pulumi.Input[float] captive_portal: Turn on the captive portal after the specified amount of time.
         :param pulumi.Input[bool] disable_auto_fallback: If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
         :param pulumi.Input[bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        :param pulumi.Input[bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         :param pulumi.Input[str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[str] tunnel_protocol: Determines which tunnel protocol to use.
@@ -61,6 +67,12 @@ class ZeroTrustDeviceDefaultProfileArgs:
             pulumi.set(__self__, "disable_auto_fallback", disable_auto_fallback)
         if exclude_office_ips is not None:
             pulumi.set(__self__, "exclude_office_ips", exclude_office_ips)
+        if excludes is not None:
+            pulumi.set(__self__, "excludes", excludes)
+        if includes is not None:
+            pulumi.set(__self__, "includes", includes)
+        if register_interface_ip_with_dns is not None:
+            pulumi.set(__self__, "register_interface_ip_with_dns", register_interface_ip_with_dns)
         if service_mode_v2 is not None:
             pulumi.set(__self__, "service_mode_v2", service_mode_v2)
         if support_url is not None:
@@ -164,6 +176,42 @@ class ZeroTrustDeviceDefaultProfileArgs:
         pulumi.set(self, "exclude_office_ips", value)
 
     @property
+    @pulumi.getter
+    def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]]:
+        """
+        List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        """
+        return pulumi.get(self, "excludes")
+
+    @excludes.setter
+    def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]]):
+        pulumi.set(self, "excludes", value)
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]]:
+        """
+        List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        """
+        return pulumi.get(self, "includes")
+
+    @includes.setter
+    def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]]):
+        pulumi.set(self, "includes", value)
+
+    @property
+    @pulumi.getter(name="registerInterfaceIpWithDns")
+    def register_interface_ip_with_dns(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        """
+        return pulumi.get(self, "register_interface_ip_with_dns")
+
+    @register_interface_ip_with_dns.setter
+    def register_interface_ip_with_dns(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "register_interface_ip_with_dns", value)
+
+    @property
     @pulumi.getter(name="serviceModeV2")
     def service_mode_v2(self) -> Optional[pulumi.Input['ZeroTrustDeviceDefaultProfileServiceModeV2Args']]:
         return pulumi.get(self, "service_mode_v2")
@@ -226,6 +274,7 @@ class _ZeroTrustDeviceDefaultProfileState:
                  fallback_domains: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileFallbackDomainArgs']]]] = None,
                  gateway_unique_id: Optional[pulumi.Input[str]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]] = None,
+                 register_interface_ip_with_dns: Optional[pulumi.Input[bool]] = None,
                  service_mode_v2: Optional[pulumi.Input['ZeroTrustDeviceDefaultProfileServiceModeV2Args']] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
                  switch_locked: Optional[pulumi.Input[bool]] = None,
@@ -241,6 +290,9 @@ class _ZeroTrustDeviceDefaultProfileState:
         :param pulumi.Input[bool] disable_auto_fallback: If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
         :param pulumi.Input[bool] enabled: Whether the policy will be applied to matching devices.
         :param pulumi.Input[bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        :param pulumi.Input[bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         :param pulumi.Input[str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[str] tunnel_protocol: Determines which tunnel protocol to use.
@@ -273,6 +325,8 @@ class _ZeroTrustDeviceDefaultProfileState:
             pulumi.set(__self__, "gateway_unique_id", gateway_unique_id)
         if includes is not None:
             pulumi.set(__self__, "includes", includes)
+        if register_interface_ip_with_dns is not None:
+            pulumi.set(__self__, "register_interface_ip_with_dns", register_interface_ip_with_dns)
         if service_mode_v2 is not None:
             pulumi.set(__self__, "service_mode_v2", service_mode_v2)
         if support_url is not None:
@@ -402,6 +456,9 @@ class _ZeroTrustDeviceDefaultProfileState:
     @property
     @pulumi.getter
     def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]]:
+        """
+        List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
@@ -429,11 +486,26 @@ class _ZeroTrustDeviceDefaultProfileState:
     @property
     @pulumi.getter
     def includes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]]:
+        """
+        List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        """
         return pulumi.get(self, "includes")
 
     @includes.setter
     def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]]):
         pulumi.set(self, "includes", value)
+
+    @property
+    @pulumi.getter(name="registerInterfaceIpWithDns")
+    def register_interface_ip_with_dns(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        """
+        return pulumi.get(self, "register_interface_ip_with_dns")
+
+    @register_interface_ip_with_dns.setter
+    def register_interface_ip_with_dns(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "register_interface_ip_with_dns", value)
 
     @property
     @pulumi.getter(name="serviceModeV2")
@@ -494,6 +566,9 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                  captive_portal: Optional[pulumi.Input[float]] = None,
                  disable_auto_fallback: Optional[pulumi.Input[bool]] = None,
                  exclude_office_ips: Optional[pulumi.Input[bool]] = None,
+                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict']]]]] = None,
+                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileIncludeArgs', 'ZeroTrustDeviceDefaultProfileIncludeArgsDict']]]]] = None,
+                 register_interface_ip_with_dns: Optional[pulumi.Input[bool]] = None,
                  service_mode_v2: Optional[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileServiceModeV2Args', 'ZeroTrustDeviceDefaultProfileServiceModeV2ArgsDict']]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
                  switch_locked: Optional[pulumi.Input[bool]] = None,
@@ -514,7 +589,18 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             auto_connect=0,
             captive_portal=180,
             disable_auto_fallback=True,
+            excludes=[{
+                "address": "192.0.2.0/24",
+                "description": "Exclude testing domains from the tunnel",
+                "host": "*.example.com",
+            }],
             exclude_office_ips=True,
+            includes=[{
+                "address": "192.0.2.0/24",
+                "description": "Exclude testing domains from the tunnel",
+                "host": "*.example.com",
+            }],
+            register_interface_ip_with_dns=True,
             service_mode_v2={
                 "mode": "proxy",
                 "port": 3000,
@@ -524,15 +610,12 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             tunnel_protocol="wireguard")
         ```
 
-<<<<<<< HEAD
-=======
         ## Import
 
         ```sh
         $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile example '<account_id>'
         ```
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_mode_switch: Whether to allow the user to switch WARP between modes.
@@ -542,6 +625,9 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         :param pulumi.Input[float] captive_portal: Turn on the captive portal after the specified amount of time.
         :param pulumi.Input[bool] disable_auto_fallback: If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
         :param pulumi.Input[bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict']]]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileIncludeArgs', 'ZeroTrustDeviceDefaultProfileIncludeArgsDict']]]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        :param pulumi.Input[bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         :param pulumi.Input[str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[str] tunnel_protocol: Determines which tunnel protocol to use.
@@ -567,7 +653,18 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             auto_connect=0,
             captive_portal=180,
             disable_auto_fallback=True,
+            excludes=[{
+                "address": "192.0.2.0/24",
+                "description": "Exclude testing domains from the tunnel",
+                "host": "*.example.com",
+            }],
             exclude_office_ips=True,
+            includes=[{
+                "address": "192.0.2.0/24",
+                "description": "Exclude testing domains from the tunnel",
+                "host": "*.example.com",
+            }],
+            register_interface_ip_with_dns=True,
             service_mode_v2={
                 "mode": "proxy",
                 "port": 3000,
@@ -577,15 +674,12 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             tunnel_protocol="wireguard")
         ```
 
-<<<<<<< HEAD
-=======
         ## Import
 
         ```sh
         $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile example '<account_id>'
         ```
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param str resource_name: The name of the resource.
         :param ZeroTrustDeviceDefaultProfileArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -609,6 +703,9 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                  captive_portal: Optional[pulumi.Input[float]] = None,
                  disable_auto_fallback: Optional[pulumi.Input[bool]] = None,
                  exclude_office_ips: Optional[pulumi.Input[bool]] = None,
+                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict']]]]] = None,
+                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileIncludeArgs', 'ZeroTrustDeviceDefaultProfileIncludeArgsDict']]]]] = None,
+                 register_interface_ip_with_dns: Optional[pulumi.Input[bool]] = None,
                  service_mode_v2: Optional[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileServiceModeV2Args', 'ZeroTrustDeviceDefaultProfileServiceModeV2ArgsDict']]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
                  switch_locked: Optional[pulumi.Input[bool]] = None,
@@ -632,16 +729,19 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             __props__.__dict__["captive_portal"] = captive_portal
             __props__.__dict__["disable_auto_fallback"] = disable_auto_fallback
             __props__.__dict__["exclude_office_ips"] = exclude_office_ips
+            __props__.__dict__["excludes"] = excludes
+            __props__.__dict__["includes"] = includes
+            __props__.__dict__["register_interface_ip_with_dns"] = register_interface_ip_with_dns
             __props__.__dict__["service_mode_v2"] = service_mode_v2
             __props__.__dict__["support_url"] = support_url
             __props__.__dict__["switch_locked"] = switch_locked
             __props__.__dict__["tunnel_protocol"] = tunnel_protocol
             __props__.__dict__["default"] = None
             __props__.__dict__["enabled"] = None
-            __props__.__dict__["excludes"] = None
             __props__.__dict__["fallback_domains"] = None
             __props__.__dict__["gateway_unique_id"] = None
-            __props__.__dict__["includes"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy"), pulumi.Alias(type_="cloudflare:index/splitTunnel:SplitTunnel")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustDeviceDefaultProfile, __self__).__init__(
             'cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile',
             resource_name,
@@ -666,6 +766,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             fallback_domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileFallbackDomainArgs', 'ZeroTrustDeviceDefaultProfileFallbackDomainArgsDict']]]]] = None,
             gateway_unique_id: Optional[pulumi.Input[str]] = None,
             includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileIncludeArgs', 'ZeroTrustDeviceDefaultProfileIncludeArgsDict']]]]] = None,
+            register_interface_ip_with_dns: Optional[pulumi.Input[bool]] = None,
             service_mode_v2: Optional[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileServiceModeV2Args', 'ZeroTrustDeviceDefaultProfileServiceModeV2ArgsDict']]] = None,
             support_url: Optional[pulumi.Input[str]] = None,
             switch_locked: Optional[pulumi.Input[bool]] = None,
@@ -686,6 +787,9 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_auto_fallback: If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
         :param pulumi.Input[bool] enabled: Whether the policy will be applied to matching devices.
         :param pulumi.Input[bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict']]]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileIncludeArgs', 'ZeroTrustDeviceDefaultProfileIncludeArgsDict']]]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        :param pulumi.Input[bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         :param pulumi.Input[str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[str] tunnel_protocol: Determines which tunnel protocol to use.
@@ -708,6 +812,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         __props__.__dict__["fallback_domains"] = fallback_domains
         __props__.__dict__["gateway_unique_id"] = gateway_unique_id
         __props__.__dict__["includes"] = includes
+        __props__.__dict__["register_interface_ip_with_dns"] = register_interface_ip_with_dns
         __props__.__dict__["service_mode_v2"] = service_mode_v2
         __props__.__dict__["support_url"] = support_url
         __props__.__dict__["switch_locked"] = switch_locked
@@ -794,6 +899,9 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
     @property
     @pulumi.getter
     def excludes(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDeviceDefaultProfileExclude']]:
+        """
+        List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        """
         return pulumi.get(self, "excludes")
 
     @property
@@ -809,7 +917,18 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
     @property
     @pulumi.getter
     def includes(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDeviceDefaultProfileInclude']]:
+        """
+        List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        """
         return pulumi.get(self, "includes")
+
+    @property
+    @pulumi.getter(name="registerInterfaceIpWithDns")
+    def register_interface_ip_with_dns(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        """
+        return pulumi.get(self, "register_interface_ip_with_dns")
 
     @property
     @pulumi.getter(name="serviceModeV2")

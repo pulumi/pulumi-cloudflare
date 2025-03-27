@@ -35,6 +35,7 @@ export function getAccounts(args?: GetAccountsArgs, opts?: pulumi.InvokeOptions)
 export interface GetAccountsArgs {
     /**
      * Direction to order results.
+     * Available values: "asc", "desc".
      */
     direction?: string;
     /**
@@ -53,6 +54,7 @@ export interface GetAccountsArgs {
 export interface GetAccountsResult {
     /**
      * Direction to order results.
+     * Available values: "asc", "desc".
      */
     readonly direction?: string;
     /**
@@ -101,6 +103,7 @@ export function getAccountsOutput(args?: GetAccountsOutputArgs, opts?: pulumi.In
 export interface GetAccountsOutputArgs {
     /**
      * Direction to order results.
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**

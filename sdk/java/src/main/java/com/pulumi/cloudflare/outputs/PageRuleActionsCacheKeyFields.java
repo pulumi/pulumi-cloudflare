@@ -15,65 +15,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PageRuleActionsCacheKeyFields {
-    /**
-     * @return Controls what cookies go into Cache Key:
-     * 
-     */
     private @Nullable PageRuleActionsCacheKeyFieldsCookie cookie;
-    /**
-     * @return Controls what HTTP headers go into Cache Key:
-     * 
-     */
     private @Nullable PageRuleActionsCacheKeyFieldsHeader header;
-    /**
-     * @return Controls which Host header goes into Cache Key:
-     * 
-     */
     private @Nullable PageRuleActionsCacheKeyFieldsHost host;
-    /**
-     * @return Controls which URL query string parameters go into the Cache Key.
-     * 
-     */
     private @Nullable PageRuleActionsCacheKeyFieldsQueryString queryString;
-    /**
-     * @return Controls which end user-related features go into the Cache Key.
-     * 
-     */
     private @Nullable PageRuleActionsCacheKeyFieldsUser user;
 
     private PageRuleActionsCacheKeyFields() {}
-    /**
-     * @return Controls what cookies go into Cache Key:
-     * 
-     */
     public Optional<PageRuleActionsCacheKeyFieldsCookie> cookie() {
         return Optional.ofNullable(this.cookie);
     }
-    /**
-     * @return Controls what HTTP headers go into Cache Key:
-     * 
-     */
     public Optional<PageRuleActionsCacheKeyFieldsHeader> header() {
         return Optional.ofNullable(this.header);
     }
-    /**
-     * @return Controls which Host header goes into Cache Key:
-     * 
-     */
     public Optional<PageRuleActionsCacheKeyFieldsHost> host() {
         return Optional.ofNullable(this.host);
     }
-    /**
-     * @return Controls which URL query string parameters go into the Cache Key.
-     * 
-     */
     public Optional<PageRuleActionsCacheKeyFieldsQueryString> queryString() {
         return Optional.ofNullable(this.queryString);
     }
-    /**
-     * @return Controls which end user-related features go into the Cache Key.
-     * 
-     */
     public Optional<PageRuleActionsCacheKeyFieldsUser> user() {
         return Optional.ofNullable(this.user);
     }

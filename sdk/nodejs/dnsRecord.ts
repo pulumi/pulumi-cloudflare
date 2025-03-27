@@ -105,6 +105,7 @@ export class DnsRecord extends pulumi.CustomResource {
     public readonly ttl!: pulumi.Output<number>;
     /**
      * Record type.
+     * Available values: "A".
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -175,6 +176,8 @@ export class DnsRecord extends pulumi.CustomResource {
             resourceInputs["tagsModifiedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/record:Record" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DnsRecord.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -245,6 +248,7 @@ export interface DnsRecordState {
     ttl?: pulumi.Input<number>;
     /**
      * Record type.
+     * Available values: "A".
      */
     type?: pulumi.Input<string>;
     /**
@@ -295,6 +299,7 @@ export interface DnsRecordArgs {
     ttl: pulumi.Input<number>;
     /**
      * Record type.
+     * Available values: "A".
      */
     type: pulumi.Input<string>;
     /**

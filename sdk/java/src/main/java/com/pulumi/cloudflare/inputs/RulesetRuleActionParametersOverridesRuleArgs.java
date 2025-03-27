@@ -80,6 +80,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
 
     /**
      * The sensitivity level to use for the rule.
+     * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */
     @Import(name="sensitivityLevel")
@@ -87,6 +88,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
 
     /**
      * @return The sensitivity level to use for the rule.
+     * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */
     public Optional<Output<String>> sensitivityLevel() {
@@ -207,6 +209,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
 
         /**
          * @param sensitivityLevel The sensitivity level to use for the rule.
+         * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
          * 
          * @return builder
          * 
@@ -218,6 +221,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
 
         /**
          * @param sensitivityLevel The sensitivity level to use for the rule.
+         * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
          * 
          * @return builder
          * 

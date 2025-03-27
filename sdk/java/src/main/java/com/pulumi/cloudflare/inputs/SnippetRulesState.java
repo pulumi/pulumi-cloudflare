@@ -55,8 +55,6 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Snippet identifying name
      * 
      */
@@ -72,7 +70,6 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Identifier
      * 
      */
@@ -175,8 +172,6 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-<<<<<<< HEAD
-=======
          * @param snippetName Snippet identifying name
          * 
          * @return builder
@@ -198,7 +193,6 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param zoneId Identifier
          * 
          * @return builder

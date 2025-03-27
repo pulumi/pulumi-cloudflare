@@ -20,6 +20,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.
+        /// Available values: "random", "hash".
         /// </summary>
         [Input("defaultPolicy")]
         public Input<string>? DefaultPolicy { get; set; }
@@ -32,6 +33,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Only the hash policy is supported for existing sessions (to avoid exponential decay).
+        /// Available values: "hash".
         /// </summary>
         [Input("sessionPolicy")]
         public Input<string>? SessionPolicy { get; set; }

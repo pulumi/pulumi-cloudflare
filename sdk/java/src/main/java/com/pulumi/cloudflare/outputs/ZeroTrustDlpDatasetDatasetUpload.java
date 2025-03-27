@@ -13,6 +13,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustDlpDatasetDatasetUpload {
     private @Nullable Integer numCells;
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
     private @Nullable String status;
     private @Nullable Integer version;
 
@@ -20,6 +24,10 @@ public final class ZeroTrustDlpDatasetDatasetUpload {
     public Optional<Integer> numCells() {
         return Optional.ofNullable(this.numCells);
     }
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

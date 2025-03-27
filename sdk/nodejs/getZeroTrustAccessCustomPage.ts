@@ -70,6 +70,7 @@ export interface GetZeroTrustAccessCustomPageResult {
     readonly name: string;
     /**
      * Custom page type.
+     * Available values: "identityDenied", "forbidden".
      */
     readonly type: string;
     /**

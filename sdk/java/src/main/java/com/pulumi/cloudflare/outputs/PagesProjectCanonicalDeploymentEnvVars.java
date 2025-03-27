@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PagesProjectCanonicalDeploymentEnvVars {
     /**
-     * @return The type of environment variable.
+     * @return Available values: &#34;plain_text&#34;.
      * 
      */
     private @Nullable String type;
@@ -24,7 +24,7 @@ public final class PagesProjectCanonicalDeploymentEnvVars {
 
     private PagesProjectCanonicalDeploymentEnvVars() {}
     /**
-     * @return The type of environment variable.
+     * @return Available values: &#34;plain_text&#34;.
      * 
      */
     public Optional<String> type() {

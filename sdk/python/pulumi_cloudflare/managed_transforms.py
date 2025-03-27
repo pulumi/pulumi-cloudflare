@@ -234,6 +234,8 @@ class ManagedTransforms(pulumi.CustomResource):
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/managedHeaders:ManagedHeaders")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ManagedTransforms, __self__).__init__(
             'cloudflare:index/managedTransforms:ManagedTransforms',
             resource_name,

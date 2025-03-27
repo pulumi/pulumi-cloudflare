@@ -477,6 +477,12 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     public Output<String> zoneId() {
         return this.zoneId;
     }
+    @Export(name="zoneName", refs={String.class}, tree="[0]")
+    private Output<String> zoneName;
+
+    public Output<String> zoneName() {
+        return this.zoneName;
+    }
 
     /**
      *

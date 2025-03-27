@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustListArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustListState;
 import com.pulumi.cloudflare.outputs.ZeroTrustListItem;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -140,6 +141,7 @@ public class ZeroTrustList extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of list.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -147,6 +149,7 @@ public class ZeroTrustList extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of list.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
     public Output<String> type() {
@@ -198,6 +201,9 @@ public class ZeroTrustList extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/teamsList:TeamsList").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

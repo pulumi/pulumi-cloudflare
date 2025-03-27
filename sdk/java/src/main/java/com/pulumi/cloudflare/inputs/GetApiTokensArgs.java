@@ -18,6 +18,7 @@ public final class GetApiTokensArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -25,6 +26,7 @@ public final class GetApiTokensArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -73,6 +75,7 @@ public final class GetApiTokensArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param direction Direction to order results.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -84,6 +87,7 @@ public final class GetApiTokensArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param direction Direction to order results.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 

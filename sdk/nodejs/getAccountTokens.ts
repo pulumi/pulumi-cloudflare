@@ -38,6 +38,7 @@ export interface GetAccountTokensArgs {
     accountId: string;
     /**
      * Direction to order results.
+     * Available values: "asc", "desc".
      */
     direction?: string;
     /**
@@ -56,6 +57,7 @@ export interface GetAccountTokensResult {
     readonly accountId: string;
     /**
      * Direction to order results.
+     * Available values: "asc", "desc".
      */
     readonly direction?: string;
     /**
@@ -103,6 +105,7 @@ export interface GetAccountTokensOutputArgs {
     accountId: pulumi.Input<string>;
     /**
      * Direction to order results.
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**

@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Action taken on requests failing validation.
+        /// Available values: "none", "log", "block".
         /// </summary>
         [Input("mitigationAction")]
         public Input<string>? MitigationAction { get; set; }

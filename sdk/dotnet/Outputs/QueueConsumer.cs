@@ -31,6 +31,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? ScriptName;
         public readonly Outputs.QueueConsumerSettings? Settings;
+        /// <summary>
+        /// Available values: "worker".
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

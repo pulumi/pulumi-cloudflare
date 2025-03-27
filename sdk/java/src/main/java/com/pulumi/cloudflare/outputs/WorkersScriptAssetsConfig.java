@@ -14,11 +14,13 @@ import javax.annotation.Nullable;
 public final class WorkersScriptAssetsConfig {
     /**
      * @return Determines the redirects and rewrites of requests for HTML content.
+     * Available values: &#34;auto-trailing-slash&#34;, &#34;force-trailing-slash&#34;, &#34;drop-trailing-slash&#34;, &#34;none&#34;.
      * 
      */
     private @Nullable String htmlHandling;
     /**
      * @return Determines the response when a request does not match a static asset, and there is no Worker script.
+     * Available values: &#34;none&#34;, &#34;404-page&#34;, &#34;single-page-application&#34;.
      * 
      */
     private @Nullable String notFoundHandling;
@@ -36,6 +38,7 @@ public final class WorkersScriptAssetsConfig {
     private WorkersScriptAssetsConfig() {}
     /**
      * @return Determines the redirects and rewrites of requests for HTML content.
+     * Available values: &#34;auto-trailing-slash&#34;, &#34;force-trailing-slash&#34;, &#34;drop-trailing-slash&#34;, &#34;none&#34;.
      * 
      */
     public Optional<String> htmlHandling() {
@@ -43,6 +46,7 @@ public final class WorkersScriptAssetsConfig {
     }
     /**
      * @return Determines the response when a request does not match a static asset, and there is no Worker script.
+     * Available values: &#34;none&#34;, &#34;404-page&#34;, &#34;single-page-application&#34;.
      * 
      */
     public Optional<String> notFoundHandling() {

@@ -73,6 +73,7 @@ type LookupAccessRuleResult struct {
 	// Unique identifier for a rule
 	Id string `pulumi:"id"`
 	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 	Mode string `pulumi:"mode"`
 	// The timestamp of when the rule was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
@@ -155,6 +156,7 @@ func (o LookupAccessRuleResultOutput) Id() pulumi.StringOutput {
 }
 
 // The action to apply to a matched request.
+// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 func (o LookupAccessRuleResultOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessRuleResult) string { return v.Mode }).(pulumi.StringOutput)
 }

@@ -17,6 +17,7 @@ public final class ObservatoryScheduledTestScheduleArgs extends com.pulumi.resou
 
     /**
      * The frequency of the test.
+     * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
      * 
      */
     @Import(name="frequency")
@@ -24,6 +25,7 @@ public final class ObservatoryScheduledTestScheduleArgs extends com.pulumi.resou
 
     /**
      * @return The frequency of the test.
+     * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
      * 
      */
     public Optional<Output<String>> frequency() {
@@ -32,6 +34,7 @@ public final class ObservatoryScheduledTestScheduleArgs extends com.pulumi.resou
 
     /**
      * A test region.
+     * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
      * 
      */
     @Import(name="region")
@@ -39,6 +42,7 @@ public final class ObservatoryScheduledTestScheduleArgs extends com.pulumi.resou
 
     /**
      * @return A test region.
+     * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
      * 
      */
     public Optional<Output<String>> region() {
@@ -88,6 +92,7 @@ public final class ObservatoryScheduledTestScheduleArgs extends com.pulumi.resou
 
         /**
          * @param frequency The frequency of the test.
+         * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
          * 
          * @return builder
          * 
@@ -99,6 +104,7 @@ public final class ObservatoryScheduledTestScheduleArgs extends com.pulumi.resou
 
         /**
          * @param frequency The frequency of the test.
+         * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
          * 
          * @return builder
          * 
@@ -109,6 +115,7 @@ public final class ObservatoryScheduledTestScheduleArgs extends com.pulumi.resou
 
         /**
          * @param region A test region.
+         * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
          * 
          * @return builder
          * 
@@ -120,6 +127,7 @@ public final class ObservatoryScheduledTestScheduleArgs extends com.pulumi.resou
 
         /**
          * @param region A test region.
+         * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
          * 
          * @return builder
          * 

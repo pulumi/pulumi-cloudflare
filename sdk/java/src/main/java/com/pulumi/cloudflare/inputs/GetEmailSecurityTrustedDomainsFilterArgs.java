@@ -18,6 +18,7 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
 
     /**
      * The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -25,6 +26,7 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
 
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -47,6 +49,7 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
 
     /**
      * The field to sort by.
+     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
      * 
      */
     @Import(name="order")
@@ -54,6 +57,7 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
 
     /**
      * @return The field to sort by.
+     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
      * 
      */
     public Optional<Output<String>> order() {
@@ -111,6 +115,7 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
 
         /**
          * @param direction The sorting direction.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -122,6 +127,7 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
 
         /**
          * @param direction The sorting direction.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -150,6 +156,7 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
 
         /**
          * @param order The field to sort by.
+         * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
          * 
          * @return builder
          * 
@@ -161,6 +168,7 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
 
         /**
          * @param order The field to sort by.
+         * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
          * 
          * @return builder
          * 

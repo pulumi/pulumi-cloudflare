@@ -17,6 +17,7 @@ public final class ImageVariantOptionsArgs extends com.pulumi.resources.Resource
 
     /**
      * The fit property describes how the width and height dimensions should be interpreted.
+     * Available values: &#34;scale-down&#34;, &#34;contain&#34;, &#34;cover&#34;, &#34;crop&#34;, &#34;pad&#34;.
      * 
      */
     @Import(name="fit", required=true)
@@ -24,6 +25,7 @@ public final class ImageVariantOptionsArgs extends com.pulumi.resources.Resource
 
     /**
      * @return The fit property describes how the width and height dimensions should be interpreted.
+     * Available values: &#34;scale-down&#34;, &#34;contain&#34;, &#34;cover&#34;, &#34;crop&#34;, &#34;pad&#34;.
      * 
      */
     public Output<String> fit() {
@@ -47,6 +49,7 @@ public final class ImageVariantOptionsArgs extends com.pulumi.resources.Resource
 
     /**
      * What EXIF data should be preserved in the output image.
+     * Available values: &#34;keep&#34;, &#34;copyright&#34;, &#34;none&#34;.
      * 
      */
     @Import(name="metadata", required=true)
@@ -54,6 +57,7 @@ public final class ImageVariantOptionsArgs extends com.pulumi.resources.Resource
 
     /**
      * @return What EXIF data should be preserved in the output image.
+     * Available values: &#34;keep&#34;, &#34;copyright&#34;, &#34;none&#34;.
      * 
      */
     public Output<String> metadata() {
@@ -104,6 +108,7 @@ public final class ImageVariantOptionsArgs extends com.pulumi.resources.Resource
 
         /**
          * @param fit The fit property describes how the width and height dimensions should be interpreted.
+         * Available values: &#34;scale-down&#34;, &#34;contain&#34;, &#34;cover&#34;, &#34;crop&#34;, &#34;pad&#34;.
          * 
          * @return builder
          * 
@@ -115,6 +120,7 @@ public final class ImageVariantOptionsArgs extends com.pulumi.resources.Resource
 
         /**
          * @param fit The fit property describes how the width and height dimensions should be interpreted.
+         * Available values: &#34;scale-down&#34;, &#34;contain&#34;, &#34;cover&#34;, &#34;crop&#34;, &#34;pad&#34;.
          * 
          * @return builder
          * 
@@ -146,6 +152,7 @@ public final class ImageVariantOptionsArgs extends com.pulumi.resources.Resource
 
         /**
          * @param metadata What EXIF data should be preserved in the output image.
+         * Available values: &#34;keep&#34;, &#34;copyright&#34;, &#34;none&#34;.
          * 
          * @return builder
          * 
@@ -157,6 +164,7 @@ public final class ImageVariantOptionsArgs extends com.pulumi.resources.Resource
 
         /**
          * @param metadata What EXIF data should be preserved in the output image.
+         * Available values: &#34;keep&#34;, &#34;copyright&#34;, &#34;none&#34;.
          * 
          * @return builder
          * 

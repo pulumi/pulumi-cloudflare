@@ -148,6 +148,8 @@ export class ZeroTrustDexTest extends pulumi.CustomResource {
             resourceInputs["testId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/deviceDexTest:DeviceDexTest" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustDexTest.__pulumiType, name, resourceInputs, opts);
     }
 }

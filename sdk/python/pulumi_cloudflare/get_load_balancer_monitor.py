@@ -247,6 +247,7 @@ class GetLoadBalancerMonitorResult:
     def type(self) -> str:
         """
         The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+        Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
         """
         return pulumi.get(self, "type")
 

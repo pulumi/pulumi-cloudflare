@@ -53,6 +53,7 @@ public final class GetCloudforceOneRequestResult {
     private @Nullable String requestIdentifier;
     /**
      * @return Request Status
+     * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
      * 
      */
     private String status;
@@ -63,6 +64,7 @@ public final class GetCloudforceOneRequestResult {
     private String summary;
     /**
      * @return The CISA defined Traffic Light Protocol (TLP)
+     * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
     private String tlp;
@@ -134,6 +136,7 @@ public final class GetCloudforceOneRequestResult {
     }
     /**
      * @return Request Status
+     * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
      * 
      */
     public String status() {
@@ -148,6 +151,7 @@ public final class GetCloudforceOneRequestResult {
     }
     /**
      * @return The CISA defined Traffic Light Protocol (TLP)
+     * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
     public String tlp() {

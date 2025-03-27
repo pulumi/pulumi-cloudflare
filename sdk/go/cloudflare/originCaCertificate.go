@@ -11,14 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-<<<<<<< HEAD
-// > Since v3.32.0
-//
-//	all authentication schemes are supported for managing Origin CA certificates.
-//	Versions prior to v3.32.0 will still need to use `apiUserServiceKey`.
-//
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // ## Example Usage
 //
 // ```go
@@ -87,8 +79,10 @@ type OriginCaCertificate struct {
 	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
 	Hostnames pulumi.StringArrayOutput `pulumi:"hostnames"`
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 	RequestType pulumi.StringPtrOutput `pulumi:"requestType"`
 	// The number of days for which the certificate should be valid.
+	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	RequestedValidity pulumi.Float64Output `pulumi:"requestedValidity"`
 }
 
@@ -131,8 +125,10 @@ type originCaCertificateState struct {
 	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
 	Hostnames []string `pulumi:"hostnames"`
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 	RequestType *string `pulumi:"requestType"`
 	// The number of days for which the certificate should be valid.
+	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	RequestedValidity *float64 `pulumi:"requestedValidity"`
 }
 
@@ -146,8 +142,10 @@ type OriginCaCertificateState struct {
 	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
 	Hostnames pulumi.StringArrayInput
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 	RequestType pulumi.StringPtrInput
 	// The number of days for which the certificate should be valid.
+	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	RequestedValidity pulumi.Float64PtrInput
 }
 
@@ -161,8 +159,10 @@ type originCaCertificateArgs struct {
 	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
 	Hostnames []string `pulumi:"hostnames"`
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 	RequestType *string `pulumi:"requestType"`
 	// The number of days for which the certificate should be valid.
+	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	RequestedValidity *float64 `pulumi:"requestedValidity"`
 }
 
@@ -173,8 +173,10 @@ type OriginCaCertificateArgs struct {
 	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
 	Hostnames pulumi.StringArrayInput
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 	RequestType pulumi.StringPtrInput
 	// The number of days for which the certificate should be valid.
+	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 	RequestedValidity pulumi.Float64PtrInput
 }
 
@@ -286,11 +288,13 @@ func (o OriginCaCertificateOutput) Hostnames() pulumi.StringArrayOutput {
 }
 
 // Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 func (o OriginCaCertificateOutput) RequestType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OriginCaCertificate) pulumi.StringPtrOutput { return v.RequestType }).(pulumi.StringPtrOutput)
 }
 
 // The number of days for which the certificate should be valid.
+// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 func (o OriginCaCertificateOutput) RequestedValidity() pulumi.Float64Output {
 	return o.ApplyT(func(v *OriginCaCertificate) pulumi.Float64Output { return v.RequestedValidity }).(pulumi.Float64Output)
 }

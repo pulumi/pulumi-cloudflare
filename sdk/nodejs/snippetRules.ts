@@ -45,13 +45,10 @@ export class SnippetRules extends pulumi.CustomResource {
      */
     public readonly rules!: pulumi.Output<outputs.SnippetRulesRule[]>;
     /**
-<<<<<<< HEAD
-=======
      * Snippet identifying name
      */
     public /*out*/ readonly snippetName!: pulumi.Output<string>;
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
@@ -104,13 +101,10 @@ export interface SnippetRulesState {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.SnippetRulesRule>[]>;
     /**
-<<<<<<< HEAD
-=======
      * Snippet identifying name
      */
     snippetName?: pulumi.Input<string>;
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Identifier
      */
     zoneId?: pulumi.Input<string>;

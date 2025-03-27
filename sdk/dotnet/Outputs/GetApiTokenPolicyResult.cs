@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Allow or deny operations against the resources.
+        /// Available values: "allow", "deny".
         /// </summary>
         public readonly string Effect;
         /// <summary>

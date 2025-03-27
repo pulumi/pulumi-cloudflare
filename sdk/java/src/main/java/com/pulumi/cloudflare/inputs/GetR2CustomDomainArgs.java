@@ -48,15 +48,15 @@ public final class GetR2CustomDomainArgs extends com.pulumi.resources.InvokeArgs
      * Name of the custom domain
      * 
      */
-    @Import(name="domainName", required=true)
-    private Output<String> domainName;
+    @Import(name="domain", required=true)
+    private Output<String> domain;
 
     /**
      * @return Name of the custom domain
      * 
      */
-    public Output<String> domainName() {
-        return this.domainName;
+    public Output<String> domain() {
+        return this.domain;
     }
 
     private GetR2CustomDomainArgs() {}
@@ -64,7 +64,7 @@ public final class GetR2CustomDomainArgs extends com.pulumi.resources.InvokeArgs
     private GetR2CustomDomainArgs(GetR2CustomDomainArgs $) {
         this.accountId = $.accountId;
         this.bucketName = $.bucketName;
-        this.domainName = $.domainName;
+        this.domain = $.domain;
     }
 
     public static Builder builder() {
@@ -128,24 +128,24 @@ public final class GetR2CustomDomainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param domainName Name of the custom domain
+         * @param domain Name of the custom domain
          * 
          * @return builder
          * 
          */
-        public Builder domainName(Output<String> domainName) {
-            $.domainName = domainName;
+        public Builder domain(Output<String> domain) {
+            $.domain = domain;
             return this;
         }
 
         /**
-         * @param domainName Name of the custom domain
+         * @param domain Name of the custom domain
          * 
          * @return builder
          * 
          */
-        public Builder domainName(String domainName) {
-            return domainName(Output.of(domainName));
+        public Builder domain(String domain) {
+            return domain(Output.of(domain));
         }
 
         public GetR2CustomDomainArgs build() {
@@ -155,8 +155,8 @@ public final class GetR2CustomDomainArgs extends com.pulumi.resources.InvokeArgs
             if ($.bucketName == null) {
                 throw new MissingRequiredPropertyException("GetR2CustomDomainArgs", "bucketName");
             }
-            if ($.domainName == null) {
-                throw new MissingRequiredPropertyException("GetR2CustomDomainArgs", "domainName");
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("GetR2CustomDomainArgs", "domain");
             }
             return $;
         }

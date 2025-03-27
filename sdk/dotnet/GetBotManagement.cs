@@ -113,12 +113,18 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Enable rule to block AI Scrapers and Crawlers.
+        /// Available values: "block", "disabled".
         /// </summary>
         public readonly string AiBotsProtection;
         /// <summary>
         /// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         /// </summary>
         public readonly bool AutoUpdateModel;
+        /// <summary>
+        /// Enable rule to punish AI Scrapers and Crawlers via a link maze.
+        /// Available values: "enabled", "disabled".
+        /// </summary>
+        public readonly string CrawlerProtection;
         /// <summary>
         /// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         /// </summary>
@@ -137,10 +143,12 @@ namespace Pulumi.Cloudflare
         public readonly bool OptimizeWordpress;
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+        /// Available values: "allow", "block", "managed_challenge".
         /// </summary>
         public readonly string SbfmDefinitelyAutomated;
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+        /// Available values: "allow", "block", "managed_challenge".
         /// </summary>
         public readonly string SbfmLikelyAutomated;
         /// <summary>
@@ -151,6 +159,7 @@ namespace Pulumi.Cloudflare
         public readonly bool SbfmStaticResourceProtection;
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+        /// Available values: "allow", "block".
         /// </summary>
         public readonly string SbfmVerifiedBots;
         /// <summary>
@@ -175,6 +184,8 @@ namespace Pulumi.Cloudflare
             string aiBotsProtection,
 
             bool autoUpdateModel,
+
+            string crawlerProtection,
 
             bool enableJs,
 
@@ -202,6 +213,7 @@ namespace Pulumi.Cloudflare
         {
             AiBotsProtection = aiBotsProtection;
             AutoUpdateModel = autoUpdateModel;
+            CrawlerProtection = crawlerProtection;
             EnableJs = enableJs;
             FightMode = fightMode;
             Id = id;

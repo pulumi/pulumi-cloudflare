@@ -63,6 +63,7 @@ type LookupCustomHostnameFallbackOriginResult struct {
 	// Your origin hostname that requests to your custom hostnames will be sent to.
 	Origin string `pulumi:"origin"`
 	// Status of the fallback origin's activation.
+	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
 	Status string `pulumi:"status"`
 	// This is the time the fallback origin was updated.
 	UpdatedAt string `pulumi:"updatedAt"`
@@ -125,6 +126,7 @@ func (o LookupCustomHostnameFallbackOriginResultOutput) Origin() pulumi.StringOu
 }
 
 // Status of the fallback origin's activation.
+// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
 func (o LookupCustomHostnameFallbackOriginResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomHostnameFallbackOriginResult) string { return v.Status }).(pulumi.StringOutput)
 }

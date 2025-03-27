@@ -35,6 +35,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
 
     /**
      * Status of the certificate or the association.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     @Import(name="certStatus")
@@ -42,6 +43,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
 
     /**
      * @return Status of the certificate or the association.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     public Optional<Output<String>> certStatus() {
@@ -176,8 +178,6 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
     }
 
     /**
-<<<<<<< HEAD
-=======
      * The hostname certificate&#39;s private key.
      * 
      */
@@ -193,7 +193,6 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
     }
 
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The serial number on the uploaded certificate.
      * 
      */
@@ -225,6 +224,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
 
     /**
      * Status of the certificate or the association.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     @Import(name="status")
@@ -232,6 +232,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
 
     /**
      * @return Status of the certificate or the association.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -282,10 +283,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         this.expiresOn = $.expiresOn;
         this.hostname = $.hostname;
         this.issuer = $.issuer;
-<<<<<<< HEAD
-=======
         this.privateKey = $.privateKey;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.serialNumber = $.serialNumber;
         this.signature = $.signature;
         this.status = $.status;
@@ -334,6 +332,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
 
         /**
          * @param certStatus Status of the certificate or the association.
+         * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
          * 
          * @return builder
          * 
@@ -345,6 +344,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
 
         /**
          * @param certStatus Status of the certificate or the association.
+         * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
          * 
          * @return builder
          * 
@@ -535,8 +535,6 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
-<<<<<<< HEAD
-=======
          * @param privateKey The hostname certificate&#39;s private key.
          * 
          * @return builder
@@ -558,7 +556,6 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param serialNumber The serial number on the uploaded certificate.
          * 
          * @return builder
@@ -602,6 +599,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
 
         /**
          * @param status Status of the certificate or the association.
+         * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
          * 
          * @return builder
          * 
@@ -613,6 +611,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
 
         /**
          * @param status Status of the certificate or the association.
+         * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
          * 
          * @return builder
          * 

@@ -19,6 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Name;
         /// <summary>
         /// DNS Record type.
+        /// Available values: "txt".
         /// </summary>
         public readonly string? Type;
         /// <summary>

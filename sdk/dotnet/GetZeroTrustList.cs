@@ -151,6 +151,7 @@ namespace Pulumi.Cloudflare
         public readonly string Name;
         /// <summary>
         /// The type of list.
+        /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;

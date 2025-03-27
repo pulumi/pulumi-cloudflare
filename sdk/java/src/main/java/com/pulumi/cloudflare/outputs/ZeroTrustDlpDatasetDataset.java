@@ -28,6 +28,10 @@ public final class ZeroTrustDlpDatasetDataset {
     private @Nullable String name;
     private @Nullable Integer numCells;
     private @Nullable Boolean secret;
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
     private @Nullable String status;
     /**
      * @return When the dataset was last updated.
@@ -65,6 +69,10 @@ public final class ZeroTrustDlpDatasetDataset {
     public Optional<Boolean> secret() {
         return Optional.ofNullable(this.secret);
     }
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

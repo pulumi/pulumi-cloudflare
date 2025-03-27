@@ -13,7 +13,6 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// ## Example Usage
-<<<<<<< HEAD
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -31,15 +30,12 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         public static Task<GetQueueConsumerResult> InvokeAsync(GetQueueConsumerArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQueueConsumerResult>("cloudflare:index/getQueueConsumer:getQueueConsumer", args ?? new GetQueueConsumerArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
-<<<<<<< HEAD
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -57,15 +53,12 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         public static Output<GetQueueConsumerResult> Invoke(GetQueueConsumerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQueueConsumerResult>("cloudflare:index/getQueueConsumer:getQueueConsumer", args ?? new GetQueueConsumerInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
-<<<<<<< HEAD
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -83,8 +76,6 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         public static Output<GetQueueConsumerResult> Invoke(GetQueueConsumerInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetQueueConsumerResult>("cloudflare:index/getQueueConsumer:getQueueConsumer", args ?? new GetQueueConsumerInvokeArgs(), options.WithDefaults());
@@ -99,15 +90,12 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-<<<<<<< HEAD
         /// <summary>
         /// A Resource identifier.
         /// </summary>
         [Input("queueId", required: true)]
         public string QueueId { get; set; } = null!;
 
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public GetQueueConsumerArgs()
         {
         }
@@ -122,15 +110,12 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-<<<<<<< HEAD
         /// <summary>
         /// A Resource identifier.
         /// </summary>
         [Input("queueId", required: true)]
         public Input<string> QueueId { get; set; } = null!;
 
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public GetQueueConsumerInvokeArgs()
         {
         }
@@ -146,14 +131,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-<<<<<<< HEAD
-=======
         /// A Resource identifier.
         /// </summary>
         public readonly string ConsumerId;
         public readonly string CreatedOn;
         /// <summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -161,8 +143,6 @@ namespace Pulumi.Cloudflare
         /// A Resource identifier.
         /// </summary>
         public readonly string QueueId;
-<<<<<<< HEAD
-=======
         /// <summary>
         /// Name of a Worker
         /// </summary>
@@ -172,22 +152,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string ScriptName;
         public readonly Outputs.GetQueueConsumerSettingsResult Settings;
+        /// <summary>
+        /// Available values: "worker".
+        /// </summary>
         public readonly string Type;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         [OutputConstructor]
         private GetQueueConsumerResult(
             string accountId,
 
-<<<<<<< HEAD
-            string id,
-
-            string queueId)
-        {
-            AccountId = accountId;
-            Id = id;
-            QueueId = queueId;
-=======
             string consumerId,
 
             string createdOn,
@@ -213,7 +186,6 @@ namespace Pulumi.Cloudflare
             ScriptName = scriptName;
             Settings = settings;
             Type = type;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
     }
 }

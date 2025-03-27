@@ -104,6 +104,7 @@ type LoadBalancerMonitor struct {
 	// The timeout (in seconds) before marking the health check as failed.
 	Timeout pulumi.IntOutput `pulumi:"timeout"`
 	// The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+	// Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -175,6 +176,7 @@ type loadBalancerMonitorState struct {
 	// The timeout (in seconds) before marking the health check as failed.
 	Timeout *int `pulumi:"timeout"`
 	// The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+	// Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
 	Type *string `pulumi:"type"`
 }
 
@@ -214,6 +216,7 @@ type LoadBalancerMonitorState struct {
 	// The timeout (in seconds) before marking the health check as failed.
 	Timeout pulumi.IntPtrInput
 	// The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+	// Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
 	Type pulumi.StringPtrInput
 }
 
@@ -255,6 +258,7 @@ type loadBalancerMonitorArgs struct {
 	// The timeout (in seconds) before marking the health check as failed.
 	Timeout *int `pulumi:"timeout"`
 	// The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+	// Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
 	Type *string `pulumi:"type"`
 }
 
@@ -293,6 +297,7 @@ type LoadBalancerMonitorArgs struct {
 	// The timeout (in seconds) before marking the health check as failed.
 	Timeout pulumi.IntPtrInput
 	// The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+	// Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
 	Type pulumi.StringPtrInput
 }
 
@@ -472,6 +477,7 @@ func (o LoadBalancerMonitorOutput) Timeout() pulumi.IntOutput {
 }
 
 // The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+// Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
 func (o LoadBalancerMonitorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

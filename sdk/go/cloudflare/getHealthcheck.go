@@ -84,6 +84,7 @@ type LookupHealthcheckResult struct {
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	Retries int `pulumi:"retries"`
 	// The current status of the origin server according to the health check.
+	// Available values: "unknown", "healthy", "unhealthy", "suspended".
 	Status string `pulumi:"status"`
 	// If suspended, no health checks are sent to the origin.
 	Suspended bool `pulumi:"suspended"`
@@ -202,6 +203,7 @@ func (o LookupHealthcheckResultOutput) Retries() pulumi.IntOutput {
 }
 
 // The current status of the origin server according to the health check.
+// Available values: "unknown", "healthy", "unhealthy", "suspended".
 func (o LookupHealthcheckResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHealthcheckResult) string { return v.Status }).(pulumi.StringOutput)
 }

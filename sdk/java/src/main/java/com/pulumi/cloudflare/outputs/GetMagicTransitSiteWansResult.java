@@ -14,6 +14,7 @@ import java.util.Objects;
 public final class GetMagicTransitSiteWansResult {
     /**
      * @return Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+     * Available values: &#34;low&#34;, &#34;mid&#34;, &#34;high&#34;.
      * 
      */
     private String healthCheckRate;
@@ -48,6 +49,7 @@ public final class GetMagicTransitSiteWansResult {
     private GetMagicTransitSiteWansResult() {}
     /**
      * @return Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+     * Available values: &#34;low&#34;, &#34;mid&#34;, &#34;high&#34;.
      * 
      */
     public String healthCheckRate() {

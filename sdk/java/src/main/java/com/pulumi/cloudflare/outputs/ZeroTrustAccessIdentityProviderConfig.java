@@ -121,6 +121,7 @@ public final class ZeroTrustAccessIdentityProviderConfig {
     private @Nullable Boolean pkceEnabled;
     /**
      * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * Available values: &#34;login&#34;, &#34;select_account&#34;, &#34;none&#34;.
      * 
      */
     private @Nullable String prompt;
@@ -301,6 +302,7 @@ public final class ZeroTrustAccessIdentityProviderConfig {
     }
     /**
      * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * Available values: &#34;login&#34;, &#34;select_account&#34;, &#34;none&#34;.
      * 
      */
     public Optional<String> prompt() {

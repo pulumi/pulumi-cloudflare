@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackState;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -73,8 +74,6 @@ public class ZeroTrustDeviceCustomProfileLocalDomainFallback extends com.pulumi.
     public Output<String> accountId() {
         return this.accountId;
     }
-<<<<<<< HEAD
-=======
     /**
      * A description of the fallback domain, displayed in the client UI.
      * 
@@ -103,7 +102,6 @@ public class ZeroTrustDeviceCustomProfileLocalDomainFallback extends com.pulumi.
     public Output<List<String>> dnsServers() {
         return this.dnsServers;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @Export(name="domains", refs={List.class,ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain.class}, tree="[0,1]")
     private Output<List<ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain>> domains;
 
@@ -124,8 +122,6 @@ public class ZeroTrustDeviceCustomProfileLocalDomainFallback extends com.pulumi.
     public Output<String> policyId() {
         return this.policyId;
     }
-<<<<<<< HEAD
-=======
     /**
      * The domain suffix to match when resolving locally.
      * 
@@ -140,7 +136,6 @@ public class ZeroTrustDeviceCustomProfileLocalDomainFallback extends com.pulumi.
     public Output<String> suffix() {
         return this.suffix;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      *
@@ -181,6 +176,10 @@ public class ZeroTrustDeviceCustomProfileLocalDomainFallback extends com.pulumi.
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/fallbackDomain:FallbackDomain").build()),
+                Output.of(Alias.builder().type("cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -53,12 +53,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+        /// Available values: "high", "low".
         /// </summary>
         [Output("frequency")]
         public Output<string> Frequency { get; private set; } = null!;
 
         /// <summary>
         /// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+        /// Available values: "edge".
         /// </summary>
         [Output("kind")]
         public Output<string?> Kind { get; private set; } = null!;
@@ -146,6 +148,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "ownershipChallenge",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -195,12 +201,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+        /// Available values: "high", "low".
         /// </summary>
         [Input("frequency")]
         public Input<string>? Frequency { get; set; }
 
         /// <summary>
         /// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+        /// Available values: "edge".
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -241,11 +249,21 @@ namespace Pulumi.Cloudflare
         [Input("outputOptions")]
         public Input<Inputs.LogpushJobOutputOptionsArgs>? OutputOptions { get; set; }
 
+        [Input("ownershipChallenge")]
+        private Input<string>? _ownershipChallenge;
+
         /// <summary>
         /// Ownership challenge token to prove destination ownership.
         /// </summary>
-        [Input("ownershipChallenge")]
-        public Input<string>? OwnershipChallenge { get; set; }
+        public Input<string>? OwnershipChallenge
+        {
+            get => _ownershipChallenge;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _ownershipChallenge = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -293,12 +311,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+        /// Available values: "high", "low".
         /// </summary>
         [Input("frequency")]
         public Input<string>? Frequency { get; set; }
 
         /// <summary>
         /// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+        /// Available values: "edge".
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -351,11 +371,21 @@ namespace Pulumi.Cloudflare
         [Input("outputOptions")]
         public Input<Inputs.LogpushJobOutputOptionsGetArgs>? OutputOptions { get; set; }
 
+        [Input("ownershipChallenge")]
+        private Input<string>? _ownershipChallenge;
+
         /// <summary>
         /// Ownership challenge token to prove destination ownership.
         /// </summary>
-        [Input("ownershipChallenge")]
-        public Input<string>? OwnershipChallenge { get; set; }
+        public Input<string>? OwnershipChallenge
+        {
+            get => _ownershipChallenge;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _ownershipChallenge = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

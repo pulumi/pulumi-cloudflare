@@ -60,6 +60,7 @@ class GetWorkersKvNamespacesResult:
     def direction(self) -> Optional[str]:
         """
         Direction to order namespaces.
+        Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
 
@@ -84,6 +85,7 @@ class GetWorkersKvNamespacesResult:
     def order(self) -> Optional[str]:
         """
         Field to order results by.
+        Available values: "id", "title".
         """
         return pulumi.get(self, "order")
 
@@ -130,8 +132,10 @@ def get_workers_kv_namespaces(account_id: Optional[str] = None,
 
     :param str account_id: Identifier
     :param str direction: Direction to order namespaces.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     :param str order: Field to order results by.
+           Available values: "id", "title".
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -168,8 +172,10 @@ def get_workers_kv_namespaces_output(account_id: Optional[pulumi.Input[str]] = N
 
     :param str account_id: Identifier
     :param str direction: Direction to order namespaces.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     :param str order: Field to order results by.
+           Available values: "id", "title".
     """
     __args__ = dict()
     __args__['accountId'] = account_id

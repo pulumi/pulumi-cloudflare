@@ -15,6 +15,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("maxAge", required: true)]
         public Input<int> MaxAge { get; set; } = null!;
 
+        /// <summary>
+        /// Available values: "Age".
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

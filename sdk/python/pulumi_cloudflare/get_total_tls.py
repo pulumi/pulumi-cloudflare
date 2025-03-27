@@ -48,6 +48,7 @@ class GetTotalTlsResult:
     def certificate_authority(self) -> str:
         """
         The Certificate Authority that Total TLS certificates will be issued through.
+        Available values: "google", "lets*encrypt", "ssl*com".
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -72,6 +73,7 @@ class GetTotalTlsResult:
     def validity_period(self) -> int:
         """
         The validity period in days for the certificates ordered via Total TLS.
+        Available values: 90.
         """
         return pulumi.get(self, "validity_period")
 

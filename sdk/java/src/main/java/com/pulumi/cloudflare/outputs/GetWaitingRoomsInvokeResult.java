@@ -16,6 +16,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWaitingRoomsInvokeResult {
     /**
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * 
+     */
+    private @Nullable String accountId;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -31,12 +36,19 @@ public final class GetWaitingRoomsInvokeResult {
      */
     private List<GetWaitingRoomsResult> results;
     /**
-     * @return Identifier
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetWaitingRoomsInvokeResult() {}
+    /**
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * 
+     */
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -59,11 +71,11 @@ public final class GetWaitingRoomsInvokeResult {
         return this.results;
     }
     /**
-     * @return Identifier
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -75,19 +87,27 @@ public final class GetWaitingRoomsInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String accountId;
         private String id;
         private @Nullable Integer maxItems;
         private List<GetWaitingRoomsResult> results;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetWaitingRoomsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accountId = defaults.accountId;
     	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
+        public Builder accountId(@Nullable String accountId) {
+
+            this.accountId = accountId;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -114,15 +134,14 @@ public final class GetWaitingRoomsInvokeResult {
             return results(List.of(results));
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetWaitingRoomsInvokeResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }
         public GetWaitingRoomsInvokeResult build() {
             final var _resultValue = new GetWaitingRoomsInvokeResult();
+            _resultValue.accountId = accountId;
             _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;

@@ -144,6 +144,7 @@ class _CustomHostnameState:
         :param pulumi.Input['CustomHostnameOwnershipVerificationHttpArgs'] ownership_verification_http: This presents the token to be served by the given http url to activate a hostname.
         :param pulumi.Input['CustomHostnameSslArgs'] ssl: SSL properties used when creating the custom hostname.
         :param pulumi.Input[str] status: Status of the hostname's activation.
+               Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "test_failed", "provisioned", "blocked".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] verification_errors: These are errors that were encountered while trying to activate a hostname.
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -271,6 +272,7 @@ class _CustomHostnameState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         Status of the hostname's activation.
+        Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "test_failed", "provisioned", "blocked".
         """
         return pulumi.get(self, "status")
 
@@ -432,6 +434,7 @@ class CustomHostname(pulumi.CustomResource):
         :param pulumi.Input[Union['CustomHostnameOwnershipVerificationHttpArgs', 'CustomHostnameOwnershipVerificationHttpArgsDict']] ownership_verification_http: This presents the token to be served by the given http url to activate a hostname.
         :param pulumi.Input[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict']] ssl: SSL properties used when creating the custom hostname.
         :param pulumi.Input[str] status: Status of the hostname's activation.
+               Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "test_failed", "provisioned", "blocked".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] verification_errors: These are errors that were encountered while trying to activate a hostname.
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -521,6 +524,7 @@ class CustomHostname(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         Status of the hostname's activation.
+        Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "test_failed", "provisioned", "blocked".
         """
         return pulumi.get(self, "status")
 

@@ -104,7 +104,7 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    public readonly certificateId!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly certificateId!: pulumi.Output<string>;
     /**
      * Indicates whether zone-level authenticated origin pulls is enabled.
      */
@@ -127,6 +127,7 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
     public /*out*/ readonly signature!: pulumi.Output<string>;
     /**
      * Status of the certificate activation.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -173,9 +174,9 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["certificate"] = args ? args.certificate : undefined;
-            resourceInputs["certificateId"] = args ? args.certificateId : undefined;
-            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["certificateId"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
             resourceInputs["expiresOn"] = undefined /*out*/;
             resourceInputs["issuer"] = undefined /*out*/;
@@ -184,6 +185,8 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
             resourceInputs["uploadedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["privateKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AuthenticatedOriginPullsCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -222,6 +225,7 @@ export interface AuthenticatedOriginPullsCertificateState {
     signature?: pulumi.Input<string>;
     /**
      * Status of the certificate activation.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
      */
     status?: pulumi.Input<string>;
     /**
@@ -242,10 +246,6 @@ export interface AuthenticatedOriginPullsCertificateArgs {
      * The zone's leaf certificate.
      */
     certificate: pulumi.Input<string>;
-    /**
-     * Identifier
-     */
-    certificateId?: pulumi.Input<string>;
     /**
      * The zone's private key.
      */

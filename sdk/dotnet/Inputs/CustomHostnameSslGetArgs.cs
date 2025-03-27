@@ -14,12 +14,14 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        /// Available values: "ubiquitous", "optimal", "force".
         /// </summary>
         [Input("bundleMethod")]
         public Input<string>? BundleMethod { get; set; }
 
         /// <summary>
         /// The Certificate Authority that will issue the certificate
+        /// Available values: "digicert", "google", "lets*encrypt", "ssl*com".
         /// </summary>
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }
@@ -30,8 +32,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("cloudflareBranding")]
         public Input<bool>? CloudflareBranding { get; set; }
 
-<<<<<<< HEAD
-=======
         [Input("customCertBundles")]
         private InputList<Inputs.CustomHostnameSslCustomCertBundleGetArgs>? _customCertBundles;
 
@@ -44,21 +44,31 @@ namespace Pulumi.Cloudflare.Inputs
             set => _customCertBundles = value;
         }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// If a custom uploaded certificate is used.
         /// </summary>
         [Input("customCertificate")]
         public Input<string>? CustomCertificate { get; set; }
 
+        [Input("customKey")]
+        private Input<string>? _customKey;
+
         /// <summary>
         /// The key for a custom uploaded certificate.
         /// </summary>
-        [Input("customKey")]
-        public Input<string>? CustomKey { get; set; }
+        public Input<string>? CustomKey
+        {
+            get => _customKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _customKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Domain control validation (DCV) method used for this hostname.
+        /// Available values: "http", "txt", "email".
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
@@ -71,6 +81,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Level of validation to be used for this hostname. Domain validation (dv) must be used.
+        /// Available values: "dv".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

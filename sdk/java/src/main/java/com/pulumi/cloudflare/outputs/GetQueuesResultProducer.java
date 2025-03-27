@@ -12,6 +12,10 @@ import java.util.Objects;
 public final class GetQueuesResultProducer {
     private String bucketName;
     private String script;
+    /**
+     * @return Available values: &#34;worker&#34;.
+     * 
+     */
     private String type;
 
     private GetQueuesResultProducer() {}
@@ -21,6 +25,10 @@ public final class GetQueuesResultProducer {
     public String script() {
         return this.script;
     }
+    /**
+     * @return Available values: &#34;worker&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }

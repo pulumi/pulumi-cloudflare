@@ -31,9 +31,17 @@ public final class R2BucketLifecycleRuleStorageClassTransitionConditionArgs exte
         return Optional.ofNullable(this.maxAge);
     }
 
+    /**
+     * Available values: &#34;Age&#34;.
+     * 
+     */
     @Import(name="type", required=true)
     private Output<String> type;
 
+    /**
+     * @return Available values: &#34;Age&#34;.
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
@@ -82,11 +90,23 @@ public final class R2BucketLifecycleRuleStorageClassTransitionConditionArgs exte
             return maxAge(Output.of(maxAge));
         }
 
+        /**
+         * @param type Available values: &#34;Age&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Available values: &#34;Age&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

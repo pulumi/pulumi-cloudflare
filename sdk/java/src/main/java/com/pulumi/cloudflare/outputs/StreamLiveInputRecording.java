@@ -26,6 +26,7 @@ public final class StreamLiveInputRecording {
     private @Nullable Boolean hideLiveViewerCount;
     /**
      * @return Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.
+     * Available values: &#34;off&#34;, &#34;automatic&#34;.
      * 
      */
     private @Nullable String mode;
@@ -57,6 +58,7 @@ public final class StreamLiveInputRecording {
     }
     /**
      * @return Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.
+     * Available values: &#34;off&#34;, &#34;automatic&#34;.
      * 
      */
     public Optional<String> mode() {

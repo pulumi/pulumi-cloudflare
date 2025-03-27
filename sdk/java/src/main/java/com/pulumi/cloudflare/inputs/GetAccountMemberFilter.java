@@ -16,6 +16,7 @@ public final class GetAccountMemberFilter extends com.pulumi.resources.InvokeArg
 
     /**
      * Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -23,6 +24,7 @@ public final class GetAccountMemberFilter extends com.pulumi.resources.InvokeArg
 
     /**
      * @return Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -31,6 +33,7 @@ public final class GetAccountMemberFilter extends com.pulumi.resources.InvokeArg
 
     /**
      * Field to order results by.
+     * Available values: &#34;user.first*name&#34;, &#34;user.last*name&#34;, &#34;user.email&#34;, &#34;status&#34;.
      * 
      */
     @Import(name="order")
@@ -38,6 +41,7 @@ public final class GetAccountMemberFilter extends com.pulumi.resources.InvokeArg
 
     /**
      * @return Field to order results by.
+     * Available values: &#34;user.first*name&#34;, &#34;user.last*name&#34;, &#34;user.email&#34;, &#34;status&#34;.
      * 
      */
     public Optional<String> order() {
@@ -46,6 +50,7 @@ public final class GetAccountMemberFilter extends com.pulumi.resources.InvokeArg
 
     /**
      * A member&#39;s status in the account.
+     * Available values: &#34;accepted&#34;, &#34;pending&#34;, &#34;rejected&#34;.
      * 
      */
     @Import(name="status")
@@ -53,6 +58,7 @@ public final class GetAccountMemberFilter extends com.pulumi.resources.InvokeArg
 
     /**
      * @return A member&#39;s status in the account.
+     * Available values: &#34;accepted&#34;, &#34;pending&#34;, &#34;rejected&#34;.
      * 
      */
     public Optional<String> status() {
@@ -87,6 +93,7 @@ public final class GetAccountMemberFilter extends com.pulumi.resources.InvokeArg
 
         /**
          * @param direction Direction to order results.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -98,6 +105,7 @@ public final class GetAccountMemberFilter extends com.pulumi.resources.InvokeArg
 
         /**
          * @param order Field to order results by.
+         * Available values: &#34;user.first*name&#34;, &#34;user.last*name&#34;, &#34;user.email&#34;, &#34;status&#34;.
          * 
          * @return builder
          * 
@@ -109,6 +117,7 @@ public final class GetAccountMemberFilter extends com.pulumi.resources.InvokeArg
 
         /**
          * @param status A member&#39;s status in the account.
+         * Available values: &#34;accepted&#34;, &#34;pending&#34;, &#34;rejected&#34;.
          * 
          * @return builder
          * 

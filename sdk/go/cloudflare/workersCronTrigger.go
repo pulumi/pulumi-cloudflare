@@ -45,6 +45,12 @@ func NewWorkersCronTrigger(ctx *pulumi.Context,
 	if args.ScriptName == nil {
 		return nil, errors.New("invalid value for required argument 'ScriptName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/workerCronTrigger:WorkerCronTrigger"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkersCronTrigger
 	err := ctx.RegisterResource("cloudflare:index/workersCronTrigger:WorkersCronTrigger", name, args, &resource, opts...)

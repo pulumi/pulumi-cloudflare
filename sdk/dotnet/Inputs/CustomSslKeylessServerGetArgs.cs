@@ -68,6 +68,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Status of the Keyless SSL.
+        /// Available values: "active", "deleted".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

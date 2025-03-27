@@ -89,6 +89,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Sorts results in an ascending or descending order.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
@@ -121,6 +122,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Sorts results in an ascending or descending order.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -153,6 +155,7 @@ namespace Pulumi.Cloudflare
         public readonly string AccountId;
         /// <summary>
         /// Sorts results in an ascending or descending order.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string Direction;
         /// <summary>

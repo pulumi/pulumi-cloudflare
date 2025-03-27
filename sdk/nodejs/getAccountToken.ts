@@ -87,6 +87,7 @@ export interface GetAccountTokenResult {
     readonly policies: outputs.GetAccountTokenPolicy[];
     /**
      * Status of the token.
+     * Available values: "active", "disabled", "expired".
      */
     readonly status: string;
     /**

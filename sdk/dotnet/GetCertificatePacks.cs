@@ -92,6 +92,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Include Certificate Packs of all statuses, not just active ones.
+        /// Available values: "all".
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -118,6 +119,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Include Certificate Packs of all statuses, not just active ones.
+        /// Available values: "all".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -152,6 +154,7 @@ namespace Pulumi.Cloudflare
         public readonly ImmutableArray<Outputs.GetCertificatePacksResultResult> Results;
         /// <summary>
         /// Include Certificate Packs of all statuses, not just active ones.
+        /// Available values: "all".
         /// </summary>
         public readonly string? Status;
         /// <summary>

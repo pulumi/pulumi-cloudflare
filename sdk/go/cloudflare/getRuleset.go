@@ -67,10 +67,14 @@ type LookupRulesetResult struct {
 	// The unique ID of the ruleset.
 	Id string `pulumi:"id"`
 	// The kind of the ruleset.
+	// Available values: "managed", "custom", "root", "zone".
 	Kind string `pulumi:"kind"`
+	// The timestamp of when the ruleset was last modified.
+	LastUpdated string `pulumi:"lastUpdated"`
 	// The human-readable name of the ruleset.
 	Name string `pulumi:"name"`
 	// The phase of the ruleset.
+	// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
 	Phase string `pulumi:"phase"`
 	// The list of rules in the ruleset.
 	Rules []GetRulesetRule `pulumi:"rules"`
@@ -134,8 +138,14 @@ func (o LookupRulesetResultOutput) Id() pulumi.StringOutput {
 }
 
 // The kind of the ruleset.
+// Available values: "managed", "custom", "root", "zone".
 func (o LookupRulesetResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRulesetResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The timestamp of when the ruleset was last modified.
+func (o LookupRulesetResultOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRulesetResult) string { return v.LastUpdated }).(pulumi.StringOutput)
 }
 
 // The human-readable name of the ruleset.
@@ -144,6 +154,7 @@ func (o LookupRulesetResultOutput) Name() pulumi.StringOutput {
 }
 
 // The phase of the ruleset.
+// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
 func (o LookupRulesetResultOutput) Phase() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRulesetResult) string { return v.Phase }).(pulumi.StringOutput)
 }

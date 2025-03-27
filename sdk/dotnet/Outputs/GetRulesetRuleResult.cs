@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// The action to perform when the rule matches.
+        /// Available values: "block".
         /// </summary>
         public readonly string Action;
         /// <summary>
@@ -46,6 +47,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The timestamp of when the rule was last modified.
+        /// </summary>
+        public readonly string LastUpdated;
+        /// <summary>
         /// An object configuring the rule's logging behavior.
         /// </summary>
         public readonly Outputs.GetRulesetRuleLoggingResult Logging;
@@ -57,6 +62,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The reference of the rule (the rule ID by default).
         /// </summary>
         public readonly string Ref;
+        /// <summary>
+        /// The version of the rule.
+        /// </summary>
+        public readonly string Version;
 
         [OutputConstructor]
         private GetRulesetRuleResult(
@@ -76,11 +85,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             string id,
 
+            string lastUpdated,
+
             Outputs.GetRulesetRuleLoggingResult logging,
 
             Outputs.GetRulesetRuleRatelimitResult ratelimit,
 
-            string @ref)
+            string @ref,
+
+            string version)
         {
             Action = action;
             ActionParameters = actionParameters;
@@ -90,9 +103,11 @@ namespace Pulumi.Cloudflare.Outputs
             ExposedCredentialCheck = exposedCredentialCheck;
             Expression = expression;
             Id = id;
+            LastUpdated = lastUpdated;
             Logging = logging;
             Ratelimit = ratelimit;
             Ref = @ref;
+            Version = version;
         }
     }
 }

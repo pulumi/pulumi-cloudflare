@@ -100,6 +100,12 @@ func NewZeroTrustAccessGroup(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/accessGroup:AccessGroup"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustAccessGroup
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup", name, args, &resource, opts...)

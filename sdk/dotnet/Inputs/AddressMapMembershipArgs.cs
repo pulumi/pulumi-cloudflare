@@ -29,6 +29,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The type of the membership.
+        /// Available values: "zone", "account".
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

@@ -34,7 +34,7 @@ class ZoneDnssecArgs:
                requiring Cloudflare to sign any records on the fly. Note that this feature has some limitations. See [Cloudflare as
                Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
                details.
-        :param pulumi.Input[str] status: Status of DNSSEC, based on user-desired state and presence of necessary records.
+        :param pulumi.Input[str] status: Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
         """
         pulumi.set(__self__, "zone_id", zone_id)
         if dnssec_multi_signer is not None:
@@ -90,7 +90,7 @@ class ZoneDnssecArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of DNSSEC, based on user-desired state and presence of necessary records.
+        Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
         """
         return pulumi.get(self, "status")
 
@@ -136,7 +136,7 @@ class _ZoneDnssecState:
         :param pulumi.Input[str] key_type: Algorithm key type.
         :param pulumi.Input[str] modified_on: When DNSSEC was last modified.
         :param pulumi.Input[str] public_key: Public key for DS record.
-        :param pulumi.Input[str] status: Status of DNSSEC, based on user-desired state and presence of necessary records.
+        :param pulumi.Input[str] status: Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
         :param pulumi.Input[str] zone_id: Identifier
         """
         if algorithm is not None:
@@ -322,7 +322,7 @@ class _ZoneDnssecState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of DNSSEC, based on user-desired state and presence of necessary records.
+        Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
         """
         return pulumi.get(self, "status")
 
@@ -383,7 +383,7 @@ class ZoneDnssec(pulumi.CustomResource):
                requiring Cloudflare to sign any records on the fly. Note that this feature has some limitations. See [Cloudflare as
                Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
                details.
-        :param pulumi.Input[str] status: Status of DNSSEC, based on user-desired state and presence of necessary records.
+        :param pulumi.Input[str] status: Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
         :param pulumi.Input[str] zone_id: Identifier
         """
         ...
@@ -505,7 +505,7 @@ class ZoneDnssec(pulumi.CustomResource):
         :param pulumi.Input[str] key_type: Algorithm key type.
         :param pulumi.Input[str] modified_on: When DNSSEC was last modified.
         :param pulumi.Input[str] public_key: Public key for DS record.
-        :param pulumi.Input[str] status: Status of DNSSEC, based on user-desired state and presence of necessary records.
+        :param pulumi.Input[str] status: Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
         :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -634,7 +634,7 @@ class ZoneDnssec(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[Optional[str]]:
         """
-        Status of DNSSEC, based on user-desired state and presence of necessary records.
+        Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
         """
         return pulumi.get(self, "status")
 

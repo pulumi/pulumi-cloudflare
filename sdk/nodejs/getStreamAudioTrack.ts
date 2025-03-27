@@ -48,13 +48,10 @@ export interface GetStreamAudioTrackResult {
      */
     readonly accountId: string;
     /**
-<<<<<<< HEAD
-=======
      * Denotes whether the audio track will be played by default in a player.
      */
     readonly default: boolean;
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -62,21 +59,19 @@ export interface GetStreamAudioTrackResult {
      * A Cloudflare-generated unique identifier for a media item.
      */
     readonly identifier: string;
-<<<<<<< HEAD
-=======
     /**
      * A string to uniquely identify the track amongst other audio track labels for the specified video.
      */
     readonly label: string;
     /**
      * Specifies the processing status of the video.
+     * Available values: "queued", "ready", "error".
      */
     readonly status: string;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
     readonly uid: string;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 /**
  * ## Example Usage

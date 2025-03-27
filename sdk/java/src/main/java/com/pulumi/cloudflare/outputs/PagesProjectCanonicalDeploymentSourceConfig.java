@@ -20,6 +20,10 @@ public final class PagesProjectCanonicalDeploymentSourceConfig {
     private @Nullable Boolean prCommentsEnabled;
     private @Nullable List<String> previewBranchExcludes;
     private @Nullable List<String> previewBranchIncludes;
+    /**
+     * @return Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
+     * 
+     */
     private @Nullable String previewDeploymentSetting;
     private @Nullable String productionBranch;
     private @Nullable Boolean productionDeploymentsEnabled;
@@ -47,6 +51,10 @@ public final class PagesProjectCanonicalDeploymentSourceConfig {
     public List<String> previewBranchIncludes() {
         return this.previewBranchIncludes == null ? List.of() : this.previewBranchIncludes;
     }
+    /**
+     * @return Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
+     * 
+     */
     public Optional<String> previewDeploymentSetting() {
         return Optional.ofNullable(this.previewDeploymentSetting);
     }

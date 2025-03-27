@@ -90,6 +90,13 @@ func NewMtlsCertificate(ctx *pulumi.Context,
 	if args.Certificates == nil {
 		return nil, errors.New("invalid value for required argument 'Certificates'")
 	}
+	if args.PrivateKey != nil {
+		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"privateKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MtlsCertificate
 	err := ctx.RegisterResource("cloudflare:index/mtlsCertificate:MtlsCertificate", name, args, &resource, opts...)

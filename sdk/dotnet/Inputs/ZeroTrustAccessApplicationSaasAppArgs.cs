@@ -32,6 +32,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is "saml"
+        /// Available values: "saml", "oidc".
         /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
@@ -42,11 +43,21 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
+
         /// <summary>
         /// The application client secret, only returned on POST request.
         /// </summary>
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
@@ -108,6 +119,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The format of the name identifier sent to the SaaS application.
+        /// Available values: "id", "email".
         /// </summary>
         [Input("nameIdFormat")]
         public Input<string>? NameIdFormat { get; set; }

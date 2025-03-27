@@ -17,11 +17,19 @@ namespace Pulumi.Cloudflare.Outputs
         /// The name of the field.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Whether to log duplicate values of the same header.
+        /// </summary>
+        public readonly bool PreserveDuplicates;
 
         [OutputConstructor]
-        private GetRulesetRuleActionParametersResponseFieldResult(string name)
+        private GetRulesetRuleActionParametersResponseFieldResult(
+            string name,
+
+            bool preserveDuplicates)
         {
             Name = name;
+            PreserveDuplicates = preserveDuplicates;
         }
     }
 }

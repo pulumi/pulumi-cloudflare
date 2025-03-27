@@ -47,24 +47,6 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-<<<<<<< HEAD
-     * The unique identifier of the filter.
-     * 
-     */
-    @Import(name="filterId")
-    private @Nullable Output<String> filterId;
-
-    /**
-     * @return The unique identifier of the filter.
-     * 
-     */
-    public Optional<Output<String>> filterId() {
-        return Optional.ofNullable(this.filterId);
-    }
-
-    /**
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * When true, indicates that the filter is currently paused.
      * 
      */
@@ -114,7 +96,6 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
     private FilterState(FilterState $) {
         this.description = $.description;
         this.expression = $.expression;
-        this.filterId = $.filterId;
         this.paused = $.paused;
         this.ref = $.ref;
         this.zoneId = $.zoneId;
@@ -181,30 +162,6 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-<<<<<<< HEAD
-         * @param filterId The unique identifier of the filter.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder filterId(@Nullable Output<String> filterId) {
-            $.filterId = filterId;
-            return this;
-        }
-
-        /**
-         * @param filterId The unique identifier of the filter.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder filterId(String filterId) {
-            return filterId(Output.of(filterId));
-        }
-
-        /**
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param paused When true, indicates that the filter is currently paused.
          * 
          * @return builder

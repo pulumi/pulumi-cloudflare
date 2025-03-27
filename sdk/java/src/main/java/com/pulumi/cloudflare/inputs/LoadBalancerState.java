@@ -330,6 +330,13 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.zoneId);
     }
 
+    @Import(name="zoneName")
+    private @Nullable Output<String> zoneName;
+
+    public Optional<Output<String>> zoneName() {
+        return Optional.ofNullable(this.zoneName);
+    }
+
     private LoadBalancerState() {}
 
     private LoadBalancerState(LoadBalancerState $) {
@@ -355,6 +362,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         this.steeringPolicy = $.steeringPolicy;
         this.ttl = $.ttl;
         this.zoneId = $.zoneId;
+        this.zoneName = $.zoneName;
     }
 
     public static Builder builder() {
@@ -829,6 +837,15 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         public Builder zoneId(String zoneId) {
             return zoneId(Output.of(zoneId));
+        }
+
+        public Builder zoneName(@Nullable Output<String> zoneName) {
+            $.zoneName = zoneName;
+            return this;
+        }
+
+        public Builder zoneName(String zoneName) {
+            return zoneName(Output.of(zoneName));
         }
 
         public LoadBalancerState build() {

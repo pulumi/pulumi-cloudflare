@@ -17,6 +17,7 @@ public final class GetWorkersSecretsResult {
     private String name;
     /**
      * @return The type of secret.
+     * Available values: &#34;secret_text&#34;.
      * 
      */
     private String type;
@@ -31,6 +32,7 @@ public final class GetWorkersSecretsResult {
     }
     /**
      * @return The type of secret.
+     * Available values: &#34;secret_text&#34;.
      * 
      */
     public String type() {

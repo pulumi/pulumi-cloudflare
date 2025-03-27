@@ -15,10 +15,12 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Whether to match all search requirements or at least one (any).
+        /// Available values: "any", "all".
         /// </summary>
         public readonly string Match;
         /// <summary>
         /// Status of the zone's custom SSL.
+        /// Available values: "active", "expired", "deleted", "pending", "initializing".
         /// </summary>
         public readonly string? Status;
 

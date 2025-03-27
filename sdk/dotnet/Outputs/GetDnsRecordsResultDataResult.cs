@@ -51,6 +51,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double LatDegrees;
         /// <summary>
         /// Latitude direction.
+        /// Available values: "N", "S".
         /// </summary>
         public readonly string LatDirection;
         /// <summary>
@@ -67,6 +68,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double LongDegrees;
         /// <summary>
         /// Longitude direction.
+        /// Available values: "E", "W".
         /// </summary>
         public readonly string LongDirection;
         /// <summary>

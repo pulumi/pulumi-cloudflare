@@ -41,12 +41,8 @@ export interface GetWaitingRoomRulesArgs {
  */
 export interface GetWaitingRoomRulesResult {
     /**
-<<<<<<< HEAD
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-=======
      * The action to take when the expression matches.
+     * Available values: "bypass*waiting*room".
      */
     readonly action: string;
     /**
@@ -70,7 +66,6 @@ export interface GetWaitingRoomRulesResult {
      * The version of the rule.
      */
     readonly version: string;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     readonly waitingRoomId: string;
     /**
      * Identifier

@@ -116,11 +116,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-<<<<<<< HEAD
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-=======
         /// The monetary unit in which pricing information is displayed.
         /// </summary>
         public readonly string Currency;
@@ -134,6 +129,7 @@ namespace Pulumi.Cloudflare
         public readonly string CurrentPeriodStart;
         /// <summary>
         /// How often the subscription is renewed automatically.
+        /// Available values: "weekly", "monthly", "quarterly", "yearly".
         /// </summary>
         public readonly string Frequency;
         /// <summary>
@@ -150,20 +146,14 @@ namespace Pulumi.Cloudflare
         public readonly Outputs.GetAccountSubscriptionRatePlanResult RatePlan;
         /// <summary>
         /// The state that the subscription is in.
+        /// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
         /// </summary>
         public readonly string State;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         [OutputConstructor]
         private GetAccountSubscriptionResult(
             string accountId,
 
-<<<<<<< HEAD
-            string id)
-        {
-            AccountId = accountId;
-            Id = id;
-=======
             string currency,
 
             string currentPeriodEnd,
@@ -189,7 +179,6 @@ namespace Pulumi.Cloudflare
             Price = price;
             RatePlan = ratePlan;
             State = state;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
     }
 }

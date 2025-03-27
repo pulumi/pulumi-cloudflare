@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Type of supported action.
+        /// Available values: "drop", "forward", "worker".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

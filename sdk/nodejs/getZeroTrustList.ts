@@ -69,6 +69,7 @@ export interface GetZeroTrustListResult {
     readonly name: string;
     /**
      * The type of list.
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
      */
     readonly type: string;
     readonly updatedAt: string;

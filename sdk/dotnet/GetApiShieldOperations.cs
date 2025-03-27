@@ -128,6 +128,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Direction to order results.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
@@ -182,6 +183,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+        /// Available values: "method", "host", "endpoint", "thresholds.$key".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -202,6 +204,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Direction to order results.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -256,6 +259,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+        /// Available values: "method", "host", "endpoint", "thresholds.$key".
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
@@ -278,6 +282,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Direction to order results.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
@@ -306,6 +311,7 @@ namespace Pulumi.Cloudflare
         public readonly ImmutableArray<string> Methods;
         /// <summary>
         /// Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+        /// Available values: "method", "host", "endpoint", "thresholds.$key".
         /// </summary>
         public readonly string? Order;
         /// <summary>

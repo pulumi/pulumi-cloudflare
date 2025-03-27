@@ -79,6 +79,21 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Jurisdiction of the bucket
+     * 
+     */
+    @Import(name="jurisdiction")
+    private @Nullable Output<String> jurisdiction;
+
+    /**
+     * @return Jurisdiction of the bucket
+     * 
+     */
+    public Optional<Output<String>> jurisdiction() {
+        return Optional.ofNullable(this.jurisdiction);
+    }
+
+    /**
      * AWS S3 bucket to copy objects from
      * 
      */
@@ -100,6 +115,7 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
         this.bucketName = $.bucketName;
         this.destination = $.destination;
         this.enabled = $.enabled;
+        this.jurisdiction = $.jurisdiction;
         this.source = $.source;
     }
 
@@ -203,6 +219,27 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param jurisdiction Jurisdiction of the bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(@Nullable Output<String> jurisdiction) {
+            $.jurisdiction = jurisdiction;
+            return this;
+        }
+
+        /**
+         * @param jurisdiction Jurisdiction of the bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(String jurisdiction) {
+            return jurisdiction(Output.of(jurisdiction));
         }
 
         /**

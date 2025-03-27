@@ -55,7 +55,10 @@ class WaitingRoomArgs:
         :param pulumi.Input[str] cookie_suffix: Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`.
         :param pulumi.Input[str] custom_page_html: Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
         :param pulumi.Input[str] default_template_language: The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be
-               used.
+               used. Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW",
+               "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT",
+               "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH",
+               "uk-UA", "vi-VN".
         :param pulumi.Input[str] description: A note that you can use to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an
                accepted user will have session_duration minutes to browse the site. After that, they will have to go through the
@@ -140,18 +143,21 @@ class WaitingRoomArgs:
                not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and
                otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`,
                `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is
-               prequeueing, the waiting room page **will not refresh automatically**.
-        :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue.
+               prequeueing, the waiting room page **will not refresh automatically**. Available values: "fifo", "random",
+               "passthrough", "reject".
+        :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue. Available values: 200, 202, 429.
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by
                Cloudflare again in that time period, they will be treated as a new user that visits the route.
         :param pulumi.Input[bool] suspended: Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.
         :param pulumi.Input[str] turnstile_action: Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply
                keeping track of how many bots are detected in Waiting Room Analytics. `infinite_queue` will send bots to a false
-               queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room.
+               queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room. Available
+               values: "log", "infinite_queue".
         :param pulumi.Input[str] turnstile_mode: Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile
                documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these
                widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
-               `invisible` requires Advanced Waiting Room.
+               `invisible` requires Advanced Waiting Room. Available values: "off", "invisible", "visible_non_interactive",
+               "visible_managed".
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "name", name)
@@ -306,7 +312,10 @@ class WaitingRoomArgs:
     def default_template_language(self) -> Optional[pulumi.Input[str]]:
         """
         The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be
-        used.
+        used. Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW",
+        "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT",
+        "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH",
+        "uk-UA", "vi-VN".
         """
         return pulumi.get(self, "default_template_language")
 
@@ -468,7 +477,8 @@ class WaitingRoomArgs:
         not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and
         otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`,
         `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is
-        prequeueing, the waiting room page **will not refresh automatically**.
+        prequeueing, the waiting room page **will not refresh automatically**. Available values: "fifo", "random",
+        "passthrough", "reject".
         """
         return pulumi.get(self, "queueing_method")
 
@@ -480,7 +490,7 @@ class WaitingRoomArgs:
     @pulumi.getter(name="queueingStatusCode")
     def queueing_status_code(self) -> Optional[pulumi.Input[int]]:
         """
-        HTTP status code returned to a user while in the queue.
+        HTTP status code returned to a user while in the queue. Available values: 200, 202, 429.
         """
         return pulumi.get(self, "queueing_status_code")
 
@@ -519,7 +529,8 @@ class WaitingRoomArgs:
         """
         Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply
         keeping track of how many bots are detected in Waiting Room Analytics. `infinite_queue` will send bots to a false
-        queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room.
+        queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room. Available
+        values: "log", "infinite_queue".
         """
         return pulumi.get(self, "turnstile_action")
 
@@ -534,7 +545,8 @@ class WaitingRoomArgs:
         Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile
         documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these
         widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
-        `invisible` requires Advanced Waiting Room.
+        `invisible` requires Advanced Waiting Room. Available values: "off", "invisible", "visible_non_interactive",
+        "visible_managed".
         """
         return pulumi.get(self, "turnstile_mode")
 
@@ -579,7 +591,10 @@ class _WaitingRoomState:
         :param pulumi.Input[str] cookie_suffix: Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`.
         :param pulumi.Input[str] custom_page_html: Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
         :param pulumi.Input[str] default_template_language: The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be
-               used.
+               used. Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW",
+               "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT",
+               "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH",
+               "uk-UA", "vi-VN".
         :param pulumi.Input[str] description: A note that you can use to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an
                accepted user will have session_duration minutes to browse the site. After that, they will have to go through the
@@ -669,19 +684,22 @@ class _WaitingRoomState:
                not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and
                otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`,
                `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is
-               prequeueing, the waiting room page **will not refresh automatically**.
-        :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue.
+               prequeueing, the waiting room page **will not refresh automatically**. Available values: "fifo", "random",
+               "passthrough", "reject".
+        :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue. Available values: 200, 202, 429.
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by
                Cloudflare again in that time period, they will be treated as a new user that visits the route.
         :param pulumi.Input[bool] suspended: Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.
         :param pulumi.Input[int] total_active_users: Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.
         :param pulumi.Input[str] turnstile_action: Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply
                keeping track of how many bots are detected in Waiting Room Analytics. `infinite_queue` will send bots to a false
-               queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room.
+               queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room. Available
+               values: "log", "infinite_queue".
         :param pulumi.Input[str] turnstile_mode: Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile
                documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these
                widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
-               `invisible` requires Advanced Waiting Room.
+               `invisible` requires Advanced Waiting Room. Available values: "off", "invisible", "visible_non_interactive",
+               "visible_managed".
         :param pulumi.Input[str] zone_id: Identifier
         """
         if additional_routes is not None:
@@ -799,7 +817,10 @@ class _WaitingRoomState:
     def default_template_language(self) -> Optional[pulumi.Input[str]]:
         """
         The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be
-        used.
+        used. Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW",
+        "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT",
+        "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH",
+        "uk-UA", "vi-VN".
         """
         return pulumi.get(self, "default_template_language")
 
@@ -1030,7 +1051,8 @@ class _WaitingRoomState:
         not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and
         otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`,
         `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is
-        prequeueing, the waiting room page **will not refresh automatically**.
+        prequeueing, the waiting room page **will not refresh automatically**. Available values: "fifo", "random",
+        "passthrough", "reject".
         """
         return pulumi.get(self, "queueing_method")
 
@@ -1042,7 +1064,7 @@ class _WaitingRoomState:
     @pulumi.getter(name="queueingStatusCode")
     def queueing_status_code(self) -> Optional[pulumi.Input[int]]:
         """
-        HTTP status code returned to a user while in the queue.
+        HTTP status code returned to a user while in the queue. Available values: 200, 202, 429.
         """
         return pulumi.get(self, "queueing_status_code")
 
@@ -1093,7 +1115,8 @@ class _WaitingRoomState:
         """
         Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply
         keeping track of how many bots are detected in Waiting Room Analytics. `infinite_queue` will send bots to a false
-        queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room.
+        queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room. Available
+        values: "log", "infinite_queue".
         """
         return pulumi.get(self, "turnstile_action")
 
@@ -1108,7 +1131,8 @@ class _WaitingRoomState:
         Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile
         documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these
         widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
-        `invisible` requires Advanced Waiting Room.
+        `invisible` requires Advanced Waiting Room. Available values: "off", "invisible", "visible_non_interactive",
+        "visible_managed".
         """
         return pulumi.get(self, "turnstile_mode")
 
@@ -1208,7 +1232,10 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[str] cookie_suffix: Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`.
         :param pulumi.Input[str] custom_page_html: Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
         :param pulumi.Input[str] default_template_language: The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be
-               used.
+               used. Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW",
+               "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT",
+               "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH",
+               "uk-UA", "vi-VN".
         :param pulumi.Input[str] description: A note that you can use to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an
                accepted user will have session_duration minutes to browse the site. After that, they will have to go through the
@@ -1296,19 +1323,22 @@ class WaitingRoom(pulumi.CustomResource):
                not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and
                otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`,
                `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is
-               prequeueing, the waiting room page **will not refresh automatically**.
-        :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue.
+               prequeueing, the waiting room page **will not refresh automatically**. Available values: "fifo", "random",
+               "passthrough", "reject".
+        :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue. Available values: 200, 202, 429.
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by
                Cloudflare again in that time period, they will be treated as a new user that visits the route.
         :param pulumi.Input[bool] suspended: Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.
         :param pulumi.Input[int] total_active_users: Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.
         :param pulumi.Input[str] turnstile_action: Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply
                keeping track of how many bots are detected in Waiting Room Analytics. `infinite_queue` will send bots to a false
-               queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room.
+               queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room. Available
+               values: "log", "infinite_queue".
         :param pulumi.Input[str] turnstile_mode: Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile
                documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these
                widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
-               `invisible` requires Advanced Waiting Room.
+               `invisible` requires Advanced Waiting Room. Available values: "off", "invisible", "visible_non_interactive",
+               "visible_managed".
         :param pulumi.Input[str] zone_id: Identifier
         """
         ...
@@ -1491,7 +1521,10 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[str] cookie_suffix: Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`.
         :param pulumi.Input[str] custom_page_html: Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
         :param pulumi.Input[str] default_template_language: The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be
-               used.
+               used. Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW",
+               "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT",
+               "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH",
+               "uk-UA", "vi-VN".
         :param pulumi.Input[str] description: A note that you can use to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an
                accepted user will have session_duration minutes to browse the site. After that, they will have to go through the
@@ -1581,19 +1614,22 @@ class WaitingRoom(pulumi.CustomResource):
                not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and
                otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`,
                `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is
-               prequeueing, the waiting room page **will not refresh automatically**.
-        :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue.
+               prequeueing, the waiting room page **will not refresh automatically**. Available values: "fifo", "random",
+               "passthrough", "reject".
+        :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue. Available values: 200, 202, 429.
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by
                Cloudflare again in that time period, they will be treated as a new user that visits the route.
         :param pulumi.Input[bool] suspended: Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.
         :param pulumi.Input[int] total_active_users: Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.
         :param pulumi.Input[str] turnstile_action: Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply
                keeping track of how many bots are detected in Waiting Room Analytics. `infinite_queue` will send bots to a false
-               queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room.
+               queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room. Available
+               values: "log", "infinite_queue".
         :param pulumi.Input[str] turnstile_mode: Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile
                documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these
                widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
-               `invisible` requires Advanced Waiting Room.
+               `invisible` requires Advanced Waiting Room. Available values: "off", "invisible", "visible_non_interactive",
+               "visible_managed".
         :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1670,7 +1706,10 @@ class WaitingRoom(pulumi.CustomResource):
     def default_template_language(self) -> pulumi.Output[str]:
         """
         The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be
-        used.
+        used. Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW",
+        "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT",
+        "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH",
+        "uk-UA", "vi-VN".
         """
         return pulumi.get(self, "default_template_language")
 
@@ -1849,7 +1888,8 @@ class WaitingRoom(pulumi.CustomResource):
         not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and
         otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`,
         `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is
-        prequeueing, the waiting room page **will not refresh automatically**.
+        prequeueing, the waiting room page **will not refresh automatically**. Available values: "fifo", "random",
+        "passthrough", "reject".
         """
         return pulumi.get(self, "queueing_method")
 
@@ -1857,7 +1897,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter(name="queueingStatusCode")
     def queueing_status_code(self) -> pulumi.Output[int]:
         """
-        HTTP status code returned to a user while in the queue.
+        HTTP status code returned to a user while in the queue. Available values: 200, 202, 429.
         """
         return pulumi.get(self, "queueing_status_code")
 
@@ -1892,7 +1932,8 @@ class WaitingRoom(pulumi.CustomResource):
         """
         Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply
         keeping track of how many bots are detected in Waiting Room Analytics. `infinite_queue` will send bots to a false
-        queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room.
+        queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room. Available
+        values: "log", "infinite_queue".
         """
         return pulumi.get(self, "turnstile_action")
 
@@ -1903,7 +1944,8 @@ class WaitingRoom(pulumi.CustomResource):
         Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile
         documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these
         widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
-        `invisible` requires Advanced Waiting Room.
+        `invisible` requires Advanced Waiting Room. Available values: "off", "invisible", "visible_non_interactive",
+        "visible_managed".
         """
         return pulumi.get(self, "turnstile_mode")
 

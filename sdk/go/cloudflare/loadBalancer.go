@@ -61,8 +61,9 @@ type LoadBalancer struct {
 	// Steering Policy for this load balancer.
 	SteeringPolicy pulumi.StringOutput `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
-	Ttl    pulumi.Float64Output `pulumi:"ttl"`
-	ZoneId pulumi.StringOutput  `pulumi:"zoneId"`
+	Ttl      pulumi.Float64Output `pulumi:"ttl"`
+	ZoneId   pulumi.StringOutput  `pulumi:"zoneId"`
+	ZoneName pulumi.StringOutput  `pulumi:"zoneName"`
 }
 
 // NewLoadBalancer registers a new resource with the given unique name, arguments, and options.
@@ -146,8 +147,9 @@ type loadBalancerState struct {
 	// Steering Policy for this load balancer.
 	SteeringPolicy *string `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
-	Ttl    *float64 `pulumi:"ttl"`
-	ZoneId *string  `pulumi:"zoneId"`
+	Ttl      *float64 `pulumi:"ttl"`
+	ZoneId   *string  `pulumi:"zoneId"`
+	ZoneName *string  `pulumi:"zoneName"`
 }
 
 type LoadBalancerState struct {
@@ -190,8 +192,9 @@ type LoadBalancerState struct {
 	// Steering Policy for this load balancer.
 	SteeringPolicy pulumi.StringPtrInput
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
-	Ttl    pulumi.Float64PtrInput
-	ZoneId pulumi.StringPtrInput
+	Ttl      pulumi.Float64PtrInput
+	ZoneId   pulumi.StringPtrInput
+	ZoneName pulumi.StringPtrInput
 }
 
 func (LoadBalancerState) ElementType() reflect.Type {
@@ -475,6 +478,10 @@ func (o LoadBalancerOutput) Ttl() pulumi.Float64Output {
 
 func (o LoadBalancerOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+func (o LoadBalancerOutput) ZoneName() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ZoneName }).(pulumi.StringOutput)
 }
 
 type LoadBalancerArrayOutput struct{ *pulumi.OutputState }

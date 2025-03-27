@@ -21,6 +21,7 @@ public final class AccountMemberPolicyArgs extends com.pulumi.resources.Resource
 
     /**
      * Allow or deny operations against the resources.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;.
      * 
      */
     @Import(name="access", required=true)
@@ -28,6 +29,7 @@ public final class AccountMemberPolicyArgs extends com.pulumi.resources.Resource
 
     /**
      * @return Allow or deny operations against the resources.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;.
      * 
      */
     public Output<String> access() {
@@ -108,6 +110,7 @@ public final class AccountMemberPolicyArgs extends com.pulumi.resources.Resource
 
         /**
          * @param access Allow or deny operations against the resources.
+         * Available values: &#34;allow&#34;, &#34;deny&#34;.
          * 
          * @return builder
          * 
@@ -119,6 +122,7 @@ public final class AccountMemberPolicyArgs extends com.pulumi.resources.Resource
 
         /**
          * @param access Allow or deny operations against the resources.
+         * Available values: &#34;allow&#34;, &#34;deny&#34;.
          * 
          * @return builder
          * 

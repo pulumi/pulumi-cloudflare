@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 public final class WaitingRoomRulesRule {
     /**
      * @return The action to take when the expression matches.
+     * Available values: &#34;bypass*waiting*room&#34;.
      * 
      */
     private String action;
@@ -37,6 +38,7 @@ public final class WaitingRoomRulesRule {
     private WaitingRoomRulesRule() {}
     /**
      * @return The action to take when the expression matches.
+     * Available values: &#34;bypass*waiting*room&#34;.
      * 
      */
     public String action() {

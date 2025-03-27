@@ -41,10 +41,6 @@ export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
-<<<<<<< HEAD
-    public readonly settings!: pulumi.Output<outputs.ZeroTrustAccessMtlsHostnameSettingsSetting[]>;
-    /**
-=======
     /**
      * Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
      */
@@ -59,7 +55,6 @@ export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
     public /*out*/ readonly hostname!: pulumi.Output<string>;
     public readonly settings!: pulumi.Output<outputs.ZeroTrustAccessMtlsHostnameSettingsSetting[]>;
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
@@ -96,6 +91,8 @@ export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
             resourceInputs["hostname"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustAccessMtlsHostnameSettings.__pulumiType, name, resourceInputs, opts);
     }
 }

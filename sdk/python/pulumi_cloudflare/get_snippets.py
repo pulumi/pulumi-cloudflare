@@ -97,15 +97,26 @@ class AwaitableGetSnippetsResult(GetSnippetsResult):
             zone_id=self.zone_id)
 
 
-def get_snippets(zone_id: Optional[str] = None,
+def get_snippets(snippet_name: Optional[str] = None,
+                 zone_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnippetsResult:
     """
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
 
+    example_snippets = cloudflare.get_snippets(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+        snippet_name="snippet_name_01")
+    ```
+
+
+    :param str snippet_name: Snippet identifying name
     :param str zone_id: Identifier
     """
     __args__ = dict()
+    __args__['snippetName'] = snippet_name
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getSnippets:getSnippets', __args__, opts=opts, typ=GetSnippetsResult).value
@@ -116,15 +127,26 @@ def get_snippets(zone_id: Optional[str] = None,
         modified_on=pulumi.get(__ret__, 'modified_on'),
         snippet_name=pulumi.get(__ret__, 'snippet_name'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_snippets_output(zone_id: Optional[pulumi.Input[str]] = None,
+def get_snippets_output(snippet_name: Optional[pulumi.Input[str]] = None,
+                        zone_id: Optional[pulumi.Input[str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnippetsResult]:
     """
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
 
+    example_snippets = cloudflare.get_snippets(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+        snippet_name="snippet_name_01")
+    ```
+
+
+    :param str snippet_name: Snippet identifying name
     :param str zone_id: Identifier
     """
     __args__ = dict()
+    __args__['snippetName'] = snippet_name
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getSnippets:getSnippets', __args__, opts=opts, typ=GetSnippetsResult)

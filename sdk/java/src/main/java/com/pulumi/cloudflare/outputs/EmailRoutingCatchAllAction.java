@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 public final class EmailRoutingCatchAllAction {
     /**
      * @return Type of action for catch-all rule.
+     * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
      * 
      */
     private String type;
@@ -22,6 +23,7 @@ public final class EmailRoutingCatchAllAction {
     private EmailRoutingCatchAllAction() {}
     /**
      * @return Type of action for catch-all rule.
+     * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
      * 
      */
     public String type() {

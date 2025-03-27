@@ -98,6 +98,7 @@ class GetPageRuleResult:
     def status(self) -> str:
         """
         The status of the Page Rule.
+        Available values: "active", "disabled".
         """
         return pulumi.get(self, "status")
 

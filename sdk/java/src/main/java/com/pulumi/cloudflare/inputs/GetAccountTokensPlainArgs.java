@@ -33,6 +33,7 @@ public final class GetAccountTokensPlainArgs extends com.pulumi.resources.Invoke
 
     /**
      * Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -40,6 +41,7 @@ public final class GetAccountTokensPlainArgs extends com.pulumi.resources.Invoke
 
     /**
      * @return Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -100,6 +102,7 @@ public final class GetAccountTokensPlainArgs extends com.pulumi.resources.Invoke
 
         /**
          * @param direction Direction to order results.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 

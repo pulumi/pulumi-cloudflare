@@ -340,6 +340,10 @@ class ZeroTrustAccessServiceToken(pulumi.CustomResource):
             __props__.__dict__["expires_at"] = None
             __props__.__dict__["last_seen_at"] = None
             __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessServiceToken:AccessServiceToken")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientSecret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ZeroTrustAccessServiceToken, __self__).__init__(
             'cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken',
             resource_name,

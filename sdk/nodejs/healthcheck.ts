@@ -87,6 +87,7 @@ export class Healthcheck extends pulumi.CustomResource {
     public readonly retries!: pulumi.Output<number>;
     /**
      * The current status of the origin server according to the health check.
+     * Available values: "unknown", "healthy", "unhealthy", "suspended".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -224,6 +225,7 @@ export interface HealthcheckState {
     retries?: pulumi.Input<number>;
     /**
      * The current status of the origin server according to the health check.
+     * Available values: "unknown", "healthy", "unhealthy", "suspended".
      */
     status?: pulumi.Input<string>;
     /**

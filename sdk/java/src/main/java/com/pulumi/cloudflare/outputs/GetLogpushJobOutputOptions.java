@@ -27,7 +27,7 @@ public final class GetLogpushJobOutputOptions {
      * @return If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
      * 
      */
-    private Boolean cve20214428;
+    private Boolean cve202144228;
     /**
      * @return String to join fields. This field be ignored when `record_template` is set.
      * 
@@ -40,6 +40,7 @@ public final class GetLogpushJobOutputOptions {
     private List<String> fieldNames;
     /**
      * @return Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+     * Available values: &#34;ndjson&#34;, &#34;csv&#34;.
      * 
      */
     private String outputType;
@@ -70,6 +71,7 @@ public final class GetLogpushJobOutputOptions {
     private Double sampleRate;
     /**
      * @return String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+     * Available values: &#34;unixnano&#34;, &#34;unix&#34;, &#34;rfc3339&#34;.
      * 
      */
     private String timestampFormat;
@@ -93,8 +95,8 @@ public final class GetLogpushJobOutputOptions {
      * @return If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
      * 
      */
-    public Boolean cve20214428() {
-        return this.cve20214428;
+    public Boolean cve202144228() {
+        return this.cve202144228;
     }
     /**
      * @return String to join fields. This field be ignored when `record_template` is set.
@@ -112,6 +114,7 @@ public final class GetLogpushJobOutputOptions {
     }
     /**
      * @return Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+     * Available values: &#34;ndjson&#34;, &#34;csv&#34;.
      * 
      */
     public String outputType() {
@@ -154,6 +157,7 @@ public final class GetLogpushJobOutputOptions {
     }
     /**
      * @return String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+     * Available values: &#34;unixnano&#34;, &#34;unix&#34;, &#34;rfc3339&#34;.
      * 
      */
     public String timestampFormat() {
@@ -171,7 +175,7 @@ public final class GetLogpushJobOutputOptions {
     public static final class Builder {
         private String batchPrefix;
         private String batchSuffix;
-        private Boolean cve20214428;
+        private Boolean cve202144228;
         private String fieldDelimiter;
         private List<String> fieldNames;
         private String outputType;
@@ -186,7 +190,7 @@ public final class GetLogpushJobOutputOptions {
     	      Objects.requireNonNull(defaults);
     	      this.batchPrefix = defaults.batchPrefix;
     	      this.batchSuffix = defaults.batchSuffix;
-    	      this.cve20214428 = defaults.cve20214428;
+    	      this.cve202144228 = defaults.cve202144228;
     	      this.fieldDelimiter = defaults.fieldDelimiter;
     	      this.fieldNames = defaults.fieldNames;
     	      this.outputType = defaults.outputType;
@@ -215,11 +219,11 @@ public final class GetLogpushJobOutputOptions {
             return this;
         }
         @CustomType.Setter
-        public Builder cve20214428(Boolean cve20214428) {
-            if (cve20214428 == null) {
-              throw new MissingRequiredPropertyException("GetLogpushJobOutputOptions", "cve20214428");
+        public Builder cve202144228(Boolean cve202144228) {
+            if (cve202144228 == null) {
+              throw new MissingRequiredPropertyException("GetLogpushJobOutputOptions", "cve202144228");
             }
-            this.cve20214428 = cve20214428;
+            this.cve202144228 = cve202144228;
             return this;
         }
         @CustomType.Setter
@@ -301,7 +305,7 @@ public final class GetLogpushJobOutputOptions {
             final var _resultValue = new GetLogpushJobOutputOptions();
             _resultValue.batchPrefix = batchPrefix;
             _resultValue.batchSuffix = batchSuffix;
-            _resultValue.cve20214428 = cve20214428;
+            _resultValue.cve202144228 = cve202144228;
             _resultValue.fieldDelimiter = fieldDelimiter;
             _resultValue.fieldNames = fieldNames;
             _resultValue.outputType = outputType;

@@ -16,6 +16,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
 
     /**
      * Field for type matcher.
+     * Available values: &#34;to&#34;.
      * 
      */
     @Import(name="field", required=true)
@@ -23,6 +24,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
 
     /**
      * @return Field for type matcher.
+     * Available values: &#34;to&#34;.
      * 
      */
     public Output<String> field() {
@@ -31,6 +33,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
 
     /**
      * Type of matcher.
+     * Available values: &#34;literal&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -38,6 +41,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
 
     /**
      * @return Type of matcher.
+     * Available values: &#34;literal&#34;.
      * 
      */
     public Output<String> type() {
@@ -87,6 +91,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
 
         /**
          * @param field Field for type matcher.
+         * Available values: &#34;to&#34;.
          * 
          * @return builder
          * 
@@ -98,6 +103,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
 
         /**
          * @param field Field for type matcher.
+         * Available values: &#34;to&#34;.
          * 
          * @return builder
          * 
@@ -108,6 +114,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
 
         /**
          * @param type Type of matcher.
+         * Available values: &#34;literal&#34;.
          * 
          * @return builder
          * 
@@ -119,6 +126,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
 
         /**
          * @param type Type of matcher.
+         * Available values: &#34;literal&#34;.
          * 
          * @return builder
          * 

@@ -69,6 +69,7 @@ class _CustomHostnameFallbackOriginState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] errors: These are errors that were encountered while trying to activate a fallback origin.
         :param pulumi.Input[str] origin: Your origin hostname that requests to your custom hostnames will be sent to.
         :param pulumi.Input[str] status: Status of the fallback origin's activation.
+               Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
         :param pulumi.Input[str] updated_at: This is the time the fallback origin was updated.
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -126,6 +127,7 @@ class _CustomHostnameFallbackOriginState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         Status of the fallback origin's activation.
+        Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
         """
         return pulumi.get(self, "status")
 
@@ -276,6 +278,7 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] errors: These are errors that were encountered while trying to activate a fallback origin.
         :param pulumi.Input[str] origin: Your origin hostname that requests to your custom hostnames will be sent to.
         :param pulumi.Input[str] status: Status of the fallback origin's activation.
+               Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
         :param pulumi.Input[str] updated_at: This is the time the fallback origin was updated.
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -320,6 +323,7 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         Status of the fallback origin's activation.
+        Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
         """
         return pulumi.get(self, "status")
 

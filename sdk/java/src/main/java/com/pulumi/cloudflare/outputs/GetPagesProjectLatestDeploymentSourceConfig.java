@@ -19,6 +19,10 @@ public final class GetPagesProjectLatestDeploymentSourceConfig {
     private Boolean prCommentsEnabled;
     private List<String> previewBranchExcludes;
     private List<String> previewBranchIncludes;
+    /**
+     * @return Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
+     * 
+     */
     private String previewDeploymentSetting;
     private String productionBranch;
     private Boolean productionDeploymentsEnabled;
@@ -46,6 +50,10 @@ public final class GetPagesProjectLatestDeploymentSourceConfig {
     public List<String> previewBranchIncludes() {
         return this.previewBranchIncludes;
     }
+    /**
+     * @return Available values: &#34;all&#34;, &#34;none&#34;, &#34;custom&#34;.
+     * 
+     */
     public String previewDeploymentSetting() {
         return this.previewDeploymentSetting;
     }

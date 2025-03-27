@@ -34,6 +34,7 @@ public final class GetTurnstileWidgetsArgs extends com.pulumi.resources.InvokeAr
 
     /**
      * Direction to order widgets.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -41,6 +42,7 @@ public final class GetTurnstileWidgetsArgs extends com.pulumi.resources.InvokeAr
 
     /**
      * @return Direction to order widgets.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -64,6 +66,7 @@ public final class GetTurnstileWidgetsArgs extends com.pulumi.resources.InvokeAr
 
     /**
      * Field to order widgets by.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
      * 
      */
     @Import(name="order")
@@ -71,6 +74,7 @@ public final class GetTurnstileWidgetsArgs extends com.pulumi.resources.InvokeAr
 
     /**
      * @return Field to order widgets by.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
      * 
      */
     public Optional<Output<String>> order() {
@@ -127,6 +131,7 @@ public final class GetTurnstileWidgetsArgs extends com.pulumi.resources.InvokeAr
 
         /**
          * @param direction Direction to order widgets.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -138,6 +143,7 @@ public final class GetTurnstileWidgetsArgs extends com.pulumi.resources.InvokeAr
 
         /**
          * @param direction Direction to order widgets.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -169,6 +175,7 @@ public final class GetTurnstileWidgetsArgs extends com.pulumi.resources.InvokeAr
 
         /**
          * @param order Field to order widgets by.
+         * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
          * 
          * @return builder
          * 
@@ -180,6 +187,7 @@ public final class GetTurnstileWidgetsArgs extends com.pulumi.resources.InvokeAr
 
         /**
          * @param order Field to order widgets by.
+         * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
          * 
          * @return builder
          * 

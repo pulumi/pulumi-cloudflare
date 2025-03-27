@@ -49,6 +49,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomClaimArgs extends com.
 
     /**
      * The scope of the claim.
+     * Available values: &#34;groups&#34;, &#34;profile&#34;, &#34;email&#34;, &#34;openid&#34;.
      * 
      */
     @Import(name="scope")
@@ -56,6 +57,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomClaimArgs extends com.
 
     /**
      * @return The scope of the claim.
+     * Available values: &#34;groups&#34;, &#34;profile&#34;, &#34;email&#34;, &#34;openid&#34;.
      * 
      */
     public Optional<Output<String>> scope() {
@@ -140,6 +142,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomClaimArgs extends com.
 
         /**
          * @param scope The scope of the claim.
+         * Available values: &#34;groups&#34;, &#34;profile&#34;, &#34;email&#34;, &#34;openid&#34;.
          * 
          * @return builder
          * 
@@ -151,6 +154,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomClaimArgs extends com.
 
         /**
          * @param scope The scope of the claim.
+         * Available values: &#34;groups&#34;, &#34;profile&#34;, &#34;email&#34;, &#34;openid&#34;.
          * 
          * @return builder
          * 

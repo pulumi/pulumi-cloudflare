@@ -26,24 +26,28 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Whether or not Early Hints is enabled.
+        /// Available values: "on", "off".
         /// </summary>
         [Input("earlyHints")]
         public Input<string>? EarlyHints { get; set; }
 
         /// <summary>
         /// Whether or not HTTP2 is enabled.
+        /// Available values: "on", "off".
         /// </summary>
         [Input("http2")]
         public Input<string>? Http2 { get; set; }
 
         /// <summary>
         /// The minimum TLS version supported.
+        /// Available values: "1.0", "1.1", "1.2", "1.3".
         /// </summary>
         [Input("minTlsVersion")]
         public Input<string>? MinTlsVersion { get; set; }
 
         /// <summary>
         /// Whether or not TLS 1.3 is enabled.
+        /// Available values: "on", "off".
         /// </summary>
         [Input("tls13")]
         public Input<string>? Tls13 { get; set; }

@@ -23,6 +23,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The action to perform when the rule matches.
+     * Available values: &#34;block&#34;.
      * 
      */
     @Import(name="action")
@@ -30,6 +31,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The action to perform when the rule matches.
+     * Available values: &#34;block&#34;.
      * 
      */
     public Optional<Output<String>> action() {
@@ -222,6 +224,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param action The action to perform when the rule matches.
+         * Available values: &#34;block&#34;.
          * 
          * @return builder
          * 
@@ -233,6 +236,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param action The action to perform when the rule matches.
+         * Available values: &#34;block&#34;.
          * 
          * @return builder
          * 

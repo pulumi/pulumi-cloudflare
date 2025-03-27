@@ -11,6 +11,7 @@ import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileFallbackDomain;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileInclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileServiceModeV2;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileTargetTest;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -35,6 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.ZeroTrustDeviceCustomProfile;
  * import com.pulumi.cloudflare.ZeroTrustDeviceCustomProfileArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileExcludeArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileIncludeArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileServiceModeV2Args;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -62,9 +65,20 @@ import javax.annotation.Nullable;
  *             .description("Policy for test teams.")
  *             .disableAutoFallback(true)
  *             .enabled(true)
+ *             .excludes(ZeroTrustDeviceCustomProfileExcludeArgs.builder()
+ *                 .address("192.0.2.0/24")
+ *                 .description("Exclude testing domains from the tunnel")
+ *                 .host("*.example.com")
+ *                 .build())
  *             .excludeOfficeIps(true)
+ *             .includes(ZeroTrustDeviceCustomProfileIncludeArgs.builder()
+ *                 .address("192.0.2.0/24")
+ *                 .description("Exclude testing domains from the tunnel")
+ *                 .host("*.example.com")
+ *                 .build())
  *             .lanAllowMinutes(30)
  *             .lanAllowSubnetSize(24)
+ *             .registerInterfaceIpWithDns(true)
  *             .serviceModeV2(ZeroTrustDeviceCustomProfileServiceModeV2Args.builder()
  *                 .mode("proxy")
  *                 .port(3000)
@@ -235,9 +249,17 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
     public Output<Optional<Boolean>> excludeOfficeIps() {
         return Codegen.optional(this.excludeOfficeIps);
     }
+    /**
+     * List of routes excluded in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
+     * 
+     */
     @Export(name="excludes", refs={List.class,ZeroTrustDeviceCustomProfileExclude.class}, tree="[0,1]")
     private Output<List<ZeroTrustDeviceCustomProfileExclude>> excludes;
 
+    /**
+     * @return List of routes excluded in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
+     * 
+     */
     public Output<List<ZeroTrustDeviceCustomProfileExclude>> excludes() {
         return this.excludes;
     }
@@ -253,9 +275,17 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
     public Output<String> gatewayUniqueId() {
         return this.gatewayUniqueId;
     }
+    /**
+     * List of routes included in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
+     * 
+     */
     @Export(name="includes", refs={List.class,ZeroTrustDeviceCustomProfileInclude.class}, tree="[0,1]")
     private Output<List<ZeroTrustDeviceCustomProfileInclude>> includes;
 
+    /**
+     * @return List of routes included in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
+     * 
+     */
     public Output<List<ZeroTrustDeviceCustomProfileInclude>> includes() {
         return this.includes;
     }
@@ -342,6 +372,20 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
      */
     public Output<Double> precedence() {
         return this.precedence;
+    }
+    /**
+     * Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
+     * 
+     */
+    @Export(name="registerInterfaceIpWithDns", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> registerInterfaceIpWithDns;
+
+    /**
+     * @return Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
+     * 
+     */
+    public Output<Optional<Boolean>> registerInterfaceIpWithDns() {
+        return Codegen.optional(this.registerInterfaceIpWithDns);
     }
     @Export(name="serviceModeV2", refs={ZeroTrustDeviceCustomProfileServiceModeV2.class}, tree="[0]")
     private Output<ZeroTrustDeviceCustomProfileServiceModeV2> serviceModeV2;
@@ -437,6 +481,10 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy").build()),
+                Output.of(Alias.builder().type("cloudflare:index/splitTunnel:SplitTunnel").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

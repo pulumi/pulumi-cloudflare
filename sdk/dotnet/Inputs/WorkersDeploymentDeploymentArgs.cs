@@ -27,6 +27,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("source")]
         public Input<string>? Source { get; set; }
 
+        /// <summary>
+        /// Available values: "percentage".
+        /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }
 

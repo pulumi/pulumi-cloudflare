@@ -46,6 +46,7 @@ class GetApiTokensResult:
     def direction(self) -> Optional[str]:
         """
         Direction to order results.
+        Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
 
@@ -101,6 +102,7 @@ def get_api_tokens(direction: Optional[str] = None,
 
 
     :param str direction: Direction to order results.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()
@@ -129,6 +131,7 @@ def get_api_tokens_output(direction: Optional[pulumi.Input[Optional[str]]] = Non
 
 
     :param str direction: Direction to order results.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()

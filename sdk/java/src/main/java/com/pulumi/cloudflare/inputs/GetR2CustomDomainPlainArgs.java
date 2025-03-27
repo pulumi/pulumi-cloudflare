@@ -47,15 +47,15 @@ public final class GetR2CustomDomainPlainArgs extends com.pulumi.resources.Invok
      * Name of the custom domain
      * 
      */
-    @Import(name="domainName", required=true)
-    private String domainName;
+    @Import(name="domain", required=true)
+    private String domain;
 
     /**
      * @return Name of the custom domain
      * 
      */
-    public String domainName() {
-        return this.domainName;
+    public String domain() {
+        return this.domain;
     }
 
     private GetR2CustomDomainPlainArgs() {}
@@ -63,7 +63,7 @@ public final class GetR2CustomDomainPlainArgs extends com.pulumi.resources.Invok
     private GetR2CustomDomainPlainArgs(GetR2CustomDomainPlainArgs $) {
         this.accountId = $.accountId;
         this.bucketName = $.bucketName;
-        this.domainName = $.domainName;
+        this.domain = $.domain;
     }
 
     public static Builder builder() {
@@ -107,13 +107,13 @@ public final class GetR2CustomDomainPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param domainName Name of the custom domain
+         * @param domain Name of the custom domain
          * 
          * @return builder
          * 
          */
-        public Builder domainName(String domainName) {
-            $.domainName = domainName;
+        public Builder domain(String domain) {
+            $.domain = domain;
             return this;
         }
 
@@ -124,8 +124,8 @@ public final class GetR2CustomDomainPlainArgs extends com.pulumi.resources.Invok
             if ($.bucketName == null) {
                 throw new MissingRequiredPropertyException("GetR2CustomDomainPlainArgs", "bucketName");
             }
-            if ($.domainName == null) {
-                throw new MissingRequiredPropertyException("GetR2CustomDomainPlainArgs", "domainName");
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("GetR2CustomDomainPlainArgs", "domain");
             }
             return $;
         }

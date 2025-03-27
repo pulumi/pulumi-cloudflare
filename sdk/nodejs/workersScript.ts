@@ -98,7 +98,7 @@ export class WorkersScript extends pulumi.CustomResource {
     /**
      * Whether Logpush is turned on for the Worker.
      */
-    public /*out*/ readonly logpush!: pulumi.Output<boolean>;
+    public readonly logpush!: pulumi.Output<boolean>;
     /**
      * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      */
@@ -130,8 +130,9 @@ export class WorkersScript extends pulumi.CustomResource {
     public readonly tailConsumers!: pulumi.Output<outputs.WorkersScriptTailConsumer[]>;
     /**
      * Usage model for the Worker invocations.
+     * Available values: "standard".
      */
-    public /*out*/ readonly usageModel!: pulumi.Output<string>;
+    public readonly usageModel!: pulumi.Output<string>;
 
     /**
      * Create a WorkersScript resource with the given unique name, arguments, and options.
@@ -189,22 +190,24 @@ export class WorkersScript extends pulumi.CustomResource {
             resourceInputs["content"] = args ? args.content : undefined;
             resourceInputs["keepAssets"] = args ? args.keepAssets : undefined;
             resourceInputs["keepBindings"] = args ? args.keepBindings : undefined;
+            resourceInputs["logpush"] = args ? args.logpush : undefined;
             resourceInputs["mainModule"] = args ? args.mainModule : undefined;
             resourceInputs["migrations"] = args ? args.migrations : undefined;
             resourceInputs["observability"] = args ? args.observability : undefined;
             resourceInputs["placement"] = args ? args.placement : undefined;
             resourceInputs["scriptName"] = args ? args.scriptName : undefined;
             resourceInputs["tailConsumers"] = args ? args.tailConsumers : undefined;
+            resourceInputs["usageModel"] = args ? args.usageModel : undefined;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["hasAssets"] = undefined /*out*/;
             resourceInputs["hasModules"] = undefined /*out*/;
-            resourceInputs["logpush"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["startupTimeMs"] = undefined /*out*/;
-            resourceInputs["usageModel"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/workerScript:WorkerScript" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkersScript.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -300,6 +303,7 @@ export interface WorkersScriptState {
     tailConsumers?: pulumi.Input<pulumi.Input<inputs.WorkersScriptTailConsumer>[]>;
     /**
      * Usage model for the Worker invocations.
+     * Available values: "standard".
      */
     usageModel?: pulumi.Input<string>;
 }
@@ -345,6 +349,10 @@ export interface WorkersScriptArgs {
      */
     keepBindings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Whether Logpush is turned on for the Worker.
+     */
+    logpush?: pulumi.Input<boolean>;
+    /**
      * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      */
     mainModule?: pulumi.Input<string>;
@@ -368,4 +376,9 @@ export interface WorkersScriptArgs {
      * List of Workers that will consume logs from the attached Worker.
      */
     tailConsumers?: pulumi.Input<pulumi.Input<inputs.WorkersScriptTailConsumer>[]>;
+    /**
+     * Usage model for the Worker invocations.
+     * Available values: "standard".
+     */
+    usageModel?: pulumi.Input<string>;
 }

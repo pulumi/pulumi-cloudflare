@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Direction to order hostnames.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
@@ -32,12 +33,14 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Field to order hostnames by.
+        /// Available values: "ssl", "ssl_status".
         /// </summary>
         [Input("order", required: true)]
         public string Order { get; set; } = null!;
 
         /// <summary>
         /// Whether to filter hostnames based on if they have SSL enabled.
+        /// Available values: 0, 1.
         /// </summary>
         [Input("ssl")]
         public double? Ssl { get; set; }

@@ -8,11 +8,37 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustTunnelCloudflaredConfig = cloudflare.getZeroTrustTunnelCloudflaredConfig({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+ * });
+ * ```
  */
-export function getZeroTrustTunnelCloudflaredConfig(opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelCloudflaredConfigResult> {
+export function getZeroTrustTunnelCloudflaredConfig(args: GetZeroTrustTunnelCloudflaredConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelCloudflaredConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig", {
+        "accountId": args.accountId,
+        "tunnelId": args.tunnelId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getZeroTrustTunnelCloudflaredConfig.
+ */
+export interface GetZeroTrustTunnelCloudflaredConfigArgs {
+    /**
+     * Identifier
+     */
+    accountId: string;
+    /**
+     * UUID of the tunnel.
+     */
+    tunnelId: string;
 }
 
 /**
@@ -34,6 +60,7 @@ export interface GetZeroTrustTunnelCloudflaredConfigResult {
     readonly id: string;
     /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+     * Available values: "local", "cloudflare".
      */
     readonly source: string;
     /**
@@ -47,9 +74,35 @@ export interface GetZeroTrustTunnelCloudflaredConfigResult {
 }
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustTunnelCloudflaredConfig = cloudflare.getZeroTrustTunnelCloudflaredConfig({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+ * });
+ * ```
  */
-export function getZeroTrustTunnelCloudflaredConfigOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredConfigResult> {
+export function getZeroTrustTunnelCloudflaredConfigOutput(args: GetZeroTrustTunnelCloudflaredConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig", {
+        "accountId": args.accountId,
+        "tunnelId": args.tunnelId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getZeroTrustTunnelCloudflaredConfig.
+ */
+export interface GetZeroTrustTunnelCloudflaredConfigOutputArgs {
+    /**
+     * Identifier
+     */
+    accountId: pulumi.Input<string>;
+    /**
+     * UUID of the tunnel.
+     */
+    tunnelId: pulumi.Input<string>;
 }

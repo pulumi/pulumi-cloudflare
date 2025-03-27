@@ -67,6 +67,9 @@ namespace Pulumi.Cloudflare
         [Output("roles")]
         public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
 
+        /// <summary>
+        /// Available values: "accepted", "pending".
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -158,6 +161,9 @@ namespace Pulumi.Cloudflare
             set => _roles = value;
         }
 
+        /// <summary>
+        /// Available values: "accepted", "pending".
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -205,6 +211,9 @@ namespace Pulumi.Cloudflare
             set => _roles = value;
         }
 
+        /// <summary>
+        /// Available values: "accepted", "pending".
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetOriginCaCertificatesResult> InvokeAsync(GetOriginCaCertificatesArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetOriginCaCertificatesResult> InvokeAsync(GetOriginCaCertificatesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOriginCaCertificatesResult>("cloudflare:index/getOriginCaCertificates:getOriginCaCertificates", args ?? new GetOriginCaCertificatesArgs(), options.WithDefaults());
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetOriginCaCertificatesResult> Invoke(GetOriginCaCertificatesInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetOriginCaCertificatesResult> Invoke(GetOriginCaCertificatesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOriginCaCertificatesResult>("cloudflare:index/getOriginCaCertificates:getOriginCaCertificates", args ?? new GetOriginCaCertificatesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -90,8 +90,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("zoneId")]
-        public string? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public string ZoneId { get; set; } = null!;
 
         public GetOriginCaCertificatesArgs()
         {
@@ -110,8 +110,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
 
         public GetOriginCaCertificatesInvokeArgs()
         {
@@ -138,7 +138,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string? ZoneId;
+        public readonly string ZoneId;
 
         [OutputConstructor]
         private GetOriginCaCertificatesResult(
@@ -148,7 +148,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetOriginCaCertificatesResultResult> results,
 
-            string? zoneId)
+            string zoneId)
         {
             Id = id;
             MaxItems = maxItems;

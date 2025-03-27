@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
         /// </summary>
-        public readonly bool Cve20214428;
+        public readonly bool Cve202144228;
         /// <summary>
         /// String to join fields. This field be ignored when `record_template` is set.
         /// </summary>
@@ -35,6 +35,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<string> FieldNames;
         /// <summary>
         /// Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+        /// Available values: "ndjson", "csv".
         /// </summary>
         public readonly string OutputType;
         /// <summary>
@@ -59,6 +60,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double SampleRate;
         /// <summary>
         /// String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+        /// Available values: "unixnano", "unix", "rfc3339".
         /// </summary>
         public readonly string TimestampFormat;
 
@@ -68,7 +70,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string batchSuffix,
 
-            bool cve20214428,
+            bool cve202144228,
 
             string fieldDelimiter,
 
@@ -90,7 +92,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             BatchPrefix = batchPrefix;
             BatchSuffix = batchSuffix;
-            Cve20214428 = cve20214428;
+            Cve202144228 = cve202144228;
             FieldDelimiter = fieldDelimiter;
             FieldNames = fieldNames;
             OutputType = outputType;

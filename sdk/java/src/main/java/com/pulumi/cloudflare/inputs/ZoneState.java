@@ -220,6 +220,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The zone status on Cloudflare.
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
     @Import(name="status")
@@ -227,6 +228,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The zone status on Cloudflare.
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -236,6 +238,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     /**
      * A full zone implies that DNS is hosted with Cloudflare. A partial zone is
      * typically a partner-hosted zone or a CNAME setup.
+     * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;.
      * 
      */
     @Import(name="type")
@@ -244,6 +247,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A full zone implies that DNS is hosted with Cloudflare. A partial zone is
      * typically a partner-hosted zone or a CNAME setup.
+     * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -267,8 +271,6 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vanityNameServers);
     }
 
-<<<<<<< HEAD
-=======
     /**
      * Verification key for partial zone setup.
      * 
@@ -284,7 +286,6 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.verificationKey);
     }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     private ZoneState() {}
 
     private ZoneState(ZoneState $) {
@@ -304,10 +305,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         this.status = $.status;
         this.type = $.type;
         this.vanityNameServers = $.vanityNameServers;
-<<<<<<< HEAD
-=======
         this.verificationKey = $.verificationKey;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     public static Builder builder() {
@@ -621,6 +619,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status The zone status on Cloudflare.
+         * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
          * 
          * @return builder
          * 
@@ -632,6 +631,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status The zone status on Cloudflare.
+         * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
          * 
          * @return builder
          * 
@@ -643,6 +643,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type A full zone implies that DNS is hosted with Cloudflare. A partial zone is
          * typically a partner-hosted zone or a CNAME setup.
+         * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;.
          * 
          * @return builder
          * 
@@ -655,6 +656,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type A full zone implies that DNS is hosted with Cloudflare. A partial zone is
          * typically a partner-hosted zone or a CNAME setup.
+         * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;.
          * 
          * @return builder
          * 
@@ -697,8 +699,6 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
             return vanityNameServers(List.of(vanityNameServers));
         }
 
-<<<<<<< HEAD
-=======
         /**
          * @param verificationKey Verification key for partial zone setup.
          * 
@@ -720,7 +720,6 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
             return verificationKey(Output.of(verificationKey));
         }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public ZoneState build() {
             return $;
         }

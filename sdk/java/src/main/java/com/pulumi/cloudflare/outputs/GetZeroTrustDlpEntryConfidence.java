@@ -10,27 +10,27 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustDlpEntryConfidence {
-<<<<<<< HEAD
-=======
-    private Boolean aiContextAvailable;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
-     * @return Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
-     * Profiles that use an entry with `available` set to true can use confidence thresholds
+     * @return Indicates whether this entry has AI remote service validation
+     * 
+     */
+    private Boolean aiContextAvailable;
+    /**
+     * @return Indicates whether this entry has any form of validation that is not an AI remote service
      * 
      */
     private Boolean available;
 
     private GetZeroTrustDlpEntryConfidence() {}
-<<<<<<< HEAD
-=======
+    /**
+     * @return Indicates whether this entry has AI remote service validation
+     * 
+     */
     public Boolean aiContextAvailable() {
         return this.aiContextAvailable;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
-     * @return Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
-     * Profiles that use an entry with `available` set to true can use confidence thresholds
+     * @return Indicates whether this entry has any form of validation that is not an AI remote service
      * 
      */
     public Boolean available() {
@@ -46,24 +46,16 @@ public final class GetZeroTrustDlpEntryConfidence {
     }
     @CustomType.Builder
     public static final class Builder {
-<<<<<<< HEAD
-=======
         private Boolean aiContextAvailable;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private Boolean available;
         public Builder() {}
         public Builder(GetZeroTrustDlpEntryConfidence defaults) {
     	      Objects.requireNonNull(defaults);
-<<<<<<< HEAD
-=======
     	      this.aiContextAvailable = defaults.aiContextAvailable;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.available = defaults.available;
         }
 
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder aiContextAvailable(Boolean aiContextAvailable) {
             if (aiContextAvailable == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpEntryConfidence", "aiContextAvailable");
@@ -72,7 +64,6 @@ public final class GetZeroTrustDlpEntryConfidence {
             return this;
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder available(Boolean available) {
             if (available == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpEntryConfidence", "available");
@@ -82,10 +73,7 @@ public final class GetZeroTrustDlpEntryConfidence {
         }
         public GetZeroTrustDlpEntryConfidence build() {
             final var _resultValue = new GetZeroTrustDlpEntryConfidence();
-<<<<<<< HEAD
-=======
             _resultValue.aiContextAvailable = aiContextAvailable;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.available = available;
             return _resultValue;
         }

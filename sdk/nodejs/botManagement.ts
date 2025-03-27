@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  * const exampleBotManagement = new cloudflare.BotManagement("example_bot_management", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     aiBotsProtection: "block",
+ *     crawlerProtection: "enabled",
  *     enableJs: true,
  *     fightMode: true,
  * });
@@ -57,12 +58,18 @@ export class BotManagement extends pulumi.CustomResource {
 
     /**
      * Enable rule to block AI Scrapers and Crawlers.
+     * Available values: "block", "disabled".
      */
     public readonly aiBotsProtection!: pulumi.Output<string | undefined>;
     /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      */
     public readonly autoUpdateModel!: pulumi.Output<boolean | undefined>;
+    /**
+     * Enable rule to punish AI Scrapers and Crawlers via a link maze.
+     * Available values: "enabled", "disabled".
+     */
+    public readonly crawlerProtection!: pulumi.Output<string | undefined>;
     /**
      * Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
      */
@@ -77,10 +84,12 @@ export class BotManagement extends pulumi.CustomResource {
     public readonly optimizeWordpress!: pulumi.Output<boolean | undefined>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+     * Available values: "allow", "block", "managedChallenge".
      */
     public readonly sbfmDefinitelyAutomated!: pulumi.Output<string | undefined>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+     * Available values: "allow", "block", "managedChallenge".
      */
     public readonly sbfmLikelyAutomated!: pulumi.Output<string | undefined>;
     /**
@@ -91,6 +100,7 @@ export class BotManagement extends pulumi.CustomResource {
     public readonly sbfmStaticResourceProtection!: pulumi.Output<boolean | undefined>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+     * Available values: "allow", "block".
      */
     public readonly sbfmVerifiedBots!: pulumi.Output<string | undefined>;
     /**
@@ -125,6 +135,7 @@ export class BotManagement extends pulumi.CustomResource {
             const state = argsOrState as BotManagementState | undefined;
             resourceInputs["aiBotsProtection"] = state ? state.aiBotsProtection : undefined;
             resourceInputs["autoUpdateModel"] = state ? state.autoUpdateModel : undefined;
+            resourceInputs["crawlerProtection"] = state ? state.crawlerProtection : undefined;
             resourceInputs["enableJs"] = state ? state.enableJs : undefined;
             resourceInputs["fightMode"] = state ? state.fightMode : undefined;
             resourceInputs["optimizeWordpress"] = state ? state.optimizeWordpress : undefined;
@@ -143,6 +154,7 @@ export class BotManagement extends pulumi.CustomResource {
             }
             resourceInputs["aiBotsProtection"] = args ? args.aiBotsProtection : undefined;
             resourceInputs["autoUpdateModel"] = args ? args.autoUpdateModel : undefined;
+            resourceInputs["crawlerProtection"] = args ? args.crawlerProtection : undefined;
             resourceInputs["enableJs"] = args ? args.enableJs : undefined;
             resourceInputs["fightMode"] = args ? args.fightMode : undefined;
             resourceInputs["optimizeWordpress"] = args ? args.optimizeWordpress : undefined;
@@ -166,12 +178,18 @@ export class BotManagement extends pulumi.CustomResource {
 export interface BotManagementState {
     /**
      * Enable rule to block AI Scrapers and Crawlers.
+     * Available values: "block", "disabled".
      */
     aiBotsProtection?: pulumi.Input<string>;
     /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      */
     autoUpdateModel?: pulumi.Input<boolean>;
+    /**
+     * Enable rule to punish AI Scrapers and Crawlers via a link maze.
+     * Available values: "enabled", "disabled".
+     */
+    crawlerProtection?: pulumi.Input<string>;
     /**
      * Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
      */
@@ -186,10 +204,12 @@ export interface BotManagementState {
     optimizeWordpress?: pulumi.Input<boolean>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+     * Available values: "allow", "block", "managedChallenge".
      */
     sbfmDefinitelyAutomated?: pulumi.Input<string>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+     * Available values: "allow", "block", "managedChallenge".
      */
     sbfmLikelyAutomated?: pulumi.Input<string>;
     /**
@@ -200,6 +220,7 @@ export interface BotManagementState {
     sbfmStaticResourceProtection?: pulumi.Input<boolean>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+     * Available values: "allow", "block".
      */
     sbfmVerifiedBots?: pulumi.Input<string>;
     /**
@@ -226,12 +247,18 @@ export interface BotManagementState {
 export interface BotManagementArgs {
     /**
      * Enable rule to block AI Scrapers and Crawlers.
+     * Available values: "block", "disabled".
      */
     aiBotsProtection?: pulumi.Input<string>;
     /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      */
     autoUpdateModel?: pulumi.Input<boolean>;
+    /**
+     * Enable rule to punish AI Scrapers and Crawlers via a link maze.
+     * Available values: "enabled", "disabled".
+     */
+    crawlerProtection?: pulumi.Input<string>;
     /**
      * Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
      */
@@ -246,10 +273,12 @@ export interface BotManagementArgs {
     optimizeWordpress?: pulumi.Input<boolean>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+     * Available values: "allow", "block", "managedChallenge".
      */
     sbfmDefinitelyAutomated?: pulumi.Input<string>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+     * Available values: "allow", "block", "managedChallenge".
      */
     sbfmLikelyAutomated?: pulumi.Input<string>;
     /**
@@ -260,6 +289,7 @@ export interface BotManagementArgs {
     sbfmStaticResourceProtection?: pulumi.Input<boolean>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+     * Available values: "allow", "block".
      */
     sbfmVerifiedBots?: pulumi.Input<string>;
     /**

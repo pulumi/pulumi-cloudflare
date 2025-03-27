@@ -245,14 +245,14 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
         return this.publicKey;
     }
     /**
-     * Status of DNSSEC, based on user-desired state and presence of necessary records.
+     * Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: &#34;active&#34;, &#34;disabled&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     /**
-     * @return Status of DNSSEC, based on user-desired state and presence of necessary records.
+     * @return Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: &#34;active&#34;, &#34;disabled&#34;.
      * 
      */
     public Output<Optional<String>> status() {

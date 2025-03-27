@@ -61,6 +61,7 @@ export interface GetR2BucketResult {
     readonly id: string;
     /**
      * Location of the bucket
+     * Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
      */
     readonly location: string;
     /**
@@ -69,6 +70,7 @@ export interface GetR2BucketResult {
     readonly name: string;
     /**
      * Storage class for newly uploaded objects, unless specified otherwise.
+     * Available values: "Standard", "InfrequentAccess".
      */
     readonly storageClass: string;
 }

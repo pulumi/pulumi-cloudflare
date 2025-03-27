@@ -12,6 +12,7 @@ import java.util.Objects;
 public final class GetAccessRulesResultConfiguration {
     /**
      * @return The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+     * Available values: &#34;ip&#34;.
      * 
      */
     private String target;
@@ -24,6 +25,7 @@ public final class GetAccessRulesResultConfiguration {
     private GetAccessRulesResultConfiguration() {}
     /**
      * @return The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+     * Available values: &#34;ip&#34;.
      * 
      */
     public String target() {

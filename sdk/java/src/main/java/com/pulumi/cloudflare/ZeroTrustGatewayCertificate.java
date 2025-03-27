@@ -70,6 +70,7 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
     }
     /**
      * The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+     * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
      * 
      */
     @Export(name="bindingStatus", refs={String.class}, tree="[0]")
@@ -77,6 +78,7 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
 
     /**
      * @return The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+     * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
      * 
      */
     public Output<String> bindingStatus() {
@@ -166,6 +168,7 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
     }
     /**
      * The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -173,6 +176,7 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
 
     /**
      * @return The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
      * 
      */
     public Output<String> type() {

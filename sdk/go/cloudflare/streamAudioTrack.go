@@ -55,6 +55,7 @@ type StreamAudioTrack struct {
 	// A string to uniquely identify the track amongst other audio track labels for the specified video.
 	Label pulumi.StringPtrOutput `pulumi:"label"`
 	// Specifies the processing status of the video.
+	// Available values: "queued", "ready", "error".
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -107,6 +108,7 @@ type streamAudioTrackState struct {
 	// A string to uniquely identify the track amongst other audio track labels for the specified video.
 	Label *string `pulumi:"label"`
 	// Specifies the processing status of the video.
+	// Available values: "queued", "ready", "error".
 	Status *string `pulumi:"status"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Uid *string `pulumi:"uid"`
@@ -124,6 +126,7 @@ type StreamAudioTrackState struct {
 	// A string to uniquely identify the track amongst other audio track labels for the specified video.
 	Label pulumi.StringPtrInput
 	// Specifies the processing status of the video.
+	// Available values: "queued", "ready", "error".
 	Status pulumi.StringPtrInput
 	// A Cloudflare-generated unique identifier for a media item.
 	Uid pulumi.StringPtrInput
@@ -273,6 +276,7 @@ func (o StreamAudioTrackOutput) Label() pulumi.StringPtrOutput {
 }
 
 // Specifies the processing status of the video.
+// Available values: "queued", "ready", "error".
 func (o StreamAudioTrackOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *StreamAudioTrack) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -18,6 +18,7 @@ public final class CustomHostnameOwnershipVerification {
     private @Nullable String name;
     /**
      * @return DNS Record type.
+     * Available values: &#34;txt&#34;.
      * 
      */
     private @Nullable String type;
@@ -37,6 +38,7 @@ public final class CustomHostnameOwnershipVerification {
     }
     /**
      * @return DNS Record type.
+     * Available values: &#34;txt&#34;.
      * 
      */
     public Optional<String> type() {

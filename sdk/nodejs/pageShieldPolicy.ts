@@ -43,6 +43,7 @@ export class PageShieldPolicy extends pulumi.CustomResource {
 
     /**
      * The action to take if the expression matches
+     * Available values: "allow", "log".
      */
     public readonly action!: pulumi.Output<string>;
     /**
@@ -123,6 +124,7 @@ export class PageShieldPolicy extends pulumi.CustomResource {
 export interface PageShieldPolicyState {
     /**
      * The action to take if the expression matches
+     * Available values: "allow", "log".
      */
     action?: pulumi.Input<string>;
     /**
@@ -153,6 +155,7 @@ export interface PageShieldPolicyState {
 export interface PageShieldPolicyArgs {
     /**
      * The action to take if the expression matches
+     * Available values: "allow", "log".
      */
     action: pulumi.Input<string>;
     /**

@@ -98,6 +98,7 @@ class GetTurnstileWidgetResult:
         """
         If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
         this setting can determine the clearance level to be set
+        Available values: "no_clearance", "jschallenge", "managed", "interactive".
         """
         return pulumi.get(self, "clearance_level")
 
@@ -140,6 +141,7 @@ class GetTurnstileWidgetResult:
     def mode(self) -> str:
         """
         Widget Mode
+        Available values: "non-interactive", "invisible", "managed".
         """
         return pulumi.get(self, "mode")
 
@@ -174,6 +176,7 @@ class GetTurnstileWidgetResult:
     def region(self) -> str:
         """
         Region where this widget can be used.
+        Available values: "world".
         """
         return pulumi.get(self, "region")
 

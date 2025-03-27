@@ -70,6 +70,7 @@ type LookupAccountMemberResult struct {
 	// Roles assigned to this Member.
 	Roles []GetAccountMemberRole `pulumi:"roles"`
 	// A member's status in the account.
+	// Available values: "accepted", "pending".
 	Status string `pulumi:"status"`
 	// Details of the user associated to the membership.
 	User GetAccountMemberUser `pulumi:"user"`
@@ -142,6 +143,7 @@ func (o LookupAccountMemberResultOutput) Roles() GetAccountMemberRoleArrayOutput
 }
 
 // A member's status in the account.
+// Available values: "accepted", "pending".
 func (o LookupAccountMemberResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountMemberResult) string { return v.Status }).(pulumi.StringOutput)
 }

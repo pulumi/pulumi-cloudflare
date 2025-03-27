@@ -57,6 +57,7 @@ export class ApiShieldSchema extends pulumi.CustomResource {
     public readonly file!: pulumi.Output<string>;
     /**
      * Kind of schema
+     * Available values: "openapiV3".
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -72,6 +73,7 @@ export class ApiShieldSchema extends pulumi.CustomResource {
     public /*out*/ readonly uploadDetails!: pulumi.Output<outputs.ApiShieldSchemaUploadDetails>;
     /**
      * Flag whether schema is enabled for validation.
+     * Available values: "true", "false".
      */
     public readonly validationEnabled!: pulumi.Output<string | undefined>;
     /**
@@ -140,6 +142,7 @@ export interface ApiShieldSchemaState {
     file?: pulumi.Input<string>;
     /**
      * Kind of schema
+     * Available values: "openapiV3".
      */
     kind?: pulumi.Input<string>;
     /**
@@ -155,6 +158,7 @@ export interface ApiShieldSchemaState {
     uploadDetails?: pulumi.Input<inputs.ApiShieldSchemaUploadDetails>;
     /**
      * Flag whether schema is enabled for validation.
+     * Available values: "true", "false".
      */
     validationEnabled?: pulumi.Input<string>;
     /**
@@ -173,6 +177,7 @@ export interface ApiShieldSchemaArgs {
     file: pulumi.Input<string>;
     /**
      * Kind of schema
+     * Available values: "openapiV3".
      */
     kind: pulumi.Input<string>;
     /**
@@ -182,6 +187,7 @@ export interface ApiShieldSchemaArgs {
     schemaId?: pulumi.Input<string>;
     /**
      * Flag whether schema is enabled for validation.
+     * Available values: "true", "false".
      */
     validationEnabled?: pulumi.Input<string>;
     /**

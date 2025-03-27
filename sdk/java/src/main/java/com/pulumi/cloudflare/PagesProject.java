@@ -76,8 +76,8 @@ import javax.annotation.Nullable;
  *                     .d1Databases(Map.of("D1_BINDING", Map.of("id", "445e2955-951a-43f8-a35b-a4d0c8138f63")))
  *                     .durableObjectNamespaces(Map.of("DO_BINDING", Map.of("namespaceId", "5eb63bbbe01eeed093cb22bb8f5acdc3")))
  *                     .envVars(Map.of("foo", Map.ofEntries(
- *                         Map.entry("value", "hello world"),
- *                         Map.entry("type", "plain_text")
+ *                         Map.entry("type", "plain_text"),
+ *                         Map.entry("value", "hello world")
  *                     )))
  *                     .hyperdriveBindings(Map.of("HYPERDRIVE", Map.of("id", "a76a99bc342644deb02c38d66082262a")))
  *                     .kvNamespaces(Map.of("KV_BINDING", Map.of("namespaceId", "5eb63bbbe01eeed093cb22bb8f5acdc3")))
@@ -106,8 +106,8 @@ import javax.annotation.Nullable;
  *                     .d1Databases(Map.of("D1_BINDING", Map.of("id", "445e2955-951a-43f8-a35b-a4d0c8138f63")))
  *                     .durableObjectNamespaces(Map.of("DO_BINDING", Map.of("namespaceId", "5eb63bbbe01eeed093cb22bb8f5acdc3")))
  *                     .envVars(Map.of("foo", Map.ofEntries(
- *                         Map.entry("value", "hello world"),
- *                         Map.entry("type", "plain_text")
+ *                         Map.entry("type", "plain_text"),
+ *                         Map.entry("value", "hello world")
  *                     )))
  *                     .hyperdriveBindings(Map.of("HYPERDRIVE", Map.of("id", "a76a99bc342644deb02c38d66082262a")))
  *                     .kvNamespaces(Map.of("KV_BINDING", Map.of("namespaceId", "5eb63bbbe01eeed093cb22bb8f5acdc3")))

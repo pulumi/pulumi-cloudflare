@@ -9,11 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-<<<<<<< HEAD
-=======
 import java.util.Optional;
 import javax.annotation.Nullable;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 @CustomType
 public final class GetMagicTransitSiteWanResult {
@@ -24,6 +21,7 @@ public final class GetMagicTransitSiteWanResult {
     private String accountId;
     /**
      * @return Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+     * Available values: &#34;low&#34;, &#34;mid&#34;, &#34;high&#34;.
      * 
      */
     private String healthCheckRate;
@@ -58,11 +56,7 @@ public final class GetMagicTransitSiteWanResult {
      * @return Identifier
      * 
      */
-<<<<<<< HEAD
-    private String wanId;
-=======
     private @Nullable String wanId;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     private GetMagicTransitSiteWanResult() {}
     /**
@@ -74,6 +68,7 @@ public final class GetMagicTransitSiteWanResult {
     }
     /**
      * @return Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+     * Available values: &#34;low&#34;, &#34;mid&#34;, &#34;high&#34;.
      * 
      */
     public String healthCheckRate() {
@@ -124,13 +119,8 @@ public final class GetMagicTransitSiteWanResult {
      * @return Identifier
      * 
      */
-<<<<<<< HEAD
-    public String wanId() {
-        return this.wanId;
-=======
     public Optional<String> wanId() {
         return Optional.ofNullable(this.wanId);
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     public static Builder builder() {
@@ -151,11 +141,7 @@ public final class GetMagicTransitSiteWanResult {
         private String siteId;
         private GetMagicTransitSiteWanStaticAddressing staticAddressing;
         private Integer vlanTag;
-<<<<<<< HEAD
-        private String wanId;
-=======
         private @Nullable String wanId;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder() {}
         public Builder(GetMagicTransitSiteWanResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -244,15 +230,8 @@ public final class GetMagicTransitSiteWanResult {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-        public Builder wanId(String wanId) {
-            if (wanId == null) {
-              throw new MissingRequiredPropertyException("GetMagicTransitSiteWanResult", "wanId");
-            }
-=======
         public Builder wanId(@Nullable String wanId) {
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             this.wanId = wanId;
             return this;
         }

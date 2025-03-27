@@ -156,6 +156,7 @@ namespace Pulumi.Cloudflare
         public readonly string Secret;
         /// <summary>
         /// Type of webhook endpoint.
+        /// Available values: "slack", "generic", "gchat".
         /// </summary>
         public readonly string Type;
         /// <summary>

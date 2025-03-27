@@ -49,6 +49,7 @@ class GetAccountsResult:
     def direction(self) -> Optional[str]:
         """
         Direction to order results.
+        Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
 
@@ -115,6 +116,7 @@ def get_accounts(direction: Optional[str] = None,
 
 
     :param str direction: Direction to order results.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     :param str name: Name of the account.
     """
@@ -148,6 +150,7 @@ def get_accounts_output(direction: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str direction: Direction to order results.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     :param str name: Name of the account.
     """

@@ -19,6 +19,7 @@ public final class GetCustomHostnamesPlainArgs extends com.pulumi.resources.Invo
 
     /**
      * Direction to order hostnames.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -26,6 +27,7 @@ public final class GetCustomHostnamesPlainArgs extends com.pulumi.resources.Invo
 
     /**
      * @return Direction to order hostnames.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -79,6 +81,7 @@ public final class GetCustomHostnamesPlainArgs extends com.pulumi.resources.Invo
 
     /**
      * Field to order hostnames by.
+     * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
      * 
      */
     @Import(name="order")
@@ -86,6 +89,7 @@ public final class GetCustomHostnamesPlainArgs extends com.pulumi.resources.Invo
 
     /**
      * @return Field to order hostnames by.
+     * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
      * 
      */
     public Optional<String> order() {
@@ -94,6 +98,7 @@ public final class GetCustomHostnamesPlainArgs extends com.pulumi.resources.Invo
 
     /**
      * Whether to filter hostnames based on if they have SSL enabled.
+     * Available values: 0, 1.
      * 
      */
     @Import(name="ssl")
@@ -101,6 +106,7 @@ public final class GetCustomHostnamesPlainArgs extends com.pulumi.resources.Invo
 
     /**
      * @return Whether to filter hostnames based on if they have SSL enabled.
+     * Available values: 0, 1.
      * 
      */
     public Optional<Double> ssl() {
@@ -154,6 +160,7 @@ public final class GetCustomHostnamesPlainArgs extends com.pulumi.resources.Invo
 
         /**
          * @param direction Direction to order hostnames.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -198,6 +205,7 @@ public final class GetCustomHostnamesPlainArgs extends com.pulumi.resources.Invo
 
         /**
          * @param order Field to order hostnames by.
+         * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
          * 
          * @return builder
          * 
@@ -209,6 +217,7 @@ public final class GetCustomHostnamesPlainArgs extends com.pulumi.resources.Invo
 
         /**
          * @param ssl Whether to filter hostnames based on if they have SSL enabled.
+         * Available values: 0, 1.
          * 
          * @return builder
          * 

@@ -52,6 +52,7 @@ type TieredCache struct {
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// Enable or disable the Smart Tiered Cache
+	// Available values: "on", "off".
 	Value pulumi.StringOutput `pulumi:"value"`
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -98,6 +99,7 @@ type tieredCacheState struct {
 	// Last time this setting was modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// Enable or disable the Smart Tiered Cache
+	// Available values: "on", "off".
 	Value *string `pulumi:"value"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
@@ -109,6 +111,7 @@ type TieredCacheState struct {
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringPtrInput
 	// Enable or disable the Smart Tiered Cache
+	// Available values: "on", "off".
 	Value pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
@@ -120,6 +123,7 @@ func (TieredCacheState) ElementType() reflect.Type {
 
 type tieredCacheArgs struct {
 	// Enable or disable the Smart Tiered Cache
+	// Available values: "on", "off".
 	Value string `pulumi:"value"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -128,6 +132,7 @@ type tieredCacheArgs struct {
 // The set of arguments for constructing a TieredCache resource.
 type TieredCacheArgs struct {
 	// Enable or disable the Smart Tiered Cache
+	// Available values: "on", "off".
 	Value pulumi.StringInput
 	// Identifier
 	ZoneId pulumi.StringInput
@@ -231,6 +236,7 @@ func (o TieredCacheOutput) ModifiedOn() pulumi.StringOutput {
 }
 
 // Enable or disable the Smart Tiered Cache
+// Available values: "on", "off".
 func (o TieredCacheOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *TieredCache) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

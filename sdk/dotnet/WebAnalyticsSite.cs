@@ -56,10 +56,22 @@ namespace Pulumi.Cloudflare
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
+        /// Enables or disables RUM. This option can be used only when auto_install is set to true.
+        /// </summary>
+        [Output("enabled")]
+        public Output<bool?> Enabled { get; private set; } = null!;
+
+        /// <summary>
         /// The hostname to use for gray-clouded sites.
         /// </summary>
         [Output("host")]
         public Output<string?> Host { get; private set; } = null!;
+
+        /// <summary>
+        /// If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+        /// </summary>
+        [Output("lite")]
+        public Output<bool?> Lite { get; private set; } = null!;
 
         /// <summary>
         /// A list of rules.
@@ -153,10 +165,22 @@ namespace Pulumi.Cloudflare
         public Input<bool>? AutoInstall { get; set; }
 
         /// <summary>
+        /// Enables or disables RUM. This option can be used only when auto_install is set to true.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
         /// The hostname to use for gray-clouded sites.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
+
+        /// <summary>
+        /// If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+        /// </summary>
+        [Input("lite")]
+        public Input<bool>? Lite { get; set; }
 
         /// <summary>
         /// The zone identifier.
@@ -188,10 +212,22 @@ namespace Pulumi.Cloudflare
         public Input<string>? Created { get; set; }
 
         /// <summary>
+        /// Enables or disables RUM. This option can be used only when auto_install is set to true.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
         /// The hostname to use for gray-clouded sites.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
+
+        /// <summary>
+        /// If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+        /// </summary>
+        [Input("lite")]
+        public Input<bool>? Lite { get; set; }
 
         [Input("rules")]
         private InputList<Inputs.WebAnalyticsSiteRuleGetArgs>? _rules;

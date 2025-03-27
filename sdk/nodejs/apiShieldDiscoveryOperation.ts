@@ -52,7 +52,7 @@ export class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
     public readonly operationId!: pulumi.Output<string>;
     /**
      * Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-     * ignored
+     * ignored Available values: "review", "ignored".
      */
     public readonly state!: pulumi.Output<string | undefined>;
     /**
@@ -103,7 +103,7 @@ export interface ApiShieldDiscoveryOperationState {
     operationId?: pulumi.Input<string>;
     /**
      * Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-     * ignored
+     * ignored Available values: "review", "ignored".
      */
     state?: pulumi.Input<string>;
     /**
@@ -122,7 +122,7 @@ export interface ApiShieldDiscoveryOperationArgs {
     operationId: pulumi.Input<string>;
     /**
      * Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-     * ignored
+     * ignored Available values: "review", "ignored".
      */
     state?: pulumi.Input<string>;
     /**

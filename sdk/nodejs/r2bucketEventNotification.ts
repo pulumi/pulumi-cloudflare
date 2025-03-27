@@ -66,6 +66,10 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
      */
     public readonly bucketName!: pulumi.Output<string>;
     /**
+     * Jurisdiction of the bucket
+     */
+    public readonly jurisdiction!: pulumi.Output<string>;
+    /**
      * Queue ID
      */
     public readonly queueId!: pulumi.Output<string | undefined>;
@@ -93,6 +97,7 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
             const state = argsOrState as R2BucketEventNotificationState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["bucketName"] = state ? state.bucketName : undefined;
+            resourceInputs["jurisdiction"] = state ? state.jurisdiction : undefined;
             resourceInputs["queueId"] = state ? state.queueId : undefined;
             resourceInputs["queues"] = state ? state.queues : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
@@ -106,6 +111,7 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["bucketName"] = args ? args.bucketName : undefined;
+            resourceInputs["jurisdiction"] = args ? args.jurisdiction : undefined;
             resourceInputs["queueId"] = args ? args.queueId : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["queues"] = undefined /*out*/;
@@ -127,6 +133,10 @@ export interface R2BucketEventNotificationState {
      * Name of the bucket
      */
     bucketName?: pulumi.Input<string>;
+    /**
+     * Jurisdiction of the bucket
+     */
+    jurisdiction?: pulumi.Input<string>;
     /**
      * Queue ID
      */
@@ -153,6 +163,10 @@ export interface R2BucketEventNotificationArgs {
      * Name of the bucket
      */
     bucketName: pulumi.Input<string>;
+    /**
+     * Jurisdiction of the bucket
+     */
+    jurisdiction?: pulumi.Input<string>;
     /**
      * Queue ID
      */

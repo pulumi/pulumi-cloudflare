@@ -19,18 +19,22 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<string> Ciphers;
         /// <summary>
         /// Whether or not Early Hints is enabled.
+        /// Available values: "on", "off".
         /// </summary>
         public readonly string EarlyHints;
         /// <summary>
         /// Whether or not HTTP2 is enabled.
+        /// Available values: "on", "off".
         /// </summary>
         public readonly string Http2;
         /// <summary>
         /// The minimum TLS version supported.
+        /// Available values: "1.0", "1.1", "1.2", "1.3".
         /// </summary>
         public readonly string MinTlsVersion;
         /// <summary>
         /// Whether or not TLS 1.3 is enabled.
+        /// Available values: "on", "off".
         /// </summary>
         public readonly string Tls13;
 

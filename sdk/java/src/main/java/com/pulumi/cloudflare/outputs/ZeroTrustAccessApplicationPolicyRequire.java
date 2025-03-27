@@ -21,10 +21,7 @@ import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyRequireGrou
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyRequireGsuite;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyRequireIp;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyRequireIpList;
-<<<<<<< HEAD
-=======
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyRequireLoginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyRequireOkta;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyRequireSaml;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyRequireServiceToken;
@@ -61,10 +58,7 @@ public final class ZeroTrustAccessApplicationPolicyRequire {
     private @Nullable ZeroTrustAccessApplicationPolicyRequireGsuite gsuite;
     private @Nullable ZeroTrustAccessApplicationPolicyRequireIp ip;
     private @Nullable ZeroTrustAccessApplicationPolicyRequireIpList ipList;
-<<<<<<< HEAD
-=======
     private @Nullable ZeroTrustAccessApplicationPolicyRequireLoginMethod loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     private @Nullable ZeroTrustAccessApplicationPolicyRequireOkta okta;
     private @Nullable ZeroTrustAccessApplicationPolicyRequireSaml saml;
     private @Nullable ZeroTrustAccessApplicationPolicyRequireServiceToken serviceToken;
@@ -132,12 +126,9 @@ public final class ZeroTrustAccessApplicationPolicyRequire {
     public Optional<ZeroTrustAccessApplicationPolicyRequireIpList> ipList() {
         return Optional.ofNullable(this.ipList);
     }
-<<<<<<< HEAD
-=======
     public Optional<ZeroTrustAccessApplicationPolicyRequireLoginMethod> loginMethod() {
         return Optional.ofNullable(this.loginMethod);
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Optional<ZeroTrustAccessApplicationPolicyRequireOkta> okta() {
         return Optional.ofNullable(this.okta);
     }
@@ -175,10 +166,7 @@ public final class ZeroTrustAccessApplicationPolicyRequire {
         private @Nullable ZeroTrustAccessApplicationPolicyRequireGsuite gsuite;
         private @Nullable ZeroTrustAccessApplicationPolicyRequireIp ip;
         private @Nullable ZeroTrustAccessApplicationPolicyRequireIpList ipList;
-<<<<<<< HEAD
-=======
         private @Nullable ZeroTrustAccessApplicationPolicyRequireLoginMethod loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private @Nullable ZeroTrustAccessApplicationPolicyRequireOkta okta;
         private @Nullable ZeroTrustAccessApplicationPolicyRequireSaml saml;
         private @Nullable ZeroTrustAccessApplicationPolicyRequireServiceToken serviceToken;
@@ -203,10 +191,7 @@ public final class ZeroTrustAccessApplicationPolicyRequire {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
-<<<<<<< HEAD
-=======
     	      this.loginMethod = defaults.loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -321,15 +306,12 @@ public final class ZeroTrustAccessApplicationPolicyRequire {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder loginMethod(@Nullable ZeroTrustAccessApplicationPolicyRequireLoginMethod loginMethod) {
 
             this.loginMethod = loginMethod;
             return this;
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder okta(@Nullable ZeroTrustAccessApplicationPolicyRequireOkta okta) {
 
             this.okta = okta;
@@ -367,10 +349,7 @@ public final class ZeroTrustAccessApplicationPolicyRequire {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
-<<<<<<< HEAD
-=======
             _resultValue.loginMethod = loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

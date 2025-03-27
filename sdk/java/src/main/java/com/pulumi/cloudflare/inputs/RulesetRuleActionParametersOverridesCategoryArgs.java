@@ -64,6 +64,7 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
 
     /**
      * The sensitivity level to use for rules in the category.
+     * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */
     @Import(name="sensitivityLevel")
@@ -71,6 +72,7 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
 
     /**
      * @return The sensitivity level to use for rules in the category.
+     * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */
     public Optional<Output<String>> sensitivityLevel() {
@@ -169,6 +171,7 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
 
         /**
          * @param sensitivityLevel The sensitivity level to use for rules in the category.
+         * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
          * 
          * @return builder
          * 
@@ -180,6 +183,7 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
 
         /**
          * @param sensitivityLevel The sensitivity level to use for rules in the category.
+         * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
          * 
          * @return builder
          * 

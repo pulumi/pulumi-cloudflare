@@ -75,10 +75,12 @@ export interface GetDnsRecordsArgs {
     content?: inputs.GetDnsRecordsContent;
     /**
      * Direction to order DNS records in.
+     * Available values: "asc", "desc".
      */
     direction?: string;
     /**
      * Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+     * Available values: "any", "all".
      */
     match?: string;
     /**
@@ -88,6 +90,7 @@ export interface GetDnsRecordsArgs {
     name?: inputs.GetDnsRecordsName;
     /**
      * Field to order DNS records by.
+     * Available values: "type", "name", "content", "ttl", "proxied".
      */
     order?: string;
     /**
@@ -101,10 +104,12 @@ export interface GetDnsRecordsArgs {
     tag?: inputs.GetDnsRecordsTag;
     /**
      * Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
+     * Available values: "any", "all".
      */
     tagMatch?: string;
     /**
      * Record type.
+     * Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
      */
     type?: string;
     /**
@@ -121,6 +126,7 @@ export interface GetDnsRecordsResult {
     readonly content?: outputs.GetDnsRecordsContent;
     /**
      * Direction to order DNS records in.
+     * Available values: "asc", "desc".
      */
     readonly direction: string;
     /**
@@ -129,6 +135,7 @@ export interface GetDnsRecordsResult {
     readonly id: string;
     /**
      * Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+     * Available values: "any", "all".
      */
     readonly match: string;
     /**
@@ -138,6 +145,7 @@ export interface GetDnsRecordsResult {
     readonly name?: outputs.GetDnsRecordsName;
     /**
      * Field to order DNS records by.
+     * Available values: "type", "name", "content", "ttl", "proxied".
      */
     readonly order: string;
     /**
@@ -155,10 +163,12 @@ export interface GetDnsRecordsResult {
     readonly tag?: outputs.GetDnsRecordsTag;
     /**
      * Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
+     * Available values: "any", "all".
      */
     readonly tagMatch: string;
     /**
      * Record type.
+     * Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
      */
     readonly type?: string;
     /**
@@ -235,10 +245,12 @@ export interface GetDnsRecordsOutputArgs {
     content?: pulumi.Input<inputs.GetDnsRecordsContentArgs>;
     /**
      * Direction to order DNS records in.
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**
      * Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+     * Available values: "any", "all".
      */
     match?: pulumi.Input<string>;
     /**
@@ -248,6 +260,7 @@ export interface GetDnsRecordsOutputArgs {
     name?: pulumi.Input<inputs.GetDnsRecordsNameArgs>;
     /**
      * Field to order DNS records by.
+     * Available values: "type", "name", "content", "ttl", "proxied".
      */
     order?: pulumi.Input<string>;
     /**
@@ -261,10 +274,12 @@ export interface GetDnsRecordsOutputArgs {
     tag?: pulumi.Input<inputs.GetDnsRecordsTagArgs>;
     /**
      * Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
+     * Available values: "any", "all".
      */
     tagMatch?: pulumi.Input<string>;
     /**
      * Record type.
+     * Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
      */
     type?: pulumi.Input<string>;
     /**

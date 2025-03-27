@@ -33,8 +33,16 @@ public final class GetPageShieldCookiesResult {
     private String name;
     private List<String> pageUrls;
     private String pathAttribute;
+    /**
+     * @return Available values: &#34;lax&#34;, &#34;strict&#34;, &#34;none&#34;.
+     * 
+     */
     private String sameSiteAttribute;
     private Boolean secureAttribute;
+    /**
+     * @return Available values: &#34;first_party&#34;, &#34;unknown&#34;.
+     * 
+     */
     private String type;
     /**
      * @return Identifier
@@ -87,12 +95,20 @@ public final class GetPageShieldCookiesResult {
     public String pathAttribute() {
         return this.pathAttribute;
     }
+    /**
+     * @return Available values: &#34;lax&#34;, &#34;strict&#34;, &#34;none&#34;.
+     * 
+     */
     public String sameSiteAttribute() {
         return this.sameSiteAttribute;
     }
     public Boolean secureAttribute() {
         return this.secureAttribute;
     }
+    /**
+     * @return Available values: &#34;first_party&#34;, &#34;unknown&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }

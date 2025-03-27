@@ -59,6 +59,7 @@ export interface GetTurnstileWidgetResult {
     /**
      * If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
      * this setting can determine the clearance level to be set
+     * Available values: "noClearance", "jschallenge", "managed", "interactive".
      */
     readonly clearanceLevel: string;
     /**
@@ -77,6 +78,7 @@ export interface GetTurnstileWidgetResult {
     readonly id: string;
     /**
      * Widget Mode
+     * Available values: "non-interactive", "invisible", "managed".
      */
     readonly mode: string;
     /**
@@ -95,6 +97,7 @@ export interface GetTurnstileWidgetResult {
     readonly offlabel: boolean;
     /**
      * Region where this widget can be used.
+     * Available values: "world".
      */
     readonly region: string;
     /**

@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RateLimitBypass {
+    /**
+     * @return Available values: &#34;url&#34;.
+     * 
+     */
     private @Nullable String name;
     /**
      * @return The URL to bypass.
@@ -19,6 +23,10 @@ public final class RateLimitBypass {
     private @Nullable String value;
 
     private RateLimitBypass() {}
+    /**
+     * @return Available values: &#34;url&#34;.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

@@ -29,7 +29,8 @@ type QueueConsumer struct {
 	// Name of a Worker
 	ScriptName pulumi.StringPtrOutput      `pulumi:"scriptName"`
 	Settings   QueueConsumerSettingsOutput `pulumi:"settings"`
-	Type       pulumi.StringPtrOutput      `pulumi:"type"`
+	// Available values: "worker".
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
 // NewQueueConsumer registers a new resource with the given unique name, arguments, and options.
@@ -81,7 +82,8 @@ type queueConsumerState struct {
 	// Name of a Worker
 	ScriptName *string                `pulumi:"scriptName"`
 	Settings   *QueueConsumerSettings `pulumi:"settings"`
-	Type       *string                `pulumi:"type"`
+	// Available values: "worker".
+	Type *string `pulumi:"type"`
 }
 
 type QueueConsumerState struct {
@@ -98,7 +100,8 @@ type QueueConsumerState struct {
 	// Name of a Worker
 	ScriptName pulumi.StringPtrInput
 	Settings   QueueConsumerSettingsPtrInput
-	Type       pulumi.StringPtrInput
+	// Available values: "worker".
+	Type pulumi.StringPtrInput
 }
 
 func (QueueConsumerState) ElementType() reflect.Type {
@@ -116,7 +119,8 @@ type queueConsumerArgs struct {
 	// Name of a Worker
 	ScriptName *string                `pulumi:"scriptName"`
 	Settings   *QueueConsumerSettings `pulumi:"settings"`
-	Type       *string                `pulumi:"type"`
+	// Available values: "worker".
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a QueueConsumer resource.
@@ -131,7 +135,8 @@ type QueueConsumerArgs struct {
 	// Name of a Worker
 	ScriptName pulumi.StringPtrInput
 	Settings   QueueConsumerSettingsPtrInput
-	Type       pulumi.StringPtrInput
+	// Available values: "worker".
+	Type pulumi.StringPtrInput
 }
 
 func (QueueConsumerArgs) ElementType() reflect.Type {
@@ -258,6 +263,7 @@ func (o QueueConsumerOutput) Settings() QueueConsumerSettingsOutput {
 	return o.ApplyT(func(v *QueueConsumer) QueueConsumerSettingsOutput { return v.Settings }).(QueueConsumerSettingsOutput)
 }
 
+// Available values: "worker".
 func (o QueueConsumerOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *QueueConsumer) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

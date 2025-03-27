@@ -30,8 +30,6 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
         return this.accountId;
     }
 
-<<<<<<< HEAD
-=======
     @Import(name="aiContextEnabled")
     private @Nullable Output<Boolean> aiContextEnabled;
 
@@ -39,7 +37,6 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.aiContextEnabled);
     }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
      * 
@@ -139,10 +136,7 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
 
     private ZeroTrustDlpCustomProfileArgs(ZeroTrustDlpCustomProfileArgs $) {
         this.accountId = $.accountId;
-<<<<<<< HEAD
-=======
         this.aiContextEnabled = $.aiContextEnabled;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.allowedMatchCount = $.allowedMatchCount;
         this.confidenceThreshold = $.confidenceThreshold;
         this.contextAwareness = $.contextAwareness;
@@ -181,8 +175,6 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
             return accountId(Output.of(accountId));
         }
 
-<<<<<<< HEAD
-=======
         public Builder aiContextEnabled(@Nullable Output<Boolean> aiContextEnabled) {
             $.aiContextEnabled = aiContextEnabled;
             return this;
@@ -192,7 +184,6 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
             return aiContextEnabled(Output.of(aiContextEnabled));
         }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /**
          * @param allowedMatchCount Related DLP policies will trigger when the match count exceeds the number set.
          * 

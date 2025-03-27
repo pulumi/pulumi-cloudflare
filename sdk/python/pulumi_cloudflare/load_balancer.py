@@ -362,7 +362,8 @@ class _LoadBalancerState:
                  session_affinity_ttl: Optional[pulumi.Input[float]] = None,
                  steering_policy: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[float]] = None,
-                 zone_id: Optional[pulumi.Input[str]] = None):
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 zone_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
         :param pulumi.Input['LoadBalancerAdaptiveRoutingArgs'] adaptive_routing: Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
@@ -429,6 +430,8 @@ class _LoadBalancerState:
             pulumi.set(__self__, "ttl", ttl)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+        if zone_name is not None:
+            pulumi.set(__self__, "zone_name", zone_name)
 
     @property
     @pulumi.getter(name="adaptiveRouting")
@@ -685,6 +688,15 @@ class _LoadBalancerState:
     def zone_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id", value)
 
+    @property
+    @pulumi.getter(name="zoneName")
+    def zone_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone_name")
+
+    @zone_name.setter
+    def zone_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_name", value)
+
 
 class LoadBalancer(pulumi.CustomResource):
     @overload
@@ -832,6 +844,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_on"] = None
             __props__.__dict__["modified_on"] = None
+            __props__.__dict__["zone_name"] = None
         super(LoadBalancer, __self__).__init__(
             'cloudflare:index/loadBalancer:LoadBalancer',
             resource_name,
@@ -863,7 +876,8 @@ class LoadBalancer(pulumi.CustomResource):
             session_affinity_ttl: Optional[pulumi.Input[float]] = None,
             steering_policy: Optional[pulumi.Input[str]] = None,
             ttl: Optional[pulumi.Input[float]] = None,
-            zone_id: Optional[pulumi.Input[str]] = None) -> 'LoadBalancer':
+            zone_id: Optional[pulumi.Input[str]] = None,
+            zone_name: Optional[pulumi.Input[str]] = None) -> 'LoadBalancer':
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -917,6 +931,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["steering_policy"] = steering_policy
         __props__.__dict__["ttl"] = ttl
         __props__.__dict__["zone_id"] = zone_id
+        __props__.__dict__["zone_name"] = zone_name
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1085,4 +1100,9 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "zone_id")
+
+    @property
+    @pulumi.getter(name="zoneName")
+    def zone_name(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "zone_name")
 

@@ -24,12 +24,9 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-<<<<<<< HEAD
-=======
         [Output("aiContextEnabled")]
         public Output<bool?> AiContextEnabled { get; private set; } = null!;
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// Related DLP policies will trigger when the match count exceeds the number set.
         /// </summary>
@@ -81,6 +78,9 @@ namespace Pulumi.Cloudflare
         [Output("sharedEntries")]
         public Output<ImmutableArray<Outputs.ZeroTrustDlpCustomProfileSharedEntry>> SharedEntries { get; private set; } = null!;
 
+        /// <summary>
+        /// Available values: "custom".
+        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
@@ -113,6 +113,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/dlpCustomProfile:DlpCustomProfile" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -139,12 +143,9 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-<<<<<<< HEAD
-=======
         [Input("aiContextEnabled")]
         public Input<bool>? AiContextEnabled { get; set; }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// Related DLP policies will trigger when the match count exceeds the number set.
         /// </summary>
@@ -211,12 +212,9 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-<<<<<<< HEAD
-=======
         [Input("aiContextEnabled")]
         public Input<bool>? AiContextEnabled { get; set; }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// Related DLP policies will trigger when the match count exceeds the number set.
         /// </summary>
@@ -284,6 +282,9 @@ namespace Pulumi.Cloudflare
             set => _sharedEntries = value;
         }
 
+        /// <summary>
+        /// Available values: "custom".
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

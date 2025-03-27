@@ -108,6 +108,8 @@ export class CallsTurnApp extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["key"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(CallsTurnApp.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -60,6 +60,7 @@ class GetCustomSslsResult:
     def match(self) -> str:
         """
         Whether to match all search requirements or at least one (any).
+        Available values: "any", "all".
         """
         return pulumi.get(self, "match")
 
@@ -84,6 +85,7 @@ class GetCustomSslsResult:
     def status(self) -> Optional[str]:
         """
         Status of the zone's custom SSL.
+        Available values: "active", "expired", "deleted", "pending", "initializing".
         """
         return pulumi.get(self, "status")
 
@@ -128,8 +130,10 @@ def get_custom_ssls(match: Optional[str] = None,
 
 
     :param str match: Whether to match all search requirements or at least one (any).
+           Available values: "any", "all".
     :param int max_items: Max items to fetch, default: 1000
     :param str status: Status of the zone's custom SSL.
+           Available values: "active", "expired", "deleted", "pending", "initializing".
     :param str zone_id: Identifier
     """
     __args__ = dict()
@@ -165,8 +169,10 @@ def get_custom_ssls_output(match: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str match: Whether to match all search requirements or at least one (any).
+           Available values: "any", "all".
     :param int max_items: Max items to fetch, default: 1000
     :param str status: Status of the zone's custom SSL.
+           Available values: "active", "expired", "deleted", "pending", "initializing".
     :param str zone_id: Identifier
     """
     __args__ = dict()

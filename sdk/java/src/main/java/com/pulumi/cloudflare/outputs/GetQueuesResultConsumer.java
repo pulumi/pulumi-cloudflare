@@ -33,6 +33,10 @@ public final class GetQueuesResultConsumer {
      */
     private String scriptName;
     private GetQueuesResultConsumerSettings settings;
+    /**
+     * @return Available values: &#34;worker&#34;.
+     * 
+     */
     private String type;
 
     private GetQueuesResultConsumer() {}
@@ -70,6 +74,10 @@ public final class GetQueuesResultConsumer {
     public GetQueuesResultConsumerSettings settings() {
         return this.settings;
     }
+    /**
+     * @return Available values: &#34;worker&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }

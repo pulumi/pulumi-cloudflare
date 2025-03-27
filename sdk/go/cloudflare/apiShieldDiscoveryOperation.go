@@ -45,7 +45,7 @@ type ApiShieldDiscoveryOperation struct {
 	// UUID
 	OperationId pulumi.StringOutput `pulumi:"operationId"`
 	// Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-	// ignored
+	// ignored Available values: "review", "ignored".
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -90,7 +90,7 @@ type apiShieldDiscoveryOperationState struct {
 	// UUID
 	OperationId *string `pulumi:"operationId"`
 	// Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-	// ignored
+	// ignored Available values: "review", "ignored".
 	State *string `pulumi:"state"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
@@ -100,7 +100,7 @@ type ApiShieldDiscoveryOperationState struct {
 	// UUID
 	OperationId pulumi.StringPtrInput
 	// Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-	// ignored
+	// ignored Available values: "review", "ignored".
 	State pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
@@ -114,7 +114,7 @@ type apiShieldDiscoveryOperationArgs struct {
 	// UUID
 	OperationId string `pulumi:"operationId"`
 	// Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-	// ignored
+	// ignored Available values: "review", "ignored".
 	State *string `pulumi:"state"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -125,7 +125,7 @@ type ApiShieldDiscoveryOperationArgs struct {
 	// UUID
 	OperationId pulumi.StringInput
 	// Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-	// ignored
+	// ignored Available values: "review", "ignored".
 	State pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringInput
@@ -224,7 +224,7 @@ func (o ApiShieldDiscoveryOperationOutput) OperationId() pulumi.StringOutput {
 }
 
 // Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-// ignored
+// ignored Available values: "review", "ignored".
 func (o ApiShieldDiscoveryOperationOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiShieldDiscoveryOperation) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }

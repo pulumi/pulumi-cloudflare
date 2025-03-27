@@ -31,6 +31,7 @@ public final class GetApiShieldDiscoveryOperationsResult {
     private String lastUpdated;
     /**
      * @return The HTTP method used to access the endpoint.
+     * Available values: &#34;GET&#34;, &#34;POST&#34;, &#34;HEAD&#34;, &#34;OPTIONS&#34;, &#34;PUT&#34;, &#34;DELETE&#34;, &#34;CONNECT&#34;, &#34;PATCH&#34;, &#34;TRACE&#34;.
      * 
      */
     private String method;
@@ -44,6 +45,7 @@ public final class GetApiShieldDiscoveryOperationsResult {
      *   * `review` - Operation is not saved into API Shield Endpoint Management
      *   * `saved` - Operation is saved into API Shield Endpoint Management
      *   * `ignored` - Operation is marked as ignored
+     *     Available values: &#34;review&#34;, &#34;saved&#34;, &#34;ignored&#34;.
      * 
      */
     private String state;
@@ -78,6 +80,7 @@ public final class GetApiShieldDiscoveryOperationsResult {
     }
     /**
      * @return The HTTP method used to access the endpoint.
+     * Available values: &#34;GET&#34;, &#34;POST&#34;, &#34;HEAD&#34;, &#34;OPTIONS&#34;, &#34;PUT&#34;, &#34;DELETE&#34;, &#34;CONNECT&#34;, &#34;PATCH&#34;, &#34;TRACE&#34;.
      * 
      */
     public String method() {
@@ -95,6 +98,7 @@ public final class GetApiShieldDiscoveryOperationsResult {
      *   * `review` - Operation is not saved into API Shield Endpoint Management
      *   * `saved` - Operation is saved into API Shield Endpoint Management
      *   * `ignored` - Operation is marked as ignored
+     *     Available values: &#34;review&#34;, &#34;saved&#34;, &#34;ignored&#34;.
      * 
      */
     public String state() {

@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Type of action for catch-all rule.
+        /// Available values: "drop", "forward", "worker".
         /// </summary>
         public readonly string Type;
         public readonly ImmutableArray<string> Values;

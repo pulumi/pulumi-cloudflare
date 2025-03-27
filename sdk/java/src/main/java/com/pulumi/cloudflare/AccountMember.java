@@ -121,9 +121,17 @@ public class AccountMember extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> roles() {
         return Codegen.optional(this.roles);
     }
+    /**
+     * Available values: &#34;accepted&#34;, &#34;pending&#34;.
+     * 
+     */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
+    /**
+     * @return Available values: &#34;accepted&#34;, &#34;pending&#34;.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }

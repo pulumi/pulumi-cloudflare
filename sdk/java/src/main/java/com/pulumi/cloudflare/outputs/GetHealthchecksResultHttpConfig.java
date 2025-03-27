@@ -41,6 +41,7 @@ public final class GetHealthchecksResultHttpConfig {
     private Map<String,List<String>> header;
     /**
      * @return The HTTP method to use for the health check.
+     * Available values: &#34;GET&#34;, &#34;HEAD&#34;.
      * 
      */
     private String method;
@@ -93,6 +94,7 @@ public final class GetHealthchecksResultHttpConfig {
     }
     /**
      * @return The HTTP method to use for the health check.
+     * Available values: &#34;GET&#34;, &#34;HEAD&#34;.
      * 
      */
     public String method() {

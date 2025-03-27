@@ -45,6 +45,7 @@ export class KeylessCertificate extends pulumi.CustomResource {
 
     /**
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: "ubiquitous", "optimal", "force".
      */
     public readonly bundleMethod!: pulumi.Output<string>;
     /**
@@ -81,6 +82,7 @@ export class KeylessCertificate extends pulumi.CustomResource {
     public readonly port!: pulumi.Output<number>;
     /**
      * Status of the Keyless SSL.
+     * Available values: "active", "deleted".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -152,6 +154,7 @@ export class KeylessCertificate extends pulumi.CustomResource {
 export interface KeylessCertificateState {
     /**
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: "ubiquitous", "optimal", "force".
      */
     bundleMethod?: pulumi.Input<string>;
     /**
@@ -188,6 +191,7 @@ export interface KeylessCertificateState {
     port?: pulumi.Input<number>;
     /**
      * Status of the Keyless SSL.
+     * Available values: "active", "deleted".
      */
     status?: pulumi.Input<string>;
     /**
@@ -206,6 +210,7 @@ export interface KeylessCertificateState {
 export interface KeylessCertificateArgs {
     /**
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: "ubiquitous", "optimal", "force".
      */
     bundleMethod?: pulumi.Input<string>;
     /**

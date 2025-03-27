@@ -49,6 +49,7 @@ public final class ZoneSubscriptionRatePlanArgs extends com.pulumi.resources.Res
 
     /**
      * The ID of the rate plan.
+     * Available values: &#34;free&#34;, &#34;lite&#34;, &#34;pro&#34;, &#34;pro*plus&#34;, &#34;business&#34;, &#34;enterprise&#34;, &#34;partners*free&#34;, &#34;partners*pro&#34;, &#34;partners*business&#34;, &#34;partners_enterprise&#34;.
      * 
      */
     @Import(name="id")
@@ -56,6 +57,7 @@ public final class ZoneSubscriptionRatePlanArgs extends com.pulumi.resources.Res
 
     /**
      * @return The ID of the rate plan.
+     * Available values: &#34;free&#34;, &#34;lite&#34;, &#34;pro&#34;, &#34;pro*plus&#34;, &#34;business&#34;, &#34;enterprise&#34;, &#34;partners*free&#34;, &#34;partners*pro&#34;, &#34;partners*business&#34;, &#34;partners_enterprise&#34;.
      * 
      */
     public Optional<Output<String>> id() {
@@ -196,6 +198,7 @@ public final class ZoneSubscriptionRatePlanArgs extends com.pulumi.resources.Res
 
         /**
          * @param id The ID of the rate plan.
+         * Available values: &#34;free&#34;, &#34;lite&#34;, &#34;pro&#34;, &#34;pro*plus&#34;, &#34;business&#34;, &#34;enterprise&#34;, &#34;partners*free&#34;, &#34;partners*pro&#34;, &#34;partners*business&#34;, &#34;partners_enterprise&#34;.
          * 
          * @return builder
          * 
@@ -207,6 +210,7 @@ public final class ZoneSubscriptionRatePlanArgs extends com.pulumi.resources.Res
 
         /**
          * @param id The ID of the rate plan.
+         * Available values: &#34;free&#34;, &#34;lite&#34;, &#34;pro&#34;, &#34;pro*plus&#34;, &#34;business&#34;, &#34;enterprise&#34;, &#34;partners*free&#34;, &#34;partners*pro&#34;, &#34;partners*business&#34;, &#34;partners_enterprise&#34;.
          * 
          * @return builder
          * 

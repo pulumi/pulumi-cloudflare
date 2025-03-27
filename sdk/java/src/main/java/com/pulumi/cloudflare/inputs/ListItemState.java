@@ -109,24 +109,6 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-<<<<<<< HEAD
-     * The unique ID of the item in the List.
-     * 
-     */
-    @Import(name="itemId")
-    private @Nullable Output<String> itemId;
-
-    /**
-     * @return The unique ID of the item in the List.
-     * 
-     */
-    public Optional<Output<String>> itemId() {
-        return Optional.ofNullable(this.itemId);
-    }
-
-    /**
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The unique ID of the list.
      * 
      */
@@ -195,7 +177,6 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         this.createdOn = $.createdOn;
         this.hostname = $.hostname;
         this.ip = $.ip;
-        this.itemId = $.itemId;
         this.listId = $.listId;
         this.modifiedOn = $.modifiedOn;
         this.operationId = $.operationId;
@@ -347,30 +328,6 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-<<<<<<< HEAD
-         * @param itemId The unique ID of the item in the List.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder itemId(@Nullable Output<String> itemId) {
-            $.itemId = itemId;
-            return this;
-        }
-
-        /**
-         * @param itemId The unique ID of the item in the List.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder itemId(String itemId) {
-            return itemId(Output.of(itemId));
-        }
-
-        /**
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param listId The unique ID of the list.
          * 
          * @return builder

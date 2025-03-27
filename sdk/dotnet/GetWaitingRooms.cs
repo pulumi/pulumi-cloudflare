@@ -24,13 +24,14 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleWaitingRooms = Cloudflare.GetWaitingRooms.Invoke(new()
         ///     {
-        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         AccountId = "account_id",
+        ///         ZoneId = "zone_id",
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Task<GetWaitingRoomsResult> InvokeAsync(GetWaitingRoomsArgs args, InvokeOptions? options = null)
+        public static Task<GetWaitingRoomsResult> InvokeAsync(GetWaitingRoomsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWaitingRoomsResult>("cloudflare:index/getWaitingRooms:getWaitingRooms", args ?? new GetWaitingRoomsArgs(), options.WithDefaults());
 
         /// <summary>
@@ -46,13 +47,14 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleWaitingRooms = Cloudflare.GetWaitingRooms.Invoke(new()
         ///     {
-        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         AccountId = "account_id",
+        ///         ZoneId = "zone_id",
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Output<GetWaitingRoomsResult> Invoke(GetWaitingRoomsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetWaitingRoomsResult> Invoke(GetWaitingRoomsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWaitingRoomsResult>("cloudflare:index/getWaitingRooms:getWaitingRooms", args ?? new GetWaitingRoomsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -68,7 +70,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleWaitingRooms = Cloudflare.GetWaitingRooms.Invoke(new()
         ///     {
-        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         AccountId = "account_id",
+        ///         ZoneId = "zone_id",
         ///     });
         /// 
         /// });
@@ -82,16 +85,22 @@ namespace Pulumi.Cloudflare
     public sealed class GetWaitingRoomsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        /// </summary>
+        [Input("accountId")]
+        public string? AccountId { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetWaitingRoomsArgs()
         {
@@ -102,16 +111,22 @@ namespace Pulumi.Cloudflare
     public sealed class GetWaitingRoomsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetWaitingRoomsInvokeArgs()
         {
@@ -123,6 +138,10 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetWaitingRoomsResult
     {
+        /// <summary>
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        /// </summary>
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -136,20 +155,23 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWaitingRoomsResultResult> Results;
         /// <summary>
-        /// Identifier
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetWaitingRoomsResult(
+            string? accountId,
+
             string id,
 
             int? maxItems,
 
             ImmutableArray<Outputs.GetWaitingRoomsResultResult> results,
 
-            string zoneId)
+            string? zoneId)
         {
+            AccountId = accountId;
             Id = id;
             MaxItems = maxItems;
             Results = results;

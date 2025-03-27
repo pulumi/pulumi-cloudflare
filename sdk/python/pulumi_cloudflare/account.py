@@ -29,6 +29,7 @@ class AccountArgs:
         The set of arguments for constructing a Account resource.
         :param pulumi.Input[str] name: Account name
         :param pulumi.Input[str] type: the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+               Available values: "standard", "enterprise".
         :param pulumi.Input['AccountSettingsArgs'] settings: Account settings
         :param pulumi.Input['AccountUnitArgs'] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """
@@ -56,6 +57,7 @@ class AccountArgs:
     def type(self) -> pulumi.Input[str]:
         """
         the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+        Available values: "standard", "enterprise".
         """
         return pulumi.get(self, "type")
 
@@ -102,6 +104,7 @@ class _AccountState:
         :param pulumi.Input[str] name: Account name
         :param pulumi.Input['AccountSettingsArgs'] settings: Account settings
         :param pulumi.Input[str] type: the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+               Available values: "standard", "enterprise".
         :param pulumi.Input['AccountUnitArgs'] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """
         if created_on is not None:
@@ -156,6 +159,7 @@ class _AccountState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+        Available values: "standard", "enterprise".
         """
         return pulumi.get(self, "type")
 
@@ -212,6 +216,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] name: Account name
         :param pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']] settings: Account settings
         :param pulumi.Input[str] type: the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+               Available values: "standard", "enterprise".
         :param pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict']] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """
         ...
@@ -304,6 +309,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] name: Account name
         :param pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']] settings: Account settings
         :param pulumi.Input[str] type: the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+               Available values: "standard", "enterprise".
         :param pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict']] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -346,6 +352,7 @@ class Account(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+        Available values: "standard", "enterprise".
         """
         return pulumi.get(self, "type")
 

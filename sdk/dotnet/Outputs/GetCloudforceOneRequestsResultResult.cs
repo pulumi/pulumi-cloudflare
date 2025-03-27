@@ -29,6 +29,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// Tokens for the request messages
         /// </summary>
         public readonly int MessageTokens;
+        /// <summary>
+        /// Available values: "routine", "high", "urgent".
+        /// </summary>
         public readonly string Priority;
         /// <summary>
         /// Readable Request ID
@@ -40,6 +43,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Request;
         /// <summary>
         /// Request Status
+        /// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -48,6 +52,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Summary;
         /// <summary>
         /// The CISA defined Traffic Light Protocol (TLP)
+        /// Available values: "clear", "amber", "amber-strict", "green", "red".
         /// </summary>
         public readonly string Tlp;
         /// <summary>

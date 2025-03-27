@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",
-        ///         DomainName = "example-domain/custom-domain.com",
+        ///         Domain = "example-domain/custom-domain.com",
         ///     });
         /// 
         /// });
@@ -50,7 +50,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",
-        ///         DomainName = "example-domain/custom-domain.com",
+        ///         Domain = "example-domain/custom-domain.com",
         ///     });
         /// 
         /// });
@@ -74,7 +74,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",
-        ///         DomainName = "example-domain/custom-domain.com",
+        ///         Domain = "example-domain/custom-domain.com",
         ///     });
         /// 
         /// });
@@ -102,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Name of the custom domain
         /// </summary>
-        [Input("domainName", required: true)]
-        public string DomainName { get; set; } = null!;
+        [Input("domain", required: true)]
+        public string Domain { get; set; } = null!;
 
         public GetR2CustomDomainArgs()
         {
@@ -128,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Name of the custom domain
         /// </summary>
-        [Input("domainName", required: true)]
-        public Input<string> DomainName { get; set; } = null!;
+        [Input("domain", required: true)]
+        public Input<string> Domain { get; set; } = null!;
 
         public GetR2CustomDomainInvokeArgs()
         {
@@ -150,13 +150,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string BucketName;
         /// <summary>
-        /// Domain name of the custom domain to be added
-        /// </summary>
-        public readonly string Domain;
-        /// <summary>
         /// Name of the custom domain
         /// </summary>
-        public readonly string DomainName;
+        public readonly string Domain;
         /// <summary>
         /// Whether this bucket is publicly accessible at the specified custom domain
         /// </summary>
@@ -167,6 +163,7 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         /// <summary>
         /// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+        /// Available values: "1.0", "1.1", "1.2", "1.3".
         /// </summary>
         public readonly string MinTls;
         public readonly Outputs.GetR2CustomDomainStatusResult Status;
@@ -187,8 +184,6 @@ namespace Pulumi.Cloudflare
 
             string domain,
 
-            string domainName,
-
             bool enabled,
 
             string id,
@@ -204,7 +199,6 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             BucketName = bucketName;
             Domain = domain;
-            DomainName = domainName;
             Enabled = enabled;
             Id = id;
             MinTls = minTls;

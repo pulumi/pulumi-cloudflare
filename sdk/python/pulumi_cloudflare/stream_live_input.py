@@ -155,6 +155,7 @@ class _StreamLiveInputState:
         :param pulumi.Input['StreamLiveInputSrtArgs'] srt: Details for streaming to a live input using SRT.
         :param pulumi.Input['StreamLiveInputSrtPlaybackArgs'] srt_playback: Details for playback from an live input using SRT.
         :param pulumi.Input[str] status: The connection status of a live input.
+               Available values: "connected", "reconnected", "reconnecting", "client*disconnect", "ttl*exceeded", "failed*to*connect", "failed*to*reconnect", "new*configuration*accepted".
         :param pulumi.Input[str] uid: A unique identifier for a live input.
         :param pulumi.Input['StreamLiveInputWebRtcArgs'] web_rtc: Details for streaming to a live input using WebRTC.
         :param pulumi.Input['StreamLiveInputWebRtcPlaybackArgs'] web_rtc_playback: Details for playback from a live input using WebRTC.
@@ -341,6 +342,7 @@ class _StreamLiveInputState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         The connection status of a live input.
+        Available values: "connected", "reconnected", "reconnecting", "client*disconnect", "ttl*exceeded", "failed*to*connect", "failed*to*reconnect", "new*configuration*accepted".
         """
         return pulumi.get(self, "status")
 
@@ -512,6 +514,7 @@ class StreamLiveInput(pulumi.CustomResource):
         :param pulumi.Input[Union['StreamLiveInputSrtArgs', 'StreamLiveInputSrtArgsDict']] srt: Details for streaming to a live input using SRT.
         :param pulumi.Input[Union['StreamLiveInputSrtPlaybackArgs', 'StreamLiveInputSrtPlaybackArgsDict']] srt_playback: Details for playback from an live input using SRT.
         :param pulumi.Input[str] status: The connection status of a live input.
+               Available values: "connected", "reconnected", "reconnecting", "client*disconnect", "ttl*exceeded", "failed*to*connect", "failed*to*reconnect", "new*configuration*accepted".
         :param pulumi.Input[str] uid: A unique identifier for a live input.
         :param pulumi.Input[Union['StreamLiveInputWebRtcArgs', 'StreamLiveInputWebRtcArgsDict']] web_rtc: Details for streaming to a live input using WebRTC.
         :param pulumi.Input[Union['StreamLiveInputWebRtcPlaybackArgs', 'StreamLiveInputWebRtcPlaybackArgsDict']] web_rtc_playback: Details for playback from a live input using WebRTC.
@@ -639,6 +642,7 @@ class StreamLiveInput(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         The connection status of a live input.
+        Available values: "connected", "reconnected", "reconnecting", "client*disconnect", "ttl*exceeded", "failed*to*connect", "failed*to*reconnect", "new*configuration*accepted".
         """
         return pulumi.get(self, "status")
 

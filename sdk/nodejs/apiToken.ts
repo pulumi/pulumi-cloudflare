@@ -74,6 +74,7 @@ export class ApiToken extends pulumi.CustomResource {
     public readonly policies!: pulumi.Output<outputs.ApiTokenPolicy[]>;
     /**
      * Status of the token.
+     * Available values: "active", "disabled", "expired".
      */
     public readonly status!: pulumi.Output<string | undefined>;
     /**
@@ -124,6 +125,8 @@ export class ApiToken extends pulumi.CustomResource {
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["value"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ApiToken.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -163,6 +166,7 @@ export interface ApiTokenState {
     policies?: pulumi.Input<pulumi.Input<inputs.ApiTokenPolicy>[]>;
     /**
      * Status of the token.
+     * Available values: "active", "disabled", "expired".
      */
     status?: pulumi.Input<string>;
     /**
@@ -194,6 +198,7 @@ export interface ApiTokenArgs {
     policies: pulumi.Input<pulumi.Input<inputs.ApiTokenPolicy>[]>;
     /**
      * Status of the token.
+     * Available values: "active", "disabled", "expired".
      */
     status?: pulumi.Input<string>;
 }

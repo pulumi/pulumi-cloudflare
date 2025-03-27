@@ -17,6 +17,7 @@ public final class WaitingRoomCookieAttributesArgs extends com.pulumi.resources.
 
     /**
      * Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`.
+     * Available values: &#34;auto&#34;, &#34;lax&#34;, &#34;none&#34;, &#34;strict&#34;.
      * 
      */
     @Import(name="samesite")
@@ -24,6 +25,7 @@ public final class WaitingRoomCookieAttributesArgs extends com.pulumi.resources.
 
     /**
      * @return Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`.
+     * Available values: &#34;auto&#34;, &#34;lax&#34;, &#34;none&#34;, &#34;strict&#34;.
      * 
      */
     public Optional<Output<String>> samesite() {
@@ -32,6 +34,7 @@ public final class WaitingRoomCookieAttributesArgs extends com.pulumi.resources.
 
     /**
      * Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled.
+     * Available values: &#34;auto&#34;, &#34;always&#34;, &#34;never&#34;.
      * 
      */
     @Import(name="secure")
@@ -39,6 +42,7 @@ public final class WaitingRoomCookieAttributesArgs extends com.pulumi.resources.
 
     /**
      * @return Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled.
+     * Available values: &#34;auto&#34;, &#34;always&#34;, &#34;never&#34;.
      * 
      */
     public Optional<Output<String>> secure() {
@@ -72,6 +76,7 @@ public final class WaitingRoomCookieAttributesArgs extends com.pulumi.resources.
 
         /**
          * @param samesite Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`.
+         * Available values: &#34;auto&#34;, &#34;lax&#34;, &#34;none&#34;, &#34;strict&#34;.
          * 
          * @return builder
          * 
@@ -83,6 +88,7 @@ public final class WaitingRoomCookieAttributesArgs extends com.pulumi.resources.
 
         /**
          * @param samesite Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`.
+         * Available values: &#34;auto&#34;, &#34;lax&#34;, &#34;none&#34;, &#34;strict&#34;.
          * 
          * @return builder
          * 
@@ -93,6 +99,7 @@ public final class WaitingRoomCookieAttributesArgs extends com.pulumi.resources.
 
         /**
          * @param secure Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled.
+         * Available values: &#34;auto&#34;, &#34;always&#34;, &#34;never&#34;.
          * 
          * @return builder
          * 
@@ -104,6 +111,7 @@ public final class WaitingRoomCookieAttributesArgs extends com.pulumi.resources.
 
         /**
          * @param secure Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled.
+         * Available values: &#34;auto&#34;, &#34;always&#34;, &#34;never&#34;.
          * 
          * @return builder
          * 

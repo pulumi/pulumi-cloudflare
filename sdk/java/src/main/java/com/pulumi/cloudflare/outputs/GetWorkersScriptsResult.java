@@ -56,11 +56,13 @@ public final class GetWorkersScriptsResult {
     private GetWorkersScriptsResultPlacement placement;
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;smart&#34;.
      * 
      */
     private String placementMode;
     /**
      * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
      */
     private String placementStatus;
@@ -71,6 +73,7 @@ public final class GetWorkersScriptsResult {
     private List<GetWorkersScriptsResultTailConsumer> tailConsumers;
     /**
      * @return Usage model for the Worker invocations.
+     * Available values: &#34;standard&#34;.
      * 
      */
     private String usageModel;
@@ -134,6 +137,7 @@ public final class GetWorkersScriptsResult {
     }
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;smart&#34;.
      * 
      */
     public String placementMode() {
@@ -141,6 +145,7 @@ public final class GetWorkersScriptsResult {
     }
     /**
      * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
      */
     public String placementStatus() {
@@ -155,6 +160,7 @@ public final class GetWorkersScriptsResult {
     }
     /**
      * @return Usage model for the Worker invocations.
+     * Available values: &#34;standard&#34;.
      * 
      */
     public String usageModel() {

@@ -78,6 +78,9 @@ namespace Pulumi.Cloudflare
         [Output("secret")]
         public Output<bool?> Secret { get; private set; } = null!;
 
+        /// <summary>
+        /// Available values: "empty", "uploading", "processing", "failed", "complete".
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -226,6 +229,9 @@ namespace Pulumi.Cloudflare
         [Input("secret")]
         public Input<bool>? Secret { get; set; }
 
+        /// <summary>
+        /// Available values: "empty", "uploading", "processing", "failed", "complete".
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

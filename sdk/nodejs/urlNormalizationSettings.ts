@@ -54,10 +54,12 @@ export class UrlNormalizationSettings extends pulumi.CustomResource {
 
     /**
      * The scope of the URL normalization.
+     * Available values: "incoming", "both".
      */
     public readonly scope!: pulumi.Output<string>;
     /**
      * The type of URL normalization performed by Cloudflare.
+     * Available values: "cloudflare", "rfc3986".
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -107,10 +109,12 @@ export class UrlNormalizationSettings extends pulumi.CustomResource {
 export interface UrlNormalizationSettingsState {
     /**
      * The scope of the URL normalization.
+     * Available values: "incoming", "both".
      */
     scope?: pulumi.Input<string>;
     /**
      * The type of URL normalization performed by Cloudflare.
+     * Available values: "cloudflare", "rfc3986".
      */
     type?: pulumi.Input<string>;
     /**
@@ -125,10 +129,12 @@ export interface UrlNormalizationSettingsState {
 export interface UrlNormalizationSettingsArgs {
     /**
      * The scope of the URL normalization.
+     * Available values: "incoming", "both".
      */
     scope: pulumi.Input<string>;
     /**
      * The type of URL normalization performed by Cloudflare.
+     * Available values: "cloudflare", "rfc3986".
      */
     type: pulumi.Input<string>;
     /**

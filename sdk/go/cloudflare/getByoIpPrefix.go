@@ -12,6 +12,31 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.LookupByoIpPrefix(ctx, &cloudflare.LookupByoIpPrefixArgs{
+//				AccountId: "258def64c72dae45f3e4c8516e2111f2",
+//				PrefixId:  pulumi.StringRef("2af39739cc4e3b5910c918468bb89828"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupByoIpPrefix(ctx *pulumi.Context, args *LookupByoIpPrefixArgs, opts ...pulumi.InvokeOption) (*LookupByoIpPrefixResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupByoIpPrefixResult
@@ -24,6 +49,8 @@ func LookupByoIpPrefix(ctx *pulumi.Context, args *LookupByoIpPrefixArgs, opts ..
 
 // A collection of arguments for invoking getByoIpPrefix.
 type LookupByoIpPrefixArgs struct {
+	// Identifier of a Cloudflare account.
+	AccountId string `pulumi:"accountId"`
 	// Identifier of an IP Prefix.
 	PrefixId *string `pulumi:"prefixId"`
 }
@@ -69,6 +96,8 @@ func LookupByoIpPrefixOutput(ctx *pulumi.Context, args LookupByoIpPrefixOutputAr
 
 // A collection of arguments for invoking getByoIpPrefix.
 type LookupByoIpPrefixOutputArgs struct {
+	// Identifier of a Cloudflare account.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identifier of an IP Prefix.
 	PrefixId pulumi.StringPtrInput `pulumi:"prefixId"`
 }

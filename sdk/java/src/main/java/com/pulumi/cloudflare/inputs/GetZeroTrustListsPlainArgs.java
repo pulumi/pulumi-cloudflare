@@ -40,6 +40,7 @@ public final class GetZeroTrustListsPlainArgs extends com.pulumi.resources.Invok
 
     /**
      * The type of list.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
     @Import(name="type")
@@ -47,6 +48,7 @@ public final class GetZeroTrustListsPlainArgs extends com.pulumi.resources.Invok
 
     /**
      * @return The type of list.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
     public Optional<String> type() {
@@ -97,6 +99,7 @@ public final class GetZeroTrustListsPlainArgs extends com.pulumi.resources.Invok
 
         /**
          * @param type The type of list.
+         * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
          * 
          * @return builder
          * 

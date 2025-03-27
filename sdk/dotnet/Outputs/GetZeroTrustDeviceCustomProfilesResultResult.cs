@@ -53,9 +53,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// Whether to add Microsoft IPs to Split Tunnel exclusions.
         /// </summary>
         public readonly bool ExcludeOfficeIps;
+        /// <summary>
+        /// List of routes excluded in the WARP client's tunnel.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfilesResultExcludeResult> Excludes;
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfilesResultFallbackDomainResult> FallbackDomains;
         public readonly string GatewayUniqueId;
+        /// <summary>
+        /// List of routes included in the WARP client's tunnel.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfilesResultIncludeResult> Includes;
         /// <summary>
         /// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
@@ -81,6 +87,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
         /// </summary>
         public readonly double Precedence;
+        /// <summary>
+        /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        /// </summary>
+        public readonly bool RegisterInterfaceIpWithDns;
         public readonly Outputs.GetZeroTrustDeviceCustomProfilesResultServiceModeV2Result ServiceModeV2;
         /// <summary>
         /// The URL to launch when the Send Feedback button is clicked.
@@ -138,6 +148,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             double precedence,
 
+            bool registerInterfaceIpWithDns,
+
             Outputs.GetZeroTrustDeviceCustomProfilesResultServiceModeV2Result serviceModeV2,
 
             string supportUrl,
@@ -168,6 +180,7 @@ namespace Pulumi.Cloudflare.Outputs
             Name = name;
             PolicyId = policyId;
             Precedence = precedence;
+            RegisterInterfaceIpWithDns = registerInterfaceIpWithDns;
             ServiceModeV2 = serviceModeV2;
             SupportUrl = supportUrl;
             SwitchLocked = switchLocked;

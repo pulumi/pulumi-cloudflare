@@ -63,15 +63,12 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
-<<<<<<< HEAD
-=======
  * ## Import
  * 
  * ```sh
  * $ pulumi import cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan example &#39;&lt;account_id&gt;/&lt;site_id&gt;/&lt;wan_id&gt;&#39;
  * ```
  * 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  */
 @ResourceType(type="cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan")
 public class MagicTransitSiteWan extends com.pulumi.resources.CustomResource {
@@ -91,6 +88,7 @@ public class MagicTransitSiteWan extends com.pulumi.resources.CustomResource {
     }
     /**
      * Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+     * Available values: &#34;low&#34;, &#34;mid&#34;, &#34;high&#34;.
      * 
      */
     @Export(name="healthCheckRate", refs={String.class}, tree="[0]")
@@ -98,6 +96,7 @@ public class MagicTransitSiteWan extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+     * Available values: &#34;low&#34;, &#34;mid&#34;, &#34;high&#34;.
      * 
      */
     public Output<String> healthCheckRate() {
@@ -163,23 +162,6 @@ public class MagicTransitSiteWan extends com.pulumi.resources.CustomResource {
     public Output<Integer> vlanTag() {
         return this.vlanTag;
     }
-<<<<<<< HEAD
-    /**
-     * Identifier
-     * 
-     */
-    @Export(name="wanId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> wanId;
-
-    /**
-     * @return Identifier
-     * 
-     */
-    public Output<Optional<String>> wanId() {
-        return Codegen.optional(this.wanId);
-    }
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      *

@@ -26,6 +26,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
 
     /**
      * The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+     * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
      * 
      */
     @Import(name="bindingStatus")
@@ -33,6 +34,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
 
     /**
      * @return The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+     * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
      * 
      */
     public Optional<Output<String>> bindingStatus() {
@@ -130,6 +132,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
 
     /**
      * The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
      * 
      */
     @Import(name="type")
@@ -137,6 +140,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
 
     /**
      * @return The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -219,6 +223,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
 
         /**
          * @param bindingStatus The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+         * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
          * 
          * @return builder
          * 
@@ -230,6 +235,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
 
         /**
          * @param bindingStatus The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+         * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
          * 
          * @return builder
          * 
@@ -363,6 +369,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
 
         /**
          * @param type The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+         * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
          * 
          * @return builder
          * 
@@ -374,6 +381,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
 
         /**
          * @param type The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+         * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
          * 
          * @return builder
          * 

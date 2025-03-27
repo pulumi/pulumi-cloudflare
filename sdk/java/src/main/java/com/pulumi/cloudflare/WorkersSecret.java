@@ -6,11 +6,13 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkersSecretArgs;
 import com.pulumi.cloudflare.inputs.WorkersSecretState;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -136,6 +138,7 @@ public class WorkersSecret extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of secret to put.
+     * Available values: &#34;secret_text&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -143,6 +146,7 @@ public class WorkersSecret extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of secret to put.
+     * Available values: &#34;secret_text&#34;.
      * 
      */
     public Output<Optional<String>> type() {
@@ -188,6 +192,12 @@ public class WorkersSecret extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/workerSecret:WorkerSecret").build())
+            ))
+            .additionalSecretOutputs(List.of(
+                "text"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

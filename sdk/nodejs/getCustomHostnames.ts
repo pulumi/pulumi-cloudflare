@@ -41,6 +41,7 @@ export function getCustomHostnames(args: GetCustomHostnamesArgs, opts?: pulumi.I
 export interface GetCustomHostnamesArgs {
     /**
      * Direction to order hostnames.
+     * Available values: "asc", "desc".
      */
     direction?: string;
     /**
@@ -57,10 +58,12 @@ export interface GetCustomHostnamesArgs {
     maxItems?: number;
     /**
      * Field to order hostnames by.
+     * Available values: "ssl", "sslStatus".
      */
     order?: string;
     /**
      * Whether to filter hostnames based on if they have SSL enabled.
+     * Available values: 0, 1.
      */
     ssl?: number;
     /**
@@ -75,6 +78,7 @@ export interface GetCustomHostnamesArgs {
 export interface GetCustomHostnamesResult {
     /**
      * Direction to order hostnames.
+     * Available values: "asc", "desc".
      */
     readonly direction?: string;
     /**
@@ -91,6 +95,7 @@ export interface GetCustomHostnamesResult {
     readonly maxItems?: number;
     /**
      * Field to order hostnames by.
+     * Available values: "ssl", "sslStatus".
      */
     readonly order: string;
     /**
@@ -99,6 +104,7 @@ export interface GetCustomHostnamesResult {
     readonly results: outputs.GetCustomHostnamesResult[];
     /**
      * Whether to filter hostnames based on if they have SSL enabled.
+     * Available values: 0, 1.
      */
     readonly ssl?: number;
     /**
@@ -141,6 +147,7 @@ export function getCustomHostnamesOutput(args: GetCustomHostnamesOutputArgs, opt
 export interface GetCustomHostnamesOutputArgs {
     /**
      * Direction to order hostnames.
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**
@@ -157,10 +164,12 @@ export interface GetCustomHostnamesOutputArgs {
     maxItems?: pulumi.Input<number>;
     /**
      * Field to order hostnames by.
+     * Available values: "ssl", "sslStatus".
      */
     order?: pulumi.Input<string>;
     /**
      * Whether to filter hostnames based on if they have SSL enabled.
+     * Available values: 0, 1.
      */
     ssl?: pulumi.Input<number>;
     /**

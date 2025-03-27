@@ -18,6 +18,7 @@ public final class GetAuthenticatedOriginPullsResult {
     private String certId;
     /**
      * @return Status of the certificate or the association.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     private String certStatus;
@@ -78,6 +79,7 @@ public final class GetAuthenticatedOriginPullsResult {
     private String signature;
     /**
      * @return Status of the certificate or the association.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     private String status;
@@ -102,6 +104,7 @@ public final class GetAuthenticatedOriginPullsResult {
     }
     /**
      * @return Status of the certificate or the association.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     public String certStatus() {
@@ -186,6 +189,7 @@ public final class GetAuthenticatedOriginPullsResult {
     }
     /**
      * @return Status of the certificate or the association.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     public String status() {

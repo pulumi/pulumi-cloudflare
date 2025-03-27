@@ -86,6 +86,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The TLS Setting name.
+        /// Available values: "ciphers", "min*tls*version", "http2".
         /// </summary>
         [Input("settingId", required: true)]
         public string SettingId { get; set; } = null!;
@@ -106,6 +107,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The TLS Setting name.
+        /// Available values: "ciphers", "min*tls*version", "http2".
         /// </summary>
         [Input("settingId", required: true)]
         public Input<string> SettingId { get; set; } = null!;
@@ -127,8 +129,6 @@ namespace Pulumi.Cloudflare
     public sealed class GetHostnameTlsSettingResult
     {
         /// <summary>
-<<<<<<< HEAD
-=======
         /// This is the time the tls setting was originally created for this hostname.
         /// </summary>
         public readonly string CreatedAt;
@@ -137,17 +137,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Hostname;
         /// <summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
         /// The TLS Setting name.
+        /// Available values: "ciphers", "min*tls*version", "http2".
         /// </summary>
         public readonly string SettingId;
         /// <summary>
-<<<<<<< HEAD
-=======
         /// Deployment status for the given tls setting.
         /// </summary>
         public readonly string Status;
@@ -160,30 +158,20 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly double Value;
         /// <summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// Identifier
         /// </summary>
         public readonly string ZoneId;
 
         [OutputConstructor]
         private GetHostnameTlsSettingResult(
-<<<<<<< HEAD
-=======
             string createdAt,
 
             string hostname,
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             string id,
 
             string settingId,
 
-<<<<<<< HEAD
-            string zoneId)
-        {
-            Id = id;
-            SettingId = settingId;
-=======
             string status,
 
             string updatedAt,
@@ -199,7 +187,6 @@ namespace Pulumi.Cloudflare
             Status = status;
             UpdatedAt = updatedAt;
             Value = value;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             ZoneId = zoneId;
         }
     }

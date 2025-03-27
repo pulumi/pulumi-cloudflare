@@ -145,6 +145,9 @@ class GetPageShieldCookiesResult:
     @property
     @pulumi.getter(name="sameSiteAttribute")
     def same_site_attribute(self) -> str:
+        """
+        Available values: "lax", "strict", "none".
+        """
         return pulumi.get(self, "same_site_attribute")
 
     @property
@@ -155,6 +158,9 @@ class GetPageShieldCookiesResult:
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Available values: "first_party", "unknown".
+        """
         return pulumi.get(self, "type")
 
     @property

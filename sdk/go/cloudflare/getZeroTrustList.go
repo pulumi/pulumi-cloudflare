@@ -71,6 +71,7 @@ type LookupZeroTrustListResult struct {
 	// The name of the list.
 	Name string `pulumi:"name"`
 	// The type of list.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 	Type      string `pulumi:"type"`
 	UpdatedAt string `pulumi:"updatedAt"`
 }
@@ -149,6 +150,7 @@ func (o LookupZeroTrustListResultOutput) Name() pulumi.StringOutput {
 }
 
 // The type of list.
+// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 func (o LookupZeroTrustListResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustListResult) string { return v.Type }).(pulumi.StringOutput)
 }

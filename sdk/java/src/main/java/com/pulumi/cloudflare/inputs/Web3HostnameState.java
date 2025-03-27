@@ -76,6 +76,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Status of the hostname&#39;s activation.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
      * 
      */
     @Import(name="status")
@@ -83,6 +84,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Status of the hostname&#39;s activation.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -91,6 +93,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Target gateway of the hostname.
+     * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
      * 
      */
     @Import(name="target")
@@ -98,6 +101,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Target gateway of the hostname.
+     * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
      * 
      */
     public Optional<Output<String>> target() {
@@ -233,6 +237,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status Status of the hostname&#39;s activation.
+         * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
          * 
          * @return builder
          * 
@@ -244,6 +249,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status Status of the hostname&#39;s activation.
+         * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
          * 
          * @return builder
          * 
@@ -254,6 +260,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param target Target gateway of the hostname.
+         * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
          * 
          * @return builder
          * 
@@ -265,6 +272,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param target Target gateway of the hostname.
+         * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
          * 
          * @return builder
          * 

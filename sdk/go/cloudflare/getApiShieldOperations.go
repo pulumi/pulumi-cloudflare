@@ -61,6 +61,7 @@ func LookupApiShieldOperations(ctx *pulumi.Context, args *LookupApiShieldOperati
 // A collection of arguments for invoking getApiShieldOperations.
 type LookupApiShieldOperationsArgs struct {
 	// Direction to order results.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Filter results to only include endpoints containing this pattern.
 	Endpoint *string `pulumi:"endpoint"`
@@ -73,6 +74,7 @@ type LookupApiShieldOperationsArgs struct {
 	// Filter results to only include the specified HTTP methods.
 	Methods []string `pulumi:"methods"`
 	// Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+	// Available values: "method", "host", "endpoint", "thresholds.$key".
 	Order *string `pulumi:"order"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -81,6 +83,7 @@ type LookupApiShieldOperationsArgs struct {
 // A collection of values returned by getApiShieldOperations.
 type LookupApiShieldOperationsResult struct {
 	// Direction to order results.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Filter results to only include endpoints containing this pattern.
 	Endpoint *string `pulumi:"endpoint"`
@@ -95,6 +98,7 @@ type LookupApiShieldOperationsResult struct {
 	// Filter results to only include the specified HTTP methods.
 	Methods []string `pulumi:"methods"`
 	// Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+	// Available values: "method", "host", "endpoint", "thresholds.$key".
 	Order *string `pulumi:"order"`
 	// The items returned by the data source
 	Results []GetApiShieldOperationsResult `pulumi:"results"`
@@ -114,6 +118,7 @@ func LookupApiShieldOperationsOutput(ctx *pulumi.Context, args LookupApiShieldOp
 // A collection of arguments for invoking getApiShieldOperations.
 type LookupApiShieldOperationsOutputArgs struct {
 	// Direction to order results.
+	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Filter results to only include endpoints containing this pattern.
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
@@ -126,6 +131,7 @@ type LookupApiShieldOperationsOutputArgs struct {
 	// Filter results to only include the specified HTTP methods.
 	Methods pulumi.StringArrayInput `pulumi:"methods"`
 	// Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+	// Available values: "method", "host", "endpoint", "thresholds.$key".
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// Identifier
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -151,6 +157,7 @@ func (o LookupApiShieldOperationsResultOutput) ToLookupApiShieldOperationsResult
 }
 
 // Direction to order results.
+// Available values: "asc", "desc".
 func (o LookupApiShieldOperationsResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiShieldOperationsResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
@@ -186,6 +193,7 @@ func (o LookupApiShieldOperationsResultOutput) Methods() pulumi.StringArrayOutpu
 }
 
 // Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+// Available values: "method", "host", "endpoint", "thresholds.$key".
 func (o LookupApiShieldOperationsResultOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiShieldOperationsResult) *string { return v.Order }).(pulumi.StringPtrOutput)
 }

@@ -117,6 +117,7 @@ namespace Pulumi.Cloudflare
         public readonly bool Editable;
         /// <summary>
         /// ID of the zone setting.
+        /// Available values: "variants".
         /// </summary>
         public readonly string Id;
         /// <summary>

@@ -83,6 +83,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Sets the direction by which results are ordered.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
@@ -95,16 +96,13 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Application field by which results are ordered.
+        /// Available values: "protocol", "app*id", "created*on", "modified_on", "dns".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
         /// <summary>
-<<<<<<< HEAD
-        /// Identifier
-=======
         /// Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -119,6 +117,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Sets the direction by which results are ordered.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -131,16 +130,13 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Application field by which results are ordered.
+        /// Available values: "protocol", "app*id", "created*on", "modified_on", "dns".
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
 
         /// <summary>
-<<<<<<< HEAD
-        /// Identifier
-=======
         /// Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -157,6 +153,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Sets the direction by which results are ordered.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string Direction;
         /// <summary>
@@ -169,6 +166,7 @@ namespace Pulumi.Cloudflare
         public readonly int? MaxItems;
         /// <summary>
         /// Application field by which results are ordered.
+        /// Available values: "protocol", "app*id", "created*on", "modified_on", "dns".
         /// </summary>
         public readonly string Order;
         /// <summary>
@@ -176,11 +174,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSpectrumApplicationsResultResult> Results;
         /// <summary>
-<<<<<<< HEAD
-        /// Identifier
-=======
         /// Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         public readonly string ZoneId;
 

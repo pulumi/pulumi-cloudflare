@@ -30,7 +30,6 @@ class MagicTransitConnectorArgs:
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MagicTransitConnector resource.
-        :param pulumi.Input[str] account_id: Account identifier
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "connector_id", connector_id)
@@ -48,9 +47,6 @@ class MagicTransitConnectorArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
-        """
-        Account identifier
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -128,7 +124,6 @@ class _MagicTransitConnectorState:
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MagicTransitConnector resources.
-        :param pulumi.Input[str] account_id: Account identifier
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -156,9 +151,6 @@ class _MagicTransitConnectorState:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Account identifier
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -294,7 +286,6 @@ class MagicTransitConnector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account identifier
         """
         ...
     @overload
@@ -399,7 +390,6 @@ class MagicTransitConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -421,9 +411,6 @@ class MagicTransitConnector(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
-        """
-        Account identifier
-        """
         return pulumi.get(self, "account_id")
 
     @property

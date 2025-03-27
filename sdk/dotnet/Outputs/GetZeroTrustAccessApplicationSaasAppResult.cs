@@ -27,6 +27,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string AppLauncherUrl;
         /// <summary>
         /// Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is "saml"
+        /// Available values: "saml", "oidc".
         /// </summary>
         public readonly string AuthType;
         /// <summary>
@@ -63,6 +64,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string IdpEntityId;
         /// <summary>
         /// The format of the name identifier sent to the SaaS application.
+        /// Available values: "id", "email".
         /// </summary>
         public readonly string NameIdFormat;
         /// <summary>

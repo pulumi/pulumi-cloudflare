@@ -34,9 +34,11 @@ class CustomSslArgs:
         :param pulumi.Input[str] private_key: The zone's private key.
         :param pulumi.Input[str] zone_id: Identifier
         :param pulumi.Input[str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+               Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input['CustomSslGeoRestrictionsArgs'] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
         :param pulumi.Input[str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
-        :param pulumi.Input[str] type: The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        :param pulumi.Input[str] type: The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+               Available values: "legacy*custom", "sni_custom".
         """
         pulumi.set(__self__, "certificate", certificate)
         pulumi.set(__self__, "private_key", private_key)
@@ -91,6 +93,7 @@ class CustomSslArgs:
     def bundle_method(self) -> Optional[pulumi.Input[str]]:
         """
         A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        Available values: "ubiquitous", "optimal", "force".
         """
         return pulumi.get(self, "bundle_method")
 
@@ -126,7 +129,8 @@ class CustomSslArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        Available values: "legacy*custom", "sni_custom".
         """
         return pulumi.get(self, "type")
 
@@ -157,6 +161,7 @@ class _CustomSslState:
         """
         Input properties used for looking up and filtering CustomSsl resources.
         :param pulumi.Input[str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+               Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input[str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
         :param pulumi.Input[str] expires_on: When the certificate from the authority expires.
         :param pulumi.Input['CustomSslGeoRestrictionsArgs'] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
@@ -167,7 +172,9 @@ class _CustomSslState:
         :param pulumi.Input[str] private_key: The zone's private key.
         :param pulumi.Input[str] signature: The type of hash used for the certificate.
         :param pulumi.Input[str] status: Status of the zone's custom SSL.
-        :param pulumi.Input[str] type: The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+               Available values: "active", "expired", "deleted", "pending", "initializing".
+        :param pulumi.Input[str] type: The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+               Available values: "legacy*custom", "sni_custom".
         :param pulumi.Input[str] uploaded_on: When the certificate was uploaded to Cloudflare.
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -209,6 +216,7 @@ class _CustomSslState:
     def bundle_method(self) -> Optional[pulumi.Input[str]]:
         """
         A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        Available values: "ubiquitous", "optimal", "force".
         """
         return pulumi.get(self, "bundle_method")
 
@@ -347,6 +355,7 @@ class _CustomSslState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         Status of the zone's custom SSL.
+        Available values: "active", "expired", "deleted", "pending", "initializing".
         """
         return pulumi.get(self, "status")
 
@@ -358,7 +367,8 @@ class _CustomSslState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        Available values: "legacy*custom", "sni_custom".
         """
         return pulumi.get(self, "type")
 
@@ -483,11 +493,13 @@ class CustomSsl(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+               Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input[str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
         :param pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
         :param pulumi.Input[str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
         :param pulumi.Input[str] private_key: The zone's private key.
-        :param pulumi.Input[str] type: The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        :param pulumi.Input[str] type: The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+               Available values: "legacy*custom", "sni_custom".
         :param pulumi.Input[str] zone_id: Identifier
         """
         ...
@@ -611,7 +623,7 @@ class CustomSsl(pulumi.CustomResource):
             __props__.__dict__["policy"] = policy
             if private_key is None and not opts.urn:
                 raise TypeError("Missing required property 'private_key'")
-            __props__.__dict__["private_key"] = private_key
+            __props__.__dict__["private_key"] = None if private_key is None else pulumi.Output.secret(private_key)
             __props__.__dict__["type"] = type
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
@@ -625,6 +637,8 @@ class CustomSsl(pulumi.CustomResource):
             __props__.__dict__["signature"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["uploaded_on"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["privateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(CustomSsl, __self__).__init__(
             'cloudflare:index/customSsl:CustomSsl',
             resource_name,
@@ -659,6 +673,7 @@ class CustomSsl(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+               Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input[str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
         :param pulumi.Input[str] expires_on: When the certificate from the authority expires.
         :param pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
@@ -669,7 +684,9 @@ class CustomSsl(pulumi.CustomResource):
         :param pulumi.Input[str] private_key: The zone's private key.
         :param pulumi.Input[str] signature: The type of hash used for the certificate.
         :param pulumi.Input[str] status: Status of the zone's custom SSL.
-        :param pulumi.Input[str] type: The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+               Available values: "active", "expired", "deleted", "pending", "initializing".
+        :param pulumi.Input[str] type: The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+               Available values: "legacy*custom", "sni_custom".
         :param pulumi.Input[str] uploaded_on: When the certificate was uploaded to Cloudflare.
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -700,6 +717,7 @@ class CustomSsl(pulumi.CustomResource):
     def bundle_method(self) -> pulumi.Output[str]:
         """
         A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        Available values: "ubiquitous", "optimal", "force".
         """
         return pulumi.get(self, "bundle_method")
 
@@ -790,6 +808,7 @@ class CustomSsl(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         Status of the zone's custom SSL.
+        Available values: "active", "expired", "deleted", "pending", "initializing".
         """
         return pulumi.get(self, "status")
 
@@ -797,7 +816,8 @@ class CustomSsl(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        Available values: "legacy*custom", "sni_custom".
         """
         return pulumi.get(self, "type")
 

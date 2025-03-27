@@ -23,12 +23,16 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Hostname;
         /// <summary>
         /// The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+        /// Available values: "tcp", "udp".
         /// </summary>
         public readonly string L4Protocol;
         /// <summary>
         /// The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
         /// </summary>
         public readonly string PortRange;
+        /// <summary>
+        /// Available values: "public".
+        /// </summary>
         public readonly string Type;
         /// <summary>
         /// The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).

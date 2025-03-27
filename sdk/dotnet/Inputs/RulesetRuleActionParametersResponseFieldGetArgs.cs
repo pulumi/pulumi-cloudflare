@@ -18,6 +18,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Whether to log duplicate values of the same header.
+        /// </summary>
+        [Input("preserveDuplicates")]
+        public Input<bool>? PreserveDuplicates { get; set; }
+
         public RulesetRuleActionParametersResponseFieldGetArgs()
         {
         }

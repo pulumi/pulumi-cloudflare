@@ -12,11 +12,21 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class StreamLiveInputSrtPlaybackGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("passphrase")]
+        private Input<string>? _passphrase;
+
         /// <summary>
         /// The secret key to use for playback via SRT.
         /// </summary>
-        [Input("passphrase")]
-        public Input<string>? Passphrase { get; set; }
+        public Input<string>? Passphrase
+        {
+            get => _passphrase;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passphrase = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The identifier of the live input to use for playback via SRT.

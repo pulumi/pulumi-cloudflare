@@ -63,6 +63,7 @@ class GetAccountMembersResult:
     def direction(self) -> Optional[str]:
         """
         Direction to order results.
+        Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
 
@@ -87,6 +88,7 @@ class GetAccountMembersResult:
     def order(self) -> Optional[str]:
         """
         Field to order results by.
+        Available values: "user.first*name", "user.last*name", "user.email", "status".
         """
         return pulumi.get(self, "order")
 
@@ -103,6 +105,7 @@ class GetAccountMembersResult:
     def status(self) -> Optional[str]:
         """
         A member's status in the account.
+        Available values: "accepted", "pending", "rejected".
         """
         return pulumi.get(self, "status")
 
@@ -144,9 +147,12 @@ def get_account_members(account_id: Optional[str] = None,
 
     :param str account_id: Account identifier tag.
     :param str direction: Direction to order results.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     :param str order: Field to order results by.
+           Available values: "user.first*name", "user.last*name", "user.email", "status".
     :param str status: A member's status in the account.
+           Available values: "accepted", "pending", "rejected".
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -187,9 +193,12 @@ def get_account_members_output(account_id: Optional[pulumi.Input[str]] = None,
 
     :param str account_id: Account identifier tag.
     :param str direction: Direction to order results.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     :param str order: Field to order results by.
+           Available values: "user.first*name", "user.last*name", "user.email", "status".
     :param str status: A member's status in the account.
+           Available values: "accepted", "pending", "rejected".
     """
     __args__ = dict()
     __args__['accountId'] = account_id

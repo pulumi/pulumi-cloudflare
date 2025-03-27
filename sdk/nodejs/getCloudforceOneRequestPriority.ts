@@ -76,6 +76,7 @@ export interface GetCloudforceOneRequestPriorityResult {
     readonly request: string;
     /**
      * Request Status
+     * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
      */
     readonly status: string;
     /**
@@ -84,6 +85,7 @@ export interface GetCloudforceOneRequestPriorityResult {
     readonly summary: string;
     /**
      * The CISA defined Traffic Light Protocol (TLP)
+     * Available values: "clear", "amber", "amber-strict", "green", "red".
      */
     readonly tlp: string;
     /**

@@ -61,7 +61,8 @@ type LookupPagesDomainArgs struct {
 // A collection of values returned by getPagesDomain.
 type LookupPagesDomainResult struct {
 	// Identifier
-	AccountId            string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
+	// Available values: "google", "letsEncrypt".
 	CertificateAuthority string `pulumi:"certificateAuthority"`
 	CreatedOn            string `pulumi:"createdOn"`
 	DomainId             string `pulumi:"domainId"`
@@ -71,7 +72,8 @@ type LookupPagesDomainResult struct {
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 	// Name of the project.
-	ProjectName      string                         `pulumi:"projectName"`
+	ProjectName string `pulumi:"projectName"`
+	// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
 	Status           string                         `pulumi:"status"`
 	ValidationData   GetPagesDomainValidationData   `pulumi:"validationData"`
 	VerificationData GetPagesDomainVerificationData `pulumi:"verificationData"`
@@ -121,6 +123,7 @@ func (o LookupPagesDomainResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesDomainResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Available values: "google", "letsEncrypt".
 func (o LookupPagesDomainResultOutput) CertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesDomainResult) string { return v.CertificateAuthority }).(pulumi.StringOutput)
 }
@@ -152,6 +155,7 @@ func (o LookupPagesDomainResultOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesDomainResult) string { return v.ProjectName }).(pulumi.StringOutput)
 }
 
+// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
 func (o LookupPagesDomainResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesDomainResult) string { return v.Status }).(pulumi.StringOutput)
 }

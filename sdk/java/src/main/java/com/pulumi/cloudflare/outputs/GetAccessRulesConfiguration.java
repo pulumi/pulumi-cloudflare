@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class GetAccessRulesConfiguration {
     /**
      * @return The target to search in existing rules.
+     * Available values: &#34;ip&#34;, &#34;ip_range&#34;, &#34;asn&#34;, &#34;country&#34;.
      * 
      */
     private @Nullable String target;
@@ -26,6 +27,7 @@ public final class GetAccessRulesConfiguration {
     private GetAccessRulesConfiguration() {}
     /**
      * @return The target to search in existing rules.
+     * Available values: &#34;ip&#34;, &#34;ip_range&#34;, &#34;asn&#34;, &#34;country&#34;.
      * 
      */
     public Optional<String> target() {

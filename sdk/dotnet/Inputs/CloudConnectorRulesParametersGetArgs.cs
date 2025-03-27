@@ -10,20 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-<<<<<<<< HEAD:sdk/dotnet/Inputs/StreamLiveInputWebRtcPlaybackGetArgs.cs
-    public sealed class StreamLiveInputWebRtcPlaybackGetArgs : global::Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The URL used to play live video over WebRTC.
-        /// </summary>
-        [Input("url")]
-        public Input<string>? Url { get; set; }
-
-        public StreamLiveInputWebRtcPlaybackGetArgs()
-        {
-        }
-        public static new StreamLiveInputWebRtcPlaybackGetArgs Empty => new StreamLiveInputWebRtcPlaybackGetArgs();
-========
     public sealed class CloudConnectorRulesParametersGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
@@ -36,6 +22,5 @@ namespace Pulumi.Cloudflare.Inputs
         {
         }
         public static new CloudConnectorRulesParametersGetArgs Empty => new CloudConnectorRulesParametersGetArgs();
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/dotnet/Inputs/CloudConnectorRulesParametersGetArgs.cs
     }
 }

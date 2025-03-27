@@ -76,6 +76,7 @@ type LookupKeylessCertificateResult struct {
 	// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
 	Port float64 `pulumi:"port"`
 	// Status of the Keyless SSL.
+	// Available values: "active", "deleted".
 	Status string `pulumi:"status"`
 	// Configuration for using Keyless SSL through a Cloudflare Tunnel
 	Tunnel GetKeylessCertificateTunnel `pulumi:"tunnel"`
@@ -165,6 +166,7 @@ func (o LookupKeylessCertificateResultOutput) Port() pulumi.Float64Output {
 }
 
 // Status of the Keyless SSL.
+// Available values: "active", "deleted".
 func (o LookupKeylessCertificateResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeylessCertificateResult) string { return v.Status }).(pulumi.StringOutput)
 }

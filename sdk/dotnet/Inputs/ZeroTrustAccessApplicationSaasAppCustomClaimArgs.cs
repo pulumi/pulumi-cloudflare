@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The scope of the claim.
+        /// Available values: "groups", "profile", "email", "openid".
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }

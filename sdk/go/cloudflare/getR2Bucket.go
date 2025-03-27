@@ -66,10 +66,12 @@ type LookupR2BucketResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Location of the bucket
+	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
 	Location string `pulumi:"location"`
 	// Name of the bucket
 	Name string `pulumi:"name"`
 	// Storage class for newly uploaded objects, unless specified otherwise.
+	// Available values: "Standard", "InfrequentAccess".
 	StorageClass string `pulumi:"storageClass"`
 }
 
@@ -130,6 +132,7 @@ func (o LookupR2BucketResultOutput) Id() pulumi.StringOutput {
 }
 
 // Location of the bucket
+// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
 func (o LookupR2BucketResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketResult) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -140,6 +143,7 @@ func (o LookupR2BucketResultOutput) Name() pulumi.StringOutput {
 }
 
 // Storage class for newly uploaded objects, unless specified otherwise.
+// Available values: "Standard", "InfrequentAccess".
 func (o LookupR2BucketResultOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketResult) string { return v.StorageClass }).(pulumi.StringOutput)
 }

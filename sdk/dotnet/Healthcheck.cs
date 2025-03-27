@@ -89,6 +89,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The current status of the origin server according to the health check.
+        /// Available values: "unknown", "healthy", "unhealthy", "suspended".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -341,6 +342,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The current status of the origin server according to the health check.
+        /// Available values: "unknown", "healthy", "unhealthy", "suspended".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

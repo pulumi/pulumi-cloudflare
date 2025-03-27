@@ -44,10 +44,7 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
     }
 
     public readonly accountId!: pulumi.Output<string>;
-<<<<<<< HEAD
-=======
     public readonly aiContextEnabled!: pulumi.Output<boolean | undefined>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
      */
@@ -77,6 +74,9 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */
     public readonly sharedEntries!: pulumi.Output<outputs.ZeroTrustDlpCustomProfileSharedEntry[]>;
+    /**
+     * Available values: "custom".
+     */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
      * When the profile was lasted updated
@@ -97,10 +97,7 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustDlpCustomProfileState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-<<<<<<< HEAD
-=======
             resourceInputs["aiContextEnabled"] = state ? state.aiContextEnabled : undefined;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resourceInputs["allowedMatchCount"] = state ? state.allowedMatchCount : undefined;
             resourceInputs["confidenceThreshold"] = state ? state.confidenceThreshold : undefined;
             resourceInputs["contextAwareness"] = state ? state.contextAwareness : undefined;
@@ -120,10 +117,7 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
                 throw new Error("Missing required property 'accountId'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-<<<<<<< HEAD
-=======
             resourceInputs["aiContextEnabled"] = args ? args.aiContextEnabled : undefined;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resourceInputs["allowedMatchCount"] = args ? args.allowedMatchCount : undefined;
             resourceInputs["confidenceThreshold"] = args ? args.confidenceThreshold : undefined;
             resourceInputs["contextAwareness"] = args ? args.contextAwareness : undefined;
@@ -139,6 +133,8 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/dlpCustomProfile:DlpCustomProfile" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustDlpCustomProfile.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -148,10 +144,7 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
  */
 export interface ZeroTrustDlpCustomProfileState {
     accountId?: pulumi.Input<string>;
-<<<<<<< HEAD
-=======
     aiContextEnabled?: pulumi.Input<boolean>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
      */
@@ -181,6 +174,9 @@ export interface ZeroTrustDlpCustomProfileState {
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */
     sharedEntries?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpCustomProfileSharedEntry>[]>;
+    /**
+     * Available values: "custom".
+     */
     type?: pulumi.Input<string>;
     /**
      * When the profile was lasted updated
@@ -193,10 +189,7 @@ export interface ZeroTrustDlpCustomProfileState {
  */
 export interface ZeroTrustDlpCustomProfileArgs {
     accountId: pulumi.Input<string>;
-<<<<<<< HEAD
-=======
     aiContextEnabled?: pulumi.Input<boolean>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
      */

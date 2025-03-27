@@ -79,6 +79,7 @@ type LookupCustomHostnameResult struct {
 	OwnershipVerificationHttp GetCustomHostnameOwnershipVerificationHttp `pulumi:"ownershipVerificationHttp"`
 	Ssl                       GetCustomHostnameSsl                       `pulumi:"ssl"`
 	// Status of the hostname's activation.
+	// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
 	Status string `pulumi:"status"`
 	// These are errors that were encountered while trying to activate a hostname.
 	VerificationErrors []string `pulumi:"verificationErrors"`
@@ -181,6 +182,7 @@ func (o LookupCustomHostnameResultOutput) Ssl() GetCustomHostnameSslOutput {
 }
 
 // Status of the hostname's activation.
+// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
 func (o LookupCustomHostnameResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomHostnameResult) string { return v.Status }).(pulumi.StringOutput)
 }

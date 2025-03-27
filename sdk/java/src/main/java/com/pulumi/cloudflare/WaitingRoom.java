@@ -157,7 +157,10 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
     }
     /**
      * The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be
-     * used.
+     * used. Available values: &#34;en-US&#34;, &#34;es-ES&#34;, &#34;de-DE&#34;, &#34;fr-FR&#34;, &#34;it-IT&#34;, &#34;ja-JP&#34;, &#34;ko-KR&#34;, &#34;pt-BR&#34;, &#34;zh-CN&#34;, &#34;zh-TW&#34;,
+     * &#34;nl-NL&#34;, &#34;pl-PL&#34;, &#34;id-ID&#34;, &#34;tr-TR&#34;, &#34;ar-EG&#34;, &#34;ru-RU&#34;, &#34;fa-IR&#34;, &#34;bg-BG&#34;, &#34;hr-HR&#34;, &#34;cs-CZ&#34;, &#34;da-DK&#34;, &#34;fi-FI&#34;, &#34;lt-LT&#34;,
+     * &#34;ms-MY&#34;, &#34;nb-NO&#34;, &#34;ro-RO&#34;, &#34;el-GR&#34;, &#34;he-IL&#34;, &#34;hi-IN&#34;, &#34;hu-HU&#34;, &#34;sr-BA&#34;, &#34;sk-SK&#34;, &#34;sl-SI&#34;, &#34;sv-SE&#34;, &#34;tl-PH&#34;, &#34;th-TH&#34;,
+     * &#34;uk-UA&#34;, &#34;vi-VN&#34;.
      * 
      */
     @Export(name="defaultTemplateLanguage", refs={String.class}, tree="[0]")
@@ -165,7 +168,10 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be
-     * used.
+     * used. Available values: &#34;en-US&#34;, &#34;es-ES&#34;, &#34;de-DE&#34;, &#34;fr-FR&#34;, &#34;it-IT&#34;, &#34;ja-JP&#34;, &#34;ko-KR&#34;, &#34;pt-BR&#34;, &#34;zh-CN&#34;, &#34;zh-TW&#34;,
+     * &#34;nl-NL&#34;, &#34;pl-PL&#34;, &#34;id-ID&#34;, &#34;tr-TR&#34;, &#34;ar-EG&#34;, &#34;ru-RU&#34;, &#34;fa-IR&#34;, &#34;bg-BG&#34;, &#34;hr-HR&#34;, &#34;cs-CZ&#34;, &#34;da-DK&#34;, &#34;fi-FI&#34;, &#34;lt-LT&#34;,
+     * &#34;ms-MY&#34;, &#34;nb-NO&#34;, &#34;ro-RO&#34;, &#34;el-GR&#34;, &#34;he-IL&#34;, &#34;hi-IN&#34;, &#34;hu-HU&#34;, &#34;sr-BA&#34;, &#34;sk-SK&#34;, &#34;sl-SI&#34;, &#34;sv-SE&#34;, &#34;tl-PH&#34;, &#34;th-TH&#34;,
+     * &#34;uk-UA&#34;, &#34;vi-VN&#34;.
      * 
      */
     public Output<String> defaultTemplateLanguage() {
@@ -473,7 +479,8 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and
      * otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`,
      * `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is
-     * prequeueing, the waiting room page **will not refresh automatically**.
+     * prequeueing, the waiting room page **will not refresh automatically**. Available values: &#34;fifo&#34;, &#34;random&#34;,
+     * &#34;passthrough&#34;, &#34;reject&#34;.
      * 
      */
     @Export(name="queueingMethod", refs={String.class}, tree="[0]")
@@ -495,21 +502,22 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and
      * otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`,
      * `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is
-     * prequeueing, the waiting room page **will not refresh automatically**.
+     * prequeueing, the waiting room page **will not refresh automatically**. Available values: &#34;fifo&#34;, &#34;random&#34;,
+     * &#34;passthrough&#34;, &#34;reject&#34;.
      * 
      */
     public Output<String> queueingMethod() {
         return this.queueingMethod;
     }
     /**
-     * HTTP status code returned to a user while in the queue.
+     * HTTP status code returned to a user while in the queue. Available values: 200, 202, 429.
      * 
      */
     @Export(name="queueingStatusCode", refs={Integer.class}, tree="[0]")
     private Output<Integer> queueingStatusCode;
 
     /**
-     * @return HTTP status code returned to a user while in the queue.
+     * @return HTTP status code returned to a user while in the queue. Available values: 200, 202, 429.
      * 
      */
     public Output<Integer> queueingStatusCode() {
@@ -562,7 +570,8 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
     /**
      * Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply
      * keeping track of how many bots are detected in Waiting Room Analytics. `infinite_queue` will send bots to a false
-     * queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room.
+     * queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room. Available
+     * values: &#34;log&#34;, &#34;infinite_queue&#34;.
      * 
      */
     @Export(name="turnstileAction", refs={String.class}, tree="[0]")
@@ -571,7 +580,8 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
     /**
      * @return Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply
      * keeping track of how many bots are detected in Waiting Room Analytics. `infinite_queue` will send bots to a false
-     * queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room.
+     * queueing state, where they will never reach your origin. `infinite_queue` requires Advanced Waiting Room. Available
+     * values: &#34;log&#34;, &#34;infinite_queue&#34;.
      * 
      */
     public Output<String> turnstileAction() {
@@ -581,7 +591,8 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile
      * documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these
      * widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
-     * `invisible` requires Advanced Waiting Room.
+     * `invisible` requires Advanced Waiting Room. Available values: &#34;off&#34;, &#34;invisible&#34;, &#34;visible_non_interactive&#34;,
+     * &#34;visible_managed&#34;.
      * 
      */
     @Export(name="turnstileMode", refs={String.class}, tree="[0]")
@@ -591,7 +602,8 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * @return Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile
      * documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these
      * widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
-     * `invisible` requires Advanced Waiting Room.
+     * `invisible` requires Advanced Waiting Room. Available values: &#34;off&#34;, &#34;invisible&#34;, &#34;visible_non_interactive&#34;,
+     * &#34;visible_managed&#34;.
      * 
      */
     public Output<String> turnstileMode() {

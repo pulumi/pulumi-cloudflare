@@ -17,6 +17,7 @@ public final class GetSpectrumApplicationDns {
     private String name;
     /**
      * @return The type of DNS record associated with the application.
+     * Available values: &#34;CNAME&#34;, &#34;ADDRESS&#34;.
      * 
      */
     private String type;
@@ -31,6 +32,7 @@ public final class GetSpectrumApplicationDns {
     }
     /**
      * @return The type of DNS record associated with the application.
+     * Available values: &#34;CNAME&#34;, &#34;ADDRESS&#34;.
      * 
      */
     public String type() {

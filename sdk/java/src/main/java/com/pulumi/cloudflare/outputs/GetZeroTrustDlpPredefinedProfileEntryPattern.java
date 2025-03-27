@@ -11,12 +11,20 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustDlpPredefinedProfileEntryPattern {
     private String regex;
+    /**
+     * @return Available values: &#34;luhn&#34;.
+     * 
+     */
     private String validation;
 
     private GetZeroTrustDlpPredefinedProfileEntryPattern() {}
     public String regex() {
         return this.regex;
     }
+    /**
+     * @return Available values: &#34;luhn&#34;.
+     * 
+     */
     public String validation() {
         return this.validation;
     }

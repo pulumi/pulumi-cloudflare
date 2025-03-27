@@ -108,7 +108,7 @@ export class ZoneDnssec extends pulumi.CustomResource {
      */
     public /*out*/ readonly publicKey!: pulumi.Output<string>;
     /**
-     * Status of DNSSEC, based on user-desired state and presence of necessary records.
+     * Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
      */
     public readonly status!: pulumi.Output<string | undefined>;
     /**
@@ -227,7 +227,7 @@ export interface ZoneDnssecState {
      */
     publicKey?: pulumi.Input<string>;
     /**
-     * Status of DNSSEC, based on user-desired state and presence of necessary records.
+     * Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
      */
     status?: pulumi.Input<string>;
     /**
@@ -255,7 +255,7 @@ export interface ZoneDnssecArgs {
      */
     dnssecPresigned?: pulumi.Input<boolean>;
     /**
-     * Status of DNSSEC, based on user-desired state and presence of necessary records.
+     * Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
      */
     status?: pulumi.Input<string>;
     /**

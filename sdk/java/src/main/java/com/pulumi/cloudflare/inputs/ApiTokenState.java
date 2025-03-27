@@ -132,6 +132,7 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Status of the token.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
      * 
      */
     @Import(name="status")
@@ -139,6 +140,7 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Status of the token.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -361,6 +363,7 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status Status of the token.
+         * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
          * 
          * @return builder
          * 
@@ -372,6 +375,7 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status Status of the token.
+         * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
          * 
          * @return builder
          * 

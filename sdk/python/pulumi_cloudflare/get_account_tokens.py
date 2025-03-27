@@ -57,6 +57,7 @@ class GetAccountTokensResult:
     def direction(self) -> Optional[str]:
         """
         Direction to order results.
+        Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
 
@@ -116,6 +117,7 @@ def get_account_tokens(account_id: Optional[str] = None,
 
     :param str account_id: Account identifier tag.
     :param str direction: Direction to order results.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()
@@ -149,6 +151,7 @@ def get_account_tokens_output(account_id: Optional[pulumi.Input[str]] = None,
 
     :param str account_id: Account identifier tag.
     :param str direction: Direction to order results.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()

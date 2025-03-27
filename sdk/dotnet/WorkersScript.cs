@@ -152,6 +152,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Usage model for the Worker invocations.
+        /// Available values: "standard".
         /// </summary>
         [Output("usageModel")]
         public Output<string> UsageModel { get; private set; } = null!;
@@ -179,6 +180,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/workerScript:WorkerScript" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -275,6 +280,12 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// Whether Logpush is turned on for the Worker.
+        /// </summary>
+        [Input("logpush")]
+        public Input<bool>? Logpush { get; set; }
+
+        /// <summary>
         /// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         /// </summary>
         [Input("mainModule")]
@@ -315,6 +326,13 @@ namespace Pulumi.Cloudflare
             get => _tailConsumers ?? (_tailConsumers = new InputList<Inputs.WorkersScriptTailConsumerArgs>());
             set => _tailConsumers = value;
         }
+
+        /// <summary>
+        /// Usage model for the Worker invocations.
+        /// Available values: "standard".
+        /// </summary>
+        [Input("usageModel")]
+        public Input<string>? UsageModel { get; set; }
 
         public WorkersScriptArgs()
         {
@@ -479,6 +497,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Usage model for the Worker invocations.
+        /// Available values: "standard".
         /// </summary>
         [Input("usageModel")]
         public Input<string>? UsageModel { get; set; }

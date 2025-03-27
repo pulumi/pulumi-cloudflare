@@ -9,6 +9,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHyperdriveConfigResult {
@@ -27,7 +29,7 @@ public final class GetHyperdriveConfigResult {
      * @return Identifier
      * 
      */
-    private String hyperdriveId;
+    private @Nullable String hyperdriveId;
     /**
      * @return Identifier
      * 
@@ -63,8 +65,8 @@ public final class GetHyperdriveConfigResult {
      * @return Identifier
      * 
      */
-    public String hyperdriveId() {
-        return this.hyperdriveId;
+    public Optional<String> hyperdriveId() {
+        return Optional.ofNullable(this.hyperdriveId);
     }
     /**
      * @return Identifier
@@ -99,7 +101,7 @@ public final class GetHyperdriveConfigResult {
         private String accountId;
         private GetHyperdriveConfigCaching caching;
         private String createdOn;
-        private String hyperdriveId;
+        private @Nullable String hyperdriveId;
         private String id;
         private String modifiedOn;
         private String name;
@@ -142,10 +144,8 @@ public final class GetHyperdriveConfigResult {
             return this;
         }
         @CustomType.Setter
-        public Builder hyperdriveId(String hyperdriveId) {
-            if (hyperdriveId == null) {
-              throw new MissingRequiredPropertyException("GetHyperdriveConfigResult", "hyperdriveId");
-            }
+        public Builder hyperdriveId(@Nullable String hyperdriveId) {
+
             this.hyperdriveId = hyperdriveId;
             return this;
         }

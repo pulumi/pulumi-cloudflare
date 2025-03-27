@@ -65,6 +65,7 @@ export class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
     public readonly origin!: pulumi.Output<string>;
     /**
      * Status of the fallback origin's activation.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -133,6 +134,7 @@ export interface CustomHostnameFallbackOriginState {
     origin?: pulumi.Input<string>;
     /**
      * Status of the fallback origin's activation.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
      */
     status?: pulumi.Input<string>;
     /**

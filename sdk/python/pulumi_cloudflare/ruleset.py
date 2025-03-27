@@ -24,28 +24,31 @@ class RulesetArgs:
                  kind: pulumi.Input[str],
                  name: pulumi.Input[str],
                  phase: pulumi.Input[str],
-                 rules: pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]],
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Ruleset resource.
         :param pulumi.Input[str] kind: The kind of the ruleset.
+               Available values: "managed", "custom", "root", "zone".
         :param pulumi.Input[str] name: The human-readable name of the ruleset.
         :param pulumi.Input[str] phase: The phase of the ruleset.
-        :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]] rules: The list of rules in the ruleset.
+               Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         :param pulumi.Input[str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[str] description: An informative description of the ruleset.
+        :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]] rules: The list of rules in the ruleset.
         :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "phase", phase)
-        pulumi.set(__self__, "rules", rules)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -54,6 +57,7 @@ class RulesetArgs:
     def kind(self) -> pulumi.Input[str]:
         """
         The kind of the ruleset.
+        Available values: "managed", "custom", "root", "zone".
         """
         return pulumi.get(self, "kind")
 
@@ -78,24 +82,13 @@ class RulesetArgs:
     def phase(self) -> pulumi.Input[str]:
         """
         The phase of the ruleset.
+        Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         """
         return pulumi.get(self, "phase")
 
     @phase.setter
     def phase(self, value: pulumi.Input[str]):
         pulumi.set(self, "phase", value)
-
-    @property
-    @pulumi.getter
-    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]]:
-        """
-        The list of rules in the ruleset.
-        """
-        return pulumi.get(self, "rules")
-
-    @rules.setter
-    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]]):
-        pulumi.set(self, "rules", value)
 
     @property
     @pulumi.getter(name="accountId")
@@ -120,6 +113,18 @@ class RulesetArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]]]:
+        """
+        The list of rules in the ruleset.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -149,8 +154,10 @@ class _RulesetState:
         :param pulumi.Input[str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[str] description: An informative description of the ruleset.
         :param pulumi.Input[str] kind: The kind of the ruleset.
+               Available values: "managed", "custom", "root", "zone".
         :param pulumi.Input[str] name: The human-readable name of the ruleset.
         :param pulumi.Input[str] phase: The phase of the ruleset.
+               Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]] rules: The list of rules in the ruleset.
         :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
@@ -198,6 +205,7 @@ class _RulesetState:
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
         The kind of the ruleset.
+        Available values: "managed", "custom", "root", "zone".
         """
         return pulumi.get(self, "kind")
 
@@ -222,6 +230,7 @@ class _RulesetState:
     def phase(self) -> Optional[pulumi.Input[str]]:
         """
         The phase of the ruleset.
+        Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         """
         return pulumi.get(self, "phase")
 
@@ -281,8 +290,10 @@ class Ruleset(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[str] description: An informative description of the ruleset.
         :param pulumi.Input[str] kind: The kind of the ruleset.
+               Available values: "managed", "custom", "root", "zone".
         :param pulumi.Input[str] name: The human-readable name of the ruleset.
         :param pulumi.Input[str] phase: The phase of the ruleset.
+               Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         :param pulumi.Input[Sequence[pulumi.Input[Union['RulesetRuleArgs', 'RulesetRuleArgsDict']]]] rules: The list of rules in the ruleset.
         :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
@@ -343,8 +354,6 @@ class Ruleset(pulumi.CustomResource):
             if phase is None and not opts.urn:
                 raise TypeError("Missing required property 'phase'")
             __props__.__dict__["phase"] = phase
-            if rules is None and not opts.urn:
-                raise TypeError("Missing required property 'rules'")
             __props__.__dict__["rules"] = rules
             __props__.__dict__["zone_id"] = zone_id
         super(Ruleset, __self__).__init__(
@@ -374,8 +383,10 @@ class Ruleset(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[str] description: An informative description of the ruleset.
         :param pulumi.Input[str] kind: The kind of the ruleset.
+               Available values: "managed", "custom", "root", "zone".
         :param pulumi.Input[str] name: The human-readable name of the ruleset.
         :param pulumi.Input[str] phase: The phase of the ruleset.
+               Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         :param pulumi.Input[Sequence[pulumi.Input[Union['RulesetRuleArgs', 'RulesetRuleArgsDict']]]] rules: The list of rules in the ruleset.
         :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
@@ -413,6 +424,7 @@ class Ruleset(pulumi.CustomResource):
     def kind(self) -> pulumi.Output[str]:
         """
         The kind of the ruleset.
+        Available values: "managed", "custom", "root", "zone".
         """
         return pulumi.get(self, "kind")
 
@@ -429,6 +441,7 @@ class Ruleset(pulumi.CustomResource):
     def phase(self) -> pulumi.Output[str]:
         """
         The phase of the ruleset.
+        Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         """
         return pulumi.get(self, "phase")
 

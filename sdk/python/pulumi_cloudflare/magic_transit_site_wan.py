@@ -27,22 +27,13 @@ class MagicTransitSiteWanArgs:
                  vlan_tag: pulumi.Input[int],
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
-<<<<<<< HEAD
-                 static_addressing: Optional[pulumi.Input['MagicTransitSiteWanStaticAddressingArgs']] = None,
-                 wan_id: Optional[pulumi.Input[str]] = None):
-=======
                  static_addressing: Optional[pulumi.Input['MagicTransitSiteWanStaticAddressingArgs']] = None):
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         The set of arguments for constructing a MagicTransitSiteWan resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] site_id: Identifier
         :param pulumi.Input[int] vlan_tag: VLAN port number.
         :param pulumi.Input['MagicTransitSiteWanStaticAddressingArgs'] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
-<<<<<<< HEAD
-        :param pulumi.Input[str] wan_id: Identifier
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "physport", physport)
@@ -54,11 +45,6 @@ class MagicTransitSiteWanArgs:
             pulumi.set(__self__, "priority", priority)
         if static_addressing is not None:
             pulumi.set(__self__, "static_addressing", static_addressing)
-<<<<<<< HEAD
-        if wan_id is not None:
-            pulumi.set(__self__, "wan_id", wan_id)
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     @property
     @pulumi.getter(name="accountId")
@@ -135,21 +121,6 @@ class MagicTransitSiteWanArgs:
     def static_addressing(self, value: Optional[pulumi.Input['MagicTransitSiteWanStaticAddressingArgs']]):
         pulumi.set(self, "static_addressing", value)
 
-<<<<<<< HEAD
-    @property
-    @pulumi.getter(name="wanId")
-    def wan_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "wan_id")
-
-    @wan_id.setter
-    def wan_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "wan_id", value)
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 @pulumi.input_type
 class _MagicTransitSiteWanState:
@@ -161,23 +132,15 @@ class _MagicTransitSiteWanState:
                  priority: Optional[pulumi.Input[int]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
                  static_addressing: Optional[pulumi.Input['MagicTransitSiteWanStaticAddressingArgs']] = None,
-<<<<<<< HEAD
-                 vlan_tag: Optional[pulumi.Input[int]] = None,
-                 wan_id: Optional[pulumi.Input[str]] = None):
-=======
                  vlan_tag: Optional[pulumi.Input[int]] = None):
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         Input properties used for looking up and filtering MagicTransitSiteWan resources.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] health_check_rate: Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+               Available values: "low", "mid", "high".
         :param pulumi.Input[str] site_id: Identifier
         :param pulumi.Input['MagicTransitSiteWanStaticAddressingArgs'] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
         :param pulumi.Input[int] vlan_tag: VLAN port number.
-<<<<<<< HEAD
-        :param pulumi.Input[str] wan_id: Identifier
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -195,11 +158,6 @@ class _MagicTransitSiteWanState:
             pulumi.set(__self__, "static_addressing", static_addressing)
         if vlan_tag is not None:
             pulumi.set(__self__, "vlan_tag", vlan_tag)
-<<<<<<< HEAD
-        if wan_id is not None:
-            pulumi.set(__self__, "wan_id", wan_id)
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     @property
     @pulumi.getter(name="accountId")
@@ -218,6 +176,7 @@ class _MagicTransitSiteWanState:
     def health_check_rate(self) -> Optional[pulumi.Input[str]]:
         """
         Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+        Available values: "low", "mid", "high".
         """
         return pulumi.get(self, "health_check_rate")
 
@@ -288,21 +247,6 @@ class _MagicTransitSiteWanState:
     def vlan_tag(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "vlan_tag", value)
 
-<<<<<<< HEAD
-    @property
-    @pulumi.getter(name="wanId")
-    def wan_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "wan_id")
-
-    @wan_id.setter
-    def wan_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "wan_id", value)
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 class MagicTransitSiteWan(pulumi.CustomResource):
     @overload
@@ -316,33 +260,22 @@ class MagicTransitSiteWan(pulumi.CustomResource):
                  site_id: Optional[pulumi.Input[str]] = None,
                  static_addressing: Optional[pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']]] = None,
                  vlan_tag: Optional[pulumi.Input[int]] = None,
-<<<<<<< HEAD
-                 wan_id: Optional[pulumi.Input[str]] = None,
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  __props__=None):
         """
         ## Example Usage
 
-<<<<<<< HEAD
-=======
         ## Import
 
         ```sh
         $ pulumi import cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan example '<account_id>/<site_id>/<wan_id>'
         ```
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] site_id: Identifier
         :param pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
         :param pulumi.Input[int] vlan_tag: VLAN port number.
-<<<<<<< HEAD
-        :param pulumi.Input[str] wan_id: Identifier
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         ...
     @overload
@@ -353,15 +286,12 @@ class MagicTransitSiteWan(pulumi.CustomResource):
         """
         ## Example Usage
 
-<<<<<<< HEAD
-=======
         ## Import
 
         ```sh
         $ pulumi import cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan example '<account_id>/<site_id>/<wan_id>'
         ```
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param str resource_name: The name of the resource.
         :param MagicTransitSiteWanArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -384,10 +314,6 @@ class MagicTransitSiteWan(pulumi.CustomResource):
                  site_id: Optional[pulumi.Input[str]] = None,
                  static_addressing: Optional[pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']]] = None,
                  vlan_tag: Optional[pulumi.Input[int]] = None,
-<<<<<<< HEAD
-                 wan_id: Optional[pulumi.Input[str]] = None,
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -412,10 +338,6 @@ class MagicTransitSiteWan(pulumi.CustomResource):
             if vlan_tag is None and not opts.urn:
                 raise TypeError("Missing required property 'vlan_tag'")
             __props__.__dict__["vlan_tag"] = vlan_tag
-<<<<<<< HEAD
-            __props__.__dict__["wan_id"] = wan_id
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             __props__.__dict__["health_check_rate"] = None
         super(MagicTransitSiteWan, __self__).__init__(
             'cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan',
@@ -434,12 +356,7 @@ class MagicTransitSiteWan(pulumi.CustomResource):
             priority: Optional[pulumi.Input[int]] = None,
             site_id: Optional[pulumi.Input[str]] = None,
             static_addressing: Optional[pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']]] = None,
-<<<<<<< HEAD
-            vlan_tag: Optional[pulumi.Input[int]] = None,
-            wan_id: Optional[pulumi.Input[str]] = None) -> 'MagicTransitSiteWan':
-=======
             vlan_tag: Optional[pulumi.Input[int]] = None) -> 'MagicTransitSiteWan':
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         Get an existing MagicTransitSiteWan resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -449,13 +366,10 @@ class MagicTransitSiteWan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] health_check_rate: Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+               Available values: "low", "mid", "high".
         :param pulumi.Input[str] site_id: Identifier
         :param pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
         :param pulumi.Input[int] vlan_tag: VLAN port number.
-<<<<<<< HEAD
-        :param pulumi.Input[str] wan_id: Identifier
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -469,10 +383,6 @@ class MagicTransitSiteWan(pulumi.CustomResource):
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["static_addressing"] = static_addressing
         __props__.__dict__["vlan_tag"] = vlan_tag
-<<<<<<< HEAD
-        __props__.__dict__["wan_id"] = wan_id
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return MagicTransitSiteWan(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -488,6 +398,7 @@ class MagicTransitSiteWan(pulumi.CustomResource):
     def health_check_rate(self) -> pulumi.Output[str]:
         """
         Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+        Available values: "low", "mid", "high".
         """
         return pulumi.get(self, "health_check_rate")
 
@@ -530,14 +441,3 @@ class MagicTransitSiteWan(pulumi.CustomResource):
         """
         return pulumi.get(self, "vlan_tag")
 
-<<<<<<< HEAD
-    @property
-    @pulumi.getter(name="wanId")
-    def wan_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "wan_id")
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580

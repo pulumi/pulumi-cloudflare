@@ -126,6 +126,8 @@ export class ZeroTrustAccessMtlsCertificate extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/cloudflareAccessMutualTlsCertificate:AccessMutualTlsCertificate" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustAccessMtlsCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }

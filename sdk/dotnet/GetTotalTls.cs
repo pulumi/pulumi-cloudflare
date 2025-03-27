@@ -113,6 +113,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The Certificate Authority that Total TLS certificates will be issued through.
+        /// Available values: "google", "lets*encrypt", "ssl*com".
         /// </summary>
         public readonly string CertificateAuthority;
         /// <summary>
@@ -125,6 +126,7 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         /// <summary>
         /// The validity period in days for the certificates ordered via Total TLS.
+        /// Available values: 90.
         /// </summary>
         public readonly int ValidityPeriod;
         /// <summary>

@@ -75,6 +75,12 @@ func NewMagicWanGreTunnel(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/greTunnel:GreTunnel"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MagicWanGreTunnel
 	err := ctx.RegisterResource("cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel", name, args, &resource, opts...)

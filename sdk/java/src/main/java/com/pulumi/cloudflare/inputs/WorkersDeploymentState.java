@@ -84,9 +84,17 @@ public final class WorkersDeploymentState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.source);
     }
 
+    /**
+     * Available values: &#34;percentage&#34;.
+     * 
+     */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
+    /**
+     * @return Available values: &#34;percentage&#34;.
+     * 
+     */
     public Optional<Output<String>> strategy() {
         return Optional.ofNullable(this.strategy);
     }
@@ -221,11 +229,23 @@ public final class WorkersDeploymentState extends com.pulumi.resources.ResourceA
             return source(Output.of(source));
         }
 
+        /**
+         * @param strategy Available values: &#34;percentage&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder strategy(@Nullable Output<String> strategy) {
             $.strategy = strategy;
             return this;
         }
 
+        /**
+         * @param strategy Available values: &#34;percentage&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder strategy(String strategy) {
             return strategy(Output.of(strategy));
         }

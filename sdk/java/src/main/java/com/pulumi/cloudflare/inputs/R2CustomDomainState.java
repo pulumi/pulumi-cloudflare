@@ -63,21 +63,6 @@ public final class R2CustomDomainState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Name of the custom domain
-     * 
-     */
-    @Import(name="domainName")
-    private @Nullable Output<String> domainName;
-
-    /**
-     * @return Name of the custom domain
-     * 
-     */
-    public Optional<Output<String>> domainName() {
-        return Optional.ofNullable(this.domainName);
-    }
-
-    /**
      * Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
      * 
      */
@@ -94,6 +79,7 @@ public final class R2CustomDomainState extends com.pulumi.resources.ResourceArgs
 
     /**
      * Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+     * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
      * 
      */
     @Import(name="minTls")
@@ -101,6 +87,7 @@ public final class R2CustomDomainState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+     * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
      * 
      */
     public Optional<Output<String>> minTls() {
@@ -150,7 +137,6 @@ public final class R2CustomDomainState extends com.pulumi.resources.ResourceArgs
         this.accountId = $.accountId;
         this.bucketName = $.bucketName;
         this.domain = $.domain;
-        this.domainName = $.domainName;
         this.enabled = $.enabled;
         this.minTls = $.minTls;
         this.status = $.status;
@@ -240,27 +226,6 @@ public final class R2CustomDomainState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param domainName Name of the custom domain
-         * 
-         * @return builder
-         * 
-         */
-        public Builder domainName(@Nullable Output<String> domainName) {
-            $.domainName = domainName;
-            return this;
-        }
-
-        /**
-         * @param domainName Name of the custom domain
-         * 
-         * @return builder
-         * 
-         */
-        public Builder domainName(String domainName) {
-            return domainName(Output.of(domainName));
-        }
-
-        /**
          * @param enabled Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
          * 
          * @return builder
@@ -283,6 +248,7 @@ public final class R2CustomDomainState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param minTls Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+         * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
          * 
          * @return builder
          * 
@@ -294,6 +260,7 @@ public final class R2CustomDomainState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param minTls Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+         * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
          * 
          * @return builder
          * 

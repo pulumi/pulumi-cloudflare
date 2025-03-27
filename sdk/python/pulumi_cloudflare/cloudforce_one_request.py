@@ -33,6 +33,7 @@ class CloudforceOneRequestArgs:
         :param pulumi.Input[str] request_type: Requested information from request
         :param pulumi.Input[str] summary: Brief description of the request
         :param pulumi.Input[str] tlp: The CISA defined Traffic Light Protocol (TLP)
+               Available values: "clear", "amber", "amber-strict", "green", "red".
         """
         pulumi.set(__self__, "account_identifier", account_identifier)
         if content is not None:
@@ -111,6 +112,7 @@ class CloudforceOneRequestArgs:
     def tlp(self) -> Optional[pulumi.Input[str]]:
         """
         The CISA defined Traffic Light Protocol (TLP)
+        Available values: "clear", "amber", "amber-strict", "green", "red".
         """
         return pulumi.get(self, "tlp")
 
@@ -146,8 +148,10 @@ class _CloudforceOneRequestState:
         :param pulumi.Input[str] request: Requested information from request
         :param pulumi.Input[str] request_type: Requested information from request
         :param pulumi.Input[str] status: Request Status
+               Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         :param pulumi.Input[str] summary: Brief description of the request
         :param pulumi.Input[str] tlp: The CISA defined Traffic Light Protocol (TLP)
+               Available values: "clear", "amber", "amber-strict", "green", "red".
         :param pulumi.Input[int] tokens: Tokens for the request
         """
         if account_identifier is not None:
@@ -286,6 +290,7 @@ class _CloudforceOneRequestState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         Request Status
+        Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         """
         return pulumi.get(self, "status")
 
@@ -310,6 +315,7 @@ class _CloudforceOneRequestState:
     def tlp(self) -> Optional[pulumi.Input[str]]:
         """
         The CISA defined Traffic Light Protocol (TLP)
+        Available values: "clear", "amber", "amber-strict", "green", "red".
         """
         return pulumi.get(self, "tlp")
 
@@ -381,6 +387,7 @@ class CloudforceOneRequest(pulumi.CustomResource):
         :param pulumi.Input[str] request_type: Requested information from request
         :param pulumi.Input[str] summary: Brief description of the request
         :param pulumi.Input[str] tlp: The CISA defined Traffic Light Protocol (TLP)
+               Available values: "clear", "amber", "amber-strict", "green", "red".
         """
         ...
     @overload
@@ -495,8 +502,10 @@ class CloudforceOneRequest(pulumi.CustomResource):
         :param pulumi.Input[str] request: Requested information from request
         :param pulumi.Input[str] request_type: Requested information from request
         :param pulumi.Input[str] status: Request Status
+               Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         :param pulumi.Input[str] summary: Brief description of the request
         :param pulumi.Input[str] tlp: The CISA defined Traffic Light Protocol (TLP)
+               Available values: "clear", "amber", "amber-strict", "green", "red".
         :param pulumi.Input[int] tokens: Tokens for the request
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -590,6 +599,7 @@ class CloudforceOneRequest(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         Request Status
+        Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         """
         return pulumi.get(self, "status")
 
@@ -606,6 +616,7 @@ class CloudforceOneRequest(pulumi.CustomResource):
     def tlp(self) -> pulumi.Output[Optional[str]]:
         """
         The CISA defined Traffic Light Protocol (TLP)
+        Available values: "clear", "amber", "amber-strict", "green", "red".
         """
         return pulumi.get(self, "tlp")
 

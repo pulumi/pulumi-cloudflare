@@ -57,10 +57,12 @@ type LookupRegionalTieredCacheResult struct {
 	// Whether the setting is editable
 	Editable bool `pulumi:"editable"`
 	// ID of the zone setting.
+	// Available values: "tcRegional".
 	Id string `pulumi:"id"`
 	// Last time this setting was modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
 	// The value of the feature
+	// Available values: "on", "off".
 	Value string `pulumi:"value"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -106,6 +108,7 @@ func (o LookupRegionalTieredCacheResultOutput) Editable() pulumi.BoolOutput {
 }
 
 // ID of the zone setting.
+// Available values: "tcRegional".
 func (o LookupRegionalTieredCacheResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionalTieredCacheResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -116,6 +119,7 @@ func (o LookupRegionalTieredCacheResultOutput) ModifiedOn() pulumi.StringOutput 
 }
 
 // The value of the feature
+// Available values: "on", "off".
 func (o LookupRegionalTieredCacheResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionalTieredCacheResult) string { return v.Value }).(pulumi.StringOutput)
 }

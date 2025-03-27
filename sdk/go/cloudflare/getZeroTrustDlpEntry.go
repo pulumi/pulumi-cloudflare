@@ -66,9 +66,10 @@ type LookupZeroTrustDlpEntryResult struct {
 	Pattern   GetZeroTrustDlpEntryPattern `pulumi:"pattern"`
 	ProfileId string                      `pulumi:"profileId"`
 	Secret    bool                        `pulumi:"secret"`
-	Type      string                      `pulumi:"type"`
-	UpdatedAt string                      `pulumi:"updatedAt"`
-	WordList  string                      `pulumi:"wordList"`
+	// Available values: "custom".
+	Type      string `pulumi:"type"`
+	UpdatedAt string `pulumi:"updatedAt"`
+	WordList  string `pulumi:"wordList"`
 }
 
 func LookupZeroTrustDlpEntryOutput(ctx *pulumi.Context, args LookupZeroTrustDlpEntryOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDlpEntryResultOutput {
@@ -146,6 +147,7 @@ func (o LookupZeroTrustDlpEntryResultOutput) Secret() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpEntryResult) bool { return v.Secret }).(pulumi.BoolOutput)
 }
 
+// Available values: "custom".
 func (o LookupZeroTrustDlpEntryResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpEntryResult) string { return v.Type }).(pulumi.StringOutput)
 }

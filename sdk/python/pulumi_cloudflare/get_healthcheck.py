@@ -200,6 +200,7 @@ class GetHealthcheckResult:
     def status(self) -> str:
         """
         The current status of the origin server according to the health check.
+        Available values: "unknown", "healthy", "unhealthy", "suspended".
         """
         return pulumi.get(self, "status")
 

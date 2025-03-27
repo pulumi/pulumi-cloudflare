@@ -109,6 +109,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
 
     /**
      * Specifies the URL scheme used to connect to your origin database.
+     * Available values: &#34;postgres&#34;, &#34;postgresql&#34;.
      * 
      */
     @Import(name="scheme", required=true)
@@ -116,6 +117,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Specifies the URL scheme used to connect to your origin database.
+     * Available values: &#34;postgres&#34;, &#34;postgresql&#34;.
      * 
      */
     public Output<String> scheme() {
@@ -296,6 +298,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
 
         /**
          * @param scheme Specifies the URL scheme used to connect to your origin database.
+         * Available values: &#34;postgres&#34;, &#34;postgresql&#34;.
          * 
          * @return builder
          * 
@@ -307,6 +310,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
 
         /**
          * @param scheme Specifies the URL scheme used to connect to your origin database.
+         * Available values: &#34;postgres&#34;, &#34;postgresql&#34;.
          * 
          * @return builder
          * 

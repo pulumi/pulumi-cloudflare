@@ -90,12 +90,9 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-<<<<<<< HEAD
-=======
         /// <summary>
         /// D1 database identifier (UUID).
         /// </summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Input("databaseId")]
         public string? DatabaseId { get; set; }
 
@@ -116,12 +113,9 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-<<<<<<< HEAD
-=======
         /// <summary>
         /// D1 database identifier (UUID).
         /// </summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Input("databaseId")]
         public Input<string>? DatabaseId { get; set; }
 
@@ -146,12 +140,9 @@ namespace Pulumi.Cloudflare
         /// Specifies the timestamp the resource was created as an ISO8601 string.
         /// </summary>
         public readonly string CreatedAt;
-<<<<<<< HEAD
-=======
         /// <summary>
         /// D1 database identifier (UUID).
         /// </summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public readonly string? DatabaseId;
         /// <summary>
         /// The D1 database's size, in bytes.
@@ -159,13 +150,6 @@ namespace Pulumi.Cloudflare
         public readonly double FileSize;
         public readonly Outputs.GetD1DatabaseFilterResult? Filter;
         /// <summary>
-<<<<<<< HEAD
-        /// The ID of this resource.
-        /// </summary>
-        public readonly string Id;
-        public readonly string Name;
-        public readonly double NumTables;
-=======
         /// D1 database identifier (UUID).
         /// </summary>
         public readonly string Id;
@@ -177,7 +161,6 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// D1 database identifier (UUID).
         /// </summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public readonly string Uuid;
         public readonly string Version;
 

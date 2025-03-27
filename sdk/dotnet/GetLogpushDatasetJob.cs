@@ -148,13 +148,6 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
         /// </summary>
-<<<<<<< HEAD
-        public readonly string DatasetId;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-=======
         public readonly string Dataset;
         /// <summary>
         /// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
@@ -174,6 +167,7 @@ namespace Pulumi.Cloudflare
         public readonly string ErrorMessage;
         /// <summary>
         /// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+        /// Available values: "high", "low".
         /// </summary>
         public readonly string Frequency;
         /// <summary>
@@ -182,6 +176,7 @@ namespace Pulumi.Cloudflare
         public readonly int Id;
         /// <summary>
         /// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+        /// Available values: "edge".
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -216,7 +211,6 @@ namespace Pulumi.Cloudflare
         /// The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
         /// </summary>
         public readonly Outputs.GetLogpushDatasetJobOutputOptionsResult OutputOptions;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
@@ -226,11 +220,6 @@ namespace Pulumi.Cloudflare
         private GetLogpushDatasetJobResult(
             string? accountId,
 
-<<<<<<< HEAD
-            string datasetId,
-
-            string id,
-=======
             string dataset,
 
             string datasetId,
@@ -262,15 +251,10 @@ namespace Pulumi.Cloudflare
             string name,
 
             Outputs.GetLogpushDatasetJobOutputOptionsResult outputOptions,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
             string? zoneId)
         {
             AccountId = accountId;
-<<<<<<< HEAD
-            DatasetId = datasetId;
-            Id = id;
-=======
             Dataset = dataset;
             DatasetId = datasetId;
             DestinationConf = destinationConf;
@@ -287,7 +271,6 @@ namespace Pulumi.Cloudflare
             MaxUploadRecords = maxUploadRecords;
             Name = name;
             OutputOptions = outputOptions;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             ZoneId = zoneId;
         }
     }

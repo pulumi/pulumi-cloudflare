@@ -299,6 +299,8 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
             __props__.__dict__["namespace_id"] = None
             __props__.__dict__["namespace_name"] = None
             __props__.__dict__["script_count"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(WorkersForPlatformsDispatchNamespace, __self__).__init__(
             'cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace',
             resource_name,

@@ -126,6 +126,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The zone status on Cloudflare.
+        /// Available values: "initializing", "pending", "active", "moved".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -133,6 +134,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
         /// typically a partner-hosted zone or a CNAME setup.
+        /// Available values: "full", "partial", "secondary".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -144,15 +146,12 @@ namespace Pulumi.Cloudflare
         [Output("vanityNameServers")]
         public Output<ImmutableArray<string>> VanityNameServers { get; private set; } = null!;
 
-<<<<<<< HEAD
-=======
         /// <summary>
         /// Verification key for partial zone setup.
         /// </summary>
         [Output("verificationKey")]
         public Output<string> VerificationKey { get; private set; } = null!;
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Create a Zone resource with the given unique name, arguments, and options.
@@ -211,6 +210,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
         /// typically a partner-hosted zone or a CNAME setup.
+        /// Available values: "full", "partial", "secondary".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -330,6 +330,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The zone status on Cloudflare.
+        /// Available values: "initializing", "pending", "active", "moved".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -337,6 +338,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
         /// typically a partner-hosted zone or a CNAME setup.
+        /// Available values: "full", "partial", "secondary".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -354,15 +356,12 @@ namespace Pulumi.Cloudflare
             set => _vanityNameServers = value;
         }
 
-<<<<<<< HEAD
-=======
         /// <summary>
         /// Verification key for partial zone setup.
         /// </summary>
         [Input("verificationKey")]
         public Input<string>? VerificationKey { get; set; }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public ZoneState()
         {
         }

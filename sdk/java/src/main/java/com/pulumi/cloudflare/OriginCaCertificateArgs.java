@@ -49,6 +49,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
 
     /**
      * Signature type desired on certificate (&#34;origin-rsa&#34; (rsa), &#34;origin-ecc&#34; (ecdsa), or &#34;keyless-certificate&#34; (for Keyless SSL servers).
+     * Available values: &#34;origin-rsa&#34;, &#34;origin-ecc&#34;, &#34;keyless-certificate&#34;.
      * 
      */
     @Import(name="requestType")
@@ -56,6 +57,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
 
     /**
      * @return Signature type desired on certificate (&#34;origin-rsa&#34; (rsa), &#34;origin-ecc&#34; (ecdsa), or &#34;keyless-certificate&#34; (for Keyless SSL servers).
+     * Available values: &#34;origin-rsa&#34;, &#34;origin-ecc&#34;, &#34;keyless-certificate&#34;.
      * 
      */
     public Optional<Output<String>> requestType() {
@@ -64,6 +66,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
 
     /**
      * The number of days for which the certificate should be valid.
+     * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      * 
      */
     @Import(name="requestedValidity")
@@ -71,6 +74,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
 
     /**
      * @return The number of days for which the certificate should be valid.
+     * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      * 
      */
     public Optional<Output<Double>> requestedValidity() {
@@ -158,6 +162,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
 
         /**
          * @param requestType Signature type desired on certificate (&#34;origin-rsa&#34; (rsa), &#34;origin-ecc&#34; (ecdsa), or &#34;keyless-certificate&#34; (for Keyless SSL servers).
+         * Available values: &#34;origin-rsa&#34;, &#34;origin-ecc&#34;, &#34;keyless-certificate&#34;.
          * 
          * @return builder
          * 
@@ -169,6 +174,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
 
         /**
          * @param requestType Signature type desired on certificate (&#34;origin-rsa&#34; (rsa), &#34;origin-ecc&#34; (ecdsa), or &#34;keyless-certificate&#34; (for Keyless SSL servers).
+         * Available values: &#34;origin-rsa&#34;, &#34;origin-ecc&#34;, &#34;keyless-certificate&#34;.
          * 
          * @return builder
          * 
@@ -179,6 +185,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
 
         /**
          * @param requestedValidity The number of days for which the certificate should be valid.
+         * Available values: 7, 30, 90, 365, 730, 1095, 5475.
          * 
          * @return builder
          * 
@@ -190,6 +197,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
 
         /**
          * @param requestedValidity The number of days for which the certificate should be valid.
+         * Available values: 7, 30, 90, 365, 730, 1095, 5475.
          * 
          * @return builder
          * 

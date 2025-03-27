@@ -67,6 +67,9 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
     public readonly pattern!: pulumi.Output<outputs.ZeroTrustDlpEntryPattern>;
     public readonly profileId!: pulumi.Output<string>;
     public /*out*/ readonly secret!: pulumi.Output<boolean>;
+    /**
+     * Available values: "custom".
+     */
     public readonly type!: pulumi.Output<string | undefined>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     public /*out*/ readonly wordList!: pulumi.Output<string>;
@@ -141,6 +144,9 @@ export interface ZeroTrustDlpEntryState {
     pattern?: pulumi.Input<inputs.ZeroTrustDlpEntryPattern>;
     profileId?: pulumi.Input<string>;
     secret?: pulumi.Input<boolean>;
+    /**
+     * Available values: "custom".
+     */
     type?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
     wordList?: pulumi.Input<string>;
@@ -155,5 +161,8 @@ export interface ZeroTrustDlpEntryArgs {
     name: pulumi.Input<string>;
     pattern: pulumi.Input<inputs.ZeroTrustDlpEntryPattern>;
     profileId: pulumi.Input<string>;
+    /**
+     * Available values: "custom".
+     */
     type?: pulumi.Input<string>;
 }

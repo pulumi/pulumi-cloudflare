@@ -54,6 +54,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// DNS record type.
+        /// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

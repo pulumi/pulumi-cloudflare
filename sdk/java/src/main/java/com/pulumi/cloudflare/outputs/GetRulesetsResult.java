@@ -22,9 +22,15 @@ public final class GetRulesetsResult {
     private String id;
     /**
      * @return The kind of the ruleset.
+     * Available values: &#34;managed&#34;, &#34;custom&#34;, &#34;root&#34;, &#34;zone&#34;.
      * 
      */
     private String kind;
+    /**
+     * @return The timestamp of when the ruleset was last modified.
+     * 
+     */
+    private String lastUpdated;
     /**
      * @return The human-readable name of the ruleset.
      * 
@@ -32,6 +38,7 @@ public final class GetRulesetsResult {
     private String name;
     /**
      * @return The phase of the ruleset.
+     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
      * 
      */
     private String phase;
@@ -53,10 +60,18 @@ public final class GetRulesetsResult {
     }
     /**
      * @return The kind of the ruleset.
+     * Available values: &#34;managed&#34;, &#34;custom&#34;, &#34;root&#34;, &#34;zone&#34;.
      * 
      */
     public String kind() {
         return this.kind;
+    }
+    /**
+     * @return The timestamp of when the ruleset was last modified.
+     * 
+     */
+    public String lastUpdated() {
+        return this.lastUpdated;
     }
     /**
      * @return The human-readable name of the ruleset.
@@ -67,6 +82,7 @@ public final class GetRulesetsResult {
     }
     /**
      * @return The phase of the ruleset.
+     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
      * 
      */
     public String phase() {
@@ -85,6 +101,7 @@ public final class GetRulesetsResult {
         private String description;
         private String id;
         private String kind;
+        private String lastUpdated;
         private String name;
         private String phase;
         public Builder() {}
@@ -93,6 +110,7 @@ public final class GetRulesetsResult {
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.kind = defaults.kind;
+    	      this.lastUpdated = defaults.lastUpdated;
     	      this.name = defaults.name;
     	      this.phase = defaults.phase;
         }
@@ -122,6 +140,14 @@ public final class GetRulesetsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder lastUpdated(String lastUpdated) {
+            if (lastUpdated == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsResult", "lastUpdated");
+            }
+            this.lastUpdated = lastUpdated;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetRulesetsResult", "name");
@@ -142,6 +168,7 @@ public final class GetRulesetsResult {
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.kind = kind;
+            _resultValue.lastUpdated = lastUpdated;
             _resultValue.name = name;
             _resultValue.phase = phase;
             return _resultValue;

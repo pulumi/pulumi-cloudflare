@@ -12,6 +12,32 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.LookupMagicTransitSiteWan(ctx, &cloudflare.LookupMagicTransitSiteWanArgs{
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				SiteId:    "023e105f4ecef8ad9ca31a8372d0c353",
+//				WanId:     pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupMagicTransitSiteWan(ctx *pulumi.Context, args *LookupMagicTransitSiteWanArgs, opts ...pulumi.InvokeOption) (*LookupMagicTransitSiteWanResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMagicTransitSiteWanResult
@@ -27,11 +53,9 @@ type LookupMagicTransitSiteWanArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// Identifier
-<<<<<<< HEAD
-	WanId string `pulumi:"wanId"`
-=======
+	SiteId string `pulumi:"siteId"`
+	// Identifier
 	WanId *string `pulumi:"wanId"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 // A collection of values returned by getMagicTransitSiteWan.
@@ -39,6 +63,7 @@ type LookupMagicTransitSiteWanResult struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+	// Available values: "low", "mid", "high".
 	HealthCheckRate string `pulumi:"healthCheckRate"`
 	// Identifier
 	Id       string `pulumi:"id"`
@@ -53,11 +78,7 @@ type LookupMagicTransitSiteWanResult struct {
 	// VLAN port number.
 	VlanTag int `pulumi:"vlanTag"`
 	// Identifier
-<<<<<<< HEAD
-	WanId string `pulumi:"wanId"`
-=======
 	WanId *string `pulumi:"wanId"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func LookupMagicTransitSiteWanOutput(ctx *pulumi.Context, args LookupMagicTransitSiteWanOutputArgs, opts ...pulumi.InvokeOption) LookupMagicTransitSiteWanResultOutput {
@@ -74,11 +95,9 @@ type LookupMagicTransitSiteWanOutputArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identifier
-<<<<<<< HEAD
-	WanId pulumi.StringInput `pulumi:"wanId"`
-=======
+	SiteId pulumi.StringInput `pulumi:"siteId"`
+	// Identifier
 	WanId pulumi.StringPtrInput `pulumi:"wanId"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func (LookupMagicTransitSiteWanOutputArgs) ElementType() reflect.Type {
@@ -106,6 +125,7 @@ func (o LookupMagicTransitSiteWanResultOutput) AccountId() pulumi.StringOutput {
 }
 
 // Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+// Available values: "low", "mid", "high".
 func (o LookupMagicTransitSiteWanResultOutput) HealthCheckRate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMagicTransitSiteWanResult) string { return v.HealthCheckRate }).(pulumi.StringOutput)
 }
@@ -146,13 +166,8 @@ func (o LookupMagicTransitSiteWanResultOutput) VlanTag() pulumi.IntOutput {
 }
 
 // Identifier
-<<<<<<< HEAD
-func (o LookupMagicTransitSiteWanResultOutput) WanId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicTransitSiteWanResult) string { return v.WanId }).(pulumi.StringOutput)
-=======
 func (o LookupMagicTransitSiteWanResultOutput) WanId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMagicTransitSiteWanResult) *string { return v.WanId }).(pulumi.StringPtrOutput)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func init() {

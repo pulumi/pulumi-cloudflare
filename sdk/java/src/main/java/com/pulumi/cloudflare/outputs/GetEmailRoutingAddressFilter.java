@@ -13,6 +13,7 @@ import java.util.Objects;
 public final class GetEmailRoutingAddressFilter {
     /**
      * @return Sorts results in an ascending or descending order.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private String direction;
@@ -25,6 +26,7 @@ public final class GetEmailRoutingAddressFilter {
     private GetEmailRoutingAddressFilter() {}
     /**
      * @return Sorts results in an ascending or descending order.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public String direction() {

@@ -67,6 +67,7 @@ export class List extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+     * Available values: "ip", "redirect", "hostname", "asn".
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -150,6 +151,7 @@ export interface ListState {
     description?: pulumi.Input<string>;
     /**
      * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+     * Available values: "ip", "redirect", "hostname", "asn".
      */
     kind?: pulumi.Input<string>;
     /**
@@ -184,6 +186,7 @@ export interface ListArgs {
     description?: pulumi.Input<string>;
     /**
      * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+     * Available values: "ip", "redirect", "hostname", "asn".
      */
     kind: pulumi.Input<string>;
     /**

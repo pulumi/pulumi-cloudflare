@@ -87,6 +87,7 @@ public final class ObservatoryScheduledTestTestArgs extends com.pulumi.resources
 
     /**
      * The frequency of the test.
+     * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
      * 
      */
     @Import(name="scheduleFrequency")
@@ -94,6 +95,7 @@ public final class ObservatoryScheduledTestTestArgs extends com.pulumi.resources
 
     /**
      * @return The frequency of the test.
+     * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
      * 
      */
     public Optional<Output<String>> scheduleFrequency() {
@@ -240,6 +242,7 @@ public final class ObservatoryScheduledTestTestArgs extends com.pulumi.resources
 
         /**
          * @param scheduleFrequency The frequency of the test.
+         * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
          * 
          * @return builder
          * 
@@ -251,6 +254,7 @@ public final class ObservatoryScheduledTestTestArgs extends com.pulumi.resources
 
         /**
          * @param scheduleFrequency The frequency of the test.
+         * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
          * 
          * @return builder
          * 

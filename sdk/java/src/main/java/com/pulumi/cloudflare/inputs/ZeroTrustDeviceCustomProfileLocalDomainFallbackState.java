@@ -24,8 +24,6 @@ public final class ZeroTrustDeviceCustomProfileLocalDomainFallbackState extends 
         return Optional.ofNullable(this.accountId);
     }
 
-<<<<<<< HEAD
-=======
     /**
      * A description of the fallback domain, displayed in the client UI.
      * 
@@ -56,7 +54,6 @@ public final class ZeroTrustDeviceCustomProfileLocalDomainFallbackState extends 
         return Optional.ofNullable(this.dnsServers);
     }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @Import(name="domains")
     private @Nullable Output<List<ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs>> domains;
 
@@ -79,8 +76,6 @@ public final class ZeroTrustDeviceCustomProfileLocalDomainFallbackState extends 
         return Optional.ofNullable(this.policyId);
     }
 
-<<<<<<< HEAD
-=======
     /**
      * The domain suffix to match when resolving locally.
      * 
@@ -96,21 +91,15 @@ public final class ZeroTrustDeviceCustomProfileLocalDomainFallbackState extends 
         return Optional.ofNullable(this.suffix);
     }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     private ZeroTrustDeviceCustomProfileLocalDomainFallbackState() {}
 
     private ZeroTrustDeviceCustomProfileLocalDomainFallbackState(ZeroTrustDeviceCustomProfileLocalDomainFallbackState $) {
         this.accountId = $.accountId;
-<<<<<<< HEAD
-        this.domains = $.domains;
-        this.policyId = $.policyId;
-=======
         this.description = $.description;
         this.dnsServers = $.dnsServers;
         this.domains = $.domains;
         this.policyId = $.policyId;
         this.suffix = $.suffix;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     public static Builder builder() {
@@ -140,8 +129,6 @@ public final class ZeroTrustDeviceCustomProfileLocalDomainFallbackState extends 
             return accountId(Output.of(accountId));
         }
 
-<<<<<<< HEAD
-=======
         /**
          * @param description A description of the fallback domain, displayed in the client UI.
          * 
@@ -194,7 +181,6 @@ public final class ZeroTrustDeviceCustomProfileLocalDomainFallbackState extends 
             return dnsServers(List.of(dnsServers));
         }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder domains(@Nullable Output<List<ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs>> domains) {
             $.domains = domains;
             return this;
@@ -229,8 +215,6 @@ public final class ZeroTrustDeviceCustomProfileLocalDomainFallbackState extends 
             return policyId(Output.of(policyId));
         }
 
-<<<<<<< HEAD
-=======
         /**
          * @param suffix The domain suffix to match when resolving locally.
          * 
@@ -252,7 +236,6 @@ public final class ZeroTrustDeviceCustomProfileLocalDomainFallbackState extends 
             return suffix(Output.of(suffix));
         }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public ZeroTrustDeviceCustomProfileLocalDomainFallbackState build() {
             return $;
         }

@@ -33,6 +33,7 @@ public final class ZeroTrustGatewaySettingsSettingsSandboxArgs extends com.pulum
 
     /**
      * Action to take when the file cannot be scanned.
+     * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */
     @Import(name="fallbackAction")
@@ -40,6 +41,7 @@ public final class ZeroTrustGatewaySettingsSettingsSandboxArgs extends com.pulum
 
     /**
      * @return Action to take when the file cannot be scanned.
+     * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */
     public Optional<Output<String>> fallbackAction() {
@@ -94,6 +96,7 @@ public final class ZeroTrustGatewaySettingsSettingsSandboxArgs extends com.pulum
 
         /**
          * @param fallbackAction Action to take when the file cannot be scanned.
+         * Available values: &#34;allow&#34;, &#34;block&#34;.
          * 
          * @return builder
          * 
@@ -105,6 +108,7 @@ public final class ZeroTrustGatewaySettingsSettingsSandboxArgs extends com.pulum
 
         /**
          * @param fallbackAction Action to take when the file cannot be scanned.
+         * Available values: &#34;allow&#34;, &#34;block&#34;.
          * 
          * @return builder
          * 

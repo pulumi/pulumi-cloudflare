@@ -62,6 +62,7 @@ import javax.annotation.Nullable;
 public class UrlNormalizationSettings extends com.pulumi.resources.CustomResource {
     /**
      * The scope of the URL normalization.
+     * Available values: &#34;incoming&#34;, &#34;both&#34;.
      * 
      */
     @Export(name="scope", refs={String.class}, tree="[0]")
@@ -69,6 +70,7 @@ public class UrlNormalizationSettings extends com.pulumi.resources.CustomResourc
 
     /**
      * @return The scope of the URL normalization.
+     * Available values: &#34;incoming&#34;, &#34;both&#34;.
      * 
      */
     public Output<String> scope() {
@@ -76,6 +78,7 @@ public class UrlNormalizationSettings extends com.pulumi.resources.CustomResourc
     }
     /**
      * The type of URL normalization performed by Cloudflare.
+     * Available values: &#34;cloudflare&#34;, &#34;rfc3986&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -83,6 +86,7 @@ public class UrlNormalizationSettings extends com.pulumi.resources.CustomResourc
 
     /**
      * @return The type of URL normalization performed by Cloudflare.
+     * Available values: &#34;cloudflare&#34;, &#34;rfc3986&#34;.
      * 
      */
     public Output<String> type() {

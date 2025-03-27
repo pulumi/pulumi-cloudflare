@@ -13,18 +13,69 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleAuthenticatedOriginPulls = Cloudflare.GetAuthenticatedOriginPulls.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Hostname = "app.example.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAuthenticatedOriginPullsResult> InvokeAsync(GetAuthenticatedOriginPullsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAuthenticatedOriginPullsResult>("cloudflare:index/getAuthenticatedOriginPulls:getAuthenticatedOriginPulls", args ?? new GetAuthenticatedOriginPullsArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleAuthenticatedOriginPulls = Cloudflare.GetAuthenticatedOriginPulls.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Hostname = "app.example.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAuthenticatedOriginPullsResult> Invoke(GetAuthenticatedOriginPullsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAuthenticatedOriginPullsResult>("cloudflare:index/getAuthenticatedOriginPulls:getAuthenticatedOriginPulls", args ?? new GetAuthenticatedOriginPullsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleAuthenticatedOriginPulls = Cloudflare.GetAuthenticatedOriginPulls.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Hostname = "app.example.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAuthenticatedOriginPullsResult> Invoke(GetAuthenticatedOriginPullsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAuthenticatedOriginPullsResult>("cloudflare:index/getAuthenticatedOriginPulls:getAuthenticatedOriginPulls", args ?? new GetAuthenticatedOriginPullsInvokeArgs(), options.WithDefaults());
@@ -33,6 +84,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetAuthenticatedOriginPullsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The hostname on the origin for which the client certificate uploaded will be used.
+        /// </summary>
+        [Input("hostname", required: true)]
+        public string Hostname { get; set; } = null!;
+
         /// <summary>
         /// Identifier
         /// </summary>
@@ -47,6 +104,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetAuthenticatedOriginPullsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The hostname on the origin for which the client certificate uploaded will be used.
+        /// </summary>
+        [Input("hostname", required: true)]
+        public Input<string> Hostname { get; set; } = null!;
+
         /// <summary>
         /// Identifier
         /// </summary>
@@ -69,6 +132,7 @@ namespace Pulumi.Cloudflare
         public readonly string CertId;
         /// <summary>
         /// Status of the certificate or the association.
+        /// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         /// </summary>
         public readonly string CertStatus;
         /// <summary>
@@ -117,6 +181,7 @@ namespace Pulumi.Cloudflare
         public readonly string Signature;
         /// <summary>
         /// Status of the certificate or the association.
+        /// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         /// </summary>
         public readonly string Status;
         /// <summary>

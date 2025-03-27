@@ -11,10 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-<<<<<<< HEAD
-=======
 import java.lang.Double;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -84,8 +81,6 @@ public class AccountSubscription extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-<<<<<<< HEAD
-=======
      * The monetary unit in which pricing information is displayed.
      * 
      */
@@ -128,8 +123,8 @@ public class AccountSubscription extends com.pulumi.resources.CustomResource {
         return this.currentPeriodStart;
     }
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * How often the subscription is renewed automatically.
+     * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
      * 
      */
     @Export(name="frequency", refs={String.class}, tree="[0]")
@@ -137,14 +132,13 @@ public class AccountSubscription extends com.pulumi.resources.CustomResource {
 
     /**
      * @return How often the subscription is renewed automatically.
+     * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
      * 
      */
     public Output<Optional<String>> frequency() {
         return Codegen.optional(this.frequency);
     }
     /**
-<<<<<<< HEAD
-=======
      * The price of the subscription that will be billed, in US dollars.
      * 
      */
@@ -159,7 +153,6 @@ public class AccountSubscription extends com.pulumi.resources.CustomResource {
         return this.price;
     }
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The rate plan applied to the subscription.
      * 
      */
@@ -174,9 +167,8 @@ public class AccountSubscription extends com.pulumi.resources.CustomResource {
         return this.ratePlan;
     }
     /**
-<<<<<<< HEAD
-=======
      * The state that the subscription is in.
+     * Available values: &#34;Trial&#34;, &#34;Provisioned&#34;, &#34;Paid&#34;, &#34;AwaitingPayment&#34;, &#34;Cancelled&#34;, &#34;Failed&#34;, &#34;Expired&#34;.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
@@ -184,13 +176,13 @@ public class AccountSubscription extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The state that the subscription is in.
+     * Available values: &#34;Trial&#34;, &#34;Provisioned&#34;, &#34;Paid&#34;, &#34;AwaitingPayment&#34;, &#34;Cancelled&#34;, &#34;Failed&#34;, &#34;Expired&#34;.
      * 
      */
     public Output<String> state() {
         return this.state;
     }
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Subscription identifier tag.
      * 
      */

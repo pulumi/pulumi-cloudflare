@@ -66,6 +66,7 @@ type LookupListResult struct {
 	// The unique ID of the list.
 	Id string `pulumi:"id"`
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+	// Available values: "ip", "redirect", "hostname", "asn".
 	Kind string `pulumi:"kind"`
 	// The unique ID of the list.
 	ListId *string `pulumi:"listId"`
@@ -136,6 +137,7 @@ func (o LookupListResultOutput) Id() pulumi.StringOutput {
 }
 
 // The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+// Available values: "ip", "redirect", "hostname", "asn".
 func (o LookupListResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListResult) string { return v.Kind }).(pulumi.StringOutput)
 }

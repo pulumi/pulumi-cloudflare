@@ -69,10 +69,12 @@ export interface GetOriginCaCertificateResult {
     readonly id: string;
     /**
      * Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+     * Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
      */
     readonly requestType: string;
     /**
      * The number of days for which the certificate should be valid.
+     * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      */
     readonly requestedValidity: number;
 }

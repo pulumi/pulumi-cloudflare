@@ -33,6 +33,7 @@ public final class GetCertificatePacksPlainArgs extends com.pulumi.resources.Inv
 
     /**
      * Include Certificate Packs of all statuses, not just active ones.
+     * Available values: &#34;all&#34;.
      * 
      */
     @Import(name="status")
@@ -40,6 +41,7 @@ public final class GetCertificatePacksPlainArgs extends com.pulumi.resources.Inv
 
     /**
      * @return Include Certificate Packs of all statuses, not just active ones.
+     * Available values: &#34;all&#34;.
      * 
      */
     public Optional<String> status() {
@@ -100,6 +102,7 @@ public final class GetCertificatePacksPlainArgs extends com.pulumi.resources.Inv
 
         /**
          * @param status Include Certificate Packs of all statuses, not just active ones.
+         * Available values: &#34;all&#34;.
          * 
          * @return builder
          * 

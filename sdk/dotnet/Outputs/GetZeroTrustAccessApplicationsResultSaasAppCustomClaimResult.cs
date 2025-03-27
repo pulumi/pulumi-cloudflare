@@ -23,6 +23,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool Required;
         /// <summary>
         /// The scope of the claim.
+        /// Available values: "groups", "profile", "email", "openid".
         /// </summary>
         public readonly string Scope;
         public readonly Outputs.GetZeroTrustAccessApplicationsResultSaasAppCustomClaimSourceResult Source;

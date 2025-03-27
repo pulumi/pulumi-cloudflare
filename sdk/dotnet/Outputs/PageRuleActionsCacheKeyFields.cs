@@ -13,25 +13,10 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class PageRuleActionsCacheKeyFields
     {
-        /// <summary>
-        /// Controls what cookies go into Cache Key:
-        /// </summary>
         public readonly Outputs.PageRuleActionsCacheKeyFieldsCookie? Cookie;
-        /// <summary>
-        /// Controls what HTTP headers go into Cache Key:
-        /// </summary>
         public readonly Outputs.PageRuleActionsCacheKeyFieldsHeader? Header;
-        /// <summary>
-        /// Controls which Host header goes into Cache Key:
-        /// </summary>
         public readonly Outputs.PageRuleActionsCacheKeyFieldsHost? Host;
-        /// <summary>
-        /// Controls which URL query string parameters go into the Cache Key.
-        /// </summary>
         public readonly Outputs.PageRuleActionsCacheKeyFieldsQueryString? QueryString;
-        /// <summary>
-        /// Controls which end user-related features go into the Cache Key.
-        /// </summary>
         public readonly Outputs.PageRuleActionsCacheKeyFieldsUser? User;
 
         [OutputConstructor]

@@ -33,6 +33,7 @@ public final class CustomHostnameSslSettingsArgs extends com.pulumi.resources.Re
 
     /**
      * Whether or not Early Hints is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     @Import(name="earlyHints")
@@ -40,6 +41,7 @@ public final class CustomHostnameSslSettingsArgs extends com.pulumi.resources.Re
 
     /**
      * @return Whether or not Early Hints is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public Optional<Output<String>> earlyHints() {
@@ -48,6 +50,7 @@ public final class CustomHostnameSslSettingsArgs extends com.pulumi.resources.Re
 
     /**
      * Whether or not HTTP2 is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     @Import(name="http2")
@@ -55,6 +58,7 @@ public final class CustomHostnameSslSettingsArgs extends com.pulumi.resources.Re
 
     /**
      * @return Whether or not HTTP2 is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public Optional<Output<String>> http2() {
@@ -63,6 +67,7 @@ public final class CustomHostnameSslSettingsArgs extends com.pulumi.resources.Re
 
     /**
      * The minimum TLS version supported.
+     * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
      * 
      */
     @Import(name="minTlsVersion")
@@ -70,6 +75,7 @@ public final class CustomHostnameSslSettingsArgs extends com.pulumi.resources.Re
 
     /**
      * @return The minimum TLS version supported.
+     * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
      * 
      */
     public Optional<Output<String>> minTlsVersion() {
@@ -78,6 +84,7 @@ public final class CustomHostnameSslSettingsArgs extends com.pulumi.resources.Re
 
     /**
      * Whether or not TLS 1.3 is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     @Import(name="tls13")
@@ -85,6 +92,7 @@ public final class CustomHostnameSslSettingsArgs extends com.pulumi.resources.Re
 
     /**
      * @return Whether or not TLS 1.3 is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public Optional<Output<String>> tls13() {
@@ -152,6 +160,7 @@ public final class CustomHostnameSslSettingsArgs extends com.pulumi.resources.Re
 
         /**
          * @param earlyHints Whether or not Early Hints is enabled.
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 
@@ -163,6 +172,7 @@ public final class CustomHostnameSslSettingsArgs extends com.pulumi.resources.Re
 
         /**
          * @param earlyHints Whether or not Early Hints is enabled.
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 
@@ -173,6 +183,7 @@ public final class CustomHostnameSslSettingsArgs extends com.pulumi.resources.Re
 
         /**
          * @param http2 Whether or not HTTP2 is enabled.
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 
@@ -184,6 +195,7 @@ public final class CustomHostnameSslSettingsArgs extends com.pulumi.resources.Re
 
         /**
          * @param http2 Whether or not HTTP2 is enabled.
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 
@@ -194,6 +206,7 @@ public final class CustomHostnameSslSettingsArgs extends com.pulumi.resources.Re
 
         /**
          * @param minTlsVersion The minimum TLS version supported.
+         * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
          * 
          * @return builder
          * 
@@ -205,6 +218,7 @@ public final class CustomHostnameSslSettingsArgs extends com.pulumi.resources.Re
 
         /**
          * @param minTlsVersion The minimum TLS version supported.
+         * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
          * 
          * @return builder
          * 
@@ -215,6 +229,7 @@ public final class CustomHostnameSslSettingsArgs extends com.pulumi.resources.Re
 
         /**
          * @param tls13 Whether or not TLS 1.3 is enabled.
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 
@@ -226,6 +241,7 @@ public final class CustomHostnameSslSettingsArgs extends com.pulumi.resources.Re
 
         /**
          * @param tls13 Whether or not TLS 1.3 is enabled.
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 

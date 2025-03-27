@@ -215,6 +215,8 @@ class ZeroTrustAccessKeyConfiguration(pulumi.CustomResource):
             __props__.__dict__["key_rotation_interval_days"] = key_rotation_interval_days
             __props__.__dict__["days_until_next_rotation"] = None
             __props__.__dict__["last_key_rotation_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustAccessKeyConfiguration, __self__).__init__(
             'cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration',
             resource_name,

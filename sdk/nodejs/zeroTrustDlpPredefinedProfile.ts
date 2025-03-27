@@ -20,10 +20,7 @@ import * as utilities from "./utilities";
  *         id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  *         enabled: true,
  *     }],
-<<<<<<< HEAD
-=======
  *     aiContextEnabled: true,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  *     allowedMatchCount: 0,
  *     confidenceThreshold: "confidence_threshold",
  *     contextAwareness: {
@@ -71,10 +68,7 @@ export class ZeroTrustDlpPredefinedProfile extends pulumi.CustomResource {
     }
 
     public readonly accountId!: pulumi.Output<string>;
-<<<<<<< HEAD
-=======
     public readonly aiContextEnabled!: pulumi.Output<boolean | undefined>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public readonly allowedMatchCount!: pulumi.Output<number | undefined>;
     public readonly confidenceThreshold!: pulumi.Output<string | undefined>;
     /**
@@ -100,6 +94,9 @@ export class ZeroTrustDlpPredefinedProfile extends pulumi.CustomResource {
      */
     public /*out*/ readonly openAccess!: pulumi.Output<boolean>;
     public readonly profileId!: pulumi.Output<string>;
+    /**
+     * Available values: "custom".
+     */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
      * When the profile was lasted updated
@@ -120,10 +117,7 @@ export class ZeroTrustDlpPredefinedProfile extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustDlpPredefinedProfileState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-<<<<<<< HEAD
-=======
             resourceInputs["aiContextEnabled"] = state ? state.aiContextEnabled : undefined;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resourceInputs["allowedMatchCount"] = state ? state.allowedMatchCount : undefined;
             resourceInputs["confidenceThreshold"] = state ? state.confidenceThreshold : undefined;
             resourceInputs["contextAwareness"] = state ? state.contextAwareness : undefined;
@@ -148,10 +142,7 @@ export class ZeroTrustDlpPredefinedProfile extends pulumi.CustomResource {
                 throw new Error("Missing required property 'profileId'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-<<<<<<< HEAD
-=======
             resourceInputs["aiContextEnabled"] = args ? args.aiContextEnabled : undefined;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resourceInputs["allowedMatchCount"] = args ? args.allowedMatchCount : undefined;
             resourceInputs["confidenceThreshold"] = args ? args.confidenceThreshold : undefined;
             resourceInputs["contextAwareness"] = args ? args.contextAwareness : undefined;
@@ -166,6 +157,8 @@ export class ZeroTrustDlpPredefinedProfile extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustDlpPredefinedProfile.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -175,10 +168,7 @@ export class ZeroTrustDlpPredefinedProfile extends pulumi.CustomResource {
  */
 export interface ZeroTrustDlpPredefinedProfileState {
     accountId?: pulumi.Input<string>;
-<<<<<<< HEAD
-=======
     aiContextEnabled?: pulumi.Input<boolean>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     allowedMatchCount?: pulumi.Input<number>;
     confidenceThreshold?: pulumi.Input<string>;
     /**
@@ -204,6 +194,9 @@ export interface ZeroTrustDlpPredefinedProfileState {
      */
     openAccess?: pulumi.Input<boolean>;
     profileId?: pulumi.Input<string>;
+    /**
+     * Available values: "custom".
+     */
     type?: pulumi.Input<string>;
     /**
      * When the profile was lasted updated
@@ -216,10 +209,7 @@ export interface ZeroTrustDlpPredefinedProfileState {
  */
 export interface ZeroTrustDlpPredefinedProfileArgs {
     accountId: pulumi.Input<string>;
-<<<<<<< HEAD
-=======
     aiContextEnabled?: pulumi.Input<boolean>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     allowedMatchCount?: pulumi.Input<number>;
     confidenceThreshold?: pulumi.Input<string>;
     /**

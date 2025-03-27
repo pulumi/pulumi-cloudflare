@@ -22,6 +22,7 @@ public final class GetZeroTrustAccessApplicationsResultDestination {
     private String hostname;
     /**
      * @return The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+     * Available values: &#34;tcp&#34;, &#34;udp&#34;.
      * 
      */
     private String l4Protocol;
@@ -30,6 +31,10 @@ public final class GetZeroTrustAccessApplicationsResultDestination {
      * 
      */
     private String portRange;
+    /**
+     * @return Available values: &#34;public&#34;.
+     * 
+     */
     private String type;
     /**
      * @return The URI of the destination. Public destinations&#39; URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
@@ -59,6 +64,7 @@ public final class GetZeroTrustAccessApplicationsResultDestination {
     }
     /**
      * @return The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+     * Available values: &#34;tcp&#34;, &#34;udp&#34;.
      * 
      */
     public String l4Protocol() {
@@ -71,6 +77,10 @@ public final class GetZeroTrustAccessApplicationsResultDestination {
     public String portRange() {
         return this.portRange;
     }
+    /**
+     * @return Available values: &#34;public&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }

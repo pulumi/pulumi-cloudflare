@@ -76,6 +76,16 @@ func NewZeroTrustAccessServiceToken(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/accessServiceToken:AccessServiceToken"),
+		},
+	})
+	opts = append(opts, aliases)
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"clientSecret",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustAccessServiceToken
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken", name, args, &resource, opts...)

@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 public final class AccountMemberPolicy {
     /**
      * @return Allow or deny operations against the resources.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;.
      * 
      */
     private String access;
@@ -39,6 +40,7 @@ public final class AccountMemberPolicy {
     private AccountMemberPolicy() {}
     /**
      * @return Allow or deny operations against the resources.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;.
      * 
      */
     public String access() {

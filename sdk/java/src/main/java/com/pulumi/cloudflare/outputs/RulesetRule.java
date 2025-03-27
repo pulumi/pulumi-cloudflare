@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
 public final class RulesetRule {
     /**
      * @return The action to perform when the rule matches.
+     * Available values: &#34;block&#34;.
      * 
      */
     private @Nullable String action;
@@ -76,6 +77,7 @@ public final class RulesetRule {
     private RulesetRule() {}
     /**
      * @return The action to perform when the rule matches.
+     * Available values: &#34;block&#34;.
      * 
      */
     public Optional<String> action() {

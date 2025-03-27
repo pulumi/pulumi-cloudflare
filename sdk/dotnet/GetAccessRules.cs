@@ -122,12 +122,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The direction used to sort returned rules.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
 
         /// <summary>
         /// When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+        /// Available values: "any", "all".
         /// </summary>
         [Input("match")]
         public string? Match { get; set; }
@@ -140,6 +142,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The action to apply to a matched request.
+        /// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         /// </summary>
         [Input("mode")]
         public string? Mode { get; set; }
@@ -153,6 +156,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The field used to sort returned rules.
+        /// Available values: "configuration.target", "configuration.value", "mode".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -182,12 +186,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The direction used to sort returned rules.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
         /// When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+        /// Available values: "any", "all".
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -200,6 +206,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The action to apply to a matched request.
+        /// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -213,6 +220,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The field used to sort returned rules.
+        /// Available values: "configuration.target", "configuration.value", "mode".
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
@@ -240,6 +248,7 @@ namespace Pulumi.Cloudflare
         public readonly Outputs.GetAccessRulesConfigurationResult? Configuration;
         /// <summary>
         /// The direction used to sort returned rules.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
@@ -248,6 +257,7 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         /// <summary>
         /// When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+        /// Available values: "any", "all".
         /// </summary>
         public readonly string Match;
         /// <summary>
@@ -256,6 +266,7 @@ namespace Pulumi.Cloudflare
         public readonly int? MaxItems;
         /// <summary>
         /// The action to apply to a matched request.
+        /// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         /// </summary>
         public readonly string? Mode;
         /// <summary>
@@ -265,6 +276,7 @@ namespace Pulumi.Cloudflare
         public readonly string? Notes;
         /// <summary>
         /// The field used to sort returned rules.
+        /// Available values: "configuration.target", "configuration.value", "mode".
         /// </summary>
         public readonly string? Order;
         /// <summary>

@@ -12,6 +12,10 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustDlpDatasetsResultUpload {
     private Integer numCells;
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
     private String status;
     private Integer version;
 
@@ -19,6 +23,10 @@ public final class GetZeroTrustDlpDatasetsResultUpload {
     public Integer numCells() {
         return this.numCells;
     }
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
     public String status() {
         return this.status;
     }

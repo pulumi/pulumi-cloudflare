@@ -52,6 +52,9 @@ export interface GetZeroTrustDlpEntryResult {
     readonly pattern: outputs.GetZeroTrustDlpEntryPattern;
     readonly profileId: string;
     readonly secret: boolean;
+    /**
+     * Available values: "custom".
+     */
     readonly type: string;
     readonly updatedAt: string;
     readonly wordList: string;

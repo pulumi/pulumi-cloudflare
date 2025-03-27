@@ -38,13 +38,8 @@ export class CloudConnectorRules extends pulumi.CustomResource {
     }
 
     /**
-<<<<<<< HEAD
-     * List of Cloud Connector rules
-     */
-    public readonly rules!: pulumi.Output<outputs.CloudConnectorRulesRule[]>;
-    /**
-=======
      * Cloud Provider type
+     * Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
      */
     public /*out*/ readonly cloudProvider!: pulumi.Output<string>;
     public /*out*/ readonly description!: pulumi.Output<string>;
@@ -59,7 +54,6 @@ export class CloudConnectorRules extends pulumi.CustomResource {
      */
     public readonly rules!: pulumi.Output<outputs.CloudConnectorRulesRule[]>;
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
@@ -86,9 +80,6 @@ export class CloudConnectorRules extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as CloudConnectorRulesArgs | undefined;
-            if ((!args || args.rules === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'rules'");
-            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
@@ -110,9 +101,8 @@ export class CloudConnectorRules extends pulumi.CustomResource {
  */
 export interface CloudConnectorRulesState {
     /**
-<<<<<<< HEAD
-=======
      * Cloud Provider type
+     * Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
      */
     cloudProvider?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
@@ -123,7 +113,6 @@ export interface CloudConnectorRulesState {
      */
     parameters?: pulumi.Input<inputs.CloudConnectorRulesParameters>;
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * List of Cloud Connector rules
      */
     rules?: pulumi.Input<pulumi.Input<inputs.CloudConnectorRulesRule>[]>;
@@ -140,7 +129,7 @@ export interface CloudConnectorRulesArgs {
     /**
      * List of Cloud Connector rules
      */
-    rules: pulumi.Input<pulumi.Input<inputs.CloudConnectorRulesRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.CloudConnectorRulesRule>[]>;
     /**
      * Identifier
      */

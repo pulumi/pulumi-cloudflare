@@ -348,6 +348,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Usage model for the Worker invocations.
+     * Available values: &#34;standard&#34;.
      * 
      */
     @Import(name="usageModel")
@@ -355,6 +356,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Usage model for the Worker invocations.
+     * Available values: &#34;standard&#34;.
      * 
      */
     public Optional<Output<String>> usageModel() {
@@ -899,6 +901,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param usageModel Usage model for the Worker invocations.
+         * Available values: &#34;standard&#34;.
          * 
          * @return builder
          * 
@@ -910,6 +913,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param usageModel Usage model for the Worker invocations.
+         * Available values: &#34;standard&#34;.
          * 
          * @return builder
          * 

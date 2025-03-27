@@ -24,6 +24,7 @@ class ArgoTieredCachingArgs:
         """
         The set of arguments for constructing a ArgoTieredCaching resource.
         :param pulumi.Input[str] value: Enables Tiered Caching.
+               Available values: "on", "off".
         :param pulumi.Input[str] zone_id: Identifier
         """
         pulumi.set(__self__, "value", value)
@@ -34,6 +35,7 @@ class ArgoTieredCachingArgs:
     def value(self) -> pulumi.Input[str]:
         """
         Enables Tiered Caching.
+        Available values: "on", "off".
         """
         return pulumi.get(self, "value")
 
@@ -66,6 +68,7 @@ class _ArgoTieredCachingState:
         :param pulumi.Input[bool] editable: Whether the setting is editable
         :param pulumi.Input[str] modified_on: Last time this setting was modified.
         :param pulumi.Input[str] value: Enables Tiered Caching.
+               Available values: "on", "off".
         :param pulumi.Input[str] zone_id: Identifier
         """
         if editable is not None:
@@ -106,6 +109,7 @@ class _ArgoTieredCachingState:
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         Enables Tiered Caching.
+        Available values: "on", "off".
         """
         return pulumi.get(self, "value")
 
@@ -155,6 +159,7 @@ class ArgoTieredCaching(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] value: Enables Tiered Caching.
+               Available values: "on", "off".
         :param pulumi.Input[str] zone_id: Identifier
         """
         ...
@@ -239,6 +244,7 @@ class ArgoTieredCaching(pulumi.CustomResource):
         :param pulumi.Input[bool] editable: Whether the setting is editable
         :param pulumi.Input[str] modified_on: Last time this setting was modified.
         :param pulumi.Input[str] value: Enables Tiered Caching.
+               Available values: "on", "off".
         :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -272,6 +278,7 @@ class ArgoTieredCaching(pulumi.CustomResource):
     def value(self) -> pulumi.Output[str]:
         """
         Enables Tiered Caching.
+        Available values: "on", "off".
         """
         return pulumi.get(self, "value")
 

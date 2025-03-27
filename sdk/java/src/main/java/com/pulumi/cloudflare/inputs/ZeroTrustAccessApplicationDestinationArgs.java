@@ -47,6 +47,7 @@ public final class ZeroTrustAccessApplicationDestinationArgs extends com.pulumi.
 
     /**
      * The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+     * Available values: &#34;tcp&#34;, &#34;udp&#34;.
      * 
      */
     @Import(name="l4Protocol")
@@ -54,6 +55,7 @@ public final class ZeroTrustAccessApplicationDestinationArgs extends com.pulumi.
 
     /**
      * @return The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+     * Available values: &#34;tcp&#34;, &#34;udp&#34;.
      * 
      */
     public Optional<Output<String>> l4Protocol() {
@@ -75,9 +77,17 @@ public final class ZeroTrustAccessApplicationDestinationArgs extends com.pulumi.
         return Optional.ofNullable(this.portRange);
     }
 
+    /**
+     * Available values: &#34;public&#34;.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return Available values: &#34;public&#34;.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -186,6 +196,7 @@ public final class ZeroTrustAccessApplicationDestinationArgs extends com.pulumi.
 
         /**
          * @param l4Protocol The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+         * Available values: &#34;tcp&#34;, &#34;udp&#34;.
          * 
          * @return builder
          * 
@@ -197,6 +208,7 @@ public final class ZeroTrustAccessApplicationDestinationArgs extends com.pulumi.
 
         /**
          * @param l4Protocol The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+         * Available values: &#34;tcp&#34;, &#34;udp&#34;.
          * 
          * @return builder
          * 
@@ -226,11 +238,23 @@ public final class ZeroTrustAccessApplicationDestinationArgs extends com.pulumi.
             return portRange(Output.of(portRange));
         }
 
+        /**
+         * @param type Available values: &#34;public&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Available values: &#34;public&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

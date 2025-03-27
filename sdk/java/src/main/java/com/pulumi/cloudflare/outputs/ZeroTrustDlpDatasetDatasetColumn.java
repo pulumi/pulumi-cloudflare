@@ -15,6 +15,10 @@ public final class ZeroTrustDlpDatasetDatasetColumn {
     private @Nullable String entryId;
     private @Nullable String headerName;
     private @Nullable Integer numCells;
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
     private @Nullable String uploadStatus;
 
     private ZeroTrustDlpDatasetDatasetColumn() {}
@@ -27,6 +31,10 @@ public final class ZeroTrustDlpDatasetDatasetColumn {
     public Optional<Integer> numCells() {
         return Optional.ofNullable(this.numCells);
     }
+    /**
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * 
+     */
     public Optional<String> uploadStatus() {
         return Optional.ofNullable(this.uploadStatus);
     }

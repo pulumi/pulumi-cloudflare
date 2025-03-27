@@ -19,6 +19,7 @@ type AuthenticatedOriginPulls struct {
 	// Identifier
 	CertId pulumi.StringOutput `pulumi:"certId"`
 	// Status of the certificate or the association.
+	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 	CertStatus pulumi.StringOutput `pulumi:"certStatus"`
 	// The time when the certificate was updated.
 	CertUpdatedAt pulumi.StringOutput `pulumi:"certUpdatedAt"`
@@ -37,16 +38,14 @@ type AuthenticatedOriginPulls struct {
 	Hostname pulumi.StringPtrOutput `pulumi:"hostname"`
 	// The certificate authority that issued the certificate.
 	Issuer pulumi.StringOutput `pulumi:"issuer"`
-<<<<<<< HEAD
-=======
 	// The hostname certificate's private key.
 	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The serial number on the uploaded certificate.
 	SerialNumber pulumi.StringOutput `pulumi:"serialNumber"`
 	// The type of hash used for the certificate.
 	Signature pulumi.StringOutput `pulumi:"signature"`
 	// Status of the certificate or the association.
+	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The time when the certificate was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -67,6 +66,10 @@ func NewAuthenticatedOriginPulls(ctx *pulumi.Context,
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"privateKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AuthenticatedOriginPulls
 	err := ctx.RegisterResource("cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls", name, args, &resource, opts...)
@@ -93,6 +96,7 @@ type authenticatedOriginPullsState struct {
 	// Identifier
 	CertId *string `pulumi:"certId"`
 	// Status of the certificate or the association.
+	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 	CertStatus *string `pulumi:"certStatus"`
 	// The time when the certificate was updated.
 	CertUpdatedAt *string `pulumi:"certUpdatedAt"`
@@ -111,16 +115,14 @@ type authenticatedOriginPullsState struct {
 	Hostname *string `pulumi:"hostname"`
 	// The certificate authority that issued the certificate.
 	Issuer *string `pulumi:"issuer"`
-<<<<<<< HEAD
-=======
 	// The hostname certificate's private key.
 	PrivateKey *string `pulumi:"privateKey"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The serial number on the uploaded certificate.
 	SerialNumber *string `pulumi:"serialNumber"`
 	// The type of hash used for the certificate.
 	Signature *string `pulumi:"signature"`
 	// Status of the certificate or the association.
+	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 	Status *string `pulumi:"status"`
 	// The time when the certificate was updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -132,6 +134,7 @@ type AuthenticatedOriginPullsState struct {
 	// Identifier
 	CertId pulumi.StringPtrInput
 	// Status of the certificate or the association.
+	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 	CertStatus pulumi.StringPtrInput
 	// The time when the certificate was updated.
 	CertUpdatedAt pulumi.StringPtrInput
@@ -150,16 +153,14 @@ type AuthenticatedOriginPullsState struct {
 	Hostname pulumi.StringPtrInput
 	// The certificate authority that issued the certificate.
 	Issuer pulumi.StringPtrInput
-<<<<<<< HEAD
-=======
 	// The hostname certificate's private key.
 	PrivateKey pulumi.StringPtrInput
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// The serial number on the uploaded certificate.
 	SerialNumber pulumi.StringPtrInput
 	// The type of hash used for the certificate.
 	Signature pulumi.StringPtrInput
 	// Status of the certificate or the association.
+	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 	Status pulumi.StringPtrInput
 	// The time when the certificate was updated.
 	UpdatedAt pulumi.StringPtrInput
@@ -281,6 +282,7 @@ func (o AuthenticatedOriginPullsOutput) CertId() pulumi.StringOutput {
 }
 
 // Status of the certificate or the association.
+// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 func (o AuthenticatedOriginPullsOutput) CertStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.CertStatus }).(pulumi.StringOutput)
 }
@@ -329,14 +331,11 @@ func (o AuthenticatedOriginPullsOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.Issuer }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-=======
 // The hostname certificate's private key.
 func (o AuthenticatedOriginPullsOutput) PrivateKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.PrivateKey }).(pulumi.StringOutput)
 }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // The serial number on the uploaded certificate.
 func (o AuthenticatedOriginPullsOutput) SerialNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.SerialNumber }).(pulumi.StringOutput)
@@ -348,6 +347,7 @@ func (o AuthenticatedOriginPullsOutput) Signature() pulumi.StringOutput {
 }
 
 // Status of the certificate or the association.
+// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
 func (o AuthenticatedOriginPullsOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

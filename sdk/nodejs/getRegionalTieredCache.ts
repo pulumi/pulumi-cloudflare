@@ -43,6 +43,7 @@ export interface GetRegionalTieredCacheResult {
     readonly editable: boolean;
     /**
      * ID of the zone setting.
+     * Available values: "tcRegional".
      */
     readonly id: string;
     /**
@@ -51,6 +52,7 @@ export interface GetRegionalTieredCacheResult {
     readonly modifiedOn: string;
     /**
      * The value of the feature
+     * Available values: "on", "off".
      */
     readonly value: string;
     /**

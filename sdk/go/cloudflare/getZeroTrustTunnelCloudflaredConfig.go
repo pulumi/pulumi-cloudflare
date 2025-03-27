@@ -12,14 +12,47 @@ import (
 )
 
 // ## Example Usage
-func LookupZeroTrustTunnelCloudflaredConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupZeroTrustTunnelCloudflaredConfigResult, error) {
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.LookupZeroTrustTunnelCloudflaredConfig(ctx, &cloudflare.LookupZeroTrustTunnelCloudflaredConfigArgs{
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				TunnelId:  "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+func LookupZeroTrustTunnelCloudflaredConfig(ctx *pulumi.Context, args *LookupZeroTrustTunnelCloudflaredConfigArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustTunnelCloudflaredConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustTunnelCloudflaredConfigResult
-	err := ctx.Invoke("cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig", nil, &rv, opts...)
+	err := ctx.Invoke("cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
+}
+
+// A collection of arguments for invoking getZeroTrustTunnelCloudflaredConfig.
+type LookupZeroTrustTunnelCloudflaredConfigArgs struct {
+	// Identifier
+	AccountId string `pulumi:"accountId"`
+	// UUID of the tunnel.
+	TunnelId string `pulumi:"tunnelId"`
 }
 
 // A collection of values returned by getZeroTrustTunnelCloudflaredConfig.
@@ -32,6 +65,7 @@ type LookupZeroTrustTunnelCloudflaredConfigResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+	// Available values: "local", "cloudflare".
 	Source string `pulumi:"source"`
 	// UUID of the tunnel.
 	TunnelId string `pulumi:"tunnelId"`
@@ -39,11 +73,25 @@ type LookupZeroTrustTunnelCloudflaredConfigResult struct {
 	Version int `pulumi:"version"`
 }
 
-func LookupZeroTrustTunnelCloudflaredConfigOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupZeroTrustTunnelCloudflaredConfigResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupZeroTrustTunnelCloudflaredConfigResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig", nil, LookupZeroTrustTunnelCloudflaredConfigResultOutput{}, options).(LookupZeroTrustTunnelCloudflaredConfigResultOutput), nil
-	}).(LookupZeroTrustTunnelCloudflaredConfigResultOutput)
+func LookupZeroTrustTunnelCloudflaredConfigOutput(ctx *pulumi.Context, args LookupZeroTrustTunnelCloudflaredConfigOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustTunnelCloudflaredConfigResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupZeroTrustTunnelCloudflaredConfigResultOutput, error) {
+			args := v.(LookupZeroTrustTunnelCloudflaredConfigArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig", args, LookupZeroTrustTunnelCloudflaredConfigResultOutput{}, options).(LookupZeroTrustTunnelCloudflaredConfigResultOutput), nil
+		}).(LookupZeroTrustTunnelCloudflaredConfigResultOutput)
+}
+
+// A collection of arguments for invoking getZeroTrustTunnelCloudflaredConfig.
+type LookupZeroTrustTunnelCloudflaredConfigOutputArgs struct {
+	// Identifier
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// UUID of the tunnel.
+	TunnelId pulumi.StringInput `pulumi:"tunnelId"`
+}
+
+func (LookupZeroTrustTunnelCloudflaredConfigOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupZeroTrustTunnelCloudflaredConfigArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getZeroTrustTunnelCloudflaredConfig.
@@ -83,6 +131,7 @@ func (o LookupZeroTrustTunnelCloudflaredConfigResultOutput) Id() pulumi.StringOu
 }
 
 // Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+// Available values: "local", "cloudflare".
 func (o LookupZeroTrustTunnelCloudflaredConfigResultOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredConfigResult) string { return v.Source }).(pulumi.StringOutput)
 }

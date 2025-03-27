@@ -47,6 +47,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double Port;
         /// <summary>
         /// Status of the Keyless SSL.
+        /// Available values: "active", "deleted".
         /// </summary>
         public readonly string Status;
         /// <summary>

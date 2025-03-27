@@ -82,6 +82,7 @@ class GetPageShieldConnectionsListResult:
     def direction(self) -> Optional[str]:
         """
         The direction used to sort returned connections.
+        Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
 
@@ -106,6 +107,7 @@ class GetPageShieldConnectionsListResult:
     def export(self) -> Optional[str]:
         """
         Export the list of connections as a file.
+        Available values: "csv".
         """
         return pulumi.get(self, "export")
 
@@ -242,9 +244,11 @@ def get_page_shield_connections_list(direction: Optional[str] = None,
 
 
     :param str direction: The direction used to sort returned connections.
+           Available values: "asc", "desc".
     :param bool exclude_cdn_cgi: When true, excludes connections seen in a `/cdn-cgi` path from the returned connections. The default value is true.
     :param str exclude_urls: Excludes connections whose URL contains one of the URL-encoded URLs separated by commas.
     :param str export: Export the list of connections as a file.
+           Available values: "csv".
     :param str hosts: Includes connections that match one or more URL-encoded hostnames separated by commas.
     :param str zone_id: Identifier
     """
@@ -322,9 +326,11 @@ def get_page_shield_connections_list_output(direction: Optional[pulumi.Input[Opt
 
 
     :param str direction: The direction used to sort returned connections.
+           Available values: "asc", "desc".
     :param bool exclude_cdn_cgi: When true, excludes connections seen in a `/cdn-cgi` path from the returned connections. The default value is true.
     :param str exclude_urls: Excludes connections whose URL contains one of the URL-encoded URLs separated by commas.
     :param str export: Export the list of connections as a file.
+           Available values: "csv".
     :param str hosts: Includes connections that match one or more URL-encoded hostnames separated by commas.
     :param str zone_id: Identifier
     """

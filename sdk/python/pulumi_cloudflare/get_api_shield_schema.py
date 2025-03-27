@@ -73,6 +73,7 @@ class GetApiShieldSchemaResult:
     def kind(self) -> str:
         """
         Kind of schema
+        Available values: "openapi_v3".
         """
         return pulumi.get(self, "kind")
 
@@ -140,10 +141,20 @@ class AwaitableGetApiShieldSchemaResult(GetApiShieldSchemaResult):
 
 
 def get_api_shield_schema(omit_source: Optional[bool] = None,
+                          schema_id: Optional[str] = None,
                           zone_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiShieldSchemaResult:
     """
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_api_shield_schema = cloudflare.get_api_shield_schema(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+        schema_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        omit_source=True)
+    ```
 
 
     :param bool omit_source: Omit the source-files of schemas and only retrieve their meta-data.
@@ -151,6 +162,7 @@ def get_api_shield_schema(omit_source: Optional[bool] = None,
     """
     __args__ = dict()
     __args__['omitSource'] = omit_source
+    __args__['schemaId'] = schema_id
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getApiShieldSchema:getApiShieldSchema', __args__, opts=opts, typ=GetApiShieldSchemaResult).value
@@ -166,10 +178,20 @@ def get_api_shield_schema(omit_source: Optional[bool] = None,
         validation_enabled=pulumi.get(__ret__, 'validation_enabled'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_api_shield_schema_output(omit_source: Optional[pulumi.Input[Optional[bool]]] = None,
+                                 schema_id: Optional[pulumi.Input[str]] = None,
                                  zone_id: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiShieldSchemaResult]:
     """
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_api_shield_schema = cloudflare.get_api_shield_schema(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+        schema_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        omit_source=True)
+    ```
 
 
     :param bool omit_source: Omit the source-files of schemas and only retrieve their meta-data.
@@ -177,6 +199,7 @@ def get_api_shield_schema_output(omit_source: Optional[pulumi.Input[Optional[boo
     """
     __args__ = dict()
     __args__['omitSource'] = omit_source
+    __args__['schemaId'] = schema_id
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getApiShieldSchema:getApiShieldSchema', __args__, opts=opts, typ=GetApiShieldSchemaResult)

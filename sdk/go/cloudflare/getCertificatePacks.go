@@ -52,6 +52,7 @@ type LookupCertificatePacksArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Include Certificate Packs of all statuses, not just active ones.
+	// Available values: "all".
 	Status *string `pulumi:"status"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -66,6 +67,7 @@ type LookupCertificatePacksResult struct {
 	// The items returned by the data source
 	Results []GetCertificatePacksResult `pulumi:"results"`
 	// Include Certificate Packs of all statuses, not just active ones.
+	// Available values: "all".
 	Status *string `pulumi:"status"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -85,6 +87,7 @@ type LookupCertificatePacksOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Include Certificate Packs of all statuses, not just active ones.
+	// Available values: "all".
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Identifier
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -125,6 +128,7 @@ func (o LookupCertificatePacksResultOutput) Results() GetCertificatePacksResultA
 }
 
 // Include Certificate Packs of all statuses, not just active ones.
+// Available values: "all".
 func (o LookupCertificatePacksResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCertificatePacksResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

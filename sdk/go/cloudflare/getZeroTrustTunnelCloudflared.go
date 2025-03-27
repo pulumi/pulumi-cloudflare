@@ -82,8 +82,10 @@ type LookupZeroTrustTunnelCloudflaredResult struct {
 	// If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
 	RemoteConfig bool `pulumi:"remoteConfig"`
 	// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+	// Available values: "inactive", "degraded", "healthy", "down".
 	Status string `pulumi:"status"`
 	// The type of tunnel.
+	// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
 	TunType string `pulumi:"tunType"`
 	// UUID of the tunnel.
 	TunnelId *string `pulumi:"tunnelId"`
@@ -188,11 +190,13 @@ func (o LookupZeroTrustTunnelCloudflaredResultOutput) RemoteConfig() pulumi.Bool
 }
 
 // The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+// Available values: "inactive", "degraded", "healthy", "down".
 func (o LookupZeroTrustTunnelCloudflaredResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // The type of tunnel.
+// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
 func (o LookupZeroTrustTunnelCloudflaredResultOutput) TunType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) string { return v.TunType }).(pulumi.StringOutput)
 }

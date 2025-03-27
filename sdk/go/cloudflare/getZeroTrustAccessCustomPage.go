@@ -71,6 +71,7 @@ type LookupZeroTrustAccessCustomPageResult struct {
 	// Custom page name.
 	Name string `pulumi:"name"`
 	// Custom page type.
+	// Available values: "identityDenied", "forbidden".
 	Type string `pulumi:"type"`
 	// UUID
 	Uid       string `pulumi:"uid"`
@@ -148,6 +149,7 @@ func (o LookupZeroTrustAccessCustomPageResultOutput) Name() pulumi.StringOutput 
 }
 
 // Custom page type.
+// Available values: "identityDenied", "forbidden".
 func (o LookupZeroTrustAccessCustomPageResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) string { return v.Type }).(pulumi.StringOutput)
 }

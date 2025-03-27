@@ -47,10 +47,12 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetWorkersScriptsResultPlacementResult Placement;
         /// <summary>
         /// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        /// Available values: "smart".
         /// </summary>
         public readonly string PlacementMode;
         /// <summary>
         /// Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        /// Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
         /// </summary>
         public readonly string PlacementStatus;
         /// <summary>
@@ -59,6 +61,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<Outputs.GetWorkersScriptsResultTailConsumerResult> TailConsumers;
         /// <summary>
         /// Usage model for the Worker invocations.
+        /// Available values: "standard".
         /// </summary>
         public readonly string UsageModel;
 

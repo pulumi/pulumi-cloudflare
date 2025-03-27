@@ -65,6 +65,7 @@ export class ZeroTrustTunnelCloudflared extends pulumi.CustomResource {
     public /*out*/ readonly accountTag!: pulumi.Output<string>;
     /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+     * Available values: "local", "cloudflare".
      */
     public readonly configSrc!: pulumi.Output<string>;
     /**
@@ -101,10 +102,12 @@ export class ZeroTrustTunnelCloudflared extends pulumi.CustomResource {
     public /*out*/ readonly remoteConfig!: pulumi.Output<boolean>;
     /**
      * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+     * Available values: "inactive", "degraded", "healthy", "down".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The type of tunnel.
+     * Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
      */
     public /*out*/ readonly tunType!: pulumi.Output<string>;
     /**
@@ -150,7 +153,7 @@ export class ZeroTrustTunnelCloudflared extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["configSrc"] = args ? args.configSrc : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tunnelSecret"] = args ? args.tunnelSecret : undefined;
+            resourceInputs["tunnelSecret"] = args?.tunnelSecret ? pulumi.secret(args.tunnelSecret) : undefined;
             resourceInputs["accountTag"] = undefined /*out*/;
             resourceInputs["connections"] = undefined /*out*/;
             resourceInputs["connsActiveAt"] = undefined /*out*/;
@@ -163,6 +166,10 @@ export class ZeroTrustTunnelCloudflared extends pulumi.CustomResource {
             resourceInputs["tunType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/tunnel:Tunnel" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
+        const secretOpts = { additionalSecretOutputs: ["tunnelSecret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ZeroTrustTunnelCloudflared.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -181,6 +188,7 @@ export interface ZeroTrustTunnelCloudflaredState {
     accountTag?: pulumi.Input<string>;
     /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+     * Available values: "local", "cloudflare".
      */
     configSrc?: pulumi.Input<string>;
     /**
@@ -217,10 +225,12 @@ export interface ZeroTrustTunnelCloudflaredState {
     remoteConfig?: pulumi.Input<boolean>;
     /**
      * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+     * Available values: "inactive", "degraded", "healthy", "down".
      */
     status?: pulumi.Input<string>;
     /**
      * The type of tunnel.
+     * Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
      */
     tunType?: pulumi.Input<string>;
     /**
@@ -239,6 +249,7 @@ export interface ZeroTrustTunnelCloudflaredArgs {
     accountId: pulumi.Input<string>;
     /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+     * Available values: "local", "cloudflare".
      */
     configSrc?: pulumi.Input<string>;
     /**

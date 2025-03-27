@@ -32,6 +32,7 @@ class AccountMemberArgs:
         :param pulumi.Input[str] email: The contact email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input['AccountMemberPolicyArgs']]] policies: Array of policies associated with this member.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Array of roles associated with this member.
+        :param pulumi.Input[str] status: Available values: "accepted", "pending".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "email", email)
@@ -93,6 +94,9 @@ class AccountMemberArgs:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Available values: "accepted", "pending".
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -115,6 +119,7 @@ class _AccountMemberState:
         :param pulumi.Input[str] email: The contact email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input['AccountMemberPolicyArgs']]] policies: Array of policies associated with this member.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Array of roles associated with this member.
+        :param pulumi.Input[str] status: Available values: "accepted", "pending".
         :param pulumi.Input['AccountMemberUserArgs'] user: Details of the user associated to the membership.
         """
         if account_id is not None:
@@ -181,6 +186,9 @@ class _AccountMemberState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Available values: "accepted", "pending".
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -237,6 +245,7 @@ class AccountMember(pulumi.CustomResource):
         :param pulumi.Input[str] email: The contact email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccountMemberPolicyArgs', 'AccountMemberPolicyArgsDict']]]] policies: Array of policies associated with this member.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Array of roles associated with this member.
+        :param pulumi.Input[str] status: Available values: "accepted", "pending".
         """
         ...
     @overload
@@ -330,6 +339,7 @@ class AccountMember(pulumi.CustomResource):
         :param pulumi.Input[str] email: The contact email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccountMemberPolicyArgs', 'AccountMemberPolicyArgsDict']]]] policies: Array of policies associated with this member.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Array of roles associated with this member.
+        :param pulumi.Input[str] status: Available values: "accepted", "pending".
         :param pulumi.Input[Union['AccountMemberUserArgs', 'AccountMemberUserArgsDict']] user: Details of the user associated to the membership.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -379,6 +389,9 @@ class AccountMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        Available values: "accepted", "pending".
+        """
         return pulumi.get(self, "status")
 
     @property

@@ -50,6 +50,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Compliance Status
+        /// Available values: "compliant", "noncompliant", "unknown".
         /// </summary>
         [Input("complianceStatus")]
         public Input<string>? ComplianceStatus { get; set; }
@@ -62,6 +63,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Count Operator
+        /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         [Input("countOperator")]
         public Input<string>? CountOperator { get; set; }
@@ -137,24 +139,28 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Network status of device.
+        /// Available values: "connected", "disconnected", "disconnecting", "connecting".
         /// </summary>
         [Input("networkStatus")]
         public Input<string>? NetworkStatus { get; set; }
 
         /// <summary>
         /// Operating system
+        /// Available values: "windows", "linux", "mac".
         /// </summary>
         [Input("operatingSystem")]
         public Input<string>? OperatingSystem { get; set; }
 
         /// <summary>
         /// Agent operational state.
+        /// Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
         /// </summary>
         [Input("operationalState")]
         public Input<string>? OperationalState { get; set; }
 
         /// <summary>
         /// operator
+        /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
@@ -203,6 +209,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// For more details on risk level, refer to the Tanium documentation.
+        /// Available values: "low", "medium", "high", "critical".
         /// </summary>
         [Input("riskLevel")]
         public Input<string>? RiskLevel { get; set; }
@@ -215,6 +222,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Score Operator
+        /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         [Input("scoreOperator")]
         public Input<string>? ScoreOperator { get; set; }
@@ -233,6 +241,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// For more details on state, please refer to the Crowdstrike documentation.
+        /// Available values: "online", "offline", "unknown".
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -257,6 +266,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Version Operator
+        /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         [Input("versionOperator")]
         public Input<string>? VersionOperator { get; set; }

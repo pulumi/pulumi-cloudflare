@@ -84,6 +84,7 @@ class GetZeroTrustTunnelCloudflaredConfigResult:
     def source(self) -> str:
         """
         Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        Available values: "local", "cloudflare".
         """
         return pulumi.get(self, "source")
 
@@ -119,11 +120,27 @@ class AwaitableGetZeroTrustTunnelCloudflaredConfigResult(GetZeroTrustTunnelCloud
             version=self.version)
 
 
-def get_zero_trust_tunnel_cloudflared_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustTunnelCloudflaredConfigResult:
+def get_zero_trust_tunnel_cloudflared_config(account_id: Optional[str] = None,
+                                             tunnel_id: Optional[str] = None,
+                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustTunnelCloudflaredConfigResult:
     """
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_zero_trust_tunnel_cloudflared_config = cloudflare.get_zero_trust_tunnel_cloudflared_config(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+    ```
+
+
+    :param str account_id: Identifier
+    :param str tunnel_id: UUID of the tunnel.
     """
     __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['tunnelId'] = tunnel_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig', __args__, opts=opts, typ=GetZeroTrustTunnelCloudflaredConfigResult).value
 
@@ -135,11 +152,27 @@ def get_zero_trust_tunnel_cloudflared_config(opts: Optional[pulumi.InvokeOptions
         source=pulumi.get(__ret__, 'source'),
         tunnel_id=pulumi.get(__ret__, 'tunnel_id'),
         version=pulumi.get(__ret__, 'version'))
-def get_zero_trust_tunnel_cloudflared_config_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelCloudflaredConfigResult]:
+def get_zero_trust_tunnel_cloudflared_config_output(account_id: Optional[pulumi.Input[str]] = None,
+                                                    tunnel_id: Optional[pulumi.Input[str]] = None,
+                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelCloudflaredConfigResult]:
     """
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_zero_trust_tunnel_cloudflared_config = cloudflare.get_zero_trust_tunnel_cloudflared_config(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+    ```
+
+
+    :param str account_id: Identifier
+    :param str tunnel_id: UUID of the tunnel.
     """
     __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['tunnelId'] = tunnel_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig', __args__, opts=opts, typ=GetZeroTrustTunnelCloudflaredConfigResult)
     return __ret__.apply(lambda __response__: GetZeroTrustTunnelCloudflaredConfigResult(

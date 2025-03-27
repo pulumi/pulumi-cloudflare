@@ -71,12 +71,14 @@ type LookupLogpushJobResult struct {
 	// If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
 	ErrorMessage string `pulumi:"errorMessage"`
 	// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+	// Available values: "high", "low".
 	Frequency string `pulumi:"frequency"`
 	// Unique id of the job.
 	Id int `pulumi:"id"`
 	// Unique id of the job.
 	JobId *int `pulumi:"jobId"`
 	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
+	// Available values: "edge".
 	Kind string `pulumi:"kind"`
 	// Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
 	LastComplete string `pulumi:"lastComplete"`
@@ -162,6 +164,7 @@ func (o LookupLogpushJobResultOutput) ErrorMessage() pulumi.StringOutput {
 }
 
 // This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+// Available values: "high", "low".
 func (o LookupLogpushJobResultOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogpushJobResult) string { return v.Frequency }).(pulumi.StringOutput)
 }
@@ -177,6 +180,7 @@ func (o LookupLogpushJobResultOutput) JobId() pulumi.IntPtrOutput {
 }
 
 // The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
+// Available values: "edge".
 func (o LookupLogpushJobResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogpushJobResult) string { return v.Kind }).(pulumi.StringOutput)
 }

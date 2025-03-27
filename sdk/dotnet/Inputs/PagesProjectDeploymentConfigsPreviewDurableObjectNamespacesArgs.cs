@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class PagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the Durabble Object namespace.
+        /// ID of the Durable Object namespace.
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }

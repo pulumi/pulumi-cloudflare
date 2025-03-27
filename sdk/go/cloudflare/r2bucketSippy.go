@@ -24,6 +24,8 @@ type R2BucketSippy struct {
 	Destination R2BucketSippyDestinationOutput `pulumi:"destination"`
 	// State of Sippy for this bucket
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringOutput `pulumi:"jurisdiction"`
 	// AWS S3 bucket to copy objects from
 	Source R2BucketSippySourceOutput `pulumi:"source"`
 }
@@ -72,6 +74,8 @@ type r2bucketSippyState struct {
 	Destination *R2BucketSippyDestination `pulumi:"destination"`
 	// State of Sippy for this bucket
 	Enabled *bool `pulumi:"enabled"`
+	// Jurisdiction of the bucket
+	Jurisdiction *string `pulumi:"jurisdiction"`
 	// AWS S3 bucket to copy objects from
 	Source *R2BucketSippySource `pulumi:"source"`
 }
@@ -85,6 +89,8 @@ type R2BucketSippyState struct {
 	Destination R2BucketSippyDestinationPtrInput
 	// State of Sippy for this bucket
 	Enabled pulumi.BoolPtrInput
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringPtrInput
 	// AWS S3 bucket to copy objects from
 	Source R2BucketSippySourcePtrInput
 }
@@ -100,6 +106,8 @@ type r2bucketSippyArgs struct {
 	BucketName string `pulumi:"bucketName"`
 	// R2 bucket to copy objects to
 	Destination *R2BucketSippyDestination `pulumi:"destination"`
+	// Jurisdiction of the bucket
+	Jurisdiction *string `pulumi:"jurisdiction"`
 	// AWS S3 bucket to copy objects from
 	Source *R2BucketSippySource `pulumi:"source"`
 }
@@ -112,6 +120,8 @@ type R2BucketSippyArgs struct {
 	BucketName pulumi.StringInput
 	// R2 bucket to copy objects to
 	Destination R2BucketSippyDestinationPtrInput
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringPtrInput
 	// AWS S3 bucket to copy objects from
 	Source R2BucketSippySourcePtrInput
 }
@@ -221,6 +231,11 @@ func (o R2BucketSippyOutput) Destination() R2BucketSippyDestinationOutput {
 // State of Sippy for this bucket
 func (o R2BucketSippyOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *R2BucketSippy) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Jurisdiction of the bucket
+func (o R2BucketSippyOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v *R2BucketSippy) pulumi.StringOutput { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
 // AWS S3 bucket to copy objects from

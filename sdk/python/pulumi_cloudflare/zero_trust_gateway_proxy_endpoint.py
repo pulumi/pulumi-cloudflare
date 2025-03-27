@@ -254,6 +254,8 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["subdomain"] = None
             __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustGatewayProxyEndpoint, __self__).__init__(
             'cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint',
             resource_name,

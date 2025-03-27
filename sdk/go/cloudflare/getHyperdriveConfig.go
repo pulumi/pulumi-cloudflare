@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupHyperdriveConfig(ctx, &cloudflare.LookupHyperdriveConfigArgs{
 //				AccountId:    "023e105f4ecef8ad9ca31a8372d0c353",
-//				HyperdriveId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				HyperdriveId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ type LookupHyperdriveConfigArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// Identifier
-	HyperdriveId string `pulumi:"hyperdriveId"`
+	HyperdriveId *string `pulumi:"hyperdriveId"`
 }
 
 // A collection of values returned by getHyperdriveConfig.
@@ -63,7 +63,7 @@ type LookupHyperdriveConfigResult struct {
 	// When the Hyperdrive configuration was created.
 	CreatedOn string `pulumi:"createdOn"`
 	// Identifier
-	HyperdriveId string `pulumi:"hyperdriveId"`
+	HyperdriveId *string `pulumi:"hyperdriveId"`
 	// Identifier
 	Id string `pulumi:"id"`
 	// When the Hyperdrive configuration was last modified.
@@ -86,7 +86,7 @@ type LookupHyperdriveConfigOutputArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identifier
-	HyperdriveId pulumi.StringInput `pulumi:"hyperdriveId"`
+	HyperdriveId pulumi.StringPtrInput `pulumi:"hyperdriveId"`
 }
 
 func (LookupHyperdriveConfigOutputArgs) ElementType() reflect.Type {
@@ -123,8 +123,8 @@ func (o LookupHyperdriveConfigResultOutput) CreatedOn() pulumi.StringOutput {
 }
 
 // Identifier
-func (o LookupHyperdriveConfigResultOutput) HyperdriveId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHyperdriveConfigResult) string { return v.HyperdriveId }).(pulumi.StringOutput)
+func (o LookupHyperdriveConfigResultOutput) HyperdriveId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupHyperdriveConfigResult) *string { return v.HyperdriveId }).(pulumi.StringPtrOutput)
 }
 
 // Identifier

@@ -7,11 +7,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-<<<<<<< HEAD
-=======
 import java.util.Optional;
 import javax.annotation.Nullable;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 
 public final class GetMagicTransitSiteLanPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -37,25 +34,30 @@ public final class GetMagicTransitSiteLanPlainArgs extends com.pulumi.resources.
      * Identifier
      * 
      */
-<<<<<<< HEAD
-    @Import(name="lanId", required=true)
-    private String lanId;
-=======
     @Import(name="lanId")
     private @Nullable String lanId;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      * @return Identifier
      * 
      */
-<<<<<<< HEAD
-    public String lanId() {
-        return this.lanId;
-=======
     public Optional<String> lanId() {
         return Optional.ofNullable(this.lanId);
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+    }
+
+    /**
+     * Identifier
+     * 
+     */
+    @Import(name="siteId", required=true)
+    private String siteId;
+
+    /**
+     * @return Identifier
+     * 
+     */
+    public String siteId() {
+        return this.siteId;
     }
 
     private GetMagicTransitSiteLanPlainArgs() {}
@@ -63,6 +65,7 @@ public final class GetMagicTransitSiteLanPlainArgs extends com.pulumi.resources.
     private GetMagicTransitSiteLanPlainArgs(GetMagicTransitSiteLanPlainArgs $) {
         this.accountId = $.accountId;
         this.lanId = $.lanId;
+        this.siteId = $.siteId;
     }
 
     public static Builder builder() {
@@ -100,12 +103,19 @@ public final class GetMagicTransitSiteLanPlainArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-<<<<<<< HEAD
-        public Builder lanId(String lanId) {
-=======
         public Builder lanId(@Nullable String lanId) {
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             $.lanId = lanId;
+            return this;
+        }
+
+        /**
+         * @param siteId Identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder siteId(String siteId) {
+            $.siteId = siteId;
             return this;
         }
 
@@ -113,12 +123,9 @@ public final class GetMagicTransitSiteLanPlainArgs extends com.pulumi.resources.
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetMagicTransitSiteLanPlainArgs", "accountId");
             }
-<<<<<<< HEAD
-            if ($.lanId == null) {
-                throw new MissingRequiredPropertyException("GetMagicTransitSiteLanPlainArgs", "lanId");
+            if ($.siteId == null) {
+                throw new MissingRequiredPropertyException("GetMagicTransitSiteLanPlainArgs", "siteId");
             }
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return $;
         }
     }

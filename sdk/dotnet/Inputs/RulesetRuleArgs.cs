@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// The action to perform when the rule matches.
+        /// Available values: "block".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

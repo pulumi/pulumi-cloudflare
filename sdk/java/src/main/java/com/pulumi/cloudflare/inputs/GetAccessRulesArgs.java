@@ -41,6 +41,7 @@ public final class GetAccessRulesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The direction used to sort returned rules.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -48,6 +49,7 @@ public final class GetAccessRulesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The direction used to sort returned rules.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -56,6 +58,7 @@ public final class GetAccessRulesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     @Import(name="match")
@@ -63,6 +66,7 @@ public final class GetAccessRulesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     public Optional<Output<String>> match() {
@@ -86,6 +90,7 @@ public final class GetAccessRulesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     @Import(name="mode")
@@ -93,6 +98,7 @@ public final class GetAccessRulesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -118,6 +124,7 @@ public final class GetAccessRulesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The field used to sort returned rules.
+     * Available values: &#34;configuration.target&#34;, &#34;configuration.value&#34;, &#34;mode&#34;.
      * 
      */
     @Import(name="order")
@@ -125,6 +132,7 @@ public final class GetAccessRulesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The field used to sort returned rules.
+     * Available values: &#34;configuration.target&#34;, &#34;configuration.value&#34;, &#34;mode&#34;.
      * 
      */
     public Optional<Output<String>> order() {
@@ -210,6 +218,7 @@ public final class GetAccessRulesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param direction The direction used to sort returned rules.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -221,6 +230,7 @@ public final class GetAccessRulesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param direction The direction used to sort returned rules.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -231,6 +241,7 @@ public final class GetAccessRulesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param match When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+         * Available values: &#34;any&#34;, &#34;all&#34;.
          * 
          * @return builder
          * 
@@ -242,6 +253,7 @@ public final class GetAccessRulesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param match When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+         * Available values: &#34;any&#34;, &#34;all&#34;.
          * 
          * @return builder
          * 
@@ -273,6 +285,7 @@ public final class GetAccessRulesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param mode The action to apply to a matched request.
+         * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
          * 
          * @return builder
          * 
@@ -284,6 +297,7 @@ public final class GetAccessRulesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param mode The action to apply to a matched request.
+         * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
          * 
          * @return builder
          * 
@@ -317,6 +331,7 @@ public final class GetAccessRulesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param order The field used to sort returned rules.
+         * Available values: &#34;configuration.target&#34;, &#34;configuration.value&#34;, &#34;mode&#34;.
          * 
          * @return builder
          * 
@@ -328,6 +343,7 @@ public final class GetAccessRulesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param order The field used to sort returned rules.
+         * Available values: &#34;configuration.target&#34;, &#34;configuration.value&#34;, &#34;mode&#34;.
          * 
          * @return builder
          * 

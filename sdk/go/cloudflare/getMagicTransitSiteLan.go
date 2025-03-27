@@ -12,6 +12,32 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.LookupMagicTransitSiteLan(ctx, &cloudflare.LookupMagicTransitSiteLanArgs{
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				SiteId:    "023e105f4ecef8ad9ca31a8372d0c353",
+//				LanId:     pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupMagicTransitSiteLan(ctx *pulumi.Context, args *LookupMagicTransitSiteLanArgs, opts ...pulumi.InvokeOption) (*LookupMagicTransitSiteLanResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMagicTransitSiteLanResult
@@ -27,11 +53,9 @@ type LookupMagicTransitSiteLanArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// Identifier
-<<<<<<< HEAD
-	LanId string `pulumi:"lanId"`
-=======
 	LanId *string `pulumi:"lanId"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+	// Identifier
+	SiteId string `pulumi:"siteId"`
 }
 
 // A collection of values returned by getMagicTransitSiteLan.
@@ -43,11 +67,7 @@ type LookupMagicTransitSiteLanResult struct {
 	// Identifier
 	Id string `pulumi:"id"`
 	// Identifier
-<<<<<<< HEAD
-	LanId         string                               `pulumi:"lanId"`
-=======
 	LanId         *string                              `pulumi:"lanId"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	Name          string                               `pulumi:"name"`
 	Nat           GetMagicTransitSiteLanNat            `pulumi:"nat"`
 	Physport      int                                  `pulumi:"physport"`
@@ -74,11 +94,9 @@ type LookupMagicTransitSiteLanOutputArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identifier
-<<<<<<< HEAD
-	LanId pulumi.StringInput `pulumi:"lanId"`
-=======
 	LanId pulumi.StringPtrInput `pulumi:"lanId"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+	// Identifier
+	SiteId pulumi.StringInput `pulumi:"siteId"`
 }
 
 func (LookupMagicTransitSiteLanOutputArgs) ElementType() reflect.Type {
@@ -116,13 +134,8 @@ func (o LookupMagicTransitSiteLanResultOutput) Id() pulumi.StringOutput {
 }
 
 // Identifier
-<<<<<<< HEAD
-func (o LookupMagicTransitSiteLanResultOutput) LanId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicTransitSiteLanResult) string { return v.LanId }).(pulumi.StringOutput)
-=======
 func (o LookupMagicTransitSiteLanResultOutput) LanId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMagicTransitSiteLanResult) *string { return v.LanId }).(pulumi.StringPtrOutput)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func (o LookupMagicTransitSiteLanResultOutput) Name() pulumi.StringOutput {

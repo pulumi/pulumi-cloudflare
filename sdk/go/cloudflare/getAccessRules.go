@@ -61,17 +61,21 @@ type LookupAccessRulesArgs struct {
 	AccountId     *string                      `pulumi:"accountId"`
 	Configuration *GetAccessRulesConfiguration `pulumi:"configuration"`
 	// The direction used to sort returned rules.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+	// Available values: "any", "all".
 	Match *string `pulumi:"match"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 	Mode *string `pulumi:"mode"`
 	// The string to search for in the notes of existing IP Access rules.
 	// Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
 	Notes *string `pulumi:"notes"`
 	// The field used to sort returned rules.
+	// Available values: "configuration.target", "configuration.value", "mode".
 	Order *string `pulumi:"order"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
@@ -83,19 +87,23 @@ type LookupAccessRulesResult struct {
 	AccountId     *string                      `pulumi:"accountId"`
 	Configuration *GetAccessRulesConfiguration `pulumi:"configuration"`
 	// The direction used to sort returned rules.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+	// Available values: "any", "all".
 	Match string `pulumi:"match"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 	Mode *string `pulumi:"mode"`
 	// The string to search for in the notes of existing IP Access rules.
 	// Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
 	Notes *string `pulumi:"notes"`
 	// The field used to sort returned rules.
+	// Available values: "configuration.target", "configuration.value", "mode".
 	Order *string `pulumi:"order"`
 	// The items returned by the data source
 	Results []GetAccessRulesResult `pulumi:"results"`
@@ -118,17 +126,21 @@ type LookupAccessRulesOutputArgs struct {
 	AccountId     pulumi.StringPtrInput               `pulumi:"accountId"`
 	Configuration GetAccessRulesConfigurationPtrInput `pulumi:"configuration"`
 	// The direction used to sort returned rules.
+	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+	// Available values: "any", "all".
 	Match pulumi.StringPtrInput `pulumi:"match"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// The string to search for in the notes of existing IP Access rules.
 	// Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
 	Notes pulumi.StringPtrInput `pulumi:"notes"`
 	// The field used to sort returned rules.
+	// Available values: "configuration.target", "configuration.value", "mode".
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
@@ -163,6 +175,7 @@ func (o LookupAccessRulesResultOutput) Configuration() GetAccessRulesConfigurati
 }
 
 // The direction used to sort returned rules.
+// Available values: "asc", "desc".
 func (o LookupAccessRulesResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccessRulesResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
@@ -173,6 +186,7 @@ func (o LookupAccessRulesResultOutput) Id() pulumi.StringOutput {
 }
 
 // When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+// Available values: "any", "all".
 func (o LookupAccessRulesResultOutput) Match() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessRulesResult) string { return v.Match }).(pulumi.StringOutput)
 }
@@ -183,6 +197,7 @@ func (o LookupAccessRulesResultOutput) MaxItems() pulumi.IntPtrOutput {
 }
 
 // The action to apply to a matched request.
+// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 func (o LookupAccessRulesResultOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccessRulesResult) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -194,6 +209,7 @@ func (o LookupAccessRulesResultOutput) Notes() pulumi.StringPtrOutput {
 }
 
 // The field used to sort returned rules.
+// Available values: "configuration.target", "configuration.value", "mode".
 func (o LookupAccessRulesResultOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccessRulesResult) *string { return v.Order }).(pulumi.StringPtrOutput)
 }

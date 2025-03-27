@@ -55,11 +55,14 @@ type LookupEmailSecurityImpersonationRegistriesArgs struct {
 	// Account Identifier
 	AccountId string `pulumi:"accountId"`
 	// The sorting direction.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The field to sort by.
-	Order      *string `pulumi:"order"`
+	// Available values: "name", "email", "createdAt".
+	Order *string `pulumi:"order"`
+	// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
 	Provenance *string `pulumi:"provenance"`
 	// Allows searching in multiple properties of a record simultaneously.
 	// This parameter is intended for human users, not automation. Its exact
@@ -73,13 +76,16 @@ type LookupEmailSecurityImpersonationRegistriesResult struct {
 	// Account Identifier
 	AccountId string `pulumi:"accountId"`
 	// The sorting direction.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The field to sort by.
-	Order      *string `pulumi:"order"`
+	// Available values: "name", "email", "createdAt".
+	Order *string `pulumi:"order"`
+	// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
 	Provenance *string `pulumi:"provenance"`
 	// The items returned by the data source
 	Results []GetEmailSecurityImpersonationRegistriesResult `pulumi:"results"`
@@ -104,11 +110,14 @@ type LookupEmailSecurityImpersonationRegistriesOutputArgs struct {
 	// Account Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The sorting direction.
+	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// The field to sort by.
-	Order      pulumi.StringPtrInput `pulumi:"order"`
+	// Available values: "name", "email", "createdAt".
+	Order pulumi.StringPtrInput `pulumi:"order"`
+	// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
 	Provenance pulumi.StringPtrInput `pulumi:"provenance"`
 	// Allows searching in multiple properties of a record simultaneously.
 	// This parameter is intended for human users, not automation. Its exact
@@ -142,6 +151,7 @@ func (o LookupEmailSecurityImpersonationRegistriesResultOutput) AccountId() pulu
 }
 
 // The sorting direction.
+// Available values: "asc", "desc".
 func (o LookupEmailSecurityImpersonationRegistriesResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistriesResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
@@ -157,10 +167,12 @@ func (o LookupEmailSecurityImpersonationRegistriesResultOutput) MaxItems() pulum
 }
 
 // The field to sort by.
+// Available values: "name", "email", "createdAt".
 func (o LookupEmailSecurityImpersonationRegistriesResultOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistriesResult) *string { return v.Order }).(pulumi.StringPtrOutput)
 }
 
+// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
 func (o LookupEmailSecurityImpersonationRegistriesResultOutput) Provenance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistriesResult) *string { return v.Provenance }).(pulumi.StringPtrOutput)
 }

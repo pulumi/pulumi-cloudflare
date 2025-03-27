@@ -13,18 +13,72 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleMagicTransitSiteWan = Cloudflare.GetMagicTransitSiteWan.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         WanId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetMagicTransitSiteWanResult> InvokeAsync(GetMagicTransitSiteWanArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMagicTransitSiteWanResult>("cloudflare:index/getMagicTransitSiteWan:getMagicTransitSiteWan", args ?? new GetMagicTransitSiteWanArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleMagicTransitSiteWan = Cloudflare.GetMagicTransitSiteWan.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         WanId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetMagicTransitSiteWanResult> Invoke(GetMagicTransitSiteWanInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMagicTransitSiteWanResult>("cloudflare:index/getMagicTransitSiteWan:getMagicTransitSiteWan", args ?? new GetMagicTransitSiteWanInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleMagicTransitSiteWan = Cloudflare.GetMagicTransitSiteWan.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         WanId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetMagicTransitSiteWanResult> Invoke(GetMagicTransitSiteWanInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMagicTransitSiteWanResult>("cloudflare:index/getMagicTransitSiteWan:getMagicTransitSiteWan", args ?? new GetMagicTransitSiteWanInvokeArgs(), options.WithDefaults());
@@ -42,13 +96,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-<<<<<<< HEAD
-        [Input("wanId", required: true)]
-        public string WanId { get; set; } = null!;
-=======
+        [Input("siteId", required: true)]
+        public string SiteId { get; set; } = null!;
+
+        /// <summary>
+        /// Identifier
+        /// </summary>
         [Input("wanId")]
         public string? WanId { get; set; }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         public GetMagicTransitSiteWanArgs()
         {
@@ -67,13 +122,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-<<<<<<< HEAD
-        [Input("wanId", required: true)]
-        public Input<string> WanId { get; set; } = null!;
-=======
+        [Input("siteId", required: true)]
+        public Input<string> SiteId { get; set; } = null!;
+
+        /// <summary>
+        /// Identifier
+        /// </summary>
         [Input("wanId")]
         public Input<string>? WanId { get; set; }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         public GetMagicTransitSiteWanInvokeArgs()
         {
@@ -91,6 +147,7 @@ namespace Pulumi.Cloudflare
         public readonly string AccountId;
         /// <summary>
         /// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+        /// Available values: "low", "mid", "high".
         /// </summary>
         public readonly string HealthCheckRate;
         /// <summary>
@@ -118,11 +175,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-<<<<<<< HEAD
-        public readonly string WanId;
-=======
         public readonly string? WanId;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         [OutputConstructor]
         private GetMagicTransitSiteWanResult(
@@ -144,11 +197,7 @@ namespace Pulumi.Cloudflare
 
             int vlanTag,
 
-<<<<<<< HEAD
-            string wanId)
-=======
             string? wanId)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         {
             AccountId = accountId;
             HealthCheckRate = healthCheckRate;

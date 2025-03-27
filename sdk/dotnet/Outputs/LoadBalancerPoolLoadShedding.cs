@@ -19,6 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double? DefaultPercent;
         /// <summary>
         /// The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.
+        /// Available values: "random", "hash".
         /// </summary>
         public readonly string? DefaultPolicy;
         /// <summary>
@@ -27,6 +28,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double? SessionPercent;
         /// <summary>
         /// Only the hash policy is supported for existing sessions (to avoid exponential decay).
+        /// Available values: "hash".
         /// </summary>
         public readonly string? SessionPolicy;
 

@@ -36,6 +36,7 @@ public final class GetRulesetRuleActionParametersOverrides {
     private List<GetRulesetRuleActionParametersOverridesRule> rules;
     /**
      * @return A sensitivity level to set for all rules. This option has lower precedence than rule and category overrides and is only applicable for DDoS phases.
+     * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */
     private String sensitivityLevel;
@@ -71,6 +72,7 @@ public final class GetRulesetRuleActionParametersOverrides {
     }
     /**
      * @return A sensitivity level to set for all rules. This option has lower precedence than rule and category overrides and is only applicable for DDoS phases.
+     * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */
     public String sensitivityLevel() {

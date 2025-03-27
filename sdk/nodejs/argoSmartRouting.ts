@@ -53,6 +53,7 @@ export class ArgoSmartRouting extends pulumi.CustomResource {
 
     /**
      * Enables Argo Smart Routing.
+     * Available values: "on", "off".
      */
     public readonly value!: pulumi.Output<string>;
     /**
@@ -97,6 +98,7 @@ export class ArgoSmartRouting extends pulumi.CustomResource {
 export interface ArgoSmartRoutingState {
     /**
      * Enables Argo Smart Routing.
+     * Available values: "on", "off".
      */
     value?: pulumi.Input<string>;
     /**
@@ -111,6 +113,7 @@ export interface ArgoSmartRoutingState {
 export interface ArgoSmartRoutingArgs {
     /**
      * Enables Argo Smart Routing.
+     * Available values: "on", "off".
      */
     value: pulumi.Input<string>;
     /**

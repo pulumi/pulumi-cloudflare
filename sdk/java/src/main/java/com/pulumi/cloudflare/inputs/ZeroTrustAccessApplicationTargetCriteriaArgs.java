@@ -34,6 +34,7 @@ public final class ZeroTrustAccessApplicationTargetCriteriaArgs extends com.pulu
 
     /**
      * The communication protocol your application secures.
+     * Available values: &#34;ssh&#34;.
      * 
      */
     @Import(name="protocol", required=true)
@@ -41,6 +42,7 @@ public final class ZeroTrustAccessApplicationTargetCriteriaArgs extends com.pulu
 
     /**
      * @return The communication protocol your application secures.
+     * Available values: &#34;ssh&#34;.
      * 
      */
     public Output<String> protocol() {
@@ -111,6 +113,7 @@ public final class ZeroTrustAccessApplicationTargetCriteriaArgs extends com.pulu
 
         /**
          * @param protocol The communication protocol your application secures.
+         * Available values: &#34;ssh&#34;.
          * 
          * @return builder
          * 
@@ -122,6 +125,7 @@ public final class ZeroTrustAccessApplicationTargetCriteriaArgs extends com.pulu
 
         /**
          * @param protocol The communication protocol your application secures.
+         * Available values: &#34;ssh&#34;.
          * 
          * @return builder
          * 

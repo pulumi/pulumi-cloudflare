@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -49,14 +50,14 @@ public final class GetZeroTrustTunnelCloudflaredRoutesArgs extends com.pulumi.re
     }
 
     /**
-     * If provided, include only tunnels that were created (and not deleted) before this time.
+     * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      * 
      */
     @Import(name="existedAt")
     private @Nullable Output<String> existedAt;
 
     /**
-     * @return If provided, include only tunnels that were created (and not deleted) before this time.
+     * @return If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      * 
      */
     public Optional<Output<String>> existedAt() {
@@ -139,17 +140,17 @@ public final class GetZeroTrustTunnelCloudflaredRoutesArgs extends com.pulumi.re
     }
 
     /**
-     * The types of tunnels to filter separated by a comma.
+     * The types of tunnels to filter by, separated by commas.
      * 
      */
     @Import(name="tunTypes")
-    private @Nullable Output<String> tunTypes;
+    private @Nullable Output<List<String>> tunTypes;
 
     /**
-     * @return The types of tunnels to filter separated by a comma.
+     * @return The types of tunnels to filter by, separated by commas.
      * 
      */
-    public Optional<Output<String>> tunTypes() {
+    public Optional<Output<List<String>>> tunTypes() {
         return Optional.ofNullable(this.tunTypes);
     }
 
@@ -260,7 +261,7 @@ public final class GetZeroTrustTunnelCloudflaredRoutesArgs extends com.pulumi.re
         }
 
         /**
-         * @param existedAt If provided, include only tunnels that were created (and not deleted) before this time.
+         * @param existedAt If provided, include only resources that were created (and not deleted) before this time. URL encoded.
          * 
          * @return builder
          * 
@@ -271,7 +272,7 @@ public final class GetZeroTrustTunnelCloudflaredRoutesArgs extends com.pulumi.re
         }
 
         /**
-         * @param existedAt If provided, include only tunnels that were created (and not deleted) before this time.
+         * @param existedAt If provided, include only resources that were created (and not deleted) before this time. URL encoded.
          * 
          * @return builder
          * 
@@ -386,24 +387,34 @@ public final class GetZeroTrustTunnelCloudflaredRoutesArgs extends com.pulumi.re
         }
 
         /**
-         * @param tunTypes The types of tunnels to filter separated by a comma.
+         * @param tunTypes The types of tunnels to filter by, separated by commas.
          * 
          * @return builder
          * 
          */
-        public Builder tunTypes(@Nullable Output<String> tunTypes) {
+        public Builder tunTypes(@Nullable Output<List<String>> tunTypes) {
             $.tunTypes = tunTypes;
             return this;
         }
 
         /**
-         * @param tunTypes The types of tunnels to filter separated by a comma.
+         * @param tunTypes The types of tunnels to filter by, separated by commas.
          * 
          * @return builder
          * 
          */
-        public Builder tunTypes(String tunTypes) {
+        public Builder tunTypes(List<String> tunTypes) {
             return tunTypes(Output.of(tunTypes));
+        }
+
+        /**
+         * @param tunTypes The types of tunnels to filter by, separated by commas.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunTypes(String... tunTypes) {
+            return tunTypes(List.of(tunTypes));
         }
 
         /**

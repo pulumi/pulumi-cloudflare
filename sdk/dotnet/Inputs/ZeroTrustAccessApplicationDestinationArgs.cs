@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+        /// Available values: "tcp", "udp".
         /// </summary>
         [Input("l4Protocol")]
         public Input<string>? L4Protocol { get; set; }
@@ -36,6 +37,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }
 
+        /// <summary>
+        /// Available values: "public".
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

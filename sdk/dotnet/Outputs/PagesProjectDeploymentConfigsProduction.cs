@@ -38,11 +38,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsProductionD1Databases>? D1Databases;
         /// <summary>
-        /// Durabble Object namespaces used for Pages Functions.
+        /// Durable Object namespaces used for Pages Functions.
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsProductionDurableObjectNamespaces>? DurableObjectNamespaces;
         /// <summary>
-        /// Environment variables for build configs.
+        /// Environment variables used for builds and Pages Functions.
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsProductionEnvVars>? EnvVars;
         /// <summary>

@@ -86,6 +86,7 @@ class GetCustomHostnameFallbackOriginResult:
     def status(self) -> str:
         """
         Status of the fallback origin's activation.
+        Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
         """
         return pulumi.get(self, "status")
 

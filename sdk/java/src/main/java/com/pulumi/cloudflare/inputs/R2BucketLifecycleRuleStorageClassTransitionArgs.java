@@ -30,9 +30,17 @@ public final class R2BucketLifecycleRuleStorageClassTransitionArgs extends com.p
         return this.condition;
     }
 
+    /**
+     * Available values: &#34;InfrequentAccess&#34;.
+     * 
+     */
     @Import(name="storageClass", required=true)
     private Output<String> storageClass;
 
+    /**
+     * @return Available values: &#34;InfrequentAccess&#34;.
+     * 
+     */
     public Output<String> storageClass() {
         return this.storageClass;
     }
@@ -83,11 +91,23 @@ public final class R2BucketLifecycleRuleStorageClassTransitionArgs extends com.p
             return condition(Output.of(condition));
         }
 
+        /**
+         * @param storageClass Available values: &#34;InfrequentAccess&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageClass(Output<String> storageClass) {
             $.storageClass = storageClass;
             return this;
         }
 
+        /**
+         * @param storageClass Available values: &#34;InfrequentAccess&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageClass(String storageClass) {
             return storageClass(Output.of(storageClass));
         }

@@ -48,6 +48,7 @@ type UserAgentBlockingRule struct {
 	// The rule configuration.
 	Configuration UserAgentBlockingRuleConfigurationOutput `pulumi:"configuration"`
 	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// The unique identifier of the User Agent Blocking rule.
 	UaRuleId pulumi.StringPtrOutput `pulumi:"uaRuleId"`
@@ -97,6 +98,7 @@ type userAgentBlockingRuleState struct {
 	// The rule configuration.
 	Configuration *UserAgentBlockingRuleConfiguration `pulumi:"configuration"`
 	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 	Mode *string `pulumi:"mode"`
 	// The unique identifier of the User Agent Blocking rule.
 	UaRuleId *string `pulumi:"uaRuleId"`
@@ -108,6 +110,7 @@ type UserAgentBlockingRuleState struct {
 	// The rule configuration.
 	Configuration UserAgentBlockingRuleConfigurationPtrInput
 	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 	Mode pulumi.StringPtrInput
 	// The unique identifier of the User Agent Blocking rule.
 	UaRuleId pulumi.StringPtrInput
@@ -123,6 +126,7 @@ type userAgentBlockingRuleArgs struct {
 	// The rule configuration.
 	Configuration UserAgentBlockingRuleConfiguration `pulumi:"configuration"`
 	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 	Mode string `pulumi:"mode"`
 	// The unique identifier of the User Agent Blocking rule.
 	UaRuleId *string `pulumi:"uaRuleId"`
@@ -135,6 +139,7 @@ type UserAgentBlockingRuleArgs struct {
 	// The rule configuration.
 	Configuration UserAgentBlockingRuleConfigurationInput
 	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 	Mode pulumi.StringInput
 	// The unique identifier of the User Agent Blocking rule.
 	UaRuleId pulumi.StringPtrInput
@@ -235,6 +240,7 @@ func (o UserAgentBlockingRuleOutput) Configuration() UserAgentBlockingRuleConfig
 }
 
 // The action to apply to a matched request.
+// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
 func (o UserAgentBlockingRuleOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserAgentBlockingRule) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }

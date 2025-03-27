@@ -66,6 +66,7 @@ class GetEmailSecurityBlockSendersResult:
     def direction(self) -> Optional[str]:
         """
         The sorting direction.
+        Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
 
@@ -90,12 +91,16 @@ class GetEmailSecurityBlockSendersResult:
     def order(self) -> Optional[str]:
         """
         The field to sort by.
+        Available values: "pattern", "created_at".
         """
         return pulumi.get(self, "order")
 
     @property
     @pulumi.getter(name="patternType")
     def pattern_type(self) -> Optional[str]:
+        """
+        Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        """
         return pulumi.get(self, "pattern_type")
 
     @property
@@ -158,8 +163,11 @@ def get_email_security_block_senders(account_id: Optional[str] = None,
 
     :param str account_id: Account Identifier
     :param str direction: The sorting direction.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     :param str order: The field to sort by.
+           Available values: "pattern", "created_at".
+    :param str pattern_type: Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
     :param str search: Allows searching in multiple properties of a record simultaneously.
            This parameter is intended for human users, not automation. Its exact
            behavior is intentionally left unspecified and is subject to change
@@ -208,8 +216,11 @@ def get_email_security_block_senders_output(account_id: Optional[pulumi.Input[st
 
     :param str account_id: Account Identifier
     :param str direction: The sorting direction.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     :param str order: The field to sort by.
+           Available values: "pattern", "created_at".
+    :param str pattern_type: Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
     :param str search: Allows searching in multiple properties of a record simultaneously.
            This parameter is intended for human users, not automation. Its exact
            behavior is intentionally left unspecified and is subject to change

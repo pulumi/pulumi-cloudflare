@@ -48,6 +48,7 @@ class GetObservatoryScheduledTestResult:
     def frequency(self) -> str:
         """
         The frequency of the test.
+        Available values: "DAILY", "WEEKLY".
         """
         return pulumi.get(self, "frequency")
 
@@ -64,6 +65,7 @@ class GetObservatoryScheduledTestResult:
     def region(self) -> str:
         """
         A test region.
+        Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
         """
         return pulumi.get(self, "region")
 
@@ -97,15 +99,31 @@ class AwaitableGetObservatoryScheduledTestResult(GetObservatoryScheduledTestResu
             zone_id=self.zone_id)
 
 
-def get_observatory_scheduled_test(zone_id: Optional[str] = None,
+def get_observatory_scheduled_test(region: Optional[str] = None,
+                                   url: Optional[str] = None,
+                                   zone_id: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObservatoryScheduledTestResult:
     """
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
 
+    example_observatory_scheduled_test = cloudflare.get_observatory_scheduled_test(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+        url="example.com",
+        region="asia-east1")
+    ```
+
+
+    :param str region: A test region.
+           Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
+    :param str url: A URL.
     :param str zone_id: Identifier
     """
     __args__ = dict()
+    __args__['region'] = region
+    __args__['url'] = url
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getObservatoryScheduledTest:getObservatoryScheduledTest', __args__, opts=opts, typ=GetObservatoryScheduledTestResult).value
@@ -116,15 +134,31 @@ def get_observatory_scheduled_test(zone_id: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         url=pulumi.get(__ret__, 'url'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_observatory_scheduled_test_output(zone_id: Optional[pulumi.Input[str]] = None,
+def get_observatory_scheduled_test_output(region: Optional[pulumi.Input[Optional[str]]] = None,
+                                          url: Optional[pulumi.Input[str]] = None,
+                                          zone_id: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObservatoryScheduledTestResult]:
     """
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
 
+    example_observatory_scheduled_test = cloudflare.get_observatory_scheduled_test(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+        url="example.com",
+        region="asia-east1")
+    ```
+
+
+    :param str region: A test region.
+           Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
+    :param str url: A URL.
     :param str zone_id: Identifier
     """
     __args__ = dict()
+    __args__['region'] = region
+    __args__['url'] = url
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getObservatoryScheduledTest:getObservatoryScheduledTest', __args__, opts=opts, typ=GetObservatoryScheduledTestResult)

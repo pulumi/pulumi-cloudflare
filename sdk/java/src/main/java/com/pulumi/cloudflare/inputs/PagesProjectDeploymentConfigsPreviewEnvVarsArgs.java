@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class PagesProjectDeploymentConfigsPreviewEnvVarsArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,18 +15,18 @@ public final class PagesProjectDeploymentConfigsPreviewEnvVarsArgs extends com.p
     public static final PagesProjectDeploymentConfigsPreviewEnvVarsArgs Empty = new PagesProjectDeploymentConfigsPreviewEnvVarsArgs();
 
     /**
-     * The type of environment variable.
+     * Available values: &#34;plain_text&#34;.
      * 
      */
-    @Import(name="type")
-    private @Nullable Output<String> type;
+    @Import(name="type", required=true)
+    private Output<String> type;
 
     /**
-     * @return The type of environment variable.
+     * @return Available values: &#34;plain_text&#34;.
      * 
      */
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     /**
@@ -72,18 +70,18 @@ public final class PagesProjectDeploymentConfigsPreviewEnvVarsArgs extends com.p
         }
 
         /**
-         * @param type The type of environment variable.
+         * @param type Available values: &#34;plain_text&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder type(@Nullable Output<String> type) {
+        public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
         /**
-         * @param type The type of environment variable.
+         * @param type Available values: &#34;plain_text&#34;.
          * 
          * @return builder
          * 
@@ -114,6 +112,9 @@ public final class PagesProjectDeploymentConfigsPreviewEnvVarsArgs extends com.p
         }
 
         public PagesProjectDeploymentConfigsPreviewEnvVarsArgs build() {
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsPreviewEnvVarsArgs", "type");
+            }
             if ($.value == null) {
                 throw new MissingRequiredPropertyException("PagesProjectDeploymentConfigsPreviewEnvVarsArgs", "value");
             }

@@ -13,6 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class CustomSslGeoRestrictions
     {
+        /// <summary>
+        /// Available values: "us", "eu", "highest_security".
+        /// </summary>
         public readonly string? Label;
 
         [OutputConstructor]

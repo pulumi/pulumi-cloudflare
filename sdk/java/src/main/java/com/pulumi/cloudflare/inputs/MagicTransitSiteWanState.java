@@ -34,6 +34,7 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
 
     /**
      * Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+     * Available values: &#34;low&#34;, &#34;mid&#34;, &#34;high&#34;.
      * 
      */
     @Import(name="healthCheckRate")
@@ -41,6 +42,7 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
 
     /**
      * @return Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+     * Available values: &#34;low&#34;, &#34;mid&#34;, &#34;high&#34;.
      * 
      */
     public Optional<Output<String>> healthCheckRate() {
@@ -113,24 +115,6 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.vlanTag);
     }
 
-<<<<<<< HEAD
-    /**
-     * Identifier
-     * 
-     */
-    @Import(name="wanId")
-    private @Nullable Output<String> wanId;
-
-    /**
-     * @return Identifier
-     * 
-     */
-    public Optional<Output<String>> wanId() {
-        return Optional.ofNullable(this.wanId);
-    }
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     private MagicTransitSiteWanState() {}
 
     private MagicTransitSiteWanState(MagicTransitSiteWanState $) {
@@ -142,10 +126,6 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
         this.siteId = $.siteId;
         this.staticAddressing = $.staticAddressing;
         this.vlanTag = $.vlanTag;
-<<<<<<< HEAD
-        this.wanId = $.wanId;
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     public static Builder builder() {
@@ -189,6 +169,7 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
 
         /**
          * @param healthCheckRate Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+         * Available values: &#34;low&#34;, &#34;mid&#34;, &#34;high&#34;.
          * 
          * @return builder
          * 
@@ -200,6 +181,7 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
 
         /**
          * @param healthCheckRate Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+         * Available values: &#34;low&#34;, &#34;mid&#34;, &#34;high&#34;.
          * 
          * @return builder
          * 
@@ -298,30 +280,6 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
             return vlanTag(Output.of(vlanTag));
         }
 
-<<<<<<< HEAD
-        /**
-         * @param wanId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder wanId(@Nullable Output<String> wanId) {
-            $.wanId = wanId;
-            return this;
-        }
-
-        /**
-         * @param wanId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder wanId(String wanId) {
-            return wanId(Output.of(wanId));
-        }
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public MagicTransitSiteWanState build() {
             return $;
         }

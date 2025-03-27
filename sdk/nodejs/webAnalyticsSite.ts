@@ -65,9 +65,17 @@ export class WebAnalyticsSite extends pulumi.CustomResource {
     public readonly autoInstall!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly created!: pulumi.Output<string>;
     /**
+     * Enables or disables RUM. This option can be used only when autoInstall is set to true.
+     */
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The hostname to use for gray-clouded sites.
      */
     public readonly host!: pulumi.Output<string | undefined>;
+    /**
+     * If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+     */
+    public readonly lite!: pulumi.Output<boolean | undefined>;
     /**
      * A list of rules.
      */
@@ -106,7 +114,9 @@ export class WebAnalyticsSite extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["autoInstall"] = state ? state.autoInstall : undefined;
             resourceInputs["created"] = state ? state.created : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["lite"] = state ? state.lite : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["ruleset"] = state ? state.ruleset : undefined;
             resourceInputs["siteTag"] = state ? state.siteTag : undefined;
@@ -120,7 +130,9 @@ export class WebAnalyticsSite extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["autoInstall"] = args ? args.autoInstall : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["lite"] = args ? args.lite : undefined;
             resourceInputs["zoneTag"] = args ? args.zoneTag : undefined;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
@@ -148,9 +160,17 @@ export interface WebAnalyticsSiteState {
     autoInstall?: pulumi.Input<boolean>;
     created?: pulumi.Input<string>;
     /**
+     * Enables or disables RUM. This option can be used only when autoInstall is set to true.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
      * The hostname to use for gray-clouded sites.
      */
     host?: pulumi.Input<string>;
+    /**
+     * If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+     */
+    lite?: pulumi.Input<boolean>;
     /**
      * A list of rules.
      */
@@ -187,9 +207,17 @@ export interface WebAnalyticsSiteArgs {
      */
     autoInstall?: pulumi.Input<boolean>;
     /**
+     * Enables or disables RUM. This option can be used only when autoInstall is set to true.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
      * The hostname to use for gray-clouded sites.
      */
     host?: pulumi.Input<string>;
+    /**
+     * If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+     */
+    lite?: pulumi.Input<boolean>;
     /**
      * The zone identifier.
      */

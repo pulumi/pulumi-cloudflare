@@ -30,6 +30,7 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
     private String id;
     /**
      * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel&#39;s configuration on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
      * 
      */
     private String source;
@@ -71,6 +72,7 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
     }
     /**
      * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel&#39;s configuration on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
      * 
      */
     public String source() {

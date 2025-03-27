@@ -6,12 +6,14 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustAccessCustomPageArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessCustomPageState;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -128,6 +130,7 @@ public class ZeroTrustAccessCustomPage extends com.pulumi.resources.CustomResour
     }
     /**
      * Custom page type.
+     * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -135,6 +138,7 @@ public class ZeroTrustAccessCustomPage extends com.pulumi.resources.CustomResour
 
     /**
      * @return Custom page type.
+     * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
      * 
      */
     public Output<String> type() {
@@ -200,6 +204,9 @@ public class ZeroTrustAccessCustomPage extends com.pulumi.resources.CustomResour
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/accessCustomPage:AccessCustomPage").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

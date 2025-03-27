@@ -17,6 +17,7 @@ public final class GetApiShieldOperationFilter extends com.pulumi.resources.Invo
 
     /**
      * Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -24,6 +25,7 @@ public final class GetApiShieldOperationFilter extends com.pulumi.resources.Invo
 
     /**
      * @return Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -92,6 +94,7 @@ public final class GetApiShieldOperationFilter extends com.pulumi.resources.Invo
 
     /**
      * Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+     * Available values: &#34;method&#34;, &#34;host&#34;, &#34;endpoint&#34;, &#34;thresholds.$key&#34;.
      * 
      */
     @Import(name="order")
@@ -99,6 +102,7 @@ public final class GetApiShieldOperationFilter extends com.pulumi.resources.Invo
 
     /**
      * @return Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+     * Available values: &#34;method&#34;, &#34;host&#34;, &#34;endpoint&#34;, &#34;thresholds.$key&#34;.
      * 
      */
     public Optional<String> order() {
@@ -136,6 +140,7 @@ public final class GetApiShieldOperationFilter extends com.pulumi.resources.Invo
 
         /**
          * @param direction Direction to order results.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -221,6 +226,7 @@ public final class GetApiShieldOperationFilter extends com.pulumi.resources.Invo
 
         /**
          * @param order Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+         * Available values: &#34;method&#34;, &#34;host&#34;, &#34;endpoint&#34;, &#34;thresholds.$key&#34;.
          * 
          * @return builder
          * 

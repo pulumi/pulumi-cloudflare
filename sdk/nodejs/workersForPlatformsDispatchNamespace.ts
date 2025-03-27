@@ -126,6 +126,8 @@ export class WorkersForPlatformsDispatchNamespace extends pulumi.CustomResource 
             resourceInputs["scriptCount"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkersForPlatformsDispatchNamespace.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -21,7 +21,18 @@ import * as utilities from "./utilities";
  *     autoConnect: 0,
  *     captivePortal: 180,
  *     disableAutoFallback: true,
+ *     excludes: [{
+ *         address: "192.0.2.0/24",
+ *         description: "Exclude testing domains from the tunnel",
+ *         host: "*.example.com",
+ *     }],
  *     excludeOfficeIps: true,
+ *     includes: [{
+ *         address: "192.0.2.0/24",
+ *         description: "Exclude testing domains from the tunnel",
+ *         host: "*.example.com",
+ *     }],
+ *     registerInterfaceIpWithDns: true,
  *     serviceModeV2: {
  *         mode: "proxy",
  *         port: 3000,
@@ -31,15 +42,12 @@ import * as utilities from "./utilities";
  *     tunnelProtocol: "wireguard",
  * });
  * ```
-<<<<<<< HEAD
-=======
  *
  * ## Import
  *
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile example '<account_id>'
  * ```
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  */
 export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
     /**
@@ -106,10 +114,20 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
      * Whether to add Microsoft IPs to Split Tunnel exclusions.
      */
     public readonly excludeOfficeIps!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly excludes!: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileExclude[]>;
+    /**
+     * List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+     */
+    public readonly excludes!: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileExclude[]>;
     public /*out*/ readonly fallbackDomains!: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileFallbackDomain[]>;
     public /*out*/ readonly gatewayUniqueId!: pulumi.Output<string>;
-    public /*out*/ readonly includes!: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileInclude[]>;
+    /**
+     * List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+     */
+    public readonly includes!: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileInclude[]>;
+    /**
+     * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+     */
+    public readonly registerInterfaceIpWithDns!: pulumi.Output<boolean | undefined>;
     public readonly serviceModeV2!: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileServiceModeV2>;
     /**
      * The URL to launch when the Send Feedback button is clicked.
@@ -151,6 +169,7 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
             resourceInputs["fallbackDomains"] = state ? state.fallbackDomains : undefined;
             resourceInputs["gatewayUniqueId"] = state ? state.gatewayUniqueId : undefined;
             resourceInputs["includes"] = state ? state.includes : undefined;
+            resourceInputs["registerInterfaceIpWithDns"] = state ? state.registerInterfaceIpWithDns : undefined;
             resourceInputs["serviceModeV2"] = state ? state.serviceModeV2 : undefined;
             resourceInputs["supportUrl"] = state ? state.supportUrl : undefined;
             resourceInputs["switchLocked"] = state ? state.switchLocked : undefined;
@@ -168,18 +187,21 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
             resourceInputs["captivePortal"] = args ? args.captivePortal : undefined;
             resourceInputs["disableAutoFallback"] = args ? args.disableAutoFallback : undefined;
             resourceInputs["excludeOfficeIps"] = args ? args.excludeOfficeIps : undefined;
+            resourceInputs["excludes"] = args ? args.excludes : undefined;
+            resourceInputs["includes"] = args ? args.includes : undefined;
+            resourceInputs["registerInterfaceIpWithDns"] = args ? args.registerInterfaceIpWithDns : undefined;
             resourceInputs["serviceModeV2"] = args ? args.serviceModeV2 : undefined;
             resourceInputs["supportUrl"] = args ? args.supportUrl : undefined;
             resourceInputs["switchLocked"] = args ? args.switchLocked : undefined;
             resourceInputs["tunnelProtocol"] = args ? args.tunnelProtocol : undefined;
             resourceInputs["default"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
-            resourceInputs["excludes"] = undefined /*out*/;
             resourceInputs["fallbackDomains"] = undefined /*out*/;
             resourceInputs["gatewayUniqueId"] = undefined /*out*/;
-            resourceInputs["includes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy" }, { type: "cloudflare:index/splitTunnel:SplitTunnel" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustDeviceDefaultProfile.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -225,10 +247,20 @@ export interface ZeroTrustDeviceDefaultProfileState {
      * Whether to add Microsoft IPs to Split Tunnel exclusions.
      */
     excludeOfficeIps?: pulumi.Input<boolean>;
+    /**
+     * List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+     */
     excludes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileExclude>[]>;
     fallbackDomains?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileFallbackDomain>[]>;
     gatewayUniqueId?: pulumi.Input<string>;
+    /**
+     * List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+     */
     includes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileInclude>[]>;
+    /**
+     * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+     */
+    registerInterfaceIpWithDns?: pulumi.Input<boolean>;
     serviceModeV2?: pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileServiceModeV2>;
     /**
      * The URL to launch when the Send Feedback button is clicked.
@@ -277,6 +309,18 @@ export interface ZeroTrustDeviceDefaultProfileArgs {
      * Whether to add Microsoft IPs to Split Tunnel exclusions.
      */
     excludeOfficeIps?: pulumi.Input<boolean>;
+    /**
+     * List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+     */
+    excludes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileExclude>[]>;
+    /**
+     * List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+     */
+    includes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileInclude>[]>;
+    /**
+     * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+     */
+    registerInterfaceIpWithDns?: pulumi.Input<boolean>;
     serviceModeV2?: pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileServiceModeV2>;
     /**
      * The URL to launch when the Send Feedback button is clicked.

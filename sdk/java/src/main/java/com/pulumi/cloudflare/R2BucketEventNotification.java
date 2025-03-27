@@ -96,6 +96,20 @@ public class R2BucketEventNotification extends com.pulumi.resources.CustomResour
         return this.bucketName;
     }
     /**
+     * Jurisdiction of the bucket
+     * 
+     */
+    @Export(name="jurisdiction", refs={String.class}, tree="[0]")
+    private Output<String> jurisdiction;
+
+    /**
+     * @return Jurisdiction of the bucket
+     * 
+     */
+    public Output<String> jurisdiction() {
+        return this.jurisdiction;
+    }
+    /**
      * Queue ID
      * 
      */

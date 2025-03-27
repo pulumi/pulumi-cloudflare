@@ -48,6 +48,7 @@ type ApiShieldSchema struct {
 	// Schema file bytes
 	File pulumi.StringOutput `pulumi:"file"`
 	// Kind of schema
+	// Available values: "openapiV3".
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the schema
 	Name     pulumi.StringPtrOutput      `pulumi:"name"`
@@ -57,6 +58,7 @@ type ApiShieldSchema struct {
 	Source        pulumi.StringOutput                `pulumi:"source"`
 	UploadDetails ApiShieldSchemaUploadDetailsOutput `pulumi:"uploadDetails"`
 	// Flag whether schema is enabled for validation.
+	// Available values: "true", "false".
 	ValidationEnabled pulumi.StringPtrOutput `pulumi:"validationEnabled"`
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -105,6 +107,7 @@ type apiShieldSchemaState struct {
 	// Schema file bytes
 	File *string `pulumi:"file"`
 	// Kind of schema
+	// Available values: "openapiV3".
 	Kind *string `pulumi:"kind"`
 	// Name of the schema
 	Name     *string                `pulumi:"name"`
@@ -114,6 +117,7 @@ type apiShieldSchemaState struct {
 	Source        *string                       `pulumi:"source"`
 	UploadDetails *ApiShieldSchemaUploadDetails `pulumi:"uploadDetails"`
 	// Flag whether schema is enabled for validation.
+	// Available values: "true", "false".
 	ValidationEnabled *string `pulumi:"validationEnabled"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
@@ -124,6 +128,7 @@ type ApiShieldSchemaState struct {
 	// Schema file bytes
 	File pulumi.StringPtrInput
 	// Kind of schema
+	// Available values: "openapiV3".
 	Kind pulumi.StringPtrInput
 	// Name of the schema
 	Name     pulumi.StringPtrInput
@@ -133,6 +138,7 @@ type ApiShieldSchemaState struct {
 	Source        pulumi.StringPtrInput
 	UploadDetails ApiShieldSchemaUploadDetailsPtrInput
 	// Flag whether schema is enabled for validation.
+	// Available values: "true", "false".
 	ValidationEnabled pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
@@ -146,11 +152,13 @@ type apiShieldSchemaArgs struct {
 	// Schema file bytes
 	File string `pulumi:"file"`
 	// Kind of schema
+	// Available values: "openapiV3".
 	Kind string `pulumi:"kind"`
 	// Name of the schema
 	Name     *string `pulumi:"name"`
 	SchemaId *string `pulumi:"schemaId"`
 	// Flag whether schema is enabled for validation.
+	// Available values: "true", "false".
 	ValidationEnabled *string `pulumi:"validationEnabled"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -161,11 +169,13 @@ type ApiShieldSchemaArgs struct {
 	// Schema file bytes
 	File pulumi.StringInput
 	// Kind of schema
+	// Available values: "openapiV3".
 	Kind pulumi.StringInput
 	// Name of the schema
 	Name     pulumi.StringPtrInput
 	SchemaId pulumi.StringPtrInput
 	// Flag whether schema is enabled for validation.
+	// Available values: "true", "false".
 	ValidationEnabled pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringInput
@@ -268,6 +278,7 @@ func (o ApiShieldSchemaOutput) File() pulumi.StringOutput {
 }
 
 // Kind of schema
+// Available values: "openapiV3".
 func (o ApiShieldSchemaOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldSchema) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
@@ -295,6 +306,7 @@ func (o ApiShieldSchemaOutput) UploadDetails() ApiShieldSchemaUploadDetailsOutpu
 }
 
 // Flag whether schema is enabled for validation.
+// Available values: "true", "false".
 func (o ApiShieldSchemaOutput) ValidationEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiShieldSchema) pulumi.StringPtrOutput { return v.ValidationEnabled }).(pulumi.StringPtrOutput)
 }

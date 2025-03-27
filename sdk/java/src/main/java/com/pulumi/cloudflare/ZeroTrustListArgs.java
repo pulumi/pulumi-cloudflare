@@ -72,6 +72,7 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of list.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -79,6 +80,7 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of list.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
     public Output<String> type() {
@@ -197,6 +199,7 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of list.
+         * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
          * 
          * @return builder
          * 
@@ -208,6 +211,7 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of list.
+         * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
          * 
          * @return builder
          * 

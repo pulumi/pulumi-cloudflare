@@ -27,6 +27,7 @@ class EmailSecurityBlockSenderArgs:
         """
         The set of arguments for constructing a EmailSecurityBlockSender resource.
         :param pulumi.Input[str] account_id: Account Identifier
+        :param pulumi.Input[str] pattern_type: Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "is_regex", is_regex)
@@ -68,6 +69,9 @@ class EmailSecurityBlockSenderArgs:
     @property
     @pulumi.getter(name="patternType")
     def pattern_type(self) -> pulumi.Input[str]:
+        """
+        Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        """
         return pulumi.get(self, "pattern_type")
 
     @pattern_type.setter
@@ -97,6 +101,7 @@ class _EmailSecurityBlockSenderState:
         """
         Input properties used for looking up and filtering EmailSecurityBlockSender resources.
         :param pulumi.Input[str] account_id: Account Identifier
+        :param pulumi.Input[str] pattern_type: Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -173,6 +178,9 @@ class _EmailSecurityBlockSenderState:
     @property
     @pulumi.getter(name="patternType")
     def pattern_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        """
         return pulumi.get(self, "pattern_type")
 
     @pattern_type.setter
@@ -200,17 +208,10 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
 
         example_email_security_block_sender = cloudflare.EmailSecurityBlockSender("example_email_security_block_sender",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-<<<<<<< HEAD
-            is_regex=False,
-            pattern="test@example.com",
-            pattern_type="EMAIL",
-            comments="block sender with email test@example.com")
-=======
             is_regex=True,
             pattern="x",
             pattern_type="EMAIL",
             comments="comments")
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ```
 
         ## Import
@@ -222,6 +223,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Identifier
+        :param pulumi.Input[str] pattern_type: Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
         ...
     @overload
@@ -238,17 +240,10 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
 
         example_email_security_block_sender = cloudflare.EmailSecurityBlockSender("example_email_security_block_sender",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-<<<<<<< HEAD
-            is_regex=False,
-            pattern="test@example.com",
-            pattern_type="EMAIL",
-            comments="block sender with email test@example.com")
-=======
             is_regex=True,
             pattern="x",
             pattern_type="EMAIL",
             comments="comments")
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ```
 
         ## Import
@@ -326,6 +321,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Identifier
+        :param pulumi.Input[str] pattern_type: Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -376,5 +372,8 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
     @property
     @pulumi.getter(name="patternType")
     def pattern_type(self) -> pulumi.Output[str]:
+        """
+        Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        """
         return pulumi.get(self, "pattern_type")
 

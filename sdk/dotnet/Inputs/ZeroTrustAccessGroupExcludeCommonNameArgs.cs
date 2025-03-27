@@ -10,7 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-<<<<<<<< HEAD:sdk/dotnet/Inputs/ZeroTrustAccessGroupExcludeCommonNameArgs.cs
     public sealed class ZeroTrustAccessGroupExcludeCommonNameArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
@@ -23,19 +22,5 @@ namespace Pulumi.Cloudflare.Inputs
         {
         }
         public static new ZeroTrustAccessGroupExcludeCommonNameArgs Empty => new ZeroTrustAccessGroupExcludeCommonNameArgs();
-========
-    public sealed class DnsSettingsZoneDefaultsNameserversGetArgs : global::Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Nameserver type
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public DnsSettingsZoneDefaultsNameserversGetArgs()
-        {
-        }
-        public static new DnsSettingsZoneDefaultsNameserversGetArgs Empty => new DnsSettingsZoneDefaultsNameserversGetArgs();
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/dotnet/Inputs/DnsSettingsZoneDefaultsNameserversGetArgs.cs
     }
 }

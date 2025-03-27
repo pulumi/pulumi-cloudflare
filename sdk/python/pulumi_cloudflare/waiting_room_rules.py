@@ -23,28 +23,14 @@ class WaitingRoomRulesArgs:
     def __init__(__self__, *,
                  rules: pulumi.Input[Sequence[pulumi.Input['WaitingRoomRulesRuleArgs']]],
                  waiting_room_id: pulumi.Input[str],
-<<<<<<< HEAD
-                 zone_id: pulumi.Input[str],
-                 rule_id: Optional[pulumi.Input[str]] = None):
-        """
-        The set of arguments for constructing a WaitingRoomRules resource.
-        :param pulumi.Input[str] zone_id: Identifier
-        :param pulumi.Input[str] rule_id: The ID of the rule.
-=======
                  zone_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a WaitingRoomRules resource.
         :param pulumi.Input[str] zone_id: Identifier
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         pulumi.set(__self__, "rules", rules)
         pulumi.set(__self__, "waiting_room_id", waiting_room_id)
         pulumi.set(__self__, "zone_id", zone_id)
-<<<<<<< HEAD
-        if rule_id is not None:
-            pulumi.set(__self__, "rule_id", rule_id)
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     @property
     @pulumi.getter
@@ -76,48 +62,23 @@ class WaitingRoomRulesArgs:
     def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
 
-<<<<<<< HEAD
-    @property
-    @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the rule.
-        """
-        return pulumi.get(self, "rule_id")
-
-    @rule_id.setter
-    def rule_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "rule_id", value)
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 @pulumi.input_type
 class _WaitingRoomRulesState:
     def __init__(__self__, *,
-<<<<<<< HEAD
-                 rule_id: Optional[pulumi.Input[str]] = None,
-=======
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  expression: Optional[pulumi.Input[str]] = None,
                  last_updated: Optional[pulumi.Input[str]] = None,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomRulesRuleArgs']]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  waiting_room_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WaitingRoomRules resources.
-<<<<<<< HEAD
-        :param pulumi.Input[str] rule_id: The ID of the rule.
-        :param pulumi.Input[str] zone_id: Identifier
-        """
-        if rule_id is not None:
-            pulumi.set(__self__, "rule_id", rule_id)
-=======
         :param pulumi.Input[str] action: The action to take when the expression matches.
+               Available values: "bypass*waiting*room".
         :param pulumi.Input[str] description: The description of the rule.
         :param pulumi.Input[bool] enabled: When set to true, the rule is enabled.
         :param pulumi.Input[str] expression: Criteria defining when there is a match for the current rule.
@@ -134,7 +95,6 @@ class _WaitingRoomRulesState:
             pulumi.set(__self__, "expression", expression)
         if last_updated is not None:
             pulumi.set(__self__, "last_updated", last_updated)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if version is not None:
@@ -145,22 +105,11 @@ class _WaitingRoomRulesState:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @property
-    @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the rule.
-        """
-        return pulumi.get(self, "rule_id")
-
-    @rule_id.setter
-    def rule_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "rule_id", value)
-
-    @property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
         The action to take when the expression matches.
+        Available values: "bypass*waiting*room".
         """
         return pulumi.get(self, "action")
 
@@ -261,7 +210,6 @@ class WaitingRoomRules(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 rule_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomRulesRuleArgs', 'WaitingRoomRulesRuleArgsDict']]]]] = None,
                  waiting_room_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -282,23 +230,16 @@ class WaitingRoomRules(pulumi.CustomResource):
                 "description": "allow all traffic from 10.20.30.40",
                 "enabled": True,
             }])
-<<<<<<< HEAD
-=======
         ```
 
         ## Import
 
         ```sh
         $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules example '<zone_id>/<waiting_room_id>'
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-<<<<<<< HEAD
-        :param pulumi.Input[str] rule_id: The ID of the rule.
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] zone_id: Identifier
         """
         ...
@@ -323,15 +264,12 @@ class WaitingRoomRules(pulumi.CustomResource):
                 "description": "allow all traffic from 10.20.30.40",
                 "enabled": True,
             }])
-<<<<<<< HEAD
-=======
         ```
 
         ## Import
 
         ```sh
         $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules example '<zone_id>/<waiting_room_id>'
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ```
 
         :param str resource_name: The name of the resource.
@@ -349,7 +287,6 @@ class WaitingRoomRules(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 rule_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomRulesRuleArgs', 'WaitingRoomRulesRuleArgsDict']]]]] = None,
                  waiting_room_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -362,10 +299,6 @@ class WaitingRoomRules(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WaitingRoomRulesArgs.__new__(WaitingRoomRulesArgs)
 
-<<<<<<< HEAD
-            __props__.__dict__["rule_id"] = rule_id
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             if rules is None and not opts.urn:
                 raise TypeError("Missing required property 'rules'")
             __props__.__dict__["rules"] = rules
@@ -391,15 +324,11 @@ class WaitingRoomRules(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-<<<<<<< HEAD
-            rule_id: Optional[pulumi.Input[str]] = None,
-=======
             action: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             expression: Optional[pulumi.Input[str]] = None,
             last_updated: Optional[pulumi.Input[str]] = None,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomRulesRuleArgs', 'WaitingRoomRulesRuleArgsDict']]]]] = None,
             version: Optional[pulumi.Input[str]] = None,
             waiting_room_id: Optional[pulumi.Input[str]] = None,
@@ -411,30 +340,23 @@ class WaitingRoomRules(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-<<<<<<< HEAD
-        :param pulumi.Input[str] rule_id: The ID of the rule.
-=======
         :param pulumi.Input[str] action: The action to take when the expression matches.
+               Available values: "bypass*waiting*room".
         :param pulumi.Input[str] description: The description of the rule.
         :param pulumi.Input[bool] enabled: When set to true, the rule is enabled.
         :param pulumi.Input[str] expression: Criteria defining when there is a match for the current rule.
         :param pulumi.Input[str] version: The version of the rule.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _WaitingRoomRulesState.__new__(_WaitingRoomRulesState)
 
-<<<<<<< HEAD
-        __props__.__dict__["rule_id"] = rule_id
-=======
         __props__.__dict__["action"] = action
         __props__.__dict__["description"] = description
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["expression"] = expression
         __props__.__dict__["last_updated"] = last_updated
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         __props__.__dict__["rules"] = rules
         __props__.__dict__["version"] = version
         __props__.__dict__["waiting_room_id"] = waiting_room_id
@@ -442,20 +364,11 @@ class WaitingRoomRules(pulumi.CustomResource):
         return WaitingRoomRules(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter(name="ruleId")
-    def rule_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The ID of the rule.
-        """
-        return pulumi.get(self, "rule_id")
-
-    @property
     @pulumi.getter
-<<<<<<< HEAD
-=======
     def action(self) -> pulumi.Output[str]:
         """
         The action to take when the expression matches.
+        Available values: "bypass*waiting*room".
         """
         return pulumi.get(self, "action")
 
@@ -490,7 +403,6 @@ class WaitingRoomRules(pulumi.CustomResource):
 
     @property
     @pulumi.getter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     def rules(self) -> pulumi.Output[Sequence['outputs.WaitingRoomRulesRule']]:
         return pulumi.get(self, "rules")
 

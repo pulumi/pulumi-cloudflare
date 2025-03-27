@@ -8,11 +8,45 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetObservatoryScheduledTestArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetObservatoryScheduledTestArgs Empty = new GetObservatoryScheduledTestArgs();
+
+    /**
+     * A test region.
+     * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return A test region.
+     * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
+     * A URL.
+     * 
+     */
+    @Import(name="url", required=true)
+    private Output<String> url;
+
+    /**
+     * @return A URL.
+     * 
+     */
+    public Output<String> url() {
+        return this.url;
+    }
 
     /**
      * Identifier
@@ -32,6 +66,8 @@ public final class GetObservatoryScheduledTestArgs extends com.pulumi.resources.
     private GetObservatoryScheduledTestArgs() {}
 
     private GetObservatoryScheduledTestArgs(GetObservatoryScheduledTestArgs $) {
+        this.region = $.region;
+        this.url = $.url;
         this.zoneId = $.zoneId;
     }
 
@@ -51,6 +87,50 @@ public final class GetObservatoryScheduledTestArgs extends com.pulumi.resources.
 
         public Builder(GetObservatoryScheduledTestArgs defaults) {
             $ = new GetObservatoryScheduledTestArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param region A test region.
+         * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region A test region.
+         * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
+        }
+
+        /**
+         * @param url A URL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder url(Output<String> url) {
+            $.url = url;
+            return this;
+        }
+
+        /**
+         * @param url A URL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder url(String url) {
+            return url(Output.of(url));
         }
 
         /**
@@ -75,6 +155,9 @@ public final class GetObservatoryScheduledTestArgs extends com.pulumi.resources.
         }
 
         public GetObservatoryScheduledTestArgs build() {
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("GetObservatoryScheduledTestArgs", "url");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetObservatoryScheduledTestArgs", "zoneId");
             }

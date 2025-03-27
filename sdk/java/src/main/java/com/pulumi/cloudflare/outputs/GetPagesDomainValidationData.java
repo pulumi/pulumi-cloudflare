@@ -11,7 +11,15 @@ import java.util.Objects;
 @CustomType
 public final class GetPagesDomainValidationData {
     private String errorMessage;
+    /**
+     * @return Available values: &#34;http&#34;, &#34;txt&#34;.
+     * 
+     */
     private String method;
+    /**
+     * @return Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;error&#34;.
+     * 
+     */
     private String status;
     private String txtName;
     private String txtValue;
@@ -20,9 +28,17 @@ public final class GetPagesDomainValidationData {
     public String errorMessage() {
         return this.errorMessage;
     }
+    /**
+     * @return Available values: &#34;http&#34;, &#34;txt&#34;.
+     * 
+     */
     public String method() {
         return this.method;
     }
+    /**
+     * @return Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;error&#34;.
+     * 
+     */
     public String status() {
         return this.status;
     }

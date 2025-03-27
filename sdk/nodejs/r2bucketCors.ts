@@ -45,6 +45,10 @@ export class R2BucketCors extends pulumi.CustomResource {
      * Name of the bucket
      */
     public readonly bucketName!: pulumi.Output<string>;
+    /**
+     * Jurisdiction of the bucket
+     */
+    public readonly jurisdiction!: pulumi.Output<string>;
     public readonly rules!: pulumi.Output<outputs.R2BucketCorsRule[]>;
 
     /**
@@ -62,6 +66,7 @@ export class R2BucketCors extends pulumi.CustomResource {
             const state = argsOrState as R2BucketCorsState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["bucketName"] = state ? state.bucketName : undefined;
+            resourceInputs["jurisdiction"] = state ? state.jurisdiction : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
         } else {
             const args = argsOrState as R2BucketCorsArgs | undefined;
@@ -73,6 +78,7 @@ export class R2BucketCors extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["bucketName"] = args ? args.bucketName : undefined;
+            resourceInputs["jurisdiction"] = args ? args.jurisdiction : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -92,6 +98,10 @@ export interface R2BucketCorsState {
      * Name of the bucket
      */
     bucketName?: pulumi.Input<string>;
+    /**
+     * Jurisdiction of the bucket
+     */
+    jurisdiction?: pulumi.Input<string>;
     rules?: pulumi.Input<pulumi.Input<inputs.R2BucketCorsRule>[]>;
 }
 
@@ -107,5 +117,9 @@ export interface R2BucketCorsArgs {
      * Name of the bucket
      */
     bucketName: pulumi.Input<string>;
+    /**
+     * Jurisdiction of the bucket
+     */
+    jurisdiction?: pulumi.Input<string>;
     rules?: pulumi.Input<pulumi.Input<inputs.R2BucketCorsRule>[]>;
 }

@@ -62,6 +62,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+        /// Available values: "standard", "enterprise".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -132,6 +133,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+        /// Available values: "standard", "enterprise".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -170,6 +172,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+        /// Available values: "standard", "enterprise".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

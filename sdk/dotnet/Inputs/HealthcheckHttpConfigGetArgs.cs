@@ -56,6 +56,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The HTTP method to use for the health check.
+        /// Available values: "GET", "HEAD".
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }

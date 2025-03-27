@@ -27,7 +27,7 @@ class GetZeroTrustDeviceDefaultProfileResult:
     """
     A collection of values returned by getZeroTrustDeviceDefaultProfile.
     """
-    def __init__(__self__, account_id=None, allow_mode_switch=None, allow_updates=None, allowed_to_leave=None, auto_connect=None, captive_portal=None, default=None, disable_auto_fallback=None, enabled=None, exclude_office_ips=None, excludes=None, fallback_domains=None, gateway_unique_id=None, id=None, includes=None, service_mode_v2=None, support_url=None, switch_locked=None, tunnel_protocol=None):
+    def __init__(__self__, account_id=None, allow_mode_switch=None, allow_updates=None, allowed_to_leave=None, auto_connect=None, captive_portal=None, default=None, disable_auto_fallback=None, enabled=None, exclude_office_ips=None, excludes=None, fallback_domains=None, gateway_unique_id=None, id=None, includes=None, register_interface_ip_with_dns=None, service_mode_v2=None, support_url=None, switch_locked=None, tunnel_protocol=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -73,6 +73,9 @@ class GetZeroTrustDeviceDefaultProfileResult:
         if includes and not isinstance(includes, list):
             raise TypeError("Expected argument 'includes' to be a list")
         pulumi.set(__self__, "includes", includes)
+        if register_interface_ip_with_dns and not isinstance(register_interface_ip_with_dns, bool):
+            raise TypeError("Expected argument 'register_interface_ip_with_dns' to be a bool")
+        pulumi.set(__self__, "register_interface_ip_with_dns", register_interface_ip_with_dns)
         if service_mode_v2 and not isinstance(service_mode_v2, dict):
             raise TypeError("Expected argument 'service_mode_v2' to be a dict")
         pulumi.set(__self__, "service_mode_v2", service_mode_v2)
@@ -166,6 +169,9 @@ class GetZeroTrustDeviceDefaultProfileResult:
     @property
     @pulumi.getter
     def excludes(self) -> Sequence['outputs.GetZeroTrustDeviceDefaultProfileExcludeResult']:
+        """
+        List of routes excluded in the WARP client's tunnel.
+        """
         return pulumi.get(self, "excludes")
 
     @property
@@ -189,7 +195,18 @@ class GetZeroTrustDeviceDefaultProfileResult:
     @property
     @pulumi.getter
     def includes(self) -> Sequence['outputs.GetZeroTrustDeviceDefaultProfileIncludeResult']:
+        """
+        List of routes included in the WARP client's tunnel.
+        """
         return pulumi.get(self, "includes")
+
+    @property
+    @pulumi.getter(name="registerInterfaceIpWithDns")
+    def register_interface_ip_with_dns(self) -> bool:
+        """
+        Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        """
+        return pulumi.get(self, "register_interface_ip_with_dns")
 
     @property
     @pulumi.getter(name="serviceModeV2")
@@ -242,6 +259,7 @@ class AwaitableGetZeroTrustDeviceDefaultProfileResult(GetZeroTrustDeviceDefaultP
             gateway_unique_id=self.gateway_unique_id,
             id=self.id,
             includes=self.includes,
+            register_interface_ip_with_dns=self.register_interface_ip_with_dns,
             service_mode_v2=self.service_mode_v2,
             support_url=self.support_url,
             switch_locked=self.switch_locked,
@@ -281,6 +299,7 @@ def get_zero_trust_device_default_profile(account_id: Optional[str] = None,
         gateway_unique_id=pulumi.get(__ret__, 'gateway_unique_id'),
         id=pulumi.get(__ret__, 'id'),
         includes=pulumi.get(__ret__, 'includes'),
+        register_interface_ip_with_dns=pulumi.get(__ret__, 'register_interface_ip_with_dns'),
         service_mode_v2=pulumi.get(__ret__, 'service_mode_v2'),
         support_url=pulumi.get(__ret__, 'support_url'),
         switch_locked=pulumi.get(__ret__, 'switch_locked'),
@@ -317,6 +336,7 @@ def get_zero_trust_device_default_profile_output(account_id: Optional[pulumi.Inp
         gateway_unique_id=pulumi.get(__response__, 'gateway_unique_id'),
         id=pulumi.get(__response__, 'id'),
         includes=pulumi.get(__response__, 'includes'),
+        register_interface_ip_with_dns=pulumi.get(__response__, 'register_interface_ip_with_dns'),
         service_mode_v2=pulumi.get(__response__, 'service_mode_v2'),
         support_url=pulumi.get(__response__, 'support_url'),
         switch_locked=pulumi.get(__response__, 'switch_locked'),

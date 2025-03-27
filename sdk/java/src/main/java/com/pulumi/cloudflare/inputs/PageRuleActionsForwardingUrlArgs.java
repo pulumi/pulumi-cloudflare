@@ -15,32 +15,16 @@ public final class PageRuleActionsForwardingUrlArgs extends com.pulumi.resources
 
     public static final PageRuleActionsForwardingUrlArgs Empty = new PageRuleActionsForwardingUrlArgs();
 
-    /**
-     * The status code to use for the redirection.
-     * 
-     */
     @Import(name="statusCode", required=true)
     private Output<Integer> statusCode;
 
-    /**
-     * @return The status code to use for the redirection.
-     * 
-     */
     public Output<Integer> statusCode() {
         return this.statusCode;
     }
 
-    /**
-     * The URL to which the page rule should forward.
-     * 
-     */
     @Import(name="url", required=true)
     private Output<String> url;
 
-    /**
-     * @return The URL to which the page rule should forward.
-     * 
-     */
     public Output<String> url() {
         return this.url;
     }
@@ -70,44 +54,20 @@ public final class PageRuleActionsForwardingUrlArgs extends com.pulumi.resources
             $ = new PageRuleActionsForwardingUrlArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param statusCode The status code to use for the redirection.
-         * 
-         * @return builder
-         * 
-         */
         public Builder statusCode(Output<Integer> statusCode) {
             $.statusCode = statusCode;
             return this;
         }
 
-        /**
-         * @param statusCode The status code to use for the redirection.
-         * 
-         * @return builder
-         * 
-         */
         public Builder statusCode(Integer statusCode) {
             return statusCode(Output.of(statusCode));
         }
 
-        /**
-         * @param url The URL to which the page rule should forward.
-         * 
-         * @return builder
-         * 
-         */
         public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
 
-        /**
-         * @param url The URL to which the page rule should forward.
-         * 
-         * @return builder
-         * 
-         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

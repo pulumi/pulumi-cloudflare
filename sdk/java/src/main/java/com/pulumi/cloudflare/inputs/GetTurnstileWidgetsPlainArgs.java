@@ -33,6 +33,7 @@ public final class GetTurnstileWidgetsPlainArgs extends com.pulumi.resources.Inv
 
     /**
      * Direction to order widgets.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -40,6 +41,7 @@ public final class GetTurnstileWidgetsPlainArgs extends com.pulumi.resources.Inv
 
     /**
      * @return Direction to order widgets.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -63,6 +65,7 @@ public final class GetTurnstileWidgetsPlainArgs extends com.pulumi.resources.Inv
 
     /**
      * Field to order widgets by.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
      * 
      */
     @Import(name="order")
@@ -70,6 +73,7 @@ public final class GetTurnstileWidgetsPlainArgs extends com.pulumi.resources.Inv
 
     /**
      * @return Field to order widgets by.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
      * 
      */
     public Optional<String> order() {
@@ -116,6 +120,7 @@ public final class GetTurnstileWidgetsPlainArgs extends com.pulumi.resources.Inv
 
         /**
          * @param direction Direction to order widgets.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -138,6 +143,7 @@ public final class GetTurnstileWidgetsPlainArgs extends com.pulumi.resources.Inv
 
         /**
          * @param order Field to order widgets by.
+         * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
          * 
          * @return builder
          * 

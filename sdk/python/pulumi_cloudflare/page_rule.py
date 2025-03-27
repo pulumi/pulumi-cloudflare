@@ -28,11 +28,14 @@ class PageRuleArgs:
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PageRule resource.
-        :param pulumi.Input['PageRuleActionsArgs'] actions: The actions taken by the page rule, options given below.
-        :param pulumi.Input[str] target: The URL pattern to target with the page rule.
-        :param pulumi.Input[str] zone_id: The DNS zone ID to which the page rule should be added.
-        :param pulumi.Input[int] priority: The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
-        :param pulumi.Input[str] status: Whether the page rule is active or disabled.
+        :param pulumi.Input[str] zone_id: Identifier
+        :param pulumi.Input[int] priority: The priority of the rule, used to define which Page Rule is processed
+               over another. A higher number indicates a higher priority. For example,
+               if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+               specific Page Rule to take precedence (rule B: `/images/special/*`),
+               specify a higher priority for rule B so it overrides rule A.
+        :param pulumi.Input[str] status: The status of the Page Rule.
+               Available values: "active", "disabled".
         """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "target", target)
@@ -45,9 +48,6 @@ class PageRuleArgs:
     @property
     @pulumi.getter
     def actions(self) -> pulumi.Input['PageRuleActionsArgs']:
-        """
-        The actions taken by the page rule, options given below.
-        """
         return pulumi.get(self, "actions")
 
     @actions.setter
@@ -57,9 +57,6 @@ class PageRuleArgs:
     @property
     @pulumi.getter
     def target(self) -> pulumi.Input[str]:
-        """
-        The URL pattern to target with the page rule.
-        """
         return pulumi.get(self, "target")
 
     @target.setter
@@ -70,7 +67,7 @@ class PageRuleArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The DNS zone ID to which the page rule should be added.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -82,7 +79,11 @@ class PageRuleArgs:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
-        The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+        The priority of the rule, used to define which Page Rule is processed
+        over another. A higher number indicates a higher priority. For example,
+        if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+        specific Page Rule to take precedence (rule B: `/images/special/*`),
+        specify a higher priority for rule B so it overrides rule A.
         """
         return pulumi.get(self, "priority")
 
@@ -94,7 +95,8 @@ class PageRuleArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether the page rule is active or disabled.
+        The status of the Page Rule.
+        Available values: "active", "disabled".
         """
         return pulumi.get(self, "status")
 
@@ -115,13 +117,16 @@ class _PageRuleState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PageRule resources.
-        :param pulumi.Input['PageRuleActionsArgs'] actions: The actions taken by the page rule, options given below.
         :param pulumi.Input[str] created_on: The timestamp of when the Page Rule was created.
         :param pulumi.Input[str] modified_on: The timestamp of when the Page Rule was last modified.
-        :param pulumi.Input[int] priority: The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
-        :param pulumi.Input[str] status: Whether the page rule is active or disabled.
-        :param pulumi.Input[str] target: The URL pattern to target with the page rule.
-        :param pulumi.Input[str] zone_id: The DNS zone ID to which the page rule should be added.
+        :param pulumi.Input[int] priority: The priority of the rule, used to define which Page Rule is processed
+               over another. A higher number indicates a higher priority. For example,
+               if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+               specific Page Rule to take precedence (rule B: `/images/special/*`),
+               specify a higher priority for rule B so it overrides rule A.
+        :param pulumi.Input[str] status: The status of the Page Rule.
+               Available values: "active", "disabled".
+        :param pulumi.Input[str] zone_id: Identifier
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
@@ -141,9 +146,6 @@ class _PageRuleState:
     @property
     @pulumi.getter
     def actions(self) -> Optional[pulumi.Input['PageRuleActionsArgs']]:
-        """
-        The actions taken by the page rule, options given below.
-        """
         return pulumi.get(self, "actions")
 
     @actions.setter
@@ -178,7 +180,11 @@ class _PageRuleState:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
-        The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+        The priority of the rule, used to define which Page Rule is processed
+        over another. A higher number indicates a higher priority. For example,
+        if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+        specific Page Rule to take precedence (rule B: `/images/special/*`),
+        specify a higher priority for rule B so it overrides rule A.
         """
         return pulumi.get(self, "priority")
 
@@ -190,7 +196,8 @@ class _PageRuleState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether the page rule is active or disabled.
+        The status of the Page Rule.
+        Available values: "active", "disabled".
         """
         return pulumi.get(self, "status")
 
@@ -201,9 +208,6 @@ class _PageRuleState:
     @property
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URL pattern to target with the page rule.
-        """
         return pulumi.get(self, "target")
 
     @target.setter
@@ -214,7 +218,7 @@ class _PageRuleState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS zone ID to which the page rule should be added.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -235,23 +239,24 @@ class PageRule(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare page rule resource.
+        ## Example Usage
 
         ## Import
 
-        Page rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.
-
         ```sh
-        $ pulumi import cloudflare:index/pageRule:PageRule default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
+        $ pulumi import cloudflare:index/pageRule:PageRule example '<zone_id>/<pagerule_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PageRuleActionsArgs', 'PageRuleActionsArgsDict']] actions: The actions taken by the page rule, options given below.
-        :param pulumi.Input[int] priority: The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
-        :param pulumi.Input[str] status: Whether the page rule is active or disabled.
-        :param pulumi.Input[str] target: The URL pattern to target with the page rule.
-        :param pulumi.Input[str] zone_id: The DNS zone ID to which the page rule should be added.
+        :param pulumi.Input[int] priority: The priority of the rule, used to define which Page Rule is processed
+               over another. A higher number indicates a higher priority. For example,
+               if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+               specific Page Rule to take precedence (rule B: `/images/special/*`),
+               specify a higher priority for rule B so it overrides rule A.
+        :param pulumi.Input[str] status: The status of the Page Rule.
+               Available values: "active", "disabled".
+        :param pulumi.Input[str] zone_id: Identifier
         """
         ...
     @overload
@@ -260,14 +265,12 @@ class PageRule(pulumi.CustomResource):
                  args: PageRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare page rule resource.
+        ## Example Usage
 
         ## Import
 
-        Page rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.
-
         ```sh
-        $ pulumi import cloudflare:index/pageRule:PageRule default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
+        $ pulumi import cloudflare:index/pageRule:PageRule example '<zone_id>/<pagerule_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -336,13 +339,16 @@ class PageRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PageRuleActionsArgs', 'PageRuleActionsArgsDict']] actions: The actions taken by the page rule, options given below.
         :param pulumi.Input[str] created_on: The timestamp of when the Page Rule was created.
         :param pulumi.Input[str] modified_on: The timestamp of when the Page Rule was last modified.
-        :param pulumi.Input[int] priority: The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
-        :param pulumi.Input[str] status: Whether the page rule is active or disabled.
-        :param pulumi.Input[str] target: The URL pattern to target with the page rule.
-        :param pulumi.Input[str] zone_id: The DNS zone ID to which the page rule should be added.
+        :param pulumi.Input[int] priority: The priority of the rule, used to define which Page Rule is processed
+               over another. A higher number indicates a higher priority. For example,
+               if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+               specific Page Rule to take precedence (rule B: `/images/special/*`),
+               specify a higher priority for rule B so it overrides rule A.
+        :param pulumi.Input[str] status: The status of the Page Rule.
+               Available values: "active", "disabled".
+        :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -360,9 +366,6 @@ class PageRule(pulumi.CustomResource):
     @property
     @pulumi.getter
     def actions(self) -> pulumi.Output['outputs.PageRuleActions']:
-        """
-        The actions taken by the page rule, options given below.
-        """
         return pulumi.get(self, "actions")
 
     @property
@@ -385,7 +388,11 @@ class PageRule(pulumi.CustomResource):
     @pulumi.getter
     def priority(self) -> pulumi.Output[int]:
         """
-        The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+        The priority of the rule, used to define which Page Rule is processed
+        over another. A higher number indicates a higher priority. For example,
+        if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+        specific Page Rule to take precedence (rule B: `/images/special/*`),
+        specify a higher priority for rule B so it overrides rule A.
         """
         return pulumi.get(self, "priority")
 
@@ -393,23 +400,21 @@ class PageRule(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Whether the page rule is active or disabled.
+        The status of the Page Rule.
+        Available values: "active", "disabled".
         """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def target(self) -> pulumi.Output[str]:
-        """
-        The URL pattern to target with the page rule.
-        """
         return pulumi.get(self, "target")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The DNS zone ID to which the page rule should be added.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

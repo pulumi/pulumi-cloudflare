@@ -74,6 +74,7 @@ export class TurnstileWidget extends pulumi.CustomResource {
     /**
      * If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
      * this setting can determine the clearance level to be set
+     * Available values: "noClearance", "jschallenge", "managed", "interactive".
      */
     public readonly clearanceLevel!: pulumi.Output<string | undefined>;
     /**
@@ -87,6 +88,7 @@ export class TurnstileWidget extends pulumi.CustomResource {
     public readonly ephemeralId!: pulumi.Output<boolean | undefined>;
     /**
      * Widget Mode
+     * Available values: "non-interactive", "invisible", "managed".
      */
     public readonly mode!: pulumi.Output<string>;
     /**
@@ -105,6 +107,7 @@ export class TurnstileWidget extends pulumi.CustomResource {
     public readonly offlabel!: pulumi.Output<boolean>;
     /**
      * Region where this widget can be used.
+     * Available values: "world".
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -191,6 +194,7 @@ export interface TurnstileWidgetState {
     /**
      * If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
      * this setting can determine the clearance level to be set
+     * Available values: "noClearance", "jschallenge", "managed", "interactive".
      */
     clearanceLevel?: pulumi.Input<string>;
     /**
@@ -204,6 +208,7 @@ export interface TurnstileWidgetState {
     ephemeralId?: pulumi.Input<boolean>;
     /**
      * Widget Mode
+     * Available values: "non-interactive", "invisible", "managed".
      */
     mode?: pulumi.Input<string>;
     /**
@@ -222,6 +227,7 @@ export interface TurnstileWidgetState {
     offlabel?: pulumi.Input<boolean>;
     /**
      * Region where this widget can be used.
+     * Available values: "world".
      */
     region?: pulumi.Input<string>;
     /**
@@ -250,6 +256,7 @@ export interface TurnstileWidgetArgs {
     /**
      * If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
      * this setting can determine the clearance level to be set
+     * Available values: "noClearance", "jschallenge", "managed", "interactive".
      */
     clearanceLevel?: pulumi.Input<string>;
     domains: pulumi.Input<pulumi.Input<string>[]>;
@@ -259,6 +266,7 @@ export interface TurnstileWidgetArgs {
     ephemeralId?: pulumi.Input<boolean>;
     /**
      * Widget Mode
+     * Available values: "non-interactive", "invisible", "managed".
      */
     mode: pulumi.Input<string>;
     /**
@@ -273,6 +281,7 @@ export interface TurnstileWidgetArgs {
     offlabel?: pulumi.Input<boolean>;
     /**
      * Region where this widget can be used.
+     * Available values: "world".
      */
     region?: pulumi.Input<string>;
 }

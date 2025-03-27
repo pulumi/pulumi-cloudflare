@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// The target to search in existing rules.
+        /// Available values: "ip", "ip_range", "asn", "country".
         /// </summary>
         public readonly string? Target;
         /// <summary>

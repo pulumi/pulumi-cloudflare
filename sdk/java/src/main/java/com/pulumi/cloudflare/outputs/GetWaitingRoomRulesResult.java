@@ -5,23 +5,15 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-<<<<<<< HEAD
-=======
 import java.lang.Boolean;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetWaitingRoomRulesResult {
     /**
-<<<<<<< HEAD
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-=======
      * @return The action to take when the expression matches.
+     * Available values: &#34;bypass*waiting*room&#34;.
      * 
      */
     private String action;
@@ -51,7 +43,6 @@ public final class GetWaitingRoomRulesResult {
      * 
      */
     private String version;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     private String waitingRoomId;
     /**
      * @return Identifier
@@ -61,10 +52,8 @@ public final class GetWaitingRoomRulesResult {
 
     private GetWaitingRoomRulesResult() {}
     /**
-<<<<<<< HEAD
-     * @return The provider-assigned unique ID for this managed resource.
-=======
      * @return The action to take when the expression matches.
+     * Available values: &#34;bypass*waiting*room&#34;.
      * 
      */
     public String action() {
@@ -93,14 +82,11 @@ public final class GetWaitingRoomRulesResult {
     }
     /**
      * @return The ID of the rule.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public String id() {
         return this.id;
     }
-<<<<<<< HEAD
-=======
     public String lastUpdated() {
         return this.lastUpdated;
     }
@@ -111,7 +97,6 @@ public final class GetWaitingRoomRulesResult {
     public String version() {
         return this.version;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public String waitingRoomId() {
         return this.waitingRoomId;
     }
@@ -132,9 +117,6 @@ public final class GetWaitingRoomRulesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-<<<<<<< HEAD
-        private String id;
-=======
         private String action;
         private String description;
         private Boolean enabled;
@@ -142,15 +124,11 @@ public final class GetWaitingRoomRulesResult {
         private String id;
         private String lastUpdated;
         private String version;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private String waitingRoomId;
         private String zoneId;
         public Builder() {}
         public Builder(GetWaitingRoomRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
-<<<<<<< HEAD
-    	      this.id = defaults.id;
-=======
     	      this.action = defaults.action;
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
@@ -158,14 +136,11 @@ public final class GetWaitingRoomRulesResult {
     	      this.id = defaults.id;
     	      this.lastUpdated = defaults.lastUpdated;
     	      this.version = defaults.version;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.waitingRoomId = defaults.waitingRoomId;
     	      this.zoneId = defaults.zoneId;
         }
 
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder action(String action) {
             if (action == null) {
               throw new MissingRequiredPropertyException("GetWaitingRoomRulesResult", "action");
@@ -198,7 +173,6 @@ public final class GetWaitingRoomRulesResult {
             return this;
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetWaitingRoomRulesResult", "id");
@@ -207,8 +181,6 @@ public final class GetWaitingRoomRulesResult {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder lastUpdated(String lastUpdated) {
             if (lastUpdated == null) {
               throw new MissingRequiredPropertyException("GetWaitingRoomRulesResult", "lastUpdated");
@@ -225,7 +197,6 @@ public final class GetWaitingRoomRulesResult {
             return this;
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder waitingRoomId(String waitingRoomId) {
             if (waitingRoomId == null) {
               throw new MissingRequiredPropertyException("GetWaitingRoomRulesResult", "waitingRoomId");
@@ -243,9 +214,6 @@ public final class GetWaitingRoomRulesResult {
         }
         public GetWaitingRoomRulesResult build() {
             final var _resultValue = new GetWaitingRoomRulesResult();
-<<<<<<< HEAD
-            _resultValue.id = id;
-=======
             _resultValue.action = action;
             _resultValue.description = description;
             _resultValue.enabled = enabled;
@@ -253,7 +221,6 @@ public final class GetWaitingRoomRulesResult {
             _resultValue.id = id;
             _resultValue.lastUpdated = lastUpdated;
             _resultValue.version = version;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.waitingRoomId = waitingRoomId;
             _resultValue.zoneId = zoneId;
             return _resultValue;

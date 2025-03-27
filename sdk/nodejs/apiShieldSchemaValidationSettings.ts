@@ -59,7 +59,7 @@ export class ApiShieldSchemaValidationSettings extends pulumi.CustomResource {
     /**
      * When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
      * validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-     * special value `disableOverride` or `null`
+     * special value `disableOverride` or `null` Available values: "none", "disableOverride".
      */
     public readonly validationOverrideMitigationAction!: pulumi.Output<string | undefined>;
     /**
@@ -111,7 +111,7 @@ export interface ApiShieldSchemaValidationSettingsState {
     /**
      * When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
      * validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-     * special value `disableOverride` or `null`
+     * special value `disableOverride` or `null` Available values: "none", "disableOverride".
      */
     validationOverrideMitigationAction?: pulumi.Input<string>;
     /**
@@ -131,7 +131,7 @@ export interface ApiShieldSchemaValidationSettingsArgs {
     /**
      * When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
      * validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-     * special value `disableOverride` or `null`
+     * special value `disableOverride` or `null` Available values: "none", "disableOverride".
      */
     validationOverrideMitigationAction?: pulumi.Input<string>;
     /**

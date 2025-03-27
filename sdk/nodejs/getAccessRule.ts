@@ -77,6 +77,7 @@ export interface GetAccessRuleResult {
     readonly id: string;
     /**
      * The action to apply to a matched request.
+     * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
     readonly mode: string;
     /**

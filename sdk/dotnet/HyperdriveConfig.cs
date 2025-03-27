@@ -41,6 +41,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example '&lt;account_id&gt;/&lt;hyperdrive_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/hyperdriveConfig:HyperdriveConfig")]
     public partial class HyperdriveConfig : global::Pulumi.CustomResource

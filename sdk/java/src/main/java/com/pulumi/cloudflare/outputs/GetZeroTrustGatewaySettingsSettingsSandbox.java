@@ -18,6 +18,7 @@ public final class GetZeroTrustGatewaySettingsSettingsSandbox {
     private Boolean enabled;
     /**
      * @return Action to take when the file cannot be scanned.
+     * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */
     private String fallbackAction;
@@ -32,6 +33,7 @@ public final class GetZeroTrustGatewaySettingsSettingsSandbox {
     }
     /**
      * @return Action to take when the file cannot be scanned.
+     * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */
     public String fallbackAction() {

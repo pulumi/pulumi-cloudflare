@@ -33,6 +33,10 @@ public final class GetQueueConsumer {
      */
     private String scriptName;
     private GetQueueConsumerSettings settings;
+    /**
+     * @return Available values: &#34;worker&#34;.
+     * 
+     */
     private String type;
 
     private GetQueueConsumer() {}
@@ -70,6 +74,10 @@ public final class GetQueueConsumer {
     public GetQueueConsumerSettings settings() {
         return this.settings;
     }
+    /**
+     * @return Available values: &#34;worker&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }

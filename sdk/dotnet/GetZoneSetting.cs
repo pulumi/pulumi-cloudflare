@@ -136,6 +136,7 @@ namespace Pulumi.Cloudflare
         public readonly bool Enabled;
         /// <summary>
         /// ID of the zone setting.
+        /// Available values: "0rtt".
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -153,6 +154,7 @@ namespace Pulumi.Cloudflare
         public readonly double TimeRemaining;
         /// <summary>
         /// Current value of the zone setting.
+        /// Available values: "on", "off".
         /// </summary>
         public readonly string Value;
         /// <summary>

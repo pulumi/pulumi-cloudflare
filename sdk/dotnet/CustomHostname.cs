@@ -71,6 +71,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the hostname's activation.
+        /// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "test_failed", "provisioned", "blocked".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -239,6 +240,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the hostname's activation.
+        /// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "test_failed", "provisioned", "blocked".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

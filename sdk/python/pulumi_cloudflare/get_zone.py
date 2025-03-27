@@ -28,11 +28,7 @@ class GetZoneResult:
     """
     A collection of values returned by getZone.
     """
-<<<<<<< HEAD
-    def __init__(__self__, account=None, activated_on=None, created_on=None, development_mode=None, filter=None, id=None, meta=None, modified_on=None, name=None, name_servers=None, original_dnshost=None, original_name_servers=None, original_registrar=None, owner=None, paused=None, status=None, type=None, vanity_name_servers=None, zone_id=None):
-=======
     def __init__(__self__, account=None, activated_on=None, created_on=None, development_mode=None, filter=None, id=None, meta=None, modified_on=None, name=None, name_servers=None, original_dnshost=None, original_name_servers=None, original_registrar=None, owner=None, paused=None, status=None, type=None, vanity_name_servers=None, verification_key=None, zone_id=None):
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if account and not isinstance(account, dict):
             raise TypeError("Expected argument 'account' to be a dict")
         pulumi.set(__self__, "account", account)

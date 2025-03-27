@@ -40,6 +40,7 @@ export interface GetWorkersKvNamespacesArgs {
     accountId: string;
     /**
      * Direction to order namespaces.
+     * Available values: "asc", "desc".
      */
     direction?: string;
     /**
@@ -48,6 +49,7 @@ export interface GetWorkersKvNamespacesArgs {
     maxItems?: number;
     /**
      * Field to order results by.
+     * Available values: "id", "title".
      */
     order?: string;
 }
@@ -62,6 +64,7 @@ export interface GetWorkersKvNamespacesResult {
     readonly accountId: string;
     /**
      * Direction to order namespaces.
+     * Available values: "asc", "desc".
      */
     readonly direction?: string;
     /**
@@ -74,6 +77,7 @@ export interface GetWorkersKvNamespacesResult {
     readonly maxItems?: number;
     /**
      * Field to order results by.
+     * Available values: "id", "title".
      */
     readonly order?: string;
     /**
@@ -115,6 +119,7 @@ export interface GetWorkersKvNamespacesOutputArgs {
     accountId: pulumi.Input<string>;
     /**
      * Direction to order namespaces.
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**
@@ -123,6 +128,7 @@ export interface GetWorkersKvNamespacesOutputArgs {
     maxItems?: pulumi.Input<number>;
     /**
      * Field to order results by.
+     * Available values: "id", "title".
      */
     order?: pulumi.Input<string>;
 }

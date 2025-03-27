@@ -43,6 +43,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A full zone implies that DNS is hosted with Cloudflare. A partial zone is
      * typically a partner-hosted zone or a CNAME setup.
+     * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;.
      * 
      */
     @Import(name="type")
@@ -51,6 +52,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A full zone implies that DNS is hosted with Cloudflare. A partial zone is
      * typically a partner-hosted zone or a CNAME setup.
+     * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -134,6 +136,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type A full zone implies that DNS is hosted with Cloudflare. A partial zone is
          * typically a partner-hosted zone or a CNAME setup.
+         * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;.
          * 
          * @return builder
          * 
@@ -146,6 +149,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type A full zone implies that DNS is hosted with Cloudflare. A partial zone is
          * typically a partner-hosted zone or a CNAME setup.
+         * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;.
          * 
          * @return builder
          * 

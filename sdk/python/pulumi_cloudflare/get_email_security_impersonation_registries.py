@@ -66,6 +66,7 @@ class GetEmailSecurityImpersonationRegistriesResult:
     def direction(self) -> Optional[str]:
         """
         The sorting direction.
+        Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
 
@@ -90,12 +91,16 @@ class GetEmailSecurityImpersonationRegistriesResult:
     def order(self) -> Optional[str]:
         """
         The field to sort by.
+        Available values: "name", "email", "created_at".
         """
         return pulumi.get(self, "order")
 
     @property
     @pulumi.getter
     def provenance(self) -> Optional[str]:
+        """
+        Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        """
         return pulumi.get(self, "provenance")
 
     @property
@@ -158,8 +163,11 @@ def get_email_security_impersonation_registries(account_id: Optional[str] = None
 
     :param str account_id: Account Identifier
     :param str direction: The sorting direction.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     :param str order: The field to sort by.
+           Available values: "name", "email", "created_at".
+    :param str provenance: Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
     :param str search: Allows searching in multiple properties of a record simultaneously.
            This parameter is intended for human users, not automation. Its exact
            behavior is intentionally left unspecified and is subject to change
@@ -208,8 +216,11 @@ def get_email_security_impersonation_registries_output(account_id: Optional[pulu
 
     :param str account_id: Account Identifier
     :param str direction: The sorting direction.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     :param str order: The field to sort by.
+           Available values: "name", "email", "created_at".
+    :param str provenance: Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
     :param str search: Allows searching in multiple properties of a record simultaneously.
            This parameter is intended for human users, not automation. Its exact
            behavior is intentionally left unspecified and is subject to change

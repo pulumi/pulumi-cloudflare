@@ -205,6 +205,7 @@ public final class StreamLiveInputState extends com.pulumi.resources.ResourceArg
 
     /**
      * The connection status of a live input.
+     * Available values: &#34;connected&#34;, &#34;reconnected&#34;, &#34;reconnecting&#34;, &#34;client*disconnect&#34;, &#34;ttl*exceeded&#34;, &#34;failed*to*connect&#34;, &#34;failed*to*reconnect&#34;, &#34;new*configuration*accepted&#34;.
      * 
      */
     @Import(name="status")
@@ -212,6 +213,7 @@ public final class StreamLiveInputState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The connection status of a live input.
+     * Available values: &#34;connected&#34;, &#34;reconnected&#34;, &#34;reconnecting&#34;, &#34;client*disconnect&#34;, &#34;ttl*exceeded&#34;, &#34;failed*to*connect&#34;, &#34;failed*to*reconnect&#34;, &#34;new*configuration*accepted&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -556,6 +558,7 @@ public final class StreamLiveInputState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param status The connection status of a live input.
+         * Available values: &#34;connected&#34;, &#34;reconnected&#34;, &#34;reconnecting&#34;, &#34;client*disconnect&#34;, &#34;ttl*exceeded&#34;, &#34;failed*to*connect&#34;, &#34;failed*to*reconnect&#34;, &#34;new*configuration*accepted&#34;.
          * 
          * @return builder
          * 
@@ -567,6 +570,7 @@ public final class StreamLiveInputState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param status The connection status of a live input.
+         * Available values: &#34;connected&#34;, &#34;reconnected&#34;, &#34;reconnecting&#34;, &#34;client*disconnect&#34;, &#34;ttl*exceeded&#34;, &#34;failed*to*connect&#34;, &#34;failed*to*reconnect&#34;, &#34;new*configuration*accepted&#34;.
          * 
          * @return builder
          * 

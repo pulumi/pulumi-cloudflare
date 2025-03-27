@@ -46,13 +46,8 @@ type ContentScanningExpression struct {
 	pulumi.CustomResourceState
 
 	Bodies ContentScanningExpressionBodyArrayOutput `pulumi:"bodies"`
-<<<<<<< HEAD
-	// Identifier
-	ExpressionId pulumi.StringPtrOutput `pulumi:"expressionId"`
-=======
 	// Ruleset expression to use in matching content objects
 	Payload pulumi.StringOutput `pulumi:"payload"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -94,26 +89,16 @@ func GetContentScanningExpression(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ContentScanningExpression resources.
 type contentScanningExpressionState struct {
 	Bodies []ContentScanningExpressionBody `pulumi:"bodies"`
-<<<<<<< HEAD
-	// Identifier
-	ExpressionId *string `pulumi:"expressionId"`
-=======
 	// Ruleset expression to use in matching content objects
 	Payload *string `pulumi:"payload"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ContentScanningExpressionState struct {
 	Bodies ContentScanningExpressionBodyArrayInput
-<<<<<<< HEAD
-	// Identifier
-	ExpressionId pulumi.StringPtrInput
-=======
 	// Ruleset expression to use in matching content objects
 	Payload pulumi.StringPtrInput
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
@@ -125,11 +110,6 @@ func (ContentScanningExpressionState) ElementType() reflect.Type {
 type contentScanningExpressionArgs struct {
 	Bodies []ContentScanningExpressionBody `pulumi:"bodies"`
 	// Identifier
-<<<<<<< HEAD
-	ExpressionId *string `pulumi:"expressionId"`
-	// Identifier
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -137,11 +117,6 @@ type contentScanningExpressionArgs struct {
 type ContentScanningExpressionArgs struct {
 	Bodies ContentScanningExpressionBodyArrayInput
 	// Identifier
-<<<<<<< HEAD
-	ExpressionId pulumi.StringPtrInput
-	// Identifier
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	ZoneId pulumi.StringInput
 }
 
@@ -234,16 +209,6 @@ func (o ContentScanningExpressionOutput) ToContentScanningExpressionOutputWithCo
 
 func (o ContentScanningExpressionOutput) Bodies() ContentScanningExpressionBodyArrayOutput {
 	return o.ApplyT(func(v *ContentScanningExpression) ContentScanningExpressionBodyArrayOutput { return v.Bodies }).(ContentScanningExpressionBodyArrayOutput)
-<<<<<<< HEAD
-}
-
-// Identifier
-func (o ContentScanningExpressionOutput) ExpressionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ContentScanningExpression) pulumi.StringPtrOutput { return v.ExpressionId }).(pulumi.StringPtrOutput)
-}
-
-// Identifier
-=======
 }
 
 // Ruleset expression to use in matching content objects
@@ -252,7 +217,6 @@ func (o ContentScanningExpressionOutput) Payload() pulumi.StringOutput {
 }
 
 // Identifier
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func (o ContentScanningExpressionOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContentScanningExpression) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

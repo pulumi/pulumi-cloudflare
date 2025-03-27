@@ -63,6 +63,7 @@ export interface GetApiShieldOperationResult {
     readonly lastUpdated: string;
     /**
      * The HTTP method used to access the endpoint.
+     * Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
      */
     readonly method: string;
     /**

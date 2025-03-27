@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * const exampleZeroTrustTunnelCloudflareds = cloudflare.getZeroTrustTunnelCloudflareds({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     excludePrefix: "vpc1-",
- *     existedAt: "2019-10-12T07:20:50.52Z",
+ *     existedAt: "2019-10-12T07%3A20%3A50.52Z",
  *     includePrefix: "vpc1-",
  *     isDeleted: true,
  *     name: "blog",
@@ -54,7 +54,7 @@ export interface GetZeroTrustTunnelCloudflaredsArgs {
     accountId: string;
     excludePrefix?: string;
     /**
-     * If provided, include only tunnels that were created (and not deleted) before this time.
+     * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      */
     existedAt?: string;
     includePrefix?: string;
@@ -72,6 +72,7 @@ export interface GetZeroTrustTunnelCloudflaredsArgs {
     name?: string;
     /**
      * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+     * Available values: "inactive", "degraded", "healthy", "down".
      */
     status?: string;
     /**
@@ -92,7 +93,7 @@ export interface GetZeroTrustTunnelCloudflaredsResult {
     readonly accountId: string;
     readonly excludePrefix?: string;
     /**
-     * If provided, include only tunnels that were created (and not deleted) before this time.
+     * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      */
     readonly existedAt?: string;
     /**
@@ -118,6 +119,7 @@ export interface GetZeroTrustTunnelCloudflaredsResult {
     readonly results: outputs.GetZeroTrustTunnelCloudflaredsResult[];
     /**
      * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+     * Available values: "inactive", "degraded", "healthy", "down".
      */
     readonly status?: string;
     /**
@@ -137,7 +139,7 @@ export interface GetZeroTrustTunnelCloudflaredsResult {
  * const exampleZeroTrustTunnelCloudflareds = cloudflare.getZeroTrustTunnelCloudflareds({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     excludePrefix: "vpc1-",
- *     existedAt: "2019-10-12T07:20:50.52Z",
+ *     existedAt: "2019-10-12T07%3A20%3A50.52Z",
  *     includePrefix: "vpc1-",
  *     isDeleted: true,
  *     name: "blog",
@@ -175,7 +177,7 @@ export interface GetZeroTrustTunnelCloudflaredsOutputArgs {
     accountId: pulumi.Input<string>;
     excludePrefix?: pulumi.Input<string>;
     /**
-     * If provided, include only tunnels that were created (and not deleted) before this time.
+     * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      */
     existedAt?: pulumi.Input<string>;
     includePrefix?: pulumi.Input<string>;
@@ -193,6 +195,7 @@ export interface GetZeroTrustTunnelCloudflaredsOutputArgs {
     name?: pulumi.Input<string>;
     /**
      * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+     * Available values: "inactive", "degraded", "healthy", "down".
      */
     status?: pulumi.Input<string>;
     /**

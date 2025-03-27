@@ -137,6 +137,7 @@ namespace Pulumi.Cloudflare
         public readonly bool SkipWizard;
         /// <summary>
         /// Show the state of your account, and the type or configuration error.
+        /// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
         /// </summary>
         public readonly string Status;
         /// <summary>

@@ -28,6 +28,7 @@ type ZeroTrustTunnelCloudflaredConfig struct {
 	Config    ZeroTrustTunnelCloudflaredConfigConfigOutput `pulumi:"config"`
 	CreatedAt pulumi.StringOutput                          `pulumi:"createdAt"`
 	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+	// Available values: "local", "cloudflare".
 	Source pulumi.StringOutput `pulumi:"source"`
 	// UUID of the tunnel.
 	TunnelId pulumi.StringOutput `pulumi:"tunnelId"`
@@ -48,6 +49,12 @@ func NewZeroTrustTunnelCloudflaredConfig(ctx *pulumi.Context,
 	if args.TunnelId == nil {
 		return nil, errors.New("invalid value for required argument 'TunnelId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/tunnelConfig:TunnelConfig"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustTunnelCloudflaredConfig
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig", name, args, &resource, opts...)
@@ -77,6 +84,7 @@ type zeroTrustTunnelCloudflaredConfigState struct {
 	Config    *ZeroTrustTunnelCloudflaredConfigConfig `pulumi:"config"`
 	CreatedAt *string                                 `pulumi:"createdAt"`
 	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+	// Available values: "local", "cloudflare".
 	Source *string `pulumi:"source"`
 	// UUID of the tunnel.
 	TunnelId *string `pulumi:"tunnelId"`
@@ -91,6 +99,7 @@ type ZeroTrustTunnelCloudflaredConfigState struct {
 	Config    ZeroTrustTunnelCloudflaredConfigConfigPtrInput
 	CreatedAt pulumi.StringPtrInput
 	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+	// Available values: "local", "cloudflare".
 	Source pulumi.StringPtrInput
 	// UUID of the tunnel.
 	TunnelId pulumi.StringPtrInput
@@ -108,6 +117,7 @@ type zeroTrustTunnelCloudflaredConfigArgs struct {
 	// The tunnel configuration and ingress rules.
 	Config *ZeroTrustTunnelCloudflaredConfigConfig `pulumi:"config"`
 	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+	// Available values: "local", "cloudflare".
 	Source *string `pulumi:"source"`
 	// UUID of the tunnel.
 	TunnelId string `pulumi:"tunnelId"`
@@ -120,6 +130,7 @@ type ZeroTrustTunnelCloudflaredConfigArgs struct {
 	// The tunnel configuration and ingress rules.
 	Config ZeroTrustTunnelCloudflaredConfigConfigPtrInput
 	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+	// Available values: "local", "cloudflare".
 	Source pulumi.StringPtrInput
 	// UUID of the tunnel.
 	TunnelId pulumi.StringInput
@@ -229,6 +240,7 @@ func (o ZeroTrustTunnelCloudflaredConfigOutput) CreatedAt() pulumi.StringOutput 
 }
 
 // Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+// Available values: "local", "cloudflare".
 func (o ZeroTrustTunnelCloudflaredConfigOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustTunnelCloudflaredConfig) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
 }

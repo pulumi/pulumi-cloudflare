@@ -32,10 +32,7 @@ namespace Pulumi.Cloudflare
     ///                 Enabled = true,
     ///             },
     ///         },
-<<<<<<< HEAD
-=======
     ///         AiContextEnabled = true,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     ///         AllowedMatchCount = 0,
     ///         ConfidenceThreshold = "confidence_threshold",
     ///         ContextAwareness = new Cloudflare.Inputs.ZeroTrustDlpPredefinedProfileContextAwarenessArgs
@@ -64,12 +61,9 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-<<<<<<< HEAD
-=======
         [Output("aiContextEnabled")]
         public Output<bool?> AiContextEnabled { get; private set; } = null!;
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Output("allowedMatchCount")]
         public Output<int?> AllowedMatchCount { get; private set; } = null!;
 
@@ -115,6 +109,9 @@ namespace Pulumi.Cloudflare
         [Output("profileId")]
         public Output<string> ProfileId { get; private set; } = null!;
 
+        /// <summary>
+        /// Available values: "custom".
+        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
@@ -147,6 +144,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -173,12 +174,9 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-<<<<<<< HEAD
-=======
         [Input("aiContextEnabled")]
         public Input<bool>? AiContextEnabled { get; set; }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Input("allowedMatchCount")]
         public Input<int>? AllowedMatchCount { get; set; }
 
@@ -216,12 +214,9 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-<<<<<<< HEAD
-=======
         [Input("aiContextEnabled")]
         public Input<bool>? AiContextEnabled { get; set; }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Input("allowedMatchCount")]
         public Input<int>? AllowedMatchCount { get; set; }
 
@@ -272,6 +267,9 @@ namespace Pulumi.Cloudflare
         [Input("profileId")]
         public Input<string>? ProfileId { get; set; }
 
+        /// <summary>
+        /// Available values: "custom".
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

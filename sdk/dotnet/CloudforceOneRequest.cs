@@ -92,6 +92,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Request Status
+        /// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -104,6 +105,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The CISA defined Traffic Light Protocol (TLP)
+        /// Available values: "clear", "amber", "amber-strict", "green", "red".
         /// </summary>
         [Output("tlp")]
         public Output<string?> Tlp { get; private set; } = null!;
@@ -195,6 +197,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The CISA defined Traffic Light Protocol (TLP)
+        /// Available values: "clear", "amber", "amber-strict", "green", "red".
         /// </summary>
         [Input("tlp")]
         public Input<string>? Tlp { get; set; }
@@ -257,6 +260,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Request Status
+        /// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -269,6 +273,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The CISA defined Traffic Light Protocol (TLP)
+        /// Available values: "clear", "amber", "amber-strict", "green", "red".
         /// </summary>
         [Input("tlp")]
         public Input<string>? Tlp { get; set; }

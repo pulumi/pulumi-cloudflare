@@ -50,6 +50,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The kind of the ruleset.
+     * Available values: &#34;managed&#34;, &#34;custom&#34;, &#34;root&#34;, &#34;zone&#34;.
      * 
      */
     @Import(name="kind", required=true)
@@ -57,6 +58,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The kind of the ruleset.
+     * Available values: &#34;managed&#34;, &#34;custom&#34;, &#34;root&#34;, &#34;zone&#34;.
      * 
      */
     public Output<String> kind() {
@@ -80,6 +82,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The phase of the ruleset.
+     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
      * 
      */
     @Import(name="phase", required=true)
@@ -87,6 +90,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The phase of the ruleset.
+     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
      * 
      */
     public Output<String> phase() {
@@ -97,15 +101,15 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
      * The list of rules in the ruleset.
      * 
      */
-    @Import(name="rules", required=true)
-    private Output<List<RulesetRuleArgs>> rules;
+    @Import(name="rules")
+    private @Nullable Output<List<RulesetRuleArgs>> rules;
 
     /**
      * @return The list of rules in the ruleset.
      * 
      */
-    public Output<List<RulesetRuleArgs>> rules() {
-        return this.rules;
+    public Optional<Output<List<RulesetRuleArgs>>> rules() {
+        return Optional.ofNullable(this.rules);
     }
 
     /**
@@ -197,6 +201,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param kind The kind of the ruleset.
+         * Available values: &#34;managed&#34;, &#34;custom&#34;, &#34;root&#34;, &#34;zone&#34;.
          * 
          * @return builder
          * 
@@ -208,6 +213,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param kind The kind of the ruleset.
+         * Available values: &#34;managed&#34;, &#34;custom&#34;, &#34;root&#34;, &#34;zone&#34;.
          * 
          * @return builder
          * 
@@ -239,6 +245,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param phase The phase of the ruleset.
+         * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
          * 
          * @return builder
          * 
@@ -250,6 +257,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param phase The phase of the ruleset.
+         * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
          * 
          * @return builder
          * 
@@ -264,7 +272,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder rules(Output<List<RulesetRuleArgs>> rules) {
+        public Builder rules(@Nullable Output<List<RulesetRuleArgs>> rules) {
             $.rules = rules;
             return this;
         }
@@ -319,9 +327,6 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.phase == null) {
                 throw new MissingRequiredPropertyException("RulesetArgs", "phase");
-            }
-            if ($.rules == null) {
-                throw new MissingRequiredPropertyException("RulesetArgs", "rules");
             }
             return $;
         }

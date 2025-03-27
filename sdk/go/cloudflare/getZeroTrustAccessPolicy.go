@@ -67,6 +67,7 @@ type LookupZeroTrustAccessPolicyResult struct {
 	ApprovalRequired bool   `pulumi:"approvalRequired"`
 	CreatedAt        string `pulumi:"createdAt"`
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision string `pulumi:"decision"`
 	// Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
 	Excludes []GetZeroTrustAccessPolicyExclude `pulumi:"excludes"`
@@ -155,6 +156,7 @@ func (o LookupZeroTrustAccessPolicyResultOutput) CreatedAt() pulumi.StringOutput
 }
 
 // The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+// Available values: "allow", "deny", "nonIdentity", "bypass".
 func (o LookupZeroTrustAccessPolicyResultOutput) Decision() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessPolicyResult) string { return v.Decision }).(pulumi.StringOutput)
 }

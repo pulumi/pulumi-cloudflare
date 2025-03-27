@@ -48,6 +48,9 @@ namespace Pulumi.Cloudflare
         [Output("source")]
         public Output<string> Source { get; private set; } = null!;
 
+        /// <summary>
+        /// Available values: "percentage".
+        /// </summary>
         [Output("strategy")]
         public Output<string> Strategy { get; private set; } = null!;
 
@@ -115,6 +118,9 @@ namespace Pulumi.Cloudflare
         [Input("scriptName", required: true)]
         public Input<string> ScriptName { get; set; } = null!;
 
+        /// <summary>
+        /// Available values: "percentage".
+        /// </summary>
         [Input("strategy", required: true)]
         public Input<string> Strategy { get; set; } = null!;
 
@@ -166,6 +172,9 @@ namespace Pulumi.Cloudflare
         [Input("source")]
         public Input<string>? Source { get; set; }
 
+        /// <summary>
+        /// Available values: "percentage".
+        /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }
 

@@ -97,6 +97,7 @@ export interface GetHealthcheckResult {
     readonly retries: number;
     /**
      * The current status of the origin server according to the health check.
+     * Available values: "unknown", "healthy", "unhealthy", "suspended".
      */
     readonly status: string;
     /**

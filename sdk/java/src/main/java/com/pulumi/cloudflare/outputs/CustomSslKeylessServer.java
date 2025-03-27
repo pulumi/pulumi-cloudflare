@@ -57,6 +57,7 @@ public final class CustomSslKeylessServer {
     private @Nullable Double port;
     /**
      * @return Status of the Keyless SSL.
+     * Available values: &#34;active&#34;, &#34;deleted&#34;.
      * 
      */
     private @Nullable String status;
@@ -125,6 +126,7 @@ public final class CustomSslKeylessServer {
     }
     /**
      * @return Status of the Keyless SSL.
+     * Available values: &#34;active&#34;, &#34;deleted&#34;.
      * 
      */
     public Optional<String> status() {

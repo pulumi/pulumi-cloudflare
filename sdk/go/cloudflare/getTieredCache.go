@@ -57,10 +57,12 @@ type LookupTieredCacheResult struct {
 	// Whether the setting is editable
 	Editable bool `pulumi:"editable"`
 	// ID of the zone setting.
+	// Available values: "tiered*cache*smart*topology*enable".
 	Id string `pulumi:"id"`
 	// Last time this setting was modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
 	// The value of the feature
+	// Available values: "on", "off".
 	Value string `pulumi:"value"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -106,6 +108,7 @@ func (o LookupTieredCacheResultOutput) Editable() pulumi.BoolOutput {
 }
 
 // ID of the zone setting.
+// Available values: "tiered*cache*smart*topology*enable".
 func (o LookupTieredCacheResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTieredCacheResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -116,6 +119,7 @@ func (o LookupTieredCacheResultOutput) ModifiedOn() pulumi.StringOutput {
 }
 
 // The value of the feature
+// Available values: "on", "off".
 func (o LookupTieredCacheResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTieredCacheResult) string { return v.Value }).(pulumi.StringOutput)
 }

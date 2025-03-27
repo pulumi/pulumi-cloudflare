@@ -93,6 +93,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
 
     /**
      * Show the state of your account, and the type or configuration error.
+     * Available values: &#34;ready&#34;, &#34;unconfigured&#34;, &#34;misconfigured&#34;, &#34;misconfigured/locked&#34;, &#34;unlocked&#34;.
      * 
      */
     @Import(name="status")
@@ -100,6 +101,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
 
     /**
      * @return Show the state of your account, and the type or configuration error.
+     * Available values: &#34;ready&#34;, &#34;unconfigured&#34;, &#34;misconfigured&#34;, &#34;misconfigured/locked&#34;, &#34;unlocked&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -274,6 +276,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
 
         /**
          * @param status Show the state of your account, and the type or configuration error.
+         * Available values: &#34;ready&#34;, &#34;unconfigured&#34;, &#34;misconfigured&#34;, &#34;misconfigured/locked&#34;, &#34;unlocked&#34;.
          * 
          * @return builder
          * 
@@ -285,6 +288,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
 
         /**
          * @param status Show the state of your account, and the type or configuration error.
+         * Available values: &#34;ready&#34;, &#34;unconfigured&#34;, &#34;misconfigured&#34;, &#34;misconfigured/locked&#34;, &#34;unlocked&#34;.
          * 
          * @return builder
          * 

@@ -13,9 +13,9 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
     'GetZeroTrustRiskBehaviorResult',
     'AwaitableGetZeroTrustRiskBehaviorResult',
     'get_zero_trust_risk_behavior',
@@ -34,26 +34,6 @@ class GetZeroTrustRiskBehaviorResult:
         if behaviors and not isinstance(behaviors, dict):
             raise TypeError("Expected argument 'behaviors' to be a dict")
         pulumi.set(__self__, "behaviors", behaviors)
-========
-    'GetBotnetFeedConfigAsnResult',
-    'AwaitableGetBotnetFeedConfigAsnResult',
-    'get_botnet_feed_config_asn',
-    'get_botnet_feed_config_asn_output',
-]
-
-@pulumi.output_type
-class GetBotnetFeedConfigAsnResult:
-    """
-    A collection of values returned by getBotnetFeedConfigAsn.
-    """
-    def __init__(__self__, account_id=None, asn=None, id=None):
-        if account_id and not isinstance(account_id, str):
-            raise TypeError("Expected argument 'account_id' to be a str")
-        pulumi.set(__self__, "account_id", account_id)
-        if asn and not isinstance(asn, int):
-            raise TypeError("Expected argument 'asn' to be a int")
-        pulumi.set(__self__, "asn", asn)
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_botnet_feed_config_asn.py
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -61,23 +41,12 @@ class GetBotnetFeedConfigAsnResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
-========
-        """
-        Identifier
-        """
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_botnet_feed_config_asn.py
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
     def behaviors(self) -> Mapping[str, 'outputs.GetZeroTrustRiskBehaviorBehaviorsResult']:
         return pulumi.get(self, "behaviors")
-========
-    def asn(self) -> int:
-        return pulumi.get(self, "asn")
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_botnet_feed_config_asn.py
 
     @property
     @pulumi.getter
@@ -88,16 +57,11 @@ class GetBotnetFeedConfigAsnResult:
         return pulumi.get(self, "id")
 
 
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
 class AwaitableGetZeroTrustRiskBehaviorResult(GetZeroTrustRiskBehaviorResult):
-========
-class AwaitableGetBotnetFeedConfigAsnResult(GetBotnetFeedConfigAsnResult):
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_botnet_feed_config_asn.py
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
         return GetZeroTrustRiskBehaviorResult(
             account_id=self.account_id,
             behaviors=self.behaviors,
@@ -106,16 +70,6 @@ class AwaitableGetBotnetFeedConfigAsnResult(GetBotnetFeedConfigAsnResult):
 
 def get_zero_trust_risk_behavior(account_id: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustRiskBehaviorResult:
-========
-        return GetBotnetFeedConfigAsnResult(
-            account_id=self.account_id,
-            asn=self.asn,
-            id=self.id)
-
-
-def get_botnet_feed_config_asn(account_id: Optional[str] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBotnetFeedConfigAsnResult:
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_botnet_feed_config_asn.py
     """
     ## Example Usage
 
@@ -123,21 +77,12 @@ def get_botnet_feed_config_asn(account_id: Optional[str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
     example_zero_trust_risk_behavior = cloudflare.get_zero_trust_risk_behavior(account_id="account_id")
     ```
-========
-    example_botnet_feed_config_asn = cloudflare.get_botnet_feed_config_asn(account_id="023e105f4ecef8ad9ca31a8372d0c353")
-    ```
-
-
-    :param str account_id: Identifier
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_botnet_feed_config_asn.py
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior', __args__, opts=opts, typ=GetZeroTrustRiskBehaviorResult).value
 
     return AwaitableGetZeroTrustRiskBehaviorResult(
@@ -146,16 +91,6 @@ def get_botnet_feed_config_asn(account_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'))
 def get_zero_trust_risk_behavior_output(account_id: Optional[pulumi.Input[str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustRiskBehaviorResult]:
-========
-    __ret__ = pulumi.runtime.invoke('cloudflare:index/getBotnetFeedConfigAsn:getBotnetFeedConfigAsn', __args__, opts=opts, typ=GetBotnetFeedConfigAsnResult).value
-
-    return AwaitableGetBotnetFeedConfigAsnResult(
-        account_id=pulumi.get(__ret__, 'account_id'),
-        asn=pulumi.get(__ret__, 'asn'),
-        id=pulumi.get(__ret__, 'id'))
-def get_botnet_feed_config_asn_output(account_id: Optional[pulumi.Input[str]] = None,
-                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBotnetFeedConfigAsnResult]:
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_botnet_feed_config_asn.py
     """
     ## Example Usage
 
@@ -163,29 +98,14 @@ def get_botnet_feed_config_asn_output(account_id: Optional[pulumi.Input[str]] = 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
     example_zero_trust_risk_behavior = cloudflare.get_zero_trust_risk_behavior(account_id="account_id")
     ```
-========
-    example_botnet_feed_config_asn = cloudflare.get_botnet_feed_config_asn(account_id="023e105f4ecef8ad9ca31a8372d0c353")
-    ```
-
-
-    :param str account_id: Identifier
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_botnet_feed_config_asn.py
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-<<<<<<<< HEAD:sdk/python/pulumi_cloudflare/get_zero_trust_risk_behavior.py
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior', __args__, opts=opts, typ=GetZeroTrustRiskBehaviorResult)
     return __ret__.apply(lambda __response__: GetZeroTrustRiskBehaviorResult(
         account_id=pulumi.get(__response__, 'account_id'),
         behaviors=pulumi.get(__response__, 'behaviors'),
-========
-    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getBotnetFeedConfigAsn:getBotnetFeedConfigAsn', __args__, opts=opts, typ=GetBotnetFeedConfigAsnResult)
-    return __ret__.apply(lambda __response__: GetBotnetFeedConfigAsnResult(
-        account_id=pulumi.get(__response__, 'account_id'),
-        asn=pulumi.get(__response__, 'asn'),
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/python/pulumi_cloudflare/get_botnet_feed_config_asn.py
         id=pulumi.get(__response__, 'id')))

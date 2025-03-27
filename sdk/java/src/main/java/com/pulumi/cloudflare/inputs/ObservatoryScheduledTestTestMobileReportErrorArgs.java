@@ -17,6 +17,7 @@ public final class ObservatoryScheduledTestTestMobileReportErrorArgs extends com
 
     /**
      * The error code of the Lighthouse result.
+     * Available values: &#34;NOT*REACHABLE&#34;, &#34;DNS*FAILURE&#34;, &#34;NOT*HTML&#34;, &#34;LIGHTHOUSE*TIMEOUT&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     @Import(name="code")
@@ -24,6 +25,7 @@ public final class ObservatoryScheduledTestTestMobileReportErrorArgs extends com
 
     /**
      * @return The error code of the Lighthouse result.
+     * Available values: &#34;NOT*REACHABLE&#34;, &#34;DNS*FAILURE&#34;, &#34;NOT*HTML&#34;, &#34;LIGHTHOUSE*TIMEOUT&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     public Optional<Output<String>> code() {
@@ -88,6 +90,7 @@ public final class ObservatoryScheduledTestTestMobileReportErrorArgs extends com
 
         /**
          * @param code The error code of the Lighthouse result.
+         * Available values: &#34;NOT*REACHABLE&#34;, &#34;DNS*FAILURE&#34;, &#34;NOT*HTML&#34;, &#34;LIGHTHOUSE*TIMEOUT&#34;, &#34;UNKNOWN&#34;.
          * 
          * @return builder
          * 
@@ -99,6 +102,7 @@ public final class ObservatoryScheduledTestTestMobileReportErrorArgs extends com
 
         /**
          * @param code The error code of the Lighthouse result.
+         * Available values: &#34;NOT*REACHABLE&#34;, &#34;DNS*FAILURE&#34;, &#34;NOT*HTML&#34;, &#34;LIGHTHOUSE*TIMEOUT&#34;, &#34;UNKNOWN&#34;.
          * 
          * @return builder
          * 

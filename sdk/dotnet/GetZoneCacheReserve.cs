@@ -117,6 +117,7 @@ namespace Pulumi.Cloudflare
         public readonly bool Editable;
         /// <summary>
         /// ID of the zone setting.
+        /// Available values: "cache_reserve".
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -125,16 +126,13 @@ namespace Pulumi.Cloudflare
         public readonly string ModifiedOn;
         /// <summary>
         /// The value of the feature
+        /// Available values: "on", "off".
         /// </summary>
         public readonly string Value;
         /// <summary>
         /// Identifier
         /// </summary>
         public readonly string ZoneId;
-        /// <summary>
-        /// ID of the zone setting.
-        /// </summary>
-        public readonly string ZoneSettingId;
 
         [OutputConstructor]
         private GetZoneCacheReserveResult(
@@ -146,20 +144,13 @@ namespace Pulumi.Cloudflare
 
             string value,
 
-<<<<<<< HEAD
-            string zoneId,
-
-            string zoneSettingId)
-=======
             string zoneId)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         {
             Editable = editable;
             Id = id;
             ModifiedOn = modifiedOn;
             Value = value;
             ZoneId = zoneId;
-            ZoneSettingId = zoneSettingId;
         }
     }
 }

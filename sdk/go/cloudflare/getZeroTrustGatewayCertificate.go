@@ -58,6 +58,7 @@ type LookupZeroTrustGatewayCertificateArgs struct {
 type LookupZeroTrustGatewayCertificateResult struct {
 	AccountId string `pulumi:"accountId"`
 	// The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+	// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
 	BindingStatus string `pulumi:"bindingStatus"`
 	// The CA certificate
 	Certificate string `pulumi:"certificate"`
@@ -76,6 +77,7 @@ type LookupZeroTrustGatewayCertificateResult struct {
 	// The entire issuer field of the certificate.
 	IssuerRaw string `pulumi:"issuerRaw"`
 	// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+	// Available values: "custom", "gatewayManaged".
 	Type       string `pulumi:"type"`
 	UpdatedAt  string `pulumi:"updatedAt"`
 	UploadedOn string `pulumi:"uploadedOn"`
@@ -121,6 +123,7 @@ func (o LookupZeroTrustGatewayCertificateResultOutput) AccountId() pulumi.String
 }
 
 // The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
 func (o LookupZeroTrustGatewayCertificateResultOutput) BindingStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) string { return v.BindingStatus }).(pulumi.StringOutput)
 }
@@ -169,6 +172,7 @@ func (o LookupZeroTrustGatewayCertificateResultOutput) IssuerRaw() pulumi.String
 }
 
 // The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+// Available values: "custom", "gatewayManaged".
 func (o LookupZeroTrustGatewayCertificateResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) string { return v.Type }).(pulumi.StringOutput)
 }

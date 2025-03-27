@@ -182,6 +182,7 @@ namespace Pulumi.Cloudflare
         public readonly string? SecretName;
         /// <summary>
         /// The type of secret.
+        /// Available values: "secret_text".
         /// </summary>
         public readonly string Type;
 

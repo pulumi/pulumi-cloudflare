@@ -73,6 +73,7 @@ export class ZeroTrustAccessCustomPage extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * Custom page type.
+     * Available values: "identityDenied", "forbidden".
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -126,6 +127,8 @@ export class ZeroTrustAccessCustomPage extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessCustomPage:AccessCustomPage" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustAccessCustomPage.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -153,6 +156,7 @@ export interface ZeroTrustAccessCustomPageState {
     name?: pulumi.Input<string>;
     /**
      * Custom page type.
+     * Available values: "identityDenied", "forbidden".
      */
     type?: pulumi.Input<string>;
     /**
@@ -184,6 +188,7 @@ export interface ZeroTrustAccessCustomPageArgs {
     name: pulumi.Input<string>;
     /**
      * Custom page type.
+     * Available values: "identityDenied", "forbidden".
      */
     type: pulumi.Input<string>;
 }

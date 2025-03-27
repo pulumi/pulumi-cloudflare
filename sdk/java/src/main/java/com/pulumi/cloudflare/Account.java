@@ -109,6 +109,7 @@ public class Account extends com.pulumi.resources.CustomResource {
     }
     /**
      * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+     * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -116,6 +117,7 @@ public class Account extends com.pulumi.resources.CustomResource {
 
     /**
      * @return the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+     * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
      */
     public Output<String> type() {

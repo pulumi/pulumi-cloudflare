@@ -13,14 +13,20 @@ import javax.annotation.Nullable;
 public final class GetEmailSecurityBlockSenderFilter {
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
     /**
      * @return The field to sort by.
+     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
      * 
      */
     private @Nullable String order;
+    /**
+     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * 
+     */
     private @Nullable String patternType;
     /**
      * @return Allows searching in multiple properties of a record simultaneously.
@@ -34,6 +40,7 @@ public final class GetEmailSecurityBlockSenderFilter {
     private GetEmailSecurityBlockSenderFilter() {}
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -41,11 +48,16 @@ public final class GetEmailSecurityBlockSenderFilter {
     }
     /**
      * @return The field to sort by.
+     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
      * 
      */
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
+    /**
+     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * 
+     */
     public Optional<String> patternType() {
         return Optional.ofNullable(this.patternType);
     }

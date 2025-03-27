@@ -27,12 +27,6 @@ class GetZeroTrustDlpPredefinedProfileResult:
     """
     A collection of values returned by getZeroTrustDlpPredefinedProfile.
     """
-<<<<<<< HEAD
-    def __init__(__self__, account_id=None, allowed_match_count=None, confidence_threshold=None, context_awareness=None, created_at=None, description=None, entries=None, id=None, name=None, ocr_enabled=None, open_access=None, profile_id=None, type=None, updated_at=None):
-        if account_id and not isinstance(account_id, str):
-            raise TypeError("Expected argument 'account_id' to be a str")
-        pulumi.set(__self__, "account_id", account_id)
-=======
     def __init__(__self__, account_id=None, ai_context_enabled=None, allowed_match_count=None, confidence_threshold=None, context_awareness=None, created_at=None, description=None, entries=None, id=None, name=None, ocr_enabled=None, open_access=None, profile_id=None, type=None, updated_at=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
@@ -40,7 +34,6 @@ class GetZeroTrustDlpPredefinedProfileResult:
         if ai_context_enabled and not isinstance(ai_context_enabled, bool):
             raise TypeError("Expected argument 'ai_context_enabled' to be a bool")
         pulumi.set(__self__, "ai_context_enabled", ai_context_enabled)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if allowed_match_count and not isinstance(allowed_match_count, int):
             raise TypeError("Expected argument 'allowed_match_count' to be a int")
         pulumi.set(__self__, "allowed_match_count", allowed_match_count)
@@ -87,14 +80,11 @@ class GetZeroTrustDlpPredefinedProfileResult:
         return pulumi.get(self, "account_id")
 
     @property
-<<<<<<< HEAD
-=======
     @pulumi.getter(name="aiContextEnabled")
     def ai_context_enabled(self) -> bool:
         return pulumi.get(self, "ai_context_enabled")
 
     @property
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="allowedMatchCount")
     def allowed_match_count(self) -> int:
         """
@@ -105,6 +95,9 @@ class GetZeroTrustDlpPredefinedProfileResult:
     @property
     @pulumi.getter(name="confidenceThreshold")
     def confidence_threshold(self) -> str:
+        """
+        Available values: "low", "medium", "high", "very_high".
+        """
         return pulumi.get(self, "confidence_threshold")
 
     @property
@@ -173,6 +166,9 @@ class GetZeroTrustDlpPredefinedProfileResult:
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Available values: "custom".
+        """
         return pulumi.get(self, "type")
 
     @property
@@ -191,10 +187,7 @@ class AwaitableGetZeroTrustDlpPredefinedProfileResult(GetZeroTrustDlpPredefinedP
             yield self
         return GetZeroTrustDlpPredefinedProfileResult(
             account_id=self.account_id,
-<<<<<<< HEAD
-=======
             ai_context_enabled=self.ai_context_enabled,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             allowed_match_count=self.allowed_match_count,
             confidence_threshold=self.confidence_threshold,
             context_awareness=self.context_awareness,
@@ -232,10 +225,7 @@ def get_zero_trust_dlp_predefined_profile(account_id: Optional[str] = None,
 
     return AwaitableGetZeroTrustDlpPredefinedProfileResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-<<<<<<< HEAD
-=======
         ai_context_enabled=pulumi.get(__ret__, 'ai_context_enabled'),
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         allowed_match_count=pulumi.get(__ret__, 'allowed_match_count'),
         confidence_threshold=pulumi.get(__ret__, 'confidence_threshold'),
         context_awareness=pulumi.get(__ret__, 'context_awareness'),
@@ -270,10 +260,7 @@ def get_zero_trust_dlp_predefined_profile_output(account_id: Optional[pulumi.Inp
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustDlpPredefinedProfile:getZeroTrustDlpPredefinedProfile', __args__, opts=opts, typ=GetZeroTrustDlpPredefinedProfileResult)
     return __ret__.apply(lambda __response__: GetZeroTrustDlpPredefinedProfileResult(
         account_id=pulumi.get(__response__, 'account_id'),
-<<<<<<< HEAD
-=======
         ai_context_enabled=pulumi.get(__response__, 'ai_context_enabled'),
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         allowed_match_count=pulumi.get(__response__, 'allowed_match_count'),
         confidence_threshold=pulumi.get(__response__, 'confidence_threshold'),
         context_awareness=pulumi.get(__response__, 'context_awareness'),

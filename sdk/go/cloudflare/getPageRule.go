@@ -72,6 +72,7 @@ type LookupPageRuleResult struct {
 	// specify a higher priority for rule B so it overrides rule A.
 	Priority int `pulumi:"priority"`
 	// The status of the Page Rule.
+	// Available values: "active", "disabled".
 	Status string `pulumi:"status"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -143,6 +144,7 @@ func (o LookupPageRuleResultOutput) Priority() pulumi.IntOutput {
 }
 
 // The status of the Page Rule.
+// Available values: "active", "disabled".
 func (o LookupPageRuleResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPageRuleResult) string { return v.Status }).(pulumi.StringOutput)
 }

@@ -28,17 +28,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewEmailSecurityBlockSender(ctx, "example_email_security_block_sender", &cloudflare.EmailSecurityBlockSenderArgs{
 //				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-<<<<<<< HEAD
-//				IsRegex:     pulumi.Bool(false),
-//				Pattern:     pulumi.String("test@example.com"),
-//				PatternType: pulumi.String("EMAIL"),
-//				Comments:    pulumi.String("block sender with email test@example.com"),
-=======
 //				IsRegex:     pulumi.Bool(true),
 //				Pattern:     pulumi.String("x"),
 //				PatternType: pulumi.String("EMAIL"),
 //				Comments:    pulumi.String("comments"),
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 //			})
 //			if err != nil {
 //				return err
@@ -64,7 +57,8 @@ type EmailSecurityBlockSender struct {
 	IsRegex      pulumi.BoolOutput      `pulumi:"isRegex"`
 	LastModified pulumi.StringOutput    `pulumi:"lastModified"`
 	Pattern      pulumi.StringOutput    `pulumi:"pattern"`
-	PatternType  pulumi.StringOutput    `pulumi:"patternType"`
+	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+	PatternType pulumi.StringOutput `pulumi:"patternType"`
 }
 
 // NewEmailSecurityBlockSender registers a new resource with the given unique name, arguments, and options.
@@ -116,7 +110,8 @@ type emailSecurityBlockSenderState struct {
 	IsRegex      *bool   `pulumi:"isRegex"`
 	LastModified *string `pulumi:"lastModified"`
 	Pattern      *string `pulumi:"pattern"`
-	PatternType  *string `pulumi:"patternType"`
+	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+	PatternType *string `pulumi:"patternType"`
 }
 
 type EmailSecurityBlockSenderState struct {
@@ -127,7 +122,8 @@ type EmailSecurityBlockSenderState struct {
 	IsRegex      pulumi.BoolPtrInput
 	LastModified pulumi.StringPtrInput
 	Pattern      pulumi.StringPtrInput
-	PatternType  pulumi.StringPtrInput
+	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+	PatternType pulumi.StringPtrInput
 }
 
 func (EmailSecurityBlockSenderState) ElementType() reflect.Type {
@@ -136,20 +132,22 @@ func (EmailSecurityBlockSenderState) ElementType() reflect.Type {
 
 type emailSecurityBlockSenderArgs struct {
 	// Account Identifier
-	AccountId   string  `pulumi:"accountId"`
-	Comments    *string `pulumi:"comments"`
-	IsRegex     bool    `pulumi:"isRegex"`
-	Pattern     string  `pulumi:"pattern"`
-	PatternType string  `pulumi:"patternType"`
+	AccountId string  `pulumi:"accountId"`
+	Comments  *string `pulumi:"comments"`
+	IsRegex   bool    `pulumi:"isRegex"`
+	Pattern   string  `pulumi:"pattern"`
+	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+	PatternType string `pulumi:"patternType"`
 }
 
 // The set of arguments for constructing a EmailSecurityBlockSender resource.
 type EmailSecurityBlockSenderArgs struct {
 	// Account Identifier
-	AccountId   pulumi.StringInput
-	Comments    pulumi.StringPtrInput
-	IsRegex     pulumi.BoolInput
-	Pattern     pulumi.StringInput
+	AccountId pulumi.StringInput
+	Comments  pulumi.StringPtrInput
+	IsRegex   pulumi.BoolInput
+	Pattern   pulumi.StringInput
+	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType pulumi.StringInput
 }
 
@@ -265,6 +263,7 @@ func (o EmailSecurityBlockSenderOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.StringOutput { return v.Pattern }).(pulumi.StringOutput)
 }
 
+// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 func (o EmailSecurityBlockSenderOutput) PatternType() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.StringOutput { return v.PatternType }).(pulumi.StringOutput)
 }

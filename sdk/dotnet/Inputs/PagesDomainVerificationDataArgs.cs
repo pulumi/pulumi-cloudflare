@@ -15,6 +15,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("errorMessage")]
         public Input<string>? ErrorMessage { get; set; }
 
+        /// <summary>
+        /// Available values: "pending", "active", "deactivated", "blocked", "error".
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

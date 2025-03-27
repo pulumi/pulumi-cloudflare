@@ -51,11 +51,10 @@ type R2CustomDomain struct {
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
 	// Name of the custom domain to be added
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	// Name of the custom domain
-	DomainName pulumi.StringPtrOutput `pulumi:"domainName"`
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls pulumi.StringPtrOutput     `pulumi:"minTls"`
 	Status R2CustomDomainStatusOutput `pulumi:"status"`
 	// Zone ID of the custom domain
@@ -115,11 +114,10 @@ type r2customDomainState struct {
 	BucketName *string `pulumi:"bucketName"`
 	// Name of the custom domain to be added
 	Domain *string `pulumi:"domain"`
-	// Name of the custom domain
-	DomainName *string `pulumi:"domainName"`
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls *string               `pulumi:"minTls"`
 	Status *R2CustomDomainStatus `pulumi:"status"`
 	// Zone ID of the custom domain
@@ -135,11 +133,10 @@ type R2CustomDomainState struct {
 	BucketName pulumi.StringPtrInput
 	// Name of the custom domain to be added
 	Domain pulumi.StringPtrInput
-	// Name of the custom domain
-	DomainName pulumi.StringPtrInput
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	Enabled pulumi.BoolPtrInput
 	// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls pulumi.StringPtrInput
 	Status R2CustomDomainStatusPtrInput
 	// Zone ID of the custom domain
@@ -159,11 +156,10 @@ type r2customDomainArgs struct {
 	BucketName string `pulumi:"bucketName"`
 	// Name of the custom domain to be added
 	Domain string `pulumi:"domain"`
-	// Name of the custom domain
-	DomainName *string `pulumi:"domainName"`
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	Enabled bool `pulumi:"enabled"`
 	// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls *string `pulumi:"minTls"`
 	// Zone ID of the custom domain
 	ZoneId string `pulumi:"zoneId"`
@@ -177,11 +173,10 @@ type R2CustomDomainArgs struct {
 	BucketName pulumi.StringInput
 	// Name of the custom domain to be added
 	Domain pulumi.StringInput
-	// Name of the custom domain
-	DomainName pulumi.StringPtrInput
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	Enabled pulumi.BoolInput
 	// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls pulumi.StringPtrInput
 	// Zone ID of the custom domain
 	ZoneId pulumi.StringInput
@@ -289,17 +284,13 @@ func (o R2CustomDomainOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2CustomDomain) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-// Name of the custom domain
-func (o R2CustomDomainOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2CustomDomain) pulumi.StringPtrOutput { return v.DomainName }).(pulumi.StringPtrOutput)
-}
-
 // Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 func (o R2CustomDomainOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *R2CustomDomain) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+// Available values: "1.0", "1.1", "1.2", "1.3".
 func (o R2CustomDomainOutput) MinTls() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *R2CustomDomain) pulumi.StringPtrOutput { return v.MinTls }).(pulumi.StringPtrOutput)
 }

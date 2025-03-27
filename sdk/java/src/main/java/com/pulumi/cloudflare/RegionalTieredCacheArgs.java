@@ -18,6 +18,7 @@ public final class RegionalTieredCacheArgs extends com.pulumi.resources.Resource
 
     /**
      * Value of the Regional Tiered Cache zone setting.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     @Import(name="value")
@@ -25,6 +26,7 @@ public final class RegionalTieredCacheArgs extends com.pulumi.resources.Resource
 
     /**
      * @return Value of the Regional Tiered Cache zone setting.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public Optional<Output<String>> value() {
@@ -73,6 +75,7 @@ public final class RegionalTieredCacheArgs extends com.pulumi.resources.Resource
 
         /**
          * @param value Value of the Regional Tiered Cache zone setting.
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 
@@ -84,6 +87,7 @@ public final class RegionalTieredCacheArgs extends com.pulumi.resources.Resource
 
         /**
          * @param value Value of the Regional Tiered Cache zone setting.
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 

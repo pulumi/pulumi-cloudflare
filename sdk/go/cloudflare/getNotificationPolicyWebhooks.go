@@ -72,6 +72,7 @@ type LookupNotificationPolicyWebhooksResult struct {
 	// Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
 	Secret string `pulumi:"secret"`
 	// Type of webhook endpoint.
+	// Available values: "slack", "generic", "gchat".
 	Type string `pulumi:"type"`
 	// The POST endpoint to call when dispatching a notification.
 	Url string `pulumi:"url"`
@@ -151,6 +152,7 @@ func (o LookupNotificationPolicyWebhooksResultOutput) Secret() pulumi.StringOutp
 }
 
 // Type of webhook endpoint.
+// Available values: "slack", "generic", "gchat".
 func (o LookupNotificationPolicyWebhooksResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationPolicyWebhooksResult) string { return v.Type }).(pulumi.StringOutput)
 }

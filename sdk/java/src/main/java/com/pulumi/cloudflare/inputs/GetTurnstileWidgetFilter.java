@@ -16,6 +16,7 @@ public final class GetTurnstileWidgetFilter extends com.pulumi.resources.InvokeA
 
     /**
      * Direction to order widgets.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -23,6 +24,7 @@ public final class GetTurnstileWidgetFilter extends com.pulumi.resources.InvokeA
 
     /**
      * @return Direction to order widgets.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -31,6 +33,7 @@ public final class GetTurnstileWidgetFilter extends com.pulumi.resources.InvokeA
 
     /**
      * Field to order widgets by.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
      * 
      */
     @Import(name="order")
@@ -38,6 +41,7 @@ public final class GetTurnstileWidgetFilter extends com.pulumi.resources.InvokeA
 
     /**
      * @return Field to order widgets by.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
      * 
      */
     public Optional<String> order() {
@@ -71,6 +75,7 @@ public final class GetTurnstileWidgetFilter extends com.pulumi.resources.InvokeA
 
         /**
          * @param direction Direction to order widgets.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -82,6 +87,7 @@ public final class GetTurnstileWidgetFilter extends com.pulumi.resources.InvokeA
 
         /**
          * @param order Field to order widgets by.
+         * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
          * 
          * @return builder
          * 

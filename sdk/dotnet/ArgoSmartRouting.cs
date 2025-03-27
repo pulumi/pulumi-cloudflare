@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Enables Argo Smart Routing.
+        /// Available values: "on", "off".
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -98,6 +99,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Enables Argo Smart Routing.
+        /// Available values: "on", "off".
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
@@ -118,6 +120,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Enables Argo Smart Routing.
+        /// Available values: "on", "off".
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

@@ -60,6 +60,7 @@ public final class GetApiTokenResult {
     private List<GetApiTokenPolicy> policies;
     /**
      * @return Status of the token.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
      * 
      */
     private String status;
@@ -134,6 +135,7 @@ public final class GetApiTokenResult {
     }
     /**
      * @return Status of the token.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
      * 
      */
     public String status() {

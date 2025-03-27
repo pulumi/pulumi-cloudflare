@@ -46,6 +46,7 @@ public final class GetZeroTrustAccessCustomPageResult {
     private String name;
     /**
      * @return Custom page type.
+     * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
      * 
      */
     private String type;
@@ -104,6 +105,7 @@ public final class GetZeroTrustAccessCustomPageResult {
     }
     /**
      * @return Custom page type.
+     * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
      * 
      */
     public String type() {

@@ -15,6 +15,7 @@ public final class GetHostnameTlsSettingPlainArgs extends com.pulumi.resources.I
 
     /**
      * The TLS Setting name.
+     * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
      * 
      */
     @Import(name="settingId", required=true)
@@ -22,6 +23,7 @@ public final class GetHostnameTlsSettingPlainArgs extends com.pulumi.resources.I
 
     /**
      * @return The TLS Setting name.
+     * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
      * 
      */
     public String settingId() {
@@ -70,6 +72,7 @@ public final class GetHostnameTlsSettingPlainArgs extends com.pulumi.resources.I
 
         /**
          * @param settingId The TLS Setting name.
+         * Available values: &#34;ciphers&#34;, &#34;min*tls*version&#34;, &#34;http2&#34;.
          * 
          * @return builder
          * 

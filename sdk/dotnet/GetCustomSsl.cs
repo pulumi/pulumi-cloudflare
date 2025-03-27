@@ -13,18 +13,69 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleCustomSsl = Cloudflare.GetCustomSsl.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CustomCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Task<GetCustomSslResult> InvokeAsync(GetCustomSslArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetCustomSslResult> InvokeAsync(GetCustomSslArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomSslResult>("cloudflare:index/getCustomSsl:getCustomSsl", args ?? new GetCustomSslArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleCustomSsl = Cloudflare.GetCustomSsl.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CustomCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetCustomSslResult> Invoke(GetCustomSslInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetCustomSslResult> Invoke(GetCustomSslInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomSslResult>("cloudflare:index/getCustomSsl:getCustomSsl", args ?? new GetCustomSslInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleCustomSsl = Cloudflare.GetCustomSsl.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CustomCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetCustomSslResult> Invoke(GetCustomSslInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomSslResult>("cloudflare:index/getCustomSsl:getCustomSsl", args ?? new GetCustomSslInvokeArgs(), options.WithDefaults());
@@ -41,6 +92,12 @@ namespace Pulumi.Cloudflare
 
         [Input("filter")]
         public Inputs.GetCustomSslFilterArgs? Filter { get; set; }
+
+        /// <summary>
+        /// Identifier
+        /// </summary>
+        [Input("zoneId", required: true)]
+        public string ZoneId { get; set; } = null!;
 
         public GetCustomSslArgs()
         {
@@ -59,6 +116,12 @@ namespace Pulumi.Cloudflare
         [Input("filter")]
         public Input<Inputs.GetCustomSslFilterInputArgs>? Filter { get; set; }
 
+        /// <summary>
+        /// Identifier
+        /// </summary>
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
+
         public GetCustomSslInvokeArgs()
         {
         }
@@ -71,6 +134,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        /// Available values: "ubiquitous", "optimal", "force".
         /// </summary>
         public readonly string BundleMethod;
         /// <summary>
@@ -114,6 +178,7 @@ namespace Pulumi.Cloudflare
         public readonly string Signature;
         /// <summary>
         /// Status of the zone's custom SSL.
+        /// Available values: "active", "expired", "deleted", "pending", "initializing".
         /// </summary>
         public readonly string Status;
         /// <summary>

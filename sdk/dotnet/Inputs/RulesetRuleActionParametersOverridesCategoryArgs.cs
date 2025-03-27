@@ -32,6 +32,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The sensitivity level to use for rules in the category.
+        /// Available values: "default", "medium", "low", "eoff".
         /// </summary>
         [Input("sensitivityLevel")]
         public Input<string>? SensitivityLevel { get; set; }

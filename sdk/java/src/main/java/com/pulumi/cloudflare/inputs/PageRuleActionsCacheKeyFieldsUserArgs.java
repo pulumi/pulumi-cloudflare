@@ -15,173 +15,23 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
 
     public static final PageRuleActionsCacheKeyFieldsUserArgs Empty = new PageRuleActionsCacheKeyFieldsUserArgs();
 
-    /**
-     * `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
-     * 
-     */
     @Import(name="deviceType")
     private @Nullable Output<Boolean> deviceType;
 
-    /**
-     * @return `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
-     * 
-     */
     public Optional<Output<Boolean>> deviceType() {
         return Optional.ofNullable(this.deviceType);
     }
 
-    /**
-     * `true` - includes the client’s country, derived from the IP address; defaults to `false`.
-     * 
-     */
     @Import(name="geo")
     private @Nullable Output<Boolean> geo;
 
-    /**
-     * @return `true` - includes the client’s country, derived from the IP address; defaults to `false`.
-     * 
-     */
     public Optional<Output<Boolean>> geo() {
         return Optional.ofNullable(this.geo);
     }
 
-    /**
-     * `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
-     * 
-     * Example:
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.PageRule;
-     * import com.pulumi.cloudflare.PageRuleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         // Unrealistic example with all features used
-     *         var foobar = new PageRule("foobar", PageRuleArgs.builder()
-     *             .zoneId(cloudflareZoneId)
-     *             .target(String.format("%s/app/*", cloudflareZone))
-     *             .priority(1)
-     *             .actions(PageRuleActionsArgs.builder()
-     *                 .cacheKeyFields(PageRuleActionsCacheKeyFieldsArgs.builder()
-     *                     .cookie(PageRuleActionsCacheKeyFieldsCookieArgs.builder()
-     *                         .checkPresences("wordpress_test_cookie")
-     *                         .build())
-     *                     .header(PageRuleActionsCacheKeyFieldsHeaderArgs.builder()
-     *                         .checkPresences("header_present")
-     *                         .excludes("origin")
-     *                         .includes(                        
-     *                             "api-key",
-     *                             "dnt")
-     *                         .build())
-     *                     .host(PageRuleActionsCacheKeyFieldsHostArgs.builder()
-     *                         .resolved(true)
-     *                         .build())
-     *                     .queryString(PageRuleActionsCacheKeyFieldsQueryStringArgs.builder()
-     *                         .ignore(true)
-     *                         .build())
-     *                     .user(PageRuleActionsCacheKeyFieldsUserArgs.builder()
-     *                         .deviceType(false)
-     *                         .geo(true)
-     *                         .lang(true)
-     *                         .build())
-     *                     .build())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     @Import(name="lang")
     private @Nullable Output<Boolean> lang;
 
-    /**
-     * @return `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
-     * 
-     * Example:
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.PageRule;
-     * import com.pulumi.cloudflare.PageRuleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         // Unrealistic example with all features used
-     *         var foobar = new PageRule("foobar", PageRuleArgs.builder()
-     *             .zoneId(cloudflareZoneId)
-     *             .target(String.format("%s/app/*", cloudflareZone))
-     *             .priority(1)
-     *             .actions(PageRuleActionsArgs.builder()
-     *                 .cacheKeyFields(PageRuleActionsCacheKeyFieldsArgs.builder()
-     *                     .cookie(PageRuleActionsCacheKeyFieldsCookieArgs.builder()
-     *                         .checkPresences("wordpress_test_cookie")
-     *                         .build())
-     *                     .header(PageRuleActionsCacheKeyFieldsHeaderArgs.builder()
-     *                         .checkPresences("header_present")
-     *                         .excludes("origin")
-     *                         .includes(                        
-     *                             "api-key",
-     *                             "dnt")
-     *                         .build())
-     *                     .host(PageRuleActionsCacheKeyFieldsHostArgs.builder()
-     *                         .resolved(true)
-     *                         .build())
-     *                     .queryString(PageRuleActionsCacheKeyFieldsQueryStringArgs.builder()
-     *                         .ignore(true)
-     *                         .build())
-     *                     .user(PageRuleActionsCacheKeyFieldsUserArgs.builder()
-     *                         .deviceType(false)
-     *                         .geo(true)
-     *                         .lang(true)
-     *                         .build())
-     *                     .build())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public Optional<Output<Boolean>> lang() {
         return Optional.ofNullable(this.lang);
     }
@@ -212,191 +62,29 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
             $ = new PageRuleActionsCacheKeyFieldsUserArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param deviceType `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deviceType(@Nullable Output<Boolean> deviceType) {
             $.deviceType = deviceType;
             return this;
         }
 
-        /**
-         * @param deviceType `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deviceType(Boolean deviceType) {
             return deviceType(Output.of(deviceType));
         }
 
-        /**
-         * @param geo `true` - includes the client’s country, derived from the IP address; defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder geo(@Nullable Output<Boolean> geo) {
             $.geo = geo;
             return this;
         }
 
-        /**
-         * @param geo `true` - includes the client’s country, derived from the IP address; defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder geo(Boolean geo) {
             return geo(Output.of(geo));
         }
 
-        /**
-         * @param lang `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
-         * 
-         * Example:
-         * 
-         * &lt;!--Start PulumiCodeChooser --&gt;
-         * <pre>
-         * {@code
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import com.pulumi.cloudflare.PageRule;
-         * import com.pulumi.cloudflare.PageRuleArgs;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *         // Unrealistic example with all features used
-         *         var foobar = new PageRule("foobar", PageRuleArgs.builder()
-         *             .zoneId(cloudflareZoneId)
-         *             .target(String.format("%s/app/*", cloudflareZone))
-         *             .priority(1)
-         *             .actions(PageRuleActionsArgs.builder()
-         *                 .cacheKeyFields(PageRuleActionsCacheKeyFieldsArgs.builder()
-         *                     .cookie(PageRuleActionsCacheKeyFieldsCookieArgs.builder()
-         *                         .checkPresences("wordpress_test_cookie")
-         *                         .build())
-         *                     .header(PageRuleActionsCacheKeyFieldsHeaderArgs.builder()
-         *                         .checkPresences("header_present")
-         *                         .excludes("origin")
-         *                         .includes(                        
-         *                             "api-key",
-         *                             "dnt")
-         *                         .build())
-         *                     .host(PageRuleActionsCacheKeyFieldsHostArgs.builder()
-         *                         .resolved(true)
-         *                         .build())
-         *                     .queryString(PageRuleActionsCacheKeyFieldsQueryStringArgs.builder()
-         *                         .ignore(true)
-         *                         .build())
-         *                     .user(PageRuleActionsCacheKeyFieldsUserArgs.builder()
-         *                         .deviceType(false)
-         *                         .geo(true)
-         *                         .lang(true)
-         *                         .build())
-         *                     .build())
-         *                 .build())
-         *             .build());
-         * 
-         *     }
-         * }
-         * }
-         * </pre>
-         * &lt;!--End PulumiCodeChooser --&gt;
-         * 
-         * @return builder
-         * 
-         */
         public Builder lang(@Nullable Output<Boolean> lang) {
             $.lang = lang;
             return this;
         }
 
-        /**
-         * @param lang `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
-         * 
-         * Example:
-         * 
-         * &lt;!--Start PulumiCodeChooser --&gt;
-         * <pre>
-         * {@code
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import com.pulumi.cloudflare.PageRule;
-         * import com.pulumi.cloudflare.PageRuleArgs;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *         // Unrealistic example with all features used
-         *         var foobar = new PageRule("foobar", PageRuleArgs.builder()
-         *             .zoneId(cloudflareZoneId)
-         *             .target(String.format("%s/app/*", cloudflareZone))
-         *             .priority(1)
-         *             .actions(PageRuleActionsArgs.builder()
-         *                 .cacheKeyFields(PageRuleActionsCacheKeyFieldsArgs.builder()
-         *                     .cookie(PageRuleActionsCacheKeyFieldsCookieArgs.builder()
-         *                         .checkPresences("wordpress_test_cookie")
-         *                         .build())
-         *                     .header(PageRuleActionsCacheKeyFieldsHeaderArgs.builder()
-         *                         .checkPresences("header_present")
-         *                         .excludes("origin")
-         *                         .includes(                        
-         *                             "api-key",
-         *                             "dnt")
-         *                         .build())
-         *                     .host(PageRuleActionsCacheKeyFieldsHostArgs.builder()
-         *                         .resolved(true)
-         *                         .build())
-         *                     .queryString(PageRuleActionsCacheKeyFieldsQueryStringArgs.builder()
-         *                         .ignore(true)
-         *                         .build())
-         *                     .user(PageRuleActionsCacheKeyFieldsUserArgs.builder()
-         *                         .deviceType(false)
-         *                         .geo(true)
-         *                         .lang(true)
-         *                         .build())
-         *                     .build())
-         *                 .build())
-         *             .build());
-         * 
-         *     }
-         * }
-         * }
-         * </pre>
-         * &lt;!--End PulumiCodeChooser --&gt;
-         * 
-         * @return builder
-         * 
-         */
         public Builder lang(Boolean lang) {
             return lang(Output.of(lang));
         }

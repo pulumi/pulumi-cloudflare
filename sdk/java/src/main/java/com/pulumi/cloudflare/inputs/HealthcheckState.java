@@ -186,6 +186,7 @@ public final class HealthcheckState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The current status of the origin server according to the health check.
+     * Available values: &#34;unknown&#34;, &#34;healthy&#34;, &#34;unhealthy&#34;, &#34;suspended&#34;.
      * 
      */
     @Import(name="status")
@@ -193,6 +194,7 @@ public final class HealthcheckState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The current status of the origin server according to the health check.
+     * Available values: &#34;unknown&#34;, &#34;healthy&#34;, &#34;unhealthy&#34;, &#34;suspended&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -555,6 +557,7 @@ public final class HealthcheckState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status The current status of the origin server according to the health check.
+         * Available values: &#34;unknown&#34;, &#34;healthy&#34;, &#34;unhealthy&#34;, &#34;suspended&#34;.
          * 
          * @return builder
          * 
@@ -566,6 +569,7 @@ public final class HealthcheckState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status The current status of the origin server according to the health check.
+         * Available values: &#34;unknown&#34;, &#34;healthy&#34;, &#34;unhealthy&#34;, &#34;suspended&#34;.
          * 
          * @return builder
          * 

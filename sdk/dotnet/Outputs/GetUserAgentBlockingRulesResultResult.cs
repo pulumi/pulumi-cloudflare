@@ -27,6 +27,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Id;
         /// <summary>
         /// The action to apply to a matched request.
+        /// Available values: "block", "challenge", "js*challenge", "managed*challenge".
         /// </summary>
         public readonly string Mode;
         /// <summary>

@@ -74,9 +74,17 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.secret);
     }
 
+    /**
+     * Available values: &#34;custom&#34;.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return Available values: &#34;custom&#34;.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -201,11 +209,23 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
             return secret(Output.of(secret));
         }
 
+        /**
+         * @param type Available values: &#34;custom&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Available values: &#34;custom&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

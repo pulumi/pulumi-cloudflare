@@ -144,8 +144,14 @@ namespace Pulumi.Cloudflare
         public readonly string Name;
         public readonly ImmutableArray<string> PageUrls;
         public readonly string PathAttribute;
+        /// <summary>
+        /// Available values: "lax", "strict", "none".
+        /// </summary>
         public readonly string SameSiteAttribute;
         public readonly bool SecureAttribute;
+        /// <summary>
+        /// Available values: "first_party", "unknown".
+        /// </summary>
         public readonly string Type;
         /// <summary>
         /// Identifier

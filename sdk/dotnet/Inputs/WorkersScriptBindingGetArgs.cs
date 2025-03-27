@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? ClassName { get; set; }
 
         /// <summary>
-        /// The dataset name to bind to.
+        /// The name of the dataset to bind to.
         /// </summary>
         [Input("dataset")]
         public Input<string>? Dataset { get; set; }
@@ -102,14 +102,25 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("service")]
         public Input<string>? Service { get; set; }
 
+        [Input("text")]
+        private Input<string>? _text;
+
         /// <summary>
         /// The text value to use.
         /// </summary>
-        [Input("text")]
-        public Input<string>? Text { get; set; }
+        public Input<string>? Text
+        {
+            get => _text;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _text = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The kind of resource that the binding provides.
+        /// Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

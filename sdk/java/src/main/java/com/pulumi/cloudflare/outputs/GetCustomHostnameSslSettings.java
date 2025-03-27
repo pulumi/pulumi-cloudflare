@@ -18,21 +18,25 @@ public final class GetCustomHostnameSslSettings {
     private List<String> ciphers;
     /**
      * @return Whether or not Early Hints is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     private String earlyHints;
     /**
      * @return Whether or not HTTP2 is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     private String http2;
     /**
      * @return The minimum TLS version supported.
+     * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
      * 
      */
     private String minTlsVersion;
     /**
      * @return Whether or not TLS 1.3 is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     private String tls13;
@@ -47,6 +51,7 @@ public final class GetCustomHostnameSslSettings {
     }
     /**
      * @return Whether or not Early Hints is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public String earlyHints() {
@@ -54,6 +59,7 @@ public final class GetCustomHostnameSslSettings {
     }
     /**
      * @return Whether or not HTTP2 is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public String http2() {
@@ -61,6 +67,7 @@ public final class GetCustomHostnameSslSettings {
     }
     /**
      * @return The minimum TLS version supported.
+     * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
      * 
      */
     public String minTlsVersion() {
@@ -68,6 +75,7 @@ public final class GetCustomHostnameSslSettings {
     }
     /**
      * @return Whether or not TLS 1.3 is enabled.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public String tls13() {

@@ -72,12 +72,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("ipList")]
         public Input<Inputs.ZeroTrustAccessApplicationPolicyIncludeIpListArgs>? IpList { get; set; }
 
-<<<<<<< HEAD
-=======
         [Input("loginMethod")]
         public Input<Inputs.ZeroTrustAccessApplicationPolicyIncludeLoginMethodArgs>? LoginMethod { get; set; }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Input("okta")]
         public Input<Inputs.ZeroTrustAccessApplicationPolicyIncludeOktaArgs>? Okta { get; set; }
 

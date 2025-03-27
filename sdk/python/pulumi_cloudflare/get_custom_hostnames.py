@@ -58,6 +58,7 @@ class GetCustomHostnamesResult:
     def direction(self) -> Optional[str]:
         """
         Direction to order hostnames.
+        Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
 
@@ -90,6 +91,7 @@ class GetCustomHostnamesResult:
     def order(self) -> str:
         """
         Field to order hostnames by.
+        Available values: "ssl", "ssl_status".
         """
         return pulumi.get(self, "order")
 
@@ -106,6 +108,7 @@ class GetCustomHostnamesResult:
     def ssl(self) -> Optional[float]:
         """
         Whether to filter hostnames based on if they have SSL enabled.
+        Available values: 0, 1.
         """
         return pulumi.get(self, "ssl")
 
@@ -158,11 +161,14 @@ def get_custom_hostnames(direction: Optional[str] = None,
 
 
     :param str direction: Direction to order hostnames.
+           Available values: "asc", "desc".
     :param str hostname: Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
     :param str id: Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the 'hostname' parameter.
     :param int max_items: Max items to fetch, default: 1000
     :param str order: Field to order hostnames by.
+           Available values: "ssl", "ssl_status".
     :param float ssl: Whether to filter hostnames based on if they have SSL enabled.
+           Available values: 0, 1.
     :param str zone_id: Identifier
     """
     __args__ = dict()
@@ -209,11 +215,14 @@ def get_custom_hostnames_output(direction: Optional[pulumi.Input[Optional[str]]]
 
 
     :param str direction: Direction to order hostnames.
+           Available values: "asc", "desc".
     :param str hostname: Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
     :param str id: Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the 'hostname' parameter.
     :param int max_items: Max items to fetch, default: 1000
     :param str order: Field to order hostnames by.
+           Available values: "ssl", "ssl_status".
     :param float ssl: Whether to filter hostnames based on if they have SSL enabled.
+           Available values: 0, 1.
     :param str zone_id: Identifier
     """
     __args__ = dict()

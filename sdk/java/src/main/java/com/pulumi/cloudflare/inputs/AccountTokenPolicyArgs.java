@@ -21,6 +21,7 @@ public final class AccountTokenPolicyArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Allow or deny operations against the resources.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;.
      * 
      */
     @Import(name="effect", required=true)
@@ -28,6 +29,7 @@ public final class AccountTokenPolicyArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Allow or deny operations against the resources.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;.
      * 
      */
     public Output<String> effect() {
@@ -108,6 +110,7 @@ public final class AccountTokenPolicyArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param effect Allow or deny operations against the resources.
+         * Available values: &#34;allow&#34;, &#34;deny&#34;.
          * 
          * @return builder
          * 
@@ -119,6 +122,7 @@ public final class AccountTokenPolicyArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param effect Allow or deny operations against the resources.
+         * Available values: &#34;allow&#34;, &#34;deny&#34;.
          * 
          * @return builder
          * 

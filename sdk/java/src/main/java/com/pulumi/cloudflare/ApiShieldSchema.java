@@ -81,6 +81,7 @@ public class ApiShieldSchema extends com.pulumi.resources.CustomResource {
     }
     /**
      * Kind of schema
+     * Available values: &#34;openapi_v3&#34;.
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
@@ -88,6 +89,7 @@ public class ApiShieldSchema extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Kind of schema
+     * Available values: &#34;openapi_v3&#34;.
      * 
      */
     public Output<String> kind() {
@@ -141,6 +143,7 @@ public class ApiShieldSchema extends com.pulumi.resources.CustomResource {
     }
     /**
      * Flag whether schema is enabled for validation.
+     * Available values: &#34;true&#34;, &#34;false&#34;.
      * 
      */
     @Export(name="validationEnabled", refs={String.class}, tree="[0]")
@@ -148,6 +151,7 @@ public class ApiShieldSchema extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Flag whether schema is enabled for validation.
+     * Available values: &#34;true&#34;, &#34;false&#34;.
      * 
      */
     public Output<Optional<String>> validationEnabled() {

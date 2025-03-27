@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Name of compression algorithm to enable.
+        /// Available values: "none", "auto", "default", "gzip", "brotli".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

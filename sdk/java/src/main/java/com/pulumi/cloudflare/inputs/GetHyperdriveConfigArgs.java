@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetHyperdriveConfigArgs extends com.pulumi.resources.InvokeArgs {
@@ -33,15 +35,15 @@ public final class GetHyperdriveConfigArgs extends com.pulumi.resources.InvokeAr
      * Identifier
      * 
      */
-    @Import(name="hyperdriveId", required=true)
-    private Output<String> hyperdriveId;
+    @Import(name="hyperdriveId")
+    private @Nullable Output<String> hyperdriveId;
 
     /**
      * @return Identifier
      * 
      */
-    public Output<String> hyperdriveId() {
-        return this.hyperdriveId;
+    public Optional<Output<String>> hyperdriveId() {
+        return Optional.ofNullable(this.hyperdriveId);
     }
 
     private GetHyperdriveConfigArgs() {}
@@ -96,7 +98,7 @@ public final class GetHyperdriveConfigArgs extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder hyperdriveId(Output<String> hyperdriveId) {
+        public Builder hyperdriveId(@Nullable Output<String> hyperdriveId) {
             $.hyperdriveId = hyperdriveId;
             return this;
         }
@@ -114,9 +116,6 @@ public final class GetHyperdriveConfigArgs extends com.pulumi.resources.InvokeAr
         public GetHyperdriveConfigArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetHyperdriveConfigArgs", "accountId");
-            }
-            if ($.hyperdriveId == null) {
-                throw new MissingRequiredPropertyException("GetHyperdriveConfigArgs", "hyperdriveId");
             }
             return $;
         }

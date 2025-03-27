@@ -71,14 +71,16 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
     }
 
     /**
-     * The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [&#34;1m&#34;,&#34;5m&#34;,&#34;10m&#34;,&#34;15m&#34;,&#34;20m&#34;,&#34;30m&#34;,&#34;45m&#34;,&#34;60m&#34;]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+     * The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [&#34;1m&#34;,&#34;5m&#34;,&#34;10m&#34;,&#34;15m&#34;,&#34;20m&#34;,&#34;30m&#34;,&#34;45m&#34;,&#34;60m&#34;].
+     * Available values: &#34;1m&#34;, &#34;5m&#34;, &#34;10m&#34;, &#34;15m&#34;, &#34;20m&#34;, &#34;30m&#34;, &#34;45m&#34;, &#34;60m&#34;.
      * 
      */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
     /**
-     * @return The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [&#34;1m&#34;,&#34;5m&#34;,&#34;10m&#34;,&#34;15m&#34;,&#34;20m&#34;,&#34;30m&#34;,&#34;45m&#34;,&#34;60m&#34;]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+     * @return The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [&#34;1m&#34;,&#34;5m&#34;,&#34;10m&#34;,&#34;15m&#34;,&#34;20m&#34;,&#34;30m&#34;,&#34;45m&#34;,&#34;60m&#34;].
+     * Available values: &#34;1m&#34;, &#34;5m&#34;, &#34;10m&#34;, &#34;15m&#34;, &#34;20m&#34;, &#34;30m&#34;, &#34;45m&#34;, &#34;60m&#34;.
      * 
      */
     public Optional<Output<String>> duration() {
@@ -115,11 +117,79 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
         return Optional.ofNullable(this.packetThreshold);
     }
 
+    /**
+     * Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+     * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
+     * 
+     */
+    @Import(name="prefixMatch")
+    private @Nullable Output<String> prefixMatch;
+
+    /**
+     * @return Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+     * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
+     * 
+     */
+    public Optional<Output<String>> prefixMatch() {
+        return Optional.ofNullable(this.prefixMatch);
+    }
+
     @Import(name="prefixes")
     private @Nullable Output<List<String>> prefixes;
 
     public Optional<Output<List<String>>> prefixes() {
         return Optional.ofNullable(this.prefixes);
+    }
+
+    /**
+     * MNM rule type.
+     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advanced_ddos&#34;.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return MNM rule type.
+     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advanced_ddos&#34;.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
+    /**
+     * Level of sensitivity set for zscore rules.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+     * 
+     */
+    @Import(name="zscoreSensitivity")
+    private @Nullable Output<String> zscoreSensitivity;
+
+    /**
+     * @return Level of sensitivity set for zscore rules.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+     * 
+     */
+    public Optional<Output<String>> zscoreSensitivity() {
+        return Optional.ofNullable(this.zscoreSensitivity);
+    }
+
+    /**
+     * Target of the zscore rule analysis.
+     * Available values: &#34;bits&#34;, &#34;packets&#34;.
+     * 
+     */
+    @Import(name="zscoreTarget")
+    private @Nullable Output<String> zscoreTarget;
+
+    /**
+     * @return Target of the zscore rule analysis.
+     * Available values: &#34;bits&#34;, &#34;packets&#34;.
+     * 
+     */
+    public Optional<Output<String>> zscoreTarget() {
+        return Optional.ofNullable(this.zscoreTarget);
     }
 
     private MagicNetworkMonitoringRuleState() {}
@@ -132,7 +202,11 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
         this.duration = $.duration;
         this.name = $.name;
         this.packetThreshold = $.packetThreshold;
+        this.prefixMatch = $.prefixMatch;
         this.prefixes = $.prefixes;
+        this.type = $.type;
+        this.zscoreSensitivity = $.zscoreSensitivity;
+        this.zscoreTarget = $.zscoreTarget;
     }
 
     public static Builder builder() {
@@ -226,7 +300,8 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param duration The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [&#34;1m&#34;,&#34;5m&#34;,&#34;10m&#34;,&#34;15m&#34;,&#34;20m&#34;,&#34;30m&#34;,&#34;45m&#34;,&#34;60m&#34;]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+         * @param duration The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [&#34;1m&#34;,&#34;5m&#34;,&#34;10m&#34;,&#34;15m&#34;,&#34;20m&#34;,&#34;30m&#34;,&#34;45m&#34;,&#34;60m&#34;].
+         * Available values: &#34;1m&#34;, &#34;5m&#34;, &#34;10m&#34;, &#34;15m&#34;, &#34;20m&#34;, &#34;30m&#34;, &#34;45m&#34;, &#34;60m&#34;.
          * 
          * @return builder
          * 
@@ -237,7 +312,8 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param duration The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [&#34;1m&#34;,&#34;5m&#34;,&#34;10m&#34;,&#34;15m&#34;,&#34;20m&#34;,&#34;30m&#34;,&#34;45m&#34;,&#34;60m&#34;]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+         * @param duration The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [&#34;1m&#34;,&#34;5m&#34;,&#34;10m&#34;,&#34;15m&#34;,&#34;20m&#34;,&#34;30m&#34;,&#34;45m&#34;,&#34;60m&#34;].
+         * Available values: &#34;1m&#34;, &#34;5m&#34;, &#34;10m&#34;, &#34;15m&#34;, &#34;20m&#34;, &#34;30m&#34;, &#34;45m&#34;, &#34;60m&#34;.
          * 
          * @return builder
          * 
@@ -288,6 +364,29 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
             return packetThreshold(Output.of(packetThreshold));
         }
 
+        /**
+         * @param prefixMatch Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+         * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prefixMatch(@Nullable Output<String> prefixMatch) {
+            $.prefixMatch = prefixMatch;
+            return this;
+        }
+
+        /**
+         * @param prefixMatch Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+         * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prefixMatch(String prefixMatch) {
+            return prefixMatch(Output.of(prefixMatch));
+        }
+
         public Builder prefixes(@Nullable Output<List<String>> prefixes) {
             $.prefixes = prefixes;
             return this;
@@ -299,6 +398,75 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
 
         public Builder prefixes(String... prefixes) {
             return prefixes(List.of(prefixes));
+        }
+
+        /**
+         * @param type MNM rule type.
+         * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advanced_ddos&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type MNM rule type.
+         * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advanced_ddos&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
+        }
+
+        /**
+         * @param zscoreSensitivity Level of sensitivity set for zscore rules.
+         * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zscoreSensitivity(@Nullable Output<String> zscoreSensitivity) {
+            $.zscoreSensitivity = zscoreSensitivity;
+            return this;
+        }
+
+        /**
+         * @param zscoreSensitivity Level of sensitivity set for zscore rules.
+         * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zscoreSensitivity(String zscoreSensitivity) {
+            return zscoreSensitivity(Output.of(zscoreSensitivity));
+        }
+
+        /**
+         * @param zscoreTarget Target of the zscore rule analysis.
+         * Available values: &#34;bits&#34;, &#34;packets&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zscoreTarget(@Nullable Output<String> zscoreTarget) {
+            $.zscoreTarget = zscoreTarget;
+            return this;
+        }
+
+        /**
+         * @param zscoreTarget Target of the zscore rule analysis.
+         * Available values: &#34;bits&#34;, &#34;packets&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zscoreTarget(String zscoreTarget) {
+            return zscoreTarget(Output.of(zscoreTarget));
         }
 
         public MagicNetworkMonitoringRuleState build() {

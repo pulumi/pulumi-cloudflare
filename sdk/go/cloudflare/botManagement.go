@@ -27,10 +27,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewBotManagement(ctx, "example_bot_management", &cloudflare.BotManagementArgs{
-//				ZoneId:           pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				AiBotsProtection: pulumi.String("block"),
-//				EnableJs:         pulumi.Bool(true),
-//				FightMode:        pulumi.Bool(true),
+//				ZoneId:            pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AiBotsProtection:  pulumi.String("block"),
+//				CrawlerProtection: pulumi.String("enabled"),
+//				EnableJs:          pulumi.Bool(true),
+//				FightMode:         pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -50,9 +51,13 @@ type BotManagement struct {
 	pulumi.CustomResourceState
 
 	// Enable rule to block AI Scrapers and Crawlers.
+	// Available values: "block", "disabled".
 	AiBotsProtection pulumi.StringPtrOutput `pulumi:"aiBotsProtection"`
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel pulumi.BoolPtrOutput `pulumi:"autoUpdateModel"`
+	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
+	// Available values: "enabled", "disabled".
+	CrawlerProtection pulumi.StringPtrOutput `pulumi:"crawlerProtection"`
 	// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
 	EnableJs pulumi.BoolPtrOutput `pulumi:"enableJs"`
 	// Whether to enable Bot Fight Mode.
@@ -60,14 +65,17 @@ type BotManagement struct {
 	// Whether to optimize Super Bot Fight Mode protections for Wordpress.
 	OptimizeWordpress pulumi.BoolPtrOutput `pulumi:"optimizeWordpress"`
 	// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+	// Available values: "allow", "block", "managedChallenge".
 	SbfmDefinitelyAutomated pulumi.StringPtrOutput `pulumi:"sbfmDefinitelyAutomated"`
 	// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+	// Available values: "allow", "block", "managedChallenge".
 	SbfmLikelyAutomated pulumi.StringPtrOutput `pulumi:"sbfmLikelyAutomated"`
 	// Super Bot Fight Mode (SBFM) to enable static resource protection.
 	// Enable if static resources on your application need bot protection.
 	// Note: Static resource protection can also result in legitimate traffic being blocked.
 	SbfmStaticResourceProtection pulumi.BoolPtrOutput `pulumi:"sbfmStaticResourceProtection"`
 	// Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+	// Available values: "allow", "block".
 	SbfmVerifiedBots pulumi.StringPtrOutput `pulumi:"sbfmVerifiedBots"`
 	// A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
 	StaleZoneConfiguration BotManagementStaleZoneConfigurationOutput `pulumi:"staleZoneConfiguration"`
@@ -113,9 +121,13 @@ func GetBotManagement(ctx *pulumi.Context,
 // Input properties used for looking up and filtering BotManagement resources.
 type botManagementState struct {
 	// Enable rule to block AI Scrapers and Crawlers.
+	// Available values: "block", "disabled".
 	AiBotsProtection *string `pulumi:"aiBotsProtection"`
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel *bool `pulumi:"autoUpdateModel"`
+	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
+	// Available values: "enabled", "disabled".
+	CrawlerProtection *string `pulumi:"crawlerProtection"`
 	// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
 	EnableJs *bool `pulumi:"enableJs"`
 	// Whether to enable Bot Fight Mode.
@@ -123,14 +135,17 @@ type botManagementState struct {
 	// Whether to optimize Super Bot Fight Mode protections for Wordpress.
 	OptimizeWordpress *bool `pulumi:"optimizeWordpress"`
 	// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+	// Available values: "allow", "block", "managedChallenge".
 	SbfmDefinitelyAutomated *string `pulumi:"sbfmDefinitelyAutomated"`
 	// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+	// Available values: "allow", "block", "managedChallenge".
 	SbfmLikelyAutomated *string `pulumi:"sbfmLikelyAutomated"`
 	// Super Bot Fight Mode (SBFM) to enable static resource protection.
 	// Enable if static resources on your application need bot protection.
 	// Note: Static resource protection can also result in legitimate traffic being blocked.
 	SbfmStaticResourceProtection *bool `pulumi:"sbfmStaticResourceProtection"`
 	// Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+	// Available values: "allow", "block".
 	SbfmVerifiedBots *string `pulumi:"sbfmVerifiedBots"`
 	// A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
 	StaleZoneConfiguration *BotManagementStaleZoneConfiguration `pulumi:"staleZoneConfiguration"`
@@ -144,9 +159,13 @@ type botManagementState struct {
 
 type BotManagementState struct {
 	// Enable rule to block AI Scrapers and Crawlers.
+	// Available values: "block", "disabled".
 	AiBotsProtection pulumi.StringPtrInput
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel pulumi.BoolPtrInput
+	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
+	// Available values: "enabled", "disabled".
+	CrawlerProtection pulumi.StringPtrInput
 	// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
 	EnableJs pulumi.BoolPtrInput
 	// Whether to enable Bot Fight Mode.
@@ -154,14 +173,17 @@ type BotManagementState struct {
 	// Whether to optimize Super Bot Fight Mode protections for Wordpress.
 	OptimizeWordpress pulumi.BoolPtrInput
 	// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+	// Available values: "allow", "block", "managedChallenge".
 	SbfmDefinitelyAutomated pulumi.StringPtrInput
 	// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+	// Available values: "allow", "block", "managedChallenge".
 	SbfmLikelyAutomated pulumi.StringPtrInput
 	// Super Bot Fight Mode (SBFM) to enable static resource protection.
 	// Enable if static resources on your application need bot protection.
 	// Note: Static resource protection can also result in legitimate traffic being blocked.
 	SbfmStaticResourceProtection pulumi.BoolPtrInput
 	// Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+	// Available values: "allow", "block".
 	SbfmVerifiedBots pulumi.StringPtrInput
 	// A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
 	StaleZoneConfiguration BotManagementStaleZoneConfigurationPtrInput
@@ -179,9 +201,13 @@ func (BotManagementState) ElementType() reflect.Type {
 
 type botManagementArgs struct {
 	// Enable rule to block AI Scrapers and Crawlers.
+	// Available values: "block", "disabled".
 	AiBotsProtection *string `pulumi:"aiBotsProtection"`
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel *bool `pulumi:"autoUpdateModel"`
+	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
+	// Available values: "enabled", "disabled".
+	CrawlerProtection *string `pulumi:"crawlerProtection"`
 	// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
 	EnableJs *bool `pulumi:"enableJs"`
 	// Whether to enable Bot Fight Mode.
@@ -189,14 +215,17 @@ type botManagementArgs struct {
 	// Whether to optimize Super Bot Fight Mode protections for Wordpress.
 	OptimizeWordpress *bool `pulumi:"optimizeWordpress"`
 	// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+	// Available values: "allow", "block", "managedChallenge".
 	SbfmDefinitelyAutomated *string `pulumi:"sbfmDefinitelyAutomated"`
 	// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+	// Available values: "allow", "block", "managedChallenge".
 	SbfmLikelyAutomated *string `pulumi:"sbfmLikelyAutomated"`
 	// Super Bot Fight Mode (SBFM) to enable static resource protection.
 	// Enable if static resources on your application need bot protection.
 	// Note: Static resource protection can also result in legitimate traffic being blocked.
 	SbfmStaticResourceProtection *bool `pulumi:"sbfmStaticResourceProtection"`
 	// Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+	// Available values: "allow", "block".
 	SbfmVerifiedBots *string `pulumi:"sbfmVerifiedBots"`
 	// Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
 	SuppressSessionScore *bool `pulumi:"suppressSessionScore"`
@@ -207,9 +236,13 @@ type botManagementArgs struct {
 // The set of arguments for constructing a BotManagement resource.
 type BotManagementArgs struct {
 	// Enable rule to block AI Scrapers and Crawlers.
+	// Available values: "block", "disabled".
 	AiBotsProtection pulumi.StringPtrInput
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel pulumi.BoolPtrInput
+	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
+	// Available values: "enabled", "disabled".
+	CrawlerProtection pulumi.StringPtrInput
 	// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
 	EnableJs pulumi.BoolPtrInput
 	// Whether to enable Bot Fight Mode.
@@ -217,14 +250,17 @@ type BotManagementArgs struct {
 	// Whether to optimize Super Bot Fight Mode protections for Wordpress.
 	OptimizeWordpress pulumi.BoolPtrInput
 	// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+	// Available values: "allow", "block", "managedChallenge".
 	SbfmDefinitelyAutomated pulumi.StringPtrInput
 	// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+	// Available values: "allow", "block", "managedChallenge".
 	SbfmLikelyAutomated pulumi.StringPtrInput
 	// Super Bot Fight Mode (SBFM) to enable static resource protection.
 	// Enable if static resources on your application need bot protection.
 	// Note: Static resource protection can also result in legitimate traffic being blocked.
 	SbfmStaticResourceProtection pulumi.BoolPtrInput
 	// Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+	// Available values: "allow", "block".
 	SbfmVerifiedBots pulumi.StringPtrInput
 	// Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
 	SuppressSessionScore pulumi.BoolPtrInput
@@ -320,6 +356,7 @@ func (o BotManagementOutput) ToBotManagementOutputWithContext(ctx context.Contex
 }
 
 // Enable rule to block AI Scrapers and Crawlers.
+// Available values: "block", "disabled".
 func (o BotManagementOutput) AiBotsProtection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.StringPtrOutput { return v.AiBotsProtection }).(pulumi.StringPtrOutput)
 }
@@ -327,6 +364,12 @@ func (o BotManagementOutput) AiBotsProtection() pulumi.StringPtrOutput {
 // Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 func (o BotManagementOutput) AutoUpdateModel() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.BoolPtrOutput { return v.AutoUpdateModel }).(pulumi.BoolPtrOutput)
+}
+
+// Enable rule to punish AI Scrapers and Crawlers via a link maze.
+// Available values: "enabled", "disabled".
+func (o BotManagementOutput) CrawlerProtection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BotManagement) pulumi.StringPtrOutput { return v.CrawlerProtection }).(pulumi.StringPtrOutput)
 }
 
 // Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
@@ -345,11 +388,13 @@ func (o BotManagementOutput) OptimizeWordpress() pulumi.BoolPtrOutput {
 }
 
 // Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+// Available values: "allow", "block", "managedChallenge".
 func (o BotManagementOutput) SbfmDefinitelyAutomated() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.StringPtrOutput { return v.SbfmDefinitelyAutomated }).(pulumi.StringPtrOutput)
 }
 
 // Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+// Available values: "allow", "block", "managedChallenge".
 func (o BotManagementOutput) SbfmLikelyAutomated() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.StringPtrOutput { return v.SbfmLikelyAutomated }).(pulumi.StringPtrOutput)
 }
@@ -362,6 +407,7 @@ func (o BotManagementOutput) SbfmStaticResourceProtection() pulumi.BoolPtrOutput
 }
 
 // Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+// Available values: "allow", "block".
 func (o BotManagementOutput) SbfmVerifiedBots() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.StringPtrOutput { return v.SbfmVerifiedBots }).(pulumi.StringPtrOutput)
 }

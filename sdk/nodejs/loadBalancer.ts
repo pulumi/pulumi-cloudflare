@@ -122,6 +122,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly ttl!: pulumi.Output<number>;
     public readonly zoneId!: pulumi.Output<string>;
+    public /*out*/ readonly zoneName!: pulumi.Output<string>;
 
     /**
      * Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -158,6 +159,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["steeringPolicy"] = state ? state.steeringPolicy : undefined;
             resourceInputs["ttl"] = state ? state.ttl : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["zoneName"] = state ? state.zoneName : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
             if ((!args || args.defaultPools === undefined) && !opts.urn) {
@@ -194,6 +196,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["zoneName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LoadBalancer.__pulumiType, name, resourceInputs, opts);
@@ -283,6 +286,7 @@ export interface LoadBalancerState {
      */
     ttl?: pulumi.Input<number>;
     zoneId?: pulumi.Input<string>;
+    zoneName?: pulumi.Input<string>;
 }
 
 /**

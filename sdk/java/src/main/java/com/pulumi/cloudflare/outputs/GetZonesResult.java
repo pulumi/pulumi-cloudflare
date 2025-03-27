@@ -93,12 +93,14 @@ public final class GetZonesResult {
     private Boolean paused;
     /**
      * @return The zone status on Cloudflare.
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
     private String status;
     /**
      * @return A full zone implies that DNS is hosted with Cloudflare. A partial zone is
      * typically a partner-hosted zone or a CNAME setup.
+     * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;.
      * 
      */
     private String type;
@@ -107,14 +109,11 @@ public final class GetZonesResult {
      * 
      */
     private List<String> vanityNameServers;
-<<<<<<< HEAD
-=======
     /**
      * @return Verification key for partial zone setup.
      * 
      */
     private String verificationKey;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     private GetZonesResult() {}
     /**
@@ -222,6 +221,7 @@ public final class GetZonesResult {
     }
     /**
      * @return The zone status on Cloudflare.
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
     public String status() {
@@ -230,6 +230,7 @@ public final class GetZonesResult {
     /**
      * @return A full zone implies that DNS is hosted with Cloudflare. A partial zone is
      * typically a partner-hosted zone or a CNAME setup.
+     * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;.
      * 
      */
     public String type() {
@@ -241,8 +242,6 @@ public final class GetZonesResult {
      */
     public List<String> vanityNameServers() {
         return this.vanityNameServers;
-<<<<<<< HEAD
-=======
     }
     /**
      * @return Verification key for partial zone setup.
@@ -250,7 +249,6 @@ public final class GetZonesResult {
      */
     public String verificationKey() {
         return this.verificationKey;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     public static Builder builder() {
@@ -279,10 +277,7 @@ public final class GetZonesResult {
         private String status;
         private String type;
         private List<String> vanityNameServers;
-<<<<<<< HEAD
-=======
         private String verificationKey;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder() {}
         public Builder(GetZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -303,10 +298,7 @@ public final class GetZonesResult {
     	      this.status = defaults.status;
     	      this.type = defaults.type;
     	      this.vanityNameServers = defaults.vanityNameServers;
-<<<<<<< HEAD
-=======
     	      this.verificationKey = defaults.verificationKey;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
 
         @CustomType.Setter
@@ -453,8 +445,6 @@ public final class GetZonesResult {
         }
         public Builder vanityNameServers(String... vanityNameServers) {
             return vanityNameServers(List.of(vanityNameServers));
-<<<<<<< HEAD
-=======
         }
         @CustomType.Setter
         public Builder verificationKey(String verificationKey) {
@@ -463,7 +453,6 @@ public final class GetZonesResult {
             }
             this.verificationKey = verificationKey;
             return this;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
         public GetZonesResult build() {
             final var _resultValue = new GetZonesResult();
@@ -484,10 +473,7 @@ public final class GetZonesResult {
             _resultValue.status = status;
             _resultValue.type = type;
             _resultValue.vanityNameServers = vanityNameServers;
-<<<<<<< HEAD
-=======
             _resultValue.verificationKey = verificationKey;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return _resultValue;
         }
     }

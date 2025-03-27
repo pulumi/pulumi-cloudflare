@@ -40,6 +40,12 @@ namespace Pulumi.Cloudflare
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Output("jurisdiction")]
+        public Output<string> Jurisdiction { get; private set; } = null!;
+
+        /// <summary>
         /// AWS S3 bucket to copy objects from
         /// </summary>
         [Output("source")]
@@ -110,6 +116,12 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.R2BucketSippyDestinationArgs>? Destination { get; set; }
 
         /// <summary>
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
+
+        /// <summary>
         /// AWS S3 bucket to copy objects from
         /// </summary>
         [Input("source")]
@@ -146,6 +158,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
 
         /// <summary>
         /// AWS S3 bucket to copy objects from

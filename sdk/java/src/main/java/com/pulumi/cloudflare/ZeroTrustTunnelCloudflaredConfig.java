@@ -7,12 +7,14 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredConfigArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigState;
 import com.pulumi.cloudflare.outputs.ZeroTrustTunnelCloudflaredConfigConfig;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -102,6 +104,7 @@ public class ZeroTrustTunnelCloudflaredConfig extends com.pulumi.resources.Custo
     }
     /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel&#39;s configuration on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
      * 
      */
     @Export(name="source", refs={String.class}, tree="[0]")
@@ -109,6 +112,7 @@ public class ZeroTrustTunnelCloudflaredConfig extends com.pulumi.resources.Custo
 
     /**
      * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel&#39;s configuration on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
      * 
      */
     public Output<String> source() {
@@ -182,6 +186,9 @@ public class ZeroTrustTunnelCloudflaredConfig extends com.pulumi.resources.Custo
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/tunnelConfig:TunnelConfig").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

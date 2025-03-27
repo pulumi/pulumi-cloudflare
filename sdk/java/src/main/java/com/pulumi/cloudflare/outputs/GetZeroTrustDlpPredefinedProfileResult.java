@@ -16,15 +16,16 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustDlpPredefinedProfileResult {
     private String accountId;
-<<<<<<< HEAD
-=======
     private Boolean aiContextEnabled;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return Related DLP policies will trigger when the match count exceeds the number set.
      * 
      */
     private Integer allowedMatchCount;
+    /**
+     * @return Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;very_high&#34;.
+     * 
+     */
     private String confidenceThreshold;
     /**
      * @return Scan the context of predefined entries to only return matches surrounded by keywords.
@@ -59,6 +60,10 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
      */
     private Boolean openAccess;
     private String profileId;
+    /**
+     * @return Available values: &#34;custom&#34;.
+     * 
+     */
     private String type;
     /**
      * @return When the profile was lasted updated
@@ -70,12 +75,9 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
     public String accountId() {
         return this.accountId;
     }
-<<<<<<< HEAD
-=======
     public Boolean aiContextEnabled() {
         return this.aiContextEnabled;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return Related DLP policies will trigger when the match count exceeds the number set.
      * 
@@ -83,6 +85,10 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
     public Integer allowedMatchCount() {
         return this.allowedMatchCount;
     }
+    /**
+     * @return Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;very_high&#34;.
+     * 
+     */
     public String confidenceThreshold() {
         return this.confidenceThreshold;
     }
@@ -137,6 +143,10 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
     public String profileId() {
         return this.profileId;
     }
+    /**
+     * @return Available values: &#34;custom&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }
@@ -158,10 +168,7 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-<<<<<<< HEAD
-=======
         private Boolean aiContextEnabled;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private Integer allowedMatchCount;
         private String confidenceThreshold;
         private GetZeroTrustDlpPredefinedProfileContextAwareness contextAwareness;
@@ -179,10 +186,7 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
         public Builder(GetZeroTrustDlpPredefinedProfileResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-<<<<<<< HEAD
-=======
     	      this.aiContextEnabled = defaults.aiContextEnabled;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.allowedMatchCount = defaults.allowedMatchCount;
     	      this.confidenceThreshold = defaults.confidenceThreshold;
     	      this.contextAwareness = defaults.contextAwareness;
@@ -207,8 +211,6 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder aiContextEnabled(Boolean aiContextEnabled) {
             if (aiContextEnabled == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedProfileResult", "aiContextEnabled");
@@ -217,7 +219,6 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
             return this;
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder allowedMatchCount(Integer allowedMatchCount) {
             if (allowedMatchCount == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedProfileResult", "allowedMatchCount");
@@ -327,10 +328,7 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
         public GetZeroTrustDlpPredefinedProfileResult build() {
             final var _resultValue = new GetZeroTrustDlpPredefinedProfileResult();
             _resultValue.accountId = accountId;
-<<<<<<< HEAD
-=======
             _resultValue.aiContextEnabled = aiContextEnabled;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.allowedMatchCount = allowedMatchCount;
             _resultValue.confidenceThreshold = confidenceThreshold;
             _resultValue.contextAwareness = contextAwareness;

@@ -24,6 +24,7 @@ public final class GetApiShieldOperationFeaturesSchemaInfo {
     private Boolean learnedAvailable;
     /**
      * @return Action taken on requests failing validation.
+     * Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
      * 
      */
     private String mitigationAction;
@@ -45,6 +46,7 @@ public final class GetApiShieldOperationFeaturesSchemaInfo {
     }
     /**
      * @return Action taken on requests failing validation.
+     * Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
      * 
      */
     public String mitigationAction() {

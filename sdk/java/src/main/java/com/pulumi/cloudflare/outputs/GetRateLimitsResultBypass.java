@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRateLimitsResultBypass {
+    /**
+     * @return Available values: &#34;url&#34;.
+     * 
+     */
     private String name;
     /**
      * @return The URL to bypass.
@@ -18,6 +22,10 @@ public final class GetRateLimitsResultBypass {
     private String value;
 
     private GetRateLimitsResultBypass() {}
+    /**
+     * @return Available values: &#34;url&#34;.
+     * 
+     */
     public String name() {
         return this.name;
     }

@@ -17,6 +17,7 @@ type ZoneSubscription struct {
 	pulumi.CustomResourceState
 
 	// How often the subscription is renewed automatically.
+	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency pulumi.StringPtrOutput `pulumi:"frequency"`
 	// Subscription identifier tag.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
@@ -58,6 +59,7 @@ func GetZoneSubscription(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ZoneSubscription resources.
 type zoneSubscriptionState struct {
 	// How often the subscription is renewed automatically.
+	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency *string `pulumi:"frequency"`
 	// Subscription identifier tag.
 	Identifier *string `pulumi:"identifier"`
@@ -67,6 +69,7 @@ type zoneSubscriptionState struct {
 
 type ZoneSubscriptionState struct {
 	// How often the subscription is renewed automatically.
+	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency pulumi.StringPtrInput
 	// Subscription identifier tag.
 	Identifier pulumi.StringPtrInput
@@ -80,6 +83,7 @@ func (ZoneSubscriptionState) ElementType() reflect.Type {
 
 type zoneSubscriptionArgs struct {
 	// How often the subscription is renewed automatically.
+	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency *string `pulumi:"frequency"`
 	// Subscription identifier tag.
 	Identifier string `pulumi:"identifier"`
@@ -90,6 +94,7 @@ type zoneSubscriptionArgs struct {
 // The set of arguments for constructing a ZoneSubscription resource.
 type ZoneSubscriptionArgs struct {
 	// How often the subscription is renewed automatically.
+	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency pulumi.StringPtrInput
 	// Subscription identifier tag.
 	Identifier pulumi.StringInput
@@ -185,6 +190,7 @@ func (o ZoneSubscriptionOutput) ToZoneSubscriptionOutputWithContext(ctx context.
 }
 
 // How often the subscription is renewed automatically.
+// Available values: "weekly", "monthly", "quarterly", "yearly".
 func (o ZoneSubscriptionOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSubscription) pulumi.StringPtrOutput { return v.Frequency }).(pulumi.StringPtrOutput)
 }

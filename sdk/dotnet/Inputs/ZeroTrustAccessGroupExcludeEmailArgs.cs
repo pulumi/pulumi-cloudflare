@@ -10,7 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-<<<<<<<< HEAD:sdk/dotnet/Inputs/ZeroTrustAccessGroupExcludeEmailArgs.cs
     public sealed class ZeroTrustAccessGroupExcludeEmailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
@@ -23,19 +22,5 @@ namespace Pulumi.Cloudflare.Inputs
         {
         }
         public static new ZeroTrustAccessGroupExcludeEmailArgs Empty => new ZeroTrustAccessGroupExcludeEmailArgs();
-========
-    public sealed class StreamLiveInputWebRtcPlaybackGetArgs : global::Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The URL used to play live video over WebRTC.
-        /// </summary>
-        [Input("url")]
-        public Input<string>? Url { get; set; }
-
-        public StreamLiveInputWebRtcPlaybackGetArgs()
-        {
-        }
-        public static new StreamLiveInputWebRtcPlaybackGetArgs Empty => new StreamLiveInputWebRtcPlaybackGetArgs();
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/dotnet/Inputs/StreamLiveInputWebRtcPlaybackGetArgs.cs
     }
 }

@@ -43,6 +43,7 @@ export interface GetZoneCacheReserveResult {
     readonly editable: boolean;
     /**
      * ID of the zone setting.
+     * Available values: "cacheReserve".
      */
     readonly id: string;
     /**
@@ -51,16 +52,13 @@ export interface GetZoneCacheReserveResult {
     readonly modifiedOn: string;
     /**
      * The value of the feature
+     * Available values: "on", "off".
      */
     readonly value: string;
     /**
      * Identifier
      */
     readonly zoneId: string;
-    /**
-     * ID of the zone setting.
-     */
-    readonly zoneSettingId: string;
 }
 /**
  * ## Example Usage

@@ -30,11 +30,12 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.PagesProjectLatestDeploymentDeploymentTrigger? DeploymentTrigger;
         /// <summary>
-        /// A dict of env variables to build this deploy.
+        /// Environment variables used for builds and Pages Functions.
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.PagesProjectLatestDeploymentEnvVars>? EnvVars;
         /// <summary>
         /// Type of deploy.
+        /// Available values: "preview", "production".
         /// </summary>
         public readonly string? Environment;
         /// <summary>

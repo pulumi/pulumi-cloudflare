@@ -63,6 +63,7 @@ public final class CustomHostnameFallbackOriginState extends com.pulumi.resource
 
     /**
      * Status of the fallback origin&#39;s activation.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     @Import(name="status")
@@ -70,6 +71,7 @@ public final class CustomHostnameFallbackOriginState extends com.pulumi.resource
 
     /**
      * @return Status of the fallback origin&#39;s activation.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -210,6 +212,7 @@ public final class CustomHostnameFallbackOriginState extends com.pulumi.resource
 
         /**
          * @param status Status of the fallback origin&#39;s activation.
+         * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
          * 
          * @return builder
          * 
@@ -221,6 +224,7 @@ public final class CustomHostnameFallbackOriginState extends com.pulumi.resource
 
         /**
          * @param status Status of the fallback origin&#39;s activation.
+         * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
          * 
          * @return builder
          * 

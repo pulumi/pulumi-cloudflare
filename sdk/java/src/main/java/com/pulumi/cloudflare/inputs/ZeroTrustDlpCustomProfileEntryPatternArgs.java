@@ -23,9 +23,17 @@ public final class ZeroTrustDlpCustomProfileEntryPatternArgs extends com.pulumi.
         return this.regex;
     }
 
+    /**
+     * Available values: &#34;luhn&#34;.
+     * 
+     */
     @Import(name="validation")
     private @Nullable Output<String> validation;
 
+    /**
+     * @return Available values: &#34;luhn&#34;.
+     * 
+     */
     public Optional<Output<String>> validation() {
         return Optional.ofNullable(this.validation);
     }
@@ -64,11 +72,23 @@ public final class ZeroTrustDlpCustomProfileEntryPatternArgs extends com.pulumi.
             return regex(Output.of(regex));
         }
 
+        /**
+         * @param validation Available values: &#34;luhn&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder validation(@Nullable Output<String> validation) {
             $.validation = validation;
             return this;
         }
 
+        /**
+         * @param validation Available values: &#34;luhn&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder validation(String validation) {
             return validation(Output.of(validation));
         }

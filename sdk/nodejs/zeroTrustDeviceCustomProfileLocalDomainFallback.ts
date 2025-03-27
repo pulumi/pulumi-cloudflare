@@ -44,8 +44,6 @@ export class ZeroTrustDeviceCustomProfileLocalDomainFallback extends pulumi.Cust
     }
 
     public readonly accountId!: pulumi.Output<string>;
-<<<<<<< HEAD
-=======
     /**
      * A description of the fallback domain, displayed in the client UI.
      */
@@ -54,19 +52,15 @@ export class ZeroTrustDeviceCustomProfileLocalDomainFallback extends pulumi.Cust
      * A list of IP addresses to handle domain resolution.
      */
     public /*out*/ readonly dnsServers!: pulumi.Output<string[]>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public readonly domains!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain[]>;
     /**
      * Device ID.
      */
     public readonly policyId!: pulumi.Output<string>;
-<<<<<<< HEAD
-=======
     /**
      * The domain suffix to match when resolving locally.
      */
     public /*out*/ readonly suffix!: pulumi.Output<string>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      * Create a ZeroTrustDeviceCustomProfileLocalDomainFallback resource with the given unique name, arguments, and options.
@@ -82,16 +76,11 @@ export class ZeroTrustDeviceCustomProfileLocalDomainFallback extends pulumi.Cust
         if (opts.id) {
             const state = argsOrState as ZeroTrustDeviceCustomProfileLocalDomainFallbackState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-<<<<<<< HEAD
-            resourceInputs["domains"] = state ? state.domains : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-=======
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dnsServers"] = state ? state.dnsServers : undefined;
             resourceInputs["domains"] = state ? state.domains : undefined;
             resourceInputs["policyId"] = state ? state.policyId : undefined;
             resourceInputs["suffix"] = state ? state.suffix : undefined;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         } else {
             const args = argsOrState as ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -106,14 +95,13 @@ export class ZeroTrustDeviceCustomProfileLocalDomainFallback extends pulumi.Cust
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["domains"] = args ? args.domains : undefined;
             resourceInputs["policyId"] = args ? args.policyId : undefined;
-<<<<<<< HEAD
-=======
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["dnsServers"] = undefined /*out*/;
             resourceInputs["suffix"] = undefined /*out*/;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/fallbackDomain:FallbackDomain" }, { type: "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustDeviceCustomProfileLocalDomainFallback.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -123,8 +111,6 @@ export class ZeroTrustDeviceCustomProfileLocalDomainFallback extends pulumi.Cust
  */
 export interface ZeroTrustDeviceCustomProfileLocalDomainFallbackState {
     accountId?: pulumi.Input<string>;
-<<<<<<< HEAD
-=======
     /**
      * A description of the fallback domain, displayed in the client UI.
      */
@@ -133,19 +119,15 @@ export interface ZeroTrustDeviceCustomProfileLocalDomainFallbackState {
      * A list of IP addresses to handle domain resolution.
      */
     dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     domains?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain>[]>;
     /**
      * Device ID.
      */
     policyId?: pulumi.Input<string>;
-<<<<<<< HEAD
-=======
     /**
      * The domain suffix to match when resolving locally.
      */
     suffix?: pulumi.Input<string>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 /**

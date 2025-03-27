@@ -13,11 +13,13 @@ import javax.annotation.Nullable;
 public final class GetTurnstileWidgetFilter {
     /**
      * @return Direction to order widgets.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
     /**
      * @return Field to order widgets by.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
      * 
      */
     private @Nullable String order;
@@ -25,6 +27,7 @@ public final class GetTurnstileWidgetFilter {
     private GetTurnstileWidgetFilter() {}
     /**
      * @return Direction to order widgets.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -32,6 +35,7 @@ public final class GetTurnstileWidgetFilter {
     }
     /**
      * @return Field to order widgets by.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;created*on&#34;, &#34;modified*on&#34;.
      * 
      */
     public Optional<String> order() {

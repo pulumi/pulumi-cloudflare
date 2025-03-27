@@ -129,28 +129,27 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+        /// Available values: "off", "v1", "v2", "simple".
         /// </summary>
         [Output("proxyProtocol")]
         public Output<string> ProxyProtocol { get; private set; } = null!;
 
         /// <summary>
         /// The type of TLS termination associated with the application.
+        /// Available values: "off", "flexible", "full", "strict".
         /// </summary>
         [Output("tls")]
         public Output<string?> Tls { get; private set; } = null!;
 
         /// <summary>
         /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+        /// Available values: "direct", "http", "https".
         /// </summary>
         [Output("trafficType")]
         public Output<string> TrafficType { get; private set; } = null!;
 
         /// <summary>
-<<<<<<< HEAD
-        /// Identifier
-=======
         /// Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -260,28 +259,27 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+        /// Available values: "off", "v1", "v2", "simple".
         /// </summary>
         [Input("proxyProtocol")]
         public Input<string>? ProxyProtocol { get; set; }
 
         /// <summary>
         /// The type of TLS termination associated with the application.
+        /// Available values: "off", "flexible", "full", "strict".
         /// </summary>
         [Input("tls")]
         public Input<string>? Tls { get; set; }
 
         /// <summary>
         /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+        /// Available values: "direct", "http", "https".
         /// </summary>
         [Input("trafficType")]
         public Input<string>? TrafficType { get; set; }
 
         /// <summary>
-<<<<<<< HEAD
-        /// Identifier
-=======
         /// Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -365,28 +363,27 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+        /// Available values: "off", "v1", "v2", "simple".
         /// </summary>
         [Input("proxyProtocol")]
         public Input<string>? ProxyProtocol { get; set; }
 
         /// <summary>
         /// The type of TLS termination associated with the application.
+        /// Available values: "off", "flexible", "full", "strict".
         /// </summary>
         [Input("tls")]
         public Input<string>? Tls { get; set; }
 
         /// <summary>
         /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+        /// Available values: "direct", "http", "https".
         /// </summary>
         [Input("trafficType")]
         public Input<string>? TrafficType { get; set; }
 
         /// <summary>
-<<<<<<< HEAD
-        /// Identifier
-=======
         /// Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

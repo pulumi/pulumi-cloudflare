@@ -14,12 +14,14 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Direction to order namespaces.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
         /// Field to order results by.
+        /// Available values: "id", "title".
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

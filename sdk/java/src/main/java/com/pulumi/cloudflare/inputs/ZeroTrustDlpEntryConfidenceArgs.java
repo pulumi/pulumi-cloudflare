@@ -15,27 +15,30 @@ public final class ZeroTrustDlpEntryConfidenceArgs extends com.pulumi.resources.
 
     public static final ZeroTrustDlpEntryConfidenceArgs Empty = new ZeroTrustDlpEntryConfidenceArgs();
 
-<<<<<<< HEAD
-=======
+    /**
+     * Indicates whether this entry has AI remote service validation
+     * 
+     */
     @Import(name="aiContextAvailable")
     private @Nullable Output<Boolean> aiContextAvailable;
 
+    /**
+     * @return Indicates whether this entry has AI remote service validation
+     * 
+     */
     public Optional<Output<Boolean>> aiContextAvailable() {
         return Optional.ofNullable(this.aiContextAvailable);
     }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
-     * Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
-     * Profiles that use an entry with `available` set to true can use confidence thresholds
+     * Indicates whether this entry has any form of validation that is not an AI remote service
      * 
      */
     @Import(name="available")
     private @Nullable Output<Boolean> available;
 
     /**
-     * @return Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
-     * Profiles that use an entry with `available` set to true can use confidence thresholds
+     * @return Indicates whether this entry has any form of validation that is not an AI remote service
      * 
      */
     public Optional<Output<Boolean>> available() {
@@ -45,10 +48,7 @@ public final class ZeroTrustDlpEntryConfidenceArgs extends com.pulumi.resources.
     private ZeroTrustDlpEntryConfidenceArgs() {}
 
     private ZeroTrustDlpEntryConfidenceArgs(ZeroTrustDlpEntryConfidenceArgs $) {
-<<<<<<< HEAD
-=======
         this.aiContextAvailable = $.aiContextAvailable;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.available = $.available;
     }
 
@@ -70,21 +70,29 @@ public final class ZeroTrustDlpEntryConfidenceArgs extends com.pulumi.resources.
             $ = new ZeroTrustDlpEntryConfidenceArgs(Objects.requireNonNull(defaults));
         }
 
-<<<<<<< HEAD
-=======
+        /**
+         * @param aiContextAvailable Indicates whether this entry has AI remote service validation
+         * 
+         * @return builder
+         * 
+         */
         public Builder aiContextAvailable(@Nullable Output<Boolean> aiContextAvailable) {
             $.aiContextAvailable = aiContextAvailable;
             return this;
         }
 
+        /**
+         * @param aiContextAvailable Indicates whether this entry has AI remote service validation
+         * 
+         * @return builder
+         * 
+         */
         public Builder aiContextAvailable(Boolean aiContextAvailable) {
             return aiContextAvailable(Output.of(aiContextAvailable));
         }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /**
-         * @param available Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
-         * Profiles that use an entry with `available` set to true can use confidence thresholds
+         * @param available Indicates whether this entry has any form of validation that is not an AI remote service
          * 
          * @return builder
          * 
@@ -95,8 +103,7 @@ public final class ZeroTrustDlpEntryConfidenceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param available Indicates whether this entry can be made more or less sensitive by setting a confidence threshold.
-         * Profiles that use an entry with `available` set to true can use confidence thresholds
+         * @param available Indicates whether this entry has any form of validation that is not an AI remote service
          * 
          * @return builder
          * 

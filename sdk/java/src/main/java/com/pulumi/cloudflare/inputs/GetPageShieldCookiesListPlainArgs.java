@@ -20,6 +20,7 @@ public final class GetPageShieldCookiesListPlainArgs extends com.pulumi.resource
 
     /**
      * The direction used to sort returned cookies.&#39;
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -27,6 +28,7 @@ public final class GetPageShieldCookiesListPlainArgs extends com.pulumi.resource
 
     /**
      * @return The direction used to sort returned cookies.&#39;
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -50,6 +52,7 @@ public final class GetPageShieldCookiesListPlainArgs extends com.pulumi.resource
 
     /**
      * Export the list of cookies as a file.
+     * Available values: &#34;csv&#34;.
      * 
      */
     @Import(name="export")
@@ -57,6 +60,7 @@ public final class GetPageShieldCookiesListPlainArgs extends com.pulumi.resource
 
     /**
      * @return Export the list of cookies as a file.
+     * Available values: &#34;csv&#34;.
      * 
      */
     public Optional<String> export() {
@@ -211,6 +215,7 @@ public final class GetPageShieldCookiesListPlainArgs extends com.pulumi.resource
 
         /**
          * @param direction The direction used to sort returned cookies.&#39;
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -233,6 +238,7 @@ public final class GetPageShieldCookiesListPlainArgs extends com.pulumi.resource
 
         /**
          * @param export Export the list of cookies as a file.
+         * Available values: &#34;csv&#34;.
          * 
          * @return builder
          * 

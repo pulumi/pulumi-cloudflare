@@ -16,10 +16,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string? ZoneId;
+        public readonly string ZoneId;
 
         [OutputConstructor]
-        private GetOriginCaCertificateFilterResult(string? zoneId)
+        private GetOriginCaCertificateFilterResult(string zoneId)
         {
             ZoneId = zoneId;
         }

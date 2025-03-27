@@ -85,14 +85,14 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
     }
 
     /**
-     * A dict of env variables to build this deploy.
+     * Environment variables used for builds and Pages Functions.
      * 
      */
     @Import(name="envVars")
     private @Nullable Output<Map<String,PagesProjectCanonicalDeploymentEnvVarsArgs>> envVars;
 
     /**
-     * @return A dict of env variables to build this deploy.
+     * @return Environment variables used for builds and Pages Functions.
      * 
      */
     public Optional<Output<Map<String,PagesProjectCanonicalDeploymentEnvVarsArgs>>> envVars() {
@@ -101,6 +101,7 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
 
     /**
      * Type of deploy.
+     * Available values: &#34;preview&#34;, &#34;production&#34;.
      * 
      */
     @Import(name="environment")
@@ -108,6 +109,7 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
 
     /**
      * @return Type of deploy.
+     * Available values: &#34;preview&#34;, &#34;production&#34;.
      * 
      */
     public Optional<Output<String>> environment() {
@@ -390,7 +392,7 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
         }
 
         /**
-         * @param envVars A dict of env variables to build this deploy.
+         * @param envVars Environment variables used for builds and Pages Functions.
          * 
          * @return builder
          * 
@@ -401,7 +403,7 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
         }
 
         /**
-         * @param envVars A dict of env variables to build this deploy.
+         * @param envVars Environment variables used for builds and Pages Functions.
          * 
          * @return builder
          * 
@@ -412,6 +414,7 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
 
         /**
          * @param environment Type of deploy.
+         * Available values: &#34;preview&#34;, &#34;production&#34;.
          * 
          * @return builder
          * 
@@ -423,6 +426,7 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
 
         /**
          * @param environment Type of deploy.
+         * Available values: &#34;preview&#34;, &#34;production&#34;.
          * 
          * @return builder
          * 

@@ -36,6 +36,7 @@ public final class RulesetRuleActionParametersOverridesRule {
     private @Nullable Integer scoreThreshold;
     /**
      * @return The sensitivity level to use for the rule.
+     * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */
     private @Nullable String sensitivityLevel;
@@ -71,6 +72,7 @@ public final class RulesetRuleActionParametersOverridesRule {
     }
     /**
      * @return The sensitivity level to use for the rule.
+     * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */
     public Optional<String> sensitivityLevel() {

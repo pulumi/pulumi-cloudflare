@@ -32,6 +32,7 @@ public final class GetR2BucketResult {
     private String id;
     /**
      * @return Location of the bucket
+     * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
      */
     private String location;
@@ -42,6 +43,7 @@ public final class GetR2BucketResult {
     private String name;
     /**
      * @return Storage class for newly uploaded objects, unless specified otherwise.
+     * Available values: &#34;Standard&#34;, &#34;InfrequentAccess&#34;.
      * 
      */
     private String storageClass;
@@ -77,6 +79,7 @@ public final class GetR2BucketResult {
     }
     /**
      * @return Location of the bucket
+     * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
      */
     public String location() {
@@ -91,6 +94,7 @@ public final class GetR2BucketResult {
     }
     /**
      * @return Storage class for newly uploaded objects, unless specified otherwise.
+     * Available values: &#34;Standard&#34;, &#34;InfrequentAccess&#34;.
      * 
      */
     public String storageClass() {

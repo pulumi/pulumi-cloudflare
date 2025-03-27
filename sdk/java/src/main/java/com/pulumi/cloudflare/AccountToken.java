@@ -200,6 +200,7 @@ public class AccountToken extends com.pulumi.resources.CustomResource {
     }
     /**
      * Status of the token.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -207,6 +208,7 @@ public class AccountToken extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Status of the token.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
      * 
      */
     public Output<Optional<String>> status() {
@@ -266,6 +268,9 @@ public class AccountToken extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "value"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

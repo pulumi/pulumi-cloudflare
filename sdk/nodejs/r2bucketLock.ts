@@ -64,6 +64,10 @@ export class R2BucketLock extends pulumi.CustomResource {
      * Name of the bucket
      */
     public readonly bucketName!: pulumi.Output<string>;
+    /**
+     * Jurisdiction of the bucket
+     */
+    public readonly jurisdiction!: pulumi.Output<string>;
     public readonly rules!: pulumi.Output<outputs.R2BucketLockRule[]>;
 
     /**
@@ -81,6 +85,7 @@ export class R2BucketLock extends pulumi.CustomResource {
             const state = argsOrState as R2BucketLockState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["bucketName"] = state ? state.bucketName : undefined;
+            resourceInputs["jurisdiction"] = state ? state.jurisdiction : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
         } else {
             const args = argsOrState as R2BucketLockArgs | undefined;
@@ -92,6 +97,7 @@ export class R2BucketLock extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["bucketName"] = args ? args.bucketName : undefined;
+            resourceInputs["jurisdiction"] = args ? args.jurisdiction : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -111,6 +117,10 @@ export interface R2BucketLockState {
      * Name of the bucket
      */
     bucketName?: pulumi.Input<string>;
+    /**
+     * Jurisdiction of the bucket
+     */
+    jurisdiction?: pulumi.Input<string>;
     rules?: pulumi.Input<pulumi.Input<inputs.R2BucketLockRule>[]>;
 }
 
@@ -126,5 +136,9 @@ export interface R2BucketLockArgs {
      * Name of the bucket
      */
     bucketName: pulumi.Input<string>;
+    /**
+     * Jurisdiction of the bucket
+     */
+    jurisdiction?: pulumi.Input<string>;
     rules?: pulumi.Input<pulumi.Input<inputs.R2BucketLockRule>[]>;
 }

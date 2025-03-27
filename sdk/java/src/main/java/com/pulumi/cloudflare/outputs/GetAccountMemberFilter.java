@@ -13,16 +13,19 @@ import javax.annotation.Nullable;
 public final class GetAccountMemberFilter {
     /**
      * @return Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
     /**
      * @return Field to order results by.
+     * Available values: &#34;user.first*name&#34;, &#34;user.last*name&#34;, &#34;user.email&#34;, &#34;status&#34;.
      * 
      */
     private @Nullable String order;
     /**
      * @return A member&#39;s status in the account.
+     * Available values: &#34;accepted&#34;, &#34;pending&#34;, &#34;rejected&#34;.
      * 
      */
     private @Nullable String status;
@@ -30,6 +33,7 @@ public final class GetAccountMemberFilter {
     private GetAccountMemberFilter() {}
     /**
      * @return Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -37,6 +41,7 @@ public final class GetAccountMemberFilter {
     }
     /**
      * @return Field to order results by.
+     * Available values: &#34;user.first*name&#34;, &#34;user.last*name&#34;, &#34;user.email&#34;, &#34;status&#34;.
      * 
      */
     public Optional<String> order() {
@@ -44,6 +49,7 @@ public final class GetAccountMemberFilter {
     }
     /**
      * @return A member&#39;s status in the account.
+     * Available values: &#34;accepted&#34;, &#34;pending&#34;, &#34;rejected&#34;.
      * 
      */
     public Optional<String> status() {

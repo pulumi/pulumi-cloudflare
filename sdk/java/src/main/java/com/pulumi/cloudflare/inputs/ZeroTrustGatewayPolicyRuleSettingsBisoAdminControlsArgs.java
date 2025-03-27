@@ -17,14 +17,16 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
     public static final ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs Empty = new ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs();
 
     /**
-     * Configure whether copy is enabled or not. When set with &#34;remote_only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Configure whether copy is enabled or not. When set with &#34;remote*only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
     @Import(name="copy")
     private @Nullable Output<String> copy;
 
     /**
-     * @return Configure whether copy is enabled or not. When set with &#34;remote_only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure whether copy is enabled or not. When set with &#34;remote*only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
     public Optional<Output<String>> copy() {
@@ -78,6 +80,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
     /**
      * Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     @Import(name="download")
@@ -85,6 +88,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
     /**
      * @return Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     public Optional<Output<String>> download() {
@@ -123,6 +127,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
     /**
      * Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     @Import(name="keyboard")
@@ -130,6 +135,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
     /**
      * @return Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     public Optional<Output<String>> keyboard() {
@@ -137,14 +143,16 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
     }
 
     /**
-     * Configure whether pasting is enabled or not. When set with &#34;remote_only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Configure whether pasting is enabled or not. When set with &#34;remote*only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
     @Import(name="paste")
     private @Nullable Output<String> paste;
 
     /**
-     * @return Configure whether pasting is enabled or not. When set with &#34;remote_only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure whether pasting is enabled or not. When set with &#34;remote*only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
     public Optional<Output<String>> paste() {
@@ -153,6 +161,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
     /**
      * Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     @Import(name="printing")
@@ -160,6 +169,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
     /**
      * @return Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     public Optional<Output<String>> printing() {
@@ -168,6 +178,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
     /**
      * Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     @Import(name="upload")
@@ -175,6 +186,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
     /**
      * @return Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     public Optional<Output<String>> upload() {
@@ -183,6 +195,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
     /**
      * Indicates which version of the browser isolation controls should apply.
+     * Available values: &#34;v1&#34;, &#34;v2&#34;.
      * 
      */
     @Import(name="version")
@@ -190,6 +203,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
     /**
      * @return Indicates which version of the browser isolation controls should apply.
+     * Available values: &#34;v1&#34;, &#34;v2&#34;.
      * 
      */
     public Optional<Output<String>> version() {
@@ -232,7 +246,8 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
         }
 
         /**
-         * @param copy Configure whether copy is enabled or not. When set with &#34;remote_only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+         * @param copy Configure whether copy is enabled or not. When set with &#34;remote*only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
          * 
          * @return builder
          * 
@@ -243,7 +258,8 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
         }
 
         /**
-         * @param copy Configure whether copy is enabled or not. When set with &#34;remote_only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+         * @param copy Configure whether copy is enabled or not. When set with &#34;remote*only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
          * 
          * @return builder
          * 
@@ -317,6 +333,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
         /**
          * @param download Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
          * 
          * @return builder
          * 
@@ -328,6 +345,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
         /**
          * @param download Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
          * 
          * @return builder
          * 
@@ -380,6 +398,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
         /**
          * @param keyboard Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
          * 
          * @return builder
          * 
@@ -391,6 +410,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
         /**
          * @param keyboard Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
          * 
          * @return builder
          * 
@@ -400,7 +420,8 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
         }
 
         /**
-         * @param paste Configure whether pasting is enabled or not. When set with &#34;remote_only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+         * @param paste Configure whether pasting is enabled or not. When set with &#34;remote*only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
          * 
          * @return builder
          * 
@@ -411,7 +432,8 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
         }
 
         /**
-         * @param paste Configure whether pasting is enabled or not. When set with &#34;remote_only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+         * @param paste Configure whether pasting is enabled or not. When set with &#34;remote*only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
          * 
          * @return builder
          * 
@@ -422,6 +444,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
         /**
          * @param printing Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
          * 
          * @return builder
          * 
@@ -433,6 +456,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
         /**
          * @param printing Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
          * 
          * @return builder
          * 
@@ -443,6 +467,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
         /**
          * @param upload Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
          * 
          * @return builder
          * 
@@ -454,6 +479,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
         /**
          * @param upload Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
          * 
          * @return builder
          * 
@@ -464,6 +490,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
         /**
          * @param version Indicates which version of the browser isolation controls should apply.
+         * Available values: &#34;v1&#34;, &#34;v2&#34;.
          * 
          * @return builder
          * 
@@ -475,6 +502,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
 
         /**
          * @param version Indicates which version of the browser isolation controls should apply.
+         * Available values: &#34;v1&#34;, &#34;v2&#34;.
          * 
          * @return builder
          * 

@@ -75,10 +75,12 @@ type LookupCloudforceOneRequestResult struct {
 	// UUID
 	RequestIdentifier *string `pulumi:"requestIdentifier"`
 	// Request Status
+	// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 	Status string `pulumi:"status"`
 	// Brief description of the request
 	Summary string `pulumi:"summary"`
 	// The CISA defined Traffic Light Protocol (TLP)
+	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	Tlp string `pulumi:"tlp"`
 	// Tokens for the request
 	Tokens  int    `pulumi:"tokens"`
@@ -169,6 +171,7 @@ func (o LookupCloudforceOneRequestResultOutput) RequestIdentifier() pulumi.Strin
 }
 
 // Request Status
+// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 func (o LookupCloudforceOneRequestResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestResult) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -179,6 +182,7 @@ func (o LookupCloudforceOneRequestResultOutput) Summary() pulumi.StringOutput {
 }
 
 // The CISA defined Traffic Light Protocol (TLP)
+// Available values: "clear", "amber", "amber-strict", "green", "red".
 func (o LookupCloudforceOneRequestResultOutput) Tlp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestResult) string { return v.Tlp }).(pulumi.StringOutput)
 }

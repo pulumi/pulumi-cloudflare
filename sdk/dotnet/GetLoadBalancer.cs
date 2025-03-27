@@ -306,6 +306,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly double Ttl;
         public readonly string ZoneId;
+        public readonly string ZoneName;
 
         [OutputConstructor]
         private GetLoadBalancerResult(
@@ -355,7 +356,9 @@ namespace Pulumi.Cloudflare
 
             double ttl,
 
-            string zoneId)
+            string zoneId,
+
+            string zoneName)
         {
             AdaptiveRouting = adaptiveRouting;
             CountryPools = countryPools;
@@ -381,6 +384,7 @@ namespace Pulumi.Cloudflare
             SteeringPolicy = steeringPolicy;
             Ttl = ttl;
             ZoneId = zoneId;
+            ZoneName = zoneName;
         }
     }
 }

@@ -13,10 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
-<<<<<<< HEAD
-=======
 from . import outputs
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 __all__ = [
     'GetLogpushDatasetJobResult',
@@ -30,18 +27,6 @@ class GetLogpushDatasetJobResult:
     """
     A collection of values returned by getLogpushDatasetJob.
     """
-<<<<<<< HEAD
-    def __init__(__self__, account_id=None, dataset_id=None, id=None, zone_id=None):
-        if account_id and not isinstance(account_id, str):
-            raise TypeError("Expected argument 'account_id' to be a str")
-        pulumi.set(__self__, "account_id", account_id)
-        if dataset_id and not isinstance(dataset_id, str):
-            raise TypeError("Expected argument 'dataset_id' to be a str")
-        pulumi.set(__self__, "dataset_id", dataset_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
-=======
     def __init__(__self__, account_id=None, dataset=None, dataset_id=None, destination_conf=None, enabled=None, error_message=None, frequency=None, id=None, kind=None, last_complete=None, last_error=None, logpull_options=None, max_upload_bytes=None, max_upload_interval_seconds=None, max_upload_records=None, name=None, output_options=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
@@ -94,7 +79,6 @@ class GetLogpushDatasetJobResult:
         if output_options and not isinstance(output_options, dict):
             raise TypeError("Expected argument 'output_options' to be a dict")
         pulumi.set(__self__, "output_options", output_options)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -108,8 +92,6 @@ class GetLogpushDatasetJobResult:
         return pulumi.get(self, "account_id")
 
     @property
-<<<<<<< HEAD
-=======
     @pulumi.getter
     def dataset(self) -> str:
         """
@@ -118,7 +100,6 @@ class GetLogpushDatasetJobResult:
         return pulumi.get(self, "dataset")
 
     @property
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> str:
         """
@@ -127,12 +108,6 @@ class GetLogpushDatasetJobResult:
         return pulumi.get(self, "dataset_id")
 
     @property
-<<<<<<< HEAD
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-=======
     @pulumi.getter(name="destinationConf")
     def destination_conf(self) -> str:
         """
@@ -161,6 +136,7 @@ class GetLogpushDatasetJobResult:
     def frequency(self) -> str:
         """
         This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+        Available values: "high", "low".
         """
         return pulumi.get(self, "frequency")
 
@@ -169,17 +145,15 @@ class GetLogpushDatasetJobResult:
     def id(self) -> int:
         """
         Unique id of the job.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         return pulumi.get(self, "id")
 
     @property
-<<<<<<< HEAD
-=======
     @pulumi.getter
     def kind(self) -> str:
         """
         The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+        Available values: "edge".
         """
         return pulumi.get(self, "kind")
 
@@ -248,7 +222,6 @@ class GetLogpushDatasetJobResult:
         return pulumi.get(self, "output_options")
 
     @property
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[str]:
         """
@@ -264,10 +237,6 @@ class AwaitableGetLogpushDatasetJobResult(GetLogpushDatasetJobResult):
             yield self
         return GetLogpushDatasetJobResult(
             account_id=self.account_id,
-<<<<<<< HEAD
-            dataset_id=self.dataset_id,
-            id=self.id,
-=======
             dataset=self.dataset,
             dataset_id=self.dataset_id,
             destination_conf=self.destination_conf,
@@ -284,7 +253,6 @@ class AwaitableGetLogpushDatasetJobResult(GetLogpushDatasetJobResult):
             max_upload_records=self.max_upload_records,
             name=self.name,
             output_options=self.output_options,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             zone_id=self.zone_id)
 
 
@@ -318,10 +286,6 @@ def get_logpush_dataset_job(account_id: Optional[str] = None,
 
     return AwaitableGetLogpushDatasetJobResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-<<<<<<< HEAD
-        dataset_id=pulumi.get(__ret__, 'dataset_id'),
-        id=pulumi.get(__ret__, 'id'),
-=======
         dataset=pulumi.get(__ret__, 'dataset'),
         dataset_id=pulumi.get(__ret__, 'dataset_id'),
         destination_conf=pulumi.get(__ret__, 'destination_conf'),
@@ -338,7 +302,6 @@ def get_logpush_dataset_job(account_id: Optional[str] = None,
         max_upload_records=pulumi.get(__ret__, 'max_upload_records'),
         name=pulumi.get(__ret__, 'name'),
         output_options=pulumi.get(__ret__, 'output_options'),
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_logpush_dataset_job_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                    dataset_id: Optional[pulumi.Input[str]] = None,
@@ -369,10 +332,6 @@ def get_logpush_dataset_job_output(account_id: Optional[pulumi.Input[Optional[st
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getLogpushDatasetJob:getLogpushDatasetJob', __args__, opts=opts, typ=GetLogpushDatasetJobResult)
     return __ret__.apply(lambda __response__: GetLogpushDatasetJobResult(
         account_id=pulumi.get(__response__, 'account_id'),
-<<<<<<< HEAD
-        dataset_id=pulumi.get(__response__, 'dataset_id'),
-        id=pulumi.get(__response__, 'id'),
-=======
         dataset=pulumi.get(__response__, 'dataset'),
         dataset_id=pulumi.get(__response__, 'dataset_id'),
         destination_conf=pulumi.get(__response__, 'destination_conf'),
@@ -389,5 +348,4 @@ def get_logpush_dataset_job_output(account_id: Optional[pulumi.Input[Optional[st
         max_upload_records=pulumi.get(__response__, 'max_upload_records'),
         name=pulumi.get(__response__, 'name'),
         output_options=pulumi.get(__response__, 'output_options'),
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         zone_id=pulumi.get(__response__, 'zone_id')))

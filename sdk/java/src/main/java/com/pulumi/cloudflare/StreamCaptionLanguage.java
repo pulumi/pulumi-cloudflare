@@ -142,6 +142,7 @@ public class StreamCaptionLanguage extends com.pulumi.resources.CustomResource {
     }
     /**
      * The status of a generated caption.
+     * Available values: &#34;ready&#34;, &#34;inprogress&#34;, &#34;error&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -149,6 +150,7 @@ public class StreamCaptionLanguage extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The status of a generated caption.
+     * Available values: &#34;ready&#34;, &#34;inprogress&#34;, &#34;error&#34;.
      * 
      */
     public Output<String> status() {

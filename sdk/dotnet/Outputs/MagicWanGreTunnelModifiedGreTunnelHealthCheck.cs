@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
+        /// Available values: "unidirectional", "bidirectional".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
@@ -23,6 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool? Enabled;
         /// <summary>
         /// How frequent the health check is run. The default value is `mid`.
+        /// Available values: "low", "mid", "high".
         /// </summary>
         public readonly string? Rate;
         /// <summary>
@@ -31,6 +33,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget? Target;
         /// <summary>
         /// The type of healthcheck to run, reply or request. The default value is `reply`.
+        /// Available values: "reply", "request".
         /// </summary>
         public readonly string? Type;
 

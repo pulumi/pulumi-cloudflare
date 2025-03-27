@@ -4,10 +4,9 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOriginCaCertificateFilter {
@@ -15,15 +14,15 @@ public final class GetOriginCaCertificateFilter {
      * @return Identifier
      * 
      */
-    private @Nullable String zoneId;
+    private String zoneId;
 
     private GetOriginCaCertificateFilter() {}
     /**
      * @return Identifier
      * 
      */
-    public Optional<String> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public String zoneId() {
+        return this.zoneId;
     }
 
     public static Builder builder() {
@@ -35,7 +34,7 @@ public final class GetOriginCaCertificateFilter {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String zoneId;
+        private String zoneId;
         public Builder() {}
         public Builder(GetOriginCaCertificateFilter defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,8 +42,10 @@ public final class GetOriginCaCertificateFilter {
         }
 
         @CustomType.Setter
-        public Builder zoneId(@Nullable String zoneId) {
-
+        public Builder zoneId(String zoneId) {
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetOriginCaCertificateFilter", "zoneId");
+            }
             this.zoneId = zoneId;
             return this;
         }

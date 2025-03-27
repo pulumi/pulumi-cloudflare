@@ -41,12 +41,13 @@ public final class PagesProjectLatestDeployment {
      */
     private @Nullable PagesProjectLatestDeploymentDeploymentTrigger deploymentTrigger;
     /**
-     * @return A dict of env variables to build this deploy.
+     * @return Environment variables used for builds and Pages Functions.
      * 
      */
     private @Nullable Map<String,PagesProjectLatestDeploymentEnvVars> envVars;
     /**
      * @return Type of deploy.
+     * Available values: &#34;preview&#34;, &#34;production&#34;.
      * 
      */
     private @Nullable String environment;
@@ -127,7 +128,7 @@ public final class PagesProjectLatestDeployment {
         return Optional.ofNullable(this.deploymentTrigger);
     }
     /**
-     * @return A dict of env variables to build this deploy.
+     * @return Environment variables used for builds and Pages Functions.
      * 
      */
     public Map<String,PagesProjectLatestDeploymentEnvVars> envVars() {
@@ -135,6 +136,7 @@ public final class PagesProjectLatestDeployment {
     }
     /**
      * @return Type of deploy.
+     * Available values: &#34;preview&#34;, &#34;production&#34;.
      * 
      */
     public Optional<String> environment() {

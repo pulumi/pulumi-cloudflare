@@ -13,28 +13,19 @@ import (
 )
 
 // ## Example Usage
-<<<<<<< HEAD
-=======
 //
 // ## Import
 //
 // ```sh
 // $ pulumi import cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan example '<account_id>/<site_id>/<lan_id>'
 // ```
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 type MagicTransitSiteLan struct {
 	pulumi.CustomResourceState
 
 	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-<<<<<<< HEAD
-	HaLink pulumi.BoolPtrOutput `pulumi:"haLink"`
-	// Identifier
-	LanId         pulumi.StringPtrOutput                     `pulumi:"lanId"`
-=======
 	HaLink        pulumi.BoolPtrOutput                       `pulumi:"haLink"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	Name          pulumi.StringPtrOutput                     `pulumi:"name"`
 	Nat           MagicTransitSiteLanNatOutput               `pulumi:"nat"`
 	Physport      pulumi.IntOutput                           `pulumi:"physport"`
@@ -92,13 +83,7 @@ type magicTransitSiteLanState struct {
 	// Identifier
 	AccountId *string `pulumi:"accountId"`
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-<<<<<<< HEAD
-	HaLink *bool `pulumi:"haLink"`
-	// Identifier
-	LanId         *string                           `pulumi:"lanId"`
-=======
 	HaLink        *bool                             `pulumi:"haLink"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	Name          *string                           `pulumi:"name"`
 	Nat           *MagicTransitSiteLanNat           `pulumi:"nat"`
 	Physport      *int                              `pulumi:"physport"`
@@ -115,13 +100,7 @@ type MagicTransitSiteLanState struct {
 	// Identifier
 	AccountId pulumi.StringPtrInput
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-<<<<<<< HEAD
-	HaLink pulumi.BoolPtrInput
-	// Identifier
-	LanId         pulumi.StringPtrInput
-=======
 	HaLink        pulumi.BoolPtrInput
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	Name          pulumi.StringPtrInput
 	Nat           MagicTransitSiteLanNatPtrInput
 	Physport      pulumi.IntPtrInput
@@ -142,13 +121,7 @@ type magicTransitSiteLanArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-<<<<<<< HEAD
-	HaLink *bool `pulumi:"haLink"`
-	// Identifier
-	LanId         *string                           `pulumi:"lanId"`
-=======
 	HaLink        *bool                             `pulumi:"haLink"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	Name          *string                           `pulumi:"name"`
 	Nat           *MagicTransitSiteLanNat           `pulumi:"nat"`
 	Physport      int                               `pulumi:"physport"`
@@ -166,13 +139,7 @@ type MagicTransitSiteLanArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-<<<<<<< HEAD
-	HaLink pulumi.BoolPtrInput
-	// Identifier
-	LanId         pulumi.StringPtrInput
-=======
 	HaLink        pulumi.BoolPtrInput
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	Name          pulumi.StringPtrInput
 	Nat           MagicTransitSiteLanNatPtrInput
 	Physport      pulumi.IntInput
@@ -282,14 +249,6 @@ func (o MagicTransitSiteLanOutput) HaLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MagicTransitSiteLan) pulumi.BoolPtrOutput { return v.HaLink }).(pulumi.BoolPtrOutput)
 }
 
-<<<<<<< HEAD
-// Identifier
-func (o MagicTransitSiteLanOutput) LanId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicTransitSiteLan) pulumi.StringPtrOutput { return v.LanId }).(pulumi.StringPtrOutput)
-}
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func (o MagicTransitSiteLanOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MagicTransitSiteLan) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }

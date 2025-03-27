@@ -28,6 +28,7 @@ public final class GetZeroTrustDeviceManagedNetworksListResult {
     private String networkId;
     /**
      * @return The type of device managed network.
+     * Available values: &#34;tls&#34;.
      * 
      */
     private String type;
@@ -56,6 +57,7 @@ public final class GetZeroTrustDeviceManagedNetworksListResult {
     }
     /**
      * @return The type of device managed network.
+     * Available values: &#34;tls&#34;.
      * 
      */
     public String type() {

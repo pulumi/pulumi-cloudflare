@@ -22,6 +22,9 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool IsRegex;
         public readonly string LastModified;
         public readonly string Pattern;
+        /// <summary>
+        /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        /// </summary>
         public readonly string PatternType;
 
         [OutputConstructor]

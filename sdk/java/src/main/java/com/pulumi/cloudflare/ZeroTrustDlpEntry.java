@@ -118,9 +118,17 @@ public class ZeroTrustDlpEntry extends com.pulumi.resources.CustomResource {
     public Output<Boolean> secret() {
         return this.secret;
     }
+    /**
+     * Available values: &#34;custom&#34;.
+     * 
+     */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
+    /**
+     * @return Available values: &#34;custom&#34;.
+     * 
+     */
     public Output<Optional<String>> type() {
         return Codegen.optional(this.type);
     }

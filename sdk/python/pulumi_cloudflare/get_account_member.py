@@ -104,6 +104,7 @@ class GetAccountMemberResult:
     def status(self) -> str:
         """
         A member's status in the account.
+        Available values: "accepted", "pending".
         """
         return pulumi.get(self, "status")
 

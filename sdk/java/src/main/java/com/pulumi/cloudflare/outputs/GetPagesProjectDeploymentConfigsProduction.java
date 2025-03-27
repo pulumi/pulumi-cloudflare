@@ -57,12 +57,12 @@ public final class GetPagesProjectDeploymentConfigsProduction {
      */
     private Map<String,GetPagesProjectDeploymentConfigsProductionD1Databases> d1Databases;
     /**
-     * @return Durabble Object namespaces used for Pages Functions.
+     * @return Durable Object namespaces used for Pages Functions.
      * 
      */
     private Map<String,GetPagesProjectDeploymentConfigsProductionDurableObjectNamespaces> durableObjectNamespaces;
     /**
-     * @return Environment variables for build configs.
+     * @return Environment variables used for builds and Pages Functions.
      * 
      */
     private Map<String,GetPagesProjectDeploymentConfigsProductionEnvVars> envVars;
@@ -151,14 +151,14 @@ public final class GetPagesProjectDeploymentConfigsProduction {
         return this.d1Databases;
     }
     /**
-     * @return Durabble Object namespaces used for Pages Functions.
+     * @return Durable Object namespaces used for Pages Functions.
      * 
      */
     public Map<String,GetPagesProjectDeploymentConfigsProductionDurableObjectNamespaces> durableObjectNamespaces() {
         return this.durableObjectNamespaces;
     }
     /**
-     * @return Environment variables for build configs.
+     * @return Environment variables used for builds and Pages Functions.
      * 
      */
     public Map<String,GetPagesProjectDeploymentConfigsProductionEnvVars> envVars() {

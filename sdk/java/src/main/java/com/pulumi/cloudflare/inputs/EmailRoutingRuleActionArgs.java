@@ -17,6 +17,7 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
 
     /**
      * Type of supported action.
+     * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -24,6 +25,7 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Type of supported action.
+     * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
      * 
      */
     public Output<String> type() {
@@ -64,6 +66,7 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
 
         /**
          * @param type Type of supported action.
+         * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
          * 
          * @return builder
          * 
@@ -75,6 +78,7 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
 
         /**
          * @param type Type of supported action.
+         * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
          * 
          * @return builder
          * 

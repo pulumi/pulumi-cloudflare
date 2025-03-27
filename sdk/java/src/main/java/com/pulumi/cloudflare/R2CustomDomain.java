@@ -103,20 +103,6 @@ public class R2CustomDomain extends com.pulumi.resources.CustomResource {
         return this.domain;
     }
     /**
-     * Name of the custom domain
-     * 
-     */
-    @Export(name="domainName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> domainName;
-
-    /**
-     * @return Name of the custom domain
-     * 
-     */
-    public Output<Optional<String>> domainName() {
-        return Codegen.optional(this.domainName);
-    }
-    /**
      * Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
      * 
      */
@@ -132,6 +118,7 @@ public class R2CustomDomain extends com.pulumi.resources.CustomResource {
     }
     /**
      * Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+     * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
      * 
      */
     @Export(name="minTls", refs={String.class}, tree="[0]")
@@ -139,6 +126,7 @@ public class R2CustomDomain extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+     * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
      * 
      */
     public Output<Optional<String>> minTls() {

@@ -33,6 +33,7 @@ class ZeroTrustDevicePostureRuleArgs:
         The set of arguments for constructing a ZeroTrustDevicePostureRule resource.
         :param pulumi.Input[str] name: The name of the device posture rule.
         :param pulumi.Input[str] type: The type of device posture rule.
+               Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom_s2s".
         :param pulumi.Input[str] description: The description of the device posture rule.
         :param pulumi.Input[str] expiration: Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
         :param pulumi.Input['ZeroTrustDevicePostureRuleInputArgs'] input: The value to be checked against.
@@ -79,6 +80,7 @@ class ZeroTrustDevicePostureRuleArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The type of device posture rule.
+        Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom_s2s".
         """
         return pulumi.get(self, "type")
 
@@ -167,6 +169,7 @@ class _ZeroTrustDevicePostureRuleState:
         :param pulumi.Input[str] name: The name of the device posture rule.
         :param pulumi.Input[str] schedule: Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         :param pulumi.Input[str] type: The type of device posture rule.
+               Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom_s2s".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -271,6 +274,7 @@ class _ZeroTrustDevicePostureRuleState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of device posture rule.
+        Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom_s2s".
         """
         return pulumi.get(self, "type")
 
@@ -311,6 +315,7 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the device posture rule.
         :param pulumi.Input[str] schedule: Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         :param pulumi.Input[str] type: The type of device posture rule.
+               Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom_s2s".
         """
         ...
     @overload
@@ -373,6 +378,8 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/devicePostureRule:DevicePostureRule")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustDevicePostureRule, __self__).__init__(
             'cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule',
             resource_name,
@@ -405,6 +412,7 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the device posture rule.
         :param pulumi.Input[str] schedule: Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         :param pulumi.Input[str] type: The type of device posture rule.
+               Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom_s2s".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -478,6 +486,7 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         The type of device posture rule.
+        Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom_s2s".
         """
         return pulumi.get(self, "type")
 

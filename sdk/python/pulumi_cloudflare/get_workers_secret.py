@@ -102,6 +102,7 @@ class GetWorkersSecretResult:
     def type(self) -> str:
         """
         The type of secret.
+        Available values: "secret_text".
         """
         return pulumi.get(self, "type")
 

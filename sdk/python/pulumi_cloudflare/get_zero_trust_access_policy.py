@@ -125,6 +125,7 @@ class GetZeroTrustAccessPolicyResult:
     def decision(self) -> str:
         """
         The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+        Available values: "allow", "deny", "non_identity", "bypass".
         """
         return pulumi.get(self, "decision")
 

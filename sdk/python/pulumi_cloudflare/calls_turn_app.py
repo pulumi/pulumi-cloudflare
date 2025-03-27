@@ -272,6 +272,8 @@ class CallsTurnApp(pulumi.CustomResource):
             __props__.__dict__["key"] = None
             __props__.__dict__["modified"] = None
             __props__.__dict__["uid"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["key"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(CallsTurnApp, __self__).__init__(
             'cloudflare:index/callsTurnApp:CallsTurnApp',
             resource_name,

@@ -50,6 +50,7 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
 
     /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
      * 
      */
     @Import(name="configSrc")
@@ -57,6 +58,7 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
 
     /**
      * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
      * 
      */
     public Optional<Output<String>> configSrc() {
@@ -185,6 +187,7 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
 
     /**
      * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+     * Available values: &#34;inactive&#34;, &#34;degraded&#34;, &#34;healthy&#34;, &#34;down&#34;.
      * 
      */
     @Import(name="status")
@@ -192,6 +195,7 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
 
     /**
      * @return The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+     * Available values: &#34;inactive&#34;, &#34;degraded&#34;, &#34;healthy&#34;, &#34;down&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -200,6 +204,7 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
 
     /**
      * The type of tunnel.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ip_sec&#34;, &#34;gre&#34;, &#34;cni&#34;.
      * 
      */
     @Import(name="tunType")
@@ -207,6 +212,7 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
 
     /**
      * @return The type of tunnel.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ip_sec&#34;, &#34;gre&#34;, &#34;cni&#34;.
      * 
      */
     public Optional<Output<String>> tunType() {
@@ -309,6 +315,7 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
 
         /**
          * @param configSrc Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+         * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
          * 
          * @return builder
          * 
@@ -320,6 +327,7 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
 
         /**
          * @param configSrc Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+         * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
          * 
          * @return builder
          * 
@@ -508,6 +516,7 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
 
         /**
          * @param status The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+         * Available values: &#34;inactive&#34;, &#34;degraded&#34;, &#34;healthy&#34;, &#34;down&#34;.
          * 
          * @return builder
          * 
@@ -519,6 +528,7 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
 
         /**
          * @param status The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+         * Available values: &#34;inactive&#34;, &#34;degraded&#34;, &#34;healthy&#34;, &#34;down&#34;.
          * 
          * @return builder
          * 
@@ -529,6 +539,7 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
 
         /**
          * @param tunType The type of tunnel.
+         * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ip_sec&#34;, &#34;gre&#34;, &#34;cni&#34;.
          * 
          * @return builder
          * 
@@ -540,6 +551,7 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
 
         /**
          * @param tunType The type of tunnel.
+         * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ip_sec&#34;, &#34;gre&#34;, &#34;cni&#34;.
          * 
          * @return builder
          * 

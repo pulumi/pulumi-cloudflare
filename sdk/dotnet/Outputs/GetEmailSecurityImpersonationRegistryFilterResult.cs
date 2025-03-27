@@ -15,12 +15,17 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// The sorting direction.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
         /// The field to sort by.
+        /// Available values: "name", "email", "created_at".
         /// </summary>
         public readonly string? Order;
+        /// <summary>
+        /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        /// </summary>
         public readonly string? Provenance;
         /// <summary>
         /// Allows searching in multiple properties of a record simultaneously.

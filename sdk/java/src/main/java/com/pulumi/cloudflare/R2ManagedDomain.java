@@ -125,6 +125,20 @@ public class R2ManagedDomain extends com.pulumi.resources.CustomResource {
     public Output<Boolean> enabled() {
         return this.enabled;
     }
+    /**
+     * Jurisdiction of the bucket
+     * 
+     */
+    @Export(name="jurisdiction", refs={String.class}, tree="[0]")
+    private Output<String> jurisdiction;
+
+    /**
+     * @return Jurisdiction of the bucket
+     * 
+     */
+    public Output<String> jurisdiction() {
+        return this.jurisdiction;
+    }
 
     /**
      *

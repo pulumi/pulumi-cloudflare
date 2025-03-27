@@ -20,6 +20,9 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool? PrCommentsEnabled;
         public readonly ImmutableArray<string> PreviewBranchExcludes;
         public readonly ImmutableArray<string> PreviewBranchIncludes;
+        /// <summary>
+        /// Available values: "all", "none", "custom".
+        /// </summary>
         public readonly string? PreviewDeploymentSetting;
         public readonly string? ProductionBranch;
         public readonly bool? ProductionDeploymentsEnabled;

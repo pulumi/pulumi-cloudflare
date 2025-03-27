@@ -31,6 +31,7 @@ export function getHostnameTlsSetting(args: GetHostnameTlsSettingArgs, opts?: pu
 export interface GetHostnameTlsSettingArgs {
     /**
      * The TLS Setting name.
+     * Available values: "ciphers", "min*tls*version", "http2".
      */
     settingId: string;
     /**
@@ -44,8 +45,6 @@ export interface GetHostnameTlsSettingArgs {
  */
 export interface GetHostnameTlsSettingResult {
     /**
-<<<<<<< HEAD
-=======
      * This is the time the tls setting was originally created for this hostname.
      */
     readonly createdAt: string;
@@ -54,17 +53,15 @@ export interface GetHostnameTlsSettingResult {
      */
     readonly hostname: string;
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
      * The TLS Setting name.
+     * Available values: "ciphers", "min*tls*version", "http2".
      */
     readonly settingId: string;
     /**
-<<<<<<< HEAD
-=======
      * Deployment status for the given tls setting.
      */
     readonly status: string;
@@ -77,7 +74,6 @@ export interface GetHostnameTlsSettingResult {
      */
     readonly value: number;
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Identifier
      */
     readonly zoneId: string;
@@ -109,6 +105,7 @@ export function getHostnameTlsSettingOutput(args: GetHostnameTlsSettingOutputArg
 export interface GetHostnameTlsSettingOutputArgs {
     /**
      * The TLS Setting name.
+     * Available values: "ciphers", "min*tls*version", "http2".
      */
     settingId: pulumi.Input<string>;
     /**

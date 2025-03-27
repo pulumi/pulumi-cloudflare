@@ -36,6 +36,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
 
     /**
      * edge ttl options
+     * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
      * 
      */
     @Import(name="mode", required=true)
@@ -43,6 +44,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
 
     /**
      * @return edge ttl options
+     * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
      * 
      */
     public Output<String> mode() {
@@ -113,6 +115,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
 
         /**
          * @param mode edge ttl options
+         * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
          * 
          * @return builder
          * 
@@ -124,6 +127,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
 
         /**
          * @param mode edge ttl options
+         * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
          * 
          * @return builder
          * 

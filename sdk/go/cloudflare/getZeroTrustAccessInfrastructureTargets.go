@@ -32,20 +32,12 @@ import (
 //				Direction:        pulumi.StringRef("asc"),
 //				Hostname:         pulumi.StringRef("hostname"),
 //				HostnameContains: pulumi.StringRef("hostname_contains"),
-<<<<<<< HEAD
-=======
 //				IpLike:           pulumi.StringRef("ip_like"),
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 //				IpV4:             pulumi.StringRef("ip_v4"),
 //				IpV6:             pulumi.StringRef("ip_v6"),
 //				Ips: []string{
 //					"string",
 //				},
-<<<<<<< HEAD
-//				ModifiedAfter:    pulumi.StringRef("2019-12-27T18:11:19.117Z"),
-//				ModifiedBefore:   pulumi.StringRef("2019-12-27T18:11:19.117Z"),
-//				Order:            pulumi.StringRef("hostname"),
-=======
 //				Ipv4End:        pulumi.StringRef("ipv4_end"),
 //				Ipv4Start:      pulumi.StringRef("ipv4_start"),
 //				Ipv6End:        pulumi.StringRef("ipv6_end"),
@@ -56,7 +48,6 @@ import (
 //				TargetIds: []string{
 //					"182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 //				},
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 //				VirtualNetworkId: pulumi.StringRef("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
 //			}, nil)
 //			if err != nil {
@@ -86,17 +77,15 @@ type LookupZeroTrustAccessInfrastructureTargetsArgs struct {
 	// Date and time at which the target was created before (inclusive)
 	CreatedBefore *string `pulumi:"createdBefore"`
 	// The sorting direction.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Hostname of a target
 	Hostname *string `pulumi:"hostname"`
 	// Partial match to the hostname of a target
 	HostnameContains *string `pulumi:"hostnameContains"`
-<<<<<<< HEAD
-=======
 	// Filters for targets whose IP addresses look like the specified string.
 	// Supports `*` as a wildcard character
 	IpLike *string `pulumi:"ipLike"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// IPv4 address of the target
 	IpV4 *string `pulumi:"ipV4"`
 	// IPv6 address of the target
@@ -104,8 +93,6 @@ type LookupZeroTrustAccessInfrastructureTargetsArgs struct {
 	// Filters for targets that have any of the following IP addresses. Specify
 	// `ips` multiple times in query parameter to build list of candidates.
 	Ips []string `pulumi:"ips"`
-<<<<<<< HEAD
-=======
 	// Defines an IPv4 filter range's ending value (inclusive). Requires
 	// `ipv4Start` to be specified as well.
 	Ipv4End *string `pulumi:"ipv4End"`
@@ -118,7 +105,6 @@ type LookupZeroTrustAccessInfrastructureTargetsArgs struct {
 	// Defines an IPv6 filter range's starting value (inclusive). Requires
 	// `ipv6End` to be specified as well.
 	Ipv6Start *string `pulumi:"ipv6Start"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Date and time at which the target was modified after (inclusive)
@@ -126,14 +112,12 @@ type LookupZeroTrustAccessInfrastructureTargetsArgs struct {
 	// Date and time at which the target was modified before (inclusive)
 	ModifiedBefore *string `pulumi:"modifiedBefore"`
 	// The field to sort by.
+	// Available values: "hostname", "createdAt".
 	Order *string `pulumi:"order"`
-<<<<<<< HEAD
-=======
 	// Filters for targets that have any of the following UUIDs. Specify
 	// `targetIds` multiple times in query parameter to build list of
 	// candidates.
 	TargetIds []string `pulumi:"targetIds"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Private virtual network identifier of the target
 	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
 }
@@ -147,6 +131,7 @@ type LookupZeroTrustAccessInfrastructureTargetsResult struct {
 	// Date and time at which the target was created before (inclusive)
 	CreatedBefore *string `pulumi:"createdBefore"`
 	// The sorting direction.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Hostname of a target
 	Hostname *string `pulumi:"hostname"`
@@ -154,12 +139,9 @@ type LookupZeroTrustAccessInfrastructureTargetsResult struct {
 	HostnameContains *string `pulumi:"hostnameContains"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-<<<<<<< HEAD
-=======
 	// Filters for targets whose IP addresses look like the specified string.
 	// Supports `*` as a wildcard character
 	IpLike *string `pulumi:"ipLike"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// IPv4 address of the target
 	IpV4 *string `pulumi:"ipV4"`
 	// IPv6 address of the target
@@ -167,8 +149,6 @@ type LookupZeroTrustAccessInfrastructureTargetsResult struct {
 	// Filters for targets that have any of the following IP addresses. Specify
 	// `ips` multiple times in query parameter to build list of candidates.
 	Ips []string `pulumi:"ips"`
-<<<<<<< HEAD
-=======
 	// Defines an IPv4 filter range's ending value (inclusive). Requires
 	// `ipv4Start` to be specified as well.
 	Ipv4End *string `pulumi:"ipv4End"`
@@ -181,7 +161,6 @@ type LookupZeroTrustAccessInfrastructureTargetsResult struct {
 	// Defines an IPv6 filter range's starting value (inclusive). Requires
 	// `ipv6End` to be specified as well.
 	Ipv6Start *string `pulumi:"ipv6Start"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Date and time at which the target was modified after (inclusive)
@@ -189,16 +168,14 @@ type LookupZeroTrustAccessInfrastructureTargetsResult struct {
 	// Date and time at which the target was modified before (inclusive)
 	ModifiedBefore *string `pulumi:"modifiedBefore"`
 	// The field to sort by.
+	// Available values: "hostname", "createdAt".
 	Order *string `pulumi:"order"`
 	// The items returned by the data source
 	Results []GetZeroTrustAccessInfrastructureTargetsResult `pulumi:"results"`
-<<<<<<< HEAD
-=======
 	// Filters for targets that have any of the following UUIDs. Specify
 	// `targetIds` multiple times in query parameter to build list of
 	// candidates.
 	TargetIds []string `pulumi:"targetIds"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Private virtual network identifier of the target
 	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
 }
@@ -221,17 +198,15 @@ type LookupZeroTrustAccessInfrastructureTargetsOutputArgs struct {
 	// Date and time at which the target was created before (inclusive)
 	CreatedBefore pulumi.StringPtrInput `pulumi:"createdBefore"`
 	// The sorting direction.
+	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Hostname of a target
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Partial match to the hostname of a target
 	HostnameContains pulumi.StringPtrInput `pulumi:"hostnameContains"`
-<<<<<<< HEAD
-=======
 	// Filters for targets whose IP addresses look like the specified string.
 	// Supports `*` as a wildcard character
 	IpLike pulumi.StringPtrInput `pulumi:"ipLike"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// IPv4 address of the target
 	IpV4 pulumi.StringPtrInput `pulumi:"ipV4"`
 	// IPv6 address of the target
@@ -239,8 +214,6 @@ type LookupZeroTrustAccessInfrastructureTargetsOutputArgs struct {
 	// Filters for targets that have any of the following IP addresses. Specify
 	// `ips` multiple times in query parameter to build list of candidates.
 	Ips pulumi.StringArrayInput `pulumi:"ips"`
-<<<<<<< HEAD
-=======
 	// Defines an IPv4 filter range's ending value (inclusive). Requires
 	// `ipv4Start` to be specified as well.
 	Ipv4End pulumi.StringPtrInput `pulumi:"ipv4End"`
@@ -253,7 +226,6 @@ type LookupZeroTrustAccessInfrastructureTargetsOutputArgs struct {
 	// Defines an IPv6 filter range's starting value (inclusive). Requires
 	// `ipv6End` to be specified as well.
 	Ipv6Start pulumi.StringPtrInput `pulumi:"ipv6Start"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Date and time at which the target was modified after (inclusive)
@@ -261,14 +233,12 @@ type LookupZeroTrustAccessInfrastructureTargetsOutputArgs struct {
 	// Date and time at which the target was modified before (inclusive)
 	ModifiedBefore pulumi.StringPtrInput `pulumi:"modifiedBefore"`
 	// The field to sort by.
+	// Available values: "hostname", "createdAt".
 	Order pulumi.StringPtrInput `pulumi:"order"`
-<<<<<<< HEAD
-=======
 	// Filters for targets that have any of the following UUIDs. Specify
 	// `targetIds` multiple times in query parameter to build list of
 	// candidates.
 	TargetIds pulumi.StringArrayInput `pulumi:"targetIds"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Private virtual network identifier of the target
 	VirtualNetworkId pulumi.StringPtrInput `pulumi:"virtualNetworkId"`
 }
@@ -308,6 +278,7 @@ func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) CreatedBefore() 
 }
 
 // The sorting direction.
+// Available values: "asc", "desc".
 func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetsResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
@@ -327,15 +298,12 @@ func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) Id() pulumi.Stri
 	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-=======
 // Filters for targets whose IP addresses look like the specified string.
 // Supports `*` as a wildcard character
 func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) IpLike() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetsResult) *string { return v.IpLike }).(pulumi.StringPtrOutput)
 }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // IPv4 address of the target
 func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) IpV4() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetsResult) *string { return v.IpV4 }).(pulumi.StringPtrOutput)
@@ -352,8 +320,6 @@ func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) Ips() pulumi.Str
 	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetsResult) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
-<<<<<<< HEAD
-=======
 // Defines an IPv4 filter range's ending value (inclusive). Requires
 // `ipv4Start` to be specified as well.
 func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) Ipv4End() pulumi.StringPtrOutput {
@@ -378,7 +344,6 @@ func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) Ipv6Start() pulu
 	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetsResult) *string { return v.Ipv6Start }).(pulumi.StringPtrOutput)
 }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // Max items to fetch, default: 1000
 func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetsResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
@@ -395,6 +360,7 @@ func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) ModifiedBefore()
 }
 
 // The field to sort by.
+// Available values: "hostname", "createdAt".
 func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetsResult) *string { return v.Order }).(pulumi.StringPtrOutput)
 }
@@ -406,8 +372,6 @@ func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) Results() GetZer
 	}).(GetZeroTrustAccessInfrastructureTargetsResultArrayOutput)
 }
 
-<<<<<<< HEAD
-=======
 // Filters for targets that have any of the following UUIDs. Specify
 // `targetIds` multiple times in query parameter to build list of
 // candidates.
@@ -415,7 +379,6 @@ func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) TargetIds() pulu
 	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetsResult) []string { return v.TargetIds }).(pulumi.StringArrayOutput)
 }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // Private virtual network identifier of the target
 func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) VirtualNetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetsResult) *string { return v.VirtualNetworkId }).(pulumi.StringPtrOutput)

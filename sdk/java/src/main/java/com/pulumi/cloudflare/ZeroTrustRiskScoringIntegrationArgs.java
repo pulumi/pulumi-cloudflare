@@ -39,9 +39,17 @@ public final class ZeroTrustRiskScoringIntegrationArgs extends com.pulumi.resour
         return Optional.ofNullable(this.active);
     }
 
+    /**
+     * Available values: &#34;Okta&#34;.
+     * 
+     */
     @Import(name="integrationType", required=true)
     private Output<String> integrationType;
 
+    /**
+     * @return Available values: &#34;Okta&#34;.
+     * 
+     */
     public Output<String> integrationType() {
         return this.integrationType;
     }
@@ -136,11 +144,23 @@ public final class ZeroTrustRiskScoringIntegrationArgs extends com.pulumi.resour
             return active(Output.of(active));
         }
 
+        /**
+         * @param integrationType Available values: &#34;Okta&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationType(Output<String> integrationType) {
             $.integrationType = integrationType;
             return this;
         }
 
+        /**
+         * @param integrationType Available values: &#34;Okta&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationType(String integrationType) {
             return integrationType(Output.of(integrationType));
         }

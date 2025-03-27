@@ -104,6 +104,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The sorting direction.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
@@ -122,6 +123,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The field to sort by.
+        /// Available values: "pattern", "created_at".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -151,6 +153,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The sorting direction.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -169,6 +172,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The field to sort by.
+        /// Available values: "pattern", "created_at".
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
@@ -198,6 +202,7 @@ namespace Pulumi.Cloudflare
         public readonly string AccountId;
         /// <summary>
         /// The sorting direction.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
@@ -212,6 +217,7 @@ namespace Pulumi.Cloudflare
         public readonly int? MaxItems;
         /// <summary>
         /// The field to sort by.
+        /// Available values: "pattern", "created_at".
         /// </summary>
         public readonly string? Order;
         /// <summary>

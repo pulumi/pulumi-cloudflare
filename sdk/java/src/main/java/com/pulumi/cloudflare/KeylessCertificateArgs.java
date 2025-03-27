@@ -21,6 +21,7 @@ public final class KeylessCertificateArgs extends com.pulumi.resources.ResourceA
 
     /**
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     @Import(name="bundleMethod")
@@ -28,6 +29,7 @@ public final class KeylessCertificateArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     public Optional<Output<String>> bundleMethod() {
@@ -172,6 +174,7 @@ public final class KeylessCertificateArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+         * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
          * 
          * @return builder
          * 
@@ -183,6 +186,7 @@ public final class KeylessCertificateArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+         * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
          * 
          * @return builder
          * 

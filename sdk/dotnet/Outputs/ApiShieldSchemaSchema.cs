@@ -16,6 +16,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? CreatedAt;
         /// <summary>
         /// Kind of schema
+        /// Available values: "openapi_v3".
         /// </summary>
         public readonly string? Kind;
         /// <summary>

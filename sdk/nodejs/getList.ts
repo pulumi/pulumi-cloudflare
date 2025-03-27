@@ -61,6 +61,7 @@ export interface GetListResult {
     readonly id: string;
     /**
      * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+     * Available values: "ip", "redirect", "hostname", "asn".
      */
     readonly kind: string;
     /**

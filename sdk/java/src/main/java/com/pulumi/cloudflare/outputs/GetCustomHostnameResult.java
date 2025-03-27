@@ -67,6 +67,7 @@ public final class GetCustomHostnameResult {
     private GetCustomHostnameSsl ssl;
     /**
      * @return Status of the hostname&#39;s activation.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;test_failed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
      * 
      */
     private String status;
@@ -153,6 +154,7 @@ public final class GetCustomHostnameResult {
     }
     /**
      * @return Status of the hostname&#39;s activation.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;test_failed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
      * 
      */
     public String status() {

@@ -24,6 +24,7 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         AiBotsProtection = "block",
+    ///         CrawlerProtection = "enabled",
     ///         EnableJs = true,
     ///         FightMode = true,
     ///     });
@@ -42,6 +43,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Enable rule to block AI Scrapers and Crawlers.
+        /// Available values: "block", "disabled".
         /// </summary>
         [Output("aiBotsProtection")]
         public Output<string?> AiBotsProtection { get; private set; } = null!;
@@ -51,6 +53,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("autoUpdateModel")]
         public Output<bool?> AutoUpdateModel { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable rule to punish AI Scrapers and Crawlers via a link maze.
+        /// Available values: "enabled", "disabled".
+        /// </summary>
+        [Output("crawlerProtection")]
+        public Output<string?> CrawlerProtection { get; private set; } = null!;
 
         /// <summary>
         /// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
@@ -72,12 +81,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+        /// Available values: "allow", "block", "managed_challenge".
         /// </summary>
         [Output("sbfmDefinitelyAutomated")]
         public Output<string?> SbfmDefinitelyAutomated { get; private set; } = null!;
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+        /// Available values: "allow", "block", "managed_challenge".
         /// </summary>
         [Output("sbfmLikelyAutomated")]
         public Output<string?> SbfmLikelyAutomated { get; private set; } = null!;
@@ -92,6 +103,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+        /// Available values: "allow", "block".
         /// </summary>
         [Output("sbfmVerifiedBots")]
         public Output<string?> SbfmVerifiedBots { get; private set; } = null!;
@@ -168,6 +180,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Enable rule to block AI Scrapers and Crawlers.
+        /// Available values: "block", "disabled".
         /// </summary>
         [Input("aiBotsProtection")]
         public Input<string>? AiBotsProtection { get; set; }
@@ -177,6 +190,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("autoUpdateModel")]
         public Input<bool>? AutoUpdateModel { get; set; }
+
+        /// <summary>
+        /// Enable rule to punish AI Scrapers and Crawlers via a link maze.
+        /// Available values: "enabled", "disabled".
+        /// </summary>
+        [Input("crawlerProtection")]
+        public Input<string>? CrawlerProtection { get; set; }
 
         /// <summary>
         /// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
@@ -198,12 +218,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+        /// Available values: "allow", "block", "managed_challenge".
         /// </summary>
         [Input("sbfmDefinitelyAutomated")]
         public Input<string>? SbfmDefinitelyAutomated { get; set; }
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+        /// Available values: "allow", "block", "managed_challenge".
         /// </summary>
         [Input("sbfmLikelyAutomated")]
         public Input<string>? SbfmLikelyAutomated { get; set; }
@@ -218,6 +240,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+        /// Available values: "allow", "block".
         /// </summary>
         [Input("sbfmVerifiedBots")]
         public Input<string>? SbfmVerifiedBots { get; set; }
@@ -244,6 +267,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Enable rule to block AI Scrapers and Crawlers.
+        /// Available values: "block", "disabled".
         /// </summary>
         [Input("aiBotsProtection")]
         public Input<string>? AiBotsProtection { get; set; }
@@ -253,6 +277,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("autoUpdateModel")]
         public Input<bool>? AutoUpdateModel { get; set; }
+
+        /// <summary>
+        /// Enable rule to punish AI Scrapers and Crawlers via a link maze.
+        /// Available values: "enabled", "disabled".
+        /// </summary>
+        [Input("crawlerProtection")]
+        public Input<string>? CrawlerProtection { get; set; }
 
         /// <summary>
         /// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
@@ -274,12 +305,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+        /// Available values: "allow", "block", "managed_challenge".
         /// </summary>
         [Input("sbfmDefinitelyAutomated")]
         public Input<string>? SbfmDefinitelyAutomated { get; set; }
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+        /// Available values: "allow", "block", "managed_challenge".
         /// </summary>
         [Input("sbfmLikelyAutomated")]
         public Input<string>? SbfmLikelyAutomated { get; set; }
@@ -294,6 +327,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+        /// Available values: "allow", "block".
         /// </summary>
         [Input("sbfmVerifiedBots")]
         public Input<string>? SbfmVerifiedBots { get; set; }

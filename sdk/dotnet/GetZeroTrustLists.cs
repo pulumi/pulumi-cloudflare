@@ -95,6 +95,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of list.
+        /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -118,6 +119,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of list.
+        /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -147,6 +149,7 @@ namespace Pulumi.Cloudflare
         public readonly ImmutableArray<Outputs.GetZeroTrustListsResultResult> Results;
         /// <summary>
         /// The type of list.
+        /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         /// </summary>
         public readonly string? Type;
 

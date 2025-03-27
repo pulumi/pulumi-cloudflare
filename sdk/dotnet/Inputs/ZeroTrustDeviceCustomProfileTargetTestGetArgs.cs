@@ -10,22 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-<<<<<<<< HEAD:sdk/dotnet/Inputs/ZeroTrustDeviceCustomProfileTargetTestGetArgs.cs
     public sealed class ZeroTrustDeviceCustomProfileTargetTestGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the DEX test targeting this policy
-========
-    public sealed class ZeroTrustAccessGroupExcludeLoginMethodGetArgs : global::Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ID of an identity provider.
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/dotnet/Inputs/ZeroTrustAccessGroupExcludeLoginMethodGetArgs.cs
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-<<<<<<<< HEAD:sdk/dotnet/Inputs/ZeroTrustDeviceCustomProfileTargetTestGetArgs.cs
         /// <summary>
         /// The name of the DEX test targeting this policy
         /// </summary>
@@ -36,11 +28,5 @@ namespace Pulumi.Cloudflare.Inputs
         {
         }
         public static new ZeroTrustDeviceCustomProfileTargetTestGetArgs Empty => new ZeroTrustDeviceCustomProfileTargetTestGetArgs();
-========
-        public ZeroTrustAccessGroupExcludeLoginMethodGetArgs()
-        {
-        }
-        public static new ZeroTrustAccessGroupExcludeLoginMethodGetArgs Empty => new ZeroTrustAccessGroupExcludeLoginMethodGetArgs();
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/dotnet/Inputs/ZeroTrustAccessGroupExcludeLoginMethodGetArgs.cs
     }
 }

@@ -14,6 +14,7 @@ import java.util.Objects;
 public final class GetRateLimitsResultAction {
     /**
      * @return The action to perform.
+     * Available values: &#34;simulate&#34;, &#34;ban&#34;, &#34;challenge&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     private String mode;
@@ -33,6 +34,7 @@ public final class GetRateLimitsResultAction {
     private GetRateLimitsResultAction() {}
     /**
      * @return The action to perform.
+     * Available values: &#34;simulate&#34;, &#34;ban&#34;, &#34;challenge&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     public String mode() {

@@ -12,17 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPagesDomainsResult {
+    /**
+     * @return Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+     * 
+     */
     private String certificateAuthority;
     private String createdOn;
     private String domainId;
     private String id;
     private String name;
+    /**
+     * @return Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
+     * 
+     */
     private String status;
     private GetPagesDomainsResultValidationData validationData;
     private GetPagesDomainsResultVerificationData verificationData;
     private String zoneTag;
 
     private GetPagesDomainsResult() {}
+    /**
+     * @return Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+     * 
+     */
     public String certificateAuthority() {
         return this.certificateAuthority;
     }
@@ -38,6 +50,10 @@ public final class GetPagesDomainsResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
+     * 
+     */
     public String status() {
         return this.status;
     }

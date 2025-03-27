@@ -20,6 +20,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// edge ttl options
+        /// Available values: "respect*origin", "bypass*by*default", "override*origin".
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;

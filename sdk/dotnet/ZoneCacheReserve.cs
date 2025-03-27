@@ -52,6 +52,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Value of the Cache Reserve zone setting.
+        /// Available values: "on", "off".
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -61,12 +62,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
-
-        /// <summary>
-        /// ID of the zone setting.
-        /// </summary>
-        [Output("zoneSettingId")]
-        public Output<string> ZoneSettingId { get; private set; } = null!;
 
 
         /// <summary>
@@ -116,6 +111,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Value of the Cache Reserve zone setting.
+        /// Available values: "on", "off".
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
@@ -148,6 +144,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Value of the Cache Reserve zone setting.
+        /// Available values: "on", "off".
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
@@ -157,12 +154,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
-
-        /// <summary>
-        /// ID of the zone setting.
-        /// </summary>
-        [Input("zoneSettingId")]
-        public Input<string>? ZoneSettingId { get; set; }
 
         public ZoneCacheReserveState()
         {

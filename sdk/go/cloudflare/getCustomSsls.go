@@ -50,10 +50,12 @@ func LookupCustomSsls(ctx *pulumi.Context, args *LookupCustomSslsArgs, opts ...p
 // A collection of arguments for invoking getCustomSsls.
 type LookupCustomSslsArgs struct {
 	// Whether to match all search requirements or at least one (any).
+	// Available values: "any", "all".
 	Match *string `pulumi:"match"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Status of the zone's custom SSL.
+	// Available values: "active", "expired", "deleted", "pending", "initializing".
 	Status *string `pulumi:"status"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -64,12 +66,14 @@ type LookupCustomSslsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Whether to match all search requirements or at least one (any).
+	// Available values: "any", "all".
 	Match string `pulumi:"match"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetCustomSslsResult `pulumi:"results"`
 	// Status of the zone's custom SSL.
+	// Available values: "active", "expired", "deleted", "pending", "initializing".
 	Status *string `pulumi:"status"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -87,10 +91,12 @@ func LookupCustomSslsOutput(ctx *pulumi.Context, args LookupCustomSslsOutputArgs
 // A collection of arguments for invoking getCustomSsls.
 type LookupCustomSslsOutputArgs struct {
 	// Whether to match all search requirements or at least one (any).
+	// Available values: "any", "all".
 	Match pulumi.StringPtrInput `pulumi:"match"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Status of the zone's custom SSL.
+	// Available values: "active", "expired", "deleted", "pending", "initializing".
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Identifier
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -121,6 +127,7 @@ func (o LookupCustomSslsResultOutput) Id() pulumi.StringOutput {
 }
 
 // Whether to match all search requirements or at least one (any).
+// Available values: "any", "all".
 func (o LookupCustomSslsResultOutput) Match() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomSslsResult) string { return v.Match }).(pulumi.StringOutput)
 }
@@ -136,6 +143,7 @@ func (o LookupCustomSslsResultOutput) Results() GetCustomSslsResultArrayOutput {
 }
 
 // Status of the zone's custom SSL.
+// Available values: "active", "expired", "deleted", "pending", "initializing".
 func (o LookupCustomSslsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomSslsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

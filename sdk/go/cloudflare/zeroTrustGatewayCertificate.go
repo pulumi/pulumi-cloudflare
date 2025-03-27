@@ -49,6 +49,7 @@ type ZeroTrustGatewayCertificate struct {
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+	// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
 	BindingStatus pulumi.StringOutput `pulumi:"bindingStatus"`
 	// The CA certificate
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
@@ -63,6 +64,7 @@ type ZeroTrustGatewayCertificate struct {
 	// The entire issuer field of the certificate.
 	IssuerRaw pulumi.StringOutput `pulumi:"issuerRaw"`
 	// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+	// Available values: "custom", "gatewayManaged".
 	Type       pulumi.StringOutput `pulumi:"type"`
 	UpdatedAt  pulumi.StringOutput `pulumi:"updatedAt"`
 	UploadedOn pulumi.StringOutput `pulumi:"uploadedOn"`
@@ -105,6 +107,7 @@ func GetZeroTrustGatewayCertificate(ctx *pulumi.Context,
 type zeroTrustGatewayCertificateState struct {
 	AccountId *string `pulumi:"accountId"`
 	// The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+	// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
 	BindingStatus *string `pulumi:"bindingStatus"`
 	// The CA certificate
 	Certificate *string `pulumi:"certificate"`
@@ -119,6 +122,7 @@ type zeroTrustGatewayCertificateState struct {
 	// The entire issuer field of the certificate.
 	IssuerRaw *string `pulumi:"issuerRaw"`
 	// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+	// Available values: "custom", "gatewayManaged".
 	Type       *string `pulumi:"type"`
 	UpdatedAt  *string `pulumi:"updatedAt"`
 	UploadedOn *string `pulumi:"uploadedOn"`
@@ -129,6 +133,7 @@ type zeroTrustGatewayCertificateState struct {
 type ZeroTrustGatewayCertificateState struct {
 	AccountId pulumi.StringPtrInput
 	// The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+	// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
 	BindingStatus pulumi.StringPtrInput
 	// The CA certificate
 	Certificate pulumi.StringPtrInput
@@ -143,6 +148,7 @@ type ZeroTrustGatewayCertificateState struct {
 	// The entire issuer field of the certificate.
 	IssuerRaw pulumi.StringPtrInput
 	// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+	// Available values: "custom", "gatewayManaged".
 	Type       pulumi.StringPtrInput
 	UpdatedAt  pulumi.StringPtrInput
 	UploadedOn pulumi.StringPtrInput
@@ -259,6 +265,7 @@ func (o ZeroTrustGatewayCertificateOutput) AccountId() pulumi.StringOutput {
 }
 
 // The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
 func (o ZeroTrustGatewayCertificateOutput) BindingStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.BindingStatus }).(pulumi.StringOutput)
 }
@@ -297,6 +304,7 @@ func (o ZeroTrustGatewayCertificateOutput) IssuerRaw() pulumi.StringOutput {
 }
 
 // The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+// Available values: "custom", "gatewayManaged".
 func (o ZeroTrustGatewayCertificateOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

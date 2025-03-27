@@ -60,6 +60,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+        /// Available values: "ip", "redirect", "hostname", "asn".
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -148,6 +149,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+        /// Available values: "ip", "redirect", "hostname", "asn".
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -186,6 +188,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+        /// Available values: "ip", "redirect", "hostname", "asn".
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

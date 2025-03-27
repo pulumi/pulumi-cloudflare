@@ -61,6 +61,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly int Retries;
         /// <summary>
         /// The current status of the origin server according to the health check.
+        /// Available values: "unknown", "healthy", "unhealthy", "suspended".
         /// </summary>
         public readonly string Status;
         /// <summary>

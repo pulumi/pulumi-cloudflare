@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class ZoneLockdownConfiguration {
     /**
      * @return The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
+     * Available values: &#34;ip&#34;.
      * 
      */
     private @Nullable String target;
@@ -25,6 +26,7 @@ public final class ZoneLockdownConfiguration {
     private ZoneLockdownConfiguration() {}
     /**
      * @return The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
+     * Available values: &#34;ip&#34;.
      * 
      */
     public Optional<String> target() {

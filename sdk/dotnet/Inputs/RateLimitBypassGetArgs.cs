@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RateLimitBypassGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Available values: "url".
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

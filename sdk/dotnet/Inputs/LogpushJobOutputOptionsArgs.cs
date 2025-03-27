@@ -27,8 +27,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
         /// </summary>
-        [Input("cve20214428")]
-        public Input<bool>? Cve20214428 { get; set; }
+        [Input("cve202144228")]
+        public Input<bool>? Cve202144228 { get; set; }
 
         /// <summary>
         /// String to join fields. This field be ignored when `record_template` is set.
@@ -50,6 +50,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+        /// Available values: "ndjson", "csv".
         /// </summary>
         [Input("outputType")]
         public Input<string>? OutputType { get; set; }
@@ -86,6 +87,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+        /// Available values: "unixnano", "unix", "rfc3339".
         /// </summary>
         [Input("timestampFormat")]
         public Input<string>? TimestampFormat { get; set; }

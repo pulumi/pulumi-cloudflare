@@ -14,6 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustDlpCustomProfileEntryPattern
     {
         public readonly string Regex;
+        /// <summary>
+        /// Available values: "luhn".
+        /// </summary>
         public readonly string? Validation;
 
         [OutputConstructor]

@@ -5,13 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
-<<<<<<< HEAD
- * > Since v3.32.0
- *    all authentication schemes are supported for managing Origin CA certificates.
- *    Versions prior to v3.32.0 will still need to use `apiUserServiceKey`.
- *
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  * ## Example Usage
  *
  * ```typescript
@@ -98,10 +91,12 @@ export class OriginCaCertificate extends pulumi.CustomResource {
     public readonly hostnames!: pulumi.Output<string[] | undefined>;
     /**
      * Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+     * Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
      */
     public readonly requestType!: pulumi.Output<string | undefined>;
     /**
      * The number of days for which the certificate should be valid.
+     * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      */
     public readonly requestedValidity!: pulumi.Output<number>;
 
@@ -160,10 +155,12 @@ export interface OriginCaCertificateState {
     hostnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+     * Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
      */
     requestType?: pulumi.Input<string>;
     /**
      * The number of days for which the certificate should be valid.
+     * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      */
     requestedValidity?: pulumi.Input<number>;
 }
@@ -182,10 +179,12 @@ export interface OriginCaCertificateArgs {
     hostnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+     * Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
      */
     requestType?: pulumi.Input<string>;
     /**
      * The number of days for which the certificate should be valid.
+     * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      */
     requestedValidity?: pulumi.Input<number>;
 }

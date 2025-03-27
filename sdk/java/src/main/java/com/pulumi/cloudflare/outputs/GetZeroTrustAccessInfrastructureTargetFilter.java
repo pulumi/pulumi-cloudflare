@@ -24,6 +24,7 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
     private @Nullable String createdBefore;
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
@@ -38,15 +39,12 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
      */
     private @Nullable String hostnameContains;
     /**
-<<<<<<< HEAD
-=======
      * @return Filters for targets whose IP addresses look like the specified string.
      * Supports `*` as a wildcard character
      * 
      */
     private @Nullable String ipLike;
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return IPv4 address of the target
      * 
      */
@@ -63,8 +61,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
      */
     private @Nullable List<String> ips;
     /**
-<<<<<<< HEAD
-=======
      * @return Defines an IPv4 filter range&#39;s ending value (inclusive). Requires
      * `ipv4_start` to be specified as well.
      * 
@@ -89,7 +85,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
      */
     private @Nullable String ipv6Start;
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return Date and time at which the target was modified after (inclusive)
      * 
      */
@@ -101,12 +96,11 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
     private @Nullable String modifiedBefore;
     /**
      * @return The field to sort by.
+     * Available values: &#34;hostname&#34;, &#34;created_at&#34;.
      * 
      */
     private @Nullable String order;
     /**
-<<<<<<< HEAD
-=======
      * @return Filters for targets that have any of the following UUIDs. Specify
      * `target_ids` multiple times in query parameter to build list of
      * candidates.
@@ -114,7 +108,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
      */
     private @Nullable List<String> targetIds;
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return Private virtual network identifier of the target
      * 
      */
@@ -137,6 +130,7 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
     }
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -157,8 +151,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
         return Optional.ofNullable(this.hostnameContains);
     }
     /**
-<<<<<<< HEAD
-=======
      * @return Filters for targets whose IP addresses look like the specified string.
      * Supports `*` as a wildcard character
      * 
@@ -167,7 +159,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
         return Optional.ofNullable(this.ipLike);
     }
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return IPv4 address of the target
      * 
      */
@@ -190,8 +181,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
         return this.ips == null ? List.of() : this.ips;
     }
     /**
-<<<<<<< HEAD
-=======
      * @return Defines an IPv4 filter range&#39;s ending value (inclusive). Requires
      * `ipv4_start` to be specified as well.
      * 
@@ -224,7 +213,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
         return Optional.ofNullable(this.ipv6Start);
     }
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return Date and time at which the target was modified after (inclusive)
      * 
      */
@@ -240,14 +228,13 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
     }
     /**
      * @return The field to sort by.
+     * Available values: &#34;hostname&#34;, &#34;created_at&#34;.
      * 
      */
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
     /**
-<<<<<<< HEAD
-=======
      * @return Filters for targets that have any of the following UUIDs. Specify
      * `target_ids` multiple times in query parameter to build list of
      * candidates.
@@ -257,7 +244,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
         return this.targetIds == null ? List.of() : this.targetIds;
     }
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return Private virtual network identifier of the target
      * 
      */
@@ -279,14 +265,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
         private @Nullable String direction;
         private @Nullable String hostname;
         private @Nullable String hostnameContains;
-<<<<<<< HEAD
-        private @Nullable String ipV4;
-        private @Nullable String ipV6;
-        private @Nullable List<String> ips;
-        private @Nullable String modifiedAfter;
-        private @Nullable String modifiedBefore;
-        private @Nullable String order;
-=======
         private @Nullable String ipLike;
         private @Nullable String ipV4;
         private @Nullable String ipV6;
@@ -299,7 +277,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
         private @Nullable String modifiedBefore;
         private @Nullable String order;
         private @Nullable List<String> targetIds;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private @Nullable String virtualNetworkId;
         public Builder() {}
         public Builder(GetZeroTrustAccessInfrastructureTargetFilter defaults) {
@@ -309,14 +286,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
     	      this.direction = defaults.direction;
     	      this.hostname = defaults.hostname;
     	      this.hostnameContains = defaults.hostnameContains;
-<<<<<<< HEAD
-    	      this.ipV4 = defaults.ipV4;
-    	      this.ipV6 = defaults.ipV6;
-    	      this.ips = defaults.ips;
-    	      this.modifiedAfter = defaults.modifiedAfter;
-    	      this.modifiedBefore = defaults.modifiedBefore;
-    	      this.order = defaults.order;
-=======
     	      this.ipLike = defaults.ipLike;
     	      this.ipV4 = defaults.ipV4;
     	      this.ipV6 = defaults.ipV6;
@@ -329,7 +298,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
     	      this.modifiedBefore = defaults.modifiedBefore;
     	      this.order = defaults.order;
     	      this.targetIds = defaults.targetIds;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.virtualNetworkId = defaults.virtualNetworkId;
         }
 
@@ -364,15 +332,12 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder ipLike(@Nullable String ipLike) {
 
             this.ipLike = ipLike;
             return this;
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder ipV4(@Nullable String ipV4) {
 
             this.ipV4 = ipV4;
@@ -394,8 +359,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
             return ips(List.of(ips));
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder ipv4End(@Nullable String ipv4End) {
 
             this.ipv4End = ipv4End;
@@ -420,7 +383,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
             return this;
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder modifiedAfter(@Nullable String modifiedAfter) {
 
             this.modifiedAfter = modifiedAfter;
@@ -439,8 +401,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder targetIds(@Nullable List<String> targetIds) {
 
             this.targetIds = targetIds;
@@ -450,7 +410,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
             return targetIds(List.of(targetIds));
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder virtualNetworkId(@Nullable String virtualNetworkId) {
 
             this.virtualNetworkId = virtualNetworkId;
@@ -463,14 +422,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
             _resultValue.direction = direction;
             _resultValue.hostname = hostname;
             _resultValue.hostnameContains = hostnameContains;
-<<<<<<< HEAD
-            _resultValue.ipV4 = ipV4;
-            _resultValue.ipV6 = ipV6;
-            _resultValue.ips = ips;
-            _resultValue.modifiedAfter = modifiedAfter;
-            _resultValue.modifiedBefore = modifiedBefore;
-            _resultValue.order = order;
-=======
             _resultValue.ipLike = ipLike;
             _resultValue.ipV4 = ipV4;
             _resultValue.ipV6 = ipV6;
@@ -483,7 +434,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
             _resultValue.modifiedBefore = modifiedBefore;
             _resultValue.order = order;
             _resultValue.targetIds = targetIds;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.virtualNetworkId = virtualNetworkId;
             return _resultValue;
         }

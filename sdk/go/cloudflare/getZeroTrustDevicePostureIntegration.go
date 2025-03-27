@@ -57,11 +57,7 @@ type LookupZeroTrustDevicePostureIntegrationArgs struct {
 // A collection of values returned by getZeroTrustDevicePostureIntegration.
 type LookupZeroTrustDevicePostureIntegrationResult struct {
 	AccountId string `pulumi:"accountId"`
-<<<<<<< HEAD
-	// The Workspace One Config Response.
-=======
 	// The configuration object containing third-party integration information.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	Config GetZeroTrustDevicePostureIntegrationConfig `pulumi:"config"`
 	// API UUID.
 	Id string `pulumi:"id"`
@@ -72,6 +68,7 @@ type LookupZeroTrustDevicePostureIntegrationResult struct {
 	// The name of the device posture integration.
 	Name string `pulumi:"name"`
 	// The type of device posture integration.
+	// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
 	Type string `pulumi:"type"`
 }
 
@@ -114,11 +111,7 @@ func (o LookupZeroTrustDevicePostureIntegrationResultOutput) AccountId() pulumi.
 	return o.ApplyT(func(v LookupZeroTrustDevicePostureIntegrationResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-// The Workspace One Config Response.
-=======
 // The configuration object containing third-party integration information.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func (o LookupZeroTrustDevicePostureIntegrationResultOutput) Config() GetZeroTrustDevicePostureIntegrationConfigOutput {
 	return o.ApplyT(func(v LookupZeroTrustDevicePostureIntegrationResult) GetZeroTrustDevicePostureIntegrationConfig {
 		return v.Config
@@ -146,6 +139,7 @@ func (o LookupZeroTrustDevicePostureIntegrationResultOutput) Name() pulumi.Strin
 }
 
 // The type of device posture integration.
+// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
 func (o LookupZeroTrustDevicePostureIntegrationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDevicePostureIntegrationResult) string { return v.Type }).(pulumi.StringOutput)
 }

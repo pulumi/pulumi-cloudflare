@@ -134,6 +134,8 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
             resourceInputs["modifiedGreTunnel"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/greTunnel:GreTunnel" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(MagicWanGreTunnel.__pulumiType, name, resourceInputs, opts);
     }
 }

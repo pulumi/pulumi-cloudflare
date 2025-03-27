@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Signature;
         /// <summary>
         /// Status of the certificate activation.
+        /// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         /// </summary>
         public readonly string Status;
         /// <summary>

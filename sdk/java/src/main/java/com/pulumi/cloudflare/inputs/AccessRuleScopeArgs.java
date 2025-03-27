@@ -47,6 +47,7 @@ public final class AccessRuleScopeArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * The scope of the rule.
+     * Available values: &#34;user&#34;, &#34;organization&#34;.
      * 
      */
     @Import(name="type")
@@ -54,6 +55,7 @@ public final class AccessRuleScopeArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The scope of the rule.
+     * Available values: &#34;user&#34;, &#34;organization&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -130,6 +132,7 @@ public final class AccessRuleScopeArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param type The scope of the rule.
+         * Available values: &#34;user&#34;, &#34;organization&#34;.
          * 
          * @return builder
          * 
@@ -141,6 +144,7 @@ public final class AccessRuleScopeArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param type The scope of the rule.
+         * Available values: &#34;user&#34;, &#34;organization&#34;.
          * 
          * @return builder
          * 

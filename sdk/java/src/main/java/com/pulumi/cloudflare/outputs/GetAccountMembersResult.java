@@ -31,6 +31,7 @@ public final class GetAccountMembersResult {
     private List<GetAccountMembersResultRole> roles;
     /**
      * @return A member&#39;s status in the account.
+     * Available values: &#34;accepted&#34;, &#34;pending&#34;.
      * 
      */
     private String status;
@@ -64,6 +65,7 @@ public final class GetAccountMembersResult {
     }
     /**
      * @return A member&#39;s status in the account.
+     * Available values: &#34;accepted&#34;, &#34;pending&#34;.
      * 
      */
     public String status() {

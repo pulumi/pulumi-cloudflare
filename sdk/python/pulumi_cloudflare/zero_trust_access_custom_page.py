@@ -30,6 +30,7 @@ class ZeroTrustAccessCustomPageArgs:
         :param pulumi.Input[str] custom_html: Custom page HTML.
         :param pulumi.Input[str] name: Custom page name.
         :param pulumi.Input[str] type: Custom page type.
+               Available values: "identity_denied", "forbidden".
         :param pulumi.Input[int] app_count: Number of apps the custom page is assigned to.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -80,6 +81,7 @@ class ZeroTrustAccessCustomPageArgs:
     def type(self) -> pulumi.Input[str]:
         """
         Custom page type.
+        Available values: "identity_denied", "forbidden".
         """
         return pulumi.get(self, "type")
 
@@ -118,6 +120,7 @@ class _ZeroTrustAccessCustomPageState:
         :param pulumi.Input[str] custom_html: Custom page HTML.
         :param pulumi.Input[str] name: Custom page name.
         :param pulumi.Input[str] type: Custom page type.
+               Available values: "identity_denied", "forbidden".
         :param pulumi.Input[str] uid: UUID
         """
         if account_id is not None:
@@ -199,6 +202,7 @@ class _ZeroTrustAccessCustomPageState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         Custom page type.
+        Available values: "identity_denied", "forbidden".
         """
         return pulumi.get(self, "type")
 
@@ -267,6 +271,7 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
         :param pulumi.Input[str] custom_html: Custom page HTML.
         :param pulumi.Input[str] name: Custom page name.
         :param pulumi.Input[str] type: Custom page type.
+               Available values: "identity_denied", "forbidden".
         """
         ...
     @overload
@@ -340,6 +345,8 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessCustomPage:AccessCustomPage")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustAccessCustomPage, __self__).__init__(
             'cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage',
             resource_name,
@@ -370,6 +377,7 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
         :param pulumi.Input[str] custom_html: Custom page HTML.
         :param pulumi.Input[str] name: Custom page name.
         :param pulumi.Input[str] type: Custom page type.
+               Available values: "identity_denied", "forbidden".
         :param pulumi.Input[str] uid: UUID
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -428,6 +436,7 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         Custom page type.
+        Available values: "identity_denied", "forbidden".
         """
         return pulumi.get(self, "type")
 

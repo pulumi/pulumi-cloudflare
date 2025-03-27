@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputMap<Inputs.PagesProjectDeploymentConfigsProductionDurableObjectNamespacesGetArgs>? _durableObjectNamespaces;
 
         /// <summary>
-        /// Durabble Object namespaces used for Pages Functions.
+        /// Durable Object namespaces used for Pages Functions.
         /// </summary>
         public InputMap<Inputs.PagesProjectDeploymentConfigsProductionDurableObjectNamespacesGetArgs> DurableObjectNamespaces
         {
@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputMap<Inputs.PagesProjectDeploymentConfigsProductionEnvVarsGetArgs>? _envVars;
 
         /// <summary>
-        /// Environment variables for build configs.
+        /// Environment variables used for builds and Pages Functions.
         /// </summary>
         public InputMap<Inputs.PagesProjectDeploymentConfigsProductionEnvVarsGetArgs> EnvVars
         {

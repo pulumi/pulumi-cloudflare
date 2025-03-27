@@ -63,6 +63,7 @@ export interface GetEmailRoutingSettingsResult {
     readonly skipWizard: boolean;
     /**
      * Show the state of your account, and the type or configuration error.
+     * Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
      */
     readonly status: string;
     /**

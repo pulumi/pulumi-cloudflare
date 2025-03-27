@@ -12,12 +12,20 @@ import java.util.Objects;
 @CustomType
 public final class R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition {
     private Integer maxAge;
+    /**
+     * @return Available values: &#34;Age&#34;.
+     * 
+     */
     private String type;
 
     private R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition() {}
     public Integer maxAge() {
         return this.maxAge;
     }
+    /**
+     * @return Available values: &#34;Age&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }

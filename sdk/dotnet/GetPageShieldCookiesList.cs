@@ -125,6 +125,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The direction used to sort returned cookies.'
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
@@ -137,6 +138,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Export the list of cookies as a file.
+        /// Available values: "csv".
         /// </summary>
         [Input("export")]
         public string? Export { get; set; }
@@ -196,6 +198,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The direction used to sort returned cookies.'
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -208,6 +211,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Export the list of cookies as a file.
+        /// Available values: "csv".
         /// </summary>
         [Input("export")]
         public Input<string>? Export { get; set; }
@@ -269,6 +273,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The direction used to sort returned cookies.'
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
@@ -277,6 +282,7 @@ namespace Pulumi.Cloudflare
         public readonly string? Domain;
         /// <summary>
         /// Export the list of cookies as a file.
+        /// Available values: "csv".
         /// </summary>
         public readonly string? Export;
         /// <summary>

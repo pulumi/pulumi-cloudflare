@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// The action to perform.
+        /// Available values: "simulate", "ban", "challenge", "js*challenge", "managed*challenge".
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

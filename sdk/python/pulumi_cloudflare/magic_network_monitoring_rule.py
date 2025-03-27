@@ -31,7 +31,8 @@ class MagicNetworkMonitoringRuleArgs:
         :param pulumi.Input[str] name: The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
         :param pulumi.Input[bool] automatic_advertisement: Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
         :param pulumi.Input[float] bandwidth: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-        :param pulumi.Input[str] duration: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+        :param pulumi.Input[str] duration: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+               Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
         :param pulumi.Input[float] packet_threshold: The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -96,7 +97,8 @@ class MagicNetworkMonitoringRuleArgs:
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[str]]:
         """
-        The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+        The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+        Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
         """
         return pulumi.get(self, "duration")
 
@@ -136,15 +138,28 @@ class _MagicNetworkMonitoringRuleState:
                  duration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  packet_threshold: Optional[pulumi.Input[float]] = None,
-                 prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 prefix_match: Optional[pulumi.Input[str]] = None,
+                 prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 zscore_sensitivity: Optional[pulumi.Input[str]] = None,
+                 zscore_target: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MagicNetworkMonitoringRule resources.
         :param pulumi.Input[bool] automatic_advertisement: Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
         :param pulumi.Input[float] bandwidth: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
         :param pulumi.Input[float] bandwidth_threshold: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-        :param pulumi.Input[str] duration: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+        :param pulumi.Input[str] duration: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+               Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
         :param pulumi.Input[str] name: The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
         :param pulumi.Input[float] packet_threshold: The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
+        :param pulumi.Input[str] prefix_match: Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+               Available values: "exact", "subnet", "supernet".
+        :param pulumi.Input[str] type: MNM rule type.
+               Available values: "threshold", "zscore", "advanced_ddos".
+        :param pulumi.Input[str] zscore_sensitivity: Level of sensitivity set for zscore rules.
+               Available values: "low", "medium", "high".
+        :param pulumi.Input[str] zscore_target: Target of the zscore rule analysis.
+               Available values: "bits", "packets".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -160,8 +175,16 @@ class _MagicNetworkMonitoringRuleState:
             pulumi.set(__self__, "name", name)
         if packet_threshold is not None:
             pulumi.set(__self__, "packet_threshold", packet_threshold)
+        if prefix_match is not None:
+            pulumi.set(__self__, "prefix_match", prefix_match)
         if prefixes is not None:
             pulumi.set(__self__, "prefixes", prefixes)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if zscore_sensitivity is not None:
+            pulumi.set(__self__, "zscore_sensitivity", zscore_sensitivity)
+        if zscore_target is not None:
+            pulumi.set(__self__, "zscore_target", zscore_target)
 
     @property
     @pulumi.getter(name="accountId")
@@ -212,7 +235,8 @@ class _MagicNetworkMonitoringRuleState:
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[str]]:
         """
-        The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+        The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+        Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
         """
         return pulumi.get(self, "duration")
 
@@ -245,6 +269,19 @@ class _MagicNetworkMonitoringRuleState:
         pulumi.set(self, "packet_threshold", value)
 
     @property
+    @pulumi.getter(name="prefixMatch")
+    def prefix_match(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+        Available values: "exact", "subnet", "supernet".
+        """
+        return pulumi.get(self, "prefix_match")
+
+    @prefix_match.setter
+    def prefix_match(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix_match", value)
+
+    @property
     @pulumi.getter
     def prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "prefixes")
@@ -252,6 +289,45 @@ class _MagicNetworkMonitoringRuleState:
     @prefixes.setter
     def prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "prefixes", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        MNM rule type.
+        Available values: "threshold", "zscore", "advanced_ddos".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="zscoreSensitivity")
+    def zscore_sensitivity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Level of sensitivity set for zscore rules.
+        Available values: "low", "medium", "high".
+        """
+        return pulumi.get(self, "zscore_sensitivity")
+
+    @zscore_sensitivity.setter
+    def zscore_sensitivity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zscore_sensitivity", value)
+
+    @property
+    @pulumi.getter(name="zscoreTarget")
+    def zscore_target(self) -> Optional[pulumi.Input[str]]:
+        """
+        Target of the zscore rule analysis.
+        Available values: "bits", "packets".
+        """
+        return pulumi.get(self, "zscore_target")
+
+    @zscore_target.setter
+    def zscore_target(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zscore_target", value)
 
 
 class MagicNetworkMonitoringRule(pulumi.CustomResource):
@@ -276,7 +352,7 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
 
         example_magic_network_monitoring_rule = cloudflare.MagicNetworkMonitoringRule("example_magic_network_monitoring_rule",
             account_id="6f91088a406011ed95aed352566e8d4c",
-            duration="300s",
+            duration="1m",
             name="my_rule_1",
             automatic_advertisement=True,
             bandwidth=1000,
@@ -294,7 +370,8 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] automatic_advertisement: Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
         :param pulumi.Input[float] bandwidth: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-        :param pulumi.Input[str] duration: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+        :param pulumi.Input[str] duration: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+               Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
         :param pulumi.Input[str] name: The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
         :param pulumi.Input[float] packet_threshold: The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
         """
@@ -313,7 +390,7 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
 
         example_magic_network_monitoring_rule = cloudflare.MagicNetworkMonitoringRule("example_magic_network_monitoring_rule",
             account_id="6f91088a406011ed95aed352566e8d4c",
-            duration="300s",
+            duration="1m",
             name="my_rule_1",
             automatic_advertisement=True,
             bandwidth=1000,
@@ -370,6 +447,10 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
             __props__.__dict__["packet_threshold"] = packet_threshold
             __props__.__dict__["prefixes"] = prefixes
             __props__.__dict__["bandwidth_threshold"] = None
+            __props__.__dict__["prefix_match"] = None
+            __props__.__dict__["type"] = None
+            __props__.__dict__["zscore_sensitivity"] = None
+            __props__.__dict__["zscore_target"] = None
         super(MagicNetworkMonitoringRule, __self__).__init__(
             'cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule',
             resource_name,
@@ -387,7 +468,11 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
             duration: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             packet_threshold: Optional[pulumi.Input[float]] = None,
-            prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'MagicNetworkMonitoringRule':
+            prefix_match: Optional[pulumi.Input[str]] = None,
+            prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            zscore_sensitivity: Optional[pulumi.Input[str]] = None,
+            zscore_target: Optional[pulumi.Input[str]] = None) -> 'MagicNetworkMonitoringRule':
         """
         Get an existing MagicNetworkMonitoringRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -398,9 +483,18 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
         :param pulumi.Input[bool] automatic_advertisement: Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
         :param pulumi.Input[float] bandwidth: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
         :param pulumi.Input[float] bandwidth_threshold: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-        :param pulumi.Input[str] duration: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+        :param pulumi.Input[str] duration: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+               Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
         :param pulumi.Input[str] name: The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
         :param pulumi.Input[float] packet_threshold: The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
+        :param pulumi.Input[str] prefix_match: Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+               Available values: "exact", "subnet", "supernet".
+        :param pulumi.Input[str] type: MNM rule type.
+               Available values: "threshold", "zscore", "advanced_ddos".
+        :param pulumi.Input[str] zscore_sensitivity: Level of sensitivity set for zscore rules.
+               Available values: "low", "medium", "high".
+        :param pulumi.Input[str] zscore_target: Target of the zscore rule analysis.
+               Available values: "bits", "packets".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -413,7 +507,11 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
         __props__.__dict__["duration"] = duration
         __props__.__dict__["name"] = name
         __props__.__dict__["packet_threshold"] = packet_threshold
+        __props__.__dict__["prefix_match"] = prefix_match
         __props__.__dict__["prefixes"] = prefixes
+        __props__.__dict__["type"] = type
+        __props__.__dict__["zscore_sensitivity"] = zscore_sensitivity
+        __props__.__dict__["zscore_target"] = zscore_target
         return MagicNetworkMonitoringRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -449,7 +547,8 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
     @pulumi.getter
     def duration(self) -> pulumi.Output[str]:
         """
-        The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+        The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+        Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
         """
         return pulumi.get(self, "duration")
 
@@ -470,7 +569,43 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
         return pulumi.get(self, "packet_threshold")
 
     @property
+    @pulumi.getter(name="prefixMatch")
+    def prefix_match(self) -> pulumi.Output[str]:
+        """
+        Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+        Available values: "exact", "subnet", "supernet".
+        """
+        return pulumi.get(self, "prefix_match")
+
+    @property
     @pulumi.getter
     def prefixes(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "prefixes")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        MNM rule type.
+        Available values: "threshold", "zscore", "advanced_ddos".
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="zscoreSensitivity")
+    def zscore_sensitivity(self) -> pulumi.Output[str]:
+        """
+        Level of sensitivity set for zscore rules.
+        Available values: "low", "medium", "high".
+        """
+        return pulumi.get(self, "zscore_sensitivity")
+
+    @property
+    @pulumi.getter(name="zscoreTarget")
+    def zscore_target(self) -> pulumi.Output[str]:
+        """
+        Target of the zscore rule analysis.
+        Available values: "bits", "packets".
+        """
+        return pulumi.get(self, "zscore_target")
 

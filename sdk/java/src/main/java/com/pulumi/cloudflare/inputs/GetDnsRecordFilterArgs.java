@@ -37,6 +37,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Direction to order DNS records in.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction", required=true)
@@ -44,6 +45,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Direction to order DNS records in.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Output<String> direction() {
@@ -52,6 +54,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     @Import(name="match", required=true)
@@ -59,6 +62,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     public Output<String> match() {
@@ -74,6 +78,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Field to order DNS records by.
+     * Available values: &#34;type&#34;, &#34;name&#34;, &#34;content&#34;, &#34;ttl&#34;, &#34;proxied&#34;.
      * 
      */
     @Import(name="order", required=true)
@@ -81,6 +86,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Field to order DNS records by.
+     * Available values: &#34;type&#34;, &#34;name&#34;, &#34;content&#34;, &#34;ttl&#34;, &#34;proxied&#34;.
      * 
      */
     public Output<String> order() {
@@ -126,6 +132,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren&#39;t related to tags.
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     @Import(name="tagMatch", required=true)
@@ -133,6 +140,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren&#39;t related to tags.
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     public Output<String> tagMatch() {
@@ -141,6 +149,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Record type.
+     * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CAA&#34;, &#34;CERT&#34;, &#34;CNAME&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;HTTPS&#34;, &#34;LOC&#34;, &#34;MX&#34;, &#34;NAPTR&#34;, &#34;NS&#34;, &#34;OPENPGPKEY&#34;, &#34;PTR&#34;, &#34;SMIMEA&#34;, &#34;SRV&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;TXT&#34;, &#34;URI&#34;.
      * 
      */
     @Import(name="type")
@@ -148,6 +157,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Record type.
+     * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CAA&#34;, &#34;CERT&#34;, &#34;CNAME&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;HTTPS&#34;, &#34;LOC&#34;, &#34;MX&#34;, &#34;NAPTR&#34;, &#34;NS&#34;, &#34;OPENPGPKEY&#34;, &#34;PTR&#34;, &#34;SMIMEA&#34;, &#34;SRV&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;TXT&#34;, &#34;URI&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -208,6 +218,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param direction Direction to order DNS records in.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -219,6 +230,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param direction Direction to order DNS records in.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -229,6 +241,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param match Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+         * Available values: &#34;any&#34;, &#34;all&#34;.
          * 
          * @return builder
          * 
@@ -240,6 +253,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param match Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+         * Available values: &#34;any&#34;, &#34;all&#34;.
          * 
          * @return builder
          * 
@@ -259,6 +273,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param order Field to order DNS records by.
+         * Available values: &#34;type&#34;, &#34;name&#34;, &#34;content&#34;, &#34;ttl&#34;, &#34;proxied&#34;.
          * 
          * @return builder
          * 
@@ -270,6 +285,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param order Field to order DNS records by.
+         * Available values: &#34;type&#34;, &#34;name&#34;, &#34;content&#34;, &#34;ttl&#34;, &#34;proxied&#34;.
          * 
          * @return builder
          * 
@@ -331,6 +347,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param tagMatch Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren&#39;t related to tags.
+         * Available values: &#34;any&#34;, &#34;all&#34;.
          * 
          * @return builder
          * 
@@ -342,6 +359,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param tagMatch Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren&#39;t related to tags.
+         * Available values: &#34;any&#34;, &#34;all&#34;.
          * 
          * @return builder
          * 
@@ -352,6 +370,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param type Record type.
+         * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CAA&#34;, &#34;CERT&#34;, &#34;CNAME&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;HTTPS&#34;, &#34;LOC&#34;, &#34;MX&#34;, &#34;NAPTR&#34;, &#34;NS&#34;, &#34;OPENPGPKEY&#34;, &#34;PTR&#34;, &#34;SMIMEA&#34;, &#34;SRV&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;TXT&#34;, &#34;URI&#34;.
          * 
          * @return builder
          * 
@@ -363,6 +382,7 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param type Record type.
+         * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CAA&#34;, &#34;CERT&#34;, &#34;CNAME&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;HTTPS&#34;, &#34;LOC&#34;, &#34;MX&#34;, &#34;NAPTR&#34;, &#34;NS&#34;, &#34;OPENPGPKEY&#34;, &#34;PTR&#34;, &#34;SMIMEA&#34;, &#34;SRV&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;TXT&#34;, &#34;URI&#34;.
          * 
          * @return builder
          * 

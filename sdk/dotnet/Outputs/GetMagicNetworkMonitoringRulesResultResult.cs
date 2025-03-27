@@ -22,7 +22,8 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double BandwidthThreshold;
         /// <summary>
-        /// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+        /// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+        /// Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
         /// </summary>
         public readonly string Duration;
         /// <summary>
@@ -37,7 +38,27 @@ namespace Pulumi.Cloudflare.Outputs
         /// The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
         /// </summary>
         public readonly double PacketThreshold;
+        /// <summary>
+        /// Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+        /// Available values: "exact", "subnet", "supernet".
+        /// </summary>
+        public readonly string PrefixMatch;
         public readonly ImmutableArray<string> Prefixes;
+        /// <summary>
+        /// MNM rule type.
+        /// Available values: "threshold", "zscore", "advanced_ddos".
+        /// </summary>
+        public readonly string Type;
+        /// <summary>
+        /// Level of sensitivity set for zscore rules.
+        /// Available values: "low", "medium", "high".
+        /// </summary>
+        public readonly string ZscoreSensitivity;
+        /// <summary>
+        /// Target of the zscore rule analysis.
+        /// Available values: "bits", "packets".
+        /// </summary>
+        public readonly string ZscoreTarget;
 
         [OutputConstructor]
         private GetMagicNetworkMonitoringRulesResultResult(
@@ -53,7 +74,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             double packetThreshold,
 
-            ImmutableArray<string> prefixes)
+            string prefixMatch,
+
+            ImmutableArray<string> prefixes,
+
+            string type,
+
+            string zscoreSensitivity,
+
+            string zscoreTarget)
         {
             AutomaticAdvertisement = automaticAdvertisement;
             BandwidthThreshold = bandwidthThreshold;
@@ -61,7 +90,11 @@ namespace Pulumi.Cloudflare.Outputs
             Id = id;
             Name = name;
             PacketThreshold = packetThreshold;
+            PrefixMatch = prefixMatch;
             Prefixes = prefixes;
+            Type = type;
+            ZscoreSensitivity = zscoreSensitivity;
+            ZscoreTarget = zscoreTarget;
         }
     }
 }

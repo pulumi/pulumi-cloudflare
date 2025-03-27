@@ -38,6 +38,7 @@ type ApiToken struct {
 	// List of access policies assigned to the token.
 	Policies ApiTokenPolicyArrayOutput `pulumi:"policies"`
 	// Status of the token.
+	// Available values: "active", "disabled", "expired".
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// The token value.
 	Value pulumi.StringOutput `pulumi:"value"`
@@ -56,6 +57,10 @@ func NewApiToken(ctx *pulumi.Context,
 	if args.Policies == nil {
 		return nil, errors.New("invalid value for required argument 'Policies'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"value",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApiToken
 	err := ctx.RegisterResource("cloudflare:index/apiToken:ApiToken", name, args, &resource, opts...)
@@ -95,6 +100,7 @@ type apiTokenState struct {
 	// List of access policies assigned to the token.
 	Policies []ApiTokenPolicy `pulumi:"policies"`
 	// Status of the token.
+	// Available values: "active", "disabled", "expired".
 	Status *string `pulumi:"status"`
 	// The token value.
 	Value *string `pulumi:"value"`
@@ -117,6 +123,7 @@ type ApiTokenState struct {
 	// List of access policies assigned to the token.
 	Policies ApiTokenPolicyArrayInput
 	// Status of the token.
+	// Available values: "active", "disabled", "expired".
 	Status pulumi.StringPtrInput
 	// The token value.
 	Value pulumi.StringPtrInput
@@ -137,6 +144,7 @@ type apiTokenArgs struct {
 	// List of access policies assigned to the token.
 	Policies []ApiTokenPolicy `pulumi:"policies"`
 	// Status of the token.
+	// Available values: "active", "disabled", "expired".
 	Status *string `pulumi:"status"`
 }
 
@@ -152,6 +160,7 @@ type ApiTokenArgs struct {
 	// List of access policies assigned to the token.
 	Policies ApiTokenPolicyArrayInput
 	// Status of the token.
+	// Available values: "active", "disabled", "expired".
 	Status pulumi.StringPtrInput
 }
 
@@ -282,6 +291,7 @@ func (o ApiTokenOutput) Policies() ApiTokenPolicyArrayOutput {
 }
 
 // Status of the token.
+// Available values: "active", "disabled", "expired".
 func (o ApiTokenOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiToken) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }

@@ -31,11 +31,13 @@ public final class LoadBalancerSessionAffinityAttributes {
     private @Nullable Boolean requireAllHeaders;
     /**
      * @return Configures the SameSite attribute on session affinity cookie. Value &#34;Auto&#34; will be translated to &#34;Lax&#34; or &#34;None&#34; depending if Always Use HTTPS is enabled. Note: when using value &#34;None&#34;, the secure attribute can not be set to &#34;Never&#34;.
+     * Available values: &#34;Auto&#34;, &#34;Lax&#34;, &#34;None&#34;, &#34;Strict&#34;.
      * 
      */
     private @Nullable String samesite;
     /**
      * @return Configures the Secure attribute on session affinity cookie. Value &#34;Always&#34; indicates the Secure attribute will be set in the Set-Cookie header, &#34;Never&#34; indicates the Secure attribute will not be set, and &#34;Auto&#34; will set the Secure attribute depending if Always Use HTTPS is enabled.
+     * Available values: &#34;Auto&#34;, &#34;Always&#34;, &#34;Never&#34;.
      * 
      */
     private @Nullable String secure;
@@ -69,6 +71,7 @@ public final class LoadBalancerSessionAffinityAttributes {
     }
     /**
      * @return Configures the SameSite attribute on session affinity cookie. Value &#34;Auto&#34; will be translated to &#34;Lax&#34; or &#34;None&#34; depending if Always Use HTTPS is enabled. Note: when using value &#34;None&#34;, the secure attribute can not be set to &#34;Never&#34;.
+     * Available values: &#34;Auto&#34;, &#34;Lax&#34;, &#34;None&#34;, &#34;Strict&#34;.
      * 
      */
     public Optional<String> samesite() {
@@ -76,6 +79,7 @@ public final class LoadBalancerSessionAffinityAttributes {
     }
     /**
      * @return Configures the Secure attribute on session affinity cookie. Value &#34;Always&#34; indicates the Secure attribute will be set in the Set-Cookie header, &#34;Never&#34; indicates the Secure attribute will not be set, and &#34;Auto&#34; will set the Secure attribute depending if Always Use HTTPS is enabled.
+     * Available values: &#34;Auto&#34;, &#34;Always&#34;, &#34;Never&#34;.
      * 
      */
     public Optional<String> secure() {

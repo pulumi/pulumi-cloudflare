@@ -62,6 +62,7 @@ type LookupZoneSettingResult struct {
 	// ssl-recommender enrollment setting.
 	Enabled bool `pulumi:"enabled"`
 	// ID of the zone setting.
+	// Available values: "0rtt".
 	Id string `pulumi:"id"`
 	// last time this setting was modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
@@ -71,6 +72,7 @@ type LookupZoneSettingResult struct {
 	// Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false.
 	TimeRemaining float64 `pulumi:"timeRemaining"`
 	// Current value of the zone setting.
+	// Available values: "on", "off".
 	Value string `pulumi:"value"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -123,6 +125,7 @@ func (o LookupZoneSettingResultOutput) Enabled() pulumi.BoolOutput {
 }
 
 // ID of the zone setting.
+// Available values: "0rtt".
 func (o LookupZoneSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -144,6 +147,7 @@ func (o LookupZoneSettingResultOutput) TimeRemaining() pulumi.Float64Output {
 }
 
 // Current value of the zone setting.
+// Available values: "on", "off".
 func (o LookupZoneSettingResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneSettingResult) string { return v.Value }).(pulumi.StringOutput)
 }

@@ -16,6 +16,7 @@ public final class GetEmailRoutingAddressFilter extends com.pulumi.resources.Inv
 
     /**
      * Sorts results in an ascending or descending order.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction", required=true)
@@ -23,6 +24,7 @@ public final class GetEmailRoutingAddressFilter extends com.pulumi.resources.Inv
 
     /**
      * @return Sorts results in an ascending or descending order.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public String direction() {
@@ -71,6 +73,7 @@ public final class GetEmailRoutingAddressFilter extends com.pulumi.resources.Inv
 
         /**
          * @param direction Sorts results in an ascending or descending order.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 

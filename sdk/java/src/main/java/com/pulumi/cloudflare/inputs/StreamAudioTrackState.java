@@ -93,6 +93,7 @@ public final class StreamAudioTrackState extends com.pulumi.resources.ResourceAr
 
     /**
      * Specifies the processing status of the video.
+     * Available values: &#34;queued&#34;, &#34;ready&#34;, &#34;error&#34;.
      * 
      */
     @Import(name="status")
@@ -100,6 +101,7 @@ public final class StreamAudioTrackState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Specifies the processing status of the video.
+     * Available values: &#34;queued&#34;, &#34;ready&#34;, &#34;error&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -258,6 +260,7 @@ public final class StreamAudioTrackState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param status Specifies the processing status of the video.
+         * Available values: &#34;queued&#34;, &#34;ready&#34;, &#34;error&#34;.
          * 
          * @return builder
          * 
@@ -269,6 +272,7 @@ public final class StreamAudioTrackState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param status Specifies the processing status of the video.
+         * Available values: &#34;queued&#34;, &#34;ready&#34;, &#34;error&#34;.
          * 
          * @return builder
          * 

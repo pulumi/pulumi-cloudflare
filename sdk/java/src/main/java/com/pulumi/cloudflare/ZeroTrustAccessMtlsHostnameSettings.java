@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustAccessMtlsHostnameSettingsArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessMtlsHostnameSettingsState;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessMtlsHostnameSettingsSetting;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -76,15 +77,6 @@ public class ZeroTrustAccessMtlsHostnameSettings extends com.pulumi.resources.Cu
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
-<<<<<<< HEAD
-    @Export(name="settings", refs={List.class,ZeroTrustAccessMtlsHostnameSettingsSetting.class}, tree="[0,1]")
-    private Output<List<ZeroTrustAccessMtlsHostnameSettingsSetting>> settings;
-
-    public Output<List<ZeroTrustAccessMtlsHostnameSettingsSetting>> settings() {
-        return this.settings;
-    }
-    /**
-=======
     /**
      * Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
      * 
@@ -134,7 +126,6 @@ public class ZeroTrustAccessMtlsHostnameSettings extends com.pulumi.resources.Cu
         return this.settings;
     }
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
@@ -188,6 +179,9 @@ public class ZeroTrustAccessMtlsHostnameSettings extends com.pulumi.resources.Cu
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

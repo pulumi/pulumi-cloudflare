@@ -32,6 +32,7 @@ public final class SpectrumApplicationDnsArgs extends com.pulumi.resources.Resou
 
     /**
      * The type of DNS record associated with the application.
+     * Available values: &#34;CNAME&#34;, &#34;ADDRESS&#34;.
      * 
      */
     @Import(name="type")
@@ -39,6 +40,7 @@ public final class SpectrumApplicationDnsArgs extends com.pulumi.resources.Resou
 
     /**
      * @return The type of DNS record associated with the application.
+     * Available values: &#34;CNAME&#34;, &#34;ADDRESS&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -93,6 +95,7 @@ public final class SpectrumApplicationDnsArgs extends com.pulumi.resources.Resou
 
         /**
          * @param type The type of DNS record associated with the application.
+         * Available values: &#34;CNAME&#34;, &#34;ADDRESS&#34;.
          * 
          * @return builder
          * 
@@ -104,6 +107,7 @@ public final class SpectrumApplicationDnsArgs extends com.pulumi.resources.Resou
 
         /**
          * @param type The type of DNS record associated with the application.
+         * Available values: &#34;CNAME&#34;, &#34;ADDRESS&#34;.
          * 
          * @return builder
          * 

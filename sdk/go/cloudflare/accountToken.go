@@ -40,6 +40,7 @@ type AccountToken struct {
 	// List of access policies assigned to the token.
 	Policies AccountTokenPolicyArrayOutput `pulumi:"policies"`
 	// Status of the token.
+	// Available values: "active", "disabled", "expired".
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// The token value.
 	Value pulumi.StringOutput `pulumi:"value"`
@@ -61,6 +62,10 @@ func NewAccountToken(ctx *pulumi.Context,
 	if args.Policies == nil {
 		return nil, errors.New("invalid value for required argument 'Policies'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"value",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccountToken
 	err := ctx.RegisterResource("cloudflare:index/accountToken:AccountToken", name, args, &resource, opts...)
@@ -102,6 +107,7 @@ type accountTokenState struct {
 	// List of access policies assigned to the token.
 	Policies []AccountTokenPolicy `pulumi:"policies"`
 	// Status of the token.
+	// Available values: "active", "disabled", "expired".
 	Status *string `pulumi:"status"`
 	// The token value.
 	Value *string `pulumi:"value"`
@@ -126,6 +132,7 @@ type AccountTokenState struct {
 	// List of access policies assigned to the token.
 	Policies AccountTokenPolicyArrayInput
 	// Status of the token.
+	// Available values: "active", "disabled", "expired".
 	Status pulumi.StringPtrInput
 	// The token value.
 	Value pulumi.StringPtrInput
@@ -148,6 +155,7 @@ type accountTokenArgs struct {
 	// List of access policies assigned to the token.
 	Policies []AccountTokenPolicy `pulumi:"policies"`
 	// Status of the token.
+	// Available values: "active", "disabled", "expired".
 	Status *string `pulumi:"status"`
 }
 
@@ -165,6 +173,7 @@ type AccountTokenArgs struct {
 	// List of access policies assigned to the token.
 	Policies AccountTokenPolicyArrayInput
 	// Status of the token.
+	// Available values: "active", "disabled", "expired".
 	Status pulumi.StringPtrInput
 }
 
@@ -300,6 +309,7 @@ func (o AccountTokenOutput) Policies() AccountTokenPolicyArrayOutput {
 }
 
 // Status of the token.
+// Available values: "active", "disabled", "expired".
 func (o AccountTokenOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountToken) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }

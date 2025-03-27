@@ -21,10 +21,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeGroup;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeGsuite;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeIp;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeIpList;
-<<<<<<< HEAD
-=======
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeLoginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeOkta;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeSaml;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeServiceToken;
@@ -60,10 +57,7 @@ public final class GetZeroTrustAccessGroupExclude {
     private GetZeroTrustAccessGroupExcludeGsuite gsuite;
     private GetZeroTrustAccessGroupExcludeIp ip;
     private GetZeroTrustAccessGroupExcludeIpList ipList;
-<<<<<<< HEAD
-=======
     private GetZeroTrustAccessGroupExcludeLoginMethod loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     private GetZeroTrustAccessGroupExcludeOkta okta;
     private GetZeroTrustAccessGroupExcludeSaml saml;
     private GetZeroTrustAccessGroupExcludeServiceToken serviceToken;
@@ -131,12 +125,9 @@ public final class GetZeroTrustAccessGroupExclude {
     public GetZeroTrustAccessGroupExcludeIpList ipList() {
         return this.ipList;
     }
-<<<<<<< HEAD
-=======
     public GetZeroTrustAccessGroupExcludeLoginMethod loginMethod() {
         return this.loginMethod;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public GetZeroTrustAccessGroupExcludeOkta okta() {
         return this.okta;
     }
@@ -174,10 +165,7 @@ public final class GetZeroTrustAccessGroupExclude {
         private GetZeroTrustAccessGroupExcludeGsuite gsuite;
         private GetZeroTrustAccessGroupExcludeIp ip;
         private GetZeroTrustAccessGroupExcludeIpList ipList;
-<<<<<<< HEAD
-=======
         private GetZeroTrustAccessGroupExcludeLoginMethod loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private GetZeroTrustAccessGroupExcludeOkta okta;
         private GetZeroTrustAccessGroupExcludeSaml saml;
         private GetZeroTrustAccessGroupExcludeServiceToken serviceToken;
@@ -202,10 +190,7 @@ public final class GetZeroTrustAccessGroupExclude {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
-<<<<<<< HEAD
-=======
     	      this.loginMethod = defaults.loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -356,8 +341,6 @@ public final class GetZeroTrustAccessGroupExclude {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder loginMethod(GetZeroTrustAccessGroupExcludeLoginMethod loginMethod) {
             if (loginMethod == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupExclude", "loginMethod");
@@ -366,7 +349,6 @@ public final class GetZeroTrustAccessGroupExclude {
             return this;
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder okta(GetZeroTrustAccessGroupExcludeOkta okta) {
             if (okta == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupExclude", "okta");
@@ -410,10 +392,7 @@ public final class GetZeroTrustAccessGroupExclude {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
-<<<<<<< HEAD
-=======
             _resultValue.loginMethod = loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

@@ -42,6 +42,7 @@ public final class HealthcheckHttpConfig {
     private @Nullable Map<String,List<String>> header;
     /**
      * @return The HTTP method to use for the health check.
+     * Available values: &#34;GET&#34;, &#34;HEAD&#34;.
      * 
      */
     private @Nullable String method;
@@ -94,6 +95,7 @@ public final class HealthcheckHttpConfig {
     }
     /**
      * @return The HTTP method to use for the health check.
+     * Available values: &#34;GET&#34;, &#34;HEAD&#34;.
      * 
      */
     public Optional<String> method() {

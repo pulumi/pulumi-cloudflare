@@ -56,6 +56,9 @@ export class WorkersDeployment extends pulumi.CustomResource {
      */
     public readonly scriptName!: pulumi.Output<string>;
     public /*out*/ readonly source!: pulumi.Output<string>;
+    /**
+     * Available values: "percentage".
+     */
     public readonly strategy!: pulumi.Output<string>;
     public readonly versions!: pulumi.Output<outputs.WorkersDeploymentVersion[]>;
 
@@ -127,6 +130,9 @@ export interface WorkersDeploymentState {
      */
     scriptName?: pulumi.Input<string>;
     source?: pulumi.Input<string>;
+    /**
+     * Available values: "percentage".
+     */
     strategy?: pulumi.Input<string>;
     versions?: pulumi.Input<pulumi.Input<inputs.WorkersDeploymentVersion>[]>;
 }
@@ -144,6 +150,9 @@ export interface WorkersDeploymentArgs {
      * Name of the script.
      */
     scriptName: pulumi.Input<string>;
+    /**
+     * Available values: "percentage".
+     */
     strategy: pulumi.Input<string>;
     versions: pulumi.Input<pulumi.Input<inputs.WorkersDeploymentVersion>[]>;
 }

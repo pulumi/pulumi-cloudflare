@@ -117,6 +117,7 @@ public final class GetLoadBalancersResult {
      * 
      */
     private Double ttl;
+    private String zoneName;
 
     private GetLoadBalancersResult() {}
     /**
@@ -261,6 +262,9 @@ public final class GetLoadBalancersResult {
     public Double ttl() {
         return this.ttl;
     }
+    public String zoneName() {
+        return this.zoneName;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -293,6 +297,7 @@ public final class GetLoadBalancersResult {
         private Double sessionAffinityTtl;
         private String steeringPolicy;
         private Double ttl;
+        private String zoneName;
         public Builder() {}
         public Builder(GetLoadBalancersResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -318,6 +323,7 @@ public final class GetLoadBalancersResult {
     	      this.sessionAffinityTtl = defaults.sessionAffinityTtl;
     	      this.steeringPolicy = defaults.steeringPolicy;
     	      this.ttl = defaults.ttl;
+    	      this.zoneName = defaults.zoneName;
         }
 
         @CustomType.Setter
@@ -505,6 +511,14 @@ public final class GetLoadBalancersResult {
             this.ttl = ttl;
             return this;
         }
+        @CustomType.Setter
+        public Builder zoneName(String zoneName) {
+            if (zoneName == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancersResult", "zoneName");
+            }
+            this.zoneName = zoneName;
+            return this;
+        }
         public GetLoadBalancersResult build() {
             final var _resultValue = new GetLoadBalancersResult();
             _resultValue.adaptiveRouting = adaptiveRouting;
@@ -529,6 +543,7 @@ public final class GetLoadBalancersResult {
             _resultValue.sessionAffinityTtl = sessionAffinityTtl;
             _resultValue.steeringPolicy = steeringPolicy;
             _resultValue.ttl = ttl;
+            _resultValue.zoneName = zoneName;
             return _resultValue;
         }
     }

@@ -34,6 +34,7 @@ export function getSpectrumApplications(args: GetSpectrumApplicationsArgs, opts?
 export interface GetSpectrumApplicationsArgs {
     /**
      * Sets the direction by which results are ordered.
+     * Available values: "asc", "desc".
      */
     direction?: string;
     /**
@@ -42,14 +43,11 @@ export interface GetSpectrumApplicationsArgs {
     maxItems?: number;
     /**
      * Application field by which results are ordered.
+     * Available values: "protocol", "app*id", "created*on", "modifiedOn", "dns".
      */
     order?: string;
     /**
-<<<<<<< HEAD
-     * Identifier
-=======
      * Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     zoneId: string;
 }
@@ -60,6 +58,7 @@ export interface GetSpectrumApplicationsArgs {
 export interface GetSpectrumApplicationsResult {
     /**
      * Sets the direction by which results are ordered.
+     * Available values: "asc", "desc".
      */
     readonly direction: string;
     /**
@@ -72,6 +71,7 @@ export interface GetSpectrumApplicationsResult {
     readonly maxItems?: number;
     /**
      * Application field by which results are ordered.
+     * Available values: "protocol", "app*id", "created*on", "modifiedOn", "dns".
      */
     readonly order: string;
     /**
@@ -79,11 +79,7 @@ export interface GetSpectrumApplicationsResult {
      */
     readonly results: outputs.GetSpectrumApplicationsResult[];
     /**
-<<<<<<< HEAD
-     * Identifier
-=======
      * Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     readonly zoneId: string;
 }
@@ -115,6 +111,7 @@ export function getSpectrumApplicationsOutput(args: GetSpectrumApplicationsOutpu
 export interface GetSpectrumApplicationsOutputArgs {
     /**
      * Sets the direction by which results are ordered.
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**
@@ -123,14 +120,11 @@ export interface GetSpectrumApplicationsOutputArgs {
     maxItems?: pulumi.Input<number>;
     /**
      * Application field by which results are ordered.
+     * Available values: "protocol", "app*id", "created*on", "modifiedOn", "dns".
      */
     order?: pulumi.Input<string>;
     /**
-<<<<<<< HEAD
-     * Identifier
-=======
      * Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     zoneId: pulumi.Input<string>;
 }

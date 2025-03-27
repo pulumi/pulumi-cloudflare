@@ -21,6 +21,38 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ListItem;
+ * import com.pulumi.cloudflare.ListItemArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleListItem = new ListItem("exampleListItem", ListItemArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .listId("2c0fc9fa937b11eaa1b71c4d701ab86e")
+ *             .ip("10.0.0.1")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
@@ -59,14 +91,14 @@ public class ListItem extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
-    private Output<String> comment;
+    private Output</* @Nullable */ String> comment;
 
     /**
      * @return An informative summary of the list item.
      * 
      */
-    public Output<String> comment() {
-        return this.comment;
+    public Output<Optional<String>> comment() {
+        return Codegen.optional(this.comment);
     }
     /**
      * The RFC 3339 timestamp of when the item was created.
@@ -111,23 +143,6 @@ public class ListItem extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ip);
     }
     /**
-<<<<<<< HEAD
-     * The unique ID of the item in the List.
-     * 
-     */
-    @Export(name="itemId", refs={String.class}, tree="[0]")
-    private Output<String> itemId;
-
-    /**
-     * @return The unique ID of the item in the List.
-     * 
-     */
-    public Output<String> itemId() {
-        return this.itemId;
-    }
-    /**
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The unique ID of the list.
      * 
      */

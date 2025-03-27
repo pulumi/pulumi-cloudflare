@@ -56,6 +56,7 @@ class GetZoneCacheVariantsResult:
     def id(self) -> str:
         """
         ID of the zone setting.
+        Available values: "variants".
         """
         return pulumi.get(self, "id")
 

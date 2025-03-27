@@ -22,6 +22,7 @@ public final class GetCustomSslsInvokeResult {
     private String id;
     /**
      * @return Whether to match all search requirements or at least one (any).
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     private String match;
@@ -37,6 +38,7 @@ public final class GetCustomSslsInvokeResult {
     private List<GetCustomSslsResult> results;
     /**
      * @return Status of the zone&#39;s custom SSL.
+     * Available values: &#34;active&#34;, &#34;expired&#34;, &#34;deleted&#34;, &#34;pending&#34;, &#34;initializing&#34;.
      * 
      */
     private @Nullable String status;
@@ -56,6 +58,7 @@ public final class GetCustomSslsInvokeResult {
     }
     /**
      * @return Whether to match all search requirements or at least one (any).
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     public String match() {
@@ -77,6 +80,7 @@ public final class GetCustomSslsInvokeResult {
     }
     /**
      * @return Status of the zone&#39;s custom SSL.
+     * Available values: &#34;active&#34;, &#34;expired&#34;, &#34;deleted&#34;, &#34;pending&#34;, &#34;initializing&#34;.
      * 
      */
     public Optional<String> status() {

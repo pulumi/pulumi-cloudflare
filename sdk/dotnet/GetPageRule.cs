@@ -152,6 +152,7 @@ namespace Pulumi.Cloudflare
         public readonly int Priority;
         /// <summary>
         /// The status of the Page Rule.
+        /// Available values: "active", "disabled".
         /// </summary>
         public readonly string Status;
         /// <summary>

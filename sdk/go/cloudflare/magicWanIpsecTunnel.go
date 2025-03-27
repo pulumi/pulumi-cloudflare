@@ -100,6 +100,12 @@ func NewMagicWanIpsecTunnel(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/ipsecTunnel:IpsecTunnel"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MagicWanIpsecTunnel
 	err := ctx.RegisterResource("cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel", name, args, &resource, opts...)

@@ -7,11 +7,45 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetObservatoryScheduledTestPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetObservatoryScheduledTestPlainArgs Empty = new GetObservatoryScheduledTestPlainArgs();
+
+    /**
+     * A test region.
+     * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable String region;
+
+    /**
+     * @return A test region.
+     * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
+     * A URL.
+     * 
+     */
+    @Import(name="url", required=true)
+    private String url;
+
+    /**
+     * @return A URL.
+     * 
+     */
+    public String url() {
+        return this.url;
+    }
 
     /**
      * Identifier
@@ -31,6 +65,8 @@ public final class GetObservatoryScheduledTestPlainArgs extends com.pulumi.resou
     private GetObservatoryScheduledTestPlainArgs() {}
 
     private GetObservatoryScheduledTestPlainArgs(GetObservatoryScheduledTestPlainArgs $) {
+        this.region = $.region;
+        this.url = $.url;
         this.zoneId = $.zoneId;
     }
 
@@ -53,6 +89,29 @@ public final class GetObservatoryScheduledTestPlainArgs extends com.pulumi.resou
         }
 
         /**
+         * @param region A test region.
+         * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable String region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param url A URL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder url(String url) {
+            $.url = url;
+            return this;
+        }
+
+        /**
          * @param zoneId Identifier
          * 
          * @return builder
@@ -64,6 +123,9 @@ public final class GetObservatoryScheduledTestPlainArgs extends com.pulumi.resou
         }
 
         public GetObservatoryScheduledTestPlainArgs build() {
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("GetObservatoryScheduledTestPlainArgs", "url");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetObservatoryScheduledTestPlainArgs", "zoneId");
             }

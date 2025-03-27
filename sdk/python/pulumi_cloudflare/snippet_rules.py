@@ -69,10 +69,7 @@ class _SnippetRulesState:
         """
         Input properties used for looking up and filtering SnippetRules resources.
         :param pulumi.Input[Sequence[pulumi.Input['SnippetRulesRuleArgs']]] rules: List of snippet rules
-<<<<<<< HEAD
-=======
         :param pulumi.Input[str] snippet_name: Snippet identifying name
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] zone_id: Identifier
         """
         if description is not None:
@@ -235,10 +232,7 @@ class SnippetRules(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SnippetRulesRuleArgs', 'SnippetRulesRuleArgsDict']]]] rules: List of snippet rules
-<<<<<<< HEAD
-=======
         :param pulumi.Input[str] snippet_name: Snippet identifying name
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -255,8 +249,6 @@ class SnippetRules(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-<<<<<<< HEAD
-=======
     def description(self) -> pulumi.Output[str]:
         return pulumi.get(self, "description")
 
@@ -272,7 +264,6 @@ class SnippetRules(pulumi.CustomResource):
 
     @property
     @pulumi.getter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     def rules(self) -> pulumi.Output[Sequence['outputs.SnippetRulesRule']]:
         """
         List of snippet rules

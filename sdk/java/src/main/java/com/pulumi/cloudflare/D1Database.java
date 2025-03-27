@@ -81,8 +81,6 @@ public class D1Database extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies the timestamp the resource was created as an ISO8601 string.
-<<<<<<< HEAD
-=======
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
@@ -111,43 +109,15 @@ public class D1Database extends com.pulumi.resources.CustomResource {
     }
     /**
      * D1 database name.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
-    private Output<String> createdAt;
-
-    /**
-     * @return Specifies the timestamp the resource was created as an ISO8601 string.
-     * 
-     */
-    public Output<String> createdAt() {
-        return this.createdAt;
-    }
-    /**
-     * The D1 database&#39;s size, in bytes.
-     * 
-     */
-    @Export(name="fileSize", refs={Double.class}, tree="[0]")
-    private Output<Double> fileSize;
-
-    /**
-     * @return The D1 database&#39;s size, in bytes.
-     * 
-     */
-    public Output<Double> fileSize() {
-        return this.fileSize;
-    }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
-<<<<<<< HEAD
-=======
     /**
      * @return D1 database name.
      * 
      */
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Output<String> name() {
         return this.name;
     }
@@ -159,6 +129,7 @@ public class D1Database extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+     * Available values: &#34;wnam&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;eeur&#34;, &#34;apac&#34;, &#34;oc&#34;.
      * 
      */
     @Export(name="primaryLocationHint", refs={String.class}, tree="[0]")
@@ -166,16 +137,12 @@ public class D1Database extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+     * Available values: &#34;wnam&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;eeur&#34;, &#34;apac&#34;, &#34;oc&#34;.
      * 
      */
     public Output<Optional<String>> primaryLocationHint() {
         return Codegen.optional(this.primaryLocationHint);
     }
-<<<<<<< HEAD
-    @Export(name="uuid", refs={String.class}, tree="[0]")
-    private Output<String> uuid;
-
-=======
     /**
      * D1 database identifier (UUID).
      * 
@@ -187,7 +154,6 @@ public class D1Database extends com.pulumi.resources.CustomResource {
      * @return D1 database identifier (UUID).
      * 
      */
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Output<String> uuid() {
         return this.uuid;
     }

@@ -57,6 +57,8 @@ type R2BucketEventNotification struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Name of the bucket
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringOutput `pulumi:"jurisdiction"`
 	// Queue ID
 	QueueId pulumi.StringPtrOutput `pulumi:"queueId"`
 	// List of queues associated with the bucket.
@@ -105,6 +107,8 @@ type r2bucketEventNotificationState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket
 	BucketName *string `pulumi:"bucketName"`
+	// Jurisdiction of the bucket
+	Jurisdiction *string `pulumi:"jurisdiction"`
 	// Queue ID
 	QueueId *string `pulumi:"queueId"`
 	// List of queues associated with the bucket.
@@ -118,6 +122,8 @@ type R2BucketEventNotificationState struct {
 	AccountId pulumi.StringPtrInput
 	// Name of the bucket
 	BucketName pulumi.StringPtrInput
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringPtrInput
 	// Queue ID
 	QueueId pulumi.StringPtrInput
 	// List of queues associated with the bucket.
@@ -135,6 +141,8 @@ type r2bucketEventNotificationArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket
 	BucketName string `pulumi:"bucketName"`
+	// Jurisdiction of the bucket
+	Jurisdiction *string `pulumi:"jurisdiction"`
 	// Queue ID
 	QueueId *string `pulumi:"queueId"`
 	// Array of rules to drive notifications
@@ -147,6 +155,8 @@ type R2BucketEventNotificationArgs struct {
 	AccountId pulumi.StringInput
 	// Name of the bucket
 	BucketName pulumi.StringInput
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringPtrInput
 	// Queue ID
 	QueueId pulumi.StringPtrInput
 	// Array of rules to drive notifications
@@ -248,6 +258,11 @@ func (o R2BucketEventNotificationOutput) AccountId() pulumi.StringOutput {
 // Name of the bucket
 func (o R2BucketEventNotificationOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2BucketEventNotification) pulumi.StringOutput { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Jurisdiction of the bucket
+func (o R2BucketEventNotificationOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v *R2BucketEventNotification) pulumi.StringOutput { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
 // Queue ID

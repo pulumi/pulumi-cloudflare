@@ -18,6 +18,7 @@ public final class SpectrumApplicationDns {
     private @Nullable String name;
     /**
      * @return The type of DNS record associated with the application.
+     * Available values: &#34;CNAME&#34;, &#34;ADDRESS&#34;.
      * 
      */
     private @Nullable String type;
@@ -32,6 +33,7 @@ public final class SpectrumApplicationDns {
     }
     /**
      * @return The type of DNS record associated with the application.
+     * Available values: &#34;CNAME&#34;, &#34;ADDRESS&#34;.
      * 
      */
     public Optional<String> type() {

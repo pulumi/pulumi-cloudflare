@@ -65,6 +65,7 @@ type TurnstileWidget struct {
 	BotFightMode pulumi.BoolOutput `pulumi:"botFightMode"`
 	// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
 	// this setting can determine the clearance level to be set
+	// Available values: "noClearance", "jschallenge", "managed", "interactive".
 	ClearanceLevel pulumi.StringPtrOutput `pulumi:"clearanceLevel"`
 	// When the widget was created.
 	CreatedOn pulumi.StringOutput      `pulumi:"createdOn"`
@@ -72,6 +73,7 @@ type TurnstileWidget struct {
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId pulumi.BoolPtrOutput `pulumi:"ephemeralId"`
 	// Widget Mode
+	// Available values: "non-interactive", "invisible", "managed".
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// When the widget was modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
@@ -82,6 +84,7 @@ type TurnstileWidget struct {
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel pulumi.BoolOutput `pulumi:"offlabel"`
 	// Region where this widget can be used.
+	// Available values: "world".
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Secret key for this widget.
 	Secret pulumi.StringOutput `pulumi:"secret"`
@@ -138,6 +141,7 @@ type turnstileWidgetState struct {
 	BotFightMode *bool `pulumi:"botFightMode"`
 	// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
 	// this setting can determine the clearance level to be set
+	// Available values: "noClearance", "jschallenge", "managed", "interactive".
 	ClearanceLevel *string `pulumi:"clearanceLevel"`
 	// When the widget was created.
 	CreatedOn *string  `pulumi:"createdOn"`
@@ -145,6 +149,7 @@ type turnstileWidgetState struct {
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId *bool `pulumi:"ephemeralId"`
 	// Widget Mode
+	// Available values: "non-interactive", "invisible", "managed".
 	Mode *string `pulumi:"mode"`
 	// When the widget was modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
@@ -155,6 +160,7 @@ type turnstileWidgetState struct {
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel *bool `pulumi:"offlabel"`
 	// Region where this widget can be used.
+	// Available values: "world".
 	Region *string `pulumi:"region"`
 	// Secret key for this widget.
 	Secret *string `pulumi:"secret"`
@@ -170,6 +176,7 @@ type TurnstileWidgetState struct {
 	BotFightMode pulumi.BoolPtrInput
 	// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
 	// this setting can determine the clearance level to be set
+	// Available values: "noClearance", "jschallenge", "managed", "interactive".
 	ClearanceLevel pulumi.StringPtrInput
 	// When the widget was created.
 	CreatedOn pulumi.StringPtrInput
@@ -177,6 +184,7 @@ type TurnstileWidgetState struct {
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId pulumi.BoolPtrInput
 	// Widget Mode
+	// Available values: "non-interactive", "invisible", "managed".
 	Mode pulumi.StringPtrInput
 	// When the widget was modified.
 	ModifiedOn pulumi.StringPtrInput
@@ -187,6 +195,7 @@ type TurnstileWidgetState struct {
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel pulumi.BoolPtrInput
 	// Region where this widget can be used.
+	// Available values: "world".
 	Region pulumi.StringPtrInput
 	// Secret key for this widget.
 	Secret pulumi.StringPtrInput
@@ -206,11 +215,13 @@ type turnstileWidgetArgs struct {
 	BotFightMode *bool `pulumi:"botFightMode"`
 	// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
 	// this setting can determine the clearance level to be set
+	// Available values: "noClearance", "jschallenge", "managed", "interactive".
 	ClearanceLevel *string  `pulumi:"clearanceLevel"`
 	Domains        []string `pulumi:"domains"`
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId *bool `pulumi:"ephemeralId"`
 	// Widget Mode
+	// Available values: "non-interactive", "invisible", "managed".
 	Mode string `pulumi:"mode"`
 	// Human readable widget name. Not unique. Cloudflare suggests that you
 	// set this to a meaningful string to make it easier to identify your
@@ -219,6 +230,7 @@ type turnstileWidgetArgs struct {
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel *bool `pulumi:"offlabel"`
 	// Region where this widget can be used.
+	// Available values: "world".
 	Region *string `pulumi:"region"`
 }
 
@@ -231,11 +243,13 @@ type TurnstileWidgetArgs struct {
 	BotFightMode pulumi.BoolPtrInput
 	// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
 	// this setting can determine the clearance level to be set
+	// Available values: "noClearance", "jschallenge", "managed", "interactive".
 	ClearanceLevel pulumi.StringPtrInput
 	Domains        pulumi.StringArrayInput
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId pulumi.BoolPtrInput
 	// Widget Mode
+	// Available values: "non-interactive", "invisible", "managed".
 	Mode pulumi.StringInput
 	// Human readable widget name. Not unique. Cloudflare suggests that you
 	// set this to a meaningful string to make it easier to identify your
@@ -244,6 +258,7 @@ type TurnstileWidgetArgs struct {
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel pulumi.BoolPtrInput
 	// Region where this widget can be used.
+	// Available values: "world".
 	Region pulumi.StringPtrInput
 }
 
@@ -347,6 +362,7 @@ func (o TurnstileWidgetOutput) BotFightMode() pulumi.BoolOutput {
 
 // If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
 // this setting can determine the clearance level to be set
+// Available values: "noClearance", "jschallenge", "managed", "interactive".
 func (o TurnstileWidgetOutput) ClearanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringPtrOutput { return v.ClearanceLevel }).(pulumi.StringPtrOutput)
 }
@@ -366,6 +382,7 @@ func (o TurnstileWidgetOutput) EphemeralId() pulumi.BoolPtrOutput {
 }
 
 // Widget Mode
+// Available values: "non-interactive", "invisible", "managed".
 func (o TurnstileWidgetOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
@@ -388,6 +405,7 @@ func (o TurnstileWidgetOutput) Offlabel() pulumi.BoolOutput {
 }
 
 // Region where this widget can be used.
+// Available values: "world".
 func (o TurnstileWidgetOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

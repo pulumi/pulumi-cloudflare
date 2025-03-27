@@ -53,6 +53,7 @@ export class Ruleset extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string>;
     /**
      * The kind of the ruleset.
+     * Available values: "managed", "custom", "root", "zone".
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -61,6 +62,7 @@ export class Ruleset extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The phase of the ruleset.
+     * Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
      */
     public readonly phase!: pulumi.Output<string>;
     /**
@@ -103,9 +105,6 @@ export class Ruleset extends pulumi.CustomResource {
             if ((!args || args.phase === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'phase'");
             }
-            if ((!args || args.rules === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'rules'");
-            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
@@ -133,6 +132,7 @@ export interface RulesetState {
     description?: pulumi.Input<string>;
     /**
      * The kind of the ruleset.
+     * Available values: "managed", "custom", "root", "zone".
      */
     kind?: pulumi.Input<string>;
     /**
@@ -141,6 +141,7 @@ export interface RulesetState {
     name?: pulumi.Input<string>;
     /**
      * The phase of the ruleset.
+     * Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
      */
     phase?: pulumi.Input<string>;
     /**
@@ -167,6 +168,7 @@ export interface RulesetArgs {
     description?: pulumi.Input<string>;
     /**
      * The kind of the ruleset.
+     * Available values: "managed", "custom", "root", "zone".
      */
     kind: pulumi.Input<string>;
     /**
@@ -175,12 +177,13 @@ export interface RulesetArgs {
     name: pulumi.Input<string>;
     /**
      * The phase of the ruleset.
+     * Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
      */
     phase: pulumi.Input<string>;
     /**
      * The list of rules in the ruleset.
      */
-    rules: pulumi.Input<pulumi.Input<inputs.RulesetRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.RulesetRule>[]>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */

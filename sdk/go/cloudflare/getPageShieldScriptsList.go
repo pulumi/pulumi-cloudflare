@@ -60,6 +60,7 @@ func LookupPageShieldScriptsList(ctx *pulumi.Context, args *LookupPageShieldScri
 // A collection of arguments for invoking getPageShieldScriptsList.
 type LookupPageShieldScriptsListArgs struct {
 	// The direction used to sort returned scripts.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// When true, excludes scripts seen in a `/cdn-cgi` path from the returned scripts. The default value is true.
 	ExcludeCdnCgi *bool `pulumi:"excludeCdnCgi"`
@@ -70,6 +71,7 @@ type LookupPageShieldScriptsListArgs struct {
 	// Excludes scripts whose URL contains one of the URL-encoded URLs separated by commas.
 	ExcludeUrls *string `pulumi:"excludeUrls"`
 	// Export the list of scripts as a file.
+	// Available values: "csv".
 	Export *string `pulumi:"export"`
 	// Includes scripts that match one or more URL-encoded hostnames separated by commas.
 	Hosts               *string  `pulumi:"hosts"`
@@ -88,6 +90,7 @@ type LookupPageShieldScriptsListArgs struct {
 // A collection of values returned by getPageShieldScriptsList.
 type LookupPageShieldScriptsListResult struct {
 	// The direction used to sort returned scripts.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// When true, excludes scripts seen in a `/cdn-cgi` path from the returned scripts. The default value is true.
 	ExcludeCdnCgi bool `pulumi:"excludeCdnCgi"`
@@ -98,6 +101,7 @@ type LookupPageShieldScriptsListResult struct {
 	// Excludes scripts whose URL contains one of the URL-encoded URLs separated by commas.
 	ExcludeUrls *string `pulumi:"excludeUrls"`
 	// Export the list of scripts as a file.
+	// Available values: "csv".
 	Export *string `pulumi:"export"`
 	// Includes scripts that match one or more URL-encoded hostnames separated by commas.
 	Hosts *string `pulumi:"hosts"`
@@ -128,6 +132,7 @@ func LookupPageShieldScriptsListOutput(ctx *pulumi.Context, args LookupPageShiel
 // A collection of arguments for invoking getPageShieldScriptsList.
 type LookupPageShieldScriptsListOutputArgs struct {
 	// The direction used to sort returned scripts.
+	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// When true, excludes scripts seen in a `/cdn-cgi` path from the returned scripts. The default value is true.
 	ExcludeCdnCgi pulumi.BoolPtrInput `pulumi:"excludeCdnCgi"`
@@ -138,6 +143,7 @@ type LookupPageShieldScriptsListOutputArgs struct {
 	// Excludes scripts whose URL contains one of the URL-encoded URLs separated by commas.
 	ExcludeUrls pulumi.StringPtrInput `pulumi:"excludeUrls"`
 	// Export the list of scripts as a file.
+	// Available values: "csv".
 	Export pulumi.StringPtrInput `pulumi:"export"`
 	// Includes scripts that match one or more URL-encoded hostnames separated by commas.
 	Hosts               pulumi.StringPtrInput  `pulumi:"hosts"`
@@ -173,6 +179,7 @@ func (o LookupPageShieldScriptsListResultOutput) ToLookupPageShieldScriptsListRe
 }
 
 // The direction used to sort returned scripts.
+// Available values: "asc", "desc".
 func (o LookupPageShieldScriptsListResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPageShieldScriptsListResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
@@ -195,6 +202,7 @@ func (o LookupPageShieldScriptsListResultOutput) ExcludeUrls() pulumi.StringPtrO
 }
 
 // Export the list of scripts as a file.
+// Available values: "csv".
 func (o LookupPageShieldScriptsListResultOutput) Export() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPageShieldScriptsListResult) *string { return v.Export }).(pulumi.StringPtrOutput)
 }

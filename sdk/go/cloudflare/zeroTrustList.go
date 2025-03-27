@@ -66,6 +66,7 @@ type ZeroTrustList struct {
 	// The name of the list.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The type of list.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 	Type      pulumi.StringOutput `pulumi:"type"`
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
@@ -86,6 +87,12 @@ func NewZeroTrustList(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/teamsList:TeamsList"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustList
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustList:ZeroTrustList", name, args, &resource, opts...)
@@ -120,6 +127,7 @@ type zeroTrustListState struct {
 	// The name of the list.
 	Name *string `pulumi:"name"`
 	// The type of list.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 	Type      *string `pulumi:"type"`
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
@@ -136,6 +144,7 @@ type ZeroTrustListState struct {
 	// The name of the list.
 	Name pulumi.StringPtrInput
 	// The type of list.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 	Type      pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -153,6 +162,7 @@ type zeroTrustListArgs struct {
 	// The name of the list.
 	Name string `pulumi:"name"`
 	// The type of list.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 	Type string `pulumi:"type"`
 }
 
@@ -166,6 +176,7 @@ type ZeroTrustListArgs struct {
 	// The name of the list.
 	Name pulumi.StringInput
 	// The type of list.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 	Type pulumi.StringInput
 }
 
@@ -285,6 +296,7 @@ func (o ZeroTrustListOutput) Name() pulumi.StringOutput {
 }
 
 // The type of list.
+// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 func (o ZeroTrustListOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustList) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -34,6 +34,7 @@ public final class GetWorkersKvNamespacesArgs extends com.pulumi.resources.Invok
 
     /**
      * Direction to order namespaces.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -41,6 +42,7 @@ public final class GetWorkersKvNamespacesArgs extends com.pulumi.resources.Invok
 
     /**
      * @return Direction to order namespaces.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -64,6 +66,7 @@ public final class GetWorkersKvNamespacesArgs extends com.pulumi.resources.Invok
 
     /**
      * Field to order results by.
+     * Available values: &#34;id&#34;, &#34;title&#34;.
      * 
      */
     @Import(name="order")
@@ -71,6 +74,7 @@ public final class GetWorkersKvNamespacesArgs extends com.pulumi.resources.Invok
 
     /**
      * @return Field to order results by.
+     * Available values: &#34;id&#34;, &#34;title&#34;.
      * 
      */
     public Optional<Output<String>> order() {
@@ -127,6 +131,7 @@ public final class GetWorkersKvNamespacesArgs extends com.pulumi.resources.Invok
 
         /**
          * @param direction Direction to order namespaces.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -138,6 +143,7 @@ public final class GetWorkersKvNamespacesArgs extends com.pulumi.resources.Invok
 
         /**
          * @param direction Direction to order namespaces.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -169,6 +175,7 @@ public final class GetWorkersKvNamespacesArgs extends com.pulumi.resources.Invok
 
         /**
          * @param order Field to order results by.
+         * Available values: &#34;id&#34;, &#34;title&#34;.
          * 
          * @return builder
          * 
@@ -180,6 +187,7 @@ public final class GetWorkersKvNamespacesArgs extends com.pulumi.resources.Invok
 
         /**
          * @param order Field to order results by.
+         * Available values: &#34;id&#34;, &#34;title&#34;.
          * 
          * @return builder
          * 

@@ -70,12 +70,14 @@ class _ZeroTrustGatewayCertificateState:
         """
         Input properties used for looking up and filtering ZeroTrustGatewayCertificate resources.
         :param pulumi.Input[str] binding_status: The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+               Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         :param pulumi.Input[str] certificate: The CA certificate
         :param pulumi.Input[str] fingerprint: The SHA256 fingerprint of the certificate.
         :param pulumi.Input[bool] in_use: Use this certificate for Gateway TLS interception
         :param pulumi.Input[str] issuer_org: The organization that issued the certificate.
         :param pulumi.Input[str] issuer_raw: The entire issuer field of the certificate.
         :param pulumi.Input[str] type: The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+               Available values: "custom", "gateway_managed".
         :param pulumi.Input[int] validity_period_days: Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
         """
         if account_id is not None:
@@ -119,6 +121,7 @@ class _ZeroTrustGatewayCertificateState:
     def binding_status(self) -> Optional[pulumi.Input[str]]:
         """
         The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         """
         return pulumi.get(self, "binding_status")
 
@@ -209,6 +212,7 @@ class _ZeroTrustGatewayCertificateState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+        Available values: "custom", "gateway_managed".
         """
         return pulumi.get(self, "type")
 
@@ -373,12 +377,14 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] binding_status: The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+               Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         :param pulumi.Input[str] certificate: The CA certificate
         :param pulumi.Input[str] fingerprint: The SHA256 fingerprint of the certificate.
         :param pulumi.Input[bool] in_use: Use this certificate for Gateway TLS interception
         :param pulumi.Input[str] issuer_org: The organization that issued the certificate.
         :param pulumi.Input[str] issuer_raw: The entire issuer field of the certificate.
         :param pulumi.Input[str] type: The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+               Available values: "custom", "gateway_managed".
         :param pulumi.Input[int] validity_period_days: Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -410,6 +416,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     def binding_status(self) -> pulumi.Output[str]:
         """
         The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         """
         return pulumi.get(self, "binding_status")
 
@@ -468,6 +475,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+        Available values: "custom", "gateway_managed".
         """
         return pulumi.get(self, "type")
 

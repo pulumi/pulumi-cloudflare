@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class AuthenticatedOriginPullsCertificateArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,21 +27,6 @@ public final class AuthenticatedOriginPullsCertificateArgs extends com.pulumi.re
      */
     public Output<String> certificate() {
         return this.certificate;
-    }
-
-    /**
-     * Identifier
-     * 
-     */
-    @Import(name="certificateId")
-    private @Nullable Output<String> certificateId;
-
-    /**
-     * @return Identifier
-     * 
-     */
-    public Optional<Output<String>> certificateId() {
-        return Optional.ofNullable(this.certificateId);
     }
 
     /**
@@ -80,7 +63,6 @@ public final class AuthenticatedOriginPullsCertificateArgs extends com.pulumi.re
 
     private AuthenticatedOriginPullsCertificateArgs(AuthenticatedOriginPullsCertificateArgs $) {
         this.certificate = $.certificate;
-        this.certificateId = $.certificateId;
         this.privateKey = $.privateKey;
         this.zoneId = $.zoneId;
     }
@@ -122,27 +104,6 @@ public final class AuthenticatedOriginPullsCertificateArgs extends com.pulumi.re
          */
         public Builder certificate(String certificate) {
             return certificate(Output.of(certificate));
-        }
-
-        /**
-         * @param certificateId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder certificateId(@Nullable Output<String> certificateId) {
-            $.certificateId = certificateId;
-            return this;
-        }
-
-        /**
-         * @param certificateId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder certificateId(String certificateId) {
-            return certificateId(Output.of(certificateId));
         }
 
         /**

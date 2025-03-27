@@ -141,6 +141,8 @@ export class ZeroTrustAccessGroup extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessGroup:AccessGroup" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustAccessGroup.__pulumiType, name, resourceInputs, opts);
     }
 }

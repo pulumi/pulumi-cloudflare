@@ -87,6 +87,7 @@ export class StreamLiveInput extends pulumi.CustomResource {
     public /*out*/ readonly srtPlayback!: pulumi.Output<outputs.StreamLiveInputSrtPlayback>;
     /**
      * The connection status of a live input.
+     * Available values: "connected", "reconnected", "reconnecting", "client*disconnect", "ttl*exceeded", "failed*to*connect", "failed*to*reconnect", "new*configuration*accepted".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -212,6 +213,7 @@ export interface StreamLiveInputState {
     srtPlayback?: pulumi.Input<inputs.StreamLiveInputSrtPlayback>;
     /**
      * The connection status of a live input.
+     * Available values: "connected", "reconnected", "reconnecting", "client*disconnect", "ttl*exceeded", "failed*to*connect", "failed*to*reconnect", "new*configuration*accepted".
      */
     status?: pulumi.Input<string>;
     /**

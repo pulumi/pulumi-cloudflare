@@ -18,6 +18,10 @@ public final class ListItemRedirect {
     private @Nullable Boolean preservePathSuffix;
     private @Nullable Boolean preserveQueryString;
     private String sourceUrl;
+    /**
+     * @return Available values: 301, 302, 307, 308.
+     * 
+     */
     private @Nullable Integer statusCode;
     private @Nullable Boolean subpathMatching;
     private String targetUrl;
@@ -35,6 +39,10 @@ public final class ListItemRedirect {
     public String sourceUrl() {
         return this.sourceUrl;
     }
+    /**
+     * @return Available values: 301, 302, 307, 308.
+     * 
+     */
     public Optional<Integer> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }

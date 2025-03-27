@@ -22,10 +22,7 @@ __all__ = ['ZeroTrustDlpCustomProfileArgs', 'ZeroTrustDlpCustomProfile']
 class ZeroTrustDlpCustomProfileArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
-<<<<<<< HEAD
-=======
                  ai_context_enabled: Optional[pulumi.Input[bool]] = None,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  allowed_match_count: Optional[pulumi.Input[int]] = None,
                  confidence_threshold: Optional[pulumi.Input[str]] = None,
                  context_awareness: Optional[pulumi.Input['ZeroTrustDlpCustomProfileContextAwarenessArgs']] = None,
@@ -43,11 +40,8 @@ class ZeroTrustDlpCustomProfileArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpCustomProfileSharedEntryArgs']]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
         """
         pulumi.set(__self__, "account_id", account_id)
-<<<<<<< HEAD
-=======
         if ai_context_enabled is not None:
             pulumi.set(__self__, "ai_context_enabled", ai_context_enabled)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if allowed_match_count is not None:
             pulumi.set(__self__, "allowed_match_count", allowed_match_count)
         if confidence_threshold is not None:
@@ -77,8 +71,6 @@ class ZeroTrustDlpCustomProfileArgs:
         pulumi.set(self, "account_id", value)
 
     @property
-<<<<<<< HEAD
-=======
     @pulumi.getter(name="aiContextEnabled")
     def ai_context_enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "ai_context_enabled")
@@ -88,7 +80,6 @@ class ZeroTrustDlpCustomProfileArgs:
         pulumi.set(self, "ai_context_enabled", value)
 
     @property
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="allowedMatchCount")
     def allowed_match_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -186,10 +177,7 @@ class ZeroTrustDlpCustomProfileArgs:
 class _ZeroTrustDlpCustomProfileState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
-<<<<<<< HEAD
-=======
                  ai_context_enabled: Optional[pulumi.Input[bool]] = None,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  allowed_match_count: Optional[pulumi.Input[int]] = None,
                  confidence_threshold: Optional[pulumi.Input[str]] = None,
                  context_awareness: Optional[pulumi.Input['ZeroTrustDlpCustomProfileContextAwarenessArgs']] = None,
@@ -211,15 +199,13 @@ class _ZeroTrustDlpCustomProfileState:
         :param pulumi.Input[str] description: The description of the profile
         :param pulumi.Input[bool] open_access: Whether this profile can be accessed by anyone
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpCustomProfileSharedEntryArgs']]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
+        :param pulumi.Input[str] type: Available values: "custom".
         :param pulumi.Input[str] updated_at: When the profile was lasted updated
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-<<<<<<< HEAD
-=======
         if ai_context_enabled is not None:
             pulumi.set(__self__, "ai_context_enabled", ai_context_enabled)
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if allowed_match_count is not None:
             pulumi.set(__self__, "allowed_match_count", allowed_match_count)
         if confidence_threshold is not None:
@@ -257,8 +243,6 @@ class _ZeroTrustDlpCustomProfileState:
         pulumi.set(self, "account_id", value)
 
     @property
-<<<<<<< HEAD
-=======
     @pulumi.getter(name="aiContextEnabled")
     def ai_context_enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "ai_context_enabled")
@@ -268,7 +252,6 @@ class _ZeroTrustDlpCustomProfileState:
         pulumi.set(self, "ai_context_enabled", value)
 
     @property
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="allowedMatchCount")
     def allowed_match_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -388,6 +371,9 @@ class _ZeroTrustDlpCustomProfileState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Available values: "custom".
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -413,10 +399,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-<<<<<<< HEAD
-=======
                  ai_context_enabled: Optional[pulumi.Input[bool]] = None,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  allowed_match_count: Optional[pulumi.Input[int]] = None,
                  confidence_threshold: Optional[pulumi.Input[str]] = None,
                  context_awareness: Optional[pulumi.Input[Union['ZeroTrustDlpCustomProfileContextAwarenessArgs', 'ZeroTrustDlpCustomProfileContextAwarenessArgsDict']]] = None,
@@ -474,10 +457,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-<<<<<<< HEAD
-=======
                  ai_context_enabled: Optional[pulumi.Input[bool]] = None,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  allowed_match_count: Optional[pulumi.Input[int]] = None,
                  confidence_threshold: Optional[pulumi.Input[str]] = None,
                  context_awareness: Optional[pulumi.Input[Union['ZeroTrustDlpCustomProfileContextAwarenessArgs', 'ZeroTrustDlpCustomProfileContextAwarenessArgsDict']]] = None,
@@ -499,10 +479,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-<<<<<<< HEAD
-=======
             __props__.__dict__["ai_context_enabled"] = ai_context_enabled
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             __props__.__dict__["allowed_match_count"] = allowed_match_count
             __props__.__dict__["confidence_threshold"] = confidence_threshold
             __props__.__dict__["context_awareness"] = context_awareness
@@ -516,6 +493,8 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
             __props__.__dict__["open_access"] = None
             __props__.__dict__["type"] = None
             __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/dlpCustomProfile:DlpCustomProfile")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustDlpCustomProfile, __self__).__init__(
             'cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile',
             resource_name,
@@ -527,10 +506,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-<<<<<<< HEAD
-=======
             ai_context_enabled: Optional[pulumi.Input[bool]] = None,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             allowed_match_count: Optional[pulumi.Input[int]] = None,
             confidence_threshold: Optional[pulumi.Input[str]] = None,
             context_awareness: Optional[pulumi.Input[Union['ZeroTrustDlpCustomProfileContextAwarenessArgs', 'ZeroTrustDlpCustomProfileContextAwarenessArgsDict']]] = None,
@@ -557,6 +533,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the profile
         :param pulumi.Input[bool] open_access: Whether this profile can be accessed by anyone
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDlpCustomProfileSharedEntryArgs', 'ZeroTrustDlpCustomProfileSharedEntryArgsDict']]]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
+        :param pulumi.Input[str] type: Available values: "custom".
         :param pulumi.Input[str] updated_at: When the profile was lasted updated
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -564,10 +541,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
         __props__ = _ZeroTrustDlpCustomProfileState.__new__(_ZeroTrustDlpCustomProfileState)
 
         __props__.__dict__["account_id"] = account_id
-<<<<<<< HEAD
-=======
         __props__.__dict__["ai_context_enabled"] = ai_context_enabled
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         __props__.__dict__["allowed_match_count"] = allowed_match_count
         __props__.__dict__["confidence_threshold"] = confidence_threshold
         __props__.__dict__["context_awareness"] = context_awareness
@@ -589,14 +563,11 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
         return pulumi.get(self, "account_id")
 
     @property
-<<<<<<< HEAD
-=======
     @pulumi.getter(name="aiContextEnabled")
     def ai_context_enabled(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "ai_context_enabled")
 
     @property
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="allowedMatchCount")
     def allowed_match_count(self) -> pulumi.Output[int]:
         """
@@ -672,6 +643,9 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
+        """
+        Available values: "custom".
+        """
         return pulumi.get(self, "type")
 
     @property

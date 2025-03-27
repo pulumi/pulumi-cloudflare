@@ -21,16 +21,20 @@ class R2ManagedDomainArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  bucket_name: pulumi.Input[str],
-                 enabled: pulumi.Input[bool]):
+                 enabled: pulumi.Input[bool],
+                 jurisdiction: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a R2ManagedDomain resource.
         :param pulumi.Input[str] account_id: Account ID
         :param pulumi.Input[str] bucket_name: Name of the bucket
         :param pulumi.Input[bool] enabled: Whether to enable public bucket access at the r2.dev domain
+        :param pulumi.Input[str] jurisdiction: Jurisdiction of the bucket
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "enabled", enabled)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
 
     @property
     @pulumi.getter(name="accountId")
@@ -68,6 +72,18 @@ class R2ManagedDomainArgs:
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
+    @property
+    @pulumi.getter
+    def jurisdiction(self) -> Optional[pulumi.Input[str]]:
+        """
+        Jurisdiction of the bucket
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jurisdiction", value)
+
 
 @pulumi.input_type
 class _R2ManagedDomainState:
@@ -76,7 +92,8 @@ class _R2ManagedDomainState:
                  bucket_id: Optional[pulumi.Input[str]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
-                 enabled: Optional[pulumi.Input[bool]] = None):
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 jurisdiction: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering R2ManagedDomain resources.
         :param pulumi.Input[str] account_id: Account ID
@@ -84,6 +101,7 @@ class _R2ManagedDomainState:
         :param pulumi.Input[str] bucket_name: Name of the bucket
         :param pulumi.Input[str] domain: Domain name of the bucket's r2.dev domain
         :param pulumi.Input[bool] enabled: Whether to enable public bucket access at the r2.dev domain
+        :param pulumi.Input[str] jurisdiction: Jurisdiction of the bucket
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -95,6 +113,8 @@ class _R2ManagedDomainState:
             pulumi.set(__self__, "domain", domain)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
 
     @property
     @pulumi.getter(name="accountId")
@@ -156,6 +176,18 @@ class _R2ManagedDomainState:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+    @property
+    @pulumi.getter
+    def jurisdiction(self) -> Optional[pulumi.Input[str]]:
+        """
+        Jurisdiction of the bucket
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jurisdiction", value)
+
 
 class R2ManagedDomain(pulumi.CustomResource):
     @overload
@@ -165,6 +197,7 @@ class R2ManagedDomain(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 jurisdiction: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -184,6 +217,7 @@ class R2ManagedDomain(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Account ID
         :param pulumi.Input[str] bucket_name: Name of the bucket
         :param pulumi.Input[bool] enabled: Whether to enable public bucket access at the r2.dev domain
+        :param pulumi.Input[str] jurisdiction: Jurisdiction of the bucket
         """
         ...
     @overload
@@ -222,6 +256,7 @@ class R2ManagedDomain(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 jurisdiction: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -240,6 +275,7 @@ class R2ManagedDomain(pulumi.CustomResource):
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["jurisdiction"] = jurisdiction
             __props__.__dict__["bucket_id"] = None
             __props__.__dict__["domain"] = None
         super(R2ManagedDomain, __self__).__init__(
@@ -256,7 +292,8 @@ class R2ManagedDomain(pulumi.CustomResource):
             bucket_id: Optional[pulumi.Input[str]] = None,
             bucket_name: Optional[pulumi.Input[str]] = None,
             domain: Optional[pulumi.Input[str]] = None,
-            enabled: Optional[pulumi.Input[bool]] = None) -> 'R2ManagedDomain':
+            enabled: Optional[pulumi.Input[bool]] = None,
+            jurisdiction: Optional[pulumi.Input[str]] = None) -> 'R2ManagedDomain':
         """
         Get an existing R2ManagedDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -269,6 +306,7 @@ class R2ManagedDomain(pulumi.CustomResource):
         :param pulumi.Input[str] bucket_name: Name of the bucket
         :param pulumi.Input[str] domain: Domain name of the bucket's r2.dev domain
         :param pulumi.Input[bool] enabled: Whether to enable public bucket access at the r2.dev domain
+        :param pulumi.Input[str] jurisdiction: Jurisdiction of the bucket
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -279,6 +317,7 @@ class R2ManagedDomain(pulumi.CustomResource):
         __props__.__dict__["bucket_name"] = bucket_name
         __props__.__dict__["domain"] = domain
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["jurisdiction"] = jurisdiction
         return R2ManagedDomain(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -320,4 +359,12 @@ class R2ManagedDomain(pulumi.CustomResource):
         Whether to enable public bucket access at the r2.dev domain
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def jurisdiction(self) -> pulumi.Output[str]:
+        """
+        Jurisdiction of the bucket
+        """
+        return pulumi.get(self, "jurisdiction")
 

@@ -14,18 +14,21 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Direction to order results.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
         /// Field to order results by.
+        /// Available values: "user.first*name", "user.last*name", "user.email", "status".
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
 
         /// <summary>
         /// A member's status in the account.
+        /// Available values: "accepted", "pending", "rejected".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

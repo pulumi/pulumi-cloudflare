@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// The property used to sort the list of results.
+        /// Available values: "host", "created".
         /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }

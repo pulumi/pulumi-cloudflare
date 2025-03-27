@@ -51,24 +51,6 @@ public final class MagicTransitSiteLanState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.haLink);
     }
 
-<<<<<<< HEAD
-    /**
-     * Identifier
-     * 
-     */
-    @Import(name="lanId")
-    private @Nullable Output<String> lanId;
-
-    /**
-     * @return Identifier
-     * 
-     */
-    public Optional<Output<String>> lanId() {
-        return Optional.ofNullable(this.lanId);
-    }
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @Import(name="name")
     private @Nullable Output<String> name;
 
@@ -147,10 +129,6 @@ public final class MagicTransitSiteLanState extends com.pulumi.resources.Resourc
     private MagicTransitSiteLanState(MagicTransitSiteLanState $) {
         this.accountId = $.accountId;
         this.haLink = $.haLink;
-<<<<<<< HEAD
-        this.lanId = $.lanId;
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.name = $.name;
         this.nat = $.nat;
         this.physport = $.physport;
@@ -220,30 +198,6 @@ public final class MagicTransitSiteLanState extends com.pulumi.resources.Resourc
             return haLink(Output.of(haLink));
         }
 
-<<<<<<< HEAD
-        /**
-         * @param lanId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder lanId(@Nullable Output<String> lanId) {
-            $.lanId = lanId;
-            return this;
-        }
-
-        /**
-         * @param lanId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder lanId(String lanId) {
-            return lanId(Output.of(lanId));
-        }
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;

@@ -6,18 +6,13 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-<<<<<<< HEAD
-=======
 import java.util.List;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
     private String accountId;
     /**
-<<<<<<< HEAD
-=======
      * @return A description of the fallback domain, displayed in the client UI.
      * 
      */
@@ -28,27 +23,21 @@ public final class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
      */
     private List<String> dnsServers;
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-<<<<<<< HEAD
-=======
     /**
      * @return The domain suffix to match when resolving locally.
      * 
      */
     private String suffix;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     private GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult() {}
     public String accountId() {
         return this.accountId;
     }
     /**
-<<<<<<< HEAD
-=======
      * @return A description of the fallback domain, displayed in the client UI.
      * 
      */
@@ -63,15 +52,12 @@ public final class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
         return this.dnsServers;
     }
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     public String id() {
         return this.id;
     }
-<<<<<<< HEAD
-=======
     /**
      * @return The domain suffix to match when resolving locally.
      * 
@@ -79,7 +65,6 @@ public final class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
     public String suffix() {
         return this.suffix;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     public static Builder builder() {
         return new Builder();
@@ -91,26 +76,18 @@ public final class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-<<<<<<< HEAD
-        private String id;
-=======
         private String description;
         private List<String> dnsServers;
         private String id;
         private String suffix;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder() {}
         public Builder(GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-<<<<<<< HEAD
-    	      this.id = defaults.id;
-=======
     	      this.description = defaults.description;
     	      this.dnsServers = defaults.dnsServers;
     	      this.id = defaults.id;
     	      this.suffix = defaults.suffix;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
 
         @CustomType.Setter
@@ -122,8 +99,6 @@ public final class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder description(String description) {
             if (description == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult", "description");
@@ -143,7 +118,6 @@ public final class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
             return dnsServers(List.of(dnsServers));
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult", "id");
@@ -151,12 +125,6 @@ public final class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
             this.id = id;
             return this;
         }
-<<<<<<< HEAD
-        public GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult build() {
-            final var _resultValue = new GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult();
-            _resultValue.accountId = accountId;
-            _resultValue.id = id;
-=======
         @CustomType.Setter
         public Builder suffix(String suffix) {
             if (suffix == null) {
@@ -172,7 +140,6 @@ public final class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
             _resultValue.dnsServers = dnsServers;
             _resultValue.id = id;
             _resultValue.suffix = suffix;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return _resultValue;
         }
     }

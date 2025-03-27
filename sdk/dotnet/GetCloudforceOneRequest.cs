@@ -159,6 +159,7 @@ namespace Pulumi.Cloudflare
         public readonly string? RequestIdentifier;
         /// <summary>
         /// Request Status
+        /// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -167,6 +168,7 @@ namespace Pulumi.Cloudflare
         public readonly string Summary;
         /// <summary>
         /// The CISA defined Traffic Light Protocol (TLP)
+        /// Available values: "clear", "amber", "amber-strict", "green", "red".
         /// </summary>
         public readonly string Tlp;
         /// <summary>

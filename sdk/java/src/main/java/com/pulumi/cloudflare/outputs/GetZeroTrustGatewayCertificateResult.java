@@ -16,6 +16,7 @@ public final class GetZeroTrustGatewayCertificateResult {
     private String accountId;
     /**
      * @return The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+     * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
      * 
      */
     private String bindingStatus;
@@ -58,6 +59,7 @@ public final class GetZeroTrustGatewayCertificateResult {
     private String issuerRaw;
     /**
      * @return The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
      * 
      */
     private String type;
@@ -70,6 +72,7 @@ public final class GetZeroTrustGatewayCertificateResult {
     }
     /**
      * @return The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+     * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
      * 
      */
     public String bindingStatus() {
@@ -132,6 +135,7 @@ public final class GetZeroTrustGatewayCertificateResult {
     }
     /**
      * @return The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
      * 
      */
     public String type() {

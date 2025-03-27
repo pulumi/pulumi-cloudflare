@@ -32,6 +32,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.
+        /// Available values: "off", "automatic".
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

@@ -21,10 +21,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeGroupArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeGsuiteArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeIpArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeIpListArgs;
-<<<<<<< HEAD
-=======
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeLoginMethodArgs;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeOktaArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeSamlArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeServiceTokenArgs;
@@ -181,25 +178,6 @@ public final class ZeroTrustAccessGroupIncludeArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.ipList);
     }
 
-<<<<<<< HEAD
-    @Import(name="okta")
-    private @Nullable Output<ZeroTrustAccessGroupIncludeOktaArgs> okta;
-
-    public Optional<Output<ZeroTrustAccessGroupIncludeOktaArgs>> okta() {
-        return Optional.ofNullable(this.okta);
-    }
-
-    @Import(name="saml")
-    private @Nullable Output<ZeroTrustAccessGroupIncludeSamlArgs> saml;
-
-    public Optional<Output<ZeroTrustAccessGroupIncludeSamlArgs>> saml() {
-        return Optional.ofNullable(this.saml);
-    }
-
-    @Import(name="serviceToken")
-    private @Nullable Output<ZeroTrustAccessGroupIncludeServiceTokenArgs> serviceToken;
-
-=======
     @Import(name="loginMethod")
     private @Nullable Output<ZeroTrustAccessGroupIncludeLoginMethodArgs> loginMethod;
 
@@ -224,7 +202,6 @@ public final class ZeroTrustAccessGroupIncludeArgs extends com.pulumi.resources.
     @Import(name="serviceToken")
     private @Nullable Output<ZeroTrustAccessGroupIncludeServiceTokenArgs> serviceToken;
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Optional<Output<ZeroTrustAccessGroupIncludeServiceTokenArgs>> serviceToken() {
         return Optional.ofNullable(this.serviceToken);
     }
@@ -250,10 +227,7 @@ public final class ZeroTrustAccessGroupIncludeArgs extends com.pulumi.resources.
         this.gsuite = $.gsuite;
         this.ip = $.ip;
         this.ipList = $.ipList;
-<<<<<<< HEAD
-=======
         this.loginMethod = $.loginMethod;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.okta = $.okta;
         this.saml = $.saml;
         this.serviceToken = $.serviceToken;
@@ -463,31 +437,6 @@ public final class ZeroTrustAccessGroupIncludeArgs extends com.pulumi.resources.
             return ipList(Output.of(ipList));
         }
 
-<<<<<<< HEAD
-        public Builder okta(@Nullable Output<ZeroTrustAccessGroupIncludeOktaArgs> okta) {
-            $.okta = okta;
-            return this;
-        }
-
-        public Builder okta(ZeroTrustAccessGroupIncludeOktaArgs okta) {
-            return okta(Output.of(okta));
-        }
-
-        public Builder saml(@Nullable Output<ZeroTrustAccessGroupIncludeSamlArgs> saml) {
-            $.saml = saml;
-            return this;
-        }
-
-        public Builder saml(ZeroTrustAccessGroupIncludeSamlArgs saml) {
-            return saml(Output.of(saml));
-        }
-
-        public Builder serviceToken(@Nullable Output<ZeroTrustAccessGroupIncludeServiceTokenArgs> serviceToken) {
-            $.serviceToken = serviceToken;
-            return this;
-        }
-
-=======
         public Builder loginMethod(@Nullable Output<ZeroTrustAccessGroupIncludeLoginMethodArgs> loginMethod) {
             $.loginMethod = loginMethod;
             return this;
@@ -520,7 +469,6 @@ public final class ZeroTrustAccessGroupIncludeArgs extends com.pulumi.resources.
             return this;
         }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder serviceToken(ZeroTrustAccessGroupIncludeServiceTokenArgs serviceToken) {
             return serviceToken(Output.of(serviceToken));
         }

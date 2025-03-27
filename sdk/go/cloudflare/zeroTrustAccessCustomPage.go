@@ -60,6 +60,7 @@ type ZeroTrustAccessCustomPage struct {
 	// Custom page name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Custom page type.
+	// Available values: "identityDenied", "forbidden".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// UUID
 	Uid       pulumi.StringOutput `pulumi:"uid"`
@@ -85,6 +86,12 @@ func NewZeroTrustAccessCustomPage(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/accessCustomPage:AccessCustomPage"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustAccessCustomPage
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage", name, args, &resource, opts...)
@@ -118,6 +125,7 @@ type zeroTrustAccessCustomPageState struct {
 	// Custom page name.
 	Name *string `pulumi:"name"`
 	// Custom page type.
+	// Available values: "identityDenied", "forbidden".
 	Type *string `pulumi:"type"`
 	// UUID
 	Uid       *string `pulumi:"uid"`
@@ -135,6 +143,7 @@ type ZeroTrustAccessCustomPageState struct {
 	// Custom page name.
 	Name pulumi.StringPtrInput
 	// Custom page type.
+	// Available values: "identityDenied", "forbidden".
 	Type pulumi.StringPtrInput
 	// UUID
 	Uid       pulumi.StringPtrInput
@@ -155,6 +164,7 @@ type zeroTrustAccessCustomPageArgs struct {
 	// Custom page name.
 	Name string `pulumi:"name"`
 	// Custom page type.
+	// Available values: "identityDenied", "forbidden".
 	Type string `pulumi:"type"`
 }
 
@@ -169,6 +179,7 @@ type ZeroTrustAccessCustomPageArgs struct {
 	// Custom page name.
 	Name pulumi.StringInput
 	// Custom page type.
+	// Available values: "identityDenied", "forbidden".
 	Type pulumi.StringInput
 }
 
@@ -284,6 +295,7 @@ func (o ZeroTrustAccessCustomPageOutput) Name() pulumi.StringOutput {
 }
 
 // Custom page type.
+// Available values: "identityDenied", "forbidden".
 func (o ZeroTrustAccessCustomPageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessCustomPage) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

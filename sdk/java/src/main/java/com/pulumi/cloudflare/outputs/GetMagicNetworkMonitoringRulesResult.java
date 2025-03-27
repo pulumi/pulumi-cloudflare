@@ -24,7 +24,8 @@ public final class GetMagicNetworkMonitoringRulesResult {
      */
     private Double bandwidthThreshold;
     /**
-     * @return The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [&#34;1m&#34;,&#34;5m&#34;,&#34;10m&#34;,&#34;15m&#34;,&#34;20m&#34;,&#34;30m&#34;,&#34;45m&#34;,&#34;60m&#34;]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+     * @return The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [&#34;1m&#34;,&#34;5m&#34;,&#34;10m&#34;,&#34;15m&#34;,&#34;20m&#34;,&#34;30m&#34;,&#34;45m&#34;,&#34;60m&#34;].
+     * Available values: &#34;1m&#34;, &#34;5m&#34;, &#34;10m&#34;, &#34;15m&#34;, &#34;20m&#34;, &#34;30m&#34;, &#34;45m&#34;, &#34;60m&#34;.
      * 
      */
     private String duration;
@@ -43,7 +44,31 @@ public final class GetMagicNetworkMonitoringRulesResult {
      * 
      */
     private Double packetThreshold;
+    /**
+     * @return Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+     * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
+     * 
+     */
+    private String prefixMatch;
     private List<String> prefixes;
+    /**
+     * @return MNM rule type.
+     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advanced_ddos&#34;.
+     * 
+     */
+    private String type;
+    /**
+     * @return Level of sensitivity set for zscore rules.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+     * 
+     */
+    private String zscoreSensitivity;
+    /**
+     * @return Target of the zscore rule analysis.
+     * Available values: &#34;bits&#34;, &#34;packets&#34;.
+     * 
+     */
+    private String zscoreTarget;
 
     private GetMagicNetworkMonitoringRulesResult() {}
     /**
@@ -61,7 +86,8 @@ public final class GetMagicNetworkMonitoringRulesResult {
         return this.bandwidthThreshold;
     }
     /**
-     * @return The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [&#34;1m&#34;,&#34;5m&#34;,&#34;10m&#34;,&#34;15m&#34;,&#34;20m&#34;,&#34;30m&#34;,&#34;45m&#34;,&#34;60m&#34;]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+     * @return The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [&#34;1m&#34;,&#34;5m&#34;,&#34;10m&#34;,&#34;15m&#34;,&#34;20m&#34;,&#34;30m&#34;,&#34;45m&#34;,&#34;60m&#34;].
+     * Available values: &#34;1m&#34;, &#34;5m&#34;, &#34;10m&#34;, &#34;15m&#34;, &#34;20m&#34;, &#34;30m&#34;, &#34;45m&#34;, &#34;60m&#34;.
      * 
      */
     public String duration() {
@@ -88,8 +114,40 @@ public final class GetMagicNetworkMonitoringRulesResult {
     public Double packetThreshold() {
         return this.packetThreshold;
     }
+    /**
+     * @return Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+     * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
+     * 
+     */
+    public String prefixMatch() {
+        return this.prefixMatch;
+    }
     public List<String> prefixes() {
         return this.prefixes;
+    }
+    /**
+     * @return MNM rule type.
+     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advanced_ddos&#34;.
+     * 
+     */
+    public String type() {
+        return this.type;
+    }
+    /**
+     * @return Level of sensitivity set for zscore rules.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+     * 
+     */
+    public String zscoreSensitivity() {
+        return this.zscoreSensitivity;
+    }
+    /**
+     * @return Target of the zscore rule analysis.
+     * Available values: &#34;bits&#34;, &#34;packets&#34;.
+     * 
+     */
+    public String zscoreTarget() {
+        return this.zscoreTarget;
     }
 
     public static Builder builder() {
@@ -107,7 +165,11 @@ public final class GetMagicNetworkMonitoringRulesResult {
         private String id;
         private String name;
         private Double packetThreshold;
+        private String prefixMatch;
         private List<String> prefixes;
+        private String type;
+        private String zscoreSensitivity;
+        private String zscoreTarget;
         public Builder() {}
         public Builder(GetMagicNetworkMonitoringRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -117,7 +179,11 @@ public final class GetMagicNetworkMonitoringRulesResult {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.packetThreshold = defaults.packetThreshold;
+    	      this.prefixMatch = defaults.prefixMatch;
     	      this.prefixes = defaults.prefixes;
+    	      this.type = defaults.type;
+    	      this.zscoreSensitivity = defaults.zscoreSensitivity;
+    	      this.zscoreTarget = defaults.zscoreTarget;
         }
 
         @CustomType.Setter
@@ -169,6 +235,14 @@ public final class GetMagicNetworkMonitoringRulesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder prefixMatch(String prefixMatch) {
+            if (prefixMatch == null) {
+              throw new MissingRequiredPropertyException("GetMagicNetworkMonitoringRulesResult", "prefixMatch");
+            }
+            this.prefixMatch = prefixMatch;
+            return this;
+        }
+        @CustomType.Setter
         public Builder prefixes(List<String> prefixes) {
             if (prefixes == null) {
               throw new MissingRequiredPropertyException("GetMagicNetworkMonitoringRulesResult", "prefixes");
@@ -179,6 +253,30 @@ public final class GetMagicNetworkMonitoringRulesResult {
         public Builder prefixes(String... prefixes) {
             return prefixes(List.of(prefixes));
         }
+        @CustomType.Setter
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetMagicNetworkMonitoringRulesResult", "type");
+            }
+            this.type = type;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder zscoreSensitivity(String zscoreSensitivity) {
+            if (zscoreSensitivity == null) {
+              throw new MissingRequiredPropertyException("GetMagicNetworkMonitoringRulesResult", "zscoreSensitivity");
+            }
+            this.zscoreSensitivity = zscoreSensitivity;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder zscoreTarget(String zscoreTarget) {
+            if (zscoreTarget == null) {
+              throw new MissingRequiredPropertyException("GetMagicNetworkMonitoringRulesResult", "zscoreTarget");
+            }
+            this.zscoreTarget = zscoreTarget;
+            return this;
+        }
         public GetMagicNetworkMonitoringRulesResult build() {
             final var _resultValue = new GetMagicNetworkMonitoringRulesResult();
             _resultValue.automaticAdvertisement = automaticAdvertisement;
@@ -187,7 +285,11 @@ public final class GetMagicNetworkMonitoringRulesResult {
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.packetThreshold = packetThreshold;
+            _resultValue.prefixMatch = prefixMatch;
             _resultValue.prefixes = prefixes;
+            _resultValue.type = type;
+            _resultValue.zscoreSensitivity = zscoreSensitivity;
+            _resultValue.zscoreTarget = zscoreTarget;
             return _resultValue;
         }
     }

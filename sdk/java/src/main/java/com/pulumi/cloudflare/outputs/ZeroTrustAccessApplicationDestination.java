@@ -23,6 +23,7 @@ public final class ZeroTrustAccessApplicationDestination {
     private @Nullable String hostname;
     /**
      * @return The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+     * Available values: &#34;tcp&#34;, &#34;udp&#34;.
      * 
      */
     private @Nullable String l4Protocol;
@@ -31,6 +32,10 @@ public final class ZeroTrustAccessApplicationDestination {
      * 
      */
     private @Nullable String portRange;
+    /**
+     * @return Available values: &#34;public&#34;.
+     * 
+     */
     private @Nullable String type;
     /**
      * @return The URI of the destination. Public destinations&#39; URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
@@ -60,6 +65,7 @@ public final class ZeroTrustAccessApplicationDestination {
     }
     /**
      * @return The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+     * Available values: &#34;tcp&#34;, &#34;udp&#34;.
      * 
      */
     public Optional<String> l4Protocol() {
@@ -72,6 +78,10 @@ public final class ZeroTrustAccessApplicationDestination {
     public Optional<String> portRange() {
         return Optional.ofNullable(this.portRange);
     }
+    /**
+     * @return Available values: &#34;public&#34;.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

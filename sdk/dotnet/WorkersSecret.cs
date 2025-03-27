@@ -74,6 +74,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of secret to put.
+        /// Available values: "secret_text".
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -101,6 +102,14 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/workerSecret:WorkerSecret" },
+                },
+                AdditionalSecretOutputs =
+                {
+                    "text",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -148,14 +157,25 @@ namespace Pulumi.Cloudflare
         [Input("scriptName", required: true)]
         public Input<string> ScriptName { get; set; } = null!;
 
+        [Input("text")]
+        private Input<string>? _text;
+
         /// <summary>
         /// The value of the secret.
         /// </summary>
-        [Input("text")]
-        public Input<string>? Text { get; set; }
+        public Input<string>? Text
+        {
+            get => _text;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _text = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The type of secret to put.
+        /// Available values: "secret_text".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -192,14 +212,25 @@ namespace Pulumi.Cloudflare
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }
 
+        [Input("text")]
+        private Input<string>? _text;
+
         /// <summary>
         /// The value of the secret.
         /// </summary>
-        [Input("text")]
-        public Input<string>? Text { get; set; }
+        public Input<string>? Text
+        {
+            get => _text;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _text = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The type of secret to put.
+        /// Available values: "secret_text".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

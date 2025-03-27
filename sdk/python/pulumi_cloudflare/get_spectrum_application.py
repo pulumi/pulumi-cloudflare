@@ -81,11 +81,7 @@ class GetSpectrumApplicationResult:
     @pulumi.getter(name="appId")
     def app_id(self) -> str:
         """
-<<<<<<< HEAD
-        Identifier
-=======
         App identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         return pulumi.get(self, "app_id")
 
@@ -185,6 +181,7 @@ class GetSpectrumApplicationResult:
     def proxy_protocol(self) -> str:
         """
         Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+        Available values: "off", "v1", "v2", "simple".
         """
         return pulumi.get(self, "proxy_protocol")
 
@@ -193,6 +190,7 @@ class GetSpectrumApplicationResult:
     def tls(self) -> str:
         """
         The type of TLS termination associated with the application.
+        Available values: "off", "flexible", "full", "strict".
         """
         return pulumi.get(self, "tls")
 
@@ -201,6 +199,7 @@ class GetSpectrumApplicationResult:
     def traffic_type(self) -> str:
         """
         Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+        Available values: "direct", "http", "https".
         """
         return pulumi.get(self, "traffic_type")
 
@@ -208,11 +207,7 @@ class GetSpectrumApplicationResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
         """
-<<<<<<< HEAD
-        Identifier
-=======
         Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         return pulumi.get(self, "zone_id")
 
@@ -256,13 +251,8 @@ def get_spectrum_application(app_id: Optional[str] = None,
     ```
 
 
-<<<<<<< HEAD
-    :param str app_id: Identifier
-    :param str zone_id: Identifier
-=======
     :param str app_id: App identifier.
     :param str zone_id: Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     """
     __args__ = dict()
     __args__['appId'] = app_id
@@ -302,13 +292,8 @@ def get_spectrum_application_output(app_id: Optional[pulumi.Input[str]] = None,
     ```
 
 
-<<<<<<< HEAD
-    :param str app_id: Identifier
-    :param str zone_id: Identifier
-=======
     :param str app_id: App identifier.
     :param str zone_id: Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     """
     __args__ = dict()
     __args__['appId'] = app_id

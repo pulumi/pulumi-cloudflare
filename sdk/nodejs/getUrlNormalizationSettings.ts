@@ -43,10 +43,12 @@ export interface GetUrlNormalizationSettingsResult {
     readonly id: string;
     /**
      * The scope of the URL normalization.
+     * Available values: "incoming", "both".
      */
     readonly scope: string;
     /**
      * The type of URL normalization performed by Cloudflare.
+     * Available values: "cloudflare", "rfc3986".
      */
     readonly type: string;
     /**

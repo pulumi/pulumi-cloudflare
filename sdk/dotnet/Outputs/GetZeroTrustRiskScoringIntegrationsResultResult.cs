@@ -29,6 +29,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// The id of the integration, a UUIDv4.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Available values: "Okta".
+        /// </summary>
         public readonly string IntegrationType;
         /// <summary>
         /// A reference ID defined by the client.

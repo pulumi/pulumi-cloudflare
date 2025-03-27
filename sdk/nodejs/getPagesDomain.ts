@@ -55,6 +55,9 @@ export interface GetPagesDomainResult {
      * Identifier
      */
     readonly accountId: string;
+    /**
+     * Available values: "google", "letsEncrypt".
+     */
     readonly certificateAuthority: string;
     readonly createdOn: string;
     readonly domainId: string;
@@ -71,6 +74,9 @@ export interface GetPagesDomainResult {
      * Name of the project.
      */
     readonly projectName: string;
+    /**
+     * Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
+     */
     readonly status: string;
     readonly validationData: outputs.GetPagesDomainValidationData;
     readonly verificationData: outputs.GetPagesDomainVerificationData;

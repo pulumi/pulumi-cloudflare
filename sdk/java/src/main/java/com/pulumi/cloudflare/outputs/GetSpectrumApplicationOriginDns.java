@@ -23,6 +23,7 @@ public final class GetSpectrumApplicationOriginDns {
     private Integer ttl;
     /**
      * @return The type of DNS record associated with the origin. &#34;&#34; is used to specify a combination of A/AAAA records.
+     * Available values: &#34;&#34;, &#34;A&#34;, &#34;AAAA&#34;, &#34;SRV&#34;.
      * 
      */
     private String type;
@@ -44,6 +45,7 @@ public final class GetSpectrumApplicationOriginDns {
     }
     /**
      * @return The type of DNS record associated with the origin. &#34;&#34; is used to specify a combination of A/AAAA records.
+     * Available values: &#34;&#34;, &#34;A&#34;, &#34;AAAA&#34;, &#34;SRV&#34;.
      * 
      */
     public String type() {

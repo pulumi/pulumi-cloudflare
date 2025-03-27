@@ -13,11 +13,13 @@ import javax.annotation.Nullable;
 public final class WorkersScriptPlacement {
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;smart&#34;.
      * 
      */
     private @Nullable String mode;
     /**
      * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
      */
     private @Nullable String status;
@@ -25,6 +27,7 @@ public final class WorkersScriptPlacement {
     private WorkersScriptPlacement() {}
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;smart&#34;.
      * 
      */
     public Optional<String> mode() {
@@ -32,6 +35,7 @@ public final class WorkersScriptPlacement {
     }
     /**
      * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
      */
     public Optional<String> status() {

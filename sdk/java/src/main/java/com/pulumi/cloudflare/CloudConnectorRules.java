@@ -69,9 +69,8 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/cloudConnectorRules:CloudConnectorRules")
 public class CloudConnectorRules extends com.pulumi.resources.CustomResource {
     /**
-<<<<<<< HEAD
-=======
      * Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
      * 
      */
     @Export(name="cloudProvider", refs={String.class}, tree="[0]")
@@ -79,6 +78,7 @@ public class CloudConnectorRules extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
      * 
      */
     public Output<String> cloudProvider() {
@@ -117,7 +117,6 @@ public class CloudConnectorRules extends com.pulumi.resources.CustomResource {
         return this.parameters;
     }
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * List of Cloud Connector rules
      * 
      */

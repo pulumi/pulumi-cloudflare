@@ -17,6 +17,7 @@ public final class R2CustomDomainStatusArgs extends com.pulumi.resources.Resourc
 
     /**
      * Ownership status of the domain
+     * Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;, &#34;unknown&#34;.
      * 
      */
     @Import(name="ownership")
@@ -24,6 +25,7 @@ public final class R2CustomDomainStatusArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Ownership status of the domain
+     * Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;, &#34;unknown&#34;.
      * 
      */
     public Optional<Output<String>> ownership() {
@@ -32,6 +34,7 @@ public final class R2CustomDomainStatusArgs extends com.pulumi.resources.Resourc
 
     /**
      * SSL certificate status
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;error&#34;, &#34;unknown&#34;.
      * 
      */
     @Import(name="ssl")
@@ -39,6 +42,7 @@ public final class R2CustomDomainStatusArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return SSL certificate status
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;error&#34;, &#34;unknown&#34;.
      * 
      */
     public Optional<Output<String>> ssl() {
@@ -72,6 +76,7 @@ public final class R2CustomDomainStatusArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param ownership Ownership status of the domain
+         * Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;, &#34;unknown&#34;.
          * 
          * @return builder
          * 
@@ -83,6 +88,7 @@ public final class R2CustomDomainStatusArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param ownership Ownership status of the domain
+         * Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;, &#34;unknown&#34;.
          * 
          * @return builder
          * 
@@ -93,6 +99,7 @@ public final class R2CustomDomainStatusArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param ssl SSL certificate status
+         * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;error&#34;, &#34;unknown&#34;.
          * 
          * @return builder
          * 
@@ -104,6 +111,7 @@ public final class R2CustomDomainStatusArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param ssl SSL certificate status
+         * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;error&#34;, &#34;unknown&#34;.
          * 
          * @return builder
          * 

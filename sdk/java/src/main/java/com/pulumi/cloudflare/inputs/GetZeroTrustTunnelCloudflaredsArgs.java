@@ -41,14 +41,14 @@ public final class GetZeroTrustTunnelCloudflaredsArgs extends com.pulumi.resourc
     }
 
     /**
-     * If provided, include only tunnels that were created (and not deleted) before this time.
+     * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      * 
      */
     @Import(name="existedAt")
     private @Nullable Output<String> existedAt;
 
     /**
-     * @return If provided, include only tunnels that were created (and not deleted) before this time.
+     * @return If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      * 
      */
     public Optional<Output<String>> existedAt() {
@@ -109,6 +109,7 @@ public final class GetZeroTrustTunnelCloudflaredsArgs extends com.pulumi.resourc
 
     /**
      * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+     * Available values: &#34;inactive&#34;, &#34;degraded&#34;, &#34;healthy&#34;, &#34;down&#34;.
      * 
      */
     @Import(name="status")
@@ -116,6 +117,7 @@ public final class GetZeroTrustTunnelCloudflaredsArgs extends com.pulumi.resourc
 
     /**
      * @return The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+     * Available values: &#34;inactive&#34;, &#34;degraded&#34;, &#34;healthy&#34;, &#34;down&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -216,7 +218,7 @@ public final class GetZeroTrustTunnelCloudflaredsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param existedAt If provided, include only tunnels that were created (and not deleted) before this time.
+         * @param existedAt If provided, include only resources that were created (and not deleted) before this time. URL encoded.
          * 
          * @return builder
          * 
@@ -227,7 +229,7 @@ public final class GetZeroTrustTunnelCloudflaredsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param existedAt If provided, include only tunnels that were created (and not deleted) before this time.
+         * @param existedAt If provided, include only resources that were created (and not deleted) before this time. URL encoded.
          * 
          * @return builder
          * 
@@ -310,6 +312,7 @@ public final class GetZeroTrustTunnelCloudflaredsArgs extends com.pulumi.resourc
 
         /**
          * @param status The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+         * Available values: &#34;inactive&#34;, &#34;degraded&#34;, &#34;healthy&#34;, &#34;down&#34;.
          * 
          * @return builder
          * 
@@ -321,6 +324,7 @@ public final class GetZeroTrustTunnelCloudflaredsArgs extends com.pulumi.resourc
 
         /**
          * @param status The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+         * Available values: &#34;inactive&#34;, &#34;degraded&#34;, &#34;healthy&#34;, &#34;down&#34;.
          * 
          * @return builder
          * 

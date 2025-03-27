@@ -26,14 +26,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZeroTrustTunnelCloudflaredRoutes(ctx, &cloudflare.LookupZeroTrustTunnelCloudflaredRoutesArgs{
-//				AccountId:        "699d98642c564d2e855e9661899b7252",
-//				Comment:          pulumi.StringRef("Example comment for this route."),
-//				ExistedAt:        pulumi.StringRef("2019-10-12T07:20:50.52Z"),
-//				IsDeleted:        pulumi.BoolRef(true),
-//				NetworkSubset:    pulumi.StringRef("172.16.0.0/16"),
-//				NetworkSuperset:  pulumi.StringRef("172.16.0.0/16"),
-//				RouteId:          pulumi.StringRef("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
-//				TunTypes:         pulumi.StringRef("cfd_tunnel,warp_connector"),
+//				AccountId:       "699d98642c564d2e855e9661899b7252",
+//				Comment:         pulumi.StringRef("Example comment for this route."),
+//				ExistedAt:       pulumi.StringRef("2019-10-12T07%3A20%3A50.52Z"),
+//				IsDeleted:       pulumi.BoolRef(true),
+//				NetworkSubset:   pulumi.StringRef("172.16.0.0/16"),
+//				NetworkSuperset: pulumi.StringRef("172.16.0.0/16"),
+//				RouteId:         pulumi.StringRef("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
+//				TunTypes: []string{
+//					"cfd_tunnel",
+//				},
 //				TunnelId:         pulumi.StringRef("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
 //				VirtualNetworkId: pulumi.StringRef("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
 //			}, nil)
@@ -61,7 +63,7 @@ type LookupZeroTrustTunnelCloudflaredRoutesArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Optional remark describing the route.
 	Comment *string `pulumi:"comment"`
-	// If provided, include only tunnels that were created (and not deleted) before this time.
+	// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
 	ExistedAt *string `pulumi:"existedAt"`
 	// If `true`, only include deleted routes. If `false`, exclude deleted routes. If empty, all routes will be included.
 	IsDeleted *bool `pulumi:"isDeleted"`
@@ -73,8 +75,8 @@ type LookupZeroTrustTunnelCloudflaredRoutesArgs struct {
 	NetworkSuperset *string `pulumi:"networkSuperset"`
 	// UUID of the route.
 	RouteId *string `pulumi:"routeId"`
-	// The types of tunnels to filter separated by a comma.
-	TunTypes *string `pulumi:"tunTypes"`
+	// The types of tunnels to filter by, separated by commas.
+	TunTypes []string `pulumi:"tunTypes"`
 	// UUID of the tunnel.
 	TunnelId *string `pulumi:"tunnelId"`
 	// UUID of the virtual network.
@@ -87,7 +89,7 @@ type LookupZeroTrustTunnelCloudflaredRoutesResult struct {
 	AccountId string `pulumi:"accountId"`
 	// Optional remark describing the route.
 	Comment *string `pulumi:"comment"`
-	// If provided, include only tunnels that were created (and not deleted) before this time.
+	// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
 	ExistedAt *string `pulumi:"existedAt"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -103,8 +105,8 @@ type LookupZeroTrustTunnelCloudflaredRoutesResult struct {
 	Results []GetZeroTrustTunnelCloudflaredRoutesResult `pulumi:"results"`
 	// UUID of the route.
 	RouteId *string `pulumi:"routeId"`
-	// The types of tunnels to filter separated by a comma.
-	TunTypes *string `pulumi:"tunTypes"`
+	// The types of tunnels to filter by, separated by commas.
+	TunTypes []string `pulumi:"tunTypes"`
 	// UUID of the tunnel.
 	TunnelId *string `pulumi:"tunnelId"`
 	// UUID of the virtual network.
@@ -126,7 +128,7 @@ type LookupZeroTrustTunnelCloudflaredRoutesOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Optional remark describing the route.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	// If provided, include only tunnels that were created (and not deleted) before this time.
+	// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
 	ExistedAt pulumi.StringPtrInput `pulumi:"existedAt"`
 	// If `true`, only include deleted routes. If `false`, exclude deleted routes. If empty, all routes will be included.
 	IsDeleted pulumi.BoolPtrInput `pulumi:"isDeleted"`
@@ -138,8 +140,8 @@ type LookupZeroTrustTunnelCloudflaredRoutesOutputArgs struct {
 	NetworkSuperset pulumi.StringPtrInput `pulumi:"networkSuperset"`
 	// UUID of the route.
 	RouteId pulumi.StringPtrInput `pulumi:"routeId"`
-	// The types of tunnels to filter separated by a comma.
-	TunTypes pulumi.StringPtrInput `pulumi:"tunTypes"`
+	// The types of tunnels to filter by, separated by commas.
+	TunTypes pulumi.StringArrayInput `pulumi:"tunTypes"`
 	// UUID of the tunnel.
 	TunnelId pulumi.StringPtrInput `pulumi:"tunnelId"`
 	// UUID of the virtual network.
@@ -175,7 +177,7 @@ func (o LookupZeroTrustTunnelCloudflaredRoutesResultOutput) Comment() pulumi.Str
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredRoutesResult) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// If provided, include only tunnels that were created (and not deleted) before this time.
+// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
 func (o LookupZeroTrustTunnelCloudflaredRoutesResultOutput) ExistedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredRoutesResult) *string { return v.ExistedAt }).(pulumi.StringPtrOutput)
 }
@@ -217,9 +219,9 @@ func (o LookupZeroTrustTunnelCloudflaredRoutesResultOutput) RouteId() pulumi.Str
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredRoutesResult) *string { return v.RouteId }).(pulumi.StringPtrOutput)
 }
 
-// The types of tunnels to filter separated by a comma.
-func (o LookupZeroTrustTunnelCloudflaredRoutesResultOutput) TunTypes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredRoutesResult) *string { return v.TunTypes }).(pulumi.StringPtrOutput)
+// The types of tunnels to filter by, separated by commas.
+func (o LookupZeroTrustTunnelCloudflaredRoutesResultOutput) TunTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredRoutesResult) []string { return v.TunTypes }).(pulumi.StringArrayOutput)
 }
 
 // UUID of the tunnel.

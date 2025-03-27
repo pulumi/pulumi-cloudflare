@@ -123,6 +123,8 @@ export class WorkersCustomDomain extends pulumi.CustomResource {
             resourceInputs["zoneName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/workerDomain:WorkerDomain" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkersCustomDomain.__pulumiType, name, resourceInputs, opts);
     }
 }

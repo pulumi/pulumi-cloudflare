@@ -20,6 +20,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The operator used when matching: `eq` means "equal" and `ne` means "not equal".
+        /// Available values: "eq", "ne".
         /// </summary>
         [Input("op")]
         public Input<string>? Op { get; set; }

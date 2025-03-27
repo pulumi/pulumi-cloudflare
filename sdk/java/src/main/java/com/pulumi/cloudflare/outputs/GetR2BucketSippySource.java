@@ -15,6 +15,10 @@ public final class GetR2BucketSippySource {
      * 
      */
     private String bucket;
+    /**
+     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;.
+     * 
+     */
     private String provider;
     /**
      * @return Region where the bucket resides (AWS only)
@@ -30,6 +34,10 @@ public final class GetR2BucketSippySource {
     public String bucket() {
         return this.bucket;
     }
+    /**
+     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;.
+     * 
+     */
     public String provider() {
         return this.provider;
     }

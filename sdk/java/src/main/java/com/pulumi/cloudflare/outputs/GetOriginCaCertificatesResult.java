@@ -39,11 +39,13 @@ public final class GetOriginCaCertificatesResult {
     private String id;
     /**
      * @return Signature type desired on certificate (&#34;origin-rsa&#34; (rsa), &#34;origin-ecc&#34; (ecdsa), or &#34;keyless-certificate&#34; (for Keyless SSL servers).
+     * Available values: &#34;origin-rsa&#34;, &#34;origin-ecc&#34;, &#34;keyless-certificate&#34;.
      * 
      */
     private String requestType;
     /**
      * @return The number of days for which the certificate should be valid.
+     * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      * 
      */
     private Double requestedValidity;
@@ -86,6 +88,7 @@ public final class GetOriginCaCertificatesResult {
     }
     /**
      * @return Signature type desired on certificate (&#34;origin-rsa&#34; (rsa), &#34;origin-ecc&#34; (ecdsa), or &#34;keyless-certificate&#34; (for Keyless SSL servers).
+     * Available values: &#34;origin-rsa&#34;, &#34;origin-ecc&#34;, &#34;keyless-certificate&#34;.
      * 
      */
     public String requestType() {
@@ -93,6 +96,7 @@ public final class GetOriginCaCertificatesResult {
     }
     /**
      * @return The number of days for which the certificate should be valid.
+     * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      * 
      */
     public Double requestedValidity() {

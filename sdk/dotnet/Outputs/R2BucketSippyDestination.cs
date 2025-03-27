@@ -19,6 +19,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
         /// </summary>
         public readonly string? AccessKeyId;
+        /// <summary>
+        /// Available values: "r2".
+        /// </summary>
         public readonly string? Provider;
         /// <summary>
         /// Value of a Cloudflare API token.

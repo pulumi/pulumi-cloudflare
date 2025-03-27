@@ -46,6 +46,7 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
 
     /**
      * The HTTP method used to access the endpoint.
+     * Available values: &#34;GET&#34;, &#34;POST&#34;, &#34;HEAD&#34;, &#34;OPTIONS&#34;, &#34;PUT&#34;, &#34;DELETE&#34;, &#34;CONNECT&#34;, &#34;PATCH&#34;, &#34;TRACE&#34;.
      * 
      */
     @Import(name="method", required=true)
@@ -53,6 +54,7 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The HTTP method used to access the endpoint.
+     * Available values: &#34;GET&#34;, &#34;POST&#34;, &#34;HEAD&#34;, &#34;OPTIONS&#34;, &#34;PUT&#34;, &#34;DELETE&#34;, &#34;CONNECT&#34;, &#34;PATCH&#34;, &#34;TRACE&#34;.
      * 
      */
     public Output<String> method() {
@@ -145,6 +147,7 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param method The HTTP method used to access the endpoint.
+         * Available values: &#34;GET&#34;, &#34;POST&#34;, &#34;HEAD&#34;, &#34;OPTIONS&#34;, &#34;PUT&#34;, &#34;DELETE&#34;, &#34;CONNECT&#34;, &#34;PATCH&#34;, &#34;TRACE&#34;.
          * 
          * @return builder
          * 
@@ -156,6 +159,7 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param method The HTTP method used to access the endpoint.
+         * Available values: &#34;GET&#34;, &#34;POST&#34;, &#34;HEAD&#34;, &#34;OPTIONS&#34;, &#34;PUT&#34;, &#34;DELETE&#34;, &#34;CONNECT&#34;, &#34;PATCH&#34;, &#34;TRACE&#34;.
          * 
          * @return builder
          * 

@@ -6,12 +6,24 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleStreamCaptionLanguage = cloudflare.getStreamCaptionLanguage({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     identifier: "ea95132c15732412d22c1476fa83f27a",
+ *     language: "tr",
+ * });
+ * ```
  */
 export function getStreamCaptionLanguage(args: GetStreamCaptionLanguageArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamCaptionLanguageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage", {
         "accountId": args.accountId,
         "identifier": args.identifier,
+        "language": args.language,
     }, opts);
 }
 
@@ -27,6 +39,10 @@ export interface GetStreamCaptionLanguageArgs {
      * A Cloudflare-generated unique identifier for a media item.
      */
     identifier: string;
+    /**
+     * The language tag in BCP 47 format.
+     */
+    language: string;
 }
 
 /**
@@ -59,17 +75,30 @@ export interface GetStreamCaptionLanguageResult {
     readonly language: string;
     /**
      * The status of a generated caption.
+     * Available values: "ready", "inprogress", "error".
      */
     readonly status: string;
 }
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleStreamCaptionLanguage = cloudflare.getStreamCaptionLanguage({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     identifier: "ea95132c15732412d22c1476fa83f27a",
+ *     language: "tr",
+ * });
+ * ```
  */
 export function getStreamCaptionLanguageOutput(args: GetStreamCaptionLanguageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamCaptionLanguageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage", {
         "accountId": args.accountId,
         "identifier": args.identifier,
+        "language": args.language,
     }, opts);
 }
 
@@ -85,4 +114,8 @@ export interface GetStreamCaptionLanguageOutputArgs {
      * A Cloudflare-generated unique identifier for a media item.
      */
     identifier: pulumi.Input<string>;
+    /**
+     * The language tag in BCP 47 format.
+     */
+    language: pulumi.Input<string>;
 }

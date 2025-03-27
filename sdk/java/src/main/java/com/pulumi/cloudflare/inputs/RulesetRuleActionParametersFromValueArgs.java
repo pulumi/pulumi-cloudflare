@@ -34,6 +34,7 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
 
     /**
      * The status code to be used for the redirect.
+     * Available values: 301, 302, 303, 307, 308.
      * 
      */
     @Import(name="statusCode")
@@ -41,6 +42,7 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
 
     /**
      * @return The status code to be used for the redirect.
+     * Available values: 301, 302, 303, 307, 308.
      * 
      */
     public Optional<Output<Double>> statusCode() {
@@ -111,6 +113,7 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
 
         /**
          * @param statusCode The status code to be used for the redirect.
+         * Available values: 301, 302, 303, 307, 308.
          * 
          * @return builder
          * 
@@ -122,6 +125,7 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
 
         /**
          * @param statusCode The status code to be used for the redirect.
+         * Available values: 301, 302, 303, 307, 308.
          * 
          * @return builder
          * 

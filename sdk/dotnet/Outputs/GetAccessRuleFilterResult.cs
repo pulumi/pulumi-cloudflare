@@ -16,14 +16,17 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetAccessRuleFilterConfigurationResult? Configuration;
         /// <summary>
         /// The direction used to sort returned rules.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
         /// When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+        /// Available values: "any", "all".
         /// </summary>
         public readonly string Match;
         /// <summary>
         /// The action to apply to a matched request.
+        /// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         /// </summary>
         public readonly string? Mode;
         /// <summary>
@@ -33,6 +36,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Notes;
         /// <summary>
         /// The field used to sort returned rules.
+        /// Available values: "configuration.target", "configuration.value", "mode".
         /// </summary>
         public readonly string? Order;
 

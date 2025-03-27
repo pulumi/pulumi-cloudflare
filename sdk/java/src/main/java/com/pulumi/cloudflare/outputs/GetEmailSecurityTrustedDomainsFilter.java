@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 public final class GetEmailSecurityTrustedDomainsFilter {
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
@@ -21,6 +22,7 @@ public final class GetEmailSecurityTrustedDomainsFilter {
     private @Nullable Boolean isSimilarity;
     /**
      * @return The field to sort by.
+     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
      * 
      */
     private @Nullable String order;
@@ -36,6 +38,7 @@ public final class GetEmailSecurityTrustedDomainsFilter {
     private GetEmailSecurityTrustedDomainsFilter() {}
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -49,6 +52,7 @@ public final class GetEmailSecurityTrustedDomainsFilter {
     }
     /**
      * @return The field to sort by.
+     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
      * 
      */
     public Optional<String> order() {

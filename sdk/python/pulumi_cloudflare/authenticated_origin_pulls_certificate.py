@@ -21,20 +21,16 @@ class AuthenticatedOriginPullsCertificateArgs:
     def __init__(__self__, *,
                  certificate: pulumi.Input[str],
                  private_key: pulumi.Input[str],
-                 zone_id: pulumi.Input[str],
-                 certificate_id: Optional[pulumi.Input[str]] = None):
+                 zone_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a AuthenticatedOriginPullsCertificate resource.
         :param pulumi.Input[str] certificate: The zone's leaf certificate.
         :param pulumi.Input[str] private_key: The zone's private key.
         :param pulumi.Input[str] zone_id: Identifier
-        :param pulumi.Input[str] certificate_id: Identifier
         """
         pulumi.set(__self__, "certificate", certificate)
         pulumi.set(__self__, "private_key", private_key)
         pulumi.set(__self__, "zone_id", zone_id)
-        if certificate_id is not None:
-            pulumi.set(__self__, "certificate_id", certificate_id)
 
     @property
     @pulumi.getter
@@ -72,18 +68,6 @@ class AuthenticatedOriginPullsCertificateArgs:
     def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
 
-    @property
-    @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "certificate_id")
-
-    @certificate_id.setter
-    def certificate_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "certificate_id", value)
-
 
 @pulumi.input_type
 class _AuthenticatedOriginPullsCertificateState:
@@ -108,6 +92,7 @@ class _AuthenticatedOriginPullsCertificateState:
         :param pulumi.Input[str] private_key: The zone's private key.
         :param pulumi.Input[str] signature: The type of hash used for the certificate.
         :param pulumi.Input[str] status: Status of the certificate activation.
+               Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         :param pulumi.Input[str] uploaded_on: This is the time the certificate was uploaded.
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -221,6 +206,7 @@ class _AuthenticatedOriginPullsCertificateState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         Status of the certificate activation.
+        Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         """
         return pulumi.get(self, "status")
 
@@ -259,7 +245,6 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate: Optional[pulumi.Input[str]] = None,
-                 certificate_id: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -330,7 +315,6 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate: The zone's leaf certificate.
-        :param pulumi.Input[str] certificate_id: Identifier
         :param pulumi.Input[str] private_key: The zone's private key.
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -420,7 +404,6 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate: Optional[pulumi.Input[str]] = None,
-                 certificate_id: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -435,19 +418,21 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
             if certificate is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate'")
             __props__.__dict__["certificate"] = certificate
-            __props__.__dict__["certificate_id"] = certificate_id
             if private_key is None and not opts.urn:
                 raise TypeError("Missing required property 'private_key'")
-            __props__.__dict__["private_key"] = private_key
+            __props__.__dict__["private_key"] = None if private_key is None else pulumi.Output.secret(private_key)
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["certificate_id"] = None
             __props__.__dict__["enabled"] = None
             __props__.__dict__["expires_on"] = None
             __props__.__dict__["issuer"] = None
             __props__.__dict__["signature"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["uploaded_on"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["privateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AuthenticatedOriginPullsCertificate, __self__).__init__(
             'cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate',
             resource_name,
@@ -483,6 +468,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] private_key: The zone's private key.
         :param pulumi.Input[str] signature: The type of hash used for the certificate.
         :param pulumi.Input[str] status: Status of the certificate activation.
+               Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         :param pulumi.Input[str] uploaded_on: This is the time the certificate was uploaded.
         :param pulumi.Input[str] zone_id: Identifier
         """
@@ -512,7 +498,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> pulumi.Output[Optional[str]]:
+    def certificate_id(self) -> pulumi.Output[str]:
         """
         Identifier
         """
@@ -563,6 +549,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         Status of the certificate activation.
+        Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         """
         return pulumi.get(self, "status")
 

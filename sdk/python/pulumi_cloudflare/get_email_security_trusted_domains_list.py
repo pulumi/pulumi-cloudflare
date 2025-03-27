@@ -69,6 +69,7 @@ class GetEmailSecurityTrustedDomainsListResult:
     def direction(self) -> Optional[str]:
         """
         The sorting direction.
+        Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
 
@@ -103,6 +104,7 @@ class GetEmailSecurityTrustedDomainsListResult:
     def order(self) -> Optional[str]:
         """
         The field to sort by.
+        Available values: "pattern", "created_at".
         """
         return pulumi.get(self, "order")
 
@@ -169,8 +171,10 @@ def get_email_security_trusted_domains_list(account_id: Optional[str] = None,
 
     :param str account_id: Account Identifier
     :param str direction: The sorting direction.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     :param str order: The field to sort by.
+           Available values: "pattern", "created_at".
     :param str search: Allows searching in multiple properties of a record simultaneously.
            This parameter is intended for human users, not automation. Its exact
            behavior is intentionally left unspecified and is subject to change
@@ -223,8 +227,10 @@ def get_email_security_trusted_domains_list_output(account_id: Optional[pulumi.I
 
     :param str account_id: Account Identifier
     :param str direction: The sorting direction.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     :param str order: The field to sort by.
+           Available values: "pattern", "created_at".
     :param str search: Allows searching in multiple properties of a record simultaneously.
            This parameter is intended for human users, not automation. Its exact
            behavior is intentionally left unspecified and is subject to change

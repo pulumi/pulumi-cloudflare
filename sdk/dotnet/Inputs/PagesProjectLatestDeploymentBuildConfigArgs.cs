@@ -42,11 +42,21 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("webAnalyticsTag")]
         public Input<string>? WebAnalyticsTag { get; set; }
 
+        [Input("webAnalyticsToken")]
+        private Input<string>? _webAnalyticsToken;
+
         /// <summary>
         /// The auth token for analytics.
         /// </summary>
-        [Input("webAnalyticsToken")]
-        public Input<string>? WebAnalyticsToken { get; set; }
+        public Input<string>? WebAnalyticsToken
+        {
+            get => _webAnalyticsToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _webAnalyticsToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public PagesProjectLatestDeploymentBuildConfigArgs()
         {

@@ -30,6 +30,7 @@ class WorkersDeploymentArgs:
         The set of arguments for constructing a WorkersDeployment resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] script_name: Name of the script.
+        :param pulumi.Input[str] strategy: Available values: "percentage".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "script_name", script_name)
@@ -65,6 +66,9 @@ class WorkersDeploymentArgs:
     @property
     @pulumi.getter
     def strategy(self) -> pulumi.Input[str]:
+        """
+        Available values: "percentage".
+        """
         return pulumi.get(self, "strategy")
 
     @strategy.setter
@@ -106,6 +110,7 @@ class _WorkersDeploymentState:
         Input properties used for looking up and filtering WorkersDeployment resources.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] script_name: Name of the script.
+        :param pulumi.Input[str] strategy: Available values: "percentage".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -198,6 +203,9 @@ class _WorkersDeploymentState:
     @property
     @pulumi.getter
     def strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Available values: "percentage".
+        """
         return pulumi.get(self, "strategy")
 
     @strategy.setter
@@ -238,6 +246,7 @@ class WorkersDeployment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] script_name: Name of the script.
+        :param pulumi.Input[str] strategy: Available values: "percentage".
         """
         ...
     @overload
@@ -328,6 +337,7 @@ class WorkersDeployment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Identifier
         :param pulumi.Input[str] script_name: Name of the script.
+        :param pulumi.Input[str] strategy: Available values: "percentage".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -388,6 +398,9 @@ class WorkersDeployment(pulumi.CustomResource):
     @property
     @pulumi.getter
     def strategy(self) -> pulumi.Output[str]:
+        """
+        Available values: "percentage".
+        """
         return pulumi.get(self, "strategy")
 
     @property

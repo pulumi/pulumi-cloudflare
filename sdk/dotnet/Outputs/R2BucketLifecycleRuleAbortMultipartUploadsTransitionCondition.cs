@@ -14,6 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition
     {
         public readonly int MaxAge;
+        /// <summary>
+        /// Available values: "Age".
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

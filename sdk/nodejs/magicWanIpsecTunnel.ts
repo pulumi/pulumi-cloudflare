@@ -161,6 +161,8 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
             resourceInputs["modifiedIpsecTunnel"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/ipsecTunnel:IpsecTunnel" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(MagicWanIpsecTunnel.__pulumiType, name, resourceInputs, opts);
     }
 }

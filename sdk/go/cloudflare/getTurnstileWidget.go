@@ -65,6 +65,7 @@ type LookupTurnstileWidgetResult struct {
 	BotFightMode bool `pulumi:"botFightMode"`
 	// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
 	// this setting can determine the clearance level to be set
+	// Available values: "noClearance", "jschallenge", "managed", "interactive".
 	ClearanceLevel string `pulumi:"clearanceLevel"`
 	// When the widget was created.
 	CreatedOn string   `pulumi:"createdOn"`
@@ -75,6 +76,7 @@ type LookupTurnstileWidgetResult struct {
 	// Widget item identifier tag.
 	Id string `pulumi:"id"`
 	// Widget Mode
+	// Available values: "non-interactive", "invisible", "managed".
 	Mode string `pulumi:"mode"`
 	// When the widget was modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
@@ -85,6 +87,7 @@ type LookupTurnstileWidgetResult struct {
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel bool `pulumi:"offlabel"`
 	// Region where this widget can be used.
+	// Available values: "world".
 	Region string `pulumi:"region"`
 	// Secret key for this widget.
 	Secret string `pulumi:"secret"`
@@ -142,6 +145,7 @@ func (o LookupTurnstileWidgetResultOutput) BotFightMode() pulumi.BoolOutput {
 
 // If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
 // this setting can determine the clearance level to be set
+// Available values: "noClearance", "jschallenge", "managed", "interactive".
 func (o LookupTurnstileWidgetResultOutput) ClearanceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetResult) string { return v.ClearanceLevel }).(pulumi.StringOutput)
 }
@@ -170,6 +174,7 @@ func (o LookupTurnstileWidgetResultOutput) Id() pulumi.StringOutput {
 }
 
 // Widget Mode
+// Available values: "non-interactive", "invisible", "managed".
 func (o LookupTurnstileWidgetResultOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetResult) string { return v.Mode }).(pulumi.StringOutput)
 }
@@ -192,6 +197,7 @@ func (o LookupTurnstileWidgetResultOutput) Offlabel() pulumi.BoolOutput {
 }
 
 // Region where this widget can be used.
+// Available values: "world".
 func (o LookupTurnstileWidgetResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetResult) string { return v.Region }).(pulumi.StringOutput)
 }

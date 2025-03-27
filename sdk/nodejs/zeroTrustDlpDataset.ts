@@ -71,6 +71,9 @@ export class ZeroTrustDlpDataset extends pulumi.CustomResource {
      * response has no secret and the dataset is uploaded in plaintext.
      */
     public readonly secret!: pulumi.Output<boolean | undefined>;
+    /**
+     * Available values: "empty", "uploading", "processing", "failed", "complete".
+     */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * When the dataset was last updated. This includes name or description changes as well as uploads.
@@ -164,6 +167,9 @@ export interface ZeroTrustDlpDatasetState {
      * response has no secret and the dataset is uploaded in plaintext.
      */
     secret?: pulumi.Input<boolean>;
+    /**
+     * Available values: "empty", "uploading", "processing", "failed", "complete".
+     */
     status?: pulumi.Input<string>;
     /**
      * When the dataset was last updated. This includes name or description changes as well as uploads.

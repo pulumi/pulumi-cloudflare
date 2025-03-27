@@ -10,63 +10,39 @@ import java.lang.String;
 import java.util.Objects;
 
 
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookArgs.java
 public final class GetStreamWebhookArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetStreamWebhookArgs Empty = new GetStreamWebhookArgs();
 
     /**
      * The account identifier tag.
-========
-public final class GetQueueConsumerArgs extends com.pulumi.resources.InvokeArgs {
-
-    public static final GetQueueConsumerArgs Empty = new GetQueueConsumerArgs();
-
-    /**
-     * A Resource identifier.
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetQueueConsumerArgs.java
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookArgs.java
      * @return The account identifier tag.
-========
-     * @return A Resource identifier.
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetQueueConsumerArgs.java
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
 
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookArgs.java
     private GetStreamWebhookArgs() {}
 
     private GetStreamWebhookArgs(GetStreamWebhookArgs $) {
-========
-    private GetQueueConsumerArgs() {}
-
-    private GetQueueConsumerArgs(GetQueueConsumerArgs $) {
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetQueueConsumerArgs.java
         this.accountId = $.accountId;
     }
 
     public static Builder builder() {
         return new Builder();
     }
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookArgs.java
     public static Builder builder(GetStreamWebhookArgs defaults) {
-========
-    public static Builder builder(GetQueueConsumerArgs defaults) {
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetQueueConsumerArgs.java
         return new Builder(defaults);
     }
 
     public static final class Builder {
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookArgs.java
         private GetStreamWebhookArgs $;
 
         public Builder() {
@@ -79,20 +55,6 @@ public final class GetQueueConsumerArgs extends com.pulumi.resources.InvokeArgs 
 
         /**
          * @param accountId The account identifier tag.
-========
-        private GetQueueConsumerArgs $;
-
-        public Builder() {
-            $ = new GetQueueConsumerArgs();
-        }
-
-        public Builder(GetQueueConsumerArgs defaults) {
-            $ = new GetQueueConsumerArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param accountId A Resource identifier.
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetQueueConsumerArgs.java
          * 
          * @return builder
          * 
@@ -103,11 +65,7 @@ public final class GetQueueConsumerArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookArgs.java
          * @param accountId The account identifier tag.
-========
-         * @param accountId A Resource identifier.
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetQueueConsumerArgs.java
          * 
          * @return builder
          * 
@@ -116,15 +74,9 @@ public final class GetQueueConsumerArgs extends com.pulumi.resources.InvokeArgs 
             return accountId(Output.of(accountId));
         }
 
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetStreamWebhookArgs.java
         public GetStreamWebhookArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetStreamWebhookArgs", "accountId");
-========
-        public GetQueueConsumerArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetQueueConsumerArgs", "accountId");
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetQueueConsumerArgs.java
             }
             return $;
         }

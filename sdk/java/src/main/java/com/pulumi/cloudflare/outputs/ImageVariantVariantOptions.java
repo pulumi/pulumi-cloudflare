@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 public final class ImageVariantVariantOptions {
     /**
      * @return The fit property describes how the width and height dimensions should be interpreted.
+     * Available values: &#34;scale-down&#34;, &#34;contain&#34;, &#34;cover&#34;, &#34;crop&#34;, &#34;pad&#34;.
      * 
      */
     private @Nullable String fit;
@@ -24,6 +25,7 @@ public final class ImageVariantVariantOptions {
     private @Nullable Double height;
     /**
      * @return What EXIF data should be preserved in the output image.
+     * Available values: &#34;keep&#34;, &#34;copyright&#34;, &#34;none&#34;.
      * 
      */
     private @Nullable String metadata;
@@ -36,6 +38,7 @@ public final class ImageVariantVariantOptions {
     private ImageVariantVariantOptions() {}
     /**
      * @return The fit property describes how the width and height dimensions should be interpreted.
+     * Available values: &#34;scale-down&#34;, &#34;contain&#34;, &#34;cover&#34;, &#34;crop&#34;, &#34;pad&#34;.
      * 
      */
     public Optional<String> fit() {
@@ -50,6 +53,7 @@ public final class ImageVariantVariantOptions {
     }
     /**
      * @return What EXIF data should be preserved in the output image.
+     * Available values: &#34;keep&#34;, &#34;copyright&#34;, &#34;none&#34;.
      * 
      */
     public Optional<String> metadata() {

@@ -79,6 +79,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double Ttl;
         /// <summary>
         /// Record type.
+        /// Available values: "A".
         /// </summary>
         public readonly string Type;
 

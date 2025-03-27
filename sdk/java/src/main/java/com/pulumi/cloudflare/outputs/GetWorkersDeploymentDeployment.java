@@ -18,6 +18,10 @@ public final class GetWorkersDeploymentDeployment {
     private String createdOn;
     private String id;
     private String source;
+    /**
+     * @return Available values: &#34;percentage&#34;.
+     * 
+     */
     private String strategy;
     private List<GetWorkersDeploymentDeploymentVersion> versions;
 
@@ -37,6 +41,10 @@ public final class GetWorkersDeploymentDeployment {
     public String source() {
         return this.source;
     }
+    /**
+     * @return Available values: &#34;percentage&#34;.
+     * 
+     */
     public String strategy() {
         return this.strategy;
     }

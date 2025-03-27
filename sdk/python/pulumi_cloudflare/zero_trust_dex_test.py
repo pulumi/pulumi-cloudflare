@@ -429,6 +429,8 @@ class ZeroTrustDexTest(pulumi.CustomResource):
             __props__.__dict__["target_policies"] = target_policies
             __props__.__dict__["targeted"] = targeted
             __props__.__dict__["test_id"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/deviceDexTest:DeviceDexTest")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustDexTest, __self__).__init__(
             'cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest',
             resource_name,

@@ -19,6 +19,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The Certificate Authority that Total TLS certificates will be issued through.
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     @Import(name="certificateAuthority")
@@ -26,6 +27,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The Certificate Authority that Total TLS certificates will be issued through.
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     public Optional<Output<String>> certificateAuthority() {
@@ -49,6 +51,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The validity period in days for the certificates ordered via Total TLS.
+     * Available values: 90.
      * 
      */
     @Import(name="validityPeriod")
@@ -56,6 +59,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The validity period in days for the certificates ordered via Total TLS.
+     * Available values: 90.
      * 
      */
     public Optional<Output<Integer>> validityPeriod() {
@@ -106,6 +110,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through.
+         * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
          * 
@@ -117,6 +122,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through.
+         * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
          * 
@@ -148,6 +154,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param validityPeriod The validity period in days for the certificates ordered via Total TLS.
+         * Available values: 90.
          * 
          * @return builder
          * 
@@ -159,6 +166,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param validityPeriod The validity period in days for the certificates ordered via Total TLS.
+         * Available values: 90.
          * 
          * @return builder
          * 

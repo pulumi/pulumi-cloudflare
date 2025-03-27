@@ -93,16 +93,15 @@ type SpectrumApplication struct {
 	// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+	// Available values: "off", "v1", "v2", "simple".
 	ProxyProtocol pulumi.StringOutput `pulumi:"proxyProtocol"`
 	// The type of TLS termination associated with the application.
+	// Available values: "off", "flexible", "full", "strict".
 	Tls pulumi.StringPtrOutput `pulumi:"tls"`
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+	// Available values: "direct", "http", "https".
 	TrafficType pulumi.StringOutput `pulumi:"trafficType"`
-<<<<<<< HEAD
-	// Identifier
-=======
 	// Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -169,16 +168,15 @@ type spectrumApplicationState struct {
 	// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
 	Protocol *string `pulumi:"protocol"`
 	// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+	// Available values: "off", "v1", "v2", "simple".
 	ProxyProtocol *string `pulumi:"proxyProtocol"`
 	// The type of TLS termination associated with the application.
+	// Available values: "off", "flexible", "full", "strict".
 	Tls *string `pulumi:"tls"`
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+	// Available values: "direct", "http", "https".
 	TrafficType *string `pulumi:"trafficType"`
-<<<<<<< HEAD
-	// Identifier
-=======
 	// Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -207,16 +205,15 @@ type SpectrumApplicationState struct {
 	// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
 	Protocol pulumi.StringPtrInput
 	// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+	// Available values: "off", "v1", "v2", "simple".
 	ProxyProtocol pulumi.StringPtrInput
 	// The type of TLS termination associated with the application.
+	// Available values: "off", "flexible", "full", "strict".
 	Tls pulumi.StringPtrInput
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+	// Available values: "direct", "http", "https".
 	TrafficType pulumi.StringPtrInput
-<<<<<<< HEAD
-	// Identifier
-=======
 	// Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -245,16 +242,15 @@ type spectrumApplicationArgs struct {
 	// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
 	Protocol string `pulumi:"protocol"`
 	// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+	// Available values: "off", "v1", "v2", "simple".
 	ProxyProtocol *string `pulumi:"proxyProtocol"`
 	// The type of TLS termination associated with the application.
+	// Available values: "off", "flexible", "full", "strict".
 	Tls *string `pulumi:"tls"`
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+	// Available values: "direct", "http", "https".
 	TrafficType *string `pulumi:"trafficType"`
-<<<<<<< HEAD
-	// Identifier
-=======
 	// Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -280,16 +276,15 @@ type SpectrumApplicationArgs struct {
 	// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
 	Protocol pulumi.StringInput
 	// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+	// Available values: "off", "v1", "v2", "simple".
 	ProxyProtocol pulumi.StringPtrInput
 	// The type of TLS termination associated with the application.
+	// Available values: "off", "flexible", "full", "strict".
 	Tls pulumi.StringPtrInput
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+	// Available values: "direct", "http", "https".
 	TrafficType pulumi.StringPtrInput
-<<<<<<< HEAD
-	// Identifier
-=======
 	// Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	ZoneId pulumi.StringInput
 }
 
@@ -434,25 +429,24 @@ func (o SpectrumApplicationOutput) Protocol() pulumi.StringOutput {
 }
 
 // Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+// Available values: "off", "v1", "v2", "simple".
 func (o SpectrumApplicationOutput) ProxyProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringOutput { return v.ProxyProtocol }).(pulumi.StringOutput)
 }
 
 // The type of TLS termination associated with the application.
+// Available values: "off", "flexible", "full", "strict".
 func (o SpectrumApplicationOutput) Tls() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringPtrOutput { return v.Tls }).(pulumi.StringPtrOutput)
 }
 
 // Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+// Available values: "direct", "http", "https".
 func (o SpectrumApplicationOutput) TrafficType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringOutput { return v.TrafficType }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-// Identifier
-=======
 // Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func (o SpectrumApplicationOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

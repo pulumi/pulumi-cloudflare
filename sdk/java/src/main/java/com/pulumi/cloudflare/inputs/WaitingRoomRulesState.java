@@ -19,21 +19,8 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
     public static final WaitingRoomRulesState Empty = new WaitingRoomRulesState();
 
     /**
-<<<<<<< HEAD
-     * The ID of the rule.
-     * 
-     */
-    @Import(name="ruleId")
-    private @Nullable Output<String> ruleId;
-
-    /**
-     * @return The ID of the rule.
-     * 
-     */
-    public Optional<Output<String>> ruleId() {
-        return Optional.ofNullable(this.ruleId);
-=======
      * The action to take when the expression matches.
+     * Available values: &#34;bypass*waiting*room&#34;.
      * 
      */
     @Import(name="action")
@@ -41,6 +28,7 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The action to take when the expression matches.
+     * Available values: &#34;bypass*waiting*room&#34;.
      * 
      */
     public Optional<Output<String>> action() {
@@ -97,7 +85,6 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
 
     public Optional<Output<String>> lastUpdated() {
         return Optional.ofNullable(this.lastUpdated);
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     @Import(name="rules")
@@ -107,8 +94,6 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.rules);
     }
 
-<<<<<<< HEAD
-=======
     /**
      * The version of the rule.
      * 
@@ -124,7 +109,6 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.version);
     }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @Import(name="waitingRoomId")
     private @Nullable Output<String> waitingRoomId;
 
@@ -150,15 +134,11 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
     private WaitingRoomRulesState() {}
 
     private WaitingRoomRulesState(WaitingRoomRulesState $) {
-<<<<<<< HEAD
-        this.ruleId = $.ruleId;
-=======
         this.action = $.action;
         this.description = $.description;
         this.enabled = $.enabled;
         this.expression = $.expression;
         this.lastUpdated = $.lastUpdated;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.rules = $.rules;
         this.version = $.version;
         this.waitingRoomId = $.waitingRoomId;
@@ -184,39 +164,24 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-<<<<<<< HEAD
-         * @param ruleId The ID of the rule.
-=======
          * @param action The action to take when the expression matches.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+         * Available values: &#34;bypass*waiting*room&#34;.
          * 
          * @return builder
          * 
          */
-<<<<<<< HEAD
-        public Builder ruleId(@Nullable Output<String> ruleId) {
-            $.ruleId = ruleId;
-=======
         public Builder action(@Nullable Output<String> action) {
             $.action = action;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return this;
         }
 
         /**
-<<<<<<< HEAD
-         * @param ruleId The ID of the rule.
-=======
          * @param action The action to take when the expression matches.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+         * Available values: &#34;bypass*waiting*room&#34;.
          * 
          * @return builder
          * 
          */
-<<<<<<< HEAD
-        public Builder ruleId(String ruleId) {
-            return ruleId(Output.of(ruleId));
-=======
         public Builder action(String action) {
             return action(Output.of(action));
         }
@@ -291,7 +256,6 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
 
         public Builder lastUpdated(String lastUpdated) {
             return lastUpdated(Output.of(lastUpdated));
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         }
 
         public Builder rules(@Nullable Output<List<WaitingRoomRulesRuleArgs>> rules) {
@@ -307,8 +271,6 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
             return rules(List.of(rules));
         }
 
-<<<<<<< HEAD
-=======
         /**
          * @param version The version of the rule.
          * 
@@ -330,7 +292,6 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
             return version(Output.of(version));
         }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder waitingRoomId(@Nullable Output<String> waitingRoomId) {
             $.waitingRoomId = waitingRoomId;
             return this;

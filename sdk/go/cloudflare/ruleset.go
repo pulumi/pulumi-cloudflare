@@ -27,10 +27,12 @@ type Ruleset struct {
 	// An informative description of the ruleset.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The kind of the ruleset.
+	// Available values: "managed", "custom", "root", "zone".
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The human-readable name of the ruleset.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The phase of the ruleset.
+	// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
 	Phase pulumi.StringOutput `pulumi:"phase"`
 	// The list of rules in the ruleset.
 	Rules RulesetRuleArrayOutput `pulumi:"rules"`
@@ -53,9 +55,6 @@ func NewRuleset(ctx *pulumi.Context,
 	}
 	if args.Phase == nil {
 		return nil, errors.New("invalid value for required argument 'Phase'")
-	}
-	if args.Rules == nil {
-		return nil, errors.New("invalid value for required argument 'Rules'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Ruleset
@@ -85,10 +84,12 @@ type rulesetState struct {
 	// An informative description of the ruleset.
 	Description *string `pulumi:"description"`
 	// The kind of the ruleset.
+	// Available values: "managed", "custom", "root", "zone".
 	Kind *string `pulumi:"kind"`
 	// The human-readable name of the ruleset.
 	Name *string `pulumi:"name"`
 	// The phase of the ruleset.
+	// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
 	Phase *string `pulumi:"phase"`
 	// The list of rules in the ruleset.
 	Rules []RulesetRule `pulumi:"rules"`
@@ -102,10 +103,12 @@ type RulesetState struct {
 	// An informative description of the ruleset.
 	Description pulumi.StringPtrInput
 	// The kind of the ruleset.
+	// Available values: "managed", "custom", "root", "zone".
 	Kind pulumi.StringPtrInput
 	// The human-readable name of the ruleset.
 	Name pulumi.StringPtrInput
 	// The phase of the ruleset.
+	// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
 	Phase pulumi.StringPtrInput
 	// The list of rules in the ruleset.
 	Rules RulesetRuleArrayInput
@@ -123,10 +126,12 @@ type rulesetArgs struct {
 	// An informative description of the ruleset.
 	Description *string `pulumi:"description"`
 	// The kind of the ruleset.
+	// Available values: "managed", "custom", "root", "zone".
 	Kind string `pulumi:"kind"`
 	// The human-readable name of the ruleset.
 	Name string `pulumi:"name"`
 	// The phase of the ruleset.
+	// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
 	Phase string `pulumi:"phase"`
 	// The list of rules in the ruleset.
 	Rules []RulesetRule `pulumi:"rules"`
@@ -141,10 +146,12 @@ type RulesetArgs struct {
 	// An informative description of the ruleset.
 	Description pulumi.StringPtrInput
 	// The kind of the ruleset.
+	// Available values: "managed", "custom", "root", "zone".
 	Kind pulumi.StringInput
 	// The human-readable name of the ruleset.
 	Name pulumi.StringInput
 	// The phase of the ruleset.
+	// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
 	Phase pulumi.StringInput
 	// The list of rules in the ruleset.
 	Rules RulesetRuleArrayInput
@@ -250,6 +257,7 @@ func (o RulesetOutput) Description() pulumi.StringOutput {
 }
 
 // The kind of the ruleset.
+// Available values: "managed", "custom", "root", "zone".
 func (o RulesetOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
@@ -260,6 +268,7 @@ func (o RulesetOutput) Name() pulumi.StringOutput {
 }
 
 // The phase of the ruleset.
+// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
 func (o RulesetOutput) Phase() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Phase }).(pulumi.StringOutput)
 }

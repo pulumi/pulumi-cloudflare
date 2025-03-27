@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -139,6 +140,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/teamsRule:TeamsRule" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -167,6 +172,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -258,6 +264,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

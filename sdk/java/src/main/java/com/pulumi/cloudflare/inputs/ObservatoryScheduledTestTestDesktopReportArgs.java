@@ -34,6 +34,7 @@ public final class ObservatoryScheduledTestTestDesktopReportArgs extends com.pul
 
     /**
      * The type of device.
+     * Available values: &#34;DESKTOP&#34;, &#34;MOBILE&#34;.
      * 
      */
     @Import(name="deviceType")
@@ -41,6 +42,7 @@ public final class ObservatoryScheduledTestTestDesktopReportArgs extends com.pul
 
     /**
      * @return The type of device.
+     * Available values: &#34;DESKTOP&#34;, &#34;MOBILE&#34;.
      * 
      */
     public Optional<Output<String>> deviceType() {
@@ -131,6 +133,7 @@ public final class ObservatoryScheduledTestTestDesktopReportArgs extends com.pul
 
     /**
      * The state of the Lighthouse report.
+     * Available values: &#34;RUNNING&#34;, &#34;COMPLETE&#34;, &#34;FAILED&#34;.
      * 
      */
     @Import(name="state")
@@ -138,6 +141,7 @@ public final class ObservatoryScheduledTestTestDesktopReportArgs extends com.pul
 
     /**
      * @return The state of the Lighthouse report.
+     * Available values: &#34;RUNNING&#34;, &#34;COMPLETE&#34;, &#34;FAILED&#34;.
      * 
      */
     public Optional<Output<String>> state() {
@@ -247,6 +251,7 @@ public final class ObservatoryScheduledTestTestDesktopReportArgs extends com.pul
 
         /**
          * @param deviceType The type of device.
+         * Available values: &#34;DESKTOP&#34;, &#34;MOBILE&#34;.
          * 
          * @return builder
          * 
@@ -258,6 +263,7 @@ public final class ObservatoryScheduledTestTestDesktopReportArgs extends com.pul
 
         /**
          * @param deviceType The type of device.
+         * Available values: &#34;DESKTOP&#34;, &#34;MOBILE&#34;.
          * 
          * @return builder
          * 
@@ -382,6 +388,7 @@ public final class ObservatoryScheduledTestTestDesktopReportArgs extends com.pul
 
         /**
          * @param state The state of the Lighthouse report.
+         * Available values: &#34;RUNNING&#34;, &#34;COMPLETE&#34;, &#34;FAILED&#34;.
          * 
          * @return builder
          * 
@@ -393,6 +400,7 @@ public final class ObservatoryScheduledTestTestDesktopReportArgs extends com.pul
 
         /**
          * @param state The state of the Lighthouse report.
+         * Available values: &#34;RUNNING&#34;, &#34;COMPLETE&#34;, &#34;FAILED&#34;.
          * 
          * @return builder
          * 

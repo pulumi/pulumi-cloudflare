@@ -27,7 +27,7 @@ class GetR2CustomDomainResult:
     """
     A collection of values returned by getR2CustomDomain.
     """
-    def __init__(__self__, account_id=None, bucket_name=None, domain=None, domain_name=None, enabled=None, id=None, min_tls=None, status=None, zone_id=None, zone_name=None):
+    def __init__(__self__, account_id=None, bucket_name=None, domain=None, enabled=None, id=None, min_tls=None, status=None, zone_id=None, zone_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -37,9 +37,6 @@ class GetR2CustomDomainResult:
         if domain and not isinstance(domain, str):
             raise TypeError("Expected argument 'domain' to be a str")
         pulumi.set(__self__, "domain", domain)
-        if domain_name and not isinstance(domain_name, str):
-            raise TypeError("Expected argument 'domain_name' to be a str")
-        pulumi.set(__self__, "domain_name", domain_name)
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
@@ -79,17 +76,9 @@ class GetR2CustomDomainResult:
     @pulumi.getter
     def domain(self) -> str:
         """
-        Domain name of the custom domain to be added
-        """
-        return pulumi.get(self, "domain")
-
-    @property
-    @pulumi.getter(name="domainName")
-    def domain_name(self) -> str:
-        """
         Name of the custom domain
         """
-        return pulumi.get(self, "domain_name")
+        return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter
@@ -112,6 +101,7 @@ class GetR2CustomDomainResult:
     def min_tls(self) -> str:
         """
         Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+        Available values: "1.0", "1.1", "1.2", "1.3".
         """
         return pulumi.get(self, "min_tls")
 
@@ -146,7 +136,6 @@ class AwaitableGetR2CustomDomainResult(GetR2CustomDomainResult):
             account_id=self.account_id,
             bucket_name=self.bucket_name,
             domain=self.domain,
-            domain_name=self.domain_name,
             enabled=self.enabled,
             id=self.id,
             min_tls=self.min_tls,
@@ -157,7 +146,7 @@ class AwaitableGetR2CustomDomainResult(GetR2CustomDomainResult):
 
 def get_r2_custom_domain(account_id: Optional[str] = None,
                          bucket_name: Optional[str] = None,
-                         domain_name: Optional[str] = None,
+                         domain: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetR2CustomDomainResult:
     """
     ## Example Usage
@@ -168,18 +157,18 @@ def get_r2_custom_domain(account_id: Optional[str] = None,
 
     example_r2_custom_domain = cloudflare.get_r2_custom_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         bucket_name="example-bucket",
-        domain_name="example-domain/custom-domain.com")
+        domain="example-domain/custom-domain.com")
     ```
 
 
     :param str account_id: Account ID
     :param str bucket_name: Name of the bucket
-    :param str domain_name: Name of the custom domain
+    :param str domain: Name of the custom domain
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bucketName'] = bucket_name
-    __args__['domainName'] = domain_name
+    __args__['domain'] = domain
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getR2CustomDomain:getR2CustomDomain', __args__, opts=opts, typ=GetR2CustomDomainResult).value
 
@@ -187,7 +176,6 @@ def get_r2_custom_domain(account_id: Optional[str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         bucket_name=pulumi.get(__ret__, 'bucket_name'),
         domain=pulumi.get(__ret__, 'domain'),
-        domain_name=pulumi.get(__ret__, 'domain_name'),
         enabled=pulumi.get(__ret__, 'enabled'),
         id=pulumi.get(__ret__, 'id'),
         min_tls=pulumi.get(__ret__, 'min_tls'),
@@ -196,7 +184,7 @@ def get_r2_custom_domain(account_id: Optional[str] = None,
         zone_name=pulumi.get(__ret__, 'zone_name'))
 def get_r2_custom_domain_output(account_id: Optional[pulumi.Input[str]] = None,
                                 bucket_name: Optional[pulumi.Input[str]] = None,
-                                domain_name: Optional[pulumi.Input[str]] = None,
+                                domain: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetR2CustomDomainResult]:
     """
     ## Example Usage
@@ -207,25 +195,24 @@ def get_r2_custom_domain_output(account_id: Optional[pulumi.Input[str]] = None,
 
     example_r2_custom_domain = cloudflare.get_r2_custom_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         bucket_name="example-bucket",
-        domain_name="example-domain/custom-domain.com")
+        domain="example-domain/custom-domain.com")
     ```
 
 
     :param str account_id: Account ID
     :param str bucket_name: Name of the bucket
-    :param str domain_name: Name of the custom domain
+    :param str domain: Name of the custom domain
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bucketName'] = bucket_name
-    __args__['domainName'] = domain_name
+    __args__['domain'] = domain
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getR2CustomDomain:getR2CustomDomain', __args__, opts=opts, typ=GetR2CustomDomainResult)
     return __ret__.apply(lambda __response__: GetR2CustomDomainResult(
         account_id=pulumi.get(__response__, 'account_id'),
         bucket_name=pulumi.get(__response__, 'bucket_name'),
         domain=pulumi.get(__response__, 'domain'),
-        domain_name=pulumi.get(__response__, 'domain_name'),
         enabled=pulumi.get(__response__, 'enabled'),
         id=pulumi.get(__response__, 'id'),
         min_tls=pulumi.get(__response__, 'min_tls'),

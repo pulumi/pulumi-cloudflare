@@ -22,6 +22,7 @@ public final class GetEmailSecurityImpersonationRegistriesInvokeResult {
     private String accountId;
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
@@ -37,9 +38,14 @@ public final class GetEmailSecurityImpersonationRegistriesInvokeResult {
     private @Nullable Integer maxItems;
     /**
      * @return The field to sort by.
+     * Available values: &#34;name&#34;, &#34;email&#34;, &#34;created_at&#34;.
      * 
      */
     private @Nullable String order;
+    /**
+     * @return Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * 
+     */
     private @Nullable String provenance;
     /**
      * @return The items returned by the data source
@@ -65,6 +71,7 @@ public final class GetEmailSecurityImpersonationRegistriesInvokeResult {
     }
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -86,11 +93,16 @@ public final class GetEmailSecurityImpersonationRegistriesInvokeResult {
     }
     /**
      * @return The field to sort by.
+     * Available values: &#34;name&#34;, &#34;email&#34;, &#34;created_at&#34;.
      * 
      */
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
+    /**
+     * @return Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * 
+     */
     public Optional<String> provenance() {
         return Optional.ofNullable(this.provenance);
     }

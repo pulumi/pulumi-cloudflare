@@ -40,12 +40,13 @@ public final class GetPagesProjectsResult {
      */
     private GetPagesProjectsResultDeploymentTrigger deploymentTrigger;
     /**
-     * @return A dict of env variables to build this deploy.
+     * @return Environment variables used for builds and Pages Functions.
      * 
      */
     private Map<String,GetPagesProjectsResultEnvVars> envVars;
     /**
      * @return Type of deploy.
+     * Available values: &#34;preview&#34;, &#34;production&#34;.
      * 
      */
     private String environment;
@@ -126,7 +127,7 @@ public final class GetPagesProjectsResult {
         return this.deploymentTrigger;
     }
     /**
-     * @return A dict of env variables to build this deploy.
+     * @return Environment variables used for builds and Pages Functions.
      * 
      */
     public Map<String,GetPagesProjectsResultEnvVars> envVars() {
@@ -134,6 +135,7 @@ public final class GetPagesProjectsResult {
     }
     /**
      * @return Type of deploy.
+     * Available values: &#34;preview&#34;, &#34;production&#34;.
      * 
      */
     public String environment() {

@@ -27,8 +27,6 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         return Optional.ofNullable(this.accountId);
     }
 
-<<<<<<< HEAD
-=======
     @Import(name="aiContextEnabled")
     private @Nullable Output<Boolean> aiContextEnabled;
 
@@ -36,7 +34,6 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         return Optional.ofNullable(this.aiContextEnabled);
     }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @Import(name="allowedMatchCount")
     private @Nullable Output<Integer> allowedMatchCount;
 
@@ -147,9 +144,17 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         return Optional.ofNullable(this.profileId);
     }
 
+    /**
+     * Available values: &#34;custom&#34;.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return Available values: &#34;custom&#34;.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -215,8 +220,6 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
             return accountId(Output.of(accountId));
         }
 
-<<<<<<< HEAD
-=======
         public Builder aiContextEnabled(@Nullable Output<Boolean> aiContextEnabled) {
             $.aiContextEnabled = aiContextEnabled;
             return this;
@@ -226,7 +229,6 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
             return aiContextEnabled(Output.of(aiContextEnabled));
         }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder allowedMatchCount(@Nullable Output<Integer> allowedMatchCount) {
             $.allowedMatchCount = allowedMatchCount;
             return this;
@@ -381,11 +383,23 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
             return profileId(Output.of(profileId));
         }
 
+        /**
+         * @param type Available values: &#34;custom&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Available values: &#34;custom&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

@@ -40,25 +40,17 @@ import (
 //	}
 //
 // ```
-<<<<<<< HEAD
-=======
 //
 // ## Import
 //
 // ```sh
 // $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example '<account_identifier>/<request_identifier>/<asset_identifer>'
 // ```
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 type CloudforceOneRequestAsset struct {
 	pulumi.CustomResourceState
 
 	// Identifier
 	AccountIdentifier pulumi.StringOutput `pulumi:"accountIdentifier"`
-<<<<<<< HEAD
-	// UUID
-	AssetIdentifer pulumi.StringPtrOutput `pulumi:"assetIdentifer"`
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Asset creation time
 	Created pulumi.StringOutput `pulumi:"created"`
 	// Asset description
@@ -121,11 +113,6 @@ func GetCloudforceOneRequestAsset(ctx *pulumi.Context,
 type cloudforceOneRequestAssetState struct {
 	// Identifier
 	AccountIdentifier *string `pulumi:"accountIdentifier"`
-<<<<<<< HEAD
-	// UUID
-	AssetIdentifer *string `pulumi:"assetIdentifer"`
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Asset creation time
 	Created *string `pulumi:"created"`
 	// Asset description
@@ -147,11 +134,6 @@ type cloudforceOneRequestAssetState struct {
 type CloudforceOneRequestAssetState struct {
 	// Identifier
 	AccountIdentifier pulumi.StringPtrInput
-<<<<<<< HEAD
-	// UUID
-	AssetIdentifer pulumi.StringPtrInput
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Asset creation time
 	Created pulumi.StringPtrInput
 	// Asset description
@@ -177,11 +159,6 @@ func (CloudforceOneRequestAssetState) ElementType() reflect.Type {
 type cloudforceOneRequestAssetArgs struct {
 	// Identifier
 	AccountIdentifier string `pulumi:"accountIdentifier"`
-<<<<<<< HEAD
-	// UUID
-	AssetIdentifer *string `pulumi:"assetIdentifer"`
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Page number of results
 	Page int `pulumi:"page"`
 	// Number of results per page
@@ -196,11 +173,6 @@ type cloudforceOneRequestAssetArgs struct {
 type CloudforceOneRequestAssetArgs struct {
 	// Identifier
 	AccountIdentifier pulumi.StringInput
-<<<<<<< HEAD
-	// UUID
-	AssetIdentifer pulumi.StringPtrInput
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Page number of results
 	Page pulumi.IntInput
 	// Number of results per page
@@ -303,14 +275,6 @@ func (o CloudforceOneRequestAssetOutput) AccountIdentifier() pulumi.StringOutput
 	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.StringOutput { return v.AccountIdentifier }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-// UUID
-func (o CloudforceOneRequestAssetOutput) AssetIdentifer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.StringPtrOutput { return v.AssetIdentifer }).(pulumi.StringPtrOutput)
-}
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // Asset creation time
 func (o CloudforceOneRequestAssetOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)

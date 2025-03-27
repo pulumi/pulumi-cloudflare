@@ -56,6 +56,7 @@ export function getPageShieldConnectionsList(args: GetPageShieldConnectionsListA
 export interface GetPageShieldConnectionsListArgs {
     /**
      * The direction used to sort returned connections.
+     * Available values: "asc", "desc".
      */
     direction?: string;
     /**
@@ -68,6 +69,7 @@ export interface GetPageShieldConnectionsListArgs {
     excludeUrls?: string;
     /**
      * Export the list of connections as a file.
+     * Available values: "csv".
      */
     export?: string;
     /**
@@ -94,6 +96,7 @@ export interface GetPageShieldConnectionsListArgs {
 export interface GetPageShieldConnectionsListResult {
     /**
      * The direction used to sort returned connections.
+     * Available values: "asc", "desc".
      */
     readonly direction?: string;
     /**
@@ -106,6 +109,7 @@ export interface GetPageShieldConnectionsListResult {
     readonly excludeUrls?: string;
     /**
      * Export the list of connections as a file.
+     * Available values: "csv".
      */
     readonly export?: string;
     /**
@@ -180,6 +184,7 @@ export function getPageShieldConnectionsListOutput(args: GetPageShieldConnection
 export interface GetPageShieldConnectionsListOutputArgs {
     /**
      * The direction used to sort returned connections.
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**
@@ -192,6 +197,7 @@ export interface GetPageShieldConnectionsListOutputArgs {
     excludeUrls?: pulumi.Input<string>;
     /**
      * Export the list of connections as a file.
+     * Available values: "csv".
      */
     export?: pulumi.Input<string>;
     /**

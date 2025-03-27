@@ -13,18 +13,72 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleObservatoryScheduledTest = Cloudflare.GetObservatoryScheduledTest.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Url = "example.com",
+        ///         Region = "asia-east1",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetObservatoryScheduledTestResult> InvokeAsync(GetObservatoryScheduledTestArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetObservatoryScheduledTestResult>("cloudflare:index/getObservatoryScheduledTest:getObservatoryScheduledTest", args ?? new GetObservatoryScheduledTestArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleObservatoryScheduledTest = Cloudflare.GetObservatoryScheduledTest.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Url = "example.com",
+        ///         Region = "asia-east1",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetObservatoryScheduledTestResult> Invoke(GetObservatoryScheduledTestInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetObservatoryScheduledTestResult>("cloudflare:index/getObservatoryScheduledTest:getObservatoryScheduledTest", args ?? new GetObservatoryScheduledTestInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleObservatoryScheduledTest = Cloudflare.GetObservatoryScheduledTest.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Url = "example.com",
+        ///         Region = "asia-east1",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetObservatoryScheduledTestResult> Invoke(GetObservatoryScheduledTestInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetObservatoryScheduledTestResult>("cloudflare:index/getObservatoryScheduledTest:getObservatoryScheduledTest", args ?? new GetObservatoryScheduledTestInvokeArgs(), options.WithDefaults());
@@ -33,6 +87,19 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetObservatoryScheduledTestArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// A test region.
+        /// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
+
+        /// <summary>
+        /// A URL.
+        /// </summary>
+        [Input("url", required: true)]
+        public string Url { get; set; } = null!;
+
         /// <summary>
         /// Identifier
         /// </summary>
@@ -47,6 +114,19 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetObservatoryScheduledTestInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// A test region.
+        /// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// A URL.
+        /// </summary>
+        [Input("url", required: true)]
+        public Input<string> Url { get; set; } = null!;
+
         /// <summary>
         /// Identifier
         /// </summary>
@@ -65,6 +145,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The frequency of the test.
+        /// Available values: "DAILY", "WEEKLY".
         /// </summary>
         public readonly string Frequency;
         /// <summary>
@@ -73,6 +154,7 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         /// <summary>
         /// A test region.
+        /// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
         /// </summary>
         public readonly string Region;
         /// <summary>

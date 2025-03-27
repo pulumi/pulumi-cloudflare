@@ -144,7 +144,7 @@ export class MtlsCertificate extends pulumi.CustomResource {
             resourceInputs["ca"] = args ? args.ca : undefined;
             resourceInputs["certificates"] = args ? args.certificates : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
             resourceInputs["expiresOn"] = undefined /*out*/;
             resourceInputs["issuer"] = undefined /*out*/;
             resourceInputs["serialNumber"] = undefined /*out*/;
@@ -153,6 +153,8 @@ export class MtlsCertificate extends pulumi.CustomResource {
             resourceInputs["uploadedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["privateKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(MtlsCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }

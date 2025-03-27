@@ -6,10 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
-<<<<<<< HEAD
-import java.lang.Object;
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -115,21 +111,13 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="flags")
-<<<<<<< HEAD
-    private @Nullable Output<Object> flags;
-=======
     private @Nullable Output<Double> flags;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     /**
      * @return Flags for the CAA record.
      * 
      */
-<<<<<<< HEAD
-    public Optional<Output<Object>> flags() {
-=======
     public Optional<Output<Double>> flags() {
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return Optional.ofNullable(this.flags);
     }
 
@@ -165,6 +153,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Latitude direction.
+     * Available values: &#34;N&#34;, &#34;S&#34;.
      * 
      */
     @Import(name="latDirection")
@@ -172,6 +161,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Latitude direction.
+     * Available values: &#34;N&#34;, &#34;S&#34;.
      * 
      */
     public Optional<Output<String>> latDirection() {
@@ -225,6 +215,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Longitude direction.
+     * Available values: &#34;E&#34;, &#34;W&#34;.
      * 
      */
     @Import(name="longDirection")
@@ -232,6 +223,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Longitude direction.
+     * Available values: &#34;E&#34;, &#34;W&#34;.
      * 
      */
     public Optional<Output<String>> longDirection() {
@@ -759,11 +751,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-<<<<<<< HEAD
-        public Builder flags(@Nullable Output<Object> flags) {
-=======
         public Builder flags(@Nullable Output<Double> flags) {
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             $.flags = flags;
             return this;
         }
@@ -774,11 +762,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-<<<<<<< HEAD
-        public Builder flags(Object flags) {
-=======
         public Builder flags(Double flags) {
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             return flags(Output.of(flags));
         }
 
@@ -826,6 +810,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param latDirection Latitude direction.
+         * Available values: &#34;N&#34;, &#34;S&#34;.
          * 
          * @return builder
          * 
@@ -837,6 +822,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param latDirection Latitude direction.
+         * Available values: &#34;N&#34;, &#34;S&#34;.
          * 
          * @return builder
          * 
@@ -910,6 +896,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param longDirection Longitude direction.
+         * Available values: &#34;E&#34;, &#34;W&#34;.
          * 
          * @return builder
          * 
@@ -921,6 +908,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param longDirection Longitude direction.
+         * Available values: &#34;E&#34;, &#34;W&#34;.
          * 
          * @return builder
          * 

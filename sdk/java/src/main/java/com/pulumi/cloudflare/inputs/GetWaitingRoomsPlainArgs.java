@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +14,21 @@ import javax.annotation.Nullable;
 public final class GetWaitingRoomsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetWaitingRoomsPlainArgs Empty = new GetWaitingRoomsPlainArgs();
+
+    /**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * 
+     */
+    @Import(name="accountId")
+    private @Nullable String accountId;
+
+    /**
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * 
+     */
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
 
     /**
      * Max items to fetch, default: 1000
@@ -32,23 +46,24 @@ public final class GetWaitingRoomsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Identifier
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private String zoneId;
+    @Import(name="zoneId")
+    private @Nullable String zoneId;
 
     /**
-     * @return Identifier
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetWaitingRoomsPlainArgs() {}
 
     private GetWaitingRoomsPlainArgs(GetWaitingRoomsPlainArgs $) {
+        this.accountId = $.accountId;
         this.maxItems = $.maxItems;
         this.zoneId = $.zoneId;
     }
@@ -72,6 +87,17 @@ public final class GetWaitingRoomsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(@Nullable String accountId) {
+            $.accountId = accountId;
+            return this;
+        }
+
+        /**
          * @param maxItems Max items to fetch, default: 1000
          * 
          * @return builder
@@ -83,20 +109,17 @@ public final class GetWaitingRoomsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
          */
-        public Builder zoneId(String zoneId) {
+        public Builder zoneId(@Nullable String zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
         public GetWaitingRoomsPlainArgs build() {
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetWaitingRoomsPlainArgs", "zoneId");
-            }
             return $;
         }
     }

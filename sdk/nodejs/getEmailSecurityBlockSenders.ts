@@ -44,6 +44,7 @@ export interface GetEmailSecurityBlockSendersArgs {
     accountId: string;
     /**
      * The sorting direction.
+     * Available values: "asc", "desc".
      */
     direction?: string;
     /**
@@ -52,8 +53,12 @@ export interface GetEmailSecurityBlockSendersArgs {
     maxItems?: number;
     /**
      * The field to sort by.
+     * Available values: "pattern", "createdAt".
      */
     order?: string;
+    /**
+     * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+     */
     patternType?: string;
     /**
      * Allows searching in multiple properties of a record simultaneously.
@@ -74,6 +79,7 @@ export interface GetEmailSecurityBlockSendersResult {
     readonly accountId: string;
     /**
      * The sorting direction.
+     * Available values: "asc", "desc".
      */
     readonly direction?: string;
     /**
@@ -86,8 +92,12 @@ export interface GetEmailSecurityBlockSendersResult {
     readonly maxItems?: number;
     /**
      * The field to sort by.
+     * Available values: "pattern", "createdAt".
      */
     readonly order?: string;
+    /**
+     * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+     */
     readonly patternType?: string;
     /**
      * The items returned by the data source
@@ -139,6 +149,7 @@ export interface GetEmailSecurityBlockSendersOutputArgs {
     accountId: pulumi.Input<string>;
     /**
      * The sorting direction.
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**
@@ -147,8 +158,12 @@ export interface GetEmailSecurityBlockSendersOutputArgs {
     maxItems?: pulumi.Input<number>;
     /**
      * The field to sort by.
+     * Available values: "pattern", "createdAt".
      */
     order?: pulumi.Input<string>;
+    /**
+     * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+     */
     patternType?: pulumi.Input<string>;
     /**
      * Allows searching in multiple properties of a record simultaneously.

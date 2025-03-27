@@ -57,6 +57,21 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Enables or disables RUM. This option can be used only when auto_install is set to true.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    /**
+     * @return Enables or disables RUM. This option can be used only when auto_install is set to true.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
+
+    /**
      * The hostname to use for gray-clouded sites.
      * 
      */
@@ -69,6 +84,21 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> host() {
         return Optional.ofNullable(this.host);
+    }
+
+    /**
+     * If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+     * 
+     */
+    @Import(name="lite")
+    private @Nullable Output<Boolean> lite;
+
+    /**
+     * @return If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+     * 
+     */
+    public Optional<Output<Boolean>> lite() {
+        return Optional.ofNullable(this.lite);
     }
 
     /**
@@ -159,7 +189,9 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         this.accountId = $.accountId;
         this.autoInstall = $.autoInstall;
         this.created = $.created;
+        this.enabled = $.enabled;
         this.host = $.host;
+        this.lite = $.lite;
         this.rules = $.rules;
         this.ruleset = $.ruleset;
         this.siteTag = $.siteTag;
@@ -238,6 +270,27 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param enabled Enables or disables RUM. This option can be used only when auto_install is set to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Enables or disables RUM. This option can be used only when auto_install is set to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
+        }
+
+        /**
          * @param host The hostname to use for gray-clouded sites.
          * 
          * @return builder
@@ -256,6 +309,27 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
          */
         public Builder host(String host) {
             return host(Output.of(host));
+        }
+
+        /**
+         * @param lite If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lite(@Nullable Output<Boolean> lite) {
+            $.lite = lite;
+            return this;
+        }
+
+        /**
+         * @param lite If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lite(Boolean lite) {
+            return lite(Output.of(lite));
         }
 
         /**

@@ -12,31 +12,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare page rule resource.
+// ## Example Usage
 //
 // ## Import
 //
-// Page rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.
-//
 // ```sh
-// $ pulumi import cloudflare:index/pageRule:PageRule default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
+// $ pulumi import cloudflare:index/pageRule:PageRule example '<zone_id>/<pagerule_id>'
 // ```
 type PageRule struct {
 	pulumi.CustomResourceState
 
-	// The actions taken by the page rule, options given below.
 	Actions PageRuleActionsOutput `pulumi:"actions"`
 	// The timestamp of when the Page Rule was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// The timestamp of when the Page Rule was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
-	// The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+	// The priority of the rule, used to define which Page Rule is processed
+	// over another. A higher number indicates a higher priority. For example,
+	// if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+	// specific Page Rule to take precedence (rule B: `/images/special/*`),
+	// specify a higher priority for rule B so it overrides rule A.
 	Priority pulumi.IntOutput `pulumi:"priority"`
-	// Whether the page rule is active or disabled.
+	// The status of the Page Rule.
+	// Available values: "active", "disabled".
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The URL pattern to target with the page rule.
 	Target pulumi.StringOutput `pulumi:"target"`
-	// The DNS zone ID to which the page rule should be added.
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -79,36 +80,42 @@ func GetPageRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PageRule resources.
 type pageRuleState struct {
-	// The actions taken by the page rule, options given below.
 	Actions *PageRuleActions `pulumi:"actions"`
 	// The timestamp of when the Page Rule was created.
 	CreatedOn *string `pulumi:"createdOn"`
 	// The timestamp of when the Page Rule was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
-	// The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+	// The priority of the rule, used to define which Page Rule is processed
+	// over another. A higher number indicates a higher priority. For example,
+	// if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+	// specific Page Rule to take precedence (rule B: `/images/special/*`),
+	// specify a higher priority for rule B so it overrides rule A.
 	Priority *int `pulumi:"priority"`
-	// Whether the page rule is active or disabled.
+	// The status of the Page Rule.
+	// Available values: "active", "disabled".
 	Status *string `pulumi:"status"`
-	// The URL pattern to target with the page rule.
 	Target *string `pulumi:"target"`
-	// The DNS zone ID to which the page rule should be added.
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type PageRuleState struct {
-	// The actions taken by the page rule, options given below.
 	Actions PageRuleActionsPtrInput
 	// The timestamp of when the Page Rule was created.
 	CreatedOn pulumi.StringPtrInput
 	// The timestamp of when the Page Rule was last modified.
 	ModifiedOn pulumi.StringPtrInput
-	// The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+	// The priority of the rule, used to define which Page Rule is processed
+	// over another. A higher number indicates a higher priority. For example,
+	// if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+	// specific Page Rule to take precedence (rule B: `/images/special/*`),
+	// specify a higher priority for rule B so it overrides rule A.
 	Priority pulumi.IntPtrInput
-	// Whether the page rule is active or disabled.
+	// The status of the Page Rule.
+	// Available values: "active", "disabled".
 	Status pulumi.StringPtrInput
-	// The URL pattern to target with the page rule.
 	Target pulumi.StringPtrInput
-	// The DNS zone ID to which the page rule should be added.
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -117,29 +124,35 @@ func (PageRuleState) ElementType() reflect.Type {
 }
 
 type pageRuleArgs struct {
-	// The actions taken by the page rule, options given below.
 	Actions PageRuleActions `pulumi:"actions"`
-	// The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+	// The priority of the rule, used to define which Page Rule is processed
+	// over another. A higher number indicates a higher priority. For example,
+	// if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+	// specific Page Rule to take precedence (rule B: `/images/special/*`),
+	// specify a higher priority for rule B so it overrides rule A.
 	Priority *int `pulumi:"priority"`
-	// Whether the page rule is active or disabled.
+	// The status of the Page Rule.
+	// Available values: "active", "disabled".
 	Status *string `pulumi:"status"`
-	// The URL pattern to target with the page rule.
-	Target string `pulumi:"target"`
-	// The DNS zone ID to which the page rule should be added.
+	Target string  `pulumi:"target"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a PageRule resource.
 type PageRuleArgs struct {
-	// The actions taken by the page rule, options given below.
 	Actions PageRuleActionsInput
-	// The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+	// The priority of the rule, used to define which Page Rule is processed
+	// over another. A higher number indicates a higher priority. For example,
+	// if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+	// specific Page Rule to take precedence (rule B: `/images/special/*`),
+	// specify a higher priority for rule B so it overrides rule A.
 	Priority pulumi.IntPtrInput
-	// Whether the page rule is active or disabled.
+	// The status of the Page Rule.
+	// Available values: "active", "disabled".
 	Status pulumi.StringPtrInput
-	// The URL pattern to target with the page rule.
 	Target pulumi.StringInput
-	// The DNS zone ID to which the page rule should be added.
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -230,7 +243,6 @@ func (o PageRuleOutput) ToPageRuleOutputWithContext(ctx context.Context) PageRul
 	return o
 }
 
-// The actions taken by the page rule, options given below.
 func (o PageRuleOutput) Actions() PageRuleActionsOutput {
 	return o.ApplyT(func(v *PageRule) PageRuleActionsOutput { return v.Actions }).(PageRuleActionsOutput)
 }
@@ -245,22 +257,26 @@ func (o PageRuleOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *PageRule) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+// The priority of the rule, used to define which Page Rule is processed
+// over another. A higher number indicates a higher priority. For example,
+// if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+// specific Page Rule to take precedence (rule B: `/images/special/*`),
+// specify a higher priority for rule B so it overrides rule A.
 func (o PageRuleOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *PageRule) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
-// Whether the page rule is active or disabled.
+// The status of the Page Rule.
+// Available values: "active", "disabled".
 func (o PageRuleOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *PageRule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The URL pattern to target with the page rule.
 func (o PageRuleOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v *PageRule) pulumi.StringOutput { return v.Target }).(pulumi.StringOutput)
 }
 
-// The DNS zone ID to which the page rule should be added.
+// Identifier
 func (o PageRuleOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PageRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -38,27 +38,19 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
-<<<<<<< HEAD
-=======
     /// 
     /// ## Import
     /// 
     /// ```sh
     /// $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules example '&lt;zone_id&gt;/&lt;waiting_room_id&gt;'
     /// ```
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /// </summary>
     [CloudflareResourceType("cloudflare:index/waitingRoomRules:WaitingRoomRules")]
     public partial class WaitingRoomRules : global::Pulumi.CustomResource
     {
         /// <summary>
-<<<<<<< HEAD
-        /// The ID of the rule.
-        /// </summary>
-        [Output("ruleId")]
-        public Output<string?> RuleId { get; private set; } = null!;
-=======
         /// The action to take when the expression matches.
+        /// Available values: "bypass*waiting*room".
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -83,20 +75,16 @@ namespace Pulumi.Cloudflare
 
         [Output("lastUpdated")]
         public Output<string> LastUpdated { get; private set; } = null!;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         [Output("rules")]
         public Output<ImmutableArray<Outputs.WaitingRoomRulesRule>> Rules { get; private set; } = null!;
 
-<<<<<<< HEAD
-=======
         /// <summary>
         /// The version of the rule.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Output("waitingRoomId")]
         public Output<string> WaitingRoomId { get; private set; } = null!;
 
@@ -152,15 +140,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class WaitingRoomRulesArgs : global::Pulumi.ResourceArgs
     {
-<<<<<<< HEAD
-        /// <summary>
-        /// The ID of the rule.
-        /// </summary>
-        [Input("ruleId")]
-        public Input<string>? RuleId { get; set; }
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Input("rules", required: true)]
         private InputList<Inputs.WaitingRoomRulesRuleArgs>? _rules;
         public InputList<Inputs.WaitingRoomRulesRuleArgs> Rules
@@ -187,13 +166,8 @@ namespace Pulumi.Cloudflare
     public sealed class WaitingRoomRulesState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-<<<<<<< HEAD
-        /// The ID of the rule.
-        /// </summary>
-        [Input("ruleId")]
-        public Input<string>? RuleId { get; set; }
-=======
         /// The action to take when the expression matches.
+        /// Available values: "bypass*waiting*room".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -218,7 +192,6 @@ namespace Pulumi.Cloudflare
 
         [Input("lastUpdated")]
         public Input<string>? LastUpdated { get; set; }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         [Input("rules")]
         private InputList<Inputs.WaitingRoomRulesRuleGetArgs>? _rules;
@@ -228,15 +201,12 @@ namespace Pulumi.Cloudflare
             set => _rules = value;
         }
 
-<<<<<<< HEAD
-=======
         /// <summary>
         /// The version of the rule.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         [Input("waitingRoomId")]
         public Input<string>? WaitingRoomId { get; set; }
 

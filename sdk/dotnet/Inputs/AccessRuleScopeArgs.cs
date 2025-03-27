@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The scope of the rule.
+        /// Available values: "user", "organization".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

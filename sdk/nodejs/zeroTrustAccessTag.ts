@@ -99,6 +99,8 @@ export class ZeroTrustAccessTag extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessTag:AccessTag" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustAccessTag.__pulumiType, name, resourceInputs, opts);
     }
 }

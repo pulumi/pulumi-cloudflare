@@ -108,6 +108,8 @@ export class CallsSfuApp extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["secret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(CallsSfuApp.__pulumiType, name, resourceInputs, opts);
     }
 }

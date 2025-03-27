@@ -48,6 +48,7 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
 
     /**
      * The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -55,6 +56,7 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
 
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -92,8 +94,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Filters for targets whose IP addresses look like the specified string.
      * Supports `*` as a wildcard character
      * 
@@ -111,7 +111,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
     }
 
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * IPv4 address of the target
      * 
      */
@@ -159,8 +158,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Defines an IPv4 filter range&#39;s ending value (inclusive). Requires
      * `ipv4_start` to be specified as well.
      * 
@@ -229,7 +226,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
     }
 
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Date and time at which the target was modified after (inclusive)
      * 
      */
@@ -261,6 +257,7 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
 
     /**
      * The field to sort by.
+     * Available values: &#34;hostname&#34;, &#34;created_at&#34;.
      * 
      */
     @Import(name="order")
@@ -268,6 +265,7 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
 
     /**
      * @return The field to sort by.
+     * Available values: &#34;hostname&#34;, &#34;created_at&#34;.
      * 
      */
     public Optional<Output<String>> order() {
@@ -275,8 +273,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Filters for targets that have any of the following UUIDs. Specify
      * `target_ids` multiple times in query parameter to build list of
      * candidates.
@@ -296,7 +292,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
     }
 
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Private virtual network identifier of the target
      * 
      */
@@ -319,14 +314,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
         this.direction = $.direction;
         this.hostname = $.hostname;
         this.hostnameContains = $.hostnameContains;
-<<<<<<< HEAD
-        this.ipV4 = $.ipV4;
-        this.ipV6 = $.ipV6;
-        this.ips = $.ips;
-        this.modifiedAfter = $.modifiedAfter;
-        this.modifiedBefore = $.modifiedBefore;
-        this.order = $.order;
-=======
         this.ipLike = $.ipLike;
         this.ipV4 = $.ipV4;
         this.ipV6 = $.ipV6;
@@ -339,7 +326,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
         this.modifiedBefore = $.modifiedBefore;
         this.order = $.order;
         this.targetIds = $.targetIds;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.virtualNetworkId = $.virtualNetworkId;
     }
 
@@ -405,6 +391,7 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
 
         /**
          * @param direction The sorting direction.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -416,6 +403,7 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
 
         /**
          * @param direction The sorting direction.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -467,8 +455,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
         }
 
         /**
-<<<<<<< HEAD
-=======
          * @param ipLike Filters for targets whose IP addresses look like the specified string.
          * Supports `*` as a wildcard character
          * 
@@ -492,7 +478,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
         }
 
         /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param ipV4 IPv4 address of the target
          * 
          * @return builder
@@ -569,8 +554,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
         }
 
         /**
-<<<<<<< HEAD
-=======
          * @param ipv4End Defines an IPv4 filter range&#39;s ending value (inclusive). Requires
          * `ipv4_start` to be specified as well.
          * 
@@ -663,7 +646,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
         }
 
         /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param modifiedAfter Date and time at which the target was modified after (inclusive)
          * 
          * @return builder
@@ -707,6 +689,7 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
 
         /**
          * @param order The field to sort by.
+         * Available values: &#34;hostname&#34;, &#34;created_at&#34;.
          * 
          * @return builder
          * 
@@ -718,6 +701,7 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
 
         /**
          * @param order The field to sort by.
+         * Available values: &#34;hostname&#34;, &#34;created_at&#34;.
          * 
          * @return builder
          * 
@@ -727,8 +711,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
         }
 
         /**
-<<<<<<< HEAD
-=======
          * @param targetIds Filters for targets that have any of the following UUIDs. Specify
          * `target_ids` multiple times in query parameter to build list of
          * candidates.
@@ -766,7 +748,6 @@ public final class GetZeroTrustAccessInfrastructureTargetFilterArgs extends com.
         }
 
         /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * @param virtualNetworkId Private virtual network identifier of the target
          * 
          * @return builder

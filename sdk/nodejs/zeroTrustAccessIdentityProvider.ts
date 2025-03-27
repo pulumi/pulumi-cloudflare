@@ -61,6 +61,7 @@ export class ZeroTrustAccessIdentityProvider extends pulumi.CustomResource {
     public readonly scimConfig!: pulumi.Output<outputs.ZeroTrustAccessIdentityProviderScimConfig>;
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -106,6 +107,8 @@ export class ZeroTrustAccessIdentityProvider extends pulumi.CustomResource {
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessIdentityProvider:AccessIdentityProvider" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustAccessIdentityProvider.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -132,6 +135,7 @@ export interface ZeroTrustAccessIdentityProviderState {
     scimConfig?: pulumi.Input<inputs.ZeroTrustAccessIdentityProviderScimConfig>;
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
      */
     type?: pulumi.Input<string>;
     /**
@@ -162,6 +166,7 @@ export interface ZeroTrustAccessIdentityProviderArgs {
     scimConfig?: pulumi.Input<inputs.ZeroTrustAccessIdentityProviderScimConfig>;
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
      */
     type: pulumi.Input<string>;
     /**

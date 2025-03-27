@@ -67,6 +67,7 @@ export class ApiShieldOperation extends pulumi.CustomResource {
     public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
     /**
      * The HTTP method used to access the endpoint.
+     * Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
      */
     public readonly method!: pulumi.Output<string>;
     /**
@@ -141,6 +142,7 @@ export interface ApiShieldOperationState {
     lastUpdated?: pulumi.Input<string>;
     /**
      * The HTTP method used to access the endpoint.
+     * Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
      */
     method?: pulumi.Input<string>;
     /**
@@ -167,6 +169,7 @@ export interface ApiShieldOperationArgs {
     host: pulumi.Input<string>;
     /**
      * The HTTP method used to access the endpoint.
+     * Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
      */
     method: pulumi.Input<string>;
     /**

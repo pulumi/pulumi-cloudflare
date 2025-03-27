@@ -38,6 +38,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        /// Available values: "local", "cloudflare".
         /// </summary>
         [Output("source")]
         public Output<string> Source { get; private set; } = null!;
@@ -77,6 +78,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/tunnelConfig:TunnelConfig" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -114,6 +119,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        /// Available values: "local", "cloudflare".
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
@@ -149,6 +155,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        /// Available values: "local", "cloudflare".
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }

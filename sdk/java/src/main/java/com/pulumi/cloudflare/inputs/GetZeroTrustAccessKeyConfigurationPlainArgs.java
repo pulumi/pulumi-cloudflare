@@ -9,15 +9,9 @@ import java.lang.String;
 import java.util.Objects;
 
 
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetZeroTrustAccessKeyConfigurationPlainArgs.java
 public final class GetZeroTrustAccessKeyConfigurationPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetZeroTrustAccessKeyConfigurationPlainArgs Empty = new GetZeroTrustAccessKeyConfigurationPlainArgs();
-========
-public final class GetBotnetFeedConfigAsnPlainArgs extends com.pulumi.resources.InvokeArgs {
-
-    public static final GetBotnetFeedConfigAsnPlainArgs Empty = new GetBotnetFeedConfigAsnPlainArgs();
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetBotnetFeedConfigAsnPlainArgs.java
 
     /**
      * Identifier
@@ -34,31 +28,20 @@ public final class GetBotnetFeedConfigAsnPlainArgs extends com.pulumi.resources.
         return this.accountId;
     }
 
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetZeroTrustAccessKeyConfigurationPlainArgs.java
     private GetZeroTrustAccessKeyConfigurationPlainArgs() {}
 
     private GetZeroTrustAccessKeyConfigurationPlainArgs(GetZeroTrustAccessKeyConfigurationPlainArgs $) {
-========
-    private GetBotnetFeedConfigAsnPlainArgs() {}
-
-    private GetBotnetFeedConfigAsnPlainArgs(GetBotnetFeedConfigAsnPlainArgs $) {
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetBotnetFeedConfigAsnPlainArgs.java
         this.accountId = $.accountId;
     }
 
     public static Builder builder() {
         return new Builder();
     }
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetZeroTrustAccessKeyConfigurationPlainArgs.java
     public static Builder builder(GetZeroTrustAccessKeyConfigurationPlainArgs defaults) {
-========
-    public static Builder builder(GetBotnetFeedConfigAsnPlainArgs defaults) {
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetBotnetFeedConfigAsnPlainArgs.java
         return new Builder(defaults);
     }
 
     public static final class Builder {
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetZeroTrustAccessKeyConfigurationPlainArgs.java
         private GetZeroTrustAccessKeyConfigurationPlainArgs $;
 
         public Builder() {
@@ -67,16 +50,6 @@ public final class GetBotnetFeedConfigAsnPlainArgs extends com.pulumi.resources.
 
         public Builder(GetZeroTrustAccessKeyConfigurationPlainArgs defaults) {
             $ = new GetZeroTrustAccessKeyConfigurationPlainArgs(Objects.requireNonNull(defaults));
-========
-        private GetBotnetFeedConfigAsnPlainArgs $;
-
-        public Builder() {
-            $ = new GetBotnetFeedConfigAsnPlainArgs();
-        }
-
-        public Builder(GetBotnetFeedConfigAsnPlainArgs defaults) {
-            $ = new GetBotnetFeedConfigAsnPlainArgs(Objects.requireNonNull(defaults));
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetBotnetFeedConfigAsnPlainArgs.java
         }
 
         /**
@@ -90,15 +63,9 @@ public final class GetBotnetFeedConfigAsnPlainArgs extends com.pulumi.resources.
             return this;
         }
 
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetZeroTrustAccessKeyConfigurationPlainArgs.java
         public GetZeroTrustAccessKeyConfigurationPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustAccessKeyConfigurationPlainArgs", "accountId");
-========
-        public GetBotnetFeedConfigAsnPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetBotnetFeedConfigAsnPlainArgs", "accountId");
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/inputs/GetBotnetFeedConfigAsnPlainArgs.java
             }
             return $;
         }

@@ -57,6 +57,7 @@ type LookupZoneCacheVariantsResult struct {
 	// Whether the setting is editable
 	Editable bool `pulumi:"editable"`
 	// ID of the zone setting.
+	// Available values: "variants".
 	Id string `pulumi:"id"`
 	// Last time this setting was modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
@@ -106,6 +107,7 @@ func (o LookupZoneCacheVariantsResultOutput) Editable() pulumi.BoolOutput {
 }
 
 // ID of the zone setting.
+// Available values: "variants".
 func (o LookupZoneCacheVariantsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneCacheVariantsResult) string { return v.Id }).(pulumi.StringOutput)
 }

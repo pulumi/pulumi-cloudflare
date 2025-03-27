@@ -18,6 +18,10 @@ public final class R2BucketSippyDestination {
      * 
      */
     private @Nullable String accessKeyId;
+    /**
+     * @return Available values: &#34;r2&#34;.
+     * 
+     */
     private @Nullable String provider;
     /**
      * @return Value of a Cloudflare API token.
@@ -40,6 +44,10 @@ public final class R2BucketSippyDestination {
     public Optional<String> accessKeyId() {
         return Optional.ofNullable(this.accessKeyId);
     }
+    /**
+     * @return Available values: &#34;r2&#34;.
+     * 
+     */
     public Optional<String> provider() {
         return Optional.ofNullable(this.provider);
     }

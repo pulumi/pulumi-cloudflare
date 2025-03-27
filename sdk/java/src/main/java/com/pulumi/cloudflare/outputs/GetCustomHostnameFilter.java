@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 public final class GetCustomHostnameFilter {
     /**
      * @return Direction to order hostnames.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
@@ -30,11 +31,13 @@ public final class GetCustomHostnameFilter {
     private @Nullable String id;
     /**
      * @return Field to order hostnames by.
+     * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
      * 
      */
     private String order;
     /**
      * @return Whether to filter hostnames based on if they have SSL enabled.
+     * Available values: 0, 1.
      * 
      */
     private @Nullable Double ssl;
@@ -42,6 +45,7 @@ public final class GetCustomHostnameFilter {
     private GetCustomHostnameFilter() {}
     /**
      * @return Direction to order hostnames.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -63,6 +67,7 @@ public final class GetCustomHostnameFilter {
     }
     /**
      * @return Field to order hostnames by.
+     * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
      * 
      */
     public String order() {
@@ -70,6 +75,7 @@ public final class GetCustomHostnameFilter {
     }
     /**
      * @return Whether to filter hostnames based on if they have SSL enabled.
+     * Available values: 0, 1.
      * 
      */
     public Optional<Double> ssl() {

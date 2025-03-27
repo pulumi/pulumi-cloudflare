@@ -9,19 +9,11 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetAccountTokenPolicyPermissionGroupMeta.java
 public final class GetAccountTokenPolicyPermissionGroupMeta {
     private String key;
     private String value;
 
     private GetAccountTokenPolicyPermissionGroupMeta() {}
-========
-public final class GetPermissionGroupsResultMeta {
-    private String key;
-    private String value;
-
-    private GetPermissionGroupsResultMeta() {}
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetPermissionGroupsResultMeta.java
     public String key() {
         return this.key;
     }
@@ -33,11 +25,7 @@ public final class GetPermissionGroupsResultMeta {
         return new Builder();
     }
 
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetAccountTokenPolicyPermissionGroupMeta.java
     public static Builder builder(GetAccountTokenPolicyPermissionGroupMeta defaults) {
-========
-    public static Builder builder(GetPermissionGroupsResultMeta defaults) {
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetPermissionGroupsResultMeta.java
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -45,11 +33,7 @@ public final class GetPermissionGroupsResultMeta {
         private String key;
         private String value;
         public Builder() {}
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetAccountTokenPolicyPermissionGroupMeta.java
         public Builder(GetAccountTokenPolicyPermissionGroupMeta defaults) {
-========
-        public Builder(GetPermissionGroupsResultMeta defaults) {
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetPermissionGroupsResultMeta.java
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
@@ -58,11 +42,7 @@ public final class GetPermissionGroupsResultMeta {
         @CustomType.Setter
         public Builder key(String key) {
             if (key == null) {
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetAccountTokenPolicyPermissionGroupMeta.java
               throw new MissingRequiredPropertyException("GetAccountTokenPolicyPermissionGroupMeta", "key");
-========
-              throw new MissingRequiredPropertyException("GetPermissionGroupsResultMeta", "key");
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetPermissionGroupsResultMeta.java
             }
             this.key = key;
             return this;
@@ -70,22 +50,13 @@ public final class GetPermissionGroupsResultMeta {
         @CustomType.Setter
         public Builder value(String value) {
             if (value == null) {
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetAccountTokenPolicyPermissionGroupMeta.java
               throw new MissingRequiredPropertyException("GetAccountTokenPolicyPermissionGroupMeta", "value");
-========
-              throw new MissingRequiredPropertyException("GetPermissionGroupsResultMeta", "value");
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetPermissionGroupsResultMeta.java
             }
             this.value = value;
             return this;
         }
-<<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetAccountTokenPolicyPermissionGroupMeta.java
         public GetAccountTokenPolicyPermissionGroupMeta build() {
             final var _resultValue = new GetAccountTokenPolicyPermissionGroupMeta();
-========
-        public GetPermissionGroupsResultMeta build() {
-            final var _resultValue = new GetPermissionGroupsResultMeta();
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/java/src/main/java/com/pulumi/cloudflare/outputs/GetPermissionGroupsResultMeta.java
             _resultValue.key = key;
             _resultValue.value = value;
             return _resultValue;

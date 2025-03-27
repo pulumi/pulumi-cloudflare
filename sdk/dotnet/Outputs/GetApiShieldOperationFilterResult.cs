@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Direction to order results.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
@@ -35,6 +36,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<string> Methods;
         /// <summary>
         /// Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+        /// Available values: "method", "host", "endpoint", "thresholds.$key".
         /// </summary>
         public readonly string? Order;
 

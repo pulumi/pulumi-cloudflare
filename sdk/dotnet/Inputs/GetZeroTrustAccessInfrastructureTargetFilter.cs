@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The sorting direction.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
@@ -43,8 +44,6 @@ namespace Pulumi.Cloudflare.Inputs
         public string? HostnameContains { get; set; }
 
         /// <summary>
-<<<<<<< HEAD
-=======
         /// Filters for targets whose IP addresses look like the specified string.
         /// Supports `*` as a wildcard character
         /// </summary>
@@ -52,7 +51,6 @@ namespace Pulumi.Cloudflare.Inputs
         public string? IpLike { get; set; }
 
         /// <summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// IPv4 address of the target
         /// </summary>
         [Input("ipV4")]
@@ -78,8 +76,6 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-<<<<<<< HEAD
-=======
         /// Defines an IPv4 filter range's ending value (inclusive). Requires
         /// `ipv4_start` to be specified as well.
         /// </summary>
@@ -108,7 +104,6 @@ namespace Pulumi.Cloudflare.Inputs
         public string? Ipv6Start { get; set; }
 
         /// <summary>
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// Date and time at which the target was modified after (inclusive)
         /// </summary>
         [Input("modifiedAfter")]
@@ -122,12 +117,11 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The field to sort by.
+        /// Available values: "hostname", "created_at".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
-<<<<<<< HEAD
-=======
         [Input("targetIds")]
         private List<string>? _targetIds;
 
@@ -142,7 +136,6 @@ namespace Pulumi.Cloudflare.Inputs
             set => _targetIds = value;
         }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// Private virtual network identifier of the target
         /// </summary>

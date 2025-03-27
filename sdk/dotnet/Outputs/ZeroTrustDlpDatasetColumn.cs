@@ -16,6 +16,9 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? EntryId;
         public readonly string? HeaderName;
         public readonly int? NumCells;
+        /// <summary>
+        /// Available values: "empty", "uploading", "processing", "failed", "complete".
+        /// </summary>
         public readonly string? UploadStatus;
 
         [OutputConstructor]

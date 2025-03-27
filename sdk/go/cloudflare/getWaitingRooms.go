@@ -26,7 +26,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupWaitingRooms(ctx, &cloudflare.LookupWaitingRoomsArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("account_id"),
+//				ZoneId:    pulumi.StringRef("zone_id"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,22 +49,26 @@ func LookupWaitingRooms(ctx *pulumi.Context, args *LookupWaitingRoomsArgs, opts 
 
 // A collection of arguments for invoking getWaitingRooms.
 type LookupWaitingRoomsArgs struct {
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getWaitingRooms.
 type LookupWaitingRoomsResult struct {
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetWaitingRoomsResult `pulumi:"results"`
-	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupWaitingRoomsOutput(ctx *pulumi.Context, args LookupWaitingRoomsOutputArgs, opts ...pulumi.InvokeOption) LookupWaitingRoomsResultOutput {
@@ -77,10 +82,12 @@ func LookupWaitingRoomsOutput(ctx *pulumi.Context, args LookupWaitingRoomsOutput
 
 // A collection of arguments for invoking getWaitingRooms.
 type LookupWaitingRoomsOutputArgs struct {
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Identifier
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupWaitingRoomsOutputArgs) ElementType() reflect.Type {
@@ -102,6 +109,11 @@ func (o LookupWaitingRoomsResultOutput) ToLookupWaitingRoomsResultOutputWithCont
 	return o
 }
 
+// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+func (o LookupWaitingRoomsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWaitingRoomsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupWaitingRoomsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWaitingRoomsResult) string { return v.Id }).(pulumi.StringOutput)
@@ -117,9 +129,9 @@ func (o LookupWaitingRoomsResultOutput) Results() GetWaitingRoomsResultArrayOutp
 	return o.ApplyT(func(v LookupWaitingRoomsResult) []GetWaitingRoomsResult { return v.Results }).(GetWaitingRoomsResultArrayOutput)
 }
 
-// Identifier
-func (o LookupWaitingRoomsResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWaitingRoomsResult) string { return v.ZoneId }).(pulumi.StringOutput)
+// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+func (o LookupWaitingRoomsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWaitingRoomsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

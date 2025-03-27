@@ -144,10 +144,12 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         /// <summary>
         /// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+        /// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         /// </summary>
         public readonly string RequestType;
         /// <summary>
         /// The number of days for which the certificate should be valid.
+        /// Available values: 7, 30, 90, 365, 730, 1095, 5475.
         /// </summary>
         public readonly double RequestedValidity;
 

@@ -94,6 +94,7 @@ type LookupLoadBalancerMonitorResult struct {
 	// The timeout (in seconds) before marking the health check as failed.
 	Timeout int `pulumi:"timeout"`
 	// The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+	// Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
 	Type string `pulumi:"type"`
 }
 
@@ -230,6 +231,7 @@ func (o LookupLoadBalancerMonitorResultOutput) Timeout() pulumi.IntOutput {
 }
 
 // The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+// Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
 func (o LookupLoadBalancerMonitorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadBalancerMonitorResult) string { return v.Type }).(pulumi.StringOutput)
 }

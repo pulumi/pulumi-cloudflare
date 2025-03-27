@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Allow or deny operations against the resources.
+        /// Available values: "allow", "deny".
         /// </summary>
         [Input("effect", required: true)]
         public Input<string> Effect { get; set; } = null!;

@@ -95,8 +95,6 @@ public class SnippetRules extends com.pulumi.resources.CustomResource {
         return this.rules;
     }
     /**
-<<<<<<< HEAD
-=======
      * Snippet identifying name
      * 
      */
@@ -111,7 +109,6 @@ public class SnippetRules extends com.pulumi.resources.CustomResource {
         return this.snippetName;
     }
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * Identifier
      * 
      */

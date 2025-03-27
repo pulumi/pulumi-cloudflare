@@ -72,6 +72,7 @@ export class StreamCaptionLanguage extends pulumi.CustomResource {
     public readonly language!: pulumi.Output<string>;
     /**
      * The status of a generated caption.
+     * Available values: "ready", "inprogress", "error".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -149,6 +150,7 @@ export interface StreamCaptionLanguageState {
     language?: pulumi.Input<string>;
     /**
      * The status of a generated caption.
+     * Available values: "ready", "inprogress", "error".
      */
     status?: pulumi.Input<string>;
 }

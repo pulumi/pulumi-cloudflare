@@ -31,6 +31,10 @@ public final class GetZeroTrustRiskScoringIntegrationsResult {
      * 
      */
     private String id;
+    /**
+     * @return Available values: &#34;Okta&#34;.
+     * 
+     */
     private String integrationType;
     /**
      * @return A reference ID defined by the client.
@@ -79,6 +83,10 @@ public final class GetZeroTrustRiskScoringIntegrationsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Available values: &#34;Okta&#34;.
+     * 
+     */
     public String integrationType() {
         return this.integrationType;
     }

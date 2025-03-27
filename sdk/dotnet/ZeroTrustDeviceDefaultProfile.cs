@@ -29,7 +29,26 @@ namespace Pulumi.Cloudflare
     ///         AutoConnect = 0,
     ///         CaptivePortal = 180,
     ///         DisableAutoFallback = true,
+    ///         Excludes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileExcludeArgs
+    ///             {
+    ///                 Address = "192.0.2.0/24",
+    ///                 Description = "Exclude testing domains from the tunnel",
+    ///                 Host = "*.example.com",
+    ///             },
+    ///         },
     ///         ExcludeOfficeIps = true,
+    ///         Includes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileIncludeArgs
+    ///             {
+    ///                 Address = "192.0.2.0/24",
+    ///                 Description = "Exclude testing domains from the tunnel",
+    ///                 Host = "*.example.com",
+    ///             },
+    ///         },
+    ///         RegisterInterfaceIpWithDns = true,
     ///         ServiceModeV2 = new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileServiceModeV2Args
     ///         {
     ///             Mode = "proxy",
@@ -42,15 +61,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
-<<<<<<< HEAD
-=======
     /// 
     /// ## Import
     /// 
     /// ```sh
     /// $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile example '&lt;account_id&gt;'
     /// ```
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile")]
     public partial class ZeroTrustDeviceDefaultProfile : global::Pulumi.CustomResource
@@ -112,6 +128,9 @@ namespace Pulumi.Cloudflare
         [Output("excludeOfficeIps")]
         public Output<bool?> ExcludeOfficeIps { get; private set; } = null!;
 
+        /// <summary>
+        /// List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        /// </summary>
         [Output("excludes")]
         public Output<ImmutableArray<Outputs.ZeroTrustDeviceDefaultProfileExclude>> Excludes { get; private set; } = null!;
 
@@ -121,8 +140,17 @@ namespace Pulumi.Cloudflare
         [Output("gatewayUniqueId")]
         public Output<string> GatewayUniqueId { get; private set; } = null!;
 
+        /// <summary>
+        /// List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        /// </summary>
         [Output("includes")]
         public Output<ImmutableArray<Outputs.ZeroTrustDeviceDefaultProfileInclude>> Includes { get; private set; } = null!;
+
+        /// <summary>
+        /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        /// </summary>
+        [Output("registerInterfaceIpWithDns")]
+        public Output<bool?> RegisterInterfaceIpWithDns { get; private set; } = null!;
 
         [Output("serviceModeV2")]
         public Output<Outputs.ZeroTrustDeviceDefaultProfileServiceModeV2> ServiceModeV2 { get; private set; } = null!;
@@ -168,6 +196,11 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy" },
+                    new global::Pulumi.Alias { Type = "cloudflare:index/splitTunnel:SplitTunnel" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -235,6 +268,36 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("excludeOfficeIps")]
         public Input<bool>? ExcludeOfficeIps { get; set; }
+
+        [Input("excludes")]
+        private InputList<Inputs.ZeroTrustDeviceDefaultProfileExcludeArgs>? _excludes;
+
+        /// <summary>
+        /// List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        /// </summary>
+        public InputList<Inputs.ZeroTrustDeviceDefaultProfileExcludeArgs> Excludes
+        {
+            get => _excludes ?? (_excludes = new InputList<Inputs.ZeroTrustDeviceDefaultProfileExcludeArgs>());
+            set => _excludes = value;
+        }
+
+        [Input("includes")]
+        private InputList<Inputs.ZeroTrustDeviceDefaultProfileIncludeArgs>? _includes;
+
+        /// <summary>
+        /// List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        /// </summary>
+        public InputList<Inputs.ZeroTrustDeviceDefaultProfileIncludeArgs> Includes
+        {
+            get => _includes ?? (_includes = new InputList<Inputs.ZeroTrustDeviceDefaultProfileIncludeArgs>());
+            set => _includes = value;
+        }
+
+        /// <summary>
+        /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        /// </summary>
+        [Input("registerInterfaceIpWithDns")]
+        public Input<bool>? RegisterInterfaceIpWithDns { get; set; }
 
         [Input("serviceModeV2")]
         public Input<Inputs.ZeroTrustDeviceDefaultProfileServiceModeV2Args>? ServiceModeV2 { get; set; }
@@ -324,6 +387,10 @@ namespace Pulumi.Cloudflare
 
         [Input("excludes")]
         private InputList<Inputs.ZeroTrustDeviceDefaultProfileExcludeGetArgs>? _excludes;
+
+        /// <summary>
+        /// List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        /// </summary>
         public InputList<Inputs.ZeroTrustDeviceDefaultProfileExcludeGetArgs> Excludes
         {
             get => _excludes ?? (_excludes = new InputList<Inputs.ZeroTrustDeviceDefaultProfileExcludeGetArgs>());
@@ -343,11 +410,21 @@ namespace Pulumi.Cloudflare
 
         [Input("includes")]
         private InputList<Inputs.ZeroTrustDeviceDefaultProfileIncludeGetArgs>? _includes;
+
+        /// <summary>
+        /// List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        /// </summary>
         public InputList<Inputs.ZeroTrustDeviceDefaultProfileIncludeGetArgs> Includes
         {
             get => _includes ?? (_includes = new InputList<Inputs.ZeroTrustDeviceDefaultProfileIncludeGetArgs>());
             set => _includes = value;
         }
+
+        /// <summary>
+        /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        /// </summary>
+        [Input("registerInterfaceIpWithDns")]
+        public Input<bool>? RegisterInterfaceIpWithDns { get; set; }
 
         [Input("serviceModeV2")]
         public Input<Inputs.ZeroTrustDeviceDefaultProfileServiceModeV2GetArgs>? ServiceModeV2 { get; set; }

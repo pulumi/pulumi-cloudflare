@@ -31,11 +31,6 @@ public final class GetD1DatabasePlainArgs extends com.pulumi.resources.InvokeArg
         return this.accountId;
     }
 
-<<<<<<< HEAD
-    @Import(name="databaseId")
-    private @Nullable String databaseId;
-
-=======
     /**
      * D1 database identifier (UUID).
      * 
@@ -47,7 +42,6 @@ public final class GetD1DatabasePlainArgs extends com.pulumi.resources.InvokeArg
      * @return D1 database identifier (UUID).
      * 
      */
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Optional<String> databaseId() {
         return Optional.ofNullable(this.databaseId);
     }
@@ -96,15 +90,12 @@ public final class GetD1DatabasePlainArgs extends com.pulumi.resources.InvokeArg
             return this;
         }
 
-<<<<<<< HEAD
-=======
         /**
          * @param databaseId D1 database identifier (UUID).
          * 
          * @return builder
          * 
          */
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder databaseId(@Nullable String databaseId) {
             $.databaseId = databaseId;
             return this;

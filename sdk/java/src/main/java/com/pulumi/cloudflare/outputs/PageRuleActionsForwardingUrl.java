@@ -11,29 +11,13 @@ import java.util.Objects;
 
 @CustomType
 public final class PageRuleActionsForwardingUrl {
-    /**
-     * @return The status code to use for the redirection.
-     * 
-     */
     private Integer statusCode;
-    /**
-     * @return The URL to which the page rule should forward.
-     * 
-     */
     private String url;
 
     private PageRuleActionsForwardingUrl() {}
-    /**
-     * @return The status code to use for the redirection.
-     * 
-     */
     public Integer statusCode() {
         return this.statusCode;
     }
-    /**
-     * @return The URL to which the page rule should forward.
-     * 
-     */
     public String url() {
         return this.url;
     }

@@ -35,24 +35,6 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
-<<<<<<< HEAD
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         var exampleEmailSecurityBlockSender = new EmailSecurityBlockSender("exampleEmailSecurityBlockSender", EmailSecurityBlockSenderArgs.builder()
- *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .isRegex(false)
- *             .pattern("test}{@literal @}{@code example.com")
- *             .patternType("EMAIL")
- *             .comments("block sender with email test}{@literal @}{@code example.com")
- *             .build());
- * 
- *     }}{@code
- * }}{@code
-=======
  * public class App {
  *     public static void main(String[] args) {
  *         Pulumi.run(App::stack);
@@ -69,7 +51,6 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -127,9 +108,17 @@ public class EmailSecurityBlockSender extends com.pulumi.resources.CustomResourc
     public Output<String> pattern() {
         return this.pattern;
     }
+    /**
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * 
+     */
     @Export(name="patternType", refs={String.class}, tree="[0]")
     private Output<String> patternType;
 
+    /**
+     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * 
+     */
     public Output<String> patternType() {
         return this.patternType;
     }

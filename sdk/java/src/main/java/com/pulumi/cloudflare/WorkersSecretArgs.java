@@ -93,6 +93,7 @@ public final class WorkersSecretArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of secret to put.
+     * Available values: &#34;secret_text&#34;.
      * 
      */
     @Import(name="type")
@@ -100,6 +101,7 @@ public final class WorkersSecretArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of secret to put.
+     * Available values: &#34;secret_text&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -242,6 +244,7 @@ public final class WorkersSecretArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of secret to put.
+         * Available values: &#34;secret_text&#34;.
          * 
          * @return builder
          * 
@@ -253,6 +256,7 @@ public final class WorkersSecretArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of secret to put.
+         * Available values: &#34;secret_text&#34;.
          * 
          * @return builder
          * 

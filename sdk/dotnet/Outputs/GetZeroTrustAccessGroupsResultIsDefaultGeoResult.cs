@@ -11,7 +11,6 @@ namespace Pulumi.Cloudflare.Outputs
 {
 
     [OutputType]
-<<<<<<<< HEAD:sdk/dotnet/Outputs/GetZeroTrustAccessGroupsResultIsDefaultGeoResult.cs
     public sealed class GetZeroTrustAccessGroupsResultIsDefaultGeoResult
     {
         /// <summary>
@@ -23,19 +22,6 @@ namespace Pulumi.Cloudflare.Outputs
         private GetZeroTrustAccessGroupsResultIsDefaultGeoResult(string countryCode)
         {
             CountryCode = countryCode;
-========
-    public sealed class GetDnsSettingsZoneDefaultsInternalDnsResult
-    {
-        /// <summary>
-        /// The ID of the zone to fallback to.
-        /// </summary>
-        public readonly string ReferenceZoneId;
-
-        [OutputConstructor]
-        private GetDnsSettingsZoneDefaultsInternalDnsResult(string referenceZoneId)
-        {
-            ReferenceZoneId = referenceZoneId;
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/dotnet/Outputs/GetDnsSettingsZoneDefaultsInternalDnsResult.cs
         }
     }
 }

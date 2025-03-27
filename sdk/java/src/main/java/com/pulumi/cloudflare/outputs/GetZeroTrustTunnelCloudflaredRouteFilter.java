@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,7 +19,7 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter {
      */
     private @Nullable String comment;
     /**
-     * @return If provided, include only tunnels that were created (and not deleted) before this time.
+     * @return If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      * 
      */
     private @Nullable String existedAt;
@@ -43,10 +44,10 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter {
      */
     private @Nullable String routeId;
     /**
-     * @return The types of tunnels to filter separated by a comma.
+     * @return The types of tunnels to filter by, separated by commas.
      * 
      */
-    private @Nullable String tunTypes;
+    private @Nullable List<String> tunTypes;
     /**
      * @return UUID of the tunnel.
      * 
@@ -67,7 +68,7 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter {
         return Optional.ofNullable(this.comment);
     }
     /**
-     * @return If provided, include only tunnels that were created (and not deleted) before this time.
+     * @return If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      * 
      */
     public Optional<String> existedAt() {
@@ -102,11 +103,11 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter {
         return Optional.ofNullable(this.routeId);
     }
     /**
-     * @return The types of tunnels to filter separated by a comma.
+     * @return The types of tunnels to filter by, separated by commas.
      * 
      */
-    public Optional<String> tunTypes() {
-        return Optional.ofNullable(this.tunTypes);
+    public List<String> tunTypes() {
+        return this.tunTypes == null ? List.of() : this.tunTypes;
     }
     /**
      * @return UUID of the tunnel.
@@ -138,7 +139,7 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter {
         private @Nullable String networkSubset;
         private @Nullable String networkSuperset;
         private @Nullable String routeId;
-        private @Nullable String tunTypes;
+        private @Nullable List<String> tunTypes;
         private @Nullable String tunnelId;
         private @Nullable String virtualNetworkId;
         public Builder() {}
@@ -192,10 +193,13 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter {
             return this;
         }
         @CustomType.Setter
-        public Builder tunTypes(@Nullable String tunTypes) {
+        public Builder tunTypes(@Nullable List<String> tunTypes) {
 
             this.tunTypes = tunTypes;
             return this;
+        }
+        public Builder tunTypes(String... tunTypes) {
+            return tunTypes(List.of(tunTypes));
         }
         @CustomType.Setter
         public Builder tunnelId(@Nullable String tunnelId) {

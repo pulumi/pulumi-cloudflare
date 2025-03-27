@@ -90,6 +90,7 @@ public class TieredCache extends com.pulumi.resources.CustomResource {
     }
     /**
      * Enable or disable the Smart Tiered Cache
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     @Export(name="value", refs={String.class}, tree="[0]")
@@ -97,6 +98,7 @@ public class TieredCache extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Enable or disable the Smart Tiered Cache
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     public Output<String> value() {

@@ -26,7 +26,7 @@ class GetMagicNetworkMonitoringRuleResult:
     """
     A collection of values returned by getMagicNetworkMonitoringRule.
     """
-    def __init__(__self__, account_id=None, automatic_advertisement=None, bandwidth_threshold=None, duration=None, id=None, name=None, packet_threshold=None, prefixes=None, rule_id=None):
+    def __init__(__self__, account_id=None, automatic_advertisement=None, bandwidth_threshold=None, duration=None, id=None, name=None, packet_threshold=None, prefix_match=None, prefixes=None, rule_id=None, type=None, zscore_sensitivity=None, zscore_target=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -48,12 +48,24 @@ class GetMagicNetworkMonitoringRuleResult:
         if packet_threshold and not isinstance(packet_threshold, float):
             raise TypeError("Expected argument 'packet_threshold' to be a float")
         pulumi.set(__self__, "packet_threshold", packet_threshold)
+        if prefix_match and not isinstance(prefix_match, str):
+            raise TypeError("Expected argument 'prefix_match' to be a str")
+        pulumi.set(__self__, "prefix_match", prefix_match)
         if prefixes and not isinstance(prefixes, list):
             raise TypeError("Expected argument 'prefixes' to be a list")
         pulumi.set(__self__, "prefixes", prefixes)
         if rule_id and not isinstance(rule_id, str):
             raise TypeError("Expected argument 'rule_id' to be a str")
         pulumi.set(__self__, "rule_id", rule_id)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
+        if zscore_sensitivity and not isinstance(zscore_sensitivity, str):
+            raise TypeError("Expected argument 'zscore_sensitivity' to be a str")
+        pulumi.set(__self__, "zscore_sensitivity", zscore_sensitivity)
+        if zscore_target and not isinstance(zscore_target, str):
+            raise TypeError("Expected argument 'zscore_target' to be a str")
+        pulumi.set(__self__, "zscore_target", zscore_target)
 
     @property
     @pulumi.getter(name="accountId")
@@ -80,7 +92,8 @@ class GetMagicNetworkMonitoringRuleResult:
     @pulumi.getter
     def duration(self) -> str:
         """
-        The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.
+        The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
+        Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
         """
         return pulumi.get(self, "duration")
 
@@ -109,6 +122,15 @@ class GetMagicNetworkMonitoringRuleResult:
         return pulumi.get(self, "packet_threshold")
 
     @property
+    @pulumi.getter(name="prefixMatch")
+    def prefix_match(self) -> str:
+        """
+        Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+        Available values: "exact", "subnet", "supernet".
+        """
+        return pulumi.get(self, "prefix_match")
+
+    @property
     @pulumi.getter
     def prefixes(self) -> Sequence[str]:
         return pulumi.get(self, "prefixes")
@@ -120,6 +142,33 @@ class GetMagicNetworkMonitoringRuleResult:
         The id of the rule. Must be unique.
         """
         return pulumi.get(self, "rule_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        MNM rule type.
+        Available values: "threshold", "zscore", "advanced_ddos".
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="zscoreSensitivity")
+    def zscore_sensitivity(self) -> str:
+        """
+        Level of sensitivity set for zscore rules.
+        Available values: "low", "medium", "high".
+        """
+        return pulumi.get(self, "zscore_sensitivity")
+
+    @property
+    @pulumi.getter(name="zscoreTarget")
+    def zscore_target(self) -> str:
+        """
+        Target of the zscore rule analysis.
+        Available values: "bits", "packets".
+        """
+        return pulumi.get(self, "zscore_target")
 
 
 class AwaitableGetMagicNetworkMonitoringRuleResult(GetMagicNetworkMonitoringRuleResult):
@@ -135,8 +184,12 @@ class AwaitableGetMagicNetworkMonitoringRuleResult(GetMagicNetworkMonitoringRule
             id=self.id,
             name=self.name,
             packet_threshold=self.packet_threshold,
+            prefix_match=self.prefix_match,
             prefixes=self.prefixes,
-            rule_id=self.rule_id)
+            rule_id=self.rule_id,
+            type=self.type,
+            zscore_sensitivity=self.zscore_sensitivity,
+            zscore_target=self.zscore_target)
 
 
 def get_magic_network_monitoring_rule(account_id: Optional[str] = None,
@@ -170,8 +223,12 @@ def get_magic_network_monitoring_rule(account_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         packet_threshold=pulumi.get(__ret__, 'packet_threshold'),
+        prefix_match=pulumi.get(__ret__, 'prefix_match'),
         prefixes=pulumi.get(__ret__, 'prefixes'),
-        rule_id=pulumi.get(__ret__, 'rule_id'))
+        rule_id=pulumi.get(__ret__, 'rule_id'),
+        type=pulumi.get(__ret__, 'type'),
+        zscore_sensitivity=pulumi.get(__ret__, 'zscore_sensitivity'),
+        zscore_target=pulumi.get(__ret__, 'zscore_target'))
 def get_magic_network_monitoring_rule_output(account_id: Optional[pulumi.Input[str]] = None,
                                              rule_id: Optional[pulumi.Input[Optional[str]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicNetworkMonitoringRuleResult]:
@@ -202,5 +259,9 @@ def get_magic_network_monitoring_rule_output(account_id: Optional[pulumi.Input[s
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         packet_threshold=pulumi.get(__response__, 'packet_threshold'),
+        prefix_match=pulumi.get(__response__, 'prefix_match'),
         prefixes=pulumi.get(__response__, 'prefixes'),
-        rule_id=pulumi.get(__response__, 'rule_id')))
+        rule_id=pulumi.get(__response__, 'rule_id'),
+        type=pulumi.get(__response__, 'type'),
+        zscore_sensitivity=pulumi.get(__response__, 'zscore_sensitivity'),
+        zscore_target=pulumi.get(__response__, 'zscore_target')))

@@ -130,6 +130,9 @@ namespace Pulumi.Cloudflare
         public readonly string Name;
         public readonly int NumCells;
         public readonly bool Secret;
+        /// <summary>
+        /// Available values: "empty", "uploading", "processing", "failed", "complete".
+        /// </summary>
         public readonly string Status;
         /// <summary>
         /// When the dataset was last updated.

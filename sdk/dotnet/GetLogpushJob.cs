@@ -163,6 +163,7 @@ namespace Pulumi.Cloudflare
         public readonly string ErrorMessage;
         /// <summary>
         /// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+        /// Available values: "high", "low".
         /// </summary>
         public readonly string Frequency;
         /// <summary>
@@ -175,6 +176,7 @@ namespace Pulumi.Cloudflare
         public readonly int? JobId;
         /// <summary>
         /// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+        /// Available values: "edge".
         /// </summary>
         public readonly string Kind;
         /// <summary>

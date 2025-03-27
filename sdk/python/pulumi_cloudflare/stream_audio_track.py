@@ -120,6 +120,7 @@ class _StreamAudioTrackState:
         :param pulumi.Input[str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[str] label: A string to uniquely identify the track amongst other audio track labels for the specified video.
         :param pulumi.Input[str] status: Specifies the processing status of the video.
+               Available values: "queued", "ready", "error".
         :param pulumi.Input[str] uid: A Cloudflare-generated unique identifier for a media item.
         """
         if account_id is not None:
@@ -202,6 +203,7 @@ class _StreamAudioTrackState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the processing status of the video.
+        Available values: "queued", "ready", "error".
         """
         return pulumi.get(self, "status")
 
@@ -347,6 +349,7 @@ class StreamAudioTrack(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[str] label: A string to uniquely identify the track amongst other audio track labels for the specified video.
         :param pulumi.Input[str] status: Specifies the processing status of the video.
+               Available values: "queued", "ready", "error".
         :param pulumi.Input[str] uid: A Cloudflare-generated unique identifier for a media item.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -407,6 +410,7 @@ class StreamAudioTrack(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         Specifies the processing status of the video.
+        Available values: "queued", "ready", "error".
         """
         return pulumi.get(self, "status")
 

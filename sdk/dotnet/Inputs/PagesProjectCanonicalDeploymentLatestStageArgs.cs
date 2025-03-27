@@ -20,6 +20,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The current build stage.
+        /// Available values: "queued", "initialize", "clone_repo", "build", "deploy".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -32,6 +33,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// State of the current stage.
+        /// Available values: "success", "idle", "active", "failure", "canceled".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

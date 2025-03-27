@@ -24,18 +24,22 @@ class R2BucketSippyArgs:
                  account_id: pulumi.Input[str],
                  bucket_name: pulumi.Input[str],
                  destination: Optional[pulumi.Input['R2BucketSippyDestinationArgs']] = None,
+                 jurisdiction: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input['R2BucketSippySourceArgs']] = None):
         """
         The set of arguments for constructing a R2BucketSippy resource.
         :param pulumi.Input[str] account_id: Account ID
         :param pulumi.Input[str] bucket_name: Name of the bucket
         :param pulumi.Input['R2BucketSippyDestinationArgs'] destination: R2 bucket to copy objects to
+        :param pulumi.Input[str] jurisdiction: Jurisdiction of the bucket
         :param pulumi.Input['R2BucketSippySourceArgs'] source: AWS S3 bucket to copy objects from
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "bucket_name", bucket_name)
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
         if source is not None:
             pulumi.set(__self__, "source", source)
 
@@ -77,6 +81,18 @@ class R2BucketSippyArgs:
 
     @property
     @pulumi.getter
+    def jurisdiction(self) -> Optional[pulumi.Input[str]]:
+        """
+        Jurisdiction of the bucket
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jurisdiction", value)
+
+    @property
+    @pulumi.getter
     def source(self) -> Optional[pulumi.Input['R2BucketSippySourceArgs']]:
         """
         AWS S3 bucket to copy objects from
@@ -95,6 +111,7 @@ class _R2BucketSippyState:
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input['R2BucketSippyDestinationArgs']] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 jurisdiction: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input['R2BucketSippySourceArgs']] = None):
         """
         Input properties used for looking up and filtering R2BucketSippy resources.
@@ -102,6 +119,7 @@ class _R2BucketSippyState:
         :param pulumi.Input[str] bucket_name: Name of the bucket
         :param pulumi.Input['R2BucketSippyDestinationArgs'] destination: R2 bucket to copy objects to
         :param pulumi.Input[bool] enabled: State of Sippy for this bucket
+        :param pulumi.Input[str] jurisdiction: Jurisdiction of the bucket
         :param pulumi.Input['R2BucketSippySourceArgs'] source: AWS S3 bucket to copy objects from
         """
         if account_id is not None:
@@ -112,6 +130,8 @@ class _R2BucketSippyState:
             pulumi.set(__self__, "destination", destination)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
         if source is not None:
             pulumi.set(__self__, "source", source)
 
@@ -165,6 +185,18 @@ class _R2BucketSippyState:
 
     @property
     @pulumi.getter
+    def jurisdiction(self) -> Optional[pulumi.Input[str]]:
+        """
+        Jurisdiction of the bucket
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jurisdiction", value)
+
+    @property
+    @pulumi.getter
     def source(self) -> Optional[pulumi.Input['R2BucketSippySourceArgs']]:
         """
         AWS S3 bucket to copy objects from
@@ -184,6 +216,7 @@ class R2BucketSippy(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']]] = None,
+                 jurisdiction: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']]] = None,
                  __props__=None):
         """
@@ -194,6 +227,7 @@ class R2BucketSippy(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Account ID
         :param pulumi.Input[str] bucket_name: Name of the bucket
         :param pulumi.Input[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']] destination: R2 bucket to copy objects to
+        :param pulumi.Input[str] jurisdiction: Jurisdiction of the bucket
         :param pulumi.Input[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']] source: AWS S3 bucket to copy objects from
         """
         ...
@@ -223,6 +257,7 @@ class R2BucketSippy(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']]] = None,
+                 jurisdiction: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -240,6 +275,7 @@ class R2BucketSippy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'bucket_name'")
             __props__.__dict__["bucket_name"] = bucket_name
             __props__.__dict__["destination"] = destination
+            __props__.__dict__["jurisdiction"] = jurisdiction
             __props__.__dict__["source"] = source
             __props__.__dict__["enabled"] = None
         super(R2BucketSippy, __self__).__init__(
@@ -256,6 +292,7 @@ class R2BucketSippy(pulumi.CustomResource):
             bucket_name: Optional[pulumi.Input[str]] = None,
             destination: Optional[pulumi.Input[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
+            jurisdiction: Optional[pulumi.Input[str]] = None,
             source: Optional[pulumi.Input[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']]] = None) -> 'R2BucketSippy':
         """
         Get an existing R2BucketSippy resource's state with the given name, id, and optional extra
@@ -268,6 +305,7 @@ class R2BucketSippy(pulumi.CustomResource):
         :param pulumi.Input[str] bucket_name: Name of the bucket
         :param pulumi.Input[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']] destination: R2 bucket to copy objects to
         :param pulumi.Input[bool] enabled: State of Sippy for this bucket
+        :param pulumi.Input[str] jurisdiction: Jurisdiction of the bucket
         :param pulumi.Input[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']] source: AWS S3 bucket to copy objects from
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -278,6 +316,7 @@ class R2BucketSippy(pulumi.CustomResource):
         __props__.__dict__["bucket_name"] = bucket_name
         __props__.__dict__["destination"] = destination
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["jurisdiction"] = jurisdiction
         __props__.__dict__["source"] = source
         return R2BucketSippy(resource_name, opts=opts, __props__=__props__)
 
@@ -312,6 +351,14 @@ class R2BucketSippy(pulumi.CustomResource):
         State of Sippy for this bucket
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def jurisdiction(self) -> pulumi.Output[str]:
+        """
+        Jurisdiction of the bucket
+        """
+        return pulumi.get(self, "jurisdiction")
 
     @property
     @pulumi.getter

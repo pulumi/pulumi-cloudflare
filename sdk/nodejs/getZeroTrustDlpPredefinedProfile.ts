@@ -40,14 +40,14 @@ export interface GetZeroTrustDlpPredefinedProfileArgs {
  */
 export interface GetZeroTrustDlpPredefinedProfileResult {
     readonly accountId: string;
-<<<<<<< HEAD
-=======
     readonly aiContextEnabled: boolean;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
      */
     readonly allowedMatchCount: number;
+    /**
+     * Available values: "low", "medium", "high", "veryHigh".
+     */
     readonly confidenceThreshold: string;
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
@@ -76,6 +76,9 @@ export interface GetZeroTrustDlpPredefinedProfileResult {
      */
     readonly openAccess: boolean;
     readonly profileId: string;
+    /**
+     * Available values: "custom".
+     */
     readonly type: string;
     /**
      * When the profile was lasted updated

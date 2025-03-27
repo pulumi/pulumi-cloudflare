@@ -19,6 +19,7 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     @Import(name="bundleMethod")
@@ -26,6 +27,7 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     public Optional<Output<String>> bundleMethod() {
@@ -93,14 +95,16 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type &#39;legacy_custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+     * The type &#39;legacy*custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+     * Available values: &#34;legacy*custom&#34;, &#34;sni_custom&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type &#39;legacy_custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+     * @return The type &#39;legacy*custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+     * Available values: &#34;legacy*custom&#34;, &#34;sni_custom&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -154,6 +158,7 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+         * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
          * 
          * @return builder
          * 
@@ -165,6 +170,7 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+         * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
          * 
          * @return builder
          * 
@@ -258,7 +264,8 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type &#39;legacy_custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+         * @param type The type &#39;legacy*custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+         * Available values: &#34;legacy*custom&#34;, &#34;sni_custom&#34;.
          * 
          * @return builder
          * 
@@ -269,7 +276,8 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type &#39;legacy_custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+         * @param type The type &#39;legacy*custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+         * Available values: &#34;legacy*custom&#34;, &#34;sni_custom&#34;.
          * 
          * @return builder
          * 

@@ -27,7 +27,10 @@ class GetWaitingRoomsResult:
     """
     A collection of values returned by getWaitingRooms.
     """
-    def __init__(__self__, id=None, max_items=None, results=None, zone_id=None):
+    def __init__(__self__, account_id=None, id=None, max_items=None, results=None, zone_id=None):
+        if account_id and not isinstance(account_id, str):
+            raise TypeError("Expected argument 'account_id' to be a str")
+        pulumi.set(__self__, "account_id", account_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -40,6 +43,14 @@ class GetWaitingRoomsResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[str]:
+        """
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        """
+        return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
@@ -67,9 +78,9 @@ class GetWaitingRoomsResult:
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> Optional[str]:
         """
-        Identifier
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -80,13 +91,15 @@ class AwaitableGetWaitingRoomsResult(GetWaitingRoomsResult):
         if False:
             yield self
         return GetWaitingRoomsResult(
+            account_id=self.account_id,
             id=self.id,
             max_items=self.max_items,
             results=self.results,
             zone_id=self.zone_id)
 
 
-def get_waiting_rooms(max_items: Optional[int] = None,
+def get_waiting_rooms(account_id: Optional[str] = None,
+                      max_items: Optional[int] = None,
                       zone_id: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWaitingRoomsResult:
     """
@@ -96,26 +109,31 @@ def get_waiting_rooms(max_items: Optional[int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_waiting_rooms = cloudflare.get_waiting_rooms(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_waiting_rooms = cloudflare.get_waiting_rooms(account_id="account_id",
+        zone_id="zone_id")
     ```
 
 
+    :param str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
     :param int max_items: Max items to fetch, default: 1000
-    :param str zone_id: Identifier
+    :param str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
+    __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getWaitingRooms:getWaitingRooms', __args__, opts=opts, typ=GetWaitingRoomsResult).value
 
     return AwaitableGetWaitingRoomsResult(
+        account_id=pulumi.get(__ret__, 'account_id'),
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_waiting_rooms_output(max_items: Optional[pulumi.Input[Optional[int]]] = None,
-                             zone_id: Optional[pulumi.Input[str]] = None,
+def get_waiting_rooms_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             max_items: Optional[pulumi.Input[Optional[int]]] = None,
+                             zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWaitingRoomsResult]:
     """
     ## Example Usage
@@ -124,19 +142,23 @@ def get_waiting_rooms_output(max_items: Optional[pulumi.Input[Optional[int]]] = 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_waiting_rooms = cloudflare.get_waiting_rooms(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_waiting_rooms = cloudflare.get_waiting_rooms(account_id="account_id",
+        zone_id="zone_id")
     ```
 
 
+    :param str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
     :param int max_items: Max items to fetch, default: 1000
-    :param str zone_id: Identifier
+    :param str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
+    __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getWaitingRooms:getWaitingRooms', __args__, opts=opts, typ=GetWaitingRoomsResult)
     return __ret__.apply(lambda __response__: GetWaitingRoomsResult(
+        account_id=pulumi.get(__response__, 'account_id'),
         id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results'),

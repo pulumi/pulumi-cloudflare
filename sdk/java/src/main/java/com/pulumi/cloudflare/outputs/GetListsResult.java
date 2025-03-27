@@ -28,6 +28,7 @@ public final class GetListsResult {
     private String id;
     /**
      * @return The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+     * Available values: &#34;ip&#34;, &#34;redirect&#34;, &#34;hostname&#34;, &#34;asn&#34;.
      * 
      */
     private String kind;
@@ -76,6 +77,7 @@ public final class GetListsResult {
     }
     /**
      * @return The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+     * Available values: &#34;ip&#34;, &#34;redirect&#34;, &#34;hostname&#34;, &#34;asn&#34;.
      * 
      */
     public String kind() {

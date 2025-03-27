@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? ClassName;
         /// <summary>
-        /// The dataset name to bind to.
+        /// The name of the dataset to bind to.
         /// </summary>
         public readonly string? Dataset;
         /// <summary>
@@ -79,6 +79,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Text;
         /// <summary>
         /// The kind of resource that the binding provides.
+        /// Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
         /// </summary>
         public readonly string Type;
 

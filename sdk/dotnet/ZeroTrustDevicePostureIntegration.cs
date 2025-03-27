@@ -44,6 +44,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of device posture integration.
+        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -71,6 +72,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/devicePostureIntegration:DevicePostureIntegration" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -117,6 +122,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of device posture integration.
+        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -152,6 +158,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of device posture integration.
+        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

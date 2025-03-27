@@ -31,11 +31,6 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         return this.accountId;
     }
 
-<<<<<<< HEAD
-    @Import(name="name", required=true)
-    private Output<String> name;
-
-=======
     /**
      * D1 database name.
      * 
@@ -47,13 +42,13 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
      * @return D1 database name.
      * 
      */
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     public Output<String> name() {
         return this.name;
     }
 
     /**
      * Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+     * Available values: &#34;wnam&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;eeur&#34;, &#34;apac&#34;, &#34;oc&#34;.
      * 
      */
     @Import(name="primaryLocationHint")
@@ -61,6 +56,7 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+     * Available values: &#34;wnam&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;eeur&#34;, &#34;apac&#34;, &#34;oc&#34;.
      * 
      */
     public Optional<Output<String>> primaryLocationHint() {
@@ -114,30 +110,30 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
             return accountId(Output.of(accountId));
         }
 
-<<<<<<< HEAD
-=======
         /**
          * @param name D1 database name.
          * 
          * @return builder
          * 
          */
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name D1 database name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-<<<<<<< HEAD
          * @param primaryLocationHint Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
-=======
-         * @param name D1 database name.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
+         * Available values: &#34;wnam&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;eeur&#34;, &#34;apac&#34;, &#34;oc&#34;.
          * 
          * @return builder
          * 
@@ -149,27 +145,7 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param primaryLocationHint Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder primaryLocationHint(String primaryLocationHint) {
-            return primaryLocationHint(Output.of(primaryLocationHint));
-        }
-
-        /**
-         * @param primaryLocationHint Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder primaryLocationHint(@Nullable Output<String> primaryLocationHint) {
-            $.primaryLocationHint = primaryLocationHint;
-            return this;
-        }
-
-        /**
-         * @param primaryLocationHint Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+         * Available values: &#34;wnam&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;eeur&#34;, &#34;apac&#34;, &#34;oc&#34;.
          * 
          * @return builder
          * 

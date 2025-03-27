@@ -16,6 +16,10 @@ public final class GetR2BucketLifecycleRuleStorageClassTransition {
      * 
      */
     private GetR2BucketLifecycleRuleStorageClassTransitionCondition condition;
+    /**
+     * @return Available values: &#34;InfrequentAccess&#34;.
+     * 
+     */
     private String storageClass;
 
     private GetR2BucketLifecycleRuleStorageClassTransition() {}
@@ -26,6 +30,10 @@ public final class GetR2BucketLifecycleRuleStorageClassTransition {
     public GetR2BucketLifecycleRuleStorageClassTransitionCondition condition() {
         return this.condition;
     }
+    /**
+     * @return Available values: &#34;InfrequentAccess&#34;.
+     * 
+     */
     public String storageClass() {
         return this.storageClass;
     }

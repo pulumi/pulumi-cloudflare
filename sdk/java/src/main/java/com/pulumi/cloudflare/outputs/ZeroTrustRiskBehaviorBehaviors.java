@@ -12,12 +12,20 @@ import java.util.Objects;
 @CustomType
 public final class ZeroTrustRiskBehaviorBehaviors {
     private Boolean enabled;
+    /**
+     * @return Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+     * 
+     */
     private String riskLevel;
 
     private ZeroTrustRiskBehaviorBehaviors() {}
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+     * 
+     */
     public String riskLevel() {
         return this.riskLevel;
     }

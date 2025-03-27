@@ -56,10 +56,6 @@ type LookupAccountSubscriptionArgs struct {
 type LookupAccountSubscriptionResult struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
-<<<<<<< HEAD
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-=======
 	// The monetary unit in which pricing information is displayed.
 	Currency string `pulumi:"currency"`
 	// The end of the current period and also when the next billing is due.
@@ -67,6 +63,7 @@ type LookupAccountSubscriptionResult struct {
 	// When the current billing period started. May match initial*period*start if this is the first period.
 	CurrentPeriodStart string `pulumi:"currentPeriodStart"`
 	// How often the subscription is renewed automatically.
+	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency string `pulumi:"frequency"`
 	// Subscription identifier tag.
 	Id string `pulumi:"id"`
@@ -75,8 +72,8 @@ type LookupAccountSubscriptionResult struct {
 	// The rate plan applied to the subscription.
 	RatePlan GetAccountSubscriptionRatePlan `pulumi:"ratePlan"`
 	// The state that the subscription is in.
+	// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
 	State string `pulumi:"state"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 func LookupAccountSubscriptionOutput(ctx *pulumi.Context, args LookupAccountSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupAccountSubscriptionResultOutput {
@@ -118,9 +115,6 @@ func (o LookupAccountSubscriptionResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountSubscriptionResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-// The provider-assigned unique ID for this managed resource.
-=======
 // The monetary unit in which pricing information is displayed.
 func (o LookupAccountSubscriptionResultOutput) Currency() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountSubscriptionResult) string { return v.Currency }).(pulumi.StringOutput)
@@ -137,18 +131,16 @@ func (o LookupAccountSubscriptionResultOutput) CurrentPeriodStart() pulumi.Strin
 }
 
 // How often the subscription is renewed automatically.
+// Available values: "weekly", "monthly", "quarterly", "yearly".
 func (o LookupAccountSubscriptionResultOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountSubscriptionResult) string { return v.Frequency }).(pulumi.StringOutput)
 }
 
 // Subscription identifier tag.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func (o LookupAccountSubscriptionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountSubscriptionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-=======
 // The price of the subscription that will be billed, in US dollars.
 func (o LookupAccountSubscriptionResultOutput) Price() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupAccountSubscriptionResult) float64 { return v.Price }).(pulumi.Float64Output)
@@ -160,11 +152,11 @@ func (o LookupAccountSubscriptionResultOutput) RatePlan() GetAccountSubscription
 }
 
 // The state that the subscription is in.
+// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
 func (o LookupAccountSubscriptionResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountSubscriptionResult) string { return v.State }).(pulumi.StringOutput)
 }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 func init() {
 	pulumi.RegisterOutputType(LookupAccountSubscriptionResultOutput{})
 }

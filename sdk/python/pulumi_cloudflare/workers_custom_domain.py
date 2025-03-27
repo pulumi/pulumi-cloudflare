@@ -315,6 +315,8 @@ class WorkersCustomDomain(pulumi.CustomResource):
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["zone_name"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/workerDomain:WorkerDomain")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(WorkersCustomDomain, __self__).__init__(
             'cloudflare:index/workersCustomDomain:WorkersCustomDomain',
             resource_name,

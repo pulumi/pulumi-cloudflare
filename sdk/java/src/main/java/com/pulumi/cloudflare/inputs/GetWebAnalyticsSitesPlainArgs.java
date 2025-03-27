@@ -48,6 +48,7 @@ public final class GetWebAnalyticsSitesPlainArgs extends com.pulumi.resources.In
 
     /**
      * The property used to sort the list of results.
+     * Available values: &#34;host&#34;, &#34;created&#34;.
      * 
      */
     @Import(name="orderBy")
@@ -55,6 +56,7 @@ public final class GetWebAnalyticsSitesPlainArgs extends com.pulumi.resources.In
 
     /**
      * @return The property used to sort the list of results.
+     * Available values: &#34;host&#34;, &#34;created&#34;.
      * 
      */
     public Optional<String> orderBy() {
@@ -111,6 +113,7 @@ public final class GetWebAnalyticsSitesPlainArgs extends com.pulumi.resources.In
 
         /**
          * @param orderBy The property used to sort the list of results.
+         * Available values: &#34;host&#34;, &#34;created&#34;.
          * 
          * @return builder
          * 

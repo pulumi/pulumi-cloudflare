@@ -58,8 +58,8 @@ class GetZeroTrustTunnelCloudflaredRoutesResult:
         if route_id and not isinstance(route_id, str):
             raise TypeError("Expected argument 'route_id' to be a str")
         pulumi.set(__self__, "route_id", route_id)
-        if tun_types and not isinstance(tun_types, str):
-            raise TypeError("Expected argument 'tun_types' to be a str")
+        if tun_types and not isinstance(tun_types, list):
+            raise TypeError("Expected argument 'tun_types' to be a list")
         pulumi.set(__self__, "tun_types", tun_types)
         if tunnel_id and not isinstance(tunnel_id, str):
             raise TypeError("Expected argument 'tunnel_id' to be a str")
@@ -88,7 +88,7 @@ class GetZeroTrustTunnelCloudflaredRoutesResult:
     @pulumi.getter(name="existedAt")
     def existed_at(self) -> Optional[str]:
         """
-        If provided, include only tunnels that were created (and not deleted) before this time.
+        If provided, include only resources that were created (and not deleted) before this time. URL encoded.
         """
         return pulumi.get(self, "existed_at")
 
@@ -150,9 +150,9 @@ class GetZeroTrustTunnelCloudflaredRoutesResult:
 
     @property
     @pulumi.getter(name="tunTypes")
-    def tun_types(self) -> Optional[str]:
+    def tun_types(self) -> Optional[Sequence[str]]:
         """
-        The types of tunnels to filter separated by a comma.
+        The types of tunnels to filter by, separated by commas.
         """
         return pulumi.get(self, "tun_types")
 
@@ -202,7 +202,7 @@ def get_zero_trust_tunnel_cloudflared_routes(account_id: Optional[str] = None,
                                              network_subset: Optional[str] = None,
                                              network_superset: Optional[str] = None,
                                              route_id: Optional[str] = None,
-                                             tun_types: Optional[str] = None,
+                                             tun_types: Optional[Sequence[str]] = None,
                                              tunnel_id: Optional[str] = None,
                                              virtual_network_id: Optional[str] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustTunnelCloudflaredRoutesResult:
@@ -215,12 +215,12 @@ def get_zero_trust_tunnel_cloudflared_routes(account_id: Optional[str] = None,
 
     example_zero_trust_tunnel_cloudflared_routes = cloudflare.get_zero_trust_tunnel_cloudflared_routes(account_id="699d98642c564d2e855e9661899b7252",
         comment="Example comment for this route.",
-        existed_at="2019-10-12T07:20:50.52Z",
+        existed_at="2019-10-12T07%3A20%3A50.52Z",
         is_deleted=True,
         network_subset="172.16.0.0/16",
         network_superset="172.16.0.0/16",
         route_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-        tun_types="cfd_tunnel,warp_connector",
+        tun_types=["cfd_tunnel"],
         tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
         virtual_network_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
     ```
@@ -228,13 +228,13 @@ def get_zero_trust_tunnel_cloudflared_routes(account_id: Optional[str] = None,
 
     :param str account_id: Cloudflare account ID
     :param str comment: Optional remark describing the route.
-    :param str existed_at: If provided, include only tunnels that were created (and not deleted) before this time.
+    :param str existed_at: If provided, include only resources that were created (and not deleted) before this time. URL encoded.
     :param bool is_deleted: If `true`, only include deleted routes. If `false`, exclude deleted routes. If empty, all routes will be included.
     :param int max_items: Max items to fetch, default: 1000
     :param str network_subset: If set, only list routes that are contained within this IP range.
     :param str network_superset: If set, only list routes that contain this IP range.
     :param str route_id: UUID of the route.
-    :param str tun_types: The types of tunnels to filter separated by a comma.
+    :param Sequence[str] tun_types: The types of tunnels to filter by, separated by commas.
     :param str tunnel_id: UUID of the tunnel.
     :param str virtual_network_id: UUID of the virtual network.
     """
@@ -275,7 +275,7 @@ def get_zero_trust_tunnel_cloudflared_routes_output(account_id: Optional[pulumi.
                                                     network_subset: Optional[pulumi.Input[Optional[str]]] = None,
                                                     network_superset: Optional[pulumi.Input[Optional[str]]] = None,
                                                     route_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                                    tun_types: Optional[pulumi.Input[Optional[str]]] = None,
+                                                    tun_types: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                                     tunnel_id: Optional[pulumi.Input[Optional[str]]] = None,
                                                     virtual_network_id: Optional[pulumi.Input[Optional[str]]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelCloudflaredRoutesResult]:
@@ -288,12 +288,12 @@ def get_zero_trust_tunnel_cloudflared_routes_output(account_id: Optional[pulumi.
 
     example_zero_trust_tunnel_cloudflared_routes = cloudflare.get_zero_trust_tunnel_cloudflared_routes(account_id="699d98642c564d2e855e9661899b7252",
         comment="Example comment for this route.",
-        existed_at="2019-10-12T07:20:50.52Z",
+        existed_at="2019-10-12T07%3A20%3A50.52Z",
         is_deleted=True,
         network_subset="172.16.0.0/16",
         network_superset="172.16.0.0/16",
         route_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-        tun_types="cfd_tunnel,warp_connector",
+        tun_types=["cfd_tunnel"],
         tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
         virtual_network_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
     ```
@@ -301,13 +301,13 @@ def get_zero_trust_tunnel_cloudflared_routes_output(account_id: Optional[pulumi.
 
     :param str account_id: Cloudflare account ID
     :param str comment: Optional remark describing the route.
-    :param str existed_at: If provided, include only tunnels that were created (and not deleted) before this time.
+    :param str existed_at: If provided, include only resources that were created (and not deleted) before this time. URL encoded.
     :param bool is_deleted: If `true`, only include deleted routes. If `false`, exclude deleted routes. If empty, all routes will be included.
     :param int max_items: Max items to fetch, default: 1000
     :param str network_subset: If set, only list routes that are contained within this IP range.
     :param str network_superset: If set, only list routes that contain this IP range.
     :param str route_id: UUID of the route.
-    :param str tun_types: The types of tunnels to filter separated by a comma.
+    :param Sequence[str] tun_types: The types of tunnels to filter by, separated by commas.
     :param str tunnel_id: UUID of the tunnel.
     :param str virtual_network_id: UUID of the virtual network.
     """

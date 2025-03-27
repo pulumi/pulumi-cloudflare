@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records.
+        /// Available values: "", "A", "AAAA", "SRV".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

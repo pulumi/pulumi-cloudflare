@@ -91,6 +91,21 @@ public final class R2ManagedDomainState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Jurisdiction of the bucket
+     * 
+     */
+    @Import(name="jurisdiction")
+    private @Nullable Output<String> jurisdiction;
+
+    /**
+     * @return Jurisdiction of the bucket
+     * 
+     */
+    public Optional<Output<String>> jurisdiction() {
+        return Optional.ofNullable(this.jurisdiction);
+    }
+
     private R2ManagedDomainState() {}
 
     private R2ManagedDomainState(R2ManagedDomainState $) {
@@ -99,6 +114,7 @@ public final class R2ManagedDomainState extends com.pulumi.resources.ResourceArg
         this.bucketName = $.bucketName;
         this.domain = $.domain;
         this.enabled = $.enabled;
+        this.jurisdiction = $.jurisdiction;
     }
 
     public static Builder builder() {
@@ -222,6 +238,27 @@ public final class R2ManagedDomainState extends com.pulumi.resources.ResourceArg
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param jurisdiction Jurisdiction of the bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(@Nullable Output<String> jurisdiction) {
+            $.jurisdiction = jurisdiction;
+            return this;
+        }
+
+        /**
+         * @param jurisdiction Jurisdiction of the bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(String jurisdiction) {
+            return jurisdiction(Output.of(jurisdiction));
         }
 
         public R2ManagedDomainState build() {

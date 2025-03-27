@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Sorts results in an ascending or descending order.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string Direction;
         /// <summary>

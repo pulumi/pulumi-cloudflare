@@ -18,6 +18,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("condition", required: true)]
         public Input<Inputs.R2BucketLifecycleRuleStorageClassTransitionConditionGetArgs> Condition { get; set; } = null!;
 
+        /// <summary>
+        /// Available values: "InfrequentAccess".
+        /// </summary>
         [Input("storageClass", required: true)]
         public Input<string> StorageClass { get; set; } = null!;
 

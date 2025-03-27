@@ -24,6 +24,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("sourceUrl", required: true)]
         public Input<string> SourceUrl { get; set; } = null!;
 
+        /// <summary>
+        /// Available values: 301, 302, 307, 308.
+        /// </summary>
         [Input("statusCode")]
         public Input<int>? StatusCode { get; set; }
 

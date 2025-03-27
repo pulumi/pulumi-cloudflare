@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyState;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyExpiration;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettings;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicySchedule;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -139,6 +140,7 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
     }
     /**
      * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;.
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
@@ -146,6 +148,7 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
 
     /**
      * @return The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;.
      * 
      */
     public Output<String> action() {
@@ -389,6 +392,9 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/teamsRule:TeamsRule").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

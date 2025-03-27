@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// The action to apply to a matched request. The `log` action is only available on an Enterprise plan.
+        /// Available values: "block", "challenge", "js*challenge", "managed*challenge", "allow", "log", "bypass".
         /// </summary>
         public readonly string Action;
         /// <summary>

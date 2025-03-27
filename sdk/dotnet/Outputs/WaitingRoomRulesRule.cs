@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// The action to take when the expression matches.
+        /// Available values: "bypass*waiting*room".
         /// </summary>
         public readonly string Action;
         /// <summary>

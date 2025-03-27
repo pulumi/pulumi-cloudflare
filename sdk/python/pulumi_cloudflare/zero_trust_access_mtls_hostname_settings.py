@@ -81,12 +81,9 @@ class _ZeroTrustAccessMtlsHostnameSettingsState:
         """
         Input properties used for looking up and filtering ZeroTrustAccessMtlsHostnameSettings resources.
         :param pulumi.Input[str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-<<<<<<< HEAD
-=======
         :param pulumi.Input[bool] china_network: Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
         :param pulumi.Input[bool] client_certificate_forwarding: Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
         :param pulumi.Input[str] hostname: The hostname that these settings apply to.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
@@ -233,6 +230,8 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
             __props__.__dict__["china_network"] = None
             __props__.__dict__["client_certificate_forwarding"] = None
             __props__.__dict__["hostname"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustAccessMtlsHostnameSettings, __self__).__init__(
             'cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings',
             resource_name,
@@ -257,12 +256,9 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-<<<<<<< HEAD
-=======
         :param pulumi.Input[bool] china_network: Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
         :param pulumi.Input[bool] client_certificate_forwarding: Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
         :param pulumi.Input[str] hostname: The hostname that these settings apply to.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -303,8 +299,6 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-<<<<<<< HEAD
-=======
     def hostname(self) -> pulumi.Output[str]:
         """
         The hostname that these settings apply to.
@@ -313,7 +307,6 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     def settings(self) -> pulumi.Output[Sequence['outputs.ZeroTrustAccessMtlsHostnameSettingsSetting']]:
         return pulumi.get(self, "settings")
 

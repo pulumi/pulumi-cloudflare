@@ -34,6 +34,7 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
 
     /**
      * Determines which browser ttl mode to use.
+     * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
      * 
      */
     @Import(name="mode", required=true)
@@ -41,6 +42,7 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
 
     /**
      * @return Determines which browser ttl mode to use.
+     * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
      * 
      */
     public Output<String> mode() {
@@ -95,6 +97,7 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
 
         /**
          * @param mode Determines which browser ttl mode to use.
+         * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
          * 
          * @return builder
          * 
@@ -106,6 +109,7 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
 
         /**
          * @param mode Determines which browser ttl mode to use.
+         * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
          * 
          * @return builder
          * 

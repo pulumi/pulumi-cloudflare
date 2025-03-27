@@ -27,6 +27,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<Outputs.GetAccountMembersResultRoleResult> Roles;
         /// <summary>
         /// A member's status in the account.
+        /// Available values: "accepted", "pending".
         /// </summary>
         public readonly string Status;
         /// <summary>

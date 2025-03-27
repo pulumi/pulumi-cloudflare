@@ -15,9 +15,17 @@ public final class RateLimitBypassArgs extends com.pulumi.resources.ResourceArgs
 
     public static final RateLimitBypassArgs Empty = new RateLimitBypassArgs();
 
+    /**
+     * Available values: &#34;url&#34;.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Available values: &#34;url&#34;.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -62,11 +70,23 @@ public final class RateLimitBypassArgs extends com.pulumi.resources.ResourceArgs
             $ = new RateLimitBypassArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name Available values: &#34;url&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Available values: &#34;url&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

@@ -20,6 +20,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The type of characteristic.
+        /// Available values: "header", "cookie".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

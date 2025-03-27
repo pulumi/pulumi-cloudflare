@@ -77,6 +77,7 @@ import javax.annotation.Nullable;
 public class CertificatePack extends com.pulumi.resources.CustomResource {
     /**
      * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     @Export(name="certificateAuthority", refs={String.class}, tree="[0]")
@@ -84,6 +85,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     public Output<String> certificateAuthority() {
@@ -119,6 +121,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
     }
     /**
      * Status of certificate pack.
+     * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -126,6 +129,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Status of certificate pack.
+     * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
      * 
      */
     public Output<String> status() {
@@ -133,6 +137,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
     }
     /**
      * Type of certificate pack.
+     * Available values: &#34;advanced&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -140,6 +145,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Type of certificate pack.
+     * Available values: &#34;advanced&#34;.
      * 
      */
     public Output<String> type() {
@@ -147,6 +153,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
     }
     /**
      * Validation Method selected for the order.
+     * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
      * 
      */
     @Export(name="validationMethod", refs={String.class}, tree="[0]")
@@ -154,6 +161,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Validation Method selected for the order.
+     * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
      * 
      */
     public Output<String> validationMethod() {
@@ -161,6 +169,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
     }
     /**
      * Validity Days selected for the order.
+     * Available values: 14, 30, 90, 365.
      * 
      */
     @Export(name="validityDays", refs={Integer.class}, tree="[0]")
@@ -168,6 +177,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Validity Days selected for the order.
+     * Available values: 14, 30, 90, 365.
      * 
      */
     public Output<Integer> validityDays() {

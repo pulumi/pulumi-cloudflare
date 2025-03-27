@@ -61,6 +61,9 @@ namespace Pulumi.Cloudflare
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Available values: "Okta".
+        /// </summary>
         [Output("integrationType")]
         public Output<string> IntegrationType { get; private set; } = null!;
 
@@ -138,6 +141,9 @@ namespace Pulumi.Cloudflare
         [Input("active")]
         public Input<bool>? Active { get; set; }
 
+        /// <summary>
+        /// Available values: "Okta".
+        /// </summary>
         [Input("integrationType", required: true)]
         public Input<string> IntegrationType { get; set; } = null!;
 
@@ -183,6 +189,9 @@ namespace Pulumi.Cloudflare
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Available values: "Okta".
+        /// </summary>
         [Input("integrationType")]
         public Input<string>? IntegrationType { get; set; }
 

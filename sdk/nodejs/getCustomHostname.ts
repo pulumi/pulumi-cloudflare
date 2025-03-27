@@ -87,6 +87,7 @@ export interface GetCustomHostnameResult {
     readonly ssl: outputs.GetCustomHostnameSsl;
     /**
      * Status of the hostname's activation.
+     * Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
      */
     readonly status: string;
     /**

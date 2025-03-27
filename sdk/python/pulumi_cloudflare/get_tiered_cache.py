@@ -56,6 +56,7 @@ class GetTieredCacheResult:
     def id(self) -> str:
         """
         ID of the zone setting.
+        Available values: "tiered*cache*smart*topology*enable".
         """
         return pulumi.get(self, "id")
 
@@ -72,6 +73,7 @@ class GetTieredCacheResult:
     def value(self) -> str:
         """
         The value of the feature
+        Available values: "on", "off".
         """
         return pulumi.get(self, "value")
 

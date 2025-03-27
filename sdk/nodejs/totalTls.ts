@@ -54,6 +54,7 @@ export class TotalTls extends pulumi.CustomResource {
 
     /**
      * The Certificate Authority that Total TLS certificates will be issued through.
+     * Available values: "google", "lets*encrypt", "ssl*com".
      */
     public readonly certificateAuthority!: pulumi.Output<string | undefined>;
     /**
@@ -62,6 +63,7 @@ export class TotalTls extends pulumi.CustomResource {
     public readonly enabled!: pulumi.Output<boolean>;
     /**
      * The validity period in days for the certificates ordered via Total TLS.
+     * Available values: 90.
      */
     public /*out*/ readonly validityPeriod!: pulumi.Output<number>;
     /**
@@ -110,6 +112,7 @@ export class TotalTls extends pulumi.CustomResource {
 export interface TotalTlsState {
     /**
      * The Certificate Authority that Total TLS certificates will be issued through.
+     * Available values: "google", "lets*encrypt", "ssl*com".
      */
     certificateAuthority?: pulumi.Input<string>;
     /**
@@ -118,6 +121,7 @@ export interface TotalTlsState {
     enabled?: pulumi.Input<boolean>;
     /**
      * The validity period in days for the certificates ordered via Total TLS.
+     * Available values: 90.
      */
     validityPeriod?: pulumi.Input<number>;
     /**
@@ -132,6 +136,7 @@ export interface TotalTlsState {
 export interface TotalTlsArgs {
     /**
      * The Certificate Authority that Total TLS certificates will be issued through.
+     * Available values: "google", "lets*encrypt", "ssl*com".
      */
     certificateAuthority?: pulumi.Input<string>;
     /**

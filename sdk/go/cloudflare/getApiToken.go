@@ -74,6 +74,7 @@ type LookupApiTokenResult struct {
 	// List of access policies assigned to the token.
 	Policies []GetApiTokenPolicy `pulumi:"policies"`
 	// Status of the token.
+	// Available values: "active", "disabled", "expired".
 	Status string `pulumi:"status"`
 	// Token identifier tag.
 	TokenId *string `pulumi:"tokenId"`
@@ -163,6 +164,7 @@ func (o LookupApiTokenResultOutput) Policies() GetApiTokenPolicyArrayOutput {
 }
 
 // Status of the token.
+// Available values: "active", "disabled", "expired".
 func (o LookupApiTokenResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiTokenResult) string { return v.Status }).(pulumi.StringOutput)
 }

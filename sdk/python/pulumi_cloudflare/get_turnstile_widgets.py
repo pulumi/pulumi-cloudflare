@@ -60,6 +60,7 @@ class GetTurnstileWidgetsResult:
     def direction(self) -> Optional[str]:
         """
         Direction to order widgets.
+        Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
 
@@ -84,6 +85,7 @@ class GetTurnstileWidgetsResult:
     def order(self) -> Optional[str]:
         """
         Field to order widgets by.
+        Available values: "id", "sitekey", "name", "created*on", "modified*on".
         """
         return pulumi.get(self, "order")
 
@@ -130,8 +132,10 @@ def get_turnstile_widgets(account_id: Optional[str] = None,
 
     :param str account_id: Identifier
     :param str direction: Direction to order widgets.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     :param str order: Field to order widgets by.
+           Available values: "id", "sitekey", "name", "created*on", "modified*on".
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -168,8 +172,10 @@ def get_turnstile_widgets_output(account_id: Optional[pulumi.Input[str]] = None,
 
     :param str account_id: Identifier
     :param str direction: Direction to order widgets.
+           Available values: "asc", "desc".
     :param int max_items: Max items to fetch, default: 1000
     :param str order: Field to order widgets by.
+           Available values: "id", "sitekey", "name", "created*on", "modified*on".
     """
     __args__ = dict()
     __args__['accountId'] = account_id

@@ -27,13 +27,16 @@ class GetBotManagementResult:
     """
     A collection of values returned by getBotManagement.
     """
-    def __init__(__self__, ai_bots_protection=None, auto_update_model=None, enable_js=None, fight_mode=None, id=None, optimize_wordpress=None, sbfm_definitely_automated=None, sbfm_likely_automated=None, sbfm_static_resource_protection=None, sbfm_verified_bots=None, stale_zone_configuration=None, suppress_session_score=None, using_latest_model=None, zone_id=None):
+    def __init__(__self__, ai_bots_protection=None, auto_update_model=None, crawler_protection=None, enable_js=None, fight_mode=None, id=None, optimize_wordpress=None, sbfm_definitely_automated=None, sbfm_likely_automated=None, sbfm_static_resource_protection=None, sbfm_verified_bots=None, stale_zone_configuration=None, suppress_session_score=None, using_latest_model=None, zone_id=None):
         if ai_bots_protection and not isinstance(ai_bots_protection, str):
             raise TypeError("Expected argument 'ai_bots_protection' to be a str")
         pulumi.set(__self__, "ai_bots_protection", ai_bots_protection)
         if auto_update_model and not isinstance(auto_update_model, bool):
             raise TypeError("Expected argument 'auto_update_model' to be a bool")
         pulumi.set(__self__, "auto_update_model", auto_update_model)
+        if crawler_protection and not isinstance(crawler_protection, str):
+            raise TypeError("Expected argument 'crawler_protection' to be a str")
+        pulumi.set(__self__, "crawler_protection", crawler_protection)
         if enable_js and not isinstance(enable_js, bool):
             raise TypeError("Expected argument 'enable_js' to be a bool")
         pulumi.set(__self__, "enable_js", enable_js)
@@ -76,6 +79,7 @@ class GetBotManagementResult:
     def ai_bots_protection(self) -> str:
         """
         Enable rule to block AI Scrapers and Crawlers.
+        Available values: "block", "disabled".
         """
         return pulumi.get(self, "ai_bots_protection")
 
@@ -86,6 +90,15 @@ class GetBotManagementResult:
         Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         """
         return pulumi.get(self, "auto_update_model")
+
+    @property
+    @pulumi.getter(name="crawlerProtection")
+    def crawler_protection(self) -> str:
+        """
+        Enable rule to punish AI Scrapers and Crawlers via a link maze.
+        Available values: "enabled", "disabled".
+        """
+        return pulumi.get(self, "crawler_protection")
 
     @property
     @pulumi.getter(name="enableJs")
@@ -124,6 +137,7 @@ class GetBotManagementResult:
     def sbfm_definitely_automated(self) -> str:
         """
         Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+        Available values: "allow", "block", "managed_challenge".
         """
         return pulumi.get(self, "sbfm_definitely_automated")
 
@@ -132,6 +146,7 @@ class GetBotManagementResult:
     def sbfm_likely_automated(self) -> str:
         """
         Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+        Available values: "allow", "block", "managed_challenge".
         """
         return pulumi.get(self, "sbfm_likely_automated")
 
@@ -150,6 +165,7 @@ class GetBotManagementResult:
     def sbfm_verified_bots(self) -> str:
         """
         Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+        Available values: "allow", "block".
         """
         return pulumi.get(self, "sbfm_verified_bots")
 
@@ -194,6 +210,7 @@ class AwaitableGetBotManagementResult(GetBotManagementResult):
         return GetBotManagementResult(
             ai_bots_protection=self.ai_bots_protection,
             auto_update_model=self.auto_update_model,
+            crawler_protection=self.crawler_protection,
             enable_js=self.enable_js,
             fight_mode=self.fight_mode,
             id=self.id,
@@ -231,6 +248,7 @@ def get_bot_management(zone_id: Optional[str] = None,
     return AwaitableGetBotManagementResult(
         ai_bots_protection=pulumi.get(__ret__, 'ai_bots_protection'),
         auto_update_model=pulumi.get(__ret__, 'auto_update_model'),
+        crawler_protection=pulumi.get(__ret__, 'crawler_protection'),
         enable_js=pulumi.get(__ret__, 'enable_js'),
         fight_mode=pulumi.get(__ret__, 'fight_mode'),
         id=pulumi.get(__ret__, 'id'),
@@ -265,6 +283,7 @@ def get_bot_management_output(zone_id: Optional[pulumi.Input[str]] = None,
     return __ret__.apply(lambda __response__: GetBotManagementResult(
         ai_bots_protection=pulumi.get(__response__, 'ai_bots_protection'),
         auto_update_model=pulumi.get(__response__, 'auto_update_model'),
+        crawler_protection=pulumi.get(__response__, 'crawler_protection'),
         enable_js=pulumi.get(__response__, 'enable_js'),
         fight_mode=pulumi.get(__response__, 'fight_mode'),
         id=pulumi.get(__response__, 'id'),

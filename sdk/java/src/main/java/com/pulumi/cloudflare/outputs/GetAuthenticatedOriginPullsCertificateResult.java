@@ -53,6 +53,7 @@ public final class GetAuthenticatedOriginPullsCertificateResult {
     private String signature;
     /**
      * @return Status of the certificate activation.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     private String status;
@@ -126,6 +127,7 @@ public final class GetAuthenticatedOriginPullsCertificateResult {
     }
     /**
      * @return Status of the certificate activation.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     public String status() {

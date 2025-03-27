@@ -19,6 +19,10 @@ public final class WorkersDeploymentDeployment {
     private @Nullable String createdOn;
     private @Nullable String id;
     private @Nullable String source;
+    /**
+     * @return Available values: &#34;percentage&#34;.
+     * 
+     */
     private @Nullable String strategy;
     private @Nullable List<WorkersDeploymentDeploymentVersion> versions;
 
@@ -38,6 +42,10 @@ public final class WorkersDeploymentDeployment {
     public Optional<String> source() {
         return Optional.ofNullable(this.source);
     }
+    /**
+     * @return Available values: &#34;percentage&#34;.
+     * 
+     */
     public Optional<String> strategy() {
         return Optional.ofNullable(this.strategy);
     }

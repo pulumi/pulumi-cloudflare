@@ -6,10 +6,23 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleObservatoryScheduledTest = cloudflare.getObservatoryScheduledTest({
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     url: "example.com",
+ *     region: "asia-east1",
+ * });
+ * ```
  */
 export function getObservatoryScheduledTest(args: GetObservatoryScheduledTestArgs, opts?: pulumi.InvokeOptions): Promise<GetObservatoryScheduledTestResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getObservatoryScheduledTest:getObservatoryScheduledTest", {
+        "region": args.region,
+        "url": args.url,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -18,6 +31,15 @@ export function getObservatoryScheduledTest(args: GetObservatoryScheduledTestArg
  * A collection of arguments for invoking getObservatoryScheduledTest.
  */
 export interface GetObservatoryScheduledTestArgs {
+    /**
+     * A test region.
+     * Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
+     */
+    region?: string;
+    /**
+     * A URL.
+     */
+    url: string;
     /**
      * Identifier
      */
@@ -30,6 +52,7 @@ export interface GetObservatoryScheduledTestArgs {
 export interface GetObservatoryScheduledTestResult {
     /**
      * The frequency of the test.
+     * Available values: "DAILY", "WEEKLY".
      */
     readonly frequency: string;
     /**
@@ -38,6 +61,7 @@ export interface GetObservatoryScheduledTestResult {
     readonly id: string;
     /**
      * A test region.
+     * Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
      */
     readonly region: string;
     /**
@@ -51,10 +75,23 @@ export interface GetObservatoryScheduledTestResult {
 }
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleObservatoryScheduledTest = cloudflare.getObservatoryScheduledTest({
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     url: "example.com",
+ *     region: "asia-east1",
+ * });
+ * ```
  */
 export function getObservatoryScheduledTestOutput(args: GetObservatoryScheduledTestOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetObservatoryScheduledTestResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getObservatoryScheduledTest:getObservatoryScheduledTest", {
+        "region": args.region,
+        "url": args.url,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -63,6 +100,15 @@ export function getObservatoryScheduledTestOutput(args: GetObservatoryScheduledT
  * A collection of arguments for invoking getObservatoryScheduledTest.
  */
 export interface GetObservatoryScheduledTestOutputArgs {
+    /**
+     * A test region.
+     * Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * A URL.
+     */
+    url: pulumi.Input<string>;
     /**
      * Identifier
      */

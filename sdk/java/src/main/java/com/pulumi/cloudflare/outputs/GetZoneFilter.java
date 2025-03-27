@@ -16,11 +16,13 @@ public final class GetZoneFilter {
     private @Nullable GetZoneFilterAccount account;
     /**
      * @return Direction to order zones.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
     /**
      * @return Whether to match all search requirements or at least one (any).
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     private String match;
@@ -39,11 +41,13 @@ public final class GetZoneFilter {
     private @Nullable String name;
     /**
      * @return Field to order zones by.
+     * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;.
      * 
      */
     private @Nullable String order;
     /**
      * @return A zone status
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
     private @Nullable String status;
@@ -54,6 +58,7 @@ public final class GetZoneFilter {
     }
     /**
      * @return Direction to order zones.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -61,6 +66,7 @@ public final class GetZoneFilter {
     }
     /**
      * @return Whether to match all search requirements or at least one (any).
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     public String match() {
@@ -83,6 +89,7 @@ public final class GetZoneFilter {
     }
     /**
      * @return Field to order zones by.
+     * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;.
      * 
      */
     public Optional<String> order() {
@@ -90,6 +97,7 @@ public final class GetZoneFilter {
     }
     /**
      * @return A zone status
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
     public Optional<String> status() {

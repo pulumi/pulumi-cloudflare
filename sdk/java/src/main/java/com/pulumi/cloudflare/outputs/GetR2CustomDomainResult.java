@@ -23,15 +23,10 @@ public final class GetR2CustomDomainResult {
      */
     private String bucketName;
     /**
-     * @return Domain name of the custom domain to be added
-     * 
-     */
-    private String domain;
-    /**
      * @return Name of the custom domain
      * 
      */
-    private String domainName;
+    private String domain;
     /**
      * @return Whether this bucket is publicly accessible at the specified custom domain
      * 
@@ -44,6 +39,7 @@ public final class GetR2CustomDomainResult {
     private String id;
     /**
      * @return Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+     * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
      * 
      */
     private String minTls;
@@ -75,18 +71,11 @@ public final class GetR2CustomDomainResult {
         return this.bucketName;
     }
     /**
-     * @return Domain name of the custom domain to be added
+     * @return Name of the custom domain
      * 
      */
     public String domain() {
         return this.domain;
-    }
-    /**
-     * @return Name of the custom domain
-     * 
-     */
-    public String domainName() {
-        return this.domainName;
     }
     /**
      * @return Whether this bucket is publicly accessible at the specified custom domain
@@ -104,6 +93,7 @@ public final class GetR2CustomDomainResult {
     }
     /**
      * @return Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+     * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
      * 
      */
     public String minTls() {
@@ -139,7 +129,6 @@ public final class GetR2CustomDomainResult {
         private String accountId;
         private String bucketName;
         private String domain;
-        private String domainName;
         private Boolean enabled;
         private String id;
         private String minTls;
@@ -152,7 +141,6 @@ public final class GetR2CustomDomainResult {
     	      this.accountId = defaults.accountId;
     	      this.bucketName = defaults.bucketName;
     	      this.domain = defaults.domain;
-    	      this.domainName = defaults.domainName;
     	      this.enabled = defaults.enabled;
     	      this.id = defaults.id;
     	      this.minTls = defaults.minTls;
@@ -183,14 +171,6 @@ public final class GetR2CustomDomainResult {
               throw new MissingRequiredPropertyException("GetR2CustomDomainResult", "domain");
             }
             this.domain = domain;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder domainName(String domainName) {
-            if (domainName == null) {
-              throw new MissingRequiredPropertyException("GetR2CustomDomainResult", "domainName");
-            }
-            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
@@ -246,7 +226,6 @@ public final class GetR2CustomDomainResult {
             _resultValue.accountId = accountId;
             _resultValue.bucketName = bucketName;
             _resultValue.domain = domain;
-            _resultValue.domainName = domainName;
             _resultValue.enabled = enabled;
             _resultValue.id = id;
             _resultValue.minTls = minTls;

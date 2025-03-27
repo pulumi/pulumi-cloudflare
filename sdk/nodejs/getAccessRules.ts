@@ -54,10 +54,12 @@ export interface GetAccessRulesArgs {
     configuration?: inputs.GetAccessRulesConfiguration;
     /**
      * The direction used to sort returned rules.
+     * Available values: "asc", "desc".
      */
     direction?: string;
     /**
      * When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+     * Available values: "any", "all".
      */
     match?: string;
     /**
@@ -66,6 +68,7 @@ export interface GetAccessRulesArgs {
     maxItems?: number;
     /**
      * The action to apply to a matched request.
+     * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
     mode?: string;
     /**
@@ -75,6 +78,7 @@ export interface GetAccessRulesArgs {
     notes?: string;
     /**
      * The field used to sort returned rules.
+     * Available values: "configuration.target", "configuration.value", "mode".
      */
     order?: string;
     /**
@@ -94,6 +98,7 @@ export interface GetAccessRulesResult {
     readonly configuration?: outputs.GetAccessRulesConfiguration;
     /**
      * The direction used to sort returned rules.
+     * Available values: "asc", "desc".
      */
     readonly direction?: string;
     /**
@@ -102,6 +107,7 @@ export interface GetAccessRulesResult {
     readonly id: string;
     /**
      * When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+     * Available values: "any", "all".
      */
     readonly match: string;
     /**
@@ -110,6 +116,7 @@ export interface GetAccessRulesResult {
     readonly maxItems?: number;
     /**
      * The action to apply to a matched request.
+     * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
     readonly mode?: string;
     /**
@@ -119,6 +126,7 @@ export interface GetAccessRulesResult {
     readonly notes?: string;
     /**
      * The field used to sort returned rules.
+     * Available values: "configuration.target", "configuration.value", "mode".
      */
     readonly order?: string;
     /**
@@ -178,10 +186,12 @@ export interface GetAccessRulesOutputArgs {
     configuration?: pulumi.Input<inputs.GetAccessRulesConfigurationArgs>;
     /**
      * The direction used to sort returned rules.
+     * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**
      * When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+     * Available values: "any", "all".
      */
     match?: pulumi.Input<string>;
     /**
@@ -190,6 +200,7 @@ export interface GetAccessRulesOutputArgs {
     maxItems?: pulumi.Input<number>;
     /**
      * The action to apply to a matched request.
+     * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
     mode?: pulumi.Input<string>;
     /**
@@ -199,6 +210,7 @@ export interface GetAccessRulesOutputArgs {
     notes?: pulumi.Input<string>;
     /**
      * The field used to sort returned rules.
+     * Available values: "configuration.target", "configuration.value", "mode".
      */
     order?: pulumi.Input<string>;
     /**

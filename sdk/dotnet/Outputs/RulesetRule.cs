@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// The action to perform when the rule matches.
+        /// Available values: "block".
         /// </summary>
         public readonly string? Action;
         /// <summary>

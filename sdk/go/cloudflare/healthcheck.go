@@ -45,6 +45,7 @@ type Healthcheck struct {
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	Retries pulumi.IntOutput `pulumi:"retries"`
 	// The current status of the origin server according to the health check.
+	// Available values: "unknown", "healthy", "unhealthy", "suspended".
 	Status pulumi.StringOutput `pulumi:"status"`
 	// If suspended, no health checks are sent to the origin.
 	Suspended pulumi.BoolOutput `pulumi:"suspended"`
@@ -120,6 +121,7 @@ type healthcheckState struct {
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	Retries *int `pulumi:"retries"`
 	// The current status of the origin server according to the health check.
+	// Available values: "unknown", "healthy", "unhealthy", "suspended".
 	Status *string `pulumi:"status"`
 	// If suspended, no health checks are sent to the origin.
 	Suspended *bool `pulumi:"suspended"`
@@ -157,6 +159,7 @@ type HealthcheckState struct {
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	Retries pulumi.IntPtrInput
 	// The current status of the origin server according to the health check.
+	// Available values: "unknown", "healthy", "unhealthy", "suspended".
 	Status pulumi.StringPtrInput
 	// If suspended, no health checks are sent to the origin.
 	Suspended pulumi.BoolPtrInput
@@ -383,6 +386,7 @@ func (o HealthcheckOutput) Retries() pulumi.IntOutput {
 }
 
 // The current status of the origin server according to the health check.
+// Available values: "unknown", "healthy", "unhealthy", "suspended".
 func (o HealthcheckOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

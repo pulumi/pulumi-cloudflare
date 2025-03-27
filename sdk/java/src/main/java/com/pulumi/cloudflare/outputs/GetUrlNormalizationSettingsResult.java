@@ -17,11 +17,13 @@ public final class GetUrlNormalizationSettingsResult {
     private String id;
     /**
      * @return The scope of the URL normalization.
+     * Available values: &#34;incoming&#34;, &#34;both&#34;.
      * 
      */
     private String scope;
     /**
      * @return The type of URL normalization performed by Cloudflare.
+     * Available values: &#34;cloudflare&#34;, &#34;rfc3986&#34;.
      * 
      */
     private String type;
@@ -41,6 +43,7 @@ public final class GetUrlNormalizationSettingsResult {
     }
     /**
      * @return The scope of the URL normalization.
+     * Available values: &#34;incoming&#34;, &#34;both&#34;.
      * 
      */
     public String scope() {
@@ -48,6 +51,7 @@ public final class GetUrlNormalizationSettingsResult {
     }
     /**
      * @return The type of URL normalization performed by Cloudflare.
+     * Available values: &#34;cloudflare&#34;, &#34;rfc3986&#34;.
      * 
      */
     public String type() {

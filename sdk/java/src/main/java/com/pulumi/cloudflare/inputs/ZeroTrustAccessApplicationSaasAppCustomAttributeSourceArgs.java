@@ -94,11 +94,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs ex
         }
 
         /**
-<<<<<<< HEAD
-         * @param nameByIdp A mapping from IdP ID to attribute name.
-=======
          * @param nameByIdps A mapping from IdP ID to attribute name.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 
@@ -109,11 +105,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs ex
         }
 
         /**
-<<<<<<< HEAD
-         * @param nameByIdp A mapping from IdP ID to attribute name.
-=======
          * @param nameByIdps A mapping from IdP ID to attribute name.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 

@@ -125,6 +125,7 @@ public final class GetLoadBalancerResult {
      */
     private Double ttl;
     private String zoneId;
+    private String zoneName;
 
     private GetLoadBalancerResult() {}
     /**
@@ -279,6 +280,9 @@ public final class GetLoadBalancerResult {
     public String zoneId() {
         return this.zoneId;
     }
+    public String zoneName() {
+        return this.zoneName;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -313,6 +317,7 @@ public final class GetLoadBalancerResult {
         private String steeringPolicy;
         private Double ttl;
         private String zoneId;
+        private String zoneName;
         public Builder() {}
         public Builder(GetLoadBalancerResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -340,6 +345,7 @@ public final class GetLoadBalancerResult {
     	      this.steeringPolicy = defaults.steeringPolicy;
     	      this.ttl = defaults.ttl;
     	      this.zoneId = defaults.zoneId;
+    	      this.zoneName = defaults.zoneName;
         }
 
         @CustomType.Setter
@@ -541,6 +547,14 @@ public final class GetLoadBalancerResult {
             this.zoneId = zoneId;
             return this;
         }
+        @CustomType.Setter
+        public Builder zoneName(String zoneName) {
+            if (zoneName == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "zoneName");
+            }
+            this.zoneName = zoneName;
+            return this;
+        }
         public GetLoadBalancerResult build() {
             final var _resultValue = new GetLoadBalancerResult();
             _resultValue.adaptiveRouting = adaptiveRouting;
@@ -567,6 +581,7 @@ public final class GetLoadBalancerResult {
             _resultValue.steeringPolicy = steeringPolicy;
             _resultValue.ttl = ttl;
             _resultValue.zoneId = zoneId;
+            _resultValue.zoneName = zoneName;
             return _resultValue;
         }
     }

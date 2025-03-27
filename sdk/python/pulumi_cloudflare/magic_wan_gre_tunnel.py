@@ -497,6 +497,8 @@ class MagicWanGreTunnel(pulumi.CustomResource):
             __props__.__dict__["gre_tunnels"] = None
             __props__.__dict__["modified"] = None
             __props__.__dict__["modified_gre_tunnel"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/greTunnel:GreTunnel")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(MagicWanGreTunnel, __self__).__init__(
             'cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel',
             resource_name,

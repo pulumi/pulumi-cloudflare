@@ -51,15 +51,9 @@ export class ContentScanningExpression extends pulumi.CustomResource {
 
     public readonly bodies!: pulumi.Output<outputs.ContentScanningExpressionBody[]>;
     /**
-<<<<<<< HEAD
-     * Identifier
-     */
-    public readonly expressionId!: pulumi.Output<string | undefined>;
-=======
      * Ruleset expression to use in matching content objects
      */
     public /*out*/ readonly payload!: pulumi.Output<string>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Identifier
      */
@@ -79,11 +73,7 @@ export class ContentScanningExpression extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ContentScanningExpressionState | undefined;
             resourceInputs["bodies"] = state ? state.bodies : undefined;
-<<<<<<< HEAD
-            resourceInputs["expressionId"] = state ? state.expressionId : undefined;
-=======
             resourceInputs["payload"] = state ? state.payload : undefined;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ContentScanningExpressionArgs | undefined;
@@ -94,10 +84,6 @@ export class ContentScanningExpression extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["bodies"] = args ? args.bodies : undefined;
-<<<<<<< HEAD
-            resourceInputs["expressionId"] = args ? args.expressionId : undefined;
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["payload"] = undefined /*out*/;
         }
@@ -112,13 +98,9 @@ export class ContentScanningExpression extends pulumi.CustomResource {
 export interface ContentScanningExpressionState {
     bodies?: pulumi.Input<pulumi.Input<inputs.ContentScanningExpressionBody>[]>;
     /**
-<<<<<<< HEAD
-     * Identifier
-=======
      * Ruleset expression to use in matching content objects
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
-    expressionId?: pulumi.Input<string>;
+    payload?: pulumi.Input<string>;
     /**
      * Identifier
      */
@@ -132,13 +114,6 @@ export interface ContentScanningExpressionArgs {
     bodies: pulumi.Input<pulumi.Input<inputs.ContentScanningExpressionBody>[]>;
     /**
      * Identifier
-<<<<<<< HEAD
-     */
-    expressionId?: pulumi.Input<string>;
-    /**
-     * Identifier
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      */
     zoneId: pulumi.Input<string>;
 }

@@ -19,11 +19,6 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
 
     @Import(name="bodies")
     private @Nullable Output<List<ContentScanningExpressionBodyArgs>> bodies;
-<<<<<<< HEAD
-
-    public Optional<Output<List<ContentScanningExpressionBodyArgs>>> bodies() {
-        return Optional.ofNullable(this.bodies);
-=======
 
     public Optional<Output<List<ContentScanningExpressionBodyArgs>>> bodies() {
         return Optional.ofNullable(this.bodies);
@@ -42,29 +37,10 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
      */
     public Optional<Output<String>> payload() {
         return Optional.ofNullable(this.payload);
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     }
 
     /**
      * Identifier
-<<<<<<< HEAD
-     * 
-     */
-    @Import(name="expressionId")
-    private @Nullable Output<String> expressionId;
-
-    /**
-     * @return Identifier
-     * 
-     */
-    public Optional<Output<String>> expressionId() {
-        return Optional.ofNullable(this.expressionId);
-    }
-
-    /**
-     * Identifier
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     @Import(name="zoneId")
@@ -82,11 +58,7 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
 
     private ContentScanningExpressionState(ContentScanningExpressionState $) {
         this.bodies = $.bodies;
-<<<<<<< HEAD
-        this.expressionId = $.expressionId;
-=======
         this.payload = $.payload;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         this.zoneId = $.zoneId;
     }
 
@@ -122,32 +94,24 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
         }
 
         /**
-<<<<<<< HEAD
-         * @param expressionId Identifier
-=======
          * @param payload Ruleset expression to use in matching content objects
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 
          */
-        public Builder expressionId(@Nullable Output<String> expressionId) {
-            $.expressionId = expressionId;
+        public Builder payload(@Nullable Output<String> payload) {
+            $.payload = payload;
             return this;
         }
 
         /**
-<<<<<<< HEAD
-         * @param expressionId Identifier
-=======
          * @param payload Ruleset expression to use in matching content objects
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 
          */
-        public Builder expressionId(String expressionId) {
-            return expressionId(Output.of(expressionId));
+        public Builder payload(String payload) {
+            return payload(Output.of(payload));
         }
 
         /**

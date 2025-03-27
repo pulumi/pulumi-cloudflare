@@ -16,6 +16,10 @@ public final class R2BucketLifecycleRuleStorageClassTransition {
      * 
      */
     private R2BucketLifecycleRuleStorageClassTransitionCondition condition;
+    /**
+     * @return Available values: &#34;InfrequentAccess&#34;.
+     * 
+     */
     private String storageClass;
 
     private R2BucketLifecycleRuleStorageClassTransition() {}
@@ -26,6 +30,10 @@ public final class R2BucketLifecycleRuleStorageClassTransition {
     public R2BucketLifecycleRuleStorageClassTransitionCondition condition() {
         return this.condition;
     }
+    /**
+     * @return Available values: &#34;InfrequentAccess&#34;.
+     * 
+     */
     public String storageClass() {
         return this.storageClass;
     }

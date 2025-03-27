@@ -61,6 +61,7 @@ export class TieredCache extends pulumi.CustomResource {
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
      * Enable or disable the Smart Tiered Cache
+     * Available values: "on", "off".
      */
     public readonly value!: pulumi.Output<string>;
     /**
@@ -117,6 +118,7 @@ export interface TieredCacheState {
     modifiedOn?: pulumi.Input<string>;
     /**
      * Enable or disable the Smart Tiered Cache
+     * Available values: "on", "off".
      */
     value?: pulumi.Input<string>;
     /**
@@ -131,6 +133,7 @@ export interface TieredCacheState {
 export interface TieredCacheArgs {
     /**
      * Enable or disable the Smart Tiered Cache
+     * Available values: "on", "off".
      */
     value: pulumi.Input<string>;
     /**

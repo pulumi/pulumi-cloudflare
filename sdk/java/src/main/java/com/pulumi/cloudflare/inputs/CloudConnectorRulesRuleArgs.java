@@ -19,6 +19,7 @@ public final class CloudConnectorRulesRuleArgs extends com.pulumi.resources.Reso
 
     /**
      * Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
      * 
      */
     @Import(name="cloudProvider")
@@ -26,6 +27,7 @@ public final class CloudConnectorRulesRuleArgs extends com.pulumi.resources.Reso
 
     /**
      * @return Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
      * 
      */
     public Optional<Output<String>> cloudProvider() {
@@ -106,6 +108,7 @@ public final class CloudConnectorRulesRuleArgs extends com.pulumi.resources.Reso
 
         /**
          * @param cloudProvider Cloud Provider type
+         * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
          * 
          * @return builder
          * 
@@ -117,6 +120,7 @@ public final class CloudConnectorRulesRuleArgs extends com.pulumi.resources.Reso
 
         /**
          * @param cloudProvider Cloud Provider type
+         * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
          * 
          * @return builder
          * 

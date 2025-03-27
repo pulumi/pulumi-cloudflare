@@ -14,6 +14,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -59,7 +60,7 @@ import javax.annotation.Nullable;
  *             .outputOptions(LogpushJobOutputOptionsArgs.builder()
  *                 .batch_prefix("batch_prefix")
  *                 .batch_suffix("batch_suffix")
- *                 .cve_2021_4428(true)
+ *                 .cve_2021_44228(true)
  *                 .field_delimiter("field_delimiter")
  *                 .field_names(                
  *                     "ClientIP",
@@ -163,6 +164,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
     }
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+     * Available values: &#34;high&#34;, &#34;low&#34;.
      * 
      */
     @Export(name="frequency", refs={String.class}, tree="[0]")
@@ -170,6 +172,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
 
     /**
      * @return This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+     * Available values: &#34;high&#34;, &#34;low&#34;.
      * 
      */
     public Output<String> frequency() {
@@ -177,6 +180,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
     }
     /**
      * The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+     * Available values: &#34;edge&#34;.
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
@@ -184,6 +188,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+     * Available values: &#34;edge&#34;.
      * 
      */
     public Output<Optional<String>> kind() {
@@ -369,6 +374,9 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "ownershipChallenge"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

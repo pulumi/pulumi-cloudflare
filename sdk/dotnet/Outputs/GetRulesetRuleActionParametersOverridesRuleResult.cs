@@ -31,6 +31,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly int ScoreThreshold;
         /// <summary>
         /// The sensitivity level to use for the rule.
+        /// Available values: "default", "medium", "low", "eoff".
         /// </summary>
         public readonly string SensitivityLevel;
 

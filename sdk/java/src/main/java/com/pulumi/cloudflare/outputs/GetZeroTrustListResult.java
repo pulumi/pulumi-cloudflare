@@ -44,6 +44,7 @@ public final class GetZeroTrustListResult {
     private String name;
     /**
      * @return The type of list.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
     private String type;
@@ -96,6 +97,7 @@ public final class GetZeroTrustListResult {
     }
     /**
      * @return The type of list.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
     public String type() {

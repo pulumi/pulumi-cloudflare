@@ -116,6 +116,7 @@ class GetZeroTrustAccessCustomPageResult:
     def type(self) -> str:
         """
         Custom page type.
+        Available values: "identity_denied", "forbidden".
         """
         return pulumi.get(self, "type")
 

@@ -93,8 +93,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("hyperdriveId", required: true)]
-        public string HyperdriveId { get; set; } = null!;
+        [Input("hyperdriveId")]
+        public string? HyperdriveId { get; set; }
 
         public GetHyperdriveConfigArgs()
         {
@@ -113,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("hyperdriveId", required: true)]
-        public Input<string> HyperdriveId { get; set; } = null!;
+        [Input("hyperdriveId")]
+        public Input<string>? HyperdriveId { get; set; }
 
         public GetHyperdriveConfigInvokeArgs()
         {
@@ -138,7 +138,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string HyperdriveId;
+        public readonly string? HyperdriveId;
         /// <summary>
         /// Identifier
         /// </summary>
@@ -158,7 +158,7 @@ namespace Pulumi.Cloudflare
 
             string createdOn,
 
-            string hyperdriveId,
+            string? hyperdriveId,
 
             string id,
 

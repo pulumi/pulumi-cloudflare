@@ -82,6 +82,12 @@ func NewZeroTrustTunnelCloudflaredRoute(ctx *pulumi.Context,
 	if args.TunnelId == nil {
 		return nil, errors.New("invalid value for required argument 'TunnelId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/tunnelRoute:TunnelRoute"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustTunnelCloudflaredRoute
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustTunnelCloudflaredRoute:ZeroTrustTunnelCloudflaredRoute", name, args, &resource, opts...)

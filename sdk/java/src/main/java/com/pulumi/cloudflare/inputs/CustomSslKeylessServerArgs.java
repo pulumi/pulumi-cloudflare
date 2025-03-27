@@ -141,6 +141,7 @@ public final class CustomSslKeylessServerArgs extends com.pulumi.resources.Resou
 
     /**
      * Status of the Keyless SSL.
+     * Available values: &#34;active&#34;, &#34;deleted&#34;.
      * 
      */
     @Import(name="status")
@@ -148,6 +149,7 @@ public final class CustomSslKeylessServerArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Status of the Keyless SSL.
+     * Available values: &#34;active&#34;, &#34;deleted&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -382,6 +384,7 @@ public final class CustomSslKeylessServerArgs extends com.pulumi.resources.Resou
 
         /**
          * @param status Status of the Keyless SSL.
+         * Available values: &#34;active&#34;, &#34;deleted&#34;.
          * 
          * @return builder
          * 
@@ -393,6 +396,7 @@ public final class CustomSslKeylessServerArgs extends com.pulumi.resources.Resou
 
         /**
          * @param status Status of the Keyless SSL.
+         * Available values: &#34;active&#34;, &#34;deleted&#34;.
          * 
          * @return builder
          * 

@@ -15,12 +15,14 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// The sorting direction.
+        /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         public readonly bool? IsRecent;
         public readonly bool? IsSimilarity;
         /// <summary>
         /// The field to sort by.
+        /// Available values: "pattern", "created_at".
         /// </summary>
         public readonly string? Order;
         /// <summary>

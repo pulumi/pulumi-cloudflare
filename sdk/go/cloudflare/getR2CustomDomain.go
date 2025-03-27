@@ -28,7 +28,7 @@ import (
 //			_, err := cloudflare.LookupR2CustomDomain(ctx, &cloudflare.LookupR2CustomDomainArgs{
 //				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
 //				BucketName: "example-bucket",
-//				DomainName: "example-domain/custom-domain.com",
+//				Domain:     "example-domain/custom-domain.com",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -55,7 +55,7 @@ type LookupR2CustomDomainArgs struct {
 	// Name of the bucket
 	BucketName string `pulumi:"bucketName"`
 	// Name of the custom domain
-	DomainName string `pulumi:"domainName"`
+	Domain string `pulumi:"domain"`
 }
 
 // A collection of values returned by getR2CustomDomain.
@@ -64,15 +64,14 @@ type LookupR2CustomDomainResult struct {
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket
 	BucketName string `pulumi:"bucketName"`
-	// Domain name of the custom domain to be added
-	Domain string `pulumi:"domain"`
 	// Name of the custom domain
-	DomainName string `pulumi:"domainName"`
+	Domain string `pulumi:"domain"`
 	// Whether this bucket is publicly accessible at the specified custom domain
 	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls string                  `pulumi:"minTls"`
 	Status GetR2CustomDomainStatus `pulumi:"status"`
 	// Zone ID of the custom domain resides in
@@ -97,7 +96,7 @@ type LookupR2CustomDomainOutputArgs struct {
 	// Name of the bucket
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// Name of the custom domain
-	DomainName pulumi.StringInput `pulumi:"domainName"`
+	Domain pulumi.StringInput `pulumi:"domain"`
 }
 
 func (LookupR2CustomDomainOutputArgs) ElementType() reflect.Type {
@@ -129,14 +128,9 @@ func (o LookupR2CustomDomainResultOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2CustomDomainResult) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// Domain name of the custom domain to be added
+// Name of the custom domain
 func (o LookupR2CustomDomainResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2CustomDomainResult) string { return v.Domain }).(pulumi.StringOutput)
-}
-
-// Name of the custom domain
-func (o LookupR2CustomDomainResultOutput) DomainName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupR2CustomDomainResult) string { return v.DomainName }).(pulumi.StringOutput)
 }
 
 // Whether this bucket is publicly accessible at the specified custom domain
@@ -150,6 +144,7 @@ func (o LookupR2CustomDomainResultOutput) Id() pulumi.StringOutput {
 }
 
 // Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+// Available values: "1.0", "1.1", "1.2", "1.3".
 func (o LookupR2CustomDomainResultOutput) MinTls() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2CustomDomainResult) string { return v.MinTls }).(pulumi.StringOutput)
 }

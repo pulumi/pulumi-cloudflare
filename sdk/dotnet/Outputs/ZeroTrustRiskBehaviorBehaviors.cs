@@ -14,6 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustRiskBehaviorBehaviors
     {
         public readonly bool Enabled;
+        /// <summary>
+        /// Available values: "low", "medium", "high".
+        /// </summary>
         public readonly string RiskLevel;
 
         [OutputConstructor]

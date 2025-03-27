@@ -60,41 +60,18 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
-<<<<<<< HEAD
-=======
  * ## Import
  * 
  * ```sh
  * $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules example &#39;&lt;zone_id&gt;/&lt;waiting_room_id&gt;&#39;
  * ```
  * 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  */
 @ResourceType(type="cloudflare:index/waitingRoomRules:WaitingRoomRules")
 public class WaitingRoomRules extends com.pulumi.resources.CustomResource {
     /**
-<<<<<<< HEAD
-     * The ID of the rule.
-     * 
-     */
-    @Export(name="ruleId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> ruleId;
-
-    /**
-     * @return The ID of the rule.
-     * 
-     */
-    public Output<Optional<String>> ruleId() {
-        return Codegen.optional(this.ruleId);
-    }
-    @Export(name="rules", refs={List.class,WaitingRoomRulesRule.class}, tree="[0,1]")
-    private Output<List<WaitingRoomRulesRule>> rules;
-
-    public Output<List<WaitingRoomRulesRule>> rules() {
-        return this.rules;
-    }
-=======
      * The action to take when the expression matches.
+     * Available values: &#34;bypass*waiting*room&#34;.
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
@@ -102,6 +79,7 @@ public class WaitingRoomRules extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The action to take when the expression matches.
+     * Available values: &#34;bypass*waiting*room&#34;.
      * 
      */
     public Output<String> action() {
@@ -175,7 +153,6 @@ public class WaitingRoomRules extends com.pulumi.resources.CustomResource {
     public Output<String> version() {
         return this.version;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @Export(name="waitingRoomId", refs={String.class}, tree="[0]")
     private Output<String> waitingRoomId;
 

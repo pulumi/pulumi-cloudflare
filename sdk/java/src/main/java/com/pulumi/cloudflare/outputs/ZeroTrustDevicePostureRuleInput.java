@@ -42,6 +42,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     private @Nullable String cn;
     /**
      * @return Compliance Status
+     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
      * 
      */
     private @Nullable String complianceStatus;
@@ -52,6 +53,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     private @Nullable String connectionId;
     /**
      * @return Count Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     private @Nullable String countOperator;
@@ -108,21 +110,25 @@ public final class ZeroTrustDevicePostureRuleInput {
     private @Nullable ZeroTrustDevicePostureRuleInputLocations locations;
     /**
      * @return Network status of device.
+     * Available values: &#34;connected&#34;, &#34;disconnected&#34;, &#34;disconnecting&#34;, &#34;connecting&#34;.
      * 
      */
     private @Nullable String networkStatus;
     /**
      * @return Operating system
+     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
      * 
      */
     private @Nullable String operatingSystem;
     /**
      * @return Agent operational state.
+     * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
      * 
      */
     private @Nullable String operationalState;
     /**
      * @return operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     private @Nullable String operator;
@@ -163,6 +169,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     private @Nullable Boolean requireAll;
     /**
      * @return For more details on risk level, refer to the Tanium documentation.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;critical&#34;.
      * 
      */
     private @Nullable String riskLevel;
@@ -173,6 +180,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     private @Nullable Double score;
     /**
      * @return Score Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     private @Nullable String scoreOperator;
@@ -188,6 +196,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     private @Nullable String sha256;
     /**
      * @return For more details on state, please refer to the Crowdstrike documentation.
+     * Available values: &#34;online&#34;, &#34;offline&#34;, &#34;unknown&#34;.
      * 
      */
     private @Nullable String state;
@@ -208,6 +217,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     private @Nullable String version;
     /**
      * @return Version Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     private @Nullable String versionOperator;
@@ -250,6 +260,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     }
     /**
      * @return Compliance Status
+     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
      * 
      */
     public Optional<String> complianceStatus() {
@@ -264,6 +275,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     }
     /**
      * @return Count Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public Optional<String> countOperator() {
@@ -344,6 +356,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     }
     /**
      * @return Network status of device.
+     * Available values: &#34;connected&#34;, &#34;disconnected&#34;, &#34;disconnecting&#34;, &#34;connecting&#34;.
      * 
      */
     public Optional<String> networkStatus() {
@@ -351,6 +364,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     }
     /**
      * @return Operating system
+     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
      * 
      */
     public Optional<String> operatingSystem() {
@@ -358,6 +372,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     }
     /**
      * @return Agent operational state.
+     * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
      * 
      */
     public Optional<String> operationalState() {
@@ -365,6 +380,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     }
     /**
      * @return operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public Optional<String> operator() {
@@ -421,6 +437,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     }
     /**
      * @return For more details on risk level, refer to the Tanium documentation.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;critical&#34;.
      * 
      */
     public Optional<String> riskLevel() {
@@ -435,6 +452,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     }
     /**
      * @return Score Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public Optional<String> scoreOperator() {
@@ -456,6 +474,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     }
     /**
      * @return For more details on state, please refer to the Crowdstrike documentation.
+     * Available values: &#34;online&#34;, &#34;offline&#34;, &#34;unknown&#34;.
      * 
      */
     public Optional<String> state() {
@@ -484,6 +503,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     }
     /**
      * @return Version Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public Optional<String> versionOperator() {

@@ -31,6 +31,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Schema;
         /// <summary>
         /// The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+        /// Available values: "strict", "passthrough".
         /// </summary>
         public readonly string Strictness;
         /// <summary>

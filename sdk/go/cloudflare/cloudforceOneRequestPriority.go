@@ -72,10 +72,12 @@ type CloudforceOneRequestPriority struct {
 	// Requirement
 	Requirement pulumi.StringOutput `pulumi:"requirement"`
 	// Request Status
+	// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Brief description of the request
 	Summary pulumi.StringOutput `pulumi:"summary"`
 	// The CISA defined Traffic Light Protocol (TLP)
+	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	Tlp pulumi.StringOutput `pulumi:"tlp"`
 	// Tokens for the request
 	Tokens  pulumi.IntOutput    `pulumi:"tokens"`
@@ -146,10 +148,12 @@ type cloudforceOneRequestPriorityState struct {
 	// Requirement
 	Requirement *string `pulumi:"requirement"`
 	// Request Status
+	// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 	Status *string `pulumi:"status"`
 	// Brief description of the request
 	Summary *string `pulumi:"summary"`
 	// The CISA defined Traffic Light Protocol (TLP)
+	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	Tlp *string `pulumi:"tlp"`
 	// Tokens for the request
 	Tokens  *int    `pulumi:"tokens"`
@@ -176,10 +180,12 @@ type CloudforceOneRequestPriorityState struct {
 	// Requirement
 	Requirement pulumi.StringPtrInput
 	// Request Status
+	// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 	Status pulumi.StringPtrInput
 	// Brief description of the request
 	Summary pulumi.StringPtrInput
 	// The CISA defined Traffic Light Protocol (TLP)
+	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	Tlp pulumi.StringPtrInput
 	// Tokens for the request
 	Tokens  pulumi.IntPtrInput
@@ -200,6 +206,7 @@ type cloudforceOneRequestPriorityArgs struct {
 	// Requirement
 	Requirement string `pulumi:"requirement"`
 	// The CISA defined Traffic Light Protocol (TLP)
+	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	Tlp string `pulumi:"tlp"`
 }
 
@@ -214,6 +221,7 @@ type CloudforceOneRequestPriorityArgs struct {
 	// Requirement
 	Requirement pulumi.StringInput
 	// The CISA defined Traffic Light Protocol (TLP)
+	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	Tlp pulumi.StringInput
 }
 
@@ -353,6 +361,7 @@ func (o CloudforceOneRequestPriorityOutput) Requirement() pulumi.StringOutput {
 }
 
 // Request Status
+// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 func (o CloudforceOneRequestPriorityOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudforceOneRequestPriority) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -363,6 +372,7 @@ func (o CloudforceOneRequestPriorityOutput) Summary() pulumi.StringOutput {
 }
 
 // The CISA defined Traffic Light Protocol (TLP)
+// Available values: "clear", "amber", "amber-strict", "green", "red".
 func (o CloudforceOneRequestPriorityOutput) Tlp() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudforceOneRequestPriority) pulumi.StringOutput { return v.Tlp }).(pulumi.StringOutput)
 }

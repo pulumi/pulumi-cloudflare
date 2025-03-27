@@ -41,6 +41,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The Certificate Authority that Total TLS certificates will be issued through.
+        /// Available values: "google", "lets*encrypt", "ssl*com".
         /// </summary>
         [Output("certificateAuthority")]
         public Output<string?> CertificateAuthority { get; private set; } = null!;
@@ -53,6 +54,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The validity period in days for the certificates ordered via Total TLS.
+        /// Available values: 90.
         /// </summary>
         [Output("validityPeriod")]
         public Output<int> ValidityPeriod { get; private set; } = null!;
@@ -111,6 +113,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The Certificate Authority that Total TLS certificates will be issued through.
+        /// Available values: "google", "lets*encrypt", "ssl*com".
         /// </summary>
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }
@@ -137,6 +140,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The Certificate Authority that Total TLS certificates will be issued through.
+        /// Available values: "google", "lets*encrypt", "ssl*com".
         /// </summary>
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }
@@ -149,6 +153,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The validity period in days for the certificates ordered via Total TLS.
+        /// Available values: 90.
         /// </summary>
         [Input("validityPeriod")]
         public Input<int>? ValidityPeriod { get; set; }

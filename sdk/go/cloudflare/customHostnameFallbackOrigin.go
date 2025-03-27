@@ -54,6 +54,7 @@ type CustomHostnameFallbackOrigin struct {
 	// Your origin hostname that requests to your custom hostnames will be sent to.
 	Origin pulumi.StringOutput `pulumi:"origin"`
 	// Status of the fallback origin's activation.
+	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
 	Status pulumi.StringOutput `pulumi:"status"`
 	// This is the time the fallback origin was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -104,6 +105,7 @@ type customHostnameFallbackOriginState struct {
 	// Your origin hostname that requests to your custom hostnames will be sent to.
 	Origin *string `pulumi:"origin"`
 	// Status of the fallback origin's activation.
+	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
 	Status *string `pulumi:"status"`
 	// This is the time the fallback origin was updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -119,6 +121,7 @@ type CustomHostnameFallbackOriginState struct {
 	// Your origin hostname that requests to your custom hostnames will be sent to.
 	Origin pulumi.StringPtrInput
 	// Status of the fallback origin's activation.
+	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
 	Status pulumi.StringPtrInput
 	// This is the time the fallback origin was updated.
 	UpdatedAt pulumi.StringPtrInput
@@ -248,6 +251,7 @@ func (o CustomHostnameFallbackOriginOutput) Origin() pulumi.StringOutput {
 }
 
 // Status of the fallback origin's activation.
+// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
 func (o CustomHostnameFallbackOriginOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomHostnameFallbackOrigin) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

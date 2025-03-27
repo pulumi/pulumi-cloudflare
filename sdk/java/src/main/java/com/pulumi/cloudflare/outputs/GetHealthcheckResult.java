@@ -81,6 +81,7 @@ public final class GetHealthcheckResult {
     private Integer retries;
     /**
      * @return The current status of the origin server according to the health check.
+     * Available values: &#34;unknown&#34;, &#34;healthy&#34;, &#34;unhealthy&#34;, &#34;suspended&#34;.
      * 
      */
     private String status;
@@ -203,6 +204,7 @@ public final class GetHealthcheckResult {
     }
     /**
      * @return The current status of the origin server according to the health check.
+     * Available values: &#34;unknown&#34;, &#34;healthy&#34;, &#34;unhealthy&#34;, &#34;suspended&#34;.
      * 
      */
     public String status() {

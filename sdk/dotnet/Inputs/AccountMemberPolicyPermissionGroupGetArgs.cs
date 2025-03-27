@@ -10,31 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-<<<<<<<< HEAD:sdk/dotnet/Inputs/AccountMemberPolicyPermissionGroupGetArgs.cs
     public sealed class AccountMemberPolicyPermissionGroupGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifier of the group.
-========
-    public sealed class ZeroTrustAccessGroupExcludeLoginMethodArgs : global::Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ID of an identity provider.
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/dotnet/Inputs/ZeroTrustAccessGroupExcludeLoginMethodArgs.cs
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
-<<<<<<<< HEAD:sdk/dotnet/Inputs/AccountMemberPolicyPermissionGroupGetArgs.cs
         public AccountMemberPolicyPermissionGroupGetArgs()
         {
         }
         public static new AccountMemberPolicyPermissionGroupGetArgs Empty => new AccountMemberPolicyPermissionGroupGetArgs();
-========
-        public ZeroTrustAccessGroupExcludeLoginMethodArgs()
-        {
-        }
-        public static new ZeroTrustAccessGroupExcludeLoginMethodArgs Empty => new ZeroTrustAccessGroupExcludeLoginMethodArgs();
->>>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580:sdk/dotnet/Inputs/ZeroTrustAccessGroupExcludeLoginMethodArgs.cs
     }
 }

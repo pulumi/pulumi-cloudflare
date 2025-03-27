@@ -80,6 +80,7 @@ class GetZeroTrustGatewayCertificateResult:
     def binding_status(self) -> str:
         """
         The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         """
         return pulumi.get(self, "binding_status")
 
@@ -154,6 +155,7 @@ class GetZeroTrustGatewayCertificateResult:
     def type(self) -> str:
         """
         The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+        Available values: "custom", "gateway_managed".
         """
         return pulumi.get(self, "type")
 

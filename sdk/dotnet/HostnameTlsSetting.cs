@@ -12,8 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
-<<<<<<< HEAD
-=======
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,7 +35,6 @@ namespace Pulumi.Cloudflare
     /// });
     /// ```
     /// 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /// ## Import
     /// 
     /// ```sh
@@ -57,10 +54,11 @@ namespace Pulumi.Cloudflare
         /// The hostname for which the tls settings are set.
         /// </summary>
         [Output("hostname")]
-        public Output<string?> Hostname { get; private set; } = null!;
+        public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
         /// The TLS Setting name.
+        /// Available values: "ciphers", "min*tls*version", "http2".
         /// </summary>
         [Output("settingId")]
         public Output<string> SettingId { get; private set; } = null!;
@@ -81,11 +79,7 @@ namespace Pulumi.Cloudflare
         /// The tls setting value.
         /// </summary>
         [Output("value")]
-<<<<<<< HEAD
-        public Output<double> Value { get; private set; } = null!;
-=======
         public Output<object> Value { get; private set; } = null!;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Identifier
@@ -142,11 +136,12 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The hostname for which the tls settings are set.
         /// </summary>
-        [Input("hostname")]
-        public Input<string>? Hostname { get; set; }
+        [Input("hostname", required: true)]
+        public Input<string> Hostname { get; set; } = null!;
 
         /// <summary>
         /// The TLS Setting name.
+        /// Available values: "ciphers", "min*tls*version", "http2".
         /// </summary>
         [Input("settingId", required: true)]
         public Input<string> SettingId { get; set; } = null!;
@@ -155,11 +150,7 @@ namespace Pulumi.Cloudflare
         /// The tls setting value.
         /// </summary>
         [Input("value", required: true)]
-<<<<<<< HEAD
-        public Input<double> Value { get; set; } = null!;
-=======
         public Input<object> Value { get; set; } = null!;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Identifier
@@ -189,6 +180,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The TLS Setting name.
+        /// Available values: "ciphers", "min*tls*version", "http2".
         /// </summary>
         [Input("settingId")]
         public Input<string>? SettingId { get; set; }
@@ -209,11 +201,7 @@ namespace Pulumi.Cloudflare
         /// The tls setting value.
         /// </summary>
         [Input("value")]
-<<<<<<< HEAD
-        public Input<double>? Value { get; set; }
-=======
         public Input<object>? Value { get; set; }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
         /// <summary>
         /// Identifier

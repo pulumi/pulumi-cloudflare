@@ -32,6 +32,7 @@ public final class CustomHostnameOwnershipVerificationArgs extends com.pulumi.re
 
     /**
      * DNS Record type.
+     * Available values: &#34;txt&#34;.
      * 
      */
     @Import(name="type")
@@ -39,6 +40,7 @@ public final class CustomHostnameOwnershipVerificationArgs extends com.pulumi.re
 
     /**
      * @return DNS Record type.
+     * Available values: &#34;txt&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -109,6 +111,7 @@ public final class CustomHostnameOwnershipVerificationArgs extends com.pulumi.re
 
         /**
          * @param type DNS Record type.
+         * Available values: &#34;txt&#34;.
          * 
          * @return builder
          * 
@@ -120,6 +123,7 @@ public final class CustomHostnameOwnershipVerificationArgs extends com.pulumi.re
 
         /**
          * @param type DNS Record type.
+         * Available values: &#34;txt&#34;.
          * 
          * @return builder
          * 

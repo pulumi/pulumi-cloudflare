@@ -50,6 +50,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+     * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -57,6 +58,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+     * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
      */
     public Output<String> type() {
@@ -149,6 +151,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+         * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
          * 
          * @return builder
          * 
@@ -160,6 +163,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+         * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
          * 
          * @return builder
          * 

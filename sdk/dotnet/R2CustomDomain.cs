@@ -55,12 +55,6 @@ namespace Pulumi.Cloudflare
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the custom domain
-        /// </summary>
-        [Output("domainName")]
-        public Output<string?> DomainName { get; private set; } = null!;
-
-        /// <summary>
         /// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
         /// </summary>
         [Output("enabled")]
@@ -68,6 +62,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+        /// Available values: "1.0", "1.1", "1.2", "1.3".
         /// </summary>
         [Output("minTls")]
         public Output<string?> MinTls { get; private set; } = null!;
@@ -152,12 +147,6 @@ namespace Pulumi.Cloudflare
         public Input<string> Domain { get; set; } = null!;
 
         /// <summary>
-        /// Name of the custom domain
-        /// </summary>
-        [Input("domainName")]
-        public Input<string>? DomainName { get; set; }
-
-        /// <summary>
         /// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
         /// </summary>
         [Input("enabled", required: true)]
@@ -165,6 +154,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+        /// Available values: "1.0", "1.1", "1.2", "1.3".
         /// </summary>
         [Input("minTls")]
         public Input<string>? MinTls { get; set; }
@@ -202,12 +192,6 @@ namespace Pulumi.Cloudflare
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// Name of the custom domain
-        /// </summary>
-        [Input("domainName")]
-        public Input<string>? DomainName { get; set; }
-
-        /// <summary>
         /// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
         /// </summary>
         [Input("enabled")]
@@ -215,6 +199,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
+        /// Available values: "1.0", "1.1", "1.2", "1.3".
         /// </summary>
         [Input("minTls")]
         public Input<string>? MinTls { get; set; }

@@ -42,7 +42,9 @@ class LogpushJobArgs:
         :param pulumi.Input[str] dataset: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
         :param pulumi.Input[bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+               Available values: "high", "low".
         :param pulumi.Input[str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+               Available values: "edge".
         :param pulumi.Input[str] logpull_options: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
         :param pulumi.Input[int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
         :param pulumi.Input[int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
@@ -133,6 +135,7 @@ class LogpushJobArgs:
     def frequency(self) -> Optional[pulumi.Input[str]]:
         """
         This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+        Available values: "high", "low".
         """
         return pulumi.get(self, "frequency")
 
@@ -145,6 +148,7 @@ class LogpushJobArgs:
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
         The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+        Available values: "edge".
         """
         return pulumi.get(self, "kind")
 
@@ -277,7 +281,9 @@ class _LogpushJobState:
         :param pulumi.Input[bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[str] error_message: If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
         :param pulumi.Input[str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+               Available values: "high", "low".
         :param pulumi.Input[str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+               Available values: "edge".
         :param pulumi.Input[str] last_complete: Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
         :param pulumi.Input[str] last_error: Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
         :param pulumi.Input[str] logpull_options: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
@@ -389,6 +395,7 @@ class _LogpushJobState:
     def frequency(self) -> Optional[pulumi.Input[str]]:
         """
         This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+        Available values: "high", "low".
         """
         return pulumi.get(self, "frequency")
 
@@ -401,6 +408,7 @@ class _LogpushJobState:
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
         The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+        Available values: "edge".
         """
         return pulumi.get(self, "kind")
 
@@ -565,7 +573,9 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
         :param pulumi.Input[bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+               Available values: "high", "low".
         :param pulumi.Input[str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+               Available values: "edge".
         :param pulumi.Input[str] logpull_options: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
         :param pulumi.Input[int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
         :param pulumi.Input[int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
@@ -642,11 +652,13 @@ class LogpushJob(pulumi.CustomResource):
             __props__.__dict__["max_upload_records"] = max_upload_records
             __props__.__dict__["name"] = name
             __props__.__dict__["output_options"] = output_options
-            __props__.__dict__["ownership_challenge"] = ownership_challenge
+            __props__.__dict__["ownership_challenge"] = None if ownership_challenge is None else pulumi.Output.secret(ownership_challenge)
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["error_message"] = None
             __props__.__dict__["last_complete"] = None
             __props__.__dict__["last_error"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["ownershipChallenge"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(LogpushJob, __self__).__init__(
             'cloudflare:index/logpushJob:LogpushJob',
             resource_name,
@@ -687,7 +699,9 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[str] error_message: If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
         :param pulumi.Input[str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+               Available values: "high", "low".
         :param pulumi.Input[str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+               Available values: "edge".
         :param pulumi.Input[str] last_complete: Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
         :param pulumi.Input[str] last_error: Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
         :param pulumi.Input[str] logpull_options: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
@@ -767,6 +781,7 @@ class LogpushJob(pulumi.CustomResource):
     def frequency(self) -> pulumi.Output[str]:
         """
         This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+        Available values: "high", "low".
         """
         return pulumi.get(self, "frequency")
 
@@ -775,6 +790,7 @@ class LogpushJob(pulumi.CustomResource):
     def kind(self) -> pulumi.Output[Optional[str]]:
         """
         The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+        Available values: "edge".
         """
         return pulumi.get(self, "kind")
 

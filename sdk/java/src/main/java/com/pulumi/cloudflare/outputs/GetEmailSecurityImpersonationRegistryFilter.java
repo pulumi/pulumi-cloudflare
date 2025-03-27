@@ -13,14 +13,20 @@ import javax.annotation.Nullable;
 public final class GetEmailSecurityImpersonationRegistryFilter {
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
     /**
      * @return The field to sort by.
+     * Available values: &#34;name&#34;, &#34;email&#34;, &#34;created_at&#34;.
      * 
      */
     private @Nullable String order;
+    /**
+     * @return Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * 
+     */
     private @Nullable String provenance;
     /**
      * @return Allows searching in multiple properties of a record simultaneously.
@@ -34,6 +40,7 @@ public final class GetEmailSecurityImpersonationRegistryFilter {
     private GetEmailSecurityImpersonationRegistryFilter() {}
     /**
      * @return The sorting direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -41,11 +48,16 @@ public final class GetEmailSecurityImpersonationRegistryFilter {
     }
     /**
      * @return The field to sort by.
+     * Available values: &#34;name&#34;, &#34;email&#34;, &#34;created_at&#34;.
      * 
      */
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
+    /**
+     * @return Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * 
+     */
     public Optional<String> provenance() {
         return Optional.ofNullable(this.provenance);
     }

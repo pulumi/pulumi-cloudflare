@@ -19,6 +19,7 @@ public final class GetSpectrumApplicationsArgs extends com.pulumi.resources.Invo
 
     /**
      * Sets the direction by which results are ordered.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     @Import(name="direction")
@@ -26,6 +27,7 @@ public final class GetSpectrumApplicationsArgs extends com.pulumi.resources.Invo
 
     /**
      * @return Sets the direction by which results are ordered.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -49,6 +51,7 @@ public final class GetSpectrumApplicationsArgs extends com.pulumi.resources.Invo
 
     /**
      * Application field by which results are ordered.
+     * Available values: &#34;protocol&#34;, &#34;app*id&#34;, &#34;created*on&#34;, &#34;modified_on&#34;, &#34;dns&#34;.
      * 
      */
     @Import(name="order")
@@ -56,6 +59,7 @@ public final class GetSpectrumApplicationsArgs extends com.pulumi.resources.Invo
 
     /**
      * @return Application field by which results are ordered.
+     * Available values: &#34;protocol&#34;, &#34;app*id&#34;, &#34;created*on&#34;, &#34;modified_on&#34;, &#34;dns&#34;.
      * 
      */
     public Optional<Output<String>> order() {
@@ -63,22 +67,14 @@ public final class GetSpectrumApplicationsArgs extends com.pulumi.resources.Invo
     }
 
     /**
-<<<<<<< HEAD
-     * Identifier
-=======
      * Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-<<<<<<< HEAD
-     * @return Identifier
-=======
      * @return Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * 
      */
     public Output<String> zoneId() {
@@ -114,6 +110,7 @@ public final class GetSpectrumApplicationsArgs extends com.pulumi.resources.Invo
 
         /**
          * @param direction Sets the direction by which results are ordered.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -125,6 +122,7 @@ public final class GetSpectrumApplicationsArgs extends com.pulumi.resources.Invo
 
         /**
          * @param direction Sets the direction by which results are ordered.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
@@ -156,6 +154,7 @@ public final class GetSpectrumApplicationsArgs extends com.pulumi.resources.Invo
 
         /**
          * @param order Application field by which results are ordered.
+         * Available values: &#34;protocol&#34;, &#34;app*id&#34;, &#34;created*on&#34;, &#34;modified_on&#34;, &#34;dns&#34;.
          * 
          * @return builder
          * 
@@ -167,6 +166,7 @@ public final class GetSpectrumApplicationsArgs extends com.pulumi.resources.Invo
 
         /**
          * @param order Application field by which results are ordered.
+         * Available values: &#34;protocol&#34;, &#34;app*id&#34;, &#34;created*on&#34;, &#34;modified_on&#34;, &#34;dns&#34;.
          * 
          * @return builder
          * 
@@ -176,11 +176,7 @@ public final class GetSpectrumApplicationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-<<<<<<< HEAD
-         * @param zoneId Identifier
-=======
          * @param zoneId Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 
@@ -191,11 +187,7 @@ public final class GetSpectrumApplicationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-<<<<<<< HEAD
-         * @param zoneId Identifier
-=======
          * @param zoneId Zone identifier.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
          * 
          * @return builder
          * 

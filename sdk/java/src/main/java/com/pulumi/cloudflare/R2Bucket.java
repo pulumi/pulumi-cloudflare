@@ -56,11 +56,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
-<<<<<<< HEAD
- * $ pulumi import cloudflare:index/r2Bucket:R2Bucket example &#39;&lt;account_id&gt;/&lt;bucket_name&gt;&#39;
-=======
  * $ pulumi import cloudflare:index/r2Bucket:R2Bucket example &#39;&lt;account_id&gt;/&lt;bucket_name&gt;/&lt;jurisdiction&gt;&#39;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  * ```
  * 
  */
@@ -110,6 +106,7 @@ public class R2Bucket extends com.pulumi.resources.CustomResource {
     }
     /**
      * Location of the bucket
+     * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
@@ -117,6 +114,7 @@ public class R2Bucket extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Location of the bucket
+     * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
      */
     public Output<Optional<String>> location() {
@@ -138,6 +136,7 @@ public class R2Bucket extends com.pulumi.resources.CustomResource {
     }
     /**
      * Storage class for newly uploaded objects, unless specified otherwise.
+     * Available values: &#34;Standard&#34;, &#34;InfrequentAccess&#34;.
      * 
      */
     @Export(name="storageClass", refs={String.class}, tree="[0]")
@@ -145,6 +144,7 @@ public class R2Bucket extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Storage class for newly uploaded objects, unless specified otherwise.
+     * Available values: &#34;Standard&#34;, &#34;InfrequentAccess&#34;.
      * 
      */
     public Output<String> storageClass() {

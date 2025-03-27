@@ -12,6 +12,32 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.LookupApiShieldSchema(ctx, &cloudflare.LookupApiShieldSchemaArgs{
+//				ZoneId:     "023e105f4ecef8ad9ca31a8372d0c353",
+//				SchemaId:   "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+//				OmitSource: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupApiShieldSchema(ctx *pulumi.Context, args *LookupApiShieldSchemaArgs, opts ...pulumi.InvokeOption) (*LookupApiShieldSchemaResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiShieldSchemaResult
@@ -25,7 +51,8 @@ func LookupApiShieldSchema(ctx *pulumi.Context, args *LookupApiShieldSchemaArgs,
 // A collection of arguments for invoking getApiShieldSchema.
 type LookupApiShieldSchemaArgs struct {
 	// Omit the source-files of schemas and only retrieve their meta-data.
-	OmitSource *bool `pulumi:"omitSource"`
+	OmitSource *bool  `pulumi:"omitSource"`
+	SchemaId   string `pulumi:"schemaId"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -36,6 +63,7 @@ type LookupApiShieldSchemaResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Kind of schema
+	// Available values: "openapiV3".
 	Kind string `pulumi:"kind"`
 	// Name of the schema
 	Name string `pulumi:"name"`
@@ -63,6 +91,7 @@ func LookupApiShieldSchemaOutput(ctx *pulumi.Context, args LookupApiShieldSchema
 type LookupApiShieldSchemaOutputArgs struct {
 	// Omit the source-files of schemas and only retrieve their meta-data.
 	OmitSource pulumi.BoolPtrInput `pulumi:"omitSource"`
+	SchemaId   pulumi.StringInput  `pulumi:"schemaId"`
 	// Identifier
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -96,6 +125,7 @@ func (o LookupApiShieldSchemaResultOutput) Id() pulumi.StringOutput {
 }
 
 // Kind of schema
+// Available values: "openapiV3".
 func (o LookupApiShieldSchemaResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiShieldSchemaResult) string { return v.Kind }).(pulumi.StringOutput)
 }

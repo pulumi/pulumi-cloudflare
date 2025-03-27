@@ -20,6 +20,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// DNS Record type.
+        /// Available values: "txt".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

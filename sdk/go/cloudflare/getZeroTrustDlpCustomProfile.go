@@ -55,14 +55,11 @@ type LookupZeroTrustDlpCustomProfileArgs struct {
 
 // A collection of values returned by getZeroTrustDlpCustomProfile.
 type LookupZeroTrustDlpCustomProfileResult struct {
-<<<<<<< HEAD
-	AccountId string `pulumi:"accountId"`
-=======
 	AccountId        string `pulumi:"accountId"`
 	AiContextEnabled bool   `pulumi:"aiContextEnabled"`
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 	// Related DLP policies will trigger when the match count exceeds the number set.
-	AllowedMatchCount   int    `pulumi:"allowedMatchCount"`
+	AllowedMatchCount int `pulumi:"allowedMatchCount"`
+	// Available values: "low", "medium", "high", "veryHigh".
 	ConfidenceThreshold string `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
 	ContextAwareness GetZeroTrustDlpCustomProfileContextAwareness `pulumi:"contextAwareness"`
@@ -79,7 +76,8 @@ type LookupZeroTrustDlpCustomProfileResult struct {
 	// Whether this profile can be accessed by anyone
 	OpenAccess bool   `pulumi:"openAccess"`
 	ProfileId  string `pulumi:"profileId"`
-	Type       string `pulumi:"type"`
+	// Available values: "custom".
+	Type string `pulumi:"type"`
 	// When the profile was lasted updated
 	UpdatedAt string `pulumi:"updatedAt"`
 }
@@ -122,18 +120,16 @@ func (o LookupZeroTrustDlpCustomProfileResultOutput) AccountId() pulumi.StringOu
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-<<<<<<< HEAD
-=======
 func (o LookupZeroTrustDlpCustomProfileResultOutput) AiContextEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) bool { return v.AiContextEnabled }).(pulumi.BoolOutput)
 }
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 // Related DLP policies will trigger when the match count exceeds the number set.
 func (o LookupZeroTrustDlpCustomProfileResultOutput) AllowedMatchCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) int { return v.AllowedMatchCount }).(pulumi.IntOutput)
 }
 
+// Available values: "low", "medium", "high", "veryHigh".
 func (o LookupZeroTrustDlpCustomProfileResultOutput) ConfidenceThreshold() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) string { return v.ConfidenceThreshold }).(pulumi.StringOutput)
 }
@@ -182,6 +178,7 @@ func (o LookupZeroTrustDlpCustomProfileResultOutput) ProfileId() pulumi.StringOu
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) string { return v.ProfileId }).(pulumi.StringOutput)
 }
 
+// Available values: "custom".
 func (o LookupZeroTrustDlpCustomProfileResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -27,6 +27,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Id;
         /// <summary>
         /// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+        /// Available values: "ip", "redirect", "hostname", "asn".
         /// </summary>
         public readonly string Kind;
         /// <summary>

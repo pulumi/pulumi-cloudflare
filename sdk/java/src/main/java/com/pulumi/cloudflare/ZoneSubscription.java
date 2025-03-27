@@ -67,6 +67,7 @@ import javax.annotation.Nullable;
 public class ZoneSubscription extends com.pulumi.resources.CustomResource {
     /**
      * How often the subscription is renewed automatically.
+     * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
      * 
      */
     @Export(name="frequency", refs={String.class}, tree="[0]")
@@ -74,6 +75,7 @@ public class ZoneSubscription extends com.pulumi.resources.CustomResource {
 
     /**
      * @return How often the subscription is renewed automatically.
+     * Available values: &#34;weekly&#34;, &#34;monthly&#34;, &#34;quarterly&#34;, &#34;yearly&#34;.
      * 
      */
     public Output<Optional<String>> frequency() {

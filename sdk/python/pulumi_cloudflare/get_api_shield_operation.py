@@ -112,6 +112,7 @@ class GetApiShieldOperationResult:
     def method(self) -> str:
         """
         The HTTP method used to access the endpoint.
+        Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         """
         return pulumi.get(self, "method")
 

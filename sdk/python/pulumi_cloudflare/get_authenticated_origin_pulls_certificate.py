@@ -130,6 +130,7 @@ class GetAuthenticatedOriginPullsCertificateResult:
     def status(self) -> str:
         """
         Status of the certificate activation.
+        Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         """
         return pulumi.get(self, "status")
 

@@ -127,6 +127,7 @@ import javax.annotation.Nullable;
 public class CustomSsl extends com.pulumi.resources.CustomResource {
     /**
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     @Export(name="bundleMethod", refs={String.class}, tree="[0]")
@@ -134,6 +135,7 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     public Output<String> bundleMethod() {
@@ -279,6 +281,7 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
     }
     /**
      * Status of the zone&#39;s custom SSL.
+     * Available values: &#34;active&#34;, &#34;expired&#34;, &#34;deleted&#34;, &#34;pending&#34;, &#34;initializing&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -286,20 +289,23 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Status of the zone&#39;s custom SSL.
+     * Available values: &#34;active&#34;, &#34;expired&#34;, &#34;deleted&#34;, &#34;pending&#34;, &#34;initializing&#34;.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The type &#39;legacy_custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+     * The type &#39;legacy*custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+     * Available values: &#34;legacy*custom&#34;, &#34;sni_custom&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The type &#39;legacy_custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+     * @return The type &#39;legacy*custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+     * Available values: &#34;legacy*custom&#34;, &#34;sni_custom&#34;.
      * 
      */
     public Output<String> type() {
@@ -373,6 +379,9 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "privateKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

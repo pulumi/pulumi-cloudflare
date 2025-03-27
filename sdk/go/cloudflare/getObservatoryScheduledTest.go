@@ -12,6 +12,32 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.LookupObservatoryScheduledTest(ctx, &cloudflare.LookupObservatoryScheduledTestArgs{
+//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				Url:    "example.com",
+//				Region: pulumi.StringRef("asia-east1"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupObservatoryScheduledTest(ctx *pulumi.Context, args *LookupObservatoryScheduledTestArgs, opts ...pulumi.InvokeOption) (*LookupObservatoryScheduledTestResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupObservatoryScheduledTestResult
@@ -24,6 +50,11 @@ func LookupObservatoryScheduledTest(ctx *pulumi.Context, args *LookupObservatory
 
 // A collection of arguments for invoking getObservatoryScheduledTest.
 type LookupObservatoryScheduledTestArgs struct {
+	// A test region.
+	// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
+	Region *string `pulumi:"region"`
+	// A URL.
+	Url string `pulumi:"url"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -31,10 +62,12 @@ type LookupObservatoryScheduledTestArgs struct {
 // A collection of values returned by getObservatoryScheduledTest.
 type LookupObservatoryScheduledTestResult struct {
 	// The frequency of the test.
+	// Available values: "DAILY", "WEEKLY".
 	Frequency string `pulumi:"frequency"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A test region.
+	// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
 	Region string `pulumi:"region"`
 	// A URL.
 	Url string `pulumi:"url"`
@@ -53,6 +86,11 @@ func LookupObservatoryScheduledTestOutput(ctx *pulumi.Context, args LookupObserv
 
 // A collection of arguments for invoking getObservatoryScheduledTest.
 type LookupObservatoryScheduledTestOutputArgs struct {
+	// A test region.
+	// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// A URL.
+	Url pulumi.StringInput `pulumi:"url"`
 	// Identifier
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -77,6 +115,7 @@ func (o LookupObservatoryScheduledTestResultOutput) ToLookupObservatoryScheduled
 }
 
 // The frequency of the test.
+// Available values: "DAILY", "WEEKLY".
 func (o LookupObservatoryScheduledTestResultOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupObservatoryScheduledTestResult) string { return v.Frequency }).(pulumi.StringOutput)
 }
@@ -87,6 +126,7 @@ func (o LookupObservatoryScheduledTestResultOutput) Id() pulumi.StringOutput {
 }
 
 // A test region.
+// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
 func (o LookupObservatoryScheduledTestResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupObservatoryScheduledTestResult) string { return v.Region }).(pulumi.StringOutput)
 }

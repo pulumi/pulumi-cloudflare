@@ -123,6 +123,7 @@ namespace Pulumi.Cloudflare
         public readonly string AccountId;
         /// <summary>
         /// The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        /// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         /// </summary>
         public readonly string BindingStatus;
         /// <summary>
@@ -157,6 +158,7 @@ namespace Pulumi.Cloudflare
         public readonly string IssuerRaw;
         /// <summary>
         /// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+        /// Available values: "custom", "gateway_managed".
         /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;

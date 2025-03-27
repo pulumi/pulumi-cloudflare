@@ -80,6 +80,7 @@ class _EmailRoutingDnsState:
         :param pulumi.Input[str] name: Domain of your zone.
         :param pulumi.Input[bool] skip_wizard: Flag to check if the user skipped the configuration wizard.
         :param pulumi.Input[str] status: Show the state of your account, and the type or configuration error.
+               Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
         :param pulumi.Input[bool] success: Whether the API call was successful
         :param pulumi.Input[str] tag: Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
         :param pulumi.Input[str] zone_id: Identifier
@@ -212,6 +213,7 @@ class _EmailRoutingDnsState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         Show the state of your account, and the type or configuration error.
+        Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
         """
         return pulumi.get(self, "status")
 
@@ -390,6 +392,7 @@ class EmailRoutingDns(pulumi.CustomResource):
         :param pulumi.Input[str] name: Domain of your zone.
         :param pulumi.Input[bool] skip_wizard: Flag to check if the user skipped the configuration wizard.
         :param pulumi.Input[str] status: Show the state of your account, and the type or configuration error.
+               Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
         :param pulumi.Input[bool] success: Whether the API call was successful
         :param pulumi.Input[str] tag: Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
         :param pulumi.Input[str] zone_id: Identifier
@@ -478,6 +481,7 @@ class EmailRoutingDns(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         Show the state of your account, and the type or configuration error.
+        Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
         """
         return pulumi.get(self, "status")
 

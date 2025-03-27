@@ -54,6 +54,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+        /// Available values: "local", "cloudflare".
         /// </summary>
         [Output("configSrc")]
         public Output<string> ConfigSrc { get; private set; } = null!;
@@ -108,12 +109,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+        /// Available values: "inactive", "degraded", "healthy", "down".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// The type of tunnel.
+        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
         /// </summary>
         [Output("tunType")]
         public Output<string> TunType { get; private set; } = null!;
@@ -147,6 +150,14 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/tunnel:Tunnel" },
+                },
+                AdditionalSecretOutputs =
+                {
+                    "tunnelSecret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -178,6 +189,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+        /// Available values: "local", "cloudflare".
         /// </summary>
         [Input("configSrc")]
         public Input<string>? ConfigSrc { get; set; }
@@ -188,11 +200,21 @@ namespace Pulumi.Cloudflare
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("tunnelSecret")]
+        private Input<string>? _tunnelSecret;
+
         /// <summary>
         /// Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
         /// </summary>
-        [Input("tunnelSecret")]
-        public Input<string>? TunnelSecret { get; set; }
+        public Input<string>? TunnelSecret
+        {
+            get => _tunnelSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tunnelSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ZeroTrustTunnelCloudflaredArgs()
         {
@@ -216,6 +238,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+        /// Available values: "local", "cloudflare".
         /// </summary>
         [Input("configSrc")]
         public Input<string>? ConfigSrc { get; set; }
@@ -276,21 +299,33 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+        /// Available values: "inactive", "degraded", "healthy", "down".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
         /// The type of tunnel.
+        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
         /// </summary>
         [Input("tunType")]
         public Input<string>? TunType { get; set; }
 
+        [Input("tunnelSecret")]
+        private Input<string>? _tunnelSecret;
+
         /// <summary>
         /// Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
         /// </summary>
-        [Input("tunnelSecret")]
-        public Input<string>? TunnelSecret { get; set; }
+        public Input<string>? TunnelSecret
+        {
+            get => _tunnelSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tunnelSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ZeroTrustTunnelCloudflaredState()
         {

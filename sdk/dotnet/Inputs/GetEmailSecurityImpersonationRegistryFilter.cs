@@ -14,16 +14,21 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// The sorting direction.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
 
         /// <summary>
         /// The field to sort by.
+        /// Available values: "name", "email", "created_at".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
+        /// <summary>
+        /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        /// </summary>
         [Input("provenance")]
         public string? Provenance { get; set; }
 

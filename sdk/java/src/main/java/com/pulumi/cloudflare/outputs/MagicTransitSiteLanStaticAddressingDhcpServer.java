@@ -5,10 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
-<<<<<<< HEAD
-=======
 import java.util.List;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,10 +28,7 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServer {
      * 
      */
     private @Nullable String dnsServer;
-<<<<<<< HEAD
-=======
     private @Nullable List<String> dnsServers;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return Mapping of MAC addresses to IP addresses
      * 
@@ -63,12 +57,9 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServer {
     public Optional<String> dnsServer() {
         return Optional.ofNullable(this.dnsServer);
     }
-<<<<<<< HEAD
-=======
     public List<String> dnsServers() {
         return this.dnsServers == null ? List.of() : this.dnsServers;
     }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * @return Mapping of MAC addresses to IP addresses
      * 
@@ -89,10 +80,7 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServer {
         private @Nullable String dhcpPoolEnd;
         private @Nullable String dhcpPoolStart;
         private @Nullable String dnsServer;
-<<<<<<< HEAD
-=======
         private @Nullable List<String> dnsServers;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         private @Nullable Map<String,String> reservations;
         public Builder() {}
         public Builder(MagicTransitSiteLanStaticAddressingDhcpServer defaults) {
@@ -100,10 +88,7 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServer {
     	      this.dhcpPoolEnd = defaults.dhcpPoolEnd;
     	      this.dhcpPoolStart = defaults.dhcpPoolStart;
     	      this.dnsServer = defaults.dnsServer;
-<<<<<<< HEAD
-=======
     	      this.dnsServers = defaults.dnsServers;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     	      this.reservations = defaults.reservations;
         }
 
@@ -126,8 +111,6 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServer {
             return this;
         }
         @CustomType.Setter
-<<<<<<< HEAD
-=======
         public Builder dnsServers(@Nullable List<String> dnsServers) {
 
             this.dnsServers = dnsServers;
@@ -137,7 +120,6 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServer {
             return dnsServers(List.of(dnsServers));
         }
         @CustomType.Setter
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         public Builder reservations(@Nullable Map<String,String> reservations) {
 
             this.reservations = reservations;
@@ -148,10 +130,7 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServer {
             _resultValue.dhcpPoolEnd = dhcpPoolEnd;
             _resultValue.dhcpPoolStart = dhcpPoolStart;
             _resultValue.dnsServer = dnsServer;
-<<<<<<< HEAD
-=======
             _resultValue.dnsServers = dnsServers;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             _resultValue.reservations = reservations;
             return _resultValue;
         }

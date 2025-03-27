@@ -24,6 +24,7 @@ public final class GetAccessRulesInvokeResult {
     private @Nullable GetAccessRulesConfiguration configuration;
     /**
      * @return The direction used to sort returned rules.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
@@ -34,6 +35,7 @@ public final class GetAccessRulesInvokeResult {
     private String id;
     /**
      * @return When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     private String match;
@@ -44,6 +46,7 @@ public final class GetAccessRulesInvokeResult {
     private @Nullable Integer maxItems;
     /**
      * @return The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     private @Nullable String mode;
@@ -55,6 +58,7 @@ public final class GetAccessRulesInvokeResult {
     private @Nullable String notes;
     /**
      * @return The field used to sort returned rules.
+     * Available values: &#34;configuration.target&#34;, &#34;configuration.value&#34;, &#34;mode&#34;.
      * 
      */
     private @Nullable String order;
@@ -82,6 +86,7 @@ public final class GetAccessRulesInvokeResult {
     }
     /**
      * @return The direction used to sort returned rules.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public Optional<String> direction() {
@@ -96,6 +101,7 @@ public final class GetAccessRulesInvokeResult {
     }
     /**
      * @return When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+     * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
     public String match() {
@@ -110,6 +116,7 @@ public final class GetAccessRulesInvokeResult {
     }
     /**
      * @return The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     public Optional<String> mode() {
@@ -125,6 +132,7 @@ public final class GetAccessRulesInvokeResult {
     }
     /**
      * @return The field used to sort returned rules.
+     * Available values: &#34;configuration.target&#34;, &#34;configuration.value&#34;, &#34;mode&#34;.
      * 
      */
     public Optional<String> order() {

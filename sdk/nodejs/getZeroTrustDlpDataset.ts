@@ -55,6 +55,9 @@ export interface GetZeroTrustDlpDatasetResult {
     readonly name: string;
     readonly numCells: number;
     readonly secret: boolean;
+    /**
+     * Available values: "empty", "uploading", "processing", "failed", "complete".
+     */
     readonly status: string;
     /**
      * When the dataset was last updated.

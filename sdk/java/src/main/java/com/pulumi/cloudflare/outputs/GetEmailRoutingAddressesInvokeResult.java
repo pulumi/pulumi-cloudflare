@@ -23,6 +23,7 @@ public final class GetEmailRoutingAddressesInvokeResult {
     private String accountId;
     /**
      * @return Sorts results in an ascending or descending order.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private String direction;
@@ -57,6 +58,7 @@ public final class GetEmailRoutingAddressesInvokeResult {
     }
     /**
      * @return Sorts results in an ascending or descending order.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     public String direction() {

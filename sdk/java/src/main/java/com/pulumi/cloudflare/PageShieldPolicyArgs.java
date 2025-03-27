@@ -17,6 +17,7 @@ public final class PageShieldPolicyArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The action to take if the expression matches
+     * Available values: &#34;allow&#34;, &#34;log&#34;.
      * 
      */
     @Import(name="action", required=true)
@@ -24,6 +25,7 @@ public final class PageShieldPolicyArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The action to take if the expression matches
+     * Available values: &#34;allow&#34;, &#34;log&#34;.
      * 
      */
     public Output<String> action() {
@@ -136,6 +138,7 @@ public final class PageShieldPolicyArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param action The action to take if the expression matches
+         * Available values: &#34;allow&#34;, &#34;log&#34;.
          * 
          * @return builder
          * 
@@ -147,6 +150,7 @@ public final class PageShieldPolicyArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param action The action to take if the expression matches
+         * Available values: &#34;allow&#34;, &#34;log&#34;.
          * 
          * @return builder
          * 

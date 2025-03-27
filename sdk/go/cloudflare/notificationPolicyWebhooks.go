@@ -62,6 +62,7 @@ type NotificationPolicyWebhooks struct {
 	// Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
 	Secret pulumi.StringPtrOutput `pulumi:"secret"`
 	// Type of webhook endpoint.
+	// Available values: "slack", "generic", "gchat".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The POST endpoint to call when dispatching a notification.
 	Url pulumi.StringOutput `pulumi:"url"`
@@ -83,6 +84,13 @@ func NewNotificationPolicyWebhooks(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	if args.Secret != nil {
+		args.Secret = pulumi.ToSecret(args.Secret).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secret",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NotificationPolicyWebhooks
 	err := ctx.RegisterResource("cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks", name, args, &resource, opts...)
@@ -119,6 +127,7 @@ type notificationPolicyWebhooksState struct {
 	// Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
 	Secret *string `pulumi:"secret"`
 	// Type of webhook endpoint.
+	// Available values: "slack", "generic", "gchat".
 	Type *string `pulumi:"type"`
 	// The POST endpoint to call when dispatching a notification.
 	Url *string `pulumi:"url"`
@@ -138,6 +147,7 @@ type NotificationPolicyWebhooksState struct {
 	// Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
 	Secret pulumi.StringPtrInput
 	// Type of webhook endpoint.
+	// Available values: "slack", "generic", "gchat".
 	Type pulumi.StringPtrInput
 	// The POST endpoint to call when dispatching a notification.
 	Url pulumi.StringPtrInput
@@ -288,6 +298,7 @@ func (o NotificationPolicyWebhooksOutput) Secret() pulumi.StringPtrOutput {
 }
 
 // Type of webhook endpoint.
+// Available values: "slack", "generic", "gchat".
 func (o NotificationPolicyWebhooksOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

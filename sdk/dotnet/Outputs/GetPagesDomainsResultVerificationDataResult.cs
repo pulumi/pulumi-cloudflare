@@ -14,6 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetPagesDomainsResultVerificationDataResult
     {
         public readonly string ErrorMessage;
+        /// <summary>
+        /// Available values: "pending", "active", "deactivated", "blocked", "error".
+        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]

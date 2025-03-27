@@ -115,14 +115,14 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustDlpCustomProfileResult
     {
         public readonly string AccountId;
-<<<<<<< HEAD
-=======
         public readonly bool AiContextEnabled;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         /// <summary>
         /// Related DLP policies will trigger when the match count exceeds the number set.
         /// </summary>
         public readonly int AllowedMatchCount;
+        /// <summary>
+        /// Available values: "low", "medium", "high", "very_high".
+        /// </summary>
         public readonly string ConfidenceThreshold;
         /// <summary>
         /// Scan the context of predefined entries to only return matches surrounded by keywords.
@@ -151,6 +151,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool OpenAccess;
         public readonly string ProfileId;
+        /// <summary>
+        /// Available values: "custom".
+        /// </summary>
         public readonly string Type;
         /// <summary>
         /// When the profile was lasted updated
@@ -161,11 +164,8 @@ namespace Pulumi.Cloudflare
         private GetZeroTrustDlpCustomProfileResult(
             string accountId,
 
-<<<<<<< HEAD
-=======
             bool aiContextEnabled,
 
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             int allowedMatchCount,
 
             string confidenceThreshold,
@@ -193,10 +193,7 @@ namespace Pulumi.Cloudflare
             string updatedAt)
         {
             AccountId = accountId;
-<<<<<<< HEAD
-=======
             AiContextEnabled = aiContextEnabled;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             AllowedMatchCount = allowedMatchCount;
             ConfidenceThreshold = confidenceThreshold;
             ContextAwareness = contextAwareness;

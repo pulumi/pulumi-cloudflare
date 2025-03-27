@@ -15,10 +15,12 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        /// Available values: "ubiquitous", "optimal", "force".
         /// </summary>
         public readonly string BundleMethod;
         /// <summary>
         /// The Certificate Authority that will issue the certificate
+        /// Available values: "digicert", "google", "lets*encrypt", "ssl*com".
         /// </summary>
         public readonly string CertificateAuthority;
         /// <summary>
@@ -51,6 +53,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Issuer;
         /// <summary>
         /// Domain control validation (DCV) method used for this hostname.
+        /// Available values: "http", "txt", "email".
         /// </summary>
         public readonly string Method;
         /// <summary>
@@ -64,10 +67,12 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Signature;
         /// <summary>
         /// Status of the hostname's SSL certificates.
+        /// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
         /// </summary>
         public readonly string Status;
         /// <summary>
         /// Level of validation to be used for this hostname. Domain validation (dv) must be used.
+        /// Available values: "dv".
         /// </summary>
         public readonly string Type;
         /// <summary>

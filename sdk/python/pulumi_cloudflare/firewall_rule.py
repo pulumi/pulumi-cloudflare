@@ -23,29 +23,15 @@ class FirewallRuleArgs:
     def __init__(__self__, *,
                  action: pulumi.Input['FirewallRuleActionArgs'],
                  filter: pulumi.Input['FirewallRuleFilterArgs'],
-<<<<<<< HEAD
-                 zone_id: pulumi.Input[str],
-                 rule_id: Optional[pulumi.Input[str]] = None):
-=======
                  zone_id: pulumi.Input[str]):
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         The set of arguments for constructing a FirewallRule resource.
         :param pulumi.Input['FirewallRuleActionArgs'] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
         :param pulumi.Input[str] zone_id: Identifier
-<<<<<<< HEAD
-        :param pulumi.Input[str] rule_id: The unique identifier of the firewall rule.
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "filter", filter)
         pulumi.set(__self__, "zone_id", zone_id)
-<<<<<<< HEAD
-        if rule_id is not None:
-            pulumi.set(__self__, "rule_id", rule_id)
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
     @property
     @pulumi.getter
@@ -80,21 +66,6 @@ class FirewallRuleArgs:
     def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
 
-<<<<<<< HEAD
-    @property
-    @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The unique identifier of the firewall rule.
-        """
-        return pulumi.get(self, "rule_id")
-
-    @rule_id.setter
-    def rule_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "rule_id", value)
-
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 
 @pulumi.input_type
 class _FirewallRuleState:
@@ -106,10 +77,6 @@ class _FirewallRuleState:
                  priority: Optional[pulumi.Input[float]] = None,
                  products: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ref: Optional[pulumi.Input[str]] = None,
-<<<<<<< HEAD
-                 rule_id: Optional[pulumi.Input[str]] = None,
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FirewallRule resources.
@@ -118,10 +85,6 @@ class _FirewallRuleState:
         :param pulumi.Input[bool] paused: When true, indicates that the firewall rule is currently paused.
         :param pulumi.Input[float] priority: The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.
         :param pulumi.Input[str] ref: A short reference tag. Allows you to select related firewall rules.
-<<<<<<< HEAD
-        :param pulumi.Input[str] rule_id: The unique identifier of the firewall rule.
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] zone_id: Identifier
         """
         if action is not None:
@@ -138,11 +101,6 @@ class _FirewallRuleState:
             pulumi.set(__self__, "products", products)
         if ref is not None:
             pulumi.set(__self__, "ref", ref)
-<<<<<<< HEAD
-        if rule_id is not None:
-            pulumi.set(__self__, "rule_id", rule_id)
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -225,21 +183,6 @@ class _FirewallRuleState:
         pulumi.set(self, "ref", value)
 
     @property
-<<<<<<< HEAD
-    @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The unique identifier of the firewall rule.
-        """
-        return pulumi.get(self, "rule_id")
-
-    @rule_id.setter
-    def rule_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "rule_id", value)
-
-    @property
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -259,18 +202,10 @@ class FirewallRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict']]] = None,
                  filter: Optional[pulumi.Input[Union['FirewallRuleFilterArgs', 'FirewallRuleFilterArgsDict']]] = None,
-<<<<<<< HEAD
-                 rule_id: Optional[pulumi.Input[str]] = None,
-                 zone_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None):
-        """
-        > `FirewallRule` is in a deprecation phase until January 15th, 2025.
-=======
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         > `FirewallRule` is in a deprecation phase until June 15th, 2025.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
           During this time period, this resource is still
           fully supported but you are strongly advised  to move to the
           `Ruleset` resource. Full details can be found in the
@@ -298,24 +233,17 @@ class FirewallRule(pulumi.CustomResource):
                 "paused": False,
                 "ref": "FIL-100",
             })
-<<<<<<< HEAD
-=======
         ```
 
         ## Import
 
         ```sh
         $ pulumi import cloudflare:index/firewallRule:FirewallRule example '<zone_id>/<rule_id>'
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict']] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
-<<<<<<< HEAD
-        :param pulumi.Input[str] rule_id: The unique identifier of the firewall rule.
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] zone_id: Identifier
         """
         ...
@@ -325,11 +253,7 @@ class FirewallRule(pulumi.CustomResource):
                  args: FirewallRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-<<<<<<< HEAD
-        > `FirewallRule` is in a deprecation phase until January 15th, 2025.
-=======
         > `FirewallRule` is in a deprecation phase until June 15th, 2025.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
           During this time period, this resource is still
           fully supported but you are strongly advised  to move to the
           `Ruleset` resource. Full details can be found in the
@@ -357,15 +281,12 @@ class FirewallRule(pulumi.CustomResource):
                 "paused": False,
                 "ref": "FIL-100",
             })
-<<<<<<< HEAD
-=======
         ```
 
         ## Import
 
         ```sh
         $ pulumi import cloudflare:index/firewallRule:FirewallRule example '<zone_id>/<rule_id>'
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         ```
 
         :param str resource_name: The name of the resource.
@@ -385,10 +306,6 @@ class FirewallRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict']]] = None,
                  filter: Optional[pulumi.Input[Union['FirewallRuleFilterArgs', 'FirewallRuleFilterArgsDict']]] = None,
-<<<<<<< HEAD
-                 rule_id: Optional[pulumi.Input[str]] = None,
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -405,10 +322,6 @@ class FirewallRule(pulumi.CustomResource):
             if filter is None and not opts.urn:
                 raise TypeError("Missing required property 'filter'")
             __props__.__dict__["filter"] = filter
-<<<<<<< HEAD
-            __props__.__dict__["rule_id"] = rule_id
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
@@ -434,10 +347,6 @@ class FirewallRule(pulumi.CustomResource):
             priority: Optional[pulumi.Input[float]] = None,
             products: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ref: Optional[pulumi.Input[str]] = None,
-<<<<<<< HEAD
-            rule_id: Optional[pulumi.Input[str]] = None,
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             zone_id: Optional[pulumi.Input[str]] = None) -> 'FirewallRule':
         """
         Get an existing FirewallRule resource's state with the given name, id, and optional extra
@@ -451,10 +360,6 @@ class FirewallRule(pulumi.CustomResource):
         :param pulumi.Input[bool] paused: When true, indicates that the firewall rule is currently paused.
         :param pulumi.Input[float] priority: The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.
         :param pulumi.Input[str] ref: A short reference tag. Allows you to select related firewall rules.
-<<<<<<< HEAD
-        :param pulumi.Input[str] rule_id: The unique identifier of the firewall rule.
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -468,10 +373,6 @@ class FirewallRule(pulumi.CustomResource):
         __props__.__dict__["priority"] = priority
         __props__.__dict__["products"] = products
         __props__.__dict__["ref"] = ref
-<<<<<<< HEAD
-        __props__.__dict__["rule_id"] = rule_id
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         __props__.__dict__["zone_id"] = zone_id
         return FirewallRule(resource_name, opts=opts, __props__=__props__)
 
@@ -526,17 +427,6 @@ class FirewallRule(pulumi.CustomResource):
         return pulumi.get(self, "ref")
 
     @property
-<<<<<<< HEAD
-    @pulumi.getter(name="ruleId")
-    def rule_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The unique identifier of the firewall rule.
-        """
-        return pulumi.get(self, "rule_id")
-
-    @property
-=======
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """

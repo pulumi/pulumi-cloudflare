@@ -60,14 +60,14 @@ public final class ZoneDnssecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Status of DNSSEC, based on user-desired state and presence of necessary records.
+     * Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: &#34;active&#34;, &#34;disabled&#34;.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Status of DNSSEC, based on user-desired state and presence of necessary records.
+     * @return Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: &#34;active&#34;, &#34;disabled&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -171,7 +171,7 @@ public final class ZoneDnssecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Status of DNSSEC, based on user-desired state and presence of necessary records.
+         * @param status Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: &#34;active&#34;, &#34;disabled&#34;.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class ZoneDnssecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Status of DNSSEC, based on user-desired state and presence of necessary records.
+         * @param status Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: &#34;active&#34;, &#34;disabled&#34;.
          * 
          * @return builder
          * 

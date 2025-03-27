@@ -25,11 +25,9 @@ class D1DatabaseArgs:
         """
         The set of arguments for constructing a D1Database resource.
         :param pulumi.Input[str] account_id: Account identifier tag.
-<<<<<<< HEAD
-=======
         :param pulumi.Input[str] name: D1 database name.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+               Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -51,12 +49,9 @@ class D1DatabaseArgs:
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
-<<<<<<< HEAD
-=======
         """
         D1 database name.
         """
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return pulumi.get(self, "name")
 
     @name.setter
@@ -68,6 +63,7 @@ class D1DatabaseArgs:
     def primary_location_hint(self) -> Optional[pulumi.Input[str]]:
         """
         Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+        Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
         """
         return pulumi.get(self, "primary_location_hint")
 
@@ -92,13 +88,10 @@ class _D1DatabaseState:
         :param pulumi.Input[str] account_id: Account identifier tag.
         :param pulumi.Input[str] created_at: Specifies the timestamp the resource was created as an ISO8601 string.
         :param pulumi.Input[float] file_size: The D1 database's size, in bytes.
-<<<<<<< HEAD
-        :param pulumi.Input[str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
-=======
         :param pulumi.Input[str] name: D1 database name.
         :param pulumi.Input[str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+               Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
         :param pulumi.Input[str] uuid: D1 database identifier (UUID).
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -156,12 +149,9 @@ class _D1DatabaseState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-<<<<<<< HEAD
-=======
         """
         D1 database name.
         """
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return pulumi.get(self, "name")
 
     @name.setter
@@ -182,6 +172,7 @@ class _D1DatabaseState:
     def primary_location_hint(self) -> Optional[pulumi.Input[str]]:
         """
         Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+        Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
         """
         return pulumi.get(self, "primary_location_hint")
 
@@ -192,12 +183,9 @@ class _D1DatabaseState:
     @property
     @pulumi.getter
     def uuid(self) -> Optional[pulumi.Input[str]]:
-<<<<<<< HEAD
-=======
         """
         D1 database identifier (UUID).
         """
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return pulumi.get(self, "uuid")
 
     @uuid.setter
@@ -248,11 +236,9 @@ class D1Database(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account identifier tag.
-<<<<<<< HEAD
-=======
         :param pulumi.Input[str] name: D1 database name.
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         :param pulumi.Input[str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+               Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
         """
         ...
     @overload
@@ -349,13 +335,10 @@ class D1Database(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Account identifier tag.
         :param pulumi.Input[str] created_at: Specifies the timestamp the resource was created as an ISO8601 string.
         :param pulumi.Input[float] file_size: The D1 database's size, in bytes.
-<<<<<<< HEAD
-        :param pulumi.Input[str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
-=======
         :param pulumi.Input[str] name: D1 database name.
         :param pulumi.Input[str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+               Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
         :param pulumi.Input[str] uuid: D1 database identifier (UUID).
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -398,12 +381,9 @@ class D1Database(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-<<<<<<< HEAD
-=======
         """
         D1 database name.
         """
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return pulumi.get(self, "name")
 
     @property
@@ -416,18 +396,16 @@ class D1Database(pulumi.CustomResource):
     def primary_location_hint(self) -> pulumi.Output[Optional[str]]:
         """
         Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+        Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
         """
         return pulumi.get(self, "primary_location_hint")
 
     @property
     @pulumi.getter
     def uuid(self) -> pulumi.Output[str]:
-<<<<<<< HEAD
-=======
         """
         D1 database identifier (UUID).
         """
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         return pulumi.get(self, "uuid")
 
     @property

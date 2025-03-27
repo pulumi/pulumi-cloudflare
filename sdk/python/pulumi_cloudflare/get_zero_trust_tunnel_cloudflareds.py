@@ -85,7 +85,7 @@ class GetZeroTrustTunnelCloudflaredsResult:
     @pulumi.getter(name="existedAt")
     def existed_at(self) -> Optional[str]:
         """
-        If provided, include only tunnels that were created (and not deleted) before this time.
+        If provided, include only resources that were created (and not deleted) before this time. URL encoded.
         """
         return pulumi.get(self, "existed_at")
 
@@ -139,6 +139,7 @@ class GetZeroTrustTunnelCloudflaredsResult:
     def status(self) -> Optional[str]:
         """
         The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+        Available values: "inactive", "degraded", "healthy", "down".
         """
         return pulumi.get(self, "status")
 
@@ -203,7 +204,7 @@ def get_zero_trust_tunnel_cloudflareds(account_id: Optional[str] = None,
 
     example_zero_trust_tunnel_cloudflareds = cloudflare.get_zero_trust_tunnel_cloudflareds(account_id="699d98642c564d2e855e9661899b7252",
         exclude_prefix="vpc1-",
-        existed_at="2019-10-12T07:20:50.52Z",
+        existed_at="2019-10-12T07%3A20%3A50.52Z",
         include_prefix="vpc1-",
         is_deleted=True,
         name="blog",
@@ -215,11 +216,12 @@ def get_zero_trust_tunnel_cloudflareds(account_id: Optional[str] = None,
 
 
     :param str account_id: Cloudflare account ID
-    :param str existed_at: If provided, include only tunnels that were created (and not deleted) before this time.
+    :param str existed_at: If provided, include only resources that were created (and not deleted) before this time. URL encoded.
     :param bool is_deleted: If `true`, only include deleted tunnels. If `false`, exclude deleted tunnels. If empty, all tunnels will be included.
     :param int max_items: Max items to fetch, default: 1000
     :param str name: A user-friendly name for a tunnel.
     :param str status: The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+           Available values: "inactive", "degraded", "healthy", "down".
     :param str uuid: UUID of the tunnel.
     """
     __args__ = dict()
@@ -272,7 +274,7 @@ def get_zero_trust_tunnel_cloudflareds_output(account_id: Optional[pulumi.Input[
 
     example_zero_trust_tunnel_cloudflareds = cloudflare.get_zero_trust_tunnel_cloudflareds(account_id="699d98642c564d2e855e9661899b7252",
         exclude_prefix="vpc1-",
-        existed_at="2019-10-12T07:20:50.52Z",
+        existed_at="2019-10-12T07%3A20%3A50.52Z",
         include_prefix="vpc1-",
         is_deleted=True,
         name="blog",
@@ -284,11 +286,12 @@ def get_zero_trust_tunnel_cloudflareds_output(account_id: Optional[pulumi.Input[
 
 
     :param str account_id: Cloudflare account ID
-    :param str existed_at: If provided, include only tunnels that were created (and not deleted) before this time.
+    :param str existed_at: If provided, include only resources that were created (and not deleted) before this time. URL encoded.
     :param bool is_deleted: If `true`, only include deleted tunnels. If `false`, exclude deleted tunnels. If empty, all tunnels will be included.
     :param int max_items: Max items to fetch, default: 1000
     :param str name: A user-friendly name for a tunnel.
     :param str status: The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+           Available values: "inactive", "degraded", "healthy", "down".
     :param str uuid: UUID of the tunnel.
     """
     __args__ = dict()

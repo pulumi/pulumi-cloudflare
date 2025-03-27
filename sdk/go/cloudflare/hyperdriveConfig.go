@@ -49,6 +49,12 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example '<account_id>/<hyperdrive_id>'
+// ```
 type HyperdriveConfig struct {
 	pulumi.CustomResourceState
 

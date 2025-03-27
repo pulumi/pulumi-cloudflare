@@ -76,6 +76,7 @@ public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {
     }
     /**
      * The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     @Export(name="mode", refs={String.class}, tree="[0]")
@@ -83,6 +84,7 @@ public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     public Output<String> mode() {

@@ -15,10 +15,12 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Field for type matcher.
+        /// Available values: "to".
         /// </summary>
         public readonly string Field;
         /// <summary>
         /// Type of matcher.
+        /// Available values: "literal".
         /// </summary>
         public readonly string Type;
         /// <summary>

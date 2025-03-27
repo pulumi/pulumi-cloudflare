@@ -53,10 +53,12 @@ type LookupWorkersKvNamespacesArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// Direction to order namespaces.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Field to order results by.
+	// Available values: "id", "title".
 	Order *string `pulumi:"order"`
 }
 
@@ -65,12 +67,14 @@ type LookupWorkersKvNamespacesResult struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// Direction to order namespaces.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Field to order results by.
+	// Available values: "id", "title".
 	Order *string `pulumi:"order"`
 	// The items returned by the data source
 	Results []GetWorkersKvNamespacesResult `pulumi:"results"`
@@ -90,10 +94,12 @@ type LookupWorkersKvNamespacesOutputArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Direction to order namespaces.
+	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Field to order results by.
+	// Available values: "id", "title".
 	Order pulumi.StringPtrInput `pulumi:"order"`
 }
 
@@ -122,6 +128,7 @@ func (o LookupWorkersKvNamespacesResultOutput) AccountId() pulumi.StringOutput {
 }
 
 // Direction to order namespaces.
+// Available values: "asc", "desc".
 func (o LookupWorkersKvNamespacesResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkersKvNamespacesResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
@@ -137,6 +144,7 @@ func (o LookupWorkersKvNamespacesResultOutput) MaxItems() pulumi.IntPtrOutput {
 }
 
 // Field to order results by.
+// Available values: "id", "title".
 func (o LookupWorkersKvNamespacesResultOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkersKvNamespacesResult) *string { return v.Order }).(pulumi.StringPtrOutput)
 }

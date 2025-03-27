@@ -77,6 +77,7 @@ export class WorkersSecret extends pulumi.CustomResource {
     public readonly text!: pulumi.Output<string | undefined>;
     /**
      * The type of secret to put.
+     * Available values: "secretText".
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -117,10 +118,14 @@ export class WorkersSecret extends pulumi.CustomResource {
             resourceInputs["dispatchNamespace"] = args ? args.dispatchNamespace : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["scriptName"] = args ? args.scriptName : undefined;
-            resourceInputs["text"] = args ? args.text : undefined;
+            resourceInputs["text"] = args?.text ? pulumi.secret(args.text) : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/workerSecret:WorkerSecret" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
+        const secretOpts = { additionalSecretOutputs: ["text"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(WorkersSecret.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -151,6 +156,7 @@ export interface WorkersSecretState {
     text?: pulumi.Input<string>;
     /**
      * The type of secret to put.
+     * Available values: "secretText".
      */
     type?: pulumi.Input<string>;
 }
@@ -181,6 +187,7 @@ export interface WorkersSecretArgs {
     text?: pulumi.Input<string>;
     /**
      * The type of secret to put.
+     * Available values: "secretText".
      */
     type?: pulumi.Input<string>;
 }

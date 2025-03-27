@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly string? ExcludePrefix;
         /// <summary>
-        /// If provided, include only tunnels that were created (and not deleted) before this time.
+        /// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
         /// </summary>
         public readonly string? ExistedAt;
         public readonly string? IncludePrefix;
@@ -29,6 +29,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Name;
         /// <summary>
         /// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+        /// Available values: "inactive", "degraded", "healthy", "down".
         /// </summary>
         public readonly string? Status;
         /// <summary>

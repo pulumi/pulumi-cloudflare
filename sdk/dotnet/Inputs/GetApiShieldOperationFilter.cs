@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Direction to order results.
+        /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
@@ -62,6 +63,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
+        /// Available values: "method", "host", "endpoint", "thresholds.$key".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }

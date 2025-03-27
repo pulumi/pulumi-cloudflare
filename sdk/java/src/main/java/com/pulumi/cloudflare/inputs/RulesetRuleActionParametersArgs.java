@@ -16,11 +16,13 @@ import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersHeadersArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersMatchedDataArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOriginArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOverridesArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersRawResponseFieldArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersRequestFieldArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersResponseArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersResponseFieldArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersServeStaleArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersSniArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersTransformedRequestFieldArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -191,6 +193,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * Content-type header to set with the response.
+     * Available values: &#34;application/json&#34;, &#34;text/xml&#34;, &#34;text/plain&#34;, &#34;text/html&#34;.
      * 
      */
     @Import(name="contentType")
@@ -198,6 +201,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * @return Content-type header to set with the response.
+     * Available values: &#34;application/json&#34;, &#34;text/xml&#34;, &#34;text/plain&#34;, &#34;text/html&#34;.
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -536,6 +540,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * Configure the Polish level.
+     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
      * 
      */
     @Import(name="polish")
@@ -543,6 +548,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * @return Configure the Polish level.
+     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
      * 
      */
     public Optional<Output<String>> polish() {
@@ -565,6 +571,21 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
+     * The raw response fields to log.
+     * 
+     */
+    @Import(name="rawResponseFields")
+    private @Nullable Output<List<RulesetRuleActionParametersRawResponseFieldArgs>> rawResponseFields;
+
+    /**
+     * @return The raw response fields to log.
+     * 
+     */
+    public Optional<Output<List<RulesetRuleActionParametersRawResponseFieldArgs>>> rawResponseFields() {
+        return Optional.ofNullable(this.rawResponseFields);
+    }
+
+    /**
      * Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
      * 
      */
@@ -580,14 +601,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * The request fields to log.
+     * The raw request fields to log.
      * 
      */
     @Import(name="requestFields")
     private @Nullable Output<List<RulesetRuleActionParametersRequestFieldArgs>> requestFields;
 
     /**
-     * @return The request fields to log.
+     * @return The raw request fields to log.
      * 
      */
     public Optional<Output<List<RulesetRuleActionParametersRequestFieldArgs>>> requestFields() {
@@ -625,14 +646,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * The response fields to log.
+     * The transformed response fields to log.
      * 
      */
     @Import(name="responseFields")
     private @Nullable Output<List<RulesetRuleActionParametersResponseFieldArgs>> responseFields;
 
     /**
-     * @return The response fields to log.
+     * @return The transformed response fields to log.
      * 
      */
     public Optional<Output<List<RulesetRuleActionParametersResponseFieldArgs>>> responseFields() {
@@ -671,6 +692,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+     * Available values: &#34;current&#34;.
      * 
      */
     @Import(name="ruleset")
@@ -678,6 +700,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * @return A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+     * Available values: &#34;current&#34;.
      * 
      */
     public Optional<Output<String>> ruleset() {
@@ -701,6 +724,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * Configure the Security Level.
+     * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
      * 
      */
     @Import(name="securityLevel")
@@ -708,6 +732,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * @return Configure the Security Level.
+     * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
      * 
      */
     public Optional<Output<String>> securityLevel() {
@@ -761,6 +786,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * Configure the SSL level.
+     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
      * 
      */
     @Import(name="ssl")
@@ -768,6 +794,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * @return Configure the SSL level.
+     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
      * 
      */
     public Optional<Output<String>> ssl() {
@@ -802,6 +829,21 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
      */
     public Optional<Output<Boolean>> sxg() {
         return Optional.ofNullable(this.sxg);
+    }
+
+    /**
+     * The transformed request fields to log.
+     * 
+     */
+    @Import(name="transformedRequestFields")
+    private @Nullable Output<List<RulesetRuleActionParametersTransformedRequestFieldArgs>> transformedRequestFields;
+
+    /**
+     * @return The transformed request fields to log.
+     * 
+     */
+    public Optional<Output<List<RulesetRuleActionParametersTransformedRequestFieldArgs>>> transformedRequestFields() {
+        return Optional.ofNullable(this.transformedRequestFields);
     }
 
     /**
@@ -857,6 +899,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.phases = $.phases;
         this.polish = $.polish;
         this.products = $.products;
+        this.rawResponseFields = $.rawResponseFields;
         this.readTimeout = $.readTimeout;
         this.requestFields = $.requestFields;
         this.respectStrongEtags = $.respectStrongEtags;
@@ -873,6 +916,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.ssl = $.ssl;
         this.statusCode = $.statusCode;
         this.sxg = $.sxg;
+        this.transformedRequestFields = $.transformedRequestFields;
         this.uri = $.uri;
     }
 
@@ -1126,6 +1170,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param contentType Content-type header to set with the response.
+         * Available values: &#34;application/json&#34;, &#34;text/xml&#34;, &#34;text/plain&#34;, &#34;text/html&#34;.
          * 
          * @return builder
          * 
@@ -1137,6 +1182,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param contentType Content-type header to set with the response.
+         * Available values: &#34;application/json&#34;, &#34;text/xml&#34;, &#34;text/plain&#34;, &#34;text/html&#34;.
          * 
          * @return builder
          * 
@@ -1629,6 +1675,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param polish Configure the Polish level.
+         * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
          * 
          * @return builder
          * 
@@ -1640,6 +1687,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param polish Configure the Polish level.
+         * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
          * 
          * @return builder
          * 
@@ -1680,6 +1728,37 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param rawResponseFields The raw response fields to log.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rawResponseFields(@Nullable Output<List<RulesetRuleActionParametersRawResponseFieldArgs>> rawResponseFields) {
+            $.rawResponseFields = rawResponseFields;
+            return this;
+        }
+
+        /**
+         * @param rawResponseFields The raw response fields to log.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rawResponseFields(List<RulesetRuleActionParametersRawResponseFieldArgs> rawResponseFields) {
+            return rawResponseFields(Output.of(rawResponseFields));
+        }
+
+        /**
+         * @param rawResponseFields The raw response fields to log.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rawResponseFields(RulesetRuleActionParametersRawResponseFieldArgs... rawResponseFields) {
+            return rawResponseFields(List.of(rawResponseFields));
+        }
+
+        /**
          * @param readTimeout Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
          * 
          * @return builder
@@ -1701,7 +1780,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param requestFields The request fields to log.
+         * @param requestFields The raw request fields to log.
          * 
          * @return builder
          * 
@@ -1712,7 +1791,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param requestFields The request fields to log.
+         * @param requestFields The raw request fields to log.
          * 
          * @return builder
          * 
@@ -1722,7 +1801,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param requestFields The request fields to log.
+         * @param requestFields The raw request fields to log.
          * 
          * @return builder
          * 
@@ -1774,7 +1853,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param responseFields The response fields to log.
+         * @param responseFields The transformed response fields to log.
          * 
          * @return builder
          * 
@@ -1785,7 +1864,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param responseFields The response fields to log.
+         * @param responseFields The transformed response fields to log.
          * 
          * @return builder
          * 
@@ -1795,7 +1874,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param responseFields The response fields to log.
+         * @param responseFields The transformed response fields to log.
          * 
          * @return builder
          * 
@@ -1848,6 +1927,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param ruleset A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+         * Available values: &#34;current&#34;.
          * 
          * @return builder
          * 
@@ -1859,6 +1939,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param ruleset A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+         * Available values: &#34;current&#34;.
          * 
          * @return builder
          * 
@@ -1900,6 +1981,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param securityLevel Configure the Security Level.
+         * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
          * 
          * @return builder
          * 
@@ -1911,6 +1993,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param securityLevel Configure the Security Level.
+         * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
          * 
          * @return builder
          * 
@@ -1984,6 +2067,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param ssl Configure the SSL level.
+         * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
          * 
          * @return builder
          * 
@@ -1995,6 +2079,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param ssl Configure the SSL level.
+         * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
          * 
          * @return builder
          * 
@@ -2043,6 +2128,37 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          */
         public Builder sxg(Boolean sxg) {
             return sxg(Output.of(sxg));
+        }
+
+        /**
+         * @param transformedRequestFields The transformed request fields to log.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transformedRequestFields(@Nullable Output<List<RulesetRuleActionParametersTransformedRequestFieldArgs>> transformedRequestFields) {
+            $.transformedRequestFields = transformedRequestFields;
+            return this;
+        }
+
+        /**
+         * @param transformedRequestFields The transformed request fields to log.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transformedRequestFields(List<RulesetRuleActionParametersTransformedRequestFieldArgs> transformedRequestFields) {
+            return transformedRequestFields(Output.of(transformedRequestFields));
+        }
+
+        /**
+         * @param transformedRequestFields The transformed request fields to log.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transformedRequestFields(RulesetRuleActionParametersTransformedRequestFieldArgs... transformedRequestFields) {
+            return transformedRequestFields(List.of(transformedRequestFields));
         }
 
         /**

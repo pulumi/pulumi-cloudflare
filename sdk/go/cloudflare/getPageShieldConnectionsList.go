@@ -61,12 +61,14 @@ func LookupPageShieldConnectionsList(ctx *pulumi.Context, args *LookupPageShield
 // A collection of arguments for invoking getPageShieldConnectionsList.
 type LookupPageShieldConnectionsListArgs struct {
 	// The direction used to sort returned connections.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// When true, excludes connections seen in a `/cdn-cgi` path from the returned connections. The default value is true.
 	ExcludeCdnCgi *bool `pulumi:"excludeCdnCgi"`
 	// Excludes connections whose URL contains one of the URL-encoded URLs separated by commas.
 	ExcludeUrls *string `pulumi:"excludeUrls"`
 	// Export the list of connections as a file.
+	// Available values: "csv".
 	Export *string `pulumi:"export"`
 	// Includes connections that match one or more URL-encoded hostnames separated by commas.
 	Hosts               *string  `pulumi:"hosts"`
@@ -85,12 +87,14 @@ type LookupPageShieldConnectionsListArgs struct {
 // A collection of values returned by getPageShieldConnectionsList.
 type LookupPageShieldConnectionsListResult struct {
 	// The direction used to sort returned connections.
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// When true, excludes connections seen in a `/cdn-cgi` path from the returned connections. The default value is true.
 	ExcludeCdnCgi *bool `pulumi:"excludeCdnCgi"`
 	// Excludes connections whose URL contains one of the URL-encoded URLs separated by commas.
 	ExcludeUrls *string `pulumi:"excludeUrls"`
 	// Export the list of connections as a file.
+	// Available values: "csv".
 	Export *string `pulumi:"export"`
 	// Includes connections that match one or more URL-encoded hostnames separated by commas.
 	Hosts *string `pulumi:"hosts"`
@@ -121,12 +125,14 @@ func LookupPageShieldConnectionsListOutput(ctx *pulumi.Context, args LookupPageS
 // A collection of arguments for invoking getPageShieldConnectionsList.
 type LookupPageShieldConnectionsListOutputArgs struct {
 	// The direction used to sort returned connections.
+	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// When true, excludes connections seen in a `/cdn-cgi` path from the returned connections. The default value is true.
 	ExcludeCdnCgi pulumi.BoolPtrInput `pulumi:"excludeCdnCgi"`
 	// Excludes connections whose URL contains one of the URL-encoded URLs separated by commas.
 	ExcludeUrls pulumi.StringPtrInput `pulumi:"excludeUrls"`
 	// Export the list of connections as a file.
+	// Available values: "csv".
 	Export pulumi.StringPtrInput `pulumi:"export"`
 	// Includes connections that match one or more URL-encoded hostnames separated by commas.
 	Hosts               pulumi.StringPtrInput  `pulumi:"hosts"`
@@ -162,6 +168,7 @@ func (o LookupPageShieldConnectionsListResultOutput) ToLookupPageShieldConnectio
 }
 
 // The direction used to sort returned connections.
+// Available values: "asc", "desc".
 func (o LookupPageShieldConnectionsListResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPageShieldConnectionsListResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
@@ -177,6 +184,7 @@ func (o LookupPageShieldConnectionsListResultOutput) ExcludeUrls() pulumi.String
 }
 
 // Export the list of connections as a file.
+// Available values: "csv".
 func (o LookupPageShieldConnectionsListResultOutput) Export() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPageShieldConnectionsListResult) *string { return v.Export }).(pulumi.StringPtrOutput)
 }

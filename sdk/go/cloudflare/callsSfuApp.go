@@ -67,6 +67,10 @@ func NewCallsSfuApp(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secret",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CallsSfuApp
 	err := ctx.RegisterResource("cloudflare:index/callsSfuApp:CallsSfuApp", name, args, &resource, opts...)

@@ -39,6 +39,7 @@ type CustomHostname struct {
 	// SSL properties used when creating the custom hostname.
 	Ssl CustomHostnameSslOutput `pulumi:"ssl"`
 	// Status of the hostname's activation.
+	// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
 	Status pulumi.StringOutput `pulumi:"status"`
 	// These are errors that were encountered while trying to activate a hostname.
 	VerificationErrors pulumi.StringArrayOutput `pulumi:"verificationErrors"`
@@ -102,6 +103,7 @@ type customHostnameState struct {
 	// SSL properties used when creating the custom hostname.
 	Ssl *CustomHostnameSsl `pulumi:"ssl"`
 	// Status of the hostname's activation.
+	// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
 	Status *string `pulumi:"status"`
 	// These are errors that were encountered while trying to activate a hostname.
 	VerificationErrors []string `pulumi:"verificationErrors"`
@@ -127,6 +129,7 @@ type CustomHostnameState struct {
 	// SSL properties used when creating the custom hostname.
 	Ssl CustomHostnameSslPtrInput
 	// Status of the hostname's activation.
+	// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
 	Status pulumi.StringPtrInput
 	// These are errors that were encountered while trying to activate a hostname.
 	VerificationErrors pulumi.StringArrayInput
@@ -299,6 +302,7 @@ func (o CustomHostnameOutput) Ssl() CustomHostnameSslOutput {
 }
 
 // Status of the hostname's activation.
+// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
 func (o CustomHostnameOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomHostname) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

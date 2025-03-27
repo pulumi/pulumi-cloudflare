@@ -66,6 +66,10 @@ export class R2ManagedDomain extends pulumi.CustomResource {
      * Whether to enable public bucket access at the r2.dev domain
      */
     public readonly enabled!: pulumi.Output<boolean>;
+    /**
+     * Jurisdiction of the bucket
+     */
+    public readonly jurisdiction!: pulumi.Output<string>;
 
     /**
      * Create a R2ManagedDomain resource with the given unique name, arguments, and options.
@@ -85,6 +89,7 @@ export class R2ManagedDomain extends pulumi.CustomResource {
             resourceInputs["bucketName"] = state ? state.bucketName : undefined;
             resourceInputs["domain"] = state ? state.domain : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["jurisdiction"] = state ? state.jurisdiction : undefined;
         } else {
             const args = argsOrState as R2ManagedDomainArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -99,6 +104,7 @@ export class R2ManagedDomain extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["bucketName"] = args ? args.bucketName : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["jurisdiction"] = args ? args.jurisdiction : undefined;
             resourceInputs["bucketId"] = undefined /*out*/;
             resourceInputs["domain"] = undefined /*out*/;
         }
@@ -131,6 +137,10 @@ export interface R2ManagedDomainState {
      * Whether to enable public bucket access at the r2.dev domain
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Jurisdiction of the bucket
+     */
+    jurisdiction?: pulumi.Input<string>;
 }
 
 /**
@@ -149,4 +159,8 @@ export interface R2ManagedDomainArgs {
      * Whether to enable public bucket access at the r2.dev domain
      */
     enabled: pulumi.Input<boolean>;
+    /**
+     * Jurisdiction of the bucket
+     */
+    jurisdiction?: pulumi.Input<string>;
 }

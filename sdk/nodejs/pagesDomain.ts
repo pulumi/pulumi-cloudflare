@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * > A DNS record for the domain is not automatically created. You need to create
- *    a `cloudflare.Record` resource for the domain you want to use.
+ *    a `cloudflareRecord` resource for the domain you want to use.
  *
  * ## Example Usage
  *
@@ -61,18 +61,20 @@ export class PagesDomain extends pulumi.CustomResource {
      * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
+    /**
+     * Available values: "google", "letsEncrypt".
+     */
     public /*out*/ readonly certificateAuthority!: pulumi.Output<string>;
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     public /*out*/ readonly domainId!: pulumi.Output<string>;
-<<<<<<< HEAD
-    public readonly name!: pulumi.Output<string | undefined>;
-=======
     public readonly name!: pulumi.Output<string>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Name of the project.
      */
     public readonly projectName!: pulumi.Output<string>;
+    /**
+     * Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
+     */
     public /*out*/ readonly status!: pulumi.Output<string>;
     public /*out*/ readonly validationData!: pulumi.Output<outputs.PagesDomainValidationData>;
     public /*out*/ readonly verificationData!: pulumi.Output<outputs.PagesDomainVerificationData>;
@@ -106,12 +108,9 @@ export class PagesDomain extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-<<<<<<< HEAD
-=======
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             if ((!args || args.projectName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
@@ -139,6 +138,9 @@ export interface PagesDomainState {
      * Identifier
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Available values: "google", "letsEncrypt".
+     */
     certificateAuthority?: pulumi.Input<string>;
     createdOn?: pulumi.Input<string>;
     domainId?: pulumi.Input<string>;
@@ -147,6 +149,9 @@ export interface PagesDomainState {
      * Name of the project.
      */
     projectName?: pulumi.Input<string>;
+    /**
+     * Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
+     */
     status?: pulumi.Input<string>;
     validationData?: pulumi.Input<inputs.PagesDomainValidationData>;
     verificationData?: pulumi.Input<inputs.PagesDomainVerificationData>;
@@ -161,11 +166,7 @@ export interface PagesDomainArgs {
      * Identifier
      */
     accountId: pulumi.Input<string>;
-<<<<<<< HEAD
-    name?: pulumi.Input<string>;
-=======
     name: pulumi.Input<string>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Name of the project.
      */

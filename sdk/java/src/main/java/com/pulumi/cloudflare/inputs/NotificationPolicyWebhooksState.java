@@ -107,6 +107,7 @@ public final class NotificationPolicyWebhooksState extends com.pulumi.resources.
 
     /**
      * Type of webhook endpoint.
+     * Available values: &#34;slack&#34;, &#34;generic&#34;, &#34;gchat&#34;.
      * 
      */
     @Import(name="type")
@@ -114,6 +115,7 @@ public final class NotificationPolicyWebhooksState extends com.pulumi.resources.
 
     /**
      * @return Type of webhook endpoint.
+     * Available values: &#34;slack&#34;, &#34;generic&#34;, &#34;gchat&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -294,6 +296,7 @@ public final class NotificationPolicyWebhooksState extends com.pulumi.resources.
 
         /**
          * @param type Type of webhook endpoint.
+         * Available values: &#34;slack&#34;, &#34;generic&#34;, &#34;gchat&#34;.
          * 
          * @return builder
          * 
@@ -305,6 +308,7 @@ public final class NotificationPolicyWebhooksState extends com.pulumi.resources.
 
         /**
          * @param type Type of webhook endpoint.
+         * Available values: &#34;slack&#34;, &#34;generic&#34;, &#34;gchat&#34;.
          * 
          * @return builder
          * 

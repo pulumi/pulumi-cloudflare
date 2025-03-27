@@ -70,6 +70,7 @@ export class EmailRoutingSettings extends pulumi.CustomResource {
     public /*out*/ readonly skipWizard!: pulumi.Output<boolean>;
     /**
      * Show the state of your account, and the type or configuration error.
+     * Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -147,6 +148,7 @@ export interface EmailRoutingSettingsState {
     skipWizard?: pulumi.Input<boolean>;
     /**
      * Show the state of your account, and the type or configuration error.
+     * Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
      */
     status?: pulumi.Input<string>;
     /**

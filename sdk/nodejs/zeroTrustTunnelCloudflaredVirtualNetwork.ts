@@ -119,6 +119,8 @@ export class ZeroTrustTunnelCloudflaredVirtualNetwork extends pulumi.CustomResou
             resourceInputs["deletedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustTunnelCloudflaredVirtualNetwork.__pulumiType, name, resourceInputs, opts);
     }
 }

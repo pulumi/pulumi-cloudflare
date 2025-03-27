@@ -14,9 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class PagesProjectDeploymentConfigsPreviewEnvVars
     {
         /// <summary>
-        /// The type of environment variable.
+        /// Available values: "plain_text".
         /// </summary>
-        public readonly string? Type;
+        public readonly string Type;
         /// <summary>
         /// Environment variable value.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private PagesProjectDeploymentConfigsPreviewEnvVars(
-            string? type,
+            string type,
 
             string value)
         {

@@ -19,6 +19,7 @@ public final class WaitingRoomRulesRuleArgs extends com.pulumi.resources.Resourc
 
     /**
      * The action to take when the expression matches.
+     * Available values: &#34;bypass*waiting*room&#34;.
      * 
      */
     @Import(name="action", required=true)
@@ -26,6 +27,7 @@ public final class WaitingRoomRulesRuleArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The action to take when the expression matches.
+     * Available values: &#34;bypass*waiting*room&#34;.
      * 
      */
     public Output<String> action() {
@@ -106,6 +108,7 @@ public final class WaitingRoomRulesRuleArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param action The action to take when the expression matches.
+         * Available values: &#34;bypass*waiting*room&#34;.
          * 
          * @return builder
          * 
@@ -117,6 +120,7 @@ public final class WaitingRoomRulesRuleArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param action The action to take when the expression matches.
+         * Available values: &#34;bypass*waiting*room&#34;.
          * 
          * @return builder
          * 

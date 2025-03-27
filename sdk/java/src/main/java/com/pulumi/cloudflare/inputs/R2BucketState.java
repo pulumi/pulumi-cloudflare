@@ -62,6 +62,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Location of the bucket
+     * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
      */
     @Import(name="location")
@@ -69,6 +70,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Location of the bucket
+     * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
      */
     public Optional<Output<String>> location() {
@@ -92,6 +94,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Storage class for newly uploaded objects, unless specified otherwise.
+     * Available values: &#34;Standard&#34;, &#34;InfrequentAccess&#34;.
      * 
      */
     @Import(name="storageClass")
@@ -99,6 +102,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Storage class for newly uploaded objects, unless specified otherwise.
+     * Available values: &#34;Standard&#34;, &#34;InfrequentAccess&#34;.
      * 
      */
     public Optional<Output<String>> storageClass() {
@@ -199,6 +203,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location Location of the bucket
+         * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
          * 
          * @return builder
          * 
@@ -210,6 +215,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location Location of the bucket
+         * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
          * 
          * @return builder
          * 
@@ -241,6 +247,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param storageClass Storage class for newly uploaded objects, unless specified otherwise.
+         * Available values: &#34;Standard&#34;, &#34;InfrequentAccess&#34;.
          * 
          * @return builder
          * 
@@ -252,6 +259,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param storageClass Storage class for newly uploaded objects, unless specified otherwise.
+         * Available values: &#34;Standard&#34;, &#34;InfrequentAccess&#34;.
          * 
          * @return builder
          * 

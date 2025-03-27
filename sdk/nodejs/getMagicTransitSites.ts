@@ -15,11 +15,7 @@ import * as utilities from "./utilities";
  *
  * const exampleMagicTransitSites = cloudflare.getMagicTransitSites({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
-<<<<<<< HEAD
- *     connectorIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
-=======
  *     connectorid: "023e105f4ecef8ad9ca31a8372d0c353",
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  * });
  * ```
  */
@@ -27,11 +23,7 @@ export function getMagicTransitSites(args: GetMagicTransitSitesArgs, opts?: pulu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicTransitSites:getMagicTransitSites", {
         "accountId": args.accountId,
-<<<<<<< HEAD
-        "connectorIdentifier": args.connectorIdentifier,
-=======
         "connectorid": args.connectorid,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "maxItems": args.maxItems,
     }, opts);
 }
@@ -47,11 +39,7 @@ export interface GetMagicTransitSitesArgs {
     /**
      * Identifier
      */
-<<<<<<< HEAD
-    connectorIdentifier?: string;
-=======
     connectorid?: string;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Max items to fetch, default: 1000
      */
@@ -69,11 +57,7 @@ export interface GetMagicTransitSitesResult {
     /**
      * Identifier
      */
-<<<<<<< HEAD
-    readonly connectorIdentifier?: string;
-=======
     readonly connectorid?: string;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -96,11 +80,7 @@ export interface GetMagicTransitSitesResult {
  *
  * const exampleMagicTransitSites = cloudflare.getMagicTransitSites({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
-<<<<<<< HEAD
- *     connectorIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
-=======
  *     connectorid: "023e105f4ecef8ad9ca31a8372d0c353",
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
  * });
  * ```
  */
@@ -108,11 +88,7 @@ export function getMagicTransitSitesOutput(args: GetMagicTransitSitesOutputArgs,
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicTransitSites:getMagicTransitSites", {
         "accountId": args.accountId,
-<<<<<<< HEAD
-        "connectorIdentifier": args.connectorIdentifier,
-=======
         "connectorid": args.connectorid,
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
         "maxItems": args.maxItems,
     }, opts);
 }
@@ -128,11 +104,7 @@ export interface GetMagicTransitSitesOutputArgs {
     /**
      * Identifier
      */
-<<<<<<< HEAD
-    connectorIdentifier?: pulumi.Input<string>;
-=======
     connectorid?: pulumi.Input<string>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
     /**
      * Max items to fetch, default: 1000
      */

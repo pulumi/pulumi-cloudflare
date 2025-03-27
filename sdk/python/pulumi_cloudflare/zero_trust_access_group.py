@@ -421,6 +421,8 @@ class ZeroTrustAccessGroup(pulumi.CustomResource):
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_at"] = None
             __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessGroup:AccessGroup")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustAccessGroup, __self__).__init__(
             'cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup',
             resource_name,

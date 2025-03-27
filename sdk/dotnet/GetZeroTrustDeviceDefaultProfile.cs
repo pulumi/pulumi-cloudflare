@@ -142,6 +142,9 @@ namespace Pulumi.Cloudflare
         /// Whether to add Microsoft IPs to Split Tunnel exclusions.
         /// </summary>
         public readonly bool ExcludeOfficeIps;
+        /// <summary>
+        /// List of routes excluded in the WARP client's tunnel.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceDefaultProfileExcludeResult> Excludes;
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceDefaultProfileFallbackDomainResult> FallbackDomains;
         public readonly string GatewayUniqueId;
@@ -149,7 +152,14 @@ namespace Pulumi.Cloudflare
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// List of routes included in the WARP client's tunnel.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceDefaultProfileIncludeResult> Includes;
+        /// <summary>
+        /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        /// </summary>
+        public readonly bool RegisterInterfaceIpWithDns;
         public readonly Outputs.GetZeroTrustDeviceDefaultProfileServiceModeV2Result ServiceModeV2;
         /// <summary>
         /// The URL to launch when the Send Feedback button is clicked.
@@ -196,6 +206,8 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetZeroTrustDeviceDefaultProfileIncludeResult> includes,
 
+            bool registerInterfaceIpWithDns,
+
             Outputs.GetZeroTrustDeviceDefaultProfileServiceModeV2Result serviceModeV2,
 
             string supportUrl,
@@ -219,6 +231,7 @@ namespace Pulumi.Cloudflare
             GatewayUniqueId = gatewayUniqueId;
             Id = id;
             Includes = includes;
+            RegisterInterfaceIpWithDns = registerInterfaceIpWithDns;
             ServiceModeV2 = serviceModeV2;
             SupportUrl = supportUrl;
             SwitchLocked = switchLocked;

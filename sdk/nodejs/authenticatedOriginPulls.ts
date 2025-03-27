@@ -43,6 +43,7 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
     public /*out*/ readonly certId!: pulumi.Output<string>;
     /**
      * Status of the certificate or the association.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
      */
     public /*out*/ readonly certStatus!: pulumi.Output<string>;
     /**
@@ -79,13 +80,10 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
      */
     public /*out*/ readonly issuer!: pulumi.Output<string>;
     /**
-<<<<<<< HEAD
-=======
      * The hostname certificate's private key.
      */
     public /*out*/ readonly privateKey!: pulumi.Output<string>;
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The serial number on the uploaded certificate.
      */
     public /*out*/ readonly serialNumber!: pulumi.Output<string>;
@@ -95,6 +93,7 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
     public /*out*/ readonly signature!: pulumi.Output<string>;
     /**
      * Status of the certificate or the association.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -130,10 +129,7 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
             resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["issuer"] = state ? state.issuer : undefined;
-<<<<<<< HEAD
-=======
             resourceInputs["privateKey"] = state ? state.privateKey : undefined;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resourceInputs["serialNumber"] = state ? state.serialNumber : undefined;
             resourceInputs["signature"] = state ? state.signature : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -159,16 +155,15 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
             resourceInputs["enabled"] = undefined /*out*/;
             resourceInputs["expiresOn"] = undefined /*out*/;
             resourceInputs["issuer"] = undefined /*out*/;
-<<<<<<< HEAD
-=======
             resourceInputs["privateKey"] = undefined /*out*/;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
             resourceInputs["serialNumber"] = undefined /*out*/;
             resourceInputs["signature"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["privateKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AuthenticatedOriginPulls.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -183,6 +178,7 @@ export interface AuthenticatedOriginPullsState {
     certId?: pulumi.Input<string>;
     /**
      * Status of the certificate or the association.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
      */
     certStatus?: pulumi.Input<string>;
     /**
@@ -219,13 +215,10 @@ export interface AuthenticatedOriginPullsState {
      */
     issuer?: pulumi.Input<string>;
     /**
-<<<<<<< HEAD
-=======
      * The hostname certificate's private key.
      */
     privateKey?: pulumi.Input<string>;
     /**
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
      * The serial number on the uploaded certificate.
      */
     serialNumber?: pulumi.Input<string>;
@@ -235,6 +228,7 @@ export interface AuthenticatedOriginPullsState {
     signature?: pulumi.Input<string>;
     /**
      * Status of the certificate or the association.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
      */
     status?: pulumi.Input<string>;
     /**

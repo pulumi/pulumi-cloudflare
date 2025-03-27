@@ -25,6 +25,7 @@ public final class AddressMapMembership {
     private @Nullable String identifier;
     /**
      * @return The type of the membership.
+     * Available values: &#34;zone&#34;, &#34;account&#34;.
      * 
      */
     private @Nullable String kind;
@@ -49,6 +50,7 @@ public final class AddressMapMembership {
     }
     /**
      * @return The type of the membership.
+     * Available values: &#34;zone&#34;, &#34;account&#34;.
      * 
      */
     public Optional<String> kind() {

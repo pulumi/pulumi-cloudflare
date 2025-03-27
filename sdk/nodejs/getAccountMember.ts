@@ -70,6 +70,7 @@ export interface GetAccountMemberResult {
     readonly roles: outputs.GetAccountMemberRole[];
     /**
      * A member's status in the account.
+     * Available values: "accepted", "pending".
      */
     readonly status: string;
     /**

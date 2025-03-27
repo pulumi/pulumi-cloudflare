@@ -16,32 +16,16 @@ public final class PageRuleActionsCacheKeyFieldsQueryStringArgs extends com.pulu
 
     public static final PageRuleActionsCacheKeyFieldsQueryStringArgs Empty = new PageRuleActionsCacheKeyFieldsQueryStringArgs();
 
-    /**
-     * Exclude these query string parameters from Cache Key.
-     * 
-     */
     @Import(name="excludes")
     private @Nullable Output<List<String>> excludes;
 
-    /**
-     * @return Exclude these query string parameters from Cache Key.
-     * 
-     */
     public Optional<Output<List<String>>> excludes() {
         return Optional.ofNullable(this.excludes);
     }
 
-    /**
-     * Only use values of specified query string parameters in Cache Key.
-     * 
-     */
     @Import(name="includes")
     private @Nullable Output<List<String>> includes;
 
-    /**
-     * @return Only use values of specified query string parameters in Cache Key.
-     * 
-     */
     public Optional<Output<List<String>>> includes() {
         return Optional.ofNullable(this.includes);
     }
@@ -71,64 +55,28 @@ public final class PageRuleActionsCacheKeyFieldsQueryStringArgs extends com.pulu
             $ = new PageRuleActionsCacheKeyFieldsQueryStringArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param excludes Exclude these query string parameters from Cache Key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder excludes(@Nullable Output<List<String>> excludes) {
             $.excludes = excludes;
             return this;
         }
 
-        /**
-         * @param excludes Exclude these query string parameters from Cache Key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder excludes(List<String> excludes) {
             return excludes(Output.of(excludes));
         }
 
-        /**
-         * @param excludes Exclude these query string parameters from Cache Key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder excludes(String... excludes) {
             return excludes(List.of(excludes));
         }
 
-        /**
-         * @param includes Only use values of specified query string parameters in Cache Key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder includes(@Nullable Output<List<String>> includes) {
             $.includes = includes;
             return this;
         }
 
-        /**
-         * @param includes Only use values of specified query string parameters in Cache Key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder includes(List<String> includes) {
             return includes(Output.of(includes));
         }
 
-        /**
-         * @param includes Only use values of specified query string parameters in Cache Key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder includes(String... includes) {
             return includes(List.of(includes));
         }

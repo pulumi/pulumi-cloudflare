@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupOriginCaCertificates(ctx, &cloudflare.LookupOriginCaCertificatesArgs{
-//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +51,7 @@ type LookupOriginCaCertificatesArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Identifier
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getOriginCaCertificates.
@@ -63,7 +63,7 @@ type LookupOriginCaCertificatesResult struct {
 	// The items returned by the data source
 	Results []GetOriginCaCertificatesResult `pulumi:"results"`
 	// Identifier
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 func LookupOriginCaCertificatesOutput(ctx *pulumi.Context, args LookupOriginCaCertificatesOutputArgs, opts ...pulumi.InvokeOption) LookupOriginCaCertificatesResultOutput {
@@ -80,7 +80,7 @@ type LookupOriginCaCertificatesOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Identifier
-	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
 func (LookupOriginCaCertificatesOutputArgs) ElementType() reflect.Type {
@@ -118,8 +118,8 @@ func (o LookupOriginCaCertificatesResultOutput) Results() GetOriginCaCertificate
 }
 
 // Identifier
-func (o LookupOriginCaCertificatesResultOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOriginCaCertificatesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o LookupOriginCaCertificatesResultOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOriginCaCertificatesResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 func init() {

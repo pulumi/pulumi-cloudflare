@@ -15,6 +15,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("numCells")]
         public Input<int>? NumCells { get; set; }
 
+        /// <summary>
+        /// Available values: "empty", "uploading", "processing", "failed", "complete".
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

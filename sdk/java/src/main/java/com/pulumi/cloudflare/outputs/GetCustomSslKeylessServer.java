@@ -56,6 +56,7 @@ public final class GetCustomSslKeylessServer {
     private Double port;
     /**
      * @return Status of the Keyless SSL.
+     * Available values: &#34;active&#34;, &#34;deleted&#34;.
      * 
      */
     private String status;
@@ -124,6 +125,7 @@ public final class GetCustomSslKeylessServer {
     }
     /**
      * @return Status of the Keyless SSL.
+     * Available values: &#34;active&#34;, &#34;deleted&#34;.
      * 
      */
     public String status() {

@@ -35,6 +35,10 @@ public final class GetZeroTrustRiskScoringIntegrationResult {
      */
     private String id;
     private @Nullable String integrationId;
+    /**
+     * @return Available values: &#34;Okta&#34;.
+     * 
+     */
     private String integrationType;
     /**
      * @return A reference ID defined by the client.
@@ -89,6 +93,10 @@ public final class GetZeroTrustRiskScoringIntegrationResult {
     public Optional<String> integrationId() {
         return Optional.ofNullable(this.integrationId);
     }
+    /**
+     * @return Available values: &#34;Okta&#34;.
+     * 
+     */
     public String integrationType() {
         return this.integrationType;
     }

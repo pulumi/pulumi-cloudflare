@@ -25,6 +25,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomClaim {
     private @Nullable Boolean required;
     /**
      * @return The scope of the claim.
+     * Available values: &#34;groups&#34;, &#34;profile&#34;, &#34;email&#34;, &#34;openid&#34;.
      * 
      */
     private @Nullable String scope;
@@ -47,6 +48,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomClaim {
     }
     /**
      * @return The scope of the claim.
+     * Available values: &#34;groups&#34;, &#34;profile&#34;, &#34;email&#34;, &#34;openid&#34;.
      * 
      */
     public Optional<String> scope() {

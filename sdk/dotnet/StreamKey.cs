@@ -84,6 +84,11 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "jwk",
+                    "pem",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -133,17 +138,37 @@ namespace Pulumi.Cloudflare
         [Input("created")]
         public Input<string>? Created { get; set; }
 
+        [Input("jwk")]
+        private Input<string>? _jwk;
+
         /// <summary>
         /// The signing key in JWK format.
         /// </summary>
-        [Input("jwk")]
-        public Input<string>? Jwk { get; set; }
+        public Input<string>? Jwk
+        {
+            get => _jwk;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _jwk = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("pem")]
+        private Input<string>? _pem;
 
         /// <summary>
         /// The signing key in PEM format.
         /// </summary>
-        [Input("pem")]
-        public Input<string>? Pem { get; set; }
+        public Input<string>? Pem
+        {
+            get => _pem;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _pem = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public StreamKeyState()
         {

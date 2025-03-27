@@ -69,6 +69,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
 
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
      * 
      */
     @Import(name="decision", required=true)
@@ -76,6 +77,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
 
     /**
      * @return The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
      * 
      */
     public Output<String> decision() {
@@ -312,6 +314,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
 
         /**
          * @param decision The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+         * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
          * 
          * @return builder
          * 
@@ -323,6 +326,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
 
         /**
          * @param decision The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+         * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
          * 
          * @return builder
          * 

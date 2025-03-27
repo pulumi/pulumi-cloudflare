@@ -20,6 +20,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Action to take when the file cannot be scanned.
+        /// Available values: "allow", "block".
         /// </summary>
         [Input("fallbackAction")]
         public Input<string>? FallbackAction { get; set; }

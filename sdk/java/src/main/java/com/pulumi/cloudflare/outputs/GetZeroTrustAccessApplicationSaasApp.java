@@ -33,6 +33,7 @@ public final class GetZeroTrustAccessApplicationSaasApp {
     private String appLauncherUrl;
     /**
      * @return Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is &#34;saml&#34;
+     * Available values: &#34;saml&#34;, &#34;oidc&#34;.
      * 
      */
     private String authType;
@@ -77,6 +78,7 @@ public final class GetZeroTrustAccessApplicationSaasApp {
     private String idpEntityId;
     /**
      * @return The format of the name identifier sent to the SaaS application.
+     * Available values: &#34;id&#34;, &#34;email&#34;.
      * 
      */
     private String nameIdFormat;
@@ -142,6 +144,7 @@ public final class GetZeroTrustAccessApplicationSaasApp {
     }
     /**
      * @return Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is &#34;saml&#34;
+     * Available values: &#34;saml&#34;, &#34;oidc&#34;.
      * 
      */
     public String authType() {
@@ -210,6 +213,7 @@ public final class GetZeroTrustAccessApplicationSaasApp {
     }
     /**
      * @return The format of the name identifier sent to the SaaS application.
+     * Available values: &#34;id&#34;, &#34;email&#34;.
      * 
      */
     public String nameIdFormat() {

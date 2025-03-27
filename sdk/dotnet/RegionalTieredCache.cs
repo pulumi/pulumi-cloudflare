@@ -52,6 +52,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Value of the Regional Tiered Cache zone setting.
+        /// Available values: "on", "off".
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -110,6 +111,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Value of the Regional Tiered Cache zone setting.
+        /// Available values: "on", "off".
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
@@ -142,6 +144,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Value of the Regional Tiered Cache zone setting.
+        /// Available values: "on", "off".
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

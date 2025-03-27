@@ -74,6 +74,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the token.
+        /// Available values: "active", "disabled", "expired".
         /// </summary>
         [Output("status")]
         public Output<string?> Status { get; private set; } = null!;
@@ -107,6 +108,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "value",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -171,6 +176,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the token.
+        /// Available values: "active", "disabled", "expired".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -242,15 +248,26 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the token.
+        /// Available values: "active", "disabled", "expired".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("value")]
+        private Input<string>? _value;
+
         /// <summary>
         /// The token value.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public AccountTokenState()
         {

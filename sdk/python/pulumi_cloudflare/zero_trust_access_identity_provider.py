@@ -32,6 +32,7 @@ class ZeroTrustAccessIdentityProviderArgs:
         :param pulumi.Input['ZeroTrustAccessIdentityProviderConfigArgs'] config: The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
         :param pulumi.Input[str] name: The name of the identity provider, shown to users on the login page.
         :param pulumi.Input[str] type: The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+               Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
         :param pulumi.Input[str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input['ZeroTrustAccessIdentityProviderScimConfigArgs'] scim_config: The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
         :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -75,6 +76,7 @@ class ZeroTrustAccessIdentityProviderArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+        Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
         """
         return pulumi.get(self, "type")
 
@@ -135,6 +137,7 @@ class _ZeroTrustAccessIdentityProviderState:
         :param pulumi.Input[str] name: The name of the identity provider, shown to users on the login page.
         :param pulumi.Input['ZeroTrustAccessIdentityProviderScimConfigArgs'] scim_config: The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
         :param pulumi.Input[str] type: The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+               Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
         :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
@@ -203,6 +206,7 @@ class _ZeroTrustAccessIdentityProviderState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+        Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
         """
         return pulumi.get(self, "type")
 
@@ -251,6 +255,7 @@ class ZeroTrustAccessIdentityProvider(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the identity provider, shown to users on the login page.
         :param pulumi.Input[Union['ZeroTrustAccessIdentityProviderScimConfigArgs', 'ZeroTrustAccessIdentityProviderScimConfigArgsDict']] scim_config: The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
         :param pulumi.Input[str] type: The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+               Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
         :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
@@ -310,6 +315,8 @@ class ZeroTrustAccessIdentityProvider(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["zone_id"] = zone_id
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessIdentityProvider:AccessIdentityProvider")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustAccessIdentityProvider, __self__).__init__(
             'cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider',
             resource_name,
@@ -338,6 +345,7 @@ class ZeroTrustAccessIdentityProvider(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the identity provider, shown to users on the login page.
         :param pulumi.Input[Union['ZeroTrustAccessIdentityProviderScimConfigArgs', 'ZeroTrustAccessIdentityProviderScimConfigArgsDict']] scim_config: The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
         :param pulumi.Input[str] type: The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+               Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
         :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -389,6 +397,7 @@ class ZeroTrustAccessIdentityProvider(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+        Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
         """
         return pulumi.get(self, "type")
 

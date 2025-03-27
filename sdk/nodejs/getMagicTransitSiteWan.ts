@@ -8,11 +8,23 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleMagicTransitSiteWan = cloudflare.getMagicTransitSiteWan({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     siteId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     wanId: "023e105f4ecef8ad9ca31a8372d0c353",
+ * });
+ * ```
  */
 export function getMagicTransitSiteWan(args: GetMagicTransitSiteWanArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicTransitSiteWanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicTransitSiteWan:getMagicTransitSiteWan", {
         "accountId": args.accountId,
+        "siteId": args.siteId,
         "wanId": args.wanId,
     }, opts);
 }
@@ -28,11 +40,11 @@ export interface GetMagicTransitSiteWanArgs {
     /**
      * Identifier
      */
-<<<<<<< HEAD
-    wanId: string;
-=======
+    siteId: string;
+    /**
+     * Identifier
+     */
     wanId?: string;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 
 /**
@@ -45,6 +57,7 @@ export interface GetMagicTransitSiteWanResult {
     readonly accountId: string;
     /**
      * Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+     * Available values: "low", "mid", "high".
      */
     readonly healthCheckRate: string;
     /**
@@ -72,19 +85,27 @@ export interface GetMagicTransitSiteWanResult {
     /**
      * Identifier
      */
-<<<<<<< HEAD
-    readonly wanId: string;
-=======
     readonly wanId?: string;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleMagicTransitSiteWan = cloudflare.getMagicTransitSiteWan({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     siteId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     wanId: "023e105f4ecef8ad9ca31a8372d0c353",
+ * });
+ * ```
  */
 export function getMagicTransitSiteWanOutput(args: GetMagicTransitSiteWanOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicTransitSiteWanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicTransitSiteWan:getMagicTransitSiteWan", {
         "accountId": args.accountId,
+        "siteId": args.siteId,
         "wanId": args.wanId,
     }, opts);
 }
@@ -100,9 +121,9 @@ export interface GetMagicTransitSiteWanOutputArgs {
     /**
      * Identifier
      */
-<<<<<<< HEAD
-    wanId: pulumi.Input<string>;
-=======
+    siteId: pulumi.Input<string>;
+    /**
+     * Identifier
+     */
     wanId?: pulumi.Input<string>;
->>>>>>> 5daf78d00237b27958698f41a3d5f5b7e342d580
 }

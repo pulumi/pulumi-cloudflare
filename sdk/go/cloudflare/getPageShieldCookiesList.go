@@ -63,10 +63,12 @@ func LookupPageShieldCookiesList(ctx *pulumi.Context, args *LookupPageShieldCook
 // A collection of arguments for invoking getPageShieldCookiesList.
 type LookupPageShieldCookiesListArgs struct {
 	// The direction used to sort returned cookies.'
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Filters the returned cookies that match the specified domain attribute
 	Domain *string `pulumi:"domain"`
 	// Export the list of cookies as a file.
+	// Available values: "csv".
 	Export *string `pulumi:"export"`
 	// Includes cookies that match one or more URL-encoded hostnames separated by commas.
 	Hosts    *string  `pulumi:"hosts"`
@@ -88,10 +90,12 @@ type LookupPageShieldCookiesListArgs struct {
 // A collection of values returned by getPageShieldCookiesList.
 type LookupPageShieldCookiesListResult struct {
 	// The direction used to sort returned cookies.'
+	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Filters the returned cookies that match the specified domain attribute
 	Domain *string `pulumi:"domain"`
 	// Export the list of cookies as a file.
+	// Available values: "csv".
 	Export *string `pulumi:"export"`
 	// Includes cookies that match one or more URL-encoded hostnames separated by commas.
 	Hosts    *string `pulumi:"hosts"`
@@ -125,10 +129,12 @@ func LookupPageShieldCookiesListOutput(ctx *pulumi.Context, args LookupPageShiel
 // A collection of arguments for invoking getPageShieldCookiesList.
 type LookupPageShieldCookiesListOutputArgs struct {
 	// The direction used to sort returned cookies.'
+	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Filters the returned cookies that match the specified domain attribute
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// Export the list of cookies as a file.
+	// Available values: "csv".
 	Export pulumi.StringPtrInput `pulumi:"export"`
 	// Includes cookies that match one or more URL-encoded hostnames separated by commas.
 	Hosts    pulumi.StringPtrInput  `pulumi:"hosts"`
@@ -167,6 +173,7 @@ func (o LookupPageShieldCookiesListResultOutput) ToLookupPageShieldCookiesListRe
 }
 
 // The direction used to sort returned cookies.'
+// Available values: "asc", "desc".
 func (o LookupPageShieldCookiesListResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPageShieldCookiesListResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
@@ -177,6 +184,7 @@ func (o LookupPageShieldCookiesListResultOutput) Domain() pulumi.StringPtrOutput
 }
 
 // Export the list of cookies as a file.
+// Available values: "csv".
 func (o LookupPageShieldCookiesListResultOutput) Export() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPageShieldCookiesListResult) *string { return v.Export }).(pulumi.StringPtrOutput)
 }

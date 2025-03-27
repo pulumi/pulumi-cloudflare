@@ -357,6 +357,8 @@ class ZeroTrustAccessMtlsCertificate(pulumi.CustomResource):
             __props__.__dict__["expires_on"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/cloudflareAccessMutualTlsCertificate:AccessMutualTlsCertificate")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustAccessMtlsCertificate, __self__).__init__(
             'cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate',
             resource_name,

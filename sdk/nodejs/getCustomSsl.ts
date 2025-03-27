@@ -8,13 +8,23 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleCustomSsl = cloudflare.getCustomSsl({
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     customCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+ * });
+ * ```
  */
-export function getCustomSsl(args?: GetCustomSslArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomSslResult> {
-    args = args || {};
+export function getCustomSsl(args: GetCustomSslArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomSslResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomSsl:getCustomSsl", {
         "customCertificateId": args.customCertificateId,
         "filter": args.filter,
+        "zoneId": args.zoneId,
     }, opts);
 }
 
@@ -27,6 +37,10 @@ export interface GetCustomSslArgs {
      */
     customCertificateId?: string;
     filter?: inputs.GetCustomSslFilter;
+    /**
+     * Identifier
+     */
+    zoneId: string;
 }
 
 /**
@@ -35,6 +49,7 @@ export interface GetCustomSslArgs {
 export interface GetCustomSslResult {
     /**
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: "ubiquitous", "optimal", "force".
      */
     readonly bundleMethod: string;
     /**
@@ -78,6 +93,7 @@ export interface GetCustomSslResult {
     readonly signature: string;
     /**
      * Status of the zone's custom SSL.
+     * Available values: "active", "expired", "deleted", "pending", "initializing".
      */
     readonly status: string;
     /**
@@ -91,13 +107,23 @@ export interface GetCustomSslResult {
 }
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleCustomSsl = cloudflare.getCustomSsl({
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     customCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+ * });
+ * ```
  */
-export function getCustomSslOutput(args?: GetCustomSslOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomSslResult> {
-    args = args || {};
+export function getCustomSslOutput(args: GetCustomSslOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomSslResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomSsl:getCustomSsl", {
         "customCertificateId": args.customCertificateId,
         "filter": args.filter,
+        "zoneId": args.zoneId,
     }, opts);
 }
 
@@ -110,4 +136,8 @@ export interface GetCustomSslOutputArgs {
      */
     customCertificateId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetCustomSslFilterArgs>;
+    /**
+     * Identifier
+     */
+    zoneId: pulumi.Input<string>;
 }

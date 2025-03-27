@@ -11,12 +11,20 @@ import java.util.Objects;
 @CustomType
 public final class GetPagesDomainVerificationData {
     private String errorMessage;
+    /**
+     * @return Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
+     * 
+     */
     private String status;
 
     private GetPagesDomainVerificationData() {}
     public String errorMessage() {
         return this.errorMessage;
     }
+    /**
+     * @return Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
+     * 
+     */
     public String status() {
         return this.status;
     }
