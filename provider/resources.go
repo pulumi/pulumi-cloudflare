@@ -45,6 +45,20 @@ const (
 //go:embed cmd/pulumi-resource-cloudflare/bridge-metadata.json
 var metadata []byte
 
+func ref[T any](val T) *T {
+	return &val
+}
+
+func alias(oldType ...string) []info.Alias {
+	aliases := []info.Alias{}
+	for _, oldType := range oldType {
+		aliases = append(aliases, info.Alias{
+			Type: ref(oldType),
+		})
+	}
+	return aliases
+}
+
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() info.Provider {
 	// Instantiate the Terraform provider
@@ -114,7 +128,6 @@ func Provider() info.Provider {
 		},
 
 		Resources: map[string]*info.Resource{
-			"cloudflare_zero_trust_access_mtls_hostname_settings": {ComputeID: delegateID("accountId")},
 			// We cannot use TF's ID field as Pulumi's ID field automatically,
 			// since it can (theoretically) be set by the user.
 			//
@@ -129,7 +142,181 @@ func Provider() info.Provider {
 				},
 			},
 			"cloudflare_snippet_rules": {Docs: &info.Doc{AllowMissing: true}},
-			"cloudflare_record":        {Docs: &info.Doc{AllowMissing: true}},
+			"cloudflare_zone": {
+				TransformFromState: func(_ context.Context, state resource.PropertyMap) (resource.PropertyMap, error) {
+					if zone, ok := state["zone"]; ok {
+						state["name"] = zone
+						delete(state, "zone")
+					}
+
+					if accountID, ok := state["accountId"]; ok {
+						state["account"] = resource.NewObjectProperty(
+							resource.PropertyMap{
+								"id": resource.NewStringProperty(accountID.StringValue()),
+							},
+						)
+						delete(state, "accountId")
+					}
+					return state, nil
+				},
+			},
+			"cloudflare_zero_trust_access_application": {
+				Aliases: alias("cloudflare:index/accessApplication:AccessApplication"),
+			},
+			"cloudflare_zero_trust_access_short_lived_certificate": {
+				Aliases: alias("cloudflare:index/accessCaCertificate:AccessCaCertificate"),
+			},
+			"cloudflare_zero_trust_access_custom_page": {
+				Aliases: alias("cloudflare:index/accessCustomPage:AccessCustomPage"),
+			},
+			"cloudflare_zero_trust_access_group": {
+				Aliases: alias("cloudflare:index/accessGroup:AccessGroup"),
+			},
+			"cloudflare_zero_trust_access_identity_provider": {
+				Aliases: alias("cloudflare:index/accessIdentityProvider:AccessIdentityProvider"),
+			},
+			"cloudflare_zero_trust_access_key_configuration": {
+				Aliases: alias("cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration"),
+			},
+			"cloudflare_zero_trust_access_mtls_certificate": {
+				Aliases: alias("cloudflare:index/cloudflareAccessMutualTlsCertificate:AccessMutualTlsCertificate"),
+			},
+			"cloudflare_zero_trust_access_mtls_hostname_settings": {
+				ComputeID: delegateID("accountId"),
+				Aliases:   alias("cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings"),
+			},
+			"cloudflare_zero_trust_organization": {
+				Aliases: alias("cloudflare:index/accessOrganization:AccessOrganization"),
+			},
+			"cloudflare_zero_trust_access_policy": {
+				Aliases: alias("cloudflare:index/accessPolicy:AccessPolicy"),
+			},
+			"cloudflare_zero_trust_access_service_token": {
+				Aliases: alias("cloudflare:index/accessServiceToken:AccessServiceToken"),
+			},
+			"cloudflare_zero_trust_access_tag": {
+				Aliases: alias("cloudflare:index/accessTag:AccessTag"),
+			},
+			"cloudflare_zero_trust_dex_test": {
+				Aliases: alias("cloudflare:index/deviceDexTest:DeviceDexTest"),
+			},
+			"cloudflare_zero_trust_device_managed_networks": {
+				Aliases: alias("cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks"),
+			},
+			"cloudflare_zero_trust_device_posture_integration": {
+				Aliases: alias("cloudflare:index/devicePostureIntegration:DevicePostureIntegration"),
+			},
+			"cloudflare_zero_trust_device_posture_rule": {
+				Aliases: alias("cloudflare:index/devicePostureRule:DevicePostureRule"),
+			},
+			"cloudflare_zero_trust_device_custom_profile": {
+				Aliases: alias(
+					"cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy",
+					"cloudflare:index/splitTunnel:SplitTunnel",
+				),
+			},
+			"cloudflare_zero_trust_device_default_profile": {
+				Aliases: alias(
+					"cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy",
+					"cloudflare:index/splitTunnel:SplitTunnel",
+				),
+			},
+			"cloudflare_zero_trust_dlp_custom_profile": {
+				// cloudflare_dlp_custom_profile
+				Aliases: alias("cloudflare:index/dlpCustomProfile:DlpCustomProfile"),
+			},
+			"cloudflare_zero_trust_dlp_predefined_profile": {
+				// cloudflare_dlp_predefined_profile
+				Aliases: alias("cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile"),
+			},
+			"cloudflare_zero_trust_device_custom_profile_local_domain_fallback": {
+				// cloudflare_fallback_domain or
+				// cloudflare_zero_trust_local_fallback_domain
+				Aliases: alias(
+					"cloudflare:index/fallbackDomain:FallbackDomain",
+					"cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain",
+				),
+			},
+			"cloudflare_magic_wan_gre_tunnel": {
+				// cloudflare_gre_tunnel
+				Aliases: alias("cloudflare:index/greTunnel:GreTunnel"),
+			},
+			"cloudflare_magic_wan_ipsec_tunnel": {
+				// cloudflare_ipsec_tunnel
+				Aliases: alias("cloudflare:index/ipsecTunnel:IpsecTunnel"),
+			},
+			"cloudflare_dns_record": {
+				// cloudflare_record
+				Aliases: alias("cloudflare:index/record:Record"),
+			},
+			"cloudflare_zero_trust_risk_behavior": {
+				// cloudflare_risk_behavior
+				Aliases: alias("cloudflare:index/riskBehavior:RiskBehavior"),
+			},
+			"cloudflare_magic_wan_static_route": {
+				// cloudflare_static_route
+				Aliases: alias("cloudflare:index/staticRoute:StaticRoute"),
+			},
+			"cloudflare_zero_trust_gateway_settings": {
+				// cloudflare_teams_account
+				Aliases: alias("cloudflare:index/teamsAccount:TeamsAccount"),
+			},
+			"cloudflare_zero_trust_list": {
+				// cloudflare_teams_list
+				Aliases: alias("cloudflare:index/teamsList:TeamsList"),
+			},
+			"cloudflare_zero_trust_dns_location": {
+				// cloudflare_teams_location
+				Aliases: alias("cloudflare:index/teamsLocation:TeamsLocation"),
+			},
+			"cloudflare_zero_trust_gateway_proxy_endpoint": {
+				// cloudflare_teams_proxy_endpoint
+				Aliases: alias("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint"),
+			},
+			"cloudflare_zero_trust_gateway_policy": {
+				// cloudflare_teams_rule
+				Aliases: alias("cloudflare:index/teamsRule:TeamsRule"),
+			},
+			"cloudflare_zero_trust_tunnel_cloudflared": {
+				// cloudflare_tunnel
+				Aliases: alias("cloudflare:index/tunnel:Tunnel"),
+			},
+			"cloudflare_zero_trust_tunnel_cloudflared_config": {
+				// cloudflare_tunnel_config
+				Aliases: alias("cloudflare:index/tunnelConfig:TunnelConfig"),
+			},
+			"cloudflare_zero_trust_tunnel_cloudflared_route": {
+				// cloudflare_tunnel_route
+				Aliases: alias("cloudflare:index/tunnelRoute:TunnelRoute"),
+			},
+			"cloudflare_zero_trust_tunnel_cloudflared_virtual_network": {
+				// cloudflare_tunnel_virtual_network
+				Aliases: alias("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork"),
+			},
+			"cloudflare_workers_cron_trigger": {
+				// cloudflare_worker_cron_trigger
+				Aliases: alias("cloudflare:index/workerCronTrigger:WorkerCronTrigger"),
+			},
+			"cloudflare_workers_custom_domain": {
+				// cloudflare_worker_domain
+				Aliases: alias("cloudflare:index/workerDomain:WorkerDomain"),
+			},
+			"cloudflare_workers_script": {
+				// cloudflare_worker_script
+				Aliases: alias("cloudflare:index/workerScript:WorkerScript"),
+			},
+			"cloudflare_workers_secret": {
+				// cloudflare_worker_secret
+				Aliases: alias("cloudflare:index/workerSecret:WorkerSecret"),
+			},
+			"cloudflare_workers_for_platforms_dispatch_namespace": {
+				// cloudflare_workers_for_platforms_namespace
+				Aliases: alias("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace"),
+			},
+			"cloudflare_managed_transforms": {
+				// cloudflare_managed_headers
+				Aliases: alias("cloudflare:index/managedHeaders:ManagedHeaders"),
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{
