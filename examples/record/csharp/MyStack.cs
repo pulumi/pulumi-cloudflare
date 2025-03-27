@@ -14,7 +14,7 @@ class MyStack : Stack
             AccountId = accountId
         });
 
-        var foobar = new Cloudflare.Record("foobar", new Cloudflare.RecordArgs
+        var foobar = new Cloudflare.DnsRecord("foobar", new Cloudflare.DnsRecordArgs
         {
             Name = "my-record-csharp",
             ZoneId = zone.Id,
