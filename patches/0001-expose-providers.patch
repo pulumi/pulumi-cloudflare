@@ -6,7 +6,7 @@ Subject: [PATCH] expose providers
 
 diff --git a/shim/shim.go b/shim/shim.go
 new file mode 100644
-index 000000000..262313b2b
+index 000000000..5f45ebd86
 --- /dev/null
 +++ b/shim/shim.go
 @@ -0,0 +1,12 @@
@@ -20,5 +20,5 @@ index 000000000..262313b2b
 +
 +
 +func PFProvider() provider.Provider {
-+	return internal.NewProvider("")()
++	return internal.NewProvider("pulumi")()
 +}
