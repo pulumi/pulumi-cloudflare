@@ -100,7 +100,7 @@ export class ZeroTrustDeviceCustomProfileLocalDomainFallback extends pulumi.Cust
             resourceInputs["suffix"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/fallbackDomain:FallbackDomain" }, { type: "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain" }] };
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustDeviceCustomProfileLocalDomainFallback.__pulumiType, name, resourceInputs, opts);
     }

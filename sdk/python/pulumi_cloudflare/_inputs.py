@@ -15,6 +15,474 @@ else:
 from . import _utilities
 
 __all__ = [
+    'AccessApplicationCorsHeadersArgs',
+    'AccessApplicationCorsHeadersArgsDict',
+    'AccessApplicationDestinationArgs',
+    'AccessApplicationDestinationArgsDict',
+    'AccessApplicationFooterLinkArgs',
+    'AccessApplicationFooterLinkArgsDict',
+    'AccessApplicationLandingPageDesignArgs',
+    'AccessApplicationLandingPageDesignArgsDict',
+    'AccessApplicationPolicyArgs',
+    'AccessApplicationPolicyArgsDict',
+    'AccessApplicationPolicyConnectionRulesArgs',
+    'AccessApplicationPolicyConnectionRulesArgsDict',
+    'AccessApplicationPolicyConnectionRulesSshArgs',
+    'AccessApplicationPolicyConnectionRulesSshArgsDict',
+    'AccessApplicationPolicyExcludeArgs',
+    'AccessApplicationPolicyExcludeArgsDict',
+    'AccessApplicationPolicyExcludeAnyValidServiceTokenArgs',
+    'AccessApplicationPolicyExcludeAnyValidServiceTokenArgsDict',
+    'AccessApplicationPolicyExcludeAuthContextArgs',
+    'AccessApplicationPolicyExcludeAuthContextArgsDict',
+    'AccessApplicationPolicyExcludeAuthMethodArgs',
+    'AccessApplicationPolicyExcludeAuthMethodArgsDict',
+    'AccessApplicationPolicyExcludeAzureAdArgs',
+    'AccessApplicationPolicyExcludeAzureAdArgsDict',
+    'AccessApplicationPolicyExcludeCertificateArgs',
+    'AccessApplicationPolicyExcludeCertificateArgsDict',
+    'AccessApplicationPolicyExcludeCommonNameArgs',
+    'AccessApplicationPolicyExcludeCommonNameArgsDict',
+    'AccessApplicationPolicyExcludeDevicePostureArgs',
+    'AccessApplicationPolicyExcludeDevicePostureArgsDict',
+    'AccessApplicationPolicyExcludeEmailArgs',
+    'AccessApplicationPolicyExcludeEmailArgsDict',
+    'AccessApplicationPolicyExcludeEmailDomainArgs',
+    'AccessApplicationPolicyExcludeEmailDomainArgsDict',
+    'AccessApplicationPolicyExcludeEmailListArgs',
+    'AccessApplicationPolicyExcludeEmailListArgsDict',
+    'AccessApplicationPolicyExcludeEveryoneArgs',
+    'AccessApplicationPolicyExcludeEveryoneArgsDict',
+    'AccessApplicationPolicyExcludeExternalEvaluationArgs',
+    'AccessApplicationPolicyExcludeExternalEvaluationArgsDict',
+    'AccessApplicationPolicyExcludeGeoArgs',
+    'AccessApplicationPolicyExcludeGeoArgsDict',
+    'AccessApplicationPolicyExcludeGithubOrganizationArgs',
+    'AccessApplicationPolicyExcludeGithubOrganizationArgsDict',
+    'AccessApplicationPolicyExcludeGroupArgs',
+    'AccessApplicationPolicyExcludeGroupArgsDict',
+    'AccessApplicationPolicyExcludeGsuiteArgs',
+    'AccessApplicationPolicyExcludeGsuiteArgsDict',
+    'AccessApplicationPolicyExcludeIpArgs',
+    'AccessApplicationPolicyExcludeIpArgsDict',
+    'AccessApplicationPolicyExcludeIpListArgs',
+    'AccessApplicationPolicyExcludeIpListArgsDict',
+    'AccessApplicationPolicyExcludeLoginMethodArgs',
+    'AccessApplicationPolicyExcludeLoginMethodArgsDict',
+    'AccessApplicationPolicyExcludeOktaArgs',
+    'AccessApplicationPolicyExcludeOktaArgsDict',
+    'AccessApplicationPolicyExcludeSamlArgs',
+    'AccessApplicationPolicyExcludeSamlArgsDict',
+    'AccessApplicationPolicyExcludeServiceTokenArgs',
+    'AccessApplicationPolicyExcludeServiceTokenArgsDict',
+    'AccessApplicationPolicyIncludeArgs',
+    'AccessApplicationPolicyIncludeArgsDict',
+    'AccessApplicationPolicyIncludeAnyValidServiceTokenArgs',
+    'AccessApplicationPolicyIncludeAnyValidServiceTokenArgsDict',
+    'AccessApplicationPolicyIncludeAuthContextArgs',
+    'AccessApplicationPolicyIncludeAuthContextArgsDict',
+    'AccessApplicationPolicyIncludeAuthMethodArgs',
+    'AccessApplicationPolicyIncludeAuthMethodArgsDict',
+    'AccessApplicationPolicyIncludeAzureAdArgs',
+    'AccessApplicationPolicyIncludeAzureAdArgsDict',
+    'AccessApplicationPolicyIncludeCertificateArgs',
+    'AccessApplicationPolicyIncludeCertificateArgsDict',
+    'AccessApplicationPolicyIncludeCommonNameArgs',
+    'AccessApplicationPolicyIncludeCommonNameArgsDict',
+    'AccessApplicationPolicyIncludeDevicePostureArgs',
+    'AccessApplicationPolicyIncludeDevicePostureArgsDict',
+    'AccessApplicationPolicyIncludeEmailArgs',
+    'AccessApplicationPolicyIncludeEmailArgsDict',
+    'AccessApplicationPolicyIncludeEmailDomainArgs',
+    'AccessApplicationPolicyIncludeEmailDomainArgsDict',
+    'AccessApplicationPolicyIncludeEmailListArgs',
+    'AccessApplicationPolicyIncludeEmailListArgsDict',
+    'AccessApplicationPolicyIncludeEveryoneArgs',
+    'AccessApplicationPolicyIncludeEveryoneArgsDict',
+    'AccessApplicationPolicyIncludeExternalEvaluationArgs',
+    'AccessApplicationPolicyIncludeExternalEvaluationArgsDict',
+    'AccessApplicationPolicyIncludeGeoArgs',
+    'AccessApplicationPolicyIncludeGeoArgsDict',
+    'AccessApplicationPolicyIncludeGithubOrganizationArgs',
+    'AccessApplicationPolicyIncludeGithubOrganizationArgsDict',
+    'AccessApplicationPolicyIncludeGroupArgs',
+    'AccessApplicationPolicyIncludeGroupArgsDict',
+    'AccessApplicationPolicyIncludeGsuiteArgs',
+    'AccessApplicationPolicyIncludeGsuiteArgsDict',
+    'AccessApplicationPolicyIncludeIpArgs',
+    'AccessApplicationPolicyIncludeIpArgsDict',
+    'AccessApplicationPolicyIncludeIpListArgs',
+    'AccessApplicationPolicyIncludeIpListArgsDict',
+    'AccessApplicationPolicyIncludeLoginMethodArgs',
+    'AccessApplicationPolicyIncludeLoginMethodArgsDict',
+    'AccessApplicationPolicyIncludeOktaArgs',
+    'AccessApplicationPolicyIncludeOktaArgsDict',
+    'AccessApplicationPolicyIncludeSamlArgs',
+    'AccessApplicationPolicyIncludeSamlArgsDict',
+    'AccessApplicationPolicyIncludeServiceTokenArgs',
+    'AccessApplicationPolicyIncludeServiceTokenArgsDict',
+    'AccessApplicationPolicyRequireArgs',
+    'AccessApplicationPolicyRequireArgsDict',
+    'AccessApplicationPolicyRequireAnyValidServiceTokenArgs',
+    'AccessApplicationPolicyRequireAnyValidServiceTokenArgsDict',
+    'AccessApplicationPolicyRequireAuthContextArgs',
+    'AccessApplicationPolicyRequireAuthContextArgsDict',
+    'AccessApplicationPolicyRequireAuthMethodArgs',
+    'AccessApplicationPolicyRequireAuthMethodArgsDict',
+    'AccessApplicationPolicyRequireAzureAdArgs',
+    'AccessApplicationPolicyRequireAzureAdArgsDict',
+    'AccessApplicationPolicyRequireCertificateArgs',
+    'AccessApplicationPolicyRequireCertificateArgsDict',
+    'AccessApplicationPolicyRequireCommonNameArgs',
+    'AccessApplicationPolicyRequireCommonNameArgsDict',
+    'AccessApplicationPolicyRequireDevicePostureArgs',
+    'AccessApplicationPolicyRequireDevicePostureArgsDict',
+    'AccessApplicationPolicyRequireEmailArgs',
+    'AccessApplicationPolicyRequireEmailArgsDict',
+    'AccessApplicationPolicyRequireEmailDomainArgs',
+    'AccessApplicationPolicyRequireEmailDomainArgsDict',
+    'AccessApplicationPolicyRequireEmailListArgs',
+    'AccessApplicationPolicyRequireEmailListArgsDict',
+    'AccessApplicationPolicyRequireEveryoneArgs',
+    'AccessApplicationPolicyRequireEveryoneArgsDict',
+    'AccessApplicationPolicyRequireExternalEvaluationArgs',
+    'AccessApplicationPolicyRequireExternalEvaluationArgsDict',
+    'AccessApplicationPolicyRequireGeoArgs',
+    'AccessApplicationPolicyRequireGeoArgsDict',
+    'AccessApplicationPolicyRequireGithubOrganizationArgs',
+    'AccessApplicationPolicyRequireGithubOrganizationArgsDict',
+    'AccessApplicationPolicyRequireGroupArgs',
+    'AccessApplicationPolicyRequireGroupArgsDict',
+    'AccessApplicationPolicyRequireGsuiteArgs',
+    'AccessApplicationPolicyRequireGsuiteArgsDict',
+    'AccessApplicationPolicyRequireIpArgs',
+    'AccessApplicationPolicyRequireIpArgsDict',
+    'AccessApplicationPolicyRequireIpListArgs',
+    'AccessApplicationPolicyRequireIpListArgsDict',
+    'AccessApplicationPolicyRequireLoginMethodArgs',
+    'AccessApplicationPolicyRequireLoginMethodArgsDict',
+    'AccessApplicationPolicyRequireOktaArgs',
+    'AccessApplicationPolicyRequireOktaArgsDict',
+    'AccessApplicationPolicyRequireSamlArgs',
+    'AccessApplicationPolicyRequireSamlArgsDict',
+    'AccessApplicationPolicyRequireServiceTokenArgs',
+    'AccessApplicationPolicyRequireServiceTokenArgsDict',
+    'AccessApplicationSaasAppArgs',
+    'AccessApplicationSaasAppArgsDict',
+    'AccessApplicationSaasAppCustomAttributeArgs',
+    'AccessApplicationSaasAppCustomAttributeArgsDict',
+    'AccessApplicationSaasAppCustomAttributeSourceArgs',
+    'AccessApplicationSaasAppCustomAttributeSourceArgsDict',
+    'AccessApplicationSaasAppCustomAttributeSourceNameByIdpArgs',
+    'AccessApplicationSaasAppCustomAttributeSourceNameByIdpArgsDict',
+    'AccessApplicationSaasAppCustomClaimArgs',
+    'AccessApplicationSaasAppCustomClaimArgsDict',
+    'AccessApplicationSaasAppCustomClaimSourceArgs',
+    'AccessApplicationSaasAppCustomClaimSourceArgsDict',
+    'AccessApplicationSaasAppHybridAndImplicitOptionsArgs',
+    'AccessApplicationSaasAppHybridAndImplicitOptionsArgsDict',
+    'AccessApplicationSaasAppRefreshTokenOptionsArgs',
+    'AccessApplicationSaasAppRefreshTokenOptionsArgsDict',
+    'AccessApplicationScimConfigArgs',
+    'AccessApplicationScimConfigArgsDict',
+    'AccessApplicationScimConfigAuthenticationArgs',
+    'AccessApplicationScimConfigAuthenticationArgsDict',
+    'AccessApplicationScimConfigMappingArgs',
+    'AccessApplicationScimConfigMappingArgsDict',
+    'AccessApplicationScimConfigMappingOperationsArgs',
+    'AccessApplicationScimConfigMappingOperationsArgsDict',
+    'AccessApplicationTargetCriteriaArgs',
+    'AccessApplicationTargetCriteriaArgsDict',
+    'AccessGroupExcludeArgs',
+    'AccessGroupExcludeArgsDict',
+    'AccessGroupExcludeAnyValidServiceTokenArgs',
+    'AccessGroupExcludeAnyValidServiceTokenArgsDict',
+    'AccessGroupExcludeAuthContextArgs',
+    'AccessGroupExcludeAuthContextArgsDict',
+    'AccessGroupExcludeAuthMethodArgs',
+    'AccessGroupExcludeAuthMethodArgsDict',
+    'AccessGroupExcludeAzureAdArgs',
+    'AccessGroupExcludeAzureAdArgsDict',
+    'AccessGroupExcludeCertificateArgs',
+    'AccessGroupExcludeCertificateArgsDict',
+    'AccessGroupExcludeCommonNameArgs',
+    'AccessGroupExcludeCommonNameArgsDict',
+    'AccessGroupExcludeDevicePostureArgs',
+    'AccessGroupExcludeDevicePostureArgsDict',
+    'AccessGroupExcludeEmailArgs',
+    'AccessGroupExcludeEmailArgsDict',
+    'AccessGroupExcludeEmailDomainArgs',
+    'AccessGroupExcludeEmailDomainArgsDict',
+    'AccessGroupExcludeEmailListArgs',
+    'AccessGroupExcludeEmailListArgsDict',
+    'AccessGroupExcludeEveryoneArgs',
+    'AccessGroupExcludeEveryoneArgsDict',
+    'AccessGroupExcludeExternalEvaluationArgs',
+    'AccessGroupExcludeExternalEvaluationArgsDict',
+    'AccessGroupExcludeGeoArgs',
+    'AccessGroupExcludeGeoArgsDict',
+    'AccessGroupExcludeGithubOrganizationArgs',
+    'AccessGroupExcludeGithubOrganizationArgsDict',
+    'AccessGroupExcludeGroupArgs',
+    'AccessGroupExcludeGroupArgsDict',
+    'AccessGroupExcludeGsuiteArgs',
+    'AccessGroupExcludeGsuiteArgsDict',
+    'AccessGroupExcludeIpArgs',
+    'AccessGroupExcludeIpArgsDict',
+    'AccessGroupExcludeIpListArgs',
+    'AccessGroupExcludeIpListArgsDict',
+    'AccessGroupExcludeLoginMethodArgs',
+    'AccessGroupExcludeLoginMethodArgsDict',
+    'AccessGroupExcludeOktaArgs',
+    'AccessGroupExcludeOktaArgsDict',
+    'AccessGroupExcludeSamlArgs',
+    'AccessGroupExcludeSamlArgsDict',
+    'AccessGroupExcludeServiceTokenArgs',
+    'AccessGroupExcludeServiceTokenArgsDict',
+    'AccessGroupIncludeArgs',
+    'AccessGroupIncludeArgsDict',
+    'AccessGroupIncludeAnyValidServiceTokenArgs',
+    'AccessGroupIncludeAnyValidServiceTokenArgsDict',
+    'AccessGroupIncludeAuthContextArgs',
+    'AccessGroupIncludeAuthContextArgsDict',
+    'AccessGroupIncludeAuthMethodArgs',
+    'AccessGroupIncludeAuthMethodArgsDict',
+    'AccessGroupIncludeAzureAdArgs',
+    'AccessGroupIncludeAzureAdArgsDict',
+    'AccessGroupIncludeCertificateArgs',
+    'AccessGroupIncludeCertificateArgsDict',
+    'AccessGroupIncludeCommonNameArgs',
+    'AccessGroupIncludeCommonNameArgsDict',
+    'AccessGroupIncludeDevicePostureArgs',
+    'AccessGroupIncludeDevicePostureArgsDict',
+    'AccessGroupIncludeEmailArgs',
+    'AccessGroupIncludeEmailArgsDict',
+    'AccessGroupIncludeEmailDomainArgs',
+    'AccessGroupIncludeEmailDomainArgsDict',
+    'AccessGroupIncludeEmailListArgs',
+    'AccessGroupIncludeEmailListArgsDict',
+    'AccessGroupIncludeEveryoneArgs',
+    'AccessGroupIncludeEveryoneArgsDict',
+    'AccessGroupIncludeExternalEvaluationArgs',
+    'AccessGroupIncludeExternalEvaluationArgsDict',
+    'AccessGroupIncludeGeoArgs',
+    'AccessGroupIncludeGeoArgsDict',
+    'AccessGroupIncludeGithubOrganizationArgs',
+    'AccessGroupIncludeGithubOrganizationArgsDict',
+    'AccessGroupIncludeGroupArgs',
+    'AccessGroupIncludeGroupArgsDict',
+    'AccessGroupIncludeGsuiteArgs',
+    'AccessGroupIncludeGsuiteArgsDict',
+    'AccessGroupIncludeIpArgs',
+    'AccessGroupIncludeIpArgsDict',
+    'AccessGroupIncludeIpListArgs',
+    'AccessGroupIncludeIpListArgsDict',
+    'AccessGroupIncludeLoginMethodArgs',
+    'AccessGroupIncludeLoginMethodArgsDict',
+    'AccessGroupIncludeOktaArgs',
+    'AccessGroupIncludeOktaArgsDict',
+    'AccessGroupIncludeSamlArgs',
+    'AccessGroupIncludeSamlArgsDict',
+    'AccessGroupIncludeServiceTokenArgs',
+    'AccessGroupIncludeServiceTokenArgsDict',
+    'AccessGroupRequireArgs',
+    'AccessGroupRequireArgsDict',
+    'AccessGroupRequireAnyValidServiceTokenArgs',
+    'AccessGroupRequireAnyValidServiceTokenArgsDict',
+    'AccessGroupRequireAuthContextArgs',
+    'AccessGroupRequireAuthContextArgsDict',
+    'AccessGroupRequireAuthMethodArgs',
+    'AccessGroupRequireAuthMethodArgsDict',
+    'AccessGroupRequireAzureAdArgs',
+    'AccessGroupRequireAzureAdArgsDict',
+    'AccessGroupRequireCertificateArgs',
+    'AccessGroupRequireCertificateArgsDict',
+    'AccessGroupRequireCommonNameArgs',
+    'AccessGroupRequireCommonNameArgsDict',
+    'AccessGroupRequireDevicePostureArgs',
+    'AccessGroupRequireDevicePostureArgsDict',
+    'AccessGroupRequireEmailArgs',
+    'AccessGroupRequireEmailArgsDict',
+    'AccessGroupRequireEmailDomainArgs',
+    'AccessGroupRequireEmailDomainArgsDict',
+    'AccessGroupRequireEmailListArgs',
+    'AccessGroupRequireEmailListArgsDict',
+    'AccessGroupRequireEveryoneArgs',
+    'AccessGroupRequireEveryoneArgsDict',
+    'AccessGroupRequireExternalEvaluationArgs',
+    'AccessGroupRequireExternalEvaluationArgsDict',
+    'AccessGroupRequireGeoArgs',
+    'AccessGroupRequireGeoArgsDict',
+    'AccessGroupRequireGithubOrganizationArgs',
+    'AccessGroupRequireGithubOrganizationArgsDict',
+    'AccessGroupRequireGroupArgs',
+    'AccessGroupRequireGroupArgsDict',
+    'AccessGroupRequireGsuiteArgs',
+    'AccessGroupRequireGsuiteArgsDict',
+    'AccessGroupRequireIpArgs',
+    'AccessGroupRequireIpArgsDict',
+    'AccessGroupRequireIpListArgs',
+    'AccessGroupRequireIpListArgsDict',
+    'AccessGroupRequireLoginMethodArgs',
+    'AccessGroupRequireLoginMethodArgsDict',
+    'AccessGroupRequireOktaArgs',
+    'AccessGroupRequireOktaArgsDict',
+    'AccessGroupRequireSamlArgs',
+    'AccessGroupRequireSamlArgsDict',
+    'AccessGroupRequireServiceTokenArgs',
+    'AccessGroupRequireServiceTokenArgsDict',
+    'AccessIdentityProviderConfigArgs',
+    'AccessIdentityProviderConfigArgsDict',
+    'AccessIdentityProviderConfigHeaderAttributeArgs',
+    'AccessIdentityProviderConfigHeaderAttributeArgsDict',
+    'AccessIdentityProviderScimConfigArgs',
+    'AccessIdentityProviderScimConfigArgsDict',
+    'AccessMutualTlsHostnameSettingsSettingArgs',
+    'AccessMutualTlsHostnameSettingsSettingArgsDict',
+    'AccessOrganizationCustomPagesArgs',
+    'AccessOrganizationCustomPagesArgsDict',
+    'AccessOrganizationLoginDesignArgs',
+    'AccessOrganizationLoginDesignArgsDict',
+    'AccessPolicyApprovalGroupArgs',
+    'AccessPolicyApprovalGroupArgsDict',
+    'AccessPolicyExcludeArgs',
+    'AccessPolicyExcludeArgsDict',
+    'AccessPolicyExcludeAnyValidServiceTokenArgs',
+    'AccessPolicyExcludeAnyValidServiceTokenArgsDict',
+    'AccessPolicyExcludeAuthContextArgs',
+    'AccessPolicyExcludeAuthContextArgsDict',
+    'AccessPolicyExcludeAuthMethodArgs',
+    'AccessPolicyExcludeAuthMethodArgsDict',
+    'AccessPolicyExcludeAzureAdArgs',
+    'AccessPolicyExcludeAzureAdArgsDict',
+    'AccessPolicyExcludeCertificateArgs',
+    'AccessPolicyExcludeCertificateArgsDict',
+    'AccessPolicyExcludeCommonNameArgs',
+    'AccessPolicyExcludeCommonNameArgsDict',
+    'AccessPolicyExcludeDevicePostureArgs',
+    'AccessPolicyExcludeDevicePostureArgsDict',
+    'AccessPolicyExcludeEmailArgs',
+    'AccessPolicyExcludeEmailArgsDict',
+    'AccessPolicyExcludeEmailDomainArgs',
+    'AccessPolicyExcludeEmailDomainArgsDict',
+    'AccessPolicyExcludeEmailListArgs',
+    'AccessPolicyExcludeEmailListArgsDict',
+    'AccessPolicyExcludeEveryoneArgs',
+    'AccessPolicyExcludeEveryoneArgsDict',
+    'AccessPolicyExcludeExternalEvaluationArgs',
+    'AccessPolicyExcludeExternalEvaluationArgsDict',
+    'AccessPolicyExcludeGeoArgs',
+    'AccessPolicyExcludeGeoArgsDict',
+    'AccessPolicyExcludeGithubOrganizationArgs',
+    'AccessPolicyExcludeGithubOrganizationArgsDict',
+    'AccessPolicyExcludeGroupArgs',
+    'AccessPolicyExcludeGroupArgsDict',
+    'AccessPolicyExcludeGsuiteArgs',
+    'AccessPolicyExcludeGsuiteArgsDict',
+    'AccessPolicyExcludeIpArgs',
+    'AccessPolicyExcludeIpArgsDict',
+    'AccessPolicyExcludeIpListArgs',
+    'AccessPolicyExcludeIpListArgsDict',
+    'AccessPolicyExcludeLoginMethodArgs',
+    'AccessPolicyExcludeLoginMethodArgsDict',
+    'AccessPolicyExcludeOktaArgs',
+    'AccessPolicyExcludeOktaArgsDict',
+    'AccessPolicyExcludeSamlArgs',
+    'AccessPolicyExcludeSamlArgsDict',
+    'AccessPolicyExcludeServiceTokenArgs',
+    'AccessPolicyExcludeServiceTokenArgsDict',
+    'AccessPolicyIncludeArgs',
+    'AccessPolicyIncludeArgsDict',
+    'AccessPolicyIncludeAnyValidServiceTokenArgs',
+    'AccessPolicyIncludeAnyValidServiceTokenArgsDict',
+    'AccessPolicyIncludeAuthContextArgs',
+    'AccessPolicyIncludeAuthContextArgsDict',
+    'AccessPolicyIncludeAuthMethodArgs',
+    'AccessPolicyIncludeAuthMethodArgsDict',
+    'AccessPolicyIncludeAzureAdArgs',
+    'AccessPolicyIncludeAzureAdArgsDict',
+    'AccessPolicyIncludeCertificateArgs',
+    'AccessPolicyIncludeCertificateArgsDict',
+    'AccessPolicyIncludeCommonNameArgs',
+    'AccessPolicyIncludeCommonNameArgsDict',
+    'AccessPolicyIncludeDevicePostureArgs',
+    'AccessPolicyIncludeDevicePostureArgsDict',
+    'AccessPolicyIncludeEmailArgs',
+    'AccessPolicyIncludeEmailArgsDict',
+    'AccessPolicyIncludeEmailDomainArgs',
+    'AccessPolicyIncludeEmailDomainArgsDict',
+    'AccessPolicyIncludeEmailListArgs',
+    'AccessPolicyIncludeEmailListArgsDict',
+    'AccessPolicyIncludeEveryoneArgs',
+    'AccessPolicyIncludeEveryoneArgsDict',
+    'AccessPolicyIncludeExternalEvaluationArgs',
+    'AccessPolicyIncludeExternalEvaluationArgsDict',
+    'AccessPolicyIncludeGeoArgs',
+    'AccessPolicyIncludeGeoArgsDict',
+    'AccessPolicyIncludeGithubOrganizationArgs',
+    'AccessPolicyIncludeGithubOrganizationArgsDict',
+    'AccessPolicyIncludeGroupArgs',
+    'AccessPolicyIncludeGroupArgsDict',
+    'AccessPolicyIncludeGsuiteArgs',
+    'AccessPolicyIncludeGsuiteArgsDict',
+    'AccessPolicyIncludeIpArgs',
+    'AccessPolicyIncludeIpArgsDict',
+    'AccessPolicyIncludeIpListArgs',
+    'AccessPolicyIncludeIpListArgsDict',
+    'AccessPolicyIncludeLoginMethodArgs',
+    'AccessPolicyIncludeLoginMethodArgsDict',
+    'AccessPolicyIncludeOktaArgs',
+    'AccessPolicyIncludeOktaArgsDict',
+    'AccessPolicyIncludeSamlArgs',
+    'AccessPolicyIncludeSamlArgsDict',
+    'AccessPolicyIncludeServiceTokenArgs',
+    'AccessPolicyIncludeServiceTokenArgsDict',
+    'AccessPolicyRequireArgs',
+    'AccessPolicyRequireArgsDict',
+    'AccessPolicyRequireAnyValidServiceTokenArgs',
+    'AccessPolicyRequireAnyValidServiceTokenArgsDict',
+    'AccessPolicyRequireAuthContextArgs',
+    'AccessPolicyRequireAuthContextArgsDict',
+    'AccessPolicyRequireAuthMethodArgs',
+    'AccessPolicyRequireAuthMethodArgsDict',
+    'AccessPolicyRequireAzureAdArgs',
+    'AccessPolicyRequireAzureAdArgsDict',
+    'AccessPolicyRequireCertificateArgs',
+    'AccessPolicyRequireCertificateArgsDict',
+    'AccessPolicyRequireCommonNameArgs',
+    'AccessPolicyRequireCommonNameArgsDict',
+    'AccessPolicyRequireDevicePostureArgs',
+    'AccessPolicyRequireDevicePostureArgsDict',
+    'AccessPolicyRequireEmailArgs',
+    'AccessPolicyRequireEmailArgsDict',
+    'AccessPolicyRequireEmailDomainArgs',
+    'AccessPolicyRequireEmailDomainArgsDict',
+    'AccessPolicyRequireEmailListArgs',
+    'AccessPolicyRequireEmailListArgsDict',
+    'AccessPolicyRequireEveryoneArgs',
+    'AccessPolicyRequireEveryoneArgsDict',
+    'AccessPolicyRequireExternalEvaluationArgs',
+    'AccessPolicyRequireExternalEvaluationArgsDict',
+    'AccessPolicyRequireGeoArgs',
+    'AccessPolicyRequireGeoArgsDict',
+    'AccessPolicyRequireGithubOrganizationArgs',
+    'AccessPolicyRequireGithubOrganizationArgsDict',
+    'AccessPolicyRequireGroupArgs',
+    'AccessPolicyRequireGroupArgsDict',
+    'AccessPolicyRequireGsuiteArgs',
+    'AccessPolicyRequireGsuiteArgsDict',
+    'AccessPolicyRequireIpArgs',
+    'AccessPolicyRequireIpArgsDict',
+    'AccessPolicyRequireIpListArgs',
+    'AccessPolicyRequireIpListArgsDict',
+    'AccessPolicyRequireLoginMethodArgs',
+    'AccessPolicyRequireLoginMethodArgsDict',
+    'AccessPolicyRequireOktaArgs',
+    'AccessPolicyRequireOktaArgsDict',
+    'AccessPolicyRequireSamlArgs',
+    'AccessPolicyRequireSamlArgsDict',
+    'AccessPolicyRequireServiceTokenArgs',
+    'AccessPolicyRequireServiceTokenArgsDict',
     'AccessRuleConfigurationArgs',
     'AccessRuleConfigurationArgsDict',
     'AccessRuleScopeArgs',
@@ -129,6 +597,48 @@ __all__ = [
     'CustomSslKeylessServerArgsDict',
     'CustomSslKeylessServerTunnelArgs',
     'CustomSslKeylessServerTunnelArgsDict',
+    'DeviceDexTestDataArgs',
+    'DeviceDexTestDataArgsDict',
+    'DeviceDexTestTargetPolicyArgs',
+    'DeviceDexTestTargetPolicyArgsDict',
+    'DeviceManagedNetworksConfigArgs',
+    'DeviceManagedNetworksConfigArgsDict',
+    'DevicePostureIntegrationConfigArgs',
+    'DevicePostureIntegrationConfigArgsDict',
+    'DevicePostureRuleInputArgs',
+    'DevicePostureRuleInputArgsDict',
+    'DevicePostureRuleInputLocationsArgs',
+    'DevicePostureRuleInputLocationsArgsDict',
+    'DevicePostureRuleMatchArgs',
+    'DevicePostureRuleMatchArgsDict',
+    'DlpCustomProfileContextAwarenessArgs',
+    'DlpCustomProfileContextAwarenessArgsDict',
+    'DlpCustomProfileContextAwarenessSkipArgs',
+    'DlpCustomProfileContextAwarenessSkipArgsDict',
+    'DlpCustomProfileEntryArgs',
+    'DlpCustomProfileEntryArgsDict',
+    'DlpCustomProfileEntryPatternArgs',
+    'DlpCustomProfileEntryPatternArgsDict',
+    'DlpCustomProfileProfileArgs',
+    'DlpCustomProfileProfileArgsDict',
+    'DlpCustomProfileProfileContextAwarenessArgs',
+    'DlpCustomProfileProfileContextAwarenessArgsDict',
+    'DlpCustomProfileProfileContextAwarenessSkipArgs',
+    'DlpCustomProfileProfileContextAwarenessSkipArgsDict',
+    'DlpCustomProfileProfileEntryArgs',
+    'DlpCustomProfileProfileEntryArgsDict',
+    'DlpCustomProfileProfileEntryPatternArgs',
+    'DlpCustomProfileProfileEntryPatternArgsDict',
+    'DlpCustomProfileProfileSharedEntryArgs',
+    'DlpCustomProfileProfileSharedEntryArgsDict',
+    'DlpCustomProfileSharedEntryArgs',
+    'DlpCustomProfileSharedEntryArgsDict',
+    'DlpPredefinedProfileContextAwarenessArgs',
+    'DlpPredefinedProfileContextAwarenessArgsDict',
+    'DlpPredefinedProfileContextAwarenessSkipArgs',
+    'DlpPredefinedProfileContextAwarenessSkipArgsDict',
+    'DlpPredefinedProfileEntryArgs',
+    'DlpPredefinedProfileEntryArgsDict',
     'DnsFirewallAttackMitigationArgs',
     'DnsFirewallAttackMitigationArgsDict',
     'DnsRecordDataArgs',
@@ -293,6 +803,10 @@ __all__ = [
     'MagicWanStaticRouteRouteScopeArgsDict',
     'MagicWanStaticRouteScopeArgs',
     'MagicWanStaticRouteScopeArgsDict',
+    'ManagedHeadersManagedRequestHeaderArgs',
+    'ManagedHeadersManagedRequestHeaderArgsDict',
+    'ManagedHeadersManagedResponseHeaderArgs',
+    'ManagedHeadersManagedResponseHeaderArgsDict',
     'ManagedTransformsManagedRequestHeaderArgs',
     'ManagedTransformsManagedRequestHeaderArgsDict',
     'ManagedTransformsManagedResponseHeaderArgs',
@@ -503,6 +1017,12 @@ __all__ = [
     'RateLimitMatchRequestArgsDict',
     'RateLimitMatchResponseArgs',
     'RateLimitMatchResponseArgsDict',
+    'RecordDataArgs',
+    'RecordDataArgsDict',
+    'RecordSettingsArgs',
+    'RecordSettingsArgsDict',
+    'RiskBehaviorBehaviorsArgs',
+    'RiskBehaviorBehaviorsArgsDict',
     'RulesetRuleArgs',
     'RulesetRuleArgsDict',
     'RulesetRuleActionParametersArgs',
@@ -595,6 +1115,16 @@ __all__ = [
     'SpectrumApplicationEdgeIpsArgsDict',
     'SpectrumApplicationOriginDnsArgs',
     'SpectrumApplicationOriginDnsArgsDict',
+    'StaticRouteModifiedRouteArgs',
+    'StaticRouteModifiedRouteArgsDict',
+    'StaticRouteModifiedRouteScopeArgs',
+    'StaticRouteModifiedRouteScopeArgsDict',
+    'StaticRouteRouteArgs',
+    'StaticRouteRouteArgsDict',
+    'StaticRouteRouteScopeArgs',
+    'StaticRouteRouteScopeArgsDict',
+    'StaticRouteScopeArgs',
+    'StaticRouteScopeArgsDict',
     'StreamInputArgs',
     'StreamInputArgsDict',
     'StreamLiveInputRecordingArgs',
@@ -617,6 +1147,102 @@ __all__ = [
     'StreamStatusArgsDict',
     'StreamWatermarkArgs',
     'StreamWatermarkArgsDict',
+    'TeamsAccountSettingsArgs',
+    'TeamsAccountSettingsArgsDict',
+    'TeamsAccountSettingsActivityLogArgs',
+    'TeamsAccountSettingsActivityLogArgsDict',
+    'TeamsAccountSettingsAntivirusArgs',
+    'TeamsAccountSettingsAntivirusArgsDict',
+    'TeamsAccountSettingsAntivirusNotificationSettingsArgs',
+    'TeamsAccountSettingsAntivirusNotificationSettingsArgsDict',
+    'TeamsAccountSettingsBlockPageArgs',
+    'TeamsAccountSettingsBlockPageArgsDict',
+    'TeamsAccountSettingsBodyScanningArgs',
+    'TeamsAccountSettingsBodyScanningArgsDict',
+    'TeamsAccountSettingsBrowserIsolationArgs',
+    'TeamsAccountSettingsBrowserIsolationArgsDict',
+    'TeamsAccountSettingsCertificateArgs',
+    'TeamsAccountSettingsCertificateArgsDict',
+    'TeamsAccountSettingsCustomCertificateArgs',
+    'TeamsAccountSettingsCustomCertificateArgsDict',
+    'TeamsAccountSettingsExtendedEmailMatchingArgs',
+    'TeamsAccountSettingsExtendedEmailMatchingArgsDict',
+    'TeamsAccountSettingsFipsArgs',
+    'TeamsAccountSettingsFipsArgsDict',
+    'TeamsAccountSettingsProtocolDetectionArgs',
+    'TeamsAccountSettingsProtocolDetectionArgsDict',
+    'TeamsAccountSettingsSandboxArgs',
+    'TeamsAccountSettingsSandboxArgsDict',
+    'TeamsAccountSettingsTlsDecryptArgs',
+    'TeamsAccountSettingsTlsDecryptArgsDict',
+    'TeamsListItemArgs',
+    'TeamsListItemArgsDict',
+    'TeamsLocationEndpointsArgs',
+    'TeamsLocationEndpointsArgsDict',
+    'TeamsLocationEndpointsDohArgs',
+    'TeamsLocationEndpointsDohArgsDict',
+    'TeamsLocationEndpointsDohNetworkArgs',
+    'TeamsLocationEndpointsDohNetworkArgsDict',
+    'TeamsLocationEndpointsDotArgs',
+    'TeamsLocationEndpointsDotArgsDict',
+    'TeamsLocationEndpointsDotNetworkArgs',
+    'TeamsLocationEndpointsDotNetworkArgsDict',
+    'TeamsLocationEndpointsIpv4Args',
+    'TeamsLocationEndpointsIpv4ArgsDict',
+    'TeamsLocationEndpointsIpv6Args',
+    'TeamsLocationEndpointsIpv6ArgsDict',
+    'TeamsLocationEndpointsIpv6NetworkArgs',
+    'TeamsLocationEndpointsIpv6NetworkArgsDict',
+    'TeamsLocationNetworkArgs',
+    'TeamsLocationNetworkArgsDict',
+    'TeamsRuleExpirationArgs',
+    'TeamsRuleExpirationArgsDict',
+    'TeamsRuleRuleSettingsArgs',
+    'TeamsRuleRuleSettingsArgsDict',
+    'TeamsRuleRuleSettingsAuditSshArgs',
+    'TeamsRuleRuleSettingsAuditSshArgsDict',
+    'TeamsRuleRuleSettingsBisoAdminControlsArgs',
+    'TeamsRuleRuleSettingsBisoAdminControlsArgsDict',
+    'TeamsRuleRuleSettingsCheckSessionArgs',
+    'TeamsRuleRuleSettingsCheckSessionArgsDict',
+    'TeamsRuleRuleSettingsDnsResolversArgs',
+    'TeamsRuleRuleSettingsDnsResolversArgsDict',
+    'TeamsRuleRuleSettingsDnsResolversIpv4Args',
+    'TeamsRuleRuleSettingsDnsResolversIpv4ArgsDict',
+    'TeamsRuleRuleSettingsDnsResolversIpv6Args',
+    'TeamsRuleRuleSettingsDnsResolversIpv6ArgsDict',
+    'TeamsRuleRuleSettingsEgressArgs',
+    'TeamsRuleRuleSettingsEgressArgsDict',
+    'TeamsRuleRuleSettingsL4overrideArgs',
+    'TeamsRuleRuleSettingsL4overrideArgsDict',
+    'TeamsRuleRuleSettingsNotificationSettingsArgs',
+    'TeamsRuleRuleSettingsNotificationSettingsArgsDict',
+    'TeamsRuleRuleSettingsPayloadLogArgs',
+    'TeamsRuleRuleSettingsPayloadLogArgsDict',
+    'TeamsRuleRuleSettingsQuarantineArgs',
+    'TeamsRuleRuleSettingsQuarantineArgsDict',
+    'TeamsRuleRuleSettingsResolveDnsInternallyArgs',
+    'TeamsRuleRuleSettingsResolveDnsInternallyArgsDict',
+    'TeamsRuleRuleSettingsUntrustedCertArgs',
+    'TeamsRuleRuleSettingsUntrustedCertArgsDict',
+    'TeamsRuleScheduleArgs',
+    'TeamsRuleScheduleArgsDict',
+    'TunnelConfigConfigArgs',
+    'TunnelConfigConfigArgsDict',
+    'TunnelConfigConfigIngressArgs',
+    'TunnelConfigConfigIngressArgsDict',
+    'TunnelConfigConfigIngressOriginRequestArgs',
+    'TunnelConfigConfigIngressOriginRequestArgsDict',
+    'TunnelConfigConfigIngressOriginRequestAccessArgs',
+    'TunnelConfigConfigIngressOriginRequestAccessArgsDict',
+    'TunnelConfigConfigOriginRequestArgs',
+    'TunnelConfigConfigOriginRequestArgsDict',
+    'TunnelConfigConfigOriginRequestAccessArgs',
+    'TunnelConfigConfigOriginRequestAccessArgsDict',
+    'TunnelConfigConfigWarpRoutingArgs',
+    'TunnelConfigConfigWarpRoutingArgsDict',
+    'TunnelConnectionArgs',
+    'TunnelConnectionArgsDict',
     'UserAgentBlockingRuleConfigurationArgs',
     'UserAgentBlockingRuleConfigurationArgsDict',
     'WaitingRoomAdditionalRouteArgs',
@@ -629,6 +1255,36 @@ __all__ = [
     'WebAnalyticsSiteRuleArgsDict',
     'WebAnalyticsSiteRulesetArgs',
     'WebAnalyticsSiteRulesetArgsDict',
+    'WorkerCronTriggerScheduleArgs',
+    'WorkerCronTriggerScheduleArgsDict',
+    'WorkerScriptAssetsArgs',
+    'WorkerScriptAssetsArgsDict',
+    'WorkerScriptAssetsConfigArgs',
+    'WorkerScriptAssetsConfigArgsDict',
+    'WorkerScriptBindingArgs',
+    'WorkerScriptBindingArgsDict',
+    'WorkerScriptBindingOutboundArgs',
+    'WorkerScriptBindingOutboundArgsDict',
+    'WorkerScriptBindingOutboundWorkerArgs',
+    'WorkerScriptBindingOutboundWorkerArgsDict',
+    'WorkerScriptMigrationsArgs',
+    'WorkerScriptMigrationsArgsDict',
+    'WorkerScriptMigrationsRenamedClassArgs',
+    'WorkerScriptMigrationsRenamedClassArgsDict',
+    'WorkerScriptMigrationsStepArgs',
+    'WorkerScriptMigrationsStepArgsDict',
+    'WorkerScriptMigrationsStepRenamedClassArgs',
+    'WorkerScriptMigrationsStepRenamedClassArgsDict',
+    'WorkerScriptMigrationsStepTransferredClassArgs',
+    'WorkerScriptMigrationsStepTransferredClassArgsDict',
+    'WorkerScriptMigrationsTransferredClassArgs',
+    'WorkerScriptMigrationsTransferredClassArgsDict',
+    'WorkerScriptObservabilityArgs',
+    'WorkerScriptObservabilityArgsDict',
+    'WorkerScriptPlacementArgs',
+    'WorkerScriptPlacementArgsDict',
+    'WorkerScriptTailConsumerArgs',
+    'WorkerScriptTailConsumerArgsDict',
     'WorkersCronTriggerScheduleArgs',
     'WorkersCronTriggerScheduleArgsDict',
     'WorkersDeploymentAnnotationsArgs',
@@ -1303,6 +1959,8 @@ __all__ = [
     'ZeroTrustGatewaySettingsSettingsTlsDecryptArgsDict',
     'ZeroTrustListItemArgs',
     'ZeroTrustListItemArgsDict',
+    'ZeroTrustLocalFallbackDomainDomainArgs',
+    'ZeroTrustLocalFallbackDomainDomainArgsDict',
     'ZeroTrustOrganizationCustomPagesArgs',
     'ZeroTrustOrganizationCustomPagesArgsDict',
     'ZeroTrustOrganizationLoginDesignArgs',
@@ -1444,6 +2102,13478 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class AccessApplicationCorsHeadersArgsDict(TypedDict):
+        allow_all_headers: NotRequired[pulumi.Input[bool]]
+        """
+        Allows all HTTP request headers.
+        """
+        allow_all_methods: NotRequired[pulumi.Input[bool]]
+        """
+        Allows all HTTP request methods.
+        """
+        allow_all_origins: NotRequired[pulumi.Input[bool]]
+        """
+        Allows all origins.
+        """
+        allow_credentials: NotRequired[pulumi.Input[bool]]
+        """
+        When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests.
+        """
+        allowed_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed HTTP request headers.
+        """
+        allowed_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed HTTP request methods.
+        """
+        allowed_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed origins.
+        """
+        max_age: NotRequired[pulumi.Input[float]]
+        """
+        The maximum number of seconds the results of a preflight request can be cached.
+        """
+elif False:
+    AccessApplicationCorsHeadersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationCorsHeadersArgs:
+    def __init__(__self__, *,
+                 allow_all_headers: Optional[pulumi.Input[bool]] = None,
+                 allow_all_methods: Optional[pulumi.Input[bool]] = None,
+                 allow_all_origins: Optional[pulumi.Input[bool]] = None,
+                 allow_credentials: Optional[pulumi.Input[bool]] = None,
+                 allowed_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_age: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[bool] allow_all_headers: Allows all HTTP request headers.
+        :param pulumi.Input[bool] allow_all_methods: Allows all HTTP request methods.
+        :param pulumi.Input[bool] allow_all_origins: Allows all origins.
+        :param pulumi.Input[bool] allow_credentials: When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_headers: Allowed HTTP request headers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_methods: Allowed HTTP request methods.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: Allowed origins.
+        :param pulumi.Input[float] max_age: The maximum number of seconds the results of a preflight request can be cached.
+        """
+        if allow_all_headers is not None:
+            pulumi.set(__self__, "allow_all_headers", allow_all_headers)
+        if allow_all_methods is not None:
+            pulumi.set(__self__, "allow_all_methods", allow_all_methods)
+        if allow_all_origins is not None:
+            pulumi.set(__self__, "allow_all_origins", allow_all_origins)
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allowed_headers is not None:
+            pulumi.set(__self__, "allowed_headers", allowed_headers)
+        if allowed_methods is not None:
+            pulumi.set(__self__, "allowed_methods", allowed_methods)
+        if allowed_origins is not None:
+            pulumi.set(__self__, "allowed_origins", allowed_origins)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowAllHeaders")
+    def allow_all_headers(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allows all HTTP request headers.
+        """
+        return pulumi.get(self, "allow_all_headers")
+
+    @allow_all_headers.setter
+    def allow_all_headers(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_all_headers", value)
+
+    @property
+    @pulumi.getter(name="allowAllMethods")
+    def allow_all_methods(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allows all HTTP request methods.
+        """
+        return pulumi.get(self, "allow_all_methods")
+
+    @allow_all_methods.setter
+    def allow_all_methods(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_all_methods", value)
+
+    @property
+    @pulumi.getter(name="allowAllOrigins")
+    def allow_all_origins(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allows all origins.
+        """
+        return pulumi.get(self, "allow_all_origins")
+
+    @allow_all_origins.setter
+    def allow_all_origins(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_all_origins", value)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @allow_credentials.setter
+    def allow_credentials(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_credentials", value)
+
+    @property
+    @pulumi.getter(name="allowedHeaders")
+    def allowed_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed HTTP request headers.
+        """
+        return pulumi.get(self, "allowed_headers")
+
+    @allowed_headers.setter
+    def allowed_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_headers", value)
+
+    @property
+    @pulumi.getter(name="allowedMethods")
+    def allowed_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed HTTP request methods.
+        """
+        return pulumi.get(self, "allowed_methods")
+
+    @allowed_methods.setter
+    def allowed_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_methods", value)
+
+    @property
+    @pulumi.getter(name="allowedOrigins")
+    def allowed_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed origins.
+        """
+        return pulumi.get(self, "allowed_origins")
+
+    @allowed_origins.setter
+    def allowed_origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_origins", value)
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[pulumi.Input[float]]:
+        """
+        The maximum number of seconds the results of a preflight request can be cached.
+        """
+        return pulumi.get(self, "max_age")
+
+    @max_age.setter
+    def max_age(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "max_age", value)
+
+
+if not MYPY:
+    class AccessApplicationDestinationArgsDict(TypedDict):
+        cidr: NotRequired[pulumi.Input[str]]
+        """
+        The CIDR range of the destination. Single IPs will be computed as /32.
+        """
+        hostname: NotRequired[pulumi.Input[str]]
+        """
+        The hostname of the destination. Matches a valid SNI served by an HTTPS origin.
+        """
+        l4_protocol: NotRequired[pulumi.Input[str]]
+        """
+        The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+        Available values: "tcp", "udp".
+        """
+        port_range: NotRequired[pulumi.Input[str]]
+        """
+        The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Available values: "public".
+        """
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
+        """
+        vnet_id: NotRequired[pulumi.Input[str]]
+        """
+        The VNET ID to match the destination. When omitted, all VNETs will match.
+        """
+elif False:
+    AccessApplicationDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationDestinationArgs:
+    def __init__(__self__, *,
+                 cidr: Optional[pulumi.Input[str]] = None,
+                 hostname: Optional[pulumi.Input[str]] = None,
+                 l4_protocol: Optional[pulumi.Input[str]] = None,
+                 port_range: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 uri: Optional[pulumi.Input[str]] = None,
+                 vnet_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cidr: The CIDR range of the destination. Single IPs will be computed as /32.
+        :param pulumi.Input[str] hostname: The hostname of the destination. Matches a valid SNI served by an HTTPS origin.
+        :param pulumi.Input[str] l4_protocol: The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+               Available values: "tcp", "udp".
+        :param pulumi.Input[str] port_range: The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
+        :param pulumi.Input[str] type: Available values: "public".
+        :param pulumi.Input[str] uri: The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
+        :param pulumi.Input[str] vnet_id: The VNET ID to match the destination. When omitted, all VNETs will match.
+        """
+        if cidr is not None:
+            pulumi.set(__self__, "cidr", cidr)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if l4_protocol is not None:
+            pulumi.set(__self__, "l4_protocol", l4_protocol)
+        if port_range is not None:
+            pulumi.set(__self__, "port_range", port_range)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+        if vnet_id is not None:
+            pulumi.set(__self__, "vnet_id", vnet_id)
+
+    @property
+    @pulumi.getter
+    def cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CIDR range of the destination. Single IPs will be computed as /32.
+        """
+        return pulumi.get(self, "cidr")
+
+    @cidr.setter
+    def cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cidr", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hostname of the destination. Matches a valid SNI served by an HTTPS origin.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="l4Protocol")
+    def l4_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+        Available values: "tcp", "udp".
+        """
+        return pulumi.get(self, "l4_protocol")
+
+    @l4_protocol.setter
+    def l4_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "l4_protocol", value)
+
+    @property
+    @pulumi.getter(name="portRange")
+    def port_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
+        """
+        return pulumi.get(self, "port_range")
+
+    @port_range.setter
+    def port_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port_range", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Available values: "public".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter(name="vnetId")
+    def vnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VNET ID to match the destination. When omitted, all VNETs will match.
+        """
+        return pulumi.get(self, "vnet_id")
+
+    @vnet_id.setter
+    def vnet_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vnet_id", value)
+
+
+if not MYPY:
+    class AccessApplicationFooterLinkArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The hypertext in the footer link.
+        """
+        url: pulumi.Input[str]
+        """
+        the hyperlink in the footer link.
+        """
+elif False:
+    AccessApplicationFooterLinkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationFooterLinkArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 url: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: The hypertext in the footer link.
+        :param pulumi.Input[str] url: the hyperlink in the footer link.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The hypertext in the footer link.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        the hyperlink in the footer link.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
+
+
+if not MYPY:
+    class AccessApplicationLandingPageDesignArgsDict(TypedDict):
+        button_color: NotRequired[pulumi.Input[str]]
+        """
+        The background color of the log in button on the landing page.
+        """
+        button_text_color: NotRequired[pulumi.Input[str]]
+        """
+        The color of the text in the log in button on the landing page.
+        """
+        image_url: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the image shown on the landing page.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        The message shown on the landing page.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title shown on the landing page.
+        """
+elif False:
+    AccessApplicationLandingPageDesignArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationLandingPageDesignArgs:
+    def __init__(__self__, *,
+                 button_color: Optional[pulumi.Input[str]] = None,
+                 button_text_color: Optional[pulumi.Input[str]] = None,
+                 image_url: Optional[pulumi.Input[str]] = None,
+                 message: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] button_color: The background color of the log in button on the landing page.
+        :param pulumi.Input[str] button_text_color: The color of the text in the log in button on the landing page.
+        :param pulumi.Input[str] image_url: The URL of the image shown on the landing page.
+        :param pulumi.Input[str] message: The message shown on the landing page.
+        :param pulumi.Input[str] title: The title shown on the landing page.
+        """
+        if button_color is not None:
+            pulumi.set(__self__, "button_color", button_color)
+        if button_text_color is not None:
+            pulumi.set(__self__, "button_text_color", button_text_color)
+        if image_url is not None:
+            pulumi.set(__self__, "image_url", image_url)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="buttonColor")
+    def button_color(self) -> Optional[pulumi.Input[str]]:
+        """
+        The background color of the log in button on the landing page.
+        """
+        return pulumi.get(self, "button_color")
+
+    @button_color.setter
+    def button_color(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "button_color", value)
+
+    @property
+    @pulumi.getter(name="buttonTextColor")
+    def button_text_color(self) -> Optional[pulumi.Input[str]]:
+        """
+        The color of the text in the log in button on the landing page.
+        """
+        return pulumi.get(self, "button_text_color")
+
+    @button_text_color.setter
+    def button_text_color(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "button_text_color", value)
+
+    @property
+    @pulumi.getter(name="imageUrl")
+    def image_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the image shown on the landing page.
+        """
+        return pulumi.get(self, "image_url")
+
+    @image_url.setter
+    def image_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_url", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        The message shown on the landing page.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title shown on the landing page.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyArgsDict(TypedDict):
+        connection_rules: NotRequired[pulumi.Input['AccessApplicationPolicyConnectionRulesArgsDict']]
+        """
+        The rules that define how users may connect to the targets secured by your application.
+        """
+        decision: NotRequired[pulumi.Input[str]]
+        """
+        The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+        Available values: "allow", "deny", "non_identity", "bypass".
+        """
+        excludes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyExcludeArgsDict']]]]
+        """
+        Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The UUID of the policy
+        """
+        includes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyIncludeArgsDict']]]]
+        """
+        Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the Access policy.
+        """
+        precedence: NotRequired[pulumi.Input[int]]
+        """
+        The order of execution for this policy. Must be unique for each policy within an app.
+        """
+        requires: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyRequireArgsDict']]]]
+        """
+        Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
+        """
+elif False:
+    AccessApplicationPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyArgs:
+    def __init__(__self__, *,
+                 connection_rules: Optional[pulumi.Input['AccessApplicationPolicyConnectionRulesArgs']] = None,
+                 decision: Optional[pulumi.Input[str]] = None,
+                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyExcludeArgs']]]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 includes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyIncludeArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 precedence: Optional[pulumi.Input[int]] = None,
+                 requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyRequireArgs']]]] = None):
+        """
+        :param pulumi.Input['AccessApplicationPolicyConnectionRulesArgs'] connection_rules: The rules that define how users may connect to the targets secured by your application.
+        :param pulumi.Input[str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+               Available values: "allow", "deny", "non_identity", "bypass".
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyExcludeArgs']]] excludes: Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
+        :param pulumi.Input[str] id: The UUID of the policy
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyIncludeArgs']]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        :param pulumi.Input[str] name: The name of the Access policy.
+        :param pulumi.Input[int] precedence: The order of execution for this policy. Must be unique for each policy within an app.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyRequireArgs']]] requires: Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
+        """
+        if connection_rules is not None:
+            pulumi.set(__self__, "connection_rules", connection_rules)
+        if decision is not None:
+            pulumi.set(__self__, "decision", decision)
+        if excludes is not None:
+            pulumi.set(__self__, "excludes", excludes)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if includes is not None:
+            pulumi.set(__self__, "includes", includes)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if precedence is not None:
+            pulumi.set(__self__, "precedence", precedence)
+        if requires is not None:
+            pulumi.set(__self__, "requires", requires)
+
+    @property
+    @pulumi.getter(name="connectionRules")
+    def connection_rules(self) -> Optional[pulumi.Input['AccessApplicationPolicyConnectionRulesArgs']]:
+        """
+        The rules that define how users may connect to the targets secured by your application.
+        """
+        return pulumi.get(self, "connection_rules")
+
+    @connection_rules.setter
+    def connection_rules(self, value: Optional[pulumi.Input['AccessApplicationPolicyConnectionRulesArgs']]):
+        pulumi.set(self, "connection_rules", value)
+
+    @property
+    @pulumi.getter
+    def decision(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+        Available values: "allow", "deny", "non_identity", "bypass".
+        """
+        return pulumi.get(self, "decision")
+
+    @decision.setter
+    def decision(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "decision", value)
+
+    @property
+    @pulumi.getter
+    def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyExcludeArgs']]]]:
+        """
+        Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
+        """
+        return pulumi.get(self, "excludes")
+
+    @excludes.setter
+    def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyExcludeArgs']]]]):
+        pulumi.set(self, "excludes", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The UUID of the policy
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyIncludeArgs']]]]:
+        """
+        Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        """
+        return pulumi.get(self, "includes")
+
+    @includes.setter
+    def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyIncludeArgs']]]]):
+        pulumi.set(self, "includes", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Access policy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def precedence(self) -> Optional[pulumi.Input[int]]:
+        """
+        The order of execution for this policy. Must be unique for each policy within an app.
+        """
+        return pulumi.get(self, "precedence")
+
+    @precedence.setter
+    def precedence(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "precedence", value)
+
+    @property
+    @pulumi.getter
+    def requires(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyRequireArgs']]]]:
+        """
+        Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
+        """
+        return pulumi.get(self, "requires")
+
+    @requires.setter
+    def requires(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyRequireArgs']]]]):
+        pulumi.set(self, "requires", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyConnectionRulesArgsDict(TypedDict):
+        ssh: NotRequired[pulumi.Input['AccessApplicationPolicyConnectionRulesSshArgsDict']]
+        """
+        The SSH-specific rules that define how users may connect to the targets secured by your application.
+        """
+elif False:
+    AccessApplicationPolicyConnectionRulesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyConnectionRulesArgs:
+    def __init__(__self__, *,
+                 ssh: Optional[pulumi.Input['AccessApplicationPolicyConnectionRulesSshArgs']] = None):
+        """
+        :param pulumi.Input['AccessApplicationPolicyConnectionRulesSshArgs'] ssh: The SSH-specific rules that define how users may connect to the targets secured by your application.
+        """
+        if ssh is not None:
+            pulumi.set(__self__, "ssh", ssh)
+
+    @property
+    @pulumi.getter
+    def ssh(self) -> Optional[pulumi.Input['AccessApplicationPolicyConnectionRulesSshArgs']]:
+        """
+        The SSH-specific rules that define how users may connect to the targets secured by your application.
+        """
+        return pulumi.get(self, "ssh")
+
+    @ssh.setter
+    def ssh(self, value: Optional[pulumi.Input['AccessApplicationPolicyConnectionRulesSshArgs']]):
+        pulumi.set(self, "ssh", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyConnectionRulesSshArgsDict(TypedDict):
+        usernames: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Contains the Unix usernames that may be used when connecting over SSH.
+        """
+        allow_email_alias: NotRequired[pulumi.Input[bool]]
+        """
+        Enables using Identity Provider email alias as SSH username.
+        """
+elif False:
+    AccessApplicationPolicyConnectionRulesSshArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyConnectionRulesSshArgs:
+    def __init__(__self__, *,
+                 usernames: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 allow_email_alias: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] usernames: Contains the Unix usernames that may be used when connecting over SSH.
+        :param pulumi.Input[bool] allow_email_alias: Enables using Identity Provider email alias as SSH username.
+        """
+        pulumi.set(__self__, "usernames", usernames)
+        if allow_email_alias is not None:
+            pulumi.set(__self__, "allow_email_alias", allow_email_alias)
+
+    @property
+    @pulumi.getter
+    def usernames(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Contains the Unix usernames that may be used when connecting over SSH.
+        """
+        return pulumi.get(self, "usernames")
+
+    @usernames.setter
+    def usernames(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "usernames", value)
+
+    @property
+    @pulumi.getter(name="allowEmailAlias")
+    def allow_email_alias(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables using Identity Provider email alias as SSH username.
+        """
+        return pulumi.get(self, "allow_email_alias")
+
+    @allow_email_alias.setter
+    def allow_email_alias(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_email_alias", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeAnyValidServiceTokenArgsDict']]
+        """
+        An empty object which matches on all service tokens.
+        """
+        auth_context: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeAuthContextArgsDict']]
+        auth_method: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeAuthMethodArgsDict']]
+        azure_ad: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeAzureAdArgsDict']]
+        certificate: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeCertificateArgsDict']]
+        common_name: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeCommonNameArgsDict']]
+        device_posture: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeDevicePostureArgsDict']]
+        email: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeEmailArgsDict']]
+        email_domain: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeEmailDomainArgsDict']]
+        email_list: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeEmailListArgsDict']]
+        everyone: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeEveryoneArgsDict']]
+        """
+        An empty object which matches on all users.
+        """
+        external_evaluation: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeExternalEvaluationArgsDict']]
+        geo: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeGeoArgsDict']]
+        github_organization: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeGithubOrganizationArgsDict']]
+        group: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeGroupArgsDict']]
+        gsuite: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeGsuiteArgsDict']]
+        ip: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeIpArgsDict']]
+        ip_list: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeIpListArgsDict']]
+        login_method: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeLoginMethodArgsDict']]
+        okta: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeOktaArgsDict']]
+        saml: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeSamlArgsDict']]
+        service_token: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeServiceTokenArgsDict']]
+elif False:
+    AccessApplicationPolicyExcludeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeArgs:
+    def __init__(__self__, *,
+                 any_valid_service_token: Optional[pulumi.Input['AccessApplicationPolicyExcludeAnyValidServiceTokenArgs']] = None,
+                 auth_context: Optional[pulumi.Input['AccessApplicationPolicyExcludeAuthContextArgs']] = None,
+                 auth_method: Optional[pulumi.Input['AccessApplicationPolicyExcludeAuthMethodArgs']] = None,
+                 azure_ad: Optional[pulumi.Input['AccessApplicationPolicyExcludeAzureAdArgs']] = None,
+                 certificate: Optional[pulumi.Input['AccessApplicationPolicyExcludeCertificateArgs']] = None,
+                 common_name: Optional[pulumi.Input['AccessApplicationPolicyExcludeCommonNameArgs']] = None,
+                 device_posture: Optional[pulumi.Input['AccessApplicationPolicyExcludeDevicePostureArgs']] = None,
+                 email: Optional[pulumi.Input['AccessApplicationPolicyExcludeEmailArgs']] = None,
+                 email_domain: Optional[pulumi.Input['AccessApplicationPolicyExcludeEmailDomainArgs']] = None,
+                 email_list: Optional[pulumi.Input['AccessApplicationPolicyExcludeEmailListArgs']] = None,
+                 everyone: Optional[pulumi.Input['AccessApplicationPolicyExcludeEveryoneArgs']] = None,
+                 external_evaluation: Optional[pulumi.Input['AccessApplicationPolicyExcludeExternalEvaluationArgs']] = None,
+                 geo: Optional[pulumi.Input['AccessApplicationPolicyExcludeGeoArgs']] = None,
+                 github_organization: Optional[pulumi.Input['AccessApplicationPolicyExcludeGithubOrganizationArgs']] = None,
+                 group: Optional[pulumi.Input['AccessApplicationPolicyExcludeGroupArgs']] = None,
+                 gsuite: Optional[pulumi.Input['AccessApplicationPolicyExcludeGsuiteArgs']] = None,
+                 ip: Optional[pulumi.Input['AccessApplicationPolicyExcludeIpArgs']] = None,
+                 ip_list: Optional[pulumi.Input['AccessApplicationPolicyExcludeIpListArgs']] = None,
+                 login_method: Optional[pulumi.Input['AccessApplicationPolicyExcludeLoginMethodArgs']] = None,
+                 okta: Optional[pulumi.Input['AccessApplicationPolicyExcludeOktaArgs']] = None,
+                 saml: Optional[pulumi.Input['AccessApplicationPolicyExcludeSamlArgs']] = None,
+                 service_token: Optional[pulumi.Input['AccessApplicationPolicyExcludeServiceTokenArgs']] = None):
+        """
+        :param pulumi.Input['AccessApplicationPolicyExcludeAnyValidServiceTokenArgs'] any_valid_service_token: An empty object which matches on all service tokens.
+        :param pulumi.Input['AccessApplicationPolicyExcludeEveryoneArgs'] everyone: An empty object which matches on all users.
+        """
+        if any_valid_service_token is not None:
+            pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_context is not None:
+            pulumi.set(__self__, "auth_context", auth_context)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
+        if azure_ad is not None:
+            pulumi.set(__self__, "azure_ad", azure_ad)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if device_posture is not None:
+            pulumi.set(__self__, "device_posture", device_posture)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if email_domain is not None:
+            pulumi.set(__self__, "email_domain", email_domain)
+        if email_list is not None:
+            pulumi.set(__self__, "email_list", email_list)
+        if everyone is not None:
+            pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
+        if geo is not None:
+            pulumi.set(__self__, "geo", geo)
+        if github_organization is not None:
+            pulumi.set(__self__, "github_organization", github_organization)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if gsuite is not None:
+            pulumi.set(__self__, "gsuite", gsuite)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if ip_list is not None:
+            pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
+        if okta is not None:
+            pulumi.set(__self__, "okta", okta)
+        if saml is not None:
+            pulumi.set(__self__, "saml", saml)
+        if service_token is not None:
+            pulumi.set(__self__, "service_token", service_token)
+
+    @property
+    @pulumi.getter(name="anyValidServiceToken")
+    def any_valid_service_token(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeAnyValidServiceTokenArgs']]:
+        """
+        An empty object which matches on all service tokens.
+        """
+        return pulumi.get(self, "any_valid_service_token")
+
+    @any_valid_service_token.setter
+    def any_valid_service_token(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeAnyValidServiceTokenArgs']]):
+        pulumi.set(self, "any_valid_service_token", value)
+
+    @property
+    @pulumi.getter(name="authContext")
+    def auth_context(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeAuthContextArgs']]:
+        return pulumi.get(self, "auth_context")
+
+    @auth_context.setter
+    def auth_context(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeAuthContextArgs']]):
+        pulumi.set(self, "auth_context", value)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeAuthMethodArgs']]:
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeAuthMethodArgs']]):
+        pulumi.set(self, "auth_method", value)
+
+    @property
+    @pulumi.getter(name="azureAd")
+    def azure_ad(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeAzureAdArgs']]:
+        return pulumi.get(self, "azure_ad")
+
+    @azure_ad.setter
+    def azure_ad(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeAzureAdArgs']]):
+        pulumi.set(self, "azure_ad", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeCertificateArgs']]:
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeCertificateArgs']]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeCommonNameArgs']]:
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeCommonNameArgs']]):
+        pulumi.set(self, "common_name", value)
+
+    @property
+    @pulumi.getter(name="devicePosture")
+    def device_posture(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeDevicePostureArgs']]:
+        return pulumi.get(self, "device_posture")
+
+    @device_posture.setter
+    def device_posture(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeDevicePostureArgs']]):
+        pulumi.set(self, "device_posture", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeEmailArgs']]:
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeEmailArgs']]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="emailDomain")
+    def email_domain(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeEmailDomainArgs']]:
+        return pulumi.get(self, "email_domain")
+
+    @email_domain.setter
+    def email_domain(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeEmailDomainArgs']]):
+        pulumi.set(self, "email_domain", value)
+
+    @property
+    @pulumi.getter(name="emailList")
+    def email_list(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeEmailListArgs']]:
+        return pulumi.get(self, "email_list")
+
+    @email_list.setter
+    def email_list(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeEmailListArgs']]):
+        pulumi.set(self, "email_list", value)
+
+    @property
+    @pulumi.getter
+    def everyone(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeEveryoneArgs']]:
+        """
+        An empty object which matches on all users.
+        """
+        return pulumi.get(self, "everyone")
+
+    @everyone.setter
+    def everyone(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeEveryoneArgs']]):
+        pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeExternalEvaluationArgs']]:
+        return pulumi.get(self, "external_evaluation")
+
+    @external_evaluation.setter
+    def external_evaluation(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeExternalEvaluationArgs']]):
+        pulumi.set(self, "external_evaluation", value)
+
+    @property
+    @pulumi.getter
+    def geo(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeGeoArgs']]:
+        return pulumi.get(self, "geo")
+
+    @geo.setter
+    def geo(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeGeoArgs']]):
+        pulumi.set(self, "geo", value)
+
+    @property
+    @pulumi.getter(name="githubOrganization")
+    def github_organization(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeGithubOrganizationArgs']]:
+        return pulumi.get(self, "github_organization")
+
+    @github_organization.setter
+    def github_organization(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeGithubOrganizationArgs']]):
+        pulumi.set(self, "github_organization", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeGroupArgs']]:
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeGroupArgs']]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def gsuite(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeGsuiteArgs']]:
+        return pulumi.get(self, "gsuite")
+
+    @gsuite.setter
+    def gsuite(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeGsuiteArgs']]):
+        pulumi.set(self, "gsuite", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeIpArgs']]:
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeIpArgs']]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter(name="ipList")
+    def ip_list(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeIpListArgs']]:
+        return pulumi.get(self, "ip_list")
+
+    @ip_list.setter
+    def ip_list(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeIpListArgs']]):
+        pulumi.set(self, "ip_list", value)
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeLoginMethodArgs']]:
+        return pulumi.get(self, "login_method")
+
+    @login_method.setter
+    def login_method(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeLoginMethodArgs']]):
+        pulumi.set(self, "login_method", value)
+
+    @property
+    @pulumi.getter
+    def okta(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeOktaArgs']]:
+        return pulumi.get(self, "okta")
+
+    @okta.setter
+    def okta(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeOktaArgs']]):
+        pulumi.set(self, "okta", value)
+
+    @property
+    @pulumi.getter
+    def saml(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeSamlArgs']]:
+        return pulumi.get(self, "saml")
+
+    @saml.setter
+    def saml(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeSamlArgs']]):
+        pulumi.set(self, "saml", value)
+
+    @property
+    @pulumi.getter(name="serviceToken")
+    def service_token(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeServiceTokenArgs']]:
+        return pulumi.get(self, "service_token")
+
+    @service_token.setter
+    def service_token(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeServiceTokenArgs']]):
+        pulumi.set(self, "service_token", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeAnyValidServiceTokenArgsDict(TypedDict):
+        pass
+elif False:
+    AccessApplicationPolicyExcludeAnyValidServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeAnyValidServiceTokenArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of an Authentication context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of an Authentication context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessApplicationPolicyExcludeAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeAuthContextArgs:
+    def __init__(__self__, *,
+                 ac_id: pulumi.Input[str],
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ac_id: The ACID of an Authentication context.
+        :param pulumi.Input[str] id: The ID of an Authentication context.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> pulumi.Input[str]:
+        """
+        The ACID of an Authentication context.
+        """
+        return pulumi.get(self, "ac_id")
+
+    @ac_id.setter
+    def ac_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ac_id", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Authentication context.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeAuthMethodArgsDict(TypedDict):
+        auth_method: pulumi.Input[str]
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+elif False:
+    AccessApplicationPolicyExcludeAuthMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeAuthMethodArgs:
+    def __init__(__self__, *,
+                 auth_method: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] auth_method: The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        pulumi.set(__self__, "auth_method", auth_method)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> pulumi.Input[str]:
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: pulumi.Input[str]):
+        pulumi.set(self, "auth_method", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeAzureAdArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an Azure group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessApplicationPolicyExcludeAzureAdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeAzureAdArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an Azure group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Azure group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeCertificateArgsDict(TypedDict):
+        pass
+elif False:
+    AccessApplicationPolicyExcludeCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeCertificateArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeCommonNameArgsDict(TypedDict):
+        common_name: pulumi.Input[str]
+        """
+        The common name to match.
+        """
+elif False:
+    AccessApplicationPolicyExcludeCommonNameArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeCommonNameArgs:
+    def __init__(__self__, *,
+                 common_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] common_name: The common name to match.
+        """
+        pulumi.set(__self__, "common_name", common_name)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> pulumi.Input[str]:
+        """
+        The common name to match.
+        """
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "common_name", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeDevicePostureArgsDict(TypedDict):
+        integration_uid: pulumi.Input[str]
+        """
+        The ID of a device posture integration.
+        """
+elif False:
+    AccessApplicationPolicyExcludeDevicePostureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeDevicePostureArgs:
+    def __init__(__self__, *,
+                 integration_uid: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] integration_uid: The ID of a device posture integration.
+        """
+        pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @property
+    @pulumi.getter(name="integrationUid")
+    def integration_uid(self) -> pulumi.Input[str]:
+        """
+        The ID of a device posture integration.
+        """
+        return pulumi.get(self, "integration_uid")
+
+    @integration_uid.setter
+    def integration_uid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "integration_uid", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeEmailArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the user.
+        """
+elif False:
+    AccessApplicationPolicyExcludeEmailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeEmailArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the user.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the user.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeEmailDomainArgsDict(TypedDict):
+        domain: pulumi.Input[str]
+        """
+        The email domain to match.
+        """
+elif False:
+    AccessApplicationPolicyExcludeEmailDomainArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeEmailDomainArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] domain: The email domain to match.
+        """
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        """
+        The email domain to match.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeEmailListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created email list.
+        """
+elif False:
+    AccessApplicationPolicyExcludeEmailListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeEmailListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created email list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created email list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeEveryoneArgsDict(TypedDict):
+        pass
+elif False:
+    AccessApplicationPolicyExcludeEveryoneArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeEveryoneArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: pulumi.Input[str]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: pulumi.Input[str]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    AccessApplicationPolicyExcludeExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeExternalEvaluationArgs:
+    def __init__(__self__, *,
+                 evaluate_url: pulumi.Input[str],
+                 keys_url: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        pulumi.set(__self__, "evaluate_url", evaluate_url)
+        pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing your business logic.
+        """
+        return pulumi.get(self, "evaluate_url")
+
+    @evaluate_url.setter
+    def evaluate_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "evaluate_url", value)
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        return pulumi.get(self, "keys_url")
+
+    @keys_url.setter
+    def keys_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "keys_url", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeGeoArgsDict(TypedDict):
+        country_code: pulumi.Input[str]
+        """
+        The country code that should be matched.
+        """
+elif False:
+    AccessApplicationPolicyExcludeGeoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeGeoArgs:
+    def __init__(__self__, *,
+                 country_code: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] country_code: The country code that should be matched.
+        """
+        pulumi.set(__self__, "country_code", country_code)
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> pulumi.Input[str]:
+        """
+        The country code that should be matched.
+        """
+        return pulumi.get(self, "country_code")
+
+    @country_code.setter
+    def country_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "country_code", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeGithubOrganizationArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Github identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the organization.
+        """
+        team: NotRequired[pulumi.Input[str]]
+        """
+        The name of the team
+        """
+elif False:
+    AccessApplicationPolicyExcludeGithubOrganizationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeGithubOrganizationArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 team: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[str] team: The name of the team
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+        if team is not None:
+            pulumi.set(__self__, "team", team)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Github identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the organization.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def team(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the team
+        """
+        return pulumi.get(self, "team")
+
+    @team.setter
+    def team(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeGroupArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created Access group.
+        """
+elif False:
+    AccessApplicationPolicyExcludeGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeGroupArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created Access group.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created Access group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeGsuiteArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    AccessApplicationPolicyExcludeGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeGsuiteArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the Google Workspace group.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeIpArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+elif False:
+    AccessApplicationPolicyExcludeIpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeIpArgs:
+    def __init__(__self__, *,
+                 ip: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ip: An IPv4 or IPv6 CIDR block.
+        """
+        pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> pulumi.Input[str]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeIpListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created IP list.
+        """
+elif False:
+    AccessApplicationPolicyExcludeIpListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeIpListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created IP list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created IP list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeLoginMethodArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an identity provider.
+        """
+elif False:
+    AccessApplicationPolicyExcludeLoginMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeLoginMethodArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeOktaArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Okta identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the Okta group.
+        """
+elif False:
+    AccessApplicationPolicyExcludeOktaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeOktaArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[str] name: The name of the Okta group.
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Okta identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the Okta group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeSamlArgsDict(TypedDict):
+        attribute_name: pulumi.Input[str]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: pulumi.Input[str]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    AccessApplicationPolicyExcludeSamlArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeSamlArgs:
+    def __init__(__self__, *,
+                 attribute_name: pulumi.Input[str],
+                 attribute_value: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
+        pulumi.set(__self__, "attribute_name", attribute_name)
+        pulumi.set(__self__, "attribute_value", attribute_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> pulumi.Input[str]:
+        """
+        The name of the SAML attribute.
+        """
+        return pulumi.get(self, "attribute_name")
+
+    @attribute_name.setter
+    def attribute_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_name", value)
+
+    @property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> pulumi.Input[str]:
+        """
+        The SAML attribute value to look for.
+        """
+        return pulumi.get(self, "attribute_value")
+
+    @attribute_value.setter
+    def attribute_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_value", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your SAML identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeServiceTokenArgsDict(TypedDict):
+        token_id: pulumi.Input[str]
+        """
+        The ID of a Service Token.
+        """
+elif False:
+    AccessApplicationPolicyExcludeServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeServiceTokenArgs:
+    def __init__(__self__, *,
+                 token_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] token_id: The ID of a Service Token.
+        """
+        pulumi.set(__self__, "token_id", token_id)
+
+    @property
+    @pulumi.getter(name="tokenId")
+    def token_id(self) -> pulumi.Input[str]:
+        """
+        The ID of a Service Token.
+        """
+        return pulumi.get(self, "token_id")
+
+    @token_id.setter
+    def token_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeAnyValidServiceTokenArgsDict']]
+        """
+        An empty object which matches on all service tokens.
+        """
+        auth_context: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeAuthContextArgsDict']]
+        auth_method: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeAuthMethodArgsDict']]
+        azure_ad: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeAzureAdArgsDict']]
+        certificate: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeCertificateArgsDict']]
+        common_name: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeCommonNameArgsDict']]
+        device_posture: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeDevicePostureArgsDict']]
+        email: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeEmailArgsDict']]
+        email_domain: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeEmailDomainArgsDict']]
+        email_list: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeEmailListArgsDict']]
+        everyone: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeEveryoneArgsDict']]
+        """
+        An empty object which matches on all users.
+        """
+        external_evaluation: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeExternalEvaluationArgsDict']]
+        geo: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeGeoArgsDict']]
+        github_organization: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeGithubOrganizationArgsDict']]
+        group: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeGroupArgsDict']]
+        gsuite: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeGsuiteArgsDict']]
+        ip: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeIpArgsDict']]
+        ip_list: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeIpListArgsDict']]
+        login_method: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeLoginMethodArgsDict']]
+        okta: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeOktaArgsDict']]
+        saml: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeSamlArgsDict']]
+        service_token: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeServiceTokenArgsDict']]
+elif False:
+    AccessApplicationPolicyIncludeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeArgs:
+    def __init__(__self__, *,
+                 any_valid_service_token: Optional[pulumi.Input['AccessApplicationPolicyIncludeAnyValidServiceTokenArgs']] = None,
+                 auth_context: Optional[pulumi.Input['AccessApplicationPolicyIncludeAuthContextArgs']] = None,
+                 auth_method: Optional[pulumi.Input['AccessApplicationPolicyIncludeAuthMethodArgs']] = None,
+                 azure_ad: Optional[pulumi.Input['AccessApplicationPolicyIncludeAzureAdArgs']] = None,
+                 certificate: Optional[pulumi.Input['AccessApplicationPolicyIncludeCertificateArgs']] = None,
+                 common_name: Optional[pulumi.Input['AccessApplicationPolicyIncludeCommonNameArgs']] = None,
+                 device_posture: Optional[pulumi.Input['AccessApplicationPolicyIncludeDevicePostureArgs']] = None,
+                 email: Optional[pulumi.Input['AccessApplicationPolicyIncludeEmailArgs']] = None,
+                 email_domain: Optional[pulumi.Input['AccessApplicationPolicyIncludeEmailDomainArgs']] = None,
+                 email_list: Optional[pulumi.Input['AccessApplicationPolicyIncludeEmailListArgs']] = None,
+                 everyone: Optional[pulumi.Input['AccessApplicationPolicyIncludeEveryoneArgs']] = None,
+                 external_evaluation: Optional[pulumi.Input['AccessApplicationPolicyIncludeExternalEvaluationArgs']] = None,
+                 geo: Optional[pulumi.Input['AccessApplicationPolicyIncludeGeoArgs']] = None,
+                 github_organization: Optional[pulumi.Input['AccessApplicationPolicyIncludeGithubOrganizationArgs']] = None,
+                 group: Optional[pulumi.Input['AccessApplicationPolicyIncludeGroupArgs']] = None,
+                 gsuite: Optional[pulumi.Input['AccessApplicationPolicyIncludeGsuiteArgs']] = None,
+                 ip: Optional[pulumi.Input['AccessApplicationPolicyIncludeIpArgs']] = None,
+                 ip_list: Optional[pulumi.Input['AccessApplicationPolicyIncludeIpListArgs']] = None,
+                 login_method: Optional[pulumi.Input['AccessApplicationPolicyIncludeLoginMethodArgs']] = None,
+                 okta: Optional[pulumi.Input['AccessApplicationPolicyIncludeOktaArgs']] = None,
+                 saml: Optional[pulumi.Input['AccessApplicationPolicyIncludeSamlArgs']] = None,
+                 service_token: Optional[pulumi.Input['AccessApplicationPolicyIncludeServiceTokenArgs']] = None):
+        """
+        :param pulumi.Input['AccessApplicationPolicyIncludeAnyValidServiceTokenArgs'] any_valid_service_token: An empty object which matches on all service tokens.
+        :param pulumi.Input['AccessApplicationPolicyIncludeEveryoneArgs'] everyone: An empty object which matches on all users.
+        """
+        if any_valid_service_token is not None:
+            pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_context is not None:
+            pulumi.set(__self__, "auth_context", auth_context)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
+        if azure_ad is not None:
+            pulumi.set(__self__, "azure_ad", azure_ad)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if device_posture is not None:
+            pulumi.set(__self__, "device_posture", device_posture)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if email_domain is not None:
+            pulumi.set(__self__, "email_domain", email_domain)
+        if email_list is not None:
+            pulumi.set(__self__, "email_list", email_list)
+        if everyone is not None:
+            pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
+        if geo is not None:
+            pulumi.set(__self__, "geo", geo)
+        if github_organization is not None:
+            pulumi.set(__self__, "github_organization", github_organization)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if gsuite is not None:
+            pulumi.set(__self__, "gsuite", gsuite)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if ip_list is not None:
+            pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
+        if okta is not None:
+            pulumi.set(__self__, "okta", okta)
+        if saml is not None:
+            pulumi.set(__self__, "saml", saml)
+        if service_token is not None:
+            pulumi.set(__self__, "service_token", service_token)
+
+    @property
+    @pulumi.getter(name="anyValidServiceToken")
+    def any_valid_service_token(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeAnyValidServiceTokenArgs']]:
+        """
+        An empty object which matches on all service tokens.
+        """
+        return pulumi.get(self, "any_valid_service_token")
+
+    @any_valid_service_token.setter
+    def any_valid_service_token(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeAnyValidServiceTokenArgs']]):
+        pulumi.set(self, "any_valid_service_token", value)
+
+    @property
+    @pulumi.getter(name="authContext")
+    def auth_context(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeAuthContextArgs']]:
+        return pulumi.get(self, "auth_context")
+
+    @auth_context.setter
+    def auth_context(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeAuthContextArgs']]):
+        pulumi.set(self, "auth_context", value)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeAuthMethodArgs']]:
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeAuthMethodArgs']]):
+        pulumi.set(self, "auth_method", value)
+
+    @property
+    @pulumi.getter(name="azureAd")
+    def azure_ad(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeAzureAdArgs']]:
+        return pulumi.get(self, "azure_ad")
+
+    @azure_ad.setter
+    def azure_ad(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeAzureAdArgs']]):
+        pulumi.set(self, "azure_ad", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeCertificateArgs']]:
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeCertificateArgs']]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeCommonNameArgs']]:
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeCommonNameArgs']]):
+        pulumi.set(self, "common_name", value)
+
+    @property
+    @pulumi.getter(name="devicePosture")
+    def device_posture(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeDevicePostureArgs']]:
+        return pulumi.get(self, "device_posture")
+
+    @device_posture.setter
+    def device_posture(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeDevicePostureArgs']]):
+        pulumi.set(self, "device_posture", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeEmailArgs']]:
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeEmailArgs']]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="emailDomain")
+    def email_domain(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeEmailDomainArgs']]:
+        return pulumi.get(self, "email_domain")
+
+    @email_domain.setter
+    def email_domain(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeEmailDomainArgs']]):
+        pulumi.set(self, "email_domain", value)
+
+    @property
+    @pulumi.getter(name="emailList")
+    def email_list(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeEmailListArgs']]:
+        return pulumi.get(self, "email_list")
+
+    @email_list.setter
+    def email_list(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeEmailListArgs']]):
+        pulumi.set(self, "email_list", value)
+
+    @property
+    @pulumi.getter
+    def everyone(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeEveryoneArgs']]:
+        """
+        An empty object which matches on all users.
+        """
+        return pulumi.get(self, "everyone")
+
+    @everyone.setter
+    def everyone(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeEveryoneArgs']]):
+        pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeExternalEvaluationArgs']]:
+        return pulumi.get(self, "external_evaluation")
+
+    @external_evaluation.setter
+    def external_evaluation(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeExternalEvaluationArgs']]):
+        pulumi.set(self, "external_evaluation", value)
+
+    @property
+    @pulumi.getter
+    def geo(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeGeoArgs']]:
+        return pulumi.get(self, "geo")
+
+    @geo.setter
+    def geo(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeGeoArgs']]):
+        pulumi.set(self, "geo", value)
+
+    @property
+    @pulumi.getter(name="githubOrganization")
+    def github_organization(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeGithubOrganizationArgs']]:
+        return pulumi.get(self, "github_organization")
+
+    @github_organization.setter
+    def github_organization(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeGithubOrganizationArgs']]):
+        pulumi.set(self, "github_organization", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeGroupArgs']]:
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeGroupArgs']]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def gsuite(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeGsuiteArgs']]:
+        return pulumi.get(self, "gsuite")
+
+    @gsuite.setter
+    def gsuite(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeGsuiteArgs']]):
+        pulumi.set(self, "gsuite", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeIpArgs']]:
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeIpArgs']]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter(name="ipList")
+    def ip_list(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeIpListArgs']]:
+        return pulumi.get(self, "ip_list")
+
+    @ip_list.setter
+    def ip_list(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeIpListArgs']]):
+        pulumi.set(self, "ip_list", value)
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeLoginMethodArgs']]:
+        return pulumi.get(self, "login_method")
+
+    @login_method.setter
+    def login_method(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeLoginMethodArgs']]):
+        pulumi.set(self, "login_method", value)
+
+    @property
+    @pulumi.getter
+    def okta(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeOktaArgs']]:
+        return pulumi.get(self, "okta")
+
+    @okta.setter
+    def okta(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeOktaArgs']]):
+        pulumi.set(self, "okta", value)
+
+    @property
+    @pulumi.getter
+    def saml(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeSamlArgs']]:
+        return pulumi.get(self, "saml")
+
+    @saml.setter
+    def saml(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeSamlArgs']]):
+        pulumi.set(self, "saml", value)
+
+    @property
+    @pulumi.getter(name="serviceToken")
+    def service_token(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeServiceTokenArgs']]:
+        return pulumi.get(self, "service_token")
+
+    @service_token.setter
+    def service_token(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeServiceTokenArgs']]):
+        pulumi.set(self, "service_token", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeAnyValidServiceTokenArgsDict(TypedDict):
+        pass
+elif False:
+    AccessApplicationPolicyIncludeAnyValidServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeAnyValidServiceTokenArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of an Authentication context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of an Authentication context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessApplicationPolicyIncludeAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeAuthContextArgs:
+    def __init__(__self__, *,
+                 ac_id: pulumi.Input[str],
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ac_id: The ACID of an Authentication context.
+        :param pulumi.Input[str] id: The ID of an Authentication context.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> pulumi.Input[str]:
+        """
+        The ACID of an Authentication context.
+        """
+        return pulumi.get(self, "ac_id")
+
+    @ac_id.setter
+    def ac_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ac_id", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Authentication context.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeAuthMethodArgsDict(TypedDict):
+        auth_method: pulumi.Input[str]
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+elif False:
+    AccessApplicationPolicyIncludeAuthMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeAuthMethodArgs:
+    def __init__(__self__, *,
+                 auth_method: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] auth_method: The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        pulumi.set(__self__, "auth_method", auth_method)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> pulumi.Input[str]:
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: pulumi.Input[str]):
+        pulumi.set(self, "auth_method", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeAzureAdArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an Azure group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessApplicationPolicyIncludeAzureAdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeAzureAdArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an Azure group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Azure group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeCertificateArgsDict(TypedDict):
+        pass
+elif False:
+    AccessApplicationPolicyIncludeCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeCertificateArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeCommonNameArgsDict(TypedDict):
+        common_name: pulumi.Input[str]
+        """
+        The common name to match.
+        """
+elif False:
+    AccessApplicationPolicyIncludeCommonNameArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeCommonNameArgs:
+    def __init__(__self__, *,
+                 common_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] common_name: The common name to match.
+        """
+        pulumi.set(__self__, "common_name", common_name)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> pulumi.Input[str]:
+        """
+        The common name to match.
+        """
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "common_name", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeDevicePostureArgsDict(TypedDict):
+        integration_uid: pulumi.Input[str]
+        """
+        The ID of a device posture integration.
+        """
+elif False:
+    AccessApplicationPolicyIncludeDevicePostureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeDevicePostureArgs:
+    def __init__(__self__, *,
+                 integration_uid: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] integration_uid: The ID of a device posture integration.
+        """
+        pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @property
+    @pulumi.getter(name="integrationUid")
+    def integration_uid(self) -> pulumi.Input[str]:
+        """
+        The ID of a device posture integration.
+        """
+        return pulumi.get(self, "integration_uid")
+
+    @integration_uid.setter
+    def integration_uid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "integration_uid", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeEmailArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the user.
+        """
+elif False:
+    AccessApplicationPolicyIncludeEmailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeEmailArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the user.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the user.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeEmailDomainArgsDict(TypedDict):
+        domain: pulumi.Input[str]
+        """
+        The email domain to match.
+        """
+elif False:
+    AccessApplicationPolicyIncludeEmailDomainArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeEmailDomainArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] domain: The email domain to match.
+        """
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        """
+        The email domain to match.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeEmailListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created email list.
+        """
+elif False:
+    AccessApplicationPolicyIncludeEmailListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeEmailListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created email list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created email list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeEveryoneArgsDict(TypedDict):
+        pass
+elif False:
+    AccessApplicationPolicyIncludeEveryoneArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeEveryoneArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: pulumi.Input[str]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: pulumi.Input[str]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    AccessApplicationPolicyIncludeExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeExternalEvaluationArgs:
+    def __init__(__self__, *,
+                 evaluate_url: pulumi.Input[str],
+                 keys_url: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        pulumi.set(__self__, "evaluate_url", evaluate_url)
+        pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing your business logic.
+        """
+        return pulumi.get(self, "evaluate_url")
+
+    @evaluate_url.setter
+    def evaluate_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "evaluate_url", value)
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        return pulumi.get(self, "keys_url")
+
+    @keys_url.setter
+    def keys_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "keys_url", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeGeoArgsDict(TypedDict):
+        country_code: pulumi.Input[str]
+        """
+        The country code that should be matched.
+        """
+elif False:
+    AccessApplicationPolicyIncludeGeoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeGeoArgs:
+    def __init__(__self__, *,
+                 country_code: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] country_code: The country code that should be matched.
+        """
+        pulumi.set(__self__, "country_code", country_code)
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> pulumi.Input[str]:
+        """
+        The country code that should be matched.
+        """
+        return pulumi.get(self, "country_code")
+
+    @country_code.setter
+    def country_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "country_code", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeGithubOrganizationArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Github identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the organization.
+        """
+        team: NotRequired[pulumi.Input[str]]
+        """
+        The name of the team
+        """
+elif False:
+    AccessApplicationPolicyIncludeGithubOrganizationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeGithubOrganizationArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 team: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[str] team: The name of the team
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+        if team is not None:
+            pulumi.set(__self__, "team", team)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Github identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the organization.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def team(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the team
+        """
+        return pulumi.get(self, "team")
+
+    @team.setter
+    def team(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeGroupArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created Access group.
+        """
+elif False:
+    AccessApplicationPolicyIncludeGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeGroupArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created Access group.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created Access group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeGsuiteArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    AccessApplicationPolicyIncludeGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeGsuiteArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the Google Workspace group.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeIpArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+elif False:
+    AccessApplicationPolicyIncludeIpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeIpArgs:
+    def __init__(__self__, *,
+                 ip: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ip: An IPv4 or IPv6 CIDR block.
+        """
+        pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> pulumi.Input[str]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeIpListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created IP list.
+        """
+elif False:
+    AccessApplicationPolicyIncludeIpListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeIpListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created IP list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created IP list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeLoginMethodArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an identity provider.
+        """
+elif False:
+    AccessApplicationPolicyIncludeLoginMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeLoginMethodArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeOktaArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Okta identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the Okta group.
+        """
+elif False:
+    AccessApplicationPolicyIncludeOktaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeOktaArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[str] name: The name of the Okta group.
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Okta identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the Okta group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeSamlArgsDict(TypedDict):
+        attribute_name: pulumi.Input[str]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: pulumi.Input[str]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    AccessApplicationPolicyIncludeSamlArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeSamlArgs:
+    def __init__(__self__, *,
+                 attribute_name: pulumi.Input[str],
+                 attribute_value: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
+        pulumi.set(__self__, "attribute_name", attribute_name)
+        pulumi.set(__self__, "attribute_value", attribute_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> pulumi.Input[str]:
+        """
+        The name of the SAML attribute.
+        """
+        return pulumi.get(self, "attribute_name")
+
+    @attribute_name.setter
+    def attribute_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_name", value)
+
+    @property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> pulumi.Input[str]:
+        """
+        The SAML attribute value to look for.
+        """
+        return pulumi.get(self, "attribute_value")
+
+    @attribute_value.setter
+    def attribute_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_value", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your SAML identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeServiceTokenArgsDict(TypedDict):
+        token_id: pulumi.Input[str]
+        """
+        The ID of a Service Token.
+        """
+elif False:
+    AccessApplicationPolicyIncludeServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeServiceTokenArgs:
+    def __init__(__self__, *,
+                 token_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] token_id: The ID of a Service Token.
+        """
+        pulumi.set(__self__, "token_id", token_id)
+
+    @property
+    @pulumi.getter(name="tokenId")
+    def token_id(self) -> pulumi.Input[str]:
+        """
+        The ID of a Service Token.
+        """
+        return pulumi.get(self, "token_id")
+
+    @token_id.setter
+    def token_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input['AccessApplicationPolicyRequireAnyValidServiceTokenArgsDict']]
+        """
+        An empty object which matches on all service tokens.
+        """
+        auth_context: NotRequired[pulumi.Input['AccessApplicationPolicyRequireAuthContextArgsDict']]
+        auth_method: NotRequired[pulumi.Input['AccessApplicationPolicyRequireAuthMethodArgsDict']]
+        azure_ad: NotRequired[pulumi.Input['AccessApplicationPolicyRequireAzureAdArgsDict']]
+        certificate: NotRequired[pulumi.Input['AccessApplicationPolicyRequireCertificateArgsDict']]
+        common_name: NotRequired[pulumi.Input['AccessApplicationPolicyRequireCommonNameArgsDict']]
+        device_posture: NotRequired[pulumi.Input['AccessApplicationPolicyRequireDevicePostureArgsDict']]
+        email: NotRequired[pulumi.Input['AccessApplicationPolicyRequireEmailArgsDict']]
+        email_domain: NotRequired[pulumi.Input['AccessApplicationPolicyRequireEmailDomainArgsDict']]
+        email_list: NotRequired[pulumi.Input['AccessApplicationPolicyRequireEmailListArgsDict']]
+        everyone: NotRequired[pulumi.Input['AccessApplicationPolicyRequireEveryoneArgsDict']]
+        """
+        An empty object which matches on all users.
+        """
+        external_evaluation: NotRequired[pulumi.Input['AccessApplicationPolicyRequireExternalEvaluationArgsDict']]
+        geo: NotRequired[pulumi.Input['AccessApplicationPolicyRequireGeoArgsDict']]
+        github_organization: NotRequired[pulumi.Input['AccessApplicationPolicyRequireGithubOrganizationArgsDict']]
+        group: NotRequired[pulumi.Input['AccessApplicationPolicyRequireGroupArgsDict']]
+        gsuite: NotRequired[pulumi.Input['AccessApplicationPolicyRequireGsuiteArgsDict']]
+        ip: NotRequired[pulumi.Input['AccessApplicationPolicyRequireIpArgsDict']]
+        ip_list: NotRequired[pulumi.Input['AccessApplicationPolicyRequireIpListArgsDict']]
+        login_method: NotRequired[pulumi.Input['AccessApplicationPolicyRequireLoginMethodArgsDict']]
+        okta: NotRequired[pulumi.Input['AccessApplicationPolicyRequireOktaArgsDict']]
+        saml: NotRequired[pulumi.Input['AccessApplicationPolicyRequireSamlArgsDict']]
+        service_token: NotRequired[pulumi.Input['AccessApplicationPolicyRequireServiceTokenArgsDict']]
+elif False:
+    AccessApplicationPolicyRequireArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireArgs:
+    def __init__(__self__, *,
+                 any_valid_service_token: Optional[pulumi.Input['AccessApplicationPolicyRequireAnyValidServiceTokenArgs']] = None,
+                 auth_context: Optional[pulumi.Input['AccessApplicationPolicyRequireAuthContextArgs']] = None,
+                 auth_method: Optional[pulumi.Input['AccessApplicationPolicyRequireAuthMethodArgs']] = None,
+                 azure_ad: Optional[pulumi.Input['AccessApplicationPolicyRequireAzureAdArgs']] = None,
+                 certificate: Optional[pulumi.Input['AccessApplicationPolicyRequireCertificateArgs']] = None,
+                 common_name: Optional[pulumi.Input['AccessApplicationPolicyRequireCommonNameArgs']] = None,
+                 device_posture: Optional[pulumi.Input['AccessApplicationPolicyRequireDevicePostureArgs']] = None,
+                 email: Optional[pulumi.Input['AccessApplicationPolicyRequireEmailArgs']] = None,
+                 email_domain: Optional[pulumi.Input['AccessApplicationPolicyRequireEmailDomainArgs']] = None,
+                 email_list: Optional[pulumi.Input['AccessApplicationPolicyRequireEmailListArgs']] = None,
+                 everyone: Optional[pulumi.Input['AccessApplicationPolicyRequireEveryoneArgs']] = None,
+                 external_evaluation: Optional[pulumi.Input['AccessApplicationPolicyRequireExternalEvaluationArgs']] = None,
+                 geo: Optional[pulumi.Input['AccessApplicationPolicyRequireGeoArgs']] = None,
+                 github_organization: Optional[pulumi.Input['AccessApplicationPolicyRequireGithubOrganizationArgs']] = None,
+                 group: Optional[pulumi.Input['AccessApplicationPolicyRequireGroupArgs']] = None,
+                 gsuite: Optional[pulumi.Input['AccessApplicationPolicyRequireGsuiteArgs']] = None,
+                 ip: Optional[pulumi.Input['AccessApplicationPolicyRequireIpArgs']] = None,
+                 ip_list: Optional[pulumi.Input['AccessApplicationPolicyRequireIpListArgs']] = None,
+                 login_method: Optional[pulumi.Input['AccessApplicationPolicyRequireLoginMethodArgs']] = None,
+                 okta: Optional[pulumi.Input['AccessApplicationPolicyRequireOktaArgs']] = None,
+                 saml: Optional[pulumi.Input['AccessApplicationPolicyRequireSamlArgs']] = None,
+                 service_token: Optional[pulumi.Input['AccessApplicationPolicyRequireServiceTokenArgs']] = None):
+        """
+        :param pulumi.Input['AccessApplicationPolicyRequireAnyValidServiceTokenArgs'] any_valid_service_token: An empty object which matches on all service tokens.
+        :param pulumi.Input['AccessApplicationPolicyRequireEveryoneArgs'] everyone: An empty object which matches on all users.
+        """
+        if any_valid_service_token is not None:
+            pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_context is not None:
+            pulumi.set(__self__, "auth_context", auth_context)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
+        if azure_ad is not None:
+            pulumi.set(__self__, "azure_ad", azure_ad)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if device_posture is not None:
+            pulumi.set(__self__, "device_posture", device_posture)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if email_domain is not None:
+            pulumi.set(__self__, "email_domain", email_domain)
+        if email_list is not None:
+            pulumi.set(__self__, "email_list", email_list)
+        if everyone is not None:
+            pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
+        if geo is not None:
+            pulumi.set(__self__, "geo", geo)
+        if github_organization is not None:
+            pulumi.set(__self__, "github_organization", github_organization)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if gsuite is not None:
+            pulumi.set(__self__, "gsuite", gsuite)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if ip_list is not None:
+            pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
+        if okta is not None:
+            pulumi.set(__self__, "okta", okta)
+        if saml is not None:
+            pulumi.set(__self__, "saml", saml)
+        if service_token is not None:
+            pulumi.set(__self__, "service_token", service_token)
+
+    @property
+    @pulumi.getter(name="anyValidServiceToken")
+    def any_valid_service_token(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireAnyValidServiceTokenArgs']]:
+        """
+        An empty object which matches on all service tokens.
+        """
+        return pulumi.get(self, "any_valid_service_token")
+
+    @any_valid_service_token.setter
+    def any_valid_service_token(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireAnyValidServiceTokenArgs']]):
+        pulumi.set(self, "any_valid_service_token", value)
+
+    @property
+    @pulumi.getter(name="authContext")
+    def auth_context(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireAuthContextArgs']]:
+        return pulumi.get(self, "auth_context")
+
+    @auth_context.setter
+    def auth_context(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireAuthContextArgs']]):
+        pulumi.set(self, "auth_context", value)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireAuthMethodArgs']]:
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireAuthMethodArgs']]):
+        pulumi.set(self, "auth_method", value)
+
+    @property
+    @pulumi.getter(name="azureAd")
+    def azure_ad(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireAzureAdArgs']]:
+        return pulumi.get(self, "azure_ad")
+
+    @azure_ad.setter
+    def azure_ad(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireAzureAdArgs']]):
+        pulumi.set(self, "azure_ad", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireCertificateArgs']]:
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireCertificateArgs']]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireCommonNameArgs']]:
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireCommonNameArgs']]):
+        pulumi.set(self, "common_name", value)
+
+    @property
+    @pulumi.getter(name="devicePosture")
+    def device_posture(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireDevicePostureArgs']]:
+        return pulumi.get(self, "device_posture")
+
+    @device_posture.setter
+    def device_posture(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireDevicePostureArgs']]):
+        pulumi.set(self, "device_posture", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireEmailArgs']]:
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireEmailArgs']]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="emailDomain")
+    def email_domain(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireEmailDomainArgs']]:
+        return pulumi.get(self, "email_domain")
+
+    @email_domain.setter
+    def email_domain(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireEmailDomainArgs']]):
+        pulumi.set(self, "email_domain", value)
+
+    @property
+    @pulumi.getter(name="emailList")
+    def email_list(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireEmailListArgs']]:
+        return pulumi.get(self, "email_list")
+
+    @email_list.setter
+    def email_list(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireEmailListArgs']]):
+        pulumi.set(self, "email_list", value)
+
+    @property
+    @pulumi.getter
+    def everyone(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireEveryoneArgs']]:
+        """
+        An empty object which matches on all users.
+        """
+        return pulumi.get(self, "everyone")
+
+    @everyone.setter
+    def everyone(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireEveryoneArgs']]):
+        pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireExternalEvaluationArgs']]:
+        return pulumi.get(self, "external_evaluation")
+
+    @external_evaluation.setter
+    def external_evaluation(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireExternalEvaluationArgs']]):
+        pulumi.set(self, "external_evaluation", value)
+
+    @property
+    @pulumi.getter
+    def geo(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireGeoArgs']]:
+        return pulumi.get(self, "geo")
+
+    @geo.setter
+    def geo(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireGeoArgs']]):
+        pulumi.set(self, "geo", value)
+
+    @property
+    @pulumi.getter(name="githubOrganization")
+    def github_organization(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireGithubOrganizationArgs']]:
+        return pulumi.get(self, "github_organization")
+
+    @github_organization.setter
+    def github_organization(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireGithubOrganizationArgs']]):
+        pulumi.set(self, "github_organization", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireGroupArgs']]:
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireGroupArgs']]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def gsuite(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireGsuiteArgs']]:
+        return pulumi.get(self, "gsuite")
+
+    @gsuite.setter
+    def gsuite(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireGsuiteArgs']]):
+        pulumi.set(self, "gsuite", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireIpArgs']]:
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireIpArgs']]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter(name="ipList")
+    def ip_list(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireIpListArgs']]:
+        return pulumi.get(self, "ip_list")
+
+    @ip_list.setter
+    def ip_list(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireIpListArgs']]):
+        pulumi.set(self, "ip_list", value)
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireLoginMethodArgs']]:
+        return pulumi.get(self, "login_method")
+
+    @login_method.setter
+    def login_method(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireLoginMethodArgs']]):
+        pulumi.set(self, "login_method", value)
+
+    @property
+    @pulumi.getter
+    def okta(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireOktaArgs']]:
+        return pulumi.get(self, "okta")
+
+    @okta.setter
+    def okta(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireOktaArgs']]):
+        pulumi.set(self, "okta", value)
+
+    @property
+    @pulumi.getter
+    def saml(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireSamlArgs']]:
+        return pulumi.get(self, "saml")
+
+    @saml.setter
+    def saml(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireSamlArgs']]):
+        pulumi.set(self, "saml", value)
+
+    @property
+    @pulumi.getter(name="serviceToken")
+    def service_token(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireServiceTokenArgs']]:
+        return pulumi.get(self, "service_token")
+
+    @service_token.setter
+    def service_token(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireServiceTokenArgs']]):
+        pulumi.set(self, "service_token", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireAnyValidServiceTokenArgsDict(TypedDict):
+        pass
+elif False:
+    AccessApplicationPolicyRequireAnyValidServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireAnyValidServiceTokenArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of an Authentication context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of an Authentication context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessApplicationPolicyRequireAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireAuthContextArgs:
+    def __init__(__self__, *,
+                 ac_id: pulumi.Input[str],
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ac_id: The ACID of an Authentication context.
+        :param pulumi.Input[str] id: The ID of an Authentication context.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> pulumi.Input[str]:
+        """
+        The ACID of an Authentication context.
+        """
+        return pulumi.get(self, "ac_id")
+
+    @ac_id.setter
+    def ac_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ac_id", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Authentication context.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireAuthMethodArgsDict(TypedDict):
+        auth_method: pulumi.Input[str]
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+elif False:
+    AccessApplicationPolicyRequireAuthMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireAuthMethodArgs:
+    def __init__(__self__, *,
+                 auth_method: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] auth_method: The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        pulumi.set(__self__, "auth_method", auth_method)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> pulumi.Input[str]:
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: pulumi.Input[str]):
+        pulumi.set(self, "auth_method", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireAzureAdArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an Azure group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessApplicationPolicyRequireAzureAdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireAzureAdArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an Azure group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Azure group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireCertificateArgsDict(TypedDict):
+        pass
+elif False:
+    AccessApplicationPolicyRequireCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireCertificateArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireCommonNameArgsDict(TypedDict):
+        common_name: pulumi.Input[str]
+        """
+        The common name to match.
+        """
+elif False:
+    AccessApplicationPolicyRequireCommonNameArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireCommonNameArgs:
+    def __init__(__self__, *,
+                 common_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] common_name: The common name to match.
+        """
+        pulumi.set(__self__, "common_name", common_name)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> pulumi.Input[str]:
+        """
+        The common name to match.
+        """
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "common_name", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireDevicePostureArgsDict(TypedDict):
+        integration_uid: pulumi.Input[str]
+        """
+        The ID of a device posture integration.
+        """
+elif False:
+    AccessApplicationPolicyRequireDevicePostureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireDevicePostureArgs:
+    def __init__(__self__, *,
+                 integration_uid: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] integration_uid: The ID of a device posture integration.
+        """
+        pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @property
+    @pulumi.getter(name="integrationUid")
+    def integration_uid(self) -> pulumi.Input[str]:
+        """
+        The ID of a device posture integration.
+        """
+        return pulumi.get(self, "integration_uid")
+
+    @integration_uid.setter
+    def integration_uid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "integration_uid", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireEmailArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the user.
+        """
+elif False:
+    AccessApplicationPolicyRequireEmailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireEmailArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the user.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the user.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireEmailDomainArgsDict(TypedDict):
+        domain: pulumi.Input[str]
+        """
+        The email domain to match.
+        """
+elif False:
+    AccessApplicationPolicyRequireEmailDomainArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireEmailDomainArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] domain: The email domain to match.
+        """
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        """
+        The email domain to match.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireEmailListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created email list.
+        """
+elif False:
+    AccessApplicationPolicyRequireEmailListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireEmailListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created email list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created email list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireEveryoneArgsDict(TypedDict):
+        pass
+elif False:
+    AccessApplicationPolicyRequireEveryoneArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireEveryoneArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: pulumi.Input[str]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: pulumi.Input[str]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    AccessApplicationPolicyRequireExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireExternalEvaluationArgs:
+    def __init__(__self__, *,
+                 evaluate_url: pulumi.Input[str],
+                 keys_url: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        pulumi.set(__self__, "evaluate_url", evaluate_url)
+        pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing your business logic.
+        """
+        return pulumi.get(self, "evaluate_url")
+
+    @evaluate_url.setter
+    def evaluate_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "evaluate_url", value)
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        return pulumi.get(self, "keys_url")
+
+    @keys_url.setter
+    def keys_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "keys_url", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireGeoArgsDict(TypedDict):
+        country_code: pulumi.Input[str]
+        """
+        The country code that should be matched.
+        """
+elif False:
+    AccessApplicationPolicyRequireGeoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireGeoArgs:
+    def __init__(__self__, *,
+                 country_code: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] country_code: The country code that should be matched.
+        """
+        pulumi.set(__self__, "country_code", country_code)
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> pulumi.Input[str]:
+        """
+        The country code that should be matched.
+        """
+        return pulumi.get(self, "country_code")
+
+    @country_code.setter
+    def country_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "country_code", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireGithubOrganizationArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Github identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the organization.
+        """
+        team: NotRequired[pulumi.Input[str]]
+        """
+        The name of the team
+        """
+elif False:
+    AccessApplicationPolicyRequireGithubOrganizationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireGithubOrganizationArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 team: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[str] team: The name of the team
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+        if team is not None:
+            pulumi.set(__self__, "team", team)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Github identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the organization.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def team(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the team
+        """
+        return pulumi.get(self, "team")
+
+    @team.setter
+    def team(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireGroupArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created Access group.
+        """
+elif False:
+    AccessApplicationPolicyRequireGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireGroupArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created Access group.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created Access group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireGsuiteArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    AccessApplicationPolicyRequireGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireGsuiteArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the Google Workspace group.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireIpArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+elif False:
+    AccessApplicationPolicyRequireIpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireIpArgs:
+    def __init__(__self__, *,
+                 ip: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ip: An IPv4 or IPv6 CIDR block.
+        """
+        pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> pulumi.Input[str]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireIpListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created IP list.
+        """
+elif False:
+    AccessApplicationPolicyRequireIpListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireIpListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created IP list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created IP list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireLoginMethodArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an identity provider.
+        """
+elif False:
+    AccessApplicationPolicyRequireLoginMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireLoginMethodArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireOktaArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Okta identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the Okta group.
+        """
+elif False:
+    AccessApplicationPolicyRequireOktaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireOktaArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[str] name: The name of the Okta group.
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Okta identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the Okta group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireSamlArgsDict(TypedDict):
+        attribute_name: pulumi.Input[str]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: pulumi.Input[str]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    AccessApplicationPolicyRequireSamlArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireSamlArgs:
+    def __init__(__self__, *,
+                 attribute_name: pulumi.Input[str],
+                 attribute_value: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
+        pulumi.set(__self__, "attribute_name", attribute_name)
+        pulumi.set(__self__, "attribute_value", attribute_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> pulumi.Input[str]:
+        """
+        The name of the SAML attribute.
+        """
+        return pulumi.get(self, "attribute_name")
+
+    @attribute_name.setter
+    def attribute_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_name", value)
+
+    @property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> pulumi.Input[str]:
+        """
+        The SAML attribute value to look for.
+        """
+        return pulumi.get(self, "attribute_value")
+
+    @attribute_value.setter
+    def attribute_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_value", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your SAML identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireServiceTokenArgsDict(TypedDict):
+        token_id: pulumi.Input[str]
+        """
+        The ID of a Service Token.
+        """
+elif False:
+    AccessApplicationPolicyRequireServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireServiceTokenArgs:
+    def __init__(__self__, *,
+                 token_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] token_id: The ID of a Service Token.
+        """
+        pulumi.set(__self__, "token_id", token_id)
+
+    @property
+    @pulumi.getter(name="tokenId")
+    def token_id(self) -> pulumi.Input[str]:
+        """
+        The ID of a Service Token.
+        """
+        return pulumi.get(self, "token_id")
+
+    @token_id.setter
+    def token_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_id", value)
+
+
+if not MYPY:
+    class AccessApplicationSaasAppArgsDict(TypedDict):
+        access_token_lifetime: NotRequired[pulumi.Input[str]]
+        """
+        The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.
+        """
+        allow_pkce_without_client_secret: NotRequired[pulumi.Input[bool]]
+        """
+        If client secret should be required on the token endpoint when authorization*code*with_pkce grant is used.
+        """
+        app_launcher_url: NotRequired[pulumi.Input[str]]
+        """
+        The URL where this applications tile redirects users
+        """
+        auth_type: NotRequired[pulumi.Input[str]]
+        """
+        Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is "saml"
+        Available values: "saml", "oidc".
+        """
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        The application client id
+        """
+        client_secret: NotRequired[pulumi.Input[str]]
+        """
+        The application client secret, only returned on POST request.
+        """
+        consumer_service_url: NotRequired[pulumi.Input[str]]
+        """
+        The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
+        """
+        created_at: NotRequired[pulumi.Input[str]]
+        custom_attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeArgsDict']]]]
+        custom_claims: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomClaimArgsDict']]]]
+        default_relay_state: NotRequired[pulumi.Input[str]]
+        """
+        The URL that the user will be redirected to after a successful login for IDP initiated logins.
+        """
+        grant_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The OIDC flows supported by this application
+        """
+        group_filter_regex: NotRequired[pulumi.Input[str]]
+        """
+        A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+        """
+        hybrid_and_implicit_options: NotRequired[pulumi.Input['AccessApplicationSaasAppHybridAndImplicitOptionsArgsDict']]
+        idp_entity_id: NotRequired[pulumi.Input[str]]
+        """
+        The unique identifier for your SaaS application.
+        """
+        name_id_format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the name identifier sent to the SaaS application.
+        Available values: "id", "email".
+        """
+        name_id_transform_jsonata: NotRequired[pulumi.Input[str]]
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+        """
+        public_key: NotRequired[pulumi.Input[str]]
+        """
+        The Access public certificate that will be used to verify your identity.
+        """
+        redirect_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+        """
+        refresh_token_options: NotRequired[pulumi.Input['AccessApplicationSaasAppRefreshTokenOptionsArgsDict']]
+        saml_attribute_transform_jsonata: NotRequired[pulumi.Input[str]]
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+        """
+        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Define the user information shared with access, "offline_access" scope will be automatically enabled if refresh tokens are enabled
+        """
+        sp_entity_id: NotRequired[pulumi.Input[str]]
+        """
+        A globally unique name for an identity or service provider.
+        """
+        sso_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        The endpoint where your SaaS application will send login requests.
+        """
+        updated_at: NotRequired[pulumi.Input[str]]
+elif False:
+    AccessApplicationSaasAppArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationSaasAppArgs:
+    def __init__(__self__, *,
+                 access_token_lifetime: Optional[pulumi.Input[str]] = None,
+                 allow_pkce_without_client_secret: Optional[pulumi.Input[bool]] = None,
+                 app_launcher_url: Optional[pulumi.Input[str]] = None,
+                 auth_type: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 consumer_service_url: Optional[pulumi.Input[str]] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 custom_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeArgs']]]] = None,
+                 custom_claims: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomClaimArgs']]]] = None,
+                 default_relay_state: Optional[pulumi.Input[str]] = None,
+                 grant_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 group_filter_regex: Optional[pulumi.Input[str]] = None,
+                 hybrid_and_implicit_options: Optional[pulumi.Input['AccessApplicationSaasAppHybridAndImplicitOptionsArgs']] = None,
+                 idp_entity_id: Optional[pulumi.Input[str]] = None,
+                 name_id_format: Optional[pulumi.Input[str]] = None,
+                 name_id_transform_jsonata: Optional[pulumi.Input[str]] = None,
+                 public_key: Optional[pulumi.Input[str]] = None,
+                 redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 refresh_token_options: Optional[pulumi.Input['AccessApplicationSaasAppRefreshTokenOptionsArgs']] = None,
+                 saml_attribute_transform_jsonata: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sp_entity_id: Optional[pulumi.Input[str]] = None,
+                 sso_endpoint: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] access_token_lifetime: The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.
+        :param pulumi.Input[bool] allow_pkce_without_client_secret: If client secret should be required on the token endpoint when authorization*code*with_pkce grant is used.
+        :param pulumi.Input[str] app_launcher_url: The URL where this applications tile redirects users
+        :param pulumi.Input[str] auth_type: Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is "saml"
+               Available values: "saml", "oidc".
+        :param pulumi.Input[str] client_id: The application client id
+        :param pulumi.Input[str] client_secret: The application client secret, only returned on POST request.
+        :param pulumi.Input[str] consumer_service_url: The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
+        :param pulumi.Input[str] default_relay_state: The URL that the user will be redirected to after a successful login for IDP initiated logins.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: The OIDC flows supported by this application
+        :param pulumi.Input[str] group_filter_regex: A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+        :param pulumi.Input[str] idp_entity_id: The unique identifier for your SaaS application.
+        :param pulumi.Input[str] name_id_format: The format of the name identifier sent to the SaaS application.
+               Available values: "id", "email".
+        :param pulumi.Input[str] name_id_transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+        :param pulumi.Input[str] public_key: The Access public certificate that will be used to verify your identity.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_uris: The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+        :param pulumi.Input[str] saml_attribute_transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Define the user information shared with access, "offline_access" scope will be automatically enabled if refresh tokens are enabled
+        :param pulumi.Input[str] sp_entity_id: A globally unique name for an identity or service provider.
+        :param pulumi.Input[str] sso_endpoint: The endpoint where your SaaS application will send login requests.
+        """
+        if access_token_lifetime is not None:
+            pulumi.set(__self__, "access_token_lifetime", access_token_lifetime)
+        if allow_pkce_without_client_secret is not None:
+            pulumi.set(__self__, "allow_pkce_without_client_secret", allow_pkce_without_client_secret)
+        if app_launcher_url is not None:
+            pulumi.set(__self__, "app_launcher_url", app_launcher_url)
+        if auth_type is not None:
+            pulumi.set(__self__, "auth_type", auth_type)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if consumer_service_url is not None:
+            pulumi.set(__self__, "consumer_service_url", consumer_service_url)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if custom_attributes is not None:
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
+        if custom_claims is not None:
+            pulumi.set(__self__, "custom_claims", custom_claims)
+        if default_relay_state is not None:
+            pulumi.set(__self__, "default_relay_state", default_relay_state)
+        if grant_types is not None:
+            pulumi.set(__self__, "grant_types", grant_types)
+        if group_filter_regex is not None:
+            pulumi.set(__self__, "group_filter_regex", group_filter_regex)
+        if hybrid_and_implicit_options is not None:
+            pulumi.set(__self__, "hybrid_and_implicit_options", hybrid_and_implicit_options)
+        if idp_entity_id is not None:
+            pulumi.set(__self__, "idp_entity_id", idp_entity_id)
+        if name_id_format is not None:
+            pulumi.set(__self__, "name_id_format", name_id_format)
+        if name_id_transform_jsonata is not None:
+            pulumi.set(__self__, "name_id_transform_jsonata", name_id_transform_jsonata)
+        if public_key is not None:
+            pulumi.set(__self__, "public_key", public_key)
+        if redirect_uris is not None:
+            pulumi.set(__self__, "redirect_uris", redirect_uris)
+        if refresh_token_options is not None:
+            pulumi.set(__self__, "refresh_token_options", refresh_token_options)
+        if saml_attribute_transform_jsonata is not None:
+            pulumi.set(__self__, "saml_attribute_transform_jsonata", saml_attribute_transform_jsonata)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if sp_entity_id is not None:
+            pulumi.set(__self__, "sp_entity_id", sp_entity_id)
+        if sso_endpoint is not None:
+            pulumi.set(__self__, "sso_endpoint", sso_endpoint)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="accessTokenLifetime")
+    def access_token_lifetime(self) -> Optional[pulumi.Input[str]]:
+        """
+        The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.
+        """
+        return pulumi.get(self, "access_token_lifetime")
+
+    @access_token_lifetime.setter
+    def access_token_lifetime(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_token_lifetime", value)
+
+    @property
+    @pulumi.getter(name="allowPkceWithoutClientSecret")
+    def allow_pkce_without_client_secret(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If client secret should be required on the token endpoint when authorization*code*with_pkce grant is used.
+        """
+        return pulumi.get(self, "allow_pkce_without_client_secret")
+
+    @allow_pkce_without_client_secret.setter
+    def allow_pkce_without_client_secret(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_pkce_without_client_secret", value)
+
+    @property
+    @pulumi.getter(name="appLauncherUrl")
+    def app_launcher_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL where this applications tile redirects users
+        """
+        return pulumi.get(self, "app_launcher_url")
+
+    @app_launcher_url.setter
+    def app_launcher_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_launcher_url", value)
+
+    @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is "saml"
+        Available values: "saml", "oidc".
+        """
+        return pulumi.get(self, "auth_type")
+
+    @auth_type.setter
+    def auth_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_type", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The application client id
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        The application client secret, only returned on POST request.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="consumerServiceUrl")
+    def consumer_service_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
+        """
+        return pulumi.get(self, "consumer_service_url")
+
+    @consumer_service_url.setter
+    def consumer_service_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consumer_service_url", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeArgs']]]]:
+        return pulumi.get(self, "custom_attributes")
+
+    @custom_attributes.setter
+    def custom_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeArgs']]]]):
+        pulumi.set(self, "custom_attributes", value)
+
+    @property
+    @pulumi.getter(name="customClaims")
+    def custom_claims(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomClaimArgs']]]]:
+        return pulumi.get(self, "custom_claims")
+
+    @custom_claims.setter
+    def custom_claims(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomClaimArgs']]]]):
+        pulumi.set(self, "custom_claims", value)
+
+    @property
+    @pulumi.getter(name="defaultRelayState")
+    def default_relay_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL that the user will be redirected to after a successful login for IDP initiated logins.
+        """
+        return pulumi.get(self, "default_relay_state")
+
+    @default_relay_state.setter
+    def default_relay_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_relay_state", value)
+
+    @property
+    @pulumi.getter(name="grantTypes")
+    def grant_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The OIDC flows supported by this application
+        """
+        return pulumi.get(self, "grant_types")
+
+    @grant_types.setter
+    def grant_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "grant_types", value)
+
+    @property
+    @pulumi.getter(name="groupFilterRegex")
+    def group_filter_regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+        """
+        return pulumi.get(self, "group_filter_regex")
+
+    @group_filter_regex.setter
+    def group_filter_regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_filter_regex", value)
+
+    @property
+    @pulumi.getter(name="hybridAndImplicitOptions")
+    def hybrid_and_implicit_options(self) -> Optional[pulumi.Input['AccessApplicationSaasAppHybridAndImplicitOptionsArgs']]:
+        return pulumi.get(self, "hybrid_and_implicit_options")
+
+    @hybrid_and_implicit_options.setter
+    def hybrid_and_implicit_options(self, value: Optional[pulumi.Input['AccessApplicationSaasAppHybridAndImplicitOptionsArgs']]):
+        pulumi.set(self, "hybrid_and_implicit_options", value)
+
+    @property
+    @pulumi.getter(name="idpEntityId")
+    def idp_entity_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier for your SaaS application.
+        """
+        return pulumi.get(self, "idp_entity_id")
+
+    @idp_entity_id.setter
+    def idp_entity_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "idp_entity_id", value)
+
+    @property
+    @pulumi.getter(name="nameIdFormat")
+    def name_id_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of the name identifier sent to the SaaS application.
+        Available values: "id", "email".
+        """
+        return pulumi.get(self, "name_id_format")
+
+    @name_id_format.setter
+    def name_id_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_id_format", value)
+
+    @property
+    @pulumi.getter(name="nameIdTransformJsonata")
+    def name_id_transform_jsonata(self) -> Optional[pulumi.Input[str]]:
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+        """
+        return pulumi.get(self, "name_id_transform_jsonata")
+
+    @name_id_transform_jsonata.setter
+    def name_id_transform_jsonata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_id_transform_jsonata", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Access public certificate that will be used to verify your identity.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter(name="redirectUris")
+    def redirect_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+        """
+        return pulumi.get(self, "redirect_uris")
+
+    @redirect_uris.setter
+    def redirect_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "redirect_uris", value)
+
+    @property
+    @pulumi.getter(name="refreshTokenOptions")
+    def refresh_token_options(self) -> Optional[pulumi.Input['AccessApplicationSaasAppRefreshTokenOptionsArgs']]:
+        return pulumi.get(self, "refresh_token_options")
+
+    @refresh_token_options.setter
+    def refresh_token_options(self, value: Optional[pulumi.Input['AccessApplicationSaasAppRefreshTokenOptionsArgs']]):
+        pulumi.set(self, "refresh_token_options", value)
+
+    @property
+    @pulumi.getter(name="samlAttributeTransformJsonata")
+    def saml_attribute_transform_jsonata(self) -> Optional[pulumi.Input[str]]:
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+        """
+        return pulumi.get(self, "saml_attribute_transform_jsonata")
+
+    @saml_attribute_transform_jsonata.setter
+    def saml_attribute_transform_jsonata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "saml_attribute_transform_jsonata", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Define the user information shared with access, "offline_access" scope will be automatically enabled if refresh tokens are enabled
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @property
+    @pulumi.getter(name="spEntityId")
+    def sp_entity_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A globally unique name for an identity or service provider.
+        """
+        return pulumi.get(self, "sp_entity_id")
+
+    @sp_entity_id.setter
+    def sp_entity_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sp_entity_id", value)
+
+    @property
+    @pulumi.getter(name="ssoEndpoint")
+    def sso_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The endpoint where your SaaS application will send login requests.
+        """
+        return pulumi.get(self, "sso_endpoint")
+
+    @sso_endpoint.setter
+    def sso_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sso_endpoint", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
+
+if not MYPY:
+    class AccessApplicationSaasAppCustomAttributeArgsDict(TypedDict):
+        friendly_name: NotRequired[pulumi.Input[str]]
+        """
+        The SAML FriendlyName of the attribute.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the attribute.
+        """
+        name_format: NotRequired[pulumi.Input[str]]
+        """
+        A globally unique name for an identity or service provider.
+        Available values: "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified", "urn:oasis:names:tc:SAML:2.0:attrname-format:basic", "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        If the attribute is required when building a SAML assertion.
+        """
+        source: NotRequired[pulumi.Input['AccessApplicationSaasAppCustomAttributeSourceArgsDict']]
+elif False:
+    AccessApplicationSaasAppCustomAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationSaasAppCustomAttributeArgs:
+    def __init__(__self__, *,
+                 friendly_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_format: Optional[pulumi.Input[str]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 source: Optional[pulumi.Input['AccessApplicationSaasAppCustomAttributeSourceArgs']] = None):
+        """
+        :param pulumi.Input[str] friendly_name: The SAML FriendlyName of the attribute.
+        :param pulumi.Input[str] name: The name of the attribute.
+        :param pulumi.Input[str] name_format: A globally unique name for an identity or service provider.
+               Available values: "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified", "urn:oasis:names:tc:SAML:2.0:attrname-format:basic", "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
+        :param pulumi.Input[bool] required: If the attribute is required when building a SAML assertion.
+        """
+        if friendly_name is not None:
+            pulumi.set(__self__, "friendly_name", friendly_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_format is not None:
+            pulumi.set(__self__, "name_format", name_format)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter(name="friendlyName")
+    def friendly_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SAML FriendlyName of the attribute.
+        """
+        return pulumi.get(self, "friendly_name")
+
+    @friendly_name.setter
+    def friendly_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "friendly_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the attribute.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nameFormat")
+    def name_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        A globally unique name for an identity or service provider.
+        Available values: "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified", "urn:oasis:names:tc:SAML:2.0:attrname-format:basic", "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
+        """
+        return pulumi.get(self, "name_format")
+
+    @name_format.setter
+    def name_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_format", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the attribute is required when building a SAML assertion.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input['AccessApplicationSaasAppCustomAttributeSourceArgs']]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input['AccessApplicationSaasAppCustomAttributeSourceArgs']]):
+        pulumi.set(self, "source", value)
+
+
+if not MYPY:
+    class AccessApplicationSaasAppCustomAttributeSourceArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the IdP attribute.
+        """
+        name_by_idps: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeSourceNameByIdpArgsDict']]]]
+        """
+        A mapping from IdP ID to attribute name.
+        """
+elif False:
+    AccessApplicationSaasAppCustomAttributeSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationSaasAppCustomAttributeSourceArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_by_idps: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeSourceNameByIdpArgs']]]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the IdP attribute.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeSourceNameByIdpArgs']]] name_by_idps: A mapping from IdP ID to attribute name.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_by_idps is not None:
+            pulumi.set(__self__, "name_by_idps", name_by_idps)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the IdP attribute.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nameByIdps")
+    def name_by_idps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeSourceNameByIdpArgs']]]]:
+        """
+        A mapping from IdP ID to attribute name.
+        """
+        return pulumi.get(self, "name_by_idps")
+
+    @name_by_idps.setter
+    def name_by_idps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeSourceNameByIdpArgs']]]]):
+        pulumi.set(self, "name_by_idps", value)
+
+
+if not MYPY:
+    class AccessApplicationSaasAppCustomAttributeSourceNameByIdpArgsDict(TypedDict):
+        idp_id: NotRequired[pulumi.Input[str]]
+        """
+        The UID of the IdP.
+        """
+        source_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the IdP provided attribute.
+        """
+elif False:
+    AccessApplicationSaasAppCustomAttributeSourceNameByIdpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationSaasAppCustomAttributeSourceNameByIdpArgs:
+    def __init__(__self__, *,
+                 idp_id: Optional[pulumi.Input[str]] = None,
+                 source_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] idp_id: The UID of the IdP.
+        :param pulumi.Input[str] source_name: The name of the IdP provided attribute.
+        """
+        if idp_id is not None:
+            pulumi.set(__self__, "idp_id", idp_id)
+        if source_name is not None:
+            pulumi.set(__self__, "source_name", source_name)
+
+    @property
+    @pulumi.getter(name="idpId")
+    def idp_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The UID of the IdP.
+        """
+        return pulumi.get(self, "idp_id")
+
+    @idp_id.setter
+    def idp_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "idp_id", value)
+
+    @property
+    @pulumi.getter(name="sourceName")
+    def source_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the IdP provided attribute.
+        """
+        return pulumi.get(self, "source_name")
+
+    @source_name.setter
+    def source_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_name", value)
+
+
+if not MYPY:
+    class AccessApplicationSaasAppCustomClaimArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the claim.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        If the claim is required when building an OIDC token.
+        """
+        scope: NotRequired[pulumi.Input[str]]
+        """
+        The scope of the claim.
+        Available values: "groups", "profile", "email", "openid".
+        """
+        source: NotRequired[pulumi.Input['AccessApplicationSaasAppCustomClaimSourceArgsDict']]
+elif False:
+    AccessApplicationSaasAppCustomClaimArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationSaasAppCustomClaimArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 source: Optional[pulumi.Input['AccessApplicationSaasAppCustomClaimSourceArgs']] = None):
+        """
+        :param pulumi.Input[str] name: The name of the claim.
+        :param pulumi.Input[bool] required: If the claim is required when building an OIDC token.
+        :param pulumi.Input[str] scope: The scope of the claim.
+               Available values: "groups", "profile", "email", "openid".
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the claim.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the claim is required when building an OIDC token.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The scope of the claim.
+        Available values: "groups", "profile", "email", "openid".
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input['AccessApplicationSaasAppCustomClaimSourceArgs']]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input['AccessApplicationSaasAppCustomClaimSourceArgs']]):
+        pulumi.set(self, "source", value)
+
+
+if not MYPY:
+    class AccessApplicationSaasAppCustomClaimSourceArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the IdP claim.
+        """
+        name_by_idp: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A mapping from IdP ID to claim name.
+        """
+elif False:
+    AccessApplicationSaasAppCustomClaimSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationSaasAppCustomClaimSourceArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_by_idp: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the IdP claim.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] name_by_idp: A mapping from IdP ID to claim name.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_by_idp is not None:
+            pulumi.set(__self__, "name_by_idp", name_by_idp)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the IdP claim.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nameByIdp")
+    def name_by_idp(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A mapping from IdP ID to claim name.
+        """
+        return pulumi.get(self, "name_by_idp")
+
+    @name_by_idp.setter
+    def name_by_idp(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "name_by_idp", value)
+
+
+if not MYPY:
+    class AccessApplicationSaasAppHybridAndImplicitOptionsArgsDict(TypedDict):
+        return_access_token_from_authorization_endpoint: NotRequired[pulumi.Input[bool]]
+        """
+        If an Access Token should be returned from the OIDC Authorization endpoint
+        """
+        return_id_token_from_authorization_endpoint: NotRequired[pulumi.Input[bool]]
+        """
+        If an ID Token should be returned from the OIDC Authorization endpoint
+        """
+elif False:
+    AccessApplicationSaasAppHybridAndImplicitOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationSaasAppHybridAndImplicitOptionsArgs:
+    def __init__(__self__, *,
+                 return_access_token_from_authorization_endpoint: Optional[pulumi.Input[bool]] = None,
+                 return_id_token_from_authorization_endpoint: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] return_access_token_from_authorization_endpoint: If an Access Token should be returned from the OIDC Authorization endpoint
+        :param pulumi.Input[bool] return_id_token_from_authorization_endpoint: If an ID Token should be returned from the OIDC Authorization endpoint
+        """
+        if return_access_token_from_authorization_endpoint is not None:
+            pulumi.set(__self__, "return_access_token_from_authorization_endpoint", return_access_token_from_authorization_endpoint)
+        if return_id_token_from_authorization_endpoint is not None:
+            pulumi.set(__self__, "return_id_token_from_authorization_endpoint", return_id_token_from_authorization_endpoint)
+
+    @property
+    @pulumi.getter(name="returnAccessTokenFromAuthorizationEndpoint")
+    def return_access_token_from_authorization_endpoint(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If an Access Token should be returned from the OIDC Authorization endpoint
+        """
+        return pulumi.get(self, "return_access_token_from_authorization_endpoint")
+
+    @return_access_token_from_authorization_endpoint.setter
+    def return_access_token_from_authorization_endpoint(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "return_access_token_from_authorization_endpoint", value)
+
+    @property
+    @pulumi.getter(name="returnIdTokenFromAuthorizationEndpoint")
+    def return_id_token_from_authorization_endpoint(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If an ID Token should be returned from the OIDC Authorization endpoint
+        """
+        return pulumi.get(self, "return_id_token_from_authorization_endpoint")
+
+    @return_id_token_from_authorization_endpoint.setter
+    def return_id_token_from_authorization_endpoint(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "return_id_token_from_authorization_endpoint", value)
+
+
+if not MYPY:
+    class AccessApplicationSaasAppRefreshTokenOptionsArgsDict(TypedDict):
+        lifetime: NotRequired[pulumi.Input[str]]
+        """
+        How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+        """
+elif False:
+    AccessApplicationSaasAppRefreshTokenOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationSaasAppRefreshTokenOptionsArgs:
+    def __init__(__self__, *,
+                 lifetime: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] lifetime: How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+        """
+        if lifetime is not None:
+            pulumi.set(__self__, "lifetime", lifetime)
+
+    @property
+    @pulumi.getter
+    def lifetime(self) -> Optional[pulumi.Input[str]]:
+        """
+        How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+        """
+        return pulumi.get(self, "lifetime")
+
+    @lifetime.setter
+    def lifetime(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lifetime", value)
+
+
+if not MYPY:
+    class AccessApplicationScimConfigArgsDict(TypedDict):
+        idp_uid: pulumi.Input[str]
+        """
+        The UID of the IdP to use as the source for SCIM resources to provision to this application.
+        """
+        remote_uri: pulumi.Input[str]
+        """
+        The base URI for the application's SCIM-compatible API.
+        """
+        authentication: NotRequired[pulumi.Input['AccessApplicationScimConfigAuthenticationArgsDict']]
+        """
+        Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+        """
+        deactivate_on_delete: NotRequired[pulumi.Input[bool]]
+        """
+        If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether SCIM provisioning is turned on for this application.
+        """
+        mappings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessApplicationScimConfigMappingArgsDict']]]]
+        """
+        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        """
+elif False:
+    AccessApplicationScimConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationScimConfigArgs:
+    def __init__(__self__, *,
+                 idp_uid: pulumi.Input[str],
+                 remote_uri: pulumi.Input[str],
+                 authentication: Optional[pulumi.Input['AccessApplicationScimConfigAuthenticationArgs']] = None,
+                 deactivate_on_delete: Optional[pulumi.Input[bool]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationScimConfigMappingArgs']]]] = None):
+        """
+        :param pulumi.Input[str] idp_uid: The UID of the IdP to use as the source for SCIM resources to provision to this application.
+        :param pulumi.Input[str] remote_uri: The base URI for the application's SCIM-compatible API.
+        :param pulumi.Input['AccessApplicationScimConfigAuthenticationArgs'] authentication: Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+        :param pulumi.Input[bool] deactivate_on_delete: If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+        :param pulumi.Input[bool] enabled: Whether SCIM provisioning is turned on for this application.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationScimConfigMappingArgs']]] mappings: A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        """
+        pulumi.set(__self__, "idp_uid", idp_uid)
+        pulumi.set(__self__, "remote_uri", remote_uri)
+        if authentication is not None:
+            pulumi.set(__self__, "authentication", authentication)
+        if deactivate_on_delete is not None:
+            pulumi.set(__self__, "deactivate_on_delete", deactivate_on_delete)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if mappings is not None:
+            pulumi.set(__self__, "mappings", mappings)
+
+    @property
+    @pulumi.getter(name="idpUid")
+    def idp_uid(self) -> pulumi.Input[str]:
+        """
+        The UID of the IdP to use as the source for SCIM resources to provision to this application.
+        """
+        return pulumi.get(self, "idp_uid")
+
+    @idp_uid.setter
+    def idp_uid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "idp_uid", value)
+
+    @property
+    @pulumi.getter(name="remoteUri")
+    def remote_uri(self) -> pulumi.Input[str]:
+        """
+        The base URI for the application's SCIM-compatible API.
+        """
+        return pulumi.get(self, "remote_uri")
+
+    @remote_uri.setter
+    def remote_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "remote_uri", value)
+
+    @property
+    @pulumi.getter
+    def authentication(self) -> Optional[pulumi.Input['AccessApplicationScimConfigAuthenticationArgs']]:
+        """
+        Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+        """
+        return pulumi.get(self, "authentication")
+
+    @authentication.setter
+    def authentication(self, value: Optional[pulumi.Input['AccessApplicationScimConfigAuthenticationArgs']]):
+        pulumi.set(self, "authentication", value)
+
+    @property
+    @pulumi.getter(name="deactivateOnDelete")
+    def deactivate_on_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+        """
+        return pulumi.get(self, "deactivate_on_delete")
+
+    @deactivate_on_delete.setter
+    def deactivate_on_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deactivate_on_delete", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether SCIM provisioning is turned on for this application.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationScimConfigMappingArgs']]]]:
+        """
+        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        """
+        return pulumi.get(self, "mappings")
+
+    @mappings.setter
+    def mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationScimConfigMappingArgs']]]]):
+        pulumi.set(self, "mappings", value)
+
+
+if not MYPY:
+    class AccessApplicationScimConfigAuthenticationArgsDict(TypedDict):
+        scheme: pulumi.Input[str]
+        """
+        The authentication scheme to use when making SCIM requests to this application.
+        Available values: "httpbasic".
+        """
+        authorization_url: NotRequired[pulumi.Input[str]]
+        """
+        URL used to generate the auth code used during token generation.
+        """
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+        """
+        client_secret: NotRequired[pulumi.Input[str]]
+        """
+        Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Password used to authenticate with the remote SCIM service.
+        """
+        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+        """
+        token: NotRequired[pulumi.Input[str]]
+        """
+        Token used to authenticate with the remote SCIM service.
+        """
+        token_url: NotRequired[pulumi.Input[str]]
+        """
+        URL used to generate the token used to authenticate with the remote SCIM service.
+        """
+        user: NotRequired[pulumi.Input[str]]
+        """
+        User name used to authenticate with the remote SCIM service.
+        """
+elif False:
+    AccessApplicationScimConfigAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationScimConfigAuthenticationArgs:
+    def __init__(__self__, *,
+                 scheme: pulumi.Input[str],
+                 authorization_url: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 token_url: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] scheme: The authentication scheme to use when making SCIM requests to this application.
+               Available values: "httpbasic".
+        :param pulumi.Input[str] authorization_url: URL used to generate the auth code used during token generation.
+        :param pulumi.Input[str] client_id: Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+        :param pulumi.Input[str] client_secret: Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+        :param pulumi.Input[str] password: Password used to authenticate with the remote SCIM service.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+        :param pulumi.Input[str] token: Token used to authenticate with the remote SCIM service.
+        :param pulumi.Input[str] token_url: URL used to generate the token used to authenticate with the remote SCIM service.
+        :param pulumi.Input[str] user: User name used to authenticate with the remote SCIM service.
+        """
+        pulumi.set(__self__, "scheme", scheme)
+        if authorization_url is not None:
+            pulumi.set(__self__, "authorization_url", authorization_url)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if token_url is not None:
+            pulumi.set(__self__, "token_url", token_url)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> pulumi.Input[str]:
+        """
+        The authentication scheme to use when making SCIM requests to this application.
+        Available values: "httpbasic".
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scheme", value)
+
+    @property
+    @pulumi.getter(name="authorizationUrl")
+    def authorization_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL used to generate the auth code used during token generation.
+        """
+        return pulumi.get(self, "authorization_url")
+
+    @authorization_url.setter
+    def authorization_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authorization_url", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password used to authenticate with the remote SCIM service.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        Token used to authenticate with the remote SCIM service.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token", value)
+
+    @property
+    @pulumi.getter(name="tokenUrl")
+    def token_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL used to generate the token used to authenticate with the remote SCIM service.
+        """
+        return pulumi.get(self, "token_url")
+
+    @token_url.setter
+    def token_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_url", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name used to authenticate with the remote SCIM service.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
+
+
+if not MYPY:
+    class AccessApplicationScimConfigMappingArgsDict(TypedDict):
+        schema: pulumi.Input[str]
+        """
+        Which SCIM resource type this mapping applies to.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not this mapping is enabled.
+        """
+        filter: NotRequired[pulumi.Input[str]]
+        """
+        A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+        """
+        operations: NotRequired[pulumi.Input['AccessApplicationScimConfigMappingOperationsArgsDict']]
+        """
+        Whether or not this mapping applies to creates, updates, or deletes.
+        """
+        strictness: NotRequired[pulumi.Input[str]]
+        """
+        The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+        Available values: "strict", "passthrough".
+        """
+        transform_jsonata: NotRequired[pulumi.Input[str]]
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
+        """
+elif False:
+    AccessApplicationScimConfigMappingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationScimConfigMappingArgs:
+    def __init__(__self__, *,
+                 schema: pulumi.Input[str],
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
+                 operations: Optional[pulumi.Input['AccessApplicationScimConfigMappingOperationsArgs']] = None,
+                 strictness: Optional[pulumi.Input[str]] = None,
+                 transform_jsonata: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] schema: Which SCIM resource type this mapping applies to.
+        :param pulumi.Input[bool] enabled: Whether or not this mapping is enabled.
+        :param pulumi.Input[str] filter: A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+        :param pulumi.Input['AccessApplicationScimConfigMappingOperationsArgs'] operations: Whether or not this mapping applies to creates, updates, or deletes.
+        :param pulumi.Input[str] strictness: The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+               Available values: "strict", "passthrough".
+        :param pulumi.Input[str] transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if operations is not None:
+            pulumi.set(__self__, "operations", operations)
+        if strictness is not None:
+            pulumi.set(__self__, "strictness", strictness)
+        if transform_jsonata is not None:
+            pulumi.set(__self__, "transform_jsonata", transform_jsonata)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[str]:
+        """
+        Which SCIM resource type this mapping applies to.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[str]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not this mapping is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter
+    def operations(self) -> Optional[pulumi.Input['AccessApplicationScimConfigMappingOperationsArgs']]:
+        """
+        Whether or not this mapping applies to creates, updates, or deletes.
+        """
+        return pulumi.get(self, "operations")
+
+    @operations.setter
+    def operations(self, value: Optional[pulumi.Input['AccessApplicationScimConfigMappingOperationsArgs']]):
+        pulumi.set(self, "operations", value)
+
+    @property
+    @pulumi.getter
+    def strictness(self) -> Optional[pulumi.Input[str]]:
+        """
+        The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+        Available values: "strict", "passthrough".
+        """
+        return pulumi.get(self, "strictness")
+
+    @strictness.setter
+    def strictness(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "strictness", value)
+
+    @property
+    @pulumi.getter(name="transformJsonata")
+    def transform_jsonata(self) -> Optional[pulumi.Input[str]]:
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
+        """
+        return pulumi.get(self, "transform_jsonata")
+
+    @transform_jsonata.setter
+    def transform_jsonata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transform_jsonata", value)
+
+
+if not MYPY:
+    class AccessApplicationScimConfigMappingOperationsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not this mapping applies to create (POST) operations.
+        """
+        delete: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not this mapping applies to DELETE operations.
+        """
+        update: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not this mapping applies to update (PATCH/PUT) operations.
+        """
+elif False:
+    AccessApplicationScimConfigMappingOperationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationScimConfigMappingOperationsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[bool]] = None,
+                 delete: Optional[pulumi.Input[bool]] = None,
+                 update: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] create: Whether or not this mapping applies to create (POST) operations.
+        :param pulumi.Input[bool] delete: Whether or not this mapping applies to DELETE operations.
+        :param pulumi.Input[bool] update: Whether or not this mapping applies to update (PATCH/PUT) operations.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not this mapping applies to create (POST) operations.
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not this mapping applies to DELETE operations.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not this mapping applies to update (PATCH/PUT) operations.
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "update", value)
+
+
+if not MYPY:
+    class AccessApplicationTargetCriteriaArgsDict(TypedDict):
+        port: pulumi.Input[int]
+        """
+        The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+        """
+        protocol: pulumi.Input[str]
+        """
+        The communication protocol your application secures.
+        Available values: "ssh".
+        """
+        target_attributes: pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[str]]]]]
+        """
+        Contains a map of target attribute keys to target attribute values.
+        """
+elif False:
+    AccessApplicationTargetCriteriaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationTargetCriteriaArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[int],
+                 protocol: pulumi.Input[str],
+                 target_attributes: pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[str]]]]]):
+        """
+        :param pulumi.Input[int] port: The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+        :param pulumi.Input[str] protocol: The communication protocol your application secures.
+               Available values: "ssh".
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[str]]]]] target_attributes: Contains a map of target attribute keys to target attribute values.
+        """
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "target_attributes", target_attributes)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        """
+        The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[str]:
+        """
+        The communication protocol your application secures.
+        Available values: "ssh".
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="targetAttributes")
+    def target_attributes(self) -> pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[str]]]]]:
+        """
+        Contains a map of target attribute keys to target attribute values.
+        """
+        return pulumi.get(self, "target_attributes")
+
+    @target_attributes.setter
+    def target_attributes(self, value: pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[str]]]]]):
+        pulumi.set(self, "target_attributes", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input['AccessGroupExcludeAnyValidServiceTokenArgsDict']]
+        """
+        An empty object which matches on all service tokens.
+        """
+        auth_context: NotRequired[pulumi.Input['AccessGroupExcludeAuthContextArgsDict']]
+        auth_method: NotRequired[pulumi.Input['AccessGroupExcludeAuthMethodArgsDict']]
+        azure_ad: NotRequired[pulumi.Input['AccessGroupExcludeAzureAdArgsDict']]
+        certificate: NotRequired[pulumi.Input['AccessGroupExcludeCertificateArgsDict']]
+        common_name: NotRequired[pulumi.Input['AccessGroupExcludeCommonNameArgsDict']]
+        device_posture: NotRequired[pulumi.Input['AccessGroupExcludeDevicePostureArgsDict']]
+        email: NotRequired[pulumi.Input['AccessGroupExcludeEmailArgsDict']]
+        email_domain: NotRequired[pulumi.Input['AccessGroupExcludeEmailDomainArgsDict']]
+        email_list: NotRequired[pulumi.Input['AccessGroupExcludeEmailListArgsDict']]
+        everyone: NotRequired[pulumi.Input['AccessGroupExcludeEveryoneArgsDict']]
+        """
+        An empty object which matches on all users.
+        """
+        external_evaluation: NotRequired[pulumi.Input['AccessGroupExcludeExternalEvaluationArgsDict']]
+        geo: NotRequired[pulumi.Input['AccessGroupExcludeGeoArgsDict']]
+        github_organization: NotRequired[pulumi.Input['AccessGroupExcludeGithubOrganizationArgsDict']]
+        group: NotRequired[pulumi.Input['AccessGroupExcludeGroupArgsDict']]
+        gsuite: NotRequired[pulumi.Input['AccessGroupExcludeGsuiteArgsDict']]
+        ip: NotRequired[pulumi.Input['AccessGroupExcludeIpArgsDict']]
+        ip_list: NotRequired[pulumi.Input['AccessGroupExcludeIpListArgsDict']]
+        login_method: NotRequired[pulumi.Input['AccessGroupExcludeLoginMethodArgsDict']]
+        okta: NotRequired[pulumi.Input['AccessGroupExcludeOktaArgsDict']]
+        saml: NotRequired[pulumi.Input['AccessGroupExcludeSamlArgsDict']]
+        service_token: NotRequired[pulumi.Input['AccessGroupExcludeServiceTokenArgsDict']]
+elif False:
+    AccessGroupExcludeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeArgs:
+    def __init__(__self__, *,
+                 any_valid_service_token: Optional[pulumi.Input['AccessGroupExcludeAnyValidServiceTokenArgs']] = None,
+                 auth_context: Optional[pulumi.Input['AccessGroupExcludeAuthContextArgs']] = None,
+                 auth_method: Optional[pulumi.Input['AccessGroupExcludeAuthMethodArgs']] = None,
+                 azure_ad: Optional[pulumi.Input['AccessGroupExcludeAzureAdArgs']] = None,
+                 certificate: Optional[pulumi.Input['AccessGroupExcludeCertificateArgs']] = None,
+                 common_name: Optional[pulumi.Input['AccessGroupExcludeCommonNameArgs']] = None,
+                 device_posture: Optional[pulumi.Input['AccessGroupExcludeDevicePostureArgs']] = None,
+                 email: Optional[pulumi.Input['AccessGroupExcludeEmailArgs']] = None,
+                 email_domain: Optional[pulumi.Input['AccessGroupExcludeEmailDomainArgs']] = None,
+                 email_list: Optional[pulumi.Input['AccessGroupExcludeEmailListArgs']] = None,
+                 everyone: Optional[pulumi.Input['AccessGroupExcludeEveryoneArgs']] = None,
+                 external_evaluation: Optional[pulumi.Input['AccessGroupExcludeExternalEvaluationArgs']] = None,
+                 geo: Optional[pulumi.Input['AccessGroupExcludeGeoArgs']] = None,
+                 github_organization: Optional[pulumi.Input['AccessGroupExcludeGithubOrganizationArgs']] = None,
+                 group: Optional[pulumi.Input['AccessGroupExcludeGroupArgs']] = None,
+                 gsuite: Optional[pulumi.Input['AccessGroupExcludeGsuiteArgs']] = None,
+                 ip: Optional[pulumi.Input['AccessGroupExcludeIpArgs']] = None,
+                 ip_list: Optional[pulumi.Input['AccessGroupExcludeIpListArgs']] = None,
+                 login_method: Optional[pulumi.Input['AccessGroupExcludeLoginMethodArgs']] = None,
+                 okta: Optional[pulumi.Input['AccessGroupExcludeOktaArgs']] = None,
+                 saml: Optional[pulumi.Input['AccessGroupExcludeSamlArgs']] = None,
+                 service_token: Optional[pulumi.Input['AccessGroupExcludeServiceTokenArgs']] = None):
+        """
+        :param pulumi.Input['AccessGroupExcludeAnyValidServiceTokenArgs'] any_valid_service_token: An empty object which matches on all service tokens.
+        :param pulumi.Input['AccessGroupExcludeEveryoneArgs'] everyone: An empty object which matches on all users.
+        """
+        if any_valid_service_token is not None:
+            pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_context is not None:
+            pulumi.set(__self__, "auth_context", auth_context)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
+        if azure_ad is not None:
+            pulumi.set(__self__, "azure_ad", azure_ad)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if device_posture is not None:
+            pulumi.set(__self__, "device_posture", device_posture)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if email_domain is not None:
+            pulumi.set(__self__, "email_domain", email_domain)
+        if email_list is not None:
+            pulumi.set(__self__, "email_list", email_list)
+        if everyone is not None:
+            pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
+        if geo is not None:
+            pulumi.set(__self__, "geo", geo)
+        if github_organization is not None:
+            pulumi.set(__self__, "github_organization", github_organization)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if gsuite is not None:
+            pulumi.set(__self__, "gsuite", gsuite)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if ip_list is not None:
+            pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
+        if okta is not None:
+            pulumi.set(__self__, "okta", okta)
+        if saml is not None:
+            pulumi.set(__self__, "saml", saml)
+        if service_token is not None:
+            pulumi.set(__self__, "service_token", service_token)
+
+    @property
+    @pulumi.getter(name="anyValidServiceToken")
+    def any_valid_service_token(self) -> Optional[pulumi.Input['AccessGroupExcludeAnyValidServiceTokenArgs']]:
+        """
+        An empty object which matches on all service tokens.
+        """
+        return pulumi.get(self, "any_valid_service_token")
+
+    @any_valid_service_token.setter
+    def any_valid_service_token(self, value: Optional[pulumi.Input['AccessGroupExcludeAnyValidServiceTokenArgs']]):
+        pulumi.set(self, "any_valid_service_token", value)
+
+    @property
+    @pulumi.getter(name="authContext")
+    def auth_context(self) -> Optional[pulumi.Input['AccessGroupExcludeAuthContextArgs']]:
+        return pulumi.get(self, "auth_context")
+
+    @auth_context.setter
+    def auth_context(self, value: Optional[pulumi.Input['AccessGroupExcludeAuthContextArgs']]):
+        pulumi.set(self, "auth_context", value)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input['AccessGroupExcludeAuthMethodArgs']]:
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input['AccessGroupExcludeAuthMethodArgs']]):
+        pulumi.set(self, "auth_method", value)
+
+    @property
+    @pulumi.getter(name="azureAd")
+    def azure_ad(self) -> Optional[pulumi.Input['AccessGroupExcludeAzureAdArgs']]:
+        return pulumi.get(self, "azure_ad")
+
+    @azure_ad.setter
+    def azure_ad(self, value: Optional[pulumi.Input['AccessGroupExcludeAzureAdArgs']]):
+        pulumi.set(self, "azure_ad", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input['AccessGroupExcludeCertificateArgs']]:
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input['AccessGroupExcludeCertificateArgs']]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[pulumi.Input['AccessGroupExcludeCommonNameArgs']]:
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: Optional[pulumi.Input['AccessGroupExcludeCommonNameArgs']]):
+        pulumi.set(self, "common_name", value)
+
+    @property
+    @pulumi.getter(name="devicePosture")
+    def device_posture(self) -> Optional[pulumi.Input['AccessGroupExcludeDevicePostureArgs']]:
+        return pulumi.get(self, "device_posture")
+
+    @device_posture.setter
+    def device_posture(self, value: Optional[pulumi.Input['AccessGroupExcludeDevicePostureArgs']]):
+        pulumi.set(self, "device_posture", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input['AccessGroupExcludeEmailArgs']]:
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input['AccessGroupExcludeEmailArgs']]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="emailDomain")
+    def email_domain(self) -> Optional[pulumi.Input['AccessGroupExcludeEmailDomainArgs']]:
+        return pulumi.get(self, "email_domain")
+
+    @email_domain.setter
+    def email_domain(self, value: Optional[pulumi.Input['AccessGroupExcludeEmailDomainArgs']]):
+        pulumi.set(self, "email_domain", value)
+
+    @property
+    @pulumi.getter(name="emailList")
+    def email_list(self) -> Optional[pulumi.Input['AccessGroupExcludeEmailListArgs']]:
+        return pulumi.get(self, "email_list")
+
+    @email_list.setter
+    def email_list(self, value: Optional[pulumi.Input['AccessGroupExcludeEmailListArgs']]):
+        pulumi.set(self, "email_list", value)
+
+    @property
+    @pulumi.getter
+    def everyone(self) -> Optional[pulumi.Input['AccessGroupExcludeEveryoneArgs']]:
+        """
+        An empty object which matches on all users.
+        """
+        return pulumi.get(self, "everyone")
+
+    @everyone.setter
+    def everyone(self, value: Optional[pulumi.Input['AccessGroupExcludeEveryoneArgs']]):
+        pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional[pulumi.Input['AccessGroupExcludeExternalEvaluationArgs']]:
+        return pulumi.get(self, "external_evaluation")
+
+    @external_evaluation.setter
+    def external_evaluation(self, value: Optional[pulumi.Input['AccessGroupExcludeExternalEvaluationArgs']]):
+        pulumi.set(self, "external_evaluation", value)
+
+    @property
+    @pulumi.getter
+    def geo(self) -> Optional[pulumi.Input['AccessGroupExcludeGeoArgs']]:
+        return pulumi.get(self, "geo")
+
+    @geo.setter
+    def geo(self, value: Optional[pulumi.Input['AccessGroupExcludeGeoArgs']]):
+        pulumi.set(self, "geo", value)
+
+    @property
+    @pulumi.getter(name="githubOrganization")
+    def github_organization(self) -> Optional[pulumi.Input['AccessGroupExcludeGithubOrganizationArgs']]:
+        return pulumi.get(self, "github_organization")
+
+    @github_organization.setter
+    def github_organization(self, value: Optional[pulumi.Input['AccessGroupExcludeGithubOrganizationArgs']]):
+        pulumi.set(self, "github_organization", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input['AccessGroupExcludeGroupArgs']]:
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input['AccessGroupExcludeGroupArgs']]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def gsuite(self) -> Optional[pulumi.Input['AccessGroupExcludeGsuiteArgs']]:
+        return pulumi.get(self, "gsuite")
+
+    @gsuite.setter
+    def gsuite(self, value: Optional[pulumi.Input['AccessGroupExcludeGsuiteArgs']]):
+        pulumi.set(self, "gsuite", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input['AccessGroupExcludeIpArgs']]:
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input['AccessGroupExcludeIpArgs']]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter(name="ipList")
+    def ip_list(self) -> Optional[pulumi.Input['AccessGroupExcludeIpListArgs']]:
+        return pulumi.get(self, "ip_list")
+
+    @ip_list.setter
+    def ip_list(self, value: Optional[pulumi.Input['AccessGroupExcludeIpListArgs']]):
+        pulumi.set(self, "ip_list", value)
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional[pulumi.Input['AccessGroupExcludeLoginMethodArgs']]:
+        return pulumi.get(self, "login_method")
+
+    @login_method.setter
+    def login_method(self, value: Optional[pulumi.Input['AccessGroupExcludeLoginMethodArgs']]):
+        pulumi.set(self, "login_method", value)
+
+    @property
+    @pulumi.getter
+    def okta(self) -> Optional[pulumi.Input['AccessGroupExcludeOktaArgs']]:
+        return pulumi.get(self, "okta")
+
+    @okta.setter
+    def okta(self, value: Optional[pulumi.Input['AccessGroupExcludeOktaArgs']]):
+        pulumi.set(self, "okta", value)
+
+    @property
+    @pulumi.getter
+    def saml(self) -> Optional[pulumi.Input['AccessGroupExcludeSamlArgs']]:
+        return pulumi.get(self, "saml")
+
+    @saml.setter
+    def saml(self, value: Optional[pulumi.Input['AccessGroupExcludeSamlArgs']]):
+        pulumi.set(self, "saml", value)
+
+    @property
+    @pulumi.getter(name="serviceToken")
+    def service_token(self) -> Optional[pulumi.Input['AccessGroupExcludeServiceTokenArgs']]:
+        return pulumi.get(self, "service_token")
+
+    @service_token.setter
+    def service_token(self, value: Optional[pulumi.Input['AccessGroupExcludeServiceTokenArgs']]):
+        pulumi.set(self, "service_token", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeAnyValidServiceTokenArgsDict(TypedDict):
+        pass
+elif False:
+    AccessGroupExcludeAnyValidServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeAnyValidServiceTokenArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessGroupExcludeAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of an Authentication context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of an Authentication context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessGroupExcludeAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeAuthContextArgs:
+    def __init__(__self__, *,
+                 ac_id: pulumi.Input[str],
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ac_id: The ACID of an Authentication context.
+        :param pulumi.Input[str] id: The ID of an Authentication context.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> pulumi.Input[str]:
+        """
+        The ACID of an Authentication context.
+        """
+        return pulumi.get(self, "ac_id")
+
+    @ac_id.setter
+    def ac_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ac_id", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Authentication context.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeAuthMethodArgsDict(TypedDict):
+        auth_method: pulumi.Input[str]
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+elif False:
+    AccessGroupExcludeAuthMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeAuthMethodArgs:
+    def __init__(__self__, *,
+                 auth_method: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] auth_method: The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        pulumi.set(__self__, "auth_method", auth_method)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> pulumi.Input[str]:
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: pulumi.Input[str]):
+        pulumi.set(self, "auth_method", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeAzureAdArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an Azure group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessGroupExcludeAzureAdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeAzureAdArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an Azure group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Azure group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeCertificateArgsDict(TypedDict):
+        pass
+elif False:
+    AccessGroupExcludeCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeCertificateArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessGroupExcludeCommonNameArgsDict(TypedDict):
+        common_name: pulumi.Input[str]
+        """
+        The common name to match.
+        """
+elif False:
+    AccessGroupExcludeCommonNameArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeCommonNameArgs:
+    def __init__(__self__, *,
+                 common_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] common_name: The common name to match.
+        """
+        pulumi.set(__self__, "common_name", common_name)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> pulumi.Input[str]:
+        """
+        The common name to match.
+        """
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "common_name", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeDevicePostureArgsDict(TypedDict):
+        integration_uid: pulumi.Input[str]
+        """
+        The ID of a device posture integration.
+        """
+elif False:
+    AccessGroupExcludeDevicePostureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeDevicePostureArgs:
+    def __init__(__self__, *,
+                 integration_uid: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] integration_uid: The ID of a device posture integration.
+        """
+        pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @property
+    @pulumi.getter(name="integrationUid")
+    def integration_uid(self) -> pulumi.Input[str]:
+        """
+        The ID of a device posture integration.
+        """
+        return pulumi.get(self, "integration_uid")
+
+    @integration_uid.setter
+    def integration_uid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "integration_uid", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeEmailArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the user.
+        """
+elif False:
+    AccessGroupExcludeEmailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeEmailArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the user.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the user.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeEmailDomainArgsDict(TypedDict):
+        domain: pulumi.Input[str]
+        """
+        The email domain to match.
+        """
+elif False:
+    AccessGroupExcludeEmailDomainArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeEmailDomainArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] domain: The email domain to match.
+        """
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        """
+        The email domain to match.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeEmailListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created email list.
+        """
+elif False:
+    AccessGroupExcludeEmailListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeEmailListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created email list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created email list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeEveryoneArgsDict(TypedDict):
+        pass
+elif False:
+    AccessGroupExcludeEveryoneArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeEveryoneArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessGroupExcludeExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: pulumi.Input[str]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: pulumi.Input[str]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    AccessGroupExcludeExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeExternalEvaluationArgs:
+    def __init__(__self__, *,
+                 evaluate_url: pulumi.Input[str],
+                 keys_url: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        pulumi.set(__self__, "evaluate_url", evaluate_url)
+        pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing your business logic.
+        """
+        return pulumi.get(self, "evaluate_url")
+
+    @evaluate_url.setter
+    def evaluate_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "evaluate_url", value)
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        return pulumi.get(self, "keys_url")
+
+    @keys_url.setter
+    def keys_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "keys_url", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeGeoArgsDict(TypedDict):
+        country_code: pulumi.Input[str]
+        """
+        The country code that should be matched.
+        """
+elif False:
+    AccessGroupExcludeGeoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeGeoArgs:
+    def __init__(__self__, *,
+                 country_code: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] country_code: The country code that should be matched.
+        """
+        pulumi.set(__self__, "country_code", country_code)
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> pulumi.Input[str]:
+        """
+        The country code that should be matched.
+        """
+        return pulumi.get(self, "country_code")
+
+    @country_code.setter
+    def country_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "country_code", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeGithubOrganizationArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Github identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the organization.
+        """
+        team: NotRequired[pulumi.Input[str]]
+        """
+        The name of the team
+        """
+elif False:
+    AccessGroupExcludeGithubOrganizationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeGithubOrganizationArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 team: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[str] team: The name of the team
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+        if team is not None:
+            pulumi.set(__self__, "team", team)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Github identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the organization.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def team(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the team
+        """
+        return pulumi.get(self, "team")
+
+    @team.setter
+    def team(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeGroupArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created Access group.
+        """
+elif False:
+    AccessGroupExcludeGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeGroupArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created Access group.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created Access group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeGsuiteArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    AccessGroupExcludeGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeGsuiteArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the Google Workspace group.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeIpArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+elif False:
+    AccessGroupExcludeIpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeIpArgs:
+    def __init__(__self__, *,
+                 ip: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ip: An IPv4 or IPv6 CIDR block.
+        """
+        pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> pulumi.Input[str]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeIpListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created IP list.
+        """
+elif False:
+    AccessGroupExcludeIpListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeIpListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created IP list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created IP list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeLoginMethodArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an identity provider.
+        """
+elif False:
+    AccessGroupExcludeLoginMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeLoginMethodArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeOktaArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Okta identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the Okta group.
+        """
+elif False:
+    AccessGroupExcludeOktaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeOktaArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[str] name: The name of the Okta group.
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Okta identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the Okta group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeSamlArgsDict(TypedDict):
+        attribute_name: pulumi.Input[str]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: pulumi.Input[str]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    AccessGroupExcludeSamlArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeSamlArgs:
+    def __init__(__self__, *,
+                 attribute_name: pulumi.Input[str],
+                 attribute_value: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
+        pulumi.set(__self__, "attribute_name", attribute_name)
+        pulumi.set(__self__, "attribute_value", attribute_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> pulumi.Input[str]:
+        """
+        The name of the SAML attribute.
+        """
+        return pulumi.get(self, "attribute_name")
+
+    @attribute_name.setter
+    def attribute_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_name", value)
+
+    @property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> pulumi.Input[str]:
+        """
+        The SAML attribute value to look for.
+        """
+        return pulumi.get(self, "attribute_value")
+
+    @attribute_value.setter
+    def attribute_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_value", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your SAML identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeServiceTokenArgsDict(TypedDict):
+        token_id: pulumi.Input[str]
+        """
+        The ID of a Service Token.
+        """
+elif False:
+    AccessGroupExcludeServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeServiceTokenArgs:
+    def __init__(__self__, *,
+                 token_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] token_id: The ID of a Service Token.
+        """
+        pulumi.set(__self__, "token_id", token_id)
+
+    @property
+    @pulumi.getter(name="tokenId")
+    def token_id(self) -> pulumi.Input[str]:
+        """
+        The ID of a Service Token.
+        """
+        return pulumi.get(self, "token_id")
+
+    @token_id.setter
+    def token_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_id", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input['AccessGroupIncludeAnyValidServiceTokenArgsDict']]
+        """
+        An empty object which matches on all service tokens.
+        """
+        auth_context: NotRequired[pulumi.Input['AccessGroupIncludeAuthContextArgsDict']]
+        auth_method: NotRequired[pulumi.Input['AccessGroupIncludeAuthMethodArgsDict']]
+        azure_ad: NotRequired[pulumi.Input['AccessGroupIncludeAzureAdArgsDict']]
+        certificate: NotRequired[pulumi.Input['AccessGroupIncludeCertificateArgsDict']]
+        common_name: NotRequired[pulumi.Input['AccessGroupIncludeCommonNameArgsDict']]
+        device_posture: NotRequired[pulumi.Input['AccessGroupIncludeDevicePostureArgsDict']]
+        email: NotRequired[pulumi.Input['AccessGroupIncludeEmailArgsDict']]
+        email_domain: NotRequired[pulumi.Input['AccessGroupIncludeEmailDomainArgsDict']]
+        email_list: NotRequired[pulumi.Input['AccessGroupIncludeEmailListArgsDict']]
+        everyone: NotRequired[pulumi.Input['AccessGroupIncludeEveryoneArgsDict']]
+        """
+        An empty object which matches on all users.
+        """
+        external_evaluation: NotRequired[pulumi.Input['AccessGroupIncludeExternalEvaluationArgsDict']]
+        geo: NotRequired[pulumi.Input['AccessGroupIncludeGeoArgsDict']]
+        github_organization: NotRequired[pulumi.Input['AccessGroupIncludeGithubOrganizationArgsDict']]
+        group: NotRequired[pulumi.Input['AccessGroupIncludeGroupArgsDict']]
+        gsuite: NotRequired[pulumi.Input['AccessGroupIncludeGsuiteArgsDict']]
+        ip: NotRequired[pulumi.Input['AccessGroupIncludeIpArgsDict']]
+        ip_list: NotRequired[pulumi.Input['AccessGroupIncludeIpListArgsDict']]
+        login_method: NotRequired[pulumi.Input['AccessGroupIncludeLoginMethodArgsDict']]
+        okta: NotRequired[pulumi.Input['AccessGroupIncludeOktaArgsDict']]
+        saml: NotRequired[pulumi.Input['AccessGroupIncludeSamlArgsDict']]
+        service_token: NotRequired[pulumi.Input['AccessGroupIncludeServiceTokenArgsDict']]
+elif False:
+    AccessGroupIncludeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeArgs:
+    def __init__(__self__, *,
+                 any_valid_service_token: Optional[pulumi.Input['AccessGroupIncludeAnyValidServiceTokenArgs']] = None,
+                 auth_context: Optional[pulumi.Input['AccessGroupIncludeAuthContextArgs']] = None,
+                 auth_method: Optional[pulumi.Input['AccessGroupIncludeAuthMethodArgs']] = None,
+                 azure_ad: Optional[pulumi.Input['AccessGroupIncludeAzureAdArgs']] = None,
+                 certificate: Optional[pulumi.Input['AccessGroupIncludeCertificateArgs']] = None,
+                 common_name: Optional[pulumi.Input['AccessGroupIncludeCommonNameArgs']] = None,
+                 device_posture: Optional[pulumi.Input['AccessGroupIncludeDevicePostureArgs']] = None,
+                 email: Optional[pulumi.Input['AccessGroupIncludeEmailArgs']] = None,
+                 email_domain: Optional[pulumi.Input['AccessGroupIncludeEmailDomainArgs']] = None,
+                 email_list: Optional[pulumi.Input['AccessGroupIncludeEmailListArgs']] = None,
+                 everyone: Optional[pulumi.Input['AccessGroupIncludeEveryoneArgs']] = None,
+                 external_evaluation: Optional[pulumi.Input['AccessGroupIncludeExternalEvaluationArgs']] = None,
+                 geo: Optional[pulumi.Input['AccessGroupIncludeGeoArgs']] = None,
+                 github_organization: Optional[pulumi.Input['AccessGroupIncludeGithubOrganizationArgs']] = None,
+                 group: Optional[pulumi.Input['AccessGroupIncludeGroupArgs']] = None,
+                 gsuite: Optional[pulumi.Input['AccessGroupIncludeGsuiteArgs']] = None,
+                 ip: Optional[pulumi.Input['AccessGroupIncludeIpArgs']] = None,
+                 ip_list: Optional[pulumi.Input['AccessGroupIncludeIpListArgs']] = None,
+                 login_method: Optional[pulumi.Input['AccessGroupIncludeLoginMethodArgs']] = None,
+                 okta: Optional[pulumi.Input['AccessGroupIncludeOktaArgs']] = None,
+                 saml: Optional[pulumi.Input['AccessGroupIncludeSamlArgs']] = None,
+                 service_token: Optional[pulumi.Input['AccessGroupIncludeServiceTokenArgs']] = None):
+        """
+        :param pulumi.Input['AccessGroupIncludeAnyValidServiceTokenArgs'] any_valid_service_token: An empty object which matches on all service tokens.
+        :param pulumi.Input['AccessGroupIncludeEveryoneArgs'] everyone: An empty object which matches on all users.
+        """
+        if any_valid_service_token is not None:
+            pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_context is not None:
+            pulumi.set(__self__, "auth_context", auth_context)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
+        if azure_ad is not None:
+            pulumi.set(__self__, "azure_ad", azure_ad)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if device_posture is not None:
+            pulumi.set(__self__, "device_posture", device_posture)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if email_domain is not None:
+            pulumi.set(__self__, "email_domain", email_domain)
+        if email_list is not None:
+            pulumi.set(__self__, "email_list", email_list)
+        if everyone is not None:
+            pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
+        if geo is not None:
+            pulumi.set(__self__, "geo", geo)
+        if github_organization is not None:
+            pulumi.set(__self__, "github_organization", github_organization)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if gsuite is not None:
+            pulumi.set(__self__, "gsuite", gsuite)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if ip_list is not None:
+            pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
+        if okta is not None:
+            pulumi.set(__self__, "okta", okta)
+        if saml is not None:
+            pulumi.set(__self__, "saml", saml)
+        if service_token is not None:
+            pulumi.set(__self__, "service_token", service_token)
+
+    @property
+    @pulumi.getter(name="anyValidServiceToken")
+    def any_valid_service_token(self) -> Optional[pulumi.Input['AccessGroupIncludeAnyValidServiceTokenArgs']]:
+        """
+        An empty object which matches on all service tokens.
+        """
+        return pulumi.get(self, "any_valid_service_token")
+
+    @any_valid_service_token.setter
+    def any_valid_service_token(self, value: Optional[pulumi.Input['AccessGroupIncludeAnyValidServiceTokenArgs']]):
+        pulumi.set(self, "any_valid_service_token", value)
+
+    @property
+    @pulumi.getter(name="authContext")
+    def auth_context(self) -> Optional[pulumi.Input['AccessGroupIncludeAuthContextArgs']]:
+        return pulumi.get(self, "auth_context")
+
+    @auth_context.setter
+    def auth_context(self, value: Optional[pulumi.Input['AccessGroupIncludeAuthContextArgs']]):
+        pulumi.set(self, "auth_context", value)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input['AccessGroupIncludeAuthMethodArgs']]:
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input['AccessGroupIncludeAuthMethodArgs']]):
+        pulumi.set(self, "auth_method", value)
+
+    @property
+    @pulumi.getter(name="azureAd")
+    def azure_ad(self) -> Optional[pulumi.Input['AccessGroupIncludeAzureAdArgs']]:
+        return pulumi.get(self, "azure_ad")
+
+    @azure_ad.setter
+    def azure_ad(self, value: Optional[pulumi.Input['AccessGroupIncludeAzureAdArgs']]):
+        pulumi.set(self, "azure_ad", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input['AccessGroupIncludeCertificateArgs']]:
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input['AccessGroupIncludeCertificateArgs']]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[pulumi.Input['AccessGroupIncludeCommonNameArgs']]:
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: Optional[pulumi.Input['AccessGroupIncludeCommonNameArgs']]):
+        pulumi.set(self, "common_name", value)
+
+    @property
+    @pulumi.getter(name="devicePosture")
+    def device_posture(self) -> Optional[pulumi.Input['AccessGroupIncludeDevicePostureArgs']]:
+        return pulumi.get(self, "device_posture")
+
+    @device_posture.setter
+    def device_posture(self, value: Optional[pulumi.Input['AccessGroupIncludeDevicePostureArgs']]):
+        pulumi.set(self, "device_posture", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input['AccessGroupIncludeEmailArgs']]:
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input['AccessGroupIncludeEmailArgs']]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="emailDomain")
+    def email_domain(self) -> Optional[pulumi.Input['AccessGroupIncludeEmailDomainArgs']]:
+        return pulumi.get(self, "email_domain")
+
+    @email_domain.setter
+    def email_domain(self, value: Optional[pulumi.Input['AccessGroupIncludeEmailDomainArgs']]):
+        pulumi.set(self, "email_domain", value)
+
+    @property
+    @pulumi.getter(name="emailList")
+    def email_list(self) -> Optional[pulumi.Input['AccessGroupIncludeEmailListArgs']]:
+        return pulumi.get(self, "email_list")
+
+    @email_list.setter
+    def email_list(self, value: Optional[pulumi.Input['AccessGroupIncludeEmailListArgs']]):
+        pulumi.set(self, "email_list", value)
+
+    @property
+    @pulumi.getter
+    def everyone(self) -> Optional[pulumi.Input['AccessGroupIncludeEveryoneArgs']]:
+        """
+        An empty object which matches on all users.
+        """
+        return pulumi.get(self, "everyone")
+
+    @everyone.setter
+    def everyone(self, value: Optional[pulumi.Input['AccessGroupIncludeEveryoneArgs']]):
+        pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional[pulumi.Input['AccessGroupIncludeExternalEvaluationArgs']]:
+        return pulumi.get(self, "external_evaluation")
+
+    @external_evaluation.setter
+    def external_evaluation(self, value: Optional[pulumi.Input['AccessGroupIncludeExternalEvaluationArgs']]):
+        pulumi.set(self, "external_evaluation", value)
+
+    @property
+    @pulumi.getter
+    def geo(self) -> Optional[pulumi.Input['AccessGroupIncludeGeoArgs']]:
+        return pulumi.get(self, "geo")
+
+    @geo.setter
+    def geo(self, value: Optional[pulumi.Input['AccessGroupIncludeGeoArgs']]):
+        pulumi.set(self, "geo", value)
+
+    @property
+    @pulumi.getter(name="githubOrganization")
+    def github_organization(self) -> Optional[pulumi.Input['AccessGroupIncludeGithubOrganizationArgs']]:
+        return pulumi.get(self, "github_organization")
+
+    @github_organization.setter
+    def github_organization(self, value: Optional[pulumi.Input['AccessGroupIncludeGithubOrganizationArgs']]):
+        pulumi.set(self, "github_organization", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input['AccessGroupIncludeGroupArgs']]:
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input['AccessGroupIncludeGroupArgs']]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def gsuite(self) -> Optional[pulumi.Input['AccessGroupIncludeGsuiteArgs']]:
+        return pulumi.get(self, "gsuite")
+
+    @gsuite.setter
+    def gsuite(self, value: Optional[pulumi.Input['AccessGroupIncludeGsuiteArgs']]):
+        pulumi.set(self, "gsuite", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input['AccessGroupIncludeIpArgs']]:
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input['AccessGroupIncludeIpArgs']]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter(name="ipList")
+    def ip_list(self) -> Optional[pulumi.Input['AccessGroupIncludeIpListArgs']]:
+        return pulumi.get(self, "ip_list")
+
+    @ip_list.setter
+    def ip_list(self, value: Optional[pulumi.Input['AccessGroupIncludeIpListArgs']]):
+        pulumi.set(self, "ip_list", value)
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional[pulumi.Input['AccessGroupIncludeLoginMethodArgs']]:
+        return pulumi.get(self, "login_method")
+
+    @login_method.setter
+    def login_method(self, value: Optional[pulumi.Input['AccessGroupIncludeLoginMethodArgs']]):
+        pulumi.set(self, "login_method", value)
+
+    @property
+    @pulumi.getter
+    def okta(self) -> Optional[pulumi.Input['AccessGroupIncludeOktaArgs']]:
+        return pulumi.get(self, "okta")
+
+    @okta.setter
+    def okta(self, value: Optional[pulumi.Input['AccessGroupIncludeOktaArgs']]):
+        pulumi.set(self, "okta", value)
+
+    @property
+    @pulumi.getter
+    def saml(self) -> Optional[pulumi.Input['AccessGroupIncludeSamlArgs']]:
+        return pulumi.get(self, "saml")
+
+    @saml.setter
+    def saml(self, value: Optional[pulumi.Input['AccessGroupIncludeSamlArgs']]):
+        pulumi.set(self, "saml", value)
+
+    @property
+    @pulumi.getter(name="serviceToken")
+    def service_token(self) -> Optional[pulumi.Input['AccessGroupIncludeServiceTokenArgs']]:
+        return pulumi.get(self, "service_token")
+
+    @service_token.setter
+    def service_token(self, value: Optional[pulumi.Input['AccessGroupIncludeServiceTokenArgs']]):
+        pulumi.set(self, "service_token", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeAnyValidServiceTokenArgsDict(TypedDict):
+        pass
+elif False:
+    AccessGroupIncludeAnyValidServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeAnyValidServiceTokenArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessGroupIncludeAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of an Authentication context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of an Authentication context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessGroupIncludeAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeAuthContextArgs:
+    def __init__(__self__, *,
+                 ac_id: pulumi.Input[str],
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ac_id: The ACID of an Authentication context.
+        :param pulumi.Input[str] id: The ID of an Authentication context.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> pulumi.Input[str]:
+        """
+        The ACID of an Authentication context.
+        """
+        return pulumi.get(self, "ac_id")
+
+    @ac_id.setter
+    def ac_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ac_id", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Authentication context.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeAuthMethodArgsDict(TypedDict):
+        auth_method: pulumi.Input[str]
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+elif False:
+    AccessGroupIncludeAuthMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeAuthMethodArgs:
+    def __init__(__self__, *,
+                 auth_method: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] auth_method: The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        pulumi.set(__self__, "auth_method", auth_method)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> pulumi.Input[str]:
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: pulumi.Input[str]):
+        pulumi.set(self, "auth_method", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeAzureAdArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an Azure group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessGroupIncludeAzureAdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeAzureAdArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an Azure group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Azure group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeCertificateArgsDict(TypedDict):
+        pass
+elif False:
+    AccessGroupIncludeCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeCertificateArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessGroupIncludeCommonNameArgsDict(TypedDict):
+        common_name: pulumi.Input[str]
+        """
+        The common name to match.
+        """
+elif False:
+    AccessGroupIncludeCommonNameArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeCommonNameArgs:
+    def __init__(__self__, *,
+                 common_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] common_name: The common name to match.
+        """
+        pulumi.set(__self__, "common_name", common_name)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> pulumi.Input[str]:
+        """
+        The common name to match.
+        """
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "common_name", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeDevicePostureArgsDict(TypedDict):
+        integration_uid: pulumi.Input[str]
+        """
+        The ID of a device posture integration.
+        """
+elif False:
+    AccessGroupIncludeDevicePostureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeDevicePostureArgs:
+    def __init__(__self__, *,
+                 integration_uid: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] integration_uid: The ID of a device posture integration.
+        """
+        pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @property
+    @pulumi.getter(name="integrationUid")
+    def integration_uid(self) -> pulumi.Input[str]:
+        """
+        The ID of a device posture integration.
+        """
+        return pulumi.get(self, "integration_uid")
+
+    @integration_uid.setter
+    def integration_uid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "integration_uid", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeEmailArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the user.
+        """
+elif False:
+    AccessGroupIncludeEmailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeEmailArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the user.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the user.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeEmailDomainArgsDict(TypedDict):
+        domain: pulumi.Input[str]
+        """
+        The email domain to match.
+        """
+elif False:
+    AccessGroupIncludeEmailDomainArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeEmailDomainArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] domain: The email domain to match.
+        """
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        """
+        The email domain to match.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeEmailListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created email list.
+        """
+elif False:
+    AccessGroupIncludeEmailListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeEmailListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created email list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created email list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeEveryoneArgsDict(TypedDict):
+        pass
+elif False:
+    AccessGroupIncludeEveryoneArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeEveryoneArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessGroupIncludeExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: pulumi.Input[str]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: pulumi.Input[str]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    AccessGroupIncludeExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeExternalEvaluationArgs:
+    def __init__(__self__, *,
+                 evaluate_url: pulumi.Input[str],
+                 keys_url: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        pulumi.set(__self__, "evaluate_url", evaluate_url)
+        pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing your business logic.
+        """
+        return pulumi.get(self, "evaluate_url")
+
+    @evaluate_url.setter
+    def evaluate_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "evaluate_url", value)
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        return pulumi.get(self, "keys_url")
+
+    @keys_url.setter
+    def keys_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "keys_url", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeGeoArgsDict(TypedDict):
+        country_code: pulumi.Input[str]
+        """
+        The country code that should be matched.
+        """
+elif False:
+    AccessGroupIncludeGeoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeGeoArgs:
+    def __init__(__self__, *,
+                 country_code: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] country_code: The country code that should be matched.
+        """
+        pulumi.set(__self__, "country_code", country_code)
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> pulumi.Input[str]:
+        """
+        The country code that should be matched.
+        """
+        return pulumi.get(self, "country_code")
+
+    @country_code.setter
+    def country_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "country_code", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeGithubOrganizationArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Github identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the organization.
+        """
+        team: NotRequired[pulumi.Input[str]]
+        """
+        The name of the team
+        """
+elif False:
+    AccessGroupIncludeGithubOrganizationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeGithubOrganizationArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 team: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[str] team: The name of the team
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+        if team is not None:
+            pulumi.set(__self__, "team", team)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Github identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the organization.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def team(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the team
+        """
+        return pulumi.get(self, "team")
+
+    @team.setter
+    def team(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeGroupArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created Access group.
+        """
+elif False:
+    AccessGroupIncludeGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeGroupArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created Access group.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created Access group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeGsuiteArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    AccessGroupIncludeGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeGsuiteArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the Google Workspace group.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeIpArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+elif False:
+    AccessGroupIncludeIpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeIpArgs:
+    def __init__(__self__, *,
+                 ip: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ip: An IPv4 or IPv6 CIDR block.
+        """
+        pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> pulumi.Input[str]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeIpListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created IP list.
+        """
+elif False:
+    AccessGroupIncludeIpListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeIpListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created IP list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created IP list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeLoginMethodArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an identity provider.
+        """
+elif False:
+    AccessGroupIncludeLoginMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeLoginMethodArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeOktaArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Okta identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the Okta group.
+        """
+elif False:
+    AccessGroupIncludeOktaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeOktaArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[str] name: The name of the Okta group.
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Okta identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the Okta group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeSamlArgsDict(TypedDict):
+        attribute_name: pulumi.Input[str]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: pulumi.Input[str]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    AccessGroupIncludeSamlArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeSamlArgs:
+    def __init__(__self__, *,
+                 attribute_name: pulumi.Input[str],
+                 attribute_value: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
+        pulumi.set(__self__, "attribute_name", attribute_name)
+        pulumi.set(__self__, "attribute_value", attribute_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> pulumi.Input[str]:
+        """
+        The name of the SAML attribute.
+        """
+        return pulumi.get(self, "attribute_name")
+
+    @attribute_name.setter
+    def attribute_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_name", value)
+
+    @property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> pulumi.Input[str]:
+        """
+        The SAML attribute value to look for.
+        """
+        return pulumi.get(self, "attribute_value")
+
+    @attribute_value.setter
+    def attribute_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_value", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your SAML identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeServiceTokenArgsDict(TypedDict):
+        token_id: pulumi.Input[str]
+        """
+        The ID of a Service Token.
+        """
+elif False:
+    AccessGroupIncludeServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeServiceTokenArgs:
+    def __init__(__self__, *,
+                 token_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] token_id: The ID of a Service Token.
+        """
+        pulumi.set(__self__, "token_id", token_id)
+
+    @property
+    @pulumi.getter(name="tokenId")
+    def token_id(self) -> pulumi.Input[str]:
+        """
+        The ID of a Service Token.
+        """
+        return pulumi.get(self, "token_id")
+
+    @token_id.setter
+    def token_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_id", value)
+
+
+if not MYPY:
+    class AccessGroupRequireArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input['AccessGroupRequireAnyValidServiceTokenArgsDict']]
+        """
+        An empty object which matches on all service tokens.
+        """
+        auth_context: NotRequired[pulumi.Input['AccessGroupRequireAuthContextArgsDict']]
+        auth_method: NotRequired[pulumi.Input['AccessGroupRequireAuthMethodArgsDict']]
+        azure_ad: NotRequired[pulumi.Input['AccessGroupRequireAzureAdArgsDict']]
+        certificate: NotRequired[pulumi.Input['AccessGroupRequireCertificateArgsDict']]
+        common_name: NotRequired[pulumi.Input['AccessGroupRequireCommonNameArgsDict']]
+        device_posture: NotRequired[pulumi.Input['AccessGroupRequireDevicePostureArgsDict']]
+        email: NotRequired[pulumi.Input['AccessGroupRequireEmailArgsDict']]
+        email_domain: NotRequired[pulumi.Input['AccessGroupRequireEmailDomainArgsDict']]
+        email_list: NotRequired[pulumi.Input['AccessGroupRequireEmailListArgsDict']]
+        everyone: NotRequired[pulumi.Input['AccessGroupRequireEveryoneArgsDict']]
+        """
+        An empty object which matches on all users.
+        """
+        external_evaluation: NotRequired[pulumi.Input['AccessGroupRequireExternalEvaluationArgsDict']]
+        geo: NotRequired[pulumi.Input['AccessGroupRequireGeoArgsDict']]
+        github_organization: NotRequired[pulumi.Input['AccessGroupRequireGithubOrganizationArgsDict']]
+        group: NotRequired[pulumi.Input['AccessGroupRequireGroupArgsDict']]
+        gsuite: NotRequired[pulumi.Input['AccessGroupRequireGsuiteArgsDict']]
+        ip: NotRequired[pulumi.Input['AccessGroupRequireIpArgsDict']]
+        ip_list: NotRequired[pulumi.Input['AccessGroupRequireIpListArgsDict']]
+        login_method: NotRequired[pulumi.Input['AccessGroupRequireLoginMethodArgsDict']]
+        okta: NotRequired[pulumi.Input['AccessGroupRequireOktaArgsDict']]
+        saml: NotRequired[pulumi.Input['AccessGroupRequireSamlArgsDict']]
+        service_token: NotRequired[pulumi.Input['AccessGroupRequireServiceTokenArgsDict']]
+elif False:
+    AccessGroupRequireArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireArgs:
+    def __init__(__self__, *,
+                 any_valid_service_token: Optional[pulumi.Input['AccessGroupRequireAnyValidServiceTokenArgs']] = None,
+                 auth_context: Optional[pulumi.Input['AccessGroupRequireAuthContextArgs']] = None,
+                 auth_method: Optional[pulumi.Input['AccessGroupRequireAuthMethodArgs']] = None,
+                 azure_ad: Optional[pulumi.Input['AccessGroupRequireAzureAdArgs']] = None,
+                 certificate: Optional[pulumi.Input['AccessGroupRequireCertificateArgs']] = None,
+                 common_name: Optional[pulumi.Input['AccessGroupRequireCommonNameArgs']] = None,
+                 device_posture: Optional[pulumi.Input['AccessGroupRequireDevicePostureArgs']] = None,
+                 email: Optional[pulumi.Input['AccessGroupRequireEmailArgs']] = None,
+                 email_domain: Optional[pulumi.Input['AccessGroupRequireEmailDomainArgs']] = None,
+                 email_list: Optional[pulumi.Input['AccessGroupRequireEmailListArgs']] = None,
+                 everyone: Optional[pulumi.Input['AccessGroupRequireEveryoneArgs']] = None,
+                 external_evaluation: Optional[pulumi.Input['AccessGroupRequireExternalEvaluationArgs']] = None,
+                 geo: Optional[pulumi.Input['AccessGroupRequireGeoArgs']] = None,
+                 github_organization: Optional[pulumi.Input['AccessGroupRequireGithubOrganizationArgs']] = None,
+                 group: Optional[pulumi.Input['AccessGroupRequireGroupArgs']] = None,
+                 gsuite: Optional[pulumi.Input['AccessGroupRequireGsuiteArgs']] = None,
+                 ip: Optional[pulumi.Input['AccessGroupRequireIpArgs']] = None,
+                 ip_list: Optional[pulumi.Input['AccessGroupRequireIpListArgs']] = None,
+                 login_method: Optional[pulumi.Input['AccessGroupRequireLoginMethodArgs']] = None,
+                 okta: Optional[pulumi.Input['AccessGroupRequireOktaArgs']] = None,
+                 saml: Optional[pulumi.Input['AccessGroupRequireSamlArgs']] = None,
+                 service_token: Optional[pulumi.Input['AccessGroupRequireServiceTokenArgs']] = None):
+        """
+        :param pulumi.Input['AccessGroupRequireAnyValidServiceTokenArgs'] any_valid_service_token: An empty object which matches on all service tokens.
+        :param pulumi.Input['AccessGroupRequireEveryoneArgs'] everyone: An empty object which matches on all users.
+        """
+        if any_valid_service_token is not None:
+            pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_context is not None:
+            pulumi.set(__self__, "auth_context", auth_context)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
+        if azure_ad is not None:
+            pulumi.set(__self__, "azure_ad", azure_ad)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if device_posture is not None:
+            pulumi.set(__self__, "device_posture", device_posture)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if email_domain is not None:
+            pulumi.set(__self__, "email_domain", email_domain)
+        if email_list is not None:
+            pulumi.set(__self__, "email_list", email_list)
+        if everyone is not None:
+            pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
+        if geo is not None:
+            pulumi.set(__self__, "geo", geo)
+        if github_organization is not None:
+            pulumi.set(__self__, "github_organization", github_organization)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if gsuite is not None:
+            pulumi.set(__self__, "gsuite", gsuite)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if ip_list is not None:
+            pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
+        if okta is not None:
+            pulumi.set(__self__, "okta", okta)
+        if saml is not None:
+            pulumi.set(__self__, "saml", saml)
+        if service_token is not None:
+            pulumi.set(__self__, "service_token", service_token)
+
+    @property
+    @pulumi.getter(name="anyValidServiceToken")
+    def any_valid_service_token(self) -> Optional[pulumi.Input['AccessGroupRequireAnyValidServiceTokenArgs']]:
+        """
+        An empty object which matches on all service tokens.
+        """
+        return pulumi.get(self, "any_valid_service_token")
+
+    @any_valid_service_token.setter
+    def any_valid_service_token(self, value: Optional[pulumi.Input['AccessGroupRequireAnyValidServiceTokenArgs']]):
+        pulumi.set(self, "any_valid_service_token", value)
+
+    @property
+    @pulumi.getter(name="authContext")
+    def auth_context(self) -> Optional[pulumi.Input['AccessGroupRequireAuthContextArgs']]:
+        return pulumi.get(self, "auth_context")
+
+    @auth_context.setter
+    def auth_context(self, value: Optional[pulumi.Input['AccessGroupRequireAuthContextArgs']]):
+        pulumi.set(self, "auth_context", value)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input['AccessGroupRequireAuthMethodArgs']]:
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input['AccessGroupRequireAuthMethodArgs']]):
+        pulumi.set(self, "auth_method", value)
+
+    @property
+    @pulumi.getter(name="azureAd")
+    def azure_ad(self) -> Optional[pulumi.Input['AccessGroupRequireAzureAdArgs']]:
+        return pulumi.get(self, "azure_ad")
+
+    @azure_ad.setter
+    def azure_ad(self, value: Optional[pulumi.Input['AccessGroupRequireAzureAdArgs']]):
+        pulumi.set(self, "azure_ad", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input['AccessGroupRequireCertificateArgs']]:
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input['AccessGroupRequireCertificateArgs']]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[pulumi.Input['AccessGroupRequireCommonNameArgs']]:
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: Optional[pulumi.Input['AccessGroupRequireCommonNameArgs']]):
+        pulumi.set(self, "common_name", value)
+
+    @property
+    @pulumi.getter(name="devicePosture")
+    def device_posture(self) -> Optional[pulumi.Input['AccessGroupRequireDevicePostureArgs']]:
+        return pulumi.get(self, "device_posture")
+
+    @device_posture.setter
+    def device_posture(self, value: Optional[pulumi.Input['AccessGroupRequireDevicePostureArgs']]):
+        pulumi.set(self, "device_posture", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input['AccessGroupRequireEmailArgs']]:
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input['AccessGroupRequireEmailArgs']]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="emailDomain")
+    def email_domain(self) -> Optional[pulumi.Input['AccessGroupRequireEmailDomainArgs']]:
+        return pulumi.get(self, "email_domain")
+
+    @email_domain.setter
+    def email_domain(self, value: Optional[pulumi.Input['AccessGroupRequireEmailDomainArgs']]):
+        pulumi.set(self, "email_domain", value)
+
+    @property
+    @pulumi.getter(name="emailList")
+    def email_list(self) -> Optional[pulumi.Input['AccessGroupRequireEmailListArgs']]:
+        return pulumi.get(self, "email_list")
+
+    @email_list.setter
+    def email_list(self, value: Optional[pulumi.Input['AccessGroupRequireEmailListArgs']]):
+        pulumi.set(self, "email_list", value)
+
+    @property
+    @pulumi.getter
+    def everyone(self) -> Optional[pulumi.Input['AccessGroupRequireEveryoneArgs']]:
+        """
+        An empty object which matches on all users.
+        """
+        return pulumi.get(self, "everyone")
+
+    @everyone.setter
+    def everyone(self, value: Optional[pulumi.Input['AccessGroupRequireEveryoneArgs']]):
+        pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional[pulumi.Input['AccessGroupRequireExternalEvaluationArgs']]:
+        return pulumi.get(self, "external_evaluation")
+
+    @external_evaluation.setter
+    def external_evaluation(self, value: Optional[pulumi.Input['AccessGroupRequireExternalEvaluationArgs']]):
+        pulumi.set(self, "external_evaluation", value)
+
+    @property
+    @pulumi.getter
+    def geo(self) -> Optional[pulumi.Input['AccessGroupRequireGeoArgs']]:
+        return pulumi.get(self, "geo")
+
+    @geo.setter
+    def geo(self, value: Optional[pulumi.Input['AccessGroupRequireGeoArgs']]):
+        pulumi.set(self, "geo", value)
+
+    @property
+    @pulumi.getter(name="githubOrganization")
+    def github_organization(self) -> Optional[pulumi.Input['AccessGroupRequireGithubOrganizationArgs']]:
+        return pulumi.get(self, "github_organization")
+
+    @github_organization.setter
+    def github_organization(self, value: Optional[pulumi.Input['AccessGroupRequireGithubOrganizationArgs']]):
+        pulumi.set(self, "github_organization", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input['AccessGroupRequireGroupArgs']]:
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input['AccessGroupRequireGroupArgs']]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def gsuite(self) -> Optional[pulumi.Input['AccessGroupRequireGsuiteArgs']]:
+        return pulumi.get(self, "gsuite")
+
+    @gsuite.setter
+    def gsuite(self, value: Optional[pulumi.Input['AccessGroupRequireGsuiteArgs']]):
+        pulumi.set(self, "gsuite", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input['AccessGroupRequireIpArgs']]:
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input['AccessGroupRequireIpArgs']]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter(name="ipList")
+    def ip_list(self) -> Optional[pulumi.Input['AccessGroupRequireIpListArgs']]:
+        return pulumi.get(self, "ip_list")
+
+    @ip_list.setter
+    def ip_list(self, value: Optional[pulumi.Input['AccessGroupRequireIpListArgs']]):
+        pulumi.set(self, "ip_list", value)
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional[pulumi.Input['AccessGroupRequireLoginMethodArgs']]:
+        return pulumi.get(self, "login_method")
+
+    @login_method.setter
+    def login_method(self, value: Optional[pulumi.Input['AccessGroupRequireLoginMethodArgs']]):
+        pulumi.set(self, "login_method", value)
+
+    @property
+    @pulumi.getter
+    def okta(self) -> Optional[pulumi.Input['AccessGroupRequireOktaArgs']]:
+        return pulumi.get(self, "okta")
+
+    @okta.setter
+    def okta(self, value: Optional[pulumi.Input['AccessGroupRequireOktaArgs']]):
+        pulumi.set(self, "okta", value)
+
+    @property
+    @pulumi.getter
+    def saml(self) -> Optional[pulumi.Input['AccessGroupRequireSamlArgs']]:
+        return pulumi.get(self, "saml")
+
+    @saml.setter
+    def saml(self, value: Optional[pulumi.Input['AccessGroupRequireSamlArgs']]):
+        pulumi.set(self, "saml", value)
+
+    @property
+    @pulumi.getter(name="serviceToken")
+    def service_token(self) -> Optional[pulumi.Input['AccessGroupRequireServiceTokenArgs']]:
+        return pulumi.get(self, "service_token")
+
+    @service_token.setter
+    def service_token(self, value: Optional[pulumi.Input['AccessGroupRequireServiceTokenArgs']]):
+        pulumi.set(self, "service_token", value)
+
+
+if not MYPY:
+    class AccessGroupRequireAnyValidServiceTokenArgsDict(TypedDict):
+        pass
+elif False:
+    AccessGroupRequireAnyValidServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireAnyValidServiceTokenArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessGroupRequireAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of an Authentication context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of an Authentication context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessGroupRequireAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireAuthContextArgs:
+    def __init__(__self__, *,
+                 ac_id: pulumi.Input[str],
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ac_id: The ACID of an Authentication context.
+        :param pulumi.Input[str] id: The ID of an Authentication context.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> pulumi.Input[str]:
+        """
+        The ACID of an Authentication context.
+        """
+        return pulumi.get(self, "ac_id")
+
+    @ac_id.setter
+    def ac_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ac_id", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Authentication context.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessGroupRequireAuthMethodArgsDict(TypedDict):
+        auth_method: pulumi.Input[str]
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+elif False:
+    AccessGroupRequireAuthMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireAuthMethodArgs:
+    def __init__(__self__, *,
+                 auth_method: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] auth_method: The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        pulumi.set(__self__, "auth_method", auth_method)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> pulumi.Input[str]:
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: pulumi.Input[str]):
+        pulumi.set(self, "auth_method", value)
+
+
+if not MYPY:
+    class AccessGroupRequireAzureAdArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an Azure group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessGroupRequireAzureAdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireAzureAdArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an Azure group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Azure group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessGroupRequireCertificateArgsDict(TypedDict):
+        pass
+elif False:
+    AccessGroupRequireCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireCertificateArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessGroupRequireCommonNameArgsDict(TypedDict):
+        common_name: pulumi.Input[str]
+        """
+        The common name to match.
+        """
+elif False:
+    AccessGroupRequireCommonNameArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireCommonNameArgs:
+    def __init__(__self__, *,
+                 common_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] common_name: The common name to match.
+        """
+        pulumi.set(__self__, "common_name", common_name)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> pulumi.Input[str]:
+        """
+        The common name to match.
+        """
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "common_name", value)
+
+
+if not MYPY:
+    class AccessGroupRequireDevicePostureArgsDict(TypedDict):
+        integration_uid: pulumi.Input[str]
+        """
+        The ID of a device posture integration.
+        """
+elif False:
+    AccessGroupRequireDevicePostureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireDevicePostureArgs:
+    def __init__(__self__, *,
+                 integration_uid: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] integration_uid: The ID of a device posture integration.
+        """
+        pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @property
+    @pulumi.getter(name="integrationUid")
+    def integration_uid(self) -> pulumi.Input[str]:
+        """
+        The ID of a device posture integration.
+        """
+        return pulumi.get(self, "integration_uid")
+
+    @integration_uid.setter
+    def integration_uid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "integration_uid", value)
+
+
+if not MYPY:
+    class AccessGroupRequireEmailArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the user.
+        """
+elif False:
+    AccessGroupRequireEmailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireEmailArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the user.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the user.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+
+if not MYPY:
+    class AccessGroupRequireEmailDomainArgsDict(TypedDict):
+        domain: pulumi.Input[str]
+        """
+        The email domain to match.
+        """
+elif False:
+    AccessGroupRequireEmailDomainArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireEmailDomainArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] domain: The email domain to match.
+        """
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        """
+        The email domain to match.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
+
+
+if not MYPY:
+    class AccessGroupRequireEmailListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created email list.
+        """
+elif False:
+    AccessGroupRequireEmailListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireEmailListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created email list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created email list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessGroupRequireEveryoneArgsDict(TypedDict):
+        pass
+elif False:
+    AccessGroupRequireEveryoneArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireEveryoneArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessGroupRequireExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: pulumi.Input[str]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: pulumi.Input[str]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    AccessGroupRequireExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireExternalEvaluationArgs:
+    def __init__(__self__, *,
+                 evaluate_url: pulumi.Input[str],
+                 keys_url: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        pulumi.set(__self__, "evaluate_url", evaluate_url)
+        pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing your business logic.
+        """
+        return pulumi.get(self, "evaluate_url")
+
+    @evaluate_url.setter
+    def evaluate_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "evaluate_url", value)
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        return pulumi.get(self, "keys_url")
+
+    @keys_url.setter
+    def keys_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "keys_url", value)
+
+
+if not MYPY:
+    class AccessGroupRequireGeoArgsDict(TypedDict):
+        country_code: pulumi.Input[str]
+        """
+        The country code that should be matched.
+        """
+elif False:
+    AccessGroupRequireGeoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireGeoArgs:
+    def __init__(__self__, *,
+                 country_code: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] country_code: The country code that should be matched.
+        """
+        pulumi.set(__self__, "country_code", country_code)
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> pulumi.Input[str]:
+        """
+        The country code that should be matched.
+        """
+        return pulumi.get(self, "country_code")
+
+    @country_code.setter
+    def country_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "country_code", value)
+
+
+if not MYPY:
+    class AccessGroupRequireGithubOrganizationArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Github identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the organization.
+        """
+        team: NotRequired[pulumi.Input[str]]
+        """
+        The name of the team
+        """
+elif False:
+    AccessGroupRequireGithubOrganizationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireGithubOrganizationArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 team: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[str] team: The name of the team
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+        if team is not None:
+            pulumi.set(__self__, "team", team)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Github identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the organization.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def team(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the team
+        """
+        return pulumi.get(self, "team")
+
+    @team.setter
+    def team(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team", value)
+
+
+if not MYPY:
+    class AccessGroupRequireGroupArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created Access group.
+        """
+elif False:
+    AccessGroupRequireGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireGroupArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created Access group.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created Access group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessGroupRequireGsuiteArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    AccessGroupRequireGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireGsuiteArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the Google Workspace group.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessGroupRequireIpArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+elif False:
+    AccessGroupRequireIpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireIpArgs:
+    def __init__(__self__, *,
+                 ip: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ip: An IPv4 or IPv6 CIDR block.
+        """
+        pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> pulumi.Input[str]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip", value)
+
+
+if not MYPY:
+    class AccessGroupRequireIpListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created IP list.
+        """
+elif False:
+    AccessGroupRequireIpListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireIpListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created IP list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created IP list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessGroupRequireLoginMethodArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an identity provider.
+        """
+elif False:
+    AccessGroupRequireLoginMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireLoginMethodArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessGroupRequireOktaArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Okta identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the Okta group.
+        """
+elif False:
+    AccessGroupRequireOktaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireOktaArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[str] name: The name of the Okta group.
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Okta identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the Okta group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class AccessGroupRequireSamlArgsDict(TypedDict):
+        attribute_name: pulumi.Input[str]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: pulumi.Input[str]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    AccessGroupRequireSamlArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireSamlArgs:
+    def __init__(__self__, *,
+                 attribute_name: pulumi.Input[str],
+                 attribute_value: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
+        pulumi.set(__self__, "attribute_name", attribute_name)
+        pulumi.set(__self__, "attribute_value", attribute_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> pulumi.Input[str]:
+        """
+        The name of the SAML attribute.
+        """
+        return pulumi.get(self, "attribute_name")
+
+    @attribute_name.setter
+    def attribute_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_name", value)
+
+    @property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> pulumi.Input[str]:
+        """
+        The SAML attribute value to look for.
+        """
+        return pulumi.get(self, "attribute_value")
+
+    @attribute_value.setter
+    def attribute_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_value", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your SAML identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessGroupRequireServiceTokenArgsDict(TypedDict):
+        token_id: pulumi.Input[str]
+        """
+        The ID of a Service Token.
+        """
+elif False:
+    AccessGroupRequireServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireServiceTokenArgs:
+    def __init__(__self__, *,
+                 token_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] token_id: The ID of a Service Token.
+        """
+        pulumi.set(__self__, "token_id", token_id)
+
+    @property
+    @pulumi.getter(name="tokenId")
+    def token_id(self) -> pulumi.Input[str]:
+        """
+        The ID of a Service Token.
+        """
+        return pulumi.get(self, "token_id")
+
+    @token_id.setter
+    def token_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_id", value)
+
+
+if not MYPY:
+    class AccessIdentityProviderConfigArgsDict(TypedDict):
+        apps_domain: NotRequired[pulumi.Input[str]]
+        """
+        Your companies TLD
+        """
+        attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules.
+        """
+        auth_url: NotRequired[pulumi.Input[str]]
+        """
+        The authorization_endpoint URL of your IdP
+        """
+        authorization_server_id: NotRequired[pulumi.Input[str]]
+        """
+        Your okta authorization server id
+        """
+        centrify_account: NotRequired[pulumi.Input[str]]
+        """
+        Your centrify account url
+        """
+        centrify_app_id: NotRequired[pulumi.Input[str]]
+        """
+        Your centrify app id
+        """
+        certs_url: NotRequired[pulumi.Input[str]]
+        """
+        The jwks_uri endpoint of your IdP to allow the IdP keys to sign the tokens
+        """
+        claims: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Custom claims
+        """
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        Your OAuth Client ID
+        """
+        client_secret: NotRequired[pulumi.Input[str]]
+        """
+        Your OAuth Client Secret
+        """
+        conditional_access_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Should Cloudflare try to load authentication contexts from your account
+        """
+        directory_id: NotRequired[pulumi.Input[str]]
+        """
+        Your Azure directory uuid
+        """
+        email_attribute_name: NotRequired[pulumi.Input[str]]
+        """
+        The attribute name for email in the SAML response.
+        """
+        email_claim_name: NotRequired[pulumi.Input[str]]
+        """
+        The claim name for email in the id_token response.
+        """
+        header_attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigHeaderAttributeArgsDict']]]]
+        """
+        Add a list of attribute names that will be returned in the response header from the Access callback.
+        """
+        idp_public_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        X509 certificate to verify the signature in the SAML authentication response
+        """
+        issuer_url: NotRequired[pulumi.Input[str]]
+        """
+        IdP Entity ID or Issuer URL
+        """
+        okta_account: NotRequired[pulumi.Input[str]]
+        """
+        Your okta account url
+        """
+        onelogin_account: NotRequired[pulumi.Input[str]]
+        """
+        Your OneLogin account url
+        """
+        ping_env_id: NotRequired[pulumi.Input[str]]
+        """
+        Your PingOne environment identifier
+        """
+        pkce_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable Proof Key for Code Exchange (PKCE)
+        """
+        prompt: NotRequired[pulumi.Input[str]]
+        """
+        Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+        Available values: "login", "select_account", "none".
+        """
+        redirect_url: NotRequired[pulumi.Input[str]]
+        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        OAuth scopes
+        """
+        sign_request: NotRequired[pulumi.Input[bool]]
+        """
+        Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
+        """
+        sso_target_url: NotRequired[pulumi.Input[str]]
+        """
+        URL to send the SAML authentication requests to
+        """
+        support_groups: NotRequired[pulumi.Input[bool]]
+        """
+        Should Cloudflare try to load groups from your account
+        """
+        token_url: NotRequired[pulumi.Input[str]]
+        """
+        The token_endpoint URL of your IdP
+        """
+elif False:
+    AccessIdentityProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessIdentityProviderConfigArgs:
+    def __init__(__self__, *,
+                 apps_domain: Optional[pulumi.Input[str]] = None,
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 auth_url: Optional[pulumi.Input[str]] = None,
+                 authorization_server_id: Optional[pulumi.Input[str]] = None,
+                 centrify_account: Optional[pulumi.Input[str]] = None,
+                 centrify_app_id: Optional[pulumi.Input[str]] = None,
+                 certs_url: Optional[pulumi.Input[str]] = None,
+                 claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 conditional_access_enabled: Optional[pulumi.Input[bool]] = None,
+                 directory_id: Optional[pulumi.Input[str]] = None,
+                 email_attribute_name: Optional[pulumi.Input[str]] = None,
+                 email_claim_name: Optional[pulumi.Input[str]] = None,
+                 header_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigHeaderAttributeArgs']]]] = None,
+                 idp_public_certs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 issuer_url: Optional[pulumi.Input[str]] = None,
+                 okta_account: Optional[pulumi.Input[str]] = None,
+                 onelogin_account: Optional[pulumi.Input[str]] = None,
+                 ping_env_id: Optional[pulumi.Input[str]] = None,
+                 pkce_enabled: Optional[pulumi.Input[bool]] = None,
+                 prompt: Optional[pulumi.Input[str]] = None,
+                 redirect_url: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sign_request: Optional[pulumi.Input[bool]] = None,
+                 sso_target_url: Optional[pulumi.Input[str]] = None,
+                 support_groups: Optional[pulumi.Input[bool]] = None,
+                 token_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] apps_domain: Your companies TLD
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] attributes: A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules.
+        :param pulumi.Input[str] auth_url: The authorization_endpoint URL of your IdP
+        :param pulumi.Input[str] authorization_server_id: Your okta authorization server id
+        :param pulumi.Input[str] centrify_account: Your centrify account url
+        :param pulumi.Input[str] centrify_app_id: Your centrify app id
+        :param pulumi.Input[str] certs_url: The jwks_uri endpoint of your IdP to allow the IdP keys to sign the tokens
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] claims: Custom claims
+        :param pulumi.Input[str] client_id: Your OAuth Client ID
+        :param pulumi.Input[str] client_secret: Your OAuth Client Secret
+        :param pulumi.Input[bool] conditional_access_enabled: Should Cloudflare try to load authentication contexts from your account
+        :param pulumi.Input[str] directory_id: Your Azure directory uuid
+        :param pulumi.Input[str] email_attribute_name: The attribute name for email in the SAML response.
+        :param pulumi.Input[str] email_claim_name: The claim name for email in the id_token response.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigHeaderAttributeArgs']]] header_attributes: Add a list of attribute names that will be returned in the response header from the Access callback.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] idp_public_certs: X509 certificate to verify the signature in the SAML authentication response
+        :param pulumi.Input[str] issuer_url: IdP Entity ID or Issuer URL
+        :param pulumi.Input[str] okta_account: Your okta account url
+        :param pulumi.Input[str] onelogin_account: Your OneLogin account url
+        :param pulumi.Input[str] ping_env_id: Your PingOne environment identifier
+        :param pulumi.Input[bool] pkce_enabled: Enable Proof Key for Code Exchange (PKCE)
+        :param pulumi.Input[str] prompt: Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+               Available values: "login", "select_account", "none".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: OAuth scopes
+        :param pulumi.Input[bool] sign_request: Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
+        :param pulumi.Input[str] sso_target_url: URL to send the SAML authentication requests to
+        :param pulumi.Input[bool] support_groups: Should Cloudflare try to load groups from your account
+        :param pulumi.Input[str] token_url: The token_endpoint URL of your IdP
+        """
+        if apps_domain is not None:
+            pulumi.set(__self__, "apps_domain", apps_domain)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+        if auth_url is not None:
+            pulumi.set(__self__, "auth_url", auth_url)
+        if authorization_server_id is not None:
+            pulumi.set(__self__, "authorization_server_id", authorization_server_id)
+        if centrify_account is not None:
+            pulumi.set(__self__, "centrify_account", centrify_account)
+        if centrify_app_id is not None:
+            pulumi.set(__self__, "centrify_app_id", centrify_app_id)
+        if certs_url is not None:
+            pulumi.set(__self__, "certs_url", certs_url)
+        if claims is not None:
+            pulumi.set(__self__, "claims", claims)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if conditional_access_enabled is not None:
+            pulumi.set(__self__, "conditional_access_enabled", conditional_access_enabled)
+        if directory_id is not None:
+            pulumi.set(__self__, "directory_id", directory_id)
+        if email_attribute_name is not None:
+            pulumi.set(__self__, "email_attribute_name", email_attribute_name)
+        if email_claim_name is not None:
+            pulumi.set(__self__, "email_claim_name", email_claim_name)
+        if header_attributes is not None:
+            pulumi.set(__self__, "header_attributes", header_attributes)
+        if idp_public_certs is not None:
+            pulumi.set(__self__, "idp_public_certs", idp_public_certs)
+        if issuer_url is not None:
+            pulumi.set(__self__, "issuer_url", issuer_url)
+        if okta_account is not None:
+            pulumi.set(__self__, "okta_account", okta_account)
+        if onelogin_account is not None:
+            pulumi.set(__self__, "onelogin_account", onelogin_account)
+        if ping_env_id is not None:
+            pulumi.set(__self__, "ping_env_id", ping_env_id)
+        if pkce_enabled is not None:
+            pulumi.set(__self__, "pkce_enabled", pkce_enabled)
+        if prompt is not None:
+            pulumi.set(__self__, "prompt", prompt)
+        if redirect_url is not None:
+            pulumi.set(__self__, "redirect_url", redirect_url)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if sign_request is not None:
+            pulumi.set(__self__, "sign_request", sign_request)
+        if sso_target_url is not None:
+            pulumi.set(__self__, "sso_target_url", sso_target_url)
+        if support_groups is not None:
+            pulumi.set(__self__, "support_groups", support_groups)
+        if token_url is not None:
+            pulumi.set(__self__, "token_url", token_url)
+
+    @property
+    @pulumi.getter(name="appsDomain")
+    def apps_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your companies TLD
+        """
+        return pulumi.get(self, "apps_domain")
+
+    @apps_domain.setter
+    def apps_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "apps_domain", value)
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules.
+        """
+        return pulumi.get(self, "attributes")
+
+    @attributes.setter
+    def attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "attributes", value)
+
+    @property
+    @pulumi.getter(name="authUrl")
+    def auth_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The authorization_endpoint URL of your IdP
+        """
+        return pulumi.get(self, "auth_url")
+
+    @auth_url.setter
+    def auth_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_url", value)
+
+    @property
+    @pulumi.getter(name="authorizationServerId")
+    def authorization_server_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your okta authorization server id
+        """
+        return pulumi.get(self, "authorization_server_id")
+
+    @authorization_server_id.setter
+    def authorization_server_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authorization_server_id", value)
+
+    @property
+    @pulumi.getter(name="centrifyAccount")
+    def centrify_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your centrify account url
+        """
+        return pulumi.get(self, "centrify_account")
+
+    @centrify_account.setter
+    def centrify_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "centrify_account", value)
+
+    @property
+    @pulumi.getter(name="centrifyAppId")
+    def centrify_app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your centrify app id
+        """
+        return pulumi.get(self, "centrify_app_id")
+
+    @centrify_app_id.setter
+    def centrify_app_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "centrify_app_id", value)
+
+    @property
+    @pulumi.getter(name="certsUrl")
+    def certs_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The jwks_uri endpoint of your IdP to allow the IdP keys to sign the tokens
+        """
+        return pulumi.get(self, "certs_url")
+
+    @certs_url.setter
+    def certs_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certs_url", value)
+
+    @property
+    @pulumi.getter
+    def claims(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Custom claims
+        """
+        return pulumi.get(self, "claims")
+
+    @claims.setter
+    def claims(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "claims", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your OAuth Client ID
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your OAuth Client Secret
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="conditionalAccessEnabled")
+    def conditional_access_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Should Cloudflare try to load authentication contexts from your account
+        """
+        return pulumi.get(self, "conditional_access_enabled")
+
+    @conditional_access_enabled.setter
+    def conditional_access_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "conditional_access_enabled", value)
+
+    @property
+    @pulumi.getter(name="directoryId")
+    def directory_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your Azure directory uuid
+        """
+        return pulumi.get(self, "directory_id")
+
+    @directory_id.setter
+    def directory_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "directory_id", value)
+
+    @property
+    @pulumi.getter(name="emailAttributeName")
+    def email_attribute_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The attribute name for email in the SAML response.
+        """
+        return pulumi.get(self, "email_attribute_name")
+
+    @email_attribute_name.setter
+    def email_attribute_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email_attribute_name", value)
+
+    @property
+    @pulumi.getter(name="emailClaimName")
+    def email_claim_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The claim name for email in the id_token response.
+        """
+        return pulumi.get(self, "email_claim_name")
+
+    @email_claim_name.setter
+    def email_claim_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email_claim_name", value)
+
+    @property
+    @pulumi.getter(name="headerAttributes")
+    def header_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigHeaderAttributeArgs']]]]:
+        """
+        Add a list of attribute names that will be returned in the response header from the Access callback.
+        """
+        return pulumi.get(self, "header_attributes")
+
+    @header_attributes.setter
+    def header_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigHeaderAttributeArgs']]]]):
+        pulumi.set(self, "header_attributes", value)
+
+    @property
+    @pulumi.getter(name="idpPublicCerts")
+    def idp_public_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        X509 certificate to verify the signature in the SAML authentication response
+        """
+        return pulumi.get(self, "idp_public_certs")
+
+    @idp_public_certs.setter
+    def idp_public_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "idp_public_certs", value)
+
+    @property
+    @pulumi.getter(name="issuerUrl")
+    def issuer_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        IdP Entity ID or Issuer URL
+        """
+        return pulumi.get(self, "issuer_url")
+
+    @issuer_url.setter
+    def issuer_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issuer_url", value)
+
+    @property
+    @pulumi.getter(name="oktaAccount")
+    def okta_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your okta account url
+        """
+        return pulumi.get(self, "okta_account")
+
+    @okta_account.setter
+    def okta_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "okta_account", value)
+
+    @property
+    @pulumi.getter(name="oneloginAccount")
+    def onelogin_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your OneLogin account url
+        """
+        return pulumi.get(self, "onelogin_account")
+
+    @onelogin_account.setter
+    def onelogin_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "onelogin_account", value)
+
+    @property
+    @pulumi.getter(name="pingEnvId")
+    def ping_env_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your PingOne environment identifier
+        """
+        return pulumi.get(self, "ping_env_id")
+
+    @ping_env_id.setter
+    def ping_env_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ping_env_id", value)
+
+    @property
+    @pulumi.getter(name="pkceEnabled")
+    def pkce_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Proof Key for Code Exchange (PKCE)
+        """
+        return pulumi.get(self, "pkce_enabled")
+
+    @pkce_enabled.setter
+    def pkce_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pkce_enabled", value)
+
+    @property
+    @pulumi.getter
+    def prompt(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+        Available values: "login", "select_account", "none".
+        """
+        return pulumi.get(self, "prompt")
+
+    @prompt.setter
+    def prompt(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prompt", value)
+
+    @property
+    @pulumi.getter(name="redirectUrl")
+    def redirect_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "redirect_url")
+
+    @redirect_url.setter
+    def redirect_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redirect_url", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        OAuth scopes
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @property
+    @pulumi.getter(name="signRequest")
+    def sign_request(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
+        """
+        return pulumi.get(self, "sign_request")
+
+    @sign_request.setter
+    def sign_request(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sign_request", value)
+
+    @property
+    @pulumi.getter(name="ssoTargetUrl")
+    def sso_target_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL to send the SAML authentication requests to
+        """
+        return pulumi.get(self, "sso_target_url")
+
+    @sso_target_url.setter
+    def sso_target_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sso_target_url", value)
+
+    @property
+    @pulumi.getter(name="supportGroups")
+    def support_groups(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Should Cloudflare try to load groups from your account
+        """
+        return pulumi.get(self, "support_groups")
+
+    @support_groups.setter
+    def support_groups(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "support_groups", value)
+
+    @property
+    @pulumi.getter(name="tokenUrl")
+    def token_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The token_endpoint URL of your IdP
+        """
+        return pulumi.get(self, "token_url")
+
+    @token_url.setter
+    def token_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_url", value)
+
+
+if not MYPY:
+    class AccessIdentityProviderConfigHeaderAttributeArgsDict(TypedDict):
+        attribute_name: NotRequired[pulumi.Input[str]]
+        """
+        attribute name from the IDP
+        """
+        header_name: NotRequired[pulumi.Input[str]]
+        """
+        header that will be added on the request to the origin
+        """
+elif False:
+    AccessIdentityProviderConfigHeaderAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessIdentityProviderConfigHeaderAttributeArgs:
+    def __init__(__self__, *,
+                 attribute_name: Optional[pulumi.Input[str]] = None,
+                 header_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] attribute_name: attribute name from the IDP
+        :param pulumi.Input[str] header_name: header that will be added on the request to the origin
+        """
+        if attribute_name is not None:
+            pulumi.set(__self__, "attribute_name", attribute_name)
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+
+    @property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        attribute name from the IDP
+        """
+        return pulumi.get(self, "attribute_name")
+
+    @attribute_name.setter
+    def attribute_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "attribute_name", value)
+
+    @property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        header that will be added on the request to the origin
+        """
+        return pulumi.get(self, "header_name")
+
+    @header_name.setter
+    def header_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "header_name", value)
+
+
+if not MYPY:
+    class AccessIdentityProviderScimConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        A flag to enable or disable SCIM for the identity provider.
+        """
+        identity_update_behavior: NotRequired[pulumi.Input[str]]
+        """
+        Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no*action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+        Available values: "automatic", "reauth", "no*action".
+        """
+        scim_base_url: NotRequired[pulumi.Input[str]]
+        """
+        The base URL of Cloudflare's SCIM V2.0 API endpoint.
+        """
+        seat_deprovision: NotRequired[pulumi.Input[bool]]
+        """
+        A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+        """
+        secret: NotRequired[pulumi.Input[str]]
+        """
+        A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
+        """
+        user_deprovision: NotRequired[pulumi.Input[bool]]
+        """
+        A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+        """
+elif False:
+    AccessIdentityProviderScimConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessIdentityProviderScimConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 identity_update_behavior: Optional[pulumi.Input[str]] = None,
+                 scim_base_url: Optional[pulumi.Input[str]] = None,
+                 seat_deprovision: Optional[pulumi.Input[bool]] = None,
+                 secret: Optional[pulumi.Input[str]] = None,
+                 user_deprovision: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: A flag to enable or disable SCIM for the identity provider.
+        :param pulumi.Input[str] identity_update_behavior: Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no*action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+               Available values: "automatic", "reauth", "no*action".
+        :param pulumi.Input[str] scim_base_url: The base URL of Cloudflare's SCIM V2.0 API endpoint.
+        :param pulumi.Input[bool] seat_deprovision: A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+        :param pulumi.Input[str] secret: A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
+        :param pulumi.Input[bool] user_deprovision: A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if identity_update_behavior is not None:
+            pulumi.set(__self__, "identity_update_behavior", identity_update_behavior)
+        if scim_base_url is not None:
+            pulumi.set(__self__, "scim_base_url", scim_base_url)
+        if seat_deprovision is not None:
+            pulumi.set(__self__, "seat_deprovision", seat_deprovision)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if user_deprovision is not None:
+            pulumi.set(__self__, "user_deprovision", user_deprovision)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A flag to enable or disable SCIM for the identity provider.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="identityUpdateBehavior")
+    def identity_update_behavior(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no*action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+        Available values: "automatic", "reauth", "no*action".
+        """
+        return pulumi.get(self, "identity_update_behavior")
+
+    @identity_update_behavior.setter
+    def identity_update_behavior(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_update_behavior", value)
+
+    @property
+    @pulumi.getter(name="scimBaseUrl")
+    def scim_base_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base URL of Cloudflare's SCIM V2.0 API endpoint.
+        """
+        return pulumi.get(self, "scim_base_url")
+
+    @scim_base_url.setter
+    def scim_base_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scim_base_url", value)
+
+    @property
+    @pulumi.getter(name="seatDeprovision")
+    def seat_deprovision(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+        """
+        return pulumi.get(self, "seat_deprovision")
+
+    @seat_deprovision.setter
+    def seat_deprovision(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "seat_deprovision", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret", value)
+
+    @property
+    @pulumi.getter(name="userDeprovision")
+    def user_deprovision(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+        """
+        return pulumi.get(self, "user_deprovision")
+
+    @user_deprovision.setter
+    def user_deprovision(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "user_deprovision", value)
+
+
+if not MYPY:
+    class AccessMutualTlsHostnameSettingsSettingArgsDict(TypedDict):
+        china_network: pulumi.Input[bool]
+        """
+        Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        """
+        client_certificate_forwarding: pulumi.Input[bool]
+        """
+        Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        """
+        hostname: pulumi.Input[str]
+        """
+        The hostname that these settings apply to.
+        """
+elif False:
+    AccessMutualTlsHostnameSettingsSettingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessMutualTlsHostnameSettingsSettingArgs:
+    def __init__(__self__, *,
+                 china_network: pulumi.Input[bool],
+                 client_certificate_forwarding: pulumi.Input[bool],
+                 hostname: pulumi.Input[str]):
+        """
+        :param pulumi.Input[bool] china_network: Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        :param pulumi.Input[bool] client_certificate_forwarding: Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        :param pulumi.Input[str] hostname: The hostname that these settings apply to.
+        """
+        pulumi.set(__self__, "china_network", china_network)
+        pulumi.set(__self__, "client_certificate_forwarding", client_certificate_forwarding)
+        pulumi.set(__self__, "hostname", hostname)
+
+    @property
+    @pulumi.getter(name="chinaNetwork")
+    def china_network(self) -> pulumi.Input[bool]:
+        """
+        Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        """
+        return pulumi.get(self, "china_network")
+
+    @china_network.setter
+    def china_network(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "china_network", value)
+
+    @property
+    @pulumi.getter(name="clientCertificateForwarding")
+    def client_certificate_forwarding(self) -> pulumi.Input[bool]:
+        """
+        Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        """
+        return pulumi.get(self, "client_certificate_forwarding")
+
+    @client_certificate_forwarding.setter
+    def client_certificate_forwarding(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "client_certificate_forwarding", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Input[str]:
+        """
+        The hostname that these settings apply to.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hostname", value)
+
+
+if not MYPY:
+    class AccessOrganizationCustomPagesArgsDict(TypedDict):
+        forbidden: NotRequired[pulumi.Input[str]]
+        """
+        The uid of the custom page to use when a user is denied access after failing a non-identity rule.
+        """
+        identity_denied: NotRequired[pulumi.Input[str]]
+        """
+        The uid of the custom page to use when a user is denied access.
+        """
+elif False:
+    AccessOrganizationCustomPagesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessOrganizationCustomPagesArgs:
+    def __init__(__self__, *,
+                 forbidden: Optional[pulumi.Input[str]] = None,
+                 identity_denied: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] forbidden: The uid of the custom page to use when a user is denied access after failing a non-identity rule.
+        :param pulumi.Input[str] identity_denied: The uid of the custom page to use when a user is denied access.
+        """
+        if forbidden is not None:
+            pulumi.set(__self__, "forbidden", forbidden)
+        if identity_denied is not None:
+            pulumi.set(__self__, "identity_denied", identity_denied)
+
+    @property
+    @pulumi.getter
+    def forbidden(self) -> Optional[pulumi.Input[str]]:
+        """
+        The uid of the custom page to use when a user is denied access after failing a non-identity rule.
+        """
+        return pulumi.get(self, "forbidden")
+
+    @forbidden.setter
+    def forbidden(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "forbidden", value)
+
+    @property
+    @pulumi.getter(name="identityDenied")
+    def identity_denied(self) -> Optional[pulumi.Input[str]]:
+        """
+        The uid of the custom page to use when a user is denied access.
+        """
+        return pulumi.get(self, "identity_denied")
+
+    @identity_denied.setter
+    def identity_denied(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_denied", value)
+
+
+if not MYPY:
+    class AccessOrganizationLoginDesignArgsDict(TypedDict):
+        background_color: NotRequired[pulumi.Input[str]]
+        """
+        The background color on your login page.
+        """
+        footer_text: NotRequired[pulumi.Input[str]]
+        """
+        The text at the bottom of your login page.
+        """
+        header_text: NotRequired[pulumi.Input[str]]
+        """
+        The text at the top of your login page.
+        """
+        logo_path: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the logo on your login page.
+        """
+        text_color: NotRequired[pulumi.Input[str]]
+        """
+        The text color on your login page.
+        """
+elif False:
+    AccessOrganizationLoginDesignArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessOrganizationLoginDesignArgs:
+    def __init__(__self__, *,
+                 background_color: Optional[pulumi.Input[str]] = None,
+                 footer_text: Optional[pulumi.Input[str]] = None,
+                 header_text: Optional[pulumi.Input[str]] = None,
+                 logo_path: Optional[pulumi.Input[str]] = None,
+                 text_color: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] background_color: The background color on your login page.
+        :param pulumi.Input[str] footer_text: The text at the bottom of your login page.
+        :param pulumi.Input[str] header_text: The text at the top of your login page.
+        :param pulumi.Input[str] logo_path: The URL of the logo on your login page.
+        :param pulumi.Input[str] text_color: The text color on your login page.
+        """
+        if background_color is not None:
+            pulumi.set(__self__, "background_color", background_color)
+        if footer_text is not None:
+            pulumi.set(__self__, "footer_text", footer_text)
+        if header_text is not None:
+            pulumi.set(__self__, "header_text", header_text)
+        if logo_path is not None:
+            pulumi.set(__self__, "logo_path", logo_path)
+        if text_color is not None:
+            pulumi.set(__self__, "text_color", text_color)
+
+    @property
+    @pulumi.getter(name="backgroundColor")
+    def background_color(self) -> Optional[pulumi.Input[str]]:
+        """
+        The background color on your login page.
+        """
+        return pulumi.get(self, "background_color")
+
+    @background_color.setter
+    def background_color(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "background_color", value)
+
+    @property
+    @pulumi.getter(name="footerText")
+    def footer_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The text at the bottom of your login page.
+        """
+        return pulumi.get(self, "footer_text")
+
+    @footer_text.setter
+    def footer_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "footer_text", value)
+
+    @property
+    @pulumi.getter(name="headerText")
+    def header_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The text at the top of your login page.
+        """
+        return pulumi.get(self, "header_text")
+
+    @header_text.setter
+    def header_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "header_text", value)
+
+    @property
+    @pulumi.getter(name="logoPath")
+    def logo_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the logo on your login page.
+        """
+        return pulumi.get(self, "logo_path")
+
+    @logo_path.setter
+    def logo_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logo_path", value)
+
+    @property
+    @pulumi.getter(name="textColor")
+    def text_color(self) -> Optional[pulumi.Input[str]]:
+        """
+        The text color on your login page.
+        """
+        return pulumi.get(self, "text_color")
+
+    @text_color.setter
+    def text_color(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text_color", value)
+
+
+if not MYPY:
+    class AccessPolicyApprovalGroupArgsDict(TypedDict):
+        approvals_needed: pulumi.Input[float]
+        """
+        The number of approvals needed to obtain access.
+        """
+        email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of emails that can approve the access request.
+        """
+        email_list_uuid: NotRequired[pulumi.Input[str]]
+        """
+        The UUID of an re-usable email list.
+        """
+elif False:
+    AccessPolicyApprovalGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyApprovalGroupArgs:
+    def __init__(__self__, *,
+                 approvals_needed: pulumi.Input[float],
+                 email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 email_list_uuid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[float] approvals_needed: The number of approvals needed to obtain access.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_addresses: A list of emails that can approve the access request.
+        :param pulumi.Input[str] email_list_uuid: The UUID of an re-usable email list.
+        """
+        pulumi.set(__self__, "approvals_needed", approvals_needed)
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if email_list_uuid is not None:
+            pulumi.set(__self__, "email_list_uuid", email_list_uuid)
+
+    @property
+    @pulumi.getter(name="approvalsNeeded")
+    def approvals_needed(self) -> pulumi.Input[float]:
+        """
+        The number of approvals needed to obtain access.
+        """
+        return pulumi.get(self, "approvals_needed")
+
+    @approvals_needed.setter
+    def approvals_needed(self, value: pulumi.Input[float]):
+        pulumi.set(self, "approvals_needed", value)
+
+    @property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of emails that can approve the access request.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @email_addresses.setter
+    def email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "email_addresses", value)
+
+    @property
+    @pulumi.getter(name="emailListUuid")
+    def email_list_uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        The UUID of an re-usable email list.
+        """
+        return pulumi.get(self, "email_list_uuid")
+
+    @email_list_uuid.setter
+    def email_list_uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email_list_uuid", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input['AccessPolicyExcludeAnyValidServiceTokenArgsDict']]
+        """
+        An empty object which matches on all service tokens.
+        """
+        auth_context: NotRequired[pulumi.Input['AccessPolicyExcludeAuthContextArgsDict']]
+        auth_method: NotRequired[pulumi.Input['AccessPolicyExcludeAuthMethodArgsDict']]
+        azure_ad: NotRequired[pulumi.Input['AccessPolicyExcludeAzureAdArgsDict']]
+        certificate: NotRequired[pulumi.Input['AccessPolicyExcludeCertificateArgsDict']]
+        common_name: NotRequired[pulumi.Input['AccessPolicyExcludeCommonNameArgsDict']]
+        device_posture: NotRequired[pulumi.Input['AccessPolicyExcludeDevicePostureArgsDict']]
+        email: NotRequired[pulumi.Input['AccessPolicyExcludeEmailArgsDict']]
+        email_domain: NotRequired[pulumi.Input['AccessPolicyExcludeEmailDomainArgsDict']]
+        email_list: NotRequired[pulumi.Input['AccessPolicyExcludeEmailListArgsDict']]
+        everyone: NotRequired[pulumi.Input['AccessPolicyExcludeEveryoneArgsDict']]
+        """
+        An empty object which matches on all users.
+        """
+        external_evaluation: NotRequired[pulumi.Input['AccessPolicyExcludeExternalEvaluationArgsDict']]
+        geo: NotRequired[pulumi.Input['AccessPolicyExcludeGeoArgsDict']]
+        github_organization: NotRequired[pulumi.Input['AccessPolicyExcludeGithubOrganizationArgsDict']]
+        group: NotRequired[pulumi.Input['AccessPolicyExcludeGroupArgsDict']]
+        gsuite: NotRequired[pulumi.Input['AccessPolicyExcludeGsuiteArgsDict']]
+        ip: NotRequired[pulumi.Input['AccessPolicyExcludeIpArgsDict']]
+        ip_list: NotRequired[pulumi.Input['AccessPolicyExcludeIpListArgsDict']]
+        login_method: NotRequired[pulumi.Input['AccessPolicyExcludeLoginMethodArgsDict']]
+        okta: NotRequired[pulumi.Input['AccessPolicyExcludeOktaArgsDict']]
+        saml: NotRequired[pulumi.Input['AccessPolicyExcludeSamlArgsDict']]
+        service_token: NotRequired[pulumi.Input['AccessPolicyExcludeServiceTokenArgsDict']]
+elif False:
+    AccessPolicyExcludeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeArgs:
+    def __init__(__self__, *,
+                 any_valid_service_token: Optional[pulumi.Input['AccessPolicyExcludeAnyValidServiceTokenArgs']] = None,
+                 auth_context: Optional[pulumi.Input['AccessPolicyExcludeAuthContextArgs']] = None,
+                 auth_method: Optional[pulumi.Input['AccessPolicyExcludeAuthMethodArgs']] = None,
+                 azure_ad: Optional[pulumi.Input['AccessPolicyExcludeAzureAdArgs']] = None,
+                 certificate: Optional[pulumi.Input['AccessPolicyExcludeCertificateArgs']] = None,
+                 common_name: Optional[pulumi.Input['AccessPolicyExcludeCommonNameArgs']] = None,
+                 device_posture: Optional[pulumi.Input['AccessPolicyExcludeDevicePostureArgs']] = None,
+                 email: Optional[pulumi.Input['AccessPolicyExcludeEmailArgs']] = None,
+                 email_domain: Optional[pulumi.Input['AccessPolicyExcludeEmailDomainArgs']] = None,
+                 email_list: Optional[pulumi.Input['AccessPolicyExcludeEmailListArgs']] = None,
+                 everyone: Optional[pulumi.Input['AccessPolicyExcludeEveryoneArgs']] = None,
+                 external_evaluation: Optional[pulumi.Input['AccessPolicyExcludeExternalEvaluationArgs']] = None,
+                 geo: Optional[pulumi.Input['AccessPolicyExcludeGeoArgs']] = None,
+                 github_organization: Optional[pulumi.Input['AccessPolicyExcludeGithubOrganizationArgs']] = None,
+                 group: Optional[pulumi.Input['AccessPolicyExcludeGroupArgs']] = None,
+                 gsuite: Optional[pulumi.Input['AccessPolicyExcludeGsuiteArgs']] = None,
+                 ip: Optional[pulumi.Input['AccessPolicyExcludeIpArgs']] = None,
+                 ip_list: Optional[pulumi.Input['AccessPolicyExcludeIpListArgs']] = None,
+                 login_method: Optional[pulumi.Input['AccessPolicyExcludeLoginMethodArgs']] = None,
+                 okta: Optional[pulumi.Input['AccessPolicyExcludeOktaArgs']] = None,
+                 saml: Optional[pulumi.Input['AccessPolicyExcludeSamlArgs']] = None,
+                 service_token: Optional[pulumi.Input['AccessPolicyExcludeServiceTokenArgs']] = None):
+        """
+        :param pulumi.Input['AccessPolicyExcludeAnyValidServiceTokenArgs'] any_valid_service_token: An empty object which matches on all service tokens.
+        :param pulumi.Input['AccessPolicyExcludeEveryoneArgs'] everyone: An empty object which matches on all users.
+        """
+        if any_valid_service_token is not None:
+            pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_context is not None:
+            pulumi.set(__self__, "auth_context", auth_context)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
+        if azure_ad is not None:
+            pulumi.set(__self__, "azure_ad", azure_ad)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if device_posture is not None:
+            pulumi.set(__self__, "device_posture", device_posture)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if email_domain is not None:
+            pulumi.set(__self__, "email_domain", email_domain)
+        if email_list is not None:
+            pulumi.set(__self__, "email_list", email_list)
+        if everyone is not None:
+            pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
+        if geo is not None:
+            pulumi.set(__self__, "geo", geo)
+        if github_organization is not None:
+            pulumi.set(__self__, "github_organization", github_organization)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if gsuite is not None:
+            pulumi.set(__self__, "gsuite", gsuite)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if ip_list is not None:
+            pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
+        if okta is not None:
+            pulumi.set(__self__, "okta", okta)
+        if saml is not None:
+            pulumi.set(__self__, "saml", saml)
+        if service_token is not None:
+            pulumi.set(__self__, "service_token", service_token)
+
+    @property
+    @pulumi.getter(name="anyValidServiceToken")
+    def any_valid_service_token(self) -> Optional[pulumi.Input['AccessPolicyExcludeAnyValidServiceTokenArgs']]:
+        """
+        An empty object which matches on all service tokens.
+        """
+        return pulumi.get(self, "any_valid_service_token")
+
+    @any_valid_service_token.setter
+    def any_valid_service_token(self, value: Optional[pulumi.Input['AccessPolicyExcludeAnyValidServiceTokenArgs']]):
+        pulumi.set(self, "any_valid_service_token", value)
+
+    @property
+    @pulumi.getter(name="authContext")
+    def auth_context(self) -> Optional[pulumi.Input['AccessPolicyExcludeAuthContextArgs']]:
+        return pulumi.get(self, "auth_context")
+
+    @auth_context.setter
+    def auth_context(self, value: Optional[pulumi.Input['AccessPolicyExcludeAuthContextArgs']]):
+        pulumi.set(self, "auth_context", value)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input['AccessPolicyExcludeAuthMethodArgs']]:
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input['AccessPolicyExcludeAuthMethodArgs']]):
+        pulumi.set(self, "auth_method", value)
+
+    @property
+    @pulumi.getter(name="azureAd")
+    def azure_ad(self) -> Optional[pulumi.Input['AccessPolicyExcludeAzureAdArgs']]:
+        return pulumi.get(self, "azure_ad")
+
+    @azure_ad.setter
+    def azure_ad(self, value: Optional[pulumi.Input['AccessPolicyExcludeAzureAdArgs']]):
+        pulumi.set(self, "azure_ad", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input['AccessPolicyExcludeCertificateArgs']]:
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input['AccessPolicyExcludeCertificateArgs']]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[pulumi.Input['AccessPolicyExcludeCommonNameArgs']]:
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: Optional[pulumi.Input['AccessPolicyExcludeCommonNameArgs']]):
+        pulumi.set(self, "common_name", value)
+
+    @property
+    @pulumi.getter(name="devicePosture")
+    def device_posture(self) -> Optional[pulumi.Input['AccessPolicyExcludeDevicePostureArgs']]:
+        return pulumi.get(self, "device_posture")
+
+    @device_posture.setter
+    def device_posture(self, value: Optional[pulumi.Input['AccessPolicyExcludeDevicePostureArgs']]):
+        pulumi.set(self, "device_posture", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input['AccessPolicyExcludeEmailArgs']]:
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input['AccessPolicyExcludeEmailArgs']]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="emailDomain")
+    def email_domain(self) -> Optional[pulumi.Input['AccessPolicyExcludeEmailDomainArgs']]:
+        return pulumi.get(self, "email_domain")
+
+    @email_domain.setter
+    def email_domain(self, value: Optional[pulumi.Input['AccessPolicyExcludeEmailDomainArgs']]):
+        pulumi.set(self, "email_domain", value)
+
+    @property
+    @pulumi.getter(name="emailList")
+    def email_list(self) -> Optional[pulumi.Input['AccessPolicyExcludeEmailListArgs']]:
+        return pulumi.get(self, "email_list")
+
+    @email_list.setter
+    def email_list(self, value: Optional[pulumi.Input['AccessPolicyExcludeEmailListArgs']]):
+        pulumi.set(self, "email_list", value)
+
+    @property
+    @pulumi.getter
+    def everyone(self) -> Optional[pulumi.Input['AccessPolicyExcludeEveryoneArgs']]:
+        """
+        An empty object which matches on all users.
+        """
+        return pulumi.get(self, "everyone")
+
+    @everyone.setter
+    def everyone(self, value: Optional[pulumi.Input['AccessPolicyExcludeEveryoneArgs']]):
+        pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional[pulumi.Input['AccessPolicyExcludeExternalEvaluationArgs']]:
+        return pulumi.get(self, "external_evaluation")
+
+    @external_evaluation.setter
+    def external_evaluation(self, value: Optional[pulumi.Input['AccessPolicyExcludeExternalEvaluationArgs']]):
+        pulumi.set(self, "external_evaluation", value)
+
+    @property
+    @pulumi.getter
+    def geo(self) -> Optional[pulumi.Input['AccessPolicyExcludeGeoArgs']]:
+        return pulumi.get(self, "geo")
+
+    @geo.setter
+    def geo(self, value: Optional[pulumi.Input['AccessPolicyExcludeGeoArgs']]):
+        pulumi.set(self, "geo", value)
+
+    @property
+    @pulumi.getter(name="githubOrganization")
+    def github_organization(self) -> Optional[pulumi.Input['AccessPolicyExcludeGithubOrganizationArgs']]:
+        return pulumi.get(self, "github_organization")
+
+    @github_organization.setter
+    def github_organization(self, value: Optional[pulumi.Input['AccessPolicyExcludeGithubOrganizationArgs']]):
+        pulumi.set(self, "github_organization", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input['AccessPolicyExcludeGroupArgs']]:
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input['AccessPolicyExcludeGroupArgs']]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def gsuite(self) -> Optional[pulumi.Input['AccessPolicyExcludeGsuiteArgs']]:
+        return pulumi.get(self, "gsuite")
+
+    @gsuite.setter
+    def gsuite(self, value: Optional[pulumi.Input['AccessPolicyExcludeGsuiteArgs']]):
+        pulumi.set(self, "gsuite", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input['AccessPolicyExcludeIpArgs']]:
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input['AccessPolicyExcludeIpArgs']]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter(name="ipList")
+    def ip_list(self) -> Optional[pulumi.Input['AccessPolicyExcludeIpListArgs']]:
+        return pulumi.get(self, "ip_list")
+
+    @ip_list.setter
+    def ip_list(self, value: Optional[pulumi.Input['AccessPolicyExcludeIpListArgs']]):
+        pulumi.set(self, "ip_list", value)
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional[pulumi.Input['AccessPolicyExcludeLoginMethodArgs']]:
+        return pulumi.get(self, "login_method")
+
+    @login_method.setter
+    def login_method(self, value: Optional[pulumi.Input['AccessPolicyExcludeLoginMethodArgs']]):
+        pulumi.set(self, "login_method", value)
+
+    @property
+    @pulumi.getter
+    def okta(self) -> Optional[pulumi.Input['AccessPolicyExcludeOktaArgs']]:
+        return pulumi.get(self, "okta")
+
+    @okta.setter
+    def okta(self, value: Optional[pulumi.Input['AccessPolicyExcludeOktaArgs']]):
+        pulumi.set(self, "okta", value)
+
+    @property
+    @pulumi.getter
+    def saml(self) -> Optional[pulumi.Input['AccessPolicyExcludeSamlArgs']]:
+        return pulumi.get(self, "saml")
+
+    @saml.setter
+    def saml(self, value: Optional[pulumi.Input['AccessPolicyExcludeSamlArgs']]):
+        pulumi.set(self, "saml", value)
+
+    @property
+    @pulumi.getter(name="serviceToken")
+    def service_token(self) -> Optional[pulumi.Input['AccessPolicyExcludeServiceTokenArgs']]:
+        return pulumi.get(self, "service_token")
+
+    @service_token.setter
+    def service_token(self, value: Optional[pulumi.Input['AccessPolicyExcludeServiceTokenArgs']]):
+        pulumi.set(self, "service_token", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeAnyValidServiceTokenArgsDict(TypedDict):
+        pass
+elif False:
+    AccessPolicyExcludeAnyValidServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeAnyValidServiceTokenArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessPolicyExcludeAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of an Authentication context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of an Authentication context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessPolicyExcludeAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeAuthContextArgs:
+    def __init__(__self__, *,
+                 ac_id: pulumi.Input[str],
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ac_id: The ACID of an Authentication context.
+        :param pulumi.Input[str] id: The ID of an Authentication context.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> pulumi.Input[str]:
+        """
+        The ACID of an Authentication context.
+        """
+        return pulumi.get(self, "ac_id")
+
+    @ac_id.setter
+    def ac_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ac_id", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Authentication context.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeAuthMethodArgsDict(TypedDict):
+        auth_method: pulumi.Input[str]
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+elif False:
+    AccessPolicyExcludeAuthMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeAuthMethodArgs:
+    def __init__(__self__, *,
+                 auth_method: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] auth_method: The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        pulumi.set(__self__, "auth_method", auth_method)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> pulumi.Input[str]:
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: pulumi.Input[str]):
+        pulumi.set(self, "auth_method", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeAzureAdArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an Azure group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessPolicyExcludeAzureAdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeAzureAdArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an Azure group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Azure group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeCertificateArgsDict(TypedDict):
+        pass
+elif False:
+    AccessPolicyExcludeCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeCertificateArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessPolicyExcludeCommonNameArgsDict(TypedDict):
+        common_name: pulumi.Input[str]
+        """
+        The common name to match.
+        """
+elif False:
+    AccessPolicyExcludeCommonNameArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeCommonNameArgs:
+    def __init__(__self__, *,
+                 common_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] common_name: The common name to match.
+        """
+        pulumi.set(__self__, "common_name", common_name)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> pulumi.Input[str]:
+        """
+        The common name to match.
+        """
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "common_name", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeDevicePostureArgsDict(TypedDict):
+        integration_uid: pulumi.Input[str]
+        """
+        The ID of a device posture integration.
+        """
+elif False:
+    AccessPolicyExcludeDevicePostureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeDevicePostureArgs:
+    def __init__(__self__, *,
+                 integration_uid: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] integration_uid: The ID of a device posture integration.
+        """
+        pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @property
+    @pulumi.getter(name="integrationUid")
+    def integration_uid(self) -> pulumi.Input[str]:
+        """
+        The ID of a device posture integration.
+        """
+        return pulumi.get(self, "integration_uid")
+
+    @integration_uid.setter
+    def integration_uid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "integration_uid", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeEmailArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the user.
+        """
+elif False:
+    AccessPolicyExcludeEmailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeEmailArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the user.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the user.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeEmailDomainArgsDict(TypedDict):
+        domain: pulumi.Input[str]
+        """
+        The email domain to match.
+        """
+elif False:
+    AccessPolicyExcludeEmailDomainArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeEmailDomainArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] domain: The email domain to match.
+        """
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        """
+        The email domain to match.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeEmailListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created email list.
+        """
+elif False:
+    AccessPolicyExcludeEmailListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeEmailListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created email list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created email list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeEveryoneArgsDict(TypedDict):
+        pass
+elif False:
+    AccessPolicyExcludeEveryoneArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeEveryoneArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessPolicyExcludeExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: pulumi.Input[str]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: pulumi.Input[str]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    AccessPolicyExcludeExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeExternalEvaluationArgs:
+    def __init__(__self__, *,
+                 evaluate_url: pulumi.Input[str],
+                 keys_url: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        pulumi.set(__self__, "evaluate_url", evaluate_url)
+        pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing your business logic.
+        """
+        return pulumi.get(self, "evaluate_url")
+
+    @evaluate_url.setter
+    def evaluate_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "evaluate_url", value)
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        return pulumi.get(self, "keys_url")
+
+    @keys_url.setter
+    def keys_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "keys_url", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeGeoArgsDict(TypedDict):
+        country_code: pulumi.Input[str]
+        """
+        The country code that should be matched.
+        """
+elif False:
+    AccessPolicyExcludeGeoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeGeoArgs:
+    def __init__(__self__, *,
+                 country_code: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] country_code: The country code that should be matched.
+        """
+        pulumi.set(__self__, "country_code", country_code)
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> pulumi.Input[str]:
+        """
+        The country code that should be matched.
+        """
+        return pulumi.get(self, "country_code")
+
+    @country_code.setter
+    def country_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "country_code", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeGithubOrganizationArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Github identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the organization.
+        """
+        team: NotRequired[pulumi.Input[str]]
+        """
+        The name of the team
+        """
+elif False:
+    AccessPolicyExcludeGithubOrganizationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeGithubOrganizationArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 team: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[str] team: The name of the team
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+        if team is not None:
+            pulumi.set(__self__, "team", team)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Github identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the organization.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def team(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the team
+        """
+        return pulumi.get(self, "team")
+
+    @team.setter
+    def team(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeGroupArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created Access group.
+        """
+elif False:
+    AccessPolicyExcludeGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeGroupArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created Access group.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created Access group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeGsuiteArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    AccessPolicyExcludeGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeGsuiteArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the Google Workspace group.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeIpArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+elif False:
+    AccessPolicyExcludeIpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeIpArgs:
+    def __init__(__self__, *,
+                 ip: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ip: An IPv4 or IPv6 CIDR block.
+        """
+        pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> pulumi.Input[str]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeIpListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created IP list.
+        """
+elif False:
+    AccessPolicyExcludeIpListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeIpListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created IP list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created IP list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeLoginMethodArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an identity provider.
+        """
+elif False:
+    AccessPolicyExcludeLoginMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeLoginMethodArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeOktaArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Okta identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the Okta group.
+        """
+elif False:
+    AccessPolicyExcludeOktaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeOktaArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[str] name: The name of the Okta group.
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Okta identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the Okta group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeSamlArgsDict(TypedDict):
+        attribute_name: pulumi.Input[str]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: pulumi.Input[str]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    AccessPolicyExcludeSamlArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeSamlArgs:
+    def __init__(__self__, *,
+                 attribute_name: pulumi.Input[str],
+                 attribute_value: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
+        pulumi.set(__self__, "attribute_name", attribute_name)
+        pulumi.set(__self__, "attribute_value", attribute_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> pulumi.Input[str]:
+        """
+        The name of the SAML attribute.
+        """
+        return pulumi.get(self, "attribute_name")
+
+    @attribute_name.setter
+    def attribute_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_name", value)
+
+    @property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> pulumi.Input[str]:
+        """
+        The SAML attribute value to look for.
+        """
+        return pulumi.get(self, "attribute_value")
+
+    @attribute_value.setter
+    def attribute_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_value", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your SAML identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeServiceTokenArgsDict(TypedDict):
+        token_id: pulumi.Input[str]
+        """
+        The ID of a Service Token.
+        """
+elif False:
+    AccessPolicyExcludeServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeServiceTokenArgs:
+    def __init__(__self__, *,
+                 token_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] token_id: The ID of a Service Token.
+        """
+        pulumi.set(__self__, "token_id", token_id)
+
+    @property
+    @pulumi.getter(name="tokenId")
+    def token_id(self) -> pulumi.Input[str]:
+        """
+        The ID of a Service Token.
+        """
+        return pulumi.get(self, "token_id")
+
+    @token_id.setter
+    def token_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_id", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input['AccessPolicyIncludeAnyValidServiceTokenArgsDict']]
+        """
+        An empty object which matches on all service tokens.
+        """
+        auth_context: NotRequired[pulumi.Input['AccessPolicyIncludeAuthContextArgsDict']]
+        auth_method: NotRequired[pulumi.Input['AccessPolicyIncludeAuthMethodArgsDict']]
+        azure_ad: NotRequired[pulumi.Input['AccessPolicyIncludeAzureAdArgsDict']]
+        certificate: NotRequired[pulumi.Input['AccessPolicyIncludeCertificateArgsDict']]
+        common_name: NotRequired[pulumi.Input['AccessPolicyIncludeCommonNameArgsDict']]
+        device_posture: NotRequired[pulumi.Input['AccessPolicyIncludeDevicePostureArgsDict']]
+        email: NotRequired[pulumi.Input['AccessPolicyIncludeEmailArgsDict']]
+        email_domain: NotRequired[pulumi.Input['AccessPolicyIncludeEmailDomainArgsDict']]
+        email_list: NotRequired[pulumi.Input['AccessPolicyIncludeEmailListArgsDict']]
+        everyone: NotRequired[pulumi.Input['AccessPolicyIncludeEveryoneArgsDict']]
+        """
+        An empty object which matches on all users.
+        """
+        external_evaluation: NotRequired[pulumi.Input['AccessPolicyIncludeExternalEvaluationArgsDict']]
+        geo: NotRequired[pulumi.Input['AccessPolicyIncludeGeoArgsDict']]
+        github_organization: NotRequired[pulumi.Input['AccessPolicyIncludeGithubOrganizationArgsDict']]
+        group: NotRequired[pulumi.Input['AccessPolicyIncludeGroupArgsDict']]
+        gsuite: NotRequired[pulumi.Input['AccessPolicyIncludeGsuiteArgsDict']]
+        ip: NotRequired[pulumi.Input['AccessPolicyIncludeIpArgsDict']]
+        ip_list: NotRequired[pulumi.Input['AccessPolicyIncludeIpListArgsDict']]
+        login_method: NotRequired[pulumi.Input['AccessPolicyIncludeLoginMethodArgsDict']]
+        okta: NotRequired[pulumi.Input['AccessPolicyIncludeOktaArgsDict']]
+        saml: NotRequired[pulumi.Input['AccessPolicyIncludeSamlArgsDict']]
+        service_token: NotRequired[pulumi.Input['AccessPolicyIncludeServiceTokenArgsDict']]
+elif False:
+    AccessPolicyIncludeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeArgs:
+    def __init__(__self__, *,
+                 any_valid_service_token: Optional[pulumi.Input['AccessPolicyIncludeAnyValidServiceTokenArgs']] = None,
+                 auth_context: Optional[pulumi.Input['AccessPolicyIncludeAuthContextArgs']] = None,
+                 auth_method: Optional[pulumi.Input['AccessPolicyIncludeAuthMethodArgs']] = None,
+                 azure_ad: Optional[pulumi.Input['AccessPolicyIncludeAzureAdArgs']] = None,
+                 certificate: Optional[pulumi.Input['AccessPolicyIncludeCertificateArgs']] = None,
+                 common_name: Optional[pulumi.Input['AccessPolicyIncludeCommonNameArgs']] = None,
+                 device_posture: Optional[pulumi.Input['AccessPolicyIncludeDevicePostureArgs']] = None,
+                 email: Optional[pulumi.Input['AccessPolicyIncludeEmailArgs']] = None,
+                 email_domain: Optional[pulumi.Input['AccessPolicyIncludeEmailDomainArgs']] = None,
+                 email_list: Optional[pulumi.Input['AccessPolicyIncludeEmailListArgs']] = None,
+                 everyone: Optional[pulumi.Input['AccessPolicyIncludeEveryoneArgs']] = None,
+                 external_evaluation: Optional[pulumi.Input['AccessPolicyIncludeExternalEvaluationArgs']] = None,
+                 geo: Optional[pulumi.Input['AccessPolicyIncludeGeoArgs']] = None,
+                 github_organization: Optional[pulumi.Input['AccessPolicyIncludeGithubOrganizationArgs']] = None,
+                 group: Optional[pulumi.Input['AccessPolicyIncludeGroupArgs']] = None,
+                 gsuite: Optional[pulumi.Input['AccessPolicyIncludeGsuiteArgs']] = None,
+                 ip: Optional[pulumi.Input['AccessPolicyIncludeIpArgs']] = None,
+                 ip_list: Optional[pulumi.Input['AccessPolicyIncludeIpListArgs']] = None,
+                 login_method: Optional[pulumi.Input['AccessPolicyIncludeLoginMethodArgs']] = None,
+                 okta: Optional[pulumi.Input['AccessPolicyIncludeOktaArgs']] = None,
+                 saml: Optional[pulumi.Input['AccessPolicyIncludeSamlArgs']] = None,
+                 service_token: Optional[pulumi.Input['AccessPolicyIncludeServiceTokenArgs']] = None):
+        """
+        :param pulumi.Input['AccessPolicyIncludeAnyValidServiceTokenArgs'] any_valid_service_token: An empty object which matches on all service tokens.
+        :param pulumi.Input['AccessPolicyIncludeEveryoneArgs'] everyone: An empty object which matches on all users.
+        """
+        if any_valid_service_token is not None:
+            pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_context is not None:
+            pulumi.set(__self__, "auth_context", auth_context)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
+        if azure_ad is not None:
+            pulumi.set(__self__, "azure_ad", azure_ad)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if device_posture is not None:
+            pulumi.set(__self__, "device_posture", device_posture)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if email_domain is not None:
+            pulumi.set(__self__, "email_domain", email_domain)
+        if email_list is not None:
+            pulumi.set(__self__, "email_list", email_list)
+        if everyone is not None:
+            pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
+        if geo is not None:
+            pulumi.set(__self__, "geo", geo)
+        if github_organization is not None:
+            pulumi.set(__self__, "github_organization", github_organization)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if gsuite is not None:
+            pulumi.set(__self__, "gsuite", gsuite)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if ip_list is not None:
+            pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
+        if okta is not None:
+            pulumi.set(__self__, "okta", okta)
+        if saml is not None:
+            pulumi.set(__self__, "saml", saml)
+        if service_token is not None:
+            pulumi.set(__self__, "service_token", service_token)
+
+    @property
+    @pulumi.getter(name="anyValidServiceToken")
+    def any_valid_service_token(self) -> Optional[pulumi.Input['AccessPolicyIncludeAnyValidServiceTokenArgs']]:
+        """
+        An empty object which matches on all service tokens.
+        """
+        return pulumi.get(self, "any_valid_service_token")
+
+    @any_valid_service_token.setter
+    def any_valid_service_token(self, value: Optional[pulumi.Input['AccessPolicyIncludeAnyValidServiceTokenArgs']]):
+        pulumi.set(self, "any_valid_service_token", value)
+
+    @property
+    @pulumi.getter(name="authContext")
+    def auth_context(self) -> Optional[pulumi.Input['AccessPolicyIncludeAuthContextArgs']]:
+        return pulumi.get(self, "auth_context")
+
+    @auth_context.setter
+    def auth_context(self, value: Optional[pulumi.Input['AccessPolicyIncludeAuthContextArgs']]):
+        pulumi.set(self, "auth_context", value)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input['AccessPolicyIncludeAuthMethodArgs']]:
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input['AccessPolicyIncludeAuthMethodArgs']]):
+        pulumi.set(self, "auth_method", value)
+
+    @property
+    @pulumi.getter(name="azureAd")
+    def azure_ad(self) -> Optional[pulumi.Input['AccessPolicyIncludeAzureAdArgs']]:
+        return pulumi.get(self, "azure_ad")
+
+    @azure_ad.setter
+    def azure_ad(self, value: Optional[pulumi.Input['AccessPolicyIncludeAzureAdArgs']]):
+        pulumi.set(self, "azure_ad", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input['AccessPolicyIncludeCertificateArgs']]:
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input['AccessPolicyIncludeCertificateArgs']]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[pulumi.Input['AccessPolicyIncludeCommonNameArgs']]:
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: Optional[pulumi.Input['AccessPolicyIncludeCommonNameArgs']]):
+        pulumi.set(self, "common_name", value)
+
+    @property
+    @pulumi.getter(name="devicePosture")
+    def device_posture(self) -> Optional[pulumi.Input['AccessPolicyIncludeDevicePostureArgs']]:
+        return pulumi.get(self, "device_posture")
+
+    @device_posture.setter
+    def device_posture(self, value: Optional[pulumi.Input['AccessPolicyIncludeDevicePostureArgs']]):
+        pulumi.set(self, "device_posture", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input['AccessPolicyIncludeEmailArgs']]:
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input['AccessPolicyIncludeEmailArgs']]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="emailDomain")
+    def email_domain(self) -> Optional[pulumi.Input['AccessPolicyIncludeEmailDomainArgs']]:
+        return pulumi.get(self, "email_domain")
+
+    @email_domain.setter
+    def email_domain(self, value: Optional[pulumi.Input['AccessPolicyIncludeEmailDomainArgs']]):
+        pulumi.set(self, "email_domain", value)
+
+    @property
+    @pulumi.getter(name="emailList")
+    def email_list(self) -> Optional[pulumi.Input['AccessPolicyIncludeEmailListArgs']]:
+        return pulumi.get(self, "email_list")
+
+    @email_list.setter
+    def email_list(self, value: Optional[pulumi.Input['AccessPolicyIncludeEmailListArgs']]):
+        pulumi.set(self, "email_list", value)
+
+    @property
+    @pulumi.getter
+    def everyone(self) -> Optional[pulumi.Input['AccessPolicyIncludeEveryoneArgs']]:
+        """
+        An empty object which matches on all users.
+        """
+        return pulumi.get(self, "everyone")
+
+    @everyone.setter
+    def everyone(self, value: Optional[pulumi.Input['AccessPolicyIncludeEveryoneArgs']]):
+        pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional[pulumi.Input['AccessPolicyIncludeExternalEvaluationArgs']]:
+        return pulumi.get(self, "external_evaluation")
+
+    @external_evaluation.setter
+    def external_evaluation(self, value: Optional[pulumi.Input['AccessPolicyIncludeExternalEvaluationArgs']]):
+        pulumi.set(self, "external_evaluation", value)
+
+    @property
+    @pulumi.getter
+    def geo(self) -> Optional[pulumi.Input['AccessPolicyIncludeGeoArgs']]:
+        return pulumi.get(self, "geo")
+
+    @geo.setter
+    def geo(self, value: Optional[pulumi.Input['AccessPolicyIncludeGeoArgs']]):
+        pulumi.set(self, "geo", value)
+
+    @property
+    @pulumi.getter(name="githubOrganization")
+    def github_organization(self) -> Optional[pulumi.Input['AccessPolicyIncludeGithubOrganizationArgs']]:
+        return pulumi.get(self, "github_organization")
+
+    @github_organization.setter
+    def github_organization(self, value: Optional[pulumi.Input['AccessPolicyIncludeGithubOrganizationArgs']]):
+        pulumi.set(self, "github_organization", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input['AccessPolicyIncludeGroupArgs']]:
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input['AccessPolicyIncludeGroupArgs']]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def gsuite(self) -> Optional[pulumi.Input['AccessPolicyIncludeGsuiteArgs']]:
+        return pulumi.get(self, "gsuite")
+
+    @gsuite.setter
+    def gsuite(self, value: Optional[pulumi.Input['AccessPolicyIncludeGsuiteArgs']]):
+        pulumi.set(self, "gsuite", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input['AccessPolicyIncludeIpArgs']]:
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input['AccessPolicyIncludeIpArgs']]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter(name="ipList")
+    def ip_list(self) -> Optional[pulumi.Input['AccessPolicyIncludeIpListArgs']]:
+        return pulumi.get(self, "ip_list")
+
+    @ip_list.setter
+    def ip_list(self, value: Optional[pulumi.Input['AccessPolicyIncludeIpListArgs']]):
+        pulumi.set(self, "ip_list", value)
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional[pulumi.Input['AccessPolicyIncludeLoginMethodArgs']]:
+        return pulumi.get(self, "login_method")
+
+    @login_method.setter
+    def login_method(self, value: Optional[pulumi.Input['AccessPolicyIncludeLoginMethodArgs']]):
+        pulumi.set(self, "login_method", value)
+
+    @property
+    @pulumi.getter
+    def okta(self) -> Optional[pulumi.Input['AccessPolicyIncludeOktaArgs']]:
+        return pulumi.get(self, "okta")
+
+    @okta.setter
+    def okta(self, value: Optional[pulumi.Input['AccessPolicyIncludeOktaArgs']]):
+        pulumi.set(self, "okta", value)
+
+    @property
+    @pulumi.getter
+    def saml(self) -> Optional[pulumi.Input['AccessPolicyIncludeSamlArgs']]:
+        return pulumi.get(self, "saml")
+
+    @saml.setter
+    def saml(self, value: Optional[pulumi.Input['AccessPolicyIncludeSamlArgs']]):
+        pulumi.set(self, "saml", value)
+
+    @property
+    @pulumi.getter(name="serviceToken")
+    def service_token(self) -> Optional[pulumi.Input['AccessPolicyIncludeServiceTokenArgs']]:
+        return pulumi.get(self, "service_token")
+
+    @service_token.setter
+    def service_token(self, value: Optional[pulumi.Input['AccessPolicyIncludeServiceTokenArgs']]):
+        pulumi.set(self, "service_token", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeAnyValidServiceTokenArgsDict(TypedDict):
+        pass
+elif False:
+    AccessPolicyIncludeAnyValidServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeAnyValidServiceTokenArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessPolicyIncludeAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of an Authentication context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of an Authentication context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessPolicyIncludeAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeAuthContextArgs:
+    def __init__(__self__, *,
+                 ac_id: pulumi.Input[str],
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ac_id: The ACID of an Authentication context.
+        :param pulumi.Input[str] id: The ID of an Authentication context.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> pulumi.Input[str]:
+        """
+        The ACID of an Authentication context.
+        """
+        return pulumi.get(self, "ac_id")
+
+    @ac_id.setter
+    def ac_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ac_id", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Authentication context.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeAuthMethodArgsDict(TypedDict):
+        auth_method: pulumi.Input[str]
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+elif False:
+    AccessPolicyIncludeAuthMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeAuthMethodArgs:
+    def __init__(__self__, *,
+                 auth_method: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] auth_method: The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        pulumi.set(__self__, "auth_method", auth_method)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> pulumi.Input[str]:
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: pulumi.Input[str]):
+        pulumi.set(self, "auth_method", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeAzureAdArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an Azure group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessPolicyIncludeAzureAdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeAzureAdArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an Azure group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Azure group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeCertificateArgsDict(TypedDict):
+        pass
+elif False:
+    AccessPolicyIncludeCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeCertificateArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessPolicyIncludeCommonNameArgsDict(TypedDict):
+        common_name: pulumi.Input[str]
+        """
+        The common name to match.
+        """
+elif False:
+    AccessPolicyIncludeCommonNameArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeCommonNameArgs:
+    def __init__(__self__, *,
+                 common_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] common_name: The common name to match.
+        """
+        pulumi.set(__self__, "common_name", common_name)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> pulumi.Input[str]:
+        """
+        The common name to match.
+        """
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "common_name", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeDevicePostureArgsDict(TypedDict):
+        integration_uid: pulumi.Input[str]
+        """
+        The ID of a device posture integration.
+        """
+elif False:
+    AccessPolicyIncludeDevicePostureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeDevicePostureArgs:
+    def __init__(__self__, *,
+                 integration_uid: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] integration_uid: The ID of a device posture integration.
+        """
+        pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @property
+    @pulumi.getter(name="integrationUid")
+    def integration_uid(self) -> pulumi.Input[str]:
+        """
+        The ID of a device posture integration.
+        """
+        return pulumi.get(self, "integration_uid")
+
+    @integration_uid.setter
+    def integration_uid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "integration_uid", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeEmailArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the user.
+        """
+elif False:
+    AccessPolicyIncludeEmailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeEmailArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the user.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the user.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeEmailDomainArgsDict(TypedDict):
+        domain: pulumi.Input[str]
+        """
+        The email domain to match.
+        """
+elif False:
+    AccessPolicyIncludeEmailDomainArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeEmailDomainArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] domain: The email domain to match.
+        """
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        """
+        The email domain to match.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeEmailListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created email list.
+        """
+elif False:
+    AccessPolicyIncludeEmailListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeEmailListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created email list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created email list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeEveryoneArgsDict(TypedDict):
+        pass
+elif False:
+    AccessPolicyIncludeEveryoneArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeEveryoneArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessPolicyIncludeExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: pulumi.Input[str]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: pulumi.Input[str]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    AccessPolicyIncludeExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeExternalEvaluationArgs:
+    def __init__(__self__, *,
+                 evaluate_url: pulumi.Input[str],
+                 keys_url: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        pulumi.set(__self__, "evaluate_url", evaluate_url)
+        pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing your business logic.
+        """
+        return pulumi.get(self, "evaluate_url")
+
+    @evaluate_url.setter
+    def evaluate_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "evaluate_url", value)
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        return pulumi.get(self, "keys_url")
+
+    @keys_url.setter
+    def keys_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "keys_url", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeGeoArgsDict(TypedDict):
+        country_code: pulumi.Input[str]
+        """
+        The country code that should be matched.
+        """
+elif False:
+    AccessPolicyIncludeGeoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeGeoArgs:
+    def __init__(__self__, *,
+                 country_code: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] country_code: The country code that should be matched.
+        """
+        pulumi.set(__self__, "country_code", country_code)
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> pulumi.Input[str]:
+        """
+        The country code that should be matched.
+        """
+        return pulumi.get(self, "country_code")
+
+    @country_code.setter
+    def country_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "country_code", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeGithubOrganizationArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Github identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the organization.
+        """
+        team: NotRequired[pulumi.Input[str]]
+        """
+        The name of the team
+        """
+elif False:
+    AccessPolicyIncludeGithubOrganizationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeGithubOrganizationArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 team: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[str] team: The name of the team
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+        if team is not None:
+            pulumi.set(__self__, "team", team)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Github identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the organization.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def team(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the team
+        """
+        return pulumi.get(self, "team")
+
+    @team.setter
+    def team(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeGroupArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created Access group.
+        """
+elif False:
+    AccessPolicyIncludeGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeGroupArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created Access group.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created Access group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeGsuiteArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    AccessPolicyIncludeGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeGsuiteArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the Google Workspace group.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeIpArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+elif False:
+    AccessPolicyIncludeIpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeIpArgs:
+    def __init__(__self__, *,
+                 ip: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ip: An IPv4 or IPv6 CIDR block.
+        """
+        pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> pulumi.Input[str]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeIpListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created IP list.
+        """
+elif False:
+    AccessPolicyIncludeIpListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeIpListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created IP list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created IP list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeLoginMethodArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an identity provider.
+        """
+elif False:
+    AccessPolicyIncludeLoginMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeLoginMethodArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeOktaArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Okta identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the Okta group.
+        """
+elif False:
+    AccessPolicyIncludeOktaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeOktaArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[str] name: The name of the Okta group.
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Okta identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the Okta group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeSamlArgsDict(TypedDict):
+        attribute_name: pulumi.Input[str]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: pulumi.Input[str]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    AccessPolicyIncludeSamlArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeSamlArgs:
+    def __init__(__self__, *,
+                 attribute_name: pulumi.Input[str],
+                 attribute_value: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
+        pulumi.set(__self__, "attribute_name", attribute_name)
+        pulumi.set(__self__, "attribute_value", attribute_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> pulumi.Input[str]:
+        """
+        The name of the SAML attribute.
+        """
+        return pulumi.get(self, "attribute_name")
+
+    @attribute_name.setter
+    def attribute_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_name", value)
+
+    @property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> pulumi.Input[str]:
+        """
+        The SAML attribute value to look for.
+        """
+        return pulumi.get(self, "attribute_value")
+
+    @attribute_value.setter
+    def attribute_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_value", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your SAML identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeServiceTokenArgsDict(TypedDict):
+        token_id: pulumi.Input[str]
+        """
+        The ID of a Service Token.
+        """
+elif False:
+    AccessPolicyIncludeServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeServiceTokenArgs:
+    def __init__(__self__, *,
+                 token_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] token_id: The ID of a Service Token.
+        """
+        pulumi.set(__self__, "token_id", token_id)
+
+    @property
+    @pulumi.getter(name="tokenId")
+    def token_id(self) -> pulumi.Input[str]:
+        """
+        The ID of a Service Token.
+        """
+        return pulumi.get(self, "token_id")
+
+    @token_id.setter
+    def token_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_id", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input['AccessPolicyRequireAnyValidServiceTokenArgsDict']]
+        """
+        An empty object which matches on all service tokens.
+        """
+        auth_context: NotRequired[pulumi.Input['AccessPolicyRequireAuthContextArgsDict']]
+        auth_method: NotRequired[pulumi.Input['AccessPolicyRequireAuthMethodArgsDict']]
+        azure_ad: NotRequired[pulumi.Input['AccessPolicyRequireAzureAdArgsDict']]
+        certificate: NotRequired[pulumi.Input['AccessPolicyRequireCertificateArgsDict']]
+        common_name: NotRequired[pulumi.Input['AccessPolicyRequireCommonNameArgsDict']]
+        device_posture: NotRequired[pulumi.Input['AccessPolicyRequireDevicePostureArgsDict']]
+        email: NotRequired[pulumi.Input['AccessPolicyRequireEmailArgsDict']]
+        email_domain: NotRequired[pulumi.Input['AccessPolicyRequireEmailDomainArgsDict']]
+        email_list: NotRequired[pulumi.Input['AccessPolicyRequireEmailListArgsDict']]
+        everyone: NotRequired[pulumi.Input['AccessPolicyRequireEveryoneArgsDict']]
+        """
+        An empty object which matches on all users.
+        """
+        external_evaluation: NotRequired[pulumi.Input['AccessPolicyRequireExternalEvaluationArgsDict']]
+        geo: NotRequired[pulumi.Input['AccessPolicyRequireGeoArgsDict']]
+        github_organization: NotRequired[pulumi.Input['AccessPolicyRequireGithubOrganizationArgsDict']]
+        group: NotRequired[pulumi.Input['AccessPolicyRequireGroupArgsDict']]
+        gsuite: NotRequired[pulumi.Input['AccessPolicyRequireGsuiteArgsDict']]
+        ip: NotRequired[pulumi.Input['AccessPolicyRequireIpArgsDict']]
+        ip_list: NotRequired[pulumi.Input['AccessPolicyRequireIpListArgsDict']]
+        login_method: NotRequired[pulumi.Input['AccessPolicyRequireLoginMethodArgsDict']]
+        okta: NotRequired[pulumi.Input['AccessPolicyRequireOktaArgsDict']]
+        saml: NotRequired[pulumi.Input['AccessPolicyRequireSamlArgsDict']]
+        service_token: NotRequired[pulumi.Input['AccessPolicyRequireServiceTokenArgsDict']]
+elif False:
+    AccessPolicyRequireArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireArgs:
+    def __init__(__self__, *,
+                 any_valid_service_token: Optional[pulumi.Input['AccessPolicyRequireAnyValidServiceTokenArgs']] = None,
+                 auth_context: Optional[pulumi.Input['AccessPolicyRequireAuthContextArgs']] = None,
+                 auth_method: Optional[pulumi.Input['AccessPolicyRequireAuthMethodArgs']] = None,
+                 azure_ad: Optional[pulumi.Input['AccessPolicyRequireAzureAdArgs']] = None,
+                 certificate: Optional[pulumi.Input['AccessPolicyRequireCertificateArgs']] = None,
+                 common_name: Optional[pulumi.Input['AccessPolicyRequireCommonNameArgs']] = None,
+                 device_posture: Optional[pulumi.Input['AccessPolicyRequireDevicePostureArgs']] = None,
+                 email: Optional[pulumi.Input['AccessPolicyRequireEmailArgs']] = None,
+                 email_domain: Optional[pulumi.Input['AccessPolicyRequireEmailDomainArgs']] = None,
+                 email_list: Optional[pulumi.Input['AccessPolicyRequireEmailListArgs']] = None,
+                 everyone: Optional[pulumi.Input['AccessPolicyRequireEveryoneArgs']] = None,
+                 external_evaluation: Optional[pulumi.Input['AccessPolicyRequireExternalEvaluationArgs']] = None,
+                 geo: Optional[pulumi.Input['AccessPolicyRequireGeoArgs']] = None,
+                 github_organization: Optional[pulumi.Input['AccessPolicyRequireGithubOrganizationArgs']] = None,
+                 group: Optional[pulumi.Input['AccessPolicyRequireGroupArgs']] = None,
+                 gsuite: Optional[pulumi.Input['AccessPolicyRequireGsuiteArgs']] = None,
+                 ip: Optional[pulumi.Input['AccessPolicyRequireIpArgs']] = None,
+                 ip_list: Optional[pulumi.Input['AccessPolicyRequireIpListArgs']] = None,
+                 login_method: Optional[pulumi.Input['AccessPolicyRequireLoginMethodArgs']] = None,
+                 okta: Optional[pulumi.Input['AccessPolicyRequireOktaArgs']] = None,
+                 saml: Optional[pulumi.Input['AccessPolicyRequireSamlArgs']] = None,
+                 service_token: Optional[pulumi.Input['AccessPolicyRequireServiceTokenArgs']] = None):
+        """
+        :param pulumi.Input['AccessPolicyRequireAnyValidServiceTokenArgs'] any_valid_service_token: An empty object which matches on all service tokens.
+        :param pulumi.Input['AccessPolicyRequireEveryoneArgs'] everyone: An empty object which matches on all users.
+        """
+        if any_valid_service_token is not None:
+            pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_context is not None:
+            pulumi.set(__self__, "auth_context", auth_context)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
+        if azure_ad is not None:
+            pulumi.set(__self__, "azure_ad", azure_ad)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if device_posture is not None:
+            pulumi.set(__self__, "device_posture", device_posture)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if email_domain is not None:
+            pulumi.set(__self__, "email_domain", email_domain)
+        if email_list is not None:
+            pulumi.set(__self__, "email_list", email_list)
+        if everyone is not None:
+            pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
+        if geo is not None:
+            pulumi.set(__self__, "geo", geo)
+        if github_organization is not None:
+            pulumi.set(__self__, "github_organization", github_organization)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if gsuite is not None:
+            pulumi.set(__self__, "gsuite", gsuite)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if ip_list is not None:
+            pulumi.set(__self__, "ip_list", ip_list)
+        if login_method is not None:
+            pulumi.set(__self__, "login_method", login_method)
+        if okta is not None:
+            pulumi.set(__self__, "okta", okta)
+        if saml is not None:
+            pulumi.set(__self__, "saml", saml)
+        if service_token is not None:
+            pulumi.set(__self__, "service_token", service_token)
+
+    @property
+    @pulumi.getter(name="anyValidServiceToken")
+    def any_valid_service_token(self) -> Optional[pulumi.Input['AccessPolicyRequireAnyValidServiceTokenArgs']]:
+        """
+        An empty object which matches on all service tokens.
+        """
+        return pulumi.get(self, "any_valid_service_token")
+
+    @any_valid_service_token.setter
+    def any_valid_service_token(self, value: Optional[pulumi.Input['AccessPolicyRequireAnyValidServiceTokenArgs']]):
+        pulumi.set(self, "any_valid_service_token", value)
+
+    @property
+    @pulumi.getter(name="authContext")
+    def auth_context(self) -> Optional[pulumi.Input['AccessPolicyRequireAuthContextArgs']]:
+        return pulumi.get(self, "auth_context")
+
+    @auth_context.setter
+    def auth_context(self, value: Optional[pulumi.Input['AccessPolicyRequireAuthContextArgs']]):
+        pulumi.set(self, "auth_context", value)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input['AccessPolicyRequireAuthMethodArgs']]:
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input['AccessPolicyRequireAuthMethodArgs']]):
+        pulumi.set(self, "auth_method", value)
+
+    @property
+    @pulumi.getter(name="azureAd")
+    def azure_ad(self) -> Optional[pulumi.Input['AccessPolicyRequireAzureAdArgs']]:
+        return pulumi.get(self, "azure_ad")
+
+    @azure_ad.setter
+    def azure_ad(self, value: Optional[pulumi.Input['AccessPolicyRequireAzureAdArgs']]):
+        pulumi.set(self, "azure_ad", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input['AccessPolicyRequireCertificateArgs']]:
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input['AccessPolicyRequireCertificateArgs']]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[pulumi.Input['AccessPolicyRequireCommonNameArgs']]:
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: Optional[pulumi.Input['AccessPolicyRequireCommonNameArgs']]):
+        pulumi.set(self, "common_name", value)
+
+    @property
+    @pulumi.getter(name="devicePosture")
+    def device_posture(self) -> Optional[pulumi.Input['AccessPolicyRequireDevicePostureArgs']]:
+        return pulumi.get(self, "device_posture")
+
+    @device_posture.setter
+    def device_posture(self, value: Optional[pulumi.Input['AccessPolicyRequireDevicePostureArgs']]):
+        pulumi.set(self, "device_posture", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input['AccessPolicyRequireEmailArgs']]:
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input['AccessPolicyRequireEmailArgs']]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="emailDomain")
+    def email_domain(self) -> Optional[pulumi.Input['AccessPolicyRequireEmailDomainArgs']]:
+        return pulumi.get(self, "email_domain")
+
+    @email_domain.setter
+    def email_domain(self, value: Optional[pulumi.Input['AccessPolicyRequireEmailDomainArgs']]):
+        pulumi.set(self, "email_domain", value)
+
+    @property
+    @pulumi.getter(name="emailList")
+    def email_list(self) -> Optional[pulumi.Input['AccessPolicyRequireEmailListArgs']]:
+        return pulumi.get(self, "email_list")
+
+    @email_list.setter
+    def email_list(self, value: Optional[pulumi.Input['AccessPolicyRequireEmailListArgs']]):
+        pulumi.set(self, "email_list", value)
+
+    @property
+    @pulumi.getter
+    def everyone(self) -> Optional[pulumi.Input['AccessPolicyRequireEveryoneArgs']]:
+        """
+        An empty object which matches on all users.
+        """
+        return pulumi.get(self, "everyone")
+
+    @everyone.setter
+    def everyone(self, value: Optional[pulumi.Input['AccessPolicyRequireEveryoneArgs']]):
+        pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional[pulumi.Input['AccessPolicyRequireExternalEvaluationArgs']]:
+        return pulumi.get(self, "external_evaluation")
+
+    @external_evaluation.setter
+    def external_evaluation(self, value: Optional[pulumi.Input['AccessPolicyRequireExternalEvaluationArgs']]):
+        pulumi.set(self, "external_evaluation", value)
+
+    @property
+    @pulumi.getter
+    def geo(self) -> Optional[pulumi.Input['AccessPolicyRequireGeoArgs']]:
+        return pulumi.get(self, "geo")
+
+    @geo.setter
+    def geo(self, value: Optional[pulumi.Input['AccessPolicyRequireGeoArgs']]):
+        pulumi.set(self, "geo", value)
+
+    @property
+    @pulumi.getter(name="githubOrganization")
+    def github_organization(self) -> Optional[pulumi.Input['AccessPolicyRequireGithubOrganizationArgs']]:
+        return pulumi.get(self, "github_organization")
+
+    @github_organization.setter
+    def github_organization(self, value: Optional[pulumi.Input['AccessPolicyRequireGithubOrganizationArgs']]):
+        pulumi.set(self, "github_organization", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input['AccessPolicyRequireGroupArgs']]:
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input['AccessPolicyRequireGroupArgs']]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def gsuite(self) -> Optional[pulumi.Input['AccessPolicyRequireGsuiteArgs']]:
+        return pulumi.get(self, "gsuite")
+
+    @gsuite.setter
+    def gsuite(self, value: Optional[pulumi.Input['AccessPolicyRequireGsuiteArgs']]):
+        pulumi.set(self, "gsuite", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input['AccessPolicyRequireIpArgs']]:
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input['AccessPolicyRequireIpArgs']]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter(name="ipList")
+    def ip_list(self) -> Optional[pulumi.Input['AccessPolicyRequireIpListArgs']]:
+        return pulumi.get(self, "ip_list")
+
+    @ip_list.setter
+    def ip_list(self, value: Optional[pulumi.Input['AccessPolicyRequireIpListArgs']]):
+        pulumi.set(self, "ip_list", value)
+
+    @property
+    @pulumi.getter(name="loginMethod")
+    def login_method(self) -> Optional[pulumi.Input['AccessPolicyRequireLoginMethodArgs']]:
+        return pulumi.get(self, "login_method")
+
+    @login_method.setter
+    def login_method(self, value: Optional[pulumi.Input['AccessPolicyRequireLoginMethodArgs']]):
+        pulumi.set(self, "login_method", value)
+
+    @property
+    @pulumi.getter
+    def okta(self) -> Optional[pulumi.Input['AccessPolicyRequireOktaArgs']]:
+        return pulumi.get(self, "okta")
+
+    @okta.setter
+    def okta(self, value: Optional[pulumi.Input['AccessPolicyRequireOktaArgs']]):
+        pulumi.set(self, "okta", value)
+
+    @property
+    @pulumi.getter
+    def saml(self) -> Optional[pulumi.Input['AccessPolicyRequireSamlArgs']]:
+        return pulumi.get(self, "saml")
+
+    @saml.setter
+    def saml(self, value: Optional[pulumi.Input['AccessPolicyRequireSamlArgs']]):
+        pulumi.set(self, "saml", value)
+
+    @property
+    @pulumi.getter(name="serviceToken")
+    def service_token(self) -> Optional[pulumi.Input['AccessPolicyRequireServiceTokenArgs']]:
+        return pulumi.get(self, "service_token")
+
+    @service_token.setter
+    def service_token(self, value: Optional[pulumi.Input['AccessPolicyRequireServiceTokenArgs']]):
+        pulumi.set(self, "service_token", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireAnyValidServiceTokenArgsDict(TypedDict):
+        pass
+elif False:
+    AccessPolicyRequireAnyValidServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireAnyValidServiceTokenArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessPolicyRequireAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of an Authentication context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of an Authentication context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessPolicyRequireAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireAuthContextArgs:
+    def __init__(__self__, *,
+                 ac_id: pulumi.Input[str],
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ac_id: The ACID of an Authentication context.
+        :param pulumi.Input[str] id: The ID of an Authentication context.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> pulumi.Input[str]:
+        """
+        The ACID of an Authentication context.
+        """
+        return pulumi.get(self, "ac_id")
+
+    @ac_id.setter
+    def ac_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ac_id", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Authentication context.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireAuthMethodArgsDict(TypedDict):
+        auth_method: pulumi.Input[str]
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+elif False:
+    AccessPolicyRequireAuthMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireAuthMethodArgs:
+    def __init__(__self__, *,
+                 auth_method: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] auth_method: The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        pulumi.set(__self__, "auth_method", auth_method)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> pulumi.Input[str]:
+        """
+        The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: pulumi.Input[str]):
+        pulumi.set(self, "auth_method", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireAzureAdArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an Azure group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Azure identity provider.
+        """
+elif False:
+    AccessPolicyRequireAzureAdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireAzureAdArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an Azure group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Azure identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an Azure group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Azure identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireCertificateArgsDict(TypedDict):
+        pass
+elif False:
+    AccessPolicyRequireCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireCertificateArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessPolicyRequireCommonNameArgsDict(TypedDict):
+        common_name: pulumi.Input[str]
+        """
+        The common name to match.
+        """
+elif False:
+    AccessPolicyRequireCommonNameArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireCommonNameArgs:
+    def __init__(__self__, *,
+                 common_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] common_name: The common name to match.
+        """
+        pulumi.set(__self__, "common_name", common_name)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> pulumi.Input[str]:
+        """
+        The common name to match.
+        """
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "common_name", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireDevicePostureArgsDict(TypedDict):
+        integration_uid: pulumi.Input[str]
+        """
+        The ID of a device posture integration.
+        """
+elif False:
+    AccessPolicyRequireDevicePostureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireDevicePostureArgs:
+    def __init__(__self__, *,
+                 integration_uid: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] integration_uid: The ID of a device posture integration.
+        """
+        pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @property
+    @pulumi.getter(name="integrationUid")
+    def integration_uid(self) -> pulumi.Input[str]:
+        """
+        The ID of a device posture integration.
+        """
+        return pulumi.get(self, "integration_uid")
+
+    @integration_uid.setter
+    def integration_uid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "integration_uid", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireEmailArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the user.
+        """
+elif False:
+    AccessPolicyRequireEmailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireEmailArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the user.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the user.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireEmailDomainArgsDict(TypedDict):
+        domain: pulumi.Input[str]
+        """
+        The email domain to match.
+        """
+elif False:
+    AccessPolicyRequireEmailDomainArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireEmailDomainArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] domain: The email domain to match.
+        """
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        """
+        The email domain to match.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireEmailListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created email list.
+        """
+elif False:
+    AccessPolicyRequireEmailListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireEmailListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created email list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created email list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireEveryoneArgsDict(TypedDict):
+        pass
+elif False:
+    AccessPolicyRequireEveryoneArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireEveryoneArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AccessPolicyRequireExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: pulumi.Input[str]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: pulumi.Input[str]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    AccessPolicyRequireExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireExternalEvaluationArgs:
+    def __init__(__self__, *,
+                 evaluate_url: pulumi.Input[str],
+                 keys_url: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        pulumi.set(__self__, "evaluate_url", evaluate_url)
+        pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing your business logic.
+        """
+        return pulumi.get(self, "evaluate_url")
+
+    @evaluate_url.setter
+    def evaluate_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "evaluate_url", value)
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> pulumi.Input[str]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+        return pulumi.get(self, "keys_url")
+
+    @keys_url.setter
+    def keys_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "keys_url", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireGeoArgsDict(TypedDict):
+        country_code: pulumi.Input[str]
+        """
+        The country code that should be matched.
+        """
+elif False:
+    AccessPolicyRequireGeoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireGeoArgs:
+    def __init__(__self__, *,
+                 country_code: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] country_code: The country code that should be matched.
+        """
+        pulumi.set(__self__, "country_code", country_code)
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> pulumi.Input[str]:
+        """
+        The country code that should be matched.
+        """
+        return pulumi.get(self, "country_code")
+
+    @country_code.setter
+    def country_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "country_code", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireGithubOrganizationArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Github identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the organization.
+        """
+        team: NotRequired[pulumi.Input[str]]
+        """
+        The name of the team
+        """
+elif False:
+    AccessPolicyRequireGithubOrganizationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireGithubOrganizationArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 team: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[str] team: The name of the team
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+        if team is not None:
+            pulumi.set(__self__, "team", team)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Github identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the organization.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def team(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the team
+        """
+        return pulumi.get(self, "team")
+
+    @team.setter
+    def team(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireGroupArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created Access group.
+        """
+elif False:
+    AccessPolicyRequireGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireGroupArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created Access group.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created Access group.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireGsuiteArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    AccessPolicyRequireGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireGsuiteArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email of the Google Workspace group.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireIpArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+elif False:
+    AccessPolicyRequireIpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireIpArgs:
+    def __init__(__self__, *,
+                 ip: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ip: An IPv4 or IPv6 CIDR block.
+        """
+        pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> pulumi.Input[str]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireIpListArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of a previously created IP list.
+        """
+elif False:
+    AccessPolicyRequireIpListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireIpListArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of a previously created IP list.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of a previously created IP list.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireLoginMethodArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of an identity provider.
+        """
+elif False:
+    AccessPolicyRequireLoginMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireLoginMethodArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The ID of an identity provider.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of an identity provider.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireOktaArgsDict(TypedDict):
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your Okta identity provider.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the Okta group.
+        """
+elif False:
+    AccessPolicyRequireOktaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireOktaArgs:
+    def __init__(__self__, *,
+                 identity_provider_id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[str] name: The name of the Okta group.
+        """
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your Okta identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the Okta group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireSamlArgsDict(TypedDict):
+        attribute_name: pulumi.Input[str]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: pulumi.Input[str]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    AccessPolicyRequireSamlArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireSamlArgs:
+    def __init__(__self__, *,
+                 attribute_name: pulumi.Input[str],
+                 attribute_value: pulumi.Input[str],
+                 identity_provider_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
+        pulumi.set(__self__, "attribute_name", attribute_name)
+        pulumi.set(__self__, "attribute_value", attribute_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> pulumi.Input[str]:
+        """
+        The name of the SAML attribute.
+        """
+        return pulumi.get(self, "attribute_name")
+
+    @attribute_name.setter
+    def attribute_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_name", value)
+
+    @property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> pulumi.Input[str]:
+        """
+        The SAML attribute value to look for.
+        """
+        return pulumi.get(self, "attribute_value")
+
+    @attribute_value.setter
+    def attribute_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_value", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The ID of your SAML identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireServiceTokenArgsDict(TypedDict):
+        token_id: pulumi.Input[str]
+        """
+        The ID of a Service Token.
+        """
+elif False:
+    AccessPolicyRequireServiceTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireServiceTokenArgs:
+    def __init__(__self__, *,
+                 token_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] token_id: The ID of a Service Token.
+        """
+        pulumi.set(__self__, "token_id", token_id)
+
+    @property
+    @pulumi.getter(name="tokenId")
+    def token_id(self) -> pulumi.Input[str]:
+        """
+        The ID of a Service Token.
+        """
+        return pulumi.get(self, "token_id")
+
+    @token_id.setter
+    def token_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_id", value)
+
 
 if not MYPY:
     class AccessRuleConfigurationArgsDict(TypedDict):
@@ -5677,6 +19807,2042 @@ class CustomSslKeylessServerTunnelArgs:
     @vnet_id.setter
     def vnet_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vnet_id", value)
+
+
+if not MYPY:
+    class DeviceDexTestDataArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        The desired endpoint to test.
+        """
+        kind: NotRequired[pulumi.Input[str]]
+        """
+        The type of test.
+        """
+        method: NotRequired[pulumi.Input[str]]
+        """
+        The HTTP request method type.
+        """
+elif False:
+    DeviceDexTestDataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeviceDexTestDataArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 method: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host: The desired endpoint to test.
+        :param pulumi.Input[str] kind: The type of test.
+        :param pulumi.Input[str] method: The HTTP request method type.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        The desired endpoint to test.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of test.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The HTTP request method type.
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "method", value)
+
+
+if not MYPY:
+    class DeviceDexTestTargetPolicyArgsDict(TypedDict):
+        default: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the profile is the account default
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The id of the device settings profile
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the device settings profile
+        """
+elif False:
+    DeviceDexTestTargetPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeviceDexTestTargetPolicyArgs:
+    def __init__(__self__, *,
+                 default: Optional[pulumi.Input[bool]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] default: Whether the profile is the account default
+        :param pulumi.Input[str] id: The id of the device settings profile
+        :param pulumi.Input[str] name: The name of the device settings profile
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the profile is the account default
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "default", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the device settings profile
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the device settings profile
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class DeviceManagedNetworksConfigArgsDict(TypedDict):
+        tls_sockaddr: pulumi.Input[str]
+        """
+        A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
+        """
+        sha256: NotRequired[pulumi.Input[str]]
+        """
+        The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
+        """
+elif False:
+    DeviceManagedNetworksConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeviceManagedNetworksConfigArgs:
+    def __init__(__self__, *,
+                 tls_sockaddr: pulumi.Input[str],
+                 sha256: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] tls_sockaddr: A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
+        :param pulumi.Input[str] sha256: The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
+        """
+        pulumi.set(__self__, "tls_sockaddr", tls_sockaddr)
+        if sha256 is not None:
+            pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="tlsSockaddr")
+    def tls_sockaddr(self) -> pulumi.Input[str]:
+        """
+        A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
+        """
+        return pulumi.get(self, "tls_sockaddr")
+
+    @tls_sockaddr.setter
+    def tls_sockaddr(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tls_sockaddr", value)
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
+        """
+        return pulumi.get(self, "sha256")
+
+    @sha256.setter
+    def sha256(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sha256", value)
+
+
+if not MYPY:
+    class DevicePostureIntegrationConfigArgsDict(TypedDict):
+        access_client_id: NotRequired[pulumi.Input[str]]
+        """
+        If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`
+        """
+        access_client_secret: NotRequired[pulumi.Input[str]]
+        """
+        If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`
+        """
+        api_url: NotRequired[pulumi.Input[str]]
+        """
+        The Workspace One API URL provided in the Workspace One Admin Dashboard.
+        """
+        auth_url: NotRequired[pulumi.Input[str]]
+        """
+        The Workspace One Authorization URL depending on your region.
+        """
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        The Workspace One client ID provided in the Workspace One Admin Dashboard.
+        """
+        client_key: NotRequired[pulumi.Input[str]]
+        """
+        The Uptycs client secret.
+        """
+        client_secret: NotRequired[pulumi.Input[str]]
+        """
+        The Workspace One client secret provided in the Workspace One Admin Dashboard.
+        """
+        customer_id: NotRequired[pulumi.Input[str]]
+        """
+        The Crowdstrike customer ID.
+        """
+elif False:
+    DevicePostureIntegrationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DevicePostureIntegrationConfigArgs:
+    def __init__(__self__, *,
+                 access_client_id: Optional[pulumi.Input[str]] = None,
+                 access_client_secret: Optional[pulumi.Input[str]] = None,
+                 api_url: Optional[pulumi.Input[str]] = None,
+                 auth_url: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_key: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 customer_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] access_client_id: If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`
+        :param pulumi.Input[str] access_client_secret: If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`
+        :param pulumi.Input[str] api_url: The Workspace One API URL provided in the Workspace One Admin Dashboard.
+        :param pulumi.Input[str] auth_url: The Workspace One Authorization URL depending on your region.
+        :param pulumi.Input[str] client_id: The Workspace One client ID provided in the Workspace One Admin Dashboard.
+        :param pulumi.Input[str] client_key: The Uptycs client secret.
+        :param pulumi.Input[str] client_secret: The Workspace One client secret provided in the Workspace One Admin Dashboard.
+        :param pulumi.Input[str] customer_id: The Crowdstrike customer ID.
+        """
+        if access_client_id is not None:
+            pulumi.set(__self__, "access_client_id", access_client_id)
+        if access_client_secret is not None:
+            pulumi.set(__self__, "access_client_secret", access_client_secret)
+        if api_url is not None:
+            pulumi.set(__self__, "api_url", api_url)
+        if auth_url is not None:
+            pulumi.set(__self__, "auth_url", auth_url)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_key is not None:
+            pulumi.set(__self__, "client_key", client_key)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if customer_id is not None:
+            pulumi.set(__self__, "customer_id", customer_id)
+
+    @property
+    @pulumi.getter(name="accessClientId")
+    def access_client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`
+        """
+        return pulumi.get(self, "access_client_id")
+
+    @access_client_id.setter
+    def access_client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_client_id", value)
+
+    @property
+    @pulumi.getter(name="accessClientSecret")
+    def access_client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`
+        """
+        return pulumi.get(self, "access_client_secret")
+
+    @access_client_secret.setter
+    def access_client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_client_secret", value)
+
+    @property
+    @pulumi.getter(name="apiUrl")
+    def api_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Workspace One API URL provided in the Workspace One Admin Dashboard.
+        """
+        return pulumi.get(self, "api_url")
+
+    @api_url.setter
+    def api_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_url", value)
+
+    @property
+    @pulumi.getter(name="authUrl")
+    def auth_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Workspace One Authorization URL depending on your region.
+        """
+        return pulumi.get(self, "auth_url")
+
+    @auth_url.setter
+    def auth_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_url", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Workspace One client ID provided in the Workspace One Admin Dashboard.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Uptycs client secret.
+        """
+        return pulumi.get(self, "client_key")
+
+    @client_key.setter
+    def client_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_key", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Workspace One client secret provided in the Workspace One Admin Dashboard.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="customerId")
+    def customer_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Crowdstrike customer ID.
+        """
+        return pulumi.get(self, "customer_id")
+
+    @customer_id.setter
+    def customer_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer_id", value)
+
+
+if not MYPY:
+    class DevicePostureRuleInputArgsDict(TypedDict):
+        active_threats: NotRequired[pulumi.Input[float]]
+        """
+        The Number of active threats.
+        """
+        certificate_id: NotRequired[pulumi.Input[str]]
+        """
+        UUID of Cloudflare managed certificate.
+        """
+        check_disks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of volume names to be checked for encryption.
+        """
+        check_private_key: NotRequired[pulumi.Input[bool]]
+        """
+        Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.
+        """
+        cn: NotRequired[pulumi.Input[str]]
+        """
+        Common Name that is protected by the certificate
+        """
+        compliance_status: NotRequired[pulumi.Input[str]]
+        """
+        Compliance Status
+        Available values: "compliant", "noncompliant", "unknown".
+        """
+        connection_id: NotRequired[pulumi.Input[str]]
+        """
+        Posture Integration ID.
+        """
+        count_operator: NotRequired[pulumi.Input[str]]
+        """
+        Count Operator
+        Available values: "<", "<=", ">", ">=", "==".
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        Domain
+        """
+        eid_last_seen: NotRequired[pulumi.Input[str]]
+        """
+        For more details on eid last seen, refer to the Tanium documentation.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enabled
+        """
+        exists: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not file exists
+        """
+        extended_key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of values indicating purposes for which the certificate public key can be used
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        List ID.
+        """
+        infected: NotRequired[pulumi.Input[bool]]
+        """
+        Whether device is infected.
+        """
+        is_active: NotRequired[pulumi.Input[bool]]
+        """
+        Whether device is active.
+        """
+        issue_count: NotRequired[pulumi.Input[str]]
+        """
+        The Number of Issues.
+        """
+        last_seen: NotRequired[pulumi.Input[str]]
+        """
+        For more details on last seen, please refer to the Crowdstrike documentation.
+        """
+        locations: NotRequired[pulumi.Input['DevicePostureRuleInputLocationsArgsDict']]
+        network_status: NotRequired[pulumi.Input[str]]
+        """
+        Network status of device.
+        Available values: "connected", "disconnected", "disconnecting", "connecting".
+        """
+        operating_system: NotRequired[pulumi.Input[str]]
+        """
+        Operating system
+        Available values: "windows", "linux", "mac".
+        """
+        operational_state: NotRequired[pulumi.Input[str]]
+        """
+        Agent operational state.
+        Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        operator
+        Available values: "<", "<=", ">", ">=", "==".
+        """
+        os: NotRequired[pulumi.Input[str]]
+        """
+        Os Version
+        """
+        os_distro_name: NotRequired[pulumi.Input[str]]
+        """
+        Operating System Distribution Name (linux only)
+        """
+        os_distro_revision: NotRequired[pulumi.Input[str]]
+        """
+        Version of OS Distribution (linux only)
+        """
+        os_version_extra: NotRequired[pulumi.Input[str]]
+        """
+        Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+        """
+        overall: NotRequired[pulumi.Input[str]]
+        """
+        overall
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        File path.
+        """
+        require_all: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to check all disks for encryption.
+        """
+        risk_level: NotRequired[pulumi.Input[str]]
+        """
+        For more details on risk level, refer to the Tanium documentation.
+        Available values: "low", "medium", "high", "critical".
+        """
+        score: NotRequired[pulumi.Input[float]]
+        """
+        A value between 0-100 assigned to devices set by the 3rd party posture provider.
+        """
+        score_operator: NotRequired[pulumi.Input[str]]
+        """
+        Score Operator
+        Available values: "<", "<=", ">", ">=", "==".
+        """
+        sensor_config: NotRequired[pulumi.Input[str]]
+        """
+        SensorConfig
+        """
+        sha256: NotRequired[pulumi.Input[str]]
+        """
+        SHA-256.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        For more details on state, please refer to the Crowdstrike documentation.
+        Available values: "online", "offline", "unknown".
+        """
+        thumbprint: NotRequired[pulumi.Input[str]]
+        """
+        Signing certificate thumbprint.
+        """
+        total_score: NotRequired[pulumi.Input[float]]
+        """
+        For more details on total score, refer to the Tanium documentation.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Version of OS
+        """
+        version_operator: NotRequired[pulumi.Input[str]]
+        """
+        Version Operator
+        Available values: "<", "<=", ">", ">=", "==".
+        """
+elif False:
+    DevicePostureRuleInputArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DevicePostureRuleInputArgs:
+    def __init__(__self__, *,
+                 active_threats: Optional[pulumi.Input[float]] = None,
+                 certificate_id: Optional[pulumi.Input[str]] = None,
+                 check_disks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 check_private_key: Optional[pulumi.Input[bool]] = None,
+                 cn: Optional[pulumi.Input[str]] = None,
+                 compliance_status: Optional[pulumi.Input[str]] = None,
+                 connection_id: Optional[pulumi.Input[str]] = None,
+                 count_operator: Optional[pulumi.Input[str]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 eid_last_seen: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 exists: Optional[pulumi.Input[bool]] = None,
+                 extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 infected: Optional[pulumi.Input[bool]] = None,
+                 is_active: Optional[pulumi.Input[bool]] = None,
+                 issue_count: Optional[pulumi.Input[str]] = None,
+                 last_seen: Optional[pulumi.Input[str]] = None,
+                 locations: Optional[pulumi.Input['DevicePostureRuleInputLocationsArgs']] = None,
+                 network_status: Optional[pulumi.Input[str]] = None,
+                 operating_system: Optional[pulumi.Input[str]] = None,
+                 operational_state: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 os: Optional[pulumi.Input[str]] = None,
+                 os_distro_name: Optional[pulumi.Input[str]] = None,
+                 os_distro_revision: Optional[pulumi.Input[str]] = None,
+                 os_version_extra: Optional[pulumi.Input[str]] = None,
+                 overall: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 require_all: Optional[pulumi.Input[bool]] = None,
+                 risk_level: Optional[pulumi.Input[str]] = None,
+                 score: Optional[pulumi.Input[float]] = None,
+                 score_operator: Optional[pulumi.Input[str]] = None,
+                 sensor_config: Optional[pulumi.Input[str]] = None,
+                 sha256: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 thumbprint: Optional[pulumi.Input[str]] = None,
+                 total_score: Optional[pulumi.Input[float]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 version_operator: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[float] active_threats: The Number of active threats.
+        :param pulumi.Input[str] certificate_id: UUID of Cloudflare managed certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] check_disks: List of volume names to be checked for encryption.
+        :param pulumi.Input[bool] check_private_key: Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.
+        :param pulumi.Input[str] cn: Common Name that is protected by the certificate
+        :param pulumi.Input[str] compliance_status: Compliance Status
+               Available values: "compliant", "noncompliant", "unknown".
+        :param pulumi.Input[str] connection_id: Posture Integration ID.
+        :param pulumi.Input[str] count_operator: Count Operator
+               Available values: "<", "<=", ">", ">=", "==".
+        :param pulumi.Input[str] domain: Domain
+        :param pulumi.Input[str] eid_last_seen: For more details on eid last seen, refer to the Tanium documentation.
+        :param pulumi.Input[bool] enabled: Enabled
+        :param pulumi.Input[bool] exists: Whether or not file exists
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] extended_key_usages: List of values indicating purposes for which the certificate public key can be used
+        :param pulumi.Input[str] id: List ID.
+        :param pulumi.Input[bool] infected: Whether device is infected.
+        :param pulumi.Input[bool] is_active: Whether device is active.
+        :param pulumi.Input[str] issue_count: The Number of Issues.
+        :param pulumi.Input[str] last_seen: For more details on last seen, please refer to the Crowdstrike documentation.
+        :param pulumi.Input[str] network_status: Network status of device.
+               Available values: "connected", "disconnected", "disconnecting", "connecting".
+        :param pulumi.Input[str] operating_system: Operating system
+               Available values: "windows", "linux", "mac".
+        :param pulumi.Input[str] operational_state: Agent operational state.
+               Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
+        :param pulumi.Input[str] operator: operator
+               Available values: "<", "<=", ">", ">=", "==".
+        :param pulumi.Input[str] os: Os Version
+        :param pulumi.Input[str] os_distro_name: Operating System Distribution Name (linux only)
+        :param pulumi.Input[str] os_distro_revision: Version of OS Distribution (linux only)
+        :param pulumi.Input[str] os_version_extra: Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+        :param pulumi.Input[str] overall: overall
+        :param pulumi.Input[str] path: File path.
+        :param pulumi.Input[bool] require_all: Whether to check all disks for encryption.
+        :param pulumi.Input[str] risk_level: For more details on risk level, refer to the Tanium documentation.
+               Available values: "low", "medium", "high", "critical".
+        :param pulumi.Input[float] score: A value between 0-100 assigned to devices set by the 3rd party posture provider.
+        :param pulumi.Input[str] score_operator: Score Operator
+               Available values: "<", "<=", ">", ">=", "==".
+        :param pulumi.Input[str] sensor_config: SensorConfig
+        :param pulumi.Input[str] sha256: SHA-256.
+        :param pulumi.Input[str] state: For more details on state, please refer to the Crowdstrike documentation.
+               Available values: "online", "offline", "unknown".
+        :param pulumi.Input[str] thumbprint: Signing certificate thumbprint.
+        :param pulumi.Input[float] total_score: For more details on total score, refer to the Tanium documentation.
+        :param pulumi.Input[str] version: Version of OS
+        :param pulumi.Input[str] version_operator: Version Operator
+               Available values: "<", "<=", ">", ">=", "==".
+        """
+        if active_threats is not None:
+            pulumi.set(__self__, "active_threats", active_threats)
+        if certificate_id is not None:
+            pulumi.set(__self__, "certificate_id", certificate_id)
+        if check_disks is not None:
+            pulumi.set(__self__, "check_disks", check_disks)
+        if check_private_key is not None:
+            pulumi.set(__self__, "check_private_key", check_private_key)
+        if cn is not None:
+            pulumi.set(__self__, "cn", cn)
+        if compliance_status is not None:
+            pulumi.set(__self__, "compliance_status", compliance_status)
+        if connection_id is not None:
+            pulumi.set(__self__, "connection_id", connection_id)
+        if count_operator is not None:
+            pulumi.set(__self__, "count_operator", count_operator)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if eid_last_seen is not None:
+            pulumi.set(__self__, "eid_last_seen", eid_last_seen)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if extended_key_usages is not None:
+            pulumi.set(__self__, "extended_key_usages", extended_key_usages)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if infected is not None:
+            pulumi.set(__self__, "infected", infected)
+        if is_active is not None:
+            pulumi.set(__self__, "is_active", is_active)
+        if issue_count is not None:
+            pulumi.set(__self__, "issue_count", issue_count)
+        if last_seen is not None:
+            pulumi.set(__self__, "last_seen", last_seen)
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
+        if network_status is not None:
+            pulumi.set(__self__, "network_status", network_status)
+        if operating_system is not None:
+            pulumi.set(__self__, "operating_system", operating_system)
+        if operational_state is not None:
+            pulumi.set(__self__, "operational_state", operational_state)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if os is not None:
+            pulumi.set(__self__, "os", os)
+        if os_distro_name is not None:
+            pulumi.set(__self__, "os_distro_name", os_distro_name)
+        if os_distro_revision is not None:
+            pulumi.set(__self__, "os_distro_revision", os_distro_revision)
+        if os_version_extra is not None:
+            pulumi.set(__self__, "os_version_extra", os_version_extra)
+        if overall is not None:
+            pulumi.set(__self__, "overall", overall)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if require_all is not None:
+            pulumi.set(__self__, "require_all", require_all)
+        if risk_level is not None:
+            pulumi.set(__self__, "risk_level", risk_level)
+        if score is not None:
+            pulumi.set(__self__, "score", score)
+        if score_operator is not None:
+            pulumi.set(__self__, "score_operator", score_operator)
+        if sensor_config is not None:
+            pulumi.set(__self__, "sensor_config", sensor_config)
+        if sha256 is not None:
+            pulumi.set(__self__, "sha256", sha256)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if thumbprint is not None:
+            pulumi.set(__self__, "thumbprint", thumbprint)
+        if total_score is not None:
+            pulumi.set(__self__, "total_score", total_score)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+        if version_operator is not None:
+            pulumi.set(__self__, "version_operator", version_operator)
+
+    @property
+    @pulumi.getter(name="activeThreats")
+    def active_threats(self) -> Optional[pulumi.Input[float]]:
+        """
+        The Number of active threats.
+        """
+        return pulumi.get(self, "active_threats")
+
+    @active_threats.setter
+    def active_threats(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "active_threats", value)
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        UUID of Cloudflare managed certificate.
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @certificate_id.setter
+    def certificate_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_id", value)
+
+    @property
+    @pulumi.getter(name="checkDisks")
+    def check_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of volume names to be checked for encryption.
+        """
+        return pulumi.get(self, "check_disks")
+
+    @check_disks.setter
+    def check_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "check_disks", value)
+
+    @property
+    @pulumi.getter(name="checkPrivateKey")
+    def check_private_key(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.
+        """
+        return pulumi.get(self, "check_private_key")
+
+    @check_private_key.setter
+    def check_private_key(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "check_private_key", value)
+
+    @property
+    @pulumi.getter
+    def cn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Common Name that is protected by the certificate
+        """
+        return pulumi.get(self, "cn")
+
+    @cn.setter
+    def cn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cn", value)
+
+    @property
+    @pulumi.getter(name="complianceStatus")
+    def compliance_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Compliance Status
+        Available values: "compliant", "noncompliant", "unknown".
+        """
+        return pulumi.get(self, "compliance_status")
+
+    @compliance_status.setter
+    def compliance_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compliance_status", value)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Posture Integration ID.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @connection_id.setter
+    def connection_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_id", value)
+
+    @property
+    @pulumi.getter(name="countOperator")
+    def count_operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        Count Operator
+        Available values: "<", "<=", ">", ">=", "==".
+        """
+        return pulumi.get(self, "count_operator")
+
+    @count_operator.setter
+    def count_operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "count_operator", value)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Domain
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="eidLastSeen")
+    def eid_last_seen(self) -> Optional[pulumi.Input[str]]:
+        """
+        For more details on eid last seen, refer to the Tanium documentation.
+        """
+        return pulumi.get(self, "eid_last_seen")
+
+    @eid_last_seen.setter
+    def eid_last_seen(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "eid_last_seen", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def exists(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not file exists
+        """
+        return pulumi.get(self, "exists")
+
+    @exists.setter
+    def exists(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "exists", value)
+
+    @property
+    @pulumi.getter(name="extendedKeyUsages")
+    def extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of values indicating purposes for which the certificate public key can be used
+        """
+        return pulumi.get(self, "extended_key_usages")
+
+    @extended_key_usages.setter
+    def extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "extended_key_usages", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        List ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def infected(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether device is infected.
+        """
+        return pulumi.get(self, "infected")
+
+    @infected.setter
+    def infected(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "infected", value)
+
+    @property
+    @pulumi.getter(name="isActive")
+    def is_active(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether device is active.
+        """
+        return pulumi.get(self, "is_active")
+
+    @is_active.setter
+    def is_active(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_active", value)
+
+    @property
+    @pulumi.getter(name="issueCount")
+    def issue_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Number of Issues.
+        """
+        return pulumi.get(self, "issue_count")
+
+    @issue_count.setter
+    def issue_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issue_count", value)
+
+    @property
+    @pulumi.getter(name="lastSeen")
+    def last_seen(self) -> Optional[pulumi.Input[str]]:
+        """
+        For more details on last seen, please refer to the Crowdstrike documentation.
+        """
+        return pulumi.get(self, "last_seen")
+
+    @last_seen.setter
+    def last_seen(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_seen", value)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> Optional[pulumi.Input['DevicePostureRuleInputLocationsArgs']]:
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: Optional[pulumi.Input['DevicePostureRuleInputLocationsArgs']]):
+        pulumi.set(self, "locations", value)
+
+    @property
+    @pulumi.getter(name="networkStatus")
+    def network_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network status of device.
+        Available values: "connected", "disconnected", "disconnecting", "connecting".
+        """
+        return pulumi.get(self, "network_status")
+
+    @network_status.setter
+    def network_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_status", value)
+
+    @property
+    @pulumi.getter(name="operatingSystem")
+    def operating_system(self) -> Optional[pulumi.Input[str]]:
+        """
+        Operating system
+        Available values: "windows", "linux", "mac".
+        """
+        return pulumi.get(self, "operating_system")
+
+    @operating_system.setter
+    def operating_system(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operating_system", value)
+
+    @property
+    @pulumi.getter(name="operationalState")
+    def operational_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Agent operational state.
+        Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
+        """
+        return pulumi.get(self, "operational_state")
+
+    @operational_state.setter
+    def operational_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operational_state", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        operator
+        Available values: "<", "<=", ">", ">=", "==".
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def os(self) -> Optional[pulumi.Input[str]]:
+        """
+        Os Version
+        """
+        return pulumi.get(self, "os")
+
+    @os.setter
+    def os(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os", value)
+
+    @property
+    @pulumi.getter(name="osDistroName")
+    def os_distro_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Operating System Distribution Name (linux only)
+        """
+        return pulumi.get(self, "os_distro_name")
+
+    @os_distro_name.setter
+    def os_distro_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_distro_name", value)
+
+    @property
+    @pulumi.getter(name="osDistroRevision")
+    def os_distro_revision(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version of OS Distribution (linux only)
+        """
+        return pulumi.get(self, "os_distro_revision")
+
+    @os_distro_revision.setter
+    def os_distro_revision(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_distro_revision", value)
+
+    @property
+    @pulumi.getter(name="osVersionExtra")
+    def os_version_extra(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+        """
+        return pulumi.get(self, "os_version_extra")
+
+    @os_version_extra.setter
+    def os_version_extra(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_version_extra", value)
+
+    @property
+    @pulumi.getter
+    def overall(self) -> Optional[pulumi.Input[str]]:
+        """
+        overall
+        """
+        return pulumi.get(self, "overall")
+
+    @overall.setter
+    def overall(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "overall", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        File path.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="requireAll")
+    def require_all(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to check all disks for encryption.
+        """
+        return pulumi.get(self, "require_all")
+
+    @require_all.setter
+    def require_all(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_all", value)
+
+    @property
+    @pulumi.getter(name="riskLevel")
+    def risk_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        For more details on risk level, refer to the Tanium documentation.
+        Available values: "low", "medium", "high", "critical".
+        """
+        return pulumi.get(self, "risk_level")
+
+    @risk_level.setter
+    def risk_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "risk_level", value)
+
+    @property
+    @pulumi.getter
+    def score(self) -> Optional[pulumi.Input[float]]:
+        """
+        A value between 0-100 assigned to devices set by the 3rd party posture provider.
+        """
+        return pulumi.get(self, "score")
+
+    @score.setter
+    def score(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "score", value)
+
+    @property
+    @pulumi.getter(name="scoreOperator")
+    def score_operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        Score Operator
+        Available values: "<", "<=", ">", ">=", "==".
+        """
+        return pulumi.get(self, "score_operator")
+
+    @score_operator.setter
+    def score_operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "score_operator", value)
+
+    @property
+    @pulumi.getter(name="sensorConfig")
+    def sensor_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        SensorConfig
+        """
+        return pulumi.get(self, "sensor_config")
+
+    @sensor_config.setter
+    def sensor_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sensor_config", value)
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[pulumi.Input[str]]:
+        """
+        SHA-256.
+        """
+        return pulumi.get(self, "sha256")
+
+    @sha256.setter
+    def sha256(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sha256", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        For more details on state, please refer to the Crowdstrike documentation.
+        Available values: "online", "offline", "unknown".
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def thumbprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Signing certificate thumbprint.
+        """
+        return pulumi.get(self, "thumbprint")
+
+    @thumbprint.setter
+    def thumbprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "thumbprint", value)
+
+    @property
+    @pulumi.getter(name="totalScore")
+    def total_score(self) -> Optional[pulumi.Input[float]]:
+        """
+        For more details on total score, refer to the Tanium documentation.
+        """
+        return pulumi.get(self, "total_score")
+
+    @total_score.setter
+    def total_score(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "total_score", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version of OS
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter(name="versionOperator")
+    def version_operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version Operator
+        Available values: "<", "<=", ">", ">=", "==".
+        """
+        return pulumi.get(self, "version_operator")
+
+    @version_operator.setter
+    def version_operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_operator", value)
+
+
+if not MYPY:
+    class DevicePostureRuleInputLocationsArgsDict(TypedDict):
+        paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of paths to check for client certificate on linux.
+        """
+        trust_stores: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of trust stores to check for client certificate.
+        """
+elif False:
+    DevicePostureRuleInputLocationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DevicePostureRuleInputLocationsArgs:
+    def __init__(__self__, *,
+                 paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of paths to check for client certificate on linux.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] trust_stores: List of trust stores to check for client certificate.
+        """
+        if paths is not None:
+            pulumi.set(__self__, "paths", paths)
+        if trust_stores is not None:
+            pulumi.set(__self__, "trust_stores", trust_stores)
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of paths to check for client certificate on linux.
+        """
+        return pulumi.get(self, "paths")
+
+    @paths.setter
+    def paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "paths", value)
+
+    @property
+    @pulumi.getter(name="trustStores")
+    def trust_stores(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of trust stores to check for client certificate.
+        """
+        return pulumi.get(self, "trust_stores")
+
+    @trust_stores.setter
+    def trust_stores(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "trust_stores", value)
+
+
+if not MYPY:
+    class DevicePostureRuleMatchArgsDict(TypedDict):
+        platform: NotRequired[pulumi.Input[str]]
+        """
+        Available values: "windows", "mac", "linux", "android", "ios".
+        """
+elif False:
+    DevicePostureRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DevicePostureRuleMatchArgs:
+    def __init__(__self__, *,
+                 platform: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] platform: Available values: "windows", "mac", "linux", "android", "ios".
+        """
+        if platform is not None:
+            pulumi.set(__self__, "platform", platform)
+
+    @property
+    @pulumi.getter
+    def platform(self) -> Optional[pulumi.Input[str]]:
+        """
+        Available values: "windows", "mac", "linux", "android", "ios".
+        """
+        return pulumi.get(self, "platform")
+
+    @platform.setter
+    def platform(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "platform", value)
+
+
+if not MYPY:
+    class DlpCustomProfileContextAwarenessArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        If true, scan the context of predefined entries to only return matches surrounded by keywords.
+        """
+        skip: pulumi.Input['DlpCustomProfileContextAwarenessSkipArgsDict']
+        """
+        Content types to exclude from context analysis and return all matches.
+        """
+elif False:
+    DlpCustomProfileContextAwarenessArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DlpCustomProfileContextAwarenessArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 skip: pulumi.Input['DlpCustomProfileContextAwarenessSkipArgs']):
+        """
+        :param pulumi.Input[bool] enabled: If true, scan the context of predefined entries to only return matches surrounded by keywords.
+        :param pulumi.Input['DlpCustomProfileContextAwarenessSkipArgs'] skip: Content types to exclude from context analysis and return all matches.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "skip", skip)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        If true, scan the context of predefined entries to only return matches surrounded by keywords.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def skip(self) -> pulumi.Input['DlpCustomProfileContextAwarenessSkipArgs']:
+        """
+        Content types to exclude from context analysis and return all matches.
+        """
+        return pulumi.get(self, "skip")
+
+    @skip.setter
+    def skip(self, value: pulumi.Input['DlpCustomProfileContextAwarenessSkipArgs']):
+        pulumi.set(self, "skip", value)
+
+
+if not MYPY:
+    class DlpCustomProfileContextAwarenessSkipArgsDict(TypedDict):
+        files: pulumi.Input[bool]
+        """
+        If the content type is a file, skip context analysis and return all matches.
+        """
+elif False:
+    DlpCustomProfileContextAwarenessSkipArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DlpCustomProfileContextAwarenessSkipArgs:
+    def __init__(__self__, *,
+                 files: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] files: If the content type is a file, skip context analysis and return all matches.
+        """
+        pulumi.set(__self__, "files", files)
+
+    @property
+    @pulumi.getter
+    def files(self) -> pulumi.Input[bool]:
+        """
+        If the content type is a file, skip context analysis and return all matches.
+        """
+        return pulumi.get(self, "files")
+
+    @files.setter
+    def files(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "files", value)
+
+
+if not MYPY:
+    class DlpCustomProfileEntryArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        name: pulumi.Input[str]
+        pattern: NotRequired[pulumi.Input['DlpCustomProfileEntryPatternArgsDict']]
+        words: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    DlpCustomProfileEntryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DlpCustomProfileEntryArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 name: pulumi.Input[str],
+                 pattern: Optional[pulumi.Input['DlpCustomProfileEntryPatternArgs']] = None,
+                 words: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "name", name)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
+        if words is not None:
+            pulumi.set(__self__, "words", words)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> Optional[pulumi.Input['DlpCustomProfileEntryPatternArgs']]:
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: Optional[pulumi.Input['DlpCustomProfileEntryPatternArgs']]):
+        pulumi.set(self, "pattern", value)
+
+    @property
+    @pulumi.getter
+    def words(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "words")
+
+    @words.setter
+    def words(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "words", value)
+
+
+if not MYPY:
+    class DlpCustomProfileEntryPatternArgsDict(TypedDict):
+        regex: pulumi.Input[str]
+        validation: NotRequired[pulumi.Input[str]]
+        """
+        Available values: "luhn".
+        """
+elif False:
+    DlpCustomProfileEntryPatternArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DlpCustomProfileEntryPatternArgs:
+    def __init__(__self__, *,
+                 regex: pulumi.Input[str],
+                 validation: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] validation: Available values: "luhn".
+        """
+        pulumi.set(__self__, "regex", regex)
+        if validation is not None:
+            pulumi.set(__self__, "validation", validation)
+
+    @property
+    @pulumi.getter
+    def regex(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: pulumi.Input[str]):
+        pulumi.set(self, "regex", value)
+
+    @property
+    @pulumi.getter
+    def validation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Available values: "luhn".
+        """
+        return pulumi.get(self, "validation")
+
+    @validation.setter
+    def validation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validation", value)
+
+
+if not MYPY:
+    class DlpCustomProfileProfileArgsDict(TypedDict):
+        entries: pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileProfileEntryArgsDict']]]
+        name: pulumi.Input[str]
+        ai_context_enabled: NotRequired[pulumi.Input[bool]]
+        allowed_match_count: NotRequired[pulumi.Input[int]]
+        """
+        Related DLP policies will trigger when the match count exceeds the number set.
+        """
+        confidence_threshold: NotRequired[pulumi.Input[str]]
+        context_awareness: NotRequired[pulumi.Input['DlpCustomProfileProfileContextAwarenessArgsDict']]
+        """
+        Scan the context of predefined entries to only return matches surrounded by keywords.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the profile
+        """
+        ocr_enabled: NotRequired[pulumi.Input[bool]]
+        shared_entries: NotRequired[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileProfileSharedEntryArgsDict']]]]
+        """
+        Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
+        """
+elif False:
+    DlpCustomProfileProfileArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DlpCustomProfileProfileArgs:
+    def __init__(__self__, *,
+                 entries: pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileProfileEntryArgs']]],
+                 name: pulumi.Input[str],
+                 ai_context_enabled: Optional[pulumi.Input[bool]] = None,
+                 allowed_match_count: Optional[pulumi.Input[int]] = None,
+                 confidence_threshold: Optional[pulumi.Input[str]] = None,
+                 context_awareness: Optional[pulumi.Input['DlpCustomProfileProfileContextAwarenessArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 ocr_enabled: Optional[pulumi.Input[bool]] = None,
+                 shared_entries: Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileProfileSharedEntryArgs']]]] = None):
+        """
+        :param pulumi.Input[int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
+        :param pulumi.Input['DlpCustomProfileProfileContextAwarenessArgs'] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
+        :param pulumi.Input[str] description: The description of the profile
+        :param pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileProfileSharedEntryArgs']]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
+        """
+        pulumi.set(__self__, "entries", entries)
+        pulumi.set(__self__, "name", name)
+        if ai_context_enabled is not None:
+            pulumi.set(__self__, "ai_context_enabled", ai_context_enabled)
+        if allowed_match_count is not None:
+            pulumi.set(__self__, "allowed_match_count", allowed_match_count)
+        if confidence_threshold is not None:
+            pulumi.set(__self__, "confidence_threshold", confidence_threshold)
+        if context_awareness is not None:
+            pulumi.set(__self__, "context_awareness", context_awareness)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if ocr_enabled is not None:
+            pulumi.set(__self__, "ocr_enabled", ocr_enabled)
+        if shared_entries is not None:
+            pulumi.set(__self__, "shared_entries", shared_entries)
+
+    @property
+    @pulumi.getter
+    def entries(self) -> pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileProfileEntryArgs']]]:
+        return pulumi.get(self, "entries")
+
+    @entries.setter
+    def entries(self, value: pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileProfileEntryArgs']]]):
+        pulumi.set(self, "entries", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="aiContextEnabled")
+    def ai_context_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "ai_context_enabled")
+
+    @ai_context_enabled.setter
+    def ai_context_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ai_context_enabled", value)
+
+    @property
+    @pulumi.getter(name="allowedMatchCount")
+    def allowed_match_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Related DLP policies will trigger when the match count exceeds the number set.
+        """
+        return pulumi.get(self, "allowed_match_count")
+
+    @allowed_match_count.setter
+    def allowed_match_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "allowed_match_count", value)
+
+    @property
+    @pulumi.getter(name="confidenceThreshold")
+    def confidence_threshold(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "confidence_threshold")
+
+    @confidence_threshold.setter
+    def confidence_threshold(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "confidence_threshold", value)
+
+    @property
+    @pulumi.getter(name="contextAwareness")
+    def context_awareness(self) -> Optional[pulumi.Input['DlpCustomProfileProfileContextAwarenessArgs']]:
+        """
+        Scan the context of predefined entries to only return matches surrounded by keywords.
+        """
+        return pulumi.get(self, "context_awareness")
+
+    @context_awareness.setter
+    def context_awareness(self, value: Optional[pulumi.Input['DlpCustomProfileProfileContextAwarenessArgs']]):
+        pulumi.set(self, "context_awareness", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the profile
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ocrEnabled")
+    def ocr_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "ocr_enabled")
+
+    @ocr_enabled.setter
+    def ocr_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ocr_enabled", value)
+
+    @property
+    @pulumi.getter(name="sharedEntries")
+    def shared_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileProfileSharedEntryArgs']]]]:
+        """
+        Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
+        """
+        return pulumi.get(self, "shared_entries")
+
+    @shared_entries.setter
+    def shared_entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileProfileSharedEntryArgs']]]]):
+        pulumi.set(self, "shared_entries", value)
+
+
+if not MYPY:
+    class DlpCustomProfileProfileContextAwarenessArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        If true, scan the context of predefined entries to only return matches surrounded by keywords.
+        """
+        skip: pulumi.Input['DlpCustomProfileProfileContextAwarenessSkipArgsDict']
+        """
+        Content types to exclude from context analysis and return all matches.
+        """
+elif False:
+    DlpCustomProfileProfileContextAwarenessArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DlpCustomProfileProfileContextAwarenessArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 skip: pulumi.Input['DlpCustomProfileProfileContextAwarenessSkipArgs']):
+        """
+        :param pulumi.Input[bool] enabled: If true, scan the context of predefined entries to only return matches surrounded by keywords.
+        :param pulumi.Input['DlpCustomProfileProfileContextAwarenessSkipArgs'] skip: Content types to exclude from context analysis and return all matches.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "skip", skip)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        If true, scan the context of predefined entries to only return matches surrounded by keywords.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def skip(self) -> pulumi.Input['DlpCustomProfileProfileContextAwarenessSkipArgs']:
+        """
+        Content types to exclude from context analysis and return all matches.
+        """
+        return pulumi.get(self, "skip")
+
+    @skip.setter
+    def skip(self, value: pulumi.Input['DlpCustomProfileProfileContextAwarenessSkipArgs']):
+        pulumi.set(self, "skip", value)
+
+
+if not MYPY:
+    class DlpCustomProfileProfileContextAwarenessSkipArgsDict(TypedDict):
+        files: pulumi.Input[bool]
+        """
+        If the content type is a file, skip context analysis and return all matches.
+        """
+elif False:
+    DlpCustomProfileProfileContextAwarenessSkipArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DlpCustomProfileProfileContextAwarenessSkipArgs:
+    def __init__(__self__, *,
+                 files: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] files: If the content type is a file, skip context analysis and return all matches.
+        """
+        pulumi.set(__self__, "files", files)
+
+    @property
+    @pulumi.getter
+    def files(self) -> pulumi.Input[bool]:
+        """
+        If the content type is a file, skip context analysis and return all matches.
+        """
+        return pulumi.get(self, "files")
+
+    @files.setter
+    def files(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "files", value)
+
+
+if not MYPY:
+    class DlpCustomProfileProfileEntryArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        name: pulumi.Input[str]
+        pattern: NotRequired[pulumi.Input['DlpCustomProfileProfileEntryPatternArgsDict']]
+        words: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    DlpCustomProfileProfileEntryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DlpCustomProfileProfileEntryArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 name: pulumi.Input[str],
+                 pattern: Optional[pulumi.Input['DlpCustomProfileProfileEntryPatternArgs']] = None,
+                 words: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "name", name)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
+        if words is not None:
+            pulumi.set(__self__, "words", words)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> Optional[pulumi.Input['DlpCustomProfileProfileEntryPatternArgs']]:
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: Optional[pulumi.Input['DlpCustomProfileProfileEntryPatternArgs']]):
+        pulumi.set(self, "pattern", value)
+
+    @property
+    @pulumi.getter
+    def words(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "words")
+
+    @words.setter
+    def words(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "words", value)
+
+
+if not MYPY:
+    class DlpCustomProfileProfileEntryPatternArgsDict(TypedDict):
+        regex: pulumi.Input[str]
+        validation: NotRequired[pulumi.Input[str]]
+        """
+        Available values: "luhn".
+        """
+elif False:
+    DlpCustomProfileProfileEntryPatternArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DlpCustomProfileProfileEntryPatternArgs:
+    def __init__(__self__, *,
+                 regex: pulumi.Input[str],
+                 validation: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] validation: Available values: "luhn".
+        """
+        pulumi.set(__self__, "regex", regex)
+        if validation is not None:
+            pulumi.set(__self__, "validation", validation)
+
+    @property
+    @pulumi.getter
+    def regex(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: pulumi.Input[str]):
+        pulumi.set(self, "regex", value)
+
+    @property
+    @pulumi.getter
+    def validation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Available values: "luhn".
+        """
+        return pulumi.get(self, "validation")
+
+    @validation.setter
+    def validation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validation", value)
+
+
+if not MYPY:
+    class DlpCustomProfileProfileSharedEntryArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        entry_id: pulumi.Input[str]
+        entry_type: pulumi.Input[str]
+        """
+        Available values: "custom".
+        """
+elif False:
+    DlpCustomProfileProfileSharedEntryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DlpCustomProfileProfileSharedEntryArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 entry_id: pulumi.Input[str],
+                 entry_type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] entry_type: Available values: "custom".
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "entry_id", entry_id)
+        pulumi.set(__self__, "entry_type", entry_type)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="entryId")
+    def entry_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "entry_id")
+
+    @entry_id.setter
+    def entry_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entry_id", value)
+
+    @property
+    @pulumi.getter(name="entryType")
+    def entry_type(self) -> pulumi.Input[str]:
+        """
+        Available values: "custom".
+        """
+        return pulumi.get(self, "entry_type")
+
+    @entry_type.setter
+    def entry_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entry_type", value)
+
+
+if not MYPY:
+    class DlpCustomProfileSharedEntryArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        entry_id: pulumi.Input[str]
+        entry_type: pulumi.Input[str]
+        """
+        Available values: "custom".
+        """
+elif False:
+    DlpCustomProfileSharedEntryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DlpCustomProfileSharedEntryArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 entry_id: pulumi.Input[str],
+                 entry_type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] entry_type: Available values: "custom".
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "entry_id", entry_id)
+        pulumi.set(__self__, "entry_type", entry_type)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="entryId")
+    def entry_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "entry_id")
+
+    @entry_id.setter
+    def entry_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entry_id", value)
+
+    @property
+    @pulumi.getter(name="entryType")
+    def entry_type(self) -> pulumi.Input[str]:
+        """
+        Available values: "custom".
+        """
+        return pulumi.get(self, "entry_type")
+
+    @entry_type.setter
+    def entry_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entry_type", value)
+
+
+if not MYPY:
+    class DlpPredefinedProfileContextAwarenessArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        If true, scan the context of predefined entries to only return matches surrounded by keywords.
+        """
+        skip: pulumi.Input['DlpPredefinedProfileContextAwarenessSkipArgsDict']
+        """
+        Content types to exclude from context analysis and return all matches.
+        """
+elif False:
+    DlpPredefinedProfileContextAwarenessArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DlpPredefinedProfileContextAwarenessArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 skip: pulumi.Input['DlpPredefinedProfileContextAwarenessSkipArgs']):
+        """
+        :param pulumi.Input[bool] enabled: If true, scan the context of predefined entries to only return matches surrounded by keywords.
+        :param pulumi.Input['DlpPredefinedProfileContextAwarenessSkipArgs'] skip: Content types to exclude from context analysis and return all matches.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "skip", skip)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        If true, scan the context of predefined entries to only return matches surrounded by keywords.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def skip(self) -> pulumi.Input['DlpPredefinedProfileContextAwarenessSkipArgs']:
+        """
+        Content types to exclude from context analysis and return all matches.
+        """
+        return pulumi.get(self, "skip")
+
+    @skip.setter
+    def skip(self, value: pulumi.Input['DlpPredefinedProfileContextAwarenessSkipArgs']):
+        pulumi.set(self, "skip", value)
+
+
+if not MYPY:
+    class DlpPredefinedProfileContextAwarenessSkipArgsDict(TypedDict):
+        files: pulumi.Input[bool]
+        """
+        If the content type is a file, skip context analysis and return all matches.
+        """
+elif False:
+    DlpPredefinedProfileContextAwarenessSkipArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DlpPredefinedProfileContextAwarenessSkipArgs:
+    def __init__(__self__, *,
+                 files: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] files: If the content type is a file, skip context analysis and return all matches.
+        """
+        pulumi.set(__self__, "files", files)
+
+    @property
+    @pulumi.getter
+    def files(self) -> pulumi.Input[bool]:
+        """
+        If the content type is a file, skip context analysis and return all matches.
+        """
+        return pulumi.get(self, "files")
+
+    @files.setter
+    def files(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "files", value)
+
+
+if not MYPY:
+    class DlpPredefinedProfileEntryArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        id: pulumi.Input[str]
+elif False:
+    DlpPredefinedProfileEntryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DlpPredefinedProfileEntryArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 id: pulumi.Input[str]):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
 
 
 if not MYPY:
@@ -13755,6 +29921,186 @@ class MagicWanStaticRouteScopeArgs:
     @colo_regions.setter
     def colo_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "colo_regions", value)
+
+
+if not MYPY:
+    class ManagedHeadersManagedRequestHeaderArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether the Managed Transform is enabled.
+        """
+        id: pulumi.Input[str]
+        """
+        The human-readable identifier of the Managed Transform.
+        """
+        conflicts_withs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The Managed Transforms that this Managed Transform conflicts with.
+        """
+        has_conflict: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
+        """
+elif False:
+    ManagedHeadersManagedRequestHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ManagedHeadersManagedRequestHeaderArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 id: pulumi.Input[str],
+                 conflicts_withs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 has_conflict: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Whether the Managed Transform is enabled.
+        :param pulumi.Input[str] id: The human-readable identifier of the Managed Transform.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] conflicts_withs: The Managed Transforms that this Managed Transform conflicts with.
+        :param pulumi.Input[bool] has_conflict: Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        if conflicts_withs is not None:
+            pulumi.set(__self__, "conflicts_withs", conflicts_withs)
+        if has_conflict is not None:
+            pulumi.set(__self__, "has_conflict", has_conflict)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether the Managed Transform is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The human-readable identifier of the Managed Transform.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="conflictsWiths")
+    def conflicts_withs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The Managed Transforms that this Managed Transform conflicts with.
+        """
+        return pulumi.get(self, "conflicts_withs")
+
+    @conflicts_withs.setter
+    def conflicts_withs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "conflicts_withs", value)
+
+    @property
+    @pulumi.getter(name="hasConflict")
+    def has_conflict(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
+        """
+        return pulumi.get(self, "has_conflict")
+
+    @has_conflict.setter
+    def has_conflict(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "has_conflict", value)
+
+
+if not MYPY:
+    class ManagedHeadersManagedResponseHeaderArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether the Managed Transform is enabled.
+        """
+        id: pulumi.Input[str]
+        """
+        The human-readable identifier of the Managed Transform.
+        """
+        conflicts_withs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The Managed Transforms that this Managed Transform conflicts with.
+        """
+        has_conflict: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
+        """
+elif False:
+    ManagedHeadersManagedResponseHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ManagedHeadersManagedResponseHeaderArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 id: pulumi.Input[str],
+                 conflicts_withs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 has_conflict: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Whether the Managed Transform is enabled.
+        :param pulumi.Input[str] id: The human-readable identifier of the Managed Transform.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] conflicts_withs: The Managed Transforms that this Managed Transform conflicts with.
+        :param pulumi.Input[bool] has_conflict: Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        if conflicts_withs is not None:
+            pulumi.set(__self__, "conflicts_withs", conflicts_withs)
+        if has_conflict is not None:
+            pulumi.set(__self__, "has_conflict", has_conflict)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether the Managed Transform is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The human-readable identifier of the Managed Transform.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="conflictsWiths")
+    def conflicts_withs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The Managed Transforms that this Managed Transform conflicts with.
+        """
+        return pulumi.get(self, "conflicts_withs")
+
+    @conflicts_withs.setter
+    def conflicts_withs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "conflicts_withs", value)
+
+    @property
+    @pulumi.getter(name="hasConflict")
+    def has_conflict(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
+        """
+        return pulumi.get(self, "has_conflict")
+
+    @has_conflict.setter
+    def has_conflict(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "has_conflict", value)
 
 
 if not MYPY:
@@ -22928,6 +39274,859 @@ class RateLimitMatchResponseArgs:
 
 
 if not MYPY:
+    class RecordDataArgsDict(TypedDict):
+        algorithm: NotRequired[pulumi.Input[float]]
+        """
+        Algorithm.
+        """
+        altitude: NotRequired[pulumi.Input[float]]
+        """
+        Altitude of location in meters.
+        """
+        certificate: NotRequired[pulumi.Input[str]]
+        """
+        Certificate.
+        """
+        digest: NotRequired[pulumi.Input[str]]
+        """
+        Digest.
+        """
+        digest_type: NotRequired[pulumi.Input[float]]
+        """
+        Digest Type.
+        """
+        fingerprint: NotRequired[pulumi.Input[str]]
+        """
+        fingerprint.
+        """
+        flags: NotRequired[pulumi.Input[float]]
+        """
+        Flags for the CAA record.
+        """
+        key_tag: NotRequired[pulumi.Input[float]]
+        """
+        Key Tag.
+        """
+        lat_degrees: NotRequired[pulumi.Input[float]]
+        """
+        Degrees of latitude.
+        """
+        lat_direction: NotRequired[pulumi.Input[str]]
+        """
+        Latitude direction.
+        Available values: "N", "S".
+        """
+        lat_minutes: NotRequired[pulumi.Input[float]]
+        """
+        Minutes of latitude.
+        """
+        lat_seconds: NotRequired[pulumi.Input[float]]
+        """
+        Seconds of latitude.
+        """
+        long_degrees: NotRequired[pulumi.Input[float]]
+        """
+        Degrees of longitude.
+        """
+        long_direction: NotRequired[pulumi.Input[str]]
+        """
+        Longitude direction.
+        Available values: "E", "W".
+        """
+        long_minutes: NotRequired[pulumi.Input[float]]
+        """
+        Minutes of longitude.
+        """
+        long_seconds: NotRequired[pulumi.Input[float]]
+        """
+        Seconds of longitude.
+        """
+        matching_type: NotRequired[pulumi.Input[float]]
+        """
+        Matching Type.
+        """
+        order: NotRequired[pulumi.Input[float]]
+        """
+        Order.
+        """
+        port: NotRequired[pulumi.Input[float]]
+        """
+        The port of the service.
+        """
+        precision_horz: NotRequired[pulumi.Input[float]]
+        """
+        Horizontal precision of location.
+        """
+        precision_vert: NotRequired[pulumi.Input[float]]
+        """
+        Vertical precision of location.
+        """
+        preference: NotRequired[pulumi.Input[float]]
+        """
+        Preference.
+        """
+        priority: NotRequired[pulumi.Input[float]]
+        """
+        priority.
+        """
+        protocol: NotRequired[pulumi.Input[float]]
+        """
+        Protocol.
+        """
+        public_key: NotRequired[pulumi.Input[str]]
+        """
+        Public Key.
+        """
+        regex: NotRequired[pulumi.Input[str]]
+        """
+        Regex.
+        """
+        replacement: NotRequired[pulumi.Input[str]]
+        """
+        Replacement.
+        """
+        selector: NotRequired[pulumi.Input[float]]
+        """
+        Selector.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Service.
+        """
+        size: NotRequired[pulumi.Input[float]]
+        """
+        Size of location in meters.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+        """
+        target: NotRequired[pulumi.Input[str]]
+        """
+        target.
+        """
+        type: NotRequired[pulumi.Input[float]]
+        """
+        Type.
+        """
+        usage: NotRequired[pulumi.Input[float]]
+        """
+        Usage.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value of the record. This field's semantics depend on the chosen tag.
+        """
+        weight: NotRequired[pulumi.Input[float]]
+        """
+        The record weight.
+        """
+elif False:
+    RecordDataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RecordDataArgs:
+    def __init__(__self__, *,
+                 algorithm: Optional[pulumi.Input[float]] = None,
+                 altitude: Optional[pulumi.Input[float]] = None,
+                 certificate: Optional[pulumi.Input[str]] = None,
+                 digest: Optional[pulumi.Input[str]] = None,
+                 digest_type: Optional[pulumi.Input[float]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
+                 flags: Optional[pulumi.Input[float]] = None,
+                 key_tag: Optional[pulumi.Input[float]] = None,
+                 lat_degrees: Optional[pulumi.Input[float]] = None,
+                 lat_direction: Optional[pulumi.Input[str]] = None,
+                 lat_minutes: Optional[pulumi.Input[float]] = None,
+                 lat_seconds: Optional[pulumi.Input[float]] = None,
+                 long_degrees: Optional[pulumi.Input[float]] = None,
+                 long_direction: Optional[pulumi.Input[str]] = None,
+                 long_minutes: Optional[pulumi.Input[float]] = None,
+                 long_seconds: Optional[pulumi.Input[float]] = None,
+                 matching_type: Optional[pulumi.Input[float]] = None,
+                 order: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[float]] = None,
+                 precision_horz: Optional[pulumi.Input[float]] = None,
+                 precision_vert: Optional[pulumi.Input[float]] = None,
+                 preference: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[float]] = None,
+                 protocol: Optional[pulumi.Input[float]] = None,
+                 public_key: Optional[pulumi.Input[str]] = None,
+                 regex: Optional[pulumi.Input[str]] = None,
+                 replacement: Optional[pulumi.Input[str]] = None,
+                 selector: Optional[pulumi.Input[float]] = None,
+                 service: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[float]] = None,
+                 tag: Optional[pulumi.Input[str]] = None,
+                 target: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[float]] = None,
+                 usage: Optional[pulumi.Input[float]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 weight: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[float] algorithm: Algorithm.
+        :param pulumi.Input[float] altitude: Altitude of location in meters.
+        :param pulumi.Input[str] certificate: Certificate.
+        :param pulumi.Input[str] digest: Digest.
+        :param pulumi.Input[float] digest_type: Digest Type.
+        :param pulumi.Input[str] fingerprint: fingerprint.
+        :param pulumi.Input[float] flags: Flags for the CAA record.
+        :param pulumi.Input[float] key_tag: Key Tag.
+        :param pulumi.Input[float] lat_degrees: Degrees of latitude.
+        :param pulumi.Input[str] lat_direction: Latitude direction.
+               Available values: "N", "S".
+        :param pulumi.Input[float] lat_minutes: Minutes of latitude.
+        :param pulumi.Input[float] lat_seconds: Seconds of latitude.
+        :param pulumi.Input[float] long_degrees: Degrees of longitude.
+        :param pulumi.Input[str] long_direction: Longitude direction.
+               Available values: "E", "W".
+        :param pulumi.Input[float] long_minutes: Minutes of longitude.
+        :param pulumi.Input[float] long_seconds: Seconds of longitude.
+        :param pulumi.Input[float] matching_type: Matching Type.
+        :param pulumi.Input[float] order: Order.
+        :param pulumi.Input[float] port: The port of the service.
+        :param pulumi.Input[float] precision_horz: Horizontal precision of location.
+        :param pulumi.Input[float] precision_vert: Vertical precision of location.
+        :param pulumi.Input[float] preference: Preference.
+        :param pulumi.Input[float] priority: priority.
+        :param pulumi.Input[float] protocol: Protocol.
+        :param pulumi.Input[str] public_key: Public Key.
+        :param pulumi.Input[str] regex: Regex.
+        :param pulumi.Input[str] replacement: Replacement.
+        :param pulumi.Input[float] selector: Selector.
+        :param pulumi.Input[str] service: Service.
+        :param pulumi.Input[float] size: Size of location in meters.
+        :param pulumi.Input[str] tag: Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+        :param pulumi.Input[str] target: target.
+        :param pulumi.Input[float] type: Type.
+        :param pulumi.Input[float] usage: Usage.
+        :param pulumi.Input[str] value: Value of the record. This field's semantics depend on the chosen tag.
+        :param pulumi.Input[float] weight: The record weight.
+        """
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if altitude is not None:
+            pulumi.set(__self__, "altitude", altitude)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if digest is not None:
+            pulumi.set(__self__, "digest", digest)
+        if digest_type is not None:
+            pulumi.set(__self__, "digest_type", digest_type)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if flags is not None:
+            pulumi.set(__self__, "flags", flags)
+        if key_tag is not None:
+            pulumi.set(__self__, "key_tag", key_tag)
+        if lat_degrees is not None:
+            pulumi.set(__self__, "lat_degrees", lat_degrees)
+        if lat_direction is not None:
+            pulumi.set(__self__, "lat_direction", lat_direction)
+        if lat_minutes is not None:
+            pulumi.set(__self__, "lat_minutes", lat_minutes)
+        if lat_seconds is not None:
+            pulumi.set(__self__, "lat_seconds", lat_seconds)
+        if long_degrees is not None:
+            pulumi.set(__self__, "long_degrees", long_degrees)
+        if long_direction is not None:
+            pulumi.set(__self__, "long_direction", long_direction)
+        if long_minutes is not None:
+            pulumi.set(__self__, "long_minutes", long_minutes)
+        if long_seconds is not None:
+            pulumi.set(__self__, "long_seconds", long_seconds)
+        if matching_type is not None:
+            pulumi.set(__self__, "matching_type", matching_type)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if precision_horz is not None:
+            pulumi.set(__self__, "precision_horz", precision_horz)
+        if precision_vert is not None:
+            pulumi.set(__self__, "precision_vert", precision_vert)
+        if preference is not None:
+            pulumi.set(__self__, "preference", preference)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if public_key is not None:
+            pulumi.set(__self__, "public_key", public_key)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+        if replacement is not None:
+            pulumi.set(__self__, "replacement", replacement)
+        if selector is not None:
+            pulumi.set(__self__, "selector", selector)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if usage is not None:
+            pulumi.set(__self__, "usage", usage)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> Optional[pulumi.Input[float]]:
+        """
+        Algorithm.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter
+    def altitude(self) -> Optional[pulumi.Input[float]]:
+        """
+        Altitude of location in meters.
+        """
+        return pulumi.get(self, "altitude")
+
+    @altitude.setter
+    def altitude(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "altitude", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate.
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Optional[pulumi.Input[str]]:
+        """
+        Digest.
+        """
+        return pulumi.get(self, "digest")
+
+    @digest.setter
+    def digest(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "digest", value)
+
+    @property
+    @pulumi.getter(name="digestType")
+    def digest_type(self) -> Optional[pulumi.Input[float]]:
+        """
+        Digest Type.
+        """
+        return pulumi.get(self, "digest_type")
+
+    @digest_type.setter
+    def digest_type(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "digest_type", value)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        fingerprint.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fingerprint", value)
+
+    @property
+    @pulumi.getter
+    def flags(self) -> Optional[pulumi.Input[float]]:
+        """
+        Flags for the CAA record.
+        """
+        return pulumi.get(self, "flags")
+
+    @flags.setter
+    def flags(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "flags", value)
+
+    @property
+    @pulumi.getter(name="keyTag")
+    def key_tag(self) -> Optional[pulumi.Input[float]]:
+        """
+        Key Tag.
+        """
+        return pulumi.get(self, "key_tag")
+
+    @key_tag.setter
+    def key_tag(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "key_tag", value)
+
+    @property
+    @pulumi.getter(name="latDegrees")
+    def lat_degrees(self) -> Optional[pulumi.Input[float]]:
+        """
+        Degrees of latitude.
+        """
+        return pulumi.get(self, "lat_degrees")
+
+    @lat_degrees.setter
+    def lat_degrees(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "lat_degrees", value)
+
+    @property
+    @pulumi.getter(name="latDirection")
+    def lat_direction(self) -> Optional[pulumi.Input[str]]:
+        """
+        Latitude direction.
+        Available values: "N", "S".
+        """
+        return pulumi.get(self, "lat_direction")
+
+    @lat_direction.setter
+    def lat_direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lat_direction", value)
+
+    @property
+    @pulumi.getter(name="latMinutes")
+    def lat_minutes(self) -> Optional[pulumi.Input[float]]:
+        """
+        Minutes of latitude.
+        """
+        return pulumi.get(self, "lat_minutes")
+
+    @lat_minutes.setter
+    def lat_minutes(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "lat_minutes", value)
+
+    @property
+    @pulumi.getter(name="latSeconds")
+    def lat_seconds(self) -> Optional[pulumi.Input[float]]:
+        """
+        Seconds of latitude.
+        """
+        return pulumi.get(self, "lat_seconds")
+
+    @lat_seconds.setter
+    def lat_seconds(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "lat_seconds", value)
+
+    @property
+    @pulumi.getter(name="longDegrees")
+    def long_degrees(self) -> Optional[pulumi.Input[float]]:
+        """
+        Degrees of longitude.
+        """
+        return pulumi.get(self, "long_degrees")
+
+    @long_degrees.setter
+    def long_degrees(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "long_degrees", value)
+
+    @property
+    @pulumi.getter(name="longDirection")
+    def long_direction(self) -> Optional[pulumi.Input[str]]:
+        """
+        Longitude direction.
+        Available values: "E", "W".
+        """
+        return pulumi.get(self, "long_direction")
+
+    @long_direction.setter
+    def long_direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "long_direction", value)
+
+    @property
+    @pulumi.getter(name="longMinutes")
+    def long_minutes(self) -> Optional[pulumi.Input[float]]:
+        """
+        Minutes of longitude.
+        """
+        return pulumi.get(self, "long_minutes")
+
+    @long_minutes.setter
+    def long_minutes(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "long_minutes", value)
+
+    @property
+    @pulumi.getter(name="longSeconds")
+    def long_seconds(self) -> Optional[pulumi.Input[float]]:
+        """
+        Seconds of longitude.
+        """
+        return pulumi.get(self, "long_seconds")
+
+    @long_seconds.setter
+    def long_seconds(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "long_seconds", value)
+
+    @property
+    @pulumi.getter(name="matchingType")
+    def matching_type(self) -> Optional[pulumi.Input[float]]:
+        """
+        Matching Type.
+        """
+        return pulumi.get(self, "matching_type")
+
+    @matching_type.setter
+    def matching_type(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "matching_type", value)
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[pulumi.Input[float]]:
+        """
+        Order.
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "order", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[float]]:
+        """
+        The port of the service.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="precisionHorz")
+    def precision_horz(self) -> Optional[pulumi.Input[float]]:
+        """
+        Horizontal precision of location.
+        """
+        return pulumi.get(self, "precision_horz")
+
+    @precision_horz.setter
+    def precision_horz(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "precision_horz", value)
+
+    @property
+    @pulumi.getter(name="precisionVert")
+    def precision_vert(self) -> Optional[pulumi.Input[float]]:
+        """
+        Vertical precision of location.
+        """
+        return pulumi.get(self, "precision_vert")
+
+    @precision_vert.setter
+    def precision_vert(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "precision_vert", value)
+
+    @property
+    @pulumi.getter
+    def preference(self) -> Optional[pulumi.Input[float]]:
+        """
+        Preference.
+        """
+        return pulumi.get(self, "preference")
+
+    @preference.setter
+    def preference(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "preference", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[float]]:
+        """
+        priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[float]]:
+        """
+        Protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Public Key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        Regex.
+        """
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "regex", value)
+
+    @property
+    @pulumi.getter
+    def replacement(self) -> Optional[pulumi.Input[str]]:
+        """
+        Replacement.
+        """
+        return pulumi.get(self, "replacement")
+
+    @replacement.setter
+    def replacement(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replacement", value)
+
+    @property
+    @pulumi.getter
+    def selector(self) -> Optional[pulumi.Input[float]]:
+        """
+        Selector.
+        """
+        return pulumi.get(self, "selector")
+
+    @selector.setter
+    def selector(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "selector", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[float]]:
+        """
+        Size of location in meters.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[pulumi.Input[str]]:
+        """
+        target.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[float]]:
+        """
+        Type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def usage(self) -> Optional[pulumi.Input[float]]:
+        """
+        Usage.
+        """
+        return pulumi.get(self, "usage")
+
+    @usage.setter
+    def usage(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "usage", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value of the record. This field's semantics depend on the chosen tag.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[float]]:
+        """
+        The record weight.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "weight", value)
+
+
+if not MYPY:
+    class RecordSettingsArgsDict(TypedDict):
+        flatten_cname: NotRequired[pulumi.Input[bool]]
+        """
+        If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
+        """
+        ipv4_only: NotRequired[pulumi.Input[bool]]
+        """
+        When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+        """
+        ipv6_only: NotRequired[pulumi.Input[bool]]
+        """
+        When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+        """
+elif False:
+    RecordSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RecordSettingsArgs:
+    def __init__(__self__, *,
+                 flatten_cname: Optional[pulumi.Input[bool]] = None,
+                 ipv4_only: Optional[pulumi.Input[bool]] = None,
+                 ipv6_only: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] flatten_cname: If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
+        :param pulumi.Input[bool] ipv4_only: When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+        :param pulumi.Input[bool] ipv6_only: When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+        """
+        if flatten_cname is not None:
+            pulumi.set(__self__, "flatten_cname", flatten_cname)
+        if ipv4_only is not None:
+            pulumi.set(__self__, "ipv4_only", ipv4_only)
+        if ipv6_only is not None:
+            pulumi.set(__self__, "ipv6_only", ipv6_only)
+
+    @property
+    @pulumi.getter(name="flattenCname")
+    def flatten_cname(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
+        """
+        return pulumi.get(self, "flatten_cname")
+
+    @flatten_cname.setter
+    def flatten_cname(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "flatten_cname", value)
+
+    @property
+    @pulumi.getter(name="ipv4Only")
+    def ipv4_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+        """
+        return pulumi.get(self, "ipv4_only")
+
+    @ipv4_only.setter
+    def ipv4_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ipv4_only", value)
+
+    @property
+    @pulumi.getter(name="ipv6Only")
+    def ipv6_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+        """
+        return pulumi.get(self, "ipv6_only")
+
+    @ipv6_only.setter
+    def ipv6_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ipv6_only", value)
+
+
+if not MYPY:
+    class RiskBehaviorBehaviorsArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        risk_level: pulumi.Input[str]
+        """
+        Available values: "low", "medium", "high".
+        """
+elif False:
+    RiskBehaviorBehaviorsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RiskBehaviorBehaviorsArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 risk_level: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] risk_level: Available values: "low", "medium", "high".
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "risk_level", risk_level)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="riskLevel")
+    def risk_level(self) -> pulumi.Input[str]:
+        """
+        Available values: "low", "medium", "high".
+        """
+        return pulumi.get(self, "risk_level")
+
+    @risk_level.setter
+    def risk_level(self, value: pulumi.Input[str]):
+        pulumi.set(self, "risk_level", value)
+
+
+if not MYPY:
     class RulesetRuleArgsDict(TypedDict):
         action: NotRequired[pulumi.Input[str]]
         """
@@ -26975,6 +44174,546 @@ class SpectrumApplicationOriginDnsArgs:
 
 
 if not MYPY:
+    class StaticRouteModifiedRouteArgsDict(TypedDict):
+        created_on: NotRequired[pulumi.Input[str]]
+        """
+        When the route was created.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional human provided description of the static route.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Identifier
+        """
+        modified_on: NotRequired[pulumi.Input[str]]
+        """
+        When the route was last modified.
+        """
+        nexthop: NotRequired[pulumi.Input[str]]
+        """
+        The next-hop IP Address for the static route.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        IP Prefix in Classless Inter-Domain Routing format.
+        """
+        priority: NotRequired[pulumi.Input[int]]
+        """
+        Priority of the static route.
+        """
+        scope: NotRequired[pulumi.Input['StaticRouteModifiedRouteScopeArgsDict']]
+        """
+        Used only for ECMP routes.
+        """
+        weight: NotRequired[pulumi.Input[int]]
+        """
+        Optional weight of the ECMP scope - if provided.
+        """
+elif False:
+    StaticRouteModifiedRouteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StaticRouteModifiedRouteArgs:
+    def __init__(__self__, *,
+                 created_on: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 modified_on: Optional[pulumi.Input[str]] = None,
+                 nexthop: Optional[pulumi.Input[str]] = None,
+                 prefix: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 scope: Optional[pulumi.Input['StaticRouteModifiedRouteScopeArgs']] = None,
+                 weight: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] created_on: When the route was created.
+        :param pulumi.Input[str] description: An optional human provided description of the static route.
+        :param pulumi.Input[str] id: Identifier
+        :param pulumi.Input[str] modified_on: When the route was last modified.
+        :param pulumi.Input[str] nexthop: The next-hop IP Address for the static route.
+        :param pulumi.Input[str] prefix: IP Prefix in Classless Inter-Domain Routing format.
+        :param pulumi.Input[int] priority: Priority of the static route.
+        :param pulumi.Input['StaticRouteModifiedRouteScopeArgs'] scope: Used only for ECMP routes.
+        :param pulumi.Input[int] weight: Optional weight of the ECMP scope - if provided.
+        """
+        if created_on is not None:
+            pulumi.set(__self__, "created_on", created_on)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
+        if nexthop is not None:
+            pulumi.set(__self__, "nexthop", nexthop)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the route was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @created_on.setter
+    def created_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_on", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional human provided description of the static route.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the route was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modified_on", value)
+
+    @property
+    @pulumi.getter
+    def nexthop(self) -> Optional[pulumi.Input[str]]:
+        """
+        The next-hop IP Address for the static route.
+        """
+        return pulumi.get(self, "nexthop")
+
+    @nexthop.setter
+    def nexthop(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nexthop", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP Prefix in Classless Inter-Domain Routing format.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        Priority of the static route.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input['StaticRouteModifiedRouteScopeArgs']]:
+        """
+        Used only for ECMP routes.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input['StaticRouteModifiedRouteScopeArgs']]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional weight of the ECMP scope - if provided.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "weight", value)
+
+
+if not MYPY:
+    class StaticRouteModifiedRouteScopeArgsDict(TypedDict):
+        colo_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of colo names for the ECMP scope.
+        """
+        colo_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of colo regions for the ECMP scope.
+        """
+elif False:
+    StaticRouteModifiedRouteScopeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StaticRouteModifiedRouteScopeArgs:
+    def __init__(__self__, *,
+                 colo_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 colo_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_names: List of colo names for the ECMP scope.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_regions: List of colo regions for the ECMP scope.
+        """
+        if colo_names is not None:
+            pulumi.set(__self__, "colo_names", colo_names)
+        if colo_regions is not None:
+            pulumi.set(__self__, "colo_regions", colo_regions)
+
+    @property
+    @pulumi.getter(name="coloNames")
+    def colo_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of colo names for the ECMP scope.
+        """
+        return pulumi.get(self, "colo_names")
+
+    @colo_names.setter
+    def colo_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "colo_names", value)
+
+    @property
+    @pulumi.getter(name="coloRegions")
+    def colo_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of colo regions for the ECMP scope.
+        """
+        return pulumi.get(self, "colo_regions")
+
+    @colo_regions.setter
+    def colo_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "colo_regions", value)
+
+
+if not MYPY:
+    class StaticRouteRouteArgsDict(TypedDict):
+        created_on: NotRequired[pulumi.Input[str]]
+        """
+        When the route was created.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional human provided description of the static route.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Identifier
+        """
+        modified_on: NotRequired[pulumi.Input[str]]
+        """
+        When the route was last modified.
+        """
+        nexthop: NotRequired[pulumi.Input[str]]
+        """
+        The next-hop IP Address for the static route.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        IP Prefix in Classless Inter-Domain Routing format.
+        """
+        priority: NotRequired[pulumi.Input[int]]
+        """
+        Priority of the static route.
+        """
+        scope: NotRequired[pulumi.Input['StaticRouteRouteScopeArgsDict']]
+        """
+        Used only for ECMP routes.
+        """
+        weight: NotRequired[pulumi.Input[int]]
+        """
+        Optional weight of the ECMP scope - if provided.
+        """
+elif False:
+    StaticRouteRouteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StaticRouteRouteArgs:
+    def __init__(__self__, *,
+                 created_on: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 modified_on: Optional[pulumi.Input[str]] = None,
+                 nexthop: Optional[pulumi.Input[str]] = None,
+                 prefix: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 scope: Optional[pulumi.Input['StaticRouteRouteScopeArgs']] = None,
+                 weight: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] created_on: When the route was created.
+        :param pulumi.Input[str] description: An optional human provided description of the static route.
+        :param pulumi.Input[str] id: Identifier
+        :param pulumi.Input[str] modified_on: When the route was last modified.
+        :param pulumi.Input[str] nexthop: The next-hop IP Address for the static route.
+        :param pulumi.Input[str] prefix: IP Prefix in Classless Inter-Domain Routing format.
+        :param pulumi.Input[int] priority: Priority of the static route.
+        :param pulumi.Input['StaticRouteRouteScopeArgs'] scope: Used only for ECMP routes.
+        :param pulumi.Input[int] weight: Optional weight of the ECMP scope - if provided.
+        """
+        if created_on is not None:
+            pulumi.set(__self__, "created_on", created_on)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
+        if nexthop is not None:
+            pulumi.set(__self__, "nexthop", nexthop)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the route was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @created_on.setter
+    def created_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_on", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional human provided description of the static route.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the route was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modified_on", value)
+
+    @property
+    @pulumi.getter
+    def nexthop(self) -> Optional[pulumi.Input[str]]:
+        """
+        The next-hop IP Address for the static route.
+        """
+        return pulumi.get(self, "nexthop")
+
+    @nexthop.setter
+    def nexthop(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nexthop", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP Prefix in Classless Inter-Domain Routing format.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        Priority of the static route.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input['StaticRouteRouteScopeArgs']]:
+        """
+        Used only for ECMP routes.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input['StaticRouteRouteScopeArgs']]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional weight of the ECMP scope - if provided.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "weight", value)
+
+
+if not MYPY:
+    class StaticRouteRouteScopeArgsDict(TypedDict):
+        colo_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of colo names for the ECMP scope.
+        """
+        colo_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of colo regions for the ECMP scope.
+        """
+elif False:
+    StaticRouteRouteScopeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StaticRouteRouteScopeArgs:
+    def __init__(__self__, *,
+                 colo_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 colo_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_names: List of colo names for the ECMP scope.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_regions: List of colo regions for the ECMP scope.
+        """
+        if colo_names is not None:
+            pulumi.set(__self__, "colo_names", colo_names)
+        if colo_regions is not None:
+            pulumi.set(__self__, "colo_regions", colo_regions)
+
+    @property
+    @pulumi.getter(name="coloNames")
+    def colo_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of colo names for the ECMP scope.
+        """
+        return pulumi.get(self, "colo_names")
+
+    @colo_names.setter
+    def colo_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "colo_names", value)
+
+    @property
+    @pulumi.getter(name="coloRegions")
+    def colo_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of colo regions for the ECMP scope.
+        """
+        return pulumi.get(self, "colo_regions")
+
+    @colo_regions.setter
+    def colo_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "colo_regions", value)
+
+
+if not MYPY:
+    class StaticRouteScopeArgsDict(TypedDict):
+        colo_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of colo names for the ECMP scope.
+        """
+        colo_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of colo regions for the ECMP scope.
+        """
+elif False:
+    StaticRouteScopeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StaticRouteScopeArgs:
+    def __init__(__self__, *,
+                 colo_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 colo_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_names: List of colo names for the ECMP scope.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_regions: List of colo regions for the ECMP scope.
+        """
+        if colo_names is not None:
+            pulumi.set(__self__, "colo_names", colo_names)
+        if colo_regions is not None:
+            pulumi.set(__self__, "colo_regions", colo_regions)
+
+    @property
+    @pulumi.getter(name="coloNames")
+    def colo_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of colo names for the ECMP scope.
+        """
+        return pulumi.get(self, "colo_names")
+
+    @colo_names.setter
+    def colo_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "colo_names", value)
+
+    @property
+    @pulumi.getter(name="coloRegions")
+    def colo_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of colo regions for the ECMP scope.
+        """
+        return pulumi.get(self, "colo_regions")
+
+    @colo_regions.setter
+    def colo_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "colo_regions", value)
+
+
+if not MYPY:
     class StreamInputArgsDict(TypedDict):
         height: NotRequired[pulumi.Input[int]]
         """
@@ -27833,6 +45572,4200 @@ class StreamWatermarkArgs:
 
 
 if not MYPY:
+    class TeamsAccountSettingsArgsDict(TypedDict):
+        activity_log: NotRequired[pulumi.Input['TeamsAccountSettingsActivityLogArgsDict']]
+        """
+        Activity log settings.
+        """
+        antivirus: NotRequired[pulumi.Input['TeamsAccountSettingsAntivirusArgsDict']]
+        """
+        Anti-virus settings.
+        """
+        block_page: NotRequired[pulumi.Input['TeamsAccountSettingsBlockPageArgsDict']]
+        """
+        Block page layout settings.
+        """
+        body_scanning: NotRequired[pulumi.Input['TeamsAccountSettingsBodyScanningArgsDict']]
+        """
+        DLP body scanning settings.
+        """
+        browser_isolation: NotRequired[pulumi.Input['TeamsAccountSettingsBrowserIsolationArgsDict']]
+        """
+        Browser isolation settings.
+        """
+        certificate: NotRequired[pulumi.Input['TeamsAccountSettingsCertificateArgsDict']]
+        """
+        Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+        """
+        custom_certificate: NotRequired[pulumi.Input['TeamsAccountSettingsCustomCertificateArgsDict']]
+        """
+        Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+        """
+        extended_email_matching: NotRequired[pulumi.Input['TeamsAccountSettingsExtendedEmailMatchingArgsDict']]
+        """
+        Extended e-mail matching settings.
+        """
+        fips: NotRequired[pulumi.Input['TeamsAccountSettingsFipsArgsDict']]
+        """
+        FIPS settings.
+        """
+        protocol_detection: NotRequired[pulumi.Input['TeamsAccountSettingsProtocolDetectionArgsDict']]
+        """
+        Protocol Detection settings.
+        """
+        sandbox: NotRequired[pulumi.Input['TeamsAccountSettingsSandboxArgsDict']]
+        """
+        Sandbox settings.
+        """
+        tls_decrypt: NotRequired[pulumi.Input['TeamsAccountSettingsTlsDecryptArgsDict']]
+        """
+        TLS interception settings.
+        """
+elif False:
+    TeamsAccountSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsAccountSettingsArgs:
+    def __init__(__self__, *,
+                 activity_log: Optional[pulumi.Input['TeamsAccountSettingsActivityLogArgs']] = None,
+                 antivirus: Optional[pulumi.Input['TeamsAccountSettingsAntivirusArgs']] = None,
+                 block_page: Optional[pulumi.Input['TeamsAccountSettingsBlockPageArgs']] = None,
+                 body_scanning: Optional[pulumi.Input['TeamsAccountSettingsBodyScanningArgs']] = None,
+                 browser_isolation: Optional[pulumi.Input['TeamsAccountSettingsBrowserIsolationArgs']] = None,
+                 certificate: Optional[pulumi.Input['TeamsAccountSettingsCertificateArgs']] = None,
+                 custom_certificate: Optional[pulumi.Input['TeamsAccountSettingsCustomCertificateArgs']] = None,
+                 extended_email_matching: Optional[pulumi.Input['TeamsAccountSettingsExtendedEmailMatchingArgs']] = None,
+                 fips: Optional[pulumi.Input['TeamsAccountSettingsFipsArgs']] = None,
+                 protocol_detection: Optional[pulumi.Input['TeamsAccountSettingsProtocolDetectionArgs']] = None,
+                 sandbox: Optional[pulumi.Input['TeamsAccountSettingsSandboxArgs']] = None,
+                 tls_decrypt: Optional[pulumi.Input['TeamsAccountSettingsTlsDecryptArgs']] = None):
+        """
+        :param pulumi.Input['TeamsAccountSettingsActivityLogArgs'] activity_log: Activity log settings.
+        :param pulumi.Input['TeamsAccountSettingsAntivirusArgs'] antivirus: Anti-virus settings.
+        :param pulumi.Input['TeamsAccountSettingsBlockPageArgs'] block_page: Block page layout settings.
+        :param pulumi.Input['TeamsAccountSettingsBodyScanningArgs'] body_scanning: DLP body scanning settings.
+        :param pulumi.Input['TeamsAccountSettingsBrowserIsolationArgs'] browser_isolation: Browser isolation settings.
+        :param pulumi.Input['TeamsAccountSettingsCertificateArgs'] certificate: Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+        :param pulumi.Input['TeamsAccountSettingsCustomCertificateArgs'] custom_certificate: Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+        :param pulumi.Input['TeamsAccountSettingsExtendedEmailMatchingArgs'] extended_email_matching: Extended e-mail matching settings.
+        :param pulumi.Input['TeamsAccountSettingsFipsArgs'] fips: FIPS settings.
+        :param pulumi.Input['TeamsAccountSettingsProtocolDetectionArgs'] protocol_detection: Protocol Detection settings.
+        :param pulumi.Input['TeamsAccountSettingsSandboxArgs'] sandbox: Sandbox settings.
+        :param pulumi.Input['TeamsAccountSettingsTlsDecryptArgs'] tls_decrypt: TLS interception settings.
+        """
+        if activity_log is not None:
+            pulumi.set(__self__, "activity_log", activity_log)
+        if antivirus is not None:
+            pulumi.set(__self__, "antivirus", antivirus)
+        if block_page is not None:
+            pulumi.set(__self__, "block_page", block_page)
+        if body_scanning is not None:
+            pulumi.set(__self__, "body_scanning", body_scanning)
+        if browser_isolation is not None:
+            pulumi.set(__self__, "browser_isolation", browser_isolation)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if custom_certificate is not None:
+            pulumi.set(__self__, "custom_certificate", custom_certificate)
+        if extended_email_matching is not None:
+            pulumi.set(__self__, "extended_email_matching", extended_email_matching)
+        if fips is not None:
+            pulumi.set(__self__, "fips", fips)
+        if protocol_detection is not None:
+            pulumi.set(__self__, "protocol_detection", protocol_detection)
+        if sandbox is not None:
+            pulumi.set(__self__, "sandbox", sandbox)
+        if tls_decrypt is not None:
+            pulumi.set(__self__, "tls_decrypt", tls_decrypt)
+
+    @property
+    @pulumi.getter(name="activityLog")
+    def activity_log(self) -> Optional[pulumi.Input['TeamsAccountSettingsActivityLogArgs']]:
+        """
+        Activity log settings.
+        """
+        return pulumi.get(self, "activity_log")
+
+    @activity_log.setter
+    def activity_log(self, value: Optional[pulumi.Input['TeamsAccountSettingsActivityLogArgs']]):
+        pulumi.set(self, "activity_log", value)
+
+    @property
+    @pulumi.getter
+    def antivirus(self) -> Optional[pulumi.Input['TeamsAccountSettingsAntivirusArgs']]:
+        """
+        Anti-virus settings.
+        """
+        return pulumi.get(self, "antivirus")
+
+    @antivirus.setter
+    def antivirus(self, value: Optional[pulumi.Input['TeamsAccountSettingsAntivirusArgs']]):
+        pulumi.set(self, "antivirus", value)
+
+    @property
+    @pulumi.getter(name="blockPage")
+    def block_page(self) -> Optional[pulumi.Input['TeamsAccountSettingsBlockPageArgs']]:
+        """
+        Block page layout settings.
+        """
+        return pulumi.get(self, "block_page")
+
+    @block_page.setter
+    def block_page(self, value: Optional[pulumi.Input['TeamsAccountSettingsBlockPageArgs']]):
+        pulumi.set(self, "block_page", value)
+
+    @property
+    @pulumi.getter(name="bodyScanning")
+    def body_scanning(self) -> Optional[pulumi.Input['TeamsAccountSettingsBodyScanningArgs']]:
+        """
+        DLP body scanning settings.
+        """
+        return pulumi.get(self, "body_scanning")
+
+    @body_scanning.setter
+    def body_scanning(self, value: Optional[pulumi.Input['TeamsAccountSettingsBodyScanningArgs']]):
+        pulumi.set(self, "body_scanning", value)
+
+    @property
+    @pulumi.getter(name="browserIsolation")
+    def browser_isolation(self) -> Optional[pulumi.Input['TeamsAccountSettingsBrowserIsolationArgs']]:
+        """
+        Browser isolation settings.
+        """
+        return pulumi.get(self, "browser_isolation")
+
+    @browser_isolation.setter
+    def browser_isolation(self, value: Optional[pulumi.Input['TeamsAccountSettingsBrowserIsolationArgs']]):
+        pulumi.set(self, "browser_isolation", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input['TeamsAccountSettingsCertificateArgs']]:
+        """
+        Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input['TeamsAccountSettingsCertificateArgs']]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="customCertificate")
+    def custom_certificate(self) -> Optional[pulumi.Input['TeamsAccountSettingsCustomCertificateArgs']]:
+        """
+        Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+        """
+        return pulumi.get(self, "custom_certificate")
+
+    @custom_certificate.setter
+    def custom_certificate(self, value: Optional[pulumi.Input['TeamsAccountSettingsCustomCertificateArgs']]):
+        pulumi.set(self, "custom_certificate", value)
+
+    @property
+    @pulumi.getter(name="extendedEmailMatching")
+    def extended_email_matching(self) -> Optional[pulumi.Input['TeamsAccountSettingsExtendedEmailMatchingArgs']]:
+        """
+        Extended e-mail matching settings.
+        """
+        return pulumi.get(self, "extended_email_matching")
+
+    @extended_email_matching.setter
+    def extended_email_matching(self, value: Optional[pulumi.Input['TeamsAccountSettingsExtendedEmailMatchingArgs']]):
+        pulumi.set(self, "extended_email_matching", value)
+
+    @property
+    @pulumi.getter
+    def fips(self) -> Optional[pulumi.Input['TeamsAccountSettingsFipsArgs']]:
+        """
+        FIPS settings.
+        """
+        return pulumi.get(self, "fips")
+
+    @fips.setter
+    def fips(self, value: Optional[pulumi.Input['TeamsAccountSettingsFipsArgs']]):
+        pulumi.set(self, "fips", value)
+
+    @property
+    @pulumi.getter(name="protocolDetection")
+    def protocol_detection(self) -> Optional[pulumi.Input['TeamsAccountSettingsProtocolDetectionArgs']]:
+        """
+        Protocol Detection settings.
+        """
+        return pulumi.get(self, "protocol_detection")
+
+    @protocol_detection.setter
+    def protocol_detection(self, value: Optional[pulumi.Input['TeamsAccountSettingsProtocolDetectionArgs']]):
+        pulumi.set(self, "protocol_detection", value)
+
+    @property
+    @pulumi.getter
+    def sandbox(self) -> Optional[pulumi.Input['TeamsAccountSettingsSandboxArgs']]:
+        """
+        Sandbox settings.
+        """
+        return pulumi.get(self, "sandbox")
+
+    @sandbox.setter
+    def sandbox(self, value: Optional[pulumi.Input['TeamsAccountSettingsSandboxArgs']]):
+        pulumi.set(self, "sandbox", value)
+
+    @property
+    @pulumi.getter(name="tlsDecrypt")
+    def tls_decrypt(self) -> Optional[pulumi.Input['TeamsAccountSettingsTlsDecryptArgs']]:
+        """
+        TLS interception settings.
+        """
+        return pulumi.get(self, "tls_decrypt")
+
+    @tls_decrypt.setter
+    def tls_decrypt(self, value: Optional[pulumi.Input['TeamsAccountSettingsTlsDecryptArgs']]):
+        pulumi.set(self, "tls_decrypt", value)
+
+
+if not MYPY:
+    class TeamsAccountSettingsActivityLogArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable activity logging.
+        """
+elif False:
+    TeamsAccountSettingsActivityLogArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsAccountSettingsActivityLogArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable activity logging.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable activity logging.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class TeamsAccountSettingsAntivirusArgsDict(TypedDict):
+        enabled_download_phase: NotRequired[pulumi.Input[bool]]
+        """
+        Enable anti-virus scanning on downloads.
+        """
+        enabled_upload_phase: NotRequired[pulumi.Input[bool]]
+        """
+        Enable anti-virus scanning on uploads.
+        """
+        fail_closed: NotRequired[pulumi.Input[bool]]
+        """
+        Block requests for files that cannot be scanned.
+        """
+        notification_settings: NotRequired[pulumi.Input['TeamsAccountSettingsAntivirusNotificationSettingsArgsDict']]
+        """
+        Configure a message to display on the user's device when an antivirus search is performed.
+        """
+elif False:
+    TeamsAccountSettingsAntivirusArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsAccountSettingsAntivirusArgs:
+    def __init__(__self__, *,
+                 enabled_download_phase: Optional[pulumi.Input[bool]] = None,
+                 enabled_upload_phase: Optional[pulumi.Input[bool]] = None,
+                 fail_closed: Optional[pulumi.Input[bool]] = None,
+                 notification_settings: Optional[pulumi.Input['TeamsAccountSettingsAntivirusNotificationSettingsArgs']] = None):
+        """
+        :param pulumi.Input[bool] enabled_download_phase: Enable anti-virus scanning on downloads.
+        :param pulumi.Input[bool] enabled_upload_phase: Enable anti-virus scanning on uploads.
+        :param pulumi.Input[bool] fail_closed: Block requests for files that cannot be scanned.
+        :param pulumi.Input['TeamsAccountSettingsAntivirusNotificationSettingsArgs'] notification_settings: Configure a message to display on the user's device when an antivirus search is performed.
+        """
+        if enabled_download_phase is not None:
+            pulumi.set(__self__, "enabled_download_phase", enabled_download_phase)
+        if enabled_upload_phase is not None:
+            pulumi.set(__self__, "enabled_upload_phase", enabled_upload_phase)
+        if fail_closed is not None:
+            pulumi.set(__self__, "fail_closed", fail_closed)
+        if notification_settings is not None:
+            pulumi.set(__self__, "notification_settings", notification_settings)
+
+    @property
+    @pulumi.getter(name="enabledDownloadPhase")
+    def enabled_download_phase(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable anti-virus scanning on downloads.
+        """
+        return pulumi.get(self, "enabled_download_phase")
+
+    @enabled_download_phase.setter
+    def enabled_download_phase(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled_download_phase", value)
+
+    @property
+    @pulumi.getter(name="enabledUploadPhase")
+    def enabled_upload_phase(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable anti-virus scanning on uploads.
+        """
+        return pulumi.get(self, "enabled_upload_phase")
+
+    @enabled_upload_phase.setter
+    def enabled_upload_phase(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled_upload_phase", value)
+
+    @property
+    @pulumi.getter(name="failClosed")
+    def fail_closed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Block requests for files that cannot be scanned.
+        """
+        return pulumi.get(self, "fail_closed")
+
+    @fail_closed.setter
+    def fail_closed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fail_closed", value)
+
+    @property
+    @pulumi.getter(name="notificationSettings")
+    def notification_settings(self) -> Optional[pulumi.Input['TeamsAccountSettingsAntivirusNotificationSettingsArgs']]:
+        """
+        Configure a message to display on the user's device when an antivirus search is performed.
+        """
+        return pulumi.get(self, "notification_settings")
+
+    @notification_settings.setter
+    def notification_settings(self, value: Optional[pulumi.Input['TeamsAccountSettingsAntivirusNotificationSettingsArgs']]):
+        pulumi.set(self, "notification_settings", value)
+
+
+if not MYPY:
+    class TeamsAccountSettingsAntivirusNotificationSettingsArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Set notification on
+        """
+        msg: NotRequired[pulumi.Input[str]]
+        """
+        Customize the message shown in the notification.
+        """
+        support_url: NotRequired[pulumi.Input[str]]
+        """
+        Optional URL to direct users to additional information. If not set, the notification will open a block page.
+        """
+elif False:
+    TeamsAccountSettingsAntivirusNotificationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsAccountSettingsAntivirusNotificationSettingsArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 msg: Optional[pulumi.Input[str]] = None,
+                 support_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Set notification on
+        :param pulumi.Input[str] msg: Customize the message shown in the notification.
+        :param pulumi.Input[str] support_url: Optional URL to direct users to additional information. If not set, the notification will open a block page.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if msg is not None:
+            pulumi.set(__self__, "msg", msg)
+        if support_url is not None:
+            pulumi.set(__self__, "support_url", support_url)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set notification on
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def msg(self) -> Optional[pulumi.Input[str]]:
+        """
+        Customize the message shown in the notification.
+        """
+        return pulumi.get(self, "msg")
+
+    @msg.setter
+    def msg(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "msg", value)
+
+    @property
+    @pulumi.getter(name="supportUrl")
+    def support_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional URL to direct users to additional information. If not set, the notification will open a block page.
+        """
+        return pulumi.get(self, "support_url")
+
+    @support_url.setter
+    def support_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "support_url", value)
+
+
+if not MYPY:
+    class TeamsAccountSettingsBlockPageArgsDict(TypedDict):
+        background_color: NotRequired[pulumi.Input[str]]
+        """
+        Block page background color in #rrggbb format.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+        """
+        footer_text: NotRequired[pulumi.Input[str]]
+        """
+        Block page footer text.
+        """
+        header_text: NotRequired[pulumi.Input[str]]
+        """
+        Block page header text.
+        """
+        logo_path: NotRequired[pulumi.Input[str]]
+        """
+        Full URL to the logo file.
+        """
+        mailto_address: NotRequired[pulumi.Input[str]]
+        """
+        Admin email for users to contact.
+        """
+        mailto_subject: NotRequired[pulumi.Input[str]]
+        """
+        Subject line for emails created from block page.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Block page title.
+        """
+        suppress_footer: NotRequired[pulumi.Input[bool]]
+        """
+        Suppress detailed info at the bottom of the block page.
+        """
+elif False:
+    TeamsAccountSettingsBlockPageArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsAccountSettingsBlockPageArgs:
+    def __init__(__self__, *,
+                 background_color: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 footer_text: Optional[pulumi.Input[str]] = None,
+                 header_text: Optional[pulumi.Input[str]] = None,
+                 logo_path: Optional[pulumi.Input[str]] = None,
+                 mailto_address: Optional[pulumi.Input[str]] = None,
+                 mailto_subject: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 suppress_footer: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] background_color: Block page background color in #rrggbb format.
+        :param pulumi.Input[bool] enabled: Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+        :param pulumi.Input[str] footer_text: Block page footer text.
+        :param pulumi.Input[str] header_text: Block page header text.
+        :param pulumi.Input[str] logo_path: Full URL to the logo file.
+        :param pulumi.Input[str] mailto_address: Admin email for users to contact.
+        :param pulumi.Input[str] mailto_subject: Subject line for emails created from block page.
+        :param pulumi.Input[str] name: Block page title.
+        :param pulumi.Input[bool] suppress_footer: Suppress detailed info at the bottom of the block page.
+        """
+        if background_color is not None:
+            pulumi.set(__self__, "background_color", background_color)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if footer_text is not None:
+            pulumi.set(__self__, "footer_text", footer_text)
+        if header_text is not None:
+            pulumi.set(__self__, "header_text", header_text)
+        if logo_path is not None:
+            pulumi.set(__self__, "logo_path", logo_path)
+        if mailto_address is not None:
+            pulumi.set(__self__, "mailto_address", mailto_address)
+        if mailto_subject is not None:
+            pulumi.set(__self__, "mailto_subject", mailto_subject)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if suppress_footer is not None:
+            pulumi.set(__self__, "suppress_footer", suppress_footer)
+
+    @property
+    @pulumi.getter(name="backgroundColor")
+    def background_color(self) -> Optional[pulumi.Input[str]]:
+        """
+        Block page background color in #rrggbb format.
+        """
+        return pulumi.get(self, "background_color")
+
+    @background_color.setter
+    def background_color(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "background_color", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="footerText")
+    def footer_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        Block page footer text.
+        """
+        return pulumi.get(self, "footer_text")
+
+    @footer_text.setter
+    def footer_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "footer_text", value)
+
+    @property
+    @pulumi.getter(name="headerText")
+    def header_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        Block page header text.
+        """
+        return pulumi.get(self, "header_text")
+
+    @header_text.setter
+    def header_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "header_text", value)
+
+    @property
+    @pulumi.getter(name="logoPath")
+    def logo_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Full URL to the logo file.
+        """
+        return pulumi.get(self, "logo_path")
+
+    @logo_path.setter
+    def logo_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logo_path", value)
+
+    @property
+    @pulumi.getter(name="mailtoAddress")
+    def mailto_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        Admin email for users to contact.
+        """
+        return pulumi.get(self, "mailto_address")
+
+    @mailto_address.setter
+    def mailto_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mailto_address", value)
+
+    @property
+    @pulumi.getter(name="mailtoSubject")
+    def mailto_subject(self) -> Optional[pulumi.Input[str]]:
+        """
+        Subject line for emails created from block page.
+        """
+        return pulumi.get(self, "mailto_subject")
+
+    @mailto_subject.setter
+    def mailto_subject(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mailto_subject", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Block page title.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="suppressFooter")
+    def suppress_footer(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Suppress detailed info at the bottom of the block page.
+        """
+        return pulumi.get(self, "suppress_footer")
+
+    @suppress_footer.setter
+    def suppress_footer(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "suppress_footer", value)
+
+
+if not MYPY:
+    class TeamsAccountSettingsBodyScanningArgsDict(TypedDict):
+        inspection_mode: NotRequired[pulumi.Input[str]]
+        """
+        Set the inspection mode to either `deep` or `shallow`.
+        """
+elif False:
+    TeamsAccountSettingsBodyScanningArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsAccountSettingsBodyScanningArgs:
+    def __init__(__self__, *,
+                 inspection_mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] inspection_mode: Set the inspection mode to either `deep` or `shallow`.
+        """
+        if inspection_mode is not None:
+            pulumi.set(__self__, "inspection_mode", inspection_mode)
+
+    @property
+    @pulumi.getter(name="inspectionMode")
+    def inspection_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the inspection mode to either `deep` or `shallow`.
+        """
+        return pulumi.get(self, "inspection_mode")
+
+    @inspection_mode.setter
+    def inspection_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "inspection_mode", value)
+
+
+if not MYPY:
+    class TeamsAccountSettingsBrowserIsolationArgsDict(TypedDict):
+        non_identity_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable non-identity onramp support for Browser Isolation.
+        """
+        url_browser_isolation_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable Clientless Browser Isolation.
+        """
+elif False:
+    TeamsAccountSettingsBrowserIsolationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsAccountSettingsBrowserIsolationArgs:
+    def __init__(__self__, *,
+                 non_identity_enabled: Optional[pulumi.Input[bool]] = None,
+                 url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] non_identity_enabled: Enable non-identity onramp support for Browser Isolation.
+        :param pulumi.Input[bool] url_browser_isolation_enabled: Enable Clientless Browser Isolation.
+        """
+        if non_identity_enabled is not None:
+            pulumi.set(__self__, "non_identity_enabled", non_identity_enabled)
+        if url_browser_isolation_enabled is not None:
+            pulumi.set(__self__, "url_browser_isolation_enabled", url_browser_isolation_enabled)
+
+    @property
+    @pulumi.getter(name="nonIdentityEnabled")
+    def non_identity_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable non-identity onramp support for Browser Isolation.
+        """
+        return pulumi.get(self, "non_identity_enabled")
+
+    @non_identity_enabled.setter
+    def non_identity_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "non_identity_enabled", value)
+
+    @property
+    @pulumi.getter(name="urlBrowserIsolationEnabled")
+    def url_browser_isolation_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Clientless Browser Isolation.
+        """
+        return pulumi.get(self, "url_browser_isolation_enabled")
+
+    @url_browser_isolation_enabled.setter
+    def url_browser_isolation_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "url_browser_isolation_enabled", value)
+
+
+if not MYPY:
+    class TeamsAccountSettingsCertificateArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+        """
+elif False:
+    TeamsAccountSettingsCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsAccountSettingsCertificateArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class TeamsAccountSettingsCustomCertificateArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Enable use of custom certificate authority for signing Gateway traffic.
+        """
+        binding_status: NotRequired[pulumi.Input[str]]
+        """
+        Certificate status (internal).
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        UUID of certificate (ID from MTLS certificate store).
+        """
+        updated_at: NotRequired[pulumi.Input[str]]
+elif False:
+    TeamsAccountSettingsCustomCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsAccountSettingsCustomCertificateArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 binding_status: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable use of custom certificate authority for signing Gateway traffic.
+        :param pulumi.Input[str] binding_status: Certificate status (internal).
+        :param pulumi.Input[str] id: UUID of certificate (ID from MTLS certificate store).
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if binding_status is not None:
+            pulumi.set(__self__, "binding_status", binding_status)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable use of custom certificate authority for signing Gateway traffic.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="bindingStatus")
+    def binding_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate status (internal).
+        """
+        return pulumi.get(self, "binding_status")
+
+    @binding_status.setter
+    def binding_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "binding_status", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        UUID of certificate (ID from MTLS certificate store).
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
+
+if not MYPY:
+    class TeamsAccountSettingsExtendedEmailMatchingArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+        """
+elif False:
+    TeamsAccountSettingsExtendedEmailMatchingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsAccountSettingsExtendedEmailMatchingArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class TeamsAccountSettingsFipsArgsDict(TypedDict):
+        tls: NotRequired[pulumi.Input[bool]]
+        """
+        Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+        """
+elif False:
+    TeamsAccountSettingsFipsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsAccountSettingsFipsArgs:
+    def __init__(__self__, *,
+                 tls: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] tls: Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+        """
+        if tls is not None:
+            pulumi.set(__self__, "tls", tls)
+
+    @property
+    @pulumi.getter
+    def tls(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+        """
+        return pulumi.get(self, "tls")
+
+    @tls.setter
+    def tls(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "tls", value)
+
+
+if not MYPY:
+    class TeamsAccountSettingsProtocolDetectionArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable detecting protocol on initial bytes of client traffic.
+        """
+elif False:
+    TeamsAccountSettingsProtocolDetectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsAccountSettingsProtocolDetectionArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable detecting protocol on initial bytes of client traffic.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable detecting protocol on initial bytes of client traffic.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class TeamsAccountSettingsSandboxArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable sandbox.
+        """
+        fallback_action: NotRequired[pulumi.Input[str]]
+        """
+        Action to take when the file cannot be scanned.
+        Available values: "allow", "block".
+        """
+elif False:
+    TeamsAccountSettingsSandboxArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsAccountSettingsSandboxArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 fallback_action: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable sandbox.
+        :param pulumi.Input[str] fallback_action: Action to take when the file cannot be scanned.
+               Available values: "allow", "block".
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if fallback_action is not None:
+            pulumi.set(__self__, "fallback_action", fallback_action)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable sandbox.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="fallbackAction")
+    def fallback_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action to take when the file cannot be scanned.
+        Available values: "allow", "block".
+        """
+        return pulumi.get(self, "fallback_action")
+
+    @fallback_action.setter
+    def fallback_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fallback_action", value)
+
+
+if not MYPY:
+    class TeamsAccountSettingsTlsDecryptArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable inspecting encrypted HTTP traffic.
+        """
+elif False:
+    TeamsAccountSettingsTlsDecryptArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsAccountSettingsTlsDecryptArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable inspecting encrypted HTTP traffic.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable inspecting encrypted HTTP traffic.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class TeamsListItemArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[str]]
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the list item, if present
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the item in a list.
+        """
+elif False:
+    TeamsListItemArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsListItemArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] description: The description of the list item, if present
+        :param pulumi.Input[str] value: The value of the item in a list.
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the list item, if present
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the item in a list.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class TeamsLocationEndpointsArgsDict(TypedDict):
+        doh: NotRequired[pulumi.Input['TeamsLocationEndpointsDohArgsDict']]
+        dot: NotRequired[pulumi.Input['TeamsLocationEndpointsDotArgsDict']]
+        ipv4: NotRequired[pulumi.Input['TeamsLocationEndpointsIpv4ArgsDict']]
+        ipv6: NotRequired[pulumi.Input['TeamsLocationEndpointsIpv6ArgsDict']]
+elif False:
+    TeamsLocationEndpointsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsLocationEndpointsArgs:
+    def __init__(__self__, *,
+                 doh: Optional[pulumi.Input['TeamsLocationEndpointsDohArgs']] = None,
+                 dot: Optional[pulumi.Input['TeamsLocationEndpointsDotArgs']] = None,
+                 ipv4: Optional[pulumi.Input['TeamsLocationEndpointsIpv4Args']] = None,
+                 ipv6: Optional[pulumi.Input['TeamsLocationEndpointsIpv6Args']] = None):
+        if doh is not None:
+            pulumi.set(__self__, "doh", doh)
+        if dot is not None:
+            pulumi.set(__self__, "dot", dot)
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+
+    @property
+    @pulumi.getter
+    def doh(self) -> Optional[pulumi.Input['TeamsLocationEndpointsDohArgs']]:
+        return pulumi.get(self, "doh")
+
+    @doh.setter
+    def doh(self, value: Optional[pulumi.Input['TeamsLocationEndpointsDohArgs']]):
+        pulumi.set(self, "doh", value)
+
+    @property
+    @pulumi.getter
+    def dot(self) -> Optional[pulumi.Input['TeamsLocationEndpointsDotArgs']]:
+        return pulumi.get(self, "dot")
+
+    @dot.setter
+    def dot(self, value: Optional[pulumi.Input['TeamsLocationEndpointsDotArgs']]):
+        pulumi.set(self, "dot", value)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional[pulumi.Input['TeamsLocationEndpointsIpv4Args']]:
+        return pulumi.get(self, "ipv4")
+
+    @ipv4.setter
+    def ipv4(self, value: Optional[pulumi.Input['TeamsLocationEndpointsIpv4Args']]):
+        pulumi.set(self, "ipv4", value)
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional[pulumi.Input['TeamsLocationEndpointsIpv6Args']]:
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: Optional[pulumi.Input['TeamsLocationEndpointsIpv6Args']]):
+        pulumi.set(self, "ipv6", value)
+
+
+if not MYPY:
+    class TeamsLocationEndpointsDohArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        True if the endpoint is enabled for this location.
+        """
+        networks: NotRequired[pulumi.Input[Sequence[pulumi.Input['TeamsLocationEndpointsDohNetworkArgsDict']]]]
+        """
+        A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+        """
+        require_token: NotRequired[pulumi.Input[bool]]
+        """
+        True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+        """
+elif False:
+    TeamsLocationEndpointsDohArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsLocationEndpointsDohArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationEndpointsDohNetworkArgs']]]] = None,
+                 require_token: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: True if the endpoint is enabled for this location.
+        :param pulumi.Input[Sequence[pulumi.Input['TeamsLocationEndpointsDohNetworkArgs']]] networks: A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+        :param pulumi.Input[bool] require_token: True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if require_token is not None:
+            pulumi.set(__self__, "require_token", require_token)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if the endpoint is enabled for this location.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationEndpointsDohNetworkArgs']]]]:
+        """
+        A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+        """
+        return pulumi.get(self, "networks")
+
+    @networks.setter
+    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationEndpointsDohNetworkArgs']]]]):
+        pulumi.set(self, "networks", value)
+
+    @property
+    @pulumi.getter(name="requireToken")
+    def require_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+        """
+        return pulumi.get(self, "require_token")
+
+    @require_token.setter
+    def require_token(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_token", value)
+
+
+if not MYPY:
+    class TeamsLocationEndpointsDohNetworkArgsDict(TypedDict):
+        network: pulumi.Input[str]
+        """
+        The IP address or IP CIDR.
+        """
+elif False:
+    TeamsLocationEndpointsDohNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsLocationEndpointsDohNetworkArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] network: The IP address or IP CIDR.
+        """
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        """
+        The IP address or IP CIDR.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
+
+
+if not MYPY:
+    class TeamsLocationEndpointsDotArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        True if the endpoint is enabled for this location.
+        """
+        networks: NotRequired[pulumi.Input[Sequence[pulumi.Input['TeamsLocationEndpointsDotNetworkArgsDict']]]]
+        """
+        A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+        """
+elif False:
+    TeamsLocationEndpointsDotArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsLocationEndpointsDotArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationEndpointsDotNetworkArgs']]]] = None):
+        """
+        :param pulumi.Input[bool] enabled: True if the endpoint is enabled for this location.
+        :param pulumi.Input[Sequence[pulumi.Input['TeamsLocationEndpointsDotNetworkArgs']]] networks: A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if the endpoint is enabled for this location.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationEndpointsDotNetworkArgs']]]]:
+        """
+        A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+        """
+        return pulumi.get(self, "networks")
+
+    @networks.setter
+    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationEndpointsDotNetworkArgs']]]]):
+        pulumi.set(self, "networks", value)
+
+
+if not MYPY:
+    class TeamsLocationEndpointsDotNetworkArgsDict(TypedDict):
+        network: pulumi.Input[str]
+        """
+        The IP address or IP CIDR.
+        """
+elif False:
+    TeamsLocationEndpointsDotNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsLocationEndpointsDotNetworkArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] network: The IP address or IP CIDR.
+        """
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        """
+        The IP address or IP CIDR.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
+
+
+if not MYPY:
+    class TeamsLocationEndpointsIpv4ArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        True if the endpoint is enabled for this location.
+        """
+elif False:
+    TeamsLocationEndpointsIpv4ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsLocationEndpointsIpv4Args:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: True if the endpoint is enabled for this location.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if the endpoint is enabled for this location.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class TeamsLocationEndpointsIpv6ArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        True if the endpoint is enabled for this location.
+        """
+        networks: NotRequired[pulumi.Input[Sequence[pulumi.Input['TeamsLocationEndpointsIpv6NetworkArgsDict']]]]
+        """
+        A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+        """
+elif False:
+    TeamsLocationEndpointsIpv6ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsLocationEndpointsIpv6Args:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationEndpointsIpv6NetworkArgs']]]] = None):
+        """
+        :param pulumi.Input[bool] enabled: True if the endpoint is enabled for this location.
+        :param pulumi.Input[Sequence[pulumi.Input['TeamsLocationEndpointsIpv6NetworkArgs']]] networks: A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if the endpoint is enabled for this location.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationEndpointsIpv6NetworkArgs']]]]:
+        """
+        A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+        """
+        return pulumi.get(self, "networks")
+
+    @networks.setter
+    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationEndpointsIpv6NetworkArgs']]]]):
+        pulumi.set(self, "networks", value)
+
+
+if not MYPY:
+    class TeamsLocationEndpointsIpv6NetworkArgsDict(TypedDict):
+        network: pulumi.Input[str]
+        """
+        The IPv6 address or IPv6 CIDR.
+        """
+elif False:
+    TeamsLocationEndpointsIpv6NetworkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsLocationEndpointsIpv6NetworkArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] network: The IPv6 address or IPv6 CIDR.
+        """
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        """
+        The IPv6 address or IPv6 CIDR.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
+
+
+if not MYPY:
+    class TeamsLocationNetworkArgsDict(TypedDict):
+        network: pulumi.Input[str]
+        """
+        The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
+        """
+elif False:
+    TeamsLocationNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsLocationNetworkArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] network: The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
+        """
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        """
+        The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
+
+
+if not MYPY:
+    class TeamsRuleExpirationArgsDict(TypedDict):
+        expires_at: pulumi.Input[str]
+        """
+        The time stamp at which the policy will expire and cease to be
+        applied.
+        """
+        duration: NotRequired[pulumi.Input[int]]
+        """
+        The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.
+        """
+        expired: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the policy has expired.
+        """
+elif False:
+    TeamsRuleExpirationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleExpirationArgs:
+    def __init__(__self__, *,
+                 expires_at: pulumi.Input[str],
+                 duration: Optional[pulumi.Input[int]] = None,
+                 expired: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] expires_at: The time stamp at which the policy will expire and cease to be
+               applied.
+        :param pulumi.Input[int] duration: The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.
+        :param pulumi.Input[bool] expired: Whether the policy has expired.
+        """
+        pulumi.set(__self__, "expires_at", expires_at)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if expired is not None:
+            pulumi.set(__self__, "expired", expired)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> pulumi.Input[str]:
+        """
+        The time stamp at which the policy will expire and cease to be
+        applied.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expires_at", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter
+    def expired(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the policy has expired.
+        """
+        return pulumi.get(self, "expired")
+
+    @expired.setter
+    def expired(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "expired", value)
+
+
+if not MYPY:
+    class TeamsRuleRuleSettingsArgsDict(TypedDict):
+        add_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
+        """
+        allow_child_bypass: NotRequired[pulumi.Input[bool]]
+        """
+        Set by parent MSP accounts to enable their children to bypass this rule.
+        """
+        audit_ssh: NotRequired[pulumi.Input['TeamsRuleRuleSettingsAuditSshArgsDict']]
+        """
+        Settings for the Audit SSH action.
+        """
+        biso_admin_controls: NotRequired[pulumi.Input['TeamsRuleRuleSettingsBisoAdminControlsArgsDict']]
+        """
+        Configure how browser isolation behaves.
+        """
+        block_page_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable the custom block page.
+        """
+        block_reason: NotRequired[pulumi.Input[str]]
+        """
+        The text describing why this block occurred, displayed on the custom block page (if enabled).
+        """
+        bypass_parent_rule: NotRequired[pulumi.Input[bool]]
+        """
+        Set by children MSP accounts to bypass their parent's rules.
+        """
+        check_session: NotRequired[pulumi.Input['TeamsRuleRuleSettingsCheckSessionArgsDict']]
+        """
+        Configure how session check behaves.
+        """
+        dns_resolvers: NotRequired[pulumi.Input['TeamsRuleRuleSettingsDnsResolversArgsDict']]
+        """
+        Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.
+        """
+        egress: NotRequired[pulumi.Input['TeamsRuleRuleSettingsEgressArgsDict']]
+        """
+        Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
+        """
+        ignore_cname_category_matches: NotRequired[pulumi.Input[bool]]
+        """
+        Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
+        """
+        insecure_disable_dnssec_validation: NotRequired[pulumi.Input[bool]]
+        """
+        INSECURE - disable DNSSEC validation (for Allow actions).
+        """
+        ip_categories: NotRequired[pulumi.Input[bool]]
+        """
+        Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
+        """
+        ip_indicator_feeds: NotRequired[pulumi.Input[bool]]
+        """
+        Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+        """
+        l4override: NotRequired[pulumi.Input['TeamsRuleRuleSettingsL4overrideArgsDict']]
+        """
+        Send matching traffic to the supplied destination IP address and port.
+        """
+        notification_settings: NotRequired[pulumi.Input['TeamsRuleRuleSettingsNotificationSettingsArgsDict']]
+        """
+        Configure a notification to display on the user's device when this rule is matched.
+        """
+        override_host: NotRequired[pulumi.Input[str]]
+        """
+        Override matching DNS queries with a hostname.
+        """
+        override_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Override matching DNS queries with an IP or set of IPs.
+        """
+        payload_log: NotRequired[pulumi.Input['TeamsRuleRuleSettingsPayloadLogArgsDict']]
+        """
+        Configure DLP payload logging.
+        """
+        quarantine: NotRequired[pulumi.Input['TeamsRuleRuleSettingsQuarantineArgsDict']]
+        """
+        Settings that apply to quarantine rules
+        """
+        resolve_dns_internally: NotRequired[pulumi.Input['TeamsRuleRuleSettingsResolveDnsInternallyArgsDict']]
+        """
+        Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+        """
+        resolve_dns_through_cloudflare: NotRequired[pulumi.Input[bool]]
+        """
+        Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns_internally' is set. Only valid when a rule's action is set to 'resolve'.
+        """
+        untrusted_cert: NotRequired[pulumi.Input['TeamsRuleRuleSettingsUntrustedCertArgsDict']]
+        """
+        Configure behavior when an upstream cert is invalid or an SSL error occurs.
+        """
+elif False:
+    TeamsRuleRuleSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsArgs:
+    def __init__(__self__, *,
+                 add_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 allow_child_bypass: Optional[pulumi.Input[bool]] = None,
+                 audit_ssh: Optional[pulumi.Input['TeamsRuleRuleSettingsAuditSshArgs']] = None,
+                 biso_admin_controls: Optional[pulumi.Input['TeamsRuleRuleSettingsBisoAdminControlsArgs']] = None,
+                 block_page_enabled: Optional[pulumi.Input[bool]] = None,
+                 block_reason: Optional[pulumi.Input[str]] = None,
+                 bypass_parent_rule: Optional[pulumi.Input[bool]] = None,
+                 check_session: Optional[pulumi.Input['TeamsRuleRuleSettingsCheckSessionArgs']] = None,
+                 dns_resolvers: Optional[pulumi.Input['TeamsRuleRuleSettingsDnsResolversArgs']] = None,
+                 egress: Optional[pulumi.Input['TeamsRuleRuleSettingsEgressArgs']] = None,
+                 ignore_cname_category_matches: Optional[pulumi.Input[bool]] = None,
+                 insecure_disable_dnssec_validation: Optional[pulumi.Input[bool]] = None,
+                 ip_categories: Optional[pulumi.Input[bool]] = None,
+                 ip_indicator_feeds: Optional[pulumi.Input[bool]] = None,
+                 l4override: Optional[pulumi.Input['TeamsRuleRuleSettingsL4overrideArgs']] = None,
+                 notification_settings: Optional[pulumi.Input['TeamsRuleRuleSettingsNotificationSettingsArgs']] = None,
+                 override_host: Optional[pulumi.Input[str]] = None,
+                 override_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 payload_log: Optional[pulumi.Input['TeamsRuleRuleSettingsPayloadLogArgs']] = None,
+                 quarantine: Optional[pulumi.Input['TeamsRuleRuleSettingsQuarantineArgs']] = None,
+                 resolve_dns_internally: Optional[pulumi.Input['TeamsRuleRuleSettingsResolveDnsInternallyArgs']] = None,
+                 resolve_dns_through_cloudflare: Optional[pulumi.Input[bool]] = None,
+                 untrusted_cert: Optional[pulumi.Input['TeamsRuleRuleSettingsUntrustedCertArgs']] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] add_headers: Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
+        :param pulumi.Input[bool] allow_child_bypass: Set by parent MSP accounts to enable their children to bypass this rule.
+        :param pulumi.Input['TeamsRuleRuleSettingsAuditSshArgs'] audit_ssh: Settings for the Audit SSH action.
+        :param pulumi.Input['TeamsRuleRuleSettingsBisoAdminControlsArgs'] biso_admin_controls: Configure how browser isolation behaves.
+        :param pulumi.Input[bool] block_page_enabled: Enable the custom block page.
+        :param pulumi.Input[str] block_reason: The text describing why this block occurred, displayed on the custom block page (if enabled).
+        :param pulumi.Input[bool] bypass_parent_rule: Set by children MSP accounts to bypass their parent's rules.
+        :param pulumi.Input['TeamsRuleRuleSettingsCheckSessionArgs'] check_session: Configure how session check behaves.
+        :param pulumi.Input['TeamsRuleRuleSettingsDnsResolversArgs'] dns_resolvers: Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.
+        :param pulumi.Input['TeamsRuleRuleSettingsEgressArgs'] egress: Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
+        :param pulumi.Input[bool] ignore_cname_category_matches: Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
+        :param pulumi.Input[bool] insecure_disable_dnssec_validation: INSECURE - disable DNSSEC validation (for Allow actions).
+        :param pulumi.Input[bool] ip_categories: Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
+        :param pulumi.Input[bool] ip_indicator_feeds: Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+        :param pulumi.Input['TeamsRuleRuleSettingsL4overrideArgs'] l4override: Send matching traffic to the supplied destination IP address and port.
+        :param pulumi.Input['TeamsRuleRuleSettingsNotificationSettingsArgs'] notification_settings: Configure a notification to display on the user's device when this rule is matched.
+        :param pulumi.Input[str] override_host: Override matching DNS queries with a hostname.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] override_ips: Override matching DNS queries with an IP or set of IPs.
+        :param pulumi.Input['TeamsRuleRuleSettingsPayloadLogArgs'] payload_log: Configure DLP payload logging.
+        :param pulumi.Input['TeamsRuleRuleSettingsQuarantineArgs'] quarantine: Settings that apply to quarantine rules
+        :param pulumi.Input['TeamsRuleRuleSettingsResolveDnsInternallyArgs'] resolve_dns_internally: Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+        :param pulumi.Input[bool] resolve_dns_through_cloudflare: Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns_internally' is set. Only valid when a rule's action is set to 'resolve'.
+        :param pulumi.Input['TeamsRuleRuleSettingsUntrustedCertArgs'] untrusted_cert: Configure behavior when an upstream cert is invalid or an SSL error occurs.
+        """
+        if add_headers is not None:
+            pulumi.set(__self__, "add_headers", add_headers)
+        if allow_child_bypass is not None:
+            pulumi.set(__self__, "allow_child_bypass", allow_child_bypass)
+        if audit_ssh is not None:
+            pulumi.set(__self__, "audit_ssh", audit_ssh)
+        if biso_admin_controls is not None:
+            pulumi.set(__self__, "biso_admin_controls", biso_admin_controls)
+        if block_page_enabled is not None:
+            pulumi.set(__self__, "block_page_enabled", block_page_enabled)
+        if block_reason is not None:
+            pulumi.set(__self__, "block_reason", block_reason)
+        if bypass_parent_rule is not None:
+            pulumi.set(__self__, "bypass_parent_rule", bypass_parent_rule)
+        if check_session is not None:
+            pulumi.set(__self__, "check_session", check_session)
+        if dns_resolvers is not None:
+            pulumi.set(__self__, "dns_resolvers", dns_resolvers)
+        if egress is not None:
+            pulumi.set(__self__, "egress", egress)
+        if ignore_cname_category_matches is not None:
+            pulumi.set(__self__, "ignore_cname_category_matches", ignore_cname_category_matches)
+        if insecure_disable_dnssec_validation is not None:
+            pulumi.set(__self__, "insecure_disable_dnssec_validation", insecure_disable_dnssec_validation)
+        if ip_categories is not None:
+            pulumi.set(__self__, "ip_categories", ip_categories)
+        if ip_indicator_feeds is not None:
+            pulumi.set(__self__, "ip_indicator_feeds", ip_indicator_feeds)
+        if l4override is not None:
+            pulumi.set(__self__, "l4override", l4override)
+        if notification_settings is not None:
+            pulumi.set(__self__, "notification_settings", notification_settings)
+        if override_host is not None:
+            pulumi.set(__self__, "override_host", override_host)
+        if override_ips is not None:
+            pulumi.set(__self__, "override_ips", override_ips)
+        if payload_log is not None:
+            pulumi.set(__self__, "payload_log", payload_log)
+        if quarantine is not None:
+            pulumi.set(__self__, "quarantine", quarantine)
+        if resolve_dns_internally is not None:
+            pulumi.set(__self__, "resolve_dns_internally", resolve_dns_internally)
+        if resolve_dns_through_cloudflare is not None:
+            pulumi.set(__self__, "resolve_dns_through_cloudflare", resolve_dns_through_cloudflare)
+        if untrusted_cert is not None:
+            pulumi.set(__self__, "untrusted_cert", untrusted_cert)
+
+    @property
+    @pulumi.getter(name="addHeaders")
+    def add_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
+        """
+        return pulumi.get(self, "add_headers")
+
+    @add_headers.setter
+    def add_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "add_headers", value)
+
+    @property
+    @pulumi.getter(name="allowChildBypass")
+    def allow_child_bypass(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set by parent MSP accounts to enable their children to bypass this rule.
+        """
+        return pulumi.get(self, "allow_child_bypass")
+
+    @allow_child_bypass.setter
+    def allow_child_bypass(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_child_bypass", value)
+
+    @property
+    @pulumi.getter(name="auditSsh")
+    def audit_ssh(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsAuditSshArgs']]:
+        """
+        Settings for the Audit SSH action.
+        """
+        return pulumi.get(self, "audit_ssh")
+
+    @audit_ssh.setter
+    def audit_ssh(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsAuditSshArgs']]):
+        pulumi.set(self, "audit_ssh", value)
+
+    @property
+    @pulumi.getter(name="bisoAdminControls")
+    def biso_admin_controls(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsBisoAdminControlsArgs']]:
+        """
+        Configure how browser isolation behaves.
+        """
+        return pulumi.get(self, "biso_admin_controls")
+
+    @biso_admin_controls.setter
+    def biso_admin_controls(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsBisoAdminControlsArgs']]):
+        pulumi.set(self, "biso_admin_controls", value)
+
+    @property
+    @pulumi.getter(name="blockPageEnabled")
+    def block_page_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the custom block page.
+        """
+        return pulumi.get(self, "block_page_enabled")
+
+    @block_page_enabled.setter
+    def block_page_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_page_enabled", value)
+
+    @property
+    @pulumi.getter(name="blockReason")
+    def block_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        The text describing why this block occurred, displayed on the custom block page (if enabled).
+        """
+        return pulumi.get(self, "block_reason")
+
+    @block_reason.setter
+    def block_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "block_reason", value)
+
+    @property
+    @pulumi.getter(name="bypassParentRule")
+    def bypass_parent_rule(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set by children MSP accounts to bypass their parent's rules.
+        """
+        return pulumi.get(self, "bypass_parent_rule")
+
+    @bypass_parent_rule.setter
+    def bypass_parent_rule(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bypass_parent_rule", value)
+
+    @property
+    @pulumi.getter(name="checkSession")
+    def check_session(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsCheckSessionArgs']]:
+        """
+        Configure how session check behaves.
+        """
+        return pulumi.get(self, "check_session")
+
+    @check_session.setter
+    def check_session(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsCheckSessionArgs']]):
+        pulumi.set(self, "check_session", value)
+
+    @property
+    @pulumi.getter(name="dnsResolvers")
+    def dns_resolvers(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsDnsResolversArgs']]:
+        """
+        Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.
+        """
+        return pulumi.get(self, "dns_resolvers")
+
+    @dns_resolvers.setter
+    def dns_resolvers(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsDnsResolversArgs']]):
+        pulumi.set(self, "dns_resolvers", value)
+
+    @property
+    @pulumi.getter
+    def egress(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsEgressArgs']]:
+        """
+        Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
+        """
+        return pulumi.get(self, "egress")
+
+    @egress.setter
+    def egress(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsEgressArgs']]):
+        pulumi.set(self, "egress", value)
+
+    @property
+    @pulumi.getter(name="ignoreCnameCategoryMatches")
+    def ignore_cname_category_matches(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
+        """
+        return pulumi.get(self, "ignore_cname_category_matches")
+
+    @ignore_cname_category_matches.setter
+    def ignore_cname_category_matches(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_cname_category_matches", value)
+
+    @property
+    @pulumi.getter(name="insecureDisableDnssecValidation")
+    def insecure_disable_dnssec_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        INSECURE - disable DNSSEC validation (for Allow actions).
+        """
+        return pulumi.get(self, "insecure_disable_dnssec_validation")
+
+    @insecure_disable_dnssec_validation.setter
+    def insecure_disable_dnssec_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "insecure_disable_dnssec_validation", value)
+
+    @property
+    @pulumi.getter(name="ipCategories")
+    def ip_categories(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
+        """
+        return pulumi.get(self, "ip_categories")
+
+    @ip_categories.setter
+    def ip_categories(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ip_categories", value)
+
+    @property
+    @pulumi.getter(name="ipIndicatorFeeds")
+    def ip_indicator_feeds(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+        """
+        return pulumi.get(self, "ip_indicator_feeds")
+
+    @ip_indicator_feeds.setter
+    def ip_indicator_feeds(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ip_indicator_feeds", value)
+
+    @property
+    @pulumi.getter
+    def l4override(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsL4overrideArgs']]:
+        """
+        Send matching traffic to the supplied destination IP address and port.
+        """
+        return pulumi.get(self, "l4override")
+
+    @l4override.setter
+    def l4override(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsL4overrideArgs']]):
+        pulumi.set(self, "l4override", value)
+
+    @property
+    @pulumi.getter(name="notificationSettings")
+    def notification_settings(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsNotificationSettingsArgs']]:
+        """
+        Configure a notification to display on the user's device when this rule is matched.
+        """
+        return pulumi.get(self, "notification_settings")
+
+    @notification_settings.setter
+    def notification_settings(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsNotificationSettingsArgs']]):
+        pulumi.set(self, "notification_settings", value)
+
+    @property
+    @pulumi.getter(name="overrideHost")
+    def override_host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Override matching DNS queries with a hostname.
+        """
+        return pulumi.get(self, "override_host")
+
+    @override_host.setter
+    def override_host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "override_host", value)
+
+    @property
+    @pulumi.getter(name="overrideIps")
+    def override_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Override matching DNS queries with an IP or set of IPs.
+        """
+        return pulumi.get(self, "override_ips")
+
+    @override_ips.setter
+    def override_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "override_ips", value)
+
+    @property
+    @pulumi.getter(name="payloadLog")
+    def payload_log(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsPayloadLogArgs']]:
+        """
+        Configure DLP payload logging.
+        """
+        return pulumi.get(self, "payload_log")
+
+    @payload_log.setter
+    def payload_log(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsPayloadLogArgs']]):
+        pulumi.set(self, "payload_log", value)
+
+    @property
+    @pulumi.getter
+    def quarantine(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsQuarantineArgs']]:
+        """
+        Settings that apply to quarantine rules
+        """
+        return pulumi.get(self, "quarantine")
+
+    @quarantine.setter
+    def quarantine(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsQuarantineArgs']]):
+        pulumi.set(self, "quarantine", value)
+
+    @property
+    @pulumi.getter(name="resolveDnsInternally")
+    def resolve_dns_internally(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsResolveDnsInternallyArgs']]:
+        """
+        Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+        """
+        return pulumi.get(self, "resolve_dns_internally")
+
+    @resolve_dns_internally.setter
+    def resolve_dns_internally(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsResolveDnsInternallyArgs']]):
+        pulumi.set(self, "resolve_dns_internally", value)
+
+    @property
+    @pulumi.getter(name="resolveDnsThroughCloudflare")
+    def resolve_dns_through_cloudflare(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns_internally' is set. Only valid when a rule's action is set to 'resolve'.
+        """
+        return pulumi.get(self, "resolve_dns_through_cloudflare")
+
+    @resolve_dns_through_cloudflare.setter
+    def resolve_dns_through_cloudflare(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "resolve_dns_through_cloudflare", value)
+
+    @property
+    @pulumi.getter(name="untrustedCert")
+    def untrusted_cert(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsUntrustedCertArgs']]:
+        """
+        Configure behavior when an upstream cert is invalid or an SSL error occurs.
+        """
+        return pulumi.get(self, "untrusted_cert")
+
+    @untrusted_cert.setter
+    def untrusted_cert(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsUntrustedCertArgs']]):
+        pulumi.set(self, "untrusted_cert", value)
+
+
+if not MYPY:
+    class TeamsRuleRuleSettingsAuditSshArgsDict(TypedDict):
+        command_logging: NotRequired[pulumi.Input[bool]]
+        """
+        Enable to turn on SSH command logging.
+        """
+elif False:
+    TeamsRuleRuleSettingsAuditSshArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsAuditSshArgs:
+    def __init__(__self__, *,
+                 command_logging: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] command_logging: Enable to turn on SSH command logging.
+        """
+        if command_logging is not None:
+            pulumi.set(__self__, "command_logging", command_logging)
+
+    @property
+    @pulumi.getter(name="commandLogging")
+    def command_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable to turn on SSH command logging.
+        """
+        return pulumi.get(self, "command_logging")
+
+    @command_logging.setter
+    def command_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "command_logging", value)
+
+
+if not MYPY:
+    class TeamsRuleRuleSettingsBisoAdminControlsArgsDict(TypedDict):
+        copy: NotRequired[pulumi.Input[str]]
+        """
+        Configure whether copy is enabled or not. When set with "remote*only", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == "v2"`.
+        Available values: "enabled", "disabled", "remote*only".
+        """
+        dcp: NotRequired[pulumi.Input[bool]]
+        """
+        Set to false to enable copy-pasting. Only applies when `version == "v1"`.
+        """
+        dd: NotRequired[pulumi.Input[bool]]
+        """
+        Set to false to enable downloading. Only applies when `version == "v1"`.
+        """
+        dk: NotRequired[pulumi.Input[bool]]
+        """
+        Set to false to enable keyboard usage. Only applies when `version == "v1"`.
+        """
+        download: NotRequired[pulumi.Input[str]]
+        """
+        Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
+        Available values: "enabled", "disabled".
+        """
+        dp: NotRequired[pulumi.Input[bool]]
+        """
+        Set to false to enable printing. Only applies when `version == "v1"`.
+        """
+        du: NotRequired[pulumi.Input[bool]]
+        """
+        Set to false to enable uploading. Only applies when `version == "v1"`.
+        """
+        keyboard: NotRequired[pulumi.Input[str]]
+        """
+        Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == "v2"`.
+        Available values: "enabled", "disabled".
+        """
+        paste: NotRequired[pulumi.Input[str]]
+        """
+        Configure whether pasting is enabled or not. When set with "remote*only", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == "v2"`.
+        Available values: "enabled", "disabled", "remote*only".
+        """
+        printing: NotRequired[pulumi.Input[str]]
+        """
+        Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == "v2"`.
+        Available values: "enabled", "disabled".
+        """
+        upload: NotRequired[pulumi.Input[str]]
+        """
+        Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == "v2"`.
+        Available values: "enabled", "disabled".
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Indicates which version of the browser isolation controls should apply.
+        Available values: "v1", "v2".
+        """
+elif False:
+    TeamsRuleRuleSettingsBisoAdminControlsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsBisoAdminControlsArgs:
+    def __init__(__self__, *,
+                 copy: Optional[pulumi.Input[str]] = None,
+                 dcp: Optional[pulumi.Input[bool]] = None,
+                 dd: Optional[pulumi.Input[bool]] = None,
+                 dk: Optional[pulumi.Input[bool]] = None,
+                 download: Optional[pulumi.Input[str]] = None,
+                 dp: Optional[pulumi.Input[bool]] = None,
+                 du: Optional[pulumi.Input[bool]] = None,
+                 keyboard: Optional[pulumi.Input[str]] = None,
+                 paste: Optional[pulumi.Input[str]] = None,
+                 printing: Optional[pulumi.Input[str]] = None,
+                 upload: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] copy: Configure whether copy is enabled or not. When set with "remote*only", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == "v2"`.
+               Available values: "enabled", "disabled", "remote*only".
+        :param pulumi.Input[bool] dcp: Set to false to enable copy-pasting. Only applies when `version == "v1"`.
+        :param pulumi.Input[bool] dd: Set to false to enable downloading. Only applies when `version == "v1"`.
+        :param pulumi.Input[bool] dk: Set to false to enable keyboard usage. Only applies when `version == "v1"`.
+        :param pulumi.Input[str] download: Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
+               Available values: "enabled", "disabled".
+        :param pulumi.Input[bool] dp: Set to false to enable printing. Only applies when `version == "v1"`.
+        :param pulumi.Input[bool] du: Set to false to enable uploading. Only applies when `version == "v1"`.
+        :param pulumi.Input[str] keyboard: Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == "v2"`.
+               Available values: "enabled", "disabled".
+        :param pulumi.Input[str] paste: Configure whether pasting is enabled or not. When set with "remote*only", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == "v2"`.
+               Available values: "enabled", "disabled", "remote*only".
+        :param pulumi.Input[str] printing: Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == "v2"`.
+               Available values: "enabled", "disabled".
+        :param pulumi.Input[str] upload: Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == "v2"`.
+               Available values: "enabled", "disabled".
+        :param pulumi.Input[str] version: Indicates which version of the browser isolation controls should apply.
+               Available values: "v1", "v2".
+        """
+        if copy is not None:
+            pulumi.set(__self__, "copy", copy)
+        if dcp is not None:
+            pulumi.set(__self__, "dcp", dcp)
+        if dd is not None:
+            pulumi.set(__self__, "dd", dd)
+        if dk is not None:
+            pulumi.set(__self__, "dk", dk)
+        if download is not None:
+            pulumi.set(__self__, "download", download)
+        if dp is not None:
+            pulumi.set(__self__, "dp", dp)
+        if du is not None:
+            pulumi.set(__self__, "du", du)
+        if keyboard is not None:
+            pulumi.set(__self__, "keyboard", keyboard)
+        if paste is not None:
+            pulumi.set(__self__, "paste", paste)
+        if printing is not None:
+            pulumi.set(__self__, "printing", printing)
+        if upload is not None:
+            pulumi.set(__self__, "upload", upload)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def copy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure whether copy is enabled or not. When set with "remote*only", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == "v2"`.
+        Available values: "enabled", "disabled", "remote*only".
+        """
+        return pulumi.get(self, "copy")
+
+    @copy.setter
+    def copy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "copy", value)
+
+    @property
+    @pulumi.getter
+    def dcp(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to false to enable copy-pasting. Only applies when `version == "v1"`.
+        """
+        return pulumi.get(self, "dcp")
+
+    @dcp.setter
+    def dcp(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dcp", value)
+
+    @property
+    @pulumi.getter
+    def dd(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to false to enable downloading. Only applies when `version == "v1"`.
+        """
+        return pulumi.get(self, "dd")
+
+    @dd.setter
+    def dd(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dd", value)
+
+    @property
+    @pulumi.getter
+    def dk(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to false to enable keyboard usage. Only applies when `version == "v1"`.
+        """
+        return pulumi.get(self, "dk")
+
+    @dk.setter
+    def dk(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dk", value)
+
+    @property
+    @pulumi.getter
+    def download(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
+        Available values: "enabled", "disabled".
+        """
+        return pulumi.get(self, "download")
+
+    @download.setter
+    def download(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "download", value)
+
+    @property
+    @pulumi.getter
+    def dp(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to false to enable printing. Only applies when `version == "v1"`.
+        """
+        return pulumi.get(self, "dp")
+
+    @dp.setter
+    def dp(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dp", value)
+
+    @property
+    @pulumi.getter
+    def du(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to false to enable uploading. Only applies when `version == "v1"`.
+        """
+        return pulumi.get(self, "du")
+
+    @du.setter
+    def du(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "du", value)
+
+    @property
+    @pulumi.getter
+    def keyboard(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == "v2"`.
+        Available values: "enabled", "disabled".
+        """
+        return pulumi.get(self, "keyboard")
+
+    @keyboard.setter
+    def keyboard(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "keyboard", value)
+
+    @property
+    @pulumi.getter
+    def paste(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure whether pasting is enabled or not. When set with "remote*only", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == "v2"`.
+        Available values: "enabled", "disabled", "remote*only".
+        """
+        return pulumi.get(self, "paste")
+
+    @paste.setter
+    def paste(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "paste", value)
+
+    @property
+    @pulumi.getter
+    def printing(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == "v2"`.
+        Available values: "enabled", "disabled".
+        """
+        return pulumi.get(self, "printing")
+
+    @printing.setter
+    def printing(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "printing", value)
+
+    @property
+    @pulumi.getter
+    def upload(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == "v2"`.
+        Available values: "enabled", "disabled".
+        """
+        return pulumi.get(self, "upload")
+
+    @upload.setter
+    def upload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "upload", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates which version of the browser isolation controls should apply.
+        Available values: "v1", "v2".
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+if not MYPY:
+    class TeamsRuleRuleSettingsCheckSessionArgsDict(TypedDict):
+        duration: NotRequired[pulumi.Input[str]]
+        """
+        Configure how fresh the session needs to be to be considered valid.
+        """
+        enforce: NotRequired[pulumi.Input[bool]]
+        """
+        Set to true to enable session enforcement.
+        """
+elif False:
+    TeamsRuleRuleSettingsCheckSessionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsCheckSessionArgs:
+    def __init__(__self__, *,
+                 duration: Optional[pulumi.Input[str]] = None,
+                 enforce: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] duration: Configure how fresh the session needs to be to be considered valid.
+        :param pulumi.Input[bool] enforce: Set to true to enable session enforcement.
+        """
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure how fresh the session needs to be to be considered valid.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to enable session enforcement.
+        """
+        return pulumi.get(self, "enforce")
+
+    @enforce.setter
+    def enforce(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enforce", value)
+
+
+if not MYPY:
+    class TeamsRuleRuleSettingsDnsResolversArgsDict(TypedDict):
+        ipv4s: NotRequired[pulumi.Input[Sequence[pulumi.Input['TeamsRuleRuleSettingsDnsResolversIpv4ArgsDict']]]]
+        ipv6s: NotRequired[pulumi.Input[Sequence[pulumi.Input['TeamsRuleRuleSettingsDnsResolversIpv6ArgsDict']]]]
+elif False:
+    TeamsRuleRuleSettingsDnsResolversArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsDnsResolversArgs:
+    def __init__(__self__, *,
+                 ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsRuleRuleSettingsDnsResolversIpv4Args']]]] = None,
+                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsRuleRuleSettingsDnsResolversIpv6Args']]]] = None):
+        if ipv4s is not None:
+            pulumi.set(__self__, "ipv4s", ipv4s)
+        if ipv6s is not None:
+            pulumi.set(__self__, "ipv6s", ipv6s)
+
+    @property
+    @pulumi.getter
+    def ipv4s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TeamsRuleRuleSettingsDnsResolversIpv4Args']]]]:
+        return pulumi.get(self, "ipv4s")
+
+    @ipv4s.setter
+    def ipv4s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsRuleRuleSettingsDnsResolversIpv4Args']]]]):
+        pulumi.set(self, "ipv4s", value)
+
+    @property
+    @pulumi.getter
+    def ipv6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TeamsRuleRuleSettingsDnsResolversIpv6Args']]]]:
+        return pulumi.get(self, "ipv6s")
+
+    @ipv6s.setter
+    def ipv6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsRuleRuleSettingsDnsResolversIpv6Args']]]]):
+        pulumi.set(self, "ipv6s", value)
+
+
+if not MYPY:
+    class TeamsRuleRuleSettingsDnsResolversIpv4ArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        IPv4 address of upstream resolver.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        A port number to use for upstream resolver. Defaults to 53 if unspecified.
+        """
+        route_through_private_network: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
+        """
+        vnet_id: NotRequired[pulumi.Input[str]]
+        """
+        Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+elif False:
+    TeamsRuleRuleSettingsDnsResolversIpv4ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsDnsResolversIpv4Args:
+    def __init__(__self__, *,
+                 ip: pulumi.Input[str],
+                 port: Optional[pulumi.Input[int]] = None,
+                 route_through_private_network: Optional[pulumi.Input[bool]] = None,
+                 vnet_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ip: IPv4 address of upstream resolver.
+        :param pulumi.Input[int] port: A port number to use for upstream resolver. Defaults to 53 if unspecified.
+        :param pulumi.Input[bool] route_through_private_network: Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
+        :param pulumi.Input[str] vnet_id: Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+        pulumi.set(__self__, "ip", ip)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if route_through_private_network is not None:
+            pulumi.set(__self__, "route_through_private_network", route_through_private_network)
+        if vnet_id is not None:
+            pulumi.set(__self__, "vnet_id", vnet_id)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> pulumi.Input[str]:
+        """
+        IPv4 address of upstream resolver.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        A port number to use for upstream resolver. Defaults to 53 if unspecified.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="routeThroughPrivateNetwork")
+    def route_through_private_network(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
+        """
+        return pulumi.get(self, "route_through_private_network")
+
+    @route_through_private_network.setter
+    def route_through_private_network(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "route_through_private_network", value)
+
+    @property
+    @pulumi.getter(name="vnetId")
+    def vnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+        return pulumi.get(self, "vnet_id")
+
+    @vnet_id.setter
+    def vnet_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vnet_id", value)
+
+
+if not MYPY:
+    class TeamsRuleRuleSettingsDnsResolversIpv6ArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        IPv6 address of upstream resolver.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        A port number to use for upstream resolver. Defaults to 53 if unspecified.
+        """
+        route_through_private_network: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
+        """
+        vnet_id: NotRequired[pulumi.Input[str]]
+        """
+        Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+elif False:
+    TeamsRuleRuleSettingsDnsResolversIpv6ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsDnsResolversIpv6Args:
+    def __init__(__self__, *,
+                 ip: pulumi.Input[str],
+                 port: Optional[pulumi.Input[int]] = None,
+                 route_through_private_network: Optional[pulumi.Input[bool]] = None,
+                 vnet_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ip: IPv6 address of upstream resolver.
+        :param pulumi.Input[int] port: A port number to use for upstream resolver. Defaults to 53 if unspecified.
+        :param pulumi.Input[bool] route_through_private_network: Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
+        :param pulumi.Input[str] vnet_id: Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+        pulumi.set(__self__, "ip", ip)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if route_through_private_network is not None:
+            pulumi.set(__self__, "route_through_private_network", route_through_private_network)
+        if vnet_id is not None:
+            pulumi.set(__self__, "vnet_id", vnet_id)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> pulumi.Input[str]:
+        """
+        IPv6 address of upstream resolver.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        A port number to use for upstream resolver. Defaults to 53 if unspecified.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="routeThroughPrivateNetwork")
+    def route_through_private_network(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
+        """
+        return pulumi.get(self, "route_through_private_network")
+
+    @route_through_private_network.setter
+    def route_through_private_network(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "route_through_private_network", value)
+
+    @property
+    @pulumi.getter(name="vnetId")
+    def vnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+        return pulumi.get(self, "vnet_id")
+
+    @vnet_id.setter
+    def vnet_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vnet_id", value)
+
+
+if not MYPY:
+    class TeamsRuleRuleSettingsEgressArgsDict(TypedDict):
+        ipv4: NotRequired[pulumi.Input[str]]
+        """
+        The IPv4 address to be used for egress.
+        """
+        ipv4_fallback: NotRequired[pulumi.Input[str]]
+        """
+        The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.
+        """
+        ipv6: NotRequired[pulumi.Input[str]]
+        """
+        The IPv6 range to be used for egress.
+        """
+elif False:
+    TeamsRuleRuleSettingsEgressArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsEgressArgs:
+    def __init__(__self__, *,
+                 ipv4: Optional[pulumi.Input[str]] = None,
+                 ipv4_fallback: Optional[pulumi.Input[str]] = None,
+                 ipv6: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ipv4: The IPv4 address to be used for egress.
+        :param pulumi.Input[str] ipv4_fallback: The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.
+        :param pulumi.Input[str] ipv6: The IPv6 range to be used for egress.
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv4_fallback is not None:
+            pulumi.set(__self__, "ipv4_fallback", ipv4_fallback)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IPv4 address to be used for egress.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @ipv4.setter
+    def ipv4(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv4", value)
+
+    @property
+    @pulumi.getter(name="ipv4Fallback")
+    def ipv4_fallback(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.
+        """
+        return pulumi.get(self, "ipv4_fallback")
+
+    @ipv4_fallback.setter
+    def ipv4_fallback(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv4_fallback", value)
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IPv6 range to be used for egress.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6", value)
+
+
+if not MYPY:
+    class TeamsRuleRuleSettingsL4overrideArgsDict(TypedDict):
+        ip: NotRequired[pulumi.Input[str]]
+        """
+        IPv4 or IPv6 address.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        A port number to use for TCP/UDP overrides.
+        """
+elif False:
+    TeamsRuleRuleSettingsL4overrideArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsL4overrideArgs:
+    def __init__(__self__, *,
+                 ip: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] ip: IPv4 or IPv6 address.
+        :param pulumi.Input[int] port: A port number to use for TCP/UDP overrides.
+        """
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv4 or IPv6 address.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        A port number to use for TCP/UDP overrides.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class TeamsRuleRuleSettingsNotificationSettingsArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Set notification on
+        """
+        msg: NotRequired[pulumi.Input[str]]
+        """
+        Customize the message shown in the notification.
+        """
+        support_url: NotRequired[pulumi.Input[str]]
+        """
+        Optional URL to direct users to additional information. If not set, the notification will open a block page.
+        """
+elif False:
+    TeamsRuleRuleSettingsNotificationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsNotificationSettingsArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 msg: Optional[pulumi.Input[str]] = None,
+                 support_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Set notification on
+        :param pulumi.Input[str] msg: Customize the message shown in the notification.
+        :param pulumi.Input[str] support_url: Optional URL to direct users to additional information. If not set, the notification will open a block page.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if msg is not None:
+            pulumi.set(__self__, "msg", msg)
+        if support_url is not None:
+            pulumi.set(__self__, "support_url", support_url)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set notification on
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def msg(self) -> Optional[pulumi.Input[str]]:
+        """
+        Customize the message shown in the notification.
+        """
+        return pulumi.get(self, "msg")
+
+    @msg.setter
+    def msg(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "msg", value)
+
+    @property
+    @pulumi.getter(name="supportUrl")
+    def support_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional URL to direct users to additional information. If not set, the notification will open a block page.
+        """
+        return pulumi.get(self, "support_url")
+
+    @support_url.setter
+    def support_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "support_url", value)
+
+
+if not MYPY:
+    class TeamsRuleRuleSettingsPayloadLogArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Set to true to enable DLP payload logging for this rule.
+        """
+elif False:
+    TeamsRuleRuleSettingsPayloadLogArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsPayloadLogArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Set to true to enable DLP payload logging for this rule.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to enable DLP payload logging for this rule.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class TeamsRuleRuleSettingsQuarantineArgsDict(TypedDict):
+        file_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Types of files to sandbox.
+        """
+elif False:
+    TeamsRuleRuleSettingsQuarantineArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsQuarantineArgs:
+    def __init__(__self__, *,
+                 file_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] file_types: Types of files to sandbox.
+        """
+        if file_types is not None:
+            pulumi.set(__self__, "file_types", file_types)
+
+    @property
+    @pulumi.getter(name="fileTypes")
+    def file_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Types of files to sandbox.
+        """
+        return pulumi.get(self, "file_types")
+
+    @file_types.setter
+    def file_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "file_types", value)
+
+
+if not MYPY:
+    class TeamsRuleRuleSettingsResolveDnsInternallyArgsDict(TypedDict):
+        fallback: NotRequired[pulumi.Input[str]]
+        """
+        The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+        Available values: "none", "public_dns".
+        """
+        view_id: NotRequired[pulumi.Input[str]]
+        """
+        The internal DNS view identifier that's passed to the internal DNS service.
+        """
+elif False:
+    TeamsRuleRuleSettingsResolveDnsInternallyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsResolveDnsInternallyArgs:
+    def __init__(__self__, *,
+                 fallback: Optional[pulumi.Input[str]] = None,
+                 view_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] fallback: The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+               Available values: "none", "public_dns".
+        :param pulumi.Input[str] view_id: The internal DNS view identifier that's passed to the internal DNS service.
+        """
+        if fallback is not None:
+            pulumi.set(__self__, "fallback", fallback)
+        if view_id is not None:
+            pulumi.set(__self__, "view_id", view_id)
+
+    @property
+    @pulumi.getter
+    def fallback(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+        Available values: "none", "public_dns".
+        """
+        return pulumi.get(self, "fallback")
+
+    @fallback.setter
+    def fallback(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fallback", value)
+
+    @property
+    @pulumi.getter(name="viewId")
+    def view_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The internal DNS view identifier that's passed to the internal DNS service.
+        """
+        return pulumi.get(self, "view_id")
+
+    @view_id.setter
+    def view_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "view_id", value)
+
+
+if not MYPY:
+    class TeamsRuleRuleSettingsUntrustedCertArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+        Available values: "pass_through", "block", "error".
+        """
+elif False:
+    TeamsRuleRuleSettingsUntrustedCertArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsUntrustedCertArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] action: The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+               Available values: "pass_through", "block", "error".
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+        Available values: "pass_through", "block", "error".
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+
+if not MYPY:
+    class TeamsRuleScheduleArgsDict(TypedDict):
+        fri: NotRequired[pulumi.Input[str]]
+        """
+        The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.
+        """
+        mon: NotRequired[pulumi.Input[str]]
+        """
+        The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.
+        """
+        sat: NotRequired[pulumi.Input[str]]
+        """
+        The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.
+        """
+        sun: NotRequired[pulumi.Input[str]]
+        """
+        The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.
+        """
+        thu: NotRequired[pulumi.Input[str]]
+        """
+        The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.
+        """
+        time_zone: NotRequired[pulumi.Input[str]]
+        """
+        The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.
+        """
+        tue: NotRequired[pulumi.Input[str]]
+        """
+        The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.
+        """
+        wed: NotRequired[pulumi.Input[str]]
+        """
+        The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.
+        """
+elif False:
+    TeamsRuleScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleScheduleArgs:
+    def __init__(__self__, *,
+                 fri: Optional[pulumi.Input[str]] = None,
+                 mon: Optional[pulumi.Input[str]] = None,
+                 sat: Optional[pulumi.Input[str]] = None,
+                 sun: Optional[pulumi.Input[str]] = None,
+                 thu: Optional[pulumi.Input[str]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None,
+                 tue: Optional[pulumi.Input[str]] = None,
+                 wed: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] fri: The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.
+        :param pulumi.Input[str] mon: The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.
+        :param pulumi.Input[str] sat: The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.
+        :param pulumi.Input[str] sun: The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.
+        :param pulumi.Input[str] thu: The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.
+        :param pulumi.Input[str] time_zone: The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.
+        :param pulumi.Input[str] tue: The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.
+        :param pulumi.Input[str] wed: The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.
+        """
+        if fri is not None:
+            pulumi.set(__self__, "fri", fri)
+        if mon is not None:
+            pulumi.set(__self__, "mon", mon)
+        if sat is not None:
+            pulumi.set(__self__, "sat", sat)
+        if sun is not None:
+            pulumi.set(__self__, "sun", sun)
+        if thu is not None:
+            pulumi.set(__self__, "thu", thu)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+        if tue is not None:
+            pulumi.set(__self__, "tue", tue)
+        if wed is not None:
+            pulumi.set(__self__, "wed", wed)
+
+    @property
+    @pulumi.getter
+    def fri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.
+        """
+        return pulumi.get(self, "fri")
+
+    @fri.setter
+    def fri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fri", value)
+
+    @property
+    @pulumi.getter
+    def mon(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.
+        """
+        return pulumi.get(self, "mon")
+
+    @mon.setter
+    def mon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mon", value)
+
+    @property
+    @pulumi.getter
+    def sat(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.
+        """
+        return pulumi.get(self, "sat")
+
+    @sat.setter
+    def sat(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sat", value)
+
+    @property
+    @pulumi.getter
+    def sun(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.
+        """
+        return pulumi.get(self, "sun")
+
+    @sun.setter
+    def sun(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sun", value)
+
+    @property
+    @pulumi.getter
+    def thu(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.
+        """
+        return pulumi.get(self, "thu")
+
+    @thu.setter
+    def thu(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "thu", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
+
+    @property
+    @pulumi.getter
+    def tue(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.
+        """
+        return pulumi.get(self, "tue")
+
+    @tue.setter
+    def tue(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tue", value)
+
+    @property
+    @pulumi.getter
+    def wed(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.
+        """
+        return pulumi.get(self, "wed")
+
+    @wed.setter
+    def wed(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "wed", value)
+
+
+if not MYPY:
+    class TunnelConfigConfigArgsDict(TypedDict):
+        ingresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressArgsDict']]]]
+        """
+        List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
+        """
+        origin_request: NotRequired[pulumi.Input['TunnelConfigConfigOriginRequestArgsDict']]
+        """
+        Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+        """
+        warp_routing: NotRequired[pulumi.Input['TunnelConfigConfigWarpRoutingArgsDict']]
+        """
+        Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+        """
+elif False:
+    TunnelConfigConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TunnelConfigConfigArgs:
+    def __init__(__self__, *,
+                 ingresses: Optional[pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressArgs']]]] = None,
+                 origin_request: Optional[pulumi.Input['TunnelConfigConfigOriginRequestArgs']] = None,
+                 warp_routing: Optional[pulumi.Input['TunnelConfigConfigWarpRoutingArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressArgs']]] ingresses: List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
+        :param pulumi.Input['TunnelConfigConfigOriginRequestArgs'] origin_request: Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+        :param pulumi.Input['TunnelConfigConfigWarpRoutingArgs'] warp_routing: Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+        """
+        if ingresses is not None:
+            pulumi.set(__self__, "ingresses", ingresses)
+        if origin_request is not None:
+            pulumi.set(__self__, "origin_request", origin_request)
+        if warp_routing is not None:
+            pulumi.set(__self__, "warp_routing", warp_routing)
+
+    @property
+    @pulumi.getter
+    def ingresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressArgs']]]]:
+        """
+        List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
+        """
+        return pulumi.get(self, "ingresses")
+
+    @ingresses.setter
+    def ingresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressArgs']]]]):
+        pulumi.set(self, "ingresses", value)
+
+    @property
+    @pulumi.getter(name="originRequest")
+    def origin_request(self) -> Optional[pulumi.Input['TunnelConfigConfigOriginRequestArgs']]:
+        """
+        Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+        """
+        return pulumi.get(self, "origin_request")
+
+    @origin_request.setter
+    def origin_request(self, value: Optional[pulumi.Input['TunnelConfigConfigOriginRequestArgs']]):
+        pulumi.set(self, "origin_request", value)
+
+    @property
+    @pulumi.getter(name="warpRouting")
+    def warp_routing(self) -> Optional[pulumi.Input['TunnelConfigConfigWarpRoutingArgs']]:
+        """
+        Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+        """
+        return pulumi.get(self, "warp_routing")
+
+    @warp_routing.setter
+    def warp_routing(self, value: Optional[pulumi.Input['TunnelConfigConfigWarpRoutingArgs']]):
+        pulumi.set(self, "warp_routing", value)
+
+
+if not MYPY:
+    class TunnelConfigConfigIngressArgsDict(TypedDict):
+        service: pulumi.Input[str]
+        """
+        Protocol and address of destination server. Supported protocols: http://, https://, unix://, tcp://, ssh://, rdp://, unix+tls://, smb://. Alternatively can return a HTTP status code http*status:[code] e.g. 'http*status:404'.
+        """
+        hostname: NotRequired[pulumi.Input[str]]
+        """
+        Public hostname for this service.
+        """
+        origin_request: NotRequired[pulumi.Input['TunnelConfigConfigIngressOriginRequestArgsDict']]
+        """
+        Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Requests with this path route to this public hostname.
+        """
+elif False:
+    TunnelConfigConfigIngressArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TunnelConfigConfigIngressArgs:
+    def __init__(__self__, *,
+                 service: pulumi.Input[str],
+                 hostname: Optional[pulumi.Input[str]] = None,
+                 origin_request: Optional[pulumi.Input['TunnelConfigConfigIngressOriginRequestArgs']] = None,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] service: Protocol and address of destination server. Supported protocols: http://, https://, unix://, tcp://, ssh://, rdp://, unix+tls://, smb://. Alternatively can return a HTTP status code http*status:[code] e.g. 'http*status:404'.
+        :param pulumi.Input[str] hostname: Public hostname for this service.
+        :param pulumi.Input['TunnelConfigConfigIngressOriginRequestArgs'] origin_request: Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+        :param pulumi.Input[str] path: Requests with this path route to this public hostname.
+        """
+        pulumi.set(__self__, "service", service)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if origin_request is not None:
+            pulumi.set(__self__, "origin_request", origin_request)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        """
+        Protocol and address of destination server. Supported protocols: http://, https://, unix://, tcp://, ssh://, rdp://, unix+tls://, smb://. Alternatively can return a HTTP status code http*status:[code] e.g. 'http*status:404'.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        Public hostname for this service.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="originRequest")
+    def origin_request(self) -> Optional[pulumi.Input['TunnelConfigConfigIngressOriginRequestArgs']]:
+        """
+        Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+        """
+        return pulumi.get(self, "origin_request")
+
+    @origin_request.setter
+    def origin_request(self, value: Optional[pulumi.Input['TunnelConfigConfigIngressOriginRequestArgs']]):
+        pulumi.set(self, "origin_request", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Requests with this path route to this public hostname.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+if not MYPY:
+    class TunnelConfigConfigIngressOriginRequestArgsDict(TypedDict):
+        access: NotRequired[pulumi.Input['TunnelConfigConfigIngressOriginRequestAccessArgsDict']]
+        """
+        For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
+        """
+        ca_pool: NotRequired[pulumi.Input[str]]
+        """
+        Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
+        """
+        connect_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
+        """
+        disable_chunked_encoding: NotRequired[pulumi.Input[bool]]
+        """
+        Disables chunked transfer encoding. Useful if you are running a WSGI server.
+        """
+        http2_origin: NotRequired[pulumi.Input[bool]]
+        """
+        Attempt to connect to origin using HTTP2. Origin must be configured as https.
+        """
+        http_host_header: NotRequired[pulumi.Input[str]]
+        """
+        Sets the HTTP Host header on requests sent to the local service.
+        """
+        keep_alive_connections: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
+        """
+        keep_alive_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Timeout after which an idle keepalive connection can be discarded.
+        """
+        no_happy_eyeballs: NotRequired[pulumi.Input[bool]]
+        """
+        Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
+        """
+        no_tls_verify: NotRequired[pulumi.Input[bool]]
+        """
+        Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
+        """
+        origin_server_name: NotRequired[pulumi.Input[str]]
+        """
+        Hostname that cloudflared should expect from your origin server certificate.
+        """
+        proxy_type: NotRequired[pulumi.Input[str]]
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: "" for the regular proxy and "socks" for a SOCKS5 proxy.
+        """
+        tcp_keep_alive: NotRequired[pulumi.Input[int]]
+        """
+        The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
+        """
+        tls_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
+        """
+elif False:
+    TunnelConfigConfigIngressOriginRequestArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TunnelConfigConfigIngressOriginRequestArgs:
+    def __init__(__self__, *,
+                 access: Optional[pulumi.Input['TunnelConfigConfigIngressOriginRequestAccessArgs']] = None,
+                 ca_pool: Optional[pulumi.Input[str]] = None,
+                 connect_timeout: Optional[pulumi.Input[int]] = None,
+                 disable_chunked_encoding: Optional[pulumi.Input[bool]] = None,
+                 http2_origin: Optional[pulumi.Input[bool]] = None,
+                 http_host_header: Optional[pulumi.Input[str]] = None,
+                 keep_alive_connections: Optional[pulumi.Input[int]] = None,
+                 keep_alive_timeout: Optional[pulumi.Input[int]] = None,
+                 no_happy_eyeballs: Optional[pulumi.Input[bool]] = None,
+                 no_tls_verify: Optional[pulumi.Input[bool]] = None,
+                 origin_server_name: Optional[pulumi.Input[str]] = None,
+                 proxy_type: Optional[pulumi.Input[str]] = None,
+                 tcp_keep_alive: Optional[pulumi.Input[int]] = None,
+                 tls_timeout: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['TunnelConfigConfigIngressOriginRequestAccessArgs'] access: For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
+        :param pulumi.Input[str] ca_pool: Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
+        :param pulumi.Input[int] connect_timeout: Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
+        :param pulumi.Input[bool] disable_chunked_encoding: Disables chunked transfer encoding. Useful if you are running a WSGI server.
+        :param pulumi.Input[bool] http2_origin: Attempt to connect to origin using HTTP2. Origin must be configured as https.
+        :param pulumi.Input[str] http_host_header: Sets the HTTP Host header on requests sent to the local service.
+        :param pulumi.Input[int] keep_alive_connections: Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
+        :param pulumi.Input[int] keep_alive_timeout: Timeout after which an idle keepalive connection can be discarded.
+        :param pulumi.Input[bool] no_happy_eyeballs: Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
+        :param pulumi.Input[bool] no_tls_verify: Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
+        :param pulumi.Input[str] origin_server_name: Hostname that cloudflared should expect from your origin server certificate.
+        :param pulumi.Input[str] proxy_type: cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: "" for the regular proxy and "socks" for a SOCKS5 proxy.
+        :param pulumi.Input[int] tcp_keep_alive: The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
+        :param pulumi.Input[int] tls_timeout: Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
+        """
+        if access is not None:
+            pulumi.set(__self__, "access", access)
+        if ca_pool is not None:
+            pulumi.set(__self__, "ca_pool", ca_pool)
+        if connect_timeout is not None:
+            pulumi.set(__self__, "connect_timeout", connect_timeout)
+        if disable_chunked_encoding is not None:
+            pulumi.set(__self__, "disable_chunked_encoding", disable_chunked_encoding)
+        if http2_origin is not None:
+            pulumi.set(__self__, "http2_origin", http2_origin)
+        if http_host_header is not None:
+            pulumi.set(__self__, "http_host_header", http_host_header)
+        if keep_alive_connections is not None:
+            pulumi.set(__self__, "keep_alive_connections", keep_alive_connections)
+        if keep_alive_timeout is not None:
+            pulumi.set(__self__, "keep_alive_timeout", keep_alive_timeout)
+        if no_happy_eyeballs is not None:
+            pulumi.set(__self__, "no_happy_eyeballs", no_happy_eyeballs)
+        if no_tls_verify is not None:
+            pulumi.set(__self__, "no_tls_verify", no_tls_verify)
+        if origin_server_name is not None:
+            pulumi.set(__self__, "origin_server_name", origin_server_name)
+        if proxy_type is not None:
+            pulumi.set(__self__, "proxy_type", proxy_type)
+        if tcp_keep_alive is not None:
+            pulumi.set(__self__, "tcp_keep_alive", tcp_keep_alive)
+        if tls_timeout is not None:
+            pulumi.set(__self__, "tls_timeout", tls_timeout)
+
+    @property
+    @pulumi.getter
+    def access(self) -> Optional[pulumi.Input['TunnelConfigConfigIngressOriginRequestAccessArgs']]:
+        """
+        For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
+        """
+        return pulumi.get(self, "access")
+
+    @access.setter
+    def access(self, value: Optional[pulumi.Input['TunnelConfigConfigIngressOriginRequestAccessArgs']]):
+        pulumi.set(self, "access", value)
+
+    @property
+    @pulumi.getter(name="caPool")
+    def ca_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
+        """
+        return pulumi.get(self, "ca_pool")
+
+    @ca_pool.setter
+    def ca_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_pool", value)
+
+    @property
+    @pulumi.getter(name="connectTimeout")
+    def connect_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
+        """
+        return pulumi.get(self, "connect_timeout")
+
+    @connect_timeout.setter
+    def connect_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "connect_timeout", value)
+
+    @property
+    @pulumi.getter(name="disableChunkedEncoding")
+    def disable_chunked_encoding(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables chunked transfer encoding. Useful if you are running a WSGI server.
+        """
+        return pulumi.get(self, "disable_chunked_encoding")
+
+    @disable_chunked_encoding.setter
+    def disable_chunked_encoding(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_chunked_encoding", value)
+
+    @property
+    @pulumi.getter(name="http2Origin")
+    def http2_origin(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Attempt to connect to origin using HTTP2. Origin must be configured as https.
+        """
+        return pulumi.get(self, "http2_origin")
+
+    @http2_origin.setter
+    def http2_origin(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "http2_origin", value)
+
+    @property
+    @pulumi.getter(name="httpHostHeader")
+    def http_host_header(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sets the HTTP Host header on requests sent to the local service.
+        """
+        return pulumi.get(self, "http_host_header")
+
+    @http_host_header.setter
+    def http_host_header(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_host_header", value)
+
+    @property
+    @pulumi.getter(name="keepAliveConnections")
+    def keep_alive_connections(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
+        """
+        return pulumi.get(self, "keep_alive_connections")
+
+    @keep_alive_connections.setter
+    def keep_alive_connections(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "keep_alive_connections", value)
+
+    @property
+    @pulumi.getter(name="keepAliveTimeout")
+    def keep_alive_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout after which an idle keepalive connection can be discarded.
+        """
+        return pulumi.get(self, "keep_alive_timeout")
+
+    @keep_alive_timeout.setter
+    def keep_alive_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "keep_alive_timeout", value)
+
+    @property
+    @pulumi.getter(name="noHappyEyeballs")
+    def no_happy_eyeballs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
+        """
+        return pulumi.get(self, "no_happy_eyeballs")
+
+    @no_happy_eyeballs.setter
+    def no_happy_eyeballs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_happy_eyeballs", value)
+
+    @property
+    @pulumi.getter(name="noTlsVerify")
+    def no_tls_verify(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
+        """
+        return pulumi.get(self, "no_tls_verify")
+
+    @no_tls_verify.setter
+    def no_tls_verify(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_tls_verify", value)
+
+    @property
+    @pulumi.getter(name="originServerName")
+    def origin_server_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hostname that cloudflared should expect from your origin server certificate.
+        """
+        return pulumi.get(self, "origin_server_name")
+
+    @origin_server_name.setter
+    def origin_server_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "origin_server_name", value)
+
+    @property
+    @pulumi.getter(name="proxyType")
+    def proxy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: "" for the regular proxy and "socks" for a SOCKS5 proxy.
+        """
+        return pulumi.get(self, "proxy_type")
+
+    @proxy_type.setter
+    def proxy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_type", value)
+
+    @property
+    @pulumi.getter(name="tcpKeepAlive")
+    def tcp_keep_alive(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
+        """
+        return pulumi.get(self, "tcp_keep_alive")
+
+    @tcp_keep_alive.setter
+    def tcp_keep_alive(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "tcp_keep_alive", value)
+
+    @property
+    @pulumi.getter(name="tlsTimeout")
+    def tls_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
+        """
+        return pulumi.get(self, "tls_timeout")
+
+    @tls_timeout.setter
+    def tls_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "tls_timeout", value)
+
+
+if not MYPY:
+    class TunnelConfigConfigIngressOriginRequestAccessArgsDict(TypedDict):
+        aud_tags: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Deny traffic that has not fulfilled Access authorization.
+        """
+        team_name: NotRequired[pulumi.Input[str]]
+elif False:
+    TunnelConfigConfigIngressOriginRequestAccessArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TunnelConfigConfigIngressOriginRequestAccessArgs:
+    def __init__(__self__, *,
+                 aud_tags: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 required: Optional[pulumi.Input[bool]] = None,
+                 team_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] aud_tags: Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
+        :param pulumi.Input[bool] required: Deny traffic that has not fulfilled Access authorization.
+        """
+        pulumi.set(__self__, "aud_tags", aud_tags)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if team_name is not None:
+            pulumi.set(__self__, "team_name", team_name)
+
+    @property
+    @pulumi.getter(name="audTags")
+    def aud_tags(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
+        """
+        return pulumi.get(self, "aud_tags")
+
+    @aud_tags.setter
+    def aud_tags(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "aud_tags", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Deny traffic that has not fulfilled Access authorization.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter(name="teamName")
+    def team_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "team_name")
+
+    @team_name.setter
+    def team_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team_name", value)
+
+
+if not MYPY:
+    class TunnelConfigConfigOriginRequestArgsDict(TypedDict):
+        access: NotRequired[pulumi.Input['TunnelConfigConfigOriginRequestAccessArgsDict']]
+        """
+        For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
+        """
+        ca_pool: NotRequired[pulumi.Input[str]]
+        """
+        Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
+        """
+        connect_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
+        """
+        disable_chunked_encoding: NotRequired[pulumi.Input[bool]]
+        """
+        Disables chunked transfer encoding. Useful if you are running a WSGI server.
+        """
+        http2_origin: NotRequired[pulumi.Input[bool]]
+        """
+        Attempt to connect to origin using HTTP2. Origin must be configured as https.
+        """
+        http_host_header: NotRequired[pulumi.Input[str]]
+        """
+        Sets the HTTP Host header on requests sent to the local service.
+        """
+        keep_alive_connections: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
+        """
+        keep_alive_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Timeout after which an idle keepalive connection can be discarded.
+        """
+        no_happy_eyeballs: NotRequired[pulumi.Input[bool]]
+        """
+        Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
+        """
+        no_tls_verify: NotRequired[pulumi.Input[bool]]
+        """
+        Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
+        """
+        origin_server_name: NotRequired[pulumi.Input[str]]
+        """
+        Hostname that cloudflared should expect from your origin server certificate.
+        """
+        proxy_type: NotRequired[pulumi.Input[str]]
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: "" for the regular proxy and "socks" for a SOCKS5 proxy.
+        """
+        tcp_keep_alive: NotRequired[pulumi.Input[int]]
+        """
+        The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
+        """
+        tls_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
+        """
+elif False:
+    TunnelConfigConfigOriginRequestArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TunnelConfigConfigOriginRequestArgs:
+    def __init__(__self__, *,
+                 access: Optional[pulumi.Input['TunnelConfigConfigOriginRequestAccessArgs']] = None,
+                 ca_pool: Optional[pulumi.Input[str]] = None,
+                 connect_timeout: Optional[pulumi.Input[int]] = None,
+                 disable_chunked_encoding: Optional[pulumi.Input[bool]] = None,
+                 http2_origin: Optional[pulumi.Input[bool]] = None,
+                 http_host_header: Optional[pulumi.Input[str]] = None,
+                 keep_alive_connections: Optional[pulumi.Input[int]] = None,
+                 keep_alive_timeout: Optional[pulumi.Input[int]] = None,
+                 no_happy_eyeballs: Optional[pulumi.Input[bool]] = None,
+                 no_tls_verify: Optional[pulumi.Input[bool]] = None,
+                 origin_server_name: Optional[pulumi.Input[str]] = None,
+                 proxy_type: Optional[pulumi.Input[str]] = None,
+                 tcp_keep_alive: Optional[pulumi.Input[int]] = None,
+                 tls_timeout: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['TunnelConfigConfigOriginRequestAccessArgs'] access: For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
+        :param pulumi.Input[str] ca_pool: Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
+        :param pulumi.Input[int] connect_timeout: Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
+        :param pulumi.Input[bool] disable_chunked_encoding: Disables chunked transfer encoding. Useful if you are running a WSGI server.
+        :param pulumi.Input[bool] http2_origin: Attempt to connect to origin using HTTP2. Origin must be configured as https.
+        :param pulumi.Input[str] http_host_header: Sets the HTTP Host header on requests sent to the local service.
+        :param pulumi.Input[int] keep_alive_connections: Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
+        :param pulumi.Input[int] keep_alive_timeout: Timeout after which an idle keepalive connection can be discarded.
+        :param pulumi.Input[bool] no_happy_eyeballs: Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
+        :param pulumi.Input[bool] no_tls_verify: Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
+        :param pulumi.Input[str] origin_server_name: Hostname that cloudflared should expect from your origin server certificate.
+        :param pulumi.Input[str] proxy_type: cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: "" for the regular proxy and "socks" for a SOCKS5 proxy.
+        :param pulumi.Input[int] tcp_keep_alive: The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
+        :param pulumi.Input[int] tls_timeout: Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
+        """
+        if access is not None:
+            pulumi.set(__self__, "access", access)
+        if ca_pool is not None:
+            pulumi.set(__self__, "ca_pool", ca_pool)
+        if connect_timeout is not None:
+            pulumi.set(__self__, "connect_timeout", connect_timeout)
+        if disable_chunked_encoding is not None:
+            pulumi.set(__self__, "disable_chunked_encoding", disable_chunked_encoding)
+        if http2_origin is not None:
+            pulumi.set(__self__, "http2_origin", http2_origin)
+        if http_host_header is not None:
+            pulumi.set(__self__, "http_host_header", http_host_header)
+        if keep_alive_connections is not None:
+            pulumi.set(__self__, "keep_alive_connections", keep_alive_connections)
+        if keep_alive_timeout is not None:
+            pulumi.set(__self__, "keep_alive_timeout", keep_alive_timeout)
+        if no_happy_eyeballs is not None:
+            pulumi.set(__self__, "no_happy_eyeballs", no_happy_eyeballs)
+        if no_tls_verify is not None:
+            pulumi.set(__self__, "no_tls_verify", no_tls_verify)
+        if origin_server_name is not None:
+            pulumi.set(__self__, "origin_server_name", origin_server_name)
+        if proxy_type is not None:
+            pulumi.set(__self__, "proxy_type", proxy_type)
+        if tcp_keep_alive is not None:
+            pulumi.set(__self__, "tcp_keep_alive", tcp_keep_alive)
+        if tls_timeout is not None:
+            pulumi.set(__self__, "tls_timeout", tls_timeout)
+
+    @property
+    @pulumi.getter
+    def access(self) -> Optional[pulumi.Input['TunnelConfigConfigOriginRequestAccessArgs']]:
+        """
+        For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
+        """
+        return pulumi.get(self, "access")
+
+    @access.setter
+    def access(self, value: Optional[pulumi.Input['TunnelConfigConfigOriginRequestAccessArgs']]):
+        pulumi.set(self, "access", value)
+
+    @property
+    @pulumi.getter(name="caPool")
+    def ca_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
+        """
+        return pulumi.get(self, "ca_pool")
+
+    @ca_pool.setter
+    def ca_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_pool", value)
+
+    @property
+    @pulumi.getter(name="connectTimeout")
+    def connect_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
+        """
+        return pulumi.get(self, "connect_timeout")
+
+    @connect_timeout.setter
+    def connect_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "connect_timeout", value)
+
+    @property
+    @pulumi.getter(name="disableChunkedEncoding")
+    def disable_chunked_encoding(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables chunked transfer encoding. Useful if you are running a WSGI server.
+        """
+        return pulumi.get(self, "disable_chunked_encoding")
+
+    @disable_chunked_encoding.setter
+    def disable_chunked_encoding(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_chunked_encoding", value)
+
+    @property
+    @pulumi.getter(name="http2Origin")
+    def http2_origin(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Attempt to connect to origin using HTTP2. Origin must be configured as https.
+        """
+        return pulumi.get(self, "http2_origin")
+
+    @http2_origin.setter
+    def http2_origin(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "http2_origin", value)
+
+    @property
+    @pulumi.getter(name="httpHostHeader")
+    def http_host_header(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sets the HTTP Host header on requests sent to the local service.
+        """
+        return pulumi.get(self, "http_host_header")
+
+    @http_host_header.setter
+    def http_host_header(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_host_header", value)
+
+    @property
+    @pulumi.getter(name="keepAliveConnections")
+    def keep_alive_connections(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
+        """
+        return pulumi.get(self, "keep_alive_connections")
+
+    @keep_alive_connections.setter
+    def keep_alive_connections(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "keep_alive_connections", value)
+
+    @property
+    @pulumi.getter(name="keepAliveTimeout")
+    def keep_alive_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout after which an idle keepalive connection can be discarded.
+        """
+        return pulumi.get(self, "keep_alive_timeout")
+
+    @keep_alive_timeout.setter
+    def keep_alive_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "keep_alive_timeout", value)
+
+    @property
+    @pulumi.getter(name="noHappyEyeballs")
+    def no_happy_eyeballs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
+        """
+        return pulumi.get(self, "no_happy_eyeballs")
+
+    @no_happy_eyeballs.setter
+    def no_happy_eyeballs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_happy_eyeballs", value)
+
+    @property
+    @pulumi.getter(name="noTlsVerify")
+    def no_tls_verify(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
+        """
+        return pulumi.get(self, "no_tls_verify")
+
+    @no_tls_verify.setter
+    def no_tls_verify(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_tls_verify", value)
+
+    @property
+    @pulumi.getter(name="originServerName")
+    def origin_server_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hostname that cloudflared should expect from your origin server certificate.
+        """
+        return pulumi.get(self, "origin_server_name")
+
+    @origin_server_name.setter
+    def origin_server_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "origin_server_name", value)
+
+    @property
+    @pulumi.getter(name="proxyType")
+    def proxy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: "" for the regular proxy and "socks" for a SOCKS5 proxy.
+        """
+        return pulumi.get(self, "proxy_type")
+
+    @proxy_type.setter
+    def proxy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_type", value)
+
+    @property
+    @pulumi.getter(name="tcpKeepAlive")
+    def tcp_keep_alive(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
+        """
+        return pulumi.get(self, "tcp_keep_alive")
+
+    @tcp_keep_alive.setter
+    def tcp_keep_alive(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "tcp_keep_alive", value)
+
+    @property
+    @pulumi.getter(name="tlsTimeout")
+    def tls_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
+        """
+        return pulumi.get(self, "tls_timeout")
+
+    @tls_timeout.setter
+    def tls_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "tls_timeout", value)
+
+
+if not MYPY:
+    class TunnelConfigConfigOriginRequestAccessArgsDict(TypedDict):
+        aud_tags: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Deny traffic that has not fulfilled Access authorization.
+        """
+        team_name: NotRequired[pulumi.Input[str]]
+elif False:
+    TunnelConfigConfigOriginRequestAccessArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TunnelConfigConfigOriginRequestAccessArgs:
+    def __init__(__self__, *,
+                 aud_tags: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 required: Optional[pulumi.Input[bool]] = None,
+                 team_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] aud_tags: Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
+        :param pulumi.Input[bool] required: Deny traffic that has not fulfilled Access authorization.
+        """
+        pulumi.set(__self__, "aud_tags", aud_tags)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if team_name is not None:
+            pulumi.set(__self__, "team_name", team_name)
+
+    @property
+    @pulumi.getter(name="audTags")
+    def aud_tags(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
+        """
+        return pulumi.get(self, "aud_tags")
+
+    @aud_tags.setter
+    def aud_tags(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "aud_tags", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Deny traffic that has not fulfilled Access authorization.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter(name="teamName")
+    def team_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "team_name")
+
+    @team_name.setter
+    def team_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team_name", value)
+
+
+if not MYPY:
+    class TunnelConfigConfigWarpRoutingArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+elif False:
+    TunnelConfigConfigWarpRoutingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TunnelConfigConfigWarpRoutingArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class TunnelConnectionArgsDict(TypedDict):
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        UUID of the Cloudflare Tunnel connector.
+        """
+        client_version: NotRequired[pulumi.Input[str]]
+        """
+        The cloudflared version used to establish this connection.
+        """
+        colo_name: NotRequired[pulumi.Input[str]]
+        """
+        The Cloudflare data center used for this connection.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        UUID of the Cloudflare Tunnel connection.
+        """
+        is_pending_reconnect: NotRequired[pulumi.Input[bool]]
+        """
+        Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+        """
+        opened_at: NotRequired[pulumi.Input[str]]
+        """
+        Timestamp of when the connection was established.
+        """
+        origin_ip: NotRequired[pulumi.Input[str]]
+        """
+        The public IP address of the host running cloudflared.
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        UUID of the Cloudflare Tunnel connection.
+        """
+elif False:
+    TunnelConnectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TunnelConnectionArgs:
+    def __init__(__self__, *,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_version: Optional[pulumi.Input[str]] = None,
+                 colo_name: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 is_pending_reconnect: Optional[pulumi.Input[bool]] = None,
+                 opened_at: Optional[pulumi.Input[str]] = None,
+                 origin_ip: Optional[pulumi.Input[str]] = None,
+                 uuid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] client_id: UUID of the Cloudflare Tunnel connector.
+        :param pulumi.Input[str] client_version: The cloudflared version used to establish this connection.
+        :param pulumi.Input[str] colo_name: The Cloudflare data center used for this connection.
+        :param pulumi.Input[str] id: UUID of the Cloudflare Tunnel connection.
+        :param pulumi.Input[bool] is_pending_reconnect: Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+        :param pulumi.Input[str] opened_at: Timestamp of when the connection was established.
+        :param pulumi.Input[str] origin_ip: The public IP address of the host running cloudflared.
+        :param pulumi.Input[str] uuid: UUID of the Cloudflare Tunnel connection.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_version is not None:
+            pulumi.set(__self__, "client_version", client_version)
+        if colo_name is not None:
+            pulumi.set(__self__, "colo_name", colo_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if is_pending_reconnect is not None:
+            pulumi.set(__self__, "is_pending_reconnect", is_pending_reconnect)
+        if opened_at is not None:
+            pulumi.set(__self__, "opened_at", opened_at)
+        if origin_ip is not None:
+            pulumi.set(__self__, "origin_ip", origin_ip)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        UUID of the Cloudflare Tunnel connector.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientVersion")
+    def client_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cloudflared version used to establish this connection.
+        """
+        return pulumi.get(self, "client_version")
+
+    @client_version.setter
+    def client_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_version", value)
+
+    @property
+    @pulumi.getter(name="coloName")
+    def colo_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cloudflare data center used for this connection.
+        """
+        return pulumi.get(self, "colo_name")
+
+    @colo_name.setter
+    def colo_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "colo_name", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        UUID of the Cloudflare Tunnel connection.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="isPendingReconnect")
+    def is_pending_reconnect(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+        """
+        return pulumi.get(self, "is_pending_reconnect")
+
+    @is_pending_reconnect.setter
+    def is_pending_reconnect(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_pending_reconnect", value)
+
+    @property
+    @pulumi.getter(name="openedAt")
+    def opened_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Timestamp of when the connection was established.
+        """
+        return pulumi.get(self, "opened_at")
+
+    @opened_at.setter
+    def opened_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "opened_at", value)
+
+    @property
+    @pulumi.getter(name="originIp")
+    def origin_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public IP address of the host running cloudflared.
+        """
+        return pulumi.get(self, "origin_ip")
+
+    @origin_ip.setter
+    def origin_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "origin_ip", value)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        UUID of the Cloudflare Tunnel connection.
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
     class UserAgentBlockingRuleConfigurationArgsDict(TypedDict):
         target: NotRequired[pulumi.Input[str]]
         """
@@ -28311,6 +50244,1269 @@ class WebAnalyticsSiteRulesetArgs:
     @zone_tag.setter
     def zone_tag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_tag", value)
+
+
+if not MYPY:
+    class WorkerCronTriggerScheduleArgsDict(TypedDict):
+        cron: pulumi.Input[str]
+elif False:
+    WorkerCronTriggerScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerCronTriggerScheduleArgs:
+    def __init__(__self__, *,
+                 cron: pulumi.Input[str]):
+        pulumi.set(__self__, "cron", cron)
+
+    @property
+    @pulumi.getter
+    def cron(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "cron")
+
+    @cron.setter
+    def cron(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cron", value)
+
+
+if not MYPY:
+    class WorkerScriptAssetsArgsDict(TypedDict):
+        config: NotRequired[pulumi.Input['WorkerScriptAssetsConfigArgsDict']]
+        """
+        Configuration for assets within a Worker.
+        """
+        jwt: NotRequired[pulumi.Input[str]]
+        """
+        Token provided upon successful upload of all files from a registered manifest.
+        """
+elif False:
+    WorkerScriptAssetsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptAssetsArgs:
+    def __init__(__self__, *,
+                 config: Optional[pulumi.Input['WorkerScriptAssetsConfigArgs']] = None,
+                 jwt: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['WorkerScriptAssetsConfigArgs'] config: Configuration for assets within a Worker.
+        :param pulumi.Input[str] jwt: Token provided upon successful upload of all files from a registered manifest.
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if jwt is not None:
+            pulumi.set(__self__, "jwt", jwt)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['WorkerScriptAssetsConfigArgs']]:
+        """
+        Configuration for assets within a Worker.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['WorkerScriptAssetsConfigArgs']]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter
+    def jwt(self) -> Optional[pulumi.Input[str]]:
+        """
+        Token provided upon successful upload of all files from a registered manifest.
+        """
+        return pulumi.get(self, "jwt")
+
+    @jwt.setter
+    def jwt(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jwt", value)
+
+
+if not MYPY:
+    class WorkerScriptAssetsConfigArgsDict(TypedDict):
+        html_handling: NotRequired[pulumi.Input[str]]
+        """
+        Determines the redirects and rewrites of requests for HTML content.
+        Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
+        """
+        not_found_handling: NotRequired[pulumi.Input[str]]
+        """
+        Determines the response when a request does not match a static asset, and there is no Worker script.
+        Available values: "none", "404-page", "single-page-application".
+        """
+        run_worker_first: NotRequired[pulumi.Input[bool]]
+        """
+        When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
+        """
+        serve_directly: NotRequired[pulumi.Input[bool]]
+        """
+        When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
+        """
+elif False:
+    WorkerScriptAssetsConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptAssetsConfigArgs:
+    def __init__(__self__, *,
+                 html_handling: Optional[pulumi.Input[str]] = None,
+                 not_found_handling: Optional[pulumi.Input[str]] = None,
+                 run_worker_first: Optional[pulumi.Input[bool]] = None,
+                 serve_directly: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] html_handling: Determines the redirects and rewrites of requests for HTML content.
+               Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
+        :param pulumi.Input[str] not_found_handling: Determines the response when a request does not match a static asset, and there is no Worker script.
+               Available values: "none", "404-page", "single-page-application".
+        :param pulumi.Input[bool] run_worker_first: When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
+        :param pulumi.Input[bool] serve_directly: When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
+        """
+        if html_handling is not None:
+            pulumi.set(__self__, "html_handling", html_handling)
+        if not_found_handling is not None:
+            pulumi.set(__self__, "not_found_handling", not_found_handling)
+        if run_worker_first is not None:
+            pulumi.set(__self__, "run_worker_first", run_worker_first)
+        if serve_directly is not None:
+            pulumi.set(__self__, "serve_directly", serve_directly)
+
+    @property
+    @pulumi.getter(name="htmlHandling")
+    def html_handling(self) -> Optional[pulumi.Input[str]]:
+        """
+        Determines the redirects and rewrites of requests for HTML content.
+        Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
+        """
+        return pulumi.get(self, "html_handling")
+
+    @html_handling.setter
+    def html_handling(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "html_handling", value)
+
+    @property
+    @pulumi.getter(name="notFoundHandling")
+    def not_found_handling(self) -> Optional[pulumi.Input[str]]:
+        """
+        Determines the response when a request does not match a static asset, and there is no Worker script.
+        Available values: "none", "404-page", "single-page-application".
+        """
+        return pulumi.get(self, "not_found_handling")
+
+    @not_found_handling.setter
+    def not_found_handling(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "not_found_handling", value)
+
+    @property
+    @pulumi.getter(name="runWorkerFirst")
+    def run_worker_first(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
+        """
+        return pulumi.get(self, "run_worker_first")
+
+    @run_worker_first.setter
+    def run_worker_first(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_worker_first", value)
+
+    @property
+    @pulumi.getter(name="serveDirectly")
+    def serve_directly(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
+        """
+        return pulumi.get(self, "serve_directly")
+
+    @serve_directly.setter
+    def serve_directly(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "serve_directly", value)
+
+
+if not MYPY:
+    class WorkerScriptBindingArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        A JavaScript variable name for the binding.
+        """
+        type: pulumi.Input[str]
+        """
+        The kind of resource that the binding provides.
+        Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
+        """
+        bucket_name: NotRequired[pulumi.Input[str]]
+        """
+        R2 bucket to bind to.
+        """
+        certificate_id: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the certificate to bind to.
+        """
+        class_name: NotRequired[pulumi.Input[str]]
+        """
+        The exported class name of the Durable Object.
+        """
+        dataset: NotRequired[pulumi.Input[str]]
+        """
+        The name of the dataset to bind to.
+        """
+        environment: NotRequired[pulumi.Input[str]]
+        """
+        The environment of the script_name to bind to.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the D1 database to bind to.
+        """
+        index_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the Vectorize index to bind to.
+        """
+        json: NotRequired[pulumi.Input[str]]
+        """
+        JSON data to use.
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Namespace to bind to.
+        """
+        namespace_id: NotRequired[pulumi.Input[str]]
+        """
+        Namespace identifier tag.
+        """
+        outbound: NotRequired[pulumi.Input['WorkerScriptBindingOutboundArgsDict']]
+        """
+        Outbound worker.
+        """
+        queue_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the Queue to bind to.
+        """
+        script_name: NotRequired[pulumi.Input[str]]
+        """
+        The script where the Durable Object is defined, if it is external to this Worker.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Name of Worker to bind to.
+        """
+        text: NotRequired[pulumi.Input[str]]
+        """
+        The text value to use.
+        """
+elif False:
+    WorkerScriptBindingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptBindingArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 bucket_name: Optional[pulumi.Input[str]] = None,
+                 certificate_id: Optional[pulumi.Input[str]] = None,
+                 class_name: Optional[pulumi.Input[str]] = None,
+                 dataset: Optional[pulumi.Input[str]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 index_name: Optional[pulumi.Input[str]] = None,
+                 json: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
+                 outbound: Optional[pulumi.Input['WorkerScriptBindingOutboundArgs']] = None,
+                 queue_name: Optional[pulumi.Input[str]] = None,
+                 script_name: Optional[pulumi.Input[str]] = None,
+                 service: Optional[pulumi.Input[str]] = None,
+                 text: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: A JavaScript variable name for the binding.
+        :param pulumi.Input[str] type: The kind of resource that the binding provides.
+               Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
+        :param pulumi.Input[str] bucket_name: R2 bucket to bind to.
+        :param pulumi.Input[str] certificate_id: Identifier of the certificate to bind to.
+        :param pulumi.Input[str] class_name: The exported class name of the Durable Object.
+        :param pulumi.Input[str] dataset: The name of the dataset to bind to.
+        :param pulumi.Input[str] environment: The environment of the script_name to bind to.
+        :param pulumi.Input[str] id: Identifier of the D1 database to bind to.
+        :param pulumi.Input[str] index_name: Name of the Vectorize index to bind to.
+        :param pulumi.Input[str] json: JSON data to use.
+        :param pulumi.Input[str] namespace: Namespace to bind to.
+        :param pulumi.Input[str] namespace_id: Namespace identifier tag.
+        :param pulumi.Input['WorkerScriptBindingOutboundArgs'] outbound: Outbound worker.
+        :param pulumi.Input[str] queue_name: Name of the Queue to bind to.
+        :param pulumi.Input[str] script_name: The script where the Durable Object is defined, if it is external to this Worker.
+        :param pulumi.Input[str] service: Name of Worker to bind to.
+        :param pulumi.Input[str] text: The text value to use.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if certificate_id is not None:
+            pulumi.set(__self__, "certificate_id", certificate_id)
+        if class_name is not None:
+            pulumi.set(__self__, "class_name", class_name)
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if index_name is not None:
+            pulumi.set(__self__, "index_name", index_name)
+        if json is not None:
+            pulumi.set(__self__, "json", json)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if namespace_id is not None:
+            pulumi.set(__self__, "namespace_id", namespace_id)
+        if outbound is not None:
+            pulumi.set(__self__, "outbound", outbound)
+        if queue_name is not None:
+            pulumi.set(__self__, "queue_name", queue_name)
+        if script_name is not None:
+            pulumi.set(__self__, "script_name", script_name)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        A JavaScript variable name for the binding.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The kind of resource that the binding provides.
+        Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        R2 bucket to bind to.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket_name", value)
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of the certificate to bind to.
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @certificate_id.setter
+    def certificate_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_id", value)
+
+    @property
+    @pulumi.getter(name="className")
+    def class_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The exported class name of the Durable Object.
+        """
+        return pulumi.get(self, "class_name")
+
+    @class_name.setter
+    def class_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "class_name", value)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the dataset to bind to.
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        """
+        The environment of the script_name to bind to.
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of the D1 database to bind to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="indexName")
+    def index_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Vectorize index to bind to.
+        """
+        return pulumi.get(self, "index_name")
+
+    @index_name.setter
+    def index_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "index_name", value)
+
+    @property
+    @pulumi.getter
+    def json(self) -> Optional[pulumi.Input[str]]:
+        """
+        JSON data to use.
+        """
+        return pulumi.get(self, "json")
+
+    @json.setter
+    def json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "json", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Namespace to bind to.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Namespace identifier tag.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @namespace_id.setter
+    def namespace_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace_id", value)
+
+    @property
+    @pulumi.getter
+    def outbound(self) -> Optional[pulumi.Input['WorkerScriptBindingOutboundArgs']]:
+        """
+        Outbound worker.
+        """
+        return pulumi.get(self, "outbound")
+
+    @outbound.setter
+    def outbound(self, value: Optional[pulumi.Input['WorkerScriptBindingOutboundArgs']]):
+        pulumi.set(self, "outbound", value)
+
+    @property
+    @pulumi.getter(name="queueName")
+    def queue_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Queue to bind to.
+        """
+        return pulumi.get(self, "queue_name")
+
+    @queue_name.setter
+    def queue_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "queue_name", value)
+
+    @property
+    @pulumi.getter(name="scriptName")
+    def script_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The script where the Durable Object is defined, if it is external to this Worker.
+        """
+        return pulumi.get(self, "script_name")
+
+    @script_name.setter
+    def script_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "script_name", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of Worker to bind to.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The text value to use.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+
+if not MYPY:
+    class WorkerScriptBindingOutboundArgsDict(TypedDict):
+        params: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
+        """
+        worker: NotRequired[pulumi.Input['WorkerScriptBindingOutboundWorkerArgsDict']]
+        """
+        Outbound worker.
+        """
+elif False:
+    WorkerScriptBindingOutboundArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptBindingOutboundArgs:
+    def __init__(__self__, *,
+                 params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 worker: Optional[pulumi.Input['WorkerScriptBindingOutboundWorkerArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] params: Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
+        :param pulumi.Input['WorkerScriptBindingOutboundWorkerArgs'] worker: Outbound worker.
+        """
+        if params is not None:
+            pulumi.set(__self__, "params", params)
+        if worker is not None:
+            pulumi.set(__self__, "worker", worker)
+
+    @property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter
+    def worker(self) -> Optional[pulumi.Input['WorkerScriptBindingOutboundWorkerArgs']]:
+        """
+        Outbound worker.
+        """
+        return pulumi.get(self, "worker")
+
+    @worker.setter
+    def worker(self, value: Optional[pulumi.Input['WorkerScriptBindingOutboundWorkerArgs']]):
+        pulumi.set(self, "worker", value)
+
+
+if not MYPY:
+    class WorkerScriptBindingOutboundWorkerArgsDict(TypedDict):
+        environment: NotRequired[pulumi.Input[str]]
+        """
+        Environment of the outbound worker.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Name of the outbound worker.
+        """
+elif False:
+    WorkerScriptBindingOutboundWorkerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptBindingOutboundWorkerArgs:
+    def __init__(__self__, *,
+                 environment: Optional[pulumi.Input[str]] = None,
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] environment: Environment of the outbound worker.
+        :param pulumi.Input[str] service: Name of the outbound worker.
+        """
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Environment of the outbound worker.
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the outbound worker.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+
+if not MYPY:
+    class WorkerScriptMigrationsArgsDict(TypedDict):
+        deleted_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of classes to delete Durable Object namespaces from.
+        """
+        new_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of classes to create Durable Object namespaces from.
+        """
+        new_sqlite_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of classes to create Durable Object namespaces with SQLite from.
+        """
+        new_tag: NotRequired[pulumi.Input[str]]
+        """
+        Tag to set as the latest migration tag.
+        """
+        old_tag: NotRequired[pulumi.Input[str]]
+        """
+        Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+        """
+        renamed_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsRenamedClassArgsDict']]]]
+        """
+        A list of classes with Durable Object namespaces that were renamed.
+        """
+        steps: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepArgsDict']]]]
+        """
+        Migrations to apply in order.
+        """
+        transferred_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsTransferredClassArgsDict']]]]
+        """
+        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+elif False:
+    WorkerScriptMigrationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptMigrationsArgs:
+    def __init__(__self__, *,
+                 deleted_classes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 new_classes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 new_sqlite_classes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 new_tag: Optional[pulumi.Input[str]] = None,
+                 old_tag: Optional[pulumi.Input[str]] = None,
+                 renamed_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsRenamedClassArgs']]]] = None,
+                 steps: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepArgs']]]] = None,
+                 transferred_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsTransferredClassArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] deleted_classes: A list of classes to delete Durable Object namespaces from.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] new_classes: A list of classes to create Durable Object namespaces from.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] new_sqlite_classes: A list of classes to create Durable Object namespaces with SQLite from.
+        :param pulumi.Input[str] new_tag: Tag to set as the latest migration tag.
+        :param pulumi.Input[str] old_tag: Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsRenamedClassArgs']]] renamed_classes: A list of classes with Durable Object namespaces that were renamed.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepArgs']]] steps: Migrations to apply in order.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsTransferredClassArgs']]] transferred_classes: A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+        if deleted_classes is not None:
+            pulumi.set(__self__, "deleted_classes", deleted_classes)
+        if new_classes is not None:
+            pulumi.set(__self__, "new_classes", new_classes)
+        if new_sqlite_classes is not None:
+            pulumi.set(__self__, "new_sqlite_classes", new_sqlite_classes)
+        if new_tag is not None:
+            pulumi.set(__self__, "new_tag", new_tag)
+        if old_tag is not None:
+            pulumi.set(__self__, "old_tag", old_tag)
+        if renamed_classes is not None:
+            pulumi.set(__self__, "renamed_classes", renamed_classes)
+        if steps is not None:
+            pulumi.set(__self__, "steps", steps)
+        if transferred_classes is not None:
+            pulumi.set(__self__, "transferred_classes", transferred_classes)
+
+    @property
+    @pulumi.getter(name="deletedClasses")
+    def deleted_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of classes to delete Durable Object namespaces from.
+        """
+        return pulumi.get(self, "deleted_classes")
+
+    @deleted_classes.setter
+    def deleted_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "deleted_classes", value)
+
+    @property
+    @pulumi.getter(name="newClasses")
+    def new_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of classes to create Durable Object namespaces from.
+        """
+        return pulumi.get(self, "new_classes")
+
+    @new_classes.setter
+    def new_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "new_classes", value)
+
+    @property
+    @pulumi.getter(name="newSqliteClasses")
+    def new_sqlite_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of classes to create Durable Object namespaces with SQLite from.
+        """
+        return pulumi.get(self, "new_sqlite_classes")
+
+    @new_sqlite_classes.setter
+    def new_sqlite_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "new_sqlite_classes", value)
+
+    @property
+    @pulumi.getter(name="newTag")
+    def new_tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Tag to set as the latest migration tag.
+        """
+        return pulumi.get(self, "new_tag")
+
+    @new_tag.setter
+    def new_tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "new_tag", value)
+
+    @property
+    @pulumi.getter(name="oldTag")
+    def old_tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+        """
+        return pulumi.get(self, "old_tag")
+
+    @old_tag.setter
+    def old_tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "old_tag", value)
+
+    @property
+    @pulumi.getter(name="renamedClasses")
+    def renamed_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsRenamedClassArgs']]]]:
+        """
+        A list of classes with Durable Object namespaces that were renamed.
+        """
+        return pulumi.get(self, "renamed_classes")
+
+    @renamed_classes.setter
+    def renamed_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsRenamedClassArgs']]]]):
+        pulumi.set(self, "renamed_classes", value)
+
+    @property
+    @pulumi.getter
+    def steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepArgs']]]]:
+        """
+        Migrations to apply in order.
+        """
+        return pulumi.get(self, "steps")
+
+    @steps.setter
+    def steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepArgs']]]]):
+        pulumi.set(self, "steps", value)
+
+    @property
+    @pulumi.getter(name="transferredClasses")
+    def transferred_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsTransferredClassArgs']]]]:
+        """
+        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+        return pulumi.get(self, "transferred_classes")
+
+    @transferred_classes.setter
+    def transferred_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsTransferredClassArgs']]]]):
+        pulumi.set(self, "transferred_classes", value)
+
+
+if not MYPY:
+    class WorkerScriptMigrationsRenamedClassArgsDict(TypedDict):
+        from_: NotRequired[pulumi.Input[str]]
+        to: NotRequired[pulumi.Input[str]]
+elif False:
+    WorkerScriptMigrationsRenamedClassArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptMigrationsRenamedClassArgs:
+    def __init__(__self__, *,
+                 from_: Optional[pulumi.Input[str]] = None,
+                 to: Optional[pulumi.Input[str]] = None):
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "from_", value)
+
+    @property
+    @pulumi.getter
+    def to(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "to", value)
+
+
+if not MYPY:
+    class WorkerScriptMigrationsStepArgsDict(TypedDict):
+        deleted_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of classes to delete Durable Object namespaces from.
+        """
+        new_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of classes to create Durable Object namespaces from.
+        """
+        new_sqlite_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of classes to create Durable Object namespaces with SQLite from.
+        """
+        renamed_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepRenamedClassArgsDict']]]]
+        """
+        A list of classes with Durable Object namespaces that were renamed.
+        """
+        transferred_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepTransferredClassArgsDict']]]]
+        """
+        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+elif False:
+    WorkerScriptMigrationsStepArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptMigrationsStepArgs:
+    def __init__(__self__, *,
+                 deleted_classes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 new_classes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 new_sqlite_classes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 renamed_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepRenamedClassArgs']]]] = None,
+                 transferred_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepTransferredClassArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] deleted_classes: A list of classes to delete Durable Object namespaces from.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] new_classes: A list of classes to create Durable Object namespaces from.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] new_sqlite_classes: A list of classes to create Durable Object namespaces with SQLite from.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepRenamedClassArgs']]] renamed_classes: A list of classes with Durable Object namespaces that were renamed.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepTransferredClassArgs']]] transferred_classes: A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+        if deleted_classes is not None:
+            pulumi.set(__self__, "deleted_classes", deleted_classes)
+        if new_classes is not None:
+            pulumi.set(__self__, "new_classes", new_classes)
+        if new_sqlite_classes is not None:
+            pulumi.set(__self__, "new_sqlite_classes", new_sqlite_classes)
+        if renamed_classes is not None:
+            pulumi.set(__self__, "renamed_classes", renamed_classes)
+        if transferred_classes is not None:
+            pulumi.set(__self__, "transferred_classes", transferred_classes)
+
+    @property
+    @pulumi.getter(name="deletedClasses")
+    def deleted_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of classes to delete Durable Object namespaces from.
+        """
+        return pulumi.get(self, "deleted_classes")
+
+    @deleted_classes.setter
+    def deleted_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "deleted_classes", value)
+
+    @property
+    @pulumi.getter(name="newClasses")
+    def new_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of classes to create Durable Object namespaces from.
+        """
+        return pulumi.get(self, "new_classes")
+
+    @new_classes.setter
+    def new_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "new_classes", value)
+
+    @property
+    @pulumi.getter(name="newSqliteClasses")
+    def new_sqlite_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of classes to create Durable Object namespaces with SQLite from.
+        """
+        return pulumi.get(self, "new_sqlite_classes")
+
+    @new_sqlite_classes.setter
+    def new_sqlite_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "new_sqlite_classes", value)
+
+    @property
+    @pulumi.getter(name="renamedClasses")
+    def renamed_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepRenamedClassArgs']]]]:
+        """
+        A list of classes with Durable Object namespaces that were renamed.
+        """
+        return pulumi.get(self, "renamed_classes")
+
+    @renamed_classes.setter
+    def renamed_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepRenamedClassArgs']]]]):
+        pulumi.set(self, "renamed_classes", value)
+
+    @property
+    @pulumi.getter(name="transferredClasses")
+    def transferred_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepTransferredClassArgs']]]]:
+        """
+        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+        return pulumi.get(self, "transferred_classes")
+
+    @transferred_classes.setter
+    def transferred_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepTransferredClassArgs']]]]):
+        pulumi.set(self, "transferred_classes", value)
+
+
+if not MYPY:
+    class WorkerScriptMigrationsStepRenamedClassArgsDict(TypedDict):
+        from_: NotRequired[pulumi.Input[str]]
+        to: NotRequired[pulumi.Input[str]]
+elif False:
+    WorkerScriptMigrationsStepRenamedClassArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptMigrationsStepRenamedClassArgs:
+    def __init__(__self__, *,
+                 from_: Optional[pulumi.Input[str]] = None,
+                 to: Optional[pulumi.Input[str]] = None):
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "from_", value)
+
+    @property
+    @pulumi.getter
+    def to(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "to", value)
+
+
+if not MYPY:
+    class WorkerScriptMigrationsStepTransferredClassArgsDict(TypedDict):
+        from_: NotRequired[pulumi.Input[str]]
+        from_script: NotRequired[pulumi.Input[str]]
+        to: NotRequired[pulumi.Input[str]]
+elif False:
+    WorkerScriptMigrationsStepTransferredClassArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptMigrationsStepTransferredClassArgs:
+    def __init__(__self__, *,
+                 from_: Optional[pulumi.Input[str]] = None,
+                 from_script: Optional[pulumi.Input[str]] = None,
+                 to: Optional[pulumi.Input[str]] = None):
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if from_script is not None:
+            pulumi.set(__self__, "from_script", from_script)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "from_", value)
+
+    @property
+    @pulumi.getter(name="fromScript")
+    def from_script(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "from_script")
+
+    @from_script.setter
+    def from_script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "from_script", value)
+
+    @property
+    @pulumi.getter
+    def to(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "to", value)
+
+
+if not MYPY:
+    class WorkerScriptMigrationsTransferredClassArgsDict(TypedDict):
+        from_: NotRequired[pulumi.Input[str]]
+        from_script: NotRequired[pulumi.Input[str]]
+        to: NotRequired[pulumi.Input[str]]
+elif False:
+    WorkerScriptMigrationsTransferredClassArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptMigrationsTransferredClassArgs:
+    def __init__(__self__, *,
+                 from_: Optional[pulumi.Input[str]] = None,
+                 from_script: Optional[pulumi.Input[str]] = None,
+                 to: Optional[pulumi.Input[str]] = None):
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if from_script is not None:
+            pulumi.set(__self__, "from_script", from_script)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "from_", value)
+
+    @property
+    @pulumi.getter(name="fromScript")
+    def from_script(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "from_script")
+
+    @from_script.setter
+    def from_script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "from_script", value)
+
+    @property
+    @pulumi.getter
+    def to(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "to", value)
+
+
+if not MYPY:
+    class WorkerScriptObservabilityArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether observability is enabled for the Worker.
+        """
+        head_sampling_rate: NotRequired[pulumi.Input[float]]
+        """
+        The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
+        """
+elif False:
+    WorkerScriptObservabilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptObservabilityArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 head_sampling_rate: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Whether observability is enabled for the Worker.
+        :param pulumi.Input[float] head_sampling_rate: The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if head_sampling_rate is not None:
+            pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether observability is enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="headSamplingRate")
+    def head_sampling_rate(self) -> Optional[pulumi.Input[float]]:
+        """
+        The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
+        """
+        return pulumi.get(self, "head_sampling_rate")
+
+    @head_sampling_rate.setter
+    def head_sampling_rate(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "head_sampling_rate", value)
+
+
+if not MYPY:
+    class WorkerScriptPlacementArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        Available values: "smart".
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+        """
+elif False:
+    WorkerScriptPlacementArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptPlacementArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] mode: Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+               Available values: "smart".
+        :param pulumi.Input[str] status: Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+               Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        Available values: "smart".
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+
+if not MYPY:
+    class WorkerScriptTailConsumerArgsDict(TypedDict):
+        service: pulumi.Input[str]
+        """
+        Name of Worker that is to be the consumer.
+        """
+        environment: NotRequired[pulumi.Input[str]]
+        """
+        Optional environment if the Worker utilizes one.
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Optional dispatch namespace the script belongs to.
+        """
+elif False:
+    WorkerScriptTailConsumerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptTailConsumerArgs:
+    def __init__(__self__, *,
+                 service: pulumi.Input[str],
+                 environment: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] service: Name of Worker that is to be the consumer.
+        :param pulumi.Input[str] environment: Optional environment if the Worker utilizes one.
+        :param pulumi.Input[str] namespace: Optional dispatch namespace the script belongs to.
+        """
+        pulumi.set(__self__, "service", service)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        """
+        Name of Worker that is to be the consumer.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional environment if the Worker utilizes one.
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional dispatch namespace the script belongs to.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
 
 
 if not MYPY:
@@ -49838,6 +73034,77 @@ class ZeroTrustListItemArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class ZeroTrustLocalFallbackDomainDomainArgsDict(TypedDict):
+        suffix: pulumi.Input[str]
+        """
+        The domain suffix to match when resolving locally.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A description of the fallback domain, displayed in the client UI.
+        """
+        dns_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IP addresses to handle domain resolution.
+        """
+elif False:
+    ZeroTrustLocalFallbackDomainDomainArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustLocalFallbackDomainDomainArgs:
+    def __init__(__self__, *,
+                 suffix: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] suffix: The domain suffix to match when resolving locally.
+        :param pulumi.Input[str] description: A description of the fallback domain, displayed in the client UI.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: A list of IP addresses to handle domain resolution.
+        """
+        pulumi.set(__self__, "suffix", suffix)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if dns_servers is not None:
+            pulumi.set(__self__, "dns_servers", dns_servers)
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> pulumi.Input[str]:
+        """
+        The domain suffix to match when resolving locally.
+        """
+        return pulumi.get(self, "suffix")
+
+    @suffix.setter
+    def suffix(self, value: pulumi.Input[str]):
+        pulumi.set(self, "suffix", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the fallback domain, displayed in the client UI.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IP addresses to handle domain resolution.
+        """
+        return pulumi.get(self, "dns_servers")
+
+    @dns_servers.setter
+    def dns_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dns_servers", value)
 
 
 if not MYPY:

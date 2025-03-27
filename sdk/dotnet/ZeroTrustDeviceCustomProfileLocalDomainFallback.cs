@@ -76,7 +76,6 @@ namespace Pulumi.Cloudflare
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/fallbackDomain:FallbackDomain" },
                     new global::Pulumi.Alias { Type = "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain" },
                 },
             };

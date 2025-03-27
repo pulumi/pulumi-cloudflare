@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/cloudflareAccessMutualTlsCertificate:AccessMutualTlsCertificate" },
+                    new global::Pulumi.Alias { Type = "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate" },
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

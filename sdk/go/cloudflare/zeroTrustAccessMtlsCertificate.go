@@ -83,7 +83,7 @@ func NewZeroTrustAccessMtlsCertificate(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("cloudflare:index/cloudflareAccessMutualTlsCertificate:AccessMutualTlsCertificate"),
+			Type: pulumi.String("cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -5,6 +5,2596 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AccessApplicationCorsHeaders {
+    /**
+     * Allows all HTTP request headers.
+     */
+    allowAllHeaders?: pulumi.Input<boolean>;
+    /**
+     * Allows all HTTP request methods.
+     */
+    allowAllMethods?: pulumi.Input<boolean>;
+    /**
+     * Allows all origins.
+     */
+    allowAllOrigins?: pulumi.Input<boolean>;
+    /**
+     * When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests.
+     */
+    allowCredentials?: pulumi.Input<boolean>;
+    /**
+     * Allowed HTTP request headers.
+     */
+    allowedHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Allowed HTTP request methods.
+     */
+    allowedMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Allowed origins.
+     */
+    allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The maximum number of seconds the results of a preflight request can be cached.
+     */
+    maxAge?: pulumi.Input<number>;
+}
+
+export interface AccessApplicationDestination {
+    /**
+     * The CIDR range of the destination. Single IPs will be computed as /32.
+     */
+    cidr?: pulumi.Input<string>;
+    /**
+     * The hostname of the destination. Matches a valid SNI served by an HTTPS origin.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+     * Available values: "tcp", "udp".
+     */
+    l4Protocol?: pulumi.Input<string>;
+    /**
+     * The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
+     */
+    portRange?: pulumi.Input<string>;
+    /**
+     * Available values: "public".
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
+     */
+    uri?: pulumi.Input<string>;
+    /**
+     * The VNET ID to match the destination. When omitted, all VNETs will match.
+     */
+    vnetId?: pulumi.Input<string>;
+}
+
+export interface AccessApplicationFooterLink {
+    /**
+     * The hypertext in the footer link.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * the hyperlink in the footer link.
+     */
+    url: pulumi.Input<string>;
+}
+
+export interface AccessApplicationLandingPageDesign {
+    /**
+     * The background color of the log in button on the landing page.
+     */
+    buttonColor?: pulumi.Input<string>;
+    /**
+     * The color of the text in the log in button on the landing page.
+     */
+    buttonTextColor?: pulumi.Input<string>;
+    /**
+     * The URL of the image shown on the landing page.
+     */
+    imageUrl?: pulumi.Input<string>;
+    /**
+     * The message shown on the landing page.
+     */
+    message?: pulumi.Input<string>;
+    /**
+     * The title shown on the landing page.
+     */
+    title?: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicy {
+    /**
+     * The rules that define how users may connect to the targets secured by your application.
+     */
+    connectionRules?: pulumi.Input<inputs.AccessApplicationPolicyConnectionRules>;
+    /**
+     * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: "allow", "deny", "nonIdentity", "bypass".
+     */
+    decision?: pulumi.Input<string>;
+    /**
+     * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
+     */
+    excludes?: pulumi.Input<pulumi.Input<inputs.AccessApplicationPolicyExclude>[]>;
+    /**
+     * The UUID of the policy
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+     */
+    includes?: pulumi.Input<pulumi.Input<inputs.AccessApplicationPolicyInclude>[]>;
+    /**
+     * The name of the Access policy.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The order of execution for this policy. Must be unique for each policy within an app.
+     */
+    precedence?: pulumi.Input<number>;
+    /**
+     * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
+     */
+    requires?: pulumi.Input<pulumi.Input<inputs.AccessApplicationPolicyRequire>[]>;
+}
+
+export interface AccessApplicationPolicyConnectionRules {
+    /**
+     * The SSH-specific rules that define how users may connect to the targets secured by your application.
+     */
+    ssh?: pulumi.Input<inputs.AccessApplicationPolicyConnectionRulesSsh>;
+}
+
+export interface AccessApplicationPolicyConnectionRulesSsh {
+    /**
+     * Enables using Identity Provider email alias as SSH username.
+     */
+    allowEmailAlias?: pulumi.Input<boolean>;
+    /**
+     * Contains the Unix usernames that may be used when connecting over SSH.
+     */
+    usernames: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessApplicationPolicyExclude {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: pulumi.Input<inputs.AccessApplicationPolicyExcludeAnyValidServiceToken>;
+    authContext?: pulumi.Input<inputs.AccessApplicationPolicyExcludeAuthContext>;
+    authMethod?: pulumi.Input<inputs.AccessApplicationPolicyExcludeAuthMethod>;
+    azureAd?: pulumi.Input<inputs.AccessApplicationPolicyExcludeAzureAd>;
+    certificate?: pulumi.Input<inputs.AccessApplicationPolicyExcludeCertificate>;
+    commonName?: pulumi.Input<inputs.AccessApplicationPolicyExcludeCommonName>;
+    devicePosture?: pulumi.Input<inputs.AccessApplicationPolicyExcludeDevicePosture>;
+    email?: pulumi.Input<inputs.AccessApplicationPolicyExcludeEmail>;
+    emailDomain?: pulumi.Input<inputs.AccessApplicationPolicyExcludeEmailDomain>;
+    emailList?: pulumi.Input<inputs.AccessApplicationPolicyExcludeEmailList>;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: pulumi.Input<inputs.AccessApplicationPolicyExcludeEveryone>;
+    externalEvaluation?: pulumi.Input<inputs.AccessApplicationPolicyExcludeExternalEvaluation>;
+    geo?: pulumi.Input<inputs.AccessApplicationPolicyExcludeGeo>;
+    githubOrganization?: pulumi.Input<inputs.AccessApplicationPolicyExcludeGithubOrganization>;
+    group?: pulumi.Input<inputs.AccessApplicationPolicyExcludeGroup>;
+    gsuite?: pulumi.Input<inputs.AccessApplicationPolicyExcludeGsuite>;
+    ip?: pulumi.Input<inputs.AccessApplicationPolicyExcludeIp>;
+    ipList?: pulumi.Input<inputs.AccessApplicationPolicyExcludeIpList>;
+    loginMethod?: pulumi.Input<inputs.AccessApplicationPolicyExcludeLoginMethod>;
+    okta?: pulumi.Input<inputs.AccessApplicationPolicyExcludeOkta>;
+    saml?: pulumi.Input<inputs.AccessApplicationPolicyExcludeSaml>;
+    serviceToken?: pulumi.Input<inputs.AccessApplicationPolicyExcludeServiceToken>;
+}
+
+export interface AccessApplicationPolicyExcludeAnyValidServiceToken {
+}
+
+export interface AccessApplicationPolicyExcludeAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: pulumi.Input<string>;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeCertificate {
+}
+
+export interface AccessApplicationPolicyExcludeCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeEmail {
+    /**
+     * The email of the user.
+     */
+    email: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeEveryone {
+}
+
+export interface AccessApplicationPolicyExcludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the team
+     */
+    team?: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: pulumi.Input<string>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the Okta group.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyExcludeServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyInclude {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: pulumi.Input<inputs.AccessApplicationPolicyIncludeAnyValidServiceToken>;
+    authContext?: pulumi.Input<inputs.AccessApplicationPolicyIncludeAuthContext>;
+    authMethod?: pulumi.Input<inputs.AccessApplicationPolicyIncludeAuthMethod>;
+    azureAd?: pulumi.Input<inputs.AccessApplicationPolicyIncludeAzureAd>;
+    certificate?: pulumi.Input<inputs.AccessApplicationPolicyIncludeCertificate>;
+    commonName?: pulumi.Input<inputs.AccessApplicationPolicyIncludeCommonName>;
+    devicePosture?: pulumi.Input<inputs.AccessApplicationPolicyIncludeDevicePosture>;
+    email?: pulumi.Input<inputs.AccessApplicationPolicyIncludeEmail>;
+    emailDomain?: pulumi.Input<inputs.AccessApplicationPolicyIncludeEmailDomain>;
+    emailList?: pulumi.Input<inputs.AccessApplicationPolicyIncludeEmailList>;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: pulumi.Input<inputs.AccessApplicationPolicyIncludeEveryone>;
+    externalEvaluation?: pulumi.Input<inputs.AccessApplicationPolicyIncludeExternalEvaluation>;
+    geo?: pulumi.Input<inputs.AccessApplicationPolicyIncludeGeo>;
+    githubOrganization?: pulumi.Input<inputs.AccessApplicationPolicyIncludeGithubOrganization>;
+    group?: pulumi.Input<inputs.AccessApplicationPolicyIncludeGroup>;
+    gsuite?: pulumi.Input<inputs.AccessApplicationPolicyIncludeGsuite>;
+    ip?: pulumi.Input<inputs.AccessApplicationPolicyIncludeIp>;
+    ipList?: pulumi.Input<inputs.AccessApplicationPolicyIncludeIpList>;
+    loginMethod?: pulumi.Input<inputs.AccessApplicationPolicyIncludeLoginMethod>;
+    okta?: pulumi.Input<inputs.AccessApplicationPolicyIncludeOkta>;
+    saml?: pulumi.Input<inputs.AccessApplicationPolicyIncludeSaml>;
+    serviceToken?: pulumi.Input<inputs.AccessApplicationPolicyIncludeServiceToken>;
+}
+
+export interface AccessApplicationPolicyIncludeAnyValidServiceToken {
+}
+
+export interface AccessApplicationPolicyIncludeAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: pulumi.Input<string>;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeCertificate {
+}
+
+export interface AccessApplicationPolicyIncludeCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeEmail {
+    /**
+     * The email of the user.
+     */
+    email: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeEveryone {
+}
+
+export interface AccessApplicationPolicyIncludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the team
+     */
+    team?: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: pulumi.Input<string>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the Okta group.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyIncludeServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequire {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: pulumi.Input<inputs.AccessApplicationPolicyRequireAnyValidServiceToken>;
+    authContext?: pulumi.Input<inputs.AccessApplicationPolicyRequireAuthContext>;
+    authMethod?: pulumi.Input<inputs.AccessApplicationPolicyRequireAuthMethod>;
+    azureAd?: pulumi.Input<inputs.AccessApplicationPolicyRequireAzureAd>;
+    certificate?: pulumi.Input<inputs.AccessApplicationPolicyRequireCertificate>;
+    commonName?: pulumi.Input<inputs.AccessApplicationPolicyRequireCommonName>;
+    devicePosture?: pulumi.Input<inputs.AccessApplicationPolicyRequireDevicePosture>;
+    email?: pulumi.Input<inputs.AccessApplicationPolicyRequireEmail>;
+    emailDomain?: pulumi.Input<inputs.AccessApplicationPolicyRequireEmailDomain>;
+    emailList?: pulumi.Input<inputs.AccessApplicationPolicyRequireEmailList>;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: pulumi.Input<inputs.AccessApplicationPolicyRequireEveryone>;
+    externalEvaluation?: pulumi.Input<inputs.AccessApplicationPolicyRequireExternalEvaluation>;
+    geo?: pulumi.Input<inputs.AccessApplicationPolicyRequireGeo>;
+    githubOrganization?: pulumi.Input<inputs.AccessApplicationPolicyRequireGithubOrganization>;
+    group?: pulumi.Input<inputs.AccessApplicationPolicyRequireGroup>;
+    gsuite?: pulumi.Input<inputs.AccessApplicationPolicyRequireGsuite>;
+    ip?: pulumi.Input<inputs.AccessApplicationPolicyRequireIp>;
+    ipList?: pulumi.Input<inputs.AccessApplicationPolicyRequireIpList>;
+    loginMethod?: pulumi.Input<inputs.AccessApplicationPolicyRequireLoginMethod>;
+    okta?: pulumi.Input<inputs.AccessApplicationPolicyRequireOkta>;
+    saml?: pulumi.Input<inputs.AccessApplicationPolicyRequireSaml>;
+    serviceToken?: pulumi.Input<inputs.AccessApplicationPolicyRequireServiceToken>;
+}
+
+export interface AccessApplicationPolicyRequireAnyValidServiceToken {
+}
+
+export interface AccessApplicationPolicyRequireAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: pulumi.Input<string>;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireCertificate {
+}
+
+export interface AccessApplicationPolicyRequireCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireEmail {
+    /**
+     * The email of the user.
+     */
+    email: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireEveryone {
+}
+
+export interface AccessApplicationPolicyRequireExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the team
+     */
+    team?: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: pulumi.Input<string>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the Okta group.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessApplicationPolicyRequireServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: pulumi.Input<string>;
+}
+
+export interface AccessApplicationSaasApp {
+    /**
+     * The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.
+     */
+    accessTokenLifetime?: pulumi.Input<string>;
+    /**
+     * If client secret should be required on the token endpoint when authorization*code*with_pkce grant is used.
+     */
+    allowPkceWithoutClientSecret?: pulumi.Input<boolean>;
+    /**
+     * The URL where this applications tile redirects users
+     */
+    appLauncherUrl?: pulumi.Input<string>;
+    /**
+     * Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is "saml"
+     * Available values: "saml", "oidc".
+     */
+    authType?: pulumi.Input<string>;
+    /**
+     * The application client id
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * The application client secret, only returned on POST request.
+     */
+    clientSecret?: pulumi.Input<string>;
+    /**
+     * The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
+     */
+    consumerServiceUrl?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
+    customAttributes?: pulumi.Input<pulumi.Input<inputs.AccessApplicationSaasAppCustomAttribute>[]>;
+    customClaims?: pulumi.Input<pulumi.Input<inputs.AccessApplicationSaasAppCustomClaim>[]>;
+    /**
+     * The URL that the user will be redirected to after a successful login for IDP initiated logins.
+     */
+    defaultRelayState?: pulumi.Input<string>;
+    /**
+     * The OIDC flows supported by this application
+     */
+    grantTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+     */
+    groupFilterRegex?: pulumi.Input<string>;
+    hybridAndImplicitOptions?: pulumi.Input<inputs.AccessApplicationSaasAppHybridAndImplicitOptions>;
+    /**
+     * The unique identifier for your SaaS application.
+     */
+    idpEntityId?: pulumi.Input<string>;
+    /**
+     * The format of the name identifier sent to the SaaS application.
+     * Available values: "id", "email".
+     */
+    nameIdFormat?: pulumi.Input<string>;
+    /**
+     * A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `nameIdFormat` setting.
+     */
+    nameIdTransformJsonata?: pulumi.Input<string>;
+    /**
+     * The Access public certificate that will be used to verify your identity.
+     */
+    publicKey?: pulumi.Input<string>;
+    /**
+     * The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+     */
+    redirectUris?: pulumi.Input<pulumi.Input<string>[]>;
+    refreshTokenOptions?: pulumi.Input<inputs.AccessApplicationSaasAppRefreshTokenOptions>;
+    /**
+     * A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+     */
+    samlAttributeTransformJsonata?: pulumi.Input<string>;
+    /**
+     * Define the user information shared with access, "offlineAccess" scope will be automatically enabled if refresh tokens are enabled
+     */
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A globally unique name for an identity or service provider.
+     */
+    spEntityId?: pulumi.Input<string>;
+    /**
+     * The endpoint where your SaaS application will send login requests.
+     */
+    ssoEndpoint?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
+}
+
+export interface AccessApplicationSaasAppCustomAttribute {
+    /**
+     * The SAML FriendlyName of the attribute.
+     */
+    friendlyName?: pulumi.Input<string>;
+    /**
+     * The name of the attribute.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * A globally unique name for an identity or service provider.
+     * Available values: "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified", "urn:oasis:names:tc:SAML:2.0:attrname-format:basic", "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
+     */
+    nameFormat?: pulumi.Input<string>;
+    /**
+     * If the attribute is required when building a SAML assertion.
+     */
+    required?: pulumi.Input<boolean>;
+    source?: pulumi.Input<inputs.AccessApplicationSaasAppCustomAttributeSource>;
+}
+
+export interface AccessApplicationSaasAppCustomAttributeSource {
+    /**
+     * The name of the IdP attribute.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * A mapping from IdP ID to attribute name.
+     */
+    nameByIdps?: pulumi.Input<pulumi.Input<inputs.AccessApplicationSaasAppCustomAttributeSourceNameByIdp>[]>;
+}
+
+export interface AccessApplicationSaasAppCustomAttributeSourceNameByIdp {
+    /**
+     * The UID of the IdP.
+     */
+    idpId?: pulumi.Input<string>;
+    /**
+     * The name of the IdP provided attribute.
+     */
+    sourceName?: pulumi.Input<string>;
+}
+
+export interface AccessApplicationSaasAppCustomClaim {
+    /**
+     * The name of the claim.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * If the claim is required when building an OIDC token.
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * The scope of the claim.
+     * Available values: "groups", "profile", "email", "openid".
+     */
+    scope?: pulumi.Input<string>;
+    source?: pulumi.Input<inputs.AccessApplicationSaasAppCustomClaimSource>;
+}
+
+export interface AccessApplicationSaasAppCustomClaimSource {
+    /**
+     * The name of the IdP claim.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * A mapping from IdP ID to claim name.
+     */
+    nameByIdp?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface AccessApplicationSaasAppHybridAndImplicitOptions {
+    /**
+     * If an Access Token should be returned from the OIDC Authorization endpoint
+     */
+    returnAccessTokenFromAuthorizationEndpoint?: pulumi.Input<boolean>;
+    /**
+     * If an ID Token should be returned from the OIDC Authorization endpoint
+     */
+    returnIdTokenFromAuthorizationEndpoint?: pulumi.Input<boolean>;
+}
+
+export interface AccessApplicationSaasAppRefreshTokenOptions {
+    /**
+     * How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+     */
+    lifetime?: pulumi.Input<string>;
+}
+
+export interface AccessApplicationScimConfig {
+    /**
+     * Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+     */
+    authentication?: pulumi.Input<inputs.AccessApplicationScimConfigAuthentication>;
+    /**
+     * If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+     */
+    deactivateOnDelete?: pulumi.Input<boolean>;
+    /**
+     * Whether SCIM provisioning is turned on for this application.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The UID of the IdP to use as the source for SCIM resources to provision to this application.
+     */
+    idpUid: pulumi.Input<string>;
+    /**
+     * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     */
+    mappings?: pulumi.Input<pulumi.Input<inputs.AccessApplicationScimConfigMapping>[]>;
+    /**
+     * The base URI for the application's SCIM-compatible API.
+     */
+    remoteUri: pulumi.Input<string>;
+}
+
+export interface AccessApplicationScimConfigAuthentication {
+    /**
+     * URL used to generate the auth code used during token generation.
+     */
+    authorizationUrl?: pulumi.Input<string>;
+    /**
+     * Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+     */
+    clientSecret?: pulumi.Input<string>;
+    /**
+     * Password used to authenticate with the remote SCIM service.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * The authentication scheme to use when making SCIM requests to this application.
+     * Available values: "httpbasic".
+     */
+    scheme: pulumi.Input<string>;
+    /**
+     * The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+     */
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Token used to authenticate with the remote SCIM service.
+     */
+    token?: pulumi.Input<string>;
+    /**
+     * URL used to generate the token used to authenticate with the remote SCIM service.
+     */
+    tokenUrl?: pulumi.Input<string>;
+    /**
+     * User name used to authenticate with the remote SCIM service.
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface AccessApplicationScimConfigMapping {
+    /**
+     * Whether or not this mapping is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+     */
+    filter?: pulumi.Input<string>;
+    /**
+     * Whether or not this mapping applies to creates, updates, or deletes.
+     */
+    operations?: pulumi.Input<inputs.AccessApplicationScimConfigMappingOperations>;
+    /**
+     * Which SCIM resource type this mapping applies to.
+     */
+    schema: pulumi.Input<string>;
+    /**
+     * The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+     * Available values: "strict", "passthrough".
+     */
+    strictness?: pulumi.Input<string>;
+    /**
+     * A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
+     */
+    transformJsonata?: pulumi.Input<string>;
+}
+
+export interface AccessApplicationScimConfigMappingOperations {
+    /**
+     * Whether or not this mapping applies to create (POST) operations.
+     */
+    create?: pulumi.Input<boolean>;
+    /**
+     * Whether or not this mapping applies to DELETE operations.
+     */
+    delete?: pulumi.Input<boolean>;
+    /**
+     * Whether or not this mapping applies to update (PATCH/PUT) operations.
+     */
+    update?: pulumi.Input<boolean>;
+}
+
+export interface AccessApplicationTargetCriteria {
+    /**
+     * The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * The communication protocol your application secures.
+     * Available values: "ssh".
+     */
+    protocol: pulumi.Input<string>;
+    /**
+     * Contains a map of target attribute keys to target attribute values.
+     */
+    targetAttributes: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+}
+
+export interface AccessGroupExclude {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: pulumi.Input<inputs.AccessGroupExcludeAnyValidServiceToken>;
+    authContext?: pulumi.Input<inputs.AccessGroupExcludeAuthContext>;
+    authMethod?: pulumi.Input<inputs.AccessGroupExcludeAuthMethod>;
+    azureAd?: pulumi.Input<inputs.AccessGroupExcludeAzureAd>;
+    certificate?: pulumi.Input<inputs.AccessGroupExcludeCertificate>;
+    commonName?: pulumi.Input<inputs.AccessGroupExcludeCommonName>;
+    devicePosture?: pulumi.Input<inputs.AccessGroupExcludeDevicePosture>;
+    email?: pulumi.Input<inputs.AccessGroupExcludeEmail>;
+    emailDomain?: pulumi.Input<inputs.AccessGroupExcludeEmailDomain>;
+    emailList?: pulumi.Input<inputs.AccessGroupExcludeEmailList>;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: pulumi.Input<inputs.AccessGroupExcludeEveryone>;
+    externalEvaluation?: pulumi.Input<inputs.AccessGroupExcludeExternalEvaluation>;
+    geo?: pulumi.Input<inputs.AccessGroupExcludeGeo>;
+    githubOrganization?: pulumi.Input<inputs.AccessGroupExcludeGithubOrganization>;
+    group?: pulumi.Input<inputs.AccessGroupExcludeGroup>;
+    gsuite?: pulumi.Input<inputs.AccessGroupExcludeGsuite>;
+    ip?: pulumi.Input<inputs.AccessGroupExcludeIp>;
+    ipList?: pulumi.Input<inputs.AccessGroupExcludeIpList>;
+    loginMethod?: pulumi.Input<inputs.AccessGroupExcludeLoginMethod>;
+    okta?: pulumi.Input<inputs.AccessGroupExcludeOkta>;
+    saml?: pulumi.Input<inputs.AccessGroupExcludeSaml>;
+    serviceToken?: pulumi.Input<inputs.AccessGroupExcludeServiceToken>;
+}
+
+export interface AccessGroupExcludeAnyValidServiceToken {
+}
+
+export interface AccessGroupExcludeAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: pulumi.Input<string>;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeCertificate {
+}
+
+export interface AccessGroupExcludeCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeEmail {
+    /**
+     * The email of the user.
+     */
+    email: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeEveryone {
+}
+
+export interface AccessGroupExcludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the team
+     */
+    team?: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: pulumi.Input<string>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the Okta group.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: pulumi.Input<string>;
+}
+
+export interface AccessGroupInclude {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: pulumi.Input<inputs.AccessGroupIncludeAnyValidServiceToken>;
+    authContext?: pulumi.Input<inputs.AccessGroupIncludeAuthContext>;
+    authMethod?: pulumi.Input<inputs.AccessGroupIncludeAuthMethod>;
+    azureAd?: pulumi.Input<inputs.AccessGroupIncludeAzureAd>;
+    certificate?: pulumi.Input<inputs.AccessGroupIncludeCertificate>;
+    commonName?: pulumi.Input<inputs.AccessGroupIncludeCommonName>;
+    devicePosture?: pulumi.Input<inputs.AccessGroupIncludeDevicePosture>;
+    email?: pulumi.Input<inputs.AccessGroupIncludeEmail>;
+    emailDomain?: pulumi.Input<inputs.AccessGroupIncludeEmailDomain>;
+    emailList?: pulumi.Input<inputs.AccessGroupIncludeEmailList>;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: pulumi.Input<inputs.AccessGroupIncludeEveryone>;
+    externalEvaluation?: pulumi.Input<inputs.AccessGroupIncludeExternalEvaluation>;
+    geo?: pulumi.Input<inputs.AccessGroupIncludeGeo>;
+    githubOrganization?: pulumi.Input<inputs.AccessGroupIncludeGithubOrganization>;
+    group?: pulumi.Input<inputs.AccessGroupIncludeGroup>;
+    gsuite?: pulumi.Input<inputs.AccessGroupIncludeGsuite>;
+    ip?: pulumi.Input<inputs.AccessGroupIncludeIp>;
+    ipList?: pulumi.Input<inputs.AccessGroupIncludeIpList>;
+    loginMethod?: pulumi.Input<inputs.AccessGroupIncludeLoginMethod>;
+    okta?: pulumi.Input<inputs.AccessGroupIncludeOkta>;
+    saml?: pulumi.Input<inputs.AccessGroupIncludeSaml>;
+    serviceToken?: pulumi.Input<inputs.AccessGroupIncludeServiceToken>;
+}
+
+export interface AccessGroupIncludeAnyValidServiceToken {
+}
+
+export interface AccessGroupIncludeAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: pulumi.Input<string>;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeCertificate {
+}
+
+export interface AccessGroupIncludeCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeEmail {
+    /**
+     * The email of the user.
+     */
+    email: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeEveryone {
+}
+
+export interface AccessGroupIncludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the team
+     */
+    team?: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: pulumi.Input<string>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the Okta group.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequire {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: pulumi.Input<inputs.AccessGroupRequireAnyValidServiceToken>;
+    authContext?: pulumi.Input<inputs.AccessGroupRequireAuthContext>;
+    authMethod?: pulumi.Input<inputs.AccessGroupRequireAuthMethod>;
+    azureAd?: pulumi.Input<inputs.AccessGroupRequireAzureAd>;
+    certificate?: pulumi.Input<inputs.AccessGroupRequireCertificate>;
+    commonName?: pulumi.Input<inputs.AccessGroupRequireCommonName>;
+    devicePosture?: pulumi.Input<inputs.AccessGroupRequireDevicePosture>;
+    email?: pulumi.Input<inputs.AccessGroupRequireEmail>;
+    emailDomain?: pulumi.Input<inputs.AccessGroupRequireEmailDomain>;
+    emailList?: pulumi.Input<inputs.AccessGroupRequireEmailList>;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: pulumi.Input<inputs.AccessGroupRequireEveryone>;
+    externalEvaluation?: pulumi.Input<inputs.AccessGroupRequireExternalEvaluation>;
+    geo?: pulumi.Input<inputs.AccessGroupRequireGeo>;
+    githubOrganization?: pulumi.Input<inputs.AccessGroupRequireGithubOrganization>;
+    group?: pulumi.Input<inputs.AccessGroupRequireGroup>;
+    gsuite?: pulumi.Input<inputs.AccessGroupRequireGsuite>;
+    ip?: pulumi.Input<inputs.AccessGroupRequireIp>;
+    ipList?: pulumi.Input<inputs.AccessGroupRequireIpList>;
+    loginMethod?: pulumi.Input<inputs.AccessGroupRequireLoginMethod>;
+    okta?: pulumi.Input<inputs.AccessGroupRequireOkta>;
+    saml?: pulumi.Input<inputs.AccessGroupRequireSaml>;
+    serviceToken?: pulumi.Input<inputs.AccessGroupRequireServiceToken>;
+}
+
+export interface AccessGroupRequireAnyValidServiceToken {
+}
+
+export interface AccessGroupRequireAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: pulumi.Input<string>;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireCertificate {
+}
+
+export interface AccessGroupRequireCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireEmail {
+    /**
+     * The email of the user.
+     */
+    email: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireEveryone {
+}
+
+export interface AccessGroupRequireExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the team
+     */
+    team?: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: pulumi.Input<string>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the Okta group.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: pulumi.Input<string>;
+}
+
+export interface AccessIdentityProviderConfig {
+    /**
+     * Your companies TLD
+     */
+    appsDomain?: pulumi.Input<string>;
+    /**
+     * A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules.
+     */
+    attributes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The authorizationEndpoint URL of your IdP
+     */
+    authUrl?: pulumi.Input<string>;
+    /**
+     * Your okta authorization server id
+     */
+    authorizationServerId?: pulumi.Input<string>;
+    /**
+     * Your centrify account url
+     */
+    centrifyAccount?: pulumi.Input<string>;
+    /**
+     * Your centrify app id
+     */
+    centrifyAppId?: pulumi.Input<string>;
+    /**
+     * The jwksUri endpoint of your IdP to allow the IdP keys to sign the tokens
+     */
+    certsUrl?: pulumi.Input<string>;
+    /**
+     * Custom claims
+     */
+    claims?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Your OAuth Client ID
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * Your OAuth Client Secret
+     */
+    clientSecret?: pulumi.Input<string>;
+    /**
+     * Should Cloudflare try to load authentication contexts from your account
+     */
+    conditionalAccessEnabled?: pulumi.Input<boolean>;
+    /**
+     * Your Azure directory uuid
+     */
+    directoryId?: pulumi.Input<string>;
+    /**
+     * The attribute name for email in the SAML response.
+     */
+    emailAttributeName?: pulumi.Input<string>;
+    /**
+     * The claim name for email in the idToken response.
+     */
+    emailClaimName?: pulumi.Input<string>;
+    /**
+     * Add a list of attribute names that will be returned in the response header from the Access callback.
+     */
+    headerAttributes?: pulumi.Input<pulumi.Input<inputs.AccessIdentityProviderConfigHeaderAttribute>[]>;
+    /**
+     * X509 certificate to verify the signature in the SAML authentication response
+     */
+    idpPublicCerts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * IdP Entity ID or Issuer URL
+     */
+    issuerUrl?: pulumi.Input<string>;
+    /**
+     * Your okta account url
+     */
+    oktaAccount?: pulumi.Input<string>;
+    /**
+     * Your OneLogin account url
+     */
+    oneloginAccount?: pulumi.Input<string>;
+    /**
+     * Your PingOne environment identifier
+     */
+    pingEnvId?: pulumi.Input<string>;
+    /**
+     * Enable Proof Key for Code Exchange (PKCE)
+     */
+    pkceEnabled?: pulumi.Input<boolean>;
+    /**
+     * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * Available values: "login", "selectAccount", "none".
+     */
+    prompt?: pulumi.Input<string>;
+    redirectUrl?: pulumi.Input<string>;
+    /**
+     * OAuth scopes
+     */
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
+     */
+    signRequest?: pulumi.Input<boolean>;
+    /**
+     * URL to send the SAML authentication requests to
+     */
+    ssoTargetUrl?: pulumi.Input<string>;
+    /**
+     * Should Cloudflare try to load groups from your account
+     */
+    supportGroups?: pulumi.Input<boolean>;
+    /**
+     * The tokenEndpoint URL of your IdP
+     */
+    tokenUrl?: pulumi.Input<string>;
+}
+
+export interface AccessIdentityProviderConfigHeaderAttribute {
+    /**
+     * attribute name from the IDP
+     */
+    attributeName?: pulumi.Input<string>;
+    /**
+     * header that will be added on the request to the origin
+     */
+    headerName?: pulumi.Input<string>;
+}
+
+export interface AccessIdentityProviderScimConfig {
+    /**
+     * A flag to enable or disable SCIM for the identity provider.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no*action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+     * Available values: "automatic", "reauth", "no*action".
+     */
+    identityUpdateBehavior?: pulumi.Input<string>;
+    /**
+     * The base URL of Cloudflare's SCIM V2.0 API endpoint.
+     */
+    scimBaseUrl?: pulumi.Input<string>;
+    /**
+     * A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
+     */
+    seatDeprovision?: pulumi.Input<boolean>;
+    /**
+     * A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
+     */
+    secret?: pulumi.Input<string>;
+    /**
+     * A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+     */
+    userDeprovision?: pulumi.Input<boolean>;
+}
+
+export interface AccessMutualTlsHostnameSettingsSetting {
+    /**
+     * Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+     */
+    chinaNetwork: pulumi.Input<boolean>;
+    /**
+     * Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+     */
+    clientCertificateForwarding: pulumi.Input<boolean>;
+    /**
+     * The hostname that these settings apply to.
+     */
+    hostname: pulumi.Input<string>;
+}
+
+export interface AccessOrganizationCustomPages {
+    /**
+     * The uid of the custom page to use when a user is denied access after failing a non-identity rule.
+     */
+    forbidden?: pulumi.Input<string>;
+    /**
+     * The uid of the custom page to use when a user is denied access.
+     */
+    identityDenied?: pulumi.Input<string>;
+}
+
+export interface AccessOrganizationLoginDesign {
+    /**
+     * The background color on your login page.
+     */
+    backgroundColor?: pulumi.Input<string>;
+    /**
+     * The text at the bottom of your login page.
+     */
+    footerText?: pulumi.Input<string>;
+    /**
+     * The text at the top of your login page.
+     */
+    headerText?: pulumi.Input<string>;
+    /**
+     * The URL of the logo on your login page.
+     */
+    logoPath?: pulumi.Input<string>;
+    /**
+     * The text color on your login page.
+     */
+    textColor?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyApprovalGroup {
+    /**
+     * The number of approvals needed to obtain access.
+     */
+    approvalsNeeded: pulumi.Input<number>;
+    /**
+     * A list of emails that can approve the access request.
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The UUID of an re-usable email list.
+     */
+    emailListUuid?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExclude {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: pulumi.Input<inputs.AccessPolicyExcludeAnyValidServiceToken>;
+    authContext?: pulumi.Input<inputs.AccessPolicyExcludeAuthContext>;
+    authMethod?: pulumi.Input<inputs.AccessPolicyExcludeAuthMethod>;
+    azureAd?: pulumi.Input<inputs.AccessPolicyExcludeAzureAd>;
+    certificate?: pulumi.Input<inputs.AccessPolicyExcludeCertificate>;
+    commonName?: pulumi.Input<inputs.AccessPolicyExcludeCommonName>;
+    devicePosture?: pulumi.Input<inputs.AccessPolicyExcludeDevicePosture>;
+    email?: pulumi.Input<inputs.AccessPolicyExcludeEmail>;
+    emailDomain?: pulumi.Input<inputs.AccessPolicyExcludeEmailDomain>;
+    emailList?: pulumi.Input<inputs.AccessPolicyExcludeEmailList>;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: pulumi.Input<inputs.AccessPolicyExcludeEveryone>;
+    externalEvaluation?: pulumi.Input<inputs.AccessPolicyExcludeExternalEvaluation>;
+    geo?: pulumi.Input<inputs.AccessPolicyExcludeGeo>;
+    githubOrganization?: pulumi.Input<inputs.AccessPolicyExcludeGithubOrganization>;
+    group?: pulumi.Input<inputs.AccessPolicyExcludeGroup>;
+    gsuite?: pulumi.Input<inputs.AccessPolicyExcludeGsuite>;
+    ip?: pulumi.Input<inputs.AccessPolicyExcludeIp>;
+    ipList?: pulumi.Input<inputs.AccessPolicyExcludeIpList>;
+    loginMethod?: pulumi.Input<inputs.AccessPolicyExcludeLoginMethod>;
+    okta?: pulumi.Input<inputs.AccessPolicyExcludeOkta>;
+    saml?: pulumi.Input<inputs.AccessPolicyExcludeSaml>;
+    serviceToken?: pulumi.Input<inputs.AccessPolicyExcludeServiceToken>;
+}
+
+export interface AccessPolicyExcludeAnyValidServiceToken {
+}
+
+export interface AccessPolicyExcludeAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: pulumi.Input<string>;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeCertificate {
+}
+
+export interface AccessPolicyExcludeCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeEmail {
+    /**
+     * The email of the user.
+     */
+    email: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeEveryone {
+}
+
+export interface AccessPolicyExcludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the team
+     */
+    team?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: pulumi.Input<string>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the Okta group.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: pulumi.Input<string>;
+}
+
+export interface AccessPolicyInclude {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: pulumi.Input<inputs.AccessPolicyIncludeAnyValidServiceToken>;
+    authContext?: pulumi.Input<inputs.AccessPolicyIncludeAuthContext>;
+    authMethod?: pulumi.Input<inputs.AccessPolicyIncludeAuthMethod>;
+    azureAd?: pulumi.Input<inputs.AccessPolicyIncludeAzureAd>;
+    certificate?: pulumi.Input<inputs.AccessPolicyIncludeCertificate>;
+    commonName?: pulumi.Input<inputs.AccessPolicyIncludeCommonName>;
+    devicePosture?: pulumi.Input<inputs.AccessPolicyIncludeDevicePosture>;
+    email?: pulumi.Input<inputs.AccessPolicyIncludeEmail>;
+    emailDomain?: pulumi.Input<inputs.AccessPolicyIncludeEmailDomain>;
+    emailList?: pulumi.Input<inputs.AccessPolicyIncludeEmailList>;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: pulumi.Input<inputs.AccessPolicyIncludeEveryone>;
+    externalEvaluation?: pulumi.Input<inputs.AccessPolicyIncludeExternalEvaluation>;
+    geo?: pulumi.Input<inputs.AccessPolicyIncludeGeo>;
+    githubOrganization?: pulumi.Input<inputs.AccessPolicyIncludeGithubOrganization>;
+    group?: pulumi.Input<inputs.AccessPolicyIncludeGroup>;
+    gsuite?: pulumi.Input<inputs.AccessPolicyIncludeGsuite>;
+    ip?: pulumi.Input<inputs.AccessPolicyIncludeIp>;
+    ipList?: pulumi.Input<inputs.AccessPolicyIncludeIpList>;
+    loginMethod?: pulumi.Input<inputs.AccessPolicyIncludeLoginMethod>;
+    okta?: pulumi.Input<inputs.AccessPolicyIncludeOkta>;
+    saml?: pulumi.Input<inputs.AccessPolicyIncludeSaml>;
+    serviceToken?: pulumi.Input<inputs.AccessPolicyIncludeServiceToken>;
+}
+
+export interface AccessPolicyIncludeAnyValidServiceToken {
+}
+
+export interface AccessPolicyIncludeAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: pulumi.Input<string>;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeCertificate {
+}
+
+export interface AccessPolicyIncludeCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeEmail {
+    /**
+     * The email of the user.
+     */
+    email: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeEveryone {
+}
+
+export interface AccessPolicyIncludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the team
+     */
+    team?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: pulumi.Input<string>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the Okta group.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequire {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: pulumi.Input<inputs.AccessPolicyRequireAnyValidServiceToken>;
+    authContext?: pulumi.Input<inputs.AccessPolicyRequireAuthContext>;
+    authMethod?: pulumi.Input<inputs.AccessPolicyRequireAuthMethod>;
+    azureAd?: pulumi.Input<inputs.AccessPolicyRequireAzureAd>;
+    certificate?: pulumi.Input<inputs.AccessPolicyRequireCertificate>;
+    commonName?: pulumi.Input<inputs.AccessPolicyRequireCommonName>;
+    devicePosture?: pulumi.Input<inputs.AccessPolicyRequireDevicePosture>;
+    email?: pulumi.Input<inputs.AccessPolicyRequireEmail>;
+    emailDomain?: pulumi.Input<inputs.AccessPolicyRequireEmailDomain>;
+    emailList?: pulumi.Input<inputs.AccessPolicyRequireEmailList>;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: pulumi.Input<inputs.AccessPolicyRequireEveryone>;
+    externalEvaluation?: pulumi.Input<inputs.AccessPolicyRequireExternalEvaluation>;
+    geo?: pulumi.Input<inputs.AccessPolicyRequireGeo>;
+    githubOrganization?: pulumi.Input<inputs.AccessPolicyRequireGithubOrganization>;
+    group?: pulumi.Input<inputs.AccessPolicyRequireGroup>;
+    gsuite?: pulumi.Input<inputs.AccessPolicyRequireGsuite>;
+    ip?: pulumi.Input<inputs.AccessPolicyRequireIp>;
+    ipList?: pulumi.Input<inputs.AccessPolicyRequireIpList>;
+    loginMethod?: pulumi.Input<inputs.AccessPolicyRequireLoginMethod>;
+    okta?: pulumi.Input<inputs.AccessPolicyRequireOkta>;
+    saml?: pulumi.Input<inputs.AccessPolicyRequireSaml>;
+    serviceToken?: pulumi.Input<inputs.AccessPolicyRequireServiceToken>;
+}
+
+export interface AccessPolicyRequireAnyValidServiceToken {
+}
+
+export interface AccessPolicyRequireAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: pulumi.Input<string>;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireCertificate {
+}
+
+export interface AccessPolicyRequireCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireEmail {
+    /**
+     * The email of the user.
+     */
+    email: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireEveryone {
+}
+
+export interface AccessPolicyRequireExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the team
+     */
+    team?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: pulumi.Input<string>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+    /**
+     * The name of the Okta group.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: pulumi.Input<string>;
+}
+
 export interface AccessRuleConfiguration {
     /**
      * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
@@ -862,6 +3452,401 @@ export interface CustomSslKeylessServerTunnel {
      * Cloudflare Tunnel Virtual Network ID
      */
     vnetId?: pulumi.Input<string>;
+}
+
+export interface DeviceDexTestData {
+    /**
+     * The desired endpoint to test.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * The type of test.
+     */
+    kind?: pulumi.Input<string>;
+    /**
+     * The HTTP request method type.
+     */
+    method?: pulumi.Input<string>;
+}
+
+export interface DeviceDexTestTargetPolicy {
+    /**
+     * Whether the profile is the account default
+     */
+    default?: pulumi.Input<boolean>;
+    /**
+     * The id of the device settings profile
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The name of the device settings profile
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface DeviceManagedNetworksConfig {
+    /**
+     * The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
+     */
+    sha256?: pulumi.Input<string>;
+    /**
+     * A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
+     */
+    tlsSockaddr: pulumi.Input<string>;
+}
+
+export interface DevicePostureIntegrationConfig {
+    /**
+     * If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`
+     */
+    accessClientId?: pulumi.Input<string>;
+    /**
+     * If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`
+     */
+    accessClientSecret?: pulumi.Input<string>;
+    /**
+     * The Workspace One API URL provided in the Workspace One Admin Dashboard.
+     */
+    apiUrl?: pulumi.Input<string>;
+    /**
+     * The Workspace One Authorization URL depending on your region.
+     */
+    authUrl?: pulumi.Input<string>;
+    /**
+     * The Workspace One client ID provided in the Workspace One Admin Dashboard.
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * The Uptycs client secret.
+     */
+    clientKey?: pulumi.Input<string>;
+    /**
+     * The Workspace One client secret provided in the Workspace One Admin Dashboard.
+     */
+    clientSecret?: pulumi.Input<string>;
+    /**
+     * The Crowdstrike customer ID.
+     */
+    customerId?: pulumi.Input<string>;
+}
+
+export interface DevicePostureRuleInput {
+    /**
+     * The Number of active threats.
+     */
+    activeThreats?: pulumi.Input<number>;
+    /**
+     * UUID of Cloudflare managed certificate.
+     */
+    certificateId?: pulumi.Input<string>;
+    /**
+     * List of volume names to be checked for encryption.
+     */
+    checkDisks?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.
+     */
+    checkPrivateKey?: pulumi.Input<boolean>;
+    /**
+     * Common Name that is protected by the certificate
+     */
+    cn?: pulumi.Input<string>;
+    /**
+     * Compliance Status
+     * Available values: "compliant", "noncompliant", "unknown".
+     */
+    complianceStatus?: pulumi.Input<string>;
+    /**
+     * Posture Integration ID.
+     */
+    connectionId?: pulumi.Input<string>;
+    /**
+     * Count Operator
+     * Available values: "<", "<=", ">", ">=", "==".
+     */
+    countOperator?: pulumi.Input<string>;
+    /**
+     * Domain
+     */
+    domain?: pulumi.Input<string>;
+    /**
+     * For more details on eid last seen, refer to the Tanium documentation.
+     */
+    eidLastSeen?: pulumi.Input<string>;
+    /**
+     * Enabled
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether or not file exists
+     */
+    exists?: pulumi.Input<boolean>;
+    /**
+     * List of values indicating purposes for which the certificate public key can be used
+     */
+    extendedKeyUsages?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List ID.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Whether device is infected.
+     */
+    infected?: pulumi.Input<boolean>;
+    /**
+     * Whether device is active.
+     */
+    isActive?: pulumi.Input<boolean>;
+    /**
+     * The Number of Issues.
+     */
+    issueCount?: pulumi.Input<string>;
+    /**
+     * For more details on last seen, please refer to the Crowdstrike documentation.
+     */
+    lastSeen?: pulumi.Input<string>;
+    locations?: pulumi.Input<inputs.DevicePostureRuleInputLocations>;
+    /**
+     * Network status of device.
+     * Available values: "connected", "disconnected", "disconnecting", "connecting".
+     */
+    networkStatus?: pulumi.Input<string>;
+    /**
+     * Operating system
+     * Available values: "windows", "linux", "mac".
+     */
+    operatingSystem?: pulumi.Input<string>;
+    /**
+     * Agent operational state.
+     * Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
+     */
+    operationalState?: pulumi.Input<string>;
+    /**
+     * operator
+     * Available values: "<", "<=", ">", ">=", "==".
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * Os Version
+     */
+    os?: pulumi.Input<string>;
+    /**
+     * Operating System Distribution Name (linux only)
+     */
+    osDistroName?: pulumi.Input<string>;
+    /**
+     * Version of OS Distribution (linux only)
+     */
+    osDistroRevision?: pulumi.Input<string>;
+    /**
+     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+     */
+    osVersionExtra?: pulumi.Input<string>;
+    /**
+     * overall
+     */
+    overall?: pulumi.Input<string>;
+    /**
+     * File path.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Whether to check all disks for encryption.
+     */
+    requireAll?: pulumi.Input<boolean>;
+    /**
+     * For more details on risk level, refer to the Tanium documentation.
+     * Available values: "low", "medium", "high", "critical".
+     */
+    riskLevel?: pulumi.Input<string>;
+    /**
+     * A value between 0-100 assigned to devices set by the 3rd party posture provider.
+     */
+    score?: pulumi.Input<number>;
+    /**
+     * Score Operator
+     * Available values: "<", "<=", ">", ">=", "==".
+     */
+    scoreOperator?: pulumi.Input<string>;
+    /**
+     * SensorConfig
+     */
+    sensorConfig?: pulumi.Input<string>;
+    /**
+     * SHA-256.
+     */
+    sha256?: pulumi.Input<string>;
+    /**
+     * For more details on state, please refer to the Crowdstrike documentation.
+     * Available values: "online", "offline", "unknown".
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * Signing certificate thumbprint.
+     */
+    thumbprint?: pulumi.Input<string>;
+    /**
+     * For more details on total score, refer to the Tanium documentation.
+     */
+    totalScore?: pulumi.Input<number>;
+    /**
+     * Version of OS
+     */
+    version?: pulumi.Input<string>;
+    /**
+     * Version Operator
+     * Available values: "<", "<=", ">", ">=", "==".
+     */
+    versionOperator?: pulumi.Input<string>;
+}
+
+export interface DevicePostureRuleInputLocations {
+    /**
+     * List of paths to check for client certificate on linux.
+     */
+    paths?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of trust stores to check for client certificate.
+     */
+    trustStores?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface DevicePostureRuleMatch {
+    /**
+     * Available values: "windows", "mac", "linux", "android", "ios".
+     */
+    platform?: pulumi.Input<string>;
+}
+
+export interface DlpCustomProfileContextAwareness {
+    /**
+     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Content types to exclude from context analysis and return all matches.
+     */
+    skip: pulumi.Input<inputs.DlpCustomProfileContextAwarenessSkip>;
+}
+
+export interface DlpCustomProfileContextAwarenessSkip {
+    /**
+     * If the content type is a file, skip context analysis and return all matches.
+     */
+    files: pulumi.Input<boolean>;
+}
+
+export interface DlpCustomProfileEntry {
+    enabled: pulumi.Input<boolean>;
+    name: pulumi.Input<string>;
+    pattern?: pulumi.Input<inputs.DlpCustomProfileEntryPattern>;
+    words?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface DlpCustomProfileEntryPattern {
+    regex: pulumi.Input<string>;
+    /**
+     * Available values: "luhn".
+     */
+    validation?: pulumi.Input<string>;
+}
+
+export interface DlpCustomProfileProfile {
+    aiContextEnabled?: pulumi.Input<boolean>;
+    /**
+     * Related DLP policies will trigger when the match count exceeds the number set.
+     */
+    allowedMatchCount?: pulumi.Input<number>;
+    confidenceThreshold?: pulumi.Input<string>;
+    /**
+     * Scan the context of predefined entries to only return matches surrounded by keywords.
+     */
+    contextAwareness?: pulumi.Input<inputs.DlpCustomProfileProfileContextAwareness>;
+    /**
+     * The description of the profile
+     */
+    description?: pulumi.Input<string>;
+    entries: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileProfileEntry>[]>;
+    name: pulumi.Input<string>;
+    ocrEnabled?: pulumi.Input<boolean>;
+    /**
+     * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
+     */
+    sharedEntries?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileProfileSharedEntry>[]>;
+}
+
+export interface DlpCustomProfileProfileContextAwareness {
+    /**
+     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Content types to exclude from context analysis and return all matches.
+     */
+    skip: pulumi.Input<inputs.DlpCustomProfileProfileContextAwarenessSkip>;
+}
+
+export interface DlpCustomProfileProfileContextAwarenessSkip {
+    /**
+     * If the content type is a file, skip context analysis and return all matches.
+     */
+    files: pulumi.Input<boolean>;
+}
+
+export interface DlpCustomProfileProfileEntry {
+    enabled: pulumi.Input<boolean>;
+    name: pulumi.Input<string>;
+    pattern?: pulumi.Input<inputs.DlpCustomProfileProfileEntryPattern>;
+    words?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface DlpCustomProfileProfileEntryPattern {
+    regex: pulumi.Input<string>;
+    /**
+     * Available values: "luhn".
+     */
+    validation?: pulumi.Input<string>;
+}
+
+export interface DlpCustomProfileProfileSharedEntry {
+    enabled: pulumi.Input<boolean>;
+    entryId: pulumi.Input<string>;
+    /**
+     * Available values: "custom".
+     */
+    entryType: pulumi.Input<string>;
+}
+
+export interface DlpCustomProfileSharedEntry {
+    enabled: pulumi.Input<boolean>;
+    entryId: pulumi.Input<string>;
+    /**
+     * Available values: "custom".
+     */
+    entryType: pulumi.Input<string>;
+}
+
+export interface DlpPredefinedProfileContextAwareness {
+    /**
+     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Content types to exclude from context analysis and return all matches.
+     */
+    skip: pulumi.Input<inputs.DlpPredefinedProfileContextAwarenessSkip>;
+}
+
+export interface DlpPredefinedProfileContextAwarenessSkip {
+    /**
+     * If the content type is a file, skip context analysis and return all matches.
+     */
+    files: pulumi.Input<boolean>;
+}
+
+export interface DlpPredefinedProfileEntry {
+    enabled: pulumi.Input<boolean>;
+    id: pulumi.Input<string>;
 }
 
 export interface DnsFirewallAttackMitigation {
@@ -4499,6 +7484,44 @@ export interface MagicWanStaticRouteScope {
     coloRegions?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface ManagedHeadersManagedRequestHeader {
+    /**
+     * The Managed Transforms that this Managed Transform conflicts with.
+     */
+    conflictsWiths?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the Managed Transform is enabled.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
+     */
+    hasConflict?: pulumi.Input<boolean>;
+    /**
+     * The human-readable identifier of the Managed Transform.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface ManagedHeadersManagedResponseHeader {
+    /**
+     * The Managed Transforms that this Managed Transform conflicts with.
+     */
+    conflictsWiths?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the Managed Transform is enabled.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
+     */
+    hasConflict?: pulumi.Input<boolean>;
+    /**
+     * The human-readable identifier of the Managed Transform.
+     */
+    id: pulumi.Input<string>;
+}
+
 export interface ManagedTransformsManagedRequestHeader {
     /**
      * The Managed Transforms that this Managed Transform conflicts with.
@@ -6226,6 +9249,178 @@ export interface RateLimitMatchResponse {
     originTraffic?: pulumi.Input<boolean>;
 }
 
+export interface RecordData {
+    /**
+     * Algorithm.
+     */
+    algorithm?: pulumi.Input<number>;
+    /**
+     * Altitude of location in meters.
+     */
+    altitude?: pulumi.Input<number>;
+    /**
+     * Certificate.
+     */
+    certificate?: pulumi.Input<string>;
+    /**
+     * Digest.
+     */
+    digest?: pulumi.Input<string>;
+    /**
+     * Digest Type.
+     */
+    digestType?: pulumi.Input<number>;
+    /**
+     * fingerprint.
+     */
+    fingerprint?: pulumi.Input<string>;
+    /**
+     * Flags for the CAA record.
+     */
+    flags?: pulumi.Input<number>;
+    /**
+     * Key Tag.
+     */
+    keyTag?: pulumi.Input<number>;
+    /**
+     * Degrees of latitude.
+     */
+    latDegrees?: pulumi.Input<number>;
+    /**
+     * Latitude direction.
+     * Available values: "N", "S".
+     */
+    latDirection?: pulumi.Input<string>;
+    /**
+     * Minutes of latitude.
+     */
+    latMinutes?: pulumi.Input<number>;
+    /**
+     * Seconds of latitude.
+     */
+    latSeconds?: pulumi.Input<number>;
+    /**
+     * Degrees of longitude.
+     */
+    longDegrees?: pulumi.Input<number>;
+    /**
+     * Longitude direction.
+     * Available values: "E", "W".
+     */
+    longDirection?: pulumi.Input<string>;
+    /**
+     * Minutes of longitude.
+     */
+    longMinutes?: pulumi.Input<number>;
+    /**
+     * Seconds of longitude.
+     */
+    longSeconds?: pulumi.Input<number>;
+    /**
+     * Matching Type.
+     */
+    matchingType?: pulumi.Input<number>;
+    /**
+     * Order.
+     */
+    order?: pulumi.Input<number>;
+    /**
+     * The port of the service.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * Horizontal precision of location.
+     */
+    precisionHorz?: pulumi.Input<number>;
+    /**
+     * Vertical precision of location.
+     */
+    precisionVert?: pulumi.Input<number>;
+    /**
+     * Preference.
+     */
+    preference?: pulumi.Input<number>;
+    /**
+     * priority.
+     */
+    priority?: pulumi.Input<number>;
+    /**
+     * Protocol.
+     */
+    protocol?: pulumi.Input<number>;
+    /**
+     * Public Key.
+     */
+    publicKey?: pulumi.Input<string>;
+    /**
+     * Regex.
+     */
+    regex?: pulumi.Input<string>;
+    /**
+     * Replacement.
+     */
+    replacement?: pulumi.Input<string>;
+    /**
+     * Selector.
+     */
+    selector?: pulumi.Input<number>;
+    /**
+     * Service.
+     */
+    service?: pulumi.Input<string>;
+    /**
+     * Size of location in meters.
+     */
+    size?: pulumi.Input<number>;
+    /**
+     * Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+     */
+    tag?: pulumi.Input<string>;
+    /**
+     * target.
+     */
+    target?: pulumi.Input<string>;
+    /**
+     * Type.
+     */
+    type?: pulumi.Input<number>;
+    /**
+     * Usage.
+     */
+    usage?: pulumi.Input<number>;
+    /**
+     * Value of the record. This field's semantics depend on the chosen tag.
+     */
+    value?: pulumi.Input<string>;
+    /**
+     * The record weight.
+     */
+    weight?: pulumi.Input<number>;
+}
+
+export interface RecordSettings {
+    /**
+     * If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
+     */
+    flattenCname?: pulumi.Input<boolean>;
+    /**
+     * When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+     */
+    ipv4Only?: pulumi.Input<boolean>;
+    /**
+     * When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+     */
+    ipv6Only?: pulumi.Input<boolean>;
+}
+
+export interface RiskBehaviorBehaviors {
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Available values: "low", "medium", "high".
+     */
+    riskLevel: pulumi.Input<string>;
+}
+
 export interface RulesetRule {
     /**
      * The action to perform when the rule matches.
@@ -7067,6 +10262,117 @@ export interface SpectrumApplicationOriginDns {
     type?: pulumi.Input<string>;
 }
 
+export interface StaticRouteModifiedRoute {
+    /**
+     * When the route was created.
+     */
+    createdOn?: pulumi.Input<string>;
+    /**
+     * An optional human provided description of the static route.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Identifier
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * When the route was last modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
+    /**
+     * The next-hop IP Address for the static route.
+     */
+    nexthop?: pulumi.Input<string>;
+    /**
+     * IP Prefix in Classless Inter-Domain Routing format.
+     */
+    prefix?: pulumi.Input<string>;
+    /**
+     * Priority of the static route.
+     */
+    priority?: pulumi.Input<number>;
+    /**
+     * Used only for ECMP routes.
+     */
+    scope?: pulumi.Input<inputs.StaticRouteModifiedRouteScope>;
+    /**
+     * Optional weight of the ECMP scope - if provided.
+     */
+    weight?: pulumi.Input<number>;
+}
+
+export interface StaticRouteModifiedRouteScope {
+    /**
+     * List of colo names for the ECMP scope.
+     */
+    coloNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of colo regions for the ECMP scope.
+     */
+    coloRegions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface StaticRouteRoute {
+    /**
+     * When the route was created.
+     */
+    createdOn?: pulumi.Input<string>;
+    /**
+     * An optional human provided description of the static route.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Identifier
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * When the route was last modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
+    /**
+     * The next-hop IP Address for the static route.
+     */
+    nexthop?: pulumi.Input<string>;
+    /**
+     * IP Prefix in Classless Inter-Domain Routing format.
+     */
+    prefix?: pulumi.Input<string>;
+    /**
+     * Priority of the static route.
+     */
+    priority?: pulumi.Input<number>;
+    /**
+     * Used only for ECMP routes.
+     */
+    scope?: pulumi.Input<inputs.StaticRouteRouteScope>;
+    /**
+     * Optional weight of the ECMP scope - if provided.
+     */
+    weight?: pulumi.Input<number>;
+}
+
+export interface StaticRouteRouteScope {
+    /**
+     * List of colo names for the ECMP scope.
+     */
+    coloNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of colo regions for the ECMP scope.
+     */
+    coloRegions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface StaticRouteScope {
+    /**
+     * List of colo names for the ECMP scope.
+     */
+    coloNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of colo regions for the ECMP scope.
+     */
+    coloRegions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface StreamInput {
     /**
      * The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready.
@@ -7246,6 +10552,864 @@ export interface StreamWatermark {
     width?: pulumi.Input<number>;
 }
 
+export interface TeamsAccountSettings {
+    /**
+     * Activity log settings.
+     */
+    activityLog?: pulumi.Input<inputs.TeamsAccountSettingsActivityLog>;
+    /**
+     * Anti-virus settings.
+     */
+    antivirus?: pulumi.Input<inputs.TeamsAccountSettingsAntivirus>;
+    /**
+     * Block page layout settings.
+     */
+    blockPage?: pulumi.Input<inputs.TeamsAccountSettingsBlockPage>;
+    /**
+     * DLP body scanning settings.
+     */
+    bodyScanning?: pulumi.Input<inputs.TeamsAccountSettingsBodyScanning>;
+    /**
+     * Browser isolation settings.
+     */
+    browserIsolation?: pulumi.Input<inputs.TeamsAccountSettingsBrowserIsolation>;
+    /**
+     * Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+     */
+    certificate?: pulumi.Input<inputs.TeamsAccountSettingsCertificate>;
+    /**
+     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     */
+    customCertificate?: pulumi.Input<inputs.TeamsAccountSettingsCustomCertificate>;
+    /**
+     * Extended e-mail matching settings.
+     */
+    extendedEmailMatching?: pulumi.Input<inputs.TeamsAccountSettingsExtendedEmailMatching>;
+    /**
+     * FIPS settings.
+     */
+    fips?: pulumi.Input<inputs.TeamsAccountSettingsFips>;
+    /**
+     * Protocol Detection settings.
+     */
+    protocolDetection?: pulumi.Input<inputs.TeamsAccountSettingsProtocolDetection>;
+    /**
+     * Sandbox settings.
+     */
+    sandbox?: pulumi.Input<inputs.TeamsAccountSettingsSandbox>;
+    /**
+     * TLS interception settings.
+     */
+    tlsDecrypt?: pulumi.Input<inputs.TeamsAccountSettingsTlsDecrypt>;
+}
+
+export interface TeamsAccountSettingsActivityLog {
+    /**
+     * Enable activity logging.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface TeamsAccountSettingsAntivirus {
+    /**
+     * Enable anti-virus scanning on downloads.
+     */
+    enabledDownloadPhase?: pulumi.Input<boolean>;
+    /**
+     * Enable anti-virus scanning on uploads.
+     */
+    enabledUploadPhase?: pulumi.Input<boolean>;
+    /**
+     * Block requests for files that cannot be scanned.
+     */
+    failClosed?: pulumi.Input<boolean>;
+    /**
+     * Configure a message to display on the user's device when an antivirus search is performed.
+     */
+    notificationSettings?: pulumi.Input<inputs.TeamsAccountSettingsAntivirusNotificationSettings>;
+}
+
+export interface TeamsAccountSettingsAntivirusNotificationSettings {
+    /**
+     * Set notification on
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Customize the message shown in the notification.
+     */
+    msg?: pulumi.Input<string>;
+    /**
+     * Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     */
+    supportUrl?: pulumi.Input<string>;
+}
+
+export interface TeamsAccountSettingsBlockPage {
+    /**
+     * Block page background color in #rrggbb format.
+     */
+    backgroundColor?: pulumi.Input<string>;
+    /**
+     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Block page footer text.
+     */
+    footerText?: pulumi.Input<string>;
+    /**
+     * Block page header text.
+     */
+    headerText?: pulumi.Input<string>;
+    /**
+     * Full URL to the logo file.
+     */
+    logoPath?: pulumi.Input<string>;
+    /**
+     * Admin email for users to contact.
+     */
+    mailtoAddress?: pulumi.Input<string>;
+    /**
+     * Subject line for emails created from block page.
+     */
+    mailtoSubject?: pulumi.Input<string>;
+    /**
+     * Block page title.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Suppress detailed info at the bottom of the block page.
+     */
+    suppressFooter?: pulumi.Input<boolean>;
+}
+
+export interface TeamsAccountSettingsBodyScanning {
+    /**
+     * Set the inspection mode to either `deep` or `shallow`.
+     */
+    inspectionMode?: pulumi.Input<string>;
+}
+
+export interface TeamsAccountSettingsBrowserIsolation {
+    /**
+     * Enable non-identity onramp support for Browser Isolation.
+     */
+    nonIdentityEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enable Clientless Browser Isolation.
+     */
+    urlBrowserIsolationEnabled?: pulumi.Input<boolean>;
+}
+
+export interface TeamsAccountSettingsCertificate {
+    /**
+     * UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface TeamsAccountSettingsCustomCertificate {
+    /**
+     * Certificate status (internal).
+     */
+    bindingStatus?: pulumi.Input<string>;
+    /**
+     * Enable use of custom certificate authority for signing Gateway traffic.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * UUID of certificate (ID from MTLS certificate store).
+     */
+    id?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
+}
+
+export interface TeamsAccountSettingsExtendedEmailMatching {
+    /**
+     * Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface TeamsAccountSettingsFips {
+    /**
+     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     */
+    tls?: pulumi.Input<boolean>;
+}
+
+export interface TeamsAccountSettingsProtocolDetection {
+    /**
+     * Enable detecting protocol on initial bytes of client traffic.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface TeamsAccountSettingsSandbox {
+    /**
+     * Enable sandbox.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Action to take when the file cannot be scanned.
+     * Available values: "allow", "block".
+     */
+    fallbackAction?: pulumi.Input<string>;
+}
+
+export interface TeamsAccountSettingsTlsDecrypt {
+    /**
+     * Enable inspecting encrypted HTTP traffic.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface TeamsListItem {
+    createdAt?: pulumi.Input<string>;
+    /**
+     * The description of the list item, if present
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The value of the item in a list.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface TeamsLocationEndpoints {
+    doh?: pulumi.Input<inputs.TeamsLocationEndpointsDoh>;
+    dot?: pulumi.Input<inputs.TeamsLocationEndpointsDot>;
+    ipv4?: pulumi.Input<inputs.TeamsLocationEndpointsIpv4>;
+    ipv6?: pulumi.Input<inputs.TeamsLocationEndpointsIpv6>;
+}
+
+export interface TeamsLocationEndpointsDoh {
+    /**
+     * True if the endpoint is enabled for this location.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     */
+    networks?: pulumi.Input<pulumi.Input<inputs.TeamsLocationEndpointsDohNetwork>[]>;
+    /**
+     * True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+     */
+    requireToken?: pulumi.Input<boolean>;
+}
+
+export interface TeamsLocationEndpointsDohNetwork {
+    /**
+     * The IP address or IP CIDR.
+     */
+    network: pulumi.Input<string>;
+}
+
+export interface TeamsLocationEndpointsDot {
+    /**
+     * True if the endpoint is enabled for this location.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     */
+    networks?: pulumi.Input<pulumi.Input<inputs.TeamsLocationEndpointsDotNetwork>[]>;
+}
+
+export interface TeamsLocationEndpointsDotNetwork {
+    /**
+     * The IP address or IP CIDR.
+     */
+    network: pulumi.Input<string>;
+}
+
+export interface TeamsLocationEndpointsIpv4 {
+    /**
+     * True if the endpoint is enabled for this location.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface TeamsLocationEndpointsIpv6 {
+    /**
+     * True if the endpoint is enabled for this location.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     */
+    networks?: pulumi.Input<pulumi.Input<inputs.TeamsLocationEndpointsIpv6Network>[]>;
+}
+
+export interface TeamsLocationEndpointsIpv6Network {
+    /**
+     * The IPv6 address or IPv6 CIDR.
+     */
+    network: pulumi.Input<string>;
+}
+
+export interface TeamsLocationNetwork {
+    /**
+     * The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
+     */
+    network: pulumi.Input<string>;
+}
+
+export interface TeamsRuleExpiration {
+    /**
+     * The default duration a policy will be active in minutes. Must be set in order to use the `resetExpiration` endpoint on this rule.
+     */
+    duration?: pulumi.Input<number>;
+    /**
+     * Whether the policy has expired.
+     */
+    expired?: pulumi.Input<boolean>;
+    /**
+     * The time stamp at which the policy will expire and cease to be
+     * applied.
+     */
+    expiresAt: pulumi.Input<string>;
+}
+
+export interface TeamsRuleRuleSettings {
+    /**
+     * Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
+     */
+    addHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Set by parent MSP accounts to enable their children to bypass this rule.
+     */
+    allowChildBypass?: pulumi.Input<boolean>;
+    /**
+     * Settings for the Audit SSH action.
+     */
+    auditSsh?: pulumi.Input<inputs.TeamsRuleRuleSettingsAuditSsh>;
+    /**
+     * Configure how browser isolation behaves.
+     */
+    bisoAdminControls?: pulumi.Input<inputs.TeamsRuleRuleSettingsBisoAdminControls>;
+    /**
+     * Enable the custom block page.
+     */
+    blockPageEnabled?: pulumi.Input<boolean>;
+    /**
+     * The text describing why this block occurred, displayed on the custom block page (if enabled).
+     */
+    blockReason?: pulumi.Input<string>;
+    /**
+     * Set by children MSP accounts to bypass their parent's rules.
+     */
+    bypassParentRule?: pulumi.Input<boolean>;
+    /**
+     * Configure how session check behaves.
+     */
+    checkSession?: pulumi.Input<inputs.TeamsRuleRuleSettingsCheckSession>;
+    /**
+     * Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.
+     */
+    dnsResolvers?: pulumi.Input<inputs.TeamsRuleRuleSettingsDnsResolvers>;
+    /**
+     * Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
+     */
+    egress?: pulumi.Input<inputs.TeamsRuleRuleSettingsEgress>;
+    /**
+     * Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
+     */
+    ignoreCnameCategoryMatches?: pulumi.Input<boolean>;
+    /**
+     * INSECURE - disable DNSSEC validation (for Allow actions).
+     */
+    insecureDisableDnssecValidation?: pulumi.Input<boolean>;
+    /**
+     * Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
+     */
+    ipCategories?: pulumi.Input<boolean>;
+    /**
+     * Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+     */
+    ipIndicatorFeeds?: pulumi.Input<boolean>;
+    /**
+     * Send matching traffic to the supplied destination IP address and port.
+     */
+    l4override?: pulumi.Input<inputs.TeamsRuleRuleSettingsL4override>;
+    /**
+     * Configure a notification to display on the user's device when this rule is matched.
+     */
+    notificationSettings?: pulumi.Input<inputs.TeamsRuleRuleSettingsNotificationSettings>;
+    /**
+     * Override matching DNS queries with a hostname.
+     */
+    overrideHost?: pulumi.Input<string>;
+    /**
+     * Override matching DNS queries with an IP or set of IPs.
+     */
+    overrideIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Configure DLP payload logging.
+     */
+    payloadLog?: pulumi.Input<inputs.TeamsRuleRuleSettingsPayloadLog>;
+    /**
+     * Settings that apply to quarantine rules
+     */
+    quarantine?: pulumi.Input<inputs.TeamsRuleRuleSettingsQuarantine>;
+    /**
+     * Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+     */
+    resolveDnsInternally?: pulumi.Input<inputs.TeamsRuleRuleSettingsResolveDnsInternally>;
+    /**
+     * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns_internally' is set. Only valid when a rule's action is set to 'resolve'.
+     */
+    resolveDnsThroughCloudflare?: pulumi.Input<boolean>;
+    /**
+     * Configure behavior when an upstream cert is invalid or an SSL error occurs.
+     */
+    untrustedCert?: pulumi.Input<inputs.TeamsRuleRuleSettingsUntrustedCert>;
+}
+
+export interface TeamsRuleRuleSettingsAuditSsh {
+    /**
+     * Enable to turn on SSH command logging.
+     */
+    commandLogging?: pulumi.Input<boolean>;
+}
+
+export interface TeamsRuleRuleSettingsBisoAdminControls {
+    /**
+     * Configure whether copy is enabled or not. When set with "remote*only", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled", "remote*only".
+     */
+    copy?: pulumi.Input<string>;
+    /**
+     * Set to false to enable copy-pasting. Only applies when `version == "v1"`.
+     */
+    dcp?: pulumi.Input<boolean>;
+    /**
+     * Set to false to enable downloading. Only applies when `version == "v1"`.
+     */
+    dd?: pulumi.Input<boolean>;
+    /**
+     * Set to false to enable keyboard usage. Only applies when `version == "v1"`.
+     */
+    dk?: pulumi.Input<boolean>;
+    /**
+     * Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled".
+     */
+    download?: pulumi.Input<string>;
+    /**
+     * Set to false to enable printing. Only applies when `version == "v1"`.
+     */
+    dp?: pulumi.Input<boolean>;
+    /**
+     * Set to false to enable uploading. Only applies when `version == "v1"`.
+     */
+    du?: pulumi.Input<boolean>;
+    /**
+     * Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled".
+     */
+    keyboard?: pulumi.Input<string>;
+    /**
+     * Configure whether pasting is enabled or not. When set with "remote*only", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled", "remote*only".
+     */
+    paste?: pulumi.Input<string>;
+    /**
+     * Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled".
+     */
+    printing?: pulumi.Input<string>;
+    /**
+     * Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled".
+     */
+    upload?: pulumi.Input<string>;
+    /**
+     * Indicates which version of the browser isolation controls should apply.
+     * Available values: "v1", "v2".
+     */
+    version?: pulumi.Input<string>;
+}
+
+export interface TeamsRuleRuleSettingsCheckSession {
+    /**
+     * Configure how fresh the session needs to be to be considered valid.
+     */
+    duration?: pulumi.Input<string>;
+    /**
+     * Set to true to enable session enforcement.
+     */
+    enforce?: pulumi.Input<boolean>;
+}
+
+export interface TeamsRuleRuleSettingsDnsResolvers {
+    ipv4s?: pulumi.Input<pulumi.Input<inputs.TeamsRuleRuleSettingsDnsResolversIpv4>[]>;
+    ipv6s?: pulumi.Input<pulumi.Input<inputs.TeamsRuleRuleSettingsDnsResolversIpv6>[]>;
+}
+
+export interface TeamsRuleRuleSettingsDnsResolversIpv4 {
+    /**
+     * IPv4 address of upstream resolver.
+     */
+    ip: pulumi.Input<string>;
+    /**
+     * A port number to use for upstream resolver. Defaults to 53 if unspecified.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * Whether to connect to this resolver over a private network. Must be set when vnetId is set.
+     */
+    routeThroughPrivateNetwork?: pulumi.Input<boolean>;
+    /**
+     * Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     */
+    vnetId?: pulumi.Input<string>;
+}
+
+export interface TeamsRuleRuleSettingsDnsResolversIpv6 {
+    /**
+     * IPv6 address of upstream resolver.
+     */
+    ip: pulumi.Input<string>;
+    /**
+     * A port number to use for upstream resolver. Defaults to 53 if unspecified.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * Whether to connect to this resolver over a private network. Must be set when vnetId is set.
+     */
+    routeThroughPrivateNetwork?: pulumi.Input<boolean>;
+    /**
+     * Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     */
+    vnetId?: pulumi.Input<string>;
+}
+
+export interface TeamsRuleRuleSettingsEgress {
+    /**
+     * The IPv4 address to be used for egress.
+     */
+    ipv4?: pulumi.Input<string>;
+    /**
+     * The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.
+     */
+    ipv4Fallback?: pulumi.Input<string>;
+    /**
+     * The IPv6 range to be used for egress.
+     */
+    ipv6?: pulumi.Input<string>;
+}
+
+export interface TeamsRuleRuleSettingsL4override {
+    /**
+     * IPv4 or IPv6 address.
+     */
+    ip?: pulumi.Input<string>;
+    /**
+     * A port number to use for TCP/UDP overrides.
+     */
+    port?: pulumi.Input<number>;
+}
+
+export interface TeamsRuleRuleSettingsNotificationSettings {
+    /**
+     * Set notification on
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Customize the message shown in the notification.
+     */
+    msg?: pulumi.Input<string>;
+    /**
+     * Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     */
+    supportUrl?: pulumi.Input<string>;
+}
+
+export interface TeamsRuleRuleSettingsPayloadLog {
+    /**
+     * Set to true to enable DLP payload logging for this rule.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface TeamsRuleRuleSettingsQuarantine {
+    /**
+     * Types of files to sandbox.
+     */
+    fileTypes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface TeamsRuleRuleSettingsResolveDnsInternally {
+    /**
+     * The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+     * Available values: "none", "publicDns".
+     */
+    fallback?: pulumi.Input<string>;
+    /**
+     * The internal DNS view identifier that's passed to the internal DNS service.
+     */
+    viewId?: pulumi.Input<string>;
+}
+
+export interface TeamsRuleRuleSettingsUntrustedCert {
+    /**
+     * The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+     * Available values: "passThrough", "block", "error".
+     */
+    action?: pulumi.Input<string>;
+}
+
+export interface TeamsRuleSchedule {
+    /**
+     * The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.
+     */
+    fri?: pulumi.Input<string>;
+    /**
+     * The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.
+     */
+    mon?: pulumi.Input<string>;
+    /**
+     * The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.
+     */
+    sat?: pulumi.Input<string>;
+    /**
+     * The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.
+     */
+    sun?: pulumi.Input<string>;
+    /**
+     * The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.
+     */
+    thu?: pulumi.Input<string>;
+    /**
+     * The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.
+     */
+    timeZone?: pulumi.Input<string>;
+    /**
+     * The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.
+     */
+    tue?: pulumi.Input<string>;
+    /**
+     * The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.
+     */
+    wed?: pulumi.Input<string>;
+}
+
+export interface TunnelConfigConfig {
+    /**
+     * List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
+     */
+    ingresses?: pulumi.Input<pulumi.Input<inputs.TunnelConfigConfigIngress>[]>;
+    /**
+     * Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+     */
+    originRequest?: pulumi.Input<inputs.TunnelConfigConfigOriginRequest>;
+    /**
+     * Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+     */
+    warpRouting?: pulumi.Input<inputs.TunnelConfigConfigWarpRouting>;
+}
+
+export interface TunnelConfigConfigIngress {
+    /**
+     * Public hostname for this service.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+     */
+    originRequest?: pulumi.Input<inputs.TunnelConfigConfigIngressOriginRequest>;
+    /**
+     * Requests with this path route to this public hostname.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Protocol and address of destination server. Supported protocols: http://, https://, unix://, tcp://, ssh://, rdp://, unix+tls://, smb://. Alternatively can return a HTTP status code http*status:[code] e.g. 'http*status:404'.
+     */
+    service: pulumi.Input<string>;
+}
+
+export interface TunnelConfigConfigIngressOriginRequest {
+    /**
+     * For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
+     */
+    access?: pulumi.Input<inputs.TunnelConfigConfigIngressOriginRequestAccess>;
+    /**
+     * Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
+     */
+    caPool?: pulumi.Input<string>;
+    /**
+     * Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
+     */
+    connectTimeout?: pulumi.Input<number>;
+    /**
+     * Disables chunked transfer encoding. Useful if you are running a WSGI server.
+     */
+    disableChunkedEncoding?: pulumi.Input<boolean>;
+    /**
+     * Attempt to connect to origin using HTTP2. Origin must be configured as https.
+     */
+    http2Origin?: pulumi.Input<boolean>;
+    /**
+     * Sets the HTTP Host header on requests sent to the local service.
+     */
+    httpHostHeader?: pulumi.Input<string>;
+    /**
+     * Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
+     */
+    keepAliveConnections?: pulumi.Input<number>;
+    /**
+     * Timeout after which an idle keepalive connection can be discarded.
+     */
+    keepAliveTimeout?: pulumi.Input<number>;
+    /**
+     * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
+     */
+    noHappyEyeballs?: pulumi.Input<boolean>;
+    /**
+     * Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
+     */
+    noTlsVerify?: pulumi.Input<boolean>;
+    /**
+     * Hostname that cloudflared should expect from your origin server certificate.
+     */
+    originServerName?: pulumi.Input<string>;
+    /**
+     * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: "" for the regular proxy and "socks" for a SOCKS5 proxy.
+     */
+    proxyType?: pulumi.Input<string>;
+    /**
+     * The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
+     */
+    tcpKeepAlive?: pulumi.Input<number>;
+    /**
+     * Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
+     */
+    tlsTimeout?: pulumi.Input<number>;
+}
+
+export interface TunnelConfigConfigIngressOriginRequestAccess {
+    /**
+     * Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
+     */
+    audTags: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Deny traffic that has not fulfilled Access authorization.
+     */
+    required?: pulumi.Input<boolean>;
+    teamName?: pulumi.Input<string>;
+}
+
+export interface TunnelConfigConfigOriginRequest {
+    /**
+     * For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
+     */
+    access?: pulumi.Input<inputs.TunnelConfigConfigOriginRequestAccess>;
+    /**
+     * Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
+     */
+    caPool?: pulumi.Input<string>;
+    /**
+     * Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
+     */
+    connectTimeout?: pulumi.Input<number>;
+    /**
+     * Disables chunked transfer encoding. Useful if you are running a WSGI server.
+     */
+    disableChunkedEncoding?: pulumi.Input<boolean>;
+    /**
+     * Attempt to connect to origin using HTTP2. Origin must be configured as https.
+     */
+    http2Origin?: pulumi.Input<boolean>;
+    /**
+     * Sets the HTTP Host header on requests sent to the local service.
+     */
+    httpHostHeader?: pulumi.Input<string>;
+    /**
+     * Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
+     */
+    keepAliveConnections?: pulumi.Input<number>;
+    /**
+     * Timeout after which an idle keepalive connection can be discarded.
+     */
+    keepAliveTimeout?: pulumi.Input<number>;
+    /**
+     * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
+     */
+    noHappyEyeballs?: pulumi.Input<boolean>;
+    /**
+     * Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
+     */
+    noTlsVerify?: pulumi.Input<boolean>;
+    /**
+     * Hostname that cloudflared should expect from your origin server certificate.
+     */
+    originServerName?: pulumi.Input<string>;
+    /**
+     * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: "" for the regular proxy and "socks" for a SOCKS5 proxy.
+     */
+    proxyType?: pulumi.Input<string>;
+    /**
+     * The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
+     */
+    tcpKeepAlive?: pulumi.Input<number>;
+    /**
+     * Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
+     */
+    tlsTimeout?: pulumi.Input<number>;
+}
+
+export interface TunnelConfigConfigOriginRequestAccess {
+    /**
+     * Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
+     */
+    audTags: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Deny traffic that has not fulfilled Access authorization.
+     */
+    required?: pulumi.Input<boolean>;
+    teamName?: pulumi.Input<string>;
+}
+
+export interface TunnelConfigConfigWarpRouting {
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface TunnelConnection {
+    /**
+     * UUID of the Cloudflare Tunnel connector.
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * The cloudflared version used to establish this connection.
+     */
+    clientVersion?: pulumi.Input<string>;
+    /**
+     * The Cloudflare data center used for this connection.
+     */
+    coloName?: pulumi.Input<string>;
+    /**
+     * UUID of the Cloudflare Tunnel connection.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+     */
+    isPendingReconnect?: pulumi.Input<boolean>;
+    /**
+     * Timestamp of when the connection was established.
+     */
+    openedAt?: pulumi.Input<string>;
+    /**
+     * The public IP address of the host running cloudflared.
+     */
+    originIp?: pulumi.Input<string>;
+    /**
+     * UUID of the Cloudflare Tunnel connection.
+     */
+    uuid?: pulumi.Input<string>;
+}
+
 export interface UserAgentBlockingRuleConfiguration {
     /**
      * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
@@ -7341,6 +11505,255 @@ export interface WebAnalyticsSiteRuleset {
      * The zone identifier.
      */
     zoneTag?: pulumi.Input<string>;
+}
+
+export interface WorkerCronTriggerSchedule {
+    cron: pulumi.Input<string>;
+}
+
+export interface WorkerScriptAssets {
+    /**
+     * Configuration for assets within a Worker.
+     */
+    config?: pulumi.Input<inputs.WorkerScriptAssetsConfig>;
+    /**
+     * Token provided upon successful upload of all files from a registered manifest.
+     */
+    jwt?: pulumi.Input<string>;
+}
+
+export interface WorkerScriptAssetsConfig {
+    /**
+     * Determines the redirects and rewrites of requests for HTML content.
+     * Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
+     */
+    htmlHandling?: pulumi.Input<string>;
+    /**
+     * Determines the response when a request does not match a static asset, and there is no Worker script.
+     * Available values: "none", "404-page", "single-page-application".
+     */
+    notFoundHandling?: pulumi.Input<string>;
+    /**
+     * When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
+     */
+    runWorkerFirst?: pulumi.Input<boolean>;
+    /**
+     * When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
+     */
+    serveDirectly?: pulumi.Input<boolean>;
+}
+
+export interface WorkerScriptBinding {
+    /**
+     * R2 bucket to bind to.
+     */
+    bucketName?: pulumi.Input<string>;
+    /**
+     * Identifier of the certificate to bind to.
+     */
+    certificateId?: pulumi.Input<string>;
+    /**
+     * The exported class name of the Durable Object.
+     */
+    className?: pulumi.Input<string>;
+    /**
+     * The name of the dataset to bind to.
+     */
+    dataset?: pulumi.Input<string>;
+    /**
+     * The environment of the scriptName to bind to.
+     */
+    environment?: pulumi.Input<string>;
+    /**
+     * Identifier of the D1 database to bind to.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Name of the Vectorize index to bind to.
+     */
+    indexName?: pulumi.Input<string>;
+    /**
+     * JSON data to use.
+     */
+    json?: pulumi.Input<string>;
+    /**
+     * A JavaScript variable name for the binding.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Namespace to bind to.
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * Namespace identifier tag.
+     */
+    namespaceId?: pulumi.Input<string>;
+    /**
+     * Outbound worker.
+     */
+    outbound?: pulumi.Input<inputs.WorkerScriptBindingOutbound>;
+    /**
+     * Name of the Queue to bind to.
+     */
+    queueName?: pulumi.Input<string>;
+    /**
+     * The script where the Durable Object is defined, if it is external to this Worker.
+     */
+    scriptName?: pulumi.Input<string>;
+    /**
+     * Name of Worker to bind to.
+     */
+    service?: pulumi.Input<string>;
+    /**
+     * The text value to use.
+     */
+    text?: pulumi.Input<string>;
+    /**
+     * The kind of resource that the binding provides.
+     * Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface WorkerScriptBindingOutbound {
+    /**
+     * Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
+     */
+    params?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Outbound worker.
+     */
+    worker?: pulumi.Input<inputs.WorkerScriptBindingOutboundWorker>;
+}
+
+export interface WorkerScriptBindingOutboundWorker {
+    /**
+     * Environment of the outbound worker.
+     */
+    environment?: pulumi.Input<string>;
+    /**
+     * Name of the outbound worker.
+     */
+    service?: pulumi.Input<string>;
+}
+
+export interface WorkerScriptMigrations {
+    /**
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Tag to set as the latest migration tag.
+     */
+    newTag?: pulumi.Input<string>;
+    /**
+     * Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+     */
+    oldTag?: pulumi.Input<string>;
+    /**
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses?: pulumi.Input<pulumi.Input<inputs.WorkerScriptMigrationsRenamedClass>[]>;
+    /**
+     * Migrations to apply in order.
+     */
+    steps?: pulumi.Input<pulumi.Input<inputs.WorkerScriptMigrationsStep>[]>;
+    /**
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses?: pulumi.Input<pulumi.Input<inputs.WorkerScriptMigrationsTransferredClass>[]>;
+}
+
+export interface WorkerScriptMigrationsRenamedClass {
+    from?: pulumi.Input<string>;
+    to?: pulumi.Input<string>;
+}
+
+export interface WorkerScriptMigrationsStep {
+    /**
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses?: pulumi.Input<pulumi.Input<inputs.WorkerScriptMigrationsStepRenamedClass>[]>;
+    /**
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses?: pulumi.Input<pulumi.Input<inputs.WorkerScriptMigrationsStepTransferredClass>[]>;
+}
+
+export interface WorkerScriptMigrationsStepRenamedClass {
+    from?: pulumi.Input<string>;
+    to?: pulumi.Input<string>;
+}
+
+export interface WorkerScriptMigrationsStepTransferredClass {
+    from?: pulumi.Input<string>;
+    fromScript?: pulumi.Input<string>;
+    to?: pulumi.Input<string>;
+}
+
+export interface WorkerScriptMigrationsTransferredClass {
+    from?: pulumi.Input<string>;
+    fromScript?: pulumi.Input<string>;
+    to?: pulumi.Input<string>;
+}
+
+export interface WorkerScriptObservability {
+    /**
+     * Whether observability is enabled for the Worker.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
+     */
+    headSamplingRate?: pulumi.Input<number>;
+}
+
+export interface WorkerScriptPlacement {
+    /**
+     * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: "smart".
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+     */
+    status?: pulumi.Input<string>;
+}
+
+export interface WorkerScriptTailConsumer {
+    /**
+     * Optional environment if the Worker utilizes one.
+     */
+    environment?: pulumi.Input<string>;
+    /**
+     * Optional dispatch namespace the script belongs to.
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * Name of Worker that is to be the consumer.
+     */
+    service: pulumi.Input<string>;
 }
 
 export interface WorkersCronTriggerSchedule {
@@ -11512,6 +15925,21 @@ export interface ZeroTrustListItem {
      * The value of the item in a list.
      */
     value?: pulumi.Input<string>;
+}
+
+export interface ZeroTrustLocalFallbackDomainDomain {
+    /**
+     * A description of the fallback domain, displayed in the client UI.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * A list of IP addresses to handle domain resolution.
+     */
+    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The domain suffix to match when resolving locally.
+     */
+    suffix: pulumi.Input<string>;
 }
 
 export interface ZeroTrustOrganizationCustomPages {

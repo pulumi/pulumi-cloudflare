@@ -235,7 +235,7 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
             __props__.__dict__["description"] = None
             __props__.__dict__["dns_servers"] = None
             __props__.__dict__["suffix"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/fallbackDomain:FallbackDomain"), pulumi.Alias(type_="cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustDeviceCustomProfileLocalDomainFallback, __self__).__init__(
             'cloudflare:index/zeroTrustDeviceCustomProfileLocalDomainFallback:ZeroTrustDeviceCustomProfileLocalDomainFallback',

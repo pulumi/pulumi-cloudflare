@@ -52,9 +52,6 @@ func NewZeroTrustDeviceCustomProfileLocalDomainFallback(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("cloudflare:index/fallbackDomain:FallbackDomain"),
-		},
-		{
 			Type: pulumi.String("cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain"),
 		},
 	})

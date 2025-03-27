@@ -177,7 +177,6 @@ public class ZeroTrustDeviceCustomProfileLocalDomainFallback extends com.pulumi.
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/fallbackDomain:FallbackDomain").build()),
                 Output.of(Alias.builder().type("cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain").build())
             ))
             .build();

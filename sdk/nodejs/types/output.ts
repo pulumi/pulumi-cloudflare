@@ -5,6 +5,2596 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AccessApplicationCorsHeaders {
+    /**
+     * Allows all HTTP request headers.
+     */
+    allowAllHeaders?: boolean;
+    /**
+     * Allows all HTTP request methods.
+     */
+    allowAllMethods?: boolean;
+    /**
+     * Allows all origins.
+     */
+    allowAllOrigins?: boolean;
+    /**
+     * When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests.
+     */
+    allowCredentials?: boolean;
+    /**
+     * Allowed HTTP request headers.
+     */
+    allowedHeaders?: string[];
+    /**
+     * Allowed HTTP request methods.
+     */
+    allowedMethods?: string[];
+    /**
+     * Allowed origins.
+     */
+    allowedOrigins?: string[];
+    /**
+     * The maximum number of seconds the results of a preflight request can be cached.
+     */
+    maxAge?: number;
+}
+
+export interface AccessApplicationDestination {
+    /**
+     * The CIDR range of the destination. Single IPs will be computed as /32.
+     */
+    cidr?: string;
+    /**
+     * The hostname of the destination. Matches a valid SNI served by an HTTPS origin.
+     */
+    hostname?: string;
+    /**
+     * The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+     * Available values: "tcp", "udp".
+     */
+    l4Protocol?: string;
+    /**
+     * The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
+     */
+    portRange?: string;
+    /**
+     * Available values: "public".
+     */
+    type?: string;
+    /**
+     * The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
+     */
+    uri?: string;
+    /**
+     * The VNET ID to match the destination. When omitted, all VNETs will match.
+     */
+    vnetId?: string;
+}
+
+export interface AccessApplicationFooterLink {
+    /**
+     * The hypertext in the footer link.
+     */
+    name: string;
+    /**
+     * the hyperlink in the footer link.
+     */
+    url: string;
+}
+
+export interface AccessApplicationLandingPageDesign {
+    /**
+     * The background color of the log in button on the landing page.
+     */
+    buttonColor?: string;
+    /**
+     * The color of the text in the log in button on the landing page.
+     */
+    buttonTextColor?: string;
+    /**
+     * The URL of the image shown on the landing page.
+     */
+    imageUrl?: string;
+    /**
+     * The message shown on the landing page.
+     */
+    message?: string;
+    /**
+     * The title shown on the landing page.
+     */
+    title: string;
+}
+
+export interface AccessApplicationPolicy {
+    /**
+     * The rules that define how users may connect to the targets secured by your application.
+     */
+    connectionRules: outputs.AccessApplicationPolicyConnectionRules;
+    /**
+     * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: "allow", "deny", "nonIdentity", "bypass".
+     */
+    decision?: string;
+    /**
+     * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
+     */
+    excludes: outputs.AccessApplicationPolicyExclude[];
+    /**
+     * The UUID of the policy
+     */
+    id?: string;
+    /**
+     * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+     */
+    includes: outputs.AccessApplicationPolicyInclude[];
+    /**
+     * The name of the Access policy.
+     */
+    name?: string;
+    /**
+     * The order of execution for this policy. Must be unique for each policy within an app.
+     */
+    precedence?: number;
+    /**
+     * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
+     */
+    requires: outputs.AccessApplicationPolicyRequire[];
+}
+
+export interface AccessApplicationPolicyConnectionRules {
+    /**
+     * The SSH-specific rules that define how users may connect to the targets secured by your application.
+     */
+    ssh: outputs.AccessApplicationPolicyConnectionRulesSsh;
+}
+
+export interface AccessApplicationPolicyConnectionRulesSsh {
+    /**
+     * Enables using Identity Provider email alias as SSH username.
+     */
+    allowEmailAlias?: boolean;
+    /**
+     * Contains the Unix usernames that may be used when connecting over SSH.
+     */
+    usernames: string[];
+}
+
+export interface AccessApplicationPolicyExclude {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: outputs.AccessApplicationPolicyExcludeAnyValidServiceToken;
+    authContext: outputs.AccessApplicationPolicyExcludeAuthContext;
+    authMethod: outputs.AccessApplicationPolicyExcludeAuthMethod;
+    azureAd: outputs.AccessApplicationPolicyExcludeAzureAd;
+    certificate?: outputs.AccessApplicationPolicyExcludeCertificate;
+    commonName: outputs.AccessApplicationPolicyExcludeCommonName;
+    devicePosture: outputs.AccessApplicationPolicyExcludeDevicePosture;
+    email: outputs.AccessApplicationPolicyExcludeEmail;
+    emailDomain: outputs.AccessApplicationPolicyExcludeEmailDomain;
+    emailList: outputs.AccessApplicationPolicyExcludeEmailList;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: outputs.AccessApplicationPolicyExcludeEveryone;
+    externalEvaluation: outputs.AccessApplicationPolicyExcludeExternalEvaluation;
+    geo: outputs.AccessApplicationPolicyExcludeGeo;
+    githubOrganization: outputs.AccessApplicationPolicyExcludeGithubOrganization;
+    group: outputs.AccessApplicationPolicyExcludeGroup;
+    gsuite: outputs.AccessApplicationPolicyExcludeGsuite;
+    ip: outputs.AccessApplicationPolicyExcludeIp;
+    ipList: outputs.AccessApplicationPolicyExcludeIpList;
+    loginMethod: outputs.AccessApplicationPolicyExcludeLoginMethod;
+    okta: outputs.AccessApplicationPolicyExcludeOkta;
+    saml: outputs.AccessApplicationPolicyExcludeSaml;
+    serviceToken: outputs.AccessApplicationPolicyExcludeServiceToken;
+}
+
+export interface AccessApplicationPolicyExcludeAnyValidServiceToken {
+}
+
+export interface AccessApplicationPolicyExcludeAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: string;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessApplicationPolicyExcludeAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: string;
+}
+
+export interface AccessApplicationPolicyExcludeAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessApplicationPolicyExcludeCertificate {
+}
+
+export interface AccessApplicationPolicyExcludeCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: string;
+}
+
+export interface AccessApplicationPolicyExcludeDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: string;
+}
+
+export interface AccessApplicationPolicyExcludeEmail {
+    /**
+     * The email of the user.
+     */
+    email: string;
+}
+
+export interface AccessApplicationPolicyExcludeEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: string;
+}
+
+export interface AccessApplicationPolicyExcludeEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: string;
+}
+
+export interface AccessApplicationPolicyExcludeEveryone {
+}
+
+export interface AccessApplicationPolicyExcludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: string;
+}
+
+export interface AccessApplicationPolicyExcludeGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: string;
+}
+
+export interface AccessApplicationPolicyExcludeGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the organization.
+     */
+    name: string;
+    /**
+     * The name of the team
+     */
+    team?: string;
+}
+
+export interface AccessApplicationPolicyExcludeGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: string;
+}
+
+export interface AccessApplicationPolicyExcludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: string;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessApplicationPolicyExcludeIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: string;
+}
+
+export interface AccessApplicationPolicyExcludeIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: string;
+}
+
+export interface AccessApplicationPolicyExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+export interface AccessApplicationPolicyExcludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the Okta group.
+     */
+    name: string;
+}
+
+export interface AccessApplicationPolicyExcludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: string;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessApplicationPolicyExcludeServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: string;
+}
+
+export interface AccessApplicationPolicyInclude {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: outputs.AccessApplicationPolicyIncludeAnyValidServiceToken;
+    authContext: outputs.AccessApplicationPolicyIncludeAuthContext;
+    authMethod: outputs.AccessApplicationPolicyIncludeAuthMethod;
+    azureAd: outputs.AccessApplicationPolicyIncludeAzureAd;
+    certificate?: outputs.AccessApplicationPolicyIncludeCertificate;
+    commonName: outputs.AccessApplicationPolicyIncludeCommonName;
+    devicePosture: outputs.AccessApplicationPolicyIncludeDevicePosture;
+    email: outputs.AccessApplicationPolicyIncludeEmail;
+    emailDomain: outputs.AccessApplicationPolicyIncludeEmailDomain;
+    emailList: outputs.AccessApplicationPolicyIncludeEmailList;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: outputs.AccessApplicationPolicyIncludeEveryone;
+    externalEvaluation: outputs.AccessApplicationPolicyIncludeExternalEvaluation;
+    geo: outputs.AccessApplicationPolicyIncludeGeo;
+    githubOrganization: outputs.AccessApplicationPolicyIncludeGithubOrganization;
+    group: outputs.AccessApplicationPolicyIncludeGroup;
+    gsuite: outputs.AccessApplicationPolicyIncludeGsuite;
+    ip: outputs.AccessApplicationPolicyIncludeIp;
+    ipList: outputs.AccessApplicationPolicyIncludeIpList;
+    loginMethod: outputs.AccessApplicationPolicyIncludeLoginMethod;
+    okta: outputs.AccessApplicationPolicyIncludeOkta;
+    saml: outputs.AccessApplicationPolicyIncludeSaml;
+    serviceToken: outputs.AccessApplicationPolicyIncludeServiceToken;
+}
+
+export interface AccessApplicationPolicyIncludeAnyValidServiceToken {
+}
+
+export interface AccessApplicationPolicyIncludeAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: string;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessApplicationPolicyIncludeAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: string;
+}
+
+export interface AccessApplicationPolicyIncludeAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessApplicationPolicyIncludeCertificate {
+}
+
+export interface AccessApplicationPolicyIncludeCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: string;
+}
+
+export interface AccessApplicationPolicyIncludeDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: string;
+}
+
+export interface AccessApplicationPolicyIncludeEmail {
+    /**
+     * The email of the user.
+     */
+    email: string;
+}
+
+export interface AccessApplicationPolicyIncludeEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: string;
+}
+
+export interface AccessApplicationPolicyIncludeEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: string;
+}
+
+export interface AccessApplicationPolicyIncludeEveryone {
+}
+
+export interface AccessApplicationPolicyIncludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: string;
+}
+
+export interface AccessApplicationPolicyIncludeGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: string;
+}
+
+export interface AccessApplicationPolicyIncludeGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the organization.
+     */
+    name: string;
+    /**
+     * The name of the team
+     */
+    team?: string;
+}
+
+export interface AccessApplicationPolicyIncludeGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: string;
+}
+
+export interface AccessApplicationPolicyIncludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: string;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessApplicationPolicyIncludeIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: string;
+}
+
+export interface AccessApplicationPolicyIncludeIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: string;
+}
+
+export interface AccessApplicationPolicyIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+export interface AccessApplicationPolicyIncludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the Okta group.
+     */
+    name: string;
+}
+
+export interface AccessApplicationPolicyIncludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: string;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessApplicationPolicyIncludeServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: string;
+}
+
+export interface AccessApplicationPolicyRequire {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: outputs.AccessApplicationPolicyRequireAnyValidServiceToken;
+    authContext: outputs.AccessApplicationPolicyRequireAuthContext;
+    authMethod: outputs.AccessApplicationPolicyRequireAuthMethod;
+    azureAd: outputs.AccessApplicationPolicyRequireAzureAd;
+    certificate?: outputs.AccessApplicationPolicyRequireCertificate;
+    commonName: outputs.AccessApplicationPolicyRequireCommonName;
+    devicePosture: outputs.AccessApplicationPolicyRequireDevicePosture;
+    email: outputs.AccessApplicationPolicyRequireEmail;
+    emailDomain: outputs.AccessApplicationPolicyRequireEmailDomain;
+    emailList: outputs.AccessApplicationPolicyRequireEmailList;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: outputs.AccessApplicationPolicyRequireEveryone;
+    externalEvaluation: outputs.AccessApplicationPolicyRequireExternalEvaluation;
+    geo: outputs.AccessApplicationPolicyRequireGeo;
+    githubOrganization: outputs.AccessApplicationPolicyRequireGithubOrganization;
+    group: outputs.AccessApplicationPolicyRequireGroup;
+    gsuite: outputs.AccessApplicationPolicyRequireGsuite;
+    ip: outputs.AccessApplicationPolicyRequireIp;
+    ipList: outputs.AccessApplicationPolicyRequireIpList;
+    loginMethod: outputs.AccessApplicationPolicyRequireLoginMethod;
+    okta: outputs.AccessApplicationPolicyRequireOkta;
+    saml: outputs.AccessApplicationPolicyRequireSaml;
+    serviceToken: outputs.AccessApplicationPolicyRequireServiceToken;
+}
+
+export interface AccessApplicationPolicyRequireAnyValidServiceToken {
+}
+
+export interface AccessApplicationPolicyRequireAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: string;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessApplicationPolicyRequireAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: string;
+}
+
+export interface AccessApplicationPolicyRequireAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessApplicationPolicyRequireCertificate {
+}
+
+export interface AccessApplicationPolicyRequireCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: string;
+}
+
+export interface AccessApplicationPolicyRequireDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: string;
+}
+
+export interface AccessApplicationPolicyRequireEmail {
+    /**
+     * The email of the user.
+     */
+    email: string;
+}
+
+export interface AccessApplicationPolicyRequireEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: string;
+}
+
+export interface AccessApplicationPolicyRequireEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: string;
+}
+
+export interface AccessApplicationPolicyRequireEveryone {
+}
+
+export interface AccessApplicationPolicyRequireExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: string;
+}
+
+export interface AccessApplicationPolicyRequireGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: string;
+}
+
+export interface AccessApplicationPolicyRequireGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the organization.
+     */
+    name: string;
+    /**
+     * The name of the team
+     */
+    team?: string;
+}
+
+export interface AccessApplicationPolicyRequireGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: string;
+}
+
+export interface AccessApplicationPolicyRequireGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: string;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessApplicationPolicyRequireIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: string;
+}
+
+export interface AccessApplicationPolicyRequireIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: string;
+}
+
+export interface AccessApplicationPolicyRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+export interface AccessApplicationPolicyRequireOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the Okta group.
+     */
+    name: string;
+}
+
+export interface AccessApplicationPolicyRequireSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: string;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessApplicationPolicyRequireServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: string;
+}
+
+export interface AccessApplicationSaasApp {
+    /**
+     * The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.
+     */
+    accessTokenLifetime?: string;
+    /**
+     * If client secret should be required on the token endpoint when authorization*code*with_pkce grant is used.
+     */
+    allowPkceWithoutClientSecret?: boolean;
+    /**
+     * The URL where this applications tile redirects users
+     */
+    appLauncherUrl?: string;
+    /**
+     * Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is "saml"
+     * Available values: "saml", "oidc".
+     */
+    authType: string;
+    /**
+     * The application client id
+     */
+    clientId: string;
+    /**
+     * The application client secret, only returned on POST request.
+     */
+    clientSecret: string;
+    /**
+     * The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
+     */
+    consumerServiceUrl?: string;
+    createdAt: string;
+    customAttributes: outputs.AccessApplicationSaasAppCustomAttribute[];
+    customClaims: outputs.AccessApplicationSaasAppCustomClaim[];
+    /**
+     * The URL that the user will be redirected to after a successful login for IDP initiated logins.
+     */
+    defaultRelayState?: string;
+    /**
+     * The OIDC flows supported by this application
+     */
+    grantTypes?: string[];
+    /**
+     * A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+     */
+    groupFilterRegex?: string;
+    hybridAndImplicitOptions: outputs.AccessApplicationSaasAppHybridAndImplicitOptions;
+    /**
+     * The unique identifier for your SaaS application.
+     */
+    idpEntityId: string;
+    /**
+     * The format of the name identifier sent to the SaaS application.
+     * Available values: "id", "email".
+     */
+    nameIdFormat?: string;
+    /**
+     * A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `nameIdFormat` setting.
+     */
+    nameIdTransformJsonata?: string;
+    /**
+     * The Access public certificate that will be used to verify your identity.
+     */
+    publicKey: string;
+    /**
+     * The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+     */
+    redirectUris?: string[];
+    refreshTokenOptions: outputs.AccessApplicationSaasAppRefreshTokenOptions;
+    /**
+     * A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+     */
+    samlAttributeTransformJsonata?: string;
+    /**
+     * Define the user information shared with access, "offlineAccess" scope will be automatically enabled if refresh tokens are enabled
+     */
+    scopes?: string[];
+    /**
+     * A globally unique name for an identity or service provider.
+     */
+    spEntityId?: string;
+    /**
+     * The endpoint where your SaaS application will send login requests.
+     */
+    ssoEndpoint: string;
+    updatedAt: string;
+}
+
+export interface AccessApplicationSaasAppCustomAttribute {
+    /**
+     * The SAML FriendlyName of the attribute.
+     */
+    friendlyName?: string;
+    /**
+     * The name of the attribute.
+     */
+    name?: string;
+    /**
+     * A globally unique name for an identity or service provider.
+     * Available values: "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified", "urn:oasis:names:tc:SAML:2.0:attrname-format:basic", "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
+     */
+    nameFormat?: string;
+    /**
+     * If the attribute is required when building a SAML assertion.
+     */
+    required?: boolean;
+    source: outputs.AccessApplicationSaasAppCustomAttributeSource;
+}
+
+export interface AccessApplicationSaasAppCustomAttributeSource {
+    /**
+     * The name of the IdP attribute.
+     */
+    name?: string;
+    /**
+     * A mapping from IdP ID to attribute name.
+     */
+    nameByIdps: outputs.AccessApplicationSaasAppCustomAttributeSourceNameByIdp[];
+}
+
+export interface AccessApplicationSaasAppCustomAttributeSourceNameByIdp {
+    /**
+     * The UID of the IdP.
+     */
+    idpId?: string;
+    /**
+     * The name of the IdP provided attribute.
+     */
+    sourceName?: string;
+}
+
+export interface AccessApplicationSaasAppCustomClaim {
+    /**
+     * The name of the claim.
+     */
+    name?: string;
+    /**
+     * If the claim is required when building an OIDC token.
+     */
+    required?: boolean;
+    /**
+     * The scope of the claim.
+     * Available values: "groups", "profile", "email", "openid".
+     */
+    scope?: string;
+    source: outputs.AccessApplicationSaasAppCustomClaimSource;
+}
+
+export interface AccessApplicationSaasAppCustomClaimSource {
+    /**
+     * The name of the IdP claim.
+     */
+    name?: string;
+    /**
+     * A mapping from IdP ID to claim name.
+     */
+    nameByIdp?: {[key: string]: string};
+}
+
+export interface AccessApplicationSaasAppHybridAndImplicitOptions {
+    /**
+     * If an Access Token should be returned from the OIDC Authorization endpoint
+     */
+    returnAccessTokenFromAuthorizationEndpoint?: boolean;
+    /**
+     * If an ID Token should be returned from the OIDC Authorization endpoint
+     */
+    returnIdTokenFromAuthorizationEndpoint?: boolean;
+}
+
+export interface AccessApplicationSaasAppRefreshTokenOptions {
+    /**
+     * How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+     */
+    lifetime?: string;
+}
+
+export interface AccessApplicationScimConfig {
+    /**
+     * Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+     */
+    authentication: outputs.AccessApplicationScimConfigAuthentication;
+    /**
+     * If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+     */
+    deactivateOnDelete?: boolean;
+    /**
+     * Whether SCIM provisioning is turned on for this application.
+     */
+    enabled?: boolean;
+    /**
+     * The UID of the IdP to use as the source for SCIM resources to provision to this application.
+     */
+    idpUid: string;
+    /**
+     * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     */
+    mappings: outputs.AccessApplicationScimConfigMapping[];
+    /**
+     * The base URI for the application's SCIM-compatible API.
+     */
+    remoteUri: string;
+}
+
+export interface AccessApplicationScimConfigAuthentication {
+    /**
+     * URL used to generate the auth code used during token generation.
+     */
+    authorizationUrl?: string;
+    /**
+     * Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+     */
+    clientId?: string;
+    /**
+     * Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+     */
+    clientSecret?: string;
+    /**
+     * Password used to authenticate with the remote SCIM service.
+     */
+    password?: string;
+    /**
+     * The authentication scheme to use when making SCIM requests to this application.
+     * Available values: "httpbasic".
+     */
+    scheme: string;
+    /**
+     * The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+     */
+    scopes?: string[];
+    /**
+     * Token used to authenticate with the remote SCIM service.
+     */
+    token?: string;
+    /**
+     * URL used to generate the token used to authenticate with the remote SCIM service.
+     */
+    tokenUrl?: string;
+    /**
+     * User name used to authenticate with the remote SCIM service.
+     */
+    user?: string;
+}
+
+export interface AccessApplicationScimConfigMapping {
+    /**
+     * Whether or not this mapping is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+     */
+    filter?: string;
+    /**
+     * Whether or not this mapping applies to creates, updates, or deletes.
+     */
+    operations: outputs.AccessApplicationScimConfigMappingOperations;
+    /**
+     * Which SCIM resource type this mapping applies to.
+     */
+    schema: string;
+    /**
+     * The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+     * Available values: "strict", "passthrough".
+     */
+    strictness?: string;
+    /**
+     * A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
+     */
+    transformJsonata?: string;
+}
+
+export interface AccessApplicationScimConfigMappingOperations {
+    /**
+     * Whether or not this mapping applies to create (POST) operations.
+     */
+    create?: boolean;
+    /**
+     * Whether or not this mapping applies to DELETE operations.
+     */
+    delete?: boolean;
+    /**
+     * Whether or not this mapping applies to update (PATCH/PUT) operations.
+     */
+    update?: boolean;
+}
+
+export interface AccessApplicationTargetCriteria {
+    /**
+     * The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+     */
+    port: number;
+    /**
+     * The communication protocol your application secures.
+     * Available values: "ssh".
+     */
+    protocol: string;
+    /**
+     * Contains a map of target attribute keys to target attribute values.
+     */
+    targetAttributes: {[key: string]: string[]};
+}
+
+export interface AccessGroupExclude {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: outputs.AccessGroupExcludeAnyValidServiceToken;
+    authContext: outputs.AccessGroupExcludeAuthContext;
+    authMethod: outputs.AccessGroupExcludeAuthMethod;
+    azureAd: outputs.AccessGroupExcludeAzureAd;
+    certificate?: outputs.AccessGroupExcludeCertificate;
+    commonName: outputs.AccessGroupExcludeCommonName;
+    devicePosture: outputs.AccessGroupExcludeDevicePosture;
+    email: outputs.AccessGroupExcludeEmail;
+    emailDomain: outputs.AccessGroupExcludeEmailDomain;
+    emailList: outputs.AccessGroupExcludeEmailList;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: outputs.AccessGroupExcludeEveryone;
+    externalEvaluation: outputs.AccessGroupExcludeExternalEvaluation;
+    geo: outputs.AccessGroupExcludeGeo;
+    githubOrganization: outputs.AccessGroupExcludeGithubOrganization;
+    group: outputs.AccessGroupExcludeGroup;
+    gsuite: outputs.AccessGroupExcludeGsuite;
+    ip: outputs.AccessGroupExcludeIp;
+    ipList: outputs.AccessGroupExcludeIpList;
+    loginMethod: outputs.AccessGroupExcludeLoginMethod;
+    okta: outputs.AccessGroupExcludeOkta;
+    saml: outputs.AccessGroupExcludeSaml;
+    serviceToken: outputs.AccessGroupExcludeServiceToken;
+}
+
+export interface AccessGroupExcludeAnyValidServiceToken {
+}
+
+export interface AccessGroupExcludeAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: string;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessGroupExcludeAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: string;
+}
+
+export interface AccessGroupExcludeAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessGroupExcludeCertificate {
+}
+
+export interface AccessGroupExcludeCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: string;
+}
+
+export interface AccessGroupExcludeDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: string;
+}
+
+export interface AccessGroupExcludeEmail {
+    /**
+     * The email of the user.
+     */
+    email: string;
+}
+
+export interface AccessGroupExcludeEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: string;
+}
+
+export interface AccessGroupExcludeEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: string;
+}
+
+export interface AccessGroupExcludeEveryone {
+}
+
+export interface AccessGroupExcludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: string;
+}
+
+export interface AccessGroupExcludeGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: string;
+}
+
+export interface AccessGroupExcludeGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the organization.
+     */
+    name: string;
+    /**
+     * The name of the team
+     */
+    team?: string;
+}
+
+export interface AccessGroupExcludeGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: string;
+}
+
+export interface AccessGroupExcludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: string;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessGroupExcludeIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: string;
+}
+
+export interface AccessGroupExcludeIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: string;
+}
+
+export interface AccessGroupExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+export interface AccessGroupExcludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the Okta group.
+     */
+    name: string;
+}
+
+export interface AccessGroupExcludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: string;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessGroupExcludeServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: string;
+}
+
+export interface AccessGroupInclude {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: outputs.AccessGroupIncludeAnyValidServiceToken;
+    authContext?: outputs.AccessGroupIncludeAuthContext;
+    authMethod?: outputs.AccessGroupIncludeAuthMethod;
+    azureAd?: outputs.AccessGroupIncludeAzureAd;
+    certificate?: outputs.AccessGroupIncludeCertificate;
+    commonName?: outputs.AccessGroupIncludeCommonName;
+    devicePosture?: outputs.AccessGroupIncludeDevicePosture;
+    email?: outputs.AccessGroupIncludeEmail;
+    emailDomain?: outputs.AccessGroupIncludeEmailDomain;
+    emailList?: outputs.AccessGroupIncludeEmailList;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: outputs.AccessGroupIncludeEveryone;
+    externalEvaluation?: outputs.AccessGroupIncludeExternalEvaluation;
+    geo?: outputs.AccessGroupIncludeGeo;
+    githubOrganization?: outputs.AccessGroupIncludeGithubOrganization;
+    group?: outputs.AccessGroupIncludeGroup;
+    gsuite?: outputs.AccessGroupIncludeGsuite;
+    ip?: outputs.AccessGroupIncludeIp;
+    ipList?: outputs.AccessGroupIncludeIpList;
+    loginMethod?: outputs.AccessGroupIncludeLoginMethod;
+    okta?: outputs.AccessGroupIncludeOkta;
+    saml?: outputs.AccessGroupIncludeSaml;
+    serviceToken?: outputs.AccessGroupIncludeServiceToken;
+}
+
+export interface AccessGroupIncludeAnyValidServiceToken {
+}
+
+export interface AccessGroupIncludeAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: string;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessGroupIncludeAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: string;
+}
+
+export interface AccessGroupIncludeAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessGroupIncludeCertificate {
+}
+
+export interface AccessGroupIncludeCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: string;
+}
+
+export interface AccessGroupIncludeDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: string;
+}
+
+export interface AccessGroupIncludeEmail {
+    /**
+     * The email of the user.
+     */
+    email: string;
+}
+
+export interface AccessGroupIncludeEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: string;
+}
+
+export interface AccessGroupIncludeEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: string;
+}
+
+export interface AccessGroupIncludeEveryone {
+}
+
+export interface AccessGroupIncludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: string;
+}
+
+export interface AccessGroupIncludeGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: string;
+}
+
+export interface AccessGroupIncludeGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the organization.
+     */
+    name: string;
+    /**
+     * The name of the team
+     */
+    team?: string;
+}
+
+export interface AccessGroupIncludeGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: string;
+}
+
+export interface AccessGroupIncludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: string;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessGroupIncludeIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: string;
+}
+
+export interface AccessGroupIncludeIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: string;
+}
+
+export interface AccessGroupIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+export interface AccessGroupIncludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the Okta group.
+     */
+    name: string;
+}
+
+export interface AccessGroupIncludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: string;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessGroupIncludeServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: string;
+}
+
+export interface AccessGroupRequire {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: outputs.AccessGroupRequireAnyValidServiceToken;
+    authContext: outputs.AccessGroupRequireAuthContext;
+    authMethod: outputs.AccessGroupRequireAuthMethod;
+    azureAd: outputs.AccessGroupRequireAzureAd;
+    certificate?: outputs.AccessGroupRequireCertificate;
+    commonName: outputs.AccessGroupRequireCommonName;
+    devicePosture: outputs.AccessGroupRequireDevicePosture;
+    email: outputs.AccessGroupRequireEmail;
+    emailDomain: outputs.AccessGroupRequireEmailDomain;
+    emailList: outputs.AccessGroupRequireEmailList;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: outputs.AccessGroupRequireEveryone;
+    externalEvaluation: outputs.AccessGroupRequireExternalEvaluation;
+    geo: outputs.AccessGroupRequireGeo;
+    githubOrganization: outputs.AccessGroupRequireGithubOrganization;
+    group: outputs.AccessGroupRequireGroup;
+    gsuite: outputs.AccessGroupRequireGsuite;
+    ip: outputs.AccessGroupRequireIp;
+    ipList: outputs.AccessGroupRequireIpList;
+    loginMethod: outputs.AccessGroupRequireLoginMethod;
+    okta: outputs.AccessGroupRequireOkta;
+    saml: outputs.AccessGroupRequireSaml;
+    serviceToken: outputs.AccessGroupRequireServiceToken;
+}
+
+export interface AccessGroupRequireAnyValidServiceToken {
+}
+
+export interface AccessGroupRequireAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: string;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessGroupRequireAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: string;
+}
+
+export interface AccessGroupRequireAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessGroupRequireCertificate {
+}
+
+export interface AccessGroupRequireCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: string;
+}
+
+export interface AccessGroupRequireDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: string;
+}
+
+export interface AccessGroupRequireEmail {
+    /**
+     * The email of the user.
+     */
+    email: string;
+}
+
+export interface AccessGroupRequireEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: string;
+}
+
+export interface AccessGroupRequireEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: string;
+}
+
+export interface AccessGroupRequireEveryone {
+}
+
+export interface AccessGroupRequireExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: string;
+}
+
+export interface AccessGroupRequireGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: string;
+}
+
+export interface AccessGroupRequireGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the organization.
+     */
+    name: string;
+    /**
+     * The name of the team
+     */
+    team?: string;
+}
+
+export interface AccessGroupRequireGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: string;
+}
+
+export interface AccessGroupRequireGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: string;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessGroupRequireIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: string;
+}
+
+export interface AccessGroupRequireIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: string;
+}
+
+export interface AccessGroupRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+export interface AccessGroupRequireOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the Okta group.
+     */
+    name: string;
+}
+
+export interface AccessGroupRequireSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: string;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessGroupRequireServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: string;
+}
+
+export interface AccessIdentityProviderConfig {
+    /**
+     * Your companies TLD
+     */
+    appsDomain?: string;
+    /**
+     * A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules.
+     */
+    attributes?: string[];
+    /**
+     * The authorizationEndpoint URL of your IdP
+     */
+    authUrl?: string;
+    /**
+     * Your okta authorization server id
+     */
+    authorizationServerId?: string;
+    /**
+     * Your centrify account url
+     */
+    centrifyAccount?: string;
+    /**
+     * Your centrify app id
+     */
+    centrifyAppId?: string;
+    /**
+     * The jwksUri endpoint of your IdP to allow the IdP keys to sign the tokens
+     */
+    certsUrl?: string;
+    /**
+     * Custom claims
+     */
+    claims?: string[];
+    /**
+     * Your OAuth Client ID
+     */
+    clientId?: string;
+    /**
+     * Your OAuth Client Secret
+     */
+    clientSecret?: string;
+    /**
+     * Should Cloudflare try to load authentication contexts from your account
+     */
+    conditionalAccessEnabled?: boolean;
+    /**
+     * Your Azure directory uuid
+     */
+    directoryId?: string;
+    /**
+     * The attribute name for email in the SAML response.
+     */
+    emailAttributeName?: string;
+    /**
+     * The claim name for email in the idToken response.
+     */
+    emailClaimName?: string;
+    /**
+     * Add a list of attribute names that will be returned in the response header from the Access callback.
+     */
+    headerAttributes?: outputs.AccessIdentityProviderConfigHeaderAttribute[];
+    /**
+     * X509 certificate to verify the signature in the SAML authentication response
+     */
+    idpPublicCerts?: string[];
+    /**
+     * IdP Entity ID or Issuer URL
+     */
+    issuerUrl?: string;
+    /**
+     * Your okta account url
+     */
+    oktaAccount?: string;
+    /**
+     * Your OneLogin account url
+     */
+    oneloginAccount?: string;
+    /**
+     * Your PingOne environment identifier
+     */
+    pingEnvId?: string;
+    /**
+     * Enable Proof Key for Code Exchange (PKCE)
+     */
+    pkceEnabled?: boolean;
+    /**
+     * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * Available values: "login", "selectAccount", "none".
+     */
+    prompt?: string;
+    redirectUrl: string;
+    /**
+     * OAuth scopes
+     */
+    scopes?: string[];
+    /**
+     * Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
+     */
+    signRequest?: boolean;
+    /**
+     * URL to send the SAML authentication requests to
+     */
+    ssoTargetUrl?: string;
+    /**
+     * Should Cloudflare try to load groups from your account
+     */
+    supportGroups?: boolean;
+    /**
+     * The tokenEndpoint URL of your IdP
+     */
+    tokenUrl?: string;
+}
+
+export interface AccessIdentityProviderConfigHeaderAttribute {
+    /**
+     * attribute name from the IDP
+     */
+    attributeName?: string;
+    /**
+     * header that will be added on the request to the origin
+     */
+    headerName?: string;
+}
+
+export interface AccessIdentityProviderScimConfig {
+    /**
+     * A flag to enable or disable SCIM for the identity provider.
+     */
+    enabled?: boolean;
+    /**
+     * Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no*action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+     * Available values: "automatic", "reauth", "no*action".
+     */
+    identityUpdateBehavior?: string;
+    /**
+     * The base URL of Cloudflare's SCIM V2.0 API endpoint.
+     */
+    scimBaseUrl: string;
+    /**
+     * A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
+     */
+    seatDeprovision?: boolean;
+    /**
+     * A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
+     */
+    secret: string;
+    /**
+     * A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+     */
+    userDeprovision?: boolean;
+}
+
+export interface AccessMutualTlsHostnameSettingsSetting {
+    /**
+     * Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+     */
+    chinaNetwork: boolean;
+    /**
+     * Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+     */
+    clientCertificateForwarding: boolean;
+    /**
+     * The hostname that these settings apply to.
+     */
+    hostname: string;
+}
+
+export interface AccessOrganizationCustomPages {
+    /**
+     * The uid of the custom page to use when a user is denied access after failing a non-identity rule.
+     */
+    forbidden?: string;
+    /**
+     * The uid of the custom page to use when a user is denied access.
+     */
+    identityDenied?: string;
+}
+
+export interface AccessOrganizationLoginDesign {
+    /**
+     * The background color on your login page.
+     */
+    backgroundColor?: string;
+    /**
+     * The text at the bottom of your login page.
+     */
+    footerText?: string;
+    /**
+     * The text at the top of your login page.
+     */
+    headerText?: string;
+    /**
+     * The URL of the logo on your login page.
+     */
+    logoPath?: string;
+    /**
+     * The text color on your login page.
+     */
+    textColor?: string;
+}
+
+export interface AccessPolicyApprovalGroup {
+    /**
+     * The number of approvals needed to obtain access.
+     */
+    approvalsNeeded: number;
+    /**
+     * A list of emails that can approve the access request.
+     */
+    emailAddresses?: string[];
+    /**
+     * The UUID of an re-usable email list.
+     */
+    emailListUuid?: string;
+}
+
+export interface AccessPolicyExclude {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: outputs.AccessPolicyExcludeAnyValidServiceToken;
+    authContext: outputs.AccessPolicyExcludeAuthContext;
+    authMethod: outputs.AccessPolicyExcludeAuthMethod;
+    azureAd: outputs.AccessPolicyExcludeAzureAd;
+    certificate?: outputs.AccessPolicyExcludeCertificate;
+    commonName: outputs.AccessPolicyExcludeCommonName;
+    devicePosture: outputs.AccessPolicyExcludeDevicePosture;
+    email: outputs.AccessPolicyExcludeEmail;
+    emailDomain: outputs.AccessPolicyExcludeEmailDomain;
+    emailList: outputs.AccessPolicyExcludeEmailList;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: outputs.AccessPolicyExcludeEveryone;
+    externalEvaluation: outputs.AccessPolicyExcludeExternalEvaluation;
+    geo: outputs.AccessPolicyExcludeGeo;
+    githubOrganization: outputs.AccessPolicyExcludeGithubOrganization;
+    group: outputs.AccessPolicyExcludeGroup;
+    gsuite: outputs.AccessPolicyExcludeGsuite;
+    ip: outputs.AccessPolicyExcludeIp;
+    ipList: outputs.AccessPolicyExcludeIpList;
+    loginMethod: outputs.AccessPolicyExcludeLoginMethod;
+    okta: outputs.AccessPolicyExcludeOkta;
+    saml: outputs.AccessPolicyExcludeSaml;
+    serviceToken: outputs.AccessPolicyExcludeServiceToken;
+}
+
+export interface AccessPolicyExcludeAnyValidServiceToken {
+}
+
+export interface AccessPolicyExcludeAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: string;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessPolicyExcludeAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: string;
+}
+
+export interface AccessPolicyExcludeAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessPolicyExcludeCertificate {
+}
+
+export interface AccessPolicyExcludeCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: string;
+}
+
+export interface AccessPolicyExcludeDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: string;
+}
+
+export interface AccessPolicyExcludeEmail {
+    /**
+     * The email of the user.
+     */
+    email: string;
+}
+
+export interface AccessPolicyExcludeEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: string;
+}
+
+export interface AccessPolicyExcludeEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: string;
+}
+
+export interface AccessPolicyExcludeEveryone {
+}
+
+export interface AccessPolicyExcludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: string;
+}
+
+export interface AccessPolicyExcludeGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: string;
+}
+
+export interface AccessPolicyExcludeGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the organization.
+     */
+    name: string;
+    /**
+     * The name of the team
+     */
+    team?: string;
+}
+
+export interface AccessPolicyExcludeGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: string;
+}
+
+export interface AccessPolicyExcludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: string;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessPolicyExcludeIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: string;
+}
+
+export interface AccessPolicyExcludeIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: string;
+}
+
+export interface AccessPolicyExcludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+export interface AccessPolicyExcludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the Okta group.
+     */
+    name: string;
+}
+
+export interface AccessPolicyExcludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: string;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessPolicyExcludeServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: string;
+}
+
+export interface AccessPolicyInclude {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: outputs.AccessPolicyIncludeAnyValidServiceToken;
+    authContext?: outputs.AccessPolicyIncludeAuthContext;
+    authMethod?: outputs.AccessPolicyIncludeAuthMethod;
+    azureAd?: outputs.AccessPolicyIncludeAzureAd;
+    certificate?: outputs.AccessPolicyIncludeCertificate;
+    commonName?: outputs.AccessPolicyIncludeCommonName;
+    devicePosture?: outputs.AccessPolicyIncludeDevicePosture;
+    email?: outputs.AccessPolicyIncludeEmail;
+    emailDomain?: outputs.AccessPolicyIncludeEmailDomain;
+    emailList?: outputs.AccessPolicyIncludeEmailList;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: outputs.AccessPolicyIncludeEveryone;
+    externalEvaluation?: outputs.AccessPolicyIncludeExternalEvaluation;
+    geo?: outputs.AccessPolicyIncludeGeo;
+    githubOrganization?: outputs.AccessPolicyIncludeGithubOrganization;
+    group?: outputs.AccessPolicyIncludeGroup;
+    gsuite?: outputs.AccessPolicyIncludeGsuite;
+    ip?: outputs.AccessPolicyIncludeIp;
+    ipList?: outputs.AccessPolicyIncludeIpList;
+    loginMethod?: outputs.AccessPolicyIncludeLoginMethod;
+    okta?: outputs.AccessPolicyIncludeOkta;
+    saml?: outputs.AccessPolicyIncludeSaml;
+    serviceToken?: outputs.AccessPolicyIncludeServiceToken;
+}
+
+export interface AccessPolicyIncludeAnyValidServiceToken {
+}
+
+export interface AccessPolicyIncludeAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: string;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessPolicyIncludeAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: string;
+}
+
+export interface AccessPolicyIncludeAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessPolicyIncludeCertificate {
+}
+
+export interface AccessPolicyIncludeCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: string;
+}
+
+export interface AccessPolicyIncludeDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: string;
+}
+
+export interface AccessPolicyIncludeEmail {
+    /**
+     * The email of the user.
+     */
+    email: string;
+}
+
+export interface AccessPolicyIncludeEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: string;
+}
+
+export interface AccessPolicyIncludeEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: string;
+}
+
+export interface AccessPolicyIncludeEveryone {
+}
+
+export interface AccessPolicyIncludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: string;
+}
+
+export interface AccessPolicyIncludeGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: string;
+}
+
+export interface AccessPolicyIncludeGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the organization.
+     */
+    name: string;
+    /**
+     * The name of the team
+     */
+    team?: string;
+}
+
+export interface AccessPolicyIncludeGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: string;
+}
+
+export interface AccessPolicyIncludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: string;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessPolicyIncludeIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: string;
+}
+
+export interface AccessPolicyIncludeIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: string;
+}
+
+export interface AccessPolicyIncludeLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+export interface AccessPolicyIncludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the Okta group.
+     */
+    name: string;
+}
+
+export interface AccessPolicyIncludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: string;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessPolicyIncludeServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: string;
+}
+
+export interface AccessPolicyRequire {
+    /**
+     * An empty object which matches on all service tokens.
+     */
+    anyValidServiceToken?: outputs.AccessPolicyRequireAnyValidServiceToken;
+    authContext: outputs.AccessPolicyRequireAuthContext;
+    authMethod: outputs.AccessPolicyRequireAuthMethod;
+    azureAd: outputs.AccessPolicyRequireAzureAd;
+    certificate?: outputs.AccessPolicyRequireCertificate;
+    commonName: outputs.AccessPolicyRequireCommonName;
+    devicePosture: outputs.AccessPolicyRequireDevicePosture;
+    email: outputs.AccessPolicyRequireEmail;
+    emailDomain: outputs.AccessPolicyRequireEmailDomain;
+    emailList: outputs.AccessPolicyRequireEmailList;
+    /**
+     * An empty object which matches on all users.
+     */
+    everyone?: outputs.AccessPolicyRequireEveryone;
+    externalEvaluation: outputs.AccessPolicyRequireExternalEvaluation;
+    geo: outputs.AccessPolicyRequireGeo;
+    githubOrganization: outputs.AccessPolicyRequireGithubOrganization;
+    group: outputs.AccessPolicyRequireGroup;
+    gsuite: outputs.AccessPolicyRequireGsuite;
+    ip: outputs.AccessPolicyRequireIp;
+    ipList: outputs.AccessPolicyRequireIpList;
+    loginMethod: outputs.AccessPolicyRequireLoginMethod;
+    okta: outputs.AccessPolicyRequireOkta;
+    saml: outputs.AccessPolicyRequireSaml;
+    serviceToken: outputs.AccessPolicyRequireServiceToken;
+}
+
+export interface AccessPolicyRequireAnyValidServiceToken {
+}
+
+export interface AccessPolicyRequireAuthContext {
+    /**
+     * The ACID of an Authentication context.
+     */
+    acId: string;
+    /**
+     * The ID of an Authentication context.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessPolicyRequireAuthMethod {
+    /**
+     * The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+     */
+    authMethod: string;
+}
+
+export interface AccessPolicyRequireAzureAd {
+    /**
+     * The ID of an Azure group.
+     */
+    id: string;
+    /**
+     * The ID of your Azure identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessPolicyRequireCertificate {
+}
+
+export interface AccessPolicyRequireCommonName {
+    /**
+     * The common name to match.
+     */
+    commonName: string;
+}
+
+export interface AccessPolicyRequireDevicePosture {
+    /**
+     * The ID of a device posture integration.
+     */
+    integrationUid: string;
+}
+
+export interface AccessPolicyRequireEmail {
+    /**
+     * The email of the user.
+     */
+    email: string;
+}
+
+export interface AccessPolicyRequireEmailDomain {
+    /**
+     * The email domain to match.
+     */
+    domain: string;
+}
+
+export interface AccessPolicyRequireEmailList {
+    /**
+     * The ID of a previously created email list.
+     */
+    id: string;
+}
+
+export interface AccessPolicyRequireEveryone {
+}
+
+export interface AccessPolicyRequireExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
+    evaluateUrl: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
+    keysUrl: string;
+}
+
+export interface AccessPolicyRequireGeo {
+    /**
+     * The country code that should be matched.
+     */
+    countryCode: string;
+}
+
+export interface AccessPolicyRequireGithubOrganization {
+    /**
+     * The ID of your Github identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the organization.
+     */
+    name: string;
+    /**
+     * The name of the team
+     */
+    team?: string;
+}
+
+export interface AccessPolicyRequireGroup {
+    /**
+     * The ID of a previously created Access group.
+     */
+    id: string;
+}
+
+export interface AccessPolicyRequireGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
+    email: string;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessPolicyRequireIp {
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ip: string;
+}
+
+export interface AccessPolicyRequireIpList {
+    /**
+     * The ID of a previously created IP list.
+     */
+    id: string;
+}
+
+export interface AccessPolicyRequireLoginMethod {
+    /**
+     * The ID of an identity provider.
+     */
+    id: string;
+}
+
+export interface AccessPolicyRequireOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
+    identityProviderId: string;
+    /**
+     * The name of the Okta group.
+     */
+    name: string;
+}
+
+export interface AccessPolicyRequireSaml {
+    /**
+     * The name of the SAML attribute.
+     */
+    attributeName: string;
+    /**
+     * The SAML attribute value to look for.
+     */
+    attributeValue: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface AccessPolicyRequireServiceToken {
+    /**
+     * The ID of a Service Token.
+     */
+    tokenId: string;
+}
+
 export interface AccessRuleConfiguration {
     /**
      * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
@@ -862,6 +3452,401 @@ export interface CustomSslKeylessServerTunnel {
      * Cloudflare Tunnel Virtual Network ID
      */
     vnetId: string;
+}
+
+export interface DeviceDexTestData {
+    /**
+     * The desired endpoint to test.
+     */
+    host?: string;
+    /**
+     * The type of test.
+     */
+    kind?: string;
+    /**
+     * The HTTP request method type.
+     */
+    method?: string;
+}
+
+export interface DeviceDexTestTargetPolicy {
+    /**
+     * Whether the profile is the account default
+     */
+    default?: boolean;
+    /**
+     * The id of the device settings profile
+     */
+    id?: string;
+    /**
+     * The name of the device settings profile
+     */
+    name?: string;
+}
+
+export interface DeviceManagedNetworksConfig {
+    /**
+     * The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
+     */
+    sha256?: string;
+    /**
+     * A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
+     */
+    tlsSockaddr: string;
+}
+
+export interface DevicePostureIntegrationConfig {
+    /**
+     * If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`
+     */
+    accessClientId?: string;
+    /**
+     * If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`
+     */
+    accessClientSecret?: string;
+    /**
+     * The Workspace One API URL provided in the Workspace One Admin Dashboard.
+     */
+    apiUrl?: string;
+    /**
+     * The Workspace One Authorization URL depending on your region.
+     */
+    authUrl?: string;
+    /**
+     * The Workspace One client ID provided in the Workspace One Admin Dashboard.
+     */
+    clientId?: string;
+    /**
+     * The Uptycs client secret.
+     */
+    clientKey?: string;
+    /**
+     * The Workspace One client secret provided in the Workspace One Admin Dashboard.
+     */
+    clientSecret?: string;
+    /**
+     * The Crowdstrike customer ID.
+     */
+    customerId?: string;
+}
+
+export interface DevicePostureRuleInput {
+    /**
+     * The Number of active threats.
+     */
+    activeThreats?: number;
+    /**
+     * UUID of Cloudflare managed certificate.
+     */
+    certificateId?: string;
+    /**
+     * List of volume names to be checked for encryption.
+     */
+    checkDisks?: string[];
+    /**
+     * Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.
+     */
+    checkPrivateKey?: boolean;
+    /**
+     * Common Name that is protected by the certificate
+     */
+    cn?: string;
+    /**
+     * Compliance Status
+     * Available values: "compliant", "noncompliant", "unknown".
+     */
+    complianceStatus?: string;
+    /**
+     * Posture Integration ID.
+     */
+    connectionId?: string;
+    /**
+     * Count Operator
+     * Available values: "<", "<=", ">", ">=", "==".
+     */
+    countOperator?: string;
+    /**
+     * Domain
+     */
+    domain?: string;
+    /**
+     * For more details on eid last seen, refer to the Tanium documentation.
+     */
+    eidLastSeen?: string;
+    /**
+     * Enabled
+     */
+    enabled?: boolean;
+    /**
+     * Whether or not file exists
+     */
+    exists?: boolean;
+    /**
+     * List of values indicating purposes for which the certificate public key can be used
+     */
+    extendedKeyUsages?: string[];
+    /**
+     * List ID.
+     */
+    id?: string;
+    /**
+     * Whether device is infected.
+     */
+    infected?: boolean;
+    /**
+     * Whether device is active.
+     */
+    isActive?: boolean;
+    /**
+     * The Number of Issues.
+     */
+    issueCount?: string;
+    /**
+     * For more details on last seen, please refer to the Crowdstrike documentation.
+     */
+    lastSeen?: string;
+    locations: outputs.DevicePostureRuleInputLocations;
+    /**
+     * Network status of device.
+     * Available values: "connected", "disconnected", "disconnecting", "connecting".
+     */
+    networkStatus?: string;
+    /**
+     * Operating system
+     * Available values: "windows", "linux", "mac".
+     */
+    operatingSystem?: string;
+    /**
+     * Agent operational state.
+     * Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
+     */
+    operationalState?: string;
+    /**
+     * operator
+     * Available values: "<", "<=", ">", ">=", "==".
+     */
+    operator?: string;
+    /**
+     * Os Version
+     */
+    os?: string;
+    /**
+     * Operating System Distribution Name (linux only)
+     */
+    osDistroName?: string;
+    /**
+     * Version of OS Distribution (linux only)
+     */
+    osDistroRevision?: string;
+    /**
+     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+     */
+    osVersionExtra?: string;
+    /**
+     * overall
+     */
+    overall?: string;
+    /**
+     * File path.
+     */
+    path?: string;
+    /**
+     * Whether to check all disks for encryption.
+     */
+    requireAll?: boolean;
+    /**
+     * For more details on risk level, refer to the Tanium documentation.
+     * Available values: "low", "medium", "high", "critical".
+     */
+    riskLevel?: string;
+    /**
+     * A value between 0-100 assigned to devices set by the 3rd party posture provider.
+     */
+    score?: number;
+    /**
+     * Score Operator
+     * Available values: "<", "<=", ">", ">=", "==".
+     */
+    scoreOperator?: string;
+    /**
+     * SensorConfig
+     */
+    sensorConfig?: string;
+    /**
+     * SHA-256.
+     */
+    sha256?: string;
+    /**
+     * For more details on state, please refer to the Crowdstrike documentation.
+     * Available values: "online", "offline", "unknown".
+     */
+    state?: string;
+    /**
+     * Signing certificate thumbprint.
+     */
+    thumbprint?: string;
+    /**
+     * For more details on total score, refer to the Tanium documentation.
+     */
+    totalScore?: number;
+    /**
+     * Version of OS
+     */
+    version?: string;
+    /**
+     * Version Operator
+     * Available values: "<", "<=", ">", ">=", "==".
+     */
+    versionOperator?: string;
+}
+
+export interface DevicePostureRuleInputLocations {
+    /**
+     * List of paths to check for client certificate on linux.
+     */
+    paths?: string[];
+    /**
+     * List of trust stores to check for client certificate.
+     */
+    trustStores?: string[];
+}
+
+export interface DevicePostureRuleMatch {
+    /**
+     * Available values: "windows", "mac", "linux", "android", "ios".
+     */
+    platform?: string;
+}
+
+export interface DlpCustomProfileContextAwareness {
+    /**
+     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
+     */
+    enabled: boolean;
+    /**
+     * Content types to exclude from context analysis and return all matches.
+     */
+    skip: outputs.DlpCustomProfileContextAwarenessSkip;
+}
+
+export interface DlpCustomProfileContextAwarenessSkip {
+    /**
+     * If the content type is a file, skip context analysis and return all matches.
+     */
+    files: boolean;
+}
+
+export interface DlpCustomProfileEntry {
+    enabled: boolean;
+    name: string;
+    pattern: outputs.DlpCustomProfileEntryPattern;
+    words?: string[];
+}
+
+export interface DlpCustomProfileEntryPattern {
+    regex: string;
+    /**
+     * Available values: "luhn".
+     */
+    validation?: string;
+}
+
+export interface DlpCustomProfileProfile {
+    aiContextEnabled?: boolean;
+    /**
+     * Related DLP policies will trigger when the match count exceeds the number set.
+     */
+    allowedMatchCount: number;
+    confidenceThreshold?: string;
+    /**
+     * Scan the context of predefined entries to only return matches surrounded by keywords.
+     */
+    contextAwareness: outputs.DlpCustomProfileProfileContextAwareness;
+    /**
+     * The description of the profile
+     */
+    description?: string;
+    entries: outputs.DlpCustomProfileProfileEntry[];
+    name: string;
+    ocrEnabled?: boolean;
+    /**
+     * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
+     */
+    sharedEntries: outputs.DlpCustomProfileProfileSharedEntry[];
+}
+
+export interface DlpCustomProfileProfileContextAwareness {
+    /**
+     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
+     */
+    enabled: boolean;
+    /**
+     * Content types to exclude from context analysis and return all matches.
+     */
+    skip: outputs.DlpCustomProfileProfileContextAwarenessSkip;
+}
+
+export interface DlpCustomProfileProfileContextAwarenessSkip {
+    /**
+     * If the content type is a file, skip context analysis and return all matches.
+     */
+    files: boolean;
+}
+
+export interface DlpCustomProfileProfileEntry {
+    enabled: boolean;
+    name: string;
+    pattern?: outputs.DlpCustomProfileProfileEntryPattern;
+    words?: string[];
+}
+
+export interface DlpCustomProfileProfileEntryPattern {
+    regex: string;
+    /**
+     * Available values: "luhn".
+     */
+    validation?: string;
+}
+
+export interface DlpCustomProfileProfileSharedEntry {
+    enabled: boolean;
+    entryId: string;
+    /**
+     * Available values: "custom".
+     */
+    entryType: string;
+}
+
+export interface DlpCustomProfileSharedEntry {
+    enabled: boolean;
+    entryId: string;
+    /**
+     * Available values: "custom".
+     */
+    entryType: string;
+}
+
+export interface DlpPredefinedProfileContextAwareness {
+    /**
+     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
+     */
+    enabled: boolean;
+    /**
+     * Content types to exclude from context analysis and return all matches.
+     */
+    skip: outputs.DlpPredefinedProfileContextAwarenessSkip;
+}
+
+export interface DlpPredefinedProfileContextAwarenessSkip {
+    /**
+     * If the content type is a file, skip context analysis and return all matches.
+     */
+    files: boolean;
+}
+
+export interface DlpPredefinedProfileEntry {
+    enabled: boolean;
+    id: string;
 }
 
 export interface DnsFirewallAttackMitigation {
@@ -23103,6 +26088,44 @@ export interface MagicWanStaticRouteScope {
     coloRegions?: string[];
 }
 
+export interface ManagedHeadersManagedRequestHeader {
+    /**
+     * The Managed Transforms that this Managed Transform conflicts with.
+     */
+    conflictsWiths: string[];
+    /**
+     * Whether the Managed Transform is enabled.
+     */
+    enabled: boolean;
+    /**
+     * Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
+     */
+    hasConflict: boolean;
+    /**
+     * The human-readable identifier of the Managed Transform.
+     */
+    id: string;
+}
+
+export interface ManagedHeadersManagedResponseHeader {
+    /**
+     * The Managed Transforms that this Managed Transform conflicts with.
+     */
+    conflictsWiths: string[];
+    /**
+     * Whether the Managed Transform is enabled.
+     */
+    enabled: boolean;
+    /**
+     * Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
+     */
+    hasConflict: boolean;
+    /**
+     * The human-readable identifier of the Managed Transform.
+     */
+    id: string;
+}
+
 export interface ManagedTransformsManagedRequestHeader {
     /**
      * The Managed Transforms that this Managed Transform conflicts with.
@@ -24830,6 +27853,178 @@ export interface RateLimitMatchResponse {
     originTraffic?: boolean;
 }
 
+export interface RecordData {
+    /**
+     * Algorithm.
+     */
+    algorithm?: number;
+    /**
+     * Altitude of location in meters.
+     */
+    altitude?: number;
+    /**
+     * Certificate.
+     */
+    certificate?: string;
+    /**
+     * Digest.
+     */
+    digest?: string;
+    /**
+     * Digest Type.
+     */
+    digestType?: number;
+    /**
+     * fingerprint.
+     */
+    fingerprint?: string;
+    /**
+     * Flags for the CAA record.
+     */
+    flags?: number;
+    /**
+     * Key Tag.
+     */
+    keyTag?: number;
+    /**
+     * Degrees of latitude.
+     */
+    latDegrees?: number;
+    /**
+     * Latitude direction.
+     * Available values: "N", "S".
+     */
+    latDirection?: string;
+    /**
+     * Minutes of latitude.
+     */
+    latMinutes: number;
+    /**
+     * Seconds of latitude.
+     */
+    latSeconds: number;
+    /**
+     * Degrees of longitude.
+     */
+    longDegrees?: number;
+    /**
+     * Longitude direction.
+     * Available values: "E", "W".
+     */
+    longDirection?: string;
+    /**
+     * Minutes of longitude.
+     */
+    longMinutes: number;
+    /**
+     * Seconds of longitude.
+     */
+    longSeconds: number;
+    /**
+     * Matching Type.
+     */
+    matchingType?: number;
+    /**
+     * Order.
+     */
+    order?: number;
+    /**
+     * The port of the service.
+     */
+    port?: number;
+    /**
+     * Horizontal precision of location.
+     */
+    precisionHorz: number;
+    /**
+     * Vertical precision of location.
+     */
+    precisionVert: number;
+    /**
+     * Preference.
+     */
+    preference?: number;
+    /**
+     * priority.
+     */
+    priority?: number;
+    /**
+     * Protocol.
+     */
+    protocol?: number;
+    /**
+     * Public Key.
+     */
+    publicKey?: string;
+    /**
+     * Regex.
+     */
+    regex?: string;
+    /**
+     * Replacement.
+     */
+    replacement?: string;
+    /**
+     * Selector.
+     */
+    selector?: number;
+    /**
+     * Service.
+     */
+    service?: string;
+    /**
+     * Size of location in meters.
+     */
+    size: number;
+    /**
+     * Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+     */
+    tag?: string;
+    /**
+     * target.
+     */
+    target?: string;
+    /**
+     * Type.
+     */
+    type?: number;
+    /**
+     * Usage.
+     */
+    usage?: number;
+    /**
+     * Value of the record. This field's semantics depend on the chosen tag.
+     */
+    value?: string;
+    /**
+     * The record weight.
+     */
+    weight?: number;
+}
+
+export interface RecordSettings {
+    /**
+     * If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
+     */
+    flattenCname: boolean;
+    /**
+     * When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+     */
+    ipv4Only: boolean;
+    /**
+     * When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+     */
+    ipv6Only: boolean;
+}
+
+export interface RiskBehaviorBehaviors {
+    enabled: boolean;
+    /**
+     * Available values: "low", "medium", "high".
+     */
+    riskLevel: string;
+}
+
 export interface RulesetRule {
     /**
      * The action to perform when the rule matches.
@@ -25671,6 +28866,117 @@ export interface SpectrumApplicationOriginDns {
     type?: string;
 }
 
+export interface StaticRouteModifiedRoute {
+    /**
+     * When the route was created.
+     */
+    createdOn: string;
+    /**
+     * An optional human provided description of the static route.
+     */
+    description: string;
+    /**
+     * Identifier
+     */
+    id: string;
+    /**
+     * When the route was last modified.
+     */
+    modifiedOn: string;
+    /**
+     * The next-hop IP Address for the static route.
+     */
+    nexthop: string;
+    /**
+     * IP Prefix in Classless Inter-Domain Routing format.
+     */
+    prefix: string;
+    /**
+     * Priority of the static route.
+     */
+    priority: number;
+    /**
+     * Used only for ECMP routes.
+     */
+    scope: outputs.StaticRouteModifiedRouteScope;
+    /**
+     * Optional weight of the ECMP scope - if provided.
+     */
+    weight: number;
+}
+
+export interface StaticRouteModifiedRouteScope {
+    /**
+     * List of colo names for the ECMP scope.
+     */
+    coloNames: string[];
+    /**
+     * List of colo regions for the ECMP scope.
+     */
+    coloRegions: string[];
+}
+
+export interface StaticRouteRoute {
+    /**
+     * When the route was created.
+     */
+    createdOn: string;
+    /**
+     * An optional human provided description of the static route.
+     */
+    description: string;
+    /**
+     * Identifier
+     */
+    id: string;
+    /**
+     * When the route was last modified.
+     */
+    modifiedOn: string;
+    /**
+     * The next-hop IP Address for the static route.
+     */
+    nexthop: string;
+    /**
+     * IP Prefix in Classless Inter-Domain Routing format.
+     */
+    prefix: string;
+    /**
+     * Priority of the static route.
+     */
+    priority: number;
+    /**
+     * Used only for ECMP routes.
+     */
+    scope: outputs.StaticRouteRouteScope;
+    /**
+     * Optional weight of the ECMP scope - if provided.
+     */
+    weight: number;
+}
+
+export interface StaticRouteRouteScope {
+    /**
+     * List of colo names for the ECMP scope.
+     */
+    coloNames: string[];
+    /**
+     * List of colo regions for the ECMP scope.
+     */
+    coloRegions: string[];
+}
+
+export interface StaticRouteScope {
+    /**
+     * List of colo names for the ECMP scope.
+     */
+    coloNames?: string[];
+    /**
+     * List of colo regions for the ECMP scope.
+     */
+    coloRegions?: string[];
+}
+
 export interface StreamInput {
     /**
      * The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready.
@@ -25850,6 +29156,864 @@ export interface StreamWatermark {
     width: number;
 }
 
+export interface TeamsAccountSettings {
+    /**
+     * Activity log settings.
+     */
+    activityLog: outputs.TeamsAccountSettingsActivityLog;
+    /**
+     * Anti-virus settings.
+     */
+    antivirus: outputs.TeamsAccountSettingsAntivirus;
+    /**
+     * Block page layout settings.
+     */
+    blockPage: outputs.TeamsAccountSettingsBlockPage;
+    /**
+     * DLP body scanning settings.
+     */
+    bodyScanning: outputs.TeamsAccountSettingsBodyScanning;
+    /**
+     * Browser isolation settings.
+     */
+    browserIsolation: outputs.TeamsAccountSettingsBrowserIsolation;
+    /**
+     * Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+     */
+    certificate: outputs.TeamsAccountSettingsCertificate;
+    /**
+     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     */
+    customCertificate: outputs.TeamsAccountSettingsCustomCertificate;
+    /**
+     * Extended e-mail matching settings.
+     */
+    extendedEmailMatching: outputs.TeamsAccountSettingsExtendedEmailMatching;
+    /**
+     * FIPS settings.
+     */
+    fips: outputs.TeamsAccountSettingsFips;
+    /**
+     * Protocol Detection settings.
+     */
+    protocolDetection: outputs.TeamsAccountSettingsProtocolDetection;
+    /**
+     * Sandbox settings.
+     */
+    sandbox: outputs.TeamsAccountSettingsSandbox;
+    /**
+     * TLS interception settings.
+     */
+    tlsDecrypt: outputs.TeamsAccountSettingsTlsDecrypt;
+}
+
+export interface TeamsAccountSettingsActivityLog {
+    /**
+     * Enable activity logging.
+     */
+    enabled?: boolean;
+}
+
+export interface TeamsAccountSettingsAntivirus {
+    /**
+     * Enable anti-virus scanning on downloads.
+     */
+    enabledDownloadPhase?: boolean;
+    /**
+     * Enable anti-virus scanning on uploads.
+     */
+    enabledUploadPhase?: boolean;
+    /**
+     * Block requests for files that cannot be scanned.
+     */
+    failClosed?: boolean;
+    /**
+     * Configure a message to display on the user's device when an antivirus search is performed.
+     */
+    notificationSettings: outputs.TeamsAccountSettingsAntivirusNotificationSettings;
+}
+
+export interface TeamsAccountSettingsAntivirusNotificationSettings {
+    /**
+     * Set notification on
+     */
+    enabled?: boolean;
+    /**
+     * Customize the message shown in the notification.
+     */
+    msg?: string;
+    /**
+     * Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     */
+    supportUrl?: string;
+}
+
+export interface TeamsAccountSettingsBlockPage {
+    /**
+     * Block page background color in #rrggbb format.
+     */
+    backgroundColor?: string;
+    /**
+     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     */
+    enabled?: boolean;
+    /**
+     * Block page footer text.
+     */
+    footerText?: string;
+    /**
+     * Block page header text.
+     */
+    headerText?: string;
+    /**
+     * Full URL to the logo file.
+     */
+    logoPath?: string;
+    /**
+     * Admin email for users to contact.
+     */
+    mailtoAddress?: string;
+    /**
+     * Subject line for emails created from block page.
+     */
+    mailtoSubject?: string;
+    /**
+     * Block page title.
+     */
+    name?: string;
+    /**
+     * Suppress detailed info at the bottom of the block page.
+     */
+    suppressFooter?: boolean;
+}
+
+export interface TeamsAccountSettingsBodyScanning {
+    /**
+     * Set the inspection mode to either `deep` or `shallow`.
+     */
+    inspectionMode?: string;
+}
+
+export interface TeamsAccountSettingsBrowserIsolation {
+    /**
+     * Enable non-identity onramp support for Browser Isolation.
+     */
+    nonIdentityEnabled?: boolean;
+    /**
+     * Enable Clientless Browser Isolation.
+     */
+    urlBrowserIsolationEnabled?: boolean;
+}
+
+export interface TeamsAccountSettingsCertificate {
+    /**
+     * UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+     */
+    id: string;
+}
+
+export interface TeamsAccountSettingsCustomCertificate {
+    /**
+     * Certificate status (internal).
+     */
+    bindingStatus: string;
+    /**
+     * Enable use of custom certificate authority for signing Gateway traffic.
+     */
+    enabled: boolean;
+    /**
+     * UUID of certificate (ID from MTLS certificate store).
+     */
+    id?: string;
+    updatedAt: string;
+}
+
+export interface TeamsAccountSettingsExtendedEmailMatching {
+    /**
+     * Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+     */
+    enabled?: boolean;
+}
+
+export interface TeamsAccountSettingsFips {
+    /**
+     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     */
+    tls?: boolean;
+}
+
+export interface TeamsAccountSettingsProtocolDetection {
+    /**
+     * Enable detecting protocol on initial bytes of client traffic.
+     */
+    enabled?: boolean;
+}
+
+export interface TeamsAccountSettingsSandbox {
+    /**
+     * Enable sandbox.
+     */
+    enabled?: boolean;
+    /**
+     * Action to take when the file cannot be scanned.
+     * Available values: "allow", "block".
+     */
+    fallbackAction?: string;
+}
+
+export interface TeamsAccountSettingsTlsDecrypt {
+    /**
+     * Enable inspecting encrypted HTTP traffic.
+     */
+    enabled?: boolean;
+}
+
+export interface TeamsListItem {
+    createdAt: string;
+    /**
+     * The description of the list item, if present
+     */
+    description?: string;
+    /**
+     * The value of the item in a list.
+     */
+    value?: string;
+}
+
+export interface TeamsLocationEndpoints {
+    doh: outputs.TeamsLocationEndpointsDoh;
+    dot: outputs.TeamsLocationEndpointsDot;
+    ipv4: outputs.TeamsLocationEndpointsIpv4;
+    ipv6: outputs.TeamsLocationEndpointsIpv6;
+}
+
+export interface TeamsLocationEndpointsDoh {
+    /**
+     * True if the endpoint is enabled for this location.
+     */
+    enabled?: boolean;
+    /**
+     * A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     */
+    networks: outputs.TeamsLocationEndpointsDohNetwork[];
+    /**
+     * True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+     */
+    requireToken?: boolean;
+}
+
+export interface TeamsLocationEndpointsDohNetwork {
+    /**
+     * The IP address or IP CIDR.
+     */
+    network: string;
+}
+
+export interface TeamsLocationEndpointsDot {
+    /**
+     * True if the endpoint is enabled for this location.
+     */
+    enabled?: boolean;
+    /**
+     * A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     */
+    networks: outputs.TeamsLocationEndpointsDotNetwork[];
+}
+
+export interface TeamsLocationEndpointsDotNetwork {
+    /**
+     * The IP address or IP CIDR.
+     */
+    network: string;
+}
+
+export interface TeamsLocationEndpointsIpv4 {
+    /**
+     * True if the endpoint is enabled for this location.
+     */
+    enabled?: boolean;
+}
+
+export interface TeamsLocationEndpointsIpv6 {
+    /**
+     * True if the endpoint is enabled for this location.
+     */
+    enabled?: boolean;
+    /**
+     * A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     */
+    networks: outputs.TeamsLocationEndpointsIpv6Network[];
+}
+
+export interface TeamsLocationEndpointsIpv6Network {
+    /**
+     * The IPv6 address or IPv6 CIDR.
+     */
+    network: string;
+}
+
+export interface TeamsLocationNetwork {
+    /**
+     * The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
+     */
+    network: string;
+}
+
+export interface TeamsRuleExpiration {
+    /**
+     * The default duration a policy will be active in minutes. Must be set in order to use the `resetExpiration` endpoint on this rule.
+     */
+    duration?: number;
+    /**
+     * Whether the policy has expired.
+     */
+    expired?: boolean;
+    /**
+     * The time stamp at which the policy will expire and cease to be
+     * applied.
+     */
+    expiresAt: string;
+}
+
+export interface TeamsRuleRuleSettings {
+    /**
+     * Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
+     */
+    addHeaders?: {[key: string]: string};
+    /**
+     * Set by parent MSP accounts to enable their children to bypass this rule.
+     */
+    allowChildBypass?: boolean;
+    /**
+     * Settings for the Audit SSH action.
+     */
+    auditSsh: outputs.TeamsRuleRuleSettingsAuditSsh;
+    /**
+     * Configure how browser isolation behaves.
+     */
+    bisoAdminControls: outputs.TeamsRuleRuleSettingsBisoAdminControls;
+    /**
+     * Enable the custom block page.
+     */
+    blockPageEnabled?: boolean;
+    /**
+     * The text describing why this block occurred, displayed on the custom block page (if enabled).
+     */
+    blockReason?: string;
+    /**
+     * Set by children MSP accounts to bypass their parent's rules.
+     */
+    bypassParentRule?: boolean;
+    /**
+     * Configure how session check behaves.
+     */
+    checkSession: outputs.TeamsRuleRuleSettingsCheckSession;
+    /**
+     * Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.
+     */
+    dnsResolvers: outputs.TeamsRuleRuleSettingsDnsResolvers;
+    /**
+     * Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
+     */
+    egress: outputs.TeamsRuleRuleSettingsEgress;
+    /**
+     * Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
+     */
+    ignoreCnameCategoryMatches?: boolean;
+    /**
+     * INSECURE - disable DNSSEC validation (for Allow actions).
+     */
+    insecureDisableDnssecValidation?: boolean;
+    /**
+     * Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
+     */
+    ipCategories?: boolean;
+    /**
+     * Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+     */
+    ipIndicatorFeeds?: boolean;
+    /**
+     * Send matching traffic to the supplied destination IP address and port.
+     */
+    l4override: outputs.TeamsRuleRuleSettingsL4override;
+    /**
+     * Configure a notification to display on the user's device when this rule is matched.
+     */
+    notificationSettings: outputs.TeamsRuleRuleSettingsNotificationSettings;
+    /**
+     * Override matching DNS queries with a hostname.
+     */
+    overrideHost?: string;
+    /**
+     * Override matching DNS queries with an IP or set of IPs.
+     */
+    overrideIps?: string[];
+    /**
+     * Configure DLP payload logging.
+     */
+    payloadLog: outputs.TeamsRuleRuleSettingsPayloadLog;
+    /**
+     * Settings that apply to quarantine rules
+     */
+    quarantine: outputs.TeamsRuleRuleSettingsQuarantine;
+    /**
+     * Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+     */
+    resolveDnsInternally: outputs.TeamsRuleRuleSettingsResolveDnsInternally;
+    /**
+     * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns_internally' is set. Only valid when a rule's action is set to 'resolve'.
+     */
+    resolveDnsThroughCloudflare?: boolean;
+    /**
+     * Configure behavior when an upstream cert is invalid or an SSL error occurs.
+     */
+    untrustedCert: outputs.TeamsRuleRuleSettingsUntrustedCert;
+}
+
+export interface TeamsRuleRuleSettingsAuditSsh {
+    /**
+     * Enable to turn on SSH command logging.
+     */
+    commandLogging?: boolean;
+}
+
+export interface TeamsRuleRuleSettingsBisoAdminControls {
+    /**
+     * Configure whether copy is enabled or not. When set with "remote*only", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled", "remote*only".
+     */
+    copy?: string;
+    /**
+     * Set to false to enable copy-pasting. Only applies when `version == "v1"`.
+     */
+    dcp?: boolean;
+    /**
+     * Set to false to enable downloading. Only applies when `version == "v1"`.
+     */
+    dd?: boolean;
+    /**
+     * Set to false to enable keyboard usage. Only applies when `version == "v1"`.
+     */
+    dk?: boolean;
+    /**
+     * Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled".
+     */
+    download?: string;
+    /**
+     * Set to false to enable printing. Only applies when `version == "v1"`.
+     */
+    dp?: boolean;
+    /**
+     * Set to false to enable uploading. Only applies when `version == "v1"`.
+     */
+    du?: boolean;
+    /**
+     * Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled".
+     */
+    keyboard?: string;
+    /**
+     * Configure whether pasting is enabled or not. When set with "remote*only", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled", "remote*only".
+     */
+    paste?: string;
+    /**
+     * Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled".
+     */
+    printing?: string;
+    /**
+     * Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled".
+     */
+    upload?: string;
+    /**
+     * Indicates which version of the browser isolation controls should apply.
+     * Available values: "v1", "v2".
+     */
+    version: string;
+}
+
+export interface TeamsRuleRuleSettingsCheckSession {
+    /**
+     * Configure how fresh the session needs to be to be considered valid.
+     */
+    duration?: string;
+    /**
+     * Set to true to enable session enforcement.
+     */
+    enforce?: boolean;
+}
+
+export interface TeamsRuleRuleSettingsDnsResolvers {
+    ipv4s: outputs.TeamsRuleRuleSettingsDnsResolversIpv4[];
+    ipv6s: outputs.TeamsRuleRuleSettingsDnsResolversIpv6[];
+}
+
+export interface TeamsRuleRuleSettingsDnsResolversIpv4 {
+    /**
+     * IPv4 address of upstream resolver.
+     */
+    ip: string;
+    /**
+     * A port number to use for upstream resolver. Defaults to 53 if unspecified.
+     */
+    port?: number;
+    /**
+     * Whether to connect to this resolver over a private network. Must be set when vnetId is set.
+     */
+    routeThroughPrivateNetwork?: boolean;
+    /**
+     * Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     */
+    vnetId?: string;
+}
+
+export interface TeamsRuleRuleSettingsDnsResolversIpv6 {
+    /**
+     * IPv6 address of upstream resolver.
+     */
+    ip: string;
+    /**
+     * A port number to use for upstream resolver. Defaults to 53 if unspecified.
+     */
+    port?: number;
+    /**
+     * Whether to connect to this resolver over a private network. Must be set when vnetId is set.
+     */
+    routeThroughPrivateNetwork?: boolean;
+    /**
+     * Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     */
+    vnetId?: string;
+}
+
+export interface TeamsRuleRuleSettingsEgress {
+    /**
+     * The IPv4 address to be used for egress.
+     */
+    ipv4?: string;
+    /**
+     * The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.
+     */
+    ipv4Fallback?: string;
+    /**
+     * The IPv6 range to be used for egress.
+     */
+    ipv6?: string;
+}
+
+export interface TeamsRuleRuleSettingsL4override {
+    /**
+     * IPv4 or IPv6 address.
+     */
+    ip?: string;
+    /**
+     * A port number to use for TCP/UDP overrides.
+     */
+    port?: number;
+}
+
+export interface TeamsRuleRuleSettingsNotificationSettings {
+    /**
+     * Set notification on
+     */
+    enabled?: boolean;
+    /**
+     * Customize the message shown in the notification.
+     */
+    msg?: string;
+    /**
+     * Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     */
+    supportUrl?: string;
+}
+
+export interface TeamsRuleRuleSettingsPayloadLog {
+    /**
+     * Set to true to enable DLP payload logging for this rule.
+     */
+    enabled?: boolean;
+}
+
+export interface TeamsRuleRuleSettingsQuarantine {
+    /**
+     * Types of files to sandbox.
+     */
+    fileTypes?: string[];
+}
+
+export interface TeamsRuleRuleSettingsResolveDnsInternally {
+    /**
+     * The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+     * Available values: "none", "publicDns".
+     */
+    fallback: string;
+    /**
+     * The internal DNS view identifier that's passed to the internal DNS service.
+     */
+    viewId?: string;
+}
+
+export interface TeamsRuleRuleSettingsUntrustedCert {
+    /**
+     * The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+     * Available values: "passThrough", "block", "error".
+     */
+    action?: string;
+}
+
+export interface TeamsRuleSchedule {
+    /**
+     * The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.
+     */
+    fri?: string;
+    /**
+     * The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.
+     */
+    mon?: string;
+    /**
+     * The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.
+     */
+    sat?: string;
+    /**
+     * The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.
+     */
+    sun?: string;
+    /**
+     * The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.
+     */
+    thu?: string;
+    /**
+     * The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.
+     */
+    timeZone?: string;
+    /**
+     * The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.
+     */
+    tue?: string;
+    /**
+     * The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.
+     */
+    wed?: string;
+}
+
+export interface TunnelConfigConfig {
+    /**
+     * List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
+     */
+    ingresses: outputs.TunnelConfigConfigIngress[];
+    /**
+     * Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+     */
+    originRequest: outputs.TunnelConfigConfigOriginRequest;
+    /**
+     * Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
+     */
+    warpRouting: outputs.TunnelConfigConfigWarpRouting;
+}
+
+export interface TunnelConfigConfigIngress {
+    /**
+     * Public hostname for this service.
+     */
+    hostname?: string;
+    /**
+     * Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+     */
+    originRequest: outputs.TunnelConfigConfigIngressOriginRequest;
+    /**
+     * Requests with this path route to this public hostname.
+     */
+    path: string;
+    /**
+     * Protocol and address of destination server. Supported protocols: http://, https://, unix://, tcp://, ssh://, rdp://, unix+tls://, smb://. Alternatively can return a HTTP status code http*status:[code] e.g. 'http*status:404'.
+     */
+    service: string;
+}
+
+export interface TunnelConfigConfigIngressOriginRequest {
+    /**
+     * For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
+     */
+    access: outputs.TunnelConfigConfigIngressOriginRequestAccess;
+    /**
+     * Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
+     */
+    caPool: string;
+    /**
+     * Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
+     */
+    connectTimeout: number;
+    /**
+     * Disables chunked transfer encoding. Useful if you are running a WSGI server.
+     */
+    disableChunkedEncoding?: boolean;
+    /**
+     * Attempt to connect to origin using HTTP2. Origin must be configured as https.
+     */
+    http2Origin?: boolean;
+    /**
+     * Sets the HTTP Host header on requests sent to the local service.
+     */
+    httpHostHeader?: string;
+    /**
+     * Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
+     */
+    keepAliveConnections: number;
+    /**
+     * Timeout after which an idle keepalive connection can be discarded.
+     */
+    keepAliveTimeout: number;
+    /**
+     * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
+     */
+    noHappyEyeballs: boolean;
+    /**
+     * Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
+     */
+    noTlsVerify: boolean;
+    /**
+     * Hostname that cloudflared should expect from your origin server certificate.
+     */
+    originServerName: string;
+    /**
+     * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: "" for the regular proxy and "socks" for a SOCKS5 proxy.
+     */
+    proxyType: string;
+    /**
+     * The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
+     */
+    tcpKeepAlive: number;
+    /**
+     * Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
+     */
+    tlsTimeout: number;
+}
+
+export interface TunnelConfigConfigIngressOriginRequestAccess {
+    /**
+     * Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
+     */
+    audTags: string[];
+    /**
+     * Deny traffic that has not fulfilled Access authorization.
+     */
+    required: boolean;
+    teamName: string;
+}
+
+export interface TunnelConfigConfigOriginRequest {
+    /**
+     * For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
+     */
+    access: outputs.TunnelConfigConfigOriginRequestAccess;
+    /**
+     * Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
+     */
+    caPool: string;
+    /**
+     * Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
+     */
+    connectTimeout: number;
+    /**
+     * Disables chunked transfer encoding. Useful if you are running a WSGI server.
+     */
+    disableChunkedEncoding?: boolean;
+    /**
+     * Attempt to connect to origin using HTTP2. Origin must be configured as https.
+     */
+    http2Origin?: boolean;
+    /**
+     * Sets the HTTP Host header on requests sent to the local service.
+     */
+    httpHostHeader?: string;
+    /**
+     * Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
+     */
+    keepAliveConnections: number;
+    /**
+     * Timeout after which an idle keepalive connection can be discarded.
+     */
+    keepAliveTimeout: number;
+    /**
+     * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
+     */
+    noHappyEyeballs: boolean;
+    /**
+     * Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
+     */
+    noTlsVerify: boolean;
+    /**
+     * Hostname that cloudflared should expect from your origin server certificate.
+     */
+    originServerName: string;
+    /**
+     * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: "" for the regular proxy and "socks" for a SOCKS5 proxy.
+     */
+    proxyType: string;
+    /**
+     * The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
+     */
+    tcpKeepAlive: number;
+    /**
+     * Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
+     */
+    tlsTimeout: number;
+}
+
+export interface TunnelConfigConfigOriginRequestAccess {
+    /**
+     * Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
+     */
+    audTags: string[];
+    /**
+     * Deny traffic that has not fulfilled Access authorization.
+     */
+    required: boolean;
+    teamName: string;
+}
+
+export interface TunnelConfigConfigWarpRouting {
+    enabled: boolean;
+}
+
+export interface TunnelConnection {
+    /**
+     * UUID of the Cloudflare Tunnel connector.
+     */
+    clientId: string;
+    /**
+     * The cloudflared version used to establish this connection.
+     */
+    clientVersion: string;
+    /**
+     * The Cloudflare data center used for this connection.
+     */
+    coloName: string;
+    /**
+     * UUID of the Cloudflare Tunnel connection.
+     */
+    id: string;
+    /**
+     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+     */
+    isPendingReconnect: boolean;
+    /**
+     * Timestamp of when the connection was established.
+     */
+    openedAt: string;
+    /**
+     * The public IP address of the host running cloudflared.
+     */
+    originIp: string;
+    /**
+     * UUID of the Cloudflare Tunnel connection.
+     */
+    uuid: string;
+}
+
 export interface UserAgentBlockingRuleConfiguration {
     /**
      * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
@@ -25945,6 +30109,255 @@ export interface WebAnalyticsSiteRuleset {
      * The zone identifier.
      */
     zoneTag: string;
+}
+
+export interface WorkerCronTriggerSchedule {
+    cron: string;
+}
+
+export interface WorkerScriptAssets {
+    /**
+     * Configuration for assets within a Worker.
+     */
+    config?: outputs.WorkerScriptAssetsConfig;
+    /**
+     * Token provided upon successful upload of all files from a registered manifest.
+     */
+    jwt?: string;
+}
+
+export interface WorkerScriptAssetsConfig {
+    /**
+     * Determines the redirects and rewrites of requests for HTML content.
+     * Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
+     */
+    htmlHandling?: string;
+    /**
+     * Determines the response when a request does not match a static asset, and there is no Worker script.
+     * Available values: "none", "404-page", "single-page-application".
+     */
+    notFoundHandling?: string;
+    /**
+     * When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
+     */
+    runWorkerFirst: boolean;
+    /**
+     * When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
+     */
+    serveDirectly: boolean;
+}
+
+export interface WorkerScriptBinding {
+    /**
+     * R2 bucket to bind to.
+     */
+    bucketName?: string;
+    /**
+     * Identifier of the certificate to bind to.
+     */
+    certificateId?: string;
+    /**
+     * The exported class name of the Durable Object.
+     */
+    className?: string;
+    /**
+     * The name of the dataset to bind to.
+     */
+    dataset?: string;
+    /**
+     * The environment of the scriptName to bind to.
+     */
+    environment?: string;
+    /**
+     * Identifier of the D1 database to bind to.
+     */
+    id?: string;
+    /**
+     * Name of the Vectorize index to bind to.
+     */
+    indexName?: string;
+    /**
+     * JSON data to use.
+     */
+    json?: string;
+    /**
+     * A JavaScript variable name for the binding.
+     */
+    name: string;
+    /**
+     * Namespace to bind to.
+     */
+    namespace?: string;
+    /**
+     * Namespace identifier tag.
+     */
+    namespaceId?: string;
+    /**
+     * Outbound worker.
+     */
+    outbound?: outputs.WorkerScriptBindingOutbound;
+    /**
+     * Name of the Queue to bind to.
+     */
+    queueName?: string;
+    /**
+     * The script where the Durable Object is defined, if it is external to this Worker.
+     */
+    scriptName?: string;
+    /**
+     * Name of Worker to bind to.
+     */
+    service?: string;
+    /**
+     * The text value to use.
+     */
+    text?: string;
+    /**
+     * The kind of resource that the binding provides.
+     * Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
+     */
+    type: string;
+}
+
+export interface WorkerScriptBindingOutbound {
+    /**
+     * Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
+     */
+    params?: string[];
+    /**
+     * Outbound worker.
+     */
+    worker?: outputs.WorkerScriptBindingOutboundWorker;
+}
+
+export interface WorkerScriptBindingOutboundWorker {
+    /**
+     * Environment of the outbound worker.
+     */
+    environment?: string;
+    /**
+     * Name of the outbound worker.
+     */
+    service?: string;
+}
+
+export interface WorkerScriptMigrations {
+    /**
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses?: string[];
+    /**
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses?: string[];
+    /**
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses?: string[];
+    /**
+     * Tag to set as the latest migration tag.
+     */
+    newTag?: string;
+    /**
+     * Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+     */
+    oldTag?: string;
+    /**
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses?: outputs.WorkerScriptMigrationsRenamedClass[];
+    /**
+     * Migrations to apply in order.
+     */
+    steps?: outputs.WorkerScriptMigrationsStep[];
+    /**
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses?: outputs.WorkerScriptMigrationsTransferredClass[];
+}
+
+export interface WorkerScriptMigrationsRenamedClass {
+    from?: string;
+    to?: string;
+}
+
+export interface WorkerScriptMigrationsStep {
+    /**
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses?: string[];
+    /**
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses?: string[];
+    /**
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses?: string[];
+    /**
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses?: outputs.WorkerScriptMigrationsStepRenamedClass[];
+    /**
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses?: outputs.WorkerScriptMigrationsStepTransferredClass[];
+}
+
+export interface WorkerScriptMigrationsStepRenamedClass {
+    from?: string;
+    to?: string;
+}
+
+export interface WorkerScriptMigrationsStepTransferredClass {
+    from?: string;
+    fromScript?: string;
+    to?: string;
+}
+
+export interface WorkerScriptMigrationsTransferredClass {
+    from?: string;
+    fromScript?: string;
+    to?: string;
+}
+
+export interface WorkerScriptObservability {
+    /**
+     * Whether observability is enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
+     */
+    headSamplingRate?: number;
+}
+
+export interface WorkerScriptPlacement {
+    /**
+     * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: "smart".
+     */
+    mode?: string;
+    /**
+     * Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+     */
+    status: string;
+}
+
+export interface WorkerScriptTailConsumer {
+    /**
+     * Optional environment if the Worker utilizes one.
+     */
+    environment?: string;
+    /**
+     * Optional dispatch namespace the script belongs to.
+     */
+    namespace?: string;
+    /**
+     * Name of Worker that is to be the consumer.
+     */
+    service: string;
 }
 
 export interface WorkersCronTriggerSchedule {
@@ -30116,6 +34529,21 @@ export interface ZeroTrustListItem {
      * The value of the item in a list.
      */
     value?: string;
+}
+
+export interface ZeroTrustLocalFallbackDomainDomain {
+    /**
+     * A description of the fallback domain, displayed in the client UI.
+     */
+    description?: string;
+    /**
+     * A list of IP addresses to handle domain resolution.
+     */
+    dnsServers?: string[];
+    /**
+     * The domain suffix to match when resolving locally.
+     */
+    suffix: string;
 }
 
 export interface ZeroTrustOrganizationCustomPages {

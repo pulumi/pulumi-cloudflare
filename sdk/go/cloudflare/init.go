@@ -21,8 +21,32 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "cloudflare:index/accessApplication:AccessApplication":
+		r = &AccessApplication{}
+	case "cloudflare:index/accessCaCertificate:AccessCaCertificate":
+		r = &AccessCaCertificate{}
+	case "cloudflare:index/accessCustomPage:AccessCustomPage":
+		r = &AccessCustomPage{}
+	case "cloudflare:index/accessGroup:AccessGroup":
+		r = &AccessGroup{}
+	case "cloudflare:index/accessIdentityProvider:AccessIdentityProvider":
+		r = &AccessIdentityProvider{}
+	case "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration":
+		r = &AccessKeysConfiguration{}
+	case "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate":
+		r = &AccessMutualTlsCertificate{}
+	case "cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings":
+		r = &AccessMutualTlsHostnameSettings{}
+	case "cloudflare:index/accessOrganization:AccessOrganization":
+		r = &AccessOrganization{}
+	case "cloudflare:index/accessPolicy:AccessPolicy":
+		r = &AccessPolicy{}
 	case "cloudflare:index/accessRule:AccessRule":
 		r = &AccessRule{}
+	case "cloudflare:index/accessServiceToken:AccessServiceToken":
+		r = &AccessServiceToken{}
+	case "cloudflare:index/accessTag:AccessTag":
+		r = &AccessTag{}
 	case "cloudflare:index/account:Account":
 		r = &Account{}
 	case "cloudflare:index/accountDnsSettings:AccountDnsSettings":
@@ -93,6 +117,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomSsl{}
 	case "cloudflare:index/d1Database:D1Database":
 		r = &D1Database{}
+	case "cloudflare:index/deviceDexTest:DeviceDexTest":
+		r = &DeviceDexTest{}
+	case "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks":
+		r = &DeviceManagedNetworks{}
+	case "cloudflare:index/devicePostureIntegration:DevicePostureIntegration":
+		r = &DevicePostureIntegration{}
+	case "cloudflare:index/devicePostureRule:DevicePostureRule":
+		r = &DevicePostureRule{}
+	case "cloudflare:index/dlpCustomProfile:DlpCustomProfile":
+		r = &DlpCustomProfile{}
+	case "cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile":
+		r = &DlpPredefinedProfile{}
 	case "cloudflare:index/dnsFirewall:DnsFirewall":
 		r = &DnsFirewall{}
 	case "cloudflare:index/dnsRecord:DnsRecord":
@@ -179,6 +215,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MagicWanIpsecTunnel{}
 	case "cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute":
 		r = &MagicWanStaticRoute{}
+	case "cloudflare:index/managedHeaders:ManagedHeaders":
+		r = &ManagedHeaders{}
 	case "cloudflare:index/managedTransforms:ManagedTransforms":
 		r = &ManagedTransforms{}
 	case "cloudflare:index/mtlsCertificate:MtlsCertificate":
@@ -221,12 +259,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &R2ManagedDomain{}
 	case "cloudflare:index/rateLimit:RateLimit":
 		r = &RateLimit{}
+	case "cloudflare:index/record:Record":
+		r = &Record{}
 	case "cloudflare:index/regionalHostname:RegionalHostname":
 		r = &RegionalHostname{}
 	case "cloudflare:index/regionalTieredCache:RegionalTieredCache":
 		r = &RegionalTieredCache{}
 	case "cloudflare:index/registrarDomain:RegistrarDomain":
 		r = &RegistrarDomain{}
+	case "cloudflare:index/riskBehavior:RiskBehavior":
+		r = &RiskBehavior{}
 	case "cloudflare:index/ruleset:Ruleset":
 		r = &Ruleset{}
 	case "cloudflare:index/snippetRules:SnippetRules":
@@ -235,6 +277,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Snippets{}
 	case "cloudflare:index/spectrumApplication:SpectrumApplication":
 		r = &SpectrumApplication{}
+	case "cloudflare:index/staticRoute:StaticRoute":
+		r = &StaticRoute{}
 	case "cloudflare:index/stream:Stream":
 		r = &Stream{}
 	case "cloudflare:index/streamAudioTrack:StreamAudioTrack":
@@ -251,10 +295,28 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &StreamWatermark{}
 	case "cloudflare:index/streamWebhook:StreamWebhook":
 		r = &StreamWebhook{}
+	case "cloudflare:index/teamsAccount:TeamsAccount":
+		r = &TeamsAccount{}
+	case "cloudflare:index/teamsList:TeamsList":
+		r = &TeamsList{}
+	case "cloudflare:index/teamsLocation:TeamsLocation":
+		r = &TeamsLocation{}
+	case "cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint":
+		r = &TeamsProxyEndpoint{}
+	case "cloudflare:index/teamsRule:TeamsRule":
+		r = &TeamsRule{}
 	case "cloudflare:index/tieredCache:TieredCache":
 		r = &TieredCache{}
 	case "cloudflare:index/totalTls:TotalTls":
 		r = &TotalTls{}
+	case "cloudflare:index/tunnel:Tunnel":
+		r = &Tunnel{}
+	case "cloudflare:index/tunnelConfig:TunnelConfig":
+		r = &TunnelConfig{}
+	case "cloudflare:index/tunnelRoute:TunnelRoute":
+		r = &TunnelRoute{}
+	case "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork":
+		r = &TunnelVirtualNetwork{}
 	case "cloudflare:index/turnstileWidget:TurnstileWidget":
 		r = &TurnstileWidget{}
 	case "cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings":
@@ -277,6 +339,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebAnalyticsRule{}
 	case "cloudflare:index/webAnalyticsSite:WebAnalyticsSite":
 		r = &WebAnalyticsSite{}
+	case "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
+		r = &WorkerCronTrigger{}
+	case "cloudflare:index/workerDomain:WorkerDomain":
+		r = &WorkerDomain{}
+	case "cloudflare:index/workerScript:WorkerScript":
+		r = &WorkerScript{}
+	case "cloudflare:index/workerSecret:WorkerSecret":
+		r = &WorkerSecret{}
 	case "cloudflare:index/workersCronTrigger:WorkersCronTrigger":
 		r = &WorkersCronTrigger{}
 	case "cloudflare:index/workersCustomDomain:WorkersCustomDomain":
@@ -285,6 +355,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkersDeployment{}
 	case "cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace":
 		r = &WorkersForPlatformsDispatchNamespace{}
+	case "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace":
+		r = &WorkersForPlatformsNamespace{}
 	case "cloudflare:index/workersKv:WorkersKv":
 		r = &WorkersKv{}
 	case "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
@@ -361,6 +433,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustGatewaySettings{}
 	case "cloudflare:index/zeroTrustList:ZeroTrustList":
 		r = &ZeroTrustList{}
+	case "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain":
+		r = &ZeroTrustLocalFallbackDomain{}
 	case "cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization":
 		r = &ZeroTrustOrganization{}
 	case "cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior":
@@ -426,7 +500,67 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/accessApplication",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accessCaCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accessCustomPage",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accessGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accessIdentityProvider",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accessKeysConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accessMutualTlsCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accessMutualTlsHostnameSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accessOrganization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accessPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/accessRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accessServiceToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accessTag",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -602,6 +736,36 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/d1Database",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/deviceDexTest",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/deviceManagedNetworks",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/devicePostureIntegration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/devicePostureRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/dlpCustomProfile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/dlpPredefinedProfile",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -821,6 +985,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/managedHeaders",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/managedTransforms",
 		&module{version},
 	)
@@ -926,6 +1095,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/record",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/regionalHostname",
 		&module{version},
 	)
@@ -937,6 +1111,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/registrarDomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/riskBehavior",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -957,6 +1136,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/spectrumApplication",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/staticRoute",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1001,12 +1185,57 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/teamsAccount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/teamsList",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/teamsLocation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/teamsProxyEndpoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/teamsRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/tieredCache",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/totalTls",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/tunnel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/tunnelConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/tunnelRoute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/tunnelVirtualNetwork",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1066,6 +1295,26 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/workerCronTrigger",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/workerDomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/workerScript",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/workerSecret",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/workersCronTrigger",
 		&module{version},
 	)
@@ -1082,6 +1331,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/workersForPlatformsDispatchNamespace",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/workersForPlatformsNamespace",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1272,6 +1526,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zeroTrustList",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustLocalFallbackDomain",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

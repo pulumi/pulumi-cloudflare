@@ -5,10 +5,70 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AccessApplicationArgs, AccessApplicationState } from "./accessApplication";
+export type AccessApplication = import("./accessApplication").AccessApplication;
+export const AccessApplication: typeof import("./accessApplication").AccessApplication = null as any;
+utilities.lazyLoad(exports, ["AccessApplication"], () => require("./accessApplication"));
+
+export { AccessCaCertificateArgs, AccessCaCertificateState } from "./accessCaCertificate";
+export type AccessCaCertificate = import("./accessCaCertificate").AccessCaCertificate;
+export const AccessCaCertificate: typeof import("./accessCaCertificate").AccessCaCertificate = null as any;
+utilities.lazyLoad(exports, ["AccessCaCertificate"], () => require("./accessCaCertificate"));
+
+export { AccessCustomPageArgs, AccessCustomPageState } from "./accessCustomPage";
+export type AccessCustomPage = import("./accessCustomPage").AccessCustomPage;
+export const AccessCustomPage: typeof import("./accessCustomPage").AccessCustomPage = null as any;
+utilities.lazyLoad(exports, ["AccessCustomPage"], () => require("./accessCustomPage"));
+
+export { AccessGroupArgs, AccessGroupState } from "./accessGroup";
+export type AccessGroup = import("./accessGroup").AccessGroup;
+export const AccessGroup: typeof import("./accessGroup").AccessGroup = null as any;
+utilities.lazyLoad(exports, ["AccessGroup"], () => require("./accessGroup"));
+
+export { AccessIdentityProviderArgs, AccessIdentityProviderState } from "./accessIdentityProvider";
+export type AccessIdentityProvider = import("./accessIdentityProvider").AccessIdentityProvider;
+export const AccessIdentityProvider: typeof import("./accessIdentityProvider").AccessIdentityProvider = null as any;
+utilities.lazyLoad(exports, ["AccessIdentityProvider"], () => require("./accessIdentityProvider"));
+
+export { AccessKeysConfigurationArgs, AccessKeysConfigurationState } from "./accessKeysConfiguration";
+export type AccessKeysConfiguration = import("./accessKeysConfiguration").AccessKeysConfiguration;
+export const AccessKeysConfiguration: typeof import("./accessKeysConfiguration").AccessKeysConfiguration = null as any;
+utilities.lazyLoad(exports, ["AccessKeysConfiguration"], () => require("./accessKeysConfiguration"));
+
+export { AccessMutualTlsCertificateArgs, AccessMutualTlsCertificateState } from "./accessMutualTlsCertificate";
+export type AccessMutualTlsCertificate = import("./accessMutualTlsCertificate").AccessMutualTlsCertificate;
+export const AccessMutualTlsCertificate: typeof import("./accessMutualTlsCertificate").AccessMutualTlsCertificate = null as any;
+utilities.lazyLoad(exports, ["AccessMutualTlsCertificate"], () => require("./accessMutualTlsCertificate"));
+
+export { AccessMutualTlsHostnameSettingsArgs, AccessMutualTlsHostnameSettingsState } from "./accessMutualTlsHostnameSettings";
+export type AccessMutualTlsHostnameSettings = import("./accessMutualTlsHostnameSettings").AccessMutualTlsHostnameSettings;
+export const AccessMutualTlsHostnameSettings: typeof import("./accessMutualTlsHostnameSettings").AccessMutualTlsHostnameSettings = null as any;
+utilities.lazyLoad(exports, ["AccessMutualTlsHostnameSettings"], () => require("./accessMutualTlsHostnameSettings"));
+
+export { AccessOrganizationArgs, AccessOrganizationState } from "./accessOrganization";
+export type AccessOrganization = import("./accessOrganization").AccessOrganization;
+export const AccessOrganization: typeof import("./accessOrganization").AccessOrganization = null as any;
+utilities.lazyLoad(exports, ["AccessOrganization"], () => require("./accessOrganization"));
+
+export { AccessPolicyArgs, AccessPolicyState } from "./accessPolicy";
+export type AccessPolicy = import("./accessPolicy").AccessPolicy;
+export const AccessPolicy: typeof import("./accessPolicy").AccessPolicy = null as any;
+utilities.lazyLoad(exports, ["AccessPolicy"], () => require("./accessPolicy"));
+
 export { AccessRuleArgs, AccessRuleState } from "./accessRule";
 export type AccessRule = import("./accessRule").AccessRule;
 export const AccessRule: typeof import("./accessRule").AccessRule = null as any;
 utilities.lazyLoad(exports, ["AccessRule"], () => require("./accessRule"));
+
+export { AccessServiceTokenArgs, AccessServiceTokenState } from "./accessServiceToken";
+export type AccessServiceToken = import("./accessServiceToken").AccessServiceToken;
+export const AccessServiceToken: typeof import("./accessServiceToken").AccessServiceToken = null as any;
+utilities.lazyLoad(exports, ["AccessServiceToken"], () => require("./accessServiceToken"));
+
+export { AccessTagArgs, AccessTagState } from "./accessTag";
+export type AccessTag = import("./accessTag").AccessTag;
+export const AccessTag: typeof import("./accessTag").AccessTag = null as any;
+utilities.lazyLoad(exports, ["AccessTag"], () => require("./accessTag"));
 
 export { AccountArgs, AccountState } from "./account";
 export type Account = import("./account").Account;
@@ -184,6 +244,36 @@ export { D1DatabaseArgs, D1DatabaseState } from "./d1database";
 export type D1Database = import("./d1database").D1Database;
 export const D1Database: typeof import("./d1database").D1Database = null as any;
 utilities.lazyLoad(exports, ["D1Database"], () => require("./d1database"));
+
+export { DeviceDexTestArgs, DeviceDexTestState } from "./deviceDexTest";
+export type DeviceDexTest = import("./deviceDexTest").DeviceDexTest;
+export const DeviceDexTest: typeof import("./deviceDexTest").DeviceDexTest = null as any;
+utilities.lazyLoad(exports, ["DeviceDexTest"], () => require("./deviceDexTest"));
+
+export { DeviceManagedNetworksArgs, DeviceManagedNetworksState } from "./deviceManagedNetworks";
+export type DeviceManagedNetworks = import("./deviceManagedNetworks").DeviceManagedNetworks;
+export const DeviceManagedNetworks: typeof import("./deviceManagedNetworks").DeviceManagedNetworks = null as any;
+utilities.lazyLoad(exports, ["DeviceManagedNetworks"], () => require("./deviceManagedNetworks"));
+
+export { DevicePostureIntegrationArgs, DevicePostureIntegrationState } from "./devicePostureIntegration";
+export type DevicePostureIntegration = import("./devicePostureIntegration").DevicePostureIntegration;
+export const DevicePostureIntegration: typeof import("./devicePostureIntegration").DevicePostureIntegration = null as any;
+utilities.lazyLoad(exports, ["DevicePostureIntegration"], () => require("./devicePostureIntegration"));
+
+export { DevicePostureRuleArgs, DevicePostureRuleState } from "./devicePostureRule";
+export type DevicePostureRule = import("./devicePostureRule").DevicePostureRule;
+export const DevicePostureRule: typeof import("./devicePostureRule").DevicePostureRule = null as any;
+utilities.lazyLoad(exports, ["DevicePostureRule"], () => require("./devicePostureRule"));
+
+export { DlpCustomProfileArgs, DlpCustomProfileState } from "./dlpCustomProfile";
+export type DlpCustomProfile = import("./dlpCustomProfile").DlpCustomProfile;
+export const DlpCustomProfile: typeof import("./dlpCustomProfile").DlpCustomProfile = null as any;
+utilities.lazyLoad(exports, ["DlpCustomProfile"], () => require("./dlpCustomProfile"));
+
+export { DlpPredefinedProfileArgs, DlpPredefinedProfileState } from "./dlpPredefinedProfile";
+export type DlpPredefinedProfile = import("./dlpPredefinedProfile").DlpPredefinedProfile;
+export const DlpPredefinedProfile: typeof import("./dlpPredefinedProfile").DlpPredefinedProfile = null as any;
+utilities.lazyLoad(exports, ["DlpPredefinedProfile"], () => require("./dlpPredefinedProfile"));
 
 export { DnsFirewallArgs, DnsFirewallState } from "./dnsFirewall";
 export type DnsFirewall = import("./dnsFirewall").DnsFirewall;
@@ -1940,6 +2030,11 @@ export type MagicWanStaticRoute = import("./magicWanStaticRoute").MagicWanStatic
 export const MagicWanStaticRoute: typeof import("./magicWanStaticRoute").MagicWanStaticRoute = null as any;
 utilities.lazyLoad(exports, ["MagicWanStaticRoute"], () => require("./magicWanStaticRoute"));
 
+export { ManagedHeadersArgs, ManagedHeadersState } from "./managedHeaders";
+export type ManagedHeaders = import("./managedHeaders").ManagedHeaders;
+export const ManagedHeaders: typeof import("./managedHeaders").ManagedHeaders = null as any;
+utilities.lazyLoad(exports, ["ManagedHeaders"], () => require("./managedHeaders"));
+
 export { ManagedTransformsArgs, ManagedTransformsState } from "./managedTransforms";
 export type ManagedTransforms = import("./managedTransforms").ManagedTransforms;
 export const ManagedTransforms: typeof import("./managedTransforms").ManagedTransforms = null as any;
@@ -2050,6 +2145,11 @@ export type RateLimit = import("./rateLimit").RateLimit;
 export const RateLimit: typeof import("./rateLimit").RateLimit = null as any;
 utilities.lazyLoad(exports, ["RateLimit"], () => require("./rateLimit"));
 
+export { RecordArgs, RecordState } from "./record";
+export type Record = import("./record").Record;
+export const Record: typeof import("./record").Record = null as any;
+utilities.lazyLoad(exports, ["Record"], () => require("./record"));
+
 export { RegionalHostnameArgs, RegionalHostnameState } from "./regionalHostname";
 export type RegionalHostname = import("./regionalHostname").RegionalHostname;
 export const RegionalHostname: typeof import("./regionalHostname").RegionalHostname = null as any;
@@ -2064,6 +2164,11 @@ export { RegistrarDomainArgs, RegistrarDomainState } from "./registrarDomain";
 export type RegistrarDomain = import("./registrarDomain").RegistrarDomain;
 export const RegistrarDomain: typeof import("./registrarDomain").RegistrarDomain = null as any;
 utilities.lazyLoad(exports, ["RegistrarDomain"], () => require("./registrarDomain"));
+
+export { RiskBehaviorArgs, RiskBehaviorState } from "./riskBehavior";
+export type RiskBehavior = import("./riskBehavior").RiskBehavior;
+export const RiskBehavior: typeof import("./riskBehavior").RiskBehavior = null as any;
+utilities.lazyLoad(exports, ["RiskBehavior"], () => require("./riskBehavior"));
 
 export { RulesetArgs, RulesetState } from "./ruleset";
 export type Ruleset = import("./ruleset").Ruleset;
@@ -2084,6 +2189,11 @@ export { SpectrumApplicationArgs, SpectrumApplicationState } from "./spectrumApp
 export type SpectrumApplication = import("./spectrumApplication").SpectrumApplication;
 export const SpectrumApplication: typeof import("./spectrumApplication").SpectrumApplication = null as any;
 utilities.lazyLoad(exports, ["SpectrumApplication"], () => require("./spectrumApplication"));
+
+export { StaticRouteArgs, StaticRouteState } from "./staticRoute";
+export type StaticRoute = import("./staticRoute").StaticRoute;
+export const StaticRoute: typeof import("./staticRoute").StaticRoute = null as any;
+utilities.lazyLoad(exports, ["StaticRoute"], () => require("./staticRoute"));
 
 export { StreamArgs, StreamState } from "./stream";
 export type Stream = import("./stream").Stream;
@@ -2125,6 +2235,31 @@ export type StreamWebhook = import("./streamWebhook").StreamWebhook;
 export const StreamWebhook: typeof import("./streamWebhook").StreamWebhook = null as any;
 utilities.lazyLoad(exports, ["StreamWebhook"], () => require("./streamWebhook"));
 
+export { TeamsAccountArgs, TeamsAccountState } from "./teamsAccount";
+export type TeamsAccount = import("./teamsAccount").TeamsAccount;
+export const TeamsAccount: typeof import("./teamsAccount").TeamsAccount = null as any;
+utilities.lazyLoad(exports, ["TeamsAccount"], () => require("./teamsAccount"));
+
+export { TeamsListArgs, TeamsListState } from "./teamsList";
+export type TeamsList = import("./teamsList").TeamsList;
+export const TeamsList: typeof import("./teamsList").TeamsList = null as any;
+utilities.lazyLoad(exports, ["TeamsList"], () => require("./teamsList"));
+
+export { TeamsLocationArgs, TeamsLocationState } from "./teamsLocation";
+export type TeamsLocation = import("./teamsLocation").TeamsLocation;
+export const TeamsLocation: typeof import("./teamsLocation").TeamsLocation = null as any;
+utilities.lazyLoad(exports, ["TeamsLocation"], () => require("./teamsLocation"));
+
+export { TeamsProxyEndpointArgs, TeamsProxyEndpointState } from "./teamsProxyEndpoint";
+export type TeamsProxyEndpoint = import("./teamsProxyEndpoint").TeamsProxyEndpoint;
+export const TeamsProxyEndpoint: typeof import("./teamsProxyEndpoint").TeamsProxyEndpoint = null as any;
+utilities.lazyLoad(exports, ["TeamsProxyEndpoint"], () => require("./teamsProxyEndpoint"));
+
+export { TeamsRuleArgs, TeamsRuleState } from "./teamsRule";
+export type TeamsRule = import("./teamsRule").TeamsRule;
+export const TeamsRule: typeof import("./teamsRule").TeamsRule = null as any;
+utilities.lazyLoad(exports, ["TeamsRule"], () => require("./teamsRule"));
+
 export { TieredCacheArgs, TieredCacheState } from "./tieredCache";
 export type TieredCache = import("./tieredCache").TieredCache;
 export const TieredCache: typeof import("./tieredCache").TieredCache = null as any;
@@ -2134,6 +2269,26 @@ export { TotalTlsArgs, TotalTlsState } from "./totalTls";
 export type TotalTls = import("./totalTls").TotalTls;
 export const TotalTls: typeof import("./totalTls").TotalTls = null as any;
 utilities.lazyLoad(exports, ["TotalTls"], () => require("./totalTls"));
+
+export { TunnelArgs, TunnelState } from "./tunnel";
+export type Tunnel = import("./tunnel").Tunnel;
+export const Tunnel: typeof import("./tunnel").Tunnel = null as any;
+utilities.lazyLoad(exports, ["Tunnel"], () => require("./tunnel"));
+
+export { TunnelConfigArgs, TunnelConfigState } from "./tunnelConfig";
+export type TunnelConfig = import("./tunnelConfig").TunnelConfig;
+export const TunnelConfig: typeof import("./tunnelConfig").TunnelConfig = null as any;
+utilities.lazyLoad(exports, ["TunnelConfig"], () => require("./tunnelConfig"));
+
+export { TunnelRouteArgs, TunnelRouteState } from "./tunnelRoute";
+export type TunnelRoute = import("./tunnelRoute").TunnelRoute;
+export const TunnelRoute: typeof import("./tunnelRoute").TunnelRoute = null as any;
+utilities.lazyLoad(exports, ["TunnelRoute"], () => require("./tunnelRoute"));
+
+export { TunnelVirtualNetworkArgs, TunnelVirtualNetworkState } from "./tunnelVirtualNetwork";
+export type TunnelVirtualNetwork = import("./tunnelVirtualNetwork").TunnelVirtualNetwork;
+export const TunnelVirtualNetwork: typeof import("./tunnelVirtualNetwork").TunnelVirtualNetwork = null as any;
+utilities.lazyLoad(exports, ["TunnelVirtualNetwork"], () => require("./tunnelVirtualNetwork"));
 
 export { TurnstileWidgetArgs, TurnstileWidgetState } from "./turnstileWidget";
 export type TurnstileWidget = import("./turnstileWidget").TurnstileWidget;
@@ -2190,6 +2345,26 @@ export type WebAnalyticsSite = import("./webAnalyticsSite").WebAnalyticsSite;
 export const WebAnalyticsSite: typeof import("./webAnalyticsSite").WebAnalyticsSite = null as any;
 utilities.lazyLoad(exports, ["WebAnalyticsSite"], () => require("./webAnalyticsSite"));
 
+export { WorkerCronTriggerArgs, WorkerCronTriggerState } from "./workerCronTrigger";
+export type WorkerCronTrigger = import("./workerCronTrigger").WorkerCronTrigger;
+export const WorkerCronTrigger: typeof import("./workerCronTrigger").WorkerCronTrigger = null as any;
+utilities.lazyLoad(exports, ["WorkerCronTrigger"], () => require("./workerCronTrigger"));
+
+export { WorkerDomainArgs, WorkerDomainState } from "./workerDomain";
+export type WorkerDomain = import("./workerDomain").WorkerDomain;
+export const WorkerDomain: typeof import("./workerDomain").WorkerDomain = null as any;
+utilities.lazyLoad(exports, ["WorkerDomain"], () => require("./workerDomain"));
+
+export { WorkerScriptArgs, WorkerScriptState } from "./workerScript";
+export type WorkerScript = import("./workerScript").WorkerScript;
+export const WorkerScript: typeof import("./workerScript").WorkerScript = null as any;
+utilities.lazyLoad(exports, ["WorkerScript"], () => require("./workerScript"));
+
+export { WorkerSecretArgs, WorkerSecretState } from "./workerSecret";
+export type WorkerSecret = import("./workerSecret").WorkerSecret;
+export const WorkerSecret: typeof import("./workerSecret").WorkerSecret = null as any;
+utilities.lazyLoad(exports, ["WorkerSecret"], () => require("./workerSecret"));
+
 export { WorkersCronTriggerArgs, WorkersCronTriggerState } from "./workersCronTrigger";
 export type WorkersCronTrigger = import("./workersCronTrigger").WorkersCronTrigger;
 export const WorkersCronTrigger: typeof import("./workersCronTrigger").WorkersCronTrigger = null as any;
@@ -2209,6 +2384,11 @@ export { WorkersForPlatformsDispatchNamespaceArgs, WorkersForPlatformsDispatchNa
 export type WorkersForPlatformsDispatchNamespace = import("./workersForPlatformsDispatchNamespace").WorkersForPlatformsDispatchNamespace;
 export const WorkersForPlatformsDispatchNamespace: typeof import("./workersForPlatformsDispatchNamespace").WorkersForPlatformsDispatchNamespace = null as any;
 utilities.lazyLoad(exports, ["WorkersForPlatformsDispatchNamespace"], () => require("./workersForPlatformsDispatchNamespace"));
+
+export { WorkersForPlatformsNamespaceArgs, WorkersForPlatformsNamespaceState } from "./workersForPlatformsNamespace";
+export type WorkersForPlatformsNamespace = import("./workersForPlatformsNamespace").WorkersForPlatformsNamespace;
+export const WorkersForPlatformsNamespace: typeof import("./workersForPlatformsNamespace").WorkersForPlatformsNamespace = null as any;
+utilities.lazyLoad(exports, ["WorkersForPlatformsNamespace"], () => require("./workersForPlatformsNamespace"));
 
 export { WorkersKvArgs, WorkersKvState } from "./workersKv";
 export type WorkersKv = import("./workersKv").WorkersKv;
@@ -2400,6 +2580,11 @@ export type ZeroTrustList = import("./zeroTrustList").ZeroTrustList;
 export const ZeroTrustList: typeof import("./zeroTrustList").ZeroTrustList = null as any;
 utilities.lazyLoad(exports, ["ZeroTrustList"], () => require("./zeroTrustList"));
 
+export { ZeroTrustLocalFallbackDomainArgs, ZeroTrustLocalFallbackDomainState } from "./zeroTrustLocalFallbackDomain";
+export type ZeroTrustLocalFallbackDomain = import("./zeroTrustLocalFallbackDomain").ZeroTrustLocalFallbackDomain;
+export const ZeroTrustLocalFallbackDomain: typeof import("./zeroTrustLocalFallbackDomain").ZeroTrustLocalFallbackDomain = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustLocalFallbackDomain"], () => require("./zeroTrustLocalFallbackDomain"));
+
 export { ZeroTrustOrganizationArgs, ZeroTrustOrganizationState } from "./zeroTrustOrganization";
 export type ZeroTrustOrganization = import("./zeroTrustOrganization").ZeroTrustOrganization;
 export const ZeroTrustOrganization: typeof import("./zeroTrustOrganization").ZeroTrustOrganization = null as any;
@@ -2494,8 +2679,32 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "cloudflare:index/accessApplication:AccessApplication":
+                return new AccessApplication(name, <any>undefined, { urn })
+            case "cloudflare:index/accessCaCertificate:AccessCaCertificate":
+                return new AccessCaCertificate(name, <any>undefined, { urn })
+            case "cloudflare:index/accessCustomPage:AccessCustomPage":
+                return new AccessCustomPage(name, <any>undefined, { urn })
+            case "cloudflare:index/accessGroup:AccessGroup":
+                return new AccessGroup(name, <any>undefined, { urn })
+            case "cloudflare:index/accessIdentityProvider:AccessIdentityProvider":
+                return new AccessIdentityProvider(name, <any>undefined, { urn })
+            case "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration":
+                return new AccessKeysConfiguration(name, <any>undefined, { urn })
+            case "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate":
+                return new AccessMutualTlsCertificate(name, <any>undefined, { urn })
+            case "cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings":
+                return new AccessMutualTlsHostnameSettings(name, <any>undefined, { urn })
+            case "cloudflare:index/accessOrganization:AccessOrganization":
+                return new AccessOrganization(name, <any>undefined, { urn })
+            case "cloudflare:index/accessPolicy:AccessPolicy":
+                return new AccessPolicy(name, <any>undefined, { urn })
             case "cloudflare:index/accessRule:AccessRule":
                 return new AccessRule(name, <any>undefined, { urn })
+            case "cloudflare:index/accessServiceToken:AccessServiceToken":
+                return new AccessServiceToken(name, <any>undefined, { urn })
+            case "cloudflare:index/accessTag:AccessTag":
+                return new AccessTag(name, <any>undefined, { urn })
             case "cloudflare:index/account:Account":
                 return new Account(name, <any>undefined, { urn })
             case "cloudflare:index/accountDnsSettings:AccountDnsSettings":
@@ -2566,6 +2775,18 @@ const _module = {
                 return new CustomSsl(name, <any>undefined, { urn })
             case "cloudflare:index/d1Database:D1Database":
                 return new D1Database(name, <any>undefined, { urn })
+            case "cloudflare:index/deviceDexTest:DeviceDexTest":
+                return new DeviceDexTest(name, <any>undefined, { urn })
+            case "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks":
+                return new DeviceManagedNetworks(name, <any>undefined, { urn })
+            case "cloudflare:index/devicePostureIntegration:DevicePostureIntegration":
+                return new DevicePostureIntegration(name, <any>undefined, { urn })
+            case "cloudflare:index/devicePostureRule:DevicePostureRule":
+                return new DevicePostureRule(name, <any>undefined, { urn })
+            case "cloudflare:index/dlpCustomProfile:DlpCustomProfile":
+                return new DlpCustomProfile(name, <any>undefined, { urn })
+            case "cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile":
+                return new DlpPredefinedProfile(name, <any>undefined, { urn })
             case "cloudflare:index/dnsFirewall:DnsFirewall":
                 return new DnsFirewall(name, <any>undefined, { urn })
             case "cloudflare:index/dnsRecord:DnsRecord":
@@ -2652,6 +2873,8 @@ const _module = {
                 return new MagicWanIpsecTunnel(name, <any>undefined, { urn })
             case "cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute":
                 return new MagicWanStaticRoute(name, <any>undefined, { urn })
+            case "cloudflare:index/managedHeaders:ManagedHeaders":
+                return new ManagedHeaders(name, <any>undefined, { urn })
             case "cloudflare:index/managedTransforms:ManagedTransforms":
                 return new ManagedTransforms(name, <any>undefined, { urn })
             case "cloudflare:index/mtlsCertificate:MtlsCertificate":
@@ -2694,12 +2917,16 @@ const _module = {
                 return new R2ManagedDomain(name, <any>undefined, { urn })
             case "cloudflare:index/rateLimit:RateLimit":
                 return new RateLimit(name, <any>undefined, { urn })
+            case "cloudflare:index/record:Record":
+                return new Record(name, <any>undefined, { urn })
             case "cloudflare:index/regionalHostname:RegionalHostname":
                 return new RegionalHostname(name, <any>undefined, { urn })
             case "cloudflare:index/regionalTieredCache:RegionalTieredCache":
                 return new RegionalTieredCache(name, <any>undefined, { urn })
             case "cloudflare:index/registrarDomain:RegistrarDomain":
                 return new RegistrarDomain(name, <any>undefined, { urn })
+            case "cloudflare:index/riskBehavior:RiskBehavior":
+                return new RiskBehavior(name, <any>undefined, { urn })
             case "cloudflare:index/ruleset:Ruleset":
                 return new Ruleset(name, <any>undefined, { urn })
             case "cloudflare:index/snippetRules:SnippetRules":
@@ -2708,6 +2935,8 @@ const _module = {
                 return new Snippets(name, <any>undefined, { urn })
             case "cloudflare:index/spectrumApplication:SpectrumApplication":
                 return new SpectrumApplication(name, <any>undefined, { urn })
+            case "cloudflare:index/staticRoute:StaticRoute":
+                return new StaticRoute(name, <any>undefined, { urn })
             case "cloudflare:index/stream:Stream":
                 return new Stream(name, <any>undefined, { urn })
             case "cloudflare:index/streamAudioTrack:StreamAudioTrack":
@@ -2724,10 +2953,28 @@ const _module = {
                 return new StreamWatermark(name, <any>undefined, { urn })
             case "cloudflare:index/streamWebhook:StreamWebhook":
                 return new StreamWebhook(name, <any>undefined, { urn })
+            case "cloudflare:index/teamsAccount:TeamsAccount":
+                return new TeamsAccount(name, <any>undefined, { urn })
+            case "cloudflare:index/teamsList:TeamsList":
+                return new TeamsList(name, <any>undefined, { urn })
+            case "cloudflare:index/teamsLocation:TeamsLocation":
+                return new TeamsLocation(name, <any>undefined, { urn })
+            case "cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint":
+                return new TeamsProxyEndpoint(name, <any>undefined, { urn })
+            case "cloudflare:index/teamsRule:TeamsRule":
+                return new TeamsRule(name, <any>undefined, { urn })
             case "cloudflare:index/tieredCache:TieredCache":
                 return new TieredCache(name, <any>undefined, { urn })
             case "cloudflare:index/totalTls:TotalTls":
                 return new TotalTls(name, <any>undefined, { urn })
+            case "cloudflare:index/tunnel:Tunnel":
+                return new Tunnel(name, <any>undefined, { urn })
+            case "cloudflare:index/tunnelConfig:TunnelConfig":
+                return new TunnelConfig(name, <any>undefined, { urn })
+            case "cloudflare:index/tunnelRoute:TunnelRoute":
+                return new TunnelRoute(name, <any>undefined, { urn })
+            case "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork":
+                return new TunnelVirtualNetwork(name, <any>undefined, { urn })
             case "cloudflare:index/turnstileWidget:TurnstileWidget":
                 return new TurnstileWidget(name, <any>undefined, { urn })
             case "cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings":
@@ -2750,6 +2997,14 @@ const _module = {
                 return new WebAnalyticsRule(name, <any>undefined, { urn })
             case "cloudflare:index/webAnalyticsSite:WebAnalyticsSite":
                 return new WebAnalyticsSite(name, <any>undefined, { urn })
+            case "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
+                return new WorkerCronTrigger(name, <any>undefined, { urn })
+            case "cloudflare:index/workerDomain:WorkerDomain":
+                return new WorkerDomain(name, <any>undefined, { urn })
+            case "cloudflare:index/workerScript:WorkerScript":
+                return new WorkerScript(name, <any>undefined, { urn })
+            case "cloudflare:index/workerSecret:WorkerSecret":
+                return new WorkerSecret(name, <any>undefined, { urn })
             case "cloudflare:index/workersCronTrigger:WorkersCronTrigger":
                 return new WorkersCronTrigger(name, <any>undefined, { urn })
             case "cloudflare:index/workersCustomDomain:WorkersCustomDomain":
@@ -2758,6 +3013,8 @@ const _module = {
                 return new WorkersDeployment(name, <any>undefined, { urn })
             case "cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace":
                 return new WorkersForPlatformsDispatchNamespace(name, <any>undefined, { urn })
+            case "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace":
+                return new WorkersForPlatformsNamespace(name, <any>undefined, { urn })
             case "cloudflare:index/workersKv:WorkersKv":
                 return new WorkersKv(name, <any>undefined, { urn })
             case "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
@@ -2834,6 +3091,8 @@ const _module = {
                 return new ZeroTrustGatewaySettings(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustList:ZeroTrustList":
                 return new ZeroTrustList(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain":
+                return new ZeroTrustLocalFallbackDomain(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization":
                 return new ZeroTrustOrganization(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior":
@@ -2871,7 +3130,19 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessApplication", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessCaCertificate", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessCustomPage", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessGroup", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessIdentityProvider", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessKeysConfiguration", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessMutualTlsCertificate", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessMutualTlsHostnameSettings", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessOrganization", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessRule", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessServiceToken", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessTag", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/account", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accountDnsSettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accountDnsSettingsInternalView", _module)
@@ -2907,6 +3178,12 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/customHostnameFallbac
 pulumi.runtime.registerResourceModule("cloudflare", "index/customPages", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customSsl", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/d1Database", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/deviceDexTest", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/deviceManagedNetworks", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/devicePostureIntegration", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/devicePostureRule", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/dlpCustomProfile", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/dlpPredefinedProfile", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/dnsFirewall", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/dnsRecord", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/dnsZoneTransfersAcl", _module)
@@ -2950,6 +3227,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/magicTransitSiteWan",
 pulumi.runtime.registerResourceModule("cloudflare", "index/magicWanGreTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/magicWanIpsecTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/magicWanStaticRoute", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/managedHeaders", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/managedTransforms", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/mtlsCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicy", _module)
@@ -2971,13 +3249,16 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/r2BucketSippy", _modu
 pulumi.runtime.registerResourceModule("cloudflare", "index/r2CustomDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/r2ManagedDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/rateLimit", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/record", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/regionalHostname", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/regionalTieredCache", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/registrarDomain", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/riskBehavior", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ruleset", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/snippetRules", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/snippets", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/spectrumApplication", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/staticRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/stream", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/streamAudioTrack", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/streamCaptionLanguage", _module)
@@ -2986,8 +3267,17 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/streamKey", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/streamLiveInput", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/streamWatermark", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/streamWebhook", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/teamsAccount", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/teamsList", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/teamsLocation", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/teamsProxyEndpoint", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/teamsRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tieredCache", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/totalTls", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/tunnel", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelConfig", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelRoute", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelVirtualNetwork", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/turnstileWidget", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/urlNormalizationSettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/user", _module)
@@ -2999,10 +3289,15 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoomSettings",
 pulumi.runtime.registerResourceModule("cloudflare", "index/web3Hostname", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/webAnalyticsRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/webAnalyticsSite", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workerCronTrigger", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workerDomain", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workerScript", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workerSecret", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersCronTrigger", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersCustomDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersDeployment", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersForPlatformsDispatchNamespace", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workersForPlatformsNamespace", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKv", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKvNamespace", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersRoute", _module)
@@ -3041,6 +3336,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayPolic
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayProxyEndpoint", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewaySettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustList", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustLocalFallbackDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustOrganization", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustRiskBehavior", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustRiskScoringIntegration", _module)

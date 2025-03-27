@@ -5,7 +5,19 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .access_application import *
+from .access_ca_certificate import *
+from .access_custom_page import *
+from .access_group import *
+from .access_identity_provider import *
+from .access_keys_configuration import *
+from .access_mutual_tls_certificate import *
+from .access_mutual_tls_hostname_settings import *
+from .access_organization import *
+from .access_policy import *
 from .access_rule import *
+from .access_service_token import *
+from .access_tag import *
 from .account import *
 from .account_dns_settings import *
 from .account_dns_settings_internal_view import *
@@ -41,6 +53,12 @@ from .custom_hostname_fallback_origin import *
 from .custom_pages import *
 from .custom_ssl import *
 from .d1_database import *
+from .device_dex_test import *
+from .device_managed_networks import *
+from .device_posture_integration import *
+from .device_posture_rule import *
+from .dlp_custom_profile import *
+from .dlp_predefined_profile import *
 from .dns_firewall import *
 from .dns_record import *
 from .dns_zone_transfers_acl import *
@@ -392,6 +410,7 @@ from .magic_transit_site_wan import *
 from .magic_wan_gre_tunnel import *
 from .magic_wan_ipsec_tunnel import *
 from .magic_wan_static_route import *
+from .managed_headers import *
 from .managed_transforms import *
 from .mtls_certificate import *
 from .notification_policy import *
@@ -414,13 +433,16 @@ from .r2_bucket_sippy import *
 from .r2_custom_domain import *
 from .r2_managed_domain import *
 from .rate_limit import *
+from .record import *
 from .regional_hostname import *
 from .regional_tiered_cache import *
 from .registrar_domain import *
+from .risk_behavior import *
 from .ruleset import *
 from .snippet_rules import *
 from .snippets import *
 from .spectrum_application import *
+from .static_route import *
 from .stream import *
 from .stream_audio_track import *
 from .stream_caption_language import *
@@ -429,8 +451,17 @@ from .stream_key import *
 from .stream_live_input import *
 from .stream_watermark import *
 from .stream_webhook import *
+from .teams_account import *
+from .teams_list import *
+from .teams_location import *
+from .teams_proxy_endpoint import *
+from .teams_rule import *
 from .tiered_cache import *
 from .total_tls import *
+from .tunnel import *
+from .tunnel_config import *
+from .tunnel_route import *
+from .tunnel_virtual_network import *
 from .turnstile_widget import *
 from .url_normalization_settings import *
 from .user import *
@@ -442,10 +473,15 @@ from .waiting_room_settings import *
 from .web3_hostname import *
 from .web_analytics_rule import *
 from .web_analytics_site import *
+from .worker_cron_trigger import *
+from .worker_domain import *
+from .worker_script import *
+from .worker_secret import *
 from .workers_cron_trigger import *
 from .workers_custom_domain import *
 from .workers_deployment import *
 from .workers_for_platforms_dispatch_namespace import *
+from .workers_for_platforms_namespace import *
 from .workers_kv import *
 from .workers_kv_namespace import *
 from .workers_route import *
@@ -484,6 +520,7 @@ from .zero_trust_gateway_policy import *
 from .zero_trust_gateway_proxy_endpoint import *
 from .zero_trust_gateway_settings import *
 from .zero_trust_list import *
+from .zero_trust_local_fallback_domain import *
 from .zero_trust_organization import *
 from .zero_trust_risk_behavior import *
 from .zero_trust_risk_scoring_integration import *
@@ -515,10 +552,106 @@ _utilities.register(
 [
  {
   "pkg": "cloudflare",
+  "mod": "index/accessApplication",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessApplication:AccessApplication": "AccessApplication"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/accessCaCertificate",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessCaCertificate:AccessCaCertificate": "AccessCaCertificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/accessCustomPage",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessCustomPage:AccessCustomPage": "AccessCustomPage"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/accessGroup",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessGroup:AccessGroup": "AccessGroup"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/accessIdentityProvider",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessIdentityProvider:AccessIdentityProvider": "AccessIdentityProvider"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/accessKeysConfiguration",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration": "AccessKeysConfiguration"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/accessMutualTlsCertificate",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate": "AccessMutualTlsCertificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/accessMutualTlsHostnameSettings",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings": "AccessMutualTlsHostnameSettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/accessOrganization",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessOrganization:AccessOrganization": "AccessOrganization"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/accessPolicy",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessPolicy:AccessPolicy": "AccessPolicy"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/accessRule",
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/accessRule:AccessRule": "AccessRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/accessServiceToken",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessServiceToken:AccessServiceToken": "AccessServiceToken"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/accessTag",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessTag:AccessTag": "AccessTag"
   }
  },
  {
@@ -799,6 +932,54 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/d1Database:D1Database": "D1Database"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/deviceDexTest",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/deviceDexTest:DeviceDexTest": "DeviceDexTest"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/deviceManagedNetworks",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks": "DeviceManagedNetworks"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/devicePostureIntegration",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/devicePostureIntegration:DevicePostureIntegration": "DevicePostureIntegration"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/devicePostureRule",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/devicePostureRule:DevicePostureRule": "DevicePostureRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/dlpCustomProfile",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/dlpCustomProfile:DlpCustomProfile": "DlpCustomProfile"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/dlpPredefinedProfile",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile": "DlpPredefinedProfile"
   }
  },
  {
@@ -1147,6 +1328,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/managedHeaders",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/managedHeaders:ManagedHeaders": "ManagedHeaders"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/managedTransforms",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1315,6 +1504,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/record",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/record:Record": "Record"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/regionalHostname",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1335,6 +1532,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/registrarDomain:RegistrarDomain": "RegistrarDomain"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/riskBehavior",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/riskBehavior:RiskBehavior": "RiskBehavior"
   }
  },
  {
@@ -1367,6 +1572,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/spectrumApplication:SpectrumApplication": "SpectrumApplication"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/staticRoute",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/staticRoute:StaticRoute": "StaticRoute"
   }
  },
  {
@@ -1435,6 +1648,46 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/teamsAccount",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/teamsAccount:TeamsAccount": "TeamsAccount"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/teamsList",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/teamsList:TeamsList": "TeamsList"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/teamsLocation",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/teamsLocation:TeamsLocation": "TeamsLocation"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/teamsProxyEndpoint",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint": "TeamsProxyEndpoint"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/teamsRule",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/teamsRule:TeamsRule": "TeamsRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/tieredCache",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1447,6 +1700,38 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/totalTls:TotalTls": "TotalTls"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/tunnel",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/tunnel:Tunnel": "Tunnel"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/tunnelConfig",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/tunnelConfig:TunnelConfig": "TunnelConfig"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/tunnelRoute",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/tunnelRoute:TunnelRoute": "TunnelRoute"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/tunnelVirtualNetwork",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork": "TunnelVirtualNetwork"
   }
  },
  {
@@ -1539,6 +1824,38 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/workerCronTrigger",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workerCronTrigger:WorkerCronTrigger": "WorkerCronTrigger"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/workerDomain",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workerDomain:WorkerDomain": "WorkerDomain"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/workerScript",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workerScript:WorkerScript": "WorkerScript"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/workerSecret",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workerSecret:WorkerSecret": "WorkerSecret"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/workersCronTrigger",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1567,6 +1884,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace": "WorkersForPlatformsDispatchNamespace"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/workersForPlatformsNamespace",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace": "WorkersForPlatformsNamespace"
   }
  },
  {
@@ -1871,6 +2196,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zeroTrustList:ZeroTrustList": "ZeroTrustList"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustLocalFallbackDomain",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain": "ZeroTrustLocalFallbackDomain"
   }
  },
  {
