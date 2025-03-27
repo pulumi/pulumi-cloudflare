@@ -40,9 +40,6 @@ func (s discardSink) LogStatus(context.Context, diag.Severity, resource.URN, str
 	return nil
 }
 
-//go:embed cmd/pulumi-resource-cloudflare/schema-embed.json
-var pulumiSchema []byte
-
 func providerFactory[T any](T) (pulumirpc.ResourceProviderServer, error) {
 	ctx := context.Background()
 	version.Version = "0.0.1"
@@ -52,7 +49,7 @@ func providerFactory[T any](T) (pulumirpc.ResourceProviderServer, error) {
 
 	return tfbridge.NewProviderServer(
 		ctx, sink, info, tfbridge.ProviderMetadata{
-			PackageSchema: pulumiSchema,
+			PackageSchema: []byte{},
 		})
 }
 
