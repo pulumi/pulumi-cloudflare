@@ -12,7 +12,7 @@ resources:
       special: false
       upper: false
   example:
-    type: cloudflare:DnsRecord
+    type: cloudflare:Record
     properties:
       zoneId: ${cloudflare-zone-id}
       name: ${randomName.result}

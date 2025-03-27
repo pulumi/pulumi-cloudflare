@@ -1,0 +1,127 @@
+{
+  "version": 3,
+  "deployment": {
+    "manifest": {
+      "time": "2025-03-27T17:49:01.312357+02:00",
+      "magic": "f275c099d52ef3c1952ebd90c8ac8e6a031384018f7340ad57e8ac81f8d1db08",
+      "version": "v3.158.0"
+    },
+    "secrets_providers": {
+      "type": "passphrase",
+      "state": {
+        "salt": "v1:NAV6tfhehgc=:v1:Lw5eD1aaxmwyA4a5:MEhmpdT/WUZaEZIFhVBP2CloBbtXpQ=="
+      }
+    },
+    "resources": [
+      {
+        "urn": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::pulumi:pulumi:Stack::index_workerskvnamespace9PC9vCoap51M-test",
+        "custom": false,
+        "type": "pulumi:pulumi:Stack",
+        "outputs": {
+          "kvNamespaceId": "9db7262b3b2144a88b548c57f3d0219d"
+        },
+        "created": "2025-03-27T15:48:58.499052Z",
+        "modified": "2025-03-27T15:48:58.499052Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::pulumi:providers:random::default",
+        "custom": true,
+        "id": "9099b4fa-f2de-4efa-9e53-dbf4c7aa94a6",
+        "type": "pulumi:providers:random",
+        "created": "2025-03-27T15:48:58.722161Z",
+        "modified": "2025-03-27T15:48:58.722161Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::random:index/randomString:RandomString::randomId",
+        "custom": true,
+        "id": "cboyrw",
+        "type": "random:index/randomString:RandomString",
+        "inputs": {
+          "length": 6,
+          "lower": true,
+          "number": false,
+          "special": false,
+          "upper": false
+        },
+        "outputs": {
+          "__meta": "{\"schema_version\":\"2\"}",
+          "id": "cboyrw",
+          "length": 6,
+          "lower": true,
+          "minLower": 0,
+          "minNumeric": 0,
+          "minSpecial": 0,
+          "minUpper": 0,
+          "number": false,
+          "numeric": false,
+          "result": "cboyrw",
+          "special": false,
+          "upper": false
+        },
+        "parent": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::pulumi:pulumi:Stack::index_workerskvnamespace9PC9vCoap51M-test",
+        "provider": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::pulumi:providers:random::default::9099b4fa-f2de-4efa-9e53-dbf4c7aa94a6",
+        "propertyDependencies": {
+          "length": [],
+          "lower": [],
+          "number": [],
+          "special": [],
+          "upper": []
+        },
+        "created": "2025-03-27T15:48:58.725356Z",
+        "modified": "2025-03-27T15:48:58.725356Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::pulumi:providers:cloudflare::default",
+        "custom": true,
+        "id": "a291623b-a454-40bc-b2e3-896e95e6e6d4",
+        "type": "pulumi:providers:cloudflare",
+        "inputs": {
+          "apiClientLogging": "false",
+          "maxBackoff": "30",
+          "minBackoff": "1",
+          "retries": "3",
+          "rps": "4"
+        },
+        "outputs": {
+          "apiClientLogging": "false",
+          "maxBackoff": "30",
+          "minBackoff": "1",
+          "retries": "3",
+          "rps": "4"
+        },
+        "created": "2025-03-27T15:48:58.77685Z",
+        "modified": "2025-03-27T15:48:58.77685Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::cloudflare:index/workersKvNamespace:WorkersKvNamespace::cloudflareWorkersKvNamespace",
+        "custom": true,
+        "id": "9db7262b3b2144a88b548c57f3d0219d",
+        "type": "cloudflare:index/workersKvNamespace:WorkersKvNamespace",
+        "inputs": {
+          "__defaults": [],
+          "accountId": "48364b099cc965f71761d67bc5314bd4",
+          "title": "kv-cboyrw"
+        },
+        "outputs": {
+          "accountId": "48364b099cc965f71761d67bc5314bd4",
+          "id": "9db7262b3b2144a88b548c57f3d0219d",
+          "title": "kv-cboyrw"
+        },
+        "parent": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::pulumi:pulumi:Stack::index_workerskvnamespace9PC9vCoap51M-test",
+        "dependencies": [
+          "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::random:index/randomString:RandomString::randomId"
+        ],
+        "provider": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::pulumi:providers:cloudflare::default::a291623b-a454-40bc-b2e3-896e95e6e6d4",
+        "propertyDependencies": {
+          "accountId": [],
+          "title": [
+            "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::random:index/randomString:RandomString::randomId"
+          ]
+        },
+        "created": "2025-03-27T15:49:01.298176Z",
+        "modified": "2025-03-27T15:49:01.298176Z"
+      }
+    ],
+    "metadata": {}
+  }
+}
