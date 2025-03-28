@@ -127,7 +127,6 @@ func Provider() info.Provider {
 					}
 					return state, nil
 				},
-				ComputeID: delegateID("name"),
 			},
 			"cloudflare_zero_trust_access_application": {
 				Aliases: alias("cloudflare:index/accessApplication:AccessApplication"),

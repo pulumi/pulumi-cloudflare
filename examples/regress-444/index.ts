@@ -13,8 +13,8 @@ const randomStr = new random.RandomString("random", {
 });
 
 const zone = new cloudflare.Zone("my-zone", {
-    zone: randomStr.result.apply(r => `ts-test-cloudflare-${r}-zone.com`),
-    accountId: accountId,
+    name: randomStr.result.apply(r => `ts-test-cloudflare-${r}-zone.com`),
+    account: {id: accountId},
 });
 
 new cloudflare.Ruleset("transform_uri_rule_query", {
