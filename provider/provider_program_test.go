@@ -40,6 +40,11 @@ func (s discardSink) LogStatus(context.Context, diag.Severity, resource.URN, str
 	return nil
 }
 
+// Use the non-embedded schema to avoid having to run generation before running the tests.
+//
+//go:embed cmd/pulumi-resource-cloudflare/schema.json
+var schemaBytes []byte
+
 func providerFactory[T any](T) (pulumirpc.ResourceProviderServer, error) {
 	ctx := context.Background()
 	version.Version = "0.0.1"
@@ -49,7 +54,7 @@ func providerFactory[T any](T) (pulumirpc.ResourceProviderServer, error) {
 
 	return tfbridge.NewProviderServer(
 		ctx, sink, info, tfbridge.ProviderMetadata{
-			PackageSchema: []byte{},
+			PackageSchema: schemaBytes,
 		})
 }
 
