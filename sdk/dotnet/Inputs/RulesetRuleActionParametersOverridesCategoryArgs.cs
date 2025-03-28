@@ -13,22 +13,29 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersOverridesCategoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Action to perform in the tag-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+        /// The action to override rules in the category with.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// Tag name to apply the ruleset rule override to.
+        /// The name of the category to override.
         /// </summary>
-        [Input("category")]
-        public Input<string>? Category { get; set; }
+        [Input("category", required: true)]
+        public Input<string> Category { get; set; } = null!;
 
         /// <summary>
-        /// Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+        /// Whether to enable execution of rules in the category.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// The sensitivity level to use for rules in the category.
+        /// Available values: "default", "medium", "low", "eoff".
+        /// </summary>
+        [Input("sensitivityLevel")]
+        public Input<string>? SensitivityLevel { get; set; }
 
         public RulesetRuleActionParametersOverridesCategoryArgs()
         {

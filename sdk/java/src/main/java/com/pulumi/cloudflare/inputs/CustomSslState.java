@@ -3,11 +3,11 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.CustomSslCustomSslOptionsArgs;
-import com.pulumi.cloudflare.inputs.CustomSslCustomSslPriorityArgs;
+import com.pulumi.cloudflare.inputs.CustomSslGeoRestrictionsArgs;
+import com.pulumi.cloudflare.inputs.CustomSslKeylessServerArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -20,32 +20,65 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
     public static final CustomSslState Empty = new CustomSslState();
 
     /**
-     * The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+     * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
-    @Import(name="customSslOptions")
-    private @Nullable Output<CustomSslCustomSslOptionsArgs> customSslOptions;
+    @Import(name="bundleMethod")
+    private @Nullable Output<String> bundleMethod;
 
     /**
-     * @return The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+     * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
-    public Optional<Output<CustomSslCustomSslOptionsArgs>> customSslOptions() {
-        return Optional.ofNullable(this.customSslOptions);
+    public Optional<Output<String>> bundleMethod() {
+        return Optional.ofNullable(this.bundleMethod);
     }
 
-    @Import(name="customSslPriorities")
-    private @Nullable Output<List<CustomSslCustomSslPriorityArgs>> customSslPriorities;
+    /**
+     * The zone&#39;s SSL certificate or certificate and the intermediate(s).
+     * 
+     */
+    @Import(name="certificate")
+    private @Nullable Output<String> certificate;
 
-    public Optional<Output<List<CustomSslCustomSslPriorityArgs>>> customSslPriorities() {
-        return Optional.ofNullable(this.customSslPriorities);
+    /**
+     * @return The zone&#39;s SSL certificate or certificate and the intermediate(s).
+     * 
+     */
+    public Optional<Output<String>> certificate() {
+        return Optional.ofNullable(this.certificate);
     }
 
+    /**
+     * When the certificate from the authority expires.
+     * 
+     */
     @Import(name="expiresOn")
     private @Nullable Output<String> expiresOn;
 
+    /**
+     * @return When the certificate from the authority expires.
+     * 
+     */
     public Optional<Output<String>> expiresOn() {
         return Optional.ofNullable(this.expiresOn);
+    }
+
+    /**
+     * Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+     * 
+     */
+    @Import(name="geoRestrictions")
+    private @Nullable Output<CustomSslGeoRestrictionsArgs> geoRestrictions;
+
+    /**
+     * @return Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+     * 
+     */
+    public Optional<Output<CustomSslGeoRestrictionsArgs>> geoRestrictions() {
+        return Optional.ofNullable(this.geoRestrictions);
     }
 
     @Import(name="hosts")
@@ -55,57 +88,161 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.hosts);
     }
 
+    /**
+     * The certificate authority that issued the certificate.
+     * 
+     */
     @Import(name="issuer")
     private @Nullable Output<String> issuer;
 
+    /**
+     * @return The certificate authority that issued the certificate.
+     * 
+     */
     public Optional<Output<String>> issuer() {
         return Optional.ofNullable(this.issuer);
     }
 
+    @Import(name="keylessServer")
+    private @Nullable Output<CustomSslKeylessServerArgs> keylessServer;
+
+    public Optional<Output<CustomSslKeylessServerArgs>> keylessServer() {
+        return Optional.ofNullable(this.keylessServer);
+    }
+
+    /**
+     * When the certificate was last modified.
+     * 
+     */
     @Import(name="modifiedOn")
     private @Nullable Output<String> modifiedOn;
 
+    /**
+     * @return When the certificate was last modified.
+     * 
+     */
     public Optional<Output<String>> modifiedOn() {
         return Optional.ofNullable(this.modifiedOn);
     }
 
-    @Import(name="priority")
-    private @Nullable Output<Integer> priority;
+    /**
+     * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * 
+     */
+    @Import(name="policy")
+    private @Nullable Output<String> policy;
 
-    public Optional<Output<Integer>> priority() {
+    /**
+     * @return Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * 
+     */
+    public Optional<Output<String>> policy() {
+        return Optional.ofNullable(this.policy);
+    }
+
+    /**
+     * The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy*custom&#39; certificates, but &#39;legacy*custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
+     * 
+     */
+    @Import(name="priority")
+    private @Nullable Output<Double> priority;
+
+    /**
+     * @return The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy*custom&#39; certificates, but &#39;legacy*custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
+     * 
+     */
+    public Optional<Output<Double>> priority() {
         return Optional.ofNullable(this.priority);
     }
 
+    /**
+     * The zone&#39;s private key.
+     * 
+     */
+    @Import(name="privateKey")
+    private @Nullable Output<String> privateKey;
+
+    /**
+     * @return The zone&#39;s private key.
+     * 
+     */
+    public Optional<Output<String>> privateKey() {
+        return Optional.ofNullable(this.privateKey);
+    }
+
+    /**
+     * The type of hash used for the certificate.
+     * 
+     */
     @Import(name="signature")
     private @Nullable Output<String> signature;
 
+    /**
+     * @return The type of hash used for the certificate.
+     * 
+     */
     public Optional<Output<String>> signature() {
         return Optional.ofNullable(this.signature);
     }
 
+    /**
+     * Status of the zone&#39;s custom SSL.
+     * Available values: &#34;active&#34;, &#34;expired&#34;, &#34;deleted&#34;, &#34;pending&#34;, &#34;initializing&#34;.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return Status of the zone&#39;s custom SSL.
+     * Available values: &#34;active&#34;, &#34;expired&#34;, &#34;deleted&#34;, &#34;pending&#34;, &#34;initializing&#34;.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * The type &#39;legacy*custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+     * Available values: &#34;legacy*custom&#34;, &#34;sni_custom&#34;.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The type &#39;legacy*custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+     * Available values: &#34;legacy*custom&#34;, &#34;sni_custom&#34;.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
+    /**
+     * When the certificate was uploaded to Cloudflare.
+     * 
+     */
     @Import(name="uploadedOn")
     private @Nullable Output<String> uploadedOn;
 
+    /**
+     * @return When the certificate was uploaded to Cloudflare.
+     * 
+     */
     public Optional<Output<String>> uploadedOn() {
         return Optional.ofNullable(this.uploadedOn);
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -115,15 +252,20 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
     private CustomSslState() {}
 
     private CustomSslState(CustomSslState $) {
-        this.customSslOptions = $.customSslOptions;
-        this.customSslPriorities = $.customSslPriorities;
+        this.bundleMethod = $.bundleMethod;
+        this.certificate = $.certificate;
         this.expiresOn = $.expiresOn;
+        this.geoRestrictions = $.geoRestrictions;
         this.hosts = $.hosts;
         this.issuer = $.issuer;
+        this.keylessServer = $.keylessServer;
         this.modifiedOn = $.modifiedOn;
+        this.policy = $.policy;
         this.priority = $.priority;
+        this.privateKey = $.privateKey;
         this.signature = $.signature;
         this.status = $.status;
+        this.type = $.type;
         this.uploadedOn = $.uploadedOn;
         this.zoneId = $.zoneId;
     }
@@ -147,46 +289,89 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customSslOptions The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+         * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+         * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder customSslOptions(@Nullable Output<CustomSslCustomSslOptionsArgs> customSslOptions) {
-            $.customSslOptions = customSslOptions;
+        public Builder bundleMethod(@Nullable Output<String> bundleMethod) {
+            $.bundleMethod = bundleMethod;
             return this;
         }
 
         /**
-         * @param customSslOptions The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+         * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+         * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder customSslOptions(CustomSslCustomSslOptionsArgs customSslOptions) {
-            return customSslOptions(Output.of(customSslOptions));
+        public Builder bundleMethod(String bundleMethod) {
+            return bundleMethod(Output.of(bundleMethod));
         }
 
-        public Builder customSslPriorities(@Nullable Output<List<CustomSslCustomSslPriorityArgs>> customSslPriorities) {
-            $.customSslPriorities = customSslPriorities;
+        /**
+         * @param certificate The zone&#39;s SSL certificate or certificate and the intermediate(s).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificate(@Nullable Output<String> certificate) {
+            $.certificate = certificate;
             return this;
         }
 
-        public Builder customSslPriorities(List<CustomSslCustomSslPriorityArgs> customSslPriorities) {
-            return customSslPriorities(Output.of(customSslPriorities));
+        /**
+         * @param certificate The zone&#39;s SSL certificate or certificate and the intermediate(s).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificate(String certificate) {
+            return certificate(Output.of(certificate));
         }
 
-        public Builder customSslPriorities(CustomSslCustomSslPriorityArgs... customSslPriorities) {
-            return customSslPriorities(List.of(customSslPriorities));
-        }
-
+        /**
+         * @param expiresOn When the certificate from the authority expires.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expiresOn(@Nullable Output<String> expiresOn) {
             $.expiresOn = expiresOn;
             return this;
         }
 
+        /**
+         * @param expiresOn When the certificate from the authority expires.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expiresOn(String expiresOn) {
             return expiresOn(Output.of(expiresOn));
+        }
+
+        /**
+         * @param geoRestrictions Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder geoRestrictions(@Nullable Output<CustomSslGeoRestrictionsArgs> geoRestrictions) {
+            $.geoRestrictions = geoRestrictions;
+            return this;
+        }
+
+        /**
+         * @param geoRestrictions Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder geoRestrictions(CustomSslGeoRestrictionsArgs geoRestrictions) {
+            return geoRestrictions(Output.of(geoRestrictions));
         }
 
         public Builder hosts(@Nullable Output<List<String>> hosts) {
@@ -202,62 +387,210 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
             return hosts(List.of(hosts));
         }
 
+        /**
+         * @param issuer The certificate authority that issued the certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder issuer(@Nullable Output<String> issuer) {
             $.issuer = issuer;
             return this;
         }
 
+        /**
+         * @param issuer The certificate authority that issued the certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder issuer(String issuer) {
             return issuer(Output.of(issuer));
         }
 
+        public Builder keylessServer(@Nullable Output<CustomSslKeylessServerArgs> keylessServer) {
+            $.keylessServer = keylessServer;
+            return this;
+        }
+
+        public Builder keylessServer(CustomSslKeylessServerArgs keylessServer) {
+            return keylessServer(Output.of(keylessServer));
+        }
+
+        /**
+         * @param modifiedOn When the certificate was last modified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
             $.modifiedOn = modifiedOn;
             return this;
         }
 
+        /**
+         * @param modifiedOn When the certificate was last modified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder modifiedOn(String modifiedOn) {
             return modifiedOn(Output.of(modifiedOn));
         }
 
-        public Builder priority(@Nullable Output<Integer> priority) {
+        /**
+         * @param policy Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policy(@Nullable Output<String> policy) {
+            $.policy = policy;
+            return this;
+        }
+
+        /**
+         * @param policy Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policy(String policy) {
+            return policy(Output.of(policy));
+        }
+
+        /**
+         * @param priority The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy*custom&#39; certificates, but &#39;legacy*custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(@Nullable Output<Double> priority) {
             $.priority = priority;
             return this;
         }
 
-        public Builder priority(Integer priority) {
+        /**
+         * @param priority The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping &#39;legacy*custom&#39; certificates, but &#39;legacy*custom&#39; certificates will always supercede &#39;sni_custom&#39; certificates.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(Double priority) {
             return priority(Output.of(priority));
         }
 
+        /**
+         * @param privateKey The zone&#39;s private key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateKey(@Nullable Output<String> privateKey) {
+            $.privateKey = privateKey;
+            return this;
+        }
+
+        /**
+         * @param privateKey The zone&#39;s private key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateKey(String privateKey) {
+            return privateKey(Output.of(privateKey));
+        }
+
+        /**
+         * @param signature The type of hash used for the certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder signature(@Nullable Output<String> signature) {
             $.signature = signature;
             return this;
         }
 
+        /**
+         * @param signature The type of hash used for the certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder signature(String signature) {
             return signature(Output.of(signature));
         }
 
+        /**
+         * @param status Status of the zone&#39;s custom SSL.
+         * Available values: &#34;active&#34;, &#34;expired&#34;, &#34;deleted&#34;, &#34;pending&#34;, &#34;initializing&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status Status of the zone&#39;s custom SSL.
+         * Available values: &#34;active&#34;, &#34;expired&#34;, &#34;deleted&#34;, &#34;pending&#34;, &#34;initializing&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }
 
+        /**
+         * @param type The type &#39;legacy*custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+         * Available values: &#34;legacy*custom&#34;, &#34;sni_custom&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The type &#39;legacy*custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+         * Available values: &#34;legacy*custom&#34;, &#34;sni_custom&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
+        }
+
+        /**
+         * @param uploadedOn When the certificate was uploaded to Cloudflare.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uploadedOn(@Nullable Output<String> uploadedOn) {
             $.uploadedOn = uploadedOn;
             return this;
         }
 
+        /**
+         * @param uploadedOn When the certificate was uploaded to Cloudflare.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uploadedOn(String uploadedOn) {
             return uploadedOn(Output.of(uploadedOn));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -268,7 +601,7 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

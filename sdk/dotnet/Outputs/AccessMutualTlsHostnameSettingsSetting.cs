@@ -16,11 +16,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
         /// </summary>
-        public readonly bool? ChinaNetwork;
+        public readonly bool ChinaNetwork;
         /// <summary>
         /// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
         /// </summary>
-        public readonly bool? ClientCertificateForwarding;
+        public readonly bool ClientCertificateForwarding;
         /// <summary>
         /// The hostname that these settings apply to.
         /// </summary>
@@ -28,9 +28,9 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private AccessMutualTlsHostnameSettingsSetting(
-            bool? chinaNetwork,
+            bool chinaNetwork,
 
-            bool? clientCertificateForwarding,
+            bool clientCertificateForwarding,
 
             string hostname)
         {

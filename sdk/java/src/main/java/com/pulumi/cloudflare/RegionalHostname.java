@@ -14,8 +14,6 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Data Localization Suite Regional Hostname.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -26,8 +24,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.Record;
- * import com.pulumi.cloudflare.RecordArgs;
  * import com.pulumi.cloudflare.RegionalHostname;
  * import com.pulumi.cloudflare.RegionalHostnameArgs;
  * import java.util.List;
@@ -43,22 +39,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Regionalized hostname record resources are managed independently from the
- *         // Regionalized Hostname resources.
- *         var example = new Record("example", RecordArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .name("example.com")
- *             .content("192.0.2.1")
- *             .type("A")
- *             .ttl(3600)
- *             .build());
- * 
- *         // The cloudflare_regional_hostname resource may exist with or without its
- *         // corresponding record resource.
  *         var exampleRegionalHostname = new RegionalHostname("exampleRegionalHostname", RegionalHostnameArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .hostname("example.com")
- *             .regionKey("eu")
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .hostname("foo.example.com")
+ *             .regionKey("ca")
  *             .build());
  * 
  *     }
@@ -67,60 +51,66 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/regionalHostname:RegionalHostname example &#39;&lt;zone_id&gt;/&lt;hostname&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/regionalHostname:RegionalHostname")
 public class RegionalHostname extends com.pulumi.resources.CustomResource {
     /**
-     * The RFC3339 timestamp of when the hostname was created.
+     * When the regional hostname was created
      * 
      */
     @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
     /**
-     * @return The RFC3339 timestamp of when the hostname was created.
+     * @return When the regional hostname was created
      * 
      */
     public Output<String> createdOn() {
         return this.createdOn;
     }
     /**
-     * The hostname to regionalize.
+     * DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
      * 
      */
     @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
     /**
-     * @return The hostname to regionalize.
+     * @return DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
      * 
      */
     public Output<String> hostname() {
         return this.hostname;
     }
     /**
-     * The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+     * Identifying key for the region
      * 
      */
     @Export(name="regionKey", refs={String.class}, tree="[0]")
     private Output<String> regionKey;
 
     /**
-     * @return The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+     * @return Identifying key for the region
      * 
      */
     public Output<String> regionKey() {
         return this.regionKey;
     }
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

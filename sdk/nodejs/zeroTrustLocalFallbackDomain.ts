@@ -7,10 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Fallback Domain resource. Fallback domains are
- * used to ignore DNS requests to a given list of domains. These DNS
- * requests will be passed back to other DNS servers configured on
- * existing network interfaces on the device.
+ * ## Example Usage
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain example '<account_id>/<policy_id>'
+ * ```
+ *
+ * @deprecated cloudflare.index/zerotrustlocalfallbackdomain.ZeroTrustLocalFallbackDomain has been deprecated in favor of cloudflare.index/zerotrustdevicecustomprofilelocaldomainfallback.ZeroTrustDeviceCustomProfileLocalDomainFallback
  */
 export class ZeroTrustLocalFallbackDomain extends pulumi.CustomResource {
     /**
@@ -23,6 +28,7 @@ export class ZeroTrustLocalFallbackDomain extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustLocalFallbackDomainState, opts?: pulumi.CustomResourceOptions): ZeroTrustLocalFallbackDomain {
+        pulumi.log.warn("ZeroTrustLocalFallbackDomain is deprecated: cloudflare.index/zerotrustlocalfallbackdomain.ZeroTrustLocalFallbackDomain has been deprecated in favor of cloudflare.index/zerotrustdevicecustomprofilelocaldomainfallback.ZeroTrustDeviceCustomProfileLocalDomainFallback")
         return new ZeroTrustLocalFallbackDomain(name, <any>state, { ...opts, id: id });
     }
 
@@ -40,15 +46,24 @@ export class ZeroTrustLocalFallbackDomain extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustLocalFallbackDomain.__pulumiType;
     }
 
-    /**
-     * The account identifier to target for the resource.
-     */
     public readonly accountId!: pulumi.Output<string>;
+    /**
+     * A description of the fallback domain, displayed in the client UI.
+     */
+    public /*out*/ readonly description!: pulumi.Output<string>;
+    /**
+     * A list of IP addresses to handle domain resolution.
+     */
+    public /*out*/ readonly dnsServers!: pulumi.Output<string[]>;
     public readonly domains!: pulumi.Output<outputs.ZeroTrustLocalFallbackDomainDomain[]>;
     /**
-     * The settings policy for which to configure this fallback domain policy.
+     * Device ID.
      */
-    public readonly policyId!: pulumi.Output<string | undefined>;
+    public readonly policyId!: pulumi.Output<string>;
+    /**
+     * The domain suffix to match when resolving locally.
+     */
+    public /*out*/ readonly suffix!: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustLocalFallbackDomain resource with the given unique name, arguments, and options.
@@ -57,15 +72,21 @@ export class ZeroTrustLocalFallbackDomain extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/zerotrustlocalfallbackdomain.ZeroTrustLocalFallbackDomain has been deprecated in favor of cloudflare.index/zerotrustdevicecustomprofilelocaldomainfallback.ZeroTrustDeviceCustomProfileLocalDomainFallback */
     constructor(name: string, args: ZeroTrustLocalFallbackDomainArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/zerotrustlocalfallbackdomain.ZeroTrustLocalFallbackDomain has been deprecated in favor of cloudflare.index/zerotrustdevicecustomprofilelocaldomainfallback.ZeroTrustDeviceCustomProfileLocalDomainFallback */
     constructor(name: string, argsOrState?: ZeroTrustLocalFallbackDomainArgs | ZeroTrustLocalFallbackDomainState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustLocalFallbackDomain is deprecated: cloudflare.index/zerotrustlocalfallbackdomain.ZeroTrustLocalFallbackDomain has been deprecated in favor of cloudflare.index/zerotrustdevicecustomprofilelocaldomainfallback.ZeroTrustDeviceCustomProfileLocalDomainFallback")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustLocalFallbackDomainState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dnsServers"] = state ? state.dnsServers : undefined;
             resourceInputs["domains"] = state ? state.domains : undefined;
             resourceInputs["policyId"] = state ? state.policyId : undefined;
+            resourceInputs["suffix"] = state ? state.suffix : undefined;
         } else {
             const args = argsOrState as ZeroTrustLocalFallbackDomainArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -74,11 +95,19 @@ export class ZeroTrustLocalFallbackDomain extends pulumi.CustomResource {
             if ((!args || args.domains === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domains'");
             }
+            if ((!args || args.policyId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'policyId'");
+            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["domains"] = args ? args.domains : undefined;
             resourceInputs["policyId"] = args ? args.policyId : undefined;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["dnsServers"] = undefined /*out*/;
+            resourceInputs["suffix"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/fallbackDomain:FallbackDomain" }, { type: "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustLocalFallbackDomain.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -87,28 +116,34 @@ export class ZeroTrustLocalFallbackDomain extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustLocalFallbackDomain resources.
  */
 export interface ZeroTrustLocalFallbackDomainState {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId?: pulumi.Input<string>;
+    /**
+     * A description of the fallback domain, displayed in the client UI.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * A list of IP addresses to handle domain resolution.
+     */
+    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
     domains?: pulumi.Input<pulumi.Input<inputs.ZeroTrustLocalFallbackDomainDomain>[]>;
     /**
-     * The settings policy for which to configure this fallback domain policy.
+     * Device ID.
      */
     policyId?: pulumi.Input<string>;
+    /**
+     * The domain suffix to match when resolving locally.
+     */
+    suffix?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustLocalFallbackDomain resource.
  */
 export interface ZeroTrustLocalFallbackDomainArgs {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId: pulumi.Input<string>;
     domains: pulumi.Input<pulumi.Input<inputs.ZeroTrustLocalFallbackDomainDomain>[]>;
     /**
-     * The settings policy for which to configure this fallback domain policy.
+     * Device ID.
      */
-    policyId?: pulumi.Input<string>;
+    policyId: pulumi.Input<string>;
 }

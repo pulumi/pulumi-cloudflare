@@ -7,16 +7,14 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = cloudflare.getLists({
- *     accountId: "f037e56e89293a057740de681ac9abbe",
+ * const exampleLists = cloudflare.getLists({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
@@ -24,6 +22,7 @@ export function getLists(args: GetListsArgs, opts?: pulumi.InvokeOptions): Promi
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLists:getLists", {
         "accountId": args.accountId,
+        "maxItems": args.maxItems,
     }, opts);
 }
 
@@ -32,9 +31,13 @@ export function getLists(args: GetListsArgs, opts?: pulumi.InvokeOptions): Promi
  */
 export interface GetListsArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: string;
+    /**
+     * Max items to fetch, default: 1000
+     */
+    maxItems?: number;
 }
 
 /**
@@ -42,26 +45,31 @@ export interface GetListsArgs {
  */
 export interface GetListsResult {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     readonly accountId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly lists: outputs.GetListsList[];
+    /**
+     * Max items to fetch, default: 1000
+     */
+    readonly maxItems?: number;
+    /**
+     * The items returned by the data source
+     */
+    readonly results: outputs.GetListsResult[];
 }
 /**
- * Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = cloudflare.getLists({
- *     accountId: "f037e56e89293a057740de681ac9abbe",
+ * const exampleLists = cloudflare.getLists({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
@@ -69,6 +77,7 @@ export function getListsOutput(args: GetListsOutputArgs, opts?: pulumi.InvokeOut
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLists:getLists", {
         "accountId": args.accountId,
+        "maxItems": args.maxItems,
     }, opts);
 }
 
@@ -77,7 +86,11 @@ export function getListsOutput(args: GetListsOutputArgs, opts?: pulumi.InvokeOut
  */
 export interface GetListsOutputArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Max items to fetch, default: 1000
+     */
+    maxItems?: pulumi.Input<number>;
 }

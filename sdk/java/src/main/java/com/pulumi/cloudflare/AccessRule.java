@@ -7,19 +7,17 @@ import com.pulumi.cloudflare.AccessRuleArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccessRuleState;
 import com.pulumi.cloudflare.outputs.AccessRuleConfiguration;
+import com.pulumi.cloudflare.outputs.AccessRuleScope;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare IP Firewall Access Rule resource. Access
- * control can be applied on basis of IP addresses, IP ranges, AS
- * numbers or countries.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -33,7 +31,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.AccessRule;
  * import com.pulumi.cloudflare.AccessRuleArgs;
  * import com.pulumi.cloudflare.inputs.AccessRuleConfigurationArgs;
- * import com.pulumi.codegen.internal.KeyedValue;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -47,46 +44,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         // Challenge requests coming from known Tor exit nodes.
- *         var torExitNodes = new AccessRule("torExitNodes", AccessRuleArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .notes("Requests coming from known Tor exit nodes")
- *             .mode("challenge")
+ *         var exampleAccessRule = new AccessRule("exampleAccessRule", AccessRuleArgs.builder()
  *             .configuration(AccessRuleConfigurationArgs.builder()
- *                 .target("country")
- *                 .value("T1")
+ *                 .target("ip")
+ *                 .value("198.51.100.4")
  *                 .build())
+ *             .mode("block")
+ *             .zoneId("zone_id")
+ *             .notes("This rule is enabled because of an event that occurred on date X.")
  *             .build());
  * 
- *         // Allowlist requests coming from Antarctica, but only for single zone.
- *         var antarctica = new AccessRule("antarctica", AccessRuleArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .notes("Requests coming from Antarctica")
- *             .mode("whitelist")
- *             .configuration(AccessRuleConfigurationArgs.builder()
- *                 .target("country")
- *                 .value("AQ")
- *                 .build())
- *             .build());
- * 
- *         final var myOffice = config.get("myOffice").orElse(        
- *             "192.0.2.0/24",
- *             "198.51.100.0/24",
- *             "2001:db8::/56");
- *         for (var i = 0; i < myOffice.length(); i++) {
- *             new AccessRule("officeNetwork-" + i, AccessRuleArgs.builder()
- *                 .accountId("f037e56e89293a057740de681ac9abbe")
- *                 .notes("Requests coming from office network")
- *                 .mode("whitelist")
- *                 .configuration(AccessRuleConfigurationArgs.builder()
- *                     .target("ip_range")
- *                     .value(myOffice[range.value()])
- *                     .build())
- *                 .build());
- * 
- *         
- * }
  *     }
  * }
  * }
@@ -95,96 +62,140 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * User level access rule import.
- * 
  * ```sh
- * $ pulumi import cloudflare:index/accessRule:AccessRule default user/&lt;user_id&gt;/&lt;rule_id&gt;
- * ```
- * 
- * Zone level access rule import.
- * 
- * ```sh
- * $ pulumi import cloudflare:index/accessRule:AccessRule default zone/&lt;zone_id&gt;/&lt;rule_id&gt;
- * ```
- * 
- * Account level access rule import.
- * 
- * ```sh
- * $ pulumi import cloudflare:index/accessRule:AccessRule default account/&lt;account_id&gt;/&lt;rule_id&gt;
+ * $ pulumi import cloudflare:index/accessRule:AccessRule example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;rule_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/accessRule:AccessRule")
 public class AccessRule extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
-     * Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+     * The available actions that a rule can apply to a matched request.
+     * 
+     */
+    @Export(name="allowedModes", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> allowedModes;
+
+    /**
+     * @return The available actions that a rule can apply to a matched request.
+     * 
+     */
+    public Output<List<String>> allowedModes() {
+        return this.allowedModes;
+    }
+    /**
+     * The rule configuration.
      * 
      */
     @Export(name="configuration", refs={AccessRuleConfiguration.class}, tree="[0]")
     private Output<AccessRuleConfiguration> configuration;
 
     /**
-     * @return Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+     * @return The rule configuration.
      * 
      */
     public Output<AccessRuleConfiguration> configuration() {
         return this.configuration;
     }
     /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
+     * The timestamp of when the rule was created.
+     * 
+     */
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
+
+    /**
+     * @return The timestamp of when the rule was created.
+     * 
+     */
+    public Output<String> createdOn() {
+        return this.createdOn;
+    }
+    /**
+     * The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     @Export(name="mode", refs={String.class}, tree="[0]")
     private Output<String> mode;
 
     /**
-     * @return The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
+     * @return The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     public Output<String> mode() {
         return this.mode;
     }
     /**
-     * A personal note about the rule. Typically used as a reminder or explanation for the rule.
+     * The timestamp of when the rule was last modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return The timestamp of when the rule was last modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * An informative summary of the rule, typically used as a reminder or explanation.
      * 
      */
     @Export(name="notes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notes;
 
     /**
-     * @return A personal note about the rule. Typically used as a reminder or explanation for the rule.
+     * @return An informative summary of the rule, typically used as a reminder or explanation.
      * 
      */
     public Output<Optional<String>> notes() {
         return Codegen.optional(this.notes);
     }
     /**
-     * The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * All zones owned by the user will have the rule applied.
+     * 
+     */
+    @Export(name="scope", refs={AccessRuleScope.class}, tree="[0]")
+    private Output<AccessRuleScope> scope;
+
+    /**
+     * @return All zones owned by the user will have the rule applied.
+     * 
+     */
+    public Output<AccessRuleScope> scope() {
+        return this.scope;
+    }
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**

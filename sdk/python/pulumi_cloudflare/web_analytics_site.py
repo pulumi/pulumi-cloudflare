@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['WebAnalyticsSiteArgs', 'WebAnalyticsSite']
 
@@ -20,20 +22,29 @@ __all__ = ['WebAnalyticsSiteArgs', 'WebAnalyticsSite']
 class WebAnalyticsSiteArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
-                 auto_install: pulumi.Input[bool],
+                 auto_install: Optional[pulumi.Input[bool]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
+                 lite: Optional[pulumi.Input[bool]] = None,
                  zone_tag: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WebAnalyticsSite resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[bool] auto_install: Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] host: The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] zone_tag: The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[bool] auto_install: If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
+        :param pulumi.Input[bool] enabled: Enables or disables RUM. This option can be used only when auto_install is set to true.
+        :param pulumi.Input[str] host: The hostname to use for gray-clouded sites.
+        :param pulumi.Input[bool] lite: If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+        :param pulumi.Input[str] zone_tag: The zone identifier.
         """
         pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "auto_install", auto_install)
+        if auto_install is not None:
+            pulumi.set(__self__, "auto_install", auto_install)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if host is not None:
             pulumi.set(__self__, "host", host)
+        if lite is not None:
+            pulumi.set(__self__, "lite", lite)
         if zone_tag is not None:
             pulumi.set(__self__, "zone_tag", zone_tag)
 
@@ -41,7 +52,7 @@ class WebAnalyticsSiteArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -51,21 +62,33 @@ class WebAnalyticsSiteArgs:
 
     @property
     @pulumi.getter(name="autoInstall")
-    def auto_install(self) -> pulumi.Input[bool]:
+    def auto_install(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+        If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
         """
         return pulumi.get(self, "auto_install")
 
     @auto_install.setter
-    def auto_install(self, value: pulumi.Input[bool]):
+    def auto_install(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_install", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables or disables RUM. This option can be used only when auto_install is set to true.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
+        The hostname to use for gray-clouded sites.
         """
         return pulumi.get(self, "host")
 
@@ -74,10 +97,22 @@ class WebAnalyticsSiteArgs:
         pulumi.set(self, "host", value)
 
     @property
+    @pulumi.getter
+    def lite(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+        """
+        return pulumi.get(self, "lite")
+
+    @lite.setter
+    def lite(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "lite", value)
+
+    @property
     @pulumi.getter(name="zoneTag")
     def zone_tag(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+        The zone identifier.
         """
         return pulumi.get(self, "zone_tag")
 
@@ -91,31 +126,45 @@ class _WebAnalyticsSiteState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  auto_install: Optional[pulumi.Input[bool]] = None,
+                 created: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
-                 ruleset_id: Optional[pulumi.Input[str]] = None,
+                 lite: Optional[pulumi.Input[bool]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WebAnalyticsSiteRuleArgs']]]] = None,
+                 ruleset: Optional[pulumi.Input['WebAnalyticsSiteRulesetArgs']] = None,
                  site_tag: Optional[pulumi.Input[str]] = None,
                  site_token: Optional[pulumi.Input[str]] = None,
                  snippet: Optional[pulumi.Input[str]] = None,
                  zone_tag: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WebAnalyticsSite resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[bool] auto_install: Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] host: The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] ruleset_id: The ID for the ruleset associated to this Web Analytics Site.
-        :param pulumi.Input[str] site_tag: The Web Analytics site tag.
-        :param pulumi.Input[str] site_token: The token for the Web Analytics site.
-        :param pulumi.Input[str] snippet: The encoded JS snippet to add to your site's HTML page if auto_install is false.
-        :param pulumi.Input[str] zone_tag: The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[bool] auto_install: If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
+        :param pulumi.Input[bool] enabled: Enables or disables RUM. This option can be used only when auto_install is set to true.
+        :param pulumi.Input[str] host: The hostname to use for gray-clouded sites.
+        :param pulumi.Input[bool] lite: If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+        :param pulumi.Input[Sequence[pulumi.Input['WebAnalyticsSiteRuleArgs']]] rules: A list of rules.
+        :param pulumi.Input[str] site_tag: The Web Analytics site identifier.
+        :param pulumi.Input[str] site_token: The Web Analytics site token.
+        :param pulumi.Input[str] snippet: Encoded JavaScript snippet.
+        :param pulumi.Input[str] zone_tag: The zone identifier.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if auto_install is not None:
             pulumi.set(__self__, "auto_install", auto_install)
+        if created is not None:
+            pulumi.set(__self__, "created", created)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if host is not None:
             pulumi.set(__self__, "host", host)
-        if ruleset_id is not None:
-            pulumi.set(__self__, "ruleset_id", ruleset_id)
+        if lite is not None:
+            pulumi.set(__self__, "lite", lite)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if ruleset is not None:
+            pulumi.set(__self__, "ruleset", ruleset)
         if site_tag is not None:
             pulumi.set(__self__, "site_tag", site_tag)
         if site_token is not None:
@@ -129,7 +178,7 @@ class _WebAnalyticsSiteState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -141,7 +190,7 @@ class _WebAnalyticsSiteState:
     @pulumi.getter(name="autoInstall")
     def auto_install(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+        If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
         """
         return pulumi.get(self, "auto_install")
 
@@ -151,9 +200,30 @@ class _WebAnalyticsSiteState:
 
     @property
     @pulumi.getter
+    def created(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created")
+
+    @created.setter
+    def created(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables or disables RUM. This option can be used only when auto_install is set to true.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
+        The hostname to use for gray-clouded sites.
         """
         return pulumi.get(self, "host")
 
@@ -162,22 +232,43 @@ class _WebAnalyticsSiteState:
         pulumi.set(self, "host", value)
 
     @property
-    @pulumi.getter(name="rulesetId")
-    def ruleset_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def lite(self) -> Optional[pulumi.Input[bool]]:
         """
-        The ID for the ruleset associated to this Web Analytics Site.
+        If enabled, the JavaScript snippet will not be injected for visitors from the EU.
         """
-        return pulumi.get(self, "ruleset_id")
+        return pulumi.get(self, "lite")
 
-    @ruleset_id.setter
-    def ruleset_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ruleset_id", value)
+    @lite.setter
+    def lite(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "lite", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WebAnalyticsSiteRuleArgs']]]]:
+        """
+        A list of rules.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WebAnalyticsSiteRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def ruleset(self) -> Optional[pulumi.Input['WebAnalyticsSiteRulesetArgs']]:
+        return pulumi.get(self, "ruleset")
+
+    @ruleset.setter
+    def ruleset(self, value: Optional[pulumi.Input['WebAnalyticsSiteRulesetArgs']]):
+        pulumi.set(self, "ruleset", value)
 
     @property
     @pulumi.getter(name="siteTag")
     def site_tag(self) -> Optional[pulumi.Input[str]]:
         """
-        The Web Analytics site tag.
+        The Web Analytics site identifier.
         """
         return pulumi.get(self, "site_tag")
 
@@ -189,7 +280,7 @@ class _WebAnalyticsSiteState:
     @pulumi.getter(name="siteToken")
     def site_token(self) -> Optional[pulumi.Input[str]]:
         """
-        The token for the Web Analytics site.
+        The Web Analytics site token.
         """
         return pulumi.get(self, "site_token")
 
@@ -201,7 +292,7 @@ class _WebAnalyticsSiteState:
     @pulumi.getter
     def snippet(self) -> Optional[pulumi.Input[str]]:
         """
-        The encoded JS snippet to add to your site's HTML page if auto_install is false.
+        Encoded JavaScript snippet.
         """
         return pulumi.get(self, "snippet")
 
@@ -213,7 +304,7 @@ class _WebAnalyticsSiteState:
     @pulumi.getter(name="zoneTag")
     def zone_tag(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+        The zone identifier.
         """
         return pulumi.get(self, "zone_tag")
 
@@ -229,36 +320,39 @@ class WebAnalyticsSite(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  auto_install: Optional[pulumi.Input[bool]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
+                 lite: Optional[pulumi.Input[bool]] = None,
                  zone_tag: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Web Analytics Site resource.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.WebAnalyticsSite("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            zone_tag="0da42c8d2132a9ddaf714f9e7c920711",
-            auto_install=True)
+        example_web_analytics_site = cloudflare.WebAnalyticsSite("example_web_analytics_site",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            auto_install=True,
+            host="example.com",
+            zone_tag="023e105f4ecef8ad9ca31a8372d0c353")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example <account_id>/<site_tag>
+        $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example '<account_id>/<site_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[bool] auto_install: Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] host: The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] zone_tag: The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[bool] auto_install: If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
+        :param pulumi.Input[bool] enabled: Enables or disables RUM. This option can be used only when auto_install is set to true.
+        :param pulumi.Input[str] host: The hostname to use for gray-clouded sites.
+        :param pulumi.Input[bool] lite: If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+        :param pulumi.Input[str] zone_tag: The zone identifier.
         """
         ...
     @overload
@@ -267,24 +361,23 @@ class WebAnalyticsSite(pulumi.CustomResource):
                  args: WebAnalyticsSiteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Web Analytics Site resource.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.WebAnalyticsSite("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            zone_tag="0da42c8d2132a9ddaf714f9e7c920711",
-            auto_install=True)
+        example_web_analytics_site = cloudflare.WebAnalyticsSite("example_web_analytics_site",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            auto_install=True,
+            host="example.com",
+            zone_tag="023e105f4ecef8ad9ca31a8372d0c353")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example <account_id>/<site_tag>
+        $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example '<account_id>/<site_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -304,7 +397,9 @@ class WebAnalyticsSite(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  auto_install: Optional[pulumi.Input[bool]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
+                 lite: Optional[pulumi.Input[bool]] = None,
                  zone_tag: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -318,17 +413,17 @@ class WebAnalyticsSite(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            if auto_install is None and not opts.urn:
-                raise TypeError("Missing required property 'auto_install'")
             __props__.__dict__["auto_install"] = auto_install
+            __props__.__dict__["enabled"] = enabled
             __props__.__dict__["host"] = host
+            __props__.__dict__["lite"] = lite
             __props__.__dict__["zone_tag"] = zone_tag
-            __props__.__dict__["ruleset_id"] = None
+            __props__.__dict__["created"] = None
+            __props__.__dict__["rules"] = None
+            __props__.__dict__["ruleset"] = None
             __props__.__dict__["site_tag"] = None
             __props__.__dict__["site_token"] = None
             __props__.__dict__["snippet"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["siteToken", "snippet"])
-        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(WebAnalyticsSite, __self__).__init__(
             'cloudflare:index/webAnalyticsSite:WebAnalyticsSite',
             resource_name,
@@ -341,8 +436,12 @@ class WebAnalyticsSite(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             auto_install: Optional[pulumi.Input[bool]] = None,
+            created: Optional[pulumi.Input[str]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
             host: Optional[pulumi.Input[str]] = None,
-            ruleset_id: Optional[pulumi.Input[str]] = None,
+            lite: Optional[pulumi.Input[bool]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WebAnalyticsSiteRuleArgs', 'WebAnalyticsSiteRuleArgsDict']]]]] = None,
+            ruleset: Optional[pulumi.Input[Union['WebAnalyticsSiteRulesetArgs', 'WebAnalyticsSiteRulesetArgsDict']]] = None,
             site_tag: Optional[pulumi.Input[str]] = None,
             site_token: Optional[pulumi.Input[str]] = None,
             snippet: Optional[pulumi.Input[str]] = None,
@@ -354,14 +453,16 @@ class WebAnalyticsSite(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[bool] auto_install: Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] host: The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] ruleset_id: The ID for the ruleset associated to this Web Analytics Site.
-        :param pulumi.Input[str] site_tag: The Web Analytics site tag.
-        :param pulumi.Input[str] site_token: The token for the Web Analytics site.
-        :param pulumi.Input[str] snippet: The encoded JS snippet to add to your site's HTML page if auto_install is false.
-        :param pulumi.Input[str] zone_tag: The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[bool] auto_install: If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
+        :param pulumi.Input[bool] enabled: Enables or disables RUM. This option can be used only when auto_install is set to true.
+        :param pulumi.Input[str] host: The hostname to use for gray-clouded sites.
+        :param pulumi.Input[bool] lite: If enabled, the JavaScript snippet will not be injected for visitors from the EU.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WebAnalyticsSiteRuleArgs', 'WebAnalyticsSiteRuleArgsDict']]]] rules: A list of rules.
+        :param pulumi.Input[str] site_tag: The Web Analytics site identifier.
+        :param pulumi.Input[str] site_token: The Web Analytics site token.
+        :param pulumi.Input[str] snippet: Encoded JavaScript snippet.
+        :param pulumi.Input[str] zone_tag: The zone identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -369,8 +470,12 @@ class WebAnalyticsSite(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["auto_install"] = auto_install
+        __props__.__dict__["created"] = created
+        __props__.__dict__["enabled"] = enabled
         __props__.__dict__["host"] = host
-        __props__.__dict__["ruleset_id"] = ruleset_id
+        __props__.__dict__["lite"] = lite
+        __props__.__dict__["rules"] = rules
+        __props__.__dict__["ruleset"] = ruleset
         __props__.__dict__["site_tag"] = site_tag
         __props__.__dict__["site_token"] = site_token
         __props__.__dict__["snippet"] = snippet
@@ -381,39 +486,65 @@ class WebAnalyticsSite(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="autoInstall")
-    def auto_install(self) -> pulumi.Output[bool]:
+    def auto_install(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+        If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
         """
         return pulumi.get(self, "auto_install")
 
     @property
     @pulumi.getter
+    def created(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enables or disables RUM. This option can be used only when auto_install is set to true.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
     def host(self) -> pulumi.Output[Optional[str]]:
         """
-        The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
+        The hostname to use for gray-clouded sites.
         """
         return pulumi.get(self, "host")
 
     @property
-    @pulumi.getter(name="rulesetId")
-    def ruleset_id(self) -> pulumi.Output[str]:
+    @pulumi.getter
+    def lite(self) -> pulumi.Output[Optional[bool]]:
         """
-        The ID for the ruleset associated to this Web Analytics Site.
+        If enabled, the JavaScript snippet will not be injected for visitors from the EU.
         """
-        return pulumi.get(self, "ruleset_id")
+        return pulumi.get(self, "lite")
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Output[Sequence['outputs.WebAnalyticsSiteRule']]:
+        """
+        A list of rules.
+        """
+        return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter
+    def ruleset(self) -> pulumi.Output['outputs.WebAnalyticsSiteRuleset']:
+        return pulumi.get(self, "ruleset")
 
     @property
     @pulumi.getter(name="siteTag")
     def site_tag(self) -> pulumi.Output[str]:
         """
-        The Web Analytics site tag.
+        The Web Analytics site identifier.
         """
         return pulumi.get(self, "site_tag")
 
@@ -421,7 +552,7 @@ class WebAnalyticsSite(pulumi.CustomResource):
     @pulumi.getter(name="siteToken")
     def site_token(self) -> pulumi.Output[str]:
         """
-        The token for the Web Analytics site.
+        The Web Analytics site token.
         """
         return pulumi.get(self, "site_token")
 
@@ -429,7 +560,7 @@ class WebAnalyticsSite(pulumi.CustomResource):
     @pulumi.getter
     def snippet(self) -> pulumi.Output[str]:
         """
-        The encoded JS snippet to add to your site's HTML page if auto_install is false.
+        Encoded JavaScript snippet.
         """
         return pulumi.get(self, "snippet")
 
@@ -437,7 +568,7 @@ class WebAnalyticsSite(pulumi.CustomResource):
     @pulumi.getter(name="zoneTag")
     def zone_tag(self) -> pulumi.Output[Optional[str]]:
         """
-        The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+        The zone identifier.
         """
         return pulumi.get(self, "zone_tag")
 

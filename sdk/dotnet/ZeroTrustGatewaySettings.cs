@@ -10,198 +10,31 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Teams Account resource. The Teams Account
-    /// resource defines configuration for secure web gateway.
-    /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.ZeroTrustGatewaySettings("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         TlsDecryptEnabled = true,
-    ///         ProtocolDetectionEnabled = true,
-    ///         BlockPage = new Cloudflare.Inputs.ZeroTrustGatewaySettingsBlockPageArgs
-    ///         {
-    ///             FooterText = "hello",
-    ///             HeaderText = "hello",
-    ///             LogoPath = "https://example.com/logo.jpg",
-    ///             BackgroundColor = "#000000",
-    ///         },
-    ///         BodyScanning = new Cloudflare.Inputs.ZeroTrustGatewaySettingsBodyScanningArgs
-    ///         {
-    ///             InspectionMode = "deep",
-    ///         },
-    ///         Antivirus = new Cloudflare.Inputs.ZeroTrustGatewaySettingsAntivirusArgs
-    ///         {
-    ///             EnabledDownloadPhase = true,
-    ///             EnabledUploadPhase = false,
-    ///             FailClosed = true,
-    ///             NotificationSettings = new Cloudflare.Inputs.ZeroTrustGatewaySettingsAntivirusNotificationSettingsArgs
-    ///             {
-    ///                 Enabled = true,
-    ///                 Message = "you are blocked",
-    ///                 SupportUrl = "https://example.com/blocked",
-    ///             },
-    ///         },
-    ///         Fips = new Cloudflare.Inputs.ZeroTrustGatewaySettingsFipsArgs
-    ///         {
-    ///             Tls = true,
-    ///         },
-    ///         Proxy = new Cloudflare.Inputs.ZeroTrustGatewaySettingsProxyArgs
-    ///         {
-    ///             Tcp = true,
-    ///             Udp = true,
-    ///             RootCa = true,
-    ///             VirtualIp = false,
-    ///             DisableForTime = 3600,
-    ///         },
-    ///         UrlBrowserIsolationEnabled = true,
-    ///         Logging = new Cloudflare.Inputs.ZeroTrustGatewaySettingsLoggingArgs
-    ///         {
-    ///             RedactPii = true,
-    ///             SettingsByRuleType = new Cloudflare.Inputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeArgs
-    ///             {
-    ///                 Dns = new Cloudflare.Inputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDnsArgs
-    ///                 {
-    ///                     LogAll = false,
-    ///                     LogBlocks = true,
-    ///                 },
-    ///                 Http = new Cloudflare.Inputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttpArgs
-    ///                 {
-    ///                     LogAll = true,
-    ///                     LogBlocks = true,
-    ///                 },
-    ///                 L4 = new Cloudflare.Inputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4Args
-    ///                 {
-    ///                     LogAll = false,
-    ///                     LogBlocks = true,
-    ///                 },
-    ///             },
-    ///         },
-    ///         ExtendedEmailMatching = new Cloudflare.Inputs.ZeroTrustGatewaySettingsExtendedEmailMatchingArgs
-    ///         {
-    ///             Enabled = true,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example &lt;account_id&gt;
+    /// $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example '&lt;account_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings")]
     public partial class ZeroTrustGatewaySettings : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether to enable the activity log.
-        /// </summary>
-        [Output("activityLogEnabled")]
-        public Output<bool?> ActivityLogEnabled { get; private set; } = null!;
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration block for antivirus traffic scanning.
+        /// Account settings
         /// </summary>
-        [Output("antivirus")]
-        public Output<Outputs.ZeroTrustGatewaySettingsAntivirus?> Antivirus { get; private set; } = null!;
+        [Output("settings")]
+        public Output<Outputs.ZeroTrustGatewaySettingsSettings> Settings { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration for a custom block page.
-        /// </summary>
-        [Output("blockPage")]
-        public Output<Outputs.ZeroTrustGatewaySettingsBlockPage?> BlockPage { get; private set; } = null!;
-
-        /// <summary>
-        /// Configuration for body scanning.
-        /// </summary>
-        [Output("bodyScanning")]
-        public Output<Outputs.ZeroTrustGatewaySettingsBodyScanning?> BodyScanning { get; private set; } = null!;
-
-        /// <summary>
-        /// Configuration for TLS interception certificate. This will be required starting Feb 2025.
-        /// </summary>
-        [Output("certificate")]
-        public Output<Outputs.ZeroTrustGatewaySettingsCertificate?> Certificate { get; private set; } = null!;
-
-        /// <summary>
-        /// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-        /// </summary>
-        [Output("customCertificate")]
-        public Output<Outputs.ZeroTrustGatewaySettingsCustomCertificate?> CustomCertificate { get; private set; } = null!;
-
-        /// <summary>
-        /// Configuration for extended e-mail matching.
-        /// </summary>
-        [Output("extendedEmailMatching")]
-        public Output<Outputs.ZeroTrustGatewaySettingsExtendedEmailMatching> ExtendedEmailMatching { get; private set; } = null!;
-
-        /// <summary>
-        /// Configure compliance with Federal Information Processing Standards.
-        /// </summary>
-        [Output("fips")]
-        public Output<Outputs.ZeroTrustGatewaySettingsFips?> Fips { get; private set; } = null!;
-
-        [Output("logging")]
-        public Output<Outputs.ZeroTrustGatewaySettingsLogging?> Logging { get; private set; } = null!;
-
-        /// <summary>
-        /// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-        /// </summary>
-        [Output("nonIdentityBrowserIsolationEnabled")]
-        public Output<bool?> NonIdentityBrowserIsolationEnabled { get; private set; } = null!;
-
-        /// <summary>
-        /// Configuration for DLP Payload Logging.
-        /// </summary>
-        [Output("payloadLog")]
-        public Output<Outputs.ZeroTrustGatewaySettingsPayloadLog?> PayloadLog { get; private set; } = null!;
-
-        /// <summary>
-        /// Indicator that protocol detection is enabled.
-        /// </summary>
-        [Output("protocolDetectionEnabled")]
-        public Output<bool?> ProtocolDetectionEnabled { get; private set; } = null!;
-
-        /// <summary>
-        /// Configuration block for specifying which protocols are proxied.
-        /// </summary>
-        [Output("proxy")]
-        public Output<Outputs.ZeroTrustGatewaySettingsProxy?> Proxy { get; private set; } = null!;
-
-        /// <summary>
-        /// Configuration for SSH Session Logging.
-        /// </summary>
-        [Output("sshSessionLog")]
-        public Output<Outputs.ZeroTrustGatewaySettingsSshSessionLog?> SshSessionLog { get; private set; } = null!;
-
-        /// <summary>
-        /// Indicator that decryption of TLS traffic is enabled.
-        /// </summary>
-        [Output("tlsDecryptEnabled")]
-        public Output<bool?> TlsDecryptEnabled { get; private set; } = null!;
-
-        /// <summary>
-        /// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-        /// </summary>
-        [Output("urlBrowserIsolationEnabled")]
-        public Output<bool?> UrlBrowserIsolationEnabled { get; private set; } = null!;
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
 
 
         /// <summary>
@@ -226,6 +59,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/teamsAccount:TeamsAccount" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -249,104 +86,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustGatewaySettingsArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Whether to enable the activity log.
+        /// Account settings
         /// </summary>
-        [Input("activityLogEnabled")]
-        public Input<bool>? ActivityLogEnabled { get; set; }
-
-        /// <summary>
-        /// Configuration block for antivirus traffic scanning.
-        /// </summary>
-        [Input("antivirus")]
-        public Input<Inputs.ZeroTrustGatewaySettingsAntivirusArgs>? Antivirus { get; set; }
-
-        /// <summary>
-        /// Configuration for a custom block page.
-        /// </summary>
-        [Input("blockPage")]
-        public Input<Inputs.ZeroTrustGatewaySettingsBlockPageArgs>? BlockPage { get; set; }
-
-        /// <summary>
-        /// Configuration for body scanning.
-        /// </summary>
-        [Input("bodyScanning")]
-        public Input<Inputs.ZeroTrustGatewaySettingsBodyScanningArgs>? BodyScanning { get; set; }
-
-        /// <summary>
-        /// Configuration for TLS interception certificate. This will be required starting Feb 2025.
-        /// </summary>
-        [Input("certificate")]
-        public Input<Inputs.ZeroTrustGatewaySettingsCertificateArgs>? Certificate { get; set; }
-
-        /// <summary>
-        /// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-        /// </summary>
-        [Input("customCertificate")]
-        public Input<Inputs.ZeroTrustGatewaySettingsCustomCertificateArgs>? CustomCertificate { get; set; }
-
-        /// <summary>
-        /// Configuration for extended e-mail matching.
-        /// </summary>
-        [Input("extendedEmailMatching")]
-        public Input<Inputs.ZeroTrustGatewaySettingsExtendedEmailMatchingArgs>? ExtendedEmailMatching { get; set; }
-
-        /// <summary>
-        /// Configure compliance with Federal Information Processing Standards.
-        /// </summary>
-        [Input("fips")]
-        public Input<Inputs.ZeroTrustGatewaySettingsFipsArgs>? Fips { get; set; }
-
-        [Input("logging")]
-        public Input<Inputs.ZeroTrustGatewaySettingsLoggingArgs>? Logging { get; set; }
-
-        /// <summary>
-        /// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-        /// </summary>
-        [Input("nonIdentityBrowserIsolationEnabled")]
-        public Input<bool>? NonIdentityBrowserIsolationEnabled { get; set; }
-
-        /// <summary>
-        /// Configuration for DLP Payload Logging.
-        /// </summary>
-        [Input("payloadLog")]
-        public Input<Inputs.ZeroTrustGatewaySettingsPayloadLogArgs>? PayloadLog { get; set; }
-
-        /// <summary>
-        /// Indicator that protocol detection is enabled.
-        /// </summary>
-        [Input("protocolDetectionEnabled")]
-        public Input<bool>? ProtocolDetectionEnabled { get; set; }
-
-        /// <summary>
-        /// Configuration block for specifying which protocols are proxied.
-        /// </summary>
-        [Input("proxy")]
-        public Input<Inputs.ZeroTrustGatewaySettingsProxyArgs>? Proxy { get; set; }
-
-        /// <summary>
-        /// Configuration for SSH Session Logging.
-        /// </summary>
-        [Input("sshSessionLog")]
-        public Input<Inputs.ZeroTrustGatewaySettingsSshSessionLogArgs>? SshSessionLog { get; set; }
-
-        /// <summary>
-        /// Indicator that decryption of TLS traffic is enabled.
-        /// </summary>
-        [Input("tlsDecryptEnabled")]
-        public Input<bool>? TlsDecryptEnabled { get; set; }
-
-        /// <summary>
-        /// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-        /// </summary>
-        [Input("urlBrowserIsolationEnabled")]
-        public Input<bool>? UrlBrowserIsolationEnabled { get; set; }
+        [Input("settings")]
+        public Input<Inputs.ZeroTrustGatewaySettingsSettingsArgs>? Settings { get; set; }
 
         public ZeroTrustGatewaySettingsArgs()
         {
@@ -356,104 +103,20 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustGatewaySettingsState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// Whether to enable the activity log.
-        /// </summary>
-        [Input("activityLogEnabled")]
-        public Input<bool>? ActivityLogEnabled { get; set; }
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Configuration block for antivirus traffic scanning.
+        /// Account settings
         /// </summary>
-        [Input("antivirus")]
-        public Input<Inputs.ZeroTrustGatewaySettingsAntivirusGetArgs>? Antivirus { get; set; }
+        [Input("settings")]
+        public Input<Inputs.ZeroTrustGatewaySettingsSettingsGetArgs>? Settings { get; set; }
 
-        /// <summary>
-        /// Configuration for a custom block page.
-        /// </summary>
-        [Input("blockPage")]
-        public Input<Inputs.ZeroTrustGatewaySettingsBlockPageGetArgs>? BlockPage { get; set; }
-
-        /// <summary>
-        /// Configuration for body scanning.
-        /// </summary>
-        [Input("bodyScanning")]
-        public Input<Inputs.ZeroTrustGatewaySettingsBodyScanningGetArgs>? BodyScanning { get; set; }
-
-        /// <summary>
-        /// Configuration for TLS interception certificate. This will be required starting Feb 2025.
-        /// </summary>
-        [Input("certificate")]
-        public Input<Inputs.ZeroTrustGatewaySettingsCertificateGetArgs>? Certificate { get; set; }
-
-        /// <summary>
-        /// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-        /// </summary>
-        [Input("customCertificate")]
-        public Input<Inputs.ZeroTrustGatewaySettingsCustomCertificateGetArgs>? CustomCertificate { get; set; }
-
-        /// <summary>
-        /// Configuration for extended e-mail matching.
-        /// </summary>
-        [Input("extendedEmailMatching")]
-        public Input<Inputs.ZeroTrustGatewaySettingsExtendedEmailMatchingGetArgs>? ExtendedEmailMatching { get; set; }
-
-        /// <summary>
-        /// Configure compliance with Federal Information Processing Standards.
-        /// </summary>
-        [Input("fips")]
-        public Input<Inputs.ZeroTrustGatewaySettingsFipsGetArgs>? Fips { get; set; }
-
-        [Input("logging")]
-        public Input<Inputs.ZeroTrustGatewaySettingsLoggingGetArgs>? Logging { get; set; }
-
-        /// <summary>
-        /// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-        /// </summary>
-        [Input("nonIdentityBrowserIsolationEnabled")]
-        public Input<bool>? NonIdentityBrowserIsolationEnabled { get; set; }
-
-        /// <summary>
-        /// Configuration for DLP Payload Logging.
-        /// </summary>
-        [Input("payloadLog")]
-        public Input<Inputs.ZeroTrustGatewaySettingsPayloadLogGetArgs>? PayloadLog { get; set; }
-
-        /// <summary>
-        /// Indicator that protocol detection is enabled.
-        /// </summary>
-        [Input("protocolDetectionEnabled")]
-        public Input<bool>? ProtocolDetectionEnabled { get; set; }
-
-        /// <summary>
-        /// Configuration block for specifying which protocols are proxied.
-        /// </summary>
-        [Input("proxy")]
-        public Input<Inputs.ZeroTrustGatewaySettingsProxyGetArgs>? Proxy { get; set; }
-
-        /// <summary>
-        /// Configuration for SSH Session Logging.
-        /// </summary>
-        [Input("sshSessionLog")]
-        public Input<Inputs.ZeroTrustGatewaySettingsSshSessionLogGetArgs>? SshSessionLog { get; set; }
-
-        /// <summary>
-        /// Indicator that decryption of TLS traffic is enabled.
-        /// </summary>
-        [Input("tlsDecryptEnabled")]
-        public Input<bool>? TlsDecryptEnabled { get; set; }
-
-        /// <summary>
-        /// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-        /// </summary>
-        [Input("urlBrowserIsolationEnabled")]
-        public Input<bool>? UrlBrowserIsolationEnabled { get; set; }
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
 
         public ZeroTrustGatewaySettingsState()
         {

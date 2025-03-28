@@ -15,17 +15,9 @@ public final class PageRuleActionsCacheKeyFieldsHostArgs extends com.pulumi.reso
 
     public static final PageRuleActionsCacheKeyFieldsHostArgs Empty = new PageRuleActionsCacheKeyFieldsHostArgs();
 
-    /**
-     * `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
-     * 
-     */
     @Import(name="resolved")
     private @Nullable Output<Boolean> resolved;
 
-    /**
-     * @return `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
-     * 
-     */
     public Optional<Output<Boolean>> resolved() {
         return Optional.ofNullable(this.resolved);
     }
@@ -54,23 +46,11 @@ public final class PageRuleActionsCacheKeyFieldsHostArgs extends com.pulumi.reso
             $ = new PageRuleActionsCacheKeyFieldsHostArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param resolved `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
-         * 
-         * @return builder
-         * 
-         */
         public Builder resolved(@Nullable Output<Boolean> resolved) {
             $.resolved = resolved;
             return this;
         }
 
-        /**
-         * @param resolved `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
-         * 
-         * @return builder
-         * 
-         */
         public Builder resolved(Boolean resolved) {
             return resolved(Output.of(resolved));
         }

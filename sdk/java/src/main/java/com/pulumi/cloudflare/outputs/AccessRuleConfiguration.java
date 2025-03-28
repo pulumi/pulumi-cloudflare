@@ -4,37 +4,40 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AccessRuleConfiguration {
     /**
-     * @return The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
+     * @return The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+     * Available values: &#34;ip&#34;.
      * 
      */
-    private String target;
+    private @Nullable String target;
     /**
-     * @return The value to target. Depends on target&#39;s type. **Modifying this attribute will force creation of a new resource.**
+     * @return The IP address to match. This address will be compared to the IP address of incoming requests.
      * 
      */
-    private String value;
+    private @Nullable String value;
 
     private AccessRuleConfiguration() {}
     /**
-     * @return The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
+     * @return The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+     * Available values: &#34;ip&#34;.
      * 
      */
-    public String target() {
-        return this.target;
+    public Optional<String> target() {
+        return Optional.ofNullable(this.target);
     }
     /**
-     * @return The value to target. Depends on target&#39;s type. **Modifying this attribute will force creation of a new resource.**
+     * @return The IP address to match. This address will be compared to the IP address of incoming requests.
      * 
      */
-    public String value() {
-        return this.value;
+    public Optional<String> value() {
+        return Optional.ofNullable(this.value);
     }
 
     public static Builder builder() {
@@ -46,8 +49,8 @@ public final class AccessRuleConfiguration {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String target;
-        private String value;
+        private @Nullable String target;
+        private @Nullable String value;
         public Builder() {}
         public Builder(AccessRuleConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
@@ -56,18 +59,14 @@ public final class AccessRuleConfiguration {
         }
 
         @CustomType.Setter
-        public Builder target(String target) {
-            if (target == null) {
-              throw new MissingRequiredPropertyException("AccessRuleConfiguration", "target");
-            }
+        public Builder target(@Nullable String target) {
+
             this.target = target;
             return this;
         }
         @CustomType.Setter
-        public Builder value(String value) {
-            if (value == null) {
-              throw new MissingRequiredPropertyException("AccessRuleConfiguration", "value");
-            }
+        public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

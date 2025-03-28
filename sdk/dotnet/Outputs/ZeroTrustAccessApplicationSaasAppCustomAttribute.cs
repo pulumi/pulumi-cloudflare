@@ -14,22 +14,23 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustAccessApplicationSaasAppCustomAttribute
     {
         /// <summary>
-        /// A friendly name for the attribute as provided to the SaaS app.
+        /// The SAML FriendlyName of the attribute.
         /// </summary>
         public readonly string? FriendlyName;
         /// <summary>
-        /// The name of the attribute as provided to the SaaS app.
+        /// The name of the attribute.
         /// </summary>
         public readonly string? Name;
         /// <summary>
         /// A globally unique name for an identity or service provider.
+        /// Available values: "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified", "urn:oasis:names:tc:SAML:2.0:attrname-format:basic", "urn:oasis:names:tc:SAML:2.0:attrname-format:uri".
         /// </summary>
         public readonly string? NameFormat;
         /// <summary>
-        /// True if the attribute must be always present.
+        /// If the attribute is required when building a SAML assertion.
         /// </summary>
         public readonly bool? Required;
-        public readonly Outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSource Source;
+        public readonly Outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSource? Source;
 
         [OutputConstructor]
         private ZeroTrustAccessApplicationSaasAppCustomAttribute(
@@ -41,7 +42,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? required,
 
-            Outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSource source)
+            Outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSource? source)
         {
             FriendlyName = friendlyName;
             Name = name;

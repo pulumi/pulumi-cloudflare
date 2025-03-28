@@ -11,13 +11,12 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource which manages Total TLS for a zone.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -43,10 +42,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TotalTls("example", TotalTlsArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *         var exampleTotalTls = new TotalTls("exampleTotalTls", TotalTlsArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .enabled(true)
- *             .certificateAuthority("lets_encrypt")
+ *             .certificateAuthority("google")
  *             .build());
  * 
  *     }
@@ -58,49 +57,67 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/totalTls:TotalTls example &lt;zone_id&gt;
+ * $ pulumi import cloudflare:index/totalTls:TotalTls example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/totalTls:TotalTls")
 public class TotalTls extends com.pulumi.resources.CustomResource {
     /**
-     * The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
+     * The Certificate Authority that Total TLS certificates will be issued through.
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     @Export(name="certificateAuthority", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certificateAuthority;
 
     /**
-     * @return The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
+     * @return The Certificate Authority that Total TLS certificates will be issued through.
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     public Output<Optional<String>> certificateAuthority() {
         return Codegen.optional(this.certificateAuthority);
     }
     /**
-     * Enable Total TLS for the zone.
+     * If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable Total TLS for the zone.
+     * @return If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The validity period in days for the certificates ordered via Total TLS.
+     * Available values: 90.
+     * 
+     */
+    @Export(name="validityPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> validityPeriod;
+
+    /**
+     * @return The validity period in days for the certificates ordered via Total TLS.
+     * Available values: 90.
+     * 
+     */
+    public Output<Integer> validityPeriod() {
+        return this.validityPeriod;
+    }
+    /**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

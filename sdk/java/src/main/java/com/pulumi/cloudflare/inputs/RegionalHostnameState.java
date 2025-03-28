@@ -16,14 +16,14 @@ public final class RegionalHostnameState extends com.pulumi.resources.ResourceAr
     public static final RegionalHostnameState Empty = new RegionalHostnameState();
 
     /**
-     * The RFC3339 timestamp of when the hostname was created.
+     * When the regional hostname was created
      * 
      */
     @Import(name="createdOn")
     private @Nullable Output<String> createdOn;
 
     /**
-     * @return The RFC3339 timestamp of when the hostname was created.
+     * @return When the regional hostname was created
      * 
      */
     public Optional<Output<String>> createdOn() {
@@ -31,14 +31,14 @@ public final class RegionalHostnameState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The hostname to regionalize.
+     * DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     /**
-     * @return The hostname to regionalize.
+     * @return DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
      * 
      */
     public Optional<Output<String>> hostname() {
@@ -46,14 +46,14 @@ public final class RegionalHostnameState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+     * Identifying key for the region
      * 
      */
     @Import(name="regionKey")
     private @Nullable Output<String> regionKey;
 
     /**
-     * @return The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+     * @return Identifying key for the region
      * 
      */
     public Optional<Output<String>> regionKey() {
@@ -61,14 +61,14 @@ public final class RegionalHostnameState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -103,7 +103,7 @@ public final class RegionalHostnameState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createdOn The RFC3339 timestamp of when the hostname was created.
+         * @param createdOn When the regional hostname was created
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class RegionalHostnameState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createdOn The RFC3339 timestamp of when the hostname was created.
+         * @param createdOn When the regional hostname was created
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class RegionalHostnameState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param hostname The hostname to regionalize.
+         * @param hostname DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class RegionalHostnameState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param hostname The hostname to regionalize.
+         * @param hostname DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class RegionalHostnameState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param regionKey The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+         * @param regionKey Identifying key for the region
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class RegionalHostnameState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param regionKey The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+         * @param regionKey Identifying key for the region
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class RegionalHostnameState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class RegionalHostnameState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

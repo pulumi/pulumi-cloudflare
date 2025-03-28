@@ -33,8 +33,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// The domain suffix to match when resolving locally.
         /// </summary>
-        [Input("suffix")]
-        public Input<string>? Suffix { get; set; }
+        [Input("suffix", required: true)]
+        public Input<string> Suffix { get; set; } = null!;
 
         public ZeroTrustLocalFallbackDomainDomainArgs()
         {

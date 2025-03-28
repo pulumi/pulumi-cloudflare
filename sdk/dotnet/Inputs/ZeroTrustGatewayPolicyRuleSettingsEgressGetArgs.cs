@@ -15,11 +15,11 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// The IPv4 address to be used for egress.
         /// </summary>
-        [Input("ipv4", required: true)]
-        public Input<string> Ipv4 { get; set; } = null!;
+        [Input("ipv4")]
+        public Input<string>? Ipv4 { get; set; }
 
         /// <summary>
-        /// The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egreass via Warp IPs.
+        /// The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.
         /// </summary>
         [Input("ipv4Fallback")]
         public Input<string>? Ipv4Fallback { get; set; }
@@ -27,8 +27,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// The IPv6 range to be used for egress.
         /// </summary>
-        [Input("ipv6", required: true)]
-        public Input<string> Ipv6 { get; set; } = null!;
+        [Input("ipv6")]
+        public Input<string>? Ipv6 { get; set; }
 
         public ZeroTrustGatewayPolicyRuleSettingsEgressGetArgs()
         {

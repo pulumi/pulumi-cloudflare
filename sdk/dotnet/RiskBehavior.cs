@@ -10,22 +10,41 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// The [Risk Behavior](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) resource allows you to configure Cloudflare Risk Behaviors for an account.
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustRiskBehavior = new Cloudflare.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior", new()
+    ///     {
+    ///         AccountId = "account_id",
+    ///         Behaviors = 
+    ///         {
+    ///             { "foo", new Cloudflare.Inputs.ZeroTrustRiskBehaviorBehaviorsArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 RiskLevel = "low",
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
+    [Obsolete(@"cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior")]
     [CloudflareResourceType("cloudflare:index/riskBehavior:RiskBehavior")]
     public partial class RiskBehavior : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-        /// <summary>
-        /// Zero Trust risk behaviors configured on this account
-        /// </summary>
         [Output("behaviors")]
-        public Output<ImmutableArray<Outputs.RiskBehaviorBehavior>> Behaviors { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.RiskBehaviorBehaviors>> Behaviors { get; private set; } = null!;
 
 
         /// <summary>
@@ -50,6 +69,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/riskBehavior:RiskBehavior" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -73,21 +96,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class RiskBehaviorArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("behaviors")]
-        private InputList<Inputs.RiskBehaviorBehaviorArgs>? _behaviors;
-
-        /// <summary>
-        /// Zero Trust risk behaviors configured on this account
-        /// </summary>
-        public InputList<Inputs.RiskBehaviorBehaviorArgs> Behaviors
+        [Input("behaviors", required: true)]
+        private InputMap<Inputs.RiskBehaviorBehaviorsArgs>? _behaviors;
+        public InputMap<Inputs.RiskBehaviorBehaviorsArgs> Behaviors
         {
-            get => _behaviors ?? (_behaviors = new InputList<Inputs.RiskBehaviorBehaviorArgs>());
+            get => _behaviors ?? (_behaviors = new InputMap<Inputs.RiskBehaviorBehaviorsArgs>());
             set => _behaviors = value;
         }
 
@@ -99,21 +115,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class RiskBehaviorState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         [Input("behaviors")]
-        private InputList<Inputs.RiskBehaviorBehaviorGetArgs>? _behaviors;
-
-        /// <summary>
-        /// Zero Trust risk behaviors configured on this account
-        /// </summary>
-        public InputList<Inputs.RiskBehaviorBehaviorGetArgs> Behaviors
+        private InputMap<Inputs.RiskBehaviorBehaviorsGetArgs>? _behaviors;
+        public InputMap<Inputs.RiskBehaviorBehaviorsGetArgs> Behaviors
         {
-            get => _behaviors ?? (_behaviors = new InputList<Inputs.RiskBehaviorBehaviorGetArgs>());
+            get => _behaviors ?? (_behaviors = new InputMap<Inputs.RiskBehaviorBehaviorsGetArgs>());
             set => _behaviors = value;
         }
 

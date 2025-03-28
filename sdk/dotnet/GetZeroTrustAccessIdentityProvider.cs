@@ -12,19 +12,73 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustAccessIdentityProvider
     {
         /// <summary>
-        /// Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustAccessIdentityProvider = Cloudflare.GetZeroTrustAccessIdentityProvider.Invoke(new()
+        ///     {
+        ///         IdentityProviderId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AccountId = "account_id",
+        ///         ZoneId = "zone_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Task<GetZeroTrustAccessIdentityProviderResult> InvokeAsync(GetZeroTrustAccessIdentityProviderArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustAccessIdentityProviderResult> InvokeAsync(GetZeroTrustAccessIdentityProviderArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustAccessIdentityProviderResult>("cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider", args ?? new GetZeroTrustAccessIdentityProviderArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustAccessIdentityProvider = Cloudflare.GetZeroTrustAccessIdentityProvider.Invoke(new()
+        ///     {
+        ///         IdentityProviderId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AccountId = "account_id",
+        ///         ZoneId = "zone_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetZeroTrustAccessIdentityProviderResult> Invoke(GetZeroTrustAccessIdentityProviderInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustAccessIdentityProviderResult> Invoke(GetZeroTrustAccessIdentityProviderInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessIdentityProviderResult>("cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider", args ?? new GetZeroTrustAccessIdentityProviderInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustAccessIdentityProvider = Cloudflare.GetZeroTrustAccessIdentityProvider.Invoke(new()
+        ///     {
+        ///         IdentityProviderId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AccountId = "account_id",
+        ///         ZoneId = "zone_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetZeroTrustAccessIdentityProviderResult> Invoke(GetZeroTrustAccessIdentityProviderInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessIdentityProviderResult>("cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider", args ?? new GetZeroTrustAccessIdentityProviderInvokeArgs(), options.WithDefaults());
@@ -34,19 +88,22 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustAccessIdentityProviderArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
-        /// <summary>
-        /// Access Identity Provider name to search for.
-        /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("filter")]
+        public Inputs.GetZeroTrustAccessIdentityProviderFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// UUID
+        /// </summary>
+        [Input("identityProviderId")]
+        public string? IdentityProviderId { get; set; }
+
+        /// <summary>
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
@@ -60,19 +117,22 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustAccessIdentityProviderInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// Access Identity Provider name to search for.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("filter")]
+        public Input<Inputs.GetZeroTrustAccessIdentityProviderFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// UUID
+        /// </summary>
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        /// <summary>
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -88,23 +148,37 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustAccessIdentityProviderResult
     {
         /// <summary>
-        /// The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+        /// </summary>
+        public readonly Outputs.GetZeroTrustAccessIdentityProviderConfigResult Config;
+        public readonly Outputs.GetZeroTrustAccessIdentityProviderFilterResult? Filter;
+        /// <summary>
+        /// UUID
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Access Identity Provider name to search for.
+        /// UUID
+        /// </summary>
+        public readonly string? IdentityProviderId;
+        /// <summary>
+        /// The name of the identity provider, shown to users on the login page.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Access Identity Provider Type.
+        /// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustAccessIdentityProviderScimConfigResult ScimConfig;
+        /// <summary>
+        /// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+        /// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         public readonly string? ZoneId;
 
@@ -112,17 +186,29 @@ namespace Pulumi.Cloudflare
         private GetZeroTrustAccessIdentityProviderResult(
             string? accountId,
 
+            Outputs.GetZeroTrustAccessIdentityProviderConfigResult config,
+
+            Outputs.GetZeroTrustAccessIdentityProviderFilterResult? filter,
+
             string id,
 
+            string? identityProviderId,
+
             string name,
+
+            Outputs.GetZeroTrustAccessIdentityProviderScimConfigResult scimConfig,
 
             string type,
 
             string? zoneId)
         {
             AccountId = accountId;
+            Config = config;
+            Filter = filter;
             Id = id;
+            IdentityProviderId = identityProviderId;
             Name = name;
+            ScimConfig = scimConfig;
             Type = type;
             ZoneId = zoneId;
         }

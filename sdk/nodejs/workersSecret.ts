@@ -5,26 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Worker secret resource.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const mySecret = new cloudflare.WorkersSecret("my_secret", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "MY_EXAMPLE_SECRET_TEXT",
- *     scriptName: "script_1",
- *     secretText: "my_secret_value",
+ * const exampleWorkersSecret = new cloudflare.WorkersSecret("example_workers_secret", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     dispatchNamespace: "my-dispatch-namespace",
+ *     scriptName: "this-is_my_script-01",
+ *     name: "MY_SECRET",
+ *     text: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+ *     type: "secret_text",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/workersSecret:WorkersSecret example <account_id>/<script_name>/<secret_name>
+ * $ pulumi import cloudflare:index/workersSecret:WorkersSecret example '<account_id>/<dispatch_namespace>/<script_name>/<secret_name>'
  * ```
  */
 export class WorkersSecret extends pulumi.CustomResource {
@@ -56,21 +56,30 @@ export class WorkersSecret extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+     * Name of the Workers for Platforms dispatch namespace.
+     */
+    public readonly dispatchNamespace!: pulumi.Output<string>;
+    /**
+     * The name of this secret, this is what will be used to access it inside the Worker.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+     * Name of the script, used in URLs and route configuration.
      */
     public readonly scriptName!: pulumi.Output<string>;
     /**
-     * The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+     * The value of the secret.
      */
-    public readonly secretText!: pulumi.Output<string>;
+    public readonly text!: pulumi.Output<string | undefined>;
+    /**
+     * The type of secret to put.
+     * Available values: "secretText".
+     */
+    public readonly type!: pulumi.Output<string | undefined>;
 
     /**
      * Create a WorkersSecret resource with the given unique name, arguments, and options.
@@ -86,13 +95,18 @@ export class WorkersSecret extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WorkersSecretState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["dispatchNamespace"] = state ? state.dispatchNamespace : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["scriptName"] = state ? state.scriptName : undefined;
-            resourceInputs["secretText"] = state ? state.secretText : undefined;
+            resourceInputs["text"] = state ? state.text : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as WorkersSecretArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
+            }
+            if ((!args || args.dispatchNamespace === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'dispatchNamespace'");
             }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
@@ -100,16 +114,17 @@ export class WorkersSecret extends pulumi.CustomResource {
             if ((!args || args.scriptName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scriptName'");
             }
-            if ((!args || args.secretText === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'secretText'");
-            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["dispatchNamespace"] = args ? args.dispatchNamespace : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["scriptName"] = args ? args.scriptName : undefined;
-            resourceInputs["secretText"] = args?.secretText ? pulumi.secret(args.secretText) : undefined;
+            resourceInputs["text"] = args?.text ? pulumi.secret(args.text) : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["secretText"] };
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/workerSecret:WorkerSecret" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
+        const secretOpts = { additionalSecretOutputs: ["text"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(WorkersSecret.__pulumiType, name, resourceInputs, opts);
     }
@@ -120,21 +135,30 @@ export class WorkersSecret extends pulumi.CustomResource {
  */
 export interface WorkersSecretState {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+     * Name of the Workers for Platforms dispatch namespace.
+     */
+    dispatchNamespace?: pulumi.Input<string>;
+    /**
+     * The name of this secret, this is what will be used to access it inside the Worker.
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+     * Name of the script, used in URLs and route configuration.
      */
     scriptName?: pulumi.Input<string>;
     /**
-     * The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+     * The value of the secret.
      */
-    secretText?: pulumi.Input<string>;
+    text?: pulumi.Input<string>;
+    /**
+     * The type of secret to put.
+     * Available values: "secretText".
+     */
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -142,19 +166,28 @@ export interface WorkersSecretState {
  */
 export interface WorkersSecretArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: pulumi.Input<string>;
     /**
-     * The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+     * Name of the Workers for Platforms dispatch namespace.
+     */
+    dispatchNamespace: pulumi.Input<string>;
+    /**
+     * The name of this secret, this is what will be used to access it inside the Worker.
      */
     name: pulumi.Input<string>;
     /**
-     * The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+     * Name of the script, used in URLs and route configuration.
      */
     scriptName: pulumi.Input<string>;
     /**
-     * The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+     * The value of the secret.
      */
-    secretText: pulumi.Input<string>;
+    text?: pulumi.Input<string>;
+    /**
+     * The type of secret to put.
+     * Available values: "secretText".
+     */
+    type?: pulumi.Input<string>;
 }

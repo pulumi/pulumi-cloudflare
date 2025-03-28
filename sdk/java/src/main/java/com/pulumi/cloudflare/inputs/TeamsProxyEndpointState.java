@@ -16,30 +16,29 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
 
     public static final TeamsProxyEndpointState Empty = new TeamsProxyEndpointState();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
     /**
-     * The networks CIDRs that will be allowed to initiate proxy connections.
+     * A list of CIDRs to restrict ingress connections.
      * 
      */
     @Import(name="ips")
     private @Nullable Output<List<String>> ips;
 
     /**
-     * @return The networks CIDRs that will be allowed to initiate proxy connections.
+     * @return A list of CIDRs to restrict ingress connections.
      * 
      */
     public Optional<Output<List<String>>> ips() {
@@ -47,14 +46,14 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Name of the teams proxy endpoint.
+     * The name of the proxy endpoint.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the teams proxy endpoint.
+     * @return The name of the proxy endpoint.
      * 
      */
     public Optional<Output<String>> name() {
@@ -62,27 +61,36 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The FQDN that proxy clients should be pointed at.
+     * The subdomain to be used as the destination in the proxy client.
      * 
      */
     @Import(name="subdomain")
     private @Nullable Output<String> subdomain;
 
     /**
-     * @return The FQDN that proxy clients should be pointed at.
+     * @return The subdomain to be used as the destination in the proxy client.
      * 
      */
     public Optional<Output<String>> subdomain() {
         return Optional.ofNullable(this.subdomain);
     }
 
+    @Import(name="updatedAt")
+    private @Nullable Output<String> updatedAt;
+
+    public Optional<Output<String>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
+    }
+
     private TeamsProxyEndpointState() {}
 
     private TeamsProxyEndpointState(TeamsProxyEndpointState $) {
         this.accountId = $.accountId;
+        this.createdAt = $.createdAt;
         this.ips = $.ips;
         this.name = $.name;
         this.subdomain = $.subdomain;
+        this.updatedAt = $.updatedAt;
     }
 
     public static Builder builder() {
@@ -103,29 +111,26 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
             $ = new TeamsProxyEndpointState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
         /**
-         * @param ips The networks CIDRs that will be allowed to initiate proxy connections.
+         * @param ips A list of CIDRs to restrict ingress connections.
          * 
          * @return builder
          * 
@@ -136,7 +141,7 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ips The networks CIDRs that will be allowed to initiate proxy connections.
+         * @param ips A list of CIDRs to restrict ingress connections.
          * 
          * @return builder
          * 
@@ -146,7 +151,7 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ips The networks CIDRs that will be allowed to initiate proxy connections.
+         * @param ips A list of CIDRs to restrict ingress connections.
          * 
          * @return builder
          * 
@@ -156,7 +161,7 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Name of the teams proxy endpoint.
+         * @param name The name of the proxy endpoint.
          * 
          * @return builder
          * 
@@ -167,7 +172,7 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Name of the teams proxy endpoint.
+         * @param name The name of the proxy endpoint.
          * 
          * @return builder
          * 
@@ -177,7 +182,7 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param subdomain The FQDN that proxy clients should be pointed at.
+         * @param subdomain The subdomain to be used as the destination in the proxy client.
          * 
          * @return builder
          * 
@@ -188,13 +193,22 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param subdomain The FQDN that proxy clients should be pointed at.
+         * @param subdomain The subdomain to be used as the destination in the proxy client.
          * 
          * @return builder
          * 
          */
         public Builder subdomain(String subdomain) {
             return subdomain(Output.of(subdomain));
+        }
+
+        public Builder updatedAt(@Nullable Output<String> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        public Builder updatedAt(String updatedAt) {
+            return updatedAt(Output.of(updatedAt));
         }
 
         public TeamsProxyEndpointState build() {

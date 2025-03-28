@@ -7,74 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Access Identity Provider resource. Identity
- * Providers are used as an authentication or authorisation source
- * within Access.
- *
- * > It's required that an `accountId` or `zoneId` is provided and in
- *    most cases using either is fine. However, if you're using a scoped
- *    access token, you must provide the argument that matches the token's
- *    scope. For example, an access token that is scoped to the "example.com"
- *    zone needs to use the `zoneId` argument.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // one time pin
- * const pinLogin = new cloudflare.AccessIdentityProvider("pin_login", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "PIN login",
- *     type: "onetimepin",
- * });
- * // oauth
- * const githubOauth = new cloudflare.AccessIdentityProvider("github_oauth", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "GitHub OAuth",
- *     type: "github",
- *     configs: [{
- *         clientId: "example",
- *         clientSecret: "secret_key",
- *     }],
- * });
- * // saml
- * const jumpcloudSaml = new cloudflare.AccessIdentityProvider("jumpcloud_saml", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "JumpCloud SAML",
- *     type: "saml",
- *     configs: [{
- *         issuerUrl: "jumpcloud",
- *         ssoTargetUrl: "https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
- *         attributes: [
- *             "email",
- *             "username",
- *         ],
- *         signRequest: false,
- *         idpPublicCert: `MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
- * uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o`,
- *     }],
- * });
- * // okta
- * const okta = new cloudflare.AccessIdentityProvider("okta", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "Okta",
- *     type: "okta",
- *     configs: [{
- *         clientId: "example",
- *         clientSecret: "secret_key",
- *         apiToken: "okta_api_token",
- *         oktaAccount: "https://example.com",
- *     }],
- * });
- * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider example <account_id>/<identity_provider_id>
+ * $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider example '<{accounts|zones}/{account_id|zone_id}>/<identity_provider_id>'
  * ```
+ *
+ * @deprecated cloudflare.index/accessidentityprovider.AccessIdentityProvider has been deprecated in favor of cloudflare.index/zerotrustaccessidentityprovider.ZeroTrustAccessIdentityProvider
  */
 export class AccessIdentityProvider extends pulumi.CustomResource {
     /**
@@ -87,6 +28,7 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccessIdentityProviderState, opts?: pulumi.CustomResourceOptions): AccessIdentityProvider {
+        pulumi.log.warn("AccessIdentityProvider is deprecated: cloudflare.index/accessidentityprovider.AccessIdentityProvider has been deprecated in favor of cloudflare.index/zerotrustaccessidentityprovider.ZeroTrustAccessIdentityProvider")
         return new AccessIdentityProvider(name, <any>state, { ...opts, id: id });
     }
 
@@ -105,27 +47,28 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+     * The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
      */
-    public readonly configs!: pulumi.Output<outputs.AccessIdentityProviderConfig[]>;
+    public readonly config!: pulumi.Output<outputs.AccessIdentityProviderConfig>;
     /**
-     * Friendly name of the Access Identity Provider configuration.
+     * The name of the identity provider, shown to users on the login page.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Configuration for SCIM settings for a given IDP.
+     * The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      */
-    public readonly scimConfigs!: pulumi.Output<outputs.AccessIdentityProviderScimConfig[]>;
+    public readonly scimConfig!: pulumi.Output<outputs.AccessIdentityProviderScimConfig>;
     /**
-     * The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+     * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -136,20 +79,26 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/accessidentityprovider.AccessIdentityProvider has been deprecated in favor of cloudflare.index/zerotrustaccessidentityprovider.ZeroTrustAccessIdentityProvider */
     constructor(name: string, args: AccessIdentityProviderArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/accessidentityprovider.AccessIdentityProvider has been deprecated in favor of cloudflare.index/zerotrustaccessidentityprovider.ZeroTrustAccessIdentityProvider */
     constructor(name: string, argsOrState?: AccessIdentityProviderArgs | AccessIdentityProviderState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AccessIdentityProvider is deprecated: cloudflare.index/accessidentityprovider.AccessIdentityProvider has been deprecated in favor of cloudflare.index/zerotrustaccessidentityprovider.ZeroTrustAccessIdentityProvider")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessIdentityProviderState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["configs"] = state ? state.configs : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["scimConfigs"] = state ? state.scimConfigs : undefined;
+            resourceInputs["scimConfig"] = state ? state.scimConfig : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessIdentityProviderArgs | undefined;
+            if ((!args || args.config === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'config'");
+            }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -157,13 +106,15 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["configs"] = args ? args.configs : undefined;
+            resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["scimConfigs"] = args ? args.scimConfigs : undefined;
+            resourceInputs["scimConfig"] = args ? args.scimConfig : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessIdentityProvider:AccessIdentityProvider" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessIdentityProvider.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -173,27 +124,28 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
  */
 export interface AccessIdentityProviderState {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+     * The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
      */
-    configs?: pulumi.Input<pulumi.Input<inputs.AccessIdentityProviderConfig>[]>;
+    config?: pulumi.Input<inputs.AccessIdentityProviderConfig>;
     /**
-     * Friendly name of the Access Identity Provider configuration.
+     * The name of the identity provider, shown to users on the login page.
      */
     name?: pulumi.Input<string>;
     /**
-     * Configuration for SCIM settings for a given IDP.
+     * The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      */
-    scimConfigs?: pulumi.Input<pulumi.Input<inputs.AccessIdentityProviderScimConfig>[]>;
+    scimConfig?: pulumi.Input<inputs.AccessIdentityProviderScimConfig>;
     /**
-     * The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+     * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
      */
     type?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -203,27 +155,28 @@ export interface AccessIdentityProviderState {
  */
 export interface AccessIdentityProviderArgs {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+     * The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
      */
-    configs?: pulumi.Input<pulumi.Input<inputs.AccessIdentityProviderConfig>[]>;
+    config: pulumi.Input<inputs.AccessIdentityProviderConfig>;
     /**
-     * Friendly name of the Access Identity Provider configuration.
+     * The name of the identity provider, shown to users on the login page.
      */
     name: pulumi.Input<string>;
     /**
-     * Configuration for SCIM settings for a given IDP.
+     * The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      */
-    scimConfigs?: pulumi.Input<pulumi.Input<inputs.AccessIdentityProviderScimConfig>[]>;
+    scimConfig?: pulumi.Input<inputs.AccessIdentityProviderScimConfig>;
     /**
-     * The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+     * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
      */
     type: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }

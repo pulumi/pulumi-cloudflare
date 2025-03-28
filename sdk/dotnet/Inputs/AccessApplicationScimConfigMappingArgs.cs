@@ -37,7 +37,8 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string> Schema { get; set; } = null!;
 
         /// <summary>
-        /// How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
+        /// The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+        /// Available values: "strict", "passthrough".
         /// </summary>
         [Input("strictness")]
         public Input<string>? Strictness { get; set; }

@@ -8,7 +8,6 @@ import com.pulumi.cloudflare.inputs.AccessIdentityProviderScimConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,14 +18,14 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
     public static final AccessIdentityProviderState Empty = new AccessIdentityProviderState();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -34,29 +33,29 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+     * The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
      * 
      */
-    @Import(name="configs")
-    private @Nullable Output<List<AccessIdentityProviderConfigArgs>> configs;
+    @Import(name="config")
+    private @Nullable Output<AccessIdentityProviderConfigArgs> config;
 
     /**
-     * @return Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+     * @return The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
      * 
      */
-    public Optional<Output<List<AccessIdentityProviderConfigArgs>>> configs() {
-        return Optional.ofNullable(this.configs);
+    public Optional<Output<AccessIdentityProviderConfigArgs>> config() {
+        return Optional.ofNullable(this.config);
     }
 
     /**
-     * Friendly name of the Access Identity Provider configuration.
+     * The name of the identity provider, shown to users on the login page.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Friendly name of the Access Identity Provider configuration.
+     * @return The name of the identity provider, shown to users on the login page.
      * 
      */
     public Optional<Output<String>> name() {
@@ -64,29 +63,31 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Configuration for SCIM settings for a given IDP.
+     * The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      * 
      */
-    @Import(name="scimConfigs")
-    private @Nullable Output<List<AccessIdentityProviderScimConfigArgs>> scimConfigs;
+    @Import(name="scimConfig")
+    private @Nullable Output<AccessIdentityProviderScimConfigArgs> scimConfig;
 
     /**
-     * @return Configuration for SCIM settings for a given IDP.
+     * @return The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      * 
      */
-    public Optional<Output<List<AccessIdentityProviderScimConfigArgs>>> scimConfigs() {
-        return Optional.ofNullable(this.scimConfigs);
+    public Optional<Output<AccessIdentityProviderScimConfigArgs>> scimConfig() {
+        return Optional.ofNullable(this.scimConfig);
     }
 
     /**
-     * The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+     * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+     * @return The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -94,14 +95,14 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -112,9 +113,9 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
 
     private AccessIdentityProviderState(AccessIdentityProviderState $) {
         this.accountId = $.accountId;
-        this.configs = $.configs;
+        this.config = $.config;
         this.name = $.name;
-        this.scimConfigs = $.scimConfigs;
+        this.scimConfig = $.scimConfig;
         this.type = $.type;
         this.zoneId = $.zoneId;
     }
@@ -138,7 +139,7 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -149,7 +150,7 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -159,38 +160,28 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param configs Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+         * @param config The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
          * 
          * @return builder
          * 
          */
-        public Builder configs(@Nullable Output<List<AccessIdentityProviderConfigArgs>> configs) {
-            $.configs = configs;
+        public Builder config(@Nullable Output<AccessIdentityProviderConfigArgs> config) {
+            $.config = config;
             return this;
         }
 
         /**
-         * @param configs Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+         * @param config The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
          * 
          * @return builder
          * 
          */
-        public Builder configs(List<AccessIdentityProviderConfigArgs> configs) {
-            return configs(Output.of(configs));
+        public Builder config(AccessIdentityProviderConfigArgs config) {
+            return config(Output.of(config));
         }
 
         /**
-         * @param configs Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder configs(AccessIdentityProviderConfigArgs... configs) {
-            return configs(List.of(configs));
-        }
-
-        /**
-         * @param name Friendly name of the Access Identity Provider configuration.
+         * @param name The name of the identity provider, shown to users on the login page.
          * 
          * @return builder
          * 
@@ -201,7 +192,7 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name Friendly name of the Access Identity Provider configuration.
+         * @param name The name of the identity provider, shown to users on the login page.
          * 
          * @return builder
          * 
@@ -211,38 +202,29 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param scimConfigs Configuration for SCIM settings for a given IDP.
+         * @param scimConfig The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
          * 
          * @return builder
          * 
          */
-        public Builder scimConfigs(@Nullable Output<List<AccessIdentityProviderScimConfigArgs>> scimConfigs) {
-            $.scimConfigs = scimConfigs;
+        public Builder scimConfig(@Nullable Output<AccessIdentityProviderScimConfigArgs> scimConfig) {
+            $.scimConfig = scimConfig;
             return this;
         }
 
         /**
-         * @param scimConfigs Configuration for SCIM settings for a given IDP.
+         * @param scimConfig The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
          * 
          * @return builder
          * 
          */
-        public Builder scimConfigs(List<AccessIdentityProviderScimConfigArgs> scimConfigs) {
-            return scimConfigs(Output.of(scimConfigs));
+        public Builder scimConfig(AccessIdentityProviderScimConfigArgs scimConfig) {
+            return scimConfig(Output.of(scimConfig));
         }
 
         /**
-         * @param scimConfigs Configuration for SCIM settings for a given IDP.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder scimConfigs(AccessIdentityProviderScimConfigArgs... scimConfigs) {
-            return scimConfigs(List.of(scimConfigs));
-        }
-
-        /**
-         * @param type The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+         * @param type The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+         * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
          * 
          * @return builder
          * 
@@ -253,7 +235,8 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+         * @param type The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+         * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
          * 
          * @return builder
          * 
@@ -263,7 +246,7 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -274,7 +257,7 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 

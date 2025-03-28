@@ -10,10 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy
-    /// Endpoints are used for pointing proxy clients at Cloudflare Secure
-    /// Gateway.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -24,14 +20,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.TeamsProxyEndpoint("example", new()
+    ///     var exampleZeroTrustGatewayProxyEndpoint = new Cloudflare.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "office",
+    ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Ips = new[]
     ///         {
-    ///             "192.0.2.0/24",
+    ///             "192.0.2.1/32",
     ///         },
+    ///         Name = "Devops team",
     ///     });
     /// 
     /// });
@@ -40,35 +36,39 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint example &lt;account_id&gt;/&lt;proxy_endpoint_id&gt;
+    /// $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint example '&lt;account_id&gt;/&lt;proxy_endpoint_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare.index/teamsproxyendpoint.TeamsProxyEndpoint has been deprecated in favor of cloudflare.index/zerotrustgatewayproxyendpoint.ZeroTrustGatewayProxyEndpoint")]
     [CloudflareResourceType("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint")]
     public partial class TeamsProxyEndpoint : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
         /// <summary>
-        /// The networks CIDRs that will be allowed to initiate proxy connections.
+        /// A list of CIDRs to restrict ingress connections.
         /// </summary>
         [Output("ips")]
         public Output<ImmutableArray<string>> Ips { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the teams proxy endpoint.
+        /// The name of the proxy endpoint.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The FQDN that proxy clients should be pointed at.
+        /// The subdomain to be used as the destination in the proxy client.
         /// </summary>
         [Output("subdomain")]
         public Output<string> Subdomain { get; private set; } = null!;
+
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
 
 
         /// <summary>
@@ -93,6 +93,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -116,9 +120,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class TeamsProxyEndpointArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
@@ -126,7 +127,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _ips;
 
         /// <summary>
-        /// The networks CIDRs that will be allowed to initiate proxy connections.
+        /// A list of CIDRs to restrict ingress connections.
         /// </summary>
         public InputList<string> Ips
         {
@@ -135,7 +136,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the teams proxy endpoint.
+        /// The name of the proxy endpoint.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -148,17 +149,17 @@ namespace Pulumi.Cloudflare
 
     public sealed class TeamsProxyEndpointState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
 
         [Input("ips")]
         private InputList<string>? _ips;
 
         /// <summary>
-        /// The networks CIDRs that will be allowed to initiate proxy connections.
+        /// A list of CIDRs to restrict ingress connections.
         /// </summary>
         public InputList<string> Ips
         {
@@ -167,16 +168,19 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the teams proxy endpoint.
+        /// The name of the proxy endpoint.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The FQDN that proxy clients should be pointed at.
+        /// The subdomain to be used as the destination in the proxy client.
         /// </summary>
         [Input("subdomain")]
         public Input<string>? Subdomain { get; set; }
+
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
 
         public TeamsProxyEndpointState()
         {

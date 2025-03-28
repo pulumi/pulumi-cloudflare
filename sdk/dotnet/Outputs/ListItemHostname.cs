@@ -13,9 +13,6 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ListItemHostname
     {
-        /// <summary>
-        /// The FQDN to match on.
-        /// </summary>
         public readonly string UrlHostname;
 
         [OutputConstructor]

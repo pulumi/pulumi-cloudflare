@@ -15,30 +15,22 @@ public final class DeviceManagedNetworksArgs extends com.pulumi.resources.Resour
 
     public static final DeviceManagedNetworksArgs Empty = new DeviceManagedNetworksArgs();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
     /**
-     * The configuration containing information for the WARP client to detect the managed network.
+     * The configuration object containing information for the WARP client to detect the managed network.
      * 
      */
     @Import(name="config", required=true)
     private Output<DeviceManagedNetworksConfigArgs> config;
 
     /**
-     * @return The configuration containing information for the WARP client to detect the managed network.
+     * @return The configuration object containing information for the WARP client to detect the managed network.
      * 
      */
     public Output<DeviceManagedNetworksConfigArgs> config() {
@@ -46,14 +38,14 @@ public final class DeviceManagedNetworksArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The name of the Device Managed Network. Must be unique.
+     * The name of the device managed network. This name must be unique.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the Device Managed Network. Must be unique.
+     * @return The name of the device managed network. This name must be unique.
      * 
      */
     public Output<String> name() {
@@ -61,14 +53,16 @@ public final class DeviceManagedNetworksArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The type of Device Managed Network. Available values: `tls`.
+     * The type of device managed network.
+     * Available values: &#34;tls&#34;.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of Device Managed Network. Available values: `tls`.
+     * @return The type of device managed network.
+     * Available values: &#34;tls&#34;.
      * 
      */
     public Output<String> type() {
@@ -102,29 +96,17 @@ public final class DeviceManagedNetworksArgs extends com.pulumi.resources.Resour
             $ = new DeviceManagedNetworksArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param config The configuration containing information for the WARP client to detect the managed network.
+         * @param config The configuration object containing information for the WARP client to detect the managed network.
          * 
          * @return builder
          * 
@@ -135,7 +117,7 @@ public final class DeviceManagedNetworksArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param config The configuration containing information for the WARP client to detect the managed network.
+         * @param config The configuration object containing information for the WARP client to detect the managed network.
          * 
          * @return builder
          * 
@@ -145,7 +127,7 @@ public final class DeviceManagedNetworksArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name The name of the Device Managed Network. Must be unique.
+         * @param name The name of the device managed network. This name must be unique.
          * 
          * @return builder
          * 
@@ -156,7 +138,7 @@ public final class DeviceManagedNetworksArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name The name of the Device Managed Network. Must be unique.
+         * @param name The name of the device managed network. This name must be unique.
          * 
          * @return builder
          * 
@@ -166,7 +148,8 @@ public final class DeviceManagedNetworksArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type The type of Device Managed Network. Available values: `tls`.
+         * @param type The type of device managed network.
+         * Available values: &#34;tls&#34;.
          * 
          * @return builder
          * 
@@ -177,7 +160,8 @@ public final class DeviceManagedNetworksArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type The type of Device Managed Network. Available values: `tls`.
+         * @param type The type of device managed network.
+         * Available values: &#34;tls&#34;.
          * 
          * @return builder
          * 

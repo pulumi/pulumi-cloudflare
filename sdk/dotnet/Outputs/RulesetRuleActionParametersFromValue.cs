@@ -14,15 +14,16 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersFromValue
     {
         /// <summary>
-        /// Preserve query string for redirect URL.
+        /// Keep the query string of the original request.
         /// </summary>
         public readonly bool? PreserveQueryString;
         /// <summary>
-        /// Status code for redirect.
+        /// The status code to be used for the redirect.
+        /// Available values: 301, 302, 303, 307, 308.
         /// </summary>
-        public readonly int? StatusCode;
+        public readonly double? StatusCode;
         /// <summary>
-        /// Target URL for redirect.
+        /// The URL to redirect the request to.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersFromValueTargetUrl? TargetUrl;
 
@@ -30,7 +31,7 @@ namespace Pulumi.Cloudflare.Outputs
         private RulesetRuleActionParametersFromValue(
             bool? preserveQueryString,
 
-            int? statusCode,
+            double? statusCode,
 
             Outputs.RulesetRuleActionParametersFromValueTargetUrl? targetUrl)
         {

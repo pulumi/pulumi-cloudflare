@@ -13,42 +13,42 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RateLimitMatchRequest {
     /**
-     * @return HTTP Methods to match traffic on. Available values: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `_ALL_`.
+     * @return The HTTP methods to match. You can specify a subset (for example, `[&#39;POST&#39;,&#39;PUT&#39;]`) or all methods (`[&#39;_ALL_&#39;]`). This field is optional when creating a rate limit.
      * 
      */
     private @Nullable List<String> methods;
     /**
-     * @return HTTP schemes to match traffic on. Available values: `HTTP`, `HTTPS`, `_ALL_`.
+     * @return The HTTP schemes to match. You can specify one scheme (`[&#39;HTTPS&#39;]`), both schemes (`[&#39;HTTP&#39;,&#39;HTTPS&#39;]`), or all schemes (`[&#39;_ALL_&#39;]`). This field is optional.
      * 
      */
     private @Nullable List<String> schemes;
     /**
-     * @return The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone.
+     * @return The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.
      * 
      */
-    private @Nullable String urlPattern;
+    private @Nullable String url;
 
     private RateLimitMatchRequest() {}
     /**
-     * @return HTTP Methods to match traffic on. Available values: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `_ALL_`.
+     * @return The HTTP methods to match. You can specify a subset (for example, `[&#39;POST&#39;,&#39;PUT&#39;]`) or all methods (`[&#39;_ALL_&#39;]`). This field is optional when creating a rate limit.
      * 
      */
     public List<String> methods() {
         return this.methods == null ? List.of() : this.methods;
     }
     /**
-     * @return HTTP schemes to match traffic on. Available values: `HTTP`, `HTTPS`, `_ALL_`.
+     * @return The HTTP schemes to match. You can specify one scheme (`[&#39;HTTPS&#39;]`), both schemes (`[&#39;HTTP&#39;,&#39;HTTPS&#39;]`), or all schemes (`[&#39;_ALL_&#39;]`). This field is optional.
      * 
      */
     public List<String> schemes() {
         return this.schemes == null ? List.of() : this.schemes;
     }
     /**
-     * @return The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone.
+     * @return The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.
      * 
      */
-    public Optional<String> urlPattern() {
-        return Optional.ofNullable(this.urlPattern);
+    public Optional<String> url() {
+        return Optional.ofNullable(this.url);
     }
 
     public static Builder builder() {
@@ -62,13 +62,13 @@ public final class RateLimitMatchRequest {
     public static final class Builder {
         private @Nullable List<String> methods;
         private @Nullable List<String> schemes;
-        private @Nullable String urlPattern;
+        private @Nullable String url;
         public Builder() {}
         public Builder(RateLimitMatchRequest defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.methods = defaults.methods;
     	      this.schemes = defaults.schemes;
-    	      this.urlPattern = defaults.urlPattern;
+    	      this.url = defaults.url;
         }
 
         @CustomType.Setter
@@ -90,16 +90,16 @@ public final class RateLimitMatchRequest {
             return schemes(List.of(schemes));
         }
         @CustomType.Setter
-        public Builder urlPattern(@Nullable String urlPattern) {
+        public Builder url(@Nullable String url) {
 
-            this.urlPattern = urlPattern;
+            this.url = url;
             return this;
         }
         public RateLimitMatchRequest build() {
             final var _resultValue = new RateLimitMatchRequest();
             _resultValue.methods = methods;
             _resultValue.schemes = schemes;
-            _resultValue.urlPattern = urlPattern;
+            _resultValue.url = url;
             return _resultValue;
         }
     }

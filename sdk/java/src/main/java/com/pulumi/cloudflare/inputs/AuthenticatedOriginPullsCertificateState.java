@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +17,14 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
     public static final AuthenticatedOriginPullsCertificateState Empty = new AuthenticatedOriginPullsCertificateState();
 
     /**
-     * The public client certificate. **Modifying this attribute will force creation of a new resource.**
+     * The zone&#39;s leaf certificate.
      * 
      */
     @Import(name="certificate")
     private @Nullable Output<String> certificate;
 
     /**
-     * @return The public client certificate. **Modifying this attribute will force creation of a new resource.**
+     * @return The zone&#39;s leaf certificate.
      * 
      */
     public Optional<Output<String>> certificate() {
@@ -31,14 +32,44 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
     }
 
     /**
-     * **Modifying this attribute will force creation of a new resource.**
+     * Identifier
+     * 
+     */
+    @Import(name="certificateId")
+    private @Nullable Output<String> certificateId;
+
+    /**
+     * @return Identifier
+     * 
+     */
+    public Optional<Output<String>> certificateId() {
+        return Optional.ofNullable(this.certificateId);
+    }
+
+    /**
+     * Indicates whether zone-level authenticated origin pulls is enabled.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    /**
+     * @return Indicates whether zone-level authenticated origin pulls is enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
+
+    /**
+     * When the certificate from the authority expires.
      * 
      */
     @Import(name="expiresOn")
     private @Nullable Output<String> expiresOn;
 
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return When the certificate from the authority expires.
      * 
      */
     public Optional<Output<String>> expiresOn() {
@@ -46,14 +77,14 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
     }
 
     /**
-     * **Modifying this attribute will force creation of a new resource.**
+     * The certificate authority that issued the certificate.
      * 
      */
     @Import(name="issuer")
     private @Nullable Output<String> issuer;
 
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return The certificate authority that issued the certificate.
      * 
      */
     public Optional<Output<String>> issuer() {
@@ -61,14 +92,14 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
     }
 
     /**
-     * The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
+     * The zone&#39;s private key.
      * 
      */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
 
     /**
-     * @return The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
+     * @return The zone&#39;s private key.
      * 
      */
     public Optional<Output<String>> privateKey() {
@@ -76,29 +107,14 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
     }
 
     /**
-     * **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    @Import(name="serialNumber")
-    private @Nullable Output<String> serialNumber;
-
-    /**
-     * @return **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Optional<Output<String>> serialNumber() {
-        return Optional.ofNullable(this.serialNumber);
-    }
-
-    /**
-     * **Modifying this attribute will force creation of a new resource.**
+     * The type of hash used for the certificate.
      * 
      */
     @Import(name="signature")
     private @Nullable Output<String> signature;
 
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return The type of hash used for the certificate.
      * 
      */
     public Optional<Output<String>> signature() {
@@ -106,14 +122,16 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
     }
 
     /**
-     * **Modifying this attribute will force creation of a new resource.**
+     * Status of the certificate activation.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return Status of the certificate activation.
+     * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -121,29 +139,14 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
     }
 
     /**
-     * The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    @Import(name="type")
-    private @Nullable Output<String> type;
-
-    /**
-     * @return The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
-    }
-
-    /**
-     * **Modifying this attribute will force creation of a new resource.**
+     * This is the time the certificate was uploaded.
      * 
      */
     @Import(name="uploadedOn")
     private @Nullable Output<String> uploadedOn;
 
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return This is the time the certificate was uploaded.
      * 
      */
     public Optional<Output<String>> uploadedOn() {
@@ -151,14 +154,14 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -169,13 +172,13 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
 
     private AuthenticatedOriginPullsCertificateState(AuthenticatedOriginPullsCertificateState $) {
         this.certificate = $.certificate;
+        this.certificateId = $.certificateId;
+        this.enabled = $.enabled;
         this.expiresOn = $.expiresOn;
         this.issuer = $.issuer;
         this.privateKey = $.privateKey;
-        this.serialNumber = $.serialNumber;
         this.signature = $.signature;
         this.status = $.status;
-        this.type = $.type;
         this.uploadedOn = $.uploadedOn;
         this.zoneId = $.zoneId;
     }
@@ -199,7 +202,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param certificate The public client certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param certificate The zone&#39;s leaf certificate.
          * 
          * @return builder
          * 
@@ -210,7 +213,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param certificate The public client certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param certificate The zone&#39;s leaf certificate.
          * 
          * @return builder
          * 
@@ -220,7 +223,49 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param expiresOn **Modifying this attribute will force creation of a new resource.**
+         * @param certificateId Identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateId(@Nullable Output<String> certificateId) {
+            $.certificateId = certificateId;
+            return this;
+        }
+
+        /**
+         * @param certificateId Identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateId(String certificateId) {
+            return certificateId(Output.of(certificateId));
+        }
+
+        /**
+         * @param enabled Indicates whether zone-level authenticated origin pulls is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Indicates whether zone-level authenticated origin pulls is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param expiresOn When the certificate from the authority expires.
          * 
          * @return builder
          * 
@@ -231,7 +276,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param expiresOn **Modifying this attribute will force creation of a new resource.**
+         * @param expiresOn When the certificate from the authority expires.
          * 
          * @return builder
          * 
@@ -241,7 +286,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param issuer **Modifying this attribute will force creation of a new resource.**
+         * @param issuer The certificate authority that issued the certificate.
          * 
          * @return builder
          * 
@@ -252,7 +297,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param issuer **Modifying this attribute will force creation of a new resource.**
+         * @param issuer The certificate authority that issued the certificate.
          * 
          * @return builder
          * 
@@ -262,7 +307,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param privateKey The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param privateKey The zone&#39;s private key.
          * 
          * @return builder
          * 
@@ -273,7 +318,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param privateKey The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param privateKey The zone&#39;s private key.
          * 
          * @return builder
          * 
@@ -283,28 +328,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param serialNumber **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder serialNumber(@Nullable Output<String> serialNumber) {
-            $.serialNumber = serialNumber;
-            return this;
-        }
-
-        /**
-         * @param serialNumber **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder serialNumber(String serialNumber) {
-            return serialNumber(Output.of(serialNumber));
-        }
-
-        /**
-         * @param signature **Modifying this attribute will force creation of a new resource.**
+         * @param signature The type of hash used for the certificate.
          * 
          * @return builder
          * 
@@ -315,7 +339,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param signature **Modifying this attribute will force creation of a new resource.**
+         * @param signature The type of hash used for the certificate.
          * 
          * @return builder
          * 
@@ -325,7 +349,8 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param status **Modifying this attribute will force creation of a new resource.**
+         * @param status Status of the certificate activation.
+         * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
          * 
          * @return builder
          * 
@@ -336,7 +361,8 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param status **Modifying this attribute will force creation of a new resource.**
+         * @param status Status of the certificate activation.
+         * Available values: &#34;initializing&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;active&#34;, &#34;deleted&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;.
          * 
          * @return builder
          * 
@@ -346,28 +372,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param type The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder type(@Nullable Output<String> type) {
-            $.type = type;
-            return this;
-        }
-
-        /**
-         * @param type The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder type(String type) {
-            return type(Output.of(type));
-        }
-
-        /**
-         * @param uploadedOn **Modifying this attribute will force creation of a new resource.**
+         * @param uploadedOn This is the time the certificate was uploaded.
          * 
          * @return builder
          * 
@@ -378,7 +383,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param uploadedOn **Modifying this attribute will force creation of a new resource.**
+         * @param uploadedOn This is the time the certificate was uploaded.
          * 
          * @return builder
          * 
@@ -388,7 +393,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -399,7 +404,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

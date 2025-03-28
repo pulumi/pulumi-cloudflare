@@ -15,8 +15,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource which manages Cloudflare custom error pages.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -42,11 +40,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new CustomPages("example", CustomPagesArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .type("basic_challenge")
- *             .url("https://example.com/challenge.html")
- *             .state("customized")
+ *         var exampleCustomPages = new CustomPages("exampleCustomPages", CustomPagesArgs.builder()
+ *             .identifier("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .state("default")
+ *             .url("http://www.example.com")
+ *             .zoneId("zone_id")
  *             .build());
  * 
  *     }
@@ -58,77 +56,79 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/customPages:CustomPages example &lt;resource_level&gt;/&lt;resource_id&gt;/&lt;custom_page_type&gt;
+ * $ pulumi import cloudflare:index/customPages:CustomPages example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;identifier&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/customPages:CustomPages")
 public class CustomPages extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
     /**
-     * Managed state of the custom page. Available values: `default`, `customized`.
+     * Identifier
+     * 
+     */
+    @Export(name="identifier", refs={String.class}, tree="[0]")
+    private Output<String> identifier;
+
+    /**
+     * @return Identifier
+     * 
+     */
+    public Output<String> identifier() {
+        return this.identifier;
+    }
+    /**
+     * The custom page state.
+     * Available values: &#34;default&#34;, &#34;customized&#34;.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> state;
+    private Output<String> state;
 
     /**
-     * @return Managed state of the custom page. Available values: `default`, `customized`.
+     * @return The custom page state.
+     * Available values: &#34;default&#34;, &#34;customized&#34;.
      * 
      */
-    public Output<Optional<String>> state() {
-        return Codegen.optional(this.state);
+    public Output<String> state() {
+        return this.state;
     }
     /**
-     * The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
-     * 
-     */
-    @Export(name="type", refs={String.class}, tree="[0]")
-    private Output<String> type;
-
-    /**
-     * @return The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
-     * 
-     */
-    public Output<String> type() {
-        return this.type;
-    }
-    /**
-     * URL of where the custom page source is located.
+     * The URL associated with the custom page.
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return URL of where the custom page source is located.
+     * @return The URL associated with the custom page.
      * 
      */
     public Output<String> url() {
         return this.url;
     }
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Output<Optional<String>> zoneId() {

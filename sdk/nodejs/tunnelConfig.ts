@@ -7,78 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Tunnel configuration resource.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleTunnel = new cloudflare.ZeroTrustTunnelCloudflared("example_tunnel", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "example_tunnel",
- *     secret: "<32 character secret>",
- * });
- * const exampleConfig = new cloudflare.TunnelConfig("example_config", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     tunnelId: exampleTunnel.id,
- *     config: {
- *         warpRouting: {
- *             enabled: true,
- *         },
- *         originRequest: {
- *             connectTimeout: "1m0s",
- *             tlsTimeout: "1m0s",
- *             tcpKeepAlive: "1m0s",
- *             noHappyEyeballs: false,
- *             keepAliveConnections: 1024,
- *             keepAliveTimeout: "1m0s",
- *             httpHostHeader: "baz",
- *             originServerName: "foobar",
- *             caPool: "/path/to/unsigned/ca/pool",
- *             noTlsVerify: false,
- *             disableChunkedEncoding: false,
- *             bastionMode: false,
- *             proxyAddress: "10.0.0.1",
- *             proxyPort: 8123,
- *             proxyType: "socks",
- *             ipRules: [{
- *                 prefix: "/web",
- *                 ports: [
- *                     80,
- *                     443,
- *                 ],
- *                 allow: false,
- *             }],
- *         },
- *         ingressRules: [
- *             {
- *                 hostname: "foo",
- *                 path: "/bar",
- *                 service: "http://10.0.0.2:8080",
- *                 originRequest: {
- *                     connectTimeout: "2m0s",
- *                     access: {
- *                         required: true,
- *                         teamName: "terraform",
- *                         audTags: ["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"],
- *                     },
- *                 },
- *             },
- *             {
- *                 service: "https://10.0.0.3:8081",
- *             },
- *         ],
- *     },
- * });
- * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/tunnelConfig:TunnelConfig example <account_id>/<tunnel_id>
+ * $ pulumi import cloudflare:index/tunnelConfig:TunnelConfig example '<account_id>/<tunnel_id>'
  * ```
+ *
+ * @deprecated cloudflare.index/tunnelconfig.TunnelConfig has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredconfig.ZeroTrustTunnelCloudflaredConfig
  */
 export class TunnelConfig extends pulumi.CustomResource {
     /**
@@ -91,6 +28,7 @@ export class TunnelConfig extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TunnelConfigState, opts?: pulumi.CustomResourceOptions): TunnelConfig {
+        pulumi.log.warn("TunnelConfig is deprecated: cloudflare.index/tunnelconfig.TunnelConfig has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredconfig.ZeroTrustTunnelCloudflaredConfig")
         return new TunnelConfig(name, <any>state, { ...opts, id: id });
     }
 
@@ -109,17 +47,27 @@ export class TunnelConfig extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Configuration block for Tunnel Configuration.
+     * The tunnel configuration and ingress rules.
      */
     public readonly config!: pulumi.Output<outputs.TunnelConfigConfig>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Identifier of the Tunnel to target for this configuration.
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+     * Available values: "local", "cloudflare".
+     */
+    public readonly source!: pulumi.Output<string>;
+    /**
+     * UUID of the tunnel.
      */
     public readonly tunnelId!: pulumi.Output<string>;
+    /**
+     * The version of the Tunnel Configuration.
+     */
+    public /*out*/ readonly version!: pulumi.Output<number>;
 
     /**
      * Create a TunnelConfig resource with the given unique name, arguments, and options.
@@ -128,31 +76,39 @@ export class TunnelConfig extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/tunnelconfig.TunnelConfig has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredconfig.ZeroTrustTunnelCloudflaredConfig */
     constructor(name: string, args: TunnelConfigArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/tunnelconfig.TunnelConfig has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredconfig.ZeroTrustTunnelCloudflaredConfig */
     constructor(name: string, argsOrState?: TunnelConfigArgs | TunnelConfigState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("TunnelConfig is deprecated: cloudflare.index/tunnelconfig.TunnelConfig has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredconfig.ZeroTrustTunnelCloudflaredConfig")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TunnelConfigState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["source"] = state ? state.source : undefined;
             resourceInputs["tunnelId"] = state ? state.tunnelId : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as TunnelConfigArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
-            }
-            if ((!args || args.config === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'config'");
             }
             if ((!args || args.tunnelId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tunnelId'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["tunnelId"] = args ? args.tunnelId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/tunnelConfig:TunnelConfig" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TunnelConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -162,17 +118,27 @@ export class TunnelConfig extends pulumi.CustomResource {
  */
 export interface TunnelConfigState {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Configuration block for Tunnel Configuration.
+     * The tunnel configuration and ingress rules.
      */
     config?: pulumi.Input<inputs.TunnelConfigConfig>;
+    createdAt?: pulumi.Input<string>;
     /**
-     * Identifier of the Tunnel to target for this configuration.
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+     * Available values: "local", "cloudflare".
+     */
+    source?: pulumi.Input<string>;
+    /**
+     * UUID of the tunnel.
      */
     tunnelId?: pulumi.Input<string>;
+    /**
+     * The version of the Tunnel Configuration.
+     */
+    version?: pulumi.Input<number>;
 }
 
 /**
@@ -180,15 +146,20 @@ export interface TunnelConfigState {
  */
 export interface TunnelConfigArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: pulumi.Input<string>;
     /**
-     * Configuration block for Tunnel Configuration.
+     * The tunnel configuration and ingress rules.
      */
-    config: pulumi.Input<inputs.TunnelConfigConfig>;
+    config?: pulumi.Input<inputs.TunnelConfigConfig>;
     /**
-     * Identifier of the Tunnel to target for this configuration.
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+     * Available values: "local", "cloudflare".
+     */
+    source?: pulumi.Input<string>;
+    /**
+     * UUID of the tunnel.
      */
     tunnelId: pulumi.Input<string>;
 }

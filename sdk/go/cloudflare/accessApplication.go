@@ -7,105 +7,95 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Access Application resource. Access
-// Applications are used to restrict access to a whole application using an
-// authorisation gateway managed by Cloudflare.
-//
-// > It's required that an `accountId` or `zoneId` is provided and in
-//
-//	most cases using either is fine. However, if you're using a scoped
-//	access token, you must provide the argument that matches the token's
-//	scope. For example, an access token that is scoped to the "example.com"
-//	zone needs to use the `zoneId` argument.
+// ## Example Usage
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/accessApplication:AccessApplication example <account_id>/<application_id>
+// $ pulumi import cloudflare:index/accessApplication:AccessApplication example '<{accounts|zones}/{account_id|zone_id}>/<app_id>'
 // ```
+//
+// Deprecated: cloudflare.index/accessapplication.AccessApplication has been deprecated in favor of cloudflare.index/zerotrustaccessapplication.ZeroTrustAccessApplication
 type AccessApplication struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
 	AllowAuthenticateViaWarp pulumi.BoolPtrOutput `pulumi:"allowAuthenticateViaWarp"`
-	// The identity providers selected for the application.
+	// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
 	AllowedIdps pulumi.StringArrayOutput `pulumi:"allowedIdps"`
-	// The logo URL of the app launcher.
+	// The image URL of the logo shown in the App Launcher header.
 	AppLauncherLogoUrl pulumi.StringPtrOutput `pulumi:"appLauncherLogoUrl"`
-	// Option to show/hide applications in App Launcher. Defaults to `true`.
-	AppLauncherVisible pulumi.BoolPtrOutput `pulumi:"appLauncherVisible"`
-	// Application Audience (AUD) Tag of the application.
+	// Displays the application in the App Launcher.
+	AppLauncherVisible pulumi.BoolOutput `pulumi:"appLauncherVisible"`
+	// Audience tag.
 	Aud pulumi.StringOutput `pulumi:"aud"`
-	// Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
-	AutoRedirectToIdentity pulumi.BoolPtrOutput `pulumi:"autoRedirectToIdentity"`
-	// The background color of the app launcher.
-	BgColor pulumi.StringPtrOutput `pulumi:"bgColor"`
-	// CORS configuration for the Access Application. See below for reference structure.
-	CorsHeaders AccessApplicationCorsHeaderArrayOutput `pulumi:"corsHeaders"`
-	// Option that returns a custom error message when a user is denied access to the application.
+	// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
+	AutoRedirectToIdentity pulumi.BoolOutput `pulumi:"autoRedirectToIdentity"`
+	// The background color of the App Launcher page.
+	BgColor     pulumi.StringPtrOutput             `pulumi:"bgColor"`
+	CorsHeaders AccessApplicationCorsHeadersOutput `pulumi:"corsHeaders"`
+	CreatedAt   pulumi.StringOutput                `pulumi:"createdAt"`
+	// The custom error message shown to a user when they are denied access to the application.
 	CustomDenyMessage pulumi.StringPtrOutput `pulumi:"customDenyMessage"`
-	// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+	// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
 	CustomDenyUrl pulumi.StringPtrOutput `pulumi:"customDenyUrl"`
-	// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+	// The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
 	CustomNonIdentityDenyUrl pulumi.StringPtrOutput `pulumi:"customNonIdentityDenyUrl"`
-	// The custom pages selected for the application.
+	// The custom pages that will be displayed when applicable for this application
 	CustomPages pulumi.StringArrayOutput `pulumi:"customPages"`
-	// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `selfHostedDomains` to allow for more flexibility in defining different types of destinations. Conflicts with `selfHostedDomains`.
+	// List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
 	Destinations AccessApplicationDestinationArrayOutput `pulumi:"destinations"`
-	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
-	Domain pulumi.StringOutput `pulumi:"domain"`
-	// The type of the primary domain. Available values: `public`, `private`.
-	DomainType pulumi.StringOutput `pulumi:"domainType"`
-	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-	EnableBindingCookie pulumi.BoolPtrOutput `pulumi:"enableBindingCookie"`
-	// The footer links of the app launcher.
+	// The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
+	Domain pulumi.StringPtrOutput `pulumi:"domain"`
+	// Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
+	EnableBindingCookie pulumi.BoolOutput `pulumi:"enableBindingCookie"`
+	// The links in the App Launcher footer.
 	FooterLinks AccessApplicationFooterLinkArrayOutput `pulumi:"footerLinks"`
-	// The background color of the header bar in the app launcher.
+	// The background color of the App Launcher header.
 	HeaderBgColor pulumi.StringPtrOutput `pulumi:"headerBgColor"`
-	// Option to add the `HttpOnly` cookie flag to access tokens.
-	HttpOnlyCookieAttribute pulumi.BoolPtrOutput `pulumi:"httpOnlyCookieAttribute"`
-	// The landing page design of the app launcher.
-	LandingPageDesign AccessApplicationLandingPageDesignPtrOutput `pulumi:"landingPageDesign"`
-	// Image URL for the logo shown in the app launcher dashboard.
+	// Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
+	HttpOnlyCookieAttribute pulumi.BoolOutput `pulumi:"httpOnlyCookieAttribute"`
+	// The design of the App Launcher landing page shown to users when they log in.
+	LandingPageDesign AccessApplicationLandingPageDesignOutput `pulumi:"landingPageDesign"`
+	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl pulumi.StringPtrOutput `pulumi:"logoUrl"`
-	// Friendly name of the Access Application.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
+	// The name of the application.
+	Name pulumi.StringPtrOutput `pulumi:"name"`
+	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass pulumi.BoolPtrOutput `pulumi:"optionsPreflightBypass"`
-	// The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `AccessPolicy` resource, as it can result in an inconsistent state.
-	Policies pulumi.StringArrayOutput `pulumi:"policies"`
-	// SaaS configuration for the Access Application.
-	SaasApp AccessApplicationSaasAppPtrOutput `pulumi:"saasApp"`
-	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+	PathCookieAttribute pulumi.BoolOutput `pulumi:"pathCookieAttribute"`
+	// The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+	Policies AccessApplicationPolicyArrayOutput `pulumi:"policies"`
+	SaasApp  AccessApplicationSaasAppOutput     `pulumi:"saasApp"`
+	// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 	SameSiteCookieAttribute pulumi.StringPtrOutput `pulumi:"sameSiteCookieAttribute"`
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
-	ScimConfig AccessApplicationScimConfigPtrOutput `pulumi:"scimConfig"`
-	// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
-	//
-	// Deprecated: Use `destinations` instead
+	ScimConfig AccessApplicationScimConfigOutput `pulumi:"scimConfig"`
+	// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
 	SelfHostedDomains pulumi.StringArrayOutput `pulumi:"selfHostedDomains"`
-	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect pulumi.BoolPtrOutput `pulumi:"serviceAuth401Redirect"`
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
-	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
-	// Option to skip the App Launcher landing page. Defaults to `false`.
-	SkipAppLauncherLoginPage pulumi.BoolPtrOutput `pulumi:"skipAppLauncherLoginPage"`
-	// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+	SessionDuration pulumi.StringOutput `pulumi:"sessionDuration"`
+	// Determines when to skip the App Launcher landing page.
+	SkipAppLauncherLoginPage pulumi.BoolOutput `pulumi:"skipAppLauncherLoginPage"`
+	// Enables automatic authentication through cloudflared.
 	SkipInterstitial pulumi.BoolPtrOutput `pulumi:"skipInterstitial"`
-	// The itags associated with the application.
-	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
+	// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
+	Tags            pulumi.StringArrayOutput                   `pulumi:"tags"`
 	TargetCriterias AccessApplicationTargetCriteriaArrayOutput `pulumi:"targetCriterias"`
-	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
-	Type pulumi.StringPtrOutput `pulumi:"type"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	// The application type.
+	Type      pulumi.StringPtrOutput `pulumi:"type"`
+	UpdatedAt pulumi.StringOutput    `pulumi:"updatedAt"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewAccessApplication registers a new resource with the given unique name, arguments, and options.
@@ -115,6 +105,12 @@ func NewAccessApplication(ctx *pulumi.Context,
 		args = &AccessApplicationArgs{}
 	}
 
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/accessApplication:AccessApplication"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessApplication
 	err := ctx.RegisterResource("cloudflare:index/accessApplication:AccessApplication", name, args, &resource, opts...)
@@ -138,160 +134,154 @@ func GetAccessApplication(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessApplication resources.
 type accessApplicationState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+	// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
 	AllowAuthenticateViaWarp *bool `pulumi:"allowAuthenticateViaWarp"`
-	// The identity providers selected for the application.
+	// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
 	AllowedIdps []string `pulumi:"allowedIdps"`
-	// The logo URL of the app launcher.
+	// The image URL of the logo shown in the App Launcher header.
 	AppLauncherLogoUrl *string `pulumi:"appLauncherLogoUrl"`
-	// Option to show/hide applications in App Launcher. Defaults to `true`.
+	// Displays the application in the App Launcher.
 	AppLauncherVisible *bool `pulumi:"appLauncherVisible"`
-	// Application Audience (AUD) Tag of the application.
+	// Audience tag.
 	Aud *string `pulumi:"aud"`
-	// Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
+	// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
 	AutoRedirectToIdentity *bool `pulumi:"autoRedirectToIdentity"`
-	// The background color of the app launcher.
-	BgColor *string `pulumi:"bgColor"`
-	// CORS configuration for the Access Application. See below for reference structure.
-	CorsHeaders []AccessApplicationCorsHeader `pulumi:"corsHeaders"`
-	// Option that returns a custom error message when a user is denied access to the application.
+	// The background color of the App Launcher page.
+	BgColor     *string                       `pulumi:"bgColor"`
+	CorsHeaders *AccessApplicationCorsHeaders `pulumi:"corsHeaders"`
+	CreatedAt   *string                       `pulumi:"createdAt"`
+	// The custom error message shown to a user when they are denied access to the application.
 	CustomDenyMessage *string `pulumi:"customDenyMessage"`
-	// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+	// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
 	CustomDenyUrl *string `pulumi:"customDenyUrl"`
-	// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+	// The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
 	CustomNonIdentityDenyUrl *string `pulumi:"customNonIdentityDenyUrl"`
-	// The custom pages selected for the application.
+	// The custom pages that will be displayed when applicable for this application
 	CustomPages []string `pulumi:"customPages"`
-	// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `selfHostedDomains` to allow for more flexibility in defining different types of destinations. Conflicts with `selfHostedDomains`.
+	// List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
 	Destinations []AccessApplicationDestination `pulumi:"destinations"`
-	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+	// The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
 	Domain *string `pulumi:"domain"`
-	// The type of the primary domain. Available values: `public`, `private`.
-	DomainType *string `pulumi:"domainType"`
-	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+	// Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
 	EnableBindingCookie *bool `pulumi:"enableBindingCookie"`
-	// The footer links of the app launcher.
+	// The links in the App Launcher footer.
 	FooterLinks []AccessApplicationFooterLink `pulumi:"footerLinks"`
-	// The background color of the header bar in the app launcher.
+	// The background color of the App Launcher header.
 	HeaderBgColor *string `pulumi:"headerBgColor"`
-	// Option to add the `HttpOnly` cookie flag to access tokens.
+	// Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
 	HttpOnlyCookieAttribute *bool `pulumi:"httpOnlyCookieAttribute"`
-	// The landing page design of the app launcher.
+	// The design of the App Launcher landing page shown to users when they log in.
 	LandingPageDesign *AccessApplicationLandingPageDesign `pulumi:"landingPageDesign"`
-	// Image URL for the logo shown in the app launcher dashboard.
+	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl *string `pulumi:"logoUrl"`
-	// Friendly name of the Access Application.
+	// The name of the application.
 	Name *string `pulumi:"name"`
-	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
+	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass *bool `pulumi:"optionsPreflightBypass"`
-	// The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `AccessPolicy` resource, as it can result in an inconsistent state.
-	Policies []string `pulumi:"policies"`
-	// SaaS configuration for the Access Application.
-	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
-	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+	PathCookieAttribute *bool `pulumi:"pathCookieAttribute"`
+	// The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+	Policies []AccessApplicationPolicy `pulumi:"policies"`
+	SaasApp  *AccessApplicationSaasApp `pulumi:"saasApp"`
+	// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig *AccessApplicationScimConfig `pulumi:"scimConfig"`
-	// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
-	//
-	// Deprecated: Use `destinations` instead
+	// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
-	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration *string `pulumi:"sessionDuration"`
-	// Option to skip the App Launcher landing page. Defaults to `false`.
+	// Determines when to skip the App Launcher landing page.
 	SkipAppLauncherLoginPage *bool `pulumi:"skipAppLauncherLoginPage"`
-	// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+	// Enables automatic authentication through cloudflared.
 	SkipInterstitial *bool `pulumi:"skipInterstitial"`
-	// The itags associated with the application.
-	Tags []string `pulumi:"tags"`
-	// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
+	// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
+	Tags            []string                          `pulumi:"tags"`
 	TargetCriterias []AccessApplicationTargetCriteria `pulumi:"targetCriterias"`
-	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
-	Type *string `pulumi:"type"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The application type.
+	Type      *string `pulumi:"type"`
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessApplicationState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+	// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
 	AllowAuthenticateViaWarp pulumi.BoolPtrInput
-	// The identity providers selected for the application.
+	// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
 	AllowedIdps pulumi.StringArrayInput
-	// The logo URL of the app launcher.
+	// The image URL of the logo shown in the App Launcher header.
 	AppLauncherLogoUrl pulumi.StringPtrInput
-	// Option to show/hide applications in App Launcher. Defaults to `true`.
+	// Displays the application in the App Launcher.
 	AppLauncherVisible pulumi.BoolPtrInput
-	// Application Audience (AUD) Tag of the application.
+	// Audience tag.
 	Aud pulumi.StringPtrInput
-	// Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
+	// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
 	AutoRedirectToIdentity pulumi.BoolPtrInput
-	// The background color of the app launcher.
-	BgColor pulumi.StringPtrInput
-	// CORS configuration for the Access Application. See below for reference structure.
-	CorsHeaders AccessApplicationCorsHeaderArrayInput
-	// Option that returns a custom error message when a user is denied access to the application.
+	// The background color of the App Launcher page.
+	BgColor     pulumi.StringPtrInput
+	CorsHeaders AccessApplicationCorsHeadersPtrInput
+	CreatedAt   pulumi.StringPtrInput
+	// The custom error message shown to a user when they are denied access to the application.
 	CustomDenyMessage pulumi.StringPtrInput
-	// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+	// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
 	CustomDenyUrl pulumi.StringPtrInput
-	// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+	// The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
 	CustomNonIdentityDenyUrl pulumi.StringPtrInput
-	// The custom pages selected for the application.
+	// The custom pages that will be displayed when applicable for this application
 	CustomPages pulumi.StringArrayInput
-	// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `selfHostedDomains` to allow for more flexibility in defining different types of destinations. Conflicts with `selfHostedDomains`.
+	// List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
 	Destinations AccessApplicationDestinationArrayInput
-	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+	// The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
 	Domain pulumi.StringPtrInput
-	// The type of the primary domain. Available values: `public`, `private`.
-	DomainType pulumi.StringPtrInput
-	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+	// Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
 	EnableBindingCookie pulumi.BoolPtrInput
-	// The footer links of the app launcher.
+	// The links in the App Launcher footer.
 	FooterLinks AccessApplicationFooterLinkArrayInput
-	// The background color of the header bar in the app launcher.
+	// The background color of the App Launcher header.
 	HeaderBgColor pulumi.StringPtrInput
-	// Option to add the `HttpOnly` cookie flag to access tokens.
+	// Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
 	HttpOnlyCookieAttribute pulumi.BoolPtrInput
-	// The landing page design of the app launcher.
+	// The design of the App Launcher landing page shown to users when they log in.
 	LandingPageDesign AccessApplicationLandingPageDesignPtrInput
-	// Image URL for the logo shown in the app launcher dashboard.
+	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl pulumi.StringPtrInput
-	// Friendly name of the Access Application.
+	// The name of the application.
 	Name pulumi.StringPtrInput
-	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
+	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass pulumi.BoolPtrInput
-	// The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `AccessPolicy` resource, as it can result in an inconsistent state.
-	Policies pulumi.StringArrayInput
-	// SaaS configuration for the Access Application.
-	SaasApp AccessApplicationSaasAppPtrInput
-	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+	PathCookieAttribute pulumi.BoolPtrInput
+	// The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+	Policies AccessApplicationPolicyArrayInput
+	SaasApp  AccessApplicationSaasAppPtrInput
+	// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 	SameSiteCookieAttribute pulumi.StringPtrInput
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig AccessApplicationScimConfigPtrInput
-	// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
-	//
-	// Deprecated: Use `destinations` instead
+	// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
 	SelfHostedDomains pulumi.StringArrayInput
-	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect pulumi.BoolPtrInput
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration pulumi.StringPtrInput
-	// Option to skip the App Launcher landing page. Defaults to `false`.
+	// Determines when to skip the App Launcher landing page.
 	SkipAppLauncherLoginPage pulumi.BoolPtrInput
-	// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+	// Enables automatic authentication through cloudflared.
 	SkipInterstitial pulumi.BoolPtrInput
-	// The itags associated with the application.
-	Tags pulumi.StringArrayInput
-	// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
+	// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
+	Tags            pulumi.StringArrayInput
 	TargetCriterias AccessApplicationTargetCriteriaArrayInput
-	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
-	Type pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The application type.
+	Type      pulumi.StringPtrInput
+	UpdatedAt pulumi.StringPtrInput
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -300,157 +290,147 @@ func (AccessApplicationState) ElementType() reflect.Type {
 }
 
 type accessApplicationArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+	// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
 	AllowAuthenticateViaWarp *bool `pulumi:"allowAuthenticateViaWarp"`
-	// The identity providers selected for the application.
+	// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
 	AllowedIdps []string `pulumi:"allowedIdps"`
-	// The logo URL of the app launcher.
+	// The image URL of the logo shown in the App Launcher header.
 	AppLauncherLogoUrl *string `pulumi:"appLauncherLogoUrl"`
-	// Option to show/hide applications in App Launcher. Defaults to `true`.
+	// Displays the application in the App Launcher.
 	AppLauncherVisible *bool `pulumi:"appLauncherVisible"`
-	// Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
+	// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
 	AutoRedirectToIdentity *bool `pulumi:"autoRedirectToIdentity"`
-	// The background color of the app launcher.
-	BgColor *string `pulumi:"bgColor"`
-	// CORS configuration for the Access Application. See below for reference structure.
-	CorsHeaders []AccessApplicationCorsHeader `pulumi:"corsHeaders"`
-	// Option that returns a custom error message when a user is denied access to the application.
+	// The background color of the App Launcher page.
+	BgColor     *string                       `pulumi:"bgColor"`
+	CorsHeaders *AccessApplicationCorsHeaders `pulumi:"corsHeaders"`
+	// The custom error message shown to a user when they are denied access to the application.
 	CustomDenyMessage *string `pulumi:"customDenyMessage"`
-	// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+	// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
 	CustomDenyUrl *string `pulumi:"customDenyUrl"`
-	// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+	// The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
 	CustomNonIdentityDenyUrl *string `pulumi:"customNonIdentityDenyUrl"`
-	// The custom pages selected for the application.
+	// The custom pages that will be displayed when applicable for this application
 	CustomPages []string `pulumi:"customPages"`
-	// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `selfHostedDomains` to allow for more flexibility in defining different types of destinations. Conflicts with `selfHostedDomains`.
+	// List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
 	Destinations []AccessApplicationDestination `pulumi:"destinations"`
-	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+	// The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
 	Domain *string `pulumi:"domain"`
-	// The type of the primary domain. Available values: `public`, `private`.
-	DomainType *string `pulumi:"domainType"`
-	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+	// Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
 	EnableBindingCookie *bool `pulumi:"enableBindingCookie"`
-	// The footer links of the app launcher.
+	// The links in the App Launcher footer.
 	FooterLinks []AccessApplicationFooterLink `pulumi:"footerLinks"`
-	// The background color of the header bar in the app launcher.
+	// The background color of the App Launcher header.
 	HeaderBgColor *string `pulumi:"headerBgColor"`
-	// Option to add the `HttpOnly` cookie flag to access tokens.
+	// Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
 	HttpOnlyCookieAttribute *bool `pulumi:"httpOnlyCookieAttribute"`
-	// The landing page design of the app launcher.
+	// The design of the App Launcher landing page shown to users when they log in.
 	LandingPageDesign *AccessApplicationLandingPageDesign `pulumi:"landingPageDesign"`
-	// Image URL for the logo shown in the app launcher dashboard.
+	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl *string `pulumi:"logoUrl"`
-	// Friendly name of the Access Application.
+	// The name of the application.
 	Name *string `pulumi:"name"`
-	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
+	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass *bool `pulumi:"optionsPreflightBypass"`
-	// The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `AccessPolicy` resource, as it can result in an inconsistent state.
-	Policies []string `pulumi:"policies"`
-	// SaaS configuration for the Access Application.
-	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
-	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+	PathCookieAttribute *bool `pulumi:"pathCookieAttribute"`
+	// The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+	Policies []AccessApplicationPolicy `pulumi:"policies"`
+	SaasApp  *AccessApplicationSaasApp `pulumi:"saasApp"`
+	// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig *AccessApplicationScimConfig `pulumi:"scimConfig"`
-	// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
-	//
-	// Deprecated: Use `destinations` instead
+	// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
-	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration *string `pulumi:"sessionDuration"`
-	// Option to skip the App Launcher landing page. Defaults to `false`.
+	// Determines when to skip the App Launcher landing page.
 	SkipAppLauncherLoginPage *bool `pulumi:"skipAppLauncherLoginPage"`
-	// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+	// Enables automatic authentication through cloudflared.
 	SkipInterstitial *bool `pulumi:"skipInterstitial"`
-	// The itags associated with the application.
-	Tags []string `pulumi:"tags"`
-	// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
+	// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
+	Tags            []string                          `pulumi:"tags"`
 	TargetCriterias []AccessApplicationTargetCriteria `pulumi:"targetCriterias"`
-	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
+	// The application type.
 	Type *string `pulumi:"type"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessApplication resource.
 type AccessApplicationArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+	// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
 	AllowAuthenticateViaWarp pulumi.BoolPtrInput
-	// The identity providers selected for the application.
+	// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
 	AllowedIdps pulumi.StringArrayInput
-	// The logo URL of the app launcher.
+	// The image URL of the logo shown in the App Launcher header.
 	AppLauncherLogoUrl pulumi.StringPtrInput
-	// Option to show/hide applications in App Launcher. Defaults to `true`.
+	// Displays the application in the App Launcher.
 	AppLauncherVisible pulumi.BoolPtrInput
-	// Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
+	// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
 	AutoRedirectToIdentity pulumi.BoolPtrInput
-	// The background color of the app launcher.
-	BgColor pulumi.StringPtrInput
-	// CORS configuration for the Access Application. See below for reference structure.
-	CorsHeaders AccessApplicationCorsHeaderArrayInput
-	// Option that returns a custom error message when a user is denied access to the application.
+	// The background color of the App Launcher page.
+	BgColor     pulumi.StringPtrInput
+	CorsHeaders AccessApplicationCorsHeadersPtrInput
+	// The custom error message shown to a user when they are denied access to the application.
 	CustomDenyMessage pulumi.StringPtrInput
-	// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+	// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
 	CustomDenyUrl pulumi.StringPtrInput
-	// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+	// The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
 	CustomNonIdentityDenyUrl pulumi.StringPtrInput
-	// The custom pages selected for the application.
+	// The custom pages that will be displayed when applicable for this application
 	CustomPages pulumi.StringArrayInput
-	// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `selfHostedDomains` to allow for more flexibility in defining different types of destinations. Conflicts with `selfHostedDomains`.
+	// List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
 	Destinations AccessApplicationDestinationArrayInput
-	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+	// The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
 	Domain pulumi.StringPtrInput
-	// The type of the primary domain. Available values: `public`, `private`.
-	DomainType pulumi.StringPtrInput
-	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+	// Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
 	EnableBindingCookie pulumi.BoolPtrInput
-	// The footer links of the app launcher.
+	// The links in the App Launcher footer.
 	FooterLinks AccessApplicationFooterLinkArrayInput
-	// The background color of the header bar in the app launcher.
+	// The background color of the App Launcher header.
 	HeaderBgColor pulumi.StringPtrInput
-	// Option to add the `HttpOnly` cookie flag to access tokens.
+	// Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
 	HttpOnlyCookieAttribute pulumi.BoolPtrInput
-	// The landing page design of the app launcher.
+	// The design of the App Launcher landing page shown to users when they log in.
 	LandingPageDesign AccessApplicationLandingPageDesignPtrInput
-	// Image URL for the logo shown in the app launcher dashboard.
+	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl pulumi.StringPtrInput
-	// Friendly name of the Access Application.
+	// The name of the application.
 	Name pulumi.StringPtrInput
-	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
+	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass pulumi.BoolPtrInput
-	// The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `AccessPolicy` resource, as it can result in an inconsistent state.
-	Policies pulumi.StringArrayInput
-	// SaaS configuration for the Access Application.
-	SaasApp AccessApplicationSaasAppPtrInput
-	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+	PathCookieAttribute pulumi.BoolPtrInput
+	// The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+	Policies AccessApplicationPolicyArrayInput
+	SaasApp  AccessApplicationSaasAppPtrInput
+	// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 	SameSiteCookieAttribute pulumi.StringPtrInput
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig AccessApplicationScimConfigPtrInput
-	// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
-	//
-	// Deprecated: Use `destinations` instead
+	// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
 	SelfHostedDomains pulumi.StringArrayInput
-	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect pulumi.BoolPtrInput
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration pulumi.StringPtrInput
-	// Option to skip the App Launcher landing page. Defaults to `false`.
+	// Determines when to skip the App Launcher landing page.
 	SkipAppLauncherLoginPage pulumi.BoolPtrInput
-	// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+	// Enables automatic authentication through cloudflared.
 	SkipInterstitial pulumi.BoolPtrInput
-	// The itags associated with the application.
-	Tags pulumi.StringArrayInput
-	// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
+	// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
+	Tags            pulumi.StringArrayInput
 	TargetCriterias AccessApplicationTargetCriteriaArrayInput
-	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
+	// The application type.
 	Type pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -541,191 +521,194 @@ func (o AccessApplicationOutput) ToAccessApplicationOutputWithContext(ctx contex
 	return o
 }
 
-// The account identifier to target for the resource. Conflicts with `zoneId`.
-func (o AccessApplicationOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+func (o AccessApplicationOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
 func (o AccessApplicationOutput) AllowAuthenticateViaWarp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.AllowAuthenticateViaWarp }).(pulumi.BoolPtrOutput)
 }
 
-// The identity providers selected for the application.
+// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
 func (o AccessApplicationOutput) AllowedIdps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringArrayOutput { return v.AllowedIdps }).(pulumi.StringArrayOutput)
 }
 
-// The logo URL of the app launcher.
+// The image URL of the logo shown in the App Launcher header.
 func (o AccessApplicationOutput) AppLauncherLogoUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.AppLauncherLogoUrl }).(pulumi.StringPtrOutput)
 }
 
-// Option to show/hide applications in App Launcher. Defaults to `true`.
-func (o AccessApplicationOutput) AppLauncherVisible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.AppLauncherVisible }).(pulumi.BoolPtrOutput)
+// Displays the application in the App Launcher.
+func (o AccessApplicationOutput) AppLauncherVisible() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.BoolOutput { return v.AppLauncherVisible }).(pulumi.BoolOutput)
 }
 
-// Application Audience (AUD) Tag of the application.
+// Audience tag.
 func (o AccessApplicationOutput) Aud() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.Aud }).(pulumi.StringOutput)
 }
 
-// Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
-func (o AccessApplicationOutput) AutoRedirectToIdentity() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.AutoRedirectToIdentity }).(pulumi.BoolPtrOutput)
+// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
+func (o AccessApplicationOutput) AutoRedirectToIdentity() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.BoolOutput { return v.AutoRedirectToIdentity }).(pulumi.BoolOutput)
 }
 
-// The background color of the app launcher.
+// The background color of the App Launcher page.
 func (o AccessApplicationOutput) BgColor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.BgColor }).(pulumi.StringPtrOutput)
 }
 
-// CORS configuration for the Access Application. See below for reference structure.
-func (o AccessApplicationOutput) CorsHeaders() AccessApplicationCorsHeaderArrayOutput {
-	return o.ApplyT(func(v *AccessApplication) AccessApplicationCorsHeaderArrayOutput { return v.CorsHeaders }).(AccessApplicationCorsHeaderArrayOutput)
+func (o AccessApplicationOutput) CorsHeaders() AccessApplicationCorsHeadersOutput {
+	return o.ApplyT(func(v *AccessApplication) AccessApplicationCorsHeadersOutput { return v.CorsHeaders }).(AccessApplicationCorsHeadersOutput)
 }
 
-// Option that returns a custom error message when a user is denied access to the application.
+func (o AccessApplicationOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The custom error message shown to a user when they are denied access to the application.
 func (o AccessApplicationOutput) CustomDenyMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.CustomDenyMessage }).(pulumi.StringPtrOutput)
 }
 
-// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
 func (o AccessApplicationOutput) CustomDenyUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.CustomDenyUrl }).(pulumi.StringPtrOutput)
 }
 
-// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+// The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
 func (o AccessApplicationOutput) CustomNonIdentityDenyUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.CustomNonIdentityDenyUrl }).(pulumi.StringPtrOutput)
 }
 
-// The custom pages selected for the application.
+// The custom pages that will be displayed when applicable for this application
 func (o AccessApplicationOutput) CustomPages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringArrayOutput { return v.CustomPages }).(pulumi.StringArrayOutput)
 }
 
-// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `selfHostedDomains` to allow for more flexibility in defining different types of destinations. Conflicts with `selfHostedDomains`.
+// List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
 func (o AccessApplicationOutput) Destinations() AccessApplicationDestinationArrayOutput {
 	return o.ApplyT(func(v *AccessApplication) AccessApplicationDestinationArrayOutput { return v.Destinations }).(AccessApplicationDestinationArrayOutput)
 }
 
-// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
-func (o AccessApplicationOutput) Domain() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+// The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
+func (o AccessApplicationOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// The type of the primary domain. Available values: `public`, `private`.
-func (o AccessApplicationOutput) DomainType() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.DomainType }).(pulumi.StringOutput)
+// Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
+func (o AccessApplicationOutput) EnableBindingCookie() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.BoolOutput { return v.EnableBindingCookie }).(pulumi.BoolOutput)
 }
 
-// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-func (o AccessApplicationOutput) EnableBindingCookie() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.EnableBindingCookie }).(pulumi.BoolPtrOutput)
-}
-
-// The footer links of the app launcher.
+// The links in the App Launcher footer.
 func (o AccessApplicationOutput) FooterLinks() AccessApplicationFooterLinkArrayOutput {
 	return o.ApplyT(func(v *AccessApplication) AccessApplicationFooterLinkArrayOutput { return v.FooterLinks }).(AccessApplicationFooterLinkArrayOutput)
 }
 
-// The background color of the header bar in the app launcher.
+// The background color of the App Launcher header.
 func (o AccessApplicationOutput) HeaderBgColor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.HeaderBgColor }).(pulumi.StringPtrOutput)
 }
 
-// Option to add the `HttpOnly` cookie flag to access tokens.
-func (o AccessApplicationOutput) HttpOnlyCookieAttribute() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.HttpOnlyCookieAttribute }).(pulumi.BoolPtrOutput)
+// Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
+func (o AccessApplicationOutput) HttpOnlyCookieAttribute() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.BoolOutput { return v.HttpOnlyCookieAttribute }).(pulumi.BoolOutput)
 }
 
-// The landing page design of the app launcher.
-func (o AccessApplicationOutput) LandingPageDesign() AccessApplicationLandingPageDesignPtrOutput {
-	return o.ApplyT(func(v *AccessApplication) AccessApplicationLandingPageDesignPtrOutput { return v.LandingPageDesign }).(AccessApplicationLandingPageDesignPtrOutput)
+// The design of the App Launcher landing page shown to users when they log in.
+func (o AccessApplicationOutput) LandingPageDesign() AccessApplicationLandingPageDesignOutput {
+	return o.ApplyT(func(v *AccessApplication) AccessApplicationLandingPageDesignOutput { return v.LandingPageDesign }).(AccessApplicationLandingPageDesignOutput)
 }
 
-// Image URL for the logo shown in the app launcher dashboard.
+// The image URL for the logo shown in the App Launcher dashboard.
 func (o AccessApplicationOutput) LogoUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.LogoUrl }).(pulumi.StringPtrOutput)
 }
 
-// Friendly name of the Access Application.
-func (o AccessApplicationOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+// The name of the application.
+func (o AccessApplicationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
+// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 func (o AccessApplicationOutput) OptionsPreflightBypass() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.OptionsPreflightBypass }).(pulumi.BoolPtrOutput)
 }
 
-// The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `AccessPolicy` resource, as it can result in an inconsistent state.
-func (o AccessApplicationOutput) Policies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AccessApplication) pulumi.StringArrayOutput { return v.Policies }).(pulumi.StringArrayOutput)
+// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+func (o AccessApplicationOutput) PathCookieAttribute() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.BoolOutput { return v.PathCookieAttribute }).(pulumi.BoolOutput)
 }
 
-// SaaS configuration for the Access Application.
-func (o AccessApplicationOutput) SaasApp() AccessApplicationSaasAppPtrOutput {
-	return o.ApplyT(func(v *AccessApplication) AccessApplicationSaasAppPtrOutput { return v.SaasApp }).(AccessApplicationSaasAppPtrOutput)
+// The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+func (o AccessApplicationOutput) Policies() AccessApplicationPolicyArrayOutput {
+	return o.ApplyT(func(v *AccessApplication) AccessApplicationPolicyArrayOutput { return v.Policies }).(AccessApplicationPolicyArrayOutput)
 }
 
-// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+func (o AccessApplicationOutput) SaasApp() AccessApplicationSaasAppOutput {
+	return o.ApplyT(func(v *AccessApplication) AccessApplicationSaasAppOutput { return v.SaasApp }).(AccessApplicationSaasAppOutput)
+}
+
+// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 func (o AccessApplicationOutput) SameSiteCookieAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.SameSiteCookieAttribute }).(pulumi.StringPtrOutput)
 }
 
 // Configuration for provisioning to this application via SCIM. This is currently in closed beta.
-func (o AccessApplicationOutput) ScimConfig() AccessApplicationScimConfigPtrOutput {
-	return o.ApplyT(func(v *AccessApplication) AccessApplicationScimConfigPtrOutput { return v.ScimConfig }).(AccessApplicationScimConfigPtrOutput)
+func (o AccessApplicationOutput) ScimConfig() AccessApplicationScimConfigOutput {
+	return o.ApplyT(func(v *AccessApplication) AccessApplicationScimConfigOutput { return v.ScimConfig }).(AccessApplicationScimConfigOutput)
 }
 
-// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
-//
-// Deprecated: Use `destinations` instead
+// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
 func (o AccessApplicationOutput) SelfHostedDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringArrayOutput { return v.SelfHostedDomains }).(pulumi.StringArrayOutput)
 }
 
-// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+// Returns a 401 status code when the request is blocked by a Service Auth policy.
 func (o AccessApplicationOutput) ServiceAuth401Redirect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.ServiceAuth401Redirect }).(pulumi.BoolPtrOutput)
 }
 
-// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
-func (o AccessApplicationOutput) SessionDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.SessionDuration }).(pulumi.StringPtrOutput)
+// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+func (o AccessApplicationOutput) SessionDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.SessionDuration }).(pulumi.StringOutput)
 }
 
-// Option to skip the App Launcher landing page. Defaults to `false`.
-func (o AccessApplicationOutput) SkipAppLauncherLoginPage() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.SkipAppLauncherLoginPage }).(pulumi.BoolPtrOutput)
+// Determines when to skip the App Launcher landing page.
+func (o AccessApplicationOutput) SkipAppLauncherLoginPage() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.BoolOutput { return v.SkipAppLauncherLoginPage }).(pulumi.BoolOutput)
 }
 
-// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+// Enables automatic authentication through cloudflared.
 func (o AccessApplicationOutput) SkipInterstitial() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.SkipInterstitial }).(pulumi.BoolPtrOutput)
 }
 
-// The itags associated with the application.
+// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
 func (o AccessApplicationOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
 func (o AccessApplicationOutput) TargetCriterias() AccessApplicationTargetCriteriaArrayOutput {
 	return o.ApplyT(func(v *AccessApplication) AccessApplicationTargetCriteriaArrayOutput { return v.TargetCriterias }).(AccessApplicationTargetCriteriaArrayOutput)
 }
 
-// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
+// The application type.
 func (o AccessApplicationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The zone identifier to target for the resource. Conflicts with `accountId`.
-func (o AccessApplicationOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o AccessApplicationOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+func (o AccessApplicationOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type AccessApplicationArrayOutput struct{ *pulumi.OutputState }

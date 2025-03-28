@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Worker secret resource.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,12 +20,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mySecret = new Cloudflare.WorkersSecret("my_secret", new()
+    ///     var exampleWorkersSecret = new Cloudflare.WorkersSecret("example_workers_secret", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "MY_EXAMPLE_SECRET_TEXT",
-    ///         ScriptName = "script_1",
-    ///         SecretText = "my_secret_value",
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         DispatchNamespace = "my-dispatch-namespace",
+    ///         ScriptName = "this-is_my_script-01",
+    ///         Name = "MY_SECRET",
+    ///         Text = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+    ///         Type = "secret_text",
     ///     });
     /// 
     /// });
@@ -36,35 +36,48 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/workersSecret:WorkersSecret example &lt;account_id&gt;/&lt;script_name&gt;/&lt;secret_name&gt;
+    /// $ pulumi import cloudflare:index/workersSecret:WorkersSecret example '&lt;account_id&gt;/&lt;dispatch_namespace&gt;/&lt;script_name&gt;/&lt;secret_name&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workersSecret:WorkersSecret")]
     public partial class WorkersSecret : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the Workers for Platforms dispatch namespace.
+        /// </summary>
+        [Output("dispatchNamespace")]
+        public Output<string> DispatchNamespace { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of this secret, this is what will be used to access it inside the Worker.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the script, used in URLs and route configuration.
         /// </summary>
         [Output("scriptName")]
         public Output<string> ScriptName { get; private set; } = null!;
 
         /// <summary>
-        /// The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+        /// The value of the secret.
         /// </summary>
-        [Output("secretText")]
-        public Output<string> SecretText { get; private set; } = null!;
+        [Output("text")]
+        public Output<string?> Text { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of secret to put.
+        /// Available values: "secret_text".
+        /// </summary>
+        [Output("type")]
+        public Output<string?> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -89,9 +102,13 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/workerSecret:WorkerSecret" },
+                },
                 AdditionalSecretOutputs =
                 {
-                    "secretText",
+                    "text",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -117,38 +134,51 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersSecretArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the Workers for Platforms dispatch namespace.
+        /// </summary>
+        [Input("dispatchNamespace", required: true)]
+        public Input<string> DispatchNamespace { get; set; } = null!;
+
+        /// <summary>
+        /// The name of this secret, this is what will be used to access it inside the Worker.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the script, used in URLs and route configuration.
         /// </summary>
         [Input("scriptName", required: true)]
         public Input<string> ScriptName { get; set; } = null!;
 
-        [Input("secretText", required: true)]
-        private Input<string>? _secretText;
+        [Input("text")]
+        private Input<string>? _text;
 
         /// <summary>
-        /// The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+        /// The value of the secret.
         /// </summary>
-        public Input<string>? SecretText
+        public Input<string>? Text
         {
-            get => _secretText;
+            get => _text;
             set
             {
                 var emptySecret = Output.CreateSecret(0);
-                _secretText = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+                _text = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// The type of secret to put.
+        /// Available values: "secret_text".
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public WorkersSecretArgs()
         {
@@ -159,38 +189,51 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersSecretState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the Workers for Platforms dispatch namespace.
+        /// </summary>
+        [Input("dispatchNamespace")]
+        public Input<string>? DispatchNamespace { get; set; }
+
+        /// <summary>
+        /// The name of this secret, this is what will be used to access it inside the Worker.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the script, used in URLs and route configuration.
         /// </summary>
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }
 
-        [Input("secretText")]
-        private Input<string>? _secretText;
+        [Input("text")]
+        private Input<string>? _text;
 
         /// <summary>
-        /// The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+        /// The value of the secret.
         /// </summary>
-        public Input<string>? SecretText
+        public Input<string>? Text
         {
-            get => _secretText;
+            get => _text;
             set
             {
                 var emptySecret = Output.CreateSecret(0);
-                _secretText = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+                _text = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// The type of secret to put.
+        /// Available values: "secret_text".
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public WorkersSecretState()
         {

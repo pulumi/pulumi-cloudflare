@@ -8,22 +8,32 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Fallback Domain resource. Fallback domains are
-// used to ignore DNS requests to a given list of domains. These DNS
-// requests will be passed back to other DNS servers configured on
-// existing network interfaces on the device.
+// ## Example Usage
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain example '<account_id>/<policy_id>'
+// ```
+//
+// Deprecated: cloudflare.index/zerotrustlocalfallbackdomain.ZeroTrustLocalFallbackDomain has been deprecated in favor of cloudflare.index/zerotrustdevicecustomprofilelocaldomainfallback.ZeroTrustDeviceCustomProfileLocalDomainFallback
 type ZeroTrustLocalFallbackDomain struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
-	AccountId pulumi.StringOutput                           `pulumi:"accountId"`
-	Domains   ZeroTrustLocalFallbackDomainDomainArrayOutput `pulumi:"domains"`
-	// The settings policy for which to configure this fallback domain policy.
-	PolicyId pulumi.StringPtrOutput `pulumi:"policyId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// A description of the fallback domain, displayed in the client UI.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// A list of IP addresses to handle domain resolution.
+	DnsServers pulumi.StringArrayOutput                      `pulumi:"dnsServers"`
+	Domains    ZeroTrustLocalFallbackDomainDomainArrayOutput `pulumi:"domains"`
+	// Device ID.
+	PolicyId pulumi.StringOutput `pulumi:"policyId"`
+	// The domain suffix to match when resolving locally.
+	Suffix pulumi.StringOutput `pulumi:"suffix"`
 }
 
 // NewZeroTrustLocalFallbackDomain registers a new resource with the given unique name, arguments, and options.
@@ -39,6 +49,18 @@ func NewZeroTrustLocalFallbackDomain(ctx *pulumi.Context,
 	if args.Domains == nil {
 		return nil, errors.New("invalid value for required argument 'Domains'")
 	}
+	if args.PolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyId'")
+	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/fallbackDomain:FallbackDomain"),
+		},
+		{
+			Type: pulumi.String("cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustLocalFallbackDomain
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain", name, args, &resource, opts...)
@@ -62,19 +84,29 @@ func GetZeroTrustLocalFallbackDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustLocalFallbackDomain resources.
 type zeroTrustLocalFallbackDomainState struct {
-	// The account identifier to target for the resource.
-	AccountId *string                              `pulumi:"accountId"`
-	Domains   []ZeroTrustLocalFallbackDomainDomain `pulumi:"domains"`
-	// The settings policy for which to configure this fallback domain policy.
+	AccountId *string `pulumi:"accountId"`
+	// A description of the fallback domain, displayed in the client UI.
+	Description *string `pulumi:"description"`
+	// A list of IP addresses to handle domain resolution.
+	DnsServers []string                             `pulumi:"dnsServers"`
+	Domains    []ZeroTrustLocalFallbackDomainDomain `pulumi:"domains"`
+	// Device ID.
 	PolicyId *string `pulumi:"policyId"`
+	// The domain suffix to match when resolving locally.
+	Suffix *string `pulumi:"suffix"`
 }
 
 type ZeroTrustLocalFallbackDomainState struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	Domains   ZeroTrustLocalFallbackDomainDomainArrayInput
-	// The settings policy for which to configure this fallback domain policy.
+	// A description of the fallback domain, displayed in the client UI.
+	Description pulumi.StringPtrInput
+	// A list of IP addresses to handle domain resolution.
+	DnsServers pulumi.StringArrayInput
+	Domains    ZeroTrustLocalFallbackDomainDomainArrayInput
+	// Device ID.
 	PolicyId pulumi.StringPtrInput
+	// The domain suffix to match when resolving locally.
+	Suffix pulumi.StringPtrInput
 }
 
 func (ZeroTrustLocalFallbackDomainState) ElementType() reflect.Type {
@@ -82,20 +114,18 @@ func (ZeroTrustLocalFallbackDomainState) ElementType() reflect.Type {
 }
 
 type zeroTrustLocalFallbackDomainArgs struct {
-	// The account identifier to target for the resource.
 	AccountId string                               `pulumi:"accountId"`
 	Domains   []ZeroTrustLocalFallbackDomainDomain `pulumi:"domains"`
-	// The settings policy for which to configure this fallback domain policy.
-	PolicyId *string `pulumi:"policyId"`
+	// Device ID.
+	PolicyId string `pulumi:"policyId"`
 }
 
 // The set of arguments for constructing a ZeroTrustLocalFallbackDomain resource.
 type ZeroTrustLocalFallbackDomainArgs struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
 	Domains   ZeroTrustLocalFallbackDomainDomainArrayInput
-	// The settings policy for which to configure this fallback domain policy.
-	PolicyId pulumi.StringPtrInput
+	// Device ID.
+	PolicyId pulumi.StringInput
 }
 
 func (ZeroTrustLocalFallbackDomainArgs) ElementType() reflect.Type {
@@ -185,18 +215,32 @@ func (o ZeroTrustLocalFallbackDomainOutput) ToZeroTrustLocalFallbackDomainOutput
 	return o
 }
 
-// The account identifier to target for the resource.
 func (o ZeroTrustLocalFallbackDomainOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustLocalFallbackDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// A description of the fallback domain, displayed in the client UI.
+func (o ZeroTrustLocalFallbackDomainOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustLocalFallbackDomain) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// A list of IP addresses to handle domain resolution.
+func (o ZeroTrustLocalFallbackDomainOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustLocalFallbackDomain) pulumi.StringArrayOutput { return v.DnsServers }).(pulumi.StringArrayOutput)
 }
 
 func (o ZeroTrustLocalFallbackDomainOutput) Domains() ZeroTrustLocalFallbackDomainDomainArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustLocalFallbackDomain) ZeroTrustLocalFallbackDomainDomainArrayOutput { return v.Domains }).(ZeroTrustLocalFallbackDomainDomainArrayOutput)
 }
 
-// The settings policy for which to configure this fallback domain policy.
-func (o ZeroTrustLocalFallbackDomainOutput) PolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustLocalFallbackDomain) pulumi.StringPtrOutput { return v.PolicyId }).(pulumi.StringPtrOutput)
+// Device ID.
+func (o ZeroTrustLocalFallbackDomainOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustLocalFallbackDomain) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
+}
+
+// The domain suffix to match when resolving locally.
+func (o ZeroTrustLocalFallbackDomainOutput) Suffix() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustLocalFallbackDomain) pulumi.StringOutput { return v.Suffix }).(pulumi.StringOutput)
 }
 
 type ZeroTrustLocalFallbackDomainArrayOutput struct{ *pulumi.OutputState }

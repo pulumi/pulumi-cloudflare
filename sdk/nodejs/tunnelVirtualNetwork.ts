@@ -5,29 +5,27 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource, that manages Cloudflare tunnel virtual networks
- * for Zero Trust. Tunnel virtual networks are used for segregation of
- * Tunnel IP Routes via Virtualized Networks to handle overlapping
- * private IPs in your origins.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.TunnelVirtualNetwork("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "vnet-for-documentation",
- *     comment: "New tunnel virtual network for documentation",
+ * const exampleZeroTrustTunnelCloudflaredVirtualNetwork = new cloudflare.ZeroTrustTunnelCloudflaredVirtualNetwork("example_zero_trust_tunnel_cloudflared_virtual_network", {
+ *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     name: "us-east-1-vpc",
+ *     comment: "Staging VPC for data science",
+ *     isDefault: true,
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example <account_id>/<vnet_id>
+ * $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example '<account_id>/<virtual_network_id>'
  * ```
+ *
+ * @deprecated cloudflare.index/tunnelvirtualnetwork.TunnelVirtualNetwork has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredvirtualnetwork.ZeroTrustTunnelCloudflaredVirtualNetwork
  */
 export class TunnelVirtualNetwork extends pulumi.CustomResource {
     /**
@@ -40,6 +38,7 @@ export class TunnelVirtualNetwork extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TunnelVirtualNetworkState, opts?: pulumi.CustomResourceOptions): TunnelVirtualNetwork {
+        pulumi.log.warn("TunnelVirtualNetwork is deprecated: cloudflare.index/tunnelvirtualnetwork.TunnelVirtualNetwork has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredvirtualnetwork.ZeroTrustTunnelCloudflaredVirtualNetwork")
         return new TunnelVirtualNetwork(name, <any>state, { ...opts, id: id });
     }
 
@@ -58,19 +57,31 @@ export class TunnelVirtualNetwork extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Description of the tunnel virtual network.
+     * Optional remark describing the virtual network.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+     * Timestamp of when the resource was created.
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     */
+    public /*out*/ readonly deletedAt!: pulumi.Output<string>;
+    /**
+     * If `true`, this virtual network is the default for the account.
+     */
+    public readonly isDefault!: pulumi.Output<boolean | undefined>;
+    /**
+     * If `true`, this virtual network is the default for the account.
      */
     public readonly isDefaultNetwork!: pulumi.Output<boolean | undefined>;
     /**
-     * A user-friendly name chosen when the virtual network is created.
+     * A user-friendly name for the virtual network.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -81,14 +92,20 @@ export class TunnelVirtualNetwork extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/tunnelvirtualnetwork.TunnelVirtualNetwork has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredvirtualnetwork.ZeroTrustTunnelCloudflaredVirtualNetwork */
     constructor(name: string, args: TunnelVirtualNetworkArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/tunnelvirtualnetwork.TunnelVirtualNetwork has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredvirtualnetwork.ZeroTrustTunnelCloudflaredVirtualNetwork */
     constructor(name: string, argsOrState?: TunnelVirtualNetworkArgs | TunnelVirtualNetworkState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("TunnelVirtualNetwork is deprecated: cloudflare.index/tunnelvirtualnetwork.TunnelVirtualNetwork has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredvirtualnetwork.ZeroTrustTunnelCloudflaredVirtualNetwork")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TunnelVirtualNetworkState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["deletedAt"] = state ? state.deletedAt : undefined;
+            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
             resourceInputs["isDefaultNetwork"] = state ? state.isDefaultNetwork : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
         } else {
@@ -101,10 +118,15 @@ export class TunnelVirtualNetwork extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
             resourceInputs["isDefaultNetwork"] = args ? args.isDefaultNetwork : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["deletedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TunnelVirtualNetwork.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -114,19 +136,31 @@ export class TunnelVirtualNetwork extends pulumi.CustomResource {
  */
 export interface TunnelVirtualNetworkState {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Description of the tunnel virtual network.
+     * Optional remark describing the virtual network.
      */
     comment?: pulumi.Input<string>;
     /**
-     * Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+     * Timestamp of when the resource was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     */
+    deletedAt?: pulumi.Input<string>;
+    /**
+     * If `true`, this virtual network is the default for the account.
+     */
+    isDefault?: pulumi.Input<boolean>;
+    /**
+     * If `true`, this virtual network is the default for the account.
      */
     isDefaultNetwork?: pulumi.Input<boolean>;
     /**
-     * A user-friendly name chosen when the virtual network is created.
+     * A user-friendly name for the virtual network.
      */
     name?: pulumi.Input<string>;
 }
@@ -136,19 +170,23 @@ export interface TunnelVirtualNetworkState {
  */
 export interface TunnelVirtualNetworkArgs {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      */
     accountId: pulumi.Input<string>;
     /**
-     * Description of the tunnel virtual network.
+     * Optional remark describing the virtual network.
      */
     comment?: pulumi.Input<string>;
     /**
-     * Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+     * If `true`, this virtual network is the default for the account.
+     */
+    isDefault?: pulumi.Input<boolean>;
+    /**
+     * If `true`, this virtual network is the default for the account.
      */
     isDefaultNetwork?: pulumi.Input<boolean>;
     /**
-     * A user-friendly name chosen when the virtual network is created.
+     * A user-friendly name for the virtual network.
      */
     name: pulumi.Input<string>;
 }

@@ -5,9 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class TeamsRuleRuleSettingsAuditSshArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,18 +16,18 @@ public final class TeamsRuleRuleSettingsAuditSshArgs extends com.pulumi.resource
     public static final TeamsRuleRuleSettingsAuditSshArgs Empty = new TeamsRuleRuleSettingsAuditSshArgs();
 
     /**
-     * Log all SSH commands.
+     * Enable to turn on SSH command logging.
      * 
      */
-    @Import(name="commandLogging", required=true)
-    private Output<Boolean> commandLogging;
+    @Import(name="commandLogging")
+    private @Nullable Output<Boolean> commandLogging;
 
     /**
-     * @return Log all SSH commands.
+     * @return Enable to turn on SSH command logging.
      * 
      */
-    public Output<Boolean> commandLogging() {
-        return this.commandLogging;
+    public Optional<Output<Boolean>> commandLogging() {
+        return Optional.ofNullable(this.commandLogging);
     }
 
     private TeamsRuleRuleSettingsAuditSshArgs() {}
@@ -54,18 +55,18 @@ public final class TeamsRuleRuleSettingsAuditSshArgs extends com.pulumi.resource
         }
 
         /**
-         * @param commandLogging Log all SSH commands.
+         * @param commandLogging Enable to turn on SSH command logging.
          * 
          * @return builder
          * 
          */
-        public Builder commandLogging(Output<Boolean> commandLogging) {
+        public Builder commandLogging(@Nullable Output<Boolean> commandLogging) {
             $.commandLogging = commandLogging;
             return this;
         }
 
         /**
-         * @param commandLogging Log all SSH commands.
+         * @param commandLogging Enable to turn on SSH command logging.
          * 
          * @return builder
          * 
@@ -75,9 +76,6 @@ public final class TeamsRuleRuleSettingsAuditSshArgs extends com.pulumi.resource
         }
 
         public TeamsRuleRuleSettingsAuditSshArgs build() {
-            if ($.commandLogging == null) {
-                throw new MissingRequiredPropertyException("TeamsRuleRuleSettingsAuditSshArgs", "commandLogging");
-            }
             return $;
         }
     }

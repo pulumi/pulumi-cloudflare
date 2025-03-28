@@ -7,7 +7,6 @@ import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriPathArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriQueryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,22 +16,15 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
 
     public static final RulesetRuleActionParametersUriArgs Empty = new RulesetRuleActionParametersUriArgs();
 
-    @Import(name="origin")
-    private @Nullable Output<Boolean> origin;
-
-    public Optional<Output<Boolean>> origin() {
-        return Optional.ofNullable(this.origin);
-    }
-
     /**
-     * URI path configuration when performing a URL rewrite.
+     * Path portion rewrite.
      * 
      */
     @Import(name="path")
     private @Nullable Output<RulesetRuleActionParametersUriPathArgs> path;
 
     /**
-     * @return URI path configuration when performing a URL rewrite.
+     * @return Path portion rewrite.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersUriPathArgs>> path() {
@@ -40,14 +32,14 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
     }
 
     /**
-     * Query string configuration when performing a URL rewrite.
+     * Query portion rewrite.
      * 
      */
     @Import(name="query")
     private @Nullable Output<RulesetRuleActionParametersUriQueryArgs> query;
 
     /**
-     * @return Query string configuration when performing a URL rewrite.
+     * @return Query portion rewrite.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersUriQueryArgs>> query() {
@@ -57,7 +49,6 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
     private RulesetRuleActionParametersUriArgs() {}
 
     private RulesetRuleActionParametersUriArgs(RulesetRuleActionParametersUriArgs $) {
-        this.origin = $.origin;
         this.path = $.path;
         this.query = $.query;
     }
@@ -80,17 +71,8 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
             $ = new RulesetRuleActionParametersUriArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder origin(@Nullable Output<Boolean> origin) {
-            $.origin = origin;
-            return this;
-        }
-
-        public Builder origin(Boolean origin) {
-            return origin(Output.of(origin));
-        }
-
         /**
-         * @param path URI path configuration when performing a URL rewrite.
+         * @param path Path portion rewrite.
          * 
          * @return builder
          * 
@@ -101,7 +83,7 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param path URI path configuration when performing a URL rewrite.
+         * @param path Path portion rewrite.
          * 
          * @return builder
          * 
@@ -111,7 +93,7 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param query Query string configuration when performing a URL rewrite.
+         * @param query Query portion rewrite.
          * 
          * @return builder
          * 
@@ -122,7 +104,7 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param query Query string configuration when performing a URL rewrite.
+         * @param query Query portion rewrite.
          * 
          * @return builder
          * 

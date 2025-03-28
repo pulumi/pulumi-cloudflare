@@ -7,77 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Teams Account resource. The Teams Account
- * resource defines configuration for secure web gateway.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.TeamsAccount("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     tlsDecryptEnabled: true,
- *     protocolDetectionEnabled: true,
- *     blockPage: {
- *         footerText: "hello",
- *         headerText: "hello",
- *         logoPath: "https://example.com/logo.jpg",
- *         backgroundColor: "#000000",
- *     },
- *     bodyScanning: {
- *         inspectionMode: "deep",
- *     },
- *     antivirus: {
- *         enabledDownloadPhase: true,
- *         enabledUploadPhase: false,
- *         failClosed: true,
- *         notificationSettings: {
- *             enabled: true,
- *             message: "you are blocked",
- *             supportUrl: "https://example.com/blocked",
- *         },
- *     },
- *     fips: {
- *         tls: true,
- *     },
- *     proxy: {
- *         tcp: true,
- *         udp: true,
- *         rootCa: true,
- *         virtualIp: false,
- *         disableForTime: 3600,
- *     },
- *     urlBrowserIsolationEnabled: true,
- *     logging: {
- *         redactPii: true,
- *         settingsByRuleType: {
- *             dns: {
- *                 logAll: false,
- *                 logBlocks: true,
- *             },
- *             http: {
- *                 logAll: true,
- *                 logBlocks: true,
- *             },
- *             l4: {
- *                 logAll: false,
- *                 logBlocks: true,
- *             },
- *         },
- *     },
- *     extendedEmailMatching: {
- *         enabled: true,
- *     },
- * });
- * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example <account_id>
+ * $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example '<account_id>'
  * ```
+ *
+ * @deprecated cloudflare.index/teamsaccount.TeamsAccount has been deprecated in favor of cloudflare.index/zerotrustgatewaysettings.ZeroTrustGatewaySettings
  */
 export class TeamsAccount extends pulumi.CustomResource {
     /**
@@ -90,6 +28,7 @@ export class TeamsAccount extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TeamsAccountState, opts?: pulumi.CustomResourceOptions): TeamsAccount {
+        pulumi.log.warn("TeamsAccount is deprecated: cloudflare.index/teamsaccount.TeamsAccount has been deprecated in favor of cloudflare.index/zerotrustgatewaysettings.ZeroTrustGatewaySettings")
         return new TeamsAccount(name, <any>state, { ...opts, id: id });
     }
 
@@ -107,73 +46,13 @@ export class TeamsAccount extends pulumi.CustomResource {
         return obj['__pulumiType'] === TeamsAccount.__pulumiType;
     }
 
-    /**
-     * The account identifier to target for the resource.
-     */
     public readonly accountId!: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Whether to enable the activity log.
+     * Account settings
      */
-    public readonly activityLogEnabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * Configuration block for antivirus traffic scanning.
-     */
-    public readonly antivirus!: pulumi.Output<outputs.TeamsAccountAntivirus | undefined>;
-    /**
-     * Configuration for a custom block page.
-     */
-    public readonly blockPage!: pulumi.Output<outputs.TeamsAccountBlockPage | undefined>;
-    /**
-     * Configuration for body scanning.
-     */
-    public readonly bodyScanning!: pulumi.Output<outputs.TeamsAccountBodyScanning | undefined>;
-    /**
-     * Configuration for TLS interception certificate. This will be required starting Feb 2025.
-     */
-    public readonly certificate!: pulumi.Output<outputs.TeamsAccountCertificate | undefined>;
-    /**
-     * Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-     *
-     * @deprecated Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-     */
-    public readonly customCertificate!: pulumi.Output<outputs.TeamsAccountCustomCertificate | undefined>;
-    /**
-     * Configuration for extended e-mail matching.
-     */
-    public readonly extendedEmailMatching!: pulumi.Output<outputs.TeamsAccountExtendedEmailMatching>;
-    /**
-     * Configure compliance with Federal Information Processing Standards.
-     */
-    public readonly fips!: pulumi.Output<outputs.TeamsAccountFips | undefined>;
-    public readonly logging!: pulumi.Output<outputs.TeamsAccountLogging | undefined>;
-    /**
-     * Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-     */
-    public readonly nonIdentityBrowserIsolationEnabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * Configuration for DLP Payload Logging.
-     */
-    public readonly payloadLog!: pulumi.Output<outputs.TeamsAccountPayloadLog | undefined>;
-    /**
-     * Indicator that protocol detection is enabled.
-     */
-    public readonly protocolDetectionEnabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * Configuration block for specifying which protocols are proxied.
-     */
-    public readonly proxy!: pulumi.Output<outputs.TeamsAccountProxy | undefined>;
-    /**
-     * Configuration for SSH Session Logging.
-     */
-    public readonly sshSessionLog!: pulumi.Output<outputs.TeamsAccountSshSessionLog | undefined>;
-    /**
-     * Indicator that decryption of TLS traffic is enabled.
-     */
-    public readonly tlsDecryptEnabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-     */
-    public readonly urlBrowserIsolationEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly settings!: pulumi.Output<outputs.TeamsAccountSettings>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a TeamsAccount resource with the given unique name, arguments, and options.
@@ -182,53 +61,32 @@ export class TeamsAccount extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/teamsaccount.TeamsAccount has been deprecated in favor of cloudflare.index/zerotrustgatewaysettings.ZeroTrustGatewaySettings */
     constructor(name: string, args: TeamsAccountArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/teamsaccount.TeamsAccount has been deprecated in favor of cloudflare.index/zerotrustgatewaysettings.ZeroTrustGatewaySettings */
     constructor(name: string, argsOrState?: TeamsAccountArgs | TeamsAccountState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("TeamsAccount is deprecated: cloudflare.index/teamsaccount.TeamsAccount has been deprecated in favor of cloudflare.index/zerotrustgatewaysettings.ZeroTrustGatewaySettings")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamsAccountState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["activityLogEnabled"] = state ? state.activityLogEnabled : undefined;
-            resourceInputs["antivirus"] = state ? state.antivirus : undefined;
-            resourceInputs["blockPage"] = state ? state.blockPage : undefined;
-            resourceInputs["bodyScanning"] = state ? state.bodyScanning : undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["customCertificate"] = state ? state.customCertificate : undefined;
-            resourceInputs["extendedEmailMatching"] = state ? state.extendedEmailMatching : undefined;
-            resourceInputs["fips"] = state ? state.fips : undefined;
-            resourceInputs["logging"] = state ? state.logging : undefined;
-            resourceInputs["nonIdentityBrowserIsolationEnabled"] = state ? state.nonIdentityBrowserIsolationEnabled : undefined;
-            resourceInputs["payloadLog"] = state ? state.payloadLog : undefined;
-            resourceInputs["protocolDetectionEnabled"] = state ? state.protocolDetectionEnabled : undefined;
-            resourceInputs["proxy"] = state ? state.proxy : undefined;
-            resourceInputs["sshSessionLog"] = state ? state.sshSessionLog : undefined;
-            resourceInputs["tlsDecryptEnabled"] = state ? state.tlsDecryptEnabled : undefined;
-            resourceInputs["urlBrowserIsolationEnabled"] = state ? state.urlBrowserIsolationEnabled : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["settings"] = state ? state.settings : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as TeamsAccountArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["activityLogEnabled"] = args ? args.activityLogEnabled : undefined;
-            resourceInputs["antivirus"] = args ? args.antivirus : undefined;
-            resourceInputs["blockPage"] = args ? args.blockPage : undefined;
-            resourceInputs["bodyScanning"] = args ? args.bodyScanning : undefined;
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
-            resourceInputs["customCertificate"] = args ? args.customCertificate : undefined;
-            resourceInputs["extendedEmailMatching"] = args ? args.extendedEmailMatching : undefined;
-            resourceInputs["fips"] = args ? args.fips : undefined;
-            resourceInputs["logging"] = args ? args.logging : undefined;
-            resourceInputs["nonIdentityBrowserIsolationEnabled"] = args ? args.nonIdentityBrowserIsolationEnabled : undefined;
-            resourceInputs["payloadLog"] = args ? args.payloadLog : undefined;
-            resourceInputs["protocolDetectionEnabled"] = args ? args.protocolDetectionEnabled : undefined;
-            resourceInputs["proxy"] = args ? args.proxy : undefined;
-            resourceInputs["sshSessionLog"] = args ? args.sshSessionLog : undefined;
-            resourceInputs["tlsDecryptEnabled"] = args ? args.tlsDecryptEnabled : undefined;
-            resourceInputs["urlBrowserIsolationEnabled"] = args ? args.urlBrowserIsolationEnabled : undefined;
+            resourceInputs["settings"] = args ? args.settings : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/teamsAccount:TeamsAccount" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TeamsAccount.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -237,144 +95,22 @@ export class TeamsAccount extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TeamsAccount resources.
  */
 export interface TeamsAccountState {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
-     * Whether to enable the activity log.
+     * Account settings
      */
-    activityLogEnabled?: pulumi.Input<boolean>;
-    /**
-     * Configuration block for antivirus traffic scanning.
-     */
-    antivirus?: pulumi.Input<inputs.TeamsAccountAntivirus>;
-    /**
-     * Configuration for a custom block page.
-     */
-    blockPage?: pulumi.Input<inputs.TeamsAccountBlockPage>;
-    /**
-     * Configuration for body scanning.
-     */
-    bodyScanning?: pulumi.Input<inputs.TeamsAccountBodyScanning>;
-    /**
-     * Configuration for TLS interception certificate. This will be required starting Feb 2025.
-     */
-    certificate?: pulumi.Input<inputs.TeamsAccountCertificate>;
-    /**
-     * Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-     *
-     * @deprecated Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-     */
-    customCertificate?: pulumi.Input<inputs.TeamsAccountCustomCertificate>;
-    /**
-     * Configuration for extended e-mail matching.
-     */
-    extendedEmailMatching?: pulumi.Input<inputs.TeamsAccountExtendedEmailMatching>;
-    /**
-     * Configure compliance with Federal Information Processing Standards.
-     */
-    fips?: pulumi.Input<inputs.TeamsAccountFips>;
-    logging?: pulumi.Input<inputs.TeamsAccountLogging>;
-    /**
-     * Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-     */
-    nonIdentityBrowserIsolationEnabled?: pulumi.Input<boolean>;
-    /**
-     * Configuration for DLP Payload Logging.
-     */
-    payloadLog?: pulumi.Input<inputs.TeamsAccountPayloadLog>;
-    /**
-     * Indicator that protocol detection is enabled.
-     */
-    protocolDetectionEnabled?: pulumi.Input<boolean>;
-    /**
-     * Configuration block for specifying which protocols are proxied.
-     */
-    proxy?: pulumi.Input<inputs.TeamsAccountProxy>;
-    /**
-     * Configuration for SSH Session Logging.
-     */
-    sshSessionLog?: pulumi.Input<inputs.TeamsAccountSshSessionLog>;
-    /**
-     * Indicator that decryption of TLS traffic is enabled.
-     */
-    tlsDecryptEnabled?: pulumi.Input<boolean>;
-    /**
-     * Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-     */
-    urlBrowserIsolationEnabled?: pulumi.Input<boolean>;
+    settings?: pulumi.Input<inputs.TeamsAccountSettings>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a TeamsAccount resource.
  */
 export interface TeamsAccountArgs {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId: pulumi.Input<string>;
     /**
-     * Whether to enable the activity log.
+     * Account settings
      */
-    activityLogEnabled?: pulumi.Input<boolean>;
-    /**
-     * Configuration block for antivirus traffic scanning.
-     */
-    antivirus?: pulumi.Input<inputs.TeamsAccountAntivirus>;
-    /**
-     * Configuration for a custom block page.
-     */
-    blockPage?: pulumi.Input<inputs.TeamsAccountBlockPage>;
-    /**
-     * Configuration for body scanning.
-     */
-    bodyScanning?: pulumi.Input<inputs.TeamsAccountBodyScanning>;
-    /**
-     * Configuration for TLS interception certificate. This will be required starting Feb 2025.
-     */
-    certificate?: pulumi.Input<inputs.TeamsAccountCertificate>;
-    /**
-     * Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-     *
-     * @deprecated Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-     */
-    customCertificate?: pulumi.Input<inputs.TeamsAccountCustomCertificate>;
-    /**
-     * Configuration for extended e-mail matching.
-     */
-    extendedEmailMatching?: pulumi.Input<inputs.TeamsAccountExtendedEmailMatching>;
-    /**
-     * Configure compliance with Federal Information Processing Standards.
-     */
-    fips?: pulumi.Input<inputs.TeamsAccountFips>;
-    logging?: pulumi.Input<inputs.TeamsAccountLogging>;
-    /**
-     * Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-     */
-    nonIdentityBrowserIsolationEnabled?: pulumi.Input<boolean>;
-    /**
-     * Configuration for DLP Payload Logging.
-     */
-    payloadLog?: pulumi.Input<inputs.TeamsAccountPayloadLog>;
-    /**
-     * Indicator that protocol detection is enabled.
-     */
-    protocolDetectionEnabled?: pulumi.Input<boolean>;
-    /**
-     * Configuration block for specifying which protocols are proxied.
-     */
-    proxy?: pulumi.Input<inputs.TeamsAccountProxy>;
-    /**
-     * Configuration for SSH Session Logging.
-     */
-    sshSessionLog?: pulumi.Input<inputs.TeamsAccountSshSessionLog>;
-    /**
-     * Indicator that decryption of TLS traffic is enabled.
-     */
-    tlsDecryptEnabled?: pulumi.Input<boolean>;
-    /**
-     * Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-     */
-    urlBrowserIsolationEnabled?: pulumi.Input<boolean>;
+    settings?: pulumi.Input<inputs.TeamsAccountSettings>;
 }

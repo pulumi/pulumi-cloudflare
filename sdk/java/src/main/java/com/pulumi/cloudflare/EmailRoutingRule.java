@@ -13,15 +13,13 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The [Email Routing Rule](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#email-rule-actions) resource allows you to create and manage email routing rules for a zone.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -34,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.EmailRoutingRule;
  * import com.pulumi.cloudflare.EmailRoutingRuleArgs;
- * import com.pulumi.cloudflare.inputs.EmailRoutingRuleMatcherArgs;
  * import com.pulumi.cloudflare.inputs.EmailRoutingRuleActionArgs;
+ * import com.pulumi.cloudflare.inputs.EmailRoutingRuleMatcherArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,19 +47,20 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var main = new EmailRoutingRule("main", EmailRoutingRuleArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .name("terraform rule")
- *             .enabled(true)
+ *         var exampleEmailRoutingRule = new EmailRoutingRule("exampleEmailRoutingRule", EmailRoutingRuleArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .actions(EmailRoutingRuleActionArgs.builder()
+ *                 .type("drop")
+ *                 .value("destinationaddress}{@literal @}{@code example.net")
+ *                 .build())
  *             .matchers(EmailRoutingRuleMatcherArgs.builder()
- *                 .type("literal")
  *                 .field("to")
+ *                 .type("literal")
  *                 .value("test}{@literal @}{@code example.com")
  *                 .build())
- *             .actions(EmailRoutingRuleActionArgs.builder()
- *                 .type("forward")
- *                 .values("destinationaddress}{@literal @}{@code example.net")
- *                 .build())
+ *             .enabled(true)
+ *             .name("Send to user}{@literal @}{@code example.net rule.")
+ *             .priority(0)
  *             .build());
  * 
  *     }}{@code
@@ -73,105 +72,105 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example &lt;zone_id&gt;/&lt;email_routing_rule_id&gt;
+ * $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example &#39;&lt;zone_id&gt;/&lt;rule_identifier&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/emailRoutingRule:EmailRoutingRule")
 public class EmailRoutingRule extends com.pulumi.resources.CustomResource {
     /**
-     * Actions to take when a match is found.
+     * List actions patterns.
      * 
      */
     @Export(name="actions", refs={List.class,EmailRoutingRuleAction.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<EmailRoutingRuleAction>> actions;
+    private Output<List<EmailRoutingRuleAction>> actions;
 
     /**
-     * @return Actions to take when a match is found.
+     * @return List actions patterns.
      * 
      */
-    public Output<Optional<List<EmailRoutingRuleAction>>> actions() {
-        return Codegen.optional(this.actions);
+    public Output<List<EmailRoutingRuleAction>> actions() {
+        return this.actions;
     }
     /**
-     * Whether the email routing rule is enabled.
+     * Routing rule status.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enabled;
+    private Output<Boolean> enabled;
 
     /**
-     * @return Whether the email routing rule is enabled.
+     * @return Routing rule status.
      * 
      */
-    public Output<Optional<Boolean>> enabled() {
-        return Codegen.optional(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
     /**
      * Matching patterns to forward to your actions.
      * 
      */
     @Export(name="matchers", refs={List.class,EmailRoutingRuleMatcher.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<EmailRoutingRuleMatcher>> matchers;
+    private Output<List<EmailRoutingRuleMatcher>> matchers;
 
     /**
      * @return Matching patterns to forward to your actions.
      * 
      */
-    public Output<Optional<List<EmailRoutingRuleMatcher>>> matchers() {
-        return Codegen.optional(this.matchers);
+    public Output<List<EmailRoutingRuleMatcher>> matchers() {
+        return this.matchers;
     }
     /**
      * Routing rule name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output<String> name;
+    private Output</* @Nullable */ String> name;
 
     /**
      * @return Routing rule name.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Output<Optional<String>> name() {
+        return Codegen.optional(this.name);
     }
     /**
-     * The priority of the email routing rule.
+     * Priority of the routing rule.
      * 
      */
-    @Export(name="priority", refs={Integer.class}, tree="[0]")
-    private Output<Integer> priority;
+    @Export(name="priority", refs={Double.class}, tree="[0]")
+    private Output<Double> priority;
 
     /**
-     * @return The priority of the email routing rule.
+     * @return Priority of the routing rule.
      * 
      */
-    public Output<Integer> priority() {
+    public Output<Double> priority() {
         return this.priority;
     }
     /**
-     * The tag of the email routing rule.
+     * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      * 
      */
     @Export(name="tag", refs={String.class}, tree="[0]")
     private Output<String> tag;
 
     /**
-     * @return The tag of the email routing rule.
+     * @return Routing rule tag. (Deprecated, replaced by routing rule identifier)
      * 
      */
     public Output<String> tag() {
         return this.tag;
     }
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

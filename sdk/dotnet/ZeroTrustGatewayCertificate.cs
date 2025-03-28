@@ -10,62 +10,95 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Teams Gateway Certificate resource. A Teams Certificate can
-    /// be specified for Gateway TLS interception and block pages.
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustGatewayCertificate = new Cloudflare.ZeroTrustGatewayCertificate("example_zero_trust_gateway_certificate", new()
+    ///     {
+    ///         AccountId = "699d98642c564d2e855e9661899b7252",
+    ///         ValidityPeriodDays = 1826,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate example '&lt;account_id&gt;/&lt;certificate_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate")]
     public partial class ZeroTrustGatewayCertificate : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-        /// </summary>
-        [Output("activate")]
-        public Output<bool?> Activate { get; private set; } = null!;
-
-        /// <summary>
-        /// The deployment status of the certificate on the edge Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+        /// The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        /// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         /// </summary>
         [Output("bindingStatus")]
         public Output<string> BindingStatus { get; private set; } = null!;
 
+        /// <summary>
+        /// The CA certificate
+        /// </summary>
+        [Output("certificate")]
+        public Output<string> Certificate { get; private set; } = null!;
+
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
-
-        /// <summary>
-        /// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
-        /// </summary>
-        [Output("custom")]
-        public Output<bool?> Custom { get; private set; } = null!;
 
         [Output("expiresOn")]
         public Output<string> ExpiresOn { get; private set; } = null!;
 
         /// <summary>
-        /// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
+        /// The SHA256 fingerprint of the certificate.
         /// </summary>
-        [Output("gatewayManaged")]
-        public Output<bool?> GatewayManaged { get; private set; } = null!;
+        [Output("fingerprint")]
+        public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the certificate is in use by Gateway for TLS interception and the block page.
+        /// Use this certificate for Gateway TLS interception
         /// </summary>
         [Output("inUse")]
         public Output<bool> InUse { get; private set; } = null!;
 
-        [Output("qsPackId")]
-        public Output<string> QsPackId { get; private set; } = null!;
+        /// <summary>
+        /// The organization that issued the certificate.
+        /// </summary>
+        [Output("issuerOrg")]
+        public Output<string> IssuerOrg { get; private set; } = null!;
+
+        /// <summary>
+        /// The entire issuer field of the certificate.
+        /// </summary>
+        [Output("issuerRaw")]
+        public Output<string> IssuerRaw { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+        /// Available values: "custom", "gateway_managed".
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
 
         [Output("uploadedOn")]
         public Output<string> UploadedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gateway_managed`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+        /// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
         /// </summary>
         [Output("validityPeriodDays")]
         public Output<int?> ValidityPeriodDays { get; private set; } = null!;
@@ -116,32 +149,11 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustGatewayCertificateArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-        /// </summary>
-        [Input("activate")]
-        public Input<bool>? Activate { get; set; }
-
-        /// <summary>
-        /// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
-        /// </summary>
-        [Input("custom")]
-        public Input<bool>? Custom { get; set; }
-
-        /// <summary>
-        /// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
-        /// </summary>
-        [Input("gatewayManaged")]
-        public Input<bool>? GatewayManaged { get; set; }
-
-        /// <summary>
-        /// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gateway_managed`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+        /// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
         /// </summary>
         [Input("validityPeriodDays")]
         public Input<int>? ValidityPeriodDays { get; set; }
@@ -154,56 +166,67 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustGatewayCertificateState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-        /// </summary>
-        [Input("activate")]
-        public Input<bool>? Activate { get; set; }
-
-        /// <summary>
-        /// The deployment status of the certificate on the edge Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+        /// The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        /// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         /// </summary>
         [Input("bindingStatus")]
         public Input<string>? BindingStatus { get; set; }
 
+        /// <summary>
+        /// The CA certificate
+        /// </summary>
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
+
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
-
-        /// <summary>
-        /// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
-        /// </summary>
-        [Input("custom")]
-        public Input<bool>? Custom { get; set; }
 
         [Input("expiresOn")]
         public Input<string>? ExpiresOn { get; set; }
 
         /// <summary>
-        /// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
+        /// The SHA256 fingerprint of the certificate.
         /// </summary>
-        [Input("gatewayManaged")]
-        public Input<bool>? GatewayManaged { get; set; }
+        [Input("fingerprint")]
+        public Input<string>? Fingerprint { get; set; }
 
         /// <summary>
-        /// Whether the certificate is in use by Gateway for TLS interception and the block page.
+        /// Use this certificate for Gateway TLS interception
         /// </summary>
         [Input("inUse")]
         public Input<bool>? InUse { get; set; }
 
-        [Input("qsPackId")]
-        public Input<string>? QsPackId { get; set; }
+        /// <summary>
+        /// The organization that issued the certificate.
+        /// </summary>
+        [Input("issuerOrg")]
+        public Input<string>? IssuerOrg { get; set; }
+
+        /// <summary>
+        /// The entire issuer field of the certificate.
+        /// </summary>
+        [Input("issuerRaw")]
+        public Input<string>? IssuerRaw { get; set; }
+
+        /// <summary>
+        /// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+        /// Available values: "custom", "gateway_managed".
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
 
         [Input("uploadedOn")]
         public Input<string>? UploadedOn { get; set; }
 
         /// <summary>
-        /// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gateway_managed`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+        /// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
         /// </summary>
         [Input("validityPeriodDays")]
         public Input<int>? ValidityPeriodDays { get; set; }

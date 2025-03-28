@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.TeamsLocationEndpointsDohNetworkArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
@@ -18,30 +17,47 @@ public final class TeamsLocationEndpointsDohArgs extends com.pulumi.resources.Re
 
     public static final TeamsLocationEndpointsDohArgs Empty = new TeamsLocationEndpointsDohArgs();
 
-    @Import(name="authenticationEnabled")
-    private @Nullable Output<Boolean> authenticationEnabled;
+    /**
+     * True if the endpoint is enabled for this location.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
 
-    public Optional<Output<Boolean>> authenticationEnabled() {
-        return Optional.ofNullable(this.authenticationEnabled);
+    /**
+     * @return True if the endpoint is enabled for this location.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
-
-    public Output<Boolean> enabled() {
-        return this.enabled;
-    }
-
+    /**
+     * A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * 
+     */
     @Import(name="networks")
     private @Nullable Output<List<TeamsLocationEndpointsDohNetworkArgs>> networks;
 
+    /**
+     * @return A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * 
+     */
     public Optional<Output<List<TeamsLocationEndpointsDohNetworkArgs>>> networks() {
         return Optional.ofNullable(this.networks);
     }
 
+    /**
+     * True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+     * 
+     */
     @Import(name="requireToken")
     private @Nullable Output<Boolean> requireToken;
 
+    /**
+     * @return True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+     * 
+     */
     public Optional<Output<Boolean>> requireToken() {
         return Optional.ofNullable(this.requireToken);
     }
@@ -49,7 +65,6 @@ public final class TeamsLocationEndpointsDohArgs extends com.pulumi.resources.Re
     private TeamsLocationEndpointsDohArgs() {}
 
     private TeamsLocationEndpointsDohArgs(TeamsLocationEndpointsDohArgs $) {
-        this.authenticationEnabled = $.authenticationEnabled;
         this.enabled = $.enabled;
         this.networks = $.networks;
         this.requireToken = $.requireToken;
@@ -73,50 +88,80 @@ public final class TeamsLocationEndpointsDohArgs extends com.pulumi.resources.Re
             $ = new TeamsLocationEndpointsDohArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder authenticationEnabled(@Nullable Output<Boolean> authenticationEnabled) {
-            $.authenticationEnabled = authenticationEnabled;
-            return this;
-        }
-
-        public Builder authenticationEnabled(Boolean authenticationEnabled) {
-            return authenticationEnabled(Output.of(authenticationEnabled));
-        }
-
-        public Builder enabled(Output<Boolean> enabled) {
+        /**
+         * @param enabled True if the endpoint is enabled for this location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled True if the endpoint is enabled for this location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param networks A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(@Nullable Output<List<TeamsLocationEndpointsDohNetworkArgs>> networks) {
             $.networks = networks;
             return this;
         }
 
+        /**
+         * @param networks A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(List<TeamsLocationEndpointsDohNetworkArgs> networks) {
             return networks(Output.of(networks));
         }
 
+        /**
+         * @param networks A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(TeamsLocationEndpointsDohNetworkArgs... networks) {
             return networks(List.of(networks));
         }
 
+        /**
+         * @param requireToken True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requireToken(@Nullable Output<Boolean> requireToken) {
             $.requireToken = requireToken;
             return this;
         }
 
+        /**
+         * @param requireToken True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requireToken(Boolean requireToken) {
             return requireToken(Output.of(requireToken));
         }
 
         public TeamsLocationEndpointsDohArgs build() {
-            if ($.enabled == null) {
-                throw new MissingRequiredPropertyException("TeamsLocationEndpointsDohArgs", "enabled");
-            }
             return $;
         }
     }

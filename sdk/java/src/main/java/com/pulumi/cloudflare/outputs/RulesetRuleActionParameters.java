@@ -8,19 +8,25 @@ import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersAutominify;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersBrowserTtl;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersCacheKey;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersCacheReserve;
+import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersCookieField;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersEdgeTtl;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersFromList;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersFromValue;
-import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersHeader;
+import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersHeaders;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersMatchedData;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersOrigin;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersOverrides;
+import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersRawResponseField;
+import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersRequestField;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersResponse;
+import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersResponseField;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersServeStale;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersSni;
+import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersTransformedRequestField;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersUri;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -32,350 +38,365 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParameters {
     /**
-     * @return Specifies uncommon ports to allow cacheable assets to be served from.
+     * @return List of additional ports that caching can be enabled on.
      * 
      */
     private @Nullable List<Integer> additionalCacheablePorts;
     /**
-     * @return Compression algorithms to use in order of preference.
+     * @return Custom order for compression algorithms.
      * 
      */
     private @Nullable List<RulesetRuleActionParametersAlgorithm> algorithms;
     /**
-     * @return Turn on or off Cloudflare Automatic HTTPS rewrites.
+     * @return Turn on or off Automatic HTTPS Rewrites.
      * 
      */
     private @Nullable Boolean automaticHttpsRewrites;
     /**
-     * @return Indicate which file extensions to minify automatically.
+     * @return Select which file extensions to minify automatically.
      * 
      */
-    private @Nullable List<RulesetRuleActionParametersAutominify> autominifies;
+    private @Nullable RulesetRuleActionParametersAutominify autominify;
     /**
-     * @return Inspect the visitor&#39;s browser for headers commonly associated with spammers and certain bots.
+     * @return Turn on or off Browser Integrity Check.
      * 
      */
     private @Nullable Boolean bic;
     /**
-     * @return List of browser TTL parameters to apply to the request.
+     * @return Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
      * 
      */
     private @Nullable RulesetRuleActionParametersBrowserTtl browserTtl;
     /**
-     * @return Whether to cache if expression matches.
+     * @return Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
      * 
      */
     private @Nullable Boolean cache;
     /**
-     * @return List of cache key parameters to apply to the request.
+     * @return Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
      * 
      */
     private @Nullable RulesetRuleActionParametersCacheKey cacheKey;
     /**
-     * @return List of cache reserve parameters to apply to the request.
+     * @return Mark whether the request&#39;s response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
      * 
      */
     private @Nullable RulesetRuleActionParametersCacheReserve cacheReserve;
     /**
-     * @return Content of the custom error response.
+     * @return Error response content.
      * 
      */
     private @Nullable String content;
     /**
-     * @return Content-Type of the custom error response.
+     * @return Content-type header to set with the response.
+     * Available values: &#34;application/json&#34;, &#34;text/xml&#34;, &#34;text/plain&#34;, &#34;text/html&#34;.
      * 
      */
     private @Nullable String contentType;
     /**
-     * @return List of cookie values to include as part of custom fields logging.
+     * @return The cookie fields to log.
      * 
      */
-    private @Nullable List<String> cookieFields;
+    private @Nullable List<RulesetRuleActionParametersCookieField> cookieFields;
     /**
      * @return Turn off all active Cloudflare Apps.
      * 
      */
     private @Nullable Boolean disableApps;
     /**
-     * @return Turn off railgun feature of the Cloudflare Speed app.
-     * 
-     */
-    private @Nullable Boolean disableRailgun;
-    /**
-     * @return Turn off RUM feature.
+     * @return Turn off Real User Monitoring (RUM).
      * 
      */
     private @Nullable Boolean disableRum;
     /**
-     * @return Turn off zaraz feature.
+     * @return Turn off Zaraz.
      * 
      */
     private @Nullable Boolean disableZaraz;
     /**
-     * @return List of edge TTL parameters to apply to the request.
+     * @return TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
      * 
      */
     private @Nullable RulesetRuleActionParametersEdgeTtl edgeTtl;
     /**
-     * @return Turn on or off the Cloudflare Email Obfuscation feature of the Cloudflare Scrape Shield app.
+     * @return Turn on or off Email Obfuscation.
      * 
      */
     private @Nullable Boolean emailObfuscation;
     /**
-     * @return Toggle fonts.
+     * @return Turn on or off Cloudflare Fonts.
      * 
      */
     private @Nullable Boolean fonts;
     /**
-     * @return Use a list to lookup information for the action.
+     * @return Serve a redirect based on a bulk list lookup.
      * 
      */
     private @Nullable RulesetRuleActionParametersFromList fromList;
     /**
-     * @return Use a value to lookup information for the action.
+     * @return Serve a redirect based on the request properties.
      * 
      */
     private @Nullable RulesetRuleActionParametersFromValue fromValue;
     /**
-     * @return List of HTTP header modifications to perform in the ruleset rule. Note: Headers are order dependent and must be provided sorted alphabetically ascending based on the `name` value.
+     * @return Map of request headers to modify.
      * 
      */
-    private @Nullable List<RulesetRuleActionParametersHeader> headers;
+    private @Nullable Map<String,RulesetRuleActionParametersHeaders> headers;
     /**
-     * @return Host Header that request origin receives.
+     * @return Rewrite the HTTP Host header.
      * 
      */
     private @Nullable String hostHeader;
     /**
-     * @return Turn on or off the hotlink protection feature.
+     * @return Turn on or off the Hotlink Protection.
      * 
      */
     private @Nullable Boolean hotlinkProtection;
     /**
-     * @return Identifier of the action parameter to modify.
+     * @return The ID of the ruleset to execute.
      * 
      */
     private @Nullable String id;
+    /**
+     * @return Increment contains the delta to change the score and can be either positive or negative.
+     * 
+     */
     private @Nullable Integer increment;
     /**
-     * @return List of properties to configure WAF payload logging.
+     * @return The configuration to use for matched data logging.
      * 
      */
     private @Nullable RulesetRuleActionParametersMatchedData matchedData;
     /**
-     * @return Turn on or off Cloudflare Mirage of the Cloudflare Speed app.
+     * @return Turn on or off Mirage.
      * 
      */
     private @Nullable Boolean mirage;
     /**
-     * @return Turn on or off the Cloudflare Opportunistic Encryption feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
+     * @return Turn on or off Opportunistic Encryption.
      * 
      */
     private @Nullable Boolean opportunisticEncryption;
     /**
-     * @return List of properties to change request origin.
+     * @return Override the IP/TCP destination.
      * 
      */
     private @Nullable RulesetRuleActionParametersOrigin origin;
     /**
-     * @return Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
+     * @return When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
      * 
      */
     private @Nullable Boolean originCacheControl;
     /**
-     * @return Pass-through error page for origin.
+     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
      * 
      */
     private @Nullable Boolean originErrorPagePassthru;
     /**
-     * @return List of override configurations to apply to the ruleset.
+     * @return A set of overrides to apply to the target ruleset.
      * 
      */
     private @Nullable RulesetRuleActionParametersOverrides overrides;
     /**
-     * @return Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+     * @return A list of phases to skip the execution of. This option is incompatible with the ruleset and rulesets options.
      * 
      */
     private @Nullable List<String> phases;
     /**
-     * @return Apply options from the Polish feature of the Cloudflare Speed app.
+     * @return Configure the Polish level.
+     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
      * 
      */
     private @Nullable String polish;
     /**
-     * @return Products to target with the actions. Available values: `bic`, `hot`, `ratelimit`, `securityLevel`, `uablock`, `waf`, `zonelockdown`.
+     * @return A list of legacy security products to skip the execution of.
      * 
      */
     private @Nullable List<String> products;
     /**
-     * @return Specifies a maximum timeout for reading content from an origin server.
+     * @return The raw response fields to log.
+     * 
+     */
+    private @Nullable List<RulesetRuleActionParametersRawResponseField> rawResponseFields;
+    /**
+     * @return Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
      * 
      */
     private @Nullable Integer readTimeout;
     /**
-     * @return List of request headers to include as part of custom fields logging, in lowercase.
+     * @return The raw request fields to log.
      * 
      */
-    private @Nullable List<String> requestFields;
+    private @Nullable List<RulesetRuleActionParametersRequestField> requestFields;
     /**
-     * @return Respect strong ETags.
+     * @return Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
      * 
      */
     private @Nullable Boolean respectStrongEtags;
     /**
-     * @return List of response headers to include as part of custom fields logging, in lowercase.
+     * @return The response to show when the block is applied.
      * 
      */
-    private @Nullable List<String> responseFields;
+    private @Nullable RulesetRuleActionParametersResponse response;
     /**
-     * @return List of parameters that configure the response given to end users.
+     * @return The transformed response fields to log.
      * 
      */
-    private @Nullable List<RulesetRuleActionParametersResponse> responses;
+    private @Nullable List<RulesetRuleActionParametersResponseField> responseFields;
     /**
-     * @return Turn on or off Cloudflare Rocket Loader in the Cloudflare Speed app.
+     * @return Turn on or off Rocket Loader
      * 
      */
     private @Nullable Boolean rocketLoader;
     /**
-     * @return Map of managed WAF rule ID to comma-delimited string of ruleset rule IDs. Example: `rules = { &#34;efb7b8c949ac4650a09736fc376e9aee&#34; = &#34;5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760&#34; }`.
+     * @return A mapping of ruleset IDs to a list of rule IDs in that ruleset to skip the execution of. This option is incompatible with the ruleset option.
      * 
      */
-    private @Nullable Map<String,String> rules;
+    private @Nullable Map<String,List<String>> rules;
     /**
-     * @return Which ruleset ID to target.
+     * @return A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+     * Available values: &#34;current&#34;.
      * 
      */
     private @Nullable String ruleset;
     /**
-     * @return List of managed WAF rule IDs to target. Only valid when the `&#34;action&#34;` is set to skip.
+     * @return A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options.
      * 
      */
     private @Nullable List<String> rulesets;
     /**
-     * @return Control options for the Security Level feature from the Security app.
+     * @return Configure the Security Level.
+     * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
      * 
      */
     private @Nullable String securityLevel;
     /**
-     * @return List of serve stale parameters to apply to the request.
+     * @return Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
      * 
      */
     private @Nullable RulesetRuleActionParametersServeStale serveStale;
     /**
-     * @return Turn on or off the Server Side Excludes feature of the Cloudflare Scrape Shield app.
+     * @return Turn on or off Server Side Excludes.
      * 
      */
     private @Nullable Boolean serverSideExcludes;
     /**
-     * @return List of properties to manange Server Name Indication.
+     * @return Override the Server Name Indication (SNI).
      * 
      */
     private @Nullable RulesetRuleActionParametersSni sni;
     /**
-     * @return Control options for the SSL feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
+     * @return Configure the SSL level.
+     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
      * 
      */
     private @Nullable String ssl;
     /**
-     * @return HTTP status code of the custom error response.
+     * @return The status code to use for the error.
      * 
      */
-    private @Nullable Integer statusCode;
+    private @Nullable Double statusCode;
     /**
-     * @return Turn on or off the SXG feature.
+     * @return Turn on or off Signed Exchanges (SXG).
      * 
      */
     private @Nullable Boolean sxg;
     /**
-     * @return List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
+     * @return The transformed request fields to log.
+     * 
+     */
+    private @Nullable List<RulesetRuleActionParametersTransformedRequestField> transformedRequestFields;
+    /**
+     * @return URI to rewrite the request to.
      * 
      */
     private @Nullable RulesetRuleActionParametersUri uri;
 
     private RulesetRuleActionParameters() {}
     /**
-     * @return Specifies uncommon ports to allow cacheable assets to be served from.
+     * @return List of additional ports that caching can be enabled on.
      * 
      */
     public List<Integer> additionalCacheablePorts() {
         return this.additionalCacheablePorts == null ? List.of() : this.additionalCacheablePorts;
     }
     /**
-     * @return Compression algorithms to use in order of preference.
+     * @return Custom order for compression algorithms.
      * 
      */
     public List<RulesetRuleActionParametersAlgorithm> algorithms() {
         return this.algorithms == null ? List.of() : this.algorithms;
     }
     /**
-     * @return Turn on or off Cloudflare Automatic HTTPS rewrites.
+     * @return Turn on or off Automatic HTTPS Rewrites.
      * 
      */
     public Optional<Boolean> automaticHttpsRewrites() {
         return Optional.ofNullable(this.automaticHttpsRewrites);
     }
     /**
-     * @return Indicate which file extensions to minify automatically.
+     * @return Select which file extensions to minify automatically.
      * 
      */
-    public List<RulesetRuleActionParametersAutominify> autominifies() {
-        return this.autominifies == null ? List.of() : this.autominifies;
+    public Optional<RulesetRuleActionParametersAutominify> autominify() {
+        return Optional.ofNullable(this.autominify);
     }
     /**
-     * @return Inspect the visitor&#39;s browser for headers commonly associated with spammers and certain bots.
+     * @return Turn on or off Browser Integrity Check.
      * 
      */
     public Optional<Boolean> bic() {
         return Optional.ofNullable(this.bic);
     }
     /**
-     * @return List of browser TTL parameters to apply to the request.
+     * @return Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
      * 
      */
     public Optional<RulesetRuleActionParametersBrowserTtl> browserTtl() {
         return Optional.ofNullable(this.browserTtl);
     }
     /**
-     * @return Whether to cache if expression matches.
+     * @return Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
      * 
      */
     public Optional<Boolean> cache() {
         return Optional.ofNullable(this.cache);
     }
     /**
-     * @return List of cache key parameters to apply to the request.
+     * @return Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
      * 
      */
     public Optional<RulesetRuleActionParametersCacheKey> cacheKey() {
         return Optional.ofNullable(this.cacheKey);
     }
     /**
-     * @return List of cache reserve parameters to apply to the request.
+     * @return Mark whether the request&#39;s response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
      * 
      */
     public Optional<RulesetRuleActionParametersCacheReserve> cacheReserve() {
         return Optional.ofNullable(this.cacheReserve);
     }
     /**
-     * @return Content of the custom error response.
+     * @return Error response content.
      * 
      */
     public Optional<String> content() {
         return Optional.ofNullable(this.content);
     }
     /**
-     * @return Content-Type of the custom error response.
+     * @return Content-type header to set with the response.
+     * Available values: &#34;application/json&#34;, &#34;text/xml&#34;, &#34;text/plain&#34;, &#34;text/html&#34;.
      * 
      */
     public Optional<String> contentType() {
         return Optional.ofNullable(this.contentType);
     }
     /**
-     * @return List of cookie values to include as part of custom fields logging.
+     * @return The cookie fields to log.
      * 
      */
-    public List<String> cookieFields() {
+    public List<RulesetRuleActionParametersCookieField> cookieFields() {
         return this.cookieFields == null ? List.of() : this.cookieFields;
     }
     /**
@@ -386,276 +407,291 @@ public final class RulesetRuleActionParameters {
         return Optional.ofNullable(this.disableApps);
     }
     /**
-     * @return Turn off railgun feature of the Cloudflare Speed app.
-     * 
-     */
-    public Optional<Boolean> disableRailgun() {
-        return Optional.ofNullable(this.disableRailgun);
-    }
-    /**
-     * @return Turn off RUM feature.
+     * @return Turn off Real User Monitoring (RUM).
      * 
      */
     public Optional<Boolean> disableRum() {
         return Optional.ofNullable(this.disableRum);
     }
     /**
-     * @return Turn off zaraz feature.
+     * @return Turn off Zaraz.
      * 
      */
     public Optional<Boolean> disableZaraz() {
         return Optional.ofNullable(this.disableZaraz);
     }
     /**
-     * @return List of edge TTL parameters to apply to the request.
+     * @return TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
      * 
      */
     public Optional<RulesetRuleActionParametersEdgeTtl> edgeTtl() {
         return Optional.ofNullable(this.edgeTtl);
     }
     /**
-     * @return Turn on or off the Cloudflare Email Obfuscation feature of the Cloudflare Scrape Shield app.
+     * @return Turn on or off Email Obfuscation.
      * 
      */
     public Optional<Boolean> emailObfuscation() {
         return Optional.ofNullable(this.emailObfuscation);
     }
     /**
-     * @return Toggle fonts.
+     * @return Turn on or off Cloudflare Fonts.
      * 
      */
     public Optional<Boolean> fonts() {
         return Optional.ofNullable(this.fonts);
     }
     /**
-     * @return Use a list to lookup information for the action.
+     * @return Serve a redirect based on a bulk list lookup.
      * 
      */
     public Optional<RulesetRuleActionParametersFromList> fromList() {
         return Optional.ofNullable(this.fromList);
     }
     /**
-     * @return Use a value to lookup information for the action.
+     * @return Serve a redirect based on the request properties.
      * 
      */
     public Optional<RulesetRuleActionParametersFromValue> fromValue() {
         return Optional.ofNullable(this.fromValue);
     }
     /**
-     * @return List of HTTP header modifications to perform in the ruleset rule. Note: Headers are order dependent and must be provided sorted alphabetically ascending based on the `name` value.
+     * @return Map of request headers to modify.
      * 
      */
-    public List<RulesetRuleActionParametersHeader> headers() {
-        return this.headers == null ? List.of() : this.headers;
+    public Map<String,RulesetRuleActionParametersHeaders> headers() {
+        return this.headers == null ? Map.of() : this.headers;
     }
     /**
-     * @return Host Header that request origin receives.
+     * @return Rewrite the HTTP Host header.
      * 
      */
     public Optional<String> hostHeader() {
         return Optional.ofNullable(this.hostHeader);
     }
     /**
-     * @return Turn on or off the hotlink protection feature.
+     * @return Turn on or off the Hotlink Protection.
      * 
      */
     public Optional<Boolean> hotlinkProtection() {
         return Optional.ofNullable(this.hotlinkProtection);
     }
     /**
-     * @return Identifier of the action parameter to modify.
+     * @return The ID of the ruleset to execute.
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return Increment contains the delta to change the score and can be either positive or negative.
+     * 
+     */
     public Optional<Integer> increment() {
         return Optional.ofNullable(this.increment);
     }
     /**
-     * @return List of properties to configure WAF payload logging.
+     * @return The configuration to use for matched data logging.
      * 
      */
     public Optional<RulesetRuleActionParametersMatchedData> matchedData() {
         return Optional.ofNullable(this.matchedData);
     }
     /**
-     * @return Turn on or off Cloudflare Mirage of the Cloudflare Speed app.
+     * @return Turn on or off Mirage.
      * 
      */
     public Optional<Boolean> mirage() {
         return Optional.ofNullable(this.mirage);
     }
     /**
-     * @return Turn on or off the Cloudflare Opportunistic Encryption feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
+     * @return Turn on or off Opportunistic Encryption.
      * 
      */
     public Optional<Boolean> opportunisticEncryption() {
         return Optional.ofNullable(this.opportunisticEncryption);
     }
     /**
-     * @return List of properties to change request origin.
+     * @return Override the IP/TCP destination.
      * 
      */
     public Optional<RulesetRuleActionParametersOrigin> origin() {
         return Optional.ofNullable(this.origin);
     }
     /**
-     * @return Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
+     * @return When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
      * 
      */
     public Optional<Boolean> originCacheControl() {
         return Optional.ofNullable(this.originCacheControl);
     }
     /**
-     * @return Pass-through error page for origin.
+     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
      * 
      */
     public Optional<Boolean> originErrorPagePassthru() {
         return Optional.ofNullable(this.originErrorPagePassthru);
     }
     /**
-     * @return List of override configurations to apply to the ruleset.
+     * @return A set of overrides to apply to the target ruleset.
      * 
      */
     public Optional<RulesetRuleActionParametersOverrides> overrides() {
         return Optional.ofNullable(this.overrides);
     }
     /**
-     * @return Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+     * @return A list of phases to skip the execution of. This option is incompatible with the ruleset and rulesets options.
      * 
      */
     public List<String> phases() {
         return this.phases == null ? List.of() : this.phases;
     }
     /**
-     * @return Apply options from the Polish feature of the Cloudflare Speed app.
+     * @return Configure the Polish level.
+     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
      * 
      */
     public Optional<String> polish() {
         return Optional.ofNullable(this.polish);
     }
     /**
-     * @return Products to target with the actions. Available values: `bic`, `hot`, `ratelimit`, `securityLevel`, `uablock`, `waf`, `zonelockdown`.
+     * @return A list of legacy security products to skip the execution of.
      * 
      */
     public List<String> products() {
         return this.products == null ? List.of() : this.products;
     }
     /**
-     * @return Specifies a maximum timeout for reading content from an origin server.
+     * @return The raw response fields to log.
+     * 
+     */
+    public List<RulesetRuleActionParametersRawResponseField> rawResponseFields() {
+        return this.rawResponseFields == null ? List.of() : this.rawResponseFields;
+    }
+    /**
+     * @return Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
      * 
      */
     public Optional<Integer> readTimeout() {
         return Optional.ofNullable(this.readTimeout);
     }
     /**
-     * @return List of request headers to include as part of custom fields logging, in lowercase.
+     * @return The raw request fields to log.
      * 
      */
-    public List<String> requestFields() {
+    public List<RulesetRuleActionParametersRequestField> requestFields() {
         return this.requestFields == null ? List.of() : this.requestFields;
     }
     /**
-     * @return Respect strong ETags.
+     * @return Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
      * 
      */
     public Optional<Boolean> respectStrongEtags() {
         return Optional.ofNullable(this.respectStrongEtags);
     }
     /**
-     * @return List of response headers to include as part of custom fields logging, in lowercase.
+     * @return The response to show when the block is applied.
      * 
      */
-    public List<String> responseFields() {
+    public Optional<RulesetRuleActionParametersResponse> response() {
+        return Optional.ofNullable(this.response);
+    }
+    /**
+     * @return The transformed response fields to log.
+     * 
+     */
+    public List<RulesetRuleActionParametersResponseField> responseFields() {
         return this.responseFields == null ? List.of() : this.responseFields;
     }
     /**
-     * @return List of parameters that configure the response given to end users.
-     * 
-     */
-    public List<RulesetRuleActionParametersResponse> responses() {
-        return this.responses == null ? List.of() : this.responses;
-    }
-    /**
-     * @return Turn on or off Cloudflare Rocket Loader in the Cloudflare Speed app.
+     * @return Turn on or off Rocket Loader
      * 
      */
     public Optional<Boolean> rocketLoader() {
         return Optional.ofNullable(this.rocketLoader);
     }
     /**
-     * @return Map of managed WAF rule ID to comma-delimited string of ruleset rule IDs. Example: `rules = { &#34;efb7b8c949ac4650a09736fc376e9aee&#34; = &#34;5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760&#34; }`.
+     * @return A mapping of ruleset IDs to a list of rule IDs in that ruleset to skip the execution of. This option is incompatible with the ruleset option.
      * 
      */
-    public Map<String,String> rules() {
+    public Map<String,List<String>> rules() {
         return this.rules == null ? Map.of() : this.rules;
     }
     /**
-     * @return Which ruleset ID to target.
+     * @return A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+     * Available values: &#34;current&#34;.
      * 
      */
     public Optional<String> ruleset() {
         return Optional.ofNullable(this.ruleset);
     }
     /**
-     * @return List of managed WAF rule IDs to target. Only valid when the `&#34;action&#34;` is set to skip.
+     * @return A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options.
      * 
      */
     public List<String> rulesets() {
         return this.rulesets == null ? List.of() : this.rulesets;
     }
     /**
-     * @return Control options for the Security Level feature from the Security app.
+     * @return Configure the Security Level.
+     * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
      * 
      */
     public Optional<String> securityLevel() {
         return Optional.ofNullable(this.securityLevel);
     }
     /**
-     * @return List of serve stale parameters to apply to the request.
+     * @return Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
      * 
      */
     public Optional<RulesetRuleActionParametersServeStale> serveStale() {
         return Optional.ofNullable(this.serveStale);
     }
     /**
-     * @return Turn on or off the Server Side Excludes feature of the Cloudflare Scrape Shield app.
+     * @return Turn on or off Server Side Excludes.
      * 
      */
     public Optional<Boolean> serverSideExcludes() {
         return Optional.ofNullable(this.serverSideExcludes);
     }
     /**
-     * @return List of properties to manange Server Name Indication.
+     * @return Override the Server Name Indication (SNI).
      * 
      */
     public Optional<RulesetRuleActionParametersSni> sni() {
         return Optional.ofNullable(this.sni);
     }
     /**
-     * @return Control options for the SSL feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
+     * @return Configure the SSL level.
+     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
      * 
      */
     public Optional<String> ssl() {
         return Optional.ofNullable(this.ssl);
     }
     /**
-     * @return HTTP status code of the custom error response.
+     * @return The status code to use for the error.
      * 
      */
-    public Optional<Integer> statusCode() {
+    public Optional<Double> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
     /**
-     * @return Turn on or off the SXG feature.
+     * @return Turn on or off Signed Exchanges (SXG).
      * 
      */
     public Optional<Boolean> sxg() {
         return Optional.ofNullable(this.sxg);
     }
     /**
-     * @return List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
+     * @return The transformed request fields to log.
+     * 
+     */
+    public List<RulesetRuleActionParametersTransformedRequestField> transformedRequestFields() {
+        return this.transformedRequestFields == null ? List.of() : this.transformedRequestFields;
+    }
+    /**
+     * @return URI to rewrite the request to.
      * 
      */
     public Optional<RulesetRuleActionParametersUri> uri() {
@@ -674,7 +710,7 @@ public final class RulesetRuleActionParameters {
         private @Nullable List<Integer> additionalCacheablePorts;
         private @Nullable List<RulesetRuleActionParametersAlgorithm> algorithms;
         private @Nullable Boolean automaticHttpsRewrites;
-        private @Nullable List<RulesetRuleActionParametersAutominify> autominifies;
+        private @Nullable RulesetRuleActionParametersAutominify autominify;
         private @Nullable Boolean bic;
         private @Nullable RulesetRuleActionParametersBrowserTtl browserTtl;
         private @Nullable Boolean cache;
@@ -682,9 +718,8 @@ public final class RulesetRuleActionParameters {
         private @Nullable RulesetRuleActionParametersCacheReserve cacheReserve;
         private @Nullable String content;
         private @Nullable String contentType;
-        private @Nullable List<String> cookieFields;
+        private @Nullable List<RulesetRuleActionParametersCookieField> cookieFields;
         private @Nullable Boolean disableApps;
-        private @Nullable Boolean disableRailgun;
         private @Nullable Boolean disableRum;
         private @Nullable Boolean disableZaraz;
         private @Nullable RulesetRuleActionParametersEdgeTtl edgeTtl;
@@ -692,7 +727,7 @@ public final class RulesetRuleActionParameters {
         private @Nullable Boolean fonts;
         private @Nullable RulesetRuleActionParametersFromList fromList;
         private @Nullable RulesetRuleActionParametersFromValue fromValue;
-        private @Nullable List<RulesetRuleActionParametersHeader> headers;
+        private @Nullable Map<String,RulesetRuleActionParametersHeaders> headers;
         private @Nullable String hostHeader;
         private @Nullable Boolean hotlinkProtection;
         private @Nullable String id;
@@ -707,13 +742,14 @@ public final class RulesetRuleActionParameters {
         private @Nullable List<String> phases;
         private @Nullable String polish;
         private @Nullable List<String> products;
+        private @Nullable List<RulesetRuleActionParametersRawResponseField> rawResponseFields;
         private @Nullable Integer readTimeout;
-        private @Nullable List<String> requestFields;
+        private @Nullable List<RulesetRuleActionParametersRequestField> requestFields;
         private @Nullable Boolean respectStrongEtags;
-        private @Nullable List<String> responseFields;
-        private @Nullable List<RulesetRuleActionParametersResponse> responses;
+        private @Nullable RulesetRuleActionParametersResponse response;
+        private @Nullable List<RulesetRuleActionParametersResponseField> responseFields;
         private @Nullable Boolean rocketLoader;
-        private @Nullable Map<String,String> rules;
+        private @Nullable Map<String,List<String>> rules;
         private @Nullable String ruleset;
         private @Nullable List<String> rulesets;
         private @Nullable String securityLevel;
@@ -721,8 +757,9 @@ public final class RulesetRuleActionParameters {
         private @Nullable Boolean serverSideExcludes;
         private @Nullable RulesetRuleActionParametersSni sni;
         private @Nullable String ssl;
-        private @Nullable Integer statusCode;
+        private @Nullable Double statusCode;
         private @Nullable Boolean sxg;
+        private @Nullable List<RulesetRuleActionParametersTransformedRequestField> transformedRequestFields;
         private @Nullable RulesetRuleActionParametersUri uri;
         public Builder() {}
         public Builder(RulesetRuleActionParameters defaults) {
@@ -730,7 +767,7 @@ public final class RulesetRuleActionParameters {
     	      this.additionalCacheablePorts = defaults.additionalCacheablePorts;
     	      this.algorithms = defaults.algorithms;
     	      this.automaticHttpsRewrites = defaults.automaticHttpsRewrites;
-    	      this.autominifies = defaults.autominifies;
+    	      this.autominify = defaults.autominify;
     	      this.bic = defaults.bic;
     	      this.browserTtl = defaults.browserTtl;
     	      this.cache = defaults.cache;
@@ -740,7 +777,6 @@ public final class RulesetRuleActionParameters {
     	      this.contentType = defaults.contentType;
     	      this.cookieFields = defaults.cookieFields;
     	      this.disableApps = defaults.disableApps;
-    	      this.disableRailgun = defaults.disableRailgun;
     	      this.disableRum = defaults.disableRum;
     	      this.disableZaraz = defaults.disableZaraz;
     	      this.edgeTtl = defaults.edgeTtl;
@@ -763,11 +799,12 @@ public final class RulesetRuleActionParameters {
     	      this.phases = defaults.phases;
     	      this.polish = defaults.polish;
     	      this.products = defaults.products;
+    	      this.rawResponseFields = defaults.rawResponseFields;
     	      this.readTimeout = defaults.readTimeout;
     	      this.requestFields = defaults.requestFields;
     	      this.respectStrongEtags = defaults.respectStrongEtags;
+    	      this.response = defaults.response;
     	      this.responseFields = defaults.responseFields;
-    	      this.responses = defaults.responses;
     	      this.rocketLoader = defaults.rocketLoader;
     	      this.rules = defaults.rules;
     	      this.ruleset = defaults.ruleset;
@@ -779,6 +816,7 @@ public final class RulesetRuleActionParameters {
     	      this.ssl = defaults.ssl;
     	      this.statusCode = defaults.statusCode;
     	      this.sxg = defaults.sxg;
+    	      this.transformedRequestFields = defaults.transformedRequestFields;
     	      this.uri = defaults.uri;
         }
 
@@ -807,13 +845,10 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder autominifies(@Nullable List<RulesetRuleActionParametersAutominify> autominifies) {
+        public Builder autominify(@Nullable RulesetRuleActionParametersAutominify autominify) {
 
-            this.autominifies = autominifies;
+            this.autominify = autominify;
             return this;
-        }
-        public Builder autominifies(RulesetRuleActionParametersAutominify... autominifies) {
-            return autominifies(List.of(autominifies));
         }
         @CustomType.Setter
         public Builder bic(@Nullable Boolean bic) {
@@ -858,24 +893,18 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder cookieFields(@Nullable List<String> cookieFields) {
+        public Builder cookieFields(@Nullable List<RulesetRuleActionParametersCookieField> cookieFields) {
 
             this.cookieFields = cookieFields;
             return this;
         }
-        public Builder cookieFields(String... cookieFields) {
+        public Builder cookieFields(RulesetRuleActionParametersCookieField... cookieFields) {
             return cookieFields(List.of(cookieFields));
         }
         @CustomType.Setter
         public Builder disableApps(@Nullable Boolean disableApps) {
 
             this.disableApps = disableApps;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder disableRailgun(@Nullable Boolean disableRailgun) {
-
-            this.disableRailgun = disableRailgun;
             return this;
         }
         @CustomType.Setter
@@ -921,13 +950,10 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder headers(@Nullable List<RulesetRuleActionParametersHeader> headers) {
+        public Builder headers(@Nullable Map<String,RulesetRuleActionParametersHeaders> headers) {
 
             this.headers = headers;
             return this;
-        }
-        public Builder headers(RulesetRuleActionParametersHeader... headers) {
-            return headers(List.of(headers));
         }
         @CustomType.Setter
         public Builder hostHeader(@Nullable String hostHeader) {
@@ -1020,18 +1046,27 @@ public final class RulesetRuleActionParameters {
             return products(List.of(products));
         }
         @CustomType.Setter
+        public Builder rawResponseFields(@Nullable List<RulesetRuleActionParametersRawResponseField> rawResponseFields) {
+
+            this.rawResponseFields = rawResponseFields;
+            return this;
+        }
+        public Builder rawResponseFields(RulesetRuleActionParametersRawResponseField... rawResponseFields) {
+            return rawResponseFields(List.of(rawResponseFields));
+        }
+        @CustomType.Setter
         public Builder readTimeout(@Nullable Integer readTimeout) {
 
             this.readTimeout = readTimeout;
             return this;
         }
         @CustomType.Setter
-        public Builder requestFields(@Nullable List<String> requestFields) {
+        public Builder requestFields(@Nullable List<RulesetRuleActionParametersRequestField> requestFields) {
 
             this.requestFields = requestFields;
             return this;
         }
-        public Builder requestFields(String... requestFields) {
+        public Builder requestFields(RulesetRuleActionParametersRequestField... requestFields) {
             return requestFields(List.of(requestFields));
         }
         @CustomType.Setter
@@ -1041,22 +1076,19 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder responseFields(@Nullable List<String> responseFields) {
+        public Builder response(@Nullable RulesetRuleActionParametersResponse response) {
+
+            this.response = response;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder responseFields(@Nullable List<RulesetRuleActionParametersResponseField> responseFields) {
 
             this.responseFields = responseFields;
             return this;
         }
-        public Builder responseFields(String... responseFields) {
+        public Builder responseFields(RulesetRuleActionParametersResponseField... responseFields) {
             return responseFields(List.of(responseFields));
-        }
-        @CustomType.Setter
-        public Builder responses(@Nullable List<RulesetRuleActionParametersResponse> responses) {
-
-            this.responses = responses;
-            return this;
-        }
-        public Builder responses(RulesetRuleActionParametersResponse... responses) {
-            return responses(List.of(responses));
         }
         @CustomType.Setter
         public Builder rocketLoader(@Nullable Boolean rocketLoader) {
@@ -1065,7 +1097,7 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder rules(@Nullable Map<String,String> rules) {
+        public Builder rules(@Nullable Map<String,List<String>> rules) {
 
             this.rules = rules;
             return this;
@@ -1116,7 +1148,7 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder statusCode(@Nullable Integer statusCode) {
+        public Builder statusCode(@Nullable Double statusCode) {
 
             this.statusCode = statusCode;
             return this;
@@ -1126,6 +1158,15 @@ public final class RulesetRuleActionParameters {
 
             this.sxg = sxg;
             return this;
+        }
+        @CustomType.Setter
+        public Builder transformedRequestFields(@Nullable List<RulesetRuleActionParametersTransformedRequestField> transformedRequestFields) {
+
+            this.transformedRequestFields = transformedRequestFields;
+            return this;
+        }
+        public Builder transformedRequestFields(RulesetRuleActionParametersTransformedRequestField... transformedRequestFields) {
+            return transformedRequestFields(List.of(transformedRequestFields));
         }
         @CustomType.Setter
         public Builder uri(@Nullable RulesetRuleActionParametersUri uri) {
@@ -1138,7 +1179,7 @@ public final class RulesetRuleActionParameters {
             _resultValue.additionalCacheablePorts = additionalCacheablePorts;
             _resultValue.algorithms = algorithms;
             _resultValue.automaticHttpsRewrites = automaticHttpsRewrites;
-            _resultValue.autominifies = autominifies;
+            _resultValue.autominify = autominify;
             _resultValue.bic = bic;
             _resultValue.browserTtl = browserTtl;
             _resultValue.cache = cache;
@@ -1148,7 +1189,6 @@ public final class RulesetRuleActionParameters {
             _resultValue.contentType = contentType;
             _resultValue.cookieFields = cookieFields;
             _resultValue.disableApps = disableApps;
-            _resultValue.disableRailgun = disableRailgun;
             _resultValue.disableRum = disableRum;
             _resultValue.disableZaraz = disableZaraz;
             _resultValue.edgeTtl = edgeTtl;
@@ -1171,11 +1211,12 @@ public final class RulesetRuleActionParameters {
             _resultValue.phases = phases;
             _resultValue.polish = polish;
             _resultValue.products = products;
+            _resultValue.rawResponseFields = rawResponseFields;
             _resultValue.readTimeout = readTimeout;
             _resultValue.requestFields = requestFields;
             _resultValue.respectStrongEtags = respectStrongEtags;
+            _resultValue.response = response;
             _resultValue.responseFields = responseFields;
-            _resultValue.responses = responses;
             _resultValue.rocketLoader = rocketLoader;
             _resultValue.rules = rules;
             _resultValue.ruleset = ruleset;
@@ -1187,6 +1228,7 @@ public final class RulesetRuleActionParameters {
             _resultValue.ssl = ssl;
             _resultValue.statusCode = statusCode;
             _resultValue.sxg = sxg;
+            _resultValue.transformedRequestFields = transformedRequestFields;
             _resultValue.uri = uri;
             return _resultValue;
         }

@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,276 +16,547 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RecordDataArgs Empty = new RecordDataArgs();
 
+    /**
+     * Algorithm.
+     * 
+     */
     @Import(name="algorithm")
-    private @Nullable Output<Integer> algorithm;
+    private @Nullable Output<Double> algorithm;
 
-    public Optional<Output<Integer>> algorithm() {
+    /**
+     * @return Algorithm.
+     * 
+     */
+    public Optional<Output<Double>> algorithm() {
         return Optional.ofNullable(this.algorithm);
     }
 
+    /**
+     * Altitude of location in meters.
+     * 
+     */
     @Import(name="altitude")
     private @Nullable Output<Double> altitude;
 
+    /**
+     * @return Altitude of location in meters.
+     * 
+     */
     public Optional<Output<Double>> altitude() {
         return Optional.ofNullable(this.altitude);
     }
 
+    /**
+     * Certificate.
+     * 
+     */
     @Import(name="certificate")
     private @Nullable Output<String> certificate;
 
+    /**
+     * @return Certificate.
+     * 
+     */
     public Optional<Output<String>> certificate() {
         return Optional.ofNullable(this.certificate);
     }
 
-    @Import(name="content")
-    private @Nullable Output<String> content;
-
-    public Optional<Output<String>> content() {
-        return Optional.ofNullable(this.content);
-    }
-
+    /**
+     * Digest.
+     * 
+     */
     @Import(name="digest")
     private @Nullable Output<String> digest;
 
+    /**
+     * @return Digest.
+     * 
+     */
     public Optional<Output<String>> digest() {
         return Optional.ofNullable(this.digest);
     }
 
+    /**
+     * Digest Type.
+     * 
+     */
     @Import(name="digestType")
-    private @Nullable Output<Integer> digestType;
+    private @Nullable Output<Double> digestType;
 
-    public Optional<Output<Integer>> digestType() {
+    /**
+     * @return Digest Type.
+     * 
+     */
+    public Optional<Output<Double>> digestType() {
         return Optional.ofNullable(this.digestType);
     }
 
+    /**
+     * fingerprint.
+     * 
+     */
     @Import(name="fingerprint")
     private @Nullable Output<String> fingerprint;
 
+    /**
+     * @return fingerprint.
+     * 
+     */
     public Optional<Output<String>> fingerprint() {
         return Optional.ofNullable(this.fingerprint);
     }
 
+    /**
+     * Flags for the CAA record.
+     * 
+     */
     @Import(name="flags")
-    private @Nullable Output<String> flags;
+    private @Nullable Output<Double> flags;
 
-    public Optional<Output<String>> flags() {
+    /**
+     * @return Flags for the CAA record.
+     * 
+     */
+    public Optional<Output<Double>> flags() {
         return Optional.ofNullable(this.flags);
     }
 
+    /**
+     * Key Tag.
+     * 
+     */
     @Import(name="keyTag")
-    private @Nullable Output<Integer> keyTag;
+    private @Nullable Output<Double> keyTag;
 
-    public Optional<Output<Integer>> keyTag() {
+    /**
+     * @return Key Tag.
+     * 
+     */
+    public Optional<Output<Double>> keyTag() {
         return Optional.ofNullable(this.keyTag);
     }
 
+    /**
+     * Degrees of latitude.
+     * 
+     */
     @Import(name="latDegrees")
-    private @Nullable Output<Integer> latDegrees;
+    private @Nullable Output<Double> latDegrees;
 
-    public Optional<Output<Integer>> latDegrees() {
+    /**
+     * @return Degrees of latitude.
+     * 
+     */
+    public Optional<Output<Double>> latDegrees() {
         return Optional.ofNullable(this.latDegrees);
     }
 
+    /**
+     * Latitude direction.
+     * Available values: &#34;N&#34;, &#34;S&#34;.
+     * 
+     */
     @Import(name="latDirection")
     private @Nullable Output<String> latDirection;
 
+    /**
+     * @return Latitude direction.
+     * Available values: &#34;N&#34;, &#34;S&#34;.
+     * 
+     */
     public Optional<Output<String>> latDirection() {
         return Optional.ofNullable(this.latDirection);
     }
 
+    /**
+     * Minutes of latitude.
+     * 
+     */
     @Import(name="latMinutes")
-    private @Nullable Output<Integer> latMinutes;
+    private @Nullable Output<Double> latMinutes;
 
-    public Optional<Output<Integer>> latMinutes() {
+    /**
+     * @return Minutes of latitude.
+     * 
+     */
+    public Optional<Output<Double>> latMinutes() {
         return Optional.ofNullable(this.latMinutes);
     }
 
+    /**
+     * Seconds of latitude.
+     * 
+     */
     @Import(name="latSeconds")
     private @Nullable Output<Double> latSeconds;
 
+    /**
+     * @return Seconds of latitude.
+     * 
+     */
     public Optional<Output<Double>> latSeconds() {
         return Optional.ofNullable(this.latSeconds);
     }
 
+    /**
+     * Degrees of longitude.
+     * 
+     */
     @Import(name="longDegrees")
-    private @Nullable Output<Integer> longDegrees;
+    private @Nullable Output<Double> longDegrees;
 
-    public Optional<Output<Integer>> longDegrees() {
+    /**
+     * @return Degrees of longitude.
+     * 
+     */
+    public Optional<Output<Double>> longDegrees() {
         return Optional.ofNullable(this.longDegrees);
     }
 
+    /**
+     * Longitude direction.
+     * Available values: &#34;E&#34;, &#34;W&#34;.
+     * 
+     */
     @Import(name="longDirection")
     private @Nullable Output<String> longDirection;
 
+    /**
+     * @return Longitude direction.
+     * Available values: &#34;E&#34;, &#34;W&#34;.
+     * 
+     */
     public Optional<Output<String>> longDirection() {
         return Optional.ofNullable(this.longDirection);
     }
 
+    /**
+     * Minutes of longitude.
+     * 
+     */
     @Import(name="longMinutes")
-    private @Nullable Output<Integer> longMinutes;
+    private @Nullable Output<Double> longMinutes;
 
-    public Optional<Output<Integer>> longMinutes() {
+    /**
+     * @return Minutes of longitude.
+     * 
+     */
+    public Optional<Output<Double>> longMinutes() {
         return Optional.ofNullable(this.longMinutes);
     }
 
+    /**
+     * Seconds of longitude.
+     * 
+     */
     @Import(name="longSeconds")
     private @Nullable Output<Double> longSeconds;
 
+    /**
+     * @return Seconds of longitude.
+     * 
+     */
     public Optional<Output<Double>> longSeconds() {
         return Optional.ofNullable(this.longSeconds);
     }
 
+    /**
+     * Matching Type.
+     * 
+     */
     @Import(name="matchingType")
-    private @Nullable Output<Integer> matchingType;
+    private @Nullable Output<Double> matchingType;
 
-    public Optional<Output<Integer>> matchingType() {
+    /**
+     * @return Matching Type.
+     * 
+     */
+    public Optional<Output<Double>> matchingType() {
         return Optional.ofNullable(this.matchingType);
     }
 
-    @Import(name="name")
-    private @Nullable Output<String> name;
-
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
-    }
-
+    /**
+     * Order.
+     * 
+     */
     @Import(name="order")
-    private @Nullable Output<Integer> order;
+    private @Nullable Output<Double> order;
 
-    public Optional<Output<Integer>> order() {
+    /**
+     * @return Order.
+     * 
+     */
+    public Optional<Output<Double>> order() {
         return Optional.ofNullable(this.order);
     }
 
+    /**
+     * The port of the service.
+     * 
+     */
     @Import(name="port")
-    private @Nullable Output<Integer> port;
+    private @Nullable Output<Double> port;
 
-    public Optional<Output<Integer>> port() {
+    /**
+     * @return The port of the service.
+     * 
+     */
+    public Optional<Output<Double>> port() {
         return Optional.ofNullable(this.port);
     }
 
+    /**
+     * Horizontal precision of location.
+     * 
+     */
     @Import(name="precisionHorz")
     private @Nullable Output<Double> precisionHorz;
 
+    /**
+     * @return Horizontal precision of location.
+     * 
+     */
     public Optional<Output<Double>> precisionHorz() {
         return Optional.ofNullable(this.precisionHorz);
     }
 
+    /**
+     * Vertical precision of location.
+     * 
+     */
     @Import(name="precisionVert")
     private @Nullable Output<Double> precisionVert;
 
+    /**
+     * @return Vertical precision of location.
+     * 
+     */
     public Optional<Output<Double>> precisionVert() {
         return Optional.ofNullable(this.precisionVert);
     }
 
+    /**
+     * Preference.
+     * 
+     */
     @Import(name="preference")
-    private @Nullable Output<Integer> preference;
+    private @Nullable Output<Double> preference;
 
-    public Optional<Output<Integer>> preference() {
+    /**
+     * @return Preference.
+     * 
+     */
+    public Optional<Output<Double>> preference() {
         return Optional.ofNullable(this.preference);
     }
 
+    /**
+     * priority.
+     * 
+     */
     @Import(name="priority")
-    private @Nullable Output<Integer> priority;
+    private @Nullable Output<Double> priority;
 
-    public Optional<Output<Integer>> priority() {
+    /**
+     * @return priority.
+     * 
+     */
+    public Optional<Output<Double>> priority() {
         return Optional.ofNullable(this.priority);
     }
 
-    @Import(name="proto")
-    private @Nullable Output<String> proto;
-
-    public Optional<Output<String>> proto() {
-        return Optional.ofNullable(this.proto);
-    }
-
+    /**
+     * Protocol.
+     * 
+     */
     @Import(name="protocol")
-    private @Nullable Output<Integer> protocol;
+    private @Nullable Output<Double> protocol;
 
-    public Optional<Output<Integer>> protocol() {
+    /**
+     * @return Protocol.
+     * 
+     */
+    public Optional<Output<Double>> protocol() {
         return Optional.ofNullable(this.protocol);
     }
 
+    /**
+     * Public Key.
+     * 
+     */
     @Import(name="publicKey")
     private @Nullable Output<String> publicKey;
 
+    /**
+     * @return Public Key.
+     * 
+     */
     public Optional<Output<String>> publicKey() {
         return Optional.ofNullable(this.publicKey);
     }
 
+    /**
+     * Regex.
+     * 
+     */
     @Import(name="regex")
     private @Nullable Output<String> regex;
 
+    /**
+     * @return Regex.
+     * 
+     */
     public Optional<Output<String>> regex() {
         return Optional.ofNullable(this.regex);
     }
 
+    /**
+     * Replacement.
+     * 
+     */
     @Import(name="replacement")
     private @Nullable Output<String> replacement;
 
+    /**
+     * @return Replacement.
+     * 
+     */
     public Optional<Output<String>> replacement() {
         return Optional.ofNullable(this.replacement);
     }
 
+    /**
+     * Selector.
+     * 
+     */
     @Import(name="selector")
-    private @Nullable Output<Integer> selector;
+    private @Nullable Output<Double> selector;
 
-    public Optional<Output<Integer>> selector() {
+    /**
+     * @return Selector.
+     * 
+     */
+    public Optional<Output<Double>> selector() {
         return Optional.ofNullable(this.selector);
     }
 
+    /**
+     * Service.
+     * 
+     */
     @Import(name="service")
     private @Nullable Output<String> service;
 
+    /**
+     * @return Service.
+     * 
+     */
     public Optional<Output<String>> service() {
         return Optional.ofNullable(this.service);
     }
 
+    /**
+     * Size of location in meters.
+     * 
+     */
     @Import(name="size")
     private @Nullable Output<Double> size;
 
+    /**
+     * @return Size of location in meters.
+     * 
+     */
     public Optional<Output<Double>> size() {
         return Optional.ofNullable(this.size);
     }
 
+    /**
+     * Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+     * 
+     */
     @Import(name="tag")
     private @Nullable Output<String> tag;
 
+    /**
+     * @return Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+     * 
+     */
     public Optional<Output<String>> tag() {
         return Optional.ofNullable(this.tag);
     }
 
+    /**
+     * target.
+     * 
+     */
     @Import(name="target")
     private @Nullable Output<String> target;
 
+    /**
+     * @return target.
+     * 
+     */
     public Optional<Output<String>> target() {
         return Optional.ofNullable(this.target);
     }
 
+    /**
+     * Type.
+     * 
+     */
     @Import(name="type")
-    private @Nullable Output<Integer> type;
+    private @Nullable Output<Double> type;
 
-    public Optional<Output<Integer>> type() {
+    /**
+     * @return Type.
+     * 
+     */
+    public Optional<Output<Double>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Usage.
+     * 
+     */
     @Import(name="usage")
-    private @Nullable Output<Integer> usage;
+    private @Nullable Output<Double> usage;
 
-    public Optional<Output<Integer>> usage() {
+    /**
+     * @return Usage.
+     * 
+     */
+    public Optional<Output<Double>> usage() {
         return Optional.ofNullable(this.usage);
     }
 
+    /**
+     * Value of the record. This field&#39;s semantics depend on the chosen tag.
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return Value of the record. This field&#39;s semantics depend on the chosen tag.
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
 
+    /**
+     * The record weight.
+     * 
+     */
     @Import(name="weight")
-    private @Nullable Output<Integer> weight;
+    private @Nullable Output<Double> weight;
 
-    public Optional<Output<Integer>> weight() {
+    /**
+     * @return The record weight.
+     * 
+     */
+    public Optional<Output<Double>> weight() {
         return Optional.ofNullable(this.weight);
     }
 
@@ -296,7 +566,6 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
         this.algorithm = $.algorithm;
         this.altitude = $.altitude;
         this.certificate = $.certificate;
-        this.content = $.content;
         this.digest = $.digest;
         this.digestType = $.digestType;
         this.fingerprint = $.fingerprint;
@@ -311,14 +580,12 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
         this.longMinutes = $.longMinutes;
         this.longSeconds = $.longSeconds;
         this.matchingType = $.matchingType;
-        this.name = $.name;
         this.order = $.order;
         this.port = $.port;
         this.precisionHorz = $.precisionHorz;
         this.precisionVert = $.precisionVert;
         this.preference = $.preference;
         this.priority = $.priority;
-        this.proto = $.proto;
         this.protocol = $.protocol;
         this.publicKey = $.publicKey;
         this.regex = $.regex;
@@ -352,354 +619,763 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
             $ = new RecordDataArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder algorithm(@Nullable Output<Integer> algorithm) {
+        /**
+         * @param algorithm Algorithm.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder algorithm(@Nullable Output<Double> algorithm) {
             $.algorithm = algorithm;
             return this;
         }
 
-        public Builder algorithm(Integer algorithm) {
+        /**
+         * @param algorithm Algorithm.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder algorithm(Double algorithm) {
             return algorithm(Output.of(algorithm));
         }
 
+        /**
+         * @param altitude Altitude of location in meters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder altitude(@Nullable Output<Double> altitude) {
             $.altitude = altitude;
             return this;
         }
 
+        /**
+         * @param altitude Altitude of location in meters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder altitude(Double altitude) {
             return altitude(Output.of(altitude));
         }
 
+        /**
+         * @param certificate Certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certificate(@Nullable Output<String> certificate) {
             $.certificate = certificate;
             return this;
         }
 
+        /**
+         * @param certificate Certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certificate(String certificate) {
             return certificate(Output.of(certificate));
         }
 
-        public Builder content(@Nullable Output<String> content) {
-            $.content = content;
-            return this;
-        }
-
-        public Builder content(String content) {
-            return content(Output.of(content));
-        }
-
+        /**
+         * @param digest Digest.
+         * 
+         * @return builder
+         * 
+         */
         public Builder digest(@Nullable Output<String> digest) {
             $.digest = digest;
             return this;
         }
 
+        /**
+         * @param digest Digest.
+         * 
+         * @return builder
+         * 
+         */
         public Builder digest(String digest) {
             return digest(Output.of(digest));
         }
 
-        public Builder digestType(@Nullable Output<Integer> digestType) {
+        /**
+         * @param digestType Digest Type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder digestType(@Nullable Output<Double> digestType) {
             $.digestType = digestType;
             return this;
         }
 
-        public Builder digestType(Integer digestType) {
+        /**
+         * @param digestType Digest Type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder digestType(Double digestType) {
             return digestType(Output.of(digestType));
         }
 
+        /**
+         * @param fingerprint fingerprint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fingerprint(@Nullable Output<String> fingerprint) {
             $.fingerprint = fingerprint;
             return this;
         }
 
+        /**
+         * @param fingerprint fingerprint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fingerprint(String fingerprint) {
             return fingerprint(Output.of(fingerprint));
         }
 
-        public Builder flags(@Nullable Output<String> flags) {
+        /**
+         * @param flags Flags for the CAA record.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flags(@Nullable Output<Double> flags) {
             $.flags = flags;
             return this;
         }
 
-        public Builder flags(String flags) {
+        /**
+         * @param flags Flags for the CAA record.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flags(Double flags) {
             return flags(Output.of(flags));
         }
 
-        public Builder keyTag(@Nullable Output<Integer> keyTag) {
+        /**
+         * @param keyTag Key Tag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyTag(@Nullable Output<Double> keyTag) {
             $.keyTag = keyTag;
             return this;
         }
 
-        public Builder keyTag(Integer keyTag) {
+        /**
+         * @param keyTag Key Tag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyTag(Double keyTag) {
             return keyTag(Output.of(keyTag));
         }
 
-        public Builder latDegrees(@Nullable Output<Integer> latDegrees) {
+        /**
+         * @param latDegrees Degrees of latitude.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder latDegrees(@Nullable Output<Double> latDegrees) {
             $.latDegrees = latDegrees;
             return this;
         }
 
-        public Builder latDegrees(Integer latDegrees) {
+        /**
+         * @param latDegrees Degrees of latitude.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder latDegrees(Double latDegrees) {
             return latDegrees(Output.of(latDegrees));
         }
 
+        /**
+         * @param latDirection Latitude direction.
+         * Available values: &#34;N&#34;, &#34;S&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder latDirection(@Nullable Output<String> latDirection) {
             $.latDirection = latDirection;
             return this;
         }
 
+        /**
+         * @param latDirection Latitude direction.
+         * Available values: &#34;N&#34;, &#34;S&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder latDirection(String latDirection) {
             return latDirection(Output.of(latDirection));
         }
 
-        public Builder latMinutes(@Nullable Output<Integer> latMinutes) {
+        /**
+         * @param latMinutes Minutes of latitude.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder latMinutes(@Nullable Output<Double> latMinutes) {
             $.latMinutes = latMinutes;
             return this;
         }
 
-        public Builder latMinutes(Integer latMinutes) {
+        /**
+         * @param latMinutes Minutes of latitude.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder latMinutes(Double latMinutes) {
             return latMinutes(Output.of(latMinutes));
         }
 
+        /**
+         * @param latSeconds Seconds of latitude.
+         * 
+         * @return builder
+         * 
+         */
         public Builder latSeconds(@Nullable Output<Double> latSeconds) {
             $.latSeconds = latSeconds;
             return this;
         }
 
+        /**
+         * @param latSeconds Seconds of latitude.
+         * 
+         * @return builder
+         * 
+         */
         public Builder latSeconds(Double latSeconds) {
             return latSeconds(Output.of(latSeconds));
         }
 
-        public Builder longDegrees(@Nullable Output<Integer> longDegrees) {
+        /**
+         * @param longDegrees Degrees of longitude.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder longDegrees(@Nullable Output<Double> longDegrees) {
             $.longDegrees = longDegrees;
             return this;
         }
 
-        public Builder longDegrees(Integer longDegrees) {
+        /**
+         * @param longDegrees Degrees of longitude.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder longDegrees(Double longDegrees) {
             return longDegrees(Output.of(longDegrees));
         }
 
+        /**
+         * @param longDirection Longitude direction.
+         * Available values: &#34;E&#34;, &#34;W&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder longDirection(@Nullable Output<String> longDirection) {
             $.longDirection = longDirection;
             return this;
         }
 
+        /**
+         * @param longDirection Longitude direction.
+         * Available values: &#34;E&#34;, &#34;W&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder longDirection(String longDirection) {
             return longDirection(Output.of(longDirection));
         }
 
-        public Builder longMinutes(@Nullable Output<Integer> longMinutes) {
+        /**
+         * @param longMinutes Minutes of longitude.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder longMinutes(@Nullable Output<Double> longMinutes) {
             $.longMinutes = longMinutes;
             return this;
         }
 
-        public Builder longMinutes(Integer longMinutes) {
+        /**
+         * @param longMinutes Minutes of longitude.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder longMinutes(Double longMinutes) {
             return longMinutes(Output.of(longMinutes));
         }
 
+        /**
+         * @param longSeconds Seconds of longitude.
+         * 
+         * @return builder
+         * 
+         */
         public Builder longSeconds(@Nullable Output<Double> longSeconds) {
             $.longSeconds = longSeconds;
             return this;
         }
 
+        /**
+         * @param longSeconds Seconds of longitude.
+         * 
+         * @return builder
+         * 
+         */
         public Builder longSeconds(Double longSeconds) {
             return longSeconds(Output.of(longSeconds));
         }
 
-        public Builder matchingType(@Nullable Output<Integer> matchingType) {
+        /**
+         * @param matchingType Matching Type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder matchingType(@Nullable Output<Double> matchingType) {
             $.matchingType = matchingType;
             return this;
         }
 
-        public Builder matchingType(Integer matchingType) {
+        /**
+         * @param matchingType Matching Type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder matchingType(Double matchingType) {
             return matchingType(Output.of(matchingType));
         }
 
-        public Builder name(@Nullable Output<String> name) {
-            $.name = name;
-            return this;
-        }
-
-        public Builder name(String name) {
-            return name(Output.of(name));
-        }
-
-        public Builder order(@Nullable Output<Integer> order) {
+        /**
+         * @param order Order.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder order(@Nullable Output<Double> order) {
             $.order = order;
             return this;
         }
 
-        public Builder order(Integer order) {
+        /**
+         * @param order Order.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder order(Double order) {
             return order(Output.of(order));
         }
 
-        public Builder port(@Nullable Output<Integer> port) {
+        /**
+         * @param port The port of the service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(@Nullable Output<Double> port) {
             $.port = port;
             return this;
         }
 
-        public Builder port(Integer port) {
+        /**
+         * @param port The port of the service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(Double port) {
             return port(Output.of(port));
         }
 
+        /**
+         * @param precisionHorz Horizontal precision of location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder precisionHorz(@Nullable Output<Double> precisionHorz) {
             $.precisionHorz = precisionHorz;
             return this;
         }
 
+        /**
+         * @param precisionHorz Horizontal precision of location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder precisionHorz(Double precisionHorz) {
             return precisionHorz(Output.of(precisionHorz));
         }
 
+        /**
+         * @param precisionVert Vertical precision of location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder precisionVert(@Nullable Output<Double> precisionVert) {
             $.precisionVert = precisionVert;
             return this;
         }
 
+        /**
+         * @param precisionVert Vertical precision of location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder precisionVert(Double precisionVert) {
             return precisionVert(Output.of(precisionVert));
         }
 
-        public Builder preference(@Nullable Output<Integer> preference) {
+        /**
+         * @param preference Preference.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preference(@Nullable Output<Double> preference) {
             $.preference = preference;
             return this;
         }
 
-        public Builder preference(Integer preference) {
+        /**
+         * @param preference Preference.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preference(Double preference) {
             return preference(Output.of(preference));
         }
 
-        public Builder priority(@Nullable Output<Integer> priority) {
+        /**
+         * @param priority priority.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(@Nullable Output<Double> priority) {
             $.priority = priority;
             return this;
         }
 
-        public Builder priority(Integer priority) {
+        /**
+         * @param priority priority.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(Double priority) {
             return priority(Output.of(priority));
         }
 
-        public Builder proto(@Nullable Output<String> proto) {
-            $.proto = proto;
-            return this;
-        }
-
-        public Builder proto(String proto) {
-            return proto(Output.of(proto));
-        }
-
-        public Builder protocol(@Nullable Output<Integer> protocol) {
+        /**
+         * @param protocol Protocol.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protocol(@Nullable Output<Double> protocol) {
             $.protocol = protocol;
             return this;
         }
 
-        public Builder protocol(Integer protocol) {
+        /**
+         * @param protocol Protocol.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protocol(Double protocol) {
             return protocol(Output.of(protocol));
         }
 
+        /**
+         * @param publicKey Public Key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicKey(@Nullable Output<String> publicKey) {
             $.publicKey = publicKey;
             return this;
         }
 
+        /**
+         * @param publicKey Public Key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicKey(String publicKey) {
             return publicKey(Output.of(publicKey));
         }
 
+        /**
+         * @param regex Regex.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regex(@Nullable Output<String> regex) {
             $.regex = regex;
             return this;
         }
 
+        /**
+         * @param regex Regex.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regex(String regex) {
             return regex(Output.of(regex));
         }
 
+        /**
+         * @param replacement Replacement.
+         * 
+         * @return builder
+         * 
+         */
         public Builder replacement(@Nullable Output<String> replacement) {
             $.replacement = replacement;
             return this;
         }
 
+        /**
+         * @param replacement Replacement.
+         * 
+         * @return builder
+         * 
+         */
         public Builder replacement(String replacement) {
             return replacement(Output.of(replacement));
         }
 
-        public Builder selector(@Nullable Output<Integer> selector) {
+        /**
+         * @param selector Selector.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selector(@Nullable Output<Double> selector) {
             $.selector = selector;
             return this;
         }
 
-        public Builder selector(Integer selector) {
+        /**
+         * @param selector Selector.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selector(Double selector) {
             return selector(Output.of(selector));
         }
 
+        /**
+         * @param service Service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder service(@Nullable Output<String> service) {
             $.service = service;
             return this;
         }
 
+        /**
+         * @param service Service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder service(String service) {
             return service(Output.of(service));
         }
 
+        /**
+         * @param size Size of location in meters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(@Nullable Output<Double> size) {
             $.size = size;
             return this;
         }
 
+        /**
+         * @param size Size of location in meters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(Double size) {
             return size(Output.of(size));
         }
 
+        /**
+         * @param tag Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag(@Nullable Output<String> tag) {
             $.tag = tag;
             return this;
         }
 
+        /**
+         * @param tag Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag(String tag) {
             return tag(Output.of(tag));
         }
 
+        /**
+         * @param target target.
+         * 
+         * @return builder
+         * 
+         */
         public Builder target(@Nullable Output<String> target) {
             $.target = target;
             return this;
         }
 
+        /**
+         * @param target target.
+         * 
+         * @return builder
+         * 
+         */
         public Builder target(String target) {
             return target(Output.of(target));
         }
 
-        public Builder type(@Nullable Output<Integer> type) {
+        /**
+         * @param type Type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<Double> type) {
             $.type = type;
             return this;
         }
 
-        public Builder type(Integer type) {
+        /**
+         * @param type Type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(Double type) {
             return type(Output.of(type));
         }
 
-        public Builder usage(@Nullable Output<Integer> usage) {
+        /**
+         * @param usage Usage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usage(@Nullable Output<Double> usage) {
             $.usage = usage;
             return this;
         }
 
-        public Builder usage(Integer usage) {
+        /**
+         * @param usage Usage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usage(Double usage) {
             return usage(Output.of(usage));
         }
 
+        /**
+         * @param value Value of the record. This field&#39;s semantics depend on the chosen tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Value of the record. This field&#39;s semantics depend on the chosen tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }
 
-        public Builder weight(@Nullable Output<Integer> weight) {
+        /**
+         * @param weight The record weight.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder weight(@Nullable Output<Double> weight) {
             $.weight = weight;
             return this;
         }
 
-        public Builder weight(Integer weight) {
+        /**
+         * @param weight The record weight.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder weight(Double weight) {
             return weight(Output.of(weight));
         }
 

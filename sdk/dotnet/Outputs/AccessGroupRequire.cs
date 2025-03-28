@@ -14,166 +14,102 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessGroupRequire
     {
         /// <summary>
-        /// Matches any valid Access service token.
+        /// An empty object which matches on all service tokens.
         /// </summary>
-        public readonly bool? AnyValidServiceToken;
-        public readonly ImmutableArray<Outputs.AccessGroupRequireAuthContext> AuthContexts;
+        public readonly Outputs.AccessGroupRequireAnyValidServiceToken? AnyValidServiceToken;
+        public readonly Outputs.AccessGroupRequireAuthContext? AuthContext;
+        public readonly Outputs.AccessGroupRequireAuthMethod? AuthMethod;
+        public readonly Outputs.AccessGroupRequireAzureAd? AzureAd;
+        public readonly Outputs.AccessGroupRequireCertificate? Certificate;
+        public readonly Outputs.AccessGroupRequireCommonName? CommonName;
+        public readonly Outputs.AccessGroupRequireDevicePosture? DevicePosture;
+        public readonly Outputs.AccessGroupRequireEmail? Email;
+        public readonly Outputs.AccessGroupRequireEmailDomain? EmailDomain;
+        public readonly Outputs.AccessGroupRequireEmailList? EmailList;
         /// <summary>
-        /// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        /// An empty object which matches on all users.
         /// </summary>
-        public readonly string? AuthMethod;
-        /// <summary>
-        /// Matches an Azure group. Requires an Azure identity provider.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.AccessGroupRequireAzure> Azures;
-        /// <summary>
-        /// Matches any valid client certificate.
-        /// </summary>
-        public readonly bool? Certificate;
-        /// <summary>
-        /// Matches a valid client certificate common name.
-        /// </summary>
-        public readonly string? CommonName;
-        /// <summary>
-        /// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-        /// </summary>
-        public readonly ImmutableArray<string> CommonNames;
-        /// <summary>
-        /// The ID of a device posture integration.
-        /// </summary>
-        public readonly ImmutableArray<string> DevicePostures;
-        /// <summary>
-        /// The email domain to match.
-        /// </summary>
-        public readonly ImmutableArray<string> EmailDomains;
-        /// <summary>
-        /// The ID of a previously created email list.
-        /// </summary>
-        public readonly ImmutableArray<string> EmailLists;
-        /// <summary>
-        /// The email of the user.
-        /// </summary>
-        public readonly ImmutableArray<string> Emails;
-        /// <summary>
-        /// Matches everyone.
-        /// </summary>
-        public readonly bool? Everyone;
-        /// <summary>
-        /// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
-        /// </summary>
+        public readonly Outputs.AccessGroupRequireEveryone? Everyone;
         public readonly Outputs.AccessGroupRequireExternalEvaluation? ExternalEvaluation;
-        /// <summary>
-        /// Matches a specific country.
-        /// </summary>
-        public readonly ImmutableArray<string> Geos;
-        /// <summary>
-        /// Matches a Github organization. Requires a Github identity provider.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.AccessGroupRequireGithub> Githubs;
-        /// <summary>
-        /// The ID of a previously created Access group.
-        /// </summary>
-        public readonly ImmutableArray<string> Groups;
-        /// <summary>
-        /// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.AccessGroupRequireGsuite> Gsuites;
-        /// <summary>
-        /// The ID of a previously created IP list.
-        /// </summary>
-        public readonly ImmutableArray<string> IpLists;
-        /// <summary>
-        /// An IPv4 or IPv6 CIDR block.
-        /// </summary>
-        public readonly ImmutableArray<string> Ips;
-        /// <summary>
-        /// The ID of a configured identity provider.
-        /// </summary>
-        public readonly ImmutableArray<string> LoginMethods;
-        /// <summary>
-        /// Matches an Okta group. Requires an Okta identity provider.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.AccessGroupRequireOkta> Oktas;
-        /// <summary>
-        /// Matches a SAML group. Requires a SAML identity provider.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.AccessGroupRequireSaml> Samls;
-        /// <summary>
-        /// The ID of an Access service token.
-        /// </summary>
-        public readonly ImmutableArray<string> ServiceTokens;
+        public readonly Outputs.AccessGroupRequireGeo? Geo;
+        public readonly Outputs.AccessGroupRequireGithubOrganization? GithubOrganization;
+        public readonly Outputs.AccessGroupRequireGroup? Group;
+        public readonly Outputs.AccessGroupRequireGsuite? Gsuite;
+        public readonly Outputs.AccessGroupRequireIp? Ip;
+        public readonly Outputs.AccessGroupRequireIpList? IpList;
+        public readonly Outputs.AccessGroupRequireLoginMethod? LoginMethod;
+        public readonly Outputs.AccessGroupRequireOkta? Okta;
+        public readonly Outputs.AccessGroupRequireSaml? Saml;
+        public readonly Outputs.AccessGroupRequireServiceToken? ServiceToken;
 
         [OutputConstructor]
         private AccessGroupRequire(
-            bool? anyValidServiceToken,
+            Outputs.AccessGroupRequireAnyValidServiceToken? anyValidServiceToken,
 
-            ImmutableArray<Outputs.AccessGroupRequireAuthContext> authContexts,
+            Outputs.AccessGroupRequireAuthContext? authContext,
 
-            string? authMethod,
+            Outputs.AccessGroupRequireAuthMethod? authMethod,
 
-            ImmutableArray<Outputs.AccessGroupRequireAzure> azures,
+            Outputs.AccessGroupRequireAzureAd? azureAd,
 
-            bool? certificate,
+            Outputs.AccessGroupRequireCertificate? certificate,
 
-            string? commonName,
+            Outputs.AccessGroupRequireCommonName? commonName,
 
-            ImmutableArray<string> commonNames,
+            Outputs.AccessGroupRequireDevicePosture? devicePosture,
 
-            ImmutableArray<string> devicePostures,
+            Outputs.AccessGroupRequireEmail? email,
 
-            ImmutableArray<string> emailDomains,
+            Outputs.AccessGroupRequireEmailDomain? emailDomain,
 
-            ImmutableArray<string> emailLists,
+            Outputs.AccessGroupRequireEmailList? emailList,
 
-            ImmutableArray<string> emails,
-
-            bool? everyone,
+            Outputs.AccessGroupRequireEveryone? everyone,
 
             Outputs.AccessGroupRequireExternalEvaluation? externalEvaluation,
 
-            ImmutableArray<string> geos,
+            Outputs.AccessGroupRequireGeo? geo,
 
-            ImmutableArray<Outputs.AccessGroupRequireGithub> githubs,
+            Outputs.AccessGroupRequireGithubOrganization? githubOrganization,
 
-            ImmutableArray<string> groups,
+            Outputs.AccessGroupRequireGroup? group,
 
-            ImmutableArray<Outputs.AccessGroupRequireGsuite> gsuites,
+            Outputs.AccessGroupRequireGsuite? gsuite,
 
-            ImmutableArray<string> ipLists,
+            Outputs.AccessGroupRequireIp? ip,
 
-            ImmutableArray<string> ips,
+            Outputs.AccessGroupRequireIpList? ipList,
 
-            ImmutableArray<string> loginMethods,
+            Outputs.AccessGroupRequireLoginMethod? loginMethod,
 
-            ImmutableArray<Outputs.AccessGroupRequireOkta> oktas,
+            Outputs.AccessGroupRequireOkta? okta,
 
-            ImmutableArray<Outputs.AccessGroupRequireSaml> samls,
+            Outputs.AccessGroupRequireSaml? saml,
 
-            ImmutableArray<string> serviceTokens)
+            Outputs.AccessGroupRequireServiceToken? serviceToken)
         {
             AnyValidServiceToken = anyValidServiceToken;
-            AuthContexts = authContexts;
+            AuthContext = authContext;
             AuthMethod = authMethod;
-            Azures = azures;
+            AzureAd = azureAd;
             Certificate = certificate;
             CommonName = commonName;
-            CommonNames = commonNames;
-            DevicePostures = devicePostures;
-            EmailDomains = emailDomains;
-            EmailLists = emailLists;
-            Emails = emails;
+            DevicePosture = devicePosture;
+            Email = email;
+            EmailDomain = emailDomain;
+            EmailList = emailList;
             Everyone = everyone;
             ExternalEvaluation = externalEvaluation;
-            Geos = geos;
-            Githubs = githubs;
-            Groups = groups;
-            Gsuites = gsuites;
-            IpLists = ipLists;
-            Ips = ips;
-            LoginMethods = loginMethods;
-            Oktas = oktas;
-            Samls = samls;
-            ServiceTokens = serviceTokens;
+            Geo = geo;
+            GithubOrganization = githubOrganization;
+            Group = group;
+            Gsuite = gsuite;
+            Ip = ip;
+            IpList = ipList;
+            LoginMethod = loginMethod;
+            Okta = okta;
+            Saml = saml;
+            ServiceToken = serviceToken;
         }
     }
 }

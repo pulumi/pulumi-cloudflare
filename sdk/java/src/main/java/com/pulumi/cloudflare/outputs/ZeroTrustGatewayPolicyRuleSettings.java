@@ -11,6 +11,7 @@ import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsEgress;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsL4override;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettings;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLog;
+import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsQuarantine;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCert;
 import com.pulumi.core.annotations.CustomType;
@@ -25,17 +26,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewayPolicyRuleSettings {
     /**
-     * @return Add custom headers to allowed requests in the form of key-value pairs.
+     * @return Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
      * 
      */
     private @Nullable Map<String,String> addHeaders;
     /**
-     * @return Allow parent MSP accounts to enable bypass their children&#39;s rules.
+     * @return Set by parent MSP accounts to enable their children to bypass this rule.
      * 
      */
     private @Nullable Boolean allowChildBypass;
     /**
-     * @return Settings for auditing SSH usage.
+     * @return Settings for the Audit SSH action.
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsAuditSsh auditSsh;
@@ -45,17 +46,17 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls bisoAdminControls;
     /**
-     * @return Indicator of block page enablement.
+     * @return Enable the custom block page.
      * 
      */
     private @Nullable Boolean blockPageEnabled;
     /**
-     * @return The displayed reason for a user being blocked.
+     * @return The text describing why this block occurred, displayed on the custom block page (if enabled).
      * 
      */
-    private @Nullable String blockPageReason;
+    private @Nullable String blockReason;
     /**
-     * @return Allow child MSP accounts to bypass their parent&#39;s rule.
+     * @return Set by children MSP accounts to bypass their parent&#39;s rules.
      * 
      */
     private @Nullable Boolean bypassParentRule;
@@ -65,88 +66,98 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsCheckSession checkSession;
     /**
-     * @return Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+     * @return Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; are set. DNS queries will route to the address closest to their origin. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsDnsResolvers dnsResolvers;
     /**
-     * @return Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+     * @return Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsEgress egress;
     /**
-     * @return Set to true, to ignore the category matches at CNAME domains in a response.
+     * @return Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
      * 
      */
     private @Nullable Boolean ignoreCnameCategoryMatches;
     /**
-     * @return Disable DNSSEC validation (must be Allow rule).
+     * @return INSECURE - disable DNSSEC validation (for Allow actions).
      * 
      */
     private @Nullable Boolean insecureDisableDnssecValidation;
     /**
-     * @return Turns on IP category based filter on dns if the rule contains dns category checks.
+     * @return Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
      * 
      */
     private @Nullable Boolean ipCategories;
     /**
-     * @return Settings to forward layer 4 traffic.
+     * @return Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+     * 
+     */
+    private @Nullable Boolean ipIndicatorFeeds;
+    /**
+     * @return Send matching traffic to the supplied destination IP address and port.
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsL4override l4override;
     /**
-     * @return Notification settings on a block rule.
+     * @return Configure a notification to display on the user&#39;s device when this rule is matched.
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsNotificationSettings notificationSettings;
     /**
-     * @return The host to override matching DNS queries with.
+     * @return Override matching DNS queries with a hostname.
      * 
      */
     private @Nullable String overrideHost;
     /**
-     * @return The IPs to override matching DNS queries with.
+     * @return Override matching DNS queries with an IP or set of IPs.
      * 
      */
     private @Nullable List<String> overrideIps;
     /**
-     * @return Configure DLP Payload Logging settings for this rule.
+     * @return Configure DLP payload logging.
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsPayloadLog payloadLog;
+    /**
+     * @return Settings that apply to quarantine rules
+     * 
+     */
+    private @Nullable ZeroTrustGatewayPolicyRuleSettingsQuarantine quarantine;
     /**
      * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally resolveDnsInternally;
     /**
-     * @return Enable sending queries that match the resolver policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+     * @return Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
      * 
      */
     private @Nullable Boolean resolveDnsThroughCloudflare;
     /**
-     * @return Configure untrusted certificate settings for this rule.
+     * @return Configure behavior when an upstream cert is invalid or an SSL error occurs.
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsUntrustedCert untrustedCert;
 
     private ZeroTrustGatewayPolicyRuleSettings() {}
     /**
-     * @return Add custom headers to allowed requests in the form of key-value pairs.
+     * @return Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
      * 
      */
     public Map<String,String> addHeaders() {
         return this.addHeaders == null ? Map.of() : this.addHeaders;
     }
     /**
-     * @return Allow parent MSP accounts to enable bypass their children&#39;s rules.
+     * @return Set by parent MSP accounts to enable their children to bypass this rule.
      * 
      */
     public Optional<Boolean> allowChildBypass() {
         return Optional.ofNullable(this.allowChildBypass);
     }
     /**
-     * @return Settings for auditing SSH usage.
+     * @return Settings for the Audit SSH action.
      * 
      */
     public Optional<ZeroTrustGatewayPolicyRuleSettingsAuditSsh> auditSsh() {
@@ -160,21 +171,21 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         return Optional.ofNullable(this.bisoAdminControls);
     }
     /**
-     * @return Indicator of block page enablement.
+     * @return Enable the custom block page.
      * 
      */
     public Optional<Boolean> blockPageEnabled() {
         return Optional.ofNullable(this.blockPageEnabled);
     }
     /**
-     * @return The displayed reason for a user being blocked.
+     * @return The text describing why this block occurred, displayed on the custom block page (if enabled).
      * 
      */
-    public Optional<String> blockPageReason() {
-        return Optional.ofNullable(this.blockPageReason);
+    public Optional<String> blockReason() {
+        return Optional.ofNullable(this.blockReason);
     }
     /**
-     * @return Allow child MSP accounts to bypass their parent&#39;s rule.
+     * @return Set by children MSP accounts to bypass their parent&#39;s rules.
      * 
      */
     public Optional<Boolean> bypassParentRule() {
@@ -188,74 +199,88 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         return Optional.ofNullable(this.checkSession);
     }
     /**
-     * @return Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+     * @return Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; are set. DNS queries will route to the address closest to their origin. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
      * 
      */
     public Optional<ZeroTrustGatewayPolicyRuleSettingsDnsResolvers> dnsResolvers() {
         return Optional.ofNullable(this.dnsResolvers);
     }
     /**
-     * @return Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+     * @return Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
      * 
      */
     public Optional<ZeroTrustGatewayPolicyRuleSettingsEgress> egress() {
         return Optional.ofNullable(this.egress);
     }
     /**
-     * @return Set to true, to ignore the category matches at CNAME domains in a response.
+     * @return Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
      * 
      */
     public Optional<Boolean> ignoreCnameCategoryMatches() {
         return Optional.ofNullable(this.ignoreCnameCategoryMatches);
     }
     /**
-     * @return Disable DNSSEC validation (must be Allow rule).
+     * @return INSECURE - disable DNSSEC validation (for Allow actions).
      * 
      */
     public Optional<Boolean> insecureDisableDnssecValidation() {
         return Optional.ofNullable(this.insecureDisableDnssecValidation);
     }
     /**
-     * @return Turns on IP category based filter on dns if the rule contains dns category checks.
+     * @return Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
      * 
      */
     public Optional<Boolean> ipCategories() {
         return Optional.ofNullable(this.ipCategories);
     }
     /**
-     * @return Settings to forward layer 4 traffic.
+     * @return Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+     * 
+     */
+    public Optional<Boolean> ipIndicatorFeeds() {
+        return Optional.ofNullable(this.ipIndicatorFeeds);
+    }
+    /**
+     * @return Send matching traffic to the supplied destination IP address and port.
      * 
      */
     public Optional<ZeroTrustGatewayPolicyRuleSettingsL4override> l4override() {
         return Optional.ofNullable(this.l4override);
     }
     /**
-     * @return Notification settings on a block rule.
+     * @return Configure a notification to display on the user&#39;s device when this rule is matched.
      * 
      */
     public Optional<ZeroTrustGatewayPolicyRuleSettingsNotificationSettings> notificationSettings() {
         return Optional.ofNullable(this.notificationSettings);
     }
     /**
-     * @return The host to override matching DNS queries with.
+     * @return Override matching DNS queries with a hostname.
      * 
      */
     public Optional<String> overrideHost() {
         return Optional.ofNullable(this.overrideHost);
     }
     /**
-     * @return The IPs to override matching DNS queries with.
+     * @return Override matching DNS queries with an IP or set of IPs.
      * 
      */
     public List<String> overrideIps() {
         return this.overrideIps == null ? List.of() : this.overrideIps;
     }
     /**
-     * @return Configure DLP Payload Logging settings for this rule.
+     * @return Configure DLP payload logging.
      * 
      */
     public Optional<ZeroTrustGatewayPolicyRuleSettingsPayloadLog> payloadLog() {
         return Optional.ofNullable(this.payloadLog);
+    }
+    /**
+     * @return Settings that apply to quarantine rules
+     * 
+     */
+    public Optional<ZeroTrustGatewayPolicyRuleSettingsQuarantine> quarantine() {
+        return Optional.ofNullable(this.quarantine);
     }
     /**
      * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
@@ -265,14 +290,14 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         return Optional.ofNullable(this.resolveDnsInternally);
     }
     /**
-     * @return Enable sending queries that match the resolver policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+     * @return Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
      * 
      */
     public Optional<Boolean> resolveDnsThroughCloudflare() {
         return Optional.ofNullable(this.resolveDnsThroughCloudflare);
     }
     /**
-     * @return Configure untrusted certificate settings for this rule.
+     * @return Configure behavior when an upstream cert is invalid or an SSL error occurs.
      * 
      */
     public Optional<ZeroTrustGatewayPolicyRuleSettingsUntrustedCert> untrustedCert() {
@@ -293,7 +318,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsAuditSsh auditSsh;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls bisoAdminControls;
         private @Nullable Boolean blockPageEnabled;
-        private @Nullable String blockPageReason;
+        private @Nullable String blockReason;
         private @Nullable Boolean bypassParentRule;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsCheckSession checkSession;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsDnsResolvers dnsResolvers;
@@ -301,11 +326,13 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         private @Nullable Boolean ignoreCnameCategoryMatches;
         private @Nullable Boolean insecureDisableDnssecValidation;
         private @Nullable Boolean ipCategories;
+        private @Nullable Boolean ipIndicatorFeeds;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsL4override l4override;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsNotificationSettings notificationSettings;
         private @Nullable String overrideHost;
         private @Nullable List<String> overrideIps;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsPayloadLog payloadLog;
+        private @Nullable ZeroTrustGatewayPolicyRuleSettingsQuarantine quarantine;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally resolveDnsInternally;
         private @Nullable Boolean resolveDnsThroughCloudflare;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsUntrustedCert untrustedCert;
@@ -317,7 +344,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
     	      this.auditSsh = defaults.auditSsh;
     	      this.bisoAdminControls = defaults.bisoAdminControls;
     	      this.blockPageEnabled = defaults.blockPageEnabled;
-    	      this.blockPageReason = defaults.blockPageReason;
+    	      this.blockReason = defaults.blockReason;
     	      this.bypassParentRule = defaults.bypassParentRule;
     	      this.checkSession = defaults.checkSession;
     	      this.dnsResolvers = defaults.dnsResolvers;
@@ -325,11 +352,13 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
     	      this.ignoreCnameCategoryMatches = defaults.ignoreCnameCategoryMatches;
     	      this.insecureDisableDnssecValidation = defaults.insecureDisableDnssecValidation;
     	      this.ipCategories = defaults.ipCategories;
+    	      this.ipIndicatorFeeds = defaults.ipIndicatorFeeds;
     	      this.l4override = defaults.l4override;
     	      this.notificationSettings = defaults.notificationSettings;
     	      this.overrideHost = defaults.overrideHost;
     	      this.overrideIps = defaults.overrideIps;
     	      this.payloadLog = defaults.payloadLog;
+    	      this.quarantine = defaults.quarantine;
     	      this.resolveDnsInternally = defaults.resolveDnsInternally;
     	      this.resolveDnsThroughCloudflare = defaults.resolveDnsThroughCloudflare;
     	      this.untrustedCert = defaults.untrustedCert;
@@ -366,9 +395,9 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
             return this;
         }
         @CustomType.Setter
-        public Builder blockPageReason(@Nullable String blockPageReason) {
+        public Builder blockReason(@Nullable String blockReason) {
 
-            this.blockPageReason = blockPageReason;
+            this.blockReason = blockReason;
             return this;
         }
         @CustomType.Setter
@@ -414,6 +443,12 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder ipIndicatorFeeds(@Nullable Boolean ipIndicatorFeeds) {
+
+            this.ipIndicatorFeeds = ipIndicatorFeeds;
+            return this;
+        }
+        @CustomType.Setter
         public Builder l4override(@Nullable ZeroTrustGatewayPolicyRuleSettingsL4override l4override) {
 
             this.l4override = l4override;
@@ -447,6 +482,12 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder quarantine(@Nullable ZeroTrustGatewayPolicyRuleSettingsQuarantine quarantine) {
+
+            this.quarantine = quarantine;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resolveDnsInternally(@Nullable ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally resolveDnsInternally) {
 
             this.resolveDnsInternally = resolveDnsInternally;
@@ -471,7 +512,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
             _resultValue.auditSsh = auditSsh;
             _resultValue.bisoAdminControls = bisoAdminControls;
             _resultValue.blockPageEnabled = blockPageEnabled;
-            _resultValue.blockPageReason = blockPageReason;
+            _resultValue.blockReason = blockReason;
             _resultValue.bypassParentRule = bypassParentRule;
             _resultValue.checkSession = checkSession;
             _resultValue.dnsResolvers = dnsResolvers;
@@ -479,11 +520,13 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
             _resultValue.ignoreCnameCategoryMatches = ignoreCnameCategoryMatches;
             _resultValue.insecureDisableDnssecValidation = insecureDisableDnssecValidation;
             _resultValue.ipCategories = ipCategories;
+            _resultValue.ipIndicatorFeeds = ipIndicatorFeeds;
             _resultValue.l4override = l4override;
             _resultValue.notificationSettings = notificationSettings;
             _resultValue.overrideHost = overrideHost;
             _resultValue.overrideIps = overrideIps;
             _resultValue.payloadLog = payloadLog;
+            _resultValue.quarantine = quarantine;
             _resultValue.resolveDnsInternally = resolveDnsInternally;
             _resultValue.resolveDnsThroughCloudflare = resolveDnsThroughCloudflare;
             _resultValue.untrustedCert = untrustedCert;

@@ -7,27 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare custom hostname (also known as SSL for SaaS) resource.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.CustomHostname("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     hostname: "hostname.example.com",
- *     ssls: [{
- *         method: "txt",
- *     }],
- * });
- * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/customHostname:CustomHostname example 1d5fdc9e88c8a8c4518b068cd94331fe/0d89c70d-ad9f-4843-b99f-6cc0252067e9
+ * $ pulumi import cloudflare:index/customHostname:CustomHostname example '<zone_id>/<custom_hostname_id>'
  * ```
  */
 export class CustomHostname extends pulumi.CustomResource {
@@ -59,37 +44,48 @@ export class CustomHostname extends pulumi.CustomResource {
     }
 
     /**
-     * Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     * This is the time the hostname was created.
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
      */
     public readonly customMetadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The custom origin server used for certificates.
+     * a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
      */
     public readonly customOriginServer!: pulumi.Output<string | undefined>;
     /**
-     * The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+     * A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
      */
     public readonly customOriginSni!: pulumi.Output<string | undefined>;
     /**
-     * Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+     * The custom hostname that will point to your hostname via CNAME.
      */
     public readonly hostname!: pulumi.Output<string>;
-    public /*out*/ readonly ownershipVerification!: pulumi.Output<{[key: string]: string}>;
-    public /*out*/ readonly ownershipVerificationHttp!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * This is a record which can be placed to activate a hostname.
+     */
+    public /*out*/ readonly ownershipVerification!: pulumi.Output<outputs.CustomHostnameOwnershipVerification>;
+    /**
+     * This presents the token to be served by the given http url to activate a hostname.
+     */
+    public /*out*/ readonly ownershipVerificationHttp!: pulumi.Output<outputs.CustomHostnameOwnershipVerificationHttp>;
     /**
      * SSL properties used when creating the custom hostname.
      */
-    public readonly ssls!: pulumi.Output<outputs.CustomHostnameSsl[] | undefined>;
+    public readonly ssl!: pulumi.Output<outputs.CustomHostnameSsl>;
     /**
-     * Status of the certificate.
+     * Status of the hostname's activation.
+     * Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
+     * These are errors that were encountered while trying to activate a hostname.
      */
-    public readonly waitForSslPendingValidation!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly verificationErrors!: pulumi.Output<string[]>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -106,20 +102,24 @@ export class CustomHostname extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomHostnameState | undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["customMetadata"] = state ? state.customMetadata : undefined;
             resourceInputs["customOriginServer"] = state ? state.customOriginServer : undefined;
             resourceInputs["customOriginSni"] = state ? state.customOriginSni : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["ownershipVerification"] = state ? state.ownershipVerification : undefined;
             resourceInputs["ownershipVerificationHttp"] = state ? state.ownershipVerificationHttp : undefined;
-            resourceInputs["ssls"] = state ? state.ssls : undefined;
+            resourceInputs["ssl"] = state ? state.ssl : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["waitForSslPendingValidation"] = state ? state.waitForSslPendingValidation : undefined;
+            resourceInputs["verificationErrors"] = state ? state.verificationErrors : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as CustomHostnameArgs | undefined;
             if ((!args || args.hostname === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
+            }
+            if ((!args || args.ssl === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'ssl'");
             }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
@@ -128,12 +128,13 @@ export class CustomHostname extends pulumi.CustomResource {
             resourceInputs["customOriginServer"] = args ? args.customOriginServer : undefined;
             resourceInputs["customOriginSni"] = args ? args.customOriginSni : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
-            resourceInputs["ssls"] = args ? args.ssls : undefined;
-            resourceInputs["waitForSslPendingValidation"] = args ? args.waitForSslPendingValidation : undefined;
+            resourceInputs["ssl"] = args ? args.ssl : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["ownershipVerification"] = undefined /*out*/;
             resourceInputs["ownershipVerificationHttp"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["verificationErrors"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CustomHostname.__pulumiType, name, resourceInputs, opts);
@@ -145,37 +146,48 @@ export class CustomHostname extends pulumi.CustomResource {
  */
 export interface CustomHostnameState {
     /**
-     * Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     * This is the time the hostname was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
      */
     customMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The custom origin server used for certificates.
+     * a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
      */
     customOriginServer?: pulumi.Input<string>;
     /**
-     * The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+     * A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
      */
     customOriginSni?: pulumi.Input<string>;
     /**
-     * Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+     * The custom hostname that will point to your hostname via CNAME.
      */
     hostname?: pulumi.Input<string>;
-    ownershipVerification?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    ownershipVerificationHttp?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * This is a record which can be placed to activate a hostname.
+     */
+    ownershipVerification?: pulumi.Input<inputs.CustomHostnameOwnershipVerification>;
+    /**
+     * This presents the token to be served by the given http url to activate a hostname.
+     */
+    ownershipVerificationHttp?: pulumi.Input<inputs.CustomHostnameOwnershipVerificationHttp>;
     /**
      * SSL properties used when creating the custom hostname.
      */
-    ssls?: pulumi.Input<pulumi.Input<inputs.CustomHostnameSsl>[]>;
+    ssl?: pulumi.Input<inputs.CustomHostnameSsl>;
     /**
-     * Status of the certificate.
+     * Status of the hostname's activation.
+     * Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
      */
     status?: pulumi.Input<string>;
     /**
-     * Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
+     * These are errors that were encountered while trying to activate a hostname.
      */
-    waitForSslPendingValidation?: pulumi.Input<boolean>;
+    verificationErrors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -185,31 +197,27 @@ export interface CustomHostnameState {
  */
 export interface CustomHostnameArgs {
     /**
-     * Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     * Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
      */
     customMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The custom origin server used for certificates.
+     * a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
      */
     customOriginServer?: pulumi.Input<string>;
     /**
-     * The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+     * A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
      */
     customOriginSni?: pulumi.Input<string>;
     /**
-     * Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+     * The custom hostname that will point to your hostname via CNAME.
      */
     hostname: pulumi.Input<string>;
     /**
      * SSL properties used when creating the custom hostname.
      */
-    ssls?: pulumi.Input<pulumi.Input<inputs.CustomHostnameSsl>[]>;
+    ssl: pulumi.Input<inputs.CustomHostnameSsl>;
     /**
-     * Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
-     */
-    waitForSslPendingValidation?: pulumi.Input<boolean>;
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

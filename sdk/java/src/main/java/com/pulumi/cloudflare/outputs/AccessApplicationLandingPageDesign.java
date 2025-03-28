@@ -12,62 +12,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessApplicationLandingPageDesign {
     /**
-     * @return The button color of the landing page.
+     * @return The background color of the log in button on the landing page.
      * 
      */
     private @Nullable String buttonColor;
     /**
-     * @return The button text color of the landing page.
+     * @return The color of the text in the log in button on the landing page.
      * 
      */
     private @Nullable String buttonTextColor;
     /**
-     * @return The URL of the image to be displayed in the landing page.
+     * @return The URL of the image shown on the landing page.
      * 
      */
     private @Nullable String imageUrl;
     /**
-     * @return The message of the landing page.
+     * @return The message shown on the landing page.
      * 
      */
     private @Nullable String message;
     /**
-     * @return The title of the landing page.
+     * @return The title shown on the landing page.
      * 
      */
     private @Nullable String title;
 
     private AccessApplicationLandingPageDesign() {}
     /**
-     * @return The button color of the landing page.
+     * @return The background color of the log in button on the landing page.
      * 
      */
     public Optional<String> buttonColor() {
         return Optional.ofNullable(this.buttonColor);
     }
     /**
-     * @return The button text color of the landing page.
+     * @return The color of the text in the log in button on the landing page.
      * 
      */
     public Optional<String> buttonTextColor() {
         return Optional.ofNullable(this.buttonTextColor);
     }
     /**
-     * @return The URL of the image to be displayed in the landing page.
+     * @return The URL of the image shown on the landing page.
      * 
      */
     public Optional<String> imageUrl() {
         return Optional.ofNullable(this.imageUrl);
     }
     /**
-     * @return The message of the landing page.
+     * @return The message shown on the landing page.
      * 
      */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
     /**
-     * @return The title of the landing page.
+     * @return The title shown on the landing page.
      * 
      */
     public Optional<String> title() {

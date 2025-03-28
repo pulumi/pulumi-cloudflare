@@ -3,9 +3,8 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.CustomHostnameSslSetting;
-import com.pulumi.cloudflare.outputs.CustomHostnameSslValidationError;
-import com.pulumi.cloudflare.outputs.CustomHostnameSslValidationRecord;
+import com.pulumi.cloudflare.outputs.CustomHostnameSslCustomCertBundle;
+import com.pulumi.cloudflare.outputs.CustomHostnameSslSettings;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
@@ -17,11 +16,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CustomHostnameSsl {
     /**
-     * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+     * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     private @Nullable String bundleMethod;
+    /**
+     * @return The Certificate Authority that will issue the certificate
+     * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
+     * 
+     */
     private @Nullable String certificateAuthority;
+    /**
+     * @return Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
+     * 
+     */
+    private @Nullable Boolean cloudflareBranding;
+    /**
+     * @return Array of custom certificate and key pairs (1 or 2 pairs allowed)
+     * 
+     */
+    private @Nullable List<CustomHostnameSslCustomCertBundle> customCertBundles;
     /**
      * @return If a custom uploaded certificate is used.
      * 
@@ -33,23 +48,22 @@ public final class CustomHostnameSsl {
      */
     private @Nullable String customKey;
     /**
-     * @return Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
+     * @return Domain control validation (DCV) method used for this hostname.
+     * Available values: &#34;http&#34;, &#34;txt&#34;, &#34;email&#34;.
      * 
      */
     private @Nullable String method;
     /**
-     * @return SSL/TLS settings for the certificate.
+     * @return SSL specific settings.
      * 
      */
-    private @Nullable List<CustomHostnameSslSetting> settings;
-    private @Nullable String status;
+    private @Nullable CustomHostnameSslSettings settings;
     /**
-     * @return Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
+     * @return Level of validation to be used for this hostname. Domain validation (dv) must be used.
+     * Available values: &#34;dv&#34;.
      * 
      */
     private @Nullable String type;
-    private @Nullable List<CustomHostnameSslValidationError> validationErrors;
-    private @Nullable List<CustomHostnameSslValidationRecord> validationRecords;
     /**
      * @return Indicates whether the certificate covers a wildcard.
      * 
@@ -58,14 +72,34 @@ public final class CustomHostnameSsl {
 
     private CustomHostnameSsl() {}
     /**
-     * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+     * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     public Optional<String> bundleMethod() {
         return Optional.ofNullable(this.bundleMethod);
     }
+    /**
+     * @return The Certificate Authority that will issue the certificate
+     * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
+     * 
+     */
     public Optional<String> certificateAuthority() {
         return Optional.ofNullable(this.certificateAuthority);
+    }
+    /**
+     * @return Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
+     * 
+     */
+    public Optional<Boolean> cloudflareBranding() {
+        return Optional.ofNullable(this.cloudflareBranding);
+    }
+    /**
+     * @return Array of custom certificate and key pairs (1 or 2 pairs allowed)
+     * 
+     */
+    public List<CustomHostnameSslCustomCertBundle> customCertBundles() {
+        return this.customCertBundles == null ? List.of() : this.customCertBundles;
     }
     /**
      * @return If a custom uploaded certificate is used.
@@ -82,34 +116,27 @@ public final class CustomHostnameSsl {
         return Optional.ofNullable(this.customKey);
     }
     /**
-     * @return Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
+     * @return Domain control validation (DCV) method used for this hostname.
+     * Available values: &#34;http&#34;, &#34;txt&#34;, &#34;email&#34;.
      * 
      */
     public Optional<String> method() {
         return Optional.ofNullable(this.method);
     }
     /**
-     * @return SSL/TLS settings for the certificate.
+     * @return SSL specific settings.
      * 
      */
-    public List<CustomHostnameSslSetting> settings() {
-        return this.settings == null ? List.of() : this.settings;
-    }
-    public Optional<String> status() {
-        return Optional.ofNullable(this.status);
+    public Optional<CustomHostnameSslSettings> settings() {
+        return Optional.ofNullable(this.settings);
     }
     /**
-     * @return Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
+     * @return Level of validation to be used for this hostname. Domain validation (dv) must be used.
+     * Available values: &#34;dv&#34;.
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
-    }
-    public List<CustomHostnameSslValidationError> validationErrors() {
-        return this.validationErrors == null ? List.of() : this.validationErrors;
-    }
-    public List<CustomHostnameSslValidationRecord> validationRecords() {
-        return this.validationRecords == null ? List.of() : this.validationRecords;
     }
     /**
      * @return Indicates whether the certificate covers a wildcard.
@@ -130,28 +157,26 @@ public final class CustomHostnameSsl {
     public static final class Builder {
         private @Nullable String bundleMethod;
         private @Nullable String certificateAuthority;
+        private @Nullable Boolean cloudflareBranding;
+        private @Nullable List<CustomHostnameSslCustomCertBundle> customCertBundles;
         private @Nullable String customCertificate;
         private @Nullable String customKey;
         private @Nullable String method;
-        private @Nullable List<CustomHostnameSslSetting> settings;
-        private @Nullable String status;
+        private @Nullable CustomHostnameSslSettings settings;
         private @Nullable String type;
-        private @Nullable List<CustomHostnameSslValidationError> validationErrors;
-        private @Nullable List<CustomHostnameSslValidationRecord> validationRecords;
         private @Nullable Boolean wildcard;
         public Builder() {}
         public Builder(CustomHostnameSsl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bundleMethod = defaults.bundleMethod;
     	      this.certificateAuthority = defaults.certificateAuthority;
+    	      this.cloudflareBranding = defaults.cloudflareBranding;
+    	      this.customCertBundles = defaults.customCertBundles;
     	      this.customCertificate = defaults.customCertificate;
     	      this.customKey = defaults.customKey;
     	      this.method = defaults.method;
     	      this.settings = defaults.settings;
-    	      this.status = defaults.status;
     	      this.type = defaults.type;
-    	      this.validationErrors = defaults.validationErrors;
-    	      this.validationRecords = defaults.validationRecords;
     	      this.wildcard = defaults.wildcard;
         }
 
@@ -166,6 +191,21 @@ public final class CustomHostnameSsl {
 
             this.certificateAuthority = certificateAuthority;
             return this;
+        }
+        @CustomType.Setter
+        public Builder cloudflareBranding(@Nullable Boolean cloudflareBranding) {
+
+            this.cloudflareBranding = cloudflareBranding;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customCertBundles(@Nullable List<CustomHostnameSslCustomCertBundle> customCertBundles) {
+
+            this.customCertBundles = customCertBundles;
+            return this;
+        }
+        public Builder customCertBundles(CustomHostnameSslCustomCertBundle... customCertBundles) {
+            return customCertBundles(List.of(customCertBundles));
         }
         @CustomType.Setter
         public Builder customCertificate(@Nullable String customCertificate) {
@@ -186,18 +226,9 @@ public final class CustomHostnameSsl {
             return this;
         }
         @CustomType.Setter
-        public Builder settings(@Nullable List<CustomHostnameSslSetting> settings) {
+        public Builder settings(@Nullable CustomHostnameSslSettings settings) {
 
             this.settings = settings;
-            return this;
-        }
-        public Builder settings(CustomHostnameSslSetting... settings) {
-            return settings(List.of(settings));
-        }
-        @CustomType.Setter
-        public Builder status(@Nullable String status) {
-
-            this.status = status;
             return this;
         }
         @CustomType.Setter
@@ -205,24 +236,6 @@ public final class CustomHostnameSsl {
 
             this.type = type;
             return this;
-        }
-        @CustomType.Setter
-        public Builder validationErrors(@Nullable List<CustomHostnameSslValidationError> validationErrors) {
-
-            this.validationErrors = validationErrors;
-            return this;
-        }
-        public Builder validationErrors(CustomHostnameSslValidationError... validationErrors) {
-            return validationErrors(List.of(validationErrors));
-        }
-        @CustomType.Setter
-        public Builder validationRecords(@Nullable List<CustomHostnameSslValidationRecord> validationRecords) {
-
-            this.validationRecords = validationRecords;
-            return this;
-        }
-        public Builder validationRecords(CustomHostnameSslValidationRecord... validationRecords) {
-            return validationRecords(List.of(validationRecords));
         }
         @CustomType.Setter
         public Builder wildcard(@Nullable Boolean wildcard) {
@@ -234,14 +247,13 @@ public final class CustomHostnameSsl {
             final var _resultValue = new CustomHostnameSsl();
             _resultValue.bundleMethod = bundleMethod;
             _resultValue.certificateAuthority = certificateAuthority;
+            _resultValue.cloudflareBranding = cloudflareBranding;
+            _resultValue.customCertBundles = customCertBundles;
             _resultValue.customCertificate = customCertificate;
             _resultValue.customKey = customKey;
             _resultValue.method = method;
             _resultValue.settings = settings;
-            _resultValue.status = status;
             _resultValue.type = type;
-            _resultValue.validationErrors = validationErrors;
-            _resultValue.validationRecords = validationRecords;
             _resultValue.wildcard = wildcard;
             return _resultValue;
         }

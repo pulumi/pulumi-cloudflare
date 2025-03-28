@@ -10,10 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare rate limit resource for a given zone. This can
-    /// be used to limit the traffic you receive zone-wide, or matching more
-    /// specific types of requests/responses.
-    /// 
     /// &gt; `cloudflare.RateLimit` is in a deprecation phase until June 15th, 2025.
     ///   During this time period, this resource is still
     ///   fully supported but you are strongly advised to move to the
@@ -30,80 +26,51 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.RateLimit("example", new()
+    ///     var exampleRateLimit = new Cloudflare.RateLimit("example_rate_limit", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Threshold = 2000,
-    ///         Period = 2,
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Action = new Cloudflare.Inputs.RateLimitActionArgs
+    ///         {
+    ///             Mode = "simulate",
+    ///             Response = new Cloudflare.Inputs.RateLimitActionResponseArgs
+    ///             {
+    ///                 Body = "&lt;error&gt;This request has been rate-limited.&lt;/error&gt;",
+    ///                 ContentType = "text/xml",
+    ///             },
+    ///             Timeout = 86400,
+    ///         },
     ///         Match = new Cloudflare.Inputs.RateLimitMatchArgs
     ///         {
+    ///             Headers = new[]
+    ///             {
+    ///                 new Cloudflare.Inputs.RateLimitMatchHeaderArgs
+    ///                 {
+    ///                     Name = "Cf-Cache-Status",
+    ///                     Op = "eq",
+    ///                     Value = "HIT",
+    ///                 },
+    ///             },
     ///             Request = new Cloudflare.Inputs.RateLimitMatchRequestArgs
     ///             {
-    ///                 UrlPattern = $"{cloudflareZone}/*",
+    ///                 Methods = new[]
+    ///                 {
+    ///                     "GET",
+    ///                     "POST",
+    ///                 },
     ///                 Schemes = new[]
     ///                 {
     ///                     "HTTP",
     ///                     "HTTPS",
     ///                 },
-    ///                 Methods = new[]
-    ///                 {
-    ///                     "GET",
-    ///                     "POST",
-    ///                     "PUT",
-    ///                     "DELETE",
-    ///                     "PATCH",
-    ///                     "HEAD",
-    ///                 },
+    ///                 Url = "*.example.org/path*",
     ///             },
     ///             Response = new Cloudflare.Inputs.RateLimitMatchResponseArgs
     ///             {
-    ///                 Statuses = new[]
-    ///                 {
-    ///                     200,
-    ///                     201,
-    ///                     202,
-    ///                     301,
-    ///                     429,
-    ///                 },
-    ///                 OriginTraffic = false,
-    ///                 Headers = new[]
-    ///                 {
-    ///                     
-    ///                     {
-    ///                         { "name", "Host" },
-    ///                         { "op", "eq" },
-    ///                         { "value", "localhost" },
-    ///                     },
-    ///                     
-    ///                     {
-    ///                         { "name", "X-Example" },
-    ///                         { "op", "ne" },
-    ///                         { "value", "my-example" },
-    ///                     },
-    ///                 },
+    ///                 OriginTraffic = true,
     ///             },
     ///         },
-    ///         Action = new Cloudflare.Inputs.RateLimitActionArgs
-    ///         {
-    ///             Mode = "simulate",
-    ///             Timeout = 43200,
-    ///             Response = new Cloudflare.Inputs.RateLimitActionResponseArgs
-    ///             {
-    ///                 ContentType = "text/plain",
-    ///                 Body = "custom response body",
-    ///             },
-    ///         },
-    ///         Correlate = new Cloudflare.Inputs.RateLimitCorrelateArgs
-    ///         {
-    ///             By = "nat",
-    ///         },
-    ///         Disabled = false,
-    ///         Description = "example rate limit for a zone",
-    ///         BypassUrlPatterns = new[]
-    ///         {
-    ///             "example.com/bypass1",
-    ///             "example.com/bypass2",
-    ///         },
+    ///         Period = 900,
+    ///         Threshold = 60,
     ///     });
     /// 
     /// });
@@ -112,59 +79,56 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/rateLimit:RateLimit example &lt;zone_id&gt;/&lt;rate_limit_id&gt;
+    /// $ pulumi import cloudflare:index/rateLimit:RateLimit example '&lt;zone_id&gt;/&lt;rate_limit_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/rateLimit:RateLimit")]
     public partial class RateLimit : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+        /// The action to perform when the threshold of matched traffic within the configured period is exceeded.
         /// </summary>
         [Output("action")]
         public Output<Outputs.RateLimitAction> Action { get; private set; } = null!;
 
-        [Output("bypassUrlPatterns")]
-        public Output<ImmutableArray<string>> BypassUrlPatterns { get; private set; } = null!;
-
         /// <summary>
-        /// Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
+        /// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
         /// </summary>
-        [Output("correlate")]
-        public Output<Outputs.RateLimitCorrelate?> Correlate { get; private set; } = null!;
+        [Output("bypasses")]
+        public Output<ImmutableArray<Outputs.RateLimitBypass>> Bypasses { get; private set; } = null!;
 
         /// <summary>
-        /// A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
+        /// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this ratelimit is currently disabled. Defaults to `false`.
+        /// When true, indicates that the rate limit is currently disabled.
         /// </summary>
         [Output("disabled")]
-        public Output<bool?> Disabled { get; private set; } = null!;
+        public Output<bool> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+        /// Determines which traffic the rate limit counts towards the threshold.
         /// </summary>
         [Output("match")]
         public Output<Outputs.RateLimitMatch> Match { get; private set; } = null!;
 
         /// <summary>
-        /// The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
+        /// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
         /// </summary>
         [Output("period")]
-        public Output<int> Period { get; private set; } = null!;
+        public Output<double> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The threshold that triggers the rate limit mitigations, combine with period.
+        /// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
         /// </summary>
         [Output("threshold")]
-        public Output<int> Threshold { get; private set; } = null!;
+        public Output<double> Threshold { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -216,57 +180,31 @@ namespace Pulumi.Cloudflare
     public sealed class RateLimitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+        /// The action to perform when the threshold of matched traffic within the configured period is exceeded.
         /// </summary>
         [Input("action", required: true)]
         public Input<Inputs.RateLimitActionArgs> Action { get; set; } = null!;
 
-        [Input("bypassUrlPatterns")]
-        private InputList<string>? _bypassUrlPatterns;
-        public InputList<string> BypassUrlPatterns
-        {
-            get => _bypassUrlPatterns ?? (_bypassUrlPatterns = new InputList<string>());
-            set => _bypassUrlPatterns = value;
-        }
-
         /// <summary>
-        /// Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
+        /// Determines which traffic the rate limit counts towards the threshold.
         /// </summary>
-        [Input("correlate")]
-        public Input<Inputs.RateLimitCorrelateArgs>? Correlate { get; set; }
+        [Input("match", required: true)]
+        public Input<Inputs.RateLimitMatchArgs> Match { get; set; } = null!;
 
         /// <summary>
-        /// A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Whether this ratelimit is currently disabled. Defaults to `false`.
-        /// </summary>
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
-
-        /// <summary>
-        /// Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
-        /// </summary>
-        [Input("match")]
-        public Input<Inputs.RateLimitMatchArgs>? Match { get; set; }
-
-        /// <summary>
-        /// The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
+        /// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
         /// </summary>
         [Input("period", required: true)]
-        public Input<int> Period { get; set; } = null!;
+        public Input<double> Period { get; set; } = null!;
 
         /// <summary>
-        /// The threshold that triggers the rate limit mitigations, combine with period.
+        /// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
         /// </summary>
         [Input("threshold", required: true)]
-        public Input<int> Threshold { get; set; } = null!;
+        public Input<double> Threshold { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -280,57 +218,55 @@ namespace Pulumi.Cloudflare
     public sealed class RateLimitState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+        /// The action to perform when the threshold of matched traffic within the configured period is exceeded.
         /// </summary>
         [Input("action")]
         public Input<Inputs.RateLimitActionGetArgs>? Action { get; set; }
 
-        [Input("bypassUrlPatterns")]
-        private InputList<string>? _bypassUrlPatterns;
-        public InputList<string> BypassUrlPatterns
+        [Input("bypasses")]
+        private InputList<Inputs.RateLimitBypassGetArgs>? _bypasses;
+
+        /// <summary>
+        /// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
+        /// </summary>
+        public InputList<Inputs.RateLimitBypassGetArgs> Bypasses
         {
-            get => _bypassUrlPatterns ?? (_bypassUrlPatterns = new InputList<string>());
-            set => _bypassUrlPatterns = value;
+            get => _bypasses ?? (_bypasses = new InputList<Inputs.RateLimitBypassGetArgs>());
+            set => _bypasses = value;
         }
 
         /// <summary>
-        /// Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
-        /// </summary>
-        [Input("correlate")]
-        public Input<Inputs.RateLimitCorrelateGetArgs>? Correlate { get; set; }
-
-        /// <summary>
-        /// A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
+        /// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether this ratelimit is currently disabled. Defaults to `false`.
+        /// When true, indicates that the rate limit is currently disabled.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+        /// Determines which traffic the rate limit counts towards the threshold.
         /// </summary>
         [Input("match")]
         public Input<Inputs.RateLimitMatchGetArgs>? Match { get; set; }
 
         /// <summary>
-        /// The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
+        /// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
         /// </summary>
         [Input("period")]
-        public Input<int>? Period { get; set; }
+        public Input<double>? Period { get; set; }
 
         /// <summary>
-        /// The threshold that triggers the rate limit mitigations, combine with period.
+        /// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
         /// </summary>
         [Input("threshold")]
-        public Input<int>? Threshold { get; set; }
+        public Input<double>? Threshold { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

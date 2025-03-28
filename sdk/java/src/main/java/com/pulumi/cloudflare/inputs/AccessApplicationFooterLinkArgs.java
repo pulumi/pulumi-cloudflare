@@ -5,10 +5,9 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class AccessApplicationFooterLinkArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,33 +15,33 @@ public final class AccessApplicationFooterLinkArgs extends com.pulumi.resources.
     public static final AccessApplicationFooterLinkArgs Empty = new AccessApplicationFooterLinkArgs();
 
     /**
-     * The name of the footer link.
+     * The hypertext in the footer link.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
-     * @return The name of the footer link.
+     * @return The hypertext in the footer link.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
-     * The URL of the footer link.
+     * the hyperlink in the footer link.
      * 
      */
-    @Import(name="url")
-    private @Nullable Output<String> url;
+    @Import(name="url", required=true)
+    private Output<String> url;
 
     /**
-     * @return The URL of the footer link.
+     * @return the hyperlink in the footer link.
      * 
      */
-    public Optional<Output<String>> url() {
-        return Optional.ofNullable(this.url);
+    public Output<String> url() {
+        return this.url;
     }
 
     private AccessApplicationFooterLinkArgs() {}
@@ -71,18 +70,18 @@ public final class AccessApplicationFooterLinkArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name The name of the footer link.
+         * @param name The hypertext in the footer link.
          * 
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The name of the footer link.
+         * @param name The hypertext in the footer link.
          * 
          * @return builder
          * 
@@ -92,18 +91,18 @@ public final class AccessApplicationFooterLinkArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param url The URL of the footer link.
+         * @param url the hyperlink in the footer link.
          * 
          * @return builder
          * 
          */
-        public Builder url(@Nullable Output<String> url) {
+        public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
 
         /**
-         * @param url The URL of the footer link.
+         * @param url the hyperlink in the footer link.
          * 
          * @return builder
          * 
@@ -113,6 +112,12 @@ public final class AccessApplicationFooterLinkArgs extends com.pulumi.resources.
         }
 
         public AccessApplicationFooterLinkArgs build() {
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("AccessApplicationFooterLinkArgs", "name");
+            }
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("AccessApplicationFooterLinkArgs", "url");
+            }
             return $;
         }
     }

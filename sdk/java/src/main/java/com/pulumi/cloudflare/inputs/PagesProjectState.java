@@ -4,7 +4,9 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.PagesProjectBuildConfigArgs;
+import com.pulumi.cloudflare.inputs.PagesProjectCanonicalDeploymentArgs;
 import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsArgs;
+import com.pulumi.cloudflare.inputs.PagesProjectLatestDeploymentArgs;
 import com.pulumi.cloudflare.inputs.PagesProjectSourceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -20,14 +22,14 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
     public static final PagesProjectState Empty = new PagesProjectState();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -35,18 +37,33 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+     * Configs for the project build process.
      * 
      */
     @Import(name="buildConfig")
     private @Nullable Output<PagesProjectBuildConfigArgs> buildConfig;
 
     /**
-     * @return Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+     * @return Configs for the project build process.
      * 
      */
     public Optional<Output<PagesProjectBuildConfigArgs>> buildConfig() {
         return Optional.ofNullable(this.buildConfig);
+    }
+
+    /**
+     * Most recent deployment to the repo.
+     * 
+     */
+    @Import(name="canonicalDeployment")
+    private @Nullable Output<PagesProjectCanonicalDeploymentArgs> canonicalDeployment;
+
+    /**
+     * @return Most recent deployment to the repo.
+     * 
+     */
+    public Optional<Output<PagesProjectCanonicalDeploymentArgs>> canonicalDeployment() {
+        return Optional.ofNullable(this.canonicalDeployment);
     }
 
     /**
@@ -65,14 +82,14 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for deployments in a project.
+     * Configs for deployments in a project.
      * 
      */
     @Import(name="deploymentConfigs")
     private @Nullable Output<PagesProjectDeploymentConfigsArgs> deploymentConfigs;
 
     /**
-     * @return Configuration for deployments in a project.
+     * @return Configs for deployments in a project.
      * 
      */
     public Optional<Output<PagesProjectDeploymentConfigsArgs>> deploymentConfigs() {
@@ -95,6 +112,21 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Most recent deployment to the repo.
+     * 
+     */
+    @Import(name="latestDeployment")
+    private @Nullable Output<PagesProjectLatestDeploymentArgs> latestDeployment;
+
+    /**
+     * @return Most recent deployment to the repo.
+     * 
+     */
+    public Optional<Output<PagesProjectLatestDeploymentArgs>> latestDeployment() {
+        return Optional.ofNullable(this.latestDeployment);
+    }
+
+    /**
      * Name of the project.
      * 
      */
@@ -110,31 +142,23 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the branch that is used for the production environment.
+     * Production branch of the project. Used to identify production deployments.
      * 
      */
     @Import(name="productionBranch")
     private @Nullable Output<String> productionBranch;
 
     /**
-     * @return The name of the branch that is used for the production environment.
+     * @return Production branch of the project. Used to identify production deployments.
      * 
      */
     public Optional<Output<String>> productionBranch() {
         return Optional.ofNullable(this.productionBranch);
     }
 
-    /**
-     * Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-     * 
-     */
     @Import(name="source")
     private @Nullable Output<PagesProjectSourceArgs> source;
 
-    /**
-     * @return Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-     * 
-     */
     public Optional<Output<PagesProjectSourceArgs>> source() {
         return Optional.ofNullable(this.source);
     }
@@ -159,9 +183,11 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
     private PagesProjectState(PagesProjectState $) {
         this.accountId = $.accountId;
         this.buildConfig = $.buildConfig;
+        this.canonicalDeployment = $.canonicalDeployment;
         this.createdOn = $.createdOn;
         this.deploymentConfigs = $.deploymentConfigs;
         this.domains = $.domains;
+        this.latestDeployment = $.latestDeployment;
         this.name = $.name;
         this.productionBranch = $.productionBranch;
         this.source = $.source;
@@ -187,7 +213,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -198,7 +224,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -208,7 +234,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param buildConfig Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+         * @param buildConfig Configs for the project build process.
          * 
          * @return builder
          * 
@@ -219,13 +245,34 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param buildConfig Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+         * @param buildConfig Configs for the project build process.
          * 
          * @return builder
          * 
          */
         public Builder buildConfig(PagesProjectBuildConfigArgs buildConfig) {
             return buildConfig(Output.of(buildConfig));
+        }
+
+        /**
+         * @param canonicalDeployment Most recent deployment to the repo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder canonicalDeployment(@Nullable Output<PagesProjectCanonicalDeploymentArgs> canonicalDeployment) {
+            $.canonicalDeployment = canonicalDeployment;
+            return this;
+        }
+
+        /**
+         * @param canonicalDeployment Most recent deployment to the repo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder canonicalDeployment(PagesProjectCanonicalDeploymentArgs canonicalDeployment) {
+            return canonicalDeployment(Output.of(canonicalDeployment));
         }
 
         /**
@@ -250,7 +297,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deploymentConfigs Configuration for deployments in a project.
+         * @param deploymentConfigs Configs for deployments in a project.
          * 
          * @return builder
          * 
@@ -261,7 +308,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deploymentConfigs Configuration for deployments in a project.
+         * @param deploymentConfigs Configs for deployments in a project.
          * 
          * @return builder
          * 
@@ -302,6 +349,27 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param latestDeployment Most recent deployment to the repo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder latestDeployment(@Nullable Output<PagesProjectLatestDeploymentArgs> latestDeployment) {
+            $.latestDeployment = latestDeployment;
+            return this;
+        }
+
+        /**
+         * @param latestDeployment Most recent deployment to the repo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder latestDeployment(PagesProjectLatestDeploymentArgs latestDeployment) {
+            return latestDeployment(Output.of(latestDeployment));
+        }
+
+        /**
          * @param name Name of the project.
          * 
          * @return builder
@@ -323,7 +391,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param productionBranch The name of the branch that is used for the production environment.
+         * @param productionBranch Production branch of the project. Used to identify production deployments.
          * 
          * @return builder
          * 
@@ -334,7 +402,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param productionBranch The name of the branch that is used for the production environment.
+         * @param productionBranch Production branch of the project. Used to identify production deployments.
          * 
          * @return builder
          * 
@@ -343,23 +411,11 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
             return productionBranch(Output.of(productionBranch));
         }
 
-        /**
-         * @param source Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-         * 
-         * @return builder
-         * 
-         */
         public Builder source(@Nullable Output<PagesProjectSourceArgs> source) {
             $.source = source;
             return this;
         }
 
-        /**
-         * @param source Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-         * 
-         * @return builder
-         * 
-         */
         public Builder source(PagesProjectSourceArgs source) {
             return source(Output.of(source));
         }

@@ -5,8 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.RateLimitActionResponse;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,41 +14,47 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RateLimitAction {
     /**
-     * @return The type of action to perform. Available values: `simulate`, `ban`, `challenge`, `js_challenge`, `managed_challenge`.
+     * @return The action to perform.
+     * Available values: &#34;simulate&#34;, &#34;ban&#34;, &#34;challenge&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
-    private String mode;
+    private @Nullable String mode;
     /**
-     * @return Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page.
+     * @return A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional.
+     * Notes: If you omit this object, Cloudflare will use the default HTML error page. If &#34;mode&#34; is &#34;challenge&#34;, &#34;managed*challenge&#34;, or &#34;js*challenge&#34;, Cloudflare will use the zone challenge pages and you should not provide the &#34;response&#34; object.
      * 
      */
     private @Nullable RateLimitActionResponse response;
     /**
-     * @return The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period.
+     * @return The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period.
+     * Notes: If &#34;mode&#34; is &#34;challenge&#34;, &#34;managed*challenge&#34;, or &#34;js*challenge&#34;, Cloudflare will use the zone&#39;s Challenge Passage time and you should not provide this value.
      * 
      */
-    private @Nullable Integer timeout;
+    private @Nullable Double timeout;
 
     private RateLimitAction() {}
     /**
-     * @return The type of action to perform. Available values: `simulate`, `ban`, `challenge`, `js_challenge`, `managed_challenge`.
+     * @return The action to perform.
+     * Available values: &#34;simulate&#34;, &#34;ban&#34;, &#34;challenge&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
-    public String mode() {
-        return this.mode;
+    public Optional<String> mode() {
+        return Optional.ofNullable(this.mode);
     }
     /**
-     * @return Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page.
+     * @return A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional.
+     * Notes: If you omit this object, Cloudflare will use the default HTML error page. If &#34;mode&#34; is &#34;challenge&#34;, &#34;managed*challenge&#34;, or &#34;js*challenge&#34;, Cloudflare will use the zone challenge pages and you should not provide the &#34;response&#34; object.
      * 
      */
     public Optional<RateLimitActionResponse> response() {
         return Optional.ofNullable(this.response);
     }
     /**
-     * @return The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period.
+     * @return The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period.
+     * Notes: If &#34;mode&#34; is &#34;challenge&#34;, &#34;managed*challenge&#34;, or &#34;js*challenge&#34;, Cloudflare will use the zone&#39;s Challenge Passage time and you should not provide this value.
      * 
      */
-    public Optional<Integer> timeout() {
+    public Optional<Double> timeout() {
         return Optional.ofNullable(this.timeout);
     }
 
@@ -62,9 +67,9 @@ public final class RateLimitAction {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String mode;
+        private @Nullable String mode;
         private @Nullable RateLimitActionResponse response;
-        private @Nullable Integer timeout;
+        private @Nullable Double timeout;
         public Builder() {}
         public Builder(RateLimitAction defaults) {
     	      Objects.requireNonNull(defaults);
@@ -74,10 +79,8 @@ public final class RateLimitAction {
         }
 
         @CustomType.Setter
-        public Builder mode(String mode) {
-            if (mode == null) {
-              throw new MissingRequiredPropertyException("RateLimitAction", "mode");
-            }
+        public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
@@ -88,7 +91,7 @@ public final class RateLimitAction {
             return this;
         }
         @CustomType.Setter
-        public Builder timeout(@Nullable Integer timeout) {
+        public Builder timeout(@Nullable Double timeout) {
 
             this.timeout = timeout;
             return this;

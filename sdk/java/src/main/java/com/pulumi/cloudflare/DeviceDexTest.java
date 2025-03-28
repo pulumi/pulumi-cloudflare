@@ -7,17 +7,19 @@ import com.pulumi.cloudflare.DeviceDexTestArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.DeviceDexTestState;
 import com.pulumi.cloudflare.outputs.DeviceDexTestData;
+import com.pulumi.cloudflare.outputs.DeviceDexTestTargetPolicy;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Device Dex Test resource. Device Dex Tests allow for building location-aware device settings policies.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -28,9 +30,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.DeviceDexTest;
- * import com.pulumi.cloudflare.DeviceDexTestArgs;
- * import com.pulumi.cloudflare.inputs.DeviceDexTestDataArgs;
+ * import com.pulumi.cloudflare.ZeroTrustDexTest;
+ * import com.pulumi.cloudflare.ZeroTrustDexTestArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDexTestDataArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDexTestTargetPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,17 +47,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new DeviceDexTest("example", DeviceDexTestArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("GET homepage")
- *             .description("Send a HTTP GET request to the home endpoint every half hour.")
- *             .interval("0h30m0s")
- *             .enabled(true)
- *             .data(DeviceDexTestDataArgs.builder()
- *                 .host("https://example.com/home")
+ *         var exampleZeroTrustDexTest = new ZeroTrustDexTest("exampleZeroTrustDexTest", ZeroTrustDexTestArgs.builder()
+ *             .accountId("699d98642c564d2e855e9661899b7252")
+ *             .data(ZeroTrustDexTestDataArgs.builder()
+ *                 .host("https://dash.cloudflare.com")
  *                 .kind("http")
  *                 .method("GET")
  *                 .build())
+ *             .enabled(true)
+ *             .interval("30m")
+ *             .name("HTTP dash health check")
+ *             .description("Checks the dash endpoint every 30 minutes")
+ *             .targetPolicies(ZeroTrustDexTestTargetPolicyArgs.builder()
+ *                 .id("id")
+ *                 .default_(true)
+ *                 .name("name")
+ *                 .build())
+ *             .targeted(true)
  *             .build());
  * 
  *     }
@@ -66,39 +75,21 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/deviceDexTest:DeviceDexTest example &lt;account_id&gt;/&lt;device_dex_test_id&gt;
+ * $ pulumi import cloudflare:index/deviceDexTest:DeviceDexTest example &#39;&lt;account_id&gt;/&lt;dex_test_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare.index/devicedextest.DeviceDexTest has been deprecated in favor of cloudflare.index/zerotrustdextest.ZeroTrustDexTest
+ * 
  */
+@Deprecated /* cloudflare.index/devicedextest.DeviceDexTest has been deprecated in favor of cloudflare.index/zerotrustdextest.ZeroTrustDexTest */
 @ResourceType(type="cloudflare:index/deviceDexTest:DeviceDexTest")
 public class DeviceDexTest extends com.pulumi.resources.CustomResource {
-    /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
-    }
-    /**
-     * Timestamp of when the Dex Test was created.
-     * 
-     */
-    @Export(name="created", refs={String.class}, tree="[0]")
-    private Output<String> created;
-
-    /**
-     * @return Timestamp of when the Dex Test was created.
-     * 
-     */
-    public Output<String> created() {
-        return this.created;
     }
     /**
      * The configuration object which contains the details for the WARP client to conduct the test.
@@ -119,14 +110,14 @@ public class DeviceDexTest extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output<String> description;
+    private Output</* @Nullable */ String> description;
 
     /**
      * @return Additional details about the test.
      * 
      */
-    public Output<String> description() {
-        return this.description;
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
      * Determines whether or not the test is active.
@@ -157,32 +148,52 @@ public class DeviceDexTest extends com.pulumi.resources.CustomResource {
         return this.interval;
     }
     /**
-     * The name of the Device Dex Test. Must be unique.
+     * The name of the DEX test. Must be unique.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the Device Dex Test. Must be unique.
+     * @return The name of the DEX test. Must be unique.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Timestamp of when the Dex Test was last updated.
+     * Device settings profiles targeted by this test
      * 
      */
-    @Export(name="updated", refs={String.class}, tree="[0]")
-    private Output<String> updated;
+    @Export(name="targetPolicies", refs={List.class,DeviceDexTestTargetPolicy.class}, tree="[0,1]")
+    private Output<List<DeviceDexTestTargetPolicy>> targetPolicies;
 
     /**
-     * @return Timestamp of when the Dex Test was last updated.
+     * @return Device settings profiles targeted by this test
      * 
      */
-    public Output<String> updated() {
-        return this.updated;
+    public Output<List<DeviceDexTestTargetPolicy>> targetPolicies() {
+        return this.targetPolicies;
+    }
+    @Export(name="targeted", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> targeted;
+
+    public Output<Optional<Boolean>> targeted() {
+        return Codegen.optional(this.targeted);
+    }
+    /**
+     * The unique identifier for the test.
+     * 
+     */
+    @Export(name="testId", refs={String.class}, tree="[0]")
+    private Output<String> testId;
+
+    /**
+     * @return The unique identifier for the test.
+     * 
+     */
+    public Output<String> testId() {
+        return this.testId;
     }
 
     /**
@@ -224,6 +235,9 @@ public class DeviceDexTest extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/deviceDexTest:DeviceDexTest").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

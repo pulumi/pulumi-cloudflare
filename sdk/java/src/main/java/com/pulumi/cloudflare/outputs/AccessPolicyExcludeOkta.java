@@ -4,11 +4,9 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class AccessPolicyExcludeOkta {
@@ -16,27 +14,27 @@ public final class AccessPolicyExcludeOkta {
      * @return The ID of your Okta identity provider.
      * 
      */
-    private @Nullable String identityProviderId;
+    private String identityProviderId;
     /**
-     * @return The name of the Okta Group.
+     * @return The name of the Okta group.
      * 
      */
-    private @Nullable List<String> names;
+    private String name;
 
     private AccessPolicyExcludeOkta() {}
     /**
      * @return The ID of your Okta identity provider.
      * 
      */
-    public Optional<String> identityProviderId() {
-        return Optional.ofNullable(this.identityProviderId);
+    public String identityProviderId() {
+        return this.identityProviderId;
     }
     /**
-     * @return The name of the Okta Group.
+     * @return The name of the Okta group.
      * 
      */
-    public List<String> names() {
-        return this.names == null ? List.of() : this.names;
+    public String name() {
+        return this.name;
     }
 
     public static Builder builder() {
@@ -48,34 +46,35 @@ public final class AccessPolicyExcludeOkta {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String identityProviderId;
-        private @Nullable List<String> names;
+        private String identityProviderId;
+        private String name;
         public Builder() {}
         public Builder(AccessPolicyExcludeOkta defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.identityProviderId = defaults.identityProviderId;
-    	      this.names = defaults.names;
+    	      this.name = defaults.name;
         }
 
         @CustomType.Setter
-        public Builder identityProviderId(@Nullable String identityProviderId) {
-
+        public Builder identityProviderId(String identityProviderId) {
+            if (identityProviderId == null) {
+              throw new MissingRequiredPropertyException("AccessPolicyExcludeOkta", "identityProviderId");
+            }
             this.identityProviderId = identityProviderId;
             return this;
         }
         @CustomType.Setter
-        public Builder names(@Nullable List<String> names) {
-
-            this.names = names;
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("AccessPolicyExcludeOkta", "name");
+            }
+            this.name = name;
             return this;
-        }
-        public Builder names(String... names) {
-            return names(List.of(names));
         }
         public AccessPolicyExcludeOkta build() {
             final var _resultValue = new AccessPolicyExcludeOkta();
             _resultValue.identityProviderId = identityProviderId;
-            _resultValue.names = names;
+            _resultValue.name = name;
             return _resultValue;
         }
     }

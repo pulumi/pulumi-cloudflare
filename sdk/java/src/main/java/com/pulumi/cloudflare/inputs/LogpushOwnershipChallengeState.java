@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +17,14 @@ public final class LogpushOwnershipChallengeState extends com.pulumi.resources.R
     public static final LogpushOwnershipChallengeState Empty = new LogpushOwnershipChallengeState();
 
     /**
-     * The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -31,44 +32,50 @@ public final class LogpushOwnershipChallengeState extends com.pulumi.resources.R
     }
 
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
      * 
      */
     @Import(name="destinationConf")
     private @Nullable Output<String> destinationConf;
 
     /**
-     * @return Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
+     * @return Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
      * 
      */
     public Optional<Output<String>> destinationConf() {
         return Optional.ofNullable(this.destinationConf);
     }
 
-    /**
-     * The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
-     * 
-     */
-    @Import(name="ownershipChallengeFilename")
-    private @Nullable Output<String> ownershipChallengeFilename;
+    @Import(name="filename")
+    private @Nullable Output<String> filename;
 
-    /**
-     * @return The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
-     * 
-     */
-    public Optional<Output<String>> ownershipChallengeFilename() {
-        return Optional.ofNullable(this.ownershipChallengeFilename);
+    public Optional<Output<String>> filename() {
+        return Optional.ofNullable(this.filename);
+    }
+
+    @Import(name="message")
+    private @Nullable Output<String> message;
+
+    public Optional<Output<String>> message() {
+        return Optional.ofNullable(this.message);
+    }
+
+    @Import(name="valid")
+    private @Nullable Output<Boolean> valid;
+
+    public Optional<Output<Boolean>> valid() {
+        return Optional.ofNullable(this.valid);
     }
 
     /**
-     * The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -80,7 +87,9 @@ public final class LogpushOwnershipChallengeState extends com.pulumi.resources.R
     private LogpushOwnershipChallengeState(LogpushOwnershipChallengeState $) {
         this.accountId = $.accountId;
         this.destinationConf = $.destinationConf;
-        this.ownershipChallengeFilename = $.ownershipChallengeFilename;
+        this.filename = $.filename;
+        this.message = $.message;
+        this.valid = $.valid;
         this.zoneId = $.zoneId;
     }
 
@@ -103,7 +112,7 @@ public final class LogpushOwnershipChallengeState extends com.pulumi.resources.R
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -114,7 +123,7 @@ public final class LogpushOwnershipChallengeState extends com.pulumi.resources.R
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -124,7 +133,7 @@ public final class LogpushOwnershipChallengeState extends com.pulumi.resources.R
         }
 
         /**
-         * @param destinationConf Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
+         * @param destinationConf Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
          * 
          * @return builder
          * 
@@ -135,7 +144,7 @@ public final class LogpushOwnershipChallengeState extends com.pulumi.resources.R
         }
 
         /**
-         * @param destinationConf Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
+         * @param destinationConf Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
          * 
          * @return builder
          * 
@@ -144,29 +153,35 @@ public final class LogpushOwnershipChallengeState extends com.pulumi.resources.R
             return destinationConf(Output.of(destinationConf));
         }
 
-        /**
-         * @param ownershipChallengeFilename The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ownershipChallengeFilename(@Nullable Output<String> ownershipChallengeFilename) {
-            $.ownershipChallengeFilename = ownershipChallengeFilename;
+        public Builder filename(@Nullable Output<String> filename) {
+            $.filename = filename;
             return this;
         }
 
-        /**
-         * @param ownershipChallengeFilename The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ownershipChallengeFilename(String ownershipChallengeFilename) {
-            return ownershipChallengeFilename(Output.of(ownershipChallengeFilename));
+        public Builder filename(String filename) {
+            return filename(Output.of(filename));
+        }
+
+        public Builder message(@Nullable Output<String> message) {
+            $.message = message;
+            return this;
+        }
+
+        public Builder message(String message) {
+            return message(Output.of(message));
+        }
+
+        public Builder valid(@Nullable Output<Boolean> valid) {
+            $.valid = valid;
+            return this;
+        }
+
+        public Builder valid(Boolean valid) {
+            return valid(Output.of(valid));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -177,7 +192,7 @@ public final class LogpushOwnershipChallengeState extends com.pulumi.resources.R
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 

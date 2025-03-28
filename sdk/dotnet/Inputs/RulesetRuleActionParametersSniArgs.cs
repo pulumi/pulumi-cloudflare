@@ -13,10 +13,10 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersSniArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Value to define for SNI.
+        /// The SNI override.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
 
         public RulesetRuleActionParametersSniArgs()
         {

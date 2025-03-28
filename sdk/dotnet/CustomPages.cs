@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource which manages Cloudflare custom error pages.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,12 +20,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.CustomPages("example", new()
+    ///     var exampleCustomPages = new Cloudflare.CustomPages("example_custom_pages", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Type = "basic_challenge",
-    ///         Url = "https://example.com/challenge.html",
-    ///         State = "customized",
+    ///         Identifier = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         State = "default",
+    ///         Url = "http://www.example.com",
+    ///         ZoneId = "zone_id",
     ///     });
     /// 
     /// });
@@ -36,38 +34,39 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/customPages:CustomPages example &lt;resource_level&gt;/&lt;resource_id&gt;/&lt;custom_page_type&gt;
+    /// $ pulumi import cloudflare:index/customPages:CustomPages example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;identifier&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/customPages:CustomPages")]
     public partial class CustomPages : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Managed state of the custom page. Available values: `default`, `customized`.
+        /// Identifier
+        /// </summary>
+        [Output("identifier")]
+        public Output<string> Identifier { get; private set; } = null!;
+
+        /// <summary>
+        /// The custom page state.
+        /// Available values: "default", "customized".
         /// </summary>
         [Output("state")]
-        public Output<string?> State { get; private set; } = null!;
+        public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
-        /// </summary>
-        [Output("type")]
-        public Output<string> Type { get; private set; } = null!;
-
-        /// <summary>
-        /// URL of where the custom page source is located.
+        /// The URL associated with the custom page.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Output("zoneId")]
         public Output<string?> ZoneId { get; private set; } = null!;
@@ -119,31 +118,32 @@ namespace Pulumi.Cloudflare
     public sealed class CustomPagesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Managed state of the custom page. Available values: `default`, `customized`.
+        /// Identifier
         /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
+        [Input("identifier", required: true)]
+        public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
+        /// The custom page state.
+        /// Available values: "default", "customized".
         /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        [Input("state", required: true)]
+        public Input<string> State { get; set; } = null!;
 
         /// <summary>
-        /// URL of where the custom page source is located.
+        /// The URL associated with the custom page.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -157,31 +157,32 @@ namespace Pulumi.Cloudflare
     public sealed class CustomPagesState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Managed state of the custom page. Available values: `default`, `customized`.
+        /// Identifier
+        /// </summary>
+        [Input("identifier")]
+        public Input<string>? Identifier { get; set; }
+
+        /// <summary>
+        /// The custom page state.
+        /// Available values: "default", "customized".
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        /// <summary>
-        /// URL of where the custom page source is located.
+        /// The URL associated with the custom page.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

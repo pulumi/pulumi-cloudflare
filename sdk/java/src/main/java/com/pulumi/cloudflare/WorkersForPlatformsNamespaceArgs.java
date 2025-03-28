@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class WorkersForPlatformsNamespaceArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,14 +17,14 @@ public final class WorkersForPlatformsNamespaceArgs extends com.pulumi.resources
     public static final WorkersForPlatformsNamespaceArgs Empty = new WorkersForPlatformsNamespaceArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
@@ -30,18 +32,18 @@ public final class WorkersForPlatformsNamespaceArgs extends com.pulumi.resources
     }
 
     /**
-     * The name of the Workers for Platforms namespace.
+     * The name of the dispatch namespace
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
-     * @return The name of the Workers for Platforms namespace.
+     * @return The name of the dispatch namespace
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     private WorkersForPlatformsNamespaceArgs() {}
@@ -70,7 +72,7 @@ public final class WorkersForPlatformsNamespaceArgs extends com.pulumi.resources
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -81,7 +83,7 @@ public final class WorkersForPlatformsNamespaceArgs extends com.pulumi.resources
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -91,18 +93,18 @@ public final class WorkersForPlatformsNamespaceArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name The name of the Workers for Platforms namespace.
+         * @param name The name of the dispatch namespace
          * 
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The name of the Workers for Platforms namespace.
+         * @param name The name of the dispatch namespace
          * 
          * @return builder
          * 
@@ -114,9 +116,6 @@ public final class WorkersForPlatformsNamespaceArgs extends com.pulumi.resources
         public WorkersForPlatformsNamespaceArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("WorkersForPlatformsNamespaceArgs", "accountId");
-            }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("WorkersForPlatformsNamespaceArgs", "name");
             }
             return $;
         }

@@ -5,21 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Access Service Tokens are used for service-to-service communication
- * when an application is behind Cloudflare Access.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustAccessServiceToken = new cloudflare.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token", {
+ *     name: "CI/CD token",
+ *     zoneId: "zone_id",
+ *     duration: "60m",
+ * });
+ * ```
  *
  * ## Import
  *
- * If you are importing an Access Service Token you will not have the
- *
- * client_secret available in the state for use. The client_secret is only
- *
- * available once, at creation. In most cases, it is better to just create a new
- *
- * resource should you need to reference it in other resources.
- *
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken example <account_id>/<service_token_id>
+ * $ pulumi import cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken example '<{accounts|zones}/{account_id|zone_id}>/<service_token_id>'
  * ```
  */
 export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
@@ -51,32 +53,31 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+     * The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
      */
     public /*out*/ readonly clientId!: pulumi.Output<string>;
     /**
-     * A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
+     * The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
      */
     public /*out*/ readonly clientSecret!: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
+     * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
     public readonly duration!: pulumi.Output<string>;
-    /**
-     * Date when the token expires.
-     */
     public /*out*/ readonly expiresAt!: pulumi.Output<string>;
-    public readonly minDaysForRenewal!: pulumi.Output<number | undefined>;
+    public /*out*/ readonly lastSeenAt!: pulumi.Output<string>;
     /**
-     * Friendly name of the token's intent.
+     * The name of the service token.
      */
     public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -96,10 +97,12 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["clientId"] = state ? state.clientId : undefined;
             resourceInputs["clientSecret"] = state ? state.clientSecret : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["duration"] = state ? state.duration : undefined;
             resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["minDaysForRenewal"] = state ? state.minDaysForRenewal : undefined;
+            resourceInputs["lastSeenAt"] = state ? state.lastSeenAt : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZeroTrustAccessServiceTokenArgs | undefined;
@@ -108,14 +111,18 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["duration"] = args ? args.duration : undefined;
-            resourceInputs["minDaysForRenewal"] = args ? args.minDaysForRenewal : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["clientSecret"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["expiresAt"] = undefined /*out*/;
+            resourceInputs["lastSeenAt"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessServiceToken:AccessServiceToken" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         const secretOpts = { additionalSecretOutputs: ["clientSecret"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(ZeroTrustAccessServiceToken.__pulumiType, name, resourceInputs, opts);
@@ -127,32 +134,31 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
  */
 export interface ZeroTrustAccessServiceTokenState {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+     * The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
      */
     clientId?: pulumi.Input<string>;
     /**
-     * A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
+     * The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
      */
     clientSecret?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
-     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
+     * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
     duration?: pulumi.Input<string>;
-    /**
-     * Date when the token expires.
-     */
     expiresAt?: pulumi.Input<string>;
-    minDaysForRenewal?: pulumi.Input<number>;
+    lastSeenAt?: pulumi.Input<string>;
     /**
-     * Friendly name of the token's intent.
+     * The name of the service token.
      */
     name?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -162,20 +168,19 @@ export interface ZeroTrustAccessServiceTokenState {
  */
 export interface ZeroTrustAccessServiceTokenArgs {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
+     * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
     duration?: pulumi.Input<string>;
-    minDaysForRenewal?: pulumi.Input<number>;
     /**
-     * Friendly name of the token's intent.
+     * The name of the service token.
      */
     name: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }

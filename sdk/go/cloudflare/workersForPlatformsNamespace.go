@@ -8,13 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) resource allows you
-// to manage Cloudflare Workers for Platforms namespaces.
-//
 // ## Example Usage
 //
 // ```go
@@ -22,35 +19,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := cloudflare.NewWorkersForPlatformsNamespace(ctx, "example", &cloudflare.WorkersForPlatformsNamespaceArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("example-namespace"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeFile, err := std.File(ctx, &std.FileArgs{
-//				Input: "script.js",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewWorkersScript(ctx, "customer_worker_1", &cloudflare.WorkersScriptArgs{
-//				AccountId:         pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:              pulumi.String("customer-worker-1"),
-//				Content:           pulumi.String(invokeFile.Result),
-//				DispatchNamespace: example.Name,
-//				Tags: pulumi.StringArray{
-//					pulumi.String("free"),
-//				},
+//			_, err := cloudflare.NewWorkersForPlatformsDispatchNamespace(ctx, "example_workers_for_platforms_dispatch_namespace", &cloudflare.WorkersForPlatformsDispatchNamespaceArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Name:      pulumi.String("my-dispatch-namespace"),
 //			})
 //			if err != nil {
 //				return err
@@ -64,15 +42,31 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace example <account_id>/<namespace_name>
+// $ pulumi import cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace example '<account_id>/<dispatch_namespace>'
 // ```
+//
+// Deprecated: cloudflare.index/workersforplatformsnamespace.WorkersForPlatformsNamespace has been deprecated in favor of cloudflare.index/workersforplatformsdispatchnamespace.WorkersForPlatformsDispatchNamespace
 type WorkersForPlatformsNamespace struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The name of the Workers for Platforms namespace.
-	Name pulumi.StringOutput `pulumi:"name"`
+	// Identifier
+	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
+	// When the script was created.
+	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// Identifier
+	ModifiedBy pulumi.StringOutput `pulumi:"modifiedBy"`
+	// When the script was last modified.
+	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
+	// The name of the dispatch namespace
+	Name pulumi.StringPtrOutput `pulumi:"name"`
+	// API Resource UUID tag.
+	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
+	// Name of the Workers for Platforms dispatch namespace.
+	NamespaceName pulumi.StringOutput `pulumi:"namespaceName"`
+	// The current number of scripts in this Dispatch Namespace
+	ScriptCount pulumi.IntOutput `pulumi:"scriptCount"`
 }
 
 // NewWorkersForPlatformsNamespace registers a new resource with the given unique name, arguments, and options.
@@ -85,9 +79,12 @@ func NewWorkersForPlatformsNamespace(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkersForPlatformsNamespace
 	err := ctx.RegisterResource("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace", name, args, &resource, opts...)
@@ -111,17 +108,45 @@ func GetWorkersForPlatformsNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkersForPlatformsNamespace resources.
 type workersForPlatformsNamespaceState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// The name of the Workers for Platforms namespace.
+	// Identifier
+	CreatedBy *string `pulumi:"createdBy"`
+	// When the script was created.
+	CreatedOn *string `pulumi:"createdOn"`
+	// Identifier
+	ModifiedBy *string `pulumi:"modifiedBy"`
+	// When the script was last modified.
+	ModifiedOn *string `pulumi:"modifiedOn"`
+	// The name of the dispatch namespace
 	Name *string `pulumi:"name"`
+	// API Resource UUID tag.
+	NamespaceId *string `pulumi:"namespaceId"`
+	// Name of the Workers for Platforms dispatch namespace.
+	NamespaceName *string `pulumi:"namespaceName"`
+	// The current number of scripts in this Dispatch Namespace
+	ScriptCount *int `pulumi:"scriptCount"`
 }
 
 type WorkersForPlatformsNamespaceState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// The name of the Workers for Platforms namespace.
+	// Identifier
+	CreatedBy pulumi.StringPtrInput
+	// When the script was created.
+	CreatedOn pulumi.StringPtrInput
+	// Identifier
+	ModifiedBy pulumi.StringPtrInput
+	// When the script was last modified.
+	ModifiedOn pulumi.StringPtrInput
+	// The name of the dispatch namespace
 	Name pulumi.StringPtrInput
+	// API Resource UUID tag.
+	NamespaceId pulumi.StringPtrInput
+	// Name of the Workers for Platforms dispatch namespace.
+	NamespaceName pulumi.StringPtrInput
+	// The current number of scripts in this Dispatch Namespace
+	ScriptCount pulumi.IntPtrInput
 }
 
 func (WorkersForPlatformsNamespaceState) ElementType() reflect.Type {
@@ -129,18 +154,18 @@ func (WorkersForPlatformsNamespaceState) ElementType() reflect.Type {
 }
 
 type workersForPlatformsNamespaceArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// The name of the Workers for Platforms namespace.
-	Name string `pulumi:"name"`
+	// The name of the dispatch namespace
+	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a WorkersForPlatformsNamespace resource.
 type WorkersForPlatformsNamespaceArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringInput
-	// The name of the Workers for Platforms namespace.
-	Name pulumi.StringInput
+	// The name of the dispatch namespace
+	Name pulumi.StringPtrInput
 }
 
 func (WorkersForPlatformsNamespaceArgs) ElementType() reflect.Type {
@@ -230,14 +255,49 @@ func (o WorkersForPlatformsNamespaceOutput) ToWorkersForPlatformsNamespaceOutput
 	return o
 }
 
-// The account identifier to target for the resource.
+// Identifier
 func (o WorkersForPlatformsNamespaceOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The name of the Workers for Platforms namespace.
-func (o WorkersForPlatformsNamespaceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+// Identifier
+func (o WorkersForPlatformsNamespaceOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// When the script was created.
+func (o WorkersForPlatformsNamespaceOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// Identifier
+func (o WorkersForPlatformsNamespaceOutput) ModifiedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringOutput { return v.ModifiedBy }).(pulumi.StringOutput)
+}
+
+// When the script was last modified.
+func (o WorkersForPlatformsNamespaceOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// The name of the dispatch namespace
+func (o WorkersForPlatformsNamespaceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// API Resource UUID tag.
+func (o WorkersForPlatformsNamespaceOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringOutput { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// Name of the Workers for Platforms dispatch namespace.
+func (o WorkersForPlatformsNamespaceOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringOutput { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// The current number of scripts in this Dispatch Namespace
+func (o WorkersForPlatformsNamespaceOutput) ScriptCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.IntOutput { return v.ScriptCount }).(pulumi.IntOutput)
 }
 
 type WorkersForPlatformsNamespaceArrayOutput struct{ *pulumi.OutputState }

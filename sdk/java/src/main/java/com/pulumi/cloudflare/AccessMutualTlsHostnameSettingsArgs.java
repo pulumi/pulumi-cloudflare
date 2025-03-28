@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.AccessMutualTlsHostnameSettingsSettingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,36 +19,36 @@ public final class AccessMutualTlsHostnameSettingsArgs extends com.pulumi.resour
     public static final AccessMutualTlsHostnameSettingsArgs Empty = new AccessMutualTlsHostnameSettingsArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
-    @Import(name="settings")
-    private @Nullable Output<List<AccessMutualTlsHostnameSettingsSettingArgs>> settings;
+    @Import(name="settings", required=true)
+    private Output<List<AccessMutualTlsHostnameSettingsSettingArgs>> settings;
 
-    public Optional<Output<List<AccessMutualTlsHostnameSettingsSettingArgs>>> settings() {
-        return Optional.ofNullable(this.settings);
+    public Output<List<AccessMutualTlsHostnameSettingsSettingArgs>> settings() {
+        return this.settings;
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -81,7 +82,7 @@ public final class AccessMutualTlsHostnameSettingsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -92,7 +93,7 @@ public final class AccessMutualTlsHostnameSettingsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -101,7 +102,7 @@ public final class AccessMutualTlsHostnameSettingsArgs extends com.pulumi.resour
             return accountId(Output.of(accountId));
         }
 
-        public Builder settings(@Nullable Output<List<AccessMutualTlsHostnameSettingsSettingArgs>> settings) {
+        public Builder settings(Output<List<AccessMutualTlsHostnameSettingsSettingArgs>> settings) {
             $.settings = settings;
             return this;
         }
@@ -115,7 +116,7 @@ public final class AccessMutualTlsHostnameSettingsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -126,7 +127,7 @@ public final class AccessMutualTlsHostnameSettingsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -136,6 +137,9 @@ public final class AccessMutualTlsHostnameSettingsArgs extends com.pulumi.resour
         }
 
         public AccessMutualTlsHostnameSettingsArgs build() {
+            if ($.settings == null) {
+                throw new MissingRequiredPropertyException("AccessMutualTlsHostnameSettingsArgs", "settings");
+            }
             return $;
         }
     }

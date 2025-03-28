@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsRuleRuleSettingsNotificationSettings
     {
         /// <summary>
-        /// Enable notification settings.
+        /// Set notification on
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Notification content.
+        /// Customize the message shown in the notification.
         /// </summary>
-        public readonly string? Message;
+        public readonly string? Msg;
         /// <summary>
-        /// Support URL to show in the notification.
+        /// Optional URL to direct users to additional information. If not set, the notification will open a block page.
         /// </summary>
         public readonly string? SupportUrl;
 
@@ -30,12 +30,12 @@ namespace Pulumi.Cloudflare.Outputs
         private TeamsRuleRuleSettingsNotificationSettings(
             bool? enabled,
 
-            string? message,
+            string? msg,
 
             string? supportUrl)
         {
             Enabled = enabled;
-            Message = message;
+            Msg = msg;
             SupportUrl = supportUrl;
         }
     }

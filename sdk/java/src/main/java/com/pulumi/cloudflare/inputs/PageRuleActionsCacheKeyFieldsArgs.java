@@ -10,7 +10,6 @@ import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsQueryStringArgs
 import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsUserArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,79 +19,39 @@ public final class PageRuleActionsCacheKeyFieldsArgs extends com.pulumi.resource
 
     public static final PageRuleActionsCacheKeyFieldsArgs Empty = new PageRuleActionsCacheKeyFieldsArgs();
 
-    /**
-     * Controls what cookies go into Cache Key:
-     * 
-     */
     @Import(name="cookie")
     private @Nullable Output<PageRuleActionsCacheKeyFieldsCookieArgs> cookie;
 
-    /**
-     * @return Controls what cookies go into Cache Key:
-     * 
-     */
     public Optional<Output<PageRuleActionsCacheKeyFieldsCookieArgs>> cookie() {
         return Optional.ofNullable(this.cookie);
     }
 
-    /**
-     * Controls what HTTP headers go into Cache Key:
-     * 
-     */
     @Import(name="header")
     private @Nullable Output<PageRuleActionsCacheKeyFieldsHeaderArgs> header;
 
-    /**
-     * @return Controls what HTTP headers go into Cache Key:
-     * 
-     */
     public Optional<Output<PageRuleActionsCacheKeyFieldsHeaderArgs>> header() {
         return Optional.ofNullable(this.header);
     }
 
-    /**
-     * Controls which Host header goes into Cache Key:
-     * 
-     */
-    @Import(name="host", required=true)
-    private Output<PageRuleActionsCacheKeyFieldsHostArgs> host;
+    @Import(name="host")
+    private @Nullable Output<PageRuleActionsCacheKeyFieldsHostArgs> host;
 
-    /**
-     * @return Controls which Host header goes into Cache Key:
-     * 
-     */
-    public Output<PageRuleActionsCacheKeyFieldsHostArgs> host() {
-        return this.host;
+    public Optional<Output<PageRuleActionsCacheKeyFieldsHostArgs>> host() {
+        return Optional.ofNullable(this.host);
     }
 
-    /**
-     * Controls which URL query string parameters go into the Cache Key.
-     * 
-     */
-    @Import(name="queryString", required=true)
-    private Output<PageRuleActionsCacheKeyFieldsQueryStringArgs> queryString;
+    @Import(name="queryString")
+    private @Nullable Output<PageRuleActionsCacheKeyFieldsQueryStringArgs> queryString;
 
-    /**
-     * @return Controls which URL query string parameters go into the Cache Key.
-     * 
-     */
-    public Output<PageRuleActionsCacheKeyFieldsQueryStringArgs> queryString() {
-        return this.queryString;
+    public Optional<Output<PageRuleActionsCacheKeyFieldsQueryStringArgs>> queryString() {
+        return Optional.ofNullable(this.queryString);
     }
 
-    /**
-     * Controls which end user-related features go into the Cache Key.
-     * 
-     */
-    @Import(name="user", required=true)
-    private Output<PageRuleActionsCacheKeyFieldsUserArgs> user;
+    @Import(name="user")
+    private @Nullable Output<PageRuleActionsCacheKeyFieldsUserArgs> user;
 
-    /**
-     * @return Controls which end user-related features go into the Cache Key.
-     * 
-     */
-    public Output<PageRuleActionsCacheKeyFieldsUserArgs> user() {
-        return this.user;
+    public Optional<Output<PageRuleActionsCacheKeyFieldsUserArgs>> user() {
+        return Optional.ofNullable(this.user);
     }
 
     private PageRuleActionsCacheKeyFieldsArgs() {}
@@ -123,121 +82,52 @@ public final class PageRuleActionsCacheKeyFieldsArgs extends com.pulumi.resource
             $ = new PageRuleActionsCacheKeyFieldsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param cookie Controls what cookies go into Cache Key:
-         * 
-         * @return builder
-         * 
-         */
         public Builder cookie(@Nullable Output<PageRuleActionsCacheKeyFieldsCookieArgs> cookie) {
             $.cookie = cookie;
             return this;
         }
 
-        /**
-         * @param cookie Controls what cookies go into Cache Key:
-         * 
-         * @return builder
-         * 
-         */
         public Builder cookie(PageRuleActionsCacheKeyFieldsCookieArgs cookie) {
             return cookie(Output.of(cookie));
         }
 
-        /**
-         * @param header Controls what HTTP headers go into Cache Key:
-         * 
-         * @return builder
-         * 
-         */
         public Builder header(@Nullable Output<PageRuleActionsCacheKeyFieldsHeaderArgs> header) {
             $.header = header;
             return this;
         }
 
-        /**
-         * @param header Controls what HTTP headers go into Cache Key:
-         * 
-         * @return builder
-         * 
-         */
         public Builder header(PageRuleActionsCacheKeyFieldsHeaderArgs header) {
             return header(Output.of(header));
         }
 
-        /**
-         * @param host Controls which Host header goes into Cache Key:
-         * 
-         * @return builder
-         * 
-         */
-        public Builder host(Output<PageRuleActionsCacheKeyFieldsHostArgs> host) {
+        public Builder host(@Nullable Output<PageRuleActionsCacheKeyFieldsHostArgs> host) {
             $.host = host;
             return this;
         }
 
-        /**
-         * @param host Controls which Host header goes into Cache Key:
-         * 
-         * @return builder
-         * 
-         */
         public Builder host(PageRuleActionsCacheKeyFieldsHostArgs host) {
             return host(Output.of(host));
         }
 
-        /**
-         * @param queryString Controls which URL query string parameters go into the Cache Key.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryString(Output<PageRuleActionsCacheKeyFieldsQueryStringArgs> queryString) {
+        public Builder queryString(@Nullable Output<PageRuleActionsCacheKeyFieldsQueryStringArgs> queryString) {
             $.queryString = queryString;
             return this;
         }
 
-        /**
-         * @param queryString Controls which URL query string parameters go into the Cache Key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder queryString(PageRuleActionsCacheKeyFieldsQueryStringArgs queryString) {
             return queryString(Output.of(queryString));
         }
 
-        /**
-         * @param user Controls which end user-related features go into the Cache Key.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder user(Output<PageRuleActionsCacheKeyFieldsUserArgs> user) {
+        public Builder user(@Nullable Output<PageRuleActionsCacheKeyFieldsUserArgs> user) {
             $.user = user;
             return this;
         }
 
-        /**
-         * @param user Controls which end user-related features go into the Cache Key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder user(PageRuleActionsCacheKeyFieldsUserArgs user) {
             return user(Output.of(user));
         }
 
         public PageRuleActionsCacheKeyFieldsArgs build() {
-            if ($.host == null) {
-                throw new MissingRequiredPropertyException("PageRuleActionsCacheKeyFieldsArgs", "host");
-            }
-            if ($.queryString == null) {
-                throw new MissingRequiredPropertyException("PageRuleActionsCacheKeyFieldsArgs", "queryString");
-            }
-            if ($.user == null) {
-                throw new MissingRequiredPropertyException("PageRuleActionsCacheKeyFieldsArgs", "user");
-            }
             return $;
         }
     }

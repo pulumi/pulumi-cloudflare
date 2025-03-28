@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.SnippetRulesRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,15 +18,36 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
 
     public static final SnippetRulesState Empty = new SnippetRulesState();
 
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
+
+    @Import(name="expression")
+    private @Nullable Output<String> expression;
+
+    public Optional<Output<String>> expression() {
+        return Optional.ofNullable(this.expression);
+    }
+
     /**
-     * List of Snippet Rules
+     * List of snippet rules
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<SnippetRulesRuleArgs>> rules;
 
     /**
-     * @return List of Snippet Rules
+     * @return List of snippet rules
      * 
      */
     public Optional<Output<List<SnippetRulesRuleArgs>>> rules() {
@@ -33,14 +55,29 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Snippet identifying name
+     * 
+     */
+    @Import(name="snippetName")
+    private @Nullable Output<String> snippetName;
+
+    /**
+     * @return Snippet identifying name
+     * 
+     */
+    public Optional<Output<String>> snippetName() {
+        return Optional.ofNullable(this.snippetName);
+    }
+
+    /**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -50,7 +87,11 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
     private SnippetRulesState() {}
 
     private SnippetRulesState(SnippetRulesState $) {
+        this.description = $.description;
+        this.enabled = $.enabled;
+        this.expression = $.expression;
         this.rules = $.rules;
+        this.snippetName = $.snippetName;
         this.zoneId = $.zoneId;
     }
 
@@ -72,8 +113,35 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
             $ = new SnippetRulesState(Objects.requireNonNull(defaults));
         }
 
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
+        }
+
+        public Builder expression(@Nullable Output<String> expression) {
+            $.expression = expression;
+            return this;
+        }
+
+        public Builder expression(String expression) {
+            return expression(Output.of(expression));
+        }
+
         /**
-         * @param rules List of Snippet Rules
+         * @param rules List of snippet rules
          * 
          * @return builder
          * 
@@ -84,7 +152,7 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules List of Snippet Rules
+         * @param rules List of snippet rules
          * 
          * @return builder
          * 
@@ -94,7 +162,7 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules List of Snippet Rules
+         * @param rules List of snippet rules
          * 
          * @return builder
          * 
@@ -104,7 +172,28 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param snippetName Snippet identifying name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snippetName(@Nullable Output<String> snippetName) {
+            $.snippetName = snippetName;
+            return this;
+        }
+
+        /**
+         * @param snippetName Snippet identifying name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snippetName(String snippetName) {
+            return snippetName(Output.of(snippetName));
+        }
+
+        /**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -115,7 +204,7 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

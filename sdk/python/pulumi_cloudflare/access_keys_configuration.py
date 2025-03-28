@@ -20,21 +20,20 @@ __all__ = ['AccessKeysConfigurationArgs', 'AccessKeysConfiguration']
 class AccessKeysConfigurationArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
-                 key_rotation_interval_days: Optional[pulumi.Input[int]] = None):
+                 key_rotation_interval_days: pulumi.Input[float]):
         """
         The set of arguments for constructing a AccessKeysConfiguration resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[int] key_rotation_interval_days: Number of days to trigger a rotation of the keys.
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[float] key_rotation_interval_days: The number of days between key rotations.
         """
         pulumi.set(__self__, "account_id", account_id)
-        if key_rotation_interval_days is not None:
-            pulumi.set(__self__, "key_rotation_interval_days", key_rotation_interval_days)
+        pulumi.set(__self__, "key_rotation_interval_days", key_rotation_interval_days)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -44,14 +43,14 @@ class AccessKeysConfigurationArgs:
 
     @property
     @pulumi.getter(name="keyRotationIntervalDays")
-    def key_rotation_interval_days(self) -> Optional[pulumi.Input[int]]:
+    def key_rotation_interval_days(self) -> pulumi.Input[float]:
         """
-        Number of days to trigger a rotation of the keys.
+        The number of days between key rotations.
         """
         return pulumi.get(self, "key_rotation_interval_days")
 
     @key_rotation_interval_days.setter
-    def key_rotation_interval_days(self, value: Optional[pulumi.Input[int]]):
+    def key_rotation_interval_days(self, value: pulumi.Input[float]):
         pulumi.set(self, "key_rotation_interval_days", value)
 
 
@@ -59,22 +58,30 @@ class AccessKeysConfigurationArgs:
 class _AccessKeysConfigurationState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 key_rotation_interval_days: Optional[pulumi.Input[int]] = None):
+                 days_until_next_rotation: Optional[pulumi.Input[float]] = None,
+                 key_rotation_interval_days: Optional[pulumi.Input[float]] = None,
+                 last_key_rotation_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessKeysConfiguration resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[int] key_rotation_interval_days: Number of days to trigger a rotation of the keys.
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[float] days_until_next_rotation: The number of days until the next key rotation.
+        :param pulumi.Input[float] key_rotation_interval_days: The number of days between key rotations.
+        :param pulumi.Input[str] last_key_rotation_at: The timestamp of the previous key rotation.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if days_until_next_rotation is not None:
+            pulumi.set(__self__, "days_until_next_rotation", days_until_next_rotation)
         if key_rotation_interval_days is not None:
             pulumi.set(__self__, "key_rotation_interval_days", key_rotation_interval_days)
+        if last_key_rotation_at is not None:
+            pulumi.set(__self__, "last_key_rotation_at", last_key_rotation_at)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -83,34 +90,77 @@ class _AccessKeysConfigurationState:
         pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter(name="keyRotationIntervalDays")
-    def key_rotation_interval_days(self) -> Optional[pulumi.Input[int]]:
+    @pulumi.getter(name="daysUntilNextRotation")
+    def days_until_next_rotation(self) -> Optional[pulumi.Input[float]]:
         """
-        Number of days to trigger a rotation of the keys.
+        The number of days until the next key rotation.
+        """
+        return pulumi.get(self, "days_until_next_rotation")
+
+    @days_until_next_rotation.setter
+    def days_until_next_rotation(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "days_until_next_rotation", value)
+
+    @property
+    @pulumi.getter(name="keyRotationIntervalDays")
+    def key_rotation_interval_days(self) -> Optional[pulumi.Input[float]]:
+        """
+        The number of days between key rotations.
         """
         return pulumi.get(self, "key_rotation_interval_days")
 
     @key_rotation_interval_days.setter
-    def key_rotation_interval_days(self, value: Optional[pulumi.Input[int]]):
+    def key_rotation_interval_days(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "key_rotation_interval_days", value)
+
+    @property
+    @pulumi.getter(name="lastKeyRotationAt")
+    def last_key_rotation_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The timestamp of the previous key rotation.
+        """
+        return pulumi.get(self, "last_key_rotation_at")
+
+    @last_key_rotation_at.setter
+    def last_key_rotation_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_key_rotation_at", value)
+
+
+warnings.warn("""cloudflare.index/accesskeysconfiguration.AccessKeysConfiguration has been deprecated in favor of cloudflare.index/zerotrustaccesskeyconfiguration.ZeroTrustAccessKeyConfiguration""", DeprecationWarning)
 
 
 class AccessKeysConfiguration(pulumi.CustomResource):
+    warnings.warn("""cloudflare.index/accesskeysconfiguration.AccessKeysConfiguration has been deprecated in favor of cloudflare.index/zerotrustaccesskeyconfiguration.ZeroTrustAccessKeyConfiguration""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 key_rotation_interval_days: Optional[pulumi.Input[int]] = None,
+                 key_rotation_interval_days: Optional[pulumi.Input[float]] = None,
                  __props__=None):
         """
-        Access Keys Configuration defines the rotation policy for the keys
-        that access will use to sign data.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_access_key_configuration = cloudflare.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            key_rotation_interval_days=30)
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration example '<account_id>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[int] key_rotation_interval_days: Number of days to trigger a rotation of the keys.
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[float] key_rotation_interval_days: The number of days between key rotations.
         """
         ...
     @overload
@@ -119,8 +169,22 @@ class AccessKeysConfiguration(pulumi.CustomResource):
                  args: AccessKeysConfigurationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Access Keys Configuration defines the rotation policy for the keys
-        that access will use to sign data.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_access_key_configuration = cloudflare.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            key_rotation_interval_days=30)
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration example '<account_id>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param AccessKeysConfigurationArgs args: The arguments to use to populate this resource's properties.
@@ -138,8 +202,9 @@ class AccessKeysConfiguration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 key_rotation_interval_days: Optional[pulumi.Input[int]] = None,
+                 key_rotation_interval_days: Optional[pulumi.Input[float]] = None,
                  __props__=None):
+        pulumi.log.warn("""AccessKeysConfiguration is deprecated: cloudflare.index/accesskeysconfiguration.AccessKeysConfiguration has been deprecated in favor of cloudflare.index/zerotrustaccesskeyconfiguration.ZeroTrustAccessKeyConfiguration""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -151,7 +216,13 @@ class AccessKeysConfiguration(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            if key_rotation_interval_days is None and not opts.urn:
+                raise TypeError("Missing required property 'key_rotation_interval_days'")
             __props__.__dict__["key_rotation_interval_days"] = key_rotation_interval_days
+            __props__.__dict__["days_until_next_rotation"] = None
+            __props__.__dict__["last_key_rotation_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessKeysConfiguration, __self__).__init__(
             'cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration',
             resource_name,
@@ -163,7 +234,9 @@ class AccessKeysConfiguration(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            key_rotation_interval_days: Optional[pulumi.Input[int]] = None) -> 'AccessKeysConfiguration':
+            days_until_next_rotation: Optional[pulumi.Input[float]] = None,
+            key_rotation_interval_days: Optional[pulumi.Input[float]] = None,
+            last_key_rotation_at: Optional[pulumi.Input[str]] = None) -> 'AccessKeysConfiguration':
         """
         Get an existing AccessKeysConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -171,30 +244,50 @@ class AccessKeysConfiguration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[int] key_rotation_interval_days: Number of days to trigger a rotation of the keys.
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[float] days_until_next_rotation: The number of days until the next key rotation.
+        :param pulumi.Input[float] key_rotation_interval_days: The number of days between key rotations.
+        :param pulumi.Input[str] last_key_rotation_at: The timestamp of the previous key rotation.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AccessKeysConfigurationState.__new__(_AccessKeysConfigurationState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["days_until_next_rotation"] = days_until_next_rotation
         __props__.__dict__["key_rotation_interval_days"] = key_rotation_interval_days
+        __props__.__dict__["last_key_rotation_at"] = last_key_rotation_at
         return AccessKeysConfiguration(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
     @property
-    @pulumi.getter(name="keyRotationIntervalDays")
-    def key_rotation_interval_days(self) -> pulumi.Output[int]:
+    @pulumi.getter(name="daysUntilNextRotation")
+    def days_until_next_rotation(self) -> pulumi.Output[float]:
         """
-        Number of days to trigger a rotation of the keys.
+        The number of days until the next key rotation.
+        """
+        return pulumi.get(self, "days_until_next_rotation")
+
+    @property
+    @pulumi.getter(name="keyRotationIntervalDays")
+    def key_rotation_interval_days(self) -> pulumi.Output[float]:
+        """
+        The number of days between key rotations.
         """
         return pulumi.get(self, "key_rotation_interval_days")
+
+    @property
+    @pulumi.getter(name="lastKeyRotationAt")
+    def last_key_rotation_at(self) -> pulumi.Output[str]:
+        """
+        The timestamp of the previous key rotation.
+        """
+        return pulumi.get(self, "last_key_rotation_at")
 

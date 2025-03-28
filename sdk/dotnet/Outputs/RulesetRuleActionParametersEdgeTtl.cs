@@ -14,15 +14,16 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersEdgeTtl
     {
         /// <summary>
-        /// Default edge TTL.
+        /// The TTL (in seconds) if you choose override_origin mode.
         /// </summary>
         public readonly int? Default;
         /// <summary>
-        /// Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
+        /// edge ttl options
+        /// Available values: "respect*origin", "bypass*by*default", "override*origin".
         /// </summary>
         public readonly string Mode;
         /// <summary>
-        /// Edge TTL for the status codes.
+        /// List of single status codes, or status code ranges to apply the selected mode
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl> StatusCodeTtls;
 

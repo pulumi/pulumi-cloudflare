@@ -16,14 +16,14 @@ public final class RulesetRuleActionParametersFromValueTargetUrlArgs extends com
     public static final RulesetRuleActionParametersFromValueTargetUrlArgs Empty = new RulesetRuleActionParametersFromValueTargetUrlArgs();
 
     /**
-     * Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * An expression to evaluate to get the URL to redirect the request to.
      * 
      */
     @Import(name="expression")
     private @Nullable Output<String> expression;
 
     /**
-     * @return Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * @return An expression to evaluate to get the URL to redirect the request to.
      * 
      */
     public Optional<Output<String>> expression() {
@@ -31,14 +31,14 @@ public final class RulesetRuleActionParametersFromValueTargetUrlArgs extends com
     }
 
     /**
-     * Static value to provide as the HTTP request header value.
+     * The URL to redirect the request to.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Static value to provide as the HTTP request header value.
+     * @return The URL to redirect the request to.
      * 
      */
     public Optional<Output<String>> value() {
@@ -71,7 +71,7 @@ public final class RulesetRuleActionParametersFromValueTargetUrlArgs extends com
         }
 
         /**
-         * @param expression Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+         * @param expression An expression to evaluate to get the URL to redirect the request to.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class RulesetRuleActionParametersFromValueTargetUrlArgs extends com
         }
 
         /**
-         * @param expression Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+         * @param expression An expression to evaluate to get the URL to redirect the request to.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class RulesetRuleActionParametersFromValueTargetUrlArgs extends com
         }
 
         /**
-         * @param value Static value to provide as the HTTP request header value.
+         * @param value The URL to redirect the request to.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class RulesetRuleActionParametersFromValueTargetUrlArgs extends com
         }
 
         /**
-         * @param value Static value to provide as the HTTP request header value.
+         * @param value The URL to redirect the request to.
          * 
          * @return builder
          * 

@@ -10,48 +10,112 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Access Group resource. Access Groups are used
-    /// in conjunction with Access Policies to restrict access to a
-    /// particular resource based on group membership.
+    /// ## Example Usage
     /// 
-    /// &gt; It's required that an `account_id` or `zone_id` is provided and in
-    ///    most cases using either is fine. However, if you're using a scoped
-    ///    access token, you must provide the argument that matches the token's
-    ///    scope. For example, an access token that is scoped to the "example.com"
-    ///    zone needs to use the `zone_id` argument.
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustAccessGroup = new Cloudflare.ZeroTrustAccessGroup("example_zero_trust_access_group", new()
+    ///     {
+    ///         Includes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustAccessGroupIncludeArgs
+    ///             {
+    ///                 Group = new Cloudflare.Inputs.ZeroTrustAccessGroupIncludeGroupArgs
+    ///                 {
+    ///                     Id = "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Name = "Allow devs",
+    ///         ZoneId = "zone_id",
+    ///         Excludes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustAccessGroupExcludeArgs
+    ///             {
+    ///                 Group = new Cloudflare.Inputs.ZeroTrustAccessGroupExcludeGroupArgs
+    ///                 {
+    ///                     Id = "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+    ///                 },
+    ///             },
+    ///         },
+    ///         IsDefault = true,
+    ///         Requires = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustAccessGroupRequireArgs
+    ///             {
+    ///                 Group = new Cloudflare.Inputs.ZeroTrustAccessGroupRequireGroupArgs
+    ///                 {
+    ///                     Id = "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup example &lt;account_id&gt;/&lt;group_id&gt;
+    /// $ pulumi import cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;group_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup")]
     public partial class ZeroTrustAccessGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+        /// </summary>
         [Output("excludes")]
         public Output<ImmutableArray<Outputs.ZeroTrustAccessGroupExclude>> Excludes { get; private set; } = null!;
 
+        /// <summary>
+        /// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        /// </summary>
         [Output("includes")]
         public Output<ImmutableArray<Outputs.ZeroTrustAccessGroupInclude>> Includes { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether this is the default group
+        /// </summary>
+        [Output("isDefault")]
+        public Output<bool?> IsDefault { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the Access group.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+        /// </summary>
         [Output("requires")]
         public Output<ImmutableArray<Outputs.ZeroTrustAccessGroupRequire>> Requires { get; private set; } = null!;
 
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
+
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -76,6 +140,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/accessGroup:AccessGroup" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -100,13 +168,17 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustAccessGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         [Input("excludes")]
         private InputList<Inputs.ZeroTrustAccessGroupExcludeArgs>? _excludes;
+
+        /// <summary>
+        /// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+        /// </summary>
         public InputList<Inputs.ZeroTrustAccessGroupExcludeArgs> Excludes
         {
             get => _excludes ?? (_excludes = new InputList<Inputs.ZeroTrustAccessGroupExcludeArgs>());
@@ -115,17 +187,34 @@ namespace Pulumi.Cloudflare
 
         [Input("includes", required: true)]
         private InputList<Inputs.ZeroTrustAccessGroupIncludeArgs>? _includes;
+
+        /// <summary>
+        /// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        /// </summary>
         public InputList<Inputs.ZeroTrustAccessGroupIncludeArgs> Includes
         {
             get => _includes ?? (_includes = new InputList<Inputs.ZeroTrustAccessGroupIncludeArgs>());
             set => _includes = value;
         }
 
+        /// <summary>
+        /// Whether this is the default group
+        /// </summary>
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
+
+        /// <summary>
+        /// The name of the Access group.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         [Input("requires")]
         private InputList<Inputs.ZeroTrustAccessGroupRequireArgs>? _requires;
+
+        /// <summary>
+        /// Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+        /// </summary>
         public InputList<Inputs.ZeroTrustAccessGroupRequireArgs> Requires
         {
             get => _requires ?? (_requires = new InputList<Inputs.ZeroTrustAccessGroupRequireArgs>());
@@ -133,7 +222,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -147,13 +236,20 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustAccessGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
         [Input("excludes")]
         private InputList<Inputs.ZeroTrustAccessGroupExcludeGetArgs>? _excludes;
+
+        /// <summary>
+        /// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+        /// </summary>
         public InputList<Inputs.ZeroTrustAccessGroupExcludeGetArgs> Excludes
         {
             get => _excludes ?? (_excludes = new InputList<Inputs.ZeroTrustAccessGroupExcludeGetArgs>());
@@ -162,25 +258,45 @@ namespace Pulumi.Cloudflare
 
         [Input("includes")]
         private InputList<Inputs.ZeroTrustAccessGroupIncludeGetArgs>? _includes;
+
+        /// <summary>
+        /// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        /// </summary>
         public InputList<Inputs.ZeroTrustAccessGroupIncludeGetArgs> Includes
         {
             get => _includes ?? (_includes = new InputList<Inputs.ZeroTrustAccessGroupIncludeGetArgs>());
             set => _includes = value;
         }
 
+        /// <summary>
+        /// Whether this is the default group
+        /// </summary>
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
+
+        /// <summary>
+        /// The name of the Access group.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("requires")]
         private InputList<Inputs.ZeroTrustAccessGroupRequireGetArgs>? _requires;
+
+        /// <summary>
+        /// Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+        /// </summary>
         public InputList<Inputs.ZeroTrustAccessGroupRequireGetArgs> Requires
         {
             get => _requires ?? (_requires = new InputList<Inputs.ZeroTrustAccessGroupRequireGetArgs>());
             set => _requires = value;
         }
 
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
+
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

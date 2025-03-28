@@ -13,20 +13,27 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ApiTokenPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Effect of the policy. Available values: `allow`, `deny`. Defaults to `allow`.
+        /// Allow or deny operations against the resources.
+        /// Available values: "allow", "deny".
         /// </summary>
-        [Input("effect")]
-        public Input<string>? Effect { get; set; }
-
-        [Input("permissionGroups", required: true)]
-        private InputList<string>? _permissionGroups;
+        [Input("effect", required: true)]
+        public Input<string> Effect { get; set; } = null!;
 
         /// <summary>
-        /// List of permissions groups IDs. See [documentation](https://developers.cloudflare.com/api/tokens/create/permissions) for more information.
+        /// Policy identifier.
         /// </summary>
-        public InputList<string> PermissionGroups
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("permissionGroups", required: true)]
+        private InputList<Inputs.ApiTokenPolicyPermissionGroupGetArgs>? _permissionGroups;
+
+        /// <summary>
+        /// A set of permission groups that are specified to the policy.
+        /// </summary>
+        public InputList<Inputs.ApiTokenPolicyPermissionGroupGetArgs> PermissionGroups
         {
-            get => _permissionGroups ?? (_permissionGroups = new InputList<string>());
+            get => _permissionGroups ?? (_permissionGroups = new InputList<Inputs.ApiTokenPolicyPermissionGroupGetArgs>());
             set => _permissionGroups = value;
         }
 
@@ -34,7 +41,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputMap<string>? _resources;
 
         /// <summary>
-        /// Describes what operations against which resources are allowed or denied.
+        /// A list of resource names that the policy applies to.
         /// </summary>
         public InputMap<string> Resources
         {

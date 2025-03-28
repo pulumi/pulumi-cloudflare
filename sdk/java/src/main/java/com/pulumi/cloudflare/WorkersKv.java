@@ -11,11 +11,10 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource to manage a Cloudflare Workers KV Pair.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -26,8 +25,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersKvNamespace;
- * import com.pulumi.cloudflare.WorkersKvNamespaceArgs;
  * import com.pulumi.cloudflare.WorkersKv;
  * import com.pulumi.cloudflare.WorkersKvArgs;
  * import java.util.List;
@@ -43,16 +40,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleNs = new WorkersKvNamespace("exampleNs", WorkersKvNamespaceArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .title("test-namespace")
- *             .build());
- * 
- *         var example = new WorkersKv("example", WorkersKvArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .namespaceId(exampleNs.id())
- *             .key("test-key")
- *             .value("test value")
+ *         var exampleWorkersKv = new WorkersKv("exampleWorkersKv", WorkersKvArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .namespaceId("0f2ac74b498b48028cb68387c421e279")
+ *             .keyName("My-Key")
+ *             .metadata("{\"someMetadataKey\": \"someMetadataValue\"}")
+ *             .value("Some Value")
  *             .build());
  * 
  *     }
@@ -64,63 +57,77 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/workersKv:WorkersKv example &lt;account_id&gt;/&lt;namespace_id&gt;/&lt;key_name&gt;
+ * $ pulumi import cloudflare:index/workersKv:WorkersKv example &#39;&lt;account_id&gt;/&lt;namespace_id&gt;/&lt;key_name&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/workersKv:WorkersKv")
 public class WorkersKv extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
+     * A key&#39;s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      * 
      */
-    @Export(name="key", refs={String.class}, tree="[0]")
-    private Output<String> key;
+    @Export(name="keyName", refs={String.class}, tree="[0]")
+    private Output<String> keyName;
 
     /**
-     * @return Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
+     * @return A key&#39;s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      * 
      */
-    public Output<String> key() {
-        return this.key;
+    public Output<String> keyName() {
+        return this.keyName;
     }
     /**
-     * The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+     * Arbitrary JSON to be associated with a key/value pair.
+     * 
+     */
+    @Export(name="metadata", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> metadata;
+
+    /**
+     * @return Arbitrary JSON to be associated with a key/value pair.
+     * 
+     */
+    public Output<Optional<String>> metadata() {
+        return Codegen.optional(this.metadata);
+    }
+    /**
+     * Namespace identifier tag.
      * 
      */
     @Export(name="namespaceId", refs={String.class}, tree="[0]")
     private Output<String> namespaceId;
 
     /**
-     * @return The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+     * @return Namespace identifier tag.
      * 
      */
     public Output<String> namespaceId() {
         return this.namespaceId;
     }
     /**
-     * Value of the KV pair.
+     * A byte sequence to be stored, up to 25 MiB in length.
      * 
      */
     @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**
-     * @return Value of the KV pair.
+     * @return A byte sequence to be stored, up to 25 MiB in length.
      * 
      */
     public Output<String> value() {

@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource which manages Total TLS for a zone.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,11 +20,11 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.TotalTls("example", new()
+    ///     var exampleTotalTls = new Cloudflare.TotalTls("example_total_tls", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Enabled = true,
-    ///         CertificateAuthority = "lets_encrypt",
+    ///         CertificateAuthority = "google",
     ///     });
     /// 
     /// });
@@ -35,26 +33,34 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/totalTls:TotalTls example &lt;zone_id&gt;
+    /// $ pulumi import cloudflare:index/totalTls:TotalTls example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/totalTls:TotalTls")]
     public partial class TotalTls : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
+        /// The Certificate Authority that Total TLS certificates will be issued through.
+        /// Available values: "google", "lets*encrypt", "ssl*com".
         /// </summary>
         [Output("certificateAuthority")]
         public Output<string?> CertificateAuthority { get; private set; } = null!;
 
         /// <summary>
-        /// Enable Total TLS for the zone.
+        /// If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// The validity period in days for the certificates ordered via Total TLS.
+        /// Available values: 90.
+        /// </summary>
+        [Output("validityPeriod")]
+        public Output<int> ValidityPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -106,19 +112,20 @@ namespace Pulumi.Cloudflare
     public sealed class TotalTlsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
+        /// The Certificate Authority that Total TLS certificates will be issued through.
+        /// Available values: "google", "lets*encrypt", "ssl*com".
         /// </summary>
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }
 
         /// <summary>
-        /// Enable Total TLS for the zone.
+        /// If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -132,19 +139,27 @@ namespace Pulumi.Cloudflare
     public sealed class TotalTlsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
+        /// The Certificate Authority that Total TLS certificates will be issued through.
+        /// Available values: "google", "lets*encrypt", "ssl*com".
         /// </summary>
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }
 
         /// <summary>
-        /// Enable Total TLS for the zone.
+        /// If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// The validity period in days for the certificates ordered via Total TLS.
+        /// Available values: 90.
+        /// </summary>
+        [Input("validityPeriod")]
+        public Input<int>? ValidityPeriod { get; set; }
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -16,47 +16,23 @@ public final class PageRuleActionsCacheKeyFieldsHeaderArgs extends com.pulumi.re
 
     public static final PageRuleActionsCacheKeyFieldsHeaderArgs Empty = new PageRuleActionsCacheKeyFieldsHeaderArgs();
 
-    /**
-     * Check for presence of specified HTTP headers, without including their actual values.
-     * 
-     */
     @Import(name="checkPresences")
     private @Nullable Output<List<String>> checkPresences;
 
-    /**
-     * @return Check for presence of specified HTTP headers, without including their actual values.
-     * 
-     */
     public Optional<Output<List<String>>> checkPresences() {
         return Optional.ofNullable(this.checkPresences);
     }
 
-    /**
-     * Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
-     * 
-     */
     @Import(name="excludes")
     private @Nullable Output<List<String>> excludes;
 
-    /**
-     * @return Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
-     * 
-     */
     public Optional<Output<List<String>>> excludes() {
         return Optional.ofNullable(this.excludes);
     }
 
-    /**
-     * Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.
-     * 
-     */
     @Import(name="includes")
     private @Nullable Output<List<String>> includes;
 
-    /**
-     * @return Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.
-     * 
-     */
     public Optional<Output<List<String>>> includes() {
         return Optional.ofNullable(this.includes);
     }
@@ -87,95 +63,41 @@ public final class PageRuleActionsCacheKeyFieldsHeaderArgs extends com.pulumi.re
             $ = new PageRuleActionsCacheKeyFieldsHeaderArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param checkPresences Check for presence of specified HTTP headers, without including their actual values.
-         * 
-         * @return builder
-         * 
-         */
         public Builder checkPresences(@Nullable Output<List<String>> checkPresences) {
             $.checkPresences = checkPresences;
             return this;
         }
 
-        /**
-         * @param checkPresences Check for presence of specified HTTP headers, without including their actual values.
-         * 
-         * @return builder
-         * 
-         */
         public Builder checkPresences(List<String> checkPresences) {
             return checkPresences(Output.of(checkPresences));
         }
 
-        /**
-         * @param checkPresences Check for presence of specified HTTP headers, without including their actual values.
-         * 
-         * @return builder
-         * 
-         */
         public Builder checkPresences(String... checkPresences) {
             return checkPresences(List.of(checkPresences));
         }
 
-        /**
-         * @param excludes Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
-         * 
-         * @return builder
-         * 
-         */
         public Builder excludes(@Nullable Output<List<String>> excludes) {
             $.excludes = excludes;
             return this;
         }
 
-        /**
-         * @param excludes Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
-         * 
-         * @return builder
-         * 
-         */
         public Builder excludes(List<String> excludes) {
             return excludes(Output.of(excludes));
         }
 
-        /**
-         * @param excludes Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
-         * 
-         * @return builder
-         * 
-         */
         public Builder excludes(String... excludes) {
             return excludes(List.of(excludes));
         }
 
-        /**
-         * @param includes Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.
-         * 
-         * @return builder
-         * 
-         */
         public Builder includes(@Nullable Output<List<String>> includes) {
             $.includes = includes;
             return this;
         }
 
-        /**
-         * @param includes Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.
-         * 
-         * @return builder
-         * 
-         */
         public Builder includes(List<String> includes) {
             return includes(Output.of(includes));
         }
 
-        /**
-         * @param includes Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.
-         * 
-         * @return builder
-         * 
-         */
         public Builder includes(String... includes) {
             return includes(List.of(includes));
         }

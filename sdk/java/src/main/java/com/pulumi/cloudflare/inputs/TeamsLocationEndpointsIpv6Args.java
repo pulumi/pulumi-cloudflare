@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.TeamsLocationEndpointsIpv6NetworkArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
@@ -18,23 +17,32 @@ public final class TeamsLocationEndpointsIpv6Args extends com.pulumi.resources.R
 
     public static final TeamsLocationEndpointsIpv6Args Empty = new TeamsLocationEndpointsIpv6Args();
 
-    @Import(name="authenticationEnabled")
-    private @Nullable Output<Boolean> authenticationEnabled;
+    /**
+     * True if the endpoint is enabled for this location.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
 
-    public Optional<Output<Boolean>> authenticationEnabled() {
-        return Optional.ofNullable(this.authenticationEnabled);
+    /**
+     * @return True if the endpoint is enabled for this location.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
-
-    public Output<Boolean> enabled() {
-        return this.enabled;
-    }
-
+    /**
+     * A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * 
+     */
     @Import(name="networks")
     private @Nullable Output<List<TeamsLocationEndpointsIpv6NetworkArgs>> networks;
 
+    /**
+     * @return A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * 
+     */
     public Optional<Output<List<TeamsLocationEndpointsIpv6NetworkArgs>>> networks() {
         return Optional.ofNullable(this.networks);
     }
@@ -42,7 +50,6 @@ public final class TeamsLocationEndpointsIpv6Args extends com.pulumi.resources.R
     private TeamsLocationEndpointsIpv6Args() {}
 
     private TeamsLocationEndpointsIpv6Args(TeamsLocationEndpointsIpv6Args $) {
-        this.authenticationEnabled = $.authenticationEnabled;
         this.enabled = $.enabled;
         this.networks = $.networks;
     }
@@ -65,41 +72,59 @@ public final class TeamsLocationEndpointsIpv6Args extends com.pulumi.resources.R
             $ = new TeamsLocationEndpointsIpv6Args(Objects.requireNonNull(defaults));
         }
 
-        public Builder authenticationEnabled(@Nullable Output<Boolean> authenticationEnabled) {
-            $.authenticationEnabled = authenticationEnabled;
-            return this;
-        }
-
-        public Builder authenticationEnabled(Boolean authenticationEnabled) {
-            return authenticationEnabled(Output.of(authenticationEnabled));
-        }
-
-        public Builder enabled(Output<Boolean> enabled) {
+        /**
+         * @param enabled True if the endpoint is enabled for this location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled True if the endpoint is enabled for this location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param networks A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(@Nullable Output<List<TeamsLocationEndpointsIpv6NetworkArgs>> networks) {
             $.networks = networks;
             return this;
         }
 
+        /**
+         * @param networks A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(List<TeamsLocationEndpointsIpv6NetworkArgs> networks) {
             return networks(Output.of(networks));
         }
 
+        /**
+         * @param networks A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(TeamsLocationEndpointsIpv6NetworkArgs... networks) {
             return networks(List.of(networks));
         }
 
         public TeamsLocationEndpointsIpv6Args build() {
-            if ($.enabled == null) {
-                throw new MissingRequiredPropertyException("TeamsLocationEndpointsIpv6Args", "enabled");
-            }
             return $;
         }
     }

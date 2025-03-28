@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Waiting Room Rules resource.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,25 +20,18 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.WaitingRoomRules("example", new()
+    ///     var exampleWaitingRoomRules = new Cloudflare.WaitingRoomRules("example_waiting_room_rules", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         WaitingRoomId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         WaitingRoomId = "699d98642c564d2e855e9661899b7252",
     ///         Rules = new[]
     ///         {
     ///             new Cloudflare.Inputs.WaitingRoomRulesRuleArgs
     ///             {
-    ///                 Description = "bypass ip list",
-    ///                 Expression = "src.ip in {192.0.2.0 192.0.2.1}",
     ///                 Action = "bypass_waiting_room",
-    ///                 Status = "enabled",
-    ///             },
-    ///             new Cloudflare.Inputs.WaitingRoomRulesRuleArgs
-    ///             {
-    ///                 Description = "bypass query string",
-    ///                 Expression = "http.request.uri.query contains \"bypass=true\"",
-    ///                 Action = "bypass_waiting_room",
-    ///                 Status = "enabled",
+    ///                 Expression = "ip.src in {10.20.30.40}",
+    ///                 Description = "allow all traffic from 10.20.30.40",
+    ///                 Enabled = true,
     ///             },
     ///         },
     ///     });
@@ -51,26 +42,54 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules default &lt;zone_id&gt;/&lt;waiting_room_id&gt;
+    /// $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules example '&lt;zone_id&gt;/&lt;waiting_room_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/waitingRoomRules:WaitingRoomRules")]
     public partial class WaitingRoomRules : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of rules to apply to the ruleset.
+        /// The action to take when the expression matches.
+        /// Available values: "bypass*waiting*room".
         /// </summary>
+        [Output("action")]
+        public Output<string> Action { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the rule.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// When set to true, the rule is enabled.
+        /// </summary>
+        [Output("enabled")]
+        public Output<bool> Enabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Criteria defining when there is a match for the current rule.
+        /// </summary>
+        [Output("expression")]
+        public Output<string> Expression { get; private set; } = null!;
+
+        [Output("lastUpdated")]
+        public Output<string> LastUpdated { get; private set; } = null!;
+
         [Output("rules")]
         public Output<ImmutableArray<Outputs.WaitingRoomRulesRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
+        /// The version of the rule.
         /// </summary>
+        [Output("version")]
+        public Output<string> Version { get; private set; } = null!;
+
         [Output("waitingRoomId")]
         public Output<string> WaitingRoomId { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -121,26 +140,19 @@ namespace Pulumi.Cloudflare
 
     public sealed class WaitingRoomRulesArgs : global::Pulumi.ResourceArgs
     {
-        [Input("rules")]
+        [Input("rules", required: true)]
         private InputList<Inputs.WaitingRoomRulesRuleArgs>? _rules;
-
-        /// <summary>
-        /// List of rules to apply to the ruleset.
-        /// </summary>
         public InputList<Inputs.WaitingRoomRulesRuleArgs> Rules
         {
             get => _rules ?? (_rules = new InputList<Inputs.WaitingRoomRulesRuleArgs>());
             set => _rules = value;
         }
 
-        /// <summary>
-        /// The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
         [Input("waitingRoomId", required: true)]
         public Input<string> WaitingRoomId { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -153,12 +165,36 @@ namespace Pulumi.Cloudflare
 
     public sealed class WaitingRoomRulesState : global::Pulumi.ResourceArgs
     {
-        [Input("rules")]
-        private InputList<Inputs.WaitingRoomRulesRuleGetArgs>? _rules;
+        /// <summary>
+        /// The action to take when the expression matches.
+        /// Available values: "bypass*waiting*room".
+        /// </summary>
+        [Input("action")]
+        public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// List of rules to apply to the ruleset.
+        /// The description of the rule.
         /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// When set to true, the rule is enabled.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Criteria defining when there is a match for the current rule.
+        /// </summary>
+        [Input("expression")]
+        public Input<string>? Expression { get; set; }
+
+        [Input("lastUpdated")]
+        public Input<string>? LastUpdated { get; set; }
+
+        [Input("rules")]
+        private InputList<Inputs.WaitingRoomRulesRuleGetArgs>? _rules;
         public InputList<Inputs.WaitingRoomRulesRuleGetArgs> Rules
         {
             get => _rules ?? (_rules = new InputList<Inputs.WaitingRoomRulesRuleGetArgs>());
@@ -166,13 +202,16 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
+        /// The version of the rule.
         /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
         [Input("waitingRoomId")]
         public Input<string>? WaitingRoomId { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -18,46 +19,38 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs
     public static final ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs Empty = new ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs();
 
     /**
-     * Audience tags of the access rule.
+     * Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
      * 
      */
-    @Import(name="audTags")
-    private @Nullable Output<List<String>> audTags;
+    @Import(name="audTags", required=true)
+    private Output<List<String>> audTags;
 
     /**
-     * @return Audience tags of the access rule.
+     * @return Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
      * 
      */
-    public Optional<Output<List<String>>> audTags() {
-        return Optional.ofNullable(this.audTags);
+    public Output<List<String>> audTags() {
+        return this.audTags;
     }
 
     /**
-     * Whether the access rule is required.
+     * Deny traffic that has not fulfilled Access authorization.
      * 
      */
     @Import(name="required")
     private @Nullable Output<Boolean> required;
 
     /**
-     * @return Whether the access rule is required.
+     * @return Deny traffic that has not fulfilled Access authorization.
      * 
      */
     public Optional<Output<Boolean>> required() {
         return Optional.ofNullable(this.required);
     }
 
-    /**
-     * Name of the team to which the access rule applies.
-     * 
-     */
     @Import(name="teamName")
     private @Nullable Output<String> teamName;
 
-    /**
-     * @return Name of the team to which the access rule applies.
-     * 
-     */
     public Optional<Output<String>> teamName() {
         return Optional.ofNullable(this.teamName);
     }
@@ -89,18 +82,18 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs
         }
 
         /**
-         * @param audTags Audience tags of the access rule.
+         * @param audTags Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
          * 
          * @return builder
          * 
          */
-        public Builder audTags(@Nullable Output<List<String>> audTags) {
+        public Builder audTags(Output<List<String>> audTags) {
             $.audTags = audTags;
             return this;
         }
 
         /**
-         * @param audTags Audience tags of the access rule.
+         * @param audTags Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
          * 
          * @return builder
          * 
@@ -110,7 +103,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs
         }
 
         /**
-         * @param audTags Audience tags of the access rule.
+         * @param audTags Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
          * 
          * @return builder
          * 
@@ -120,7 +113,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs
         }
 
         /**
-         * @param required Whether the access rule is required.
+         * @param required Deny traffic that has not fulfilled Access authorization.
          * 
          * @return builder
          * 
@@ -131,7 +124,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs
         }
 
         /**
-         * @param required Whether the access rule is required.
+         * @param required Deny traffic that has not fulfilled Access authorization.
          * 
          * @return builder
          * 
@@ -140,28 +133,19 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs
             return required(Output.of(required));
         }
 
-        /**
-         * @param teamName Name of the team to which the access rule applies.
-         * 
-         * @return builder
-         * 
-         */
         public Builder teamName(@Nullable Output<String> teamName) {
             $.teamName = teamName;
             return this;
         }
 
-        /**
-         * @param teamName Name of the team to which the access rule applies.
-         * 
-         * @return builder
-         * 
-         */
         public Builder teamName(String teamName) {
             return teamName(Output.of(teamName));
         }
 
         public ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs build() {
+            if ($.audTags == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs", "audTags");
+            }
             return $;
         }
     }

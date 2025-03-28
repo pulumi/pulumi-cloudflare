@@ -5,25 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource to manage operation-level settings in API Shield Schema Validation 2.0.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.ApiShieldOperation("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     method: "GET",
- *     host: "api.example.com",
- *     endpoint: "/path",
+ * const exampleApiShieldOperationSchemaValidationSettings = new cloudflare.ApiShieldOperationSchemaValidationSettings("example_api_shield_operation_schema_validation_settings", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     operationId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     mitigationAction: "log",
  * });
- * const exampleApiShieldOperationSchemaValidationSettings = new cloudflare.ApiShieldOperationSchemaValidationSettings("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     operationId: example.id,
- *     mitigationAction: "block",
- * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings example '<zone_id>/<operation_id>'
  * ```
  */
 export class ApiShieldOperationSchemaValidationSettings extends pulumi.CustomResource {
@@ -55,15 +53,18 @@ export class ApiShieldOperationSchemaValidationSettings extends pulumi.CustomRes
     }
 
     /**
-     * The mitigation action to apply to this operation.
+     * When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+     * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+     * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+     * Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
      */
     public readonly mitigationAction!: pulumi.Output<string | undefined>;
     /**
-     * Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+     * UUID
      */
     public readonly operationId!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -105,15 +106,18 @@ export class ApiShieldOperationSchemaValidationSettings extends pulumi.CustomRes
  */
 export interface ApiShieldOperationSchemaValidationSettingsState {
     /**
-     * The mitigation action to apply to this operation.
+     * When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+     * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+     * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+     * Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
      */
     mitigationAction?: pulumi.Input<string>;
     /**
-     * Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+     * UUID
      */
     operationId?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -123,15 +127,18 @@ export interface ApiShieldOperationSchemaValidationSettingsState {
  */
 export interface ApiShieldOperationSchemaValidationSettingsArgs {
     /**
-     * The mitigation action to apply to this operation.
+     * When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+     * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+     * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+     * Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
      */
     mitigationAction?: pulumi.Input<string>;
     /**
-     * Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+     * UUID
      */
     operationId: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

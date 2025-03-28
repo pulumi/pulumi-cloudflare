@@ -13,34 +13,29 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class CloudConnectorRulesRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Brief summary of the cloud connector rule and its intended use.
+        /// Cloud Provider type
+        /// Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
         /// </summary>
+        [Input("cloudProvider")]
+        public Input<string>? CloudProvider { get; set; }
+
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Whether the headers rule is active.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// Criteria for an HTTP request to trigger the cloud connector rule. Uses the Firewall Rules expression language based on Wireshark display filters.
-        /// </summary>
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
+        [Input("expression")]
+        public Input<string>? Expression { get; set; }
+
+        [Input("id")]
+        public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Cloud Connector Rule Parameters
+        /// Parameters of Cloud Connector Rule
         /// </summary>
         [Input("parameters")]
         public Input<Inputs.CloudConnectorRulesRuleParametersGetArgs>? Parameters { get; set; }
-
-        /// <summary>
-        /// Type of provider. Available values: `aws_s3`, `cloudflare_r2`, `azure_storage`, `gcp_storage`
-        /// </summary>
-        [Input("provider", required: true)]
-        public Input<string> Provider { get; set; } = null!;
 
         public CloudConnectorRulesRuleGetArgs()
         {

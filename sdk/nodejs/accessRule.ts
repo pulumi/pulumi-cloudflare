@@ -7,74 +7,27 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare IP Firewall Access Rule resource. Access
- * control can be applied on basis of IP addresses, IP ranges, AS
- * numbers or countries.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * // Challenge requests coming from known Tor exit nodes.
- * const torExitNodes = new cloudflare.AccessRule("tor_exit_nodes", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     notes: "Requests coming from known Tor exit nodes",
- *     mode: "challenge",
+ * const exampleAccessRule = new cloudflare.AccessRule("example_access_rule", {
  *     configuration: {
- *         target: "country",
- *         value: "T1",
+ *         target: "ip",
+ *         value: "198.51.100.4",
  *     },
+ *     mode: "block",
+ *     zoneId: "zone_id",
+ *     notes: "This rule is enabled because of an event that occurred on date X.",
  * });
- * // Allowlist requests coming from Antarctica, but only for single zone.
- * const antarctica = new cloudflare.AccessRule("antarctica", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     notes: "Requests coming from Antarctica",
- *     mode: "whitelist",
- *     configuration: {
- *         target: "country",
- *         value: "AQ",
- *     },
- * });
- * const config = new pulumi.Config();
- * const myOffice = config.getObject<Array<string>>("myOffice") || [
- *     "192.0.2.0/24",
- *     "198.51.100.0/24",
- *     "2001:db8::/56",
- * ];
- * const officeNetwork: cloudflare.AccessRule[] = [];
- * for (const range = {value: 0}; range.value < myOffice.length; range.value++) {
- *     officeNetwork.push(new cloudflare.AccessRule(`office_network-${range.value}`, {
- *         accountId: "f037e56e89293a057740de681ac9abbe",
- *         notes: "Requests coming from office network",
- *         mode: "whitelist",
- *         configuration: {
- *             target: "ip_range",
- *             value: myOffice[range.value],
- *         },
- *     }));
- * }
  * ```
  *
  * ## Import
  *
- * User level access rule import.
- *
  * ```sh
- * $ pulumi import cloudflare:index/accessRule:AccessRule default user/<user_id>/<rule_id>
- * ```
- *
- * Zone level access rule import.
- *
- * ```sh
- * $ pulumi import cloudflare:index/accessRule:AccessRule default zone/<zone_id>/<rule_id>
- * ```
- *
- * Account level access rule import.
- *
- * ```sh
- * $ pulumi import cloudflare:index/accessRule:AccessRule default account/<account_id>/<rule_id>
+ * $ pulumi import cloudflare:index/accessRule:AccessRule example '<{accounts|zones}/{account_id|zone_id}>/<rule_id>'
  * ```
  */
 export class AccessRule extends pulumi.CustomResource {
@@ -106,25 +59,42 @@ export class AccessRule extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+     * The available actions that a rule can apply to a matched request.
+     */
+    public /*out*/ readonly allowedModes!: pulumi.Output<string[]>;
+    /**
+     * The rule configuration.
      */
     public readonly configuration!: pulumi.Output<outputs.AccessRuleConfiguration>;
     /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
+     * The timestamp of when the rule was created.
+     */
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    /**
+     * The action to apply to a matched request.
+     * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
     public readonly mode!: pulumi.Output<string>;
     /**
-     * A personal note about the rule. Typically used as a reminder or explanation for the rule.
+     * The timestamp of when the rule was last modified.
+     */
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    /**
+     * An informative summary of the rule, typically used as a reminder or explanation.
      */
     public readonly notes!: pulumi.Output<string | undefined>;
     /**
-     * The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * All zones owned by the user will have the rule applied.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    public /*out*/ readonly scope!: pulumi.Output<outputs.AccessRuleScope>;
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     */
+    public readonly zoneId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccessRule resource with the given unique name, arguments, and options.
@@ -140,9 +110,13 @@ export class AccessRule extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccessRuleState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["allowedModes"] = state ? state.allowedModes : undefined;
             resourceInputs["configuration"] = state ? state.configuration : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["mode"] = state ? state.mode : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["notes"] = state ? state.notes : undefined;
+            resourceInputs["scope"] = state ? state.scope : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessRuleArgs | undefined;
@@ -157,6 +131,10 @@ export class AccessRule extends pulumi.CustomResource {
             resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["notes"] = args ? args.notes : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["allowedModes"] = undefined /*out*/;
+            resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["scope"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessRule.__pulumiType, name, resourceInputs, opts);
@@ -168,23 +146,40 @@ export class AccessRule extends pulumi.CustomResource {
  */
 export interface AccessRuleState {
     /**
-     * The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+     * The available actions that a rule can apply to a matched request.
+     */
+    allowedModes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The rule configuration.
      */
     configuration?: pulumi.Input<inputs.AccessRuleConfiguration>;
     /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
+     * The timestamp of when the rule was created.
+     */
+    createdOn?: pulumi.Input<string>;
+    /**
+     * The action to apply to a matched request.
+     * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
     mode?: pulumi.Input<string>;
     /**
-     * A personal note about the rule. Typically used as a reminder or explanation for the rule.
+     * The timestamp of when the rule was last modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
+    /**
+     * An informative summary of the rule, typically used as a reminder or explanation.
      */
     notes?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * All zones owned by the user will have the rule applied.
+     */
+    scope?: pulumi.Input<inputs.AccessRuleScope>;
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -194,23 +189,24 @@ export interface AccessRuleState {
  */
 export interface AccessRuleArgs {
     /**
-     * The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+     * The rule configuration.
      */
     configuration: pulumi.Input<inputs.AccessRuleConfiguration>;
     /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
+     * The action to apply to a matched request.
+     * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
     mode: pulumi.Input<string>;
     /**
-     * A personal note about the rule. Typically used as a reminder or explanation for the rule.
+     * An informative summary of the rule, typically used as a reminder or explanation.
      */
     notes?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }

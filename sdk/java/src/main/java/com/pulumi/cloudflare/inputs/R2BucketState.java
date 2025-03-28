@@ -16,14 +16,14 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
     public static final R2BucketState Empty = new R2BucketState();
 
     /**
-     * The account identifier to target for the resource.
+     * Account ID
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Account ID
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -31,14 +31,46 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
+     * Creation timestamp
+     * 
+     */
+    @Import(name="creationDate")
+    private @Nullable Output<String> creationDate;
+
+    /**
+     * @return Creation timestamp
+     * 
+     */
+    public Optional<Output<String>> creationDate() {
+        return Optional.ofNullable(this.creationDate);
+    }
+
+    /**
+     * Jurisdiction of the bucket
+     * 
+     */
+    @Import(name="jurisdiction")
+    private @Nullable Output<String> jurisdiction;
+
+    /**
+     * @return Jurisdiction of the bucket
+     * 
+     */
+    public Optional<Output<String>> jurisdiction() {
+        return Optional.ofNullable(this.jurisdiction);
+    }
+
+    /**
+     * Location of the bucket
+     * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
+     * @return Location of the bucket
+     * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
      */
     public Optional<Output<String>> location() {
@@ -46,26 +78,46 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the R2 bucket.
+     * Name of the bucket
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the R2 bucket.
+     * @return Name of the bucket
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Storage class for newly uploaded objects, unless specified otherwise.
+     * Available values: &#34;Standard&#34;, &#34;InfrequentAccess&#34;.
+     * 
+     */
+    @Import(name="storageClass")
+    private @Nullable Output<String> storageClass;
+
+    /**
+     * @return Storage class for newly uploaded objects, unless specified otherwise.
+     * Available values: &#34;Standard&#34;, &#34;InfrequentAccess&#34;.
+     * 
+     */
+    public Optional<Output<String>> storageClass() {
+        return Optional.ofNullable(this.storageClass);
+    }
+
     private R2BucketState() {}
 
     private R2BucketState(R2BucketState $) {
         this.accountId = $.accountId;
+        this.creationDate = $.creationDate;
+        this.jurisdiction = $.jurisdiction;
         this.location = $.location;
         this.name = $.name;
+        this.storageClass = $.storageClass;
     }
 
     public static Builder builder() {
@@ -87,7 +139,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Account ID
          * 
          * @return builder
          * 
@@ -98,7 +150,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Account ID
          * 
          * @return builder
          * 
@@ -108,7 +160,50 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
+         * @param creationDate Creation timestamp
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationDate(@Nullable Output<String> creationDate) {
+            $.creationDate = creationDate;
+            return this;
+        }
+
+        /**
+         * @param creationDate Creation timestamp
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationDate(String creationDate) {
+            return creationDate(Output.of(creationDate));
+        }
+
+        /**
+         * @param jurisdiction Jurisdiction of the bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(@Nullable Output<String> jurisdiction) {
+            $.jurisdiction = jurisdiction;
+            return this;
+        }
+
+        /**
+         * @param jurisdiction Jurisdiction of the bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(String jurisdiction) {
+            return jurisdiction(Output.of(jurisdiction));
+        }
+
+        /**
+         * @param location Location of the bucket
+         * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
          * 
          * @return builder
          * 
@@ -119,7 +214,8 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
+         * @param location Location of the bucket
+         * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
          * 
          * @return builder
          * 
@@ -129,7 +225,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the R2 bucket.
+         * @param name Name of the bucket
          * 
          * @return builder
          * 
@@ -140,13 +236,36 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the R2 bucket.
+         * @param name Name of the bucket
          * 
          * @return builder
          * 
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param storageClass Storage class for newly uploaded objects, unless specified otherwise.
+         * Available values: &#34;Standard&#34;, &#34;InfrequentAccess&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageClass(@Nullable Output<String> storageClass) {
+            $.storageClass = storageClass;
+            return this;
+        }
+
+        /**
+         * @param storageClass Storage class for newly uploaded objects, unless specified otherwise.
+         * Available values: &#34;Standard&#34;, &#34;InfrequentAccess&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageClass(String storageClass) {
+            return storageClass(Output.of(storageClass));
         }
 
         public R2BucketState build() {

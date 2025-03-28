@@ -4,25 +4,26 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class CloudConnectorRulesRuleParameters {
     /**
-     * @return Host parameter for cloud connector rule
+     * @return Host to perform Cloud Connection to
      * 
      */
-    private String host;
+    private @Nullable String host;
 
     private CloudConnectorRulesRuleParameters() {}
     /**
-     * @return Host parameter for cloud connector rule
+     * @return Host to perform Cloud Connection to
      * 
      */
-    public String host() {
-        return this.host;
+    public Optional<String> host() {
+        return Optional.ofNullable(this.host);
     }
 
     public static Builder builder() {
@@ -34,7 +35,7 @@ public final class CloudConnectorRulesRuleParameters {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String host;
+        private @Nullable String host;
         public Builder() {}
         public Builder(CloudConnectorRulesRuleParameters defaults) {
     	      Objects.requireNonNull(defaults);
@@ -42,10 +43,8 @@ public final class CloudConnectorRulesRuleParameters {
         }
 
         @CustomType.Setter
-        public Builder host(String host) {
-            if (host == null) {
-              throw new MissingRequiredPropertyException("CloudConnectorRulesRuleParameters", "host");
-            }
+        public Builder host(@Nullable String host) {
+
             this.host = host;
             return this;
         }

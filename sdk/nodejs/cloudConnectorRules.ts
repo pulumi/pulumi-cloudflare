@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The [Cloud Connector Rules](https://developers.cloudflare.com/rules/cloud-connector/) resource allows you to create and manage cloud connector rules for a zone.
+ * ## Example Usage
  */
 export class CloudConnectorRules extends pulumi.CustomResource {
     /**
@@ -38,11 +38,23 @@ export class CloudConnectorRules extends pulumi.CustomResource {
     }
 
     /**
-     * List of Cloud Connector Rules
+     * Cloud Provider type
+     * Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
      */
-    public readonly rules!: pulumi.Output<outputs.CloudConnectorRulesRule[] | undefined>;
+    public /*out*/ readonly cloudProvider!: pulumi.Output<string>;
+    public /*out*/ readonly description!: pulumi.Output<string>;
+    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
+    public /*out*/ readonly expression!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Parameters of Cloud Connector Rule
+     */
+    public /*out*/ readonly parameters!: pulumi.Output<outputs.CloudConnectorRulesParameters>;
+    /**
+     * List of Cloud Connector rules
+     */
+    public readonly rules!: pulumi.Output<outputs.CloudConnectorRulesRule[]>;
+    /**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -59,6 +71,11 @@ export class CloudConnectorRules extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudConnectorRulesState | undefined;
+            resourceInputs["cloudProvider"] = state ? state.cloudProvider : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["expression"] = state ? state.expression : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -68,6 +85,11 @@ export class CloudConnectorRules extends pulumi.CustomResource {
             }
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["cloudProvider"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["enabled"] = undefined /*out*/;
+            resourceInputs["expression"] = undefined /*out*/;
+            resourceInputs["parameters"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CloudConnectorRules.__pulumiType, name, resourceInputs, opts);
@@ -79,11 +101,23 @@ export class CloudConnectorRules extends pulumi.CustomResource {
  */
 export interface CloudConnectorRulesState {
     /**
-     * List of Cloud Connector Rules
+     * Cloud Provider type
+     * Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
+     */
+    cloudProvider?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    expression?: pulumi.Input<string>;
+    /**
+     * Parameters of Cloud Connector Rule
+     */
+    parameters?: pulumi.Input<inputs.CloudConnectorRulesParameters>;
+    /**
+     * List of Cloud Connector rules
      */
     rules?: pulumi.Input<pulumi.Input<inputs.CloudConnectorRulesRule>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -93,11 +127,11 @@ export interface CloudConnectorRulesState {
  */
 export interface CloudConnectorRulesArgs {
     /**
-     * List of Cloud Connector Rules
+     * List of Cloud Connector rules
      */
     rules?: pulumi.Input<pulumi.Input<inputs.CloudConnectorRulesRule>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

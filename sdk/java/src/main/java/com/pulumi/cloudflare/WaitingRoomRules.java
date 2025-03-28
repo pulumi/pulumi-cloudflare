@@ -11,14 +11,12 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Waiting Room Rules resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -45,22 +43,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WaitingRoomRules("example", WaitingRoomRulesArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .waitingRoomId("d41d8cd98f00b204e9800998ecf8427e")
- *             .rules(            
- *                 WaitingRoomRulesRuleArgs.builder()
- *                     .description("bypass ip list")
- *                     .expression("src.ip in {192.0.2.0 192.0.2.1}")
- *                     .action("bypass_waiting_room")
- *                     .status("enabled")
- *                     .build(),
- *                 WaitingRoomRulesRuleArgs.builder()
- *                     .description("bypass query string")
- *                     .expression("http.request.uri.query contains \"bypass=true\"")
- *                     .action("bypass_waiting_room")
- *                     .status("enabled")
- *                     .build())
+ *         var exampleWaitingRoomRules = new WaitingRoomRules("exampleWaitingRoomRules", WaitingRoomRulesArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .waitingRoomId("699d98642c564d2e855e9661899b7252")
+ *             .rules(WaitingRoomRulesRuleArgs.builder()
+ *                 .action("bypass_waiting_room")
+ *                 .expression("ip.src in {10.20.30.40}")
+ *                 .description("allow all traffic from 10.20.30.40")
+ *                 .enabled(true)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -72,49 +63,111 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules default &lt;zone_id&gt;/&lt;waiting_room_id&gt;
+ * $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules example &#39;&lt;zone_id&gt;/&lt;waiting_room_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/waitingRoomRules:WaitingRoomRules")
 public class WaitingRoomRules extends com.pulumi.resources.CustomResource {
     /**
-     * List of rules to apply to the ruleset.
+     * The action to take when the expression matches.
+     * Available values: &#34;bypass*waiting*room&#34;.
      * 
      */
-    @Export(name="rules", refs={List.class,WaitingRoomRulesRule.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<WaitingRoomRulesRule>> rules;
+    @Export(name="action", refs={String.class}, tree="[0]")
+    private Output<String> action;
 
     /**
-     * @return List of rules to apply to the ruleset.
+     * @return The action to take when the expression matches.
+     * Available values: &#34;bypass*waiting*room&#34;.
      * 
      */
-    public Output<Optional<List<WaitingRoomRulesRule>>> rules() {
-        return Codegen.optional(this.rules);
+    public Output<String> action() {
+        return this.action;
     }
     /**
-     * The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
+     * The description of the rule.
      * 
      */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    /**
+     * @return The description of the rule.
+     * 
+     */
+    public Output<String> description() {
+        return this.description;
+    }
+    /**
+     * When set to true, the rule is enabled.
+     * 
+     */
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enabled;
+
+    /**
+     * @return When set to true, the rule is enabled.
+     * 
+     */
+    public Output<Boolean> enabled() {
+        return this.enabled;
+    }
+    /**
+     * Criteria defining when there is a match for the current rule.
+     * 
+     */
+    @Export(name="expression", refs={String.class}, tree="[0]")
+    private Output<String> expression;
+
+    /**
+     * @return Criteria defining when there is a match for the current rule.
+     * 
+     */
+    public Output<String> expression() {
+        return this.expression;
+    }
+    @Export(name="lastUpdated", refs={String.class}, tree="[0]")
+    private Output<String> lastUpdated;
+
+    public Output<String> lastUpdated() {
+        return this.lastUpdated;
+    }
+    @Export(name="rules", refs={List.class,WaitingRoomRulesRule.class}, tree="[0,1]")
+    private Output<List<WaitingRoomRulesRule>> rules;
+
+    public Output<List<WaitingRoomRulesRule>> rules() {
+        return this.rules;
+    }
+    /**
+     * The version of the rule.
+     * 
+     */
+    @Export(name="version", refs={String.class}, tree="[0]")
+    private Output<String> version;
+
+    /**
+     * @return The version of the rule.
+     * 
+     */
+    public Output<String> version() {
+        return this.version;
+    }
     @Export(name="waitingRoomId", refs={String.class}, tree="[0]")
     private Output<String> waitingRoomId;
 
-    /**
-     * @return The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Output<String> waitingRoomId() {
         return this.waitingRoomId;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

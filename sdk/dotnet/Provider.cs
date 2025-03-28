@@ -19,20 +19,6 @@ namespace Pulumi.Cloudflare
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
-        /// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
-        /// environment variable.
-        /// </summary>
-        [Output("apiBasePath")]
-        public Output<string?> ApiBasePath { get; private set; } = null!;
-
-        /// <summary>
-        /// Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
-        /// environment variable.
-        /// </summary>
-        [Output("apiHostname")]
-        public Output<string?> ApiHostname { get; private set; } = null!;
-
-        /// <summary>
         /// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
         /// keys are [now considered legacy by
         /// Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
@@ -55,6 +41,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("apiUserServiceKey")]
         public Output<string?> ApiUserServiceKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment
+        /// variable.
+        /// </summary>
+        [Output("baseUrl")]
+        public Output<string?> BaseUrl { get; private set; } = null!;
 
         /// <summary>
         /// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
@@ -100,27 +93,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
-        /// environment variable.
-        /// </summary>
-        [Input("apiBasePath")]
-        public Input<string>? ApiBasePath { get; set; }
-
-        /// <summary>
-        /// Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using
-        /// the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
-        /// </summary>
-        [Input("apiClientLogging", json: true)]
-        public Input<bool>? ApiClientLogging { get; set; }
-
-        /// <summary>
-        /// Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
-        /// environment variable.
-        /// </summary>
-        [Input("apiHostname")]
-        public Input<string>? ApiHostname { get; set; }
-
         [Input("apiKey")]
         private Input<string>? _apiKey;
 
@@ -176,50 +148,24 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment
+        /// variable.
+        /// </summary>
+        [Input("baseUrl")]
+        public Input<string>? BaseUrl { get; set; }
+
+        /// <summary>
         /// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
         /// variable. Required when using `api_key`. Conflicts with `api_token`.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
-        /// <summary>
-        /// Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
-        /// `CLOUDFLARE_MAX_BACKOFF` environment variable.
-        /// </summary>
-        [Input("maxBackoff", json: true)]
-        public Input<int>? MaxBackoff { get; set; }
-
-        /// <summary>
-        /// Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the
-        /// `CLOUDFLARE_MIN_BACKOFF` environment variable.
-        /// </summary>
-        [Input("minBackoff", json: true)]
-        public Input<int>? MinBackoff { get; set; }
-
-        /// <summary>
-        /// Maximum number of retries to perform when an API request fails. Alternatively, can be configured using the
-        /// `CLOUDFLARE_RETRIES` environment variable.
-        /// </summary>
-        [Input("retries", json: true)]
-        public Input<int>? Retries { get; set; }
-
-        /// <summary>
-        /// RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
-        /// variable.
-        /// </summary>
-        [Input("rps", json: true)]
-        public Input<int>? Rps { get; set; }
-
         [Input("userAgentOperatorSuffix")]
         public Input<string>? UserAgentOperatorSuffix { get; set; }
 
         public ProviderArgs()
         {
-            ApiClientLogging = Utilities.GetEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") ?? false;
-            MaxBackoff = Utilities.GetEnvInt32("CLOUDFLARE_MAX_BACKOFF") ?? 30;
-            MinBackoff = Utilities.GetEnvInt32("CLOUDFLARE_MIN_BACKOFF") ?? 1;
-            Retries = Utilities.GetEnvInt32("CLOUDFLARE_RETRIES") ?? 3;
-            Rps = Utilities.GetEnvInt32("CLOUDFLARE_RPS") ?? 4;
         }
         public static new ProviderArgs Empty => new ProviderArgs();
     }

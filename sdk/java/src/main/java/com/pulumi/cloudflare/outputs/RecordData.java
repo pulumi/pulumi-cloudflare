@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Double;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,162 +12,442 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RecordData {
-    private @Nullable Integer algorithm;
+    /**
+     * @return Algorithm.
+     * 
+     */
+    private @Nullable Double algorithm;
+    /**
+     * @return Altitude of location in meters.
+     * 
+     */
     private @Nullable Double altitude;
+    /**
+     * @return Certificate.
+     * 
+     */
     private @Nullable String certificate;
-    private @Nullable String content;
+    /**
+     * @return Digest.
+     * 
+     */
     private @Nullable String digest;
-    private @Nullable Integer digestType;
+    /**
+     * @return Digest Type.
+     * 
+     */
+    private @Nullable Double digestType;
+    /**
+     * @return fingerprint.
+     * 
+     */
     private @Nullable String fingerprint;
-    private @Nullable String flags;
-    private @Nullable Integer keyTag;
-    private @Nullable Integer latDegrees;
+    /**
+     * @return Flags for the CAA record.
+     * 
+     */
+    private @Nullable Double flags;
+    /**
+     * @return Key Tag.
+     * 
+     */
+    private @Nullable Double keyTag;
+    /**
+     * @return Degrees of latitude.
+     * 
+     */
+    private @Nullable Double latDegrees;
+    /**
+     * @return Latitude direction.
+     * Available values: &#34;N&#34;, &#34;S&#34;.
+     * 
+     */
     private @Nullable String latDirection;
-    private @Nullable Integer latMinutes;
+    /**
+     * @return Minutes of latitude.
+     * 
+     */
+    private @Nullable Double latMinutes;
+    /**
+     * @return Seconds of latitude.
+     * 
+     */
     private @Nullable Double latSeconds;
-    private @Nullable Integer longDegrees;
+    /**
+     * @return Degrees of longitude.
+     * 
+     */
+    private @Nullable Double longDegrees;
+    /**
+     * @return Longitude direction.
+     * Available values: &#34;E&#34;, &#34;W&#34;.
+     * 
+     */
     private @Nullable String longDirection;
-    private @Nullable Integer longMinutes;
+    /**
+     * @return Minutes of longitude.
+     * 
+     */
+    private @Nullable Double longMinutes;
+    /**
+     * @return Seconds of longitude.
+     * 
+     */
     private @Nullable Double longSeconds;
-    private @Nullable Integer matchingType;
-    private @Nullable String name;
-    private @Nullable Integer order;
-    private @Nullable Integer port;
+    /**
+     * @return Matching Type.
+     * 
+     */
+    private @Nullable Double matchingType;
+    /**
+     * @return Order.
+     * 
+     */
+    private @Nullable Double order;
+    /**
+     * @return The port of the service.
+     * 
+     */
+    private @Nullable Double port;
+    /**
+     * @return Horizontal precision of location.
+     * 
+     */
     private @Nullable Double precisionHorz;
+    /**
+     * @return Vertical precision of location.
+     * 
+     */
     private @Nullable Double precisionVert;
-    private @Nullable Integer preference;
-    private @Nullable Integer priority;
-    private @Nullable String proto;
-    private @Nullable Integer protocol;
+    /**
+     * @return Preference.
+     * 
+     */
+    private @Nullable Double preference;
+    /**
+     * @return priority.
+     * 
+     */
+    private @Nullable Double priority;
+    /**
+     * @return Protocol.
+     * 
+     */
+    private @Nullable Double protocol;
+    /**
+     * @return Public Key.
+     * 
+     */
     private @Nullable String publicKey;
+    /**
+     * @return Regex.
+     * 
+     */
     private @Nullable String regex;
+    /**
+     * @return Replacement.
+     * 
+     */
     private @Nullable String replacement;
-    private @Nullable Integer selector;
+    /**
+     * @return Selector.
+     * 
+     */
+    private @Nullable Double selector;
+    /**
+     * @return Service.
+     * 
+     */
     private @Nullable String service;
+    /**
+     * @return Size of location in meters.
+     * 
+     */
     private @Nullable Double size;
+    /**
+     * @return Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+     * 
+     */
     private @Nullable String tag;
+    /**
+     * @return target.
+     * 
+     */
     private @Nullable String target;
-    private @Nullable Integer type;
-    private @Nullable Integer usage;
+    /**
+     * @return Type.
+     * 
+     */
+    private @Nullable Double type;
+    /**
+     * @return Usage.
+     * 
+     */
+    private @Nullable Double usage;
+    /**
+     * @return Value of the record. This field&#39;s semantics depend on the chosen tag.
+     * 
+     */
     private @Nullable String value;
-    private @Nullable Integer weight;
+    /**
+     * @return The record weight.
+     * 
+     */
+    private @Nullable Double weight;
 
     private RecordData() {}
-    public Optional<Integer> algorithm() {
+    /**
+     * @return Algorithm.
+     * 
+     */
+    public Optional<Double> algorithm() {
         return Optional.ofNullable(this.algorithm);
     }
+    /**
+     * @return Altitude of location in meters.
+     * 
+     */
     public Optional<Double> altitude() {
         return Optional.ofNullable(this.altitude);
     }
+    /**
+     * @return Certificate.
+     * 
+     */
     public Optional<String> certificate() {
         return Optional.ofNullable(this.certificate);
     }
-    public Optional<String> content() {
-        return Optional.ofNullable(this.content);
-    }
+    /**
+     * @return Digest.
+     * 
+     */
     public Optional<String> digest() {
         return Optional.ofNullable(this.digest);
     }
-    public Optional<Integer> digestType() {
+    /**
+     * @return Digest Type.
+     * 
+     */
+    public Optional<Double> digestType() {
         return Optional.ofNullable(this.digestType);
     }
+    /**
+     * @return fingerprint.
+     * 
+     */
     public Optional<String> fingerprint() {
         return Optional.ofNullable(this.fingerprint);
     }
-    public Optional<String> flags() {
+    /**
+     * @return Flags for the CAA record.
+     * 
+     */
+    public Optional<Double> flags() {
         return Optional.ofNullable(this.flags);
     }
-    public Optional<Integer> keyTag() {
+    /**
+     * @return Key Tag.
+     * 
+     */
+    public Optional<Double> keyTag() {
         return Optional.ofNullable(this.keyTag);
     }
-    public Optional<Integer> latDegrees() {
+    /**
+     * @return Degrees of latitude.
+     * 
+     */
+    public Optional<Double> latDegrees() {
         return Optional.ofNullable(this.latDegrees);
     }
+    /**
+     * @return Latitude direction.
+     * Available values: &#34;N&#34;, &#34;S&#34;.
+     * 
+     */
     public Optional<String> latDirection() {
         return Optional.ofNullable(this.latDirection);
     }
-    public Optional<Integer> latMinutes() {
+    /**
+     * @return Minutes of latitude.
+     * 
+     */
+    public Optional<Double> latMinutes() {
         return Optional.ofNullable(this.latMinutes);
     }
+    /**
+     * @return Seconds of latitude.
+     * 
+     */
     public Optional<Double> latSeconds() {
         return Optional.ofNullable(this.latSeconds);
     }
-    public Optional<Integer> longDegrees() {
+    /**
+     * @return Degrees of longitude.
+     * 
+     */
+    public Optional<Double> longDegrees() {
         return Optional.ofNullable(this.longDegrees);
     }
+    /**
+     * @return Longitude direction.
+     * Available values: &#34;E&#34;, &#34;W&#34;.
+     * 
+     */
     public Optional<String> longDirection() {
         return Optional.ofNullable(this.longDirection);
     }
-    public Optional<Integer> longMinutes() {
+    /**
+     * @return Minutes of longitude.
+     * 
+     */
+    public Optional<Double> longMinutes() {
         return Optional.ofNullable(this.longMinutes);
     }
+    /**
+     * @return Seconds of longitude.
+     * 
+     */
     public Optional<Double> longSeconds() {
         return Optional.ofNullable(this.longSeconds);
     }
-    public Optional<Integer> matchingType() {
+    /**
+     * @return Matching Type.
+     * 
+     */
+    public Optional<Double> matchingType() {
         return Optional.ofNullable(this.matchingType);
     }
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
-    }
-    public Optional<Integer> order() {
+    /**
+     * @return Order.
+     * 
+     */
+    public Optional<Double> order() {
         return Optional.ofNullable(this.order);
     }
-    public Optional<Integer> port() {
+    /**
+     * @return The port of the service.
+     * 
+     */
+    public Optional<Double> port() {
         return Optional.ofNullable(this.port);
     }
+    /**
+     * @return Horizontal precision of location.
+     * 
+     */
     public Optional<Double> precisionHorz() {
         return Optional.ofNullable(this.precisionHorz);
     }
+    /**
+     * @return Vertical precision of location.
+     * 
+     */
     public Optional<Double> precisionVert() {
         return Optional.ofNullable(this.precisionVert);
     }
-    public Optional<Integer> preference() {
+    /**
+     * @return Preference.
+     * 
+     */
+    public Optional<Double> preference() {
         return Optional.ofNullable(this.preference);
     }
-    public Optional<Integer> priority() {
+    /**
+     * @return priority.
+     * 
+     */
+    public Optional<Double> priority() {
         return Optional.ofNullable(this.priority);
     }
-    public Optional<String> proto() {
-        return Optional.ofNullable(this.proto);
-    }
-    public Optional<Integer> protocol() {
+    /**
+     * @return Protocol.
+     * 
+     */
+    public Optional<Double> protocol() {
         return Optional.ofNullable(this.protocol);
     }
+    /**
+     * @return Public Key.
+     * 
+     */
     public Optional<String> publicKey() {
         return Optional.ofNullable(this.publicKey);
     }
+    /**
+     * @return Regex.
+     * 
+     */
     public Optional<String> regex() {
         return Optional.ofNullable(this.regex);
     }
+    /**
+     * @return Replacement.
+     * 
+     */
     public Optional<String> replacement() {
         return Optional.ofNullable(this.replacement);
     }
-    public Optional<Integer> selector() {
+    /**
+     * @return Selector.
+     * 
+     */
+    public Optional<Double> selector() {
         return Optional.ofNullable(this.selector);
     }
+    /**
+     * @return Service.
+     * 
+     */
     public Optional<String> service() {
         return Optional.ofNullable(this.service);
     }
+    /**
+     * @return Size of location in meters.
+     * 
+     */
     public Optional<Double> size() {
         return Optional.ofNullable(this.size);
     }
+    /**
+     * @return Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+     * 
+     */
     public Optional<String> tag() {
         return Optional.ofNullable(this.tag);
     }
+    /**
+     * @return target.
+     * 
+     */
     public Optional<String> target() {
         return Optional.ofNullable(this.target);
     }
-    public Optional<Integer> type() {
+    /**
+     * @return Type.
+     * 
+     */
+    public Optional<Double> type() {
         return Optional.ofNullable(this.type);
     }
-    public Optional<Integer> usage() {
+    /**
+     * @return Usage.
+     * 
+     */
+    public Optional<Double> usage() {
         return Optional.ofNullable(this.usage);
     }
+    /**
+     * @return Value of the record. This field&#39;s semantics depend on the chosen tag.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }
-    public Optional<Integer> weight() {
+    /**
+     * @return The record weight.
+     * 
+     */
+    public Optional<Double> weight() {
         return Optional.ofNullable(this.weight);
     }
 
@@ -181,52 +460,48 @@ public final class RecordData {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer algorithm;
+        private @Nullable Double algorithm;
         private @Nullable Double altitude;
         private @Nullable String certificate;
-        private @Nullable String content;
         private @Nullable String digest;
-        private @Nullable Integer digestType;
+        private @Nullable Double digestType;
         private @Nullable String fingerprint;
-        private @Nullable String flags;
-        private @Nullable Integer keyTag;
-        private @Nullable Integer latDegrees;
+        private @Nullable Double flags;
+        private @Nullable Double keyTag;
+        private @Nullable Double latDegrees;
         private @Nullable String latDirection;
-        private @Nullable Integer latMinutes;
+        private @Nullable Double latMinutes;
         private @Nullable Double latSeconds;
-        private @Nullable Integer longDegrees;
+        private @Nullable Double longDegrees;
         private @Nullable String longDirection;
-        private @Nullable Integer longMinutes;
+        private @Nullable Double longMinutes;
         private @Nullable Double longSeconds;
-        private @Nullable Integer matchingType;
-        private @Nullable String name;
-        private @Nullable Integer order;
-        private @Nullable Integer port;
+        private @Nullable Double matchingType;
+        private @Nullable Double order;
+        private @Nullable Double port;
         private @Nullable Double precisionHorz;
         private @Nullable Double precisionVert;
-        private @Nullable Integer preference;
-        private @Nullable Integer priority;
-        private @Nullable String proto;
-        private @Nullable Integer protocol;
+        private @Nullable Double preference;
+        private @Nullable Double priority;
+        private @Nullable Double protocol;
         private @Nullable String publicKey;
         private @Nullable String regex;
         private @Nullable String replacement;
-        private @Nullable Integer selector;
+        private @Nullable Double selector;
         private @Nullable String service;
         private @Nullable Double size;
         private @Nullable String tag;
         private @Nullable String target;
-        private @Nullable Integer type;
-        private @Nullable Integer usage;
+        private @Nullable Double type;
+        private @Nullable Double usage;
         private @Nullable String value;
-        private @Nullable Integer weight;
+        private @Nullable Double weight;
         public Builder() {}
         public Builder(RecordData defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.algorithm = defaults.algorithm;
     	      this.altitude = defaults.altitude;
     	      this.certificate = defaults.certificate;
-    	      this.content = defaults.content;
     	      this.digest = defaults.digest;
     	      this.digestType = defaults.digestType;
     	      this.fingerprint = defaults.fingerprint;
@@ -241,14 +516,12 @@ public final class RecordData {
     	      this.longMinutes = defaults.longMinutes;
     	      this.longSeconds = defaults.longSeconds;
     	      this.matchingType = defaults.matchingType;
-    	      this.name = defaults.name;
     	      this.order = defaults.order;
     	      this.port = defaults.port;
     	      this.precisionHorz = defaults.precisionHorz;
     	      this.precisionVert = defaults.precisionVert;
     	      this.preference = defaults.preference;
     	      this.priority = defaults.priority;
-    	      this.proto = defaults.proto;
     	      this.protocol = defaults.protocol;
     	      this.publicKey = defaults.publicKey;
     	      this.regex = defaults.regex;
@@ -265,7 +538,7 @@ public final class RecordData {
         }
 
         @CustomType.Setter
-        public Builder algorithm(@Nullable Integer algorithm) {
+        public Builder algorithm(@Nullable Double algorithm) {
 
             this.algorithm = algorithm;
             return this;
@@ -283,19 +556,13 @@ public final class RecordData {
             return this;
         }
         @CustomType.Setter
-        public Builder content(@Nullable String content) {
-
-            this.content = content;
-            return this;
-        }
-        @CustomType.Setter
         public Builder digest(@Nullable String digest) {
 
             this.digest = digest;
             return this;
         }
         @CustomType.Setter
-        public Builder digestType(@Nullable Integer digestType) {
+        public Builder digestType(@Nullable Double digestType) {
 
             this.digestType = digestType;
             return this;
@@ -307,19 +574,19 @@ public final class RecordData {
             return this;
         }
         @CustomType.Setter
-        public Builder flags(@Nullable String flags) {
+        public Builder flags(@Nullable Double flags) {
 
             this.flags = flags;
             return this;
         }
         @CustomType.Setter
-        public Builder keyTag(@Nullable Integer keyTag) {
+        public Builder keyTag(@Nullable Double keyTag) {
 
             this.keyTag = keyTag;
             return this;
         }
         @CustomType.Setter
-        public Builder latDegrees(@Nullable Integer latDegrees) {
+        public Builder latDegrees(@Nullable Double latDegrees) {
 
             this.latDegrees = latDegrees;
             return this;
@@ -331,7 +598,7 @@ public final class RecordData {
             return this;
         }
         @CustomType.Setter
-        public Builder latMinutes(@Nullable Integer latMinutes) {
+        public Builder latMinutes(@Nullable Double latMinutes) {
 
             this.latMinutes = latMinutes;
             return this;
@@ -343,7 +610,7 @@ public final class RecordData {
             return this;
         }
         @CustomType.Setter
-        public Builder longDegrees(@Nullable Integer longDegrees) {
+        public Builder longDegrees(@Nullable Double longDegrees) {
 
             this.longDegrees = longDegrees;
             return this;
@@ -355,7 +622,7 @@ public final class RecordData {
             return this;
         }
         @CustomType.Setter
-        public Builder longMinutes(@Nullable Integer longMinutes) {
+        public Builder longMinutes(@Nullable Double longMinutes) {
 
             this.longMinutes = longMinutes;
             return this;
@@ -367,25 +634,19 @@ public final class RecordData {
             return this;
         }
         @CustomType.Setter
-        public Builder matchingType(@Nullable Integer matchingType) {
+        public Builder matchingType(@Nullable Double matchingType) {
 
             this.matchingType = matchingType;
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
-            this.name = name;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder order(@Nullable Integer order) {
+        public Builder order(@Nullable Double order) {
 
             this.order = order;
             return this;
         }
         @CustomType.Setter
-        public Builder port(@Nullable Integer port) {
+        public Builder port(@Nullable Double port) {
 
             this.port = port;
             return this;
@@ -403,25 +664,19 @@ public final class RecordData {
             return this;
         }
         @CustomType.Setter
-        public Builder preference(@Nullable Integer preference) {
+        public Builder preference(@Nullable Double preference) {
 
             this.preference = preference;
             return this;
         }
         @CustomType.Setter
-        public Builder priority(@Nullable Integer priority) {
+        public Builder priority(@Nullable Double priority) {
 
             this.priority = priority;
             return this;
         }
         @CustomType.Setter
-        public Builder proto(@Nullable String proto) {
-
-            this.proto = proto;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder protocol(@Nullable Integer protocol) {
+        public Builder protocol(@Nullable Double protocol) {
 
             this.protocol = protocol;
             return this;
@@ -445,7 +700,7 @@ public final class RecordData {
             return this;
         }
         @CustomType.Setter
-        public Builder selector(@Nullable Integer selector) {
+        public Builder selector(@Nullable Double selector) {
 
             this.selector = selector;
             return this;
@@ -475,13 +730,13 @@ public final class RecordData {
             return this;
         }
         @CustomType.Setter
-        public Builder type(@Nullable Integer type) {
+        public Builder type(@Nullable Double type) {
 
             this.type = type;
             return this;
         }
         @CustomType.Setter
-        public Builder usage(@Nullable Integer usage) {
+        public Builder usage(@Nullable Double usage) {
 
             this.usage = usage;
             return this;
@@ -493,7 +748,7 @@ public final class RecordData {
             return this;
         }
         @CustomType.Setter
-        public Builder weight(@Nullable Integer weight) {
+        public Builder weight(@Nullable Double weight) {
 
             this.weight = weight;
             return this;
@@ -503,7 +758,6 @@ public final class RecordData {
             _resultValue.algorithm = algorithm;
             _resultValue.altitude = altitude;
             _resultValue.certificate = certificate;
-            _resultValue.content = content;
             _resultValue.digest = digest;
             _resultValue.digestType = digestType;
             _resultValue.fingerprint = fingerprint;
@@ -518,14 +772,12 @@ public final class RecordData {
             _resultValue.longMinutes = longMinutes;
             _resultValue.longSeconds = longSeconds;
             _resultValue.matchingType = matchingType;
-            _resultValue.name = name;
             _resultValue.order = order;
             _resultValue.port = port;
             _resultValue.precisionHorz = precisionHorz;
             _resultValue.precisionVert = precisionVert;
             _resultValue.preference = preference;
             _resultValue.priority = priority;
-            _resultValue.proto = proto;
             _resultValue.protocol = protocol;
             _resultValue.publicKey = publicKey;
             _resultValue.regex = regex;

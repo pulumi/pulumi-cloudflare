@@ -22,18 +22,22 @@ class TunnelVirtualNetworkArgs:
                  account_id: pulumi.Input[str],
                  name: pulumi.Input[str],
                  comment: Optional[pulumi.Input[str]] = None,
+                 is_default: Optional[pulumi.Input[bool]] = None,
                  is_default_network: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a TunnelVirtualNetwork resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] name: A user-friendly name chosen when the virtual network is created.
-        :param pulumi.Input[str] comment: Description of the tunnel virtual network.
-        :param pulumi.Input[bool] is_default_network: Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+        :param pulumi.Input[str] account_id: Cloudflare account ID
+        :param pulumi.Input[str] name: A user-friendly name for the virtual network.
+        :param pulumi.Input[str] comment: Optional remark describing the virtual network.
+        :param pulumi.Input[bool] is_default: If `true`, this virtual network is the default for the account.
+        :param pulumi.Input[bool] is_default_network: If `true`, this virtual network is the default for the account.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if is_default is not None:
+            pulumi.set(__self__, "is_default", is_default)
         if is_default_network is not None:
             pulumi.set(__self__, "is_default_network", is_default_network)
 
@@ -41,7 +45,7 @@ class TunnelVirtualNetworkArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Cloudflare account ID
         """
         return pulumi.get(self, "account_id")
 
@@ -53,7 +57,7 @@ class TunnelVirtualNetworkArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        A user-friendly name chosen when the virtual network is created.
+        A user-friendly name for the virtual network.
         """
         return pulumi.get(self, "name")
 
@@ -65,7 +69,7 @@ class TunnelVirtualNetworkArgs:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the tunnel virtual network.
+        Optional remark describing the virtual network.
         """
         return pulumi.get(self, "comment")
 
@@ -74,10 +78,22 @@ class TunnelVirtualNetworkArgs:
         pulumi.set(self, "comment", value)
 
     @property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, this virtual network is the default for the account.
+        """
+        return pulumi.get(self, "is_default")
+
+    @is_default.setter
+    def is_default(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_default", value)
+
+    @property
     @pulumi.getter(name="isDefaultNetwork")
     def is_default_network(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+        If `true`, this virtual network is the default for the account.
         """
         return pulumi.get(self, "is_default_network")
 
@@ -91,19 +107,31 @@ class _TunnelVirtualNetworkState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 deleted_at: Optional[pulumi.Input[str]] = None,
+                 is_default: Optional[pulumi.Input[bool]] = None,
                  is_default_network: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TunnelVirtualNetwork resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] comment: Description of the tunnel virtual network.
-        :param pulumi.Input[bool] is_default_network: Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
-        :param pulumi.Input[str] name: A user-friendly name chosen when the virtual network is created.
+        :param pulumi.Input[str] account_id: Cloudflare account ID
+        :param pulumi.Input[str] comment: Optional remark describing the virtual network.
+        :param pulumi.Input[str] created_at: Timestamp of when the resource was created.
+        :param pulumi.Input[str] deleted_at: Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        :param pulumi.Input[bool] is_default: If `true`, this virtual network is the default for the account.
+        :param pulumi.Input[bool] is_default_network: If `true`, this virtual network is the default for the account.
+        :param pulumi.Input[str] name: A user-friendly name for the virtual network.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if deleted_at is not None:
+            pulumi.set(__self__, "deleted_at", deleted_at)
+        if is_default is not None:
+            pulumi.set(__self__, "is_default", is_default)
         if is_default_network is not None:
             pulumi.set(__self__, "is_default_network", is_default_network)
         if name is not None:
@@ -113,7 +141,7 @@ class _TunnelVirtualNetworkState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Cloudflare account ID
         """
         return pulumi.get(self, "account_id")
 
@@ -125,7 +153,7 @@ class _TunnelVirtualNetworkState:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the tunnel virtual network.
+        Optional remark describing the virtual network.
         """
         return pulumi.get(self, "comment")
 
@@ -134,10 +162,46 @@ class _TunnelVirtualNetworkState:
         pulumi.set(self, "comment", value)
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Timestamp of when the resource was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="deletedAt")
+    def deleted_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        """
+        return pulumi.get(self, "deleted_at")
+
+    @deleted_at.setter
+    def deleted_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deleted_at", value)
+
+    @property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, this virtual network is the default for the account.
+        """
+        return pulumi.get(self, "is_default")
+
+    @is_default.setter
+    def is_default(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_default", value)
+
+    @property
     @pulumi.getter(name="isDefaultNetwork")
     def is_default_network(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+        If `true`, this virtual network is the default for the account.
         """
         return pulumi.get(self, "is_default_network")
 
@@ -149,7 +213,7 @@ class _TunnelVirtualNetworkState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A user-friendly name chosen when the virtual network is created.
+        A user-friendly name for the virtual network.
         """
         return pulumi.get(self, "name")
 
@@ -158,46 +222,49 @@ class _TunnelVirtualNetworkState:
         pulumi.set(self, "name", value)
 
 
+warnings.warn("""cloudflare.index/tunnelvirtualnetwork.TunnelVirtualNetwork has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredvirtualnetwork.ZeroTrustTunnelCloudflaredVirtualNetwork""", DeprecationWarning)
+
+
 class TunnelVirtualNetwork(pulumi.CustomResource):
+    warnings.warn("""cloudflare.index/tunnelvirtualnetwork.TunnelVirtualNetwork has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredvirtualnetwork.ZeroTrustTunnelCloudflaredVirtualNetwork""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 is_default: Optional[pulumi.Input[bool]] = None,
                  is_default_network: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a resource, that manages Cloudflare tunnel virtual networks
-        for Zero Trust. Tunnel virtual networks are used for segregation of
-        Tunnel IP Routes via Virtualized Networks to handle overlapping
-        private IPs in your origins.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.TunnelVirtualNetwork("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="vnet-for-documentation",
-            comment="New tunnel virtual network for documentation")
+        example_zero_trust_tunnel_cloudflared_virtual_network = cloudflare.ZeroTrustTunnelCloudflaredVirtualNetwork("example_zero_trust_tunnel_cloudflared_virtual_network",
+            account_id="699d98642c564d2e855e9661899b7252",
+            name="us-east-1-vpc",
+            comment="Staging VPC for data science",
+            is_default=True)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example <account_id>/<vnet_id>
+        $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example '<account_id>/<virtual_network_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] comment: Description of the tunnel virtual network.
-        :param pulumi.Input[bool] is_default_network: Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
-        :param pulumi.Input[str] name: A user-friendly name chosen when the virtual network is created.
+        :param pulumi.Input[str] account_id: Cloudflare account ID
+        :param pulumi.Input[str] comment: Optional remark describing the virtual network.
+        :param pulumi.Input[bool] is_default: If `true`, this virtual network is the default for the account.
+        :param pulumi.Input[bool] is_default_network: If `true`, this virtual network is the default for the account.
+        :param pulumi.Input[str] name: A user-friendly name for the virtual network.
         """
         ...
     @overload
@@ -206,27 +273,23 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
                  args: TunnelVirtualNetworkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource, that manages Cloudflare tunnel virtual networks
-        for Zero Trust. Tunnel virtual networks are used for segregation of
-        Tunnel IP Routes via Virtualized Networks to handle overlapping
-        private IPs in your origins.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.TunnelVirtualNetwork("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="vnet-for-documentation",
-            comment="New tunnel virtual network for documentation")
+        example_zero_trust_tunnel_cloudflared_virtual_network = cloudflare.ZeroTrustTunnelCloudflaredVirtualNetwork("example_zero_trust_tunnel_cloudflared_virtual_network",
+            account_id="699d98642c564d2e855e9661899b7252",
+            name="us-east-1-vpc",
+            comment="Staging VPC for data science",
+            is_default=True)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example <account_id>/<vnet_id>
+        $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example '<account_id>/<virtual_network_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -246,9 +309,11 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 is_default: Optional[pulumi.Input[bool]] = None,
                  is_default_network: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""TunnelVirtualNetwork is deprecated: cloudflare.index/tunnelvirtualnetwork.TunnelVirtualNetwork has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredvirtualnetwork.ZeroTrustTunnelCloudflaredVirtualNetwork""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -261,10 +326,15 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["comment"] = comment
+            __props__.__dict__["is_default"] = is_default
             __props__.__dict__["is_default_network"] = is_default_network
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["deleted_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(TunnelVirtualNetwork, __self__).__init__(
             'cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork',
             resource_name,
@@ -277,6 +347,9 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             comment: Optional[pulumi.Input[str]] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
+            deleted_at: Optional[pulumi.Input[str]] = None,
+            is_default: Optional[pulumi.Input[bool]] = None,
             is_default_network: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'TunnelVirtualNetwork':
         """
@@ -286,10 +359,13 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] comment: Description of the tunnel virtual network.
-        :param pulumi.Input[bool] is_default_network: Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
-        :param pulumi.Input[str] name: A user-friendly name chosen when the virtual network is created.
+        :param pulumi.Input[str] account_id: Cloudflare account ID
+        :param pulumi.Input[str] comment: Optional remark describing the virtual network.
+        :param pulumi.Input[str] created_at: Timestamp of when the resource was created.
+        :param pulumi.Input[str] deleted_at: Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        :param pulumi.Input[bool] is_default: If `true`, this virtual network is the default for the account.
+        :param pulumi.Input[bool] is_default_network: If `true`, this virtual network is the default for the account.
+        :param pulumi.Input[str] name: A user-friendly name for the virtual network.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -297,6 +373,9 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["comment"] = comment
+        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["deleted_at"] = deleted_at
+        __props__.__dict__["is_default"] = is_default
         __props__.__dict__["is_default_network"] = is_default_network
         __props__.__dict__["name"] = name
         return TunnelVirtualNetwork(resource_name, opts=opts, __props__=__props__)
@@ -305,7 +384,7 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Cloudflare account ID
         """
         return pulumi.get(self, "account_id")
 
@@ -313,15 +392,39 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the tunnel virtual network.
+        Optional remark describing the virtual network.
         """
         return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[str]:
+        """
+        Timestamp of when the resource was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="deletedAt")
+    def deleted_at(self) -> pulumi.Output[str]:
+        """
+        Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        """
+        return pulumi.get(self, "deleted_at")
+
+    @property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If `true`, this virtual network is the default for the account.
+        """
+        return pulumi.get(self, "is_default")
 
     @property
     @pulumi.getter(name="isDefaultNetwork")
     def is_default_network(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+        If `true`, this virtual network is the default for the account.
         """
         return pulumi.get(self, "is_default_network")
 
@@ -329,7 +432,7 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        A user-friendly name chosen when the virtual network is created.
+        A user-friendly name for the virtual network.
         """
         return pulumi.get(self, "name")
 

@@ -4,19 +4,19 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class AccessApplicationSaasAppCustomClaimSource {
     /**
-     * @return The name of the attribute as provided by the IDP.
+     * @return The name of the IdP claim.
      * 
      */
-    private String name;
+    private @Nullable String name;
     /**
      * @return A mapping from IdP ID to claim name.
      * 
@@ -25,11 +25,11 @@ public final class AccessApplicationSaasAppCustomClaimSource {
 
     private AccessApplicationSaasAppCustomClaimSource() {}
     /**
-     * @return The name of the attribute as provided by the IDP.
+     * @return The name of the IdP claim.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
      * @return A mapping from IdP ID to claim name.
@@ -48,7 +48,7 @@ public final class AccessApplicationSaasAppCustomClaimSource {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String name;
+        private @Nullable String name;
         private @Nullable Map<String,String> nameByIdp;
         public Builder() {}
         public Builder(AccessApplicationSaasAppCustomClaimSource defaults) {
@@ -58,10 +58,8 @@ public final class AccessApplicationSaasAppCustomClaimSource {
         }
 
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("AccessApplicationSaasAppCustomClaimSource", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }

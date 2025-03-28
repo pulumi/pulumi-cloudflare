@@ -11,6 +11,7 @@ import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsEgressArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsL4overrideArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsNotificationSettingsArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsPayloadLogArgs;
+import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsQuarantineArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsResolveDnsInternallyArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsUntrustedCertArgs;
 import com.pulumi.core.Output;
@@ -29,14 +30,14 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     public static final TeamsRuleRuleSettingsArgs Empty = new TeamsRuleRuleSettingsArgs();
 
     /**
-     * Add custom headers to allowed requests in the form of key-value pairs.
+     * Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
      * 
      */
     @Import(name="addHeaders")
     private @Nullable Output<Map<String,String>> addHeaders;
 
     /**
-     * @return Add custom headers to allowed requests in the form of key-value pairs.
+     * @return Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
      * 
      */
     public Optional<Output<Map<String,String>>> addHeaders() {
@@ -44,14 +45,14 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Allow parent MSP accounts to enable bypass their children&#39;s rules.
+     * Set by parent MSP accounts to enable their children to bypass this rule.
      * 
      */
     @Import(name="allowChildBypass")
     private @Nullable Output<Boolean> allowChildBypass;
 
     /**
-     * @return Allow parent MSP accounts to enable bypass their children&#39;s rules.
+     * @return Set by parent MSP accounts to enable their children to bypass this rule.
      * 
      */
     public Optional<Output<Boolean>> allowChildBypass() {
@@ -59,14 +60,14 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Settings for auditing SSH usage.
+     * Settings for the Audit SSH action.
      * 
      */
     @Import(name="auditSsh")
     private @Nullable Output<TeamsRuleRuleSettingsAuditSshArgs> auditSsh;
 
     /**
-     * @return Settings for auditing SSH usage.
+     * @return Settings for the Audit SSH action.
      * 
      */
     public Optional<Output<TeamsRuleRuleSettingsAuditSshArgs>> auditSsh() {
@@ -89,14 +90,14 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Indicator of block page enablement.
+     * Enable the custom block page.
      * 
      */
     @Import(name="blockPageEnabled")
     private @Nullable Output<Boolean> blockPageEnabled;
 
     /**
-     * @return Indicator of block page enablement.
+     * @return Enable the custom block page.
      * 
      */
     public Optional<Output<Boolean>> blockPageEnabled() {
@@ -104,29 +105,29 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The displayed reason for a user being blocked.
+     * The text describing why this block occurred, displayed on the custom block page (if enabled).
      * 
      */
-    @Import(name="blockPageReason")
-    private @Nullable Output<String> blockPageReason;
+    @Import(name="blockReason")
+    private @Nullable Output<String> blockReason;
 
     /**
-     * @return The displayed reason for a user being blocked.
+     * @return The text describing why this block occurred, displayed on the custom block page (if enabled).
      * 
      */
-    public Optional<Output<String>> blockPageReason() {
-        return Optional.ofNullable(this.blockPageReason);
+    public Optional<Output<String>> blockReason() {
+        return Optional.ofNullable(this.blockReason);
     }
 
     /**
-     * Allow child MSP accounts to bypass their parent&#39;s rule.
+     * Set by children MSP accounts to bypass their parent&#39;s rules.
      * 
      */
     @Import(name="bypassParentRule")
     private @Nullable Output<Boolean> bypassParentRule;
 
     /**
-     * @return Allow child MSP accounts to bypass their parent&#39;s rule.
+     * @return Set by children MSP accounts to bypass their parent&#39;s rules.
      * 
      */
     public Optional<Output<Boolean>> bypassParentRule() {
@@ -149,14 +150,14 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+     * Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; are set. DNS queries will route to the address closest to their origin. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
      * 
      */
     @Import(name="dnsResolvers")
     private @Nullable Output<TeamsRuleRuleSettingsDnsResolversArgs> dnsResolvers;
 
     /**
-     * @return Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+     * @return Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; are set. DNS queries will route to the address closest to their origin. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
      * 
      */
     public Optional<Output<TeamsRuleRuleSettingsDnsResolversArgs>> dnsResolvers() {
@@ -164,14 +165,14 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+     * Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
      * 
      */
     @Import(name="egress")
     private @Nullable Output<TeamsRuleRuleSettingsEgressArgs> egress;
 
     /**
-     * @return Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+     * @return Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
      * 
      */
     public Optional<Output<TeamsRuleRuleSettingsEgressArgs>> egress() {
@@ -179,14 +180,14 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Set to true, to ignore the category matches at CNAME domains in a response.
+     * Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
      * 
      */
     @Import(name="ignoreCnameCategoryMatches")
     private @Nullable Output<Boolean> ignoreCnameCategoryMatches;
 
     /**
-     * @return Set to true, to ignore the category matches at CNAME domains in a response.
+     * @return Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
      * 
      */
     public Optional<Output<Boolean>> ignoreCnameCategoryMatches() {
@@ -194,14 +195,14 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Disable DNSSEC validation (must be Allow rule).
+     * INSECURE - disable DNSSEC validation (for Allow actions).
      * 
      */
     @Import(name="insecureDisableDnssecValidation")
     private @Nullable Output<Boolean> insecureDisableDnssecValidation;
 
     /**
-     * @return Disable DNSSEC validation (must be Allow rule).
+     * @return INSECURE - disable DNSSEC validation (for Allow actions).
      * 
      */
     public Optional<Output<Boolean>> insecureDisableDnssecValidation() {
@@ -209,14 +210,14 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Turns on IP category based filter on dns if the rule contains dns category checks.
+     * Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
      * 
      */
     @Import(name="ipCategories")
     private @Nullable Output<Boolean> ipCategories;
 
     /**
-     * @return Turns on IP category based filter on dns if the rule contains dns category checks.
+     * @return Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
      * 
      */
     public Optional<Output<Boolean>> ipCategories() {
@@ -224,14 +225,29 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Settings to forward layer 4 traffic.
+     * Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+     * 
+     */
+    @Import(name="ipIndicatorFeeds")
+    private @Nullable Output<Boolean> ipIndicatorFeeds;
+
+    /**
+     * @return Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+     * 
+     */
+    public Optional<Output<Boolean>> ipIndicatorFeeds() {
+        return Optional.ofNullable(this.ipIndicatorFeeds);
+    }
+
+    /**
+     * Send matching traffic to the supplied destination IP address and port.
      * 
      */
     @Import(name="l4override")
     private @Nullable Output<TeamsRuleRuleSettingsL4overrideArgs> l4override;
 
     /**
-     * @return Settings to forward layer 4 traffic.
+     * @return Send matching traffic to the supplied destination IP address and port.
      * 
      */
     public Optional<Output<TeamsRuleRuleSettingsL4overrideArgs>> l4override() {
@@ -239,14 +255,14 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Notification settings on a block rule.
+     * Configure a notification to display on the user&#39;s device when this rule is matched.
      * 
      */
     @Import(name="notificationSettings")
     private @Nullable Output<TeamsRuleRuleSettingsNotificationSettingsArgs> notificationSettings;
 
     /**
-     * @return Notification settings on a block rule.
+     * @return Configure a notification to display on the user&#39;s device when this rule is matched.
      * 
      */
     public Optional<Output<TeamsRuleRuleSettingsNotificationSettingsArgs>> notificationSettings() {
@@ -254,14 +270,14 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The host to override matching DNS queries with.
+     * Override matching DNS queries with a hostname.
      * 
      */
     @Import(name="overrideHost")
     private @Nullable Output<String> overrideHost;
 
     /**
-     * @return The host to override matching DNS queries with.
+     * @return Override matching DNS queries with a hostname.
      * 
      */
     public Optional<Output<String>> overrideHost() {
@@ -269,14 +285,14 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The IPs to override matching DNS queries with.
+     * Override matching DNS queries with an IP or set of IPs.
      * 
      */
     @Import(name="overrideIps")
     private @Nullable Output<List<String>> overrideIps;
 
     /**
-     * @return The IPs to override matching DNS queries with.
+     * @return Override matching DNS queries with an IP or set of IPs.
      * 
      */
     public Optional<Output<List<String>>> overrideIps() {
@@ -284,18 +300,33 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Configure DLP Payload Logging settings for this rule.
+     * Configure DLP payload logging.
      * 
      */
     @Import(name="payloadLog")
     private @Nullable Output<TeamsRuleRuleSettingsPayloadLogArgs> payloadLog;
 
     /**
-     * @return Configure DLP Payload Logging settings for this rule.
+     * @return Configure DLP payload logging.
      * 
      */
     public Optional<Output<TeamsRuleRuleSettingsPayloadLogArgs>> payloadLog() {
         return Optional.ofNullable(this.payloadLog);
+    }
+
+    /**
+     * Settings that apply to quarantine rules
+     * 
+     */
+    @Import(name="quarantine")
+    private @Nullable Output<TeamsRuleRuleSettingsQuarantineArgs> quarantine;
+
+    /**
+     * @return Settings that apply to quarantine rules
+     * 
+     */
+    public Optional<Output<TeamsRuleRuleSettingsQuarantineArgs>> quarantine() {
+        return Optional.ofNullable(this.quarantine);
     }
 
     /**
@@ -314,14 +345,14 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Enable sending queries that match the resolver policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+     * Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
      * 
      */
     @Import(name="resolveDnsThroughCloudflare")
     private @Nullable Output<Boolean> resolveDnsThroughCloudflare;
 
     /**
-     * @return Enable sending queries that match the resolver policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+     * @return Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
      * 
      */
     public Optional<Output<Boolean>> resolveDnsThroughCloudflare() {
@@ -329,14 +360,14 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Configure untrusted certificate settings for this rule.
+     * Configure behavior when an upstream cert is invalid or an SSL error occurs.
      * 
      */
     @Import(name="untrustedCert")
     private @Nullable Output<TeamsRuleRuleSettingsUntrustedCertArgs> untrustedCert;
 
     /**
-     * @return Configure untrusted certificate settings for this rule.
+     * @return Configure behavior when an upstream cert is invalid or an SSL error occurs.
      * 
      */
     public Optional<Output<TeamsRuleRuleSettingsUntrustedCertArgs>> untrustedCert() {
@@ -351,7 +382,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         this.auditSsh = $.auditSsh;
         this.bisoAdminControls = $.bisoAdminControls;
         this.blockPageEnabled = $.blockPageEnabled;
-        this.blockPageReason = $.blockPageReason;
+        this.blockReason = $.blockReason;
         this.bypassParentRule = $.bypassParentRule;
         this.checkSession = $.checkSession;
         this.dnsResolvers = $.dnsResolvers;
@@ -359,11 +390,13 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         this.ignoreCnameCategoryMatches = $.ignoreCnameCategoryMatches;
         this.insecureDisableDnssecValidation = $.insecureDisableDnssecValidation;
         this.ipCategories = $.ipCategories;
+        this.ipIndicatorFeeds = $.ipIndicatorFeeds;
         this.l4override = $.l4override;
         this.notificationSettings = $.notificationSettings;
         this.overrideHost = $.overrideHost;
         this.overrideIps = $.overrideIps;
         this.payloadLog = $.payloadLog;
+        this.quarantine = $.quarantine;
         this.resolveDnsInternally = $.resolveDnsInternally;
         this.resolveDnsThroughCloudflare = $.resolveDnsThroughCloudflare;
         this.untrustedCert = $.untrustedCert;
@@ -388,7 +421,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param addHeaders Add custom headers to allowed requests in the form of key-value pairs.
+         * @param addHeaders Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
          * 
          * @return builder
          * 
@@ -399,7 +432,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param addHeaders Add custom headers to allowed requests in the form of key-value pairs.
+         * @param addHeaders Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
          * 
          * @return builder
          * 
@@ -409,7 +442,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param allowChildBypass Allow parent MSP accounts to enable bypass their children&#39;s rules.
+         * @param allowChildBypass Set by parent MSP accounts to enable their children to bypass this rule.
          * 
          * @return builder
          * 
@@ -420,7 +453,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param allowChildBypass Allow parent MSP accounts to enable bypass their children&#39;s rules.
+         * @param allowChildBypass Set by parent MSP accounts to enable their children to bypass this rule.
          * 
          * @return builder
          * 
@@ -430,7 +463,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param auditSsh Settings for auditing SSH usage.
+         * @param auditSsh Settings for the Audit SSH action.
          * 
          * @return builder
          * 
@@ -441,7 +474,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param auditSsh Settings for auditing SSH usage.
+         * @param auditSsh Settings for the Audit SSH action.
          * 
          * @return builder
          * 
@@ -472,7 +505,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param blockPageEnabled Indicator of block page enablement.
+         * @param blockPageEnabled Enable the custom block page.
          * 
          * @return builder
          * 
@@ -483,7 +516,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param blockPageEnabled Indicator of block page enablement.
+         * @param blockPageEnabled Enable the custom block page.
          * 
          * @return builder
          * 
@@ -493,28 +526,28 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param blockPageReason The displayed reason for a user being blocked.
+         * @param blockReason The text describing why this block occurred, displayed on the custom block page (if enabled).
          * 
          * @return builder
          * 
          */
-        public Builder blockPageReason(@Nullable Output<String> blockPageReason) {
-            $.blockPageReason = blockPageReason;
+        public Builder blockReason(@Nullable Output<String> blockReason) {
+            $.blockReason = blockReason;
             return this;
         }
 
         /**
-         * @param blockPageReason The displayed reason for a user being blocked.
+         * @param blockReason The text describing why this block occurred, displayed on the custom block page (if enabled).
          * 
          * @return builder
          * 
          */
-        public Builder blockPageReason(String blockPageReason) {
-            return blockPageReason(Output.of(blockPageReason));
+        public Builder blockReason(String blockReason) {
+            return blockReason(Output.of(blockReason));
         }
 
         /**
-         * @param bypassParentRule Allow child MSP accounts to bypass their parent&#39;s rule.
+         * @param bypassParentRule Set by children MSP accounts to bypass their parent&#39;s rules.
          * 
          * @return builder
          * 
@@ -525,7 +558,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param bypassParentRule Allow child MSP accounts to bypass their parent&#39;s rule.
+         * @param bypassParentRule Set by children MSP accounts to bypass their parent&#39;s rules.
          * 
          * @return builder
          * 
@@ -556,7 +589,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dnsResolvers Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+         * @param dnsResolvers Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; are set. DNS queries will route to the address closest to their origin. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
          * 
          * @return builder
          * 
@@ -567,7 +600,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dnsResolvers Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+         * @param dnsResolvers Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; are set. DNS queries will route to the address closest to their origin. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
          * 
          * @return builder
          * 
@@ -577,7 +610,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param egress Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+         * @param egress Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
          * 
          * @return builder
          * 
@@ -588,7 +621,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param egress Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+         * @param egress Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
          * 
          * @return builder
          * 
@@ -598,7 +631,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ignoreCnameCategoryMatches Set to true, to ignore the category matches at CNAME domains in a response.
+         * @param ignoreCnameCategoryMatches Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
          * 
          * @return builder
          * 
@@ -609,7 +642,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ignoreCnameCategoryMatches Set to true, to ignore the category matches at CNAME domains in a response.
+         * @param ignoreCnameCategoryMatches Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
          * 
          * @return builder
          * 
@@ -619,7 +652,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param insecureDisableDnssecValidation Disable DNSSEC validation (must be Allow rule).
+         * @param insecureDisableDnssecValidation INSECURE - disable DNSSEC validation (for Allow actions).
          * 
          * @return builder
          * 
@@ -630,7 +663,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param insecureDisableDnssecValidation Disable DNSSEC validation (must be Allow rule).
+         * @param insecureDisableDnssecValidation INSECURE - disable DNSSEC validation (for Allow actions).
          * 
          * @return builder
          * 
@@ -640,7 +673,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipCategories Turns on IP category based filter on dns if the rule contains dns category checks.
+         * @param ipCategories Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
          * 
          * @return builder
          * 
@@ -651,7 +684,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipCategories Turns on IP category based filter on dns if the rule contains dns category checks.
+         * @param ipCategories Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
          * 
          * @return builder
          * 
@@ -661,7 +694,28 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param l4override Settings to forward layer 4 traffic.
+         * @param ipIndicatorFeeds Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipIndicatorFeeds(@Nullable Output<Boolean> ipIndicatorFeeds) {
+            $.ipIndicatorFeeds = ipIndicatorFeeds;
+            return this;
+        }
+
+        /**
+         * @param ipIndicatorFeeds Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipIndicatorFeeds(Boolean ipIndicatorFeeds) {
+            return ipIndicatorFeeds(Output.of(ipIndicatorFeeds));
+        }
+
+        /**
+         * @param l4override Send matching traffic to the supplied destination IP address and port.
          * 
          * @return builder
          * 
@@ -672,7 +726,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param l4override Settings to forward layer 4 traffic.
+         * @param l4override Send matching traffic to the supplied destination IP address and port.
          * 
          * @return builder
          * 
@@ -682,7 +736,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param notificationSettings Notification settings on a block rule.
+         * @param notificationSettings Configure a notification to display on the user&#39;s device when this rule is matched.
          * 
          * @return builder
          * 
@@ -693,7 +747,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param notificationSettings Notification settings on a block rule.
+         * @param notificationSettings Configure a notification to display on the user&#39;s device when this rule is matched.
          * 
          * @return builder
          * 
@@ -703,7 +757,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param overrideHost The host to override matching DNS queries with.
+         * @param overrideHost Override matching DNS queries with a hostname.
          * 
          * @return builder
          * 
@@ -714,7 +768,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param overrideHost The host to override matching DNS queries with.
+         * @param overrideHost Override matching DNS queries with a hostname.
          * 
          * @return builder
          * 
@@ -724,7 +778,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param overrideIps The IPs to override matching DNS queries with.
+         * @param overrideIps Override matching DNS queries with an IP or set of IPs.
          * 
          * @return builder
          * 
@@ -735,7 +789,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param overrideIps The IPs to override matching DNS queries with.
+         * @param overrideIps Override matching DNS queries with an IP or set of IPs.
          * 
          * @return builder
          * 
@@ -745,7 +799,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param overrideIps The IPs to override matching DNS queries with.
+         * @param overrideIps Override matching DNS queries with an IP or set of IPs.
          * 
          * @return builder
          * 
@@ -755,7 +809,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param payloadLog Configure DLP Payload Logging settings for this rule.
+         * @param payloadLog Configure DLP payload logging.
          * 
          * @return builder
          * 
@@ -766,13 +820,34 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param payloadLog Configure DLP Payload Logging settings for this rule.
+         * @param payloadLog Configure DLP payload logging.
          * 
          * @return builder
          * 
          */
         public Builder payloadLog(TeamsRuleRuleSettingsPayloadLogArgs payloadLog) {
             return payloadLog(Output.of(payloadLog));
+        }
+
+        /**
+         * @param quarantine Settings that apply to quarantine rules
+         * 
+         * @return builder
+         * 
+         */
+        public Builder quarantine(@Nullable Output<TeamsRuleRuleSettingsQuarantineArgs> quarantine) {
+            $.quarantine = quarantine;
+            return this;
+        }
+
+        /**
+         * @param quarantine Settings that apply to quarantine rules
+         * 
+         * @return builder
+         * 
+         */
+        public Builder quarantine(TeamsRuleRuleSettingsQuarantineArgs quarantine) {
+            return quarantine(Output.of(quarantine));
         }
 
         /**
@@ -797,7 +872,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param resolveDnsThroughCloudflare Enable sending queries that match the resolver policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+         * @param resolveDnsThroughCloudflare Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
          * 
          * @return builder
          * 
@@ -808,7 +883,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param resolveDnsThroughCloudflare Enable sending queries that match the resolver policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+         * @param resolveDnsThroughCloudflare Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
          * 
          * @return builder
          * 
@@ -818,7 +893,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param untrustedCert Configure untrusted certificate settings for this rule.
+         * @param untrustedCert Configure behavior when an upstream cert is invalid or an SSL error occurs.
          * 
          * @return builder
          * 
@@ -829,7 +904,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param untrustedCert Configure untrusted certificate settings for this rule.
+         * @param untrustedCert Configure behavior when an upstream cert is invalid or an SSL error occurs.
          * 
          * @return builder
          * 

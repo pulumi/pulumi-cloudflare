@@ -13,40 +13,83 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsRuleRuleSettingsBisoAdminControlsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Disable clipboard redirection.
+        /// Configure whether copy is enabled or not. When set with "remote*only", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled", "remote*only".
         /// </summary>
-        [Input("disableClipboardRedirection")]
-        public Input<bool>? DisableClipboardRedirection { get; set; }
+        [Input("copy")]
+        public Input<string>? Copy { get; set; }
 
         /// <summary>
-        /// Disable copy-paste.
+        /// Set to false to enable copy-pasting. Only applies when `version == "v1"`.
         /// </summary>
-        [Input("disableCopyPaste")]
-        public Input<bool>? DisableCopyPaste { get; set; }
+        [Input("dcp")]
+        public Input<bool>? Dcp { get; set; }
 
         /// <summary>
-        /// Disable download.
+        /// Set to false to enable downloading. Only applies when `version == "v1"`.
         /// </summary>
-        [Input("disableDownload")]
-        public Input<bool>? DisableDownload { get; set; }
+        [Input("dd")]
+        public Input<bool>? Dd { get; set; }
 
         /// <summary>
-        /// Disable keyboard usage.
+        /// Set to false to enable keyboard usage. Only applies when `version == "v1"`.
         /// </summary>
-        [Input("disableKeyboard")]
-        public Input<bool>? DisableKeyboard { get; set; }
+        [Input("dk")]
+        public Input<bool>? Dk { get; set; }
 
         /// <summary>
-        /// Disable printing.
+        /// Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled".
         /// </summary>
-        [Input("disablePrinting")]
-        public Input<bool>? DisablePrinting { get; set; }
+        [Input("download")]
+        public Input<string>? Download { get; set; }
 
         /// <summary>
-        /// Disable upload.
+        /// Set to false to enable printing. Only applies when `version == "v1"`.
         /// </summary>
-        [Input("disableUpload")]
-        public Input<bool>? DisableUpload { get; set; }
+        [Input("dp")]
+        public Input<bool>? Dp { get; set; }
+
+        /// <summary>
+        /// Set to false to enable uploading. Only applies when `version == "v1"`.
+        /// </summary>
+        [Input("du")]
+        public Input<bool>? Du { get; set; }
+
+        /// <summary>
+        /// Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled".
+        /// </summary>
+        [Input("keyboard")]
+        public Input<string>? Keyboard { get; set; }
+
+        /// <summary>
+        /// Configure whether pasting is enabled or not. When set with "remote*only", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled", "remote*only".
+        /// </summary>
+        [Input("paste")]
+        public Input<string>? Paste { get; set; }
+
+        /// <summary>
+        /// Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled".
+        /// </summary>
+        [Input("printing")]
+        public Input<string>? Printing { get; set; }
+
+        /// <summary>
+        /// Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled".
+        /// </summary>
+        [Input("upload")]
+        public Input<string>? Upload { get; set; }
+
+        /// <summary>
+        /// Indicates which version of the browser isolation controls should apply.
+        /// Available values: "v1", "v2".
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         public TeamsRuleRuleSettingsBisoAdminControlsArgs()
         {

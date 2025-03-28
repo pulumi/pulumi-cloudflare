@@ -8,19 +8,55 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Access Keys Configuration defines the rotation policy for the keys
-// that access will use to sign data.
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustAccessKeyConfiguration(ctx, "example_zero_trust_access_key_configuration", &cloudflare.ZeroTrustAccessKeyConfigurationArgs{
+//				AccountId:               pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				KeyRotationIntervalDays: pulumi.Float64(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration example '<account_id>'
+// ```
+//
+// Deprecated: cloudflare.index/accesskeysconfiguration.AccessKeysConfiguration has been deprecated in favor of cloudflare.index/zerotrustaccesskeyconfiguration.ZeroTrustAccessKeyConfiguration
 type AccessKeysConfiguration struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Number of days to trigger a rotation of the keys.
-	KeyRotationIntervalDays pulumi.IntOutput `pulumi:"keyRotationIntervalDays"`
+	// The number of days until the next key rotation.
+	DaysUntilNextRotation pulumi.Float64Output `pulumi:"daysUntilNextRotation"`
+	// The number of days between key rotations.
+	KeyRotationIntervalDays pulumi.Float64Output `pulumi:"keyRotationIntervalDays"`
+	// The timestamp of the previous key rotation.
+	LastKeyRotationAt pulumi.StringOutput `pulumi:"lastKeyRotationAt"`
 }
 
 // NewAccessKeysConfiguration registers a new resource with the given unique name, arguments, and options.
@@ -33,6 +69,15 @@ func NewAccessKeysConfiguration(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	if args.KeyRotationIntervalDays == nil {
+		return nil, errors.New("invalid value for required argument 'KeyRotationIntervalDays'")
+	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessKeysConfiguration
 	err := ctx.RegisterResource("cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration", name, args, &resource, opts...)
@@ -56,17 +101,25 @@ func GetAccessKeysConfiguration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessKeysConfiguration resources.
 type accessKeysConfigurationState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// Number of days to trigger a rotation of the keys.
-	KeyRotationIntervalDays *int `pulumi:"keyRotationIntervalDays"`
+	// The number of days until the next key rotation.
+	DaysUntilNextRotation *float64 `pulumi:"daysUntilNextRotation"`
+	// The number of days between key rotations.
+	KeyRotationIntervalDays *float64 `pulumi:"keyRotationIntervalDays"`
+	// The timestamp of the previous key rotation.
+	LastKeyRotationAt *string `pulumi:"lastKeyRotationAt"`
 }
 
 type AccessKeysConfigurationState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// Number of days to trigger a rotation of the keys.
-	KeyRotationIntervalDays pulumi.IntPtrInput
+	// The number of days until the next key rotation.
+	DaysUntilNextRotation pulumi.Float64PtrInput
+	// The number of days between key rotations.
+	KeyRotationIntervalDays pulumi.Float64PtrInput
+	// The timestamp of the previous key rotation.
+	LastKeyRotationAt pulumi.StringPtrInput
 }
 
 func (AccessKeysConfigurationState) ElementType() reflect.Type {
@@ -74,18 +127,18 @@ func (AccessKeysConfigurationState) ElementType() reflect.Type {
 }
 
 type accessKeysConfigurationArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// Number of days to trigger a rotation of the keys.
-	KeyRotationIntervalDays *int `pulumi:"keyRotationIntervalDays"`
+	// The number of days between key rotations.
+	KeyRotationIntervalDays float64 `pulumi:"keyRotationIntervalDays"`
 }
 
 // The set of arguments for constructing a AccessKeysConfiguration resource.
 type AccessKeysConfigurationArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringInput
-	// Number of days to trigger a rotation of the keys.
-	KeyRotationIntervalDays pulumi.IntPtrInput
+	// The number of days between key rotations.
+	KeyRotationIntervalDays pulumi.Float64Input
 }
 
 func (AccessKeysConfigurationArgs) ElementType() reflect.Type {
@@ -175,14 +228,24 @@ func (o AccessKeysConfigurationOutput) ToAccessKeysConfigurationOutputWithContex
 	return o
 }
 
-// The account identifier to target for the resource.
+// Identifier
 func (o AccessKeysConfigurationOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKeysConfiguration) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Number of days to trigger a rotation of the keys.
-func (o AccessKeysConfigurationOutput) KeyRotationIntervalDays() pulumi.IntOutput {
-	return o.ApplyT(func(v *AccessKeysConfiguration) pulumi.IntOutput { return v.KeyRotationIntervalDays }).(pulumi.IntOutput)
+// The number of days until the next key rotation.
+func (o AccessKeysConfigurationOutput) DaysUntilNextRotation() pulumi.Float64Output {
+	return o.ApplyT(func(v *AccessKeysConfiguration) pulumi.Float64Output { return v.DaysUntilNextRotation }).(pulumi.Float64Output)
+}
+
+// The number of days between key rotations.
+func (o AccessKeysConfigurationOutput) KeyRotationIntervalDays() pulumi.Float64Output {
+	return o.ApplyT(func(v *AccessKeysConfiguration) pulumi.Float64Output { return v.KeyRotationIntervalDays }).(pulumi.Float64Output)
+}
+
+// The timestamp of the previous key rotation.
+func (o AccessKeysConfigurationOutput) LastKeyRotationAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessKeysConfiguration) pulumi.StringOutput { return v.LastKeyRotationAt }).(pulumi.StringOutput)
 }
 
 type AccessKeysConfigurationArrayOutput struct{ *pulumi.OutputState }

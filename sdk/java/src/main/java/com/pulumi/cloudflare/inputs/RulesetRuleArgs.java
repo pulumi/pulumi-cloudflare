@@ -9,9 +9,9 @@ import com.pulumi.cloudflare.inputs.RulesetRuleLoggingArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleRatelimitArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -22,14 +22,16 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
     public static final RulesetRuleArgs Empty = new RulesetRuleArgs();
 
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * The action to perform when the rule matches.
+     * Available values: &#34;block&#34;.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * @return The action to perform when the rule matches.
+     * Available values: &#34;block&#34;.
      * 
      */
     public Optional<Output<String>> action() {
@@ -37,14 +39,14 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of parameters that configure the behavior of the ruleset rule action.
+     * The parameters configuring the rule&#39;s action.
      * 
      */
     @Import(name="actionParameters")
     private @Nullable Output<RulesetRuleActionParametersArgs> actionParameters;
 
     /**
-     * @return List of parameters that configure the behavior of the ruleset rule action.
+     * @return The parameters configuring the rule&#39;s action.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersArgs>> actionParameters() {
@@ -52,14 +54,29 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Brief summary of the ruleset rule and its intended use.
+     * The categories of the rule.
+     * 
+     */
+    @Import(name="categories")
+    private @Nullable Output<List<String>> categories;
+
+    /**
+     * @return The categories of the rule.
+     * 
+     */
+    public Optional<Output<List<String>>> categories() {
+        return Optional.ofNullable(this.categories);
+    }
+
+    /**
+     * An informative description of the rule.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Brief summary of the ruleset rule and its intended use.
+     * @return An informative description of the rule.
      * 
      */
     public Optional<Output<String>> description() {
@@ -67,14 +84,14 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the rule is active.
+     * Whether the rule should be executed.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether the rule is active.
+     * @return Whether the rule should be executed.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -82,14 +99,14 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of parameters that configure exposed credential checks.
+     * Configure checks for exposed credentials.
      * 
      */
     @Import(name="exposedCredentialCheck")
     private @Nullable Output<RulesetRuleExposedCredentialCheckArgs> exposedCredentialCheck;
 
     /**
-     * @return List of parameters that configure exposed credential checks.
+     * @return Configure checks for exposed credentials.
      * 
      */
     public Optional<Output<RulesetRuleExposedCredentialCheckArgs>> exposedCredentialCheck() {
@@ -97,29 +114,29 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * The expression defining which traffic will match the rule.
      * 
      */
-    @Import(name="expression", required=true)
-    private Output<String> expression;
+    @Import(name="expression")
+    private @Nullable Output<String> expression;
 
     /**
-     * @return Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * @return The expression defining which traffic will match the rule.
      * 
      */
-    public Output<String> expression() {
-        return this.expression;
+    public Optional<Output<String>> expression() {
+        return Optional.ofNullable(this.expression);
     }
 
     /**
-     * Unique rule identifier.
+     * The unique ID of the rule.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return Unique rule identifier.
+     * @return The unique ID of the rule.
      * 
      */
     public Optional<Output<String>> id() {
@@ -127,14 +144,14 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List parameters to configure how the rule generates logs. Only valid for skip action.
+     * An object configuring the rule&#39;s logging behavior.
      * 
      */
     @Import(name="logging")
     private @Nullable Output<RulesetRuleLoggingArgs> logging;
 
     /**
-     * @return List parameters to configure how the rule generates logs. Only valid for skip action.
+     * @return An object configuring the rule&#39;s logging behavior.
      * 
      */
     public Optional<Output<RulesetRuleLoggingArgs>> logging() {
@@ -142,14 +159,14 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of parameters that configure HTTP rate limiting behaviour.
+     * An object configuring the rule&#39;s ratelimit behavior.
      * 
      */
     @Import(name="ratelimit")
     private @Nullable Output<RulesetRuleRatelimitArgs> ratelimit;
 
     /**
-     * @return List of parameters that configure HTTP rate limiting behaviour.
+     * @return An object configuring the rule&#39;s ratelimit behavior.
      * 
      */
     public Optional<Output<RulesetRuleRatelimitArgs>> ratelimit() {
@@ -157,14 +174,14 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rule reference.
+     * The reference of the rule (the rule ID by default).
      * 
      */
     @Import(name="ref")
     private @Nullable Output<String> ref;
 
     /**
-     * @return Rule reference.
+     * @return The reference of the rule (the rule ID by default).
      * 
      */
     public Optional<Output<String>> ref() {
@@ -176,6 +193,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
     private RulesetRuleArgs(RulesetRuleArgs $) {
         this.action = $.action;
         this.actionParameters = $.actionParameters;
+        this.categories = $.categories;
         this.description = $.description;
         this.enabled = $.enabled;
         this.exposedCredentialCheck = $.exposedCredentialCheck;
@@ -205,7 +223,8 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+         * @param action The action to perform when the rule matches.
+         * Available values: &#34;block&#34;.
          * 
          * @return builder
          * 
@@ -216,7 +235,8 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+         * @param action The action to perform when the rule matches.
+         * Available values: &#34;block&#34;.
          * 
          * @return builder
          * 
@@ -226,7 +246,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param actionParameters List of parameters that configure the behavior of the ruleset rule action.
+         * @param actionParameters The parameters configuring the rule&#39;s action.
          * 
          * @return builder
          * 
@@ -237,7 +257,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param actionParameters List of parameters that configure the behavior of the ruleset rule action.
+         * @param actionParameters The parameters configuring the rule&#39;s action.
          * 
          * @return builder
          * 
@@ -247,7 +267,38 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Brief summary of the ruleset rule and its intended use.
+         * @param categories The categories of the rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder categories(@Nullable Output<List<String>> categories) {
+            $.categories = categories;
+            return this;
+        }
+
+        /**
+         * @param categories The categories of the rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder categories(List<String> categories) {
+            return categories(Output.of(categories));
+        }
+
+        /**
+         * @param categories The categories of the rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder categories(String... categories) {
+            return categories(List.of(categories));
+        }
+
+        /**
+         * @param description An informative description of the rule.
          * 
          * @return builder
          * 
@@ -258,7 +309,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Brief summary of the ruleset rule and its intended use.
+         * @param description An informative description of the rule.
          * 
          * @return builder
          * 
@@ -268,7 +319,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the rule is active.
+         * @param enabled Whether the rule should be executed.
          * 
          * @return builder
          * 
@@ -279,7 +330,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the rule is active.
+         * @param enabled Whether the rule should be executed.
          * 
          * @return builder
          * 
@@ -289,7 +340,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exposedCredentialCheck List of parameters that configure exposed credential checks.
+         * @param exposedCredentialCheck Configure checks for exposed credentials.
          * 
          * @return builder
          * 
@@ -300,7 +351,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exposedCredentialCheck List of parameters that configure exposed credential checks.
+         * @param exposedCredentialCheck Configure checks for exposed credentials.
          * 
          * @return builder
          * 
@@ -310,18 +361,18 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expression Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+         * @param expression The expression defining which traffic will match the rule.
          * 
          * @return builder
          * 
          */
-        public Builder expression(Output<String> expression) {
+        public Builder expression(@Nullable Output<String> expression) {
             $.expression = expression;
             return this;
         }
 
         /**
-         * @param expression Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+         * @param expression The expression defining which traffic will match the rule.
          * 
          * @return builder
          * 
@@ -331,7 +382,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param id Unique rule identifier.
+         * @param id The unique ID of the rule.
          * 
          * @return builder
          * 
@@ -342,7 +393,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param id Unique rule identifier.
+         * @param id The unique ID of the rule.
          * 
          * @return builder
          * 
@@ -352,7 +403,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logging List parameters to configure how the rule generates logs. Only valid for skip action.
+         * @param logging An object configuring the rule&#39;s logging behavior.
          * 
          * @return builder
          * 
@@ -363,7 +414,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logging List parameters to configure how the rule generates logs. Only valid for skip action.
+         * @param logging An object configuring the rule&#39;s logging behavior.
          * 
          * @return builder
          * 
@@ -373,7 +424,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ratelimit List of parameters that configure HTTP rate limiting behaviour.
+         * @param ratelimit An object configuring the rule&#39;s ratelimit behavior.
          * 
          * @return builder
          * 
@@ -384,7 +435,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ratelimit List of parameters that configure HTTP rate limiting behaviour.
+         * @param ratelimit An object configuring the rule&#39;s ratelimit behavior.
          * 
          * @return builder
          * 
@@ -394,7 +445,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ref Rule reference.
+         * @param ref The reference of the rule (the rule ID by default).
          * 
          * @return builder
          * 
@@ -405,7 +456,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ref Rule reference.
+         * @param ref The reference of the rule (the rule ID by default).
          * 
          * @return builder
          * 
@@ -415,9 +466,6 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RulesetRuleArgs build() {
-            if ($.expression == null) {
-                throw new MissingRequiredPropertyException("RulesetRuleArgs", "expression");
-            }
             return $;
         }
     }

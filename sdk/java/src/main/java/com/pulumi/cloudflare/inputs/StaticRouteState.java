@@ -3,8 +3,12 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.StaticRouteModifiedRouteArgs;
+import com.pulumi.cloudflare.inputs.StaticRouteRouteArgs;
+import com.pulumi.cloudflare.inputs.StaticRouteScopeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -18,14 +22,14 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
     public static final StaticRouteState Empty = new StaticRouteState();
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -33,59 +37,43 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of Cloudflare colocation regions for this static route.
-     * 
-     */
-    @Import(name="coloNames")
-    private @Nullable Output<List<String>> coloNames;
-
-    /**
-     * @return List of Cloudflare colocation regions for this static route.
-     * 
-     */
-    public Optional<Output<List<String>>> coloNames() {
-        return Optional.ofNullable(this.coloNames);
-    }
-
-    /**
-     * List of Cloudflare colocation names for this static route.
-     * 
-     */
-    @Import(name="coloRegions")
-    private @Nullable Output<List<String>> coloRegions;
-
-    /**
-     * @return List of Cloudflare colocation names for this static route.
-     * 
-     */
-    public Optional<Output<List<String>>> coloRegions() {
-        return Optional.ofNullable(this.coloRegions);
-    }
-
-    /**
-     * Description of the static route.
+     * An optional human provided description of the static route.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the static route.
+     * @return An optional human provided description of the static route.
      * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    @Import(name="modified")
+    private @Nullable Output<Boolean> modified;
+
+    public Optional<Output<Boolean>> modified() {
+        return Optional.ofNullable(this.modified);
+    }
+
+    @Import(name="modifiedRoute")
+    private @Nullable Output<StaticRouteModifiedRouteArgs> modifiedRoute;
+
+    public Optional<Output<StaticRouteModifiedRouteArgs>> modifiedRoute() {
+        return Optional.ofNullable(this.modifiedRoute);
+    }
+
     /**
-     * The nexthop IP address where traffic will be routed to.
+     * The next-hop IP Address for the static route.
      * 
      */
     @Import(name="nexthop")
     private @Nullable Output<String> nexthop;
 
     /**
-     * @return The nexthop IP address where traffic will be routed to.
+     * @return The next-hop IP Address for the static route.
      * 
      */
     public Optional<Output<String>> nexthop() {
@@ -93,14 +81,14 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Your network prefix using CIDR notation.
+     * IP Prefix in Classless Inter-Domain Routing format.
      * 
      */
     @Import(name="prefix")
     private @Nullable Output<String> prefix;
 
     /**
-     * @return Your network prefix using CIDR notation.
+     * @return IP Prefix in Classless Inter-Domain Routing format.
      * 
      */
     public Optional<Output<String>> prefix() {
@@ -108,29 +96,73 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The priority for the static route.
+     * Priority of the static route.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return The priority for the static route.
+     * @return Priority of the static route.
      * 
      */
     public Optional<Output<Integer>> priority() {
         return Optional.ofNullable(this.priority);
     }
 
+    @Import(name="route")
+    private @Nullable Output<StaticRouteRouteArgs> route;
+
+    public Optional<Output<StaticRouteRouteArgs>> route() {
+        return Optional.ofNullable(this.route);
+    }
+
     /**
-     * The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
+     * 
+     */
+    @Import(name="routeId")
+    private @Nullable Output<String> routeId;
+
+    /**
+     * @return Identifier
+     * 
+     */
+    public Optional<Output<String>> routeId() {
+        return Optional.ofNullable(this.routeId);
+    }
+
+    @Import(name="routes")
+    private @Nullable Output<List<StaticRouteRouteArgs>> routes;
+
+    public Optional<Output<List<StaticRouteRouteArgs>>> routes() {
+        return Optional.ofNullable(this.routes);
+    }
+
+    /**
+     * Used only for ECMP routes.
+     * 
+     */
+    @Import(name="scope")
+    private @Nullable Output<StaticRouteScopeArgs> scope;
+
+    /**
+     * @return Used only for ECMP routes.
+     * 
+     */
+    public Optional<Output<StaticRouteScopeArgs>> scope() {
+        return Optional.ofNullable(this.scope);
+    }
+
+    /**
+     * Optional weight of the ECMP scope - if provided.
      * 
      */
     @Import(name="weight")
     private @Nullable Output<Integer> weight;
 
     /**
-     * @return The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+     * @return Optional weight of the ECMP scope - if provided.
      * 
      */
     public Optional<Output<Integer>> weight() {
@@ -141,12 +173,16 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
 
     private StaticRouteState(StaticRouteState $) {
         this.accountId = $.accountId;
-        this.coloNames = $.coloNames;
-        this.coloRegions = $.coloRegions;
         this.description = $.description;
+        this.modified = $.modified;
+        this.modifiedRoute = $.modifiedRoute;
         this.nexthop = $.nexthop;
         this.prefix = $.prefix;
         this.priority = $.priority;
+        this.route = $.route;
+        this.routeId = $.routeId;
+        this.routes = $.routes;
+        this.scope = $.scope;
         this.weight = $.weight;
     }
 
@@ -169,7 +205,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -180,7 +216,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -190,69 +226,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coloNames List of Cloudflare colocation regions for this static route.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder coloNames(@Nullable Output<List<String>> coloNames) {
-            $.coloNames = coloNames;
-            return this;
-        }
-
-        /**
-         * @param coloNames List of Cloudflare colocation regions for this static route.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder coloNames(List<String> coloNames) {
-            return coloNames(Output.of(coloNames));
-        }
-
-        /**
-         * @param coloNames List of Cloudflare colocation regions for this static route.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder coloNames(String... coloNames) {
-            return coloNames(List.of(coloNames));
-        }
-
-        /**
-         * @param coloRegions List of Cloudflare colocation names for this static route.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder coloRegions(@Nullable Output<List<String>> coloRegions) {
-            $.coloRegions = coloRegions;
-            return this;
-        }
-
-        /**
-         * @param coloRegions List of Cloudflare colocation names for this static route.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder coloRegions(List<String> coloRegions) {
-            return coloRegions(Output.of(coloRegions));
-        }
-
-        /**
-         * @param coloRegions List of Cloudflare colocation names for this static route.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder coloRegions(String... coloRegions) {
-            return coloRegions(List.of(coloRegions));
-        }
-
-        /**
-         * @param description Description of the static route.
+         * @param description An optional human provided description of the static route.
          * 
          * @return builder
          * 
@@ -263,7 +237,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the static route.
+         * @param description An optional human provided description of the static route.
          * 
          * @return builder
          * 
@@ -272,8 +246,26 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        public Builder modified(@Nullable Output<Boolean> modified) {
+            $.modified = modified;
+            return this;
+        }
+
+        public Builder modified(Boolean modified) {
+            return modified(Output.of(modified));
+        }
+
+        public Builder modifiedRoute(@Nullable Output<StaticRouteModifiedRouteArgs> modifiedRoute) {
+            $.modifiedRoute = modifiedRoute;
+            return this;
+        }
+
+        public Builder modifiedRoute(StaticRouteModifiedRouteArgs modifiedRoute) {
+            return modifiedRoute(Output.of(modifiedRoute));
+        }
+
         /**
-         * @param nexthop The nexthop IP address where traffic will be routed to.
+         * @param nexthop The next-hop IP Address for the static route.
          * 
          * @return builder
          * 
@@ -284,7 +276,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nexthop The nexthop IP address where traffic will be routed to.
+         * @param nexthop The next-hop IP Address for the static route.
          * 
          * @return builder
          * 
@@ -294,7 +286,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param prefix Your network prefix using CIDR notation.
+         * @param prefix IP Prefix in Classless Inter-Domain Routing format.
          * 
          * @return builder
          * 
@@ -305,7 +297,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param prefix Your network prefix using CIDR notation.
+         * @param prefix IP Prefix in Classless Inter-Domain Routing format.
          * 
          * @return builder
          * 
@@ -315,7 +307,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority The priority for the static route.
+         * @param priority Priority of the static route.
          * 
          * @return builder
          * 
@@ -326,7 +318,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority The priority for the static route.
+         * @param priority Priority of the static route.
          * 
          * @return builder
          * 
@@ -335,8 +327,72 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
             return priority(Output.of(priority));
         }
 
+        public Builder route(@Nullable Output<StaticRouteRouteArgs> route) {
+            $.route = route;
+            return this;
+        }
+
+        public Builder route(StaticRouteRouteArgs route) {
+            return route(Output.of(route));
+        }
+
         /**
-         * @param weight The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+         * @param routeId Identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeId(@Nullable Output<String> routeId) {
+            $.routeId = routeId;
+            return this;
+        }
+
+        /**
+         * @param routeId Identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeId(String routeId) {
+            return routeId(Output.of(routeId));
+        }
+
+        public Builder routes(@Nullable Output<List<StaticRouteRouteArgs>> routes) {
+            $.routes = routes;
+            return this;
+        }
+
+        public Builder routes(List<StaticRouteRouteArgs> routes) {
+            return routes(Output.of(routes));
+        }
+
+        public Builder routes(StaticRouteRouteArgs... routes) {
+            return routes(List.of(routes));
+        }
+
+        /**
+         * @param scope Used only for ECMP routes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scope(@Nullable Output<StaticRouteScopeArgs> scope) {
+            $.scope = scope;
+            return this;
+        }
+
+        /**
+         * @param scope Used only for ECMP routes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scope(StaticRouteScopeArgs scope) {
+            return scope(Output.of(scope));
+        }
+
+        /**
+         * @param weight Optional weight of the ECMP scope - if provided.
          * 
          * @return builder
          * 
@@ -347,7 +403,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param weight The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+         * @param weight Optional weight of the ECMP scope - if provided.
          * 
          * @return builder
          * 

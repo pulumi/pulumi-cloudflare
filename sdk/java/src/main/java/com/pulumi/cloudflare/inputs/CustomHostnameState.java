@@ -3,10 +3,11 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.CustomHostnameOwnershipVerificationArgs;
+import com.pulumi.cloudflare.inputs.CustomHostnameOwnershipVerificationHttpArgs;
 import com.pulumi.cloudflare.inputs.CustomHostnameSslArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -20,14 +21,29 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
     public static final CustomHostnameState Empty = new CustomHostnameState();
 
     /**
-     * Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     * This is the time the hostname was created.
+     * 
+     */
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    /**
+     * @return This is the time the hostname was created.
+     * 
+     */
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
      * 
      */
     @Import(name="customMetadata")
     private @Nullable Output<Map<String,String>> customMetadata;
 
     /**
-     * @return Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     * @return Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
      * 
      */
     public Optional<Output<Map<String,String>>> customMetadata() {
@@ -35,14 +51,14 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The custom origin server used for certificates.
+     * a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
      * 
      */
     @Import(name="customOriginServer")
     private @Nullable Output<String> customOriginServer;
 
     /**
-     * @return The custom origin server used for certificates.
+     * @return a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
      * 
      */
     public Optional<Output<String>> customOriginServer() {
@@ -50,14 +66,14 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+     * A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string &#39;:request*host*header:&#39; which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
      * 
      */
     @Import(name="customOriginSni")
     private @Nullable Output<String> customOriginSni;
 
     /**
-     * @return The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+     * @return A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string &#39;:request*host*header:&#39; which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
      * 
      */
     public Optional<Output<String>> customOriginSni() {
@@ -65,31 +81,47 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+     * The custom hostname that will point to your hostname via CNAME.
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     /**
-     * @return Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+     * @return The custom hostname that will point to your hostname via CNAME.
      * 
      */
     public Optional<Output<String>> hostname() {
         return Optional.ofNullable(this.hostname);
     }
 
+    /**
+     * This is a record which can be placed to activate a hostname.
+     * 
+     */
     @Import(name="ownershipVerification")
-    private @Nullable Output<Map<String,String>> ownershipVerification;
+    private @Nullable Output<CustomHostnameOwnershipVerificationArgs> ownershipVerification;
 
-    public Optional<Output<Map<String,String>>> ownershipVerification() {
+    /**
+     * @return This is a record which can be placed to activate a hostname.
+     * 
+     */
+    public Optional<Output<CustomHostnameOwnershipVerificationArgs>> ownershipVerification() {
         return Optional.ofNullable(this.ownershipVerification);
     }
 
+    /**
+     * This presents the token to be served by the given http url to activate a hostname.
+     * 
+     */
     @Import(name="ownershipVerificationHttp")
-    private @Nullable Output<Map<String,String>> ownershipVerificationHttp;
+    private @Nullable Output<CustomHostnameOwnershipVerificationHttpArgs> ownershipVerificationHttp;
 
-    public Optional<Output<Map<String,String>>> ownershipVerificationHttp() {
+    /**
+     * @return This presents the token to be served by the given http url to activate a hostname.
+     * 
+     */
+    public Optional<Output<CustomHostnameOwnershipVerificationHttpArgs>> ownershipVerificationHttp() {
         return Optional.ofNullable(this.ownershipVerificationHttp);
     }
 
@@ -97,26 +129,28 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
      * SSL properties used when creating the custom hostname.
      * 
      */
-    @Import(name="ssls")
-    private @Nullable Output<List<CustomHostnameSslArgs>> ssls;
+    @Import(name="ssl")
+    private @Nullable Output<CustomHostnameSslArgs> ssl;
 
     /**
      * @return SSL properties used when creating the custom hostname.
      * 
      */
-    public Optional<Output<List<CustomHostnameSslArgs>>> ssls() {
-        return Optional.ofNullable(this.ssls);
+    public Optional<Output<CustomHostnameSslArgs>> ssl() {
+        return Optional.ofNullable(this.ssl);
     }
 
     /**
-     * Status of the certificate.
+     * Status of the hostname&#39;s activation.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;test_failed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Status of the certificate.
+     * @return Status of the hostname&#39;s activation.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;test_failed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -124,29 +158,29 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+     * These are errors that were encountered while trying to activate a hostname.
      * 
      */
-    @Import(name="waitForSslPendingValidation")
-    private @Nullable Output<Boolean> waitForSslPendingValidation;
+    @Import(name="verificationErrors")
+    private @Nullable Output<List<String>> verificationErrors;
 
     /**
-     * @return Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+     * @return These are errors that were encountered while trying to activate a hostname.
      * 
      */
-    public Optional<Output<Boolean>> waitForSslPendingValidation() {
-        return Optional.ofNullable(this.waitForSslPendingValidation);
+    public Optional<Output<List<String>>> verificationErrors() {
+        return Optional.ofNullable(this.verificationErrors);
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -156,15 +190,16 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
     private CustomHostnameState() {}
 
     private CustomHostnameState(CustomHostnameState $) {
+        this.createdAt = $.createdAt;
         this.customMetadata = $.customMetadata;
         this.customOriginServer = $.customOriginServer;
         this.customOriginSni = $.customOriginSni;
         this.hostname = $.hostname;
         this.ownershipVerification = $.ownershipVerification;
         this.ownershipVerificationHttp = $.ownershipVerificationHttp;
-        this.ssls = $.ssls;
+        this.ssl = $.ssl;
         this.status = $.status;
-        this.waitForSslPendingValidation = $.waitForSslPendingValidation;
+        this.verificationErrors = $.verificationErrors;
         this.zoneId = $.zoneId;
     }
 
@@ -187,7 +222,28 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param customMetadata Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+         * @param createdAt This is the time the hostname was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        /**
+         * @param createdAt This is the time the hostname was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param customMetadata Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
          * 
          * @return builder
          * 
@@ -198,7 +254,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param customMetadata Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+         * @param customMetadata Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
          * 
          * @return builder
          * 
@@ -208,7 +264,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param customOriginServer The custom origin server used for certificates.
+         * @param customOriginServer a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
          * 
          * @return builder
          * 
@@ -219,7 +275,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param customOriginServer The custom origin server used for certificates.
+         * @param customOriginServer a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
          * 
          * @return builder
          * 
@@ -229,7 +285,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param customOriginSni The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+         * @param customOriginSni A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string &#39;:request*host*header:&#39; which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
          * 
          * @return builder
          * 
@@ -240,7 +296,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param customOriginSni The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+         * @param customOriginSni A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string &#39;:request*host*header:&#39; which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
          * 
          * @return builder
          * 
@@ -250,7 +306,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hostname Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+         * @param hostname The custom hostname that will point to your hostname via CNAME.
          * 
          * @return builder
          * 
@@ -261,7 +317,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hostname Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+         * @param hostname The custom hostname that will point to your hostname via CNAME.
          * 
          * @return builder
          * 
@@ -270,57 +326,72 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
             return hostname(Output.of(hostname));
         }
 
-        public Builder ownershipVerification(@Nullable Output<Map<String,String>> ownershipVerification) {
+        /**
+         * @param ownershipVerification This is a record which can be placed to activate a hostname.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownershipVerification(@Nullable Output<CustomHostnameOwnershipVerificationArgs> ownershipVerification) {
             $.ownershipVerification = ownershipVerification;
             return this;
         }
 
-        public Builder ownershipVerification(Map<String,String> ownershipVerification) {
+        /**
+         * @param ownershipVerification This is a record which can be placed to activate a hostname.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownershipVerification(CustomHostnameOwnershipVerificationArgs ownershipVerification) {
             return ownershipVerification(Output.of(ownershipVerification));
         }
 
-        public Builder ownershipVerificationHttp(@Nullable Output<Map<String,String>> ownershipVerificationHttp) {
+        /**
+         * @param ownershipVerificationHttp This presents the token to be served by the given http url to activate a hostname.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownershipVerificationHttp(@Nullable Output<CustomHostnameOwnershipVerificationHttpArgs> ownershipVerificationHttp) {
             $.ownershipVerificationHttp = ownershipVerificationHttp;
             return this;
         }
 
-        public Builder ownershipVerificationHttp(Map<String,String> ownershipVerificationHttp) {
+        /**
+         * @param ownershipVerificationHttp This presents the token to be served by the given http url to activate a hostname.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownershipVerificationHttp(CustomHostnameOwnershipVerificationHttpArgs ownershipVerificationHttp) {
             return ownershipVerificationHttp(Output.of(ownershipVerificationHttp));
         }
 
         /**
-         * @param ssls SSL properties used when creating the custom hostname.
+         * @param ssl SSL properties used when creating the custom hostname.
          * 
          * @return builder
          * 
          */
-        public Builder ssls(@Nullable Output<List<CustomHostnameSslArgs>> ssls) {
-            $.ssls = ssls;
+        public Builder ssl(@Nullable Output<CustomHostnameSslArgs> ssl) {
+            $.ssl = ssl;
             return this;
         }
 
         /**
-         * @param ssls SSL properties used when creating the custom hostname.
+         * @param ssl SSL properties used when creating the custom hostname.
          * 
          * @return builder
          * 
          */
-        public Builder ssls(List<CustomHostnameSslArgs> ssls) {
-            return ssls(Output.of(ssls));
+        public Builder ssl(CustomHostnameSslArgs ssl) {
+            return ssl(Output.of(ssl));
         }
 
         /**
-         * @param ssls SSL properties used when creating the custom hostname.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ssls(CustomHostnameSslArgs... ssls) {
-            return ssls(List.of(ssls));
-        }
-
-        /**
-         * @param status Status of the certificate.
+         * @param status Status of the hostname&#39;s activation.
+         * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;test_failed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
          * 
          * @return builder
          * 
@@ -331,7 +402,8 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status Status of the certificate.
+         * @param status Status of the hostname&#39;s activation.
+         * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;test_failed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
          * 
          * @return builder
          * 
@@ -341,28 +413,38 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param waitForSslPendingValidation Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+         * @param verificationErrors These are errors that were encountered while trying to activate a hostname.
          * 
          * @return builder
          * 
          */
-        public Builder waitForSslPendingValidation(@Nullable Output<Boolean> waitForSslPendingValidation) {
-            $.waitForSslPendingValidation = waitForSslPendingValidation;
+        public Builder verificationErrors(@Nullable Output<List<String>> verificationErrors) {
+            $.verificationErrors = verificationErrors;
             return this;
         }
 
         /**
-         * @param waitForSslPendingValidation Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+         * @param verificationErrors These are errors that were encountered while trying to activate a hostname.
          * 
          * @return builder
          * 
          */
-        public Builder waitForSslPendingValidation(Boolean waitForSslPendingValidation) {
-            return waitForSslPendingValidation(Output.of(waitForSslPendingValidation));
+        public Builder verificationErrors(List<String> verificationErrors) {
+            return verificationErrors(Output.of(verificationErrors));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param verificationErrors These are errors that were encountered while trying to activate a hostname.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder verificationErrors(String... verificationErrors) {
+            return verificationErrors(List.of(verificationErrors));
+        }
+
+        /**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -373,7 +455,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

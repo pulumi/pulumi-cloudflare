@@ -13,13 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TeamsRuleRuleSettingsDnsResolvers
     {
-        /// <summary>
-        /// IPv4 resolvers.
-        /// </summary>
         public readonly ImmutableArray<Outputs.TeamsRuleRuleSettingsDnsResolversIpv4> Ipv4s;
-        /// <summary>
-        /// IPv6 resolvers.
-        /// </summary>
         public readonly ImmutableArray<Outputs.TeamsRuleRuleSettingsDnsResolversIpv6> Ipv6s;
 
         [OutputConstructor]

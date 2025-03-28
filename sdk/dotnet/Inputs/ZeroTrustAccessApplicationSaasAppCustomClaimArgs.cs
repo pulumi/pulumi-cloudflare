@@ -13,25 +13,26 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustAccessApplicationSaasAppCustomClaimArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the attribute as provided to the SaaS app.
+        /// The name of the claim.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// True if the attribute must be always present.
+        /// If the claim is required when building an OIDC token.
         /// </summary>
         [Input("required")]
         public Input<bool>? Required { get; set; }
 
         /// <summary>
         /// The scope of the claim.
+        /// Available values: "groups", "profile", "email", "openid".
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
-        [Input("source", required: true)]
-        public Input<Inputs.ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgs> Source { get; set; } = null!;
+        [Input("source")]
+        public Input<Inputs.ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgs>? Source { get; set; }
 
         public ZeroTrustAccessApplicationSaasAppCustomClaimArgs()
         {

@@ -3,52 +3,55 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.GetAccountRolesRole;
+import com.pulumi.cloudflare.outputs.GetAccountRolesResultPermissions;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetAccountRolesResult {
     /**
-     * @return The account identifier to target for the resource.
+     * @return Description of role&#39;s permissions.
      * 
      */
-    private String accountId;
+    private String description;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Role identifier tag.
      * 
      */
     private String id;
     /**
-     * @return A list of roles object.
+     * @return Role name.
      * 
      */
-    private List<GetAccountRolesRole> roles;
+    private String name;
+    private GetAccountRolesResultPermissions permissions;
 
     private GetAccountRolesResult() {}
     /**
-     * @return The account identifier to target for the resource.
+     * @return Description of role&#39;s permissions.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public String description() {
+        return this.description;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Role identifier tag.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return A list of roles object.
+     * @return Role name.
      * 
      */
-    public List<GetAccountRolesRole> roles() {
-        return this.roles;
+    public String name() {
+        return this.name;
+    }
+    public GetAccountRolesResultPermissions permissions() {
+        return this.permissions;
     }
 
     public static Builder builder() {
@@ -60,23 +63,25 @@ public final class GetAccountRolesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private String description;
         private String id;
-        private List<GetAccountRolesRole> roles;
+        private String name;
+        private GetAccountRolesResultPermissions permissions;
         public Builder() {}
         public Builder(GetAccountRolesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accountId = defaults.accountId;
+    	      this.description = defaults.description;
     	      this.id = defaults.id;
-    	      this.roles = defaults.roles;
+    	      this.name = defaults.name;
+    	      this.permissions = defaults.permissions;
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetAccountRolesResult", "accountId");
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAccountRolesResult", "description");
             }
-            this.accountId = accountId;
+            this.description = description;
             return this;
         }
         @CustomType.Setter
@@ -88,21 +93,27 @@ public final class GetAccountRolesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder roles(List<GetAccountRolesRole> roles) {
-            if (roles == null) {
-              throw new MissingRequiredPropertyException("GetAccountRolesResult", "roles");
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAccountRolesResult", "name");
             }
-            this.roles = roles;
+            this.name = name;
             return this;
         }
-        public Builder roles(GetAccountRolesRole... roles) {
-            return roles(List.of(roles));
+        @CustomType.Setter
+        public Builder permissions(GetAccountRolesResultPermissions permissions) {
+            if (permissions == null) {
+              throw new MissingRequiredPropertyException("GetAccountRolesResult", "permissions");
+            }
+            this.permissions = permissions;
+            return this;
         }
         public GetAccountRolesResult build() {
             final var _resultValue = new GetAccountRolesResult();
-            _resultValue.accountId = accountId;
+            _resultValue.description = description;
             _resultValue.id = id;
-            _resultValue.roles = roles;
+            _resultValue.name = name;
+            _resultValue.permissions = permissions;
             return _resultValue;
         }
     }

@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -17,64 +16,40 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
 
     public static final SnippetRulesRuleArgs Empty = new SnippetRulesRuleArgs();
 
-    /**
-     * Brief summary of the snippet rule and its intended use.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return Brief summary of the snippet rule and its intended use.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * Whether the headers rule is active.
-     * 
-     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
-    /**
-     * @return Whether the headers rule is active.
-     * 
-     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
-    /**
-     * Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.
-     * 
-     */
-    @Import(name="expression", required=true)
-    private Output<String> expression;
+    @Import(name="expression")
+    private @Nullable Output<String> expression;
 
-    /**
-     * @return Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.
-     * 
-     */
-    public Output<String> expression() {
-        return this.expression;
+    public Optional<Output<String>> expression() {
+        return Optional.ofNullable(this.expression);
     }
 
     /**
-     * Name of the snippet invoked by this rule.
+     * Snippet identifying name
      * 
      */
-    @Import(name="snippetName", required=true)
-    private Output<String> snippetName;
+    @Import(name="snippetName")
+    private @Nullable Output<String> snippetName;
 
     /**
-     * @return Name of the snippet invoked by this rule.
+     * @return Snippet identifying name
      * 
      */
-    public Output<String> snippetName() {
-        return this.snippetName;
+    public Optional<Output<String>> snippetName() {
+        return Optional.ofNullable(this.snippetName);
     }
 
     private SnippetRulesRuleArgs() {}
@@ -104,82 +79,46 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
             $ = new SnippetRulesRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param description Brief summary of the snippet rule and its intended use.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description Brief summary of the snippet rule and its intended use.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
-        /**
-         * @param enabled Whether the headers rule is active.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @param enabled Whether the headers rule is active.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
-        /**
-         * @param expression Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder expression(Output<String> expression) {
+        public Builder expression(@Nullable Output<String> expression) {
             $.expression = expression;
             return this;
         }
 
-        /**
-         * @param expression Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder expression(String expression) {
             return expression(Output.of(expression));
         }
 
         /**
-         * @param snippetName Name of the snippet invoked by this rule.
+         * @param snippetName Snippet identifying name
          * 
          * @return builder
          * 
          */
-        public Builder snippetName(Output<String> snippetName) {
+        public Builder snippetName(@Nullable Output<String> snippetName) {
             $.snippetName = snippetName;
             return this;
         }
 
         /**
-         * @param snippetName Name of the snippet invoked by this rule.
+         * @param snippetName Snippet identifying name
          * 
          * @return builder
          * 
@@ -189,12 +128,6 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         public SnippetRulesRuleArgs build() {
-            if ($.expression == null) {
-                throw new MissingRequiredPropertyException("SnippetRulesRuleArgs", "expression");
-            }
-            if ($.snippetName == null) {
-                throw new MissingRequiredPropertyException("SnippetRulesRuleArgs", "snippetName");
-            }
             return $;
         }
     }

@@ -13,101 +13,202 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RecordData
     {
-        public readonly int? Algorithm;
+        /// <summary>
+        /// Algorithm.
+        /// </summary>
+        public readonly double? Algorithm;
+        /// <summary>
+        /// Altitude of location in meters.
+        /// </summary>
         public readonly double? Altitude;
+        /// <summary>
+        /// Certificate.
+        /// </summary>
         public readonly string? Certificate;
-        public readonly string? Content;
+        /// <summary>
+        /// Digest.
+        /// </summary>
         public readonly string? Digest;
-        public readonly int? DigestType;
+        /// <summary>
+        /// Digest Type.
+        /// </summary>
+        public readonly double? DigestType;
+        /// <summary>
+        /// fingerprint.
+        /// </summary>
         public readonly string? Fingerprint;
-        public readonly string? Flags;
-        public readonly int? KeyTag;
-        public readonly int? LatDegrees;
+        /// <summary>
+        /// Flags for the CAA record.
+        /// </summary>
+        public readonly double? Flags;
+        /// <summary>
+        /// Key Tag.
+        /// </summary>
+        public readonly double? KeyTag;
+        /// <summary>
+        /// Degrees of latitude.
+        /// </summary>
+        public readonly double? LatDegrees;
+        /// <summary>
+        /// Latitude direction.
+        /// Available values: "N", "S".
+        /// </summary>
         public readonly string? LatDirection;
-        public readonly int? LatMinutes;
+        /// <summary>
+        /// Minutes of latitude.
+        /// </summary>
+        public readonly double? LatMinutes;
+        /// <summary>
+        /// Seconds of latitude.
+        /// </summary>
         public readonly double? LatSeconds;
-        public readonly int? LongDegrees;
+        /// <summary>
+        /// Degrees of longitude.
+        /// </summary>
+        public readonly double? LongDegrees;
+        /// <summary>
+        /// Longitude direction.
+        /// Available values: "E", "W".
+        /// </summary>
         public readonly string? LongDirection;
-        public readonly int? LongMinutes;
+        /// <summary>
+        /// Minutes of longitude.
+        /// </summary>
+        public readonly double? LongMinutes;
+        /// <summary>
+        /// Seconds of longitude.
+        /// </summary>
         public readonly double? LongSeconds;
-        public readonly int? MatchingType;
-        public readonly string? Name;
-        public readonly int? Order;
-        public readonly int? Port;
+        /// <summary>
+        /// Matching Type.
+        /// </summary>
+        public readonly double? MatchingType;
+        /// <summary>
+        /// Order.
+        /// </summary>
+        public readonly double? Order;
+        /// <summary>
+        /// The port of the service.
+        /// </summary>
+        public readonly double? Port;
+        /// <summary>
+        /// Horizontal precision of location.
+        /// </summary>
         public readonly double? PrecisionHorz;
+        /// <summary>
+        /// Vertical precision of location.
+        /// </summary>
         public readonly double? PrecisionVert;
-        public readonly int? Preference;
-        public readonly int? Priority;
-        public readonly string? Proto;
-        public readonly int? Protocol;
+        /// <summary>
+        /// Preference.
+        /// </summary>
+        public readonly double? Preference;
+        /// <summary>
+        /// priority.
+        /// </summary>
+        public readonly double? Priority;
+        /// <summary>
+        /// Protocol.
+        /// </summary>
+        public readonly double? Protocol;
+        /// <summary>
+        /// Public Key.
+        /// </summary>
         public readonly string? PublicKey;
+        /// <summary>
+        /// Regex.
+        /// </summary>
         public readonly string? Regex;
+        /// <summary>
+        /// Replacement.
+        /// </summary>
         public readonly string? Replacement;
-        public readonly int? Selector;
+        /// <summary>
+        /// Selector.
+        /// </summary>
+        public readonly double? Selector;
+        /// <summary>
+        /// Service.
+        /// </summary>
         public readonly string? Service;
+        /// <summary>
+        /// Size of location in meters.
+        /// </summary>
         public readonly double? Size;
+        /// <summary>
+        /// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+        /// </summary>
         public readonly string? Tag;
+        /// <summary>
+        /// target.
+        /// </summary>
         public readonly string? Target;
-        public readonly int? Type;
-        public readonly int? Usage;
+        /// <summary>
+        /// Type.
+        /// </summary>
+        public readonly double? Type;
+        /// <summary>
+        /// Usage.
+        /// </summary>
+        public readonly double? Usage;
+        /// <summary>
+        /// Value of the record. This field's semantics depend on the chosen tag.
+        /// </summary>
         public readonly string? Value;
-        public readonly int? Weight;
+        /// <summary>
+        /// The record weight.
+        /// </summary>
+        public readonly double? Weight;
 
         [OutputConstructor]
         private RecordData(
-            int? algorithm,
+            double? algorithm,
 
             double? altitude,
 
             string? certificate,
 
-            string? content,
-
             string? digest,
 
-            int? digestType,
+            double? digestType,
 
             string? fingerprint,
 
-            string? flags,
+            double? flags,
 
-            int? keyTag,
+            double? keyTag,
 
-            int? latDegrees,
+            double? latDegrees,
 
             string? latDirection,
 
-            int? latMinutes,
+            double? latMinutes,
 
             double? latSeconds,
 
-            int? longDegrees,
+            double? longDegrees,
 
             string? longDirection,
 
-            int? longMinutes,
+            double? longMinutes,
 
             double? longSeconds,
 
-            int? matchingType,
+            double? matchingType,
 
-            string? name,
+            double? order,
 
-            int? order,
-
-            int? port,
+            double? port,
 
             double? precisionHorz,
 
             double? precisionVert,
 
-            int? preference,
+            double? preference,
 
-            int? priority,
+            double? priority,
 
-            string? proto,
-
-            int? protocol,
+            double? protocol,
 
             string? publicKey,
 
@@ -115,7 +216,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? replacement,
 
-            int? selector,
+            double? selector,
 
             string? service,
 
@@ -125,18 +226,17 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? target,
 
-            int? type,
+            double? type,
 
-            int? usage,
+            double? usage,
 
             string? value,
 
-            int? weight)
+            double? weight)
         {
             Algorithm = algorithm;
             Altitude = altitude;
             Certificate = certificate;
-            Content = content;
             Digest = digest;
             DigestType = digestType;
             Fingerprint = fingerprint;
@@ -151,14 +251,12 @@ namespace Pulumi.Cloudflare.Outputs
             LongMinutes = longMinutes;
             LongSeconds = longSeconds;
             MatchingType = matchingType;
-            Name = name;
             Order = order;
             Port = port;
             PrecisionHorz = precisionHorz;
             PrecisionVert = precisionVert;
             Preference = preference;
             Priority = priority;
-            Proto = proto;
             Protocol = protocol;
             PublicKey = publicKey;
             Regex = regex;

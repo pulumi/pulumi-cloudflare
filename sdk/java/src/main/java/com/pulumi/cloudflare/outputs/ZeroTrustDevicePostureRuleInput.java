@@ -3,10 +3,10 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.ZeroTrustDevicePostureRuleInputLocation;
+import com.pulumi.cloudflare.outputs.ZeroTrustDevicePostureRuleInputLocations;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,470 +16,494 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustDevicePostureRuleInput {
     /**
-     * @return The number of active threats from SentinelOne.
+     * @return The Number of active threats.
      * 
      */
-    private @Nullable Integer activeThreats;
+    private @Nullable Double activeThreats;
     /**
-     * @return The UUID of a Cloudflare managed certificate.
+     * @return UUID of Cloudflare managed certificate.
      * 
      */
     private @Nullable String certificateId;
     /**
-     * @return Specific volume(s) to check for encryption.
+     * @return List of volume names to be checked for encryption.
      * 
      */
     private @Nullable List<String> checkDisks;
     /**
-     * @return Confirm the certificate was not imported from another device.
+     * @return Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.
      * 
      */
     private @Nullable Boolean checkPrivateKey;
     /**
-     * @return The common name for a certificate.
+     * @return Common Name that is protected by the certificate
      * 
      */
     private @Nullable String cn;
     /**
-     * @return The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
+     * @return Compliance Status
+     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
      * 
      */
     private @Nullable String complianceStatus;
     /**
-     * @return The workspace one or intune connection id.
+     * @return Posture Integration ID.
      * 
      */
     private @Nullable String connectionId;
     /**
-     * @return The count comparison operator for kolide. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * @return Count Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     private @Nullable String countOperator;
     /**
-     * @return The domain that the client must join.
+     * @return Domain
      * 
      */
     private @Nullable String domain;
     /**
-     * @return The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+     * @return For more details on eid last seen, refer to the Tanium documentation.
      * 
      */
     private @Nullable String eidLastSeen;
     /**
-     * @return True if the firewall must be enabled.
+     * @return Enabled
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Checks if the file should exist.
+     * @return Whether or not file exists
      * 
      */
     private @Nullable Boolean exists;
     /**
-     * @return List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+     * @return List of values indicating purposes for which the certificate public key can be used
      * 
      */
     private @Nullable List<String> extendedKeyUsages;
     /**
-     * @return The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
+     * @return List ID.
      * 
      */
     private @Nullable String id;
     /**
-     * @return True if SentinelOne device is infected.
+     * @return Whether device is infected.
      * 
      */
     private @Nullable Boolean infected;
     /**
-     * @return True if SentinelOne device is active.
+     * @return Whether device is active.
      * 
      */
     private @Nullable Boolean isActive;
     /**
-     * @return The number of issues for kolide.
+     * @return The Number of Issues.
      * 
      */
     private @Nullable String issueCount;
     /**
-     * @return The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+     * @return For more details on last seen, please refer to the Crowdstrike documentation.
      * 
      */
     private @Nullable String lastSeen;
+    private @Nullable ZeroTrustDevicePostureRuleInputLocations locations;
     /**
-     * @return List of operating system locations to check for a client certificate..
-     * 
-     */
-    private @Nullable List<ZeroTrustDevicePostureRuleInputLocation> locations;
-    /**
-     * @return The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+     * @return Network status of device.
+     * Available values: &#34;connected&#34;, &#34;disconnected&#34;, &#34;disconnecting&#34;, &#34;connecting&#34;.
      * 
      */
     private @Nullable String networkStatus;
     /**
-     * @return The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+     * @return Operating system
+     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
+     * 
+     */
+    private @Nullable String operatingSystem;
+    /**
+     * @return Agent operational state.
+     * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
      * 
      */
     private @Nullable String operationalState;
     /**
-     * @return The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * @return operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     private @Nullable String operator;
     /**
-     * @return OS signal score from Crowdstrike. Value must be between 1 and 100.
+     * @return Os Version
      * 
      */
     private @Nullable String os;
     /**
-     * @return The operating system excluding version information.
+     * @return Operating System Distribution Name (linux only)
      * 
      */
     private @Nullable String osDistroName;
     /**
-     * @return The operating system version excluding OS name information or release name.
+     * @return Version of OS Distribution (linux only)
      * 
      */
     private @Nullable String osDistroRevision;
     /**
-     * @return Extra version value following the operating system semantic version.
+     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
      * 
      */
     private @Nullable String osVersionExtra;
     /**
-     * @return Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+     * @return overall
      * 
      */
     private @Nullable String overall;
     /**
-     * @return The path to the file.
+     * @return File path.
      * 
      */
     private @Nullable String path;
     /**
-     * @return True if all drives must be encrypted.
+     * @return Whether to check all disks for encryption.
      * 
      */
     private @Nullable Boolean requireAll;
     /**
-     * @return The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+     * @return For more details on risk level, refer to the Tanium documentation.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;critical&#34;.
      * 
      */
     private @Nullable String riskLevel;
     /**
-     * @return Checks if the application should be running.
+     * @return A value between 0-100 assigned to devices set by the 3rd party posture provider.
      * 
      */
-    private @Nullable Boolean running;
+    private @Nullable Double score;
     /**
-     * @return A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+     * @return Score Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
-    private @Nullable Integer score;
+    private @Nullable String scoreOperator;
     /**
-     * @return Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+     * @return SensorConfig
      * 
      */
     private @Nullable String sensorConfig;
     /**
-     * @return The sha256 hash of the file.
+     * @return SHA-256.
      * 
      */
     private @Nullable String sha256;
     /**
-     * @return The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+     * @return For more details on state, please refer to the Crowdstrike documentation.
+     * Available values: &#34;online&#34;, &#34;offline&#34;, &#34;unknown&#34;.
      * 
      */
     private @Nullable String state;
     /**
-     * @return The thumbprint of the file certificate.
+     * @return Signing certificate thumbprint.
      * 
      */
     private @Nullable String thumbprint;
     /**
-     * @return The total score from Tanium.
+     * @return For more details on total score, refer to the Tanium documentation.
      * 
      */
-    private @Nullable Integer totalScore;
+    private @Nullable Double totalScore;
     /**
-     * @return The operating system semantic version.
+     * @return Version of OS
      * 
      */
     private @Nullable String version;
     /**
-     * @return The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * @return Version Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     private @Nullable String versionOperator;
 
     private ZeroTrustDevicePostureRuleInput() {}
     /**
-     * @return The number of active threats from SentinelOne.
+     * @return The Number of active threats.
      * 
      */
-    public Optional<Integer> activeThreats() {
+    public Optional<Double> activeThreats() {
         return Optional.ofNullable(this.activeThreats);
     }
     /**
-     * @return The UUID of a Cloudflare managed certificate.
+     * @return UUID of Cloudflare managed certificate.
      * 
      */
     public Optional<String> certificateId() {
         return Optional.ofNullable(this.certificateId);
     }
     /**
-     * @return Specific volume(s) to check for encryption.
+     * @return List of volume names to be checked for encryption.
      * 
      */
     public List<String> checkDisks() {
         return this.checkDisks == null ? List.of() : this.checkDisks;
     }
     /**
-     * @return Confirm the certificate was not imported from another device.
+     * @return Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.
      * 
      */
     public Optional<Boolean> checkPrivateKey() {
         return Optional.ofNullable(this.checkPrivateKey);
     }
     /**
-     * @return The common name for a certificate.
+     * @return Common Name that is protected by the certificate
      * 
      */
     public Optional<String> cn() {
         return Optional.ofNullable(this.cn);
     }
     /**
-     * @return The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
+     * @return Compliance Status
+     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
      * 
      */
     public Optional<String> complianceStatus() {
         return Optional.ofNullable(this.complianceStatus);
     }
     /**
-     * @return The workspace one or intune connection id.
+     * @return Posture Integration ID.
      * 
      */
     public Optional<String> connectionId() {
         return Optional.ofNullable(this.connectionId);
     }
     /**
-     * @return The count comparison operator for kolide. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * @return Count Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public Optional<String> countOperator() {
         return Optional.ofNullable(this.countOperator);
     }
     /**
-     * @return The domain that the client must join.
+     * @return Domain
      * 
      */
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
     }
     /**
-     * @return The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+     * @return For more details on eid last seen, refer to the Tanium documentation.
      * 
      */
     public Optional<String> eidLastSeen() {
         return Optional.ofNullable(this.eidLastSeen);
     }
     /**
-     * @return True if the firewall must be enabled.
+     * @return Enabled
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Checks if the file should exist.
+     * @return Whether or not file exists
      * 
      */
     public Optional<Boolean> exists() {
         return Optional.ofNullable(this.exists);
     }
     /**
-     * @return List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+     * @return List of values indicating purposes for which the certificate public key can be used
      * 
      */
     public List<String> extendedKeyUsages() {
         return this.extendedKeyUsages == null ? List.of() : this.extendedKeyUsages;
     }
     /**
-     * @return The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
+     * @return List ID.
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return True if SentinelOne device is infected.
+     * @return Whether device is infected.
      * 
      */
     public Optional<Boolean> infected() {
         return Optional.ofNullable(this.infected);
     }
     /**
-     * @return True if SentinelOne device is active.
+     * @return Whether device is active.
      * 
      */
     public Optional<Boolean> isActive() {
         return Optional.ofNullable(this.isActive);
     }
     /**
-     * @return The number of issues for kolide.
+     * @return The Number of Issues.
      * 
      */
     public Optional<String> issueCount() {
         return Optional.ofNullable(this.issueCount);
     }
     /**
-     * @return The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+     * @return For more details on last seen, please refer to the Crowdstrike documentation.
      * 
      */
     public Optional<String> lastSeen() {
         return Optional.ofNullable(this.lastSeen);
     }
-    /**
-     * @return List of operating system locations to check for a client certificate..
-     * 
-     */
-    public List<ZeroTrustDevicePostureRuleInputLocation> locations() {
-        return this.locations == null ? List.of() : this.locations;
+    public Optional<ZeroTrustDevicePostureRuleInputLocations> locations() {
+        return Optional.ofNullable(this.locations);
     }
     /**
-     * @return The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+     * @return Network status of device.
+     * Available values: &#34;connected&#34;, &#34;disconnected&#34;, &#34;disconnecting&#34;, &#34;connecting&#34;.
      * 
      */
     public Optional<String> networkStatus() {
         return Optional.ofNullable(this.networkStatus);
     }
     /**
-     * @return The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+     * @return Operating system
+     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
+     * 
+     */
+    public Optional<String> operatingSystem() {
+        return Optional.ofNullable(this.operatingSystem);
+    }
+    /**
+     * @return Agent operational state.
+     * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
      * 
      */
     public Optional<String> operationalState() {
         return Optional.ofNullable(this.operationalState);
     }
     /**
-     * @return The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * @return operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
     /**
-     * @return OS signal score from Crowdstrike. Value must be between 1 and 100.
+     * @return Os Version
      * 
      */
     public Optional<String> os() {
         return Optional.ofNullable(this.os);
     }
     /**
-     * @return The operating system excluding version information.
+     * @return Operating System Distribution Name (linux only)
      * 
      */
     public Optional<String> osDistroName() {
         return Optional.ofNullable(this.osDistroName);
     }
     /**
-     * @return The operating system version excluding OS name information or release name.
+     * @return Version of OS Distribution (linux only)
      * 
      */
     public Optional<String> osDistroRevision() {
         return Optional.ofNullable(this.osDistroRevision);
     }
     /**
-     * @return Extra version value following the operating system semantic version.
+     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
      * 
      */
     public Optional<String> osVersionExtra() {
         return Optional.ofNullable(this.osVersionExtra);
     }
     /**
-     * @return Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+     * @return overall
      * 
      */
     public Optional<String> overall() {
         return Optional.ofNullable(this.overall);
     }
     /**
-     * @return The path to the file.
+     * @return File path.
      * 
      */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }
     /**
-     * @return True if all drives must be encrypted.
+     * @return Whether to check all disks for encryption.
      * 
      */
     public Optional<Boolean> requireAll() {
         return Optional.ofNullable(this.requireAll);
     }
     /**
-     * @return The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+     * @return For more details on risk level, refer to the Tanium documentation.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;critical&#34;.
      * 
      */
     public Optional<String> riskLevel() {
         return Optional.ofNullable(this.riskLevel);
     }
     /**
-     * @return Checks if the application should be running.
+     * @return A value between 0-100 assigned to devices set by the 3rd party posture provider.
      * 
      */
-    public Optional<Boolean> running() {
-        return Optional.ofNullable(this.running);
-    }
-    /**
-     * @return A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
-     * 
-     */
-    public Optional<Integer> score() {
+    public Optional<Double> score() {
         return Optional.ofNullable(this.score);
     }
     /**
-     * @return Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+     * @return Score Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
+     * 
+     */
+    public Optional<String> scoreOperator() {
+        return Optional.ofNullable(this.scoreOperator);
+    }
+    /**
+     * @return SensorConfig
      * 
      */
     public Optional<String> sensorConfig() {
         return Optional.ofNullable(this.sensorConfig);
     }
     /**
-     * @return The sha256 hash of the file.
+     * @return SHA-256.
      * 
      */
     public Optional<String> sha256() {
         return Optional.ofNullable(this.sha256);
     }
     /**
-     * @return The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+     * @return For more details on state, please refer to the Crowdstrike documentation.
+     * Available values: &#34;online&#34;, &#34;offline&#34;, &#34;unknown&#34;.
      * 
      */
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }
     /**
-     * @return The thumbprint of the file certificate.
+     * @return Signing certificate thumbprint.
      * 
      */
     public Optional<String> thumbprint() {
         return Optional.ofNullable(this.thumbprint);
     }
     /**
-     * @return The total score from Tanium.
+     * @return For more details on total score, refer to the Tanium documentation.
      * 
      */
-    public Optional<Integer> totalScore() {
+    public Optional<Double> totalScore() {
         return Optional.ofNullable(this.totalScore);
     }
     /**
-     * @return The operating system semantic version.
+     * @return Version of OS
      * 
      */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }
     /**
-     * @return The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * @return Version Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public Optional<String> versionOperator() {
@@ -495,7 +519,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer activeThreats;
+        private @Nullable Double activeThreats;
         private @Nullable String certificateId;
         private @Nullable List<String> checkDisks;
         private @Nullable Boolean checkPrivateKey;
@@ -513,8 +537,9 @@ public final class ZeroTrustDevicePostureRuleInput {
         private @Nullable Boolean isActive;
         private @Nullable String issueCount;
         private @Nullable String lastSeen;
-        private @Nullable List<ZeroTrustDevicePostureRuleInputLocation> locations;
+        private @Nullable ZeroTrustDevicePostureRuleInputLocations locations;
         private @Nullable String networkStatus;
+        private @Nullable String operatingSystem;
         private @Nullable String operationalState;
         private @Nullable String operator;
         private @Nullable String os;
@@ -525,13 +550,13 @@ public final class ZeroTrustDevicePostureRuleInput {
         private @Nullable String path;
         private @Nullable Boolean requireAll;
         private @Nullable String riskLevel;
-        private @Nullable Boolean running;
-        private @Nullable Integer score;
+        private @Nullable Double score;
+        private @Nullable String scoreOperator;
         private @Nullable String sensorConfig;
         private @Nullable String sha256;
         private @Nullable String state;
         private @Nullable String thumbprint;
-        private @Nullable Integer totalScore;
+        private @Nullable Double totalScore;
         private @Nullable String version;
         private @Nullable String versionOperator;
         public Builder() {}
@@ -557,6 +582,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     	      this.lastSeen = defaults.lastSeen;
     	      this.locations = defaults.locations;
     	      this.networkStatus = defaults.networkStatus;
+    	      this.operatingSystem = defaults.operatingSystem;
     	      this.operationalState = defaults.operationalState;
     	      this.operator = defaults.operator;
     	      this.os = defaults.os;
@@ -567,8 +593,8 @@ public final class ZeroTrustDevicePostureRuleInput {
     	      this.path = defaults.path;
     	      this.requireAll = defaults.requireAll;
     	      this.riskLevel = defaults.riskLevel;
-    	      this.running = defaults.running;
     	      this.score = defaults.score;
+    	      this.scoreOperator = defaults.scoreOperator;
     	      this.sensorConfig = defaults.sensorConfig;
     	      this.sha256 = defaults.sha256;
     	      this.state = defaults.state;
@@ -579,7 +605,7 @@ public final class ZeroTrustDevicePostureRuleInput {
         }
 
         @CustomType.Setter
-        public Builder activeThreats(@Nullable Integer activeThreats) {
+        public Builder activeThreats(@Nullable Double activeThreats) {
 
             this.activeThreats = activeThreats;
             return this;
@@ -693,18 +719,21 @@ public final class ZeroTrustDevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
-        public Builder locations(@Nullable List<ZeroTrustDevicePostureRuleInputLocation> locations) {
+        public Builder locations(@Nullable ZeroTrustDevicePostureRuleInputLocations locations) {
 
             this.locations = locations;
             return this;
-        }
-        public Builder locations(ZeroTrustDevicePostureRuleInputLocation... locations) {
-            return locations(List.of(locations));
         }
         @CustomType.Setter
         public Builder networkStatus(@Nullable String networkStatus) {
 
             this.networkStatus = networkStatus;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder operatingSystem(@Nullable String operatingSystem) {
+
+            this.operatingSystem = operatingSystem;
             return this;
         }
         @CustomType.Setter
@@ -768,15 +797,15 @@ public final class ZeroTrustDevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
-        public Builder running(@Nullable Boolean running) {
+        public Builder score(@Nullable Double score) {
 
-            this.running = running;
+            this.score = score;
             return this;
         }
         @CustomType.Setter
-        public Builder score(@Nullable Integer score) {
+        public Builder scoreOperator(@Nullable String scoreOperator) {
 
-            this.score = score;
+            this.scoreOperator = scoreOperator;
             return this;
         }
         @CustomType.Setter
@@ -804,7 +833,7 @@ public final class ZeroTrustDevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
-        public Builder totalScore(@Nullable Integer totalScore) {
+        public Builder totalScore(@Nullable Double totalScore) {
 
             this.totalScore = totalScore;
             return this;
@@ -843,6 +872,7 @@ public final class ZeroTrustDevicePostureRuleInput {
             _resultValue.lastSeen = lastSeen;
             _resultValue.locations = locations;
             _resultValue.networkStatus = networkStatus;
+            _resultValue.operatingSystem = operatingSystem;
             _resultValue.operationalState = operationalState;
             _resultValue.operator = operator;
             _resultValue.os = os;
@@ -853,8 +883,8 @@ public final class ZeroTrustDevicePostureRuleInput {
             _resultValue.path = path;
             _resultValue.requireAll = requireAll;
             _resultValue.riskLevel = riskLevel;
-            _resultValue.running = running;
             _resultValue.score = score;
+            _resultValue.scoreOperator = scoreOperator;
             _resultValue.sensorConfig = sensorConfig;
             _resultValue.sha256 = sha256;
             _resultValue.state = state;

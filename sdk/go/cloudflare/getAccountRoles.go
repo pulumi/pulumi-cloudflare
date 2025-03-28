@@ -7,14 +7,38 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
-func GetAccountRoles(ctx *pulumi.Context, args *GetAccountRolesArgs, opts ...pulumi.InvokeOption) (*GetAccountRolesResult, error) {
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.LookupAccountRoles(ctx, &cloudflare.LookupAccountRolesArgs{
+//				AccountId: "eb78d65290b24279ba6f44721b3ea3c4",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+func LookupAccountRoles(ctx *pulumi.Context, args *LookupAccountRolesArgs, opts ...pulumi.InvokeOption) (*LookupAccountRolesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetAccountRolesResult
+	var rv LookupAccountRolesResult
 	err := ctx.Invoke("cloudflare:index/getAccountRoles:getAccountRoles", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -23,70 +47,81 @@ func GetAccountRoles(ctx *pulumi.Context, args *GetAccountRolesArgs, opts ...pul
 }
 
 // A collection of arguments for invoking getAccountRoles.
-type GetAccountRolesArgs struct {
-	// The account identifier to target for the resource.
+type LookupAccountRolesArgs struct {
+	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
+	// Max items to fetch, default: 1000
+	MaxItems *int `pulumi:"maxItems"`
 }
 
 // A collection of values returned by getAccountRoles.
-type GetAccountRolesResult struct {
-	// The account identifier to target for the resource.
+type LookupAccountRolesResult struct {
+	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of roles object.
-	Roles []GetAccountRolesRole `pulumi:"roles"`
+	// Max items to fetch, default: 1000
+	MaxItems *int `pulumi:"maxItems"`
+	// The items returned by the data source
+	Results []GetAccountRolesResult `pulumi:"results"`
 }
 
-func GetAccountRolesOutput(ctx *pulumi.Context, args GetAccountRolesOutputArgs, opts ...pulumi.InvokeOption) GetAccountRolesResultOutput {
+func LookupAccountRolesOutput(ctx *pulumi.Context, args LookupAccountRolesOutputArgs, opts ...pulumi.InvokeOption) LookupAccountRolesResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccountRolesResultOutput, error) {
-			args := v.(GetAccountRolesArgs)
+		ApplyT(func(v interface{}) (LookupAccountRolesResultOutput, error) {
+			args := v.(LookupAccountRolesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getAccountRoles:getAccountRoles", args, GetAccountRolesResultOutput{}, options).(GetAccountRolesResultOutput), nil
-		}).(GetAccountRolesResultOutput)
+			return ctx.InvokeOutput("cloudflare:index/getAccountRoles:getAccountRoles", args, LookupAccountRolesResultOutput{}, options).(LookupAccountRolesResultOutput), nil
+		}).(LookupAccountRolesResultOutput)
 }
 
 // A collection of arguments for invoking getAccountRoles.
-type GetAccountRolesOutputArgs struct {
-	// The account identifier to target for the resource.
+type LookupAccountRolesOutputArgs struct {
+	// Account identifier tag.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Max items to fetch, default: 1000
+	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
 
-func (GetAccountRolesOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountRolesArgs)(nil)).Elem()
+func (LookupAccountRolesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountRolesArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getAccountRoles.
-type GetAccountRolesResultOutput struct{ *pulumi.OutputState }
+type LookupAccountRolesResultOutput struct{ *pulumi.OutputState }
 
-func (GetAccountRolesResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountRolesResult)(nil)).Elem()
+func (LookupAccountRolesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountRolesResult)(nil)).Elem()
 }
 
-func (o GetAccountRolesResultOutput) ToGetAccountRolesResultOutput() GetAccountRolesResultOutput {
+func (o LookupAccountRolesResultOutput) ToLookupAccountRolesResultOutput() LookupAccountRolesResultOutput {
 	return o
 }
 
-func (o GetAccountRolesResultOutput) ToGetAccountRolesResultOutputWithContext(ctx context.Context) GetAccountRolesResultOutput {
+func (o LookupAccountRolesResultOutput) ToLookupAccountRolesResultOutputWithContext(ctx context.Context) LookupAccountRolesResultOutput {
 	return o
 }
 
-// The account identifier to target for the resource.
-func (o GetAccountRolesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountRolesResult) string { return v.AccountId }).(pulumi.StringOutput)
+// Account identifier tag.
+func (o LookupAccountRolesResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountRolesResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetAccountRolesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountRolesResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupAccountRolesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountRolesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of roles object.
-func (o GetAccountRolesResultOutput) Roles() GetAccountRolesRoleArrayOutput {
-	return o.ApplyT(func(v GetAccountRolesResult) []GetAccountRolesRole { return v.Roles }).(GetAccountRolesRoleArrayOutput)
+// Max items to fetch, default: 1000
+func (o LookupAccountRolesResultOutput) MaxItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupAccountRolesResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
+}
+
+// The items returned by the data source
+func (o LookupAccountRolesResultOutput) Results() GetAccountRolesResultArrayOutput {
+	return o.ApplyT(func(v LookupAccountRolesResult) []GetAccountRolesResult { return v.Results }).(GetAccountRolesResultArrayOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetAccountRolesResultOutput{})
+	pulumi.RegisterOutputType(LookupAccountRolesResultOutput{})
 }

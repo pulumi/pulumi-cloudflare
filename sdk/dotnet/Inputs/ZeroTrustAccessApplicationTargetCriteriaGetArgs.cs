@@ -20,19 +20,20 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The communication protocol your application secures.
+        /// Available values: "ssh".
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
 
         [Input("targetAttributes", required: true)]
-        private InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaTargetAttributeGetArgs>? _targetAttributes;
+        private InputMap<ImmutableArray<string>>? _targetAttributes;
 
         /// <summary>
         /// Contains a map of target attribute keys to target attribute values.
         /// </summary>
-        public InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaTargetAttributeGetArgs> TargetAttributes
+        public InputMap<ImmutableArray<string>> TargetAttributes
         {
-            get => _targetAttributes ?? (_targetAttributes = new InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaTargetAttributeGetArgs>());
+            get => _targetAttributes ?? (_targetAttributes = new InputMap<ImmutableArray<string>>());
             set => _targetAttributes = value;
         }
 

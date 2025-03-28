@@ -5,10 +5,9 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ZeroTrustAccessGroupIncludeSamlArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,45 +18,45 @@ public final class ZeroTrustAccessGroupIncludeSamlArgs extends com.pulumi.resour
      * The name of the SAML attribute.
      * 
      */
-    @Import(name="attributeName")
-    private @Nullable Output<String> attributeName;
+    @Import(name="attributeName", required=true)
+    private Output<String> attributeName;
 
     /**
      * @return The name of the SAML attribute.
      * 
      */
-    public Optional<Output<String>> attributeName() {
-        return Optional.ofNullable(this.attributeName);
+    public Output<String> attributeName() {
+        return this.attributeName;
     }
 
     /**
      * The SAML attribute value to look for.
      * 
      */
-    @Import(name="attributeValue")
-    private @Nullable Output<String> attributeValue;
+    @Import(name="attributeValue", required=true)
+    private Output<String> attributeValue;
 
     /**
      * @return The SAML attribute value to look for.
      * 
      */
-    public Optional<Output<String>> attributeValue() {
-        return Optional.ofNullable(this.attributeValue);
+    public Output<String> attributeValue() {
+        return this.attributeValue;
     }
 
     /**
      * The ID of your SAML identity provider.
      * 
      */
-    @Import(name="identityProviderId")
-    private @Nullable Output<String> identityProviderId;
+    @Import(name="identityProviderId", required=true)
+    private Output<String> identityProviderId;
 
     /**
      * @return The ID of your SAML identity provider.
      * 
      */
-    public Optional<Output<String>> identityProviderId() {
-        return Optional.ofNullable(this.identityProviderId);
+    public Output<String> identityProviderId() {
+        return this.identityProviderId;
     }
 
     private ZeroTrustAccessGroupIncludeSamlArgs() {}
@@ -92,7 +91,7 @@ public final class ZeroTrustAccessGroupIncludeSamlArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder attributeName(@Nullable Output<String> attributeName) {
+        public Builder attributeName(Output<String> attributeName) {
             $.attributeName = attributeName;
             return this;
         }
@@ -113,7 +112,7 @@ public final class ZeroTrustAccessGroupIncludeSamlArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder attributeValue(@Nullable Output<String> attributeValue) {
+        public Builder attributeValue(Output<String> attributeValue) {
             $.attributeValue = attributeValue;
             return this;
         }
@@ -134,7 +133,7 @@ public final class ZeroTrustAccessGroupIncludeSamlArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder identityProviderId(@Nullable Output<String> identityProviderId) {
+        public Builder identityProviderId(Output<String> identityProviderId) {
             $.identityProviderId = identityProviderId;
             return this;
         }
@@ -150,6 +149,15 @@ public final class ZeroTrustAccessGroupIncludeSamlArgs extends com.pulumi.resour
         }
 
         public ZeroTrustAccessGroupIncludeSamlArgs build() {
+            if ($.attributeName == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustAccessGroupIncludeSamlArgs", "attributeName");
+            }
+            if ($.attributeValue == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustAccessGroupIncludeSamlArgs", "attributeValue");
+            }
+            if ($.identityProviderId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustAccessGroupIncludeSamlArgs", "identityProviderId");
+            }
             return $;
         }
     }

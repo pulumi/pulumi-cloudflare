@@ -13,16 +13,14 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ZeroTrustDnsLocationEndpointsIpv4
     {
-        public readonly bool? AuthenticationEnabled;
-        public readonly bool Enabled;
+        /// <summary>
+        /// True if the endpoint is enabled for this location.
+        /// </summary>
+        public readonly bool? Enabled;
 
         [OutputConstructor]
-        private ZeroTrustDnsLocationEndpointsIpv4(
-            bool? authenticationEnabled,
-
-            bool enabled)
+        private ZeroTrustDnsLocationEndpointsIpv4(bool? enabled)
         {
-            AuthenticationEnabled = authenticationEnabled;
             Enabled = enabled;
         }
     }

@@ -4,11 +4,12 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.RecordDataArgs;
+import com.pulumi.cloudflare.inputs.RecordSettingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,13 +20,6 @@ import javax.annotation.Nullable;
 public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RecordArgs Empty = new RecordArgs();
-
-    @Import(name="allowOverwrite")
-    private @Nullable Output<Boolean> allowOverwrite;
-
-    public Optional<Output<Boolean>> allowOverwrite() {
-        return Optional.ofNullable(this.allowOverwrite);
-    }
 
     /**
      * Comments or notes about the DNS record. This field has no effect on DNS responses.
@@ -43,14 +37,14 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The content of the record. Must provide only one of `data`, `content`, `value`.
+     * A valid IPv4 address.
      * 
      */
     @Import(name="content")
     private @Nullable Output<String> content;
 
     /**
-     * @return The content of the record. Must provide only one of `data`, `content`, `value`.
+     * @return A valid IPv4 address.
      * 
      */
     public Optional<Output<String>> content() {
@@ -58,14 +52,14 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
+     * Components of a CAA record.
      * 
      */
     @Import(name="data")
     private @Nullable Output<RecordDataArgs> data;
 
     /**
-     * @return Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
+     * @return Components of a CAA record.
      * 
      */
     public Optional<Output<RecordDataArgs>> data() {
@@ -73,14 +67,14 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the record. **Modifying this attribute will force creation of a new resource.**
+     * DNS record name (or {@literal @} for the zone apex) in Punycode.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the record. **Modifying this attribute will force creation of a new resource.**
+     * @return DNS record name (or {@literal @} for the zone apex) in Punycode.
      * 
      */
     public Output<String> name() {
@@ -88,29 +82,29 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The priority of the record.
+     * Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
      * 
      */
     @Import(name="priority")
-    private @Nullable Output<Integer> priority;
+    private @Nullable Output<Double> priority;
 
     /**
-     * @return The priority of the record.
+     * @return Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
      * 
      */
-    public Optional<Output<Integer>> priority() {
+    public Optional<Output<Double>> priority() {
         return Optional.ofNullable(this.priority);
     }
 
     /**
-     * Whether the record gets Cloudflare&#39;s origin protection.
+     * Whether the record is receiving the performance and security benefits of Cloudflare.
      * 
      */
     @Import(name="proxied")
     private @Nullable Output<Boolean> proxied;
 
     /**
-     * @return Whether the record gets Cloudflare&#39;s origin protection.
+     * @return Whether the record is receiving the performance and security benefits of Cloudflare.
      * 
      */
     public Optional<Output<Boolean>> proxied() {
@@ -118,14 +112,29 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom tags for the DNS record.
+     * Settings for the DNS record.
+     * 
+     */
+    @Import(name="settings")
+    private @Nullable Output<RecordSettingsArgs> settings;
+
+    /**
+     * @return Settings for the DNS record.
+     * 
+     */
+    public Optional<Output<RecordSettingsArgs>> settings() {
+        return Optional.ofNullable(this.settings);
+    }
+
+    /**
+     * Custom tags for the DNS record. This field has no effect on DNS responses.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Custom tags for the DNS record.
+     * @return Custom tags for the DNS record. This field has no effect on DNS responses.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -133,29 +142,31 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The TTL of the record.
+     * Time To Live (TTL) of the DNS record in seconds. Setting to 1 means &#39;automatic&#39;. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
      * 
      */
-    @Import(name="ttl")
-    private @Nullable Output<Integer> ttl;
+    @Import(name="ttl", required=true)
+    private Output<Double> ttl;
 
     /**
-     * @return The TTL of the record.
+     * @return Time To Live (TTL) of the DNS record in seconds. Setting to 1 means &#39;automatic&#39;. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
      * 
      */
-    public Optional<Output<Integer>> ttl() {
-        return Optional.ofNullable(this.ttl);
+    public Output<Double> ttl() {
+        return this.ttl;
     }
 
     /**
-     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+     * Record type.
+     * Available values: &#34;A&#34;.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+     * @return Record type.
+     * Available values: &#34;A&#34;.
      * 
      */
     public Output<String> type() {
@@ -163,37 +174,14 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The value of the record. Must provide only one of `data`, `content`, `value`.
-     * 
-     * @deprecated
-     * `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-     * 
-     */
-    @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`. */
-    @Import(name="value")
-    private @Nullable Output<String> value;
-
-    /**
-     * @return The value of the record. Must provide only one of `data`, `content`, `value`.
-     * 
-     * @deprecated
-     * `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-     * 
-     */
-    @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`. */
-    public Optional<Output<String>> value() {
-        return Optional.ofNullable(this.value);
-    }
-
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -203,17 +191,16 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     private RecordArgs() {}
 
     private RecordArgs(RecordArgs $) {
-        this.allowOverwrite = $.allowOverwrite;
         this.comment = $.comment;
         this.content = $.content;
         this.data = $.data;
         this.name = $.name;
         this.priority = $.priority;
         this.proxied = $.proxied;
+        this.settings = $.settings;
         this.tags = $.tags;
         this.ttl = $.ttl;
         this.type = $.type;
-        this.value = $.value;
         this.zoneId = $.zoneId;
     }
 
@@ -233,15 +220,6 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RecordArgs defaults) {
             $ = new RecordArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder allowOverwrite(@Nullable Output<Boolean> allowOverwrite) {
-            $.allowOverwrite = allowOverwrite;
-            return this;
-        }
-
-        public Builder allowOverwrite(Boolean allowOverwrite) {
-            return allowOverwrite(Output.of(allowOverwrite));
         }
 
         /**
@@ -266,7 +244,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param content The content of the record. Must provide only one of `data`, `content`, `value`.
+         * @param content A valid IPv4 address.
          * 
          * @return builder
          * 
@@ -277,7 +255,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param content The content of the record. Must provide only one of `data`, `content`, `value`.
+         * @param content A valid IPv4 address.
          * 
          * @return builder
          * 
@@ -287,7 +265,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param data Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
+         * @param data Components of a CAA record.
          * 
          * @return builder
          * 
@@ -298,7 +276,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param data Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
+         * @param data Components of a CAA record.
          * 
          * @return builder
          * 
@@ -308,7 +286,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the record. **Modifying this attribute will force creation of a new resource.**
+         * @param name DNS record name (or {@literal @} for the zone apex) in Punycode.
          * 
          * @return builder
          * 
@@ -319,7 +297,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the record. **Modifying this attribute will force creation of a new resource.**
+         * @param name DNS record name (or {@literal @} for the zone apex) in Punycode.
          * 
          * @return builder
          * 
@@ -329,28 +307,28 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority The priority of the record.
+         * @param priority Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
          * 
          * @return builder
          * 
          */
-        public Builder priority(@Nullable Output<Integer> priority) {
+        public Builder priority(@Nullable Output<Double> priority) {
             $.priority = priority;
             return this;
         }
 
         /**
-         * @param priority The priority of the record.
+         * @param priority Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
          * 
          * @return builder
          * 
          */
-        public Builder priority(Integer priority) {
+        public Builder priority(Double priority) {
             return priority(Output.of(priority));
         }
 
         /**
-         * @param proxied Whether the record gets Cloudflare&#39;s origin protection.
+         * @param proxied Whether the record is receiving the performance and security benefits of Cloudflare.
          * 
          * @return builder
          * 
@@ -361,7 +339,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxied Whether the record gets Cloudflare&#39;s origin protection.
+         * @param proxied Whether the record is receiving the performance and security benefits of Cloudflare.
          * 
          * @return builder
          * 
@@ -371,7 +349,28 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Custom tags for the DNS record.
+         * @param settings Settings for the DNS record.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder settings(@Nullable Output<RecordSettingsArgs> settings) {
+            $.settings = settings;
+            return this;
+        }
+
+        /**
+         * @param settings Settings for the DNS record.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder settings(RecordSettingsArgs settings) {
+            return settings(Output.of(settings));
+        }
+
+        /**
+         * @param tags Custom tags for the DNS record. This field has no effect on DNS responses.
          * 
          * @return builder
          * 
@@ -382,7 +381,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Custom tags for the DNS record.
+         * @param tags Custom tags for the DNS record. This field has no effect on DNS responses.
          * 
          * @return builder
          * 
@@ -392,7 +391,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Custom tags for the DNS record.
+         * @param tags Custom tags for the DNS record. This field has no effect on DNS responses.
          * 
          * @return builder
          * 
@@ -402,28 +401,29 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ttl The TTL of the record.
+         * @param ttl Time To Live (TTL) of the DNS record in seconds. Setting to 1 means &#39;automatic&#39;. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
          * 
          * @return builder
          * 
          */
-        public Builder ttl(@Nullable Output<Integer> ttl) {
+        public Builder ttl(Output<Double> ttl) {
             $.ttl = ttl;
             return this;
         }
 
         /**
-         * @param ttl The TTL of the record.
+         * @param ttl Time To Live (TTL) of the DNS record in seconds. Setting to 1 means &#39;automatic&#39;. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
          * 
          * @return builder
          * 
          */
-        public Builder ttl(Integer ttl) {
+        public Builder ttl(Double ttl) {
             return ttl(Output.of(ttl));
         }
 
         /**
-         * @param type The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+         * @param type Record type.
+         * Available values: &#34;A&#34;.
          * 
          * @return builder
          * 
@@ -434,7 +434,8 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+         * @param type Record type.
+         * Available values: &#34;A&#34;.
          * 
          * @return builder
          * 
@@ -444,36 +445,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The value of the record. Must provide only one of `data`, `content`, `value`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-         * 
-         */
-        @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`. */
-        public Builder value(@Nullable Output<String> value) {
-            $.value = value;
-            return this;
-        }
-
-        /**
-         * @param value The value of the record. Must provide only one of `data`, `content`, `value`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-         * 
-         */
-        @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`. */
-        public Builder value(String value) {
-            return value(Output.of(value));
-        }
-
-        /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -484,7 +456,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -496,6 +468,9 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         public RecordArgs build() {
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("RecordArgs", "name");
+            }
+            if ($.ttl == null) {
+                throw new MissingRequiredPropertyException("RecordArgs", "ttl");
             }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("RecordArgs", "type");

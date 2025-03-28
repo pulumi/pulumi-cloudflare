@@ -14,47 +14,54 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class LoadBalancerPoolOrigin
     {
         /// <summary>
-        /// The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+        /// The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual*network*id must also be set.
         /// </summary>
-        public readonly string Address;
+        public readonly string? Address;
         /// <summary>
-        /// Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+        /// This field shows up only if the origin is disabled. This field is set with the time the origin was disabled.
+        /// </summary>
+        public readonly string? DisabledAt;
+        /// <summary>
+        /// Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// HTTP request headers.
+        /// The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'.
         /// </summary>
-        public readonly ImmutableArray<Outputs.LoadBalancerPoolOriginHeader> Headers;
+        public readonly Outputs.LoadBalancerPoolOriginHeader? Header;
         /// <summary>
         /// A human-identifiable name for the origin.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         /// <summary>
         /// The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
         /// </summary>
         public readonly string? VirtualNetworkId;
         /// <summary>
-        /// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="least_connections"`, weight is used to scale the origin's open connections. Defaults to `1`.
+        /// The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.
         /// </summary>
         public readonly double? Weight;
 
         [OutputConstructor]
         private LoadBalancerPoolOrigin(
-            string address,
+            string? address,
+
+            string? disabledAt,
 
             bool? enabled,
 
-            ImmutableArray<Outputs.LoadBalancerPoolOriginHeader> headers,
+            Outputs.LoadBalancerPoolOriginHeader? header,
 
-            string name,
+            string? name,
 
             string? virtualNetworkId,
 
             double? weight)
         {
             Address = address;
+            DisabledAt = disabledAt;
             Enabled = enabled;
-            Headers = headers;
+            Header = header;
             Name = name;
             VirtualNetworkId = virtualNetworkId;
             Weight = weight;

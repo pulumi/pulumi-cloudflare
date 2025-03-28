@@ -16,23 +16,23 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The IPv4 address to be used for egress.
         /// </summary>
-        public readonly string Ipv4;
+        public readonly string? Ipv4;
         /// <summary>
-        /// The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egreass via Warp IPs.
+        /// The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.
         /// </summary>
         public readonly string? Ipv4Fallback;
         /// <summary>
         /// The IPv6 range to be used for egress.
         /// </summary>
-        public readonly string Ipv6;
+        public readonly string? Ipv6;
 
         [OutputConstructor]
         private ZeroTrustGatewayPolicyRuleSettingsEgress(
-            string ipv4,
+            string? ipv4,
 
             string? ipv4Fallback,
 
-            string ipv6)
+            string? ipv6)
         {
             Ipv4 = ipv4;
             Ipv4Fallback = ipv4Fallback;

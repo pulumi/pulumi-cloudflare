@@ -7,76 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Teams Account resource. The Teams Account
- * resource defines configuration for secure web gateway.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.ZeroTrustGatewaySettings("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     tlsDecryptEnabled: true,
- *     protocolDetectionEnabled: true,
- *     blockPage: {
- *         footerText: "hello",
- *         headerText: "hello",
- *         logoPath: "https://example.com/logo.jpg",
- *         backgroundColor: "#000000",
- *     },
- *     bodyScanning: {
- *         inspectionMode: "deep",
- *     },
- *     antivirus: {
- *         enabledDownloadPhase: true,
- *         enabledUploadPhase: false,
- *         failClosed: true,
- *         notificationSettings: {
- *             enabled: true,
- *             message: "you are blocked",
- *             supportUrl: "https://example.com/blocked",
- *         },
- *     },
- *     fips: {
- *         tls: true,
- *     },
- *     proxy: {
- *         tcp: true,
- *         udp: true,
- *         rootCa: true,
- *         virtualIp: false,
- *         disableForTime: 3600,
- *     },
- *     urlBrowserIsolationEnabled: true,
- *     logging: {
- *         redactPii: true,
- *         settingsByRuleType: {
- *             dns: {
- *                 logAll: false,
- *                 logBlocks: true,
- *             },
- *             http: {
- *                 logAll: true,
- *                 logBlocks: true,
- *             },
- *             l4: {
- *                 logAll: false,
- *                 logBlocks: true,
- *             },
- *         },
- *     },
- *     extendedEmailMatching: {
- *         enabled: true,
- *     },
- * });
- * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example <account_id>
+ * $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example '<account_id>'
  * ```
  */
 export class ZeroTrustGatewaySettings extends pulumi.CustomResource {
@@ -107,73 +43,13 @@ export class ZeroTrustGatewaySettings extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustGatewaySettings.__pulumiType;
     }
 
-    /**
-     * The account identifier to target for the resource.
-     */
     public readonly accountId!: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Whether to enable the activity log.
+     * Account settings
      */
-    public readonly activityLogEnabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * Configuration block for antivirus traffic scanning.
-     */
-    public readonly antivirus!: pulumi.Output<outputs.ZeroTrustGatewaySettingsAntivirus | undefined>;
-    /**
-     * Configuration for a custom block page.
-     */
-    public readonly blockPage!: pulumi.Output<outputs.ZeroTrustGatewaySettingsBlockPage | undefined>;
-    /**
-     * Configuration for body scanning.
-     */
-    public readonly bodyScanning!: pulumi.Output<outputs.ZeroTrustGatewaySettingsBodyScanning | undefined>;
-    /**
-     * Configuration for TLS interception certificate. This will be required starting Feb 2025.
-     */
-    public readonly certificate!: pulumi.Output<outputs.ZeroTrustGatewaySettingsCertificate | undefined>;
-    /**
-     * Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-     *
-     * @deprecated Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-     */
-    public readonly customCertificate!: pulumi.Output<outputs.ZeroTrustGatewaySettingsCustomCertificate | undefined>;
-    /**
-     * Configuration for extended e-mail matching.
-     */
-    public readonly extendedEmailMatching!: pulumi.Output<outputs.ZeroTrustGatewaySettingsExtendedEmailMatching>;
-    /**
-     * Configure compliance with Federal Information Processing Standards.
-     */
-    public readonly fips!: pulumi.Output<outputs.ZeroTrustGatewaySettingsFips | undefined>;
-    public readonly logging!: pulumi.Output<outputs.ZeroTrustGatewaySettingsLogging | undefined>;
-    /**
-     * Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-     */
-    public readonly nonIdentityBrowserIsolationEnabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * Configuration for DLP Payload Logging.
-     */
-    public readonly payloadLog!: pulumi.Output<outputs.ZeroTrustGatewaySettingsPayloadLog | undefined>;
-    /**
-     * Indicator that protocol detection is enabled.
-     */
-    public readonly protocolDetectionEnabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * Configuration block for specifying which protocols are proxied.
-     */
-    public readonly proxy!: pulumi.Output<outputs.ZeroTrustGatewaySettingsProxy | undefined>;
-    /**
-     * Configuration for SSH Session Logging.
-     */
-    public readonly sshSessionLog!: pulumi.Output<outputs.ZeroTrustGatewaySettingsSshSessionLog | undefined>;
-    /**
-     * Indicator that decryption of TLS traffic is enabled.
-     */
-    public readonly tlsDecryptEnabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-     */
-    public readonly urlBrowserIsolationEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly settings!: pulumi.Output<outputs.ZeroTrustGatewaySettingsSettings>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustGatewaySettings resource with the given unique name, arguments, and options.
@@ -189,46 +65,22 @@ export class ZeroTrustGatewaySettings extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustGatewaySettingsState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["activityLogEnabled"] = state ? state.activityLogEnabled : undefined;
-            resourceInputs["antivirus"] = state ? state.antivirus : undefined;
-            resourceInputs["blockPage"] = state ? state.blockPage : undefined;
-            resourceInputs["bodyScanning"] = state ? state.bodyScanning : undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["customCertificate"] = state ? state.customCertificate : undefined;
-            resourceInputs["extendedEmailMatching"] = state ? state.extendedEmailMatching : undefined;
-            resourceInputs["fips"] = state ? state.fips : undefined;
-            resourceInputs["logging"] = state ? state.logging : undefined;
-            resourceInputs["nonIdentityBrowserIsolationEnabled"] = state ? state.nonIdentityBrowserIsolationEnabled : undefined;
-            resourceInputs["payloadLog"] = state ? state.payloadLog : undefined;
-            resourceInputs["protocolDetectionEnabled"] = state ? state.protocolDetectionEnabled : undefined;
-            resourceInputs["proxy"] = state ? state.proxy : undefined;
-            resourceInputs["sshSessionLog"] = state ? state.sshSessionLog : undefined;
-            resourceInputs["tlsDecryptEnabled"] = state ? state.tlsDecryptEnabled : undefined;
-            resourceInputs["urlBrowserIsolationEnabled"] = state ? state.urlBrowserIsolationEnabled : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["settings"] = state ? state.settings : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ZeroTrustGatewaySettingsArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["activityLogEnabled"] = args ? args.activityLogEnabled : undefined;
-            resourceInputs["antivirus"] = args ? args.antivirus : undefined;
-            resourceInputs["blockPage"] = args ? args.blockPage : undefined;
-            resourceInputs["bodyScanning"] = args ? args.bodyScanning : undefined;
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
-            resourceInputs["customCertificate"] = args ? args.customCertificate : undefined;
-            resourceInputs["extendedEmailMatching"] = args ? args.extendedEmailMatching : undefined;
-            resourceInputs["fips"] = args ? args.fips : undefined;
-            resourceInputs["logging"] = args ? args.logging : undefined;
-            resourceInputs["nonIdentityBrowserIsolationEnabled"] = args ? args.nonIdentityBrowserIsolationEnabled : undefined;
-            resourceInputs["payloadLog"] = args ? args.payloadLog : undefined;
-            resourceInputs["protocolDetectionEnabled"] = args ? args.protocolDetectionEnabled : undefined;
-            resourceInputs["proxy"] = args ? args.proxy : undefined;
-            resourceInputs["sshSessionLog"] = args ? args.sshSessionLog : undefined;
-            resourceInputs["tlsDecryptEnabled"] = args ? args.tlsDecryptEnabled : undefined;
-            resourceInputs["urlBrowserIsolationEnabled"] = args ? args.urlBrowserIsolationEnabled : undefined;
+            resourceInputs["settings"] = args ? args.settings : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/teamsAccount:TeamsAccount" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustGatewaySettings.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -237,144 +89,22 @@ export class ZeroTrustGatewaySettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustGatewaySettings resources.
  */
 export interface ZeroTrustGatewaySettingsState {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
-     * Whether to enable the activity log.
+     * Account settings
      */
-    activityLogEnabled?: pulumi.Input<boolean>;
-    /**
-     * Configuration block for antivirus traffic scanning.
-     */
-    antivirus?: pulumi.Input<inputs.ZeroTrustGatewaySettingsAntivirus>;
-    /**
-     * Configuration for a custom block page.
-     */
-    blockPage?: pulumi.Input<inputs.ZeroTrustGatewaySettingsBlockPage>;
-    /**
-     * Configuration for body scanning.
-     */
-    bodyScanning?: pulumi.Input<inputs.ZeroTrustGatewaySettingsBodyScanning>;
-    /**
-     * Configuration for TLS interception certificate. This will be required starting Feb 2025.
-     */
-    certificate?: pulumi.Input<inputs.ZeroTrustGatewaySettingsCertificate>;
-    /**
-     * Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-     *
-     * @deprecated Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-     */
-    customCertificate?: pulumi.Input<inputs.ZeroTrustGatewaySettingsCustomCertificate>;
-    /**
-     * Configuration for extended e-mail matching.
-     */
-    extendedEmailMatching?: pulumi.Input<inputs.ZeroTrustGatewaySettingsExtendedEmailMatching>;
-    /**
-     * Configure compliance with Federal Information Processing Standards.
-     */
-    fips?: pulumi.Input<inputs.ZeroTrustGatewaySettingsFips>;
-    logging?: pulumi.Input<inputs.ZeroTrustGatewaySettingsLogging>;
-    /**
-     * Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-     */
-    nonIdentityBrowserIsolationEnabled?: pulumi.Input<boolean>;
-    /**
-     * Configuration for DLP Payload Logging.
-     */
-    payloadLog?: pulumi.Input<inputs.ZeroTrustGatewaySettingsPayloadLog>;
-    /**
-     * Indicator that protocol detection is enabled.
-     */
-    protocolDetectionEnabled?: pulumi.Input<boolean>;
-    /**
-     * Configuration block for specifying which protocols are proxied.
-     */
-    proxy?: pulumi.Input<inputs.ZeroTrustGatewaySettingsProxy>;
-    /**
-     * Configuration for SSH Session Logging.
-     */
-    sshSessionLog?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSshSessionLog>;
-    /**
-     * Indicator that decryption of TLS traffic is enabled.
-     */
-    tlsDecryptEnabled?: pulumi.Input<boolean>;
-    /**
-     * Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-     */
-    urlBrowserIsolationEnabled?: pulumi.Input<boolean>;
+    settings?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettings>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustGatewaySettings resource.
  */
 export interface ZeroTrustGatewaySettingsArgs {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId: pulumi.Input<string>;
     /**
-     * Whether to enable the activity log.
+     * Account settings
      */
-    activityLogEnabled?: pulumi.Input<boolean>;
-    /**
-     * Configuration block for antivirus traffic scanning.
-     */
-    antivirus?: pulumi.Input<inputs.ZeroTrustGatewaySettingsAntivirus>;
-    /**
-     * Configuration for a custom block page.
-     */
-    blockPage?: pulumi.Input<inputs.ZeroTrustGatewaySettingsBlockPage>;
-    /**
-     * Configuration for body scanning.
-     */
-    bodyScanning?: pulumi.Input<inputs.ZeroTrustGatewaySettingsBodyScanning>;
-    /**
-     * Configuration for TLS interception certificate. This will be required starting Feb 2025.
-     */
-    certificate?: pulumi.Input<inputs.ZeroTrustGatewaySettingsCertificate>;
-    /**
-     * Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-     *
-     * @deprecated Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-     */
-    customCertificate?: pulumi.Input<inputs.ZeroTrustGatewaySettingsCustomCertificate>;
-    /**
-     * Configuration for extended e-mail matching.
-     */
-    extendedEmailMatching?: pulumi.Input<inputs.ZeroTrustGatewaySettingsExtendedEmailMatching>;
-    /**
-     * Configure compliance with Federal Information Processing Standards.
-     */
-    fips?: pulumi.Input<inputs.ZeroTrustGatewaySettingsFips>;
-    logging?: pulumi.Input<inputs.ZeroTrustGatewaySettingsLogging>;
-    /**
-     * Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-     */
-    nonIdentityBrowserIsolationEnabled?: pulumi.Input<boolean>;
-    /**
-     * Configuration for DLP Payload Logging.
-     */
-    payloadLog?: pulumi.Input<inputs.ZeroTrustGatewaySettingsPayloadLog>;
-    /**
-     * Indicator that protocol detection is enabled.
-     */
-    protocolDetectionEnabled?: pulumi.Input<boolean>;
-    /**
-     * Configuration block for specifying which protocols are proxied.
-     */
-    proxy?: pulumi.Input<inputs.ZeroTrustGatewaySettingsProxy>;
-    /**
-     * Configuration for SSH Session Logging.
-     */
-    sshSessionLog?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSshSessionLog>;
-    /**
-     * Indicator that decryption of TLS traffic is enabled.
-     */
-    tlsDecryptEnabled?: pulumi.Input<boolean>;
-    /**
-     * Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-     */
-    urlBrowserIsolationEnabled?: pulumi.Input<boolean>;
+    settings?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettings>;
 }

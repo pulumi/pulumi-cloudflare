@@ -3,10 +3,11 @@
 
 package com.pulumi.cloudflare;
 
-import com.pulumi.cloudflare.inputs.AccessApplicationCorsHeaderArgs;
+import com.pulumi.cloudflare.inputs.AccessApplicationCorsHeadersArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationDestinationArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationFooterLinkArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationLandingPageDesignArgs;
+import com.pulumi.cloudflare.inputs.AccessApplicationPolicyArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationScimConfigArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationTargetCriteriaArgs;
@@ -25,14 +26,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     public static final AccessApplicationArgs Empty = new AccessApplicationArgs();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -40,14 +41,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+     * When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
      * 
      */
     @Import(name="allowAuthenticateViaWarp")
     private @Nullable Output<Boolean> allowAuthenticateViaWarp;
 
     /**
-     * @return When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+     * @return When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
      * 
      */
     public Optional<Output<Boolean>> allowAuthenticateViaWarp() {
@@ -55,14 +56,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The identity providers selected for the application.
+     * The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
      * 
      */
     @Import(name="allowedIdps")
     private @Nullable Output<List<String>> allowedIdps;
 
     /**
-     * @return The identity providers selected for the application.
+     * @return The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
      * 
      */
     public Optional<Output<List<String>>> allowedIdps() {
@@ -70,14 +71,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The logo URL of the app launcher.
+     * The image URL of the logo shown in the App Launcher header.
      * 
      */
     @Import(name="appLauncherLogoUrl")
     private @Nullable Output<String> appLauncherLogoUrl;
 
     /**
-     * @return The logo URL of the app launcher.
+     * @return The image URL of the logo shown in the App Launcher header.
      * 
      */
     public Optional<Output<String>> appLauncherLogoUrl() {
@@ -85,14 +86,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Option to show/hide applications in App Launcher. Defaults to `true`.
+     * Displays the application in the App Launcher.
      * 
      */
     @Import(name="appLauncherVisible")
     private @Nullable Output<Boolean> appLauncherVisible;
 
     /**
-     * @return Option to show/hide applications in App Launcher. Defaults to `true`.
+     * @return Displays the application in the App Launcher.
      * 
      */
     public Optional<Output<Boolean>> appLauncherVisible() {
@@ -100,14 +101,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
+     * When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
      * 
      */
     @Import(name="autoRedirectToIdentity")
     private @Nullable Output<Boolean> autoRedirectToIdentity;
 
     /**
-     * @return Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
+     * @return When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
      * 
      */
     public Optional<Output<Boolean>> autoRedirectToIdentity() {
@@ -115,44 +116,36 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The background color of the app launcher.
+     * The background color of the App Launcher page.
      * 
      */
     @Import(name="bgColor")
     private @Nullable Output<String> bgColor;
 
     /**
-     * @return The background color of the app launcher.
+     * @return The background color of the App Launcher page.
      * 
      */
     public Optional<Output<String>> bgColor() {
         return Optional.ofNullable(this.bgColor);
     }
 
-    /**
-     * CORS configuration for the Access Application. See below for reference structure.
-     * 
-     */
     @Import(name="corsHeaders")
-    private @Nullable Output<List<AccessApplicationCorsHeaderArgs>> corsHeaders;
+    private @Nullable Output<AccessApplicationCorsHeadersArgs> corsHeaders;
 
-    /**
-     * @return CORS configuration for the Access Application. See below for reference structure.
-     * 
-     */
-    public Optional<Output<List<AccessApplicationCorsHeaderArgs>>> corsHeaders() {
+    public Optional<Output<AccessApplicationCorsHeadersArgs>> corsHeaders() {
         return Optional.ofNullable(this.corsHeaders);
     }
 
     /**
-     * Option that returns a custom error message when a user is denied access to the application.
+     * The custom error message shown to a user when they are denied access to the application.
      * 
      */
     @Import(name="customDenyMessage")
     private @Nullable Output<String> customDenyMessage;
 
     /**
-     * @return Option that returns a custom error message when a user is denied access to the application.
+     * @return The custom error message shown to a user when they are denied access to the application.
      * 
      */
     public Optional<Output<String>> customDenyMessage() {
@@ -160,14 +153,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+     * The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
      * 
      */
     @Import(name="customDenyUrl")
     private @Nullable Output<String> customDenyUrl;
 
     /**
-     * @return Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+     * @return The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
      * 
      */
     public Optional<Output<String>> customDenyUrl() {
@@ -175,14 +168,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+     * The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
      * 
      */
     @Import(name="customNonIdentityDenyUrl")
     private @Nullable Output<String> customNonIdentityDenyUrl;
 
     /**
-     * @return Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+     * @return The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
      * 
      */
     public Optional<Output<String>> customNonIdentityDenyUrl() {
@@ -190,14 +183,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The custom pages selected for the application.
+     * The custom pages that will be displayed when applicable for this application
      * 
      */
     @Import(name="customPages")
     private @Nullable Output<List<String>> customPages;
 
     /**
-     * @return The custom pages selected for the application.
+     * @return The custom pages that will be displayed when applicable for this application
      * 
      */
     public Optional<Output<List<String>>> customPages() {
@@ -205,14 +198,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+     * List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
      */
     @Import(name="destinations")
     private @Nullable Output<List<AccessApplicationDestinationArgs>> destinations;
 
     /**
-     * @return A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+     * @return List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
      */
     public Optional<Output<List<AccessApplicationDestinationArgs>>> destinations() {
@@ -220,14 +213,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+     * The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+     * @return The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
      * 
      */
     public Optional<Output<String>> domain() {
@@ -235,29 +228,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The type of the primary domain. Available values: `public`, `private`.
-     * 
-     */
-    @Import(name="domainType")
-    private @Nullable Output<String> domainType;
-
-    /**
-     * @return The type of the primary domain. Available values: `public`, `private`.
-     * 
-     */
-    public Optional<Output<String>> domainType() {
-        return Optional.ofNullable(this.domainType);
-    }
-
-    /**
-     * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional &#34;binding&#34; cookie on requests. Defaults to `false`.
+     * Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
      * 
      */
     @Import(name="enableBindingCookie")
     private @Nullable Output<Boolean> enableBindingCookie;
 
     /**
-     * @return Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional &#34;binding&#34; cookie on requests. Defaults to `false`.
+     * @return Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
      * 
      */
     public Optional<Output<Boolean>> enableBindingCookie() {
@@ -265,14 +243,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The footer links of the app launcher.
+     * The links in the App Launcher footer.
      * 
      */
     @Import(name="footerLinks")
     private @Nullable Output<List<AccessApplicationFooterLinkArgs>> footerLinks;
 
     /**
-     * @return The footer links of the app launcher.
+     * @return The links in the App Launcher footer.
      * 
      */
     public Optional<Output<List<AccessApplicationFooterLinkArgs>>> footerLinks() {
@@ -280,14 +258,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The background color of the header bar in the app launcher.
+     * The background color of the App Launcher header.
      * 
      */
     @Import(name="headerBgColor")
     private @Nullable Output<String> headerBgColor;
 
     /**
-     * @return The background color of the header bar in the app launcher.
+     * @return The background color of the App Launcher header.
      * 
      */
     public Optional<Output<String>> headerBgColor() {
@@ -295,14 +273,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Option to add the `HttpOnly` cookie flag to access tokens.
+     * Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
      * 
      */
     @Import(name="httpOnlyCookieAttribute")
     private @Nullable Output<Boolean> httpOnlyCookieAttribute;
 
     /**
-     * @return Option to add the `HttpOnly` cookie flag to access tokens.
+     * @return Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
      * 
      */
     public Optional<Output<Boolean>> httpOnlyCookieAttribute() {
@@ -310,14 +288,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The landing page design of the app launcher.
+     * The design of the App Launcher landing page shown to users when they log in.
      * 
      */
     @Import(name="landingPageDesign")
     private @Nullable Output<AccessApplicationLandingPageDesignArgs> landingPageDesign;
 
     /**
-     * @return The landing page design of the app launcher.
+     * @return The design of the App Launcher landing page shown to users when they log in.
      * 
      */
     public Optional<Output<AccessApplicationLandingPageDesignArgs>> landingPageDesign() {
@@ -325,14 +303,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Image URL for the logo shown in the app launcher dashboard.
+     * The image URL for the logo shown in the App Launcher dashboard.
      * 
      */
     @Import(name="logoUrl")
     private @Nullable Output<String> logoUrl;
 
     /**
-     * @return Image URL for the logo shown in the app launcher dashboard.
+     * @return The image URL for the logo shown in the App Launcher dashboard.
      * 
      */
     public Optional<Output<String>> logoUrl() {
@@ -340,14 +318,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Friendly name of the Access Application.
+     * The name of the application.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Friendly name of the Access Application.
+     * @return The name of the application.
      * 
      */
     public Optional<Output<String>> name() {
@@ -355,14 +333,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+     * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
      * 
      */
     @Import(name="optionsPreflightBypass")
     private @Nullable Output<Boolean> optionsPreflightBypass;
 
     /**
-     * @return Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+     * @return Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
      * 
      */
     public Optional<Output<Boolean>> optionsPreflightBypass() {
@@ -370,44 +348,51 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+     * Enables cookie paths to scope an application&#39;s JWT to the application path. If disabled, the JWT will scope to the hostname by default
      * 
      */
-    @Import(name="policies")
-    private @Nullable Output<List<String>> policies;
+    @Import(name="pathCookieAttribute")
+    private @Nullable Output<Boolean> pathCookieAttribute;
 
     /**
-     * @return The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+     * @return Enables cookie paths to scope an application&#39;s JWT to the application path. If disabled, the JWT will scope to the hostname by default
      * 
      */
-    public Optional<Output<List<String>>> policies() {
-        return Optional.ofNullable(this.policies);
+    public Optional<Output<Boolean>> pathCookieAttribute() {
+        return Optional.ofNullable(this.pathCookieAttribute);
     }
 
     /**
-     * SaaS configuration for the Access Application.
+     * The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
      * 
      */
+    @Import(name="policies")
+    private @Nullable Output<List<AccessApplicationPolicyArgs>> policies;
+
+    /**
+     * @return The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+     * 
+     */
+    public Optional<Output<List<AccessApplicationPolicyArgs>>> policies() {
+        return Optional.ofNullable(this.policies);
+    }
+
     @Import(name="saasApp")
     private @Nullable Output<AccessApplicationSaasAppArgs> saasApp;
 
-    /**
-     * @return SaaS configuration for the Access Application.
-     * 
-     */
     public Optional<Output<AccessApplicationSaasAppArgs>> saasApp() {
         return Optional.ofNullable(this.saasApp);
     }
 
     /**
-     * Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+     * Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
      * 
      */
     @Import(name="sameSiteCookieAttribute")
     private @Nullable Output<String> sameSiteCookieAttribute;
 
     /**
-     * @return Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+     * @return Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
      * 
      */
     public Optional<Output<String>> sameSiteCookieAttribute() {
@@ -430,37 +415,29 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
-     * 
-     * @deprecated
-     * Use `destinations` instead
+     * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
      */
-    @Deprecated /* Use `destinations` instead */
     @Import(name="selfHostedDomains")
     private @Nullable Output<List<String>> selfHostedDomains;
 
     /**
-     * @return List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
-     * 
-     * @deprecated
-     * Use `destinations` instead
+     * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
      */
-    @Deprecated /* Use `destinations` instead */
     public Optional<Output<List<String>>> selfHostedDomains() {
         return Optional.ofNullable(this.selfHostedDomains);
     }
 
     /**
-     * Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+     * Returns a 401 status code when the request is blocked by a Service Auth policy.
      * 
      */
     @Import(name="serviceAuth401Redirect")
     private @Nullable Output<Boolean> serviceAuth401Redirect;
 
     /**
-     * @return Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+     * @return Returns a 401 status code when the request is blocked by a Service Auth policy.
      * 
      */
     public Optional<Output<Boolean>> serviceAuth401Redirect() {
@@ -468,14 +445,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
     @Import(name="sessionDuration")
     private @Nullable Output<String> sessionDuration;
 
     /**
-     * @return How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
     public Optional<Output<String>> sessionDuration() {
@@ -483,14 +460,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Option to skip the App Launcher landing page. Defaults to `false`.
+     * Determines when to skip the App Launcher landing page.
      * 
      */
     @Import(name="skipAppLauncherLoginPage")
     private @Nullable Output<Boolean> skipAppLauncherLoginPage;
 
     /**
-     * @return Option to skip the App Launcher landing page. Defaults to `false`.
+     * @return Determines when to skip the App Launcher landing page.
      * 
      */
     public Optional<Output<Boolean>> skipAppLauncherLoginPage() {
@@ -498,14 +475,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+     * Enables automatic authentication through cloudflared.
      * 
      */
     @Import(name="skipInterstitial")
     private @Nullable Output<Boolean> skipInterstitial;
 
     /**
-     * @return Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+     * @return Enables automatic authentication through cloudflared.
      * 
      */
     public Optional<Output<Boolean>> skipInterstitial() {
@@ -513,44 +490,36 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The itags associated with the application.
+     * The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The itags associated with the application.
+     * @return The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
      * 
      */
     public Optional<Output<List<String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
-    /**
-     * The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
-     * 
-     */
     @Import(name="targetCriterias")
     private @Nullable Output<List<AccessApplicationTargetCriteriaArgs>> targetCriterias;
 
-    /**
-     * @return The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
-     * 
-     */
     public Optional<Output<List<AccessApplicationTargetCriteriaArgs>>> targetCriterias() {
         return Optional.ofNullable(this.targetCriterias);
     }
 
     /**
-     * The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
+     * The application type.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
+     * @return The application type.
      * 
      */
     public Optional<Output<String>> type() {
@@ -558,14 +527,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -589,7 +558,6 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         this.customPages = $.customPages;
         this.destinations = $.destinations;
         this.domain = $.domain;
-        this.domainType = $.domainType;
         this.enableBindingCookie = $.enableBindingCookie;
         this.footerLinks = $.footerLinks;
         this.headerBgColor = $.headerBgColor;
@@ -598,6 +566,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         this.logoUrl = $.logoUrl;
         this.name = $.name;
         this.optionsPreflightBypass = $.optionsPreflightBypass;
+        this.pathCookieAttribute = $.pathCookieAttribute;
         this.policies = $.policies;
         this.saasApp = $.saasApp;
         this.sameSiteCookieAttribute = $.sameSiteCookieAttribute;
@@ -632,7 +601,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -643,7 +612,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -653,7 +622,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowAuthenticateViaWarp When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+         * @param allowAuthenticateViaWarp When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
          * 
          * @return builder
          * 
@@ -664,7 +633,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowAuthenticateViaWarp When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+         * @param allowAuthenticateViaWarp When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
          * 
          * @return builder
          * 
@@ -674,7 +643,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowedIdps The identity providers selected for the application.
+         * @param allowedIdps The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
          * 
          * @return builder
          * 
@@ -685,7 +654,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowedIdps The identity providers selected for the application.
+         * @param allowedIdps The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
          * 
          * @return builder
          * 
@@ -695,7 +664,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowedIdps The identity providers selected for the application.
+         * @param allowedIdps The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
          * 
          * @return builder
          * 
@@ -705,7 +674,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param appLauncherLogoUrl The logo URL of the app launcher.
+         * @param appLauncherLogoUrl The image URL of the logo shown in the App Launcher header.
          * 
          * @return builder
          * 
@@ -716,7 +685,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param appLauncherLogoUrl The logo URL of the app launcher.
+         * @param appLauncherLogoUrl The image URL of the logo shown in the App Launcher header.
          * 
          * @return builder
          * 
@@ -726,7 +695,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param appLauncherVisible Option to show/hide applications in App Launcher. Defaults to `true`.
+         * @param appLauncherVisible Displays the application in the App Launcher.
          * 
          * @return builder
          * 
@@ -737,7 +706,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param appLauncherVisible Option to show/hide applications in App Launcher. Defaults to `true`.
+         * @param appLauncherVisible Displays the application in the App Launcher.
          * 
          * @return builder
          * 
@@ -747,7 +716,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoRedirectToIdentity Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
+         * @param autoRedirectToIdentity When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
          * 
          * @return builder
          * 
@@ -758,7 +727,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoRedirectToIdentity Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
+         * @param autoRedirectToIdentity When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
          * 
          * @return builder
          * 
@@ -768,7 +737,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bgColor The background color of the app launcher.
+         * @param bgColor The background color of the App Launcher page.
          * 
          * @return builder
          * 
@@ -779,7 +748,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bgColor The background color of the app launcher.
+         * @param bgColor The background color of the App Launcher page.
          * 
          * @return builder
          * 
@@ -788,39 +757,17 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
             return bgColor(Output.of(bgColor));
         }
 
-        /**
-         * @param corsHeaders CORS configuration for the Access Application. See below for reference structure.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder corsHeaders(@Nullable Output<List<AccessApplicationCorsHeaderArgs>> corsHeaders) {
+        public Builder corsHeaders(@Nullable Output<AccessApplicationCorsHeadersArgs> corsHeaders) {
             $.corsHeaders = corsHeaders;
             return this;
         }
 
-        /**
-         * @param corsHeaders CORS configuration for the Access Application. See below for reference structure.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder corsHeaders(List<AccessApplicationCorsHeaderArgs> corsHeaders) {
+        public Builder corsHeaders(AccessApplicationCorsHeadersArgs corsHeaders) {
             return corsHeaders(Output.of(corsHeaders));
         }
 
         /**
-         * @param corsHeaders CORS configuration for the Access Application. See below for reference structure.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder corsHeaders(AccessApplicationCorsHeaderArgs... corsHeaders) {
-            return corsHeaders(List.of(corsHeaders));
-        }
-
-        /**
-         * @param customDenyMessage Option that returns a custom error message when a user is denied access to the application.
+         * @param customDenyMessage The custom error message shown to a user when they are denied access to the application.
          * 
          * @return builder
          * 
@@ -831,7 +778,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customDenyMessage Option that returns a custom error message when a user is denied access to the application.
+         * @param customDenyMessage The custom error message shown to a user when they are denied access to the application.
          * 
          * @return builder
          * 
@@ -841,7 +788,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customDenyUrl Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+         * @param customDenyUrl The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
          * 
          * @return builder
          * 
@@ -852,7 +799,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customDenyUrl Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+         * @param customDenyUrl The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
          * 
          * @return builder
          * 
@@ -862,7 +809,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customNonIdentityDenyUrl Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+         * @param customNonIdentityDenyUrl The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
          * 
          * @return builder
          * 
@@ -873,7 +820,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customNonIdentityDenyUrl Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+         * @param customNonIdentityDenyUrl The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
          * 
          * @return builder
          * 
@@ -883,7 +830,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customPages The custom pages selected for the application.
+         * @param customPages The custom pages that will be displayed when applicable for this application
          * 
          * @return builder
          * 
@@ -894,7 +841,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customPages The custom pages selected for the application.
+         * @param customPages The custom pages that will be displayed when applicable for this application
          * 
          * @return builder
          * 
@@ -904,7 +851,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customPages The custom pages selected for the application.
+         * @param customPages The custom pages that will be displayed when applicable for this application
          * 
          * @return builder
          * 
@@ -914,7 +861,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param destinations A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+         * @param destinations List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
          * 
          * @return builder
          * 
@@ -925,7 +872,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param destinations A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+         * @param destinations List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
          * 
          * @return builder
          * 
@@ -935,7 +882,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param destinations A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+         * @param destinations List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
          * 
          * @return builder
          * 
@@ -945,7 +892,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param domain The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+         * @param domain The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
          * 
          * @return builder
          * 
@@ -956,7 +903,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param domain The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+         * @param domain The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
          * 
          * @return builder
          * 
@@ -966,28 +913,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param domainType The type of the primary domain. Available values: `public`, `private`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder domainType(@Nullable Output<String> domainType) {
-            $.domainType = domainType;
-            return this;
-        }
-
-        /**
-         * @param domainType The type of the primary domain. Available values: `public`, `private`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder domainType(String domainType) {
-            return domainType(Output.of(domainType));
-        }
-
-        /**
-         * @param enableBindingCookie Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional &#34;binding&#34; cookie on requests. Defaults to `false`.
+         * @param enableBindingCookie Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
          * 
          * @return builder
          * 
@@ -998,7 +924,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enableBindingCookie Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional &#34;binding&#34; cookie on requests. Defaults to `false`.
+         * @param enableBindingCookie Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
          * 
          * @return builder
          * 
@@ -1008,7 +934,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param footerLinks The footer links of the app launcher.
+         * @param footerLinks The links in the App Launcher footer.
          * 
          * @return builder
          * 
@@ -1019,7 +945,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param footerLinks The footer links of the app launcher.
+         * @param footerLinks The links in the App Launcher footer.
          * 
          * @return builder
          * 
@@ -1029,7 +955,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param footerLinks The footer links of the app launcher.
+         * @param footerLinks The links in the App Launcher footer.
          * 
          * @return builder
          * 
@@ -1039,7 +965,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param headerBgColor The background color of the header bar in the app launcher.
+         * @param headerBgColor The background color of the App Launcher header.
          * 
          * @return builder
          * 
@@ -1050,7 +976,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param headerBgColor The background color of the header bar in the app launcher.
+         * @param headerBgColor The background color of the App Launcher header.
          * 
          * @return builder
          * 
@@ -1060,7 +986,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param httpOnlyCookieAttribute Option to add the `HttpOnly` cookie flag to access tokens.
+         * @param httpOnlyCookieAttribute Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
          * 
          * @return builder
          * 
@@ -1071,7 +997,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param httpOnlyCookieAttribute Option to add the `HttpOnly` cookie flag to access tokens.
+         * @param httpOnlyCookieAttribute Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
          * 
          * @return builder
          * 
@@ -1081,7 +1007,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param landingPageDesign The landing page design of the app launcher.
+         * @param landingPageDesign The design of the App Launcher landing page shown to users when they log in.
          * 
          * @return builder
          * 
@@ -1092,7 +1018,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param landingPageDesign The landing page design of the app launcher.
+         * @param landingPageDesign The design of the App Launcher landing page shown to users when they log in.
          * 
          * @return builder
          * 
@@ -1102,7 +1028,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param logoUrl Image URL for the logo shown in the app launcher dashboard.
+         * @param logoUrl The image URL for the logo shown in the App Launcher dashboard.
          * 
          * @return builder
          * 
@@ -1113,7 +1039,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param logoUrl Image URL for the logo shown in the app launcher dashboard.
+         * @param logoUrl The image URL for the logo shown in the App Launcher dashboard.
          * 
          * @return builder
          * 
@@ -1123,7 +1049,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Friendly name of the Access Application.
+         * @param name The name of the application.
          * 
          * @return builder
          * 
@@ -1134,7 +1060,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Friendly name of the Access Application.
+         * @param name The name of the application.
          * 
          * @return builder
          * 
@@ -1144,7 +1070,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param optionsPreflightBypass Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+         * @param optionsPreflightBypass Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
          * 
          * @return builder
          * 
@@ -1155,7 +1081,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param optionsPreflightBypass Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+         * @param optionsPreflightBypass Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
          * 
          * @return builder
          * 
@@ -1165,59 +1091,68 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param policies The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+         * @param pathCookieAttribute Enables cookie paths to scope an application&#39;s JWT to the application path. If disabled, the JWT will scope to the hostname by default
          * 
          * @return builder
          * 
          */
-        public Builder policies(@Nullable Output<List<String>> policies) {
+        public Builder pathCookieAttribute(@Nullable Output<Boolean> pathCookieAttribute) {
+            $.pathCookieAttribute = pathCookieAttribute;
+            return this;
+        }
+
+        /**
+         * @param pathCookieAttribute Enables cookie paths to scope an application&#39;s JWT to the application path. If disabled, the JWT will scope to the hostname by default
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pathCookieAttribute(Boolean pathCookieAttribute) {
+            return pathCookieAttribute(Output.of(pathCookieAttribute));
+        }
+
+        /**
+         * @param policies The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policies(@Nullable Output<List<AccessApplicationPolicyArgs>> policies) {
             $.policies = policies;
             return this;
         }
 
         /**
-         * @param policies The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+         * @param policies The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
          * 
          * @return builder
          * 
          */
-        public Builder policies(List<String> policies) {
+        public Builder policies(List<AccessApplicationPolicyArgs> policies) {
             return policies(Output.of(policies));
         }
 
         /**
-         * @param policies The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+         * @param policies The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
          * 
          * @return builder
          * 
          */
-        public Builder policies(String... policies) {
+        public Builder policies(AccessApplicationPolicyArgs... policies) {
             return policies(List.of(policies));
         }
 
-        /**
-         * @param saasApp SaaS configuration for the Access Application.
-         * 
-         * @return builder
-         * 
-         */
         public Builder saasApp(@Nullable Output<AccessApplicationSaasAppArgs> saasApp) {
             $.saasApp = saasApp;
             return this;
         }
 
-        /**
-         * @param saasApp SaaS configuration for the Access Application.
-         * 
-         * @return builder
-         * 
-         */
         public Builder saasApp(AccessApplicationSaasAppArgs saasApp) {
             return saasApp(Output.of(saasApp));
         }
 
         /**
-         * @param sameSiteCookieAttribute Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+         * @param sameSiteCookieAttribute Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
          * 
          * @return builder
          * 
@@ -1228,7 +1163,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sameSiteCookieAttribute Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+         * @param sameSiteCookieAttribute Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
          * 
          * @return builder
          * 
@@ -1259,50 +1194,38 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param selfHostedDomains List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+         * @param selfHostedDomains List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `destinations` instead
-         * 
          */
-        @Deprecated /* Use `destinations` instead */
         public Builder selfHostedDomains(@Nullable Output<List<String>> selfHostedDomains) {
             $.selfHostedDomains = selfHostedDomains;
             return this;
         }
 
         /**
-         * @param selfHostedDomains List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+         * @param selfHostedDomains List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `destinations` instead
-         * 
          */
-        @Deprecated /* Use `destinations` instead */
         public Builder selfHostedDomains(List<String> selfHostedDomains) {
             return selfHostedDomains(Output.of(selfHostedDomains));
         }
 
         /**
-         * @param selfHostedDomains List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+         * @param selfHostedDomains List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `destinations` instead
-         * 
          */
-        @Deprecated /* Use `destinations` instead */
         public Builder selfHostedDomains(String... selfHostedDomains) {
             return selfHostedDomains(List.of(selfHostedDomains));
         }
 
         /**
-         * @param serviceAuth401Redirect Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+         * @param serviceAuth401Redirect Returns a 401 status code when the request is blocked by a Service Auth policy.
          * 
          * @return builder
          * 
@@ -1313,7 +1236,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serviceAuth401Redirect Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+         * @param serviceAuth401Redirect Returns a 401 status code when the request is blocked by a Service Auth policy.
          * 
          * @return builder
          * 
@@ -1323,7 +1246,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sessionDuration How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+         * @param sessionDuration The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
          * 
          * @return builder
          * 
@@ -1334,7 +1257,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sessionDuration How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+         * @param sessionDuration The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
          * 
          * @return builder
          * 
@@ -1344,7 +1267,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param skipAppLauncherLoginPage Option to skip the App Launcher landing page. Defaults to `false`.
+         * @param skipAppLauncherLoginPage Determines when to skip the App Launcher landing page.
          * 
          * @return builder
          * 
@@ -1355,7 +1278,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param skipAppLauncherLoginPage Option to skip the App Launcher landing page. Defaults to `false`.
+         * @param skipAppLauncherLoginPage Determines when to skip the App Launcher landing page.
          * 
          * @return builder
          * 
@@ -1365,7 +1288,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param skipInterstitial Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+         * @param skipInterstitial Enables automatic authentication through cloudflared.
          * 
          * @return builder
          * 
@@ -1376,7 +1299,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param skipInterstitial Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+         * @param skipInterstitial Enables automatic authentication through cloudflared.
          * 
          * @return builder
          * 
@@ -1386,7 +1309,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tags The itags associated with the application.
+         * @param tags The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
          * 
          * @return builder
          * 
@@ -1397,7 +1320,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tags The itags associated with the application.
+         * @param tags The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
          * 
          * @return builder
          * 
@@ -1407,7 +1330,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tags The itags associated with the application.
+         * @param tags The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
          * 
          * @return builder
          * 
@@ -1416,39 +1339,21 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
             return tags(List.of(tags));
         }
 
-        /**
-         * @param targetCriterias The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetCriterias(@Nullable Output<List<AccessApplicationTargetCriteriaArgs>> targetCriterias) {
             $.targetCriterias = targetCriterias;
             return this;
         }
 
-        /**
-         * @param targetCriterias The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetCriterias(List<AccessApplicationTargetCriteriaArgs> targetCriterias) {
             return targetCriterias(Output.of(targetCriterias));
         }
 
-        /**
-         * @param targetCriterias The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetCriterias(AccessApplicationTargetCriteriaArgs... targetCriterias) {
             return targetCriterias(List.of(targetCriterias));
         }
 
         /**
-         * @param type The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
+         * @param type The application type.
          * 
          * @return builder
          * 
@@ -1459,7 +1364,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
+         * @param type The application type.
          * 
          * @return builder
          * 
@@ -1469,7 +1374,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -1480,7 +1385,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 

@@ -12,19 +12,70 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustTunnelCloudflared
     {
         /// <summary>
-        /// Use this datasource to lookup a tunnel in an account.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustTunnelCloudflared = Cloudflare.GetZeroTrustTunnelCloudflared.Invoke(new()
+        ///     {
+        ///         AccountId = "699d98642c564d2e855e9661899b7252",
+        ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetZeroTrustTunnelCloudflaredResult> InvokeAsync(GetZeroTrustTunnelCloudflaredArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustTunnelCloudflaredResult>("cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared", args ?? new GetZeroTrustTunnelCloudflaredArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this datasource to lookup a tunnel in an account.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustTunnelCloudflared = Cloudflare.GetZeroTrustTunnelCloudflared.Invoke(new()
+        ///     {
+        ///         AccountId = "699d98642c564d2e855e9661899b7252",
+        ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetZeroTrustTunnelCloudflaredResult> Invoke(GetZeroTrustTunnelCloudflaredInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustTunnelCloudflaredResult>("cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared", args ?? new GetZeroTrustTunnelCloudflaredInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this datasource to lookup a tunnel in an account.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustTunnelCloudflared = Cloudflare.GetZeroTrustTunnelCloudflared.Invoke(new()
+        ///     {
+        ///         AccountId = "699d98642c564d2e855e9661899b7252",
+        ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetZeroTrustTunnelCloudflaredResult> Invoke(GetZeroTrustTunnelCloudflaredInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustTunnelCloudflaredResult>("cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared", args ?? new GetZeroTrustTunnelCloudflaredInvokeArgs(), options.WithDefaults());
@@ -34,22 +85,19 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustTunnelCloudflaredArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Cloudflare account ID
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Input("isDeleted")]
-        public bool? IsDeleted { get; set; }
+        [Input("filter")]
+        public Inputs.GetZeroTrustTunnelCloudflaredFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
+        /// UUID of the tunnel.
         /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("tunnelId")]
+        public string? TunnelId { get; set; }
 
         public GetZeroTrustTunnelCloudflaredArgs()
         {
@@ -60,22 +108,19 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustTunnelCloudflaredInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Cloudflare account ID
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Input("isDeleted")]
-        public Input<bool>? IsDeleted { get; set; }
+        [Input("filter")]
+        public Input<Inputs.GetZeroTrustTunnelCloudflaredFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
+        /// UUID of the tunnel.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("tunnelId")]
+        public Input<string>? TunnelId { get; set; }
 
         public GetZeroTrustTunnelCloudflaredInvokeArgs()
         {
@@ -88,41 +133,86 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustTunnelCloudflaredResult
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Cloudflare account ID
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// ID of the tunnel.
+        /// Cloudflare account ID
+        /// </summary>
+        public readonly string AccountTag;
+        /// <summary>
+        /// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetZeroTrustTunnelCloudflaredConnectionResult> Connections;
+        /// <summary>
+        /// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
+        /// </summary>
+        public readonly string ConnsActiveAt;
+        /// <summary>
+        /// Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
+        /// </summary>
+        public readonly string ConnsInactiveAt;
+        /// <summary>
+        /// Timestamp of when the resource was created.
+        /// </summary>
+        public readonly string CreatedAt;
+        /// <summary>
+        /// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        /// </summary>
+        public readonly string DeletedAt;
+        public readonly Outputs.GetZeroTrustTunnelCloudflaredFilterResult? Filter;
+        /// <summary>
+        /// UUID of the tunnel.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+        /// Metadata associated with the tunnel.
         /// </summary>
-        public readonly bool? IsDeleted;
+        public readonly string Metadata;
         /// <summary>
-        /// Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
+        /// A user-friendly name for a tunnel.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Whether the tunnel can be configured remotely from the Zero Trust dashboard.
+        /// If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
         /// </summary>
         public readonly bool RemoteConfig;
         /// <summary>
-        /// The status of the tunnel. Available values: `inactive`, `degraded`, `healthy`, `down`.
+        /// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+        /// Available values: "inactive", "degraded", "healthy", "down".
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The type of the tunnel. Available values: `cfd_tunnel`, `warp_connector`.
+        /// The type of tunnel.
+        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
         /// </summary>
-        public readonly string TunnelType;
+        public readonly string TunType;
+        /// <summary>
+        /// UUID of the tunnel.
+        /// </summary>
+        public readonly string? TunnelId;
 
         [OutputConstructor]
         private GetZeroTrustTunnelCloudflaredResult(
             string accountId,
 
+            string accountTag,
+
+            ImmutableArray<Outputs.GetZeroTrustTunnelCloudflaredConnectionResult> connections,
+
+            string connsActiveAt,
+
+            string connsInactiveAt,
+
+            string createdAt,
+
+            string deletedAt,
+
+            Outputs.GetZeroTrustTunnelCloudflaredFilterResult? filter,
+
             string id,
 
-            bool? isDeleted,
+            string metadata,
 
             string name,
 
@@ -130,15 +220,25 @@ namespace Pulumi.Cloudflare
 
             string status,
 
-            string tunnelType)
+            string tunType,
+
+            string? tunnelId)
         {
             AccountId = accountId;
+            AccountTag = accountTag;
+            Connections = connections;
+            ConnsActiveAt = connsActiveAt;
+            ConnsInactiveAt = connsInactiveAt;
+            CreatedAt = createdAt;
+            DeletedAt = deletedAt;
+            Filter = filter;
             Id = id;
-            IsDeleted = isDeleted;
+            Metadata = metadata;
             Name = name;
             RemoteConfig = remoteConfig;
             Status = status;
-            TunnelType = tunnelType;
+            TunType = tunType;
+            TunnelId = tunnelId;
         }
     }
 }

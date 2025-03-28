@@ -7,21 +7,25 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource to manage API Shield configurations.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.ApiShield("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * const exampleApiShield = new cloudflare.ApiShield("example_api_shield", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     authIdCharacteristics: [{
- *         name: "my-example-header",
+ *         name: "authorization",
  *         type: "header",
  *     }],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/apiShield:ApiShield example '<zone_id>'
  * ```
  */
 export class ApiShield extends pulumi.CustomResource {
@@ -52,12 +56,15 @@ export class ApiShield extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApiShield.__pulumiType;
     }
 
+    public readonly authIdCharacteristics!: pulumi.Output<outputs.ApiShieldAuthIdCharacteristic[]>;
+    public /*out*/ readonly errors!: pulumi.Output<outputs.ApiShieldError[]>;
+    public /*out*/ readonly messages!: pulumi.Output<outputs.ApiShieldMessage[]>;
     /**
-     * Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
+     * Whether the API call was successful
      */
-    public readonly authIdCharacteristics!: pulumi.Output<outputs.ApiShieldAuthIdCharacteristic[] | undefined>;
+    public /*out*/ readonly success!: pulumi.Output<boolean>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -75,14 +82,23 @@ export class ApiShield extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ApiShieldState | undefined;
             resourceInputs["authIdCharacteristics"] = state ? state.authIdCharacteristics : undefined;
+            resourceInputs["errors"] = state ? state.errors : undefined;
+            resourceInputs["messages"] = state ? state.messages : undefined;
+            resourceInputs["success"] = state ? state.success : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ApiShieldArgs | undefined;
+            if ((!args || args.authIdCharacteristics === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'authIdCharacteristics'");
+            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["authIdCharacteristics"] = args ? args.authIdCharacteristics : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["errors"] = undefined /*out*/;
+            resourceInputs["messages"] = undefined /*out*/;
+            resourceInputs["success"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApiShield.__pulumiType, name, resourceInputs, opts);
@@ -93,12 +109,15 @@ export class ApiShield extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApiShield resources.
  */
 export interface ApiShieldState {
-    /**
-     * Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-     */
     authIdCharacteristics?: pulumi.Input<pulumi.Input<inputs.ApiShieldAuthIdCharacteristic>[]>;
+    errors?: pulumi.Input<pulumi.Input<inputs.ApiShieldError>[]>;
+    messages?: pulumi.Input<pulumi.Input<inputs.ApiShieldMessage>[]>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Whether the API call was successful
+     */
+    success?: pulumi.Input<boolean>;
+    /**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -107,12 +126,9 @@ export interface ApiShieldState {
  * The set of arguments for constructing a ApiShield resource.
  */
 export interface ApiShieldArgs {
+    authIdCharacteristics: pulumi.Input<pulumi.Input<inputs.ApiShieldAuthIdCharacteristic>[]>;
     /**
-     * Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-     */
-    authIdCharacteristics?: pulumi.Input<pulumi.Input<inputs.ApiShieldAuthIdCharacteristic>[]>;
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

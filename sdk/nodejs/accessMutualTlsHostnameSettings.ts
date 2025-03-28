@@ -7,37 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Access Mutual TLS Certificate Settings resource.
- *
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.AccessMutualTlsHostnameSettings("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     settings: [{
- *         hostname: "example.com",
- *         clientCertificateForwarding: true,
- *         chinaNetwork: false,
- *     }],
- * });
- * ```
- *
- * ## Import
- *
- * Account level mTLS hostname settings import.
- *
- * ```sh
- * $ pulumi import cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings example account/<account_id>
- * ```
- *
- * Zone level mTLS hostname settings import.
- *
- * ```sh
- * $ pulumi import cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings example zone/<zone_id>
- * ```
+ * @deprecated cloudflare.index/accessmutualtlshostnamesettings.AccessMutualTlsHostnameSettings has been deprecated in favor of cloudflare.index/zerotrustaccessmtlshostnamesettings.ZeroTrustAccessMtlsHostnameSettings
  */
 export class AccessMutualTlsHostnameSettings extends pulumi.CustomResource {
     /**
@@ -50,6 +22,7 @@ export class AccessMutualTlsHostnameSettings extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccessMutualTlsHostnameSettingsState, opts?: pulumi.CustomResourceOptions): AccessMutualTlsHostnameSettings {
+        pulumi.log.warn("AccessMutualTlsHostnameSettings is deprecated: cloudflare.index/accessmutualtlshostnamesettings.AccessMutualTlsHostnameSettings has been deprecated in favor of cloudflare.index/zerotrustaccessmtlshostnamesettings.ZeroTrustAccessMtlsHostnameSettings")
         return new AccessMutualTlsHostnameSettings(name, <any>state, { ...opts, id: id });
     }
 
@@ -68,12 +41,24 @@ export class AccessMutualTlsHostnameSettings extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
-    public readonly settings!: pulumi.Output<outputs.AccessMutualTlsHostnameSettingsSetting[] | undefined>;
     /**
-     * The zone identifier to target for the resource.
+     * Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+     */
+    public /*out*/ readonly chinaNetwork!: pulumi.Output<boolean>;
+    /**
+     * Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+     */
+    public /*out*/ readonly clientCertificateForwarding!: pulumi.Output<boolean>;
+    /**
+     * The hostname that these settings apply to.
+     */
+    public /*out*/ readonly hostname!: pulumi.Output<string>;
+    public readonly settings!: pulumi.Output<outputs.AccessMutualTlsHostnameSettingsSetting[]>;
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -84,22 +69,36 @@ export class AccessMutualTlsHostnameSettings extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: AccessMutualTlsHostnameSettingsArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/accessmutualtlshostnamesettings.AccessMutualTlsHostnameSettings has been deprecated in favor of cloudflare.index/zerotrustaccessmtlshostnamesettings.ZeroTrustAccessMtlsHostnameSettings */
+    constructor(name: string, args: AccessMutualTlsHostnameSettingsArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/accessmutualtlshostnamesettings.AccessMutualTlsHostnameSettings has been deprecated in favor of cloudflare.index/zerotrustaccessmtlshostnamesettings.ZeroTrustAccessMtlsHostnameSettings */
     constructor(name: string, argsOrState?: AccessMutualTlsHostnameSettingsArgs | AccessMutualTlsHostnameSettingsState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AccessMutualTlsHostnameSettings is deprecated: cloudflare.index/accessmutualtlshostnamesettings.AccessMutualTlsHostnameSettings has been deprecated in favor of cloudflare.index/zerotrustaccessmtlshostnamesettings.ZeroTrustAccessMtlsHostnameSettings")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessMutualTlsHostnameSettingsState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["chinaNetwork"] = state ? state.chinaNetwork : undefined;
+            resourceInputs["clientCertificateForwarding"] = state ? state.clientCertificateForwarding : undefined;
+            resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["settings"] = state ? state.settings : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessMutualTlsHostnameSettingsArgs | undefined;
+            if ((!args || args.settings === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'settings'");
+            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["settings"] = args ? args.settings : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["chinaNetwork"] = undefined /*out*/;
+            resourceInputs["clientCertificateForwarding"] = undefined /*out*/;
+            resourceInputs["hostname"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessMutualTlsHostnameSettings.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -109,12 +108,24 @@ export class AccessMutualTlsHostnameSettings extends pulumi.CustomResource {
  */
 export interface AccessMutualTlsHostnameSettingsState {
     /**
-     * The account identifier to target for the resource.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+     */
+    chinaNetwork?: pulumi.Input<boolean>;
+    /**
+     * Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+     */
+    clientCertificateForwarding?: pulumi.Input<boolean>;
+    /**
+     * The hostname that these settings apply to.
+     */
+    hostname?: pulumi.Input<string>;
     settings?: pulumi.Input<pulumi.Input<inputs.AccessMutualTlsHostnameSettingsSetting>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -124,12 +135,12 @@ export interface AccessMutualTlsHostnameSettingsState {
  */
 export interface AccessMutualTlsHostnameSettingsArgs {
     /**
-     * The account identifier to target for the resource.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
-    settings?: pulumi.Input<pulumi.Input<inputs.AccessMutualTlsHostnameSettingsSetting>[]>;
+    settings: pulumi.Input<pulumi.Input<inputs.AccessMutualTlsHostnameSettingsSetting>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }

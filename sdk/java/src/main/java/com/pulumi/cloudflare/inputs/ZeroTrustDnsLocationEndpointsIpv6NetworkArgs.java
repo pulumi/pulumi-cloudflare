@@ -15,14 +15,14 @@ public final class ZeroTrustDnsLocationEndpointsIpv6NetworkArgs extends com.pulu
     public static final ZeroTrustDnsLocationEndpointsIpv6NetworkArgs Empty = new ZeroTrustDnsLocationEndpointsIpv6NetworkArgs();
 
     /**
-     * CIDR notation representation of the network IP.
+     * The IPv6 address or IPv6 CIDR.
      * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
 
     /**
-     * @return CIDR notation representation of the network IP.
+     * @return The IPv6 address or IPv6 CIDR.
      * 
      */
     public Output<String> network() {
@@ -54,7 +54,7 @@ public final class ZeroTrustDnsLocationEndpointsIpv6NetworkArgs extends com.pulu
         }
 
         /**
-         * @param network CIDR notation representation of the network IP.
+         * @param network The IPv6 address or IPv6 CIDR.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class ZeroTrustDnsLocationEndpointsIpv6NetworkArgs extends com.pulu
         }
 
         /**
-         * @param network CIDR notation representation of the network IP.
+         * @param network The IPv6 address or IPv6 CIDR.
          * 
          * @return builder
          * 

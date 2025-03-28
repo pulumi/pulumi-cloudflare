@@ -7,7 +7,6 @@ import com.pulumi.cloudflare.inputs.ZoneLockdownConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -20,14 +19,14 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
     public static final ZoneLockdownState Empty = new ZoneLockdownState();
 
     /**
-     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+     * A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
      * 
      */
     @Import(name="configurations")
     private @Nullable Output<List<ZoneLockdownConfigurationArgs>> configurations;
 
     /**
-     * @return A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+     * @return A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
      * 
      */
     public Optional<Output<List<ZoneLockdownConfigurationArgs>>> configurations() {
@@ -35,14 +34,29 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+     * The timestamp of when the rule was created.
+     * 
+     */
+    @Import(name="createdOn")
+    private @Nullable Output<String> createdOn;
+
+    /**
+     * @return The timestamp of when the rule was created.
+     * 
+     */
+    public Optional<Output<String>> createdOn() {
+        return Optional.ofNullable(this.createdOn);
+    }
+
+    /**
+     * An informative summary of the rule.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+     * @return An informative summary of the rule.
      * 
      */
     public Optional<Output<String>> description() {
@@ -50,36 +64,44 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
+     * The timestamp of when the rule was last modified.
+     * 
+     */
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    /**
+     * @return The timestamp of when the rule was last modified.
+     * 
+     */
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
+    }
+
+    /**
+     * When true, indicates that the rule is currently paused.
      * 
      */
     @Import(name="paused")
     private @Nullable Output<Boolean> paused;
 
     /**
-     * @return Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
+     * @return When true, indicates that the rule is currently paused.
      * 
      */
     public Optional<Output<Boolean>> paused() {
         return Optional.ofNullable(this.paused);
     }
 
-    @Import(name="priority")
-    private @Nullable Output<Integer> priority;
-
-    public Optional<Output<Integer>> priority() {
-        return Optional.ofNullable(this.priority);
-    }
-
     /**
-     * A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+     * The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
      * 
      */
     @Import(name="urls")
     private @Nullable Output<List<String>> urls;
 
     /**
-     * @return A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+     * @return The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
      * 
      */
     public Optional<Output<List<String>>> urls() {
@@ -87,14 +109,14 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -105,9 +127,10 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
 
     private ZoneLockdownState(ZoneLockdownState $) {
         this.configurations = $.configurations;
+        this.createdOn = $.createdOn;
         this.description = $.description;
+        this.modifiedOn = $.modifiedOn;
         this.paused = $.paused;
-        this.priority = $.priority;
         this.urls = $.urls;
         this.zoneId = $.zoneId;
     }
@@ -131,7 +154,7 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configurations A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+         * @param configurations A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
          * 
          * @return builder
          * 
@@ -142,7 +165,7 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configurations A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+         * @param configurations A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
          * 
          * @return builder
          * 
@@ -152,7 +175,7 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configurations A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+         * @param configurations A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
          * 
          * @return builder
          * 
@@ -162,7 +185,28 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+         * @param createdOn The timestamp of when the rule was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(@Nullable Output<String> createdOn) {
+            $.createdOn = createdOn;
+            return this;
+        }
+
+        /**
+         * @param createdOn The timestamp of when the rule was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(String createdOn) {
+            return createdOn(Output.of(createdOn));
+        }
+
+        /**
+         * @param description An informative summary of the rule.
          * 
          * @return builder
          * 
@@ -173,7 +217,7 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+         * @param description An informative summary of the rule.
          * 
          * @return builder
          * 
@@ -183,7 +227,28 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paused Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
+         * @param modifiedOn The timestamp of when the rule was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        /**
+         * @param modifiedOn The timestamp of when the rule was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
+        }
+
+        /**
+         * @param paused When true, indicates that the rule is currently paused.
          * 
          * @return builder
          * 
@@ -194,7 +259,7 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paused Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
+         * @param paused When true, indicates that the rule is currently paused.
          * 
          * @return builder
          * 
@@ -203,17 +268,8 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
             return paused(Output.of(paused));
         }
 
-        public Builder priority(@Nullable Output<Integer> priority) {
-            $.priority = priority;
-            return this;
-        }
-
-        public Builder priority(Integer priority) {
-            return priority(Output.of(priority));
-        }
-
         /**
-         * @param urls A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+         * @param urls The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
          * 
          * @return builder
          * 
@@ -224,7 +280,7 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param urls A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+         * @param urls The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
          * 
          * @return builder
          * 
@@ -234,7 +290,7 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param urls A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+         * @param urls The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
          * 
          * @return builder
          * 
@@ -244,7 +300,7 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -255,7 +311,7 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

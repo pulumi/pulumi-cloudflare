@@ -3,17 +3,29 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireAnyValidServiceToken;
 import com.pulumi.cloudflare.outputs.AccessPolicyRequireAuthContext;
-import com.pulumi.cloudflare.outputs.AccessPolicyRequireAzure;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireAuthMethod;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireAzureAd;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireCertificate;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireCommonName;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireDevicePosture;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireEmail;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireEmailDomain;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireEmailList;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireEveryone;
 import com.pulumi.cloudflare.outputs.AccessPolicyRequireExternalEvaluation;
-import com.pulumi.cloudflare.outputs.AccessPolicyRequireGithub;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireGeo;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireGithubOrganization;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireGroup;
 import com.pulumi.cloudflare.outputs.AccessPolicyRequireGsuite;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireIp;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireIpList;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireLoginMethod;
 import com.pulumi.cloudflare.outputs.AccessPolicyRequireOkta;
 import com.pulumi.cloudflare.outputs.AccessPolicyRequireSaml;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireServiceToken;
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Boolean;
-import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,274 +33,110 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessPolicyRequire {
     /**
-     * @return Matches any valid Access service token.
+     * @return An empty object which matches on all service tokens.
      * 
      */
-    private @Nullable Boolean anyValidServiceToken;
-    private @Nullable List<AccessPolicyRequireAuthContext> authContexts;
+    private @Nullable AccessPolicyRequireAnyValidServiceToken anyValidServiceToken;
+    private @Nullable AccessPolicyRequireAuthContext authContext;
+    private @Nullable AccessPolicyRequireAuthMethod authMethod;
+    private @Nullable AccessPolicyRequireAzureAd azureAd;
+    private @Nullable AccessPolicyRequireCertificate certificate;
+    private @Nullable AccessPolicyRequireCommonName commonName;
+    private @Nullable AccessPolicyRequireDevicePosture devicePosture;
+    private @Nullable AccessPolicyRequireEmail email;
+    private @Nullable AccessPolicyRequireEmailDomain emailDomain;
+    private @Nullable AccessPolicyRequireEmailList emailList;
     /**
-     * @return The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     * @return An empty object which matches on all users.
      * 
      */
-    private @Nullable String authMethod;
-    /**
-     * @return Matches an Azure group. Requires an Azure identity provider.
-     * 
-     */
-    private @Nullable List<AccessPolicyRequireAzure> azures;
-    /**
-     * @return Matches any valid client certificate.
-     * 
-     */
-    private @Nullable Boolean certificate;
-    /**
-     * @return Matches a valid client certificate common name.
-     * 
-     */
-    private @Nullable String commonName;
-    /**
-     * @return Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-     * 
-     */
-    private @Nullable List<String> commonNames;
-    /**
-     * @return The ID of a device posture integration.
-     * 
-     */
-    private @Nullable List<String> devicePostures;
-    /**
-     * @return The email domain to match.
-     * 
-     */
-    private @Nullable List<String> emailDomains;
-    /**
-     * @return The ID of a previously created email list.
-     * 
-     */
-    private @Nullable List<String> emailLists;
-    /**
-     * @return The email of the user.
-     * 
-     */
-    private @Nullable List<String> emails;
-    /**
-     * @return Matches everyone.
-     * 
-     */
-    private @Nullable Boolean everyone;
-    /**
-     * @return Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
-     * 
-     */
+    private @Nullable AccessPolicyRequireEveryone everyone;
     private @Nullable AccessPolicyRequireExternalEvaluation externalEvaluation;
-    /**
-     * @return Matches a specific country.
-     * 
-     */
-    private @Nullable List<String> geos;
-    /**
-     * @return Matches a Github organization. Requires a Github identity provider.
-     * 
-     */
-    private @Nullable List<AccessPolicyRequireGithub> githubs;
-    /**
-     * @return The ID of a previously created Access group.
-     * 
-     */
-    private @Nullable List<String> groups;
-    /**
-     * @return Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-     * 
-     */
-    private @Nullable List<AccessPolicyRequireGsuite> gsuites;
-    /**
-     * @return The ID of a previously created IP list.
-     * 
-     */
-    private @Nullable List<String> ipLists;
-    /**
-     * @return An IPv4 or IPv6 CIDR block.
-     * 
-     */
-    private @Nullable List<String> ips;
-    /**
-     * @return The ID of a configured identity provider.
-     * 
-     */
-    private @Nullable List<String> loginMethods;
-    /**
-     * @return Matches an Okta group. Requires an Okta identity provider.
-     * 
-     */
-    private @Nullable List<AccessPolicyRequireOkta> oktas;
-    /**
-     * @return Matches a SAML group. Requires a SAML identity provider.
-     * 
-     */
-    private @Nullable List<AccessPolicyRequireSaml> samls;
-    /**
-     * @return The ID of an Access service token.
-     * 
-     */
-    private @Nullable List<String> serviceTokens;
+    private @Nullable AccessPolicyRequireGeo geo;
+    private @Nullable AccessPolicyRequireGithubOrganization githubOrganization;
+    private @Nullable AccessPolicyRequireGroup group;
+    private @Nullable AccessPolicyRequireGsuite gsuite;
+    private @Nullable AccessPolicyRequireIp ip;
+    private @Nullable AccessPolicyRequireIpList ipList;
+    private @Nullable AccessPolicyRequireLoginMethod loginMethod;
+    private @Nullable AccessPolicyRequireOkta okta;
+    private @Nullable AccessPolicyRequireSaml saml;
+    private @Nullable AccessPolicyRequireServiceToken serviceToken;
 
     private AccessPolicyRequire() {}
     /**
-     * @return Matches any valid Access service token.
+     * @return An empty object which matches on all service tokens.
      * 
      */
-    public Optional<Boolean> anyValidServiceToken() {
+    public Optional<AccessPolicyRequireAnyValidServiceToken> anyValidServiceToken() {
         return Optional.ofNullable(this.anyValidServiceToken);
     }
-    public List<AccessPolicyRequireAuthContext> authContexts() {
-        return this.authContexts == null ? List.of() : this.authContexts;
+    public Optional<AccessPolicyRequireAuthContext> authContext() {
+        return Optional.ofNullable(this.authContext);
     }
-    /**
-     * @return The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
-     * 
-     */
-    public Optional<String> authMethod() {
+    public Optional<AccessPolicyRequireAuthMethod> authMethod() {
         return Optional.ofNullable(this.authMethod);
     }
-    /**
-     * @return Matches an Azure group. Requires an Azure identity provider.
-     * 
-     */
-    public List<AccessPolicyRequireAzure> azures() {
-        return this.azures == null ? List.of() : this.azures;
+    public Optional<AccessPolicyRequireAzureAd> azureAd() {
+        return Optional.ofNullable(this.azureAd);
     }
-    /**
-     * @return Matches any valid client certificate.
-     * 
-     */
-    public Optional<Boolean> certificate() {
+    public Optional<AccessPolicyRequireCertificate> certificate() {
         return Optional.ofNullable(this.certificate);
     }
-    /**
-     * @return Matches a valid client certificate common name.
-     * 
-     */
-    public Optional<String> commonName() {
+    public Optional<AccessPolicyRequireCommonName> commonName() {
         return Optional.ofNullable(this.commonName);
     }
-    /**
-     * @return Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-     * 
-     */
-    public List<String> commonNames() {
-        return this.commonNames == null ? List.of() : this.commonNames;
+    public Optional<AccessPolicyRequireDevicePosture> devicePosture() {
+        return Optional.ofNullable(this.devicePosture);
+    }
+    public Optional<AccessPolicyRequireEmail> email() {
+        return Optional.ofNullable(this.email);
+    }
+    public Optional<AccessPolicyRequireEmailDomain> emailDomain() {
+        return Optional.ofNullable(this.emailDomain);
+    }
+    public Optional<AccessPolicyRequireEmailList> emailList() {
+        return Optional.ofNullable(this.emailList);
     }
     /**
-     * @return The ID of a device posture integration.
+     * @return An empty object which matches on all users.
      * 
      */
-    public List<String> devicePostures() {
-        return this.devicePostures == null ? List.of() : this.devicePostures;
-    }
-    /**
-     * @return The email domain to match.
-     * 
-     */
-    public List<String> emailDomains() {
-        return this.emailDomains == null ? List.of() : this.emailDomains;
-    }
-    /**
-     * @return The ID of a previously created email list.
-     * 
-     */
-    public List<String> emailLists() {
-        return this.emailLists == null ? List.of() : this.emailLists;
-    }
-    /**
-     * @return The email of the user.
-     * 
-     */
-    public List<String> emails() {
-        return this.emails == null ? List.of() : this.emails;
-    }
-    /**
-     * @return Matches everyone.
-     * 
-     */
-    public Optional<Boolean> everyone() {
+    public Optional<AccessPolicyRequireEveryone> everyone() {
         return Optional.ofNullable(this.everyone);
     }
-    /**
-     * @return Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
-     * 
-     */
     public Optional<AccessPolicyRequireExternalEvaluation> externalEvaluation() {
         return Optional.ofNullable(this.externalEvaluation);
     }
-    /**
-     * @return Matches a specific country.
-     * 
-     */
-    public List<String> geos() {
-        return this.geos == null ? List.of() : this.geos;
+    public Optional<AccessPolicyRequireGeo> geo() {
+        return Optional.ofNullable(this.geo);
     }
-    /**
-     * @return Matches a Github organization. Requires a Github identity provider.
-     * 
-     */
-    public List<AccessPolicyRequireGithub> githubs() {
-        return this.githubs == null ? List.of() : this.githubs;
+    public Optional<AccessPolicyRequireGithubOrganization> githubOrganization() {
+        return Optional.ofNullable(this.githubOrganization);
     }
-    /**
-     * @return The ID of a previously created Access group.
-     * 
-     */
-    public List<String> groups() {
-        return this.groups == null ? List.of() : this.groups;
+    public Optional<AccessPolicyRequireGroup> group() {
+        return Optional.ofNullable(this.group);
     }
-    /**
-     * @return Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-     * 
-     */
-    public List<AccessPolicyRequireGsuite> gsuites() {
-        return this.gsuites == null ? List.of() : this.gsuites;
+    public Optional<AccessPolicyRequireGsuite> gsuite() {
+        return Optional.ofNullable(this.gsuite);
     }
-    /**
-     * @return The ID of a previously created IP list.
-     * 
-     */
-    public List<String> ipLists() {
-        return this.ipLists == null ? List.of() : this.ipLists;
+    public Optional<AccessPolicyRequireIp> ip() {
+        return Optional.ofNullable(this.ip);
     }
-    /**
-     * @return An IPv4 or IPv6 CIDR block.
-     * 
-     */
-    public List<String> ips() {
-        return this.ips == null ? List.of() : this.ips;
+    public Optional<AccessPolicyRequireIpList> ipList() {
+        return Optional.ofNullable(this.ipList);
     }
-    /**
-     * @return The ID of a configured identity provider.
-     * 
-     */
-    public List<String> loginMethods() {
-        return this.loginMethods == null ? List.of() : this.loginMethods;
+    public Optional<AccessPolicyRequireLoginMethod> loginMethod() {
+        return Optional.ofNullable(this.loginMethod);
     }
-    /**
-     * @return Matches an Okta group. Requires an Okta identity provider.
-     * 
-     */
-    public List<AccessPolicyRequireOkta> oktas() {
-        return this.oktas == null ? List.of() : this.oktas;
+    public Optional<AccessPolicyRequireOkta> okta() {
+        return Optional.ofNullable(this.okta);
     }
-    /**
-     * @return Matches a SAML group. Requires a SAML identity provider.
-     * 
-     */
-    public List<AccessPolicyRequireSaml> samls() {
-        return this.samls == null ? List.of() : this.samls;
+    public Optional<AccessPolicyRequireSaml> saml() {
+        return Optional.ofNullable(this.saml);
     }
-    /**
-     * @return The ID of an Access service token.
-     * 
-     */
-    public List<String> serviceTokens() {
-        return this.serviceTokens == null ? List.of() : this.serviceTokens;
+    public Optional<AccessPolicyRequireServiceToken> serviceToken() {
+        return Optional.ofNullable(this.serviceToken);
     }
 
     public static Builder builder() {
@@ -300,146 +148,117 @@ public final class AccessPolicyRequire {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean anyValidServiceToken;
-        private @Nullable List<AccessPolicyRequireAuthContext> authContexts;
-        private @Nullable String authMethod;
-        private @Nullable List<AccessPolicyRequireAzure> azures;
-        private @Nullable Boolean certificate;
-        private @Nullable String commonName;
-        private @Nullable List<String> commonNames;
-        private @Nullable List<String> devicePostures;
-        private @Nullable List<String> emailDomains;
-        private @Nullable List<String> emailLists;
-        private @Nullable List<String> emails;
-        private @Nullable Boolean everyone;
+        private @Nullable AccessPolicyRequireAnyValidServiceToken anyValidServiceToken;
+        private @Nullable AccessPolicyRequireAuthContext authContext;
+        private @Nullable AccessPolicyRequireAuthMethod authMethod;
+        private @Nullable AccessPolicyRequireAzureAd azureAd;
+        private @Nullable AccessPolicyRequireCertificate certificate;
+        private @Nullable AccessPolicyRequireCommonName commonName;
+        private @Nullable AccessPolicyRequireDevicePosture devicePosture;
+        private @Nullable AccessPolicyRequireEmail email;
+        private @Nullable AccessPolicyRequireEmailDomain emailDomain;
+        private @Nullable AccessPolicyRequireEmailList emailList;
+        private @Nullable AccessPolicyRequireEveryone everyone;
         private @Nullable AccessPolicyRequireExternalEvaluation externalEvaluation;
-        private @Nullable List<String> geos;
-        private @Nullable List<AccessPolicyRequireGithub> githubs;
-        private @Nullable List<String> groups;
-        private @Nullable List<AccessPolicyRequireGsuite> gsuites;
-        private @Nullable List<String> ipLists;
-        private @Nullable List<String> ips;
-        private @Nullable List<String> loginMethods;
-        private @Nullable List<AccessPolicyRequireOkta> oktas;
-        private @Nullable List<AccessPolicyRequireSaml> samls;
-        private @Nullable List<String> serviceTokens;
+        private @Nullable AccessPolicyRequireGeo geo;
+        private @Nullable AccessPolicyRequireGithubOrganization githubOrganization;
+        private @Nullable AccessPolicyRequireGroup group;
+        private @Nullable AccessPolicyRequireGsuite gsuite;
+        private @Nullable AccessPolicyRequireIp ip;
+        private @Nullable AccessPolicyRequireIpList ipList;
+        private @Nullable AccessPolicyRequireLoginMethod loginMethod;
+        private @Nullable AccessPolicyRequireOkta okta;
+        private @Nullable AccessPolicyRequireSaml saml;
+        private @Nullable AccessPolicyRequireServiceToken serviceToken;
         public Builder() {}
         public Builder(AccessPolicyRequire defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.anyValidServiceToken = defaults.anyValidServiceToken;
-    	      this.authContexts = defaults.authContexts;
+    	      this.authContext = defaults.authContext;
     	      this.authMethod = defaults.authMethod;
-    	      this.azures = defaults.azures;
+    	      this.azureAd = defaults.azureAd;
     	      this.certificate = defaults.certificate;
     	      this.commonName = defaults.commonName;
-    	      this.commonNames = defaults.commonNames;
-    	      this.devicePostures = defaults.devicePostures;
-    	      this.emailDomains = defaults.emailDomains;
-    	      this.emailLists = defaults.emailLists;
-    	      this.emails = defaults.emails;
+    	      this.devicePosture = defaults.devicePosture;
+    	      this.email = defaults.email;
+    	      this.emailDomain = defaults.emailDomain;
+    	      this.emailList = defaults.emailList;
     	      this.everyone = defaults.everyone;
     	      this.externalEvaluation = defaults.externalEvaluation;
-    	      this.geos = defaults.geos;
-    	      this.githubs = defaults.githubs;
-    	      this.groups = defaults.groups;
-    	      this.gsuites = defaults.gsuites;
-    	      this.ipLists = defaults.ipLists;
-    	      this.ips = defaults.ips;
-    	      this.loginMethods = defaults.loginMethods;
-    	      this.oktas = defaults.oktas;
-    	      this.samls = defaults.samls;
-    	      this.serviceTokens = defaults.serviceTokens;
+    	      this.geo = defaults.geo;
+    	      this.githubOrganization = defaults.githubOrganization;
+    	      this.group = defaults.group;
+    	      this.gsuite = defaults.gsuite;
+    	      this.ip = defaults.ip;
+    	      this.ipList = defaults.ipList;
+    	      this.loginMethod = defaults.loginMethod;
+    	      this.okta = defaults.okta;
+    	      this.saml = defaults.saml;
+    	      this.serviceToken = defaults.serviceToken;
         }
 
         @CustomType.Setter
-        public Builder anyValidServiceToken(@Nullable Boolean anyValidServiceToken) {
+        public Builder anyValidServiceToken(@Nullable AccessPolicyRequireAnyValidServiceToken anyValidServiceToken) {
 
             this.anyValidServiceToken = anyValidServiceToken;
             return this;
         }
         @CustomType.Setter
-        public Builder authContexts(@Nullable List<AccessPolicyRequireAuthContext> authContexts) {
+        public Builder authContext(@Nullable AccessPolicyRequireAuthContext authContext) {
 
-            this.authContexts = authContexts;
+            this.authContext = authContext;
             return this;
         }
-        public Builder authContexts(AccessPolicyRequireAuthContext... authContexts) {
-            return authContexts(List.of(authContexts));
-        }
         @CustomType.Setter
-        public Builder authMethod(@Nullable String authMethod) {
+        public Builder authMethod(@Nullable AccessPolicyRequireAuthMethod authMethod) {
 
             this.authMethod = authMethod;
             return this;
         }
         @CustomType.Setter
-        public Builder azures(@Nullable List<AccessPolicyRequireAzure> azures) {
+        public Builder azureAd(@Nullable AccessPolicyRequireAzureAd azureAd) {
 
-            this.azures = azures;
+            this.azureAd = azureAd;
             return this;
         }
-        public Builder azures(AccessPolicyRequireAzure... azures) {
-            return azures(List.of(azures));
-        }
         @CustomType.Setter
-        public Builder certificate(@Nullable Boolean certificate) {
+        public Builder certificate(@Nullable AccessPolicyRequireCertificate certificate) {
 
             this.certificate = certificate;
             return this;
         }
         @CustomType.Setter
-        public Builder commonName(@Nullable String commonName) {
+        public Builder commonName(@Nullable AccessPolicyRequireCommonName commonName) {
 
             this.commonName = commonName;
             return this;
         }
         @CustomType.Setter
-        public Builder commonNames(@Nullable List<String> commonNames) {
+        public Builder devicePosture(@Nullable AccessPolicyRequireDevicePosture devicePosture) {
 
-            this.commonNames = commonNames;
+            this.devicePosture = devicePosture;
             return this;
         }
-        public Builder commonNames(String... commonNames) {
-            return commonNames(List.of(commonNames));
-        }
         @CustomType.Setter
-        public Builder devicePostures(@Nullable List<String> devicePostures) {
+        public Builder email(@Nullable AccessPolicyRequireEmail email) {
 
-            this.devicePostures = devicePostures;
+            this.email = email;
             return this;
         }
-        public Builder devicePostures(String... devicePostures) {
-            return devicePostures(List.of(devicePostures));
-        }
         @CustomType.Setter
-        public Builder emailDomains(@Nullable List<String> emailDomains) {
+        public Builder emailDomain(@Nullable AccessPolicyRequireEmailDomain emailDomain) {
 
-            this.emailDomains = emailDomains;
+            this.emailDomain = emailDomain;
             return this;
         }
-        public Builder emailDomains(String... emailDomains) {
-            return emailDomains(List.of(emailDomains));
-        }
         @CustomType.Setter
-        public Builder emailLists(@Nullable List<String> emailLists) {
+        public Builder emailList(@Nullable AccessPolicyRequireEmailList emailList) {
 
-            this.emailLists = emailLists;
+            this.emailList = emailList;
             return this;
         }
-        public Builder emailLists(String... emailLists) {
-            return emailLists(List.of(emailLists));
-        }
         @CustomType.Setter
-        public Builder emails(@Nullable List<String> emails) {
-
-            this.emails = emails;
-            return this;
-        }
-        public Builder emails(String... emails) {
-            return emails(List.of(emails));
-        }
-        @CustomType.Setter
-        public Builder everyone(@Nullable Boolean everyone) {
+        public Builder everyone(@Nullable AccessPolicyRequireEveryone everyone) {
 
             this.everyone = everyone;
             return this;
@@ -451,120 +270,89 @@ public final class AccessPolicyRequire {
             return this;
         }
         @CustomType.Setter
-        public Builder geos(@Nullable List<String> geos) {
+        public Builder geo(@Nullable AccessPolicyRequireGeo geo) {
 
-            this.geos = geos;
+            this.geo = geo;
             return this;
-        }
-        public Builder geos(String... geos) {
-            return geos(List.of(geos));
         }
         @CustomType.Setter
-        public Builder githubs(@Nullable List<AccessPolicyRequireGithub> githubs) {
+        public Builder githubOrganization(@Nullable AccessPolicyRequireGithubOrganization githubOrganization) {
 
-            this.githubs = githubs;
+            this.githubOrganization = githubOrganization;
             return this;
-        }
-        public Builder githubs(AccessPolicyRequireGithub... githubs) {
-            return githubs(List.of(githubs));
         }
         @CustomType.Setter
-        public Builder groups(@Nullable List<String> groups) {
+        public Builder group(@Nullable AccessPolicyRequireGroup group) {
 
-            this.groups = groups;
+            this.group = group;
             return this;
-        }
-        public Builder groups(String... groups) {
-            return groups(List.of(groups));
         }
         @CustomType.Setter
-        public Builder gsuites(@Nullable List<AccessPolicyRequireGsuite> gsuites) {
+        public Builder gsuite(@Nullable AccessPolicyRequireGsuite gsuite) {
 
-            this.gsuites = gsuites;
+            this.gsuite = gsuite;
             return this;
-        }
-        public Builder gsuites(AccessPolicyRequireGsuite... gsuites) {
-            return gsuites(List.of(gsuites));
         }
         @CustomType.Setter
-        public Builder ipLists(@Nullable List<String> ipLists) {
+        public Builder ip(@Nullable AccessPolicyRequireIp ip) {
 
-            this.ipLists = ipLists;
+            this.ip = ip;
             return this;
-        }
-        public Builder ipLists(String... ipLists) {
-            return ipLists(List.of(ipLists));
         }
         @CustomType.Setter
-        public Builder ips(@Nullable List<String> ips) {
+        public Builder ipList(@Nullable AccessPolicyRequireIpList ipList) {
 
-            this.ips = ips;
+            this.ipList = ipList;
             return this;
-        }
-        public Builder ips(String... ips) {
-            return ips(List.of(ips));
         }
         @CustomType.Setter
-        public Builder loginMethods(@Nullable List<String> loginMethods) {
+        public Builder loginMethod(@Nullable AccessPolicyRequireLoginMethod loginMethod) {
 
-            this.loginMethods = loginMethods;
+            this.loginMethod = loginMethod;
             return this;
-        }
-        public Builder loginMethods(String... loginMethods) {
-            return loginMethods(List.of(loginMethods));
         }
         @CustomType.Setter
-        public Builder oktas(@Nullable List<AccessPolicyRequireOkta> oktas) {
+        public Builder okta(@Nullable AccessPolicyRequireOkta okta) {
 
-            this.oktas = oktas;
+            this.okta = okta;
             return this;
-        }
-        public Builder oktas(AccessPolicyRequireOkta... oktas) {
-            return oktas(List.of(oktas));
         }
         @CustomType.Setter
-        public Builder samls(@Nullable List<AccessPolicyRequireSaml> samls) {
+        public Builder saml(@Nullable AccessPolicyRequireSaml saml) {
 
-            this.samls = samls;
+            this.saml = saml;
             return this;
-        }
-        public Builder samls(AccessPolicyRequireSaml... samls) {
-            return samls(List.of(samls));
         }
         @CustomType.Setter
-        public Builder serviceTokens(@Nullable List<String> serviceTokens) {
+        public Builder serviceToken(@Nullable AccessPolicyRequireServiceToken serviceToken) {
 
-            this.serviceTokens = serviceTokens;
+            this.serviceToken = serviceToken;
             return this;
-        }
-        public Builder serviceTokens(String... serviceTokens) {
-            return serviceTokens(List.of(serviceTokens));
         }
         public AccessPolicyRequire build() {
             final var _resultValue = new AccessPolicyRequire();
             _resultValue.anyValidServiceToken = anyValidServiceToken;
-            _resultValue.authContexts = authContexts;
+            _resultValue.authContext = authContext;
             _resultValue.authMethod = authMethod;
-            _resultValue.azures = azures;
+            _resultValue.azureAd = azureAd;
             _resultValue.certificate = certificate;
             _resultValue.commonName = commonName;
-            _resultValue.commonNames = commonNames;
-            _resultValue.devicePostures = devicePostures;
-            _resultValue.emailDomains = emailDomains;
-            _resultValue.emailLists = emailLists;
-            _resultValue.emails = emails;
+            _resultValue.devicePosture = devicePosture;
+            _resultValue.email = email;
+            _resultValue.emailDomain = emailDomain;
+            _resultValue.emailList = emailList;
             _resultValue.everyone = everyone;
             _resultValue.externalEvaluation = externalEvaluation;
-            _resultValue.geos = geos;
-            _resultValue.githubs = githubs;
-            _resultValue.groups = groups;
-            _resultValue.gsuites = gsuites;
-            _resultValue.ipLists = ipLists;
-            _resultValue.ips = ips;
-            _resultValue.loginMethods = loginMethods;
-            _resultValue.oktas = oktas;
-            _resultValue.samls = samls;
-            _resultValue.serviceTokens = serviceTokens;
+            _resultValue.geo = geo;
+            _resultValue.githubOrganization = githubOrganization;
+            _resultValue.group = group;
+            _resultValue.gsuite = gsuite;
+            _resultValue.ip = ip;
+            _resultValue.ipList = ipList;
+            _resultValue.loginMethod = loginMethod;
+            _resultValue.okta = okta;
+            _resultValue.saml = saml;
+            _resultValue.serviceToken = serviceToken;
             return _resultValue;
         }
     }

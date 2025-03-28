@@ -24,9 +24,10 @@ class TotalTlsArgs:
                  certificate_authority: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TotalTls resource.
-        :param pulumi.Input[bool] enabled: Enable Total TLS for the zone.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
+        :param pulumi.Input[bool] enabled: If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
+        :param pulumi.Input[str] zone_id: Identifier
+        :param pulumi.Input[str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through.
+               Available values: "google", "lets*encrypt", "ssl*com".
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -37,7 +38,7 @@ class TotalTlsArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Enable Total TLS for the zone.
+        If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
         """
         return pulumi.get(self, "enabled")
 
@@ -49,7 +50,7 @@ class TotalTlsArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -61,7 +62,8 @@ class TotalTlsArgs:
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
         """
-        The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
+        The Certificate Authority that Total TLS certificates will be issued through.
+        Available values: "google", "lets*encrypt", "ssl*com".
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -75,17 +77,23 @@ class _TotalTlsState:
     def __init__(__self__, *,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 validity_period: Optional[pulumi.Input[int]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TotalTls resources.
-        :param pulumi.Input[str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
-        :param pulumi.Input[bool] enabled: Enable Total TLS for the zone.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through.
+               Available values: "google", "lets*encrypt", "ssl*com".
+        :param pulumi.Input[bool] enabled: If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
+        :param pulumi.Input[int] validity_period: The validity period in days for the certificates ordered via Total TLS.
+               Available values: 90.
+        :param pulumi.Input[str] zone_id: Identifier
         """
         if certificate_authority is not None:
             pulumi.set(__self__, "certificate_authority", certificate_authority)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if validity_period is not None:
+            pulumi.set(__self__, "validity_period", validity_period)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -93,7 +101,8 @@ class _TotalTlsState:
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
         """
-        The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
+        The Certificate Authority that Total TLS certificates will be issued through.
+        Available values: "google", "lets*encrypt", "ssl*com".
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -105,7 +114,7 @@ class _TotalTlsState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable Total TLS for the zone.
+        If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
         """
         return pulumi.get(self, "enabled")
 
@@ -114,10 +123,23 @@ class _TotalTlsState:
         pulumi.set(self, "enabled", value)
 
     @property
+    @pulumi.getter(name="validityPeriod")
+    def validity_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The validity period in days for the certificates ordered via Total TLS.
+        Available values: 90.
+        """
+        return pulumi.get(self, "validity_period")
+
+    @validity_period.setter
+    def validity_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "validity_period", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -136,31 +158,30 @@ class TotalTls(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a resource which manages Total TLS for a zone.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.TotalTls("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+        example_total_tls = cloudflare.TotalTls("example_total_tls",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             enabled=True,
-            certificate_authority="lets_encrypt")
+            certificate_authority="google")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/totalTls:TotalTls example <zone_id>
+        $ pulumi import cloudflare:index/totalTls:TotalTls example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
-        :param pulumi.Input[bool] enabled: Enable Total TLS for the zone.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through.
+               Available values: "google", "lets*encrypt", "ssl*com".
+        :param pulumi.Input[bool] enabled: If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
+        :param pulumi.Input[str] zone_id: Identifier
         """
         ...
     @overload
@@ -169,24 +190,22 @@ class TotalTls(pulumi.CustomResource):
                  args: TotalTlsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource which manages Total TLS for a zone.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.TotalTls("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+        example_total_tls = cloudflare.TotalTls("example_total_tls",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             enabled=True,
-            certificate_authority="lets_encrypt")
+            certificate_authority="google")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/totalTls:TotalTls example <zone_id>
+        $ pulumi import cloudflare:index/totalTls:TotalTls example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -223,6 +242,7 @@ class TotalTls(pulumi.CustomResource):
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["validity_period"] = None
         super(TotalTls, __self__).__init__(
             'cloudflare:index/totalTls:TotalTls',
             resource_name,
@@ -235,6 +255,7 @@ class TotalTls(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate_authority: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
+            validity_period: Optional[pulumi.Input[int]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'TotalTls':
         """
         Get an existing TotalTls resource's state with the given name, id, and optional extra
@@ -243,9 +264,12 @@ class TotalTls(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
-        :param pulumi.Input[bool] enabled: Enable Total TLS for the zone.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through.
+               Available values: "google", "lets*encrypt", "ssl*com".
+        :param pulumi.Input[bool] enabled: If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
+        :param pulumi.Input[int] validity_period: The validity period in days for the certificates ordered via Total TLS.
+               Available values: 90.
+        :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -253,6 +277,7 @@ class TotalTls(pulumi.CustomResource):
 
         __props__.__dict__["certificate_authority"] = certificate_authority
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["validity_period"] = validity_period
         __props__.__dict__["zone_id"] = zone_id
         return TotalTls(resource_name, opts=opts, __props__=__props__)
 
@@ -260,7 +285,8 @@ class TotalTls(pulumi.CustomResource):
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Output[Optional[str]]:
         """
-        The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
+        The Certificate Authority that Total TLS certificates will be issued through.
+        Available values: "google", "lets*encrypt", "ssl*com".
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -268,15 +294,24 @@ class TotalTls(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
         """
-        Enable Total TLS for the zone.
+        If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="validityPeriod")
+    def validity_period(self) -> pulumi.Output[int]:
+        """
+        The validity period in days for the certificates ordered via Total TLS.
+        Available values: 90.
+        """
+        return pulumi.get(self, "validity_period")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

@@ -5,10 +5,9 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ZeroTrustAccessPolicyIncludeExternalEvaluationArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,30 +18,30 @@ public final class ZeroTrustAccessPolicyIncludeExternalEvaluationArgs extends co
      * The API endpoint containing your business logic.
      * 
      */
-    @Import(name="evaluateUrl")
-    private @Nullable Output<String> evaluateUrl;
+    @Import(name="evaluateUrl", required=true)
+    private Output<String> evaluateUrl;
 
     /**
      * @return The API endpoint containing your business logic.
      * 
      */
-    public Optional<Output<String>> evaluateUrl() {
-        return Optional.ofNullable(this.evaluateUrl);
+    public Output<String> evaluateUrl() {
+        return this.evaluateUrl;
     }
 
     /**
      * The API endpoint containing the key that Access uses to verify that the response came from your API.
      * 
      */
-    @Import(name="keysUrl")
-    private @Nullable Output<String> keysUrl;
+    @Import(name="keysUrl", required=true)
+    private Output<String> keysUrl;
 
     /**
      * @return The API endpoint containing the key that Access uses to verify that the response came from your API.
      * 
      */
-    public Optional<Output<String>> keysUrl() {
-        return Optional.ofNullable(this.keysUrl);
+    public Output<String> keysUrl() {
+        return this.keysUrl;
     }
 
     private ZeroTrustAccessPolicyIncludeExternalEvaluationArgs() {}
@@ -76,7 +75,7 @@ public final class ZeroTrustAccessPolicyIncludeExternalEvaluationArgs extends co
          * @return builder
          * 
          */
-        public Builder evaluateUrl(@Nullable Output<String> evaluateUrl) {
+        public Builder evaluateUrl(Output<String> evaluateUrl) {
             $.evaluateUrl = evaluateUrl;
             return this;
         }
@@ -97,7 +96,7 @@ public final class ZeroTrustAccessPolicyIncludeExternalEvaluationArgs extends co
          * @return builder
          * 
          */
-        public Builder keysUrl(@Nullable Output<String> keysUrl) {
+        public Builder keysUrl(Output<String> keysUrl) {
             $.keysUrl = keysUrl;
             return this;
         }
@@ -113,6 +112,12 @@ public final class ZeroTrustAccessPolicyIncludeExternalEvaluationArgs extends co
         }
 
         public ZeroTrustAccessPolicyIncludeExternalEvaluationArgs build() {
+            if ($.evaluateUrl == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustAccessPolicyIncludeExternalEvaluationArgs", "evaluateUrl");
+            }
+            if ($.keysUrl == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustAccessPolicyIncludeExternalEvaluationArgs", "keysUrl");
+            }
             return $;
         }
     }

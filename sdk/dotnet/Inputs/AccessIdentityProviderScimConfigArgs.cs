@@ -19,16 +19,17 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Deprecated. Use `identity_update_behavior`.
-        /// </summary>
-        [Input("groupMemberDeprovision")]
-        public Input<bool>? GroupMemberDeprovision { get; set; }
-
-        /// <summary>
-        /// Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no_action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+        /// Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no*action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+        /// Available values: "automatic", "reauth", "no*action".
         /// </summary>
         [Input("identityUpdateBehavior")]
         public Input<string>? IdentityUpdateBehavior { get; set; }
+
+        /// <summary>
+        /// The base URL of Cloudflare's SCIM V2.0 API endpoint.
+        /// </summary>
+        [Input("scimBaseUrl")]
+        public Input<string>? ScimBaseUrl { get; set; }
 
         /// <summary>
         /// A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
@@ -40,7 +41,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _secret;
 
         /// <summary>
-        /// A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+        /// A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
         /// </summary>
         public Input<string>? Secret
         {

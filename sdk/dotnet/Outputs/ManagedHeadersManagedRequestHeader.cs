@@ -14,21 +14,35 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ManagedHeadersManagedRequestHeader
     {
         /// <summary>
-        /// Whether the headers rule is active.
+        /// The Managed Transforms that this Managed Transform conflicts with.
+        /// </summary>
+        public readonly ImmutableArray<string> ConflictsWiths;
+        /// <summary>
+        /// Whether the Managed Transform is enabled.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// Unique headers rule identifier.
+        /// Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
+        /// </summary>
+        public readonly bool? HasConflict;
+        /// <summary>
+        /// The human-readable identifier of the Managed Transform.
         /// </summary>
         public readonly string Id;
 
         [OutputConstructor]
         private ManagedHeadersManagedRequestHeader(
+            ImmutableArray<string> conflictsWiths,
+
             bool enabled,
+
+            bool? hasConflict,
 
             string id)
         {
+            ConflictsWiths = conflictsWiths;
             Enabled = enabled;
+            HasConflict = hasConflict;
             Id = id;
         }
     }

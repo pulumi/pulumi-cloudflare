@@ -7,12 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this datasource to lookup Rulesets in an account or zone.
-//
 // ## Example Usage
 //
 // ```go
@@ -20,18 +18,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetRulesets(ctx, &cloudflare.GetRulesetsArgs{
-//				ZoneId: pulumi.StringRef("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Filter: cloudflare.GetRulesetsFilter{
-//					Name: pulumi.StringRef(".*OWASP.*"),
-//				},
+//			_, err := cloudflare.LookupRulesets(ctx, &cloudflare.LookupRulesetsArgs{
+//				AccountId: pulumi.StringRef("account_id"),
+//				ZoneId:    pulumi.StringRef("zone_id"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -41,9 +37,9 @@ import (
 //	}
 //
 // ```
-func GetRulesets(ctx *pulumi.Context, args *GetRulesetsArgs, opts ...pulumi.InvokeOption) (*GetRulesetsResult, error) {
+func LookupRulesets(ctx *pulumi.Context, args *LookupRulesetsArgs, opts ...pulumi.InvokeOption) (*LookupRulesetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetRulesetsResult
+	var rv LookupRulesetsResult
 	err := ctx.Invoke("cloudflare:index/getRulesets:getRulesets", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -52,97 +48,92 @@ func GetRulesets(ctx *pulumi.Context, args *GetRulesetsArgs, opts ...pulumi.Invo
 }
 
 // A collection of arguments for invoking getRulesets.
-type GetRulesetsArgs struct {
-	// The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
-	AccountId *string            `pulumi:"accountId"`
-	Filter    *GetRulesetsFilter `pulumi:"filter"`
-	// Include rule data in response.
-	IncludeRules *bool `pulumi:"includeRules"`
-	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+type LookupRulesetsArgs struct {
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId *string `pulumi:"accountId"`
+	// Max items to fetch, default: 1000
+	MaxItems *int `pulumi:"maxItems"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getRulesets.
-type GetRulesetsResult struct {
-	// The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
-	AccountId *string            `pulumi:"accountId"`
-	Filter    *GetRulesetsFilter `pulumi:"filter"`
+type LookupRulesetsResult struct {
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Include rule data in response.
-	IncludeRules *bool                `pulumi:"includeRules"`
-	Rulesets     []GetRulesetsRuleset `pulumi:"rulesets"`
-	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+	// Max items to fetch, default: 1000
+	MaxItems *int `pulumi:"maxItems"`
+	// The items returned by the data source
+	Results []GetRulesetsResult `pulumi:"results"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
-func GetRulesetsOutput(ctx *pulumi.Context, args GetRulesetsOutputArgs, opts ...pulumi.InvokeOption) GetRulesetsResultOutput {
+func LookupRulesetsOutput(ctx *pulumi.Context, args LookupRulesetsOutputArgs, opts ...pulumi.InvokeOption) LookupRulesetsResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRulesetsResultOutput, error) {
-			args := v.(GetRulesetsArgs)
+		ApplyT(func(v interface{}) (LookupRulesetsResultOutput, error) {
+			args := v.(LookupRulesetsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getRulesets:getRulesets", args, GetRulesetsResultOutput{}, options).(GetRulesetsResultOutput), nil
-		}).(GetRulesetsResultOutput)
+			return ctx.InvokeOutput("cloudflare:index/getRulesets:getRulesets", args, LookupRulesetsResultOutput{}, options).(LookupRulesetsResultOutput), nil
+		}).(LookupRulesetsResultOutput)
 }
 
 // A collection of arguments for invoking getRulesets.
-type GetRulesetsOutputArgs struct {
-	// The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
-	AccountId pulumi.StringPtrInput     `pulumi:"accountId"`
-	Filter    GetRulesetsFilterPtrInput `pulumi:"filter"`
-	// Include rule data in response.
-	IncludeRules pulumi.BoolPtrInput `pulumi:"includeRules"`
-	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+type LookupRulesetsOutputArgs struct {
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// Max items to fetch, default: 1000
+	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
-func (GetRulesetsOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetsArgs)(nil)).Elem()
+func (LookupRulesetsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRulesetsArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getRulesets.
-type GetRulesetsResultOutput struct{ *pulumi.OutputState }
+type LookupRulesetsResultOutput struct{ *pulumi.OutputState }
 
-func (GetRulesetsResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetsResult)(nil)).Elem()
+func (LookupRulesetsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRulesetsResult)(nil)).Elem()
 }
 
-func (o GetRulesetsResultOutput) ToGetRulesetsResultOutput() GetRulesetsResultOutput {
+func (o LookupRulesetsResultOutput) ToLookupRulesetsResultOutput() LookupRulesetsResultOutput {
 	return o
 }
 
-func (o GetRulesetsResultOutput) ToGetRulesetsResultOutputWithContext(ctx context.Context) GetRulesetsResultOutput {
+func (o LookupRulesetsResultOutput) ToLookupRulesetsResultOutputWithContext(ctx context.Context) LookupRulesetsResultOutput {
 	return o
 }
 
-// The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
-func (o GetRulesetsResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetRulesetsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-func (o GetRulesetsResultOutput) Filter() GetRulesetsFilterPtrOutput {
-	return o.ApplyT(func(v GetRulesetsResult) *GetRulesetsFilter { return v.Filter }).(GetRulesetsFilterPtrOutput)
+// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+func (o LookupRulesetsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRulesetsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetRulesetsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetsResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupRulesetsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRulesetsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Include rule data in response.
-func (o GetRulesetsResultOutput) IncludeRules() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetRulesetsResult) *bool { return v.IncludeRules }).(pulumi.BoolPtrOutput)
+// Max items to fetch, default: 1000
+func (o LookupRulesetsResultOutput) MaxItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupRulesetsResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-func (o GetRulesetsResultOutput) Rulesets() GetRulesetsRulesetArrayOutput {
-	return o.ApplyT(func(v GetRulesetsResult) []GetRulesetsRuleset { return v.Rulesets }).(GetRulesetsRulesetArrayOutput)
+// The items returned by the data source
+func (o LookupRulesetsResultOutput) Results() GetRulesetsResultArrayOutput {
+	return o.ApplyT(func(v LookupRulesetsResult) []GetRulesetsResult { return v.Results }).(GetRulesetsResultArrayOutput)
 }
 
-// The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
-func (o GetRulesetsResultOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetRulesetsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+func (o LookupRulesetsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRulesetsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetRulesetsResultOutput{})
+	pulumi.RegisterOutputType(LookupRulesetsResultOutput{})
 }

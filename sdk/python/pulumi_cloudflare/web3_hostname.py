@@ -28,7 +28,8 @@ class Web3HostnameArgs:
         The set of arguments for constructing a Web3Hostname resource.
         :param pulumi.Input[str] name: The hostname that will point to the target gateway via CNAME.
         :param pulumi.Input[str] target: Target gateway of the hostname.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+               Available values: "ethereum", "ipfs", "ipfs*universal*path".
+        :param pulumi.Input[str] zone_id: Identifier
         :param pulumi.Input[str] description: An optional description of the hostname.
         :param pulumi.Input[str] dnslink: DNSLink value used if the target is ipfs.
         """
@@ -57,6 +58,7 @@ class Web3HostnameArgs:
     def target(self) -> pulumi.Input[str]:
         """
         Target gateway of the hostname.
+        Available values: "ethereum", "ipfs", "ipfs*universal*path".
         """
         return pulumi.get(self, "target")
 
@@ -68,7 +70,7 @@ class Web3HostnameArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -114,14 +116,14 @@ class _Web3HostnameState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Web3Hostname resources.
-        :param pulumi.Input[str] created_on: Creation time.
         :param pulumi.Input[str] description: An optional description of the hostname.
         :param pulumi.Input[str] dnslink: DNSLink value used if the target is ipfs.
-        :param pulumi.Input[str] modified_on: Last modification time.
         :param pulumi.Input[str] name: The hostname that will point to the target gateway via CNAME.
         :param pulumi.Input[str] status: Status of the hostname's activation.
+               Available values: "active", "pending", "deleting", "error".
         :param pulumi.Input[str] target: Target gateway of the hostname.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+               Available values: "ethereum", "ipfs", "ipfs*universal*path".
+        :param pulumi.Input[str] zone_id: Identifier
         """
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
@@ -143,9 +145,6 @@ class _Web3HostnameState:
     @property
     @pulumi.getter(name="createdOn")
     def created_on(self) -> Optional[pulumi.Input[str]]:
-        """
-        Creation time.
-        """
         return pulumi.get(self, "created_on")
 
     @created_on.setter
@@ -179,9 +178,6 @@ class _Web3HostnameState:
     @property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> Optional[pulumi.Input[str]]:
-        """
-        Last modification time.
-        """
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
@@ -205,6 +201,7 @@ class _Web3HostnameState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         Status of the hostname's activation.
+        Available values: "active", "pending", "deleting", "error".
         """
         return pulumi.get(self, "status")
 
@@ -217,6 +214,7 @@ class _Web3HostnameState:
     def target(self) -> Optional[pulumi.Input[str]]:
         """
         Target gateway of the hostname.
+        Available values: "ethereum", "ipfs", "ipfs*universal*path".
         """
         return pulumi.get(self, "target")
 
@@ -228,7 +226,7 @@ class _Web3HostnameState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -249,7 +247,25 @@ class Web3Hostname(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages Web3 hostnames for IPFS and Ethereum gateways.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_web3_hostname = cloudflare.Web3Hostname("example_web3_hostname",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="gateway.example.com",
+            target="ethereum",
+            description="This is my IPFS gateway.",
+            dnslink="/ipns/onboarding.ipfs.cloudflare.com")
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/web3Hostname:Web3Hostname example '<zone_id>/<identifier>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -257,7 +273,8 @@ class Web3Hostname(pulumi.CustomResource):
         :param pulumi.Input[str] dnslink: DNSLink value used if the target is ipfs.
         :param pulumi.Input[str] name: The hostname that will point to the target gateway via CNAME.
         :param pulumi.Input[str] target: Target gateway of the hostname.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+               Available values: "ethereum", "ipfs", "ipfs*universal*path".
+        :param pulumi.Input[str] zone_id: Identifier
         """
         ...
     @overload
@@ -266,7 +283,25 @@ class Web3Hostname(pulumi.CustomResource):
                  args: Web3HostnameArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages Web3 hostnames for IPFS and Ethereum gateways.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_web3_hostname = cloudflare.Web3Hostname("example_web3_hostname",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="gateway.example.com",
+            target="ethereum",
+            description="This is my IPFS gateway.",
+            dnslink="/ipns/onboarding.ipfs.cloudflare.com")
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/web3Hostname:Web3Hostname example '<zone_id>/<identifier>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param Web3HostnameArgs args: The arguments to use to populate this resource's properties.
@@ -336,14 +371,14 @@ class Web3Hostname(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] created_on: Creation time.
         :param pulumi.Input[str] description: An optional description of the hostname.
         :param pulumi.Input[str] dnslink: DNSLink value used if the target is ipfs.
-        :param pulumi.Input[str] modified_on: Last modification time.
         :param pulumi.Input[str] name: The hostname that will point to the target gateway via CNAME.
         :param pulumi.Input[str] status: Status of the hostname's activation.
+               Available values: "active", "pending", "deleting", "error".
         :param pulumi.Input[str] target: Target gateway of the hostname.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+               Available values: "ethereum", "ipfs", "ipfs*universal*path".
+        :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -362,9 +397,6 @@ class Web3Hostname(pulumi.CustomResource):
     @property
     @pulumi.getter(name="createdOn")
     def created_on(self) -> pulumi.Output[str]:
-        """
-        Creation time.
-        """
         return pulumi.get(self, "created_on")
 
     @property
@@ -386,9 +418,6 @@ class Web3Hostname(pulumi.CustomResource):
     @property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> pulumi.Output[str]:
-        """
-        Last modification time.
-        """
         return pulumi.get(self, "modified_on")
 
     @property
@@ -404,6 +433,7 @@ class Web3Hostname(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         Status of the hostname's activation.
+        Available values: "active", "pending", "deleting", "error".
         """
         return pulumi.get(self, "status")
 
@@ -412,6 +442,7 @@ class Web3Hostname(pulumi.CustomResource):
     def target(self) -> pulumi.Output[str]:
         """
         Target gateway of the hostname.
+        Available values: "ethereum", "ipfs", "ipfs*universal*path".
         """
         return pulumi.get(self, "target")
 
@@ -419,7 +450,7 @@ class Web3Hostname(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

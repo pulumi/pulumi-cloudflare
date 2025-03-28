@@ -14,19 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersCacheKey
     {
         /// <summary>
-        /// Cache by device type.
+        /// Separate cached content based on the visitor’s device type
         /// </summary>
         public readonly bool? CacheByDeviceType;
         /// <summary>
-        /// Cache deception armor.
+        /// Protect from web cache deception attacks while allowing static assets to be cached
         /// </summary>
         public readonly bool? CacheDeceptionArmor;
         /// <summary>
-        /// Custom key parameters for the request.
+        /// Customize which components of the request are included or excluded from the cache key.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKey? CustomKey;
         /// <summary>
-        /// Ignore query strings order.
+        /// Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings' order.
         /// </summary>
         public readonly bool? IgnoreQueryStringsOrder;
 

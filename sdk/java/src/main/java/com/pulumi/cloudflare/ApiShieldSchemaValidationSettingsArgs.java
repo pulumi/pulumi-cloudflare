@@ -17,14 +17,14 @@ public final class ApiShieldSchemaValidationSettingsArgs extends com.pulumi.reso
     public static final ApiShieldSchemaValidationSettingsArgs Empty = new ApiShieldSchemaValidationSettingsArgs();
 
     /**
-     * The default mitigation action used when there is no mitigation action defined on the operation.
+     * The default mitigation action used when there is no mitigation action defined on the operation
      * 
      */
     @Import(name="validationDefaultMitigationAction", required=true)
     private Output<String> validationDefaultMitigationAction;
 
     /**
-     * @return The default mitigation action used when there is no mitigation action defined on the operation.
+     * @return The default mitigation action used when there is no mitigation action defined on the operation
      * 
      */
     public Output<String> validationDefaultMitigationAction() {
@@ -32,14 +32,18 @@ public final class ApiShieldSchemaValidationSettingsArgs extends com.pulumi.reso
     }
 
     /**
-     * When set, this overrides both zone level and operation level mitigation actions.
+     * When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+     * validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+     * special value `disable_override` or `null` Available values: &#34;none&#34;, &#34;disable_override&#34;.
      * 
      */
     @Import(name="validationOverrideMitigationAction")
     private @Nullable Output<String> validationOverrideMitigationAction;
 
     /**
-     * @return When set, this overrides both zone level and operation level mitigation actions.
+     * @return When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+     * validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+     * special value `disable_override` or `null` Available values: &#34;none&#34;, &#34;disable_override&#34;.
      * 
      */
     public Optional<Output<String>> validationOverrideMitigationAction() {
@@ -47,14 +51,14 @@ public final class ApiShieldSchemaValidationSettingsArgs extends com.pulumi.reso
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -88,7 +92,7 @@ public final class ApiShieldSchemaValidationSettingsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param validationDefaultMitigationAction The default mitigation action used when there is no mitigation action defined on the operation.
+         * @param validationDefaultMitigationAction The default mitigation action used when there is no mitigation action defined on the operation
          * 
          * @return builder
          * 
@@ -99,7 +103,7 @@ public final class ApiShieldSchemaValidationSettingsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param validationDefaultMitigationAction The default mitigation action used when there is no mitigation action defined on the operation.
+         * @param validationDefaultMitigationAction The default mitigation action used when there is no mitigation action defined on the operation
          * 
          * @return builder
          * 
@@ -109,7 +113,9 @@ public final class ApiShieldSchemaValidationSettingsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param validationOverrideMitigationAction When set, this overrides both zone level and operation level mitigation actions.
+         * @param validationOverrideMitigationAction When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+         * validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+         * special value `disable_override` or `null` Available values: &#34;none&#34;, &#34;disable_override&#34;.
          * 
          * @return builder
          * 
@@ -120,7 +126,9 @@ public final class ApiShieldSchemaValidationSettingsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param validationOverrideMitigationAction When set, this overrides both zone level and operation level mitigation actions.
+         * @param validationOverrideMitigationAction When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+         * validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+         * special value `disable_override` or `null` Available values: &#34;none&#34;, &#34;disable_override&#34;.
          * 
          * @return builder
          * 
@@ -130,7 +138,7 @@ public final class ApiShieldSchemaValidationSettingsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -141,7 +149,7 @@ public final class ApiShieldSchemaValidationSettingsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

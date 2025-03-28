@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -15,7 +14,7 @@ public final class ZeroTrustAccessGroupExcludeGsuite {
      * @return The email of the Google Workspace group.
      * 
      */
-    private List<String> emails;
+    private String email;
     /**
      * @return The ID of your Google Workspace identity provider.
      * 
@@ -27,8 +26,8 @@ public final class ZeroTrustAccessGroupExcludeGsuite {
      * @return The email of the Google Workspace group.
      * 
      */
-    public List<String> emails() {
-        return this.emails;
+    public String email() {
+        return this.email;
     }
     /**
      * @return The ID of your Google Workspace identity provider.
@@ -47,25 +46,22 @@ public final class ZeroTrustAccessGroupExcludeGsuite {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> emails;
+        private String email;
         private String identityProviderId;
         public Builder() {}
         public Builder(ZeroTrustAccessGroupExcludeGsuite defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.emails = defaults.emails;
+    	      this.email = defaults.email;
     	      this.identityProviderId = defaults.identityProviderId;
         }
 
         @CustomType.Setter
-        public Builder emails(List<String> emails) {
-            if (emails == null) {
-              throw new MissingRequiredPropertyException("ZeroTrustAccessGroupExcludeGsuite", "emails");
+        public Builder email(String email) {
+            if (email == null) {
+              throw new MissingRequiredPropertyException("ZeroTrustAccessGroupExcludeGsuite", "email");
             }
-            this.emails = emails;
+            this.email = email;
             return this;
-        }
-        public Builder emails(String... emails) {
-            return emails(List.of(emails));
         }
         @CustomType.Setter
         public Builder identityProviderId(String identityProviderId) {
@@ -77,7 +73,7 @@ public final class ZeroTrustAccessGroupExcludeGsuite {
         }
         public ZeroTrustAccessGroupExcludeGsuite build() {
             final var _resultValue = new ZeroTrustAccessGroupExcludeGsuite();
-            _resultValue.emails = emails;
+            _resultValue.email = email;
             _resultValue.identityProviderId = identityProviderId;
             return _resultValue;
         }

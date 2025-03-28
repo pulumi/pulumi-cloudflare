@@ -7,7 +7,22 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The [Risk Behavior](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) resource allows you to configure Cloudflare Risk Behaviors for an account.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustRiskBehavior = new cloudflare.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior", {
+ *     accountId: "account_id",
+ *     behaviors: {
+ *         foo: {
+ *             enabled: true,
+ *             riskLevel: "low",
+ *         },
+ *     },
+ * });
+ * ```
  */
 export class ZeroTrustRiskBehavior extends pulumi.CustomResource {
     /**
@@ -37,14 +52,8 @@ export class ZeroTrustRiskBehavior extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustRiskBehavior.__pulumiType;
     }
 
-    /**
-     * The account identifier to target for the resource.
-     */
     public readonly accountId!: pulumi.Output<string>;
-    /**
-     * Zero Trust risk behaviors configured on this account
-     */
-    public readonly behaviors!: pulumi.Output<outputs.ZeroTrustRiskBehaviorBehavior[] | undefined>;
+    public readonly behaviors!: pulumi.Output<{[key: string]: outputs.ZeroTrustRiskBehaviorBehaviors}>;
 
     /**
      * Create a ZeroTrustRiskBehavior resource with the given unique name, arguments, and options.
@@ -66,10 +75,15 @@ export class ZeroTrustRiskBehavior extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
+            if ((!args || args.behaviors === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'behaviors'");
+            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["behaviors"] = args ? args.behaviors : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/riskBehavior:RiskBehavior" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ZeroTrustRiskBehavior.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -78,26 +92,14 @@ export class ZeroTrustRiskBehavior extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustRiskBehavior resources.
  */
 export interface ZeroTrustRiskBehaviorState {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId?: pulumi.Input<string>;
-    /**
-     * Zero Trust risk behaviors configured on this account
-     */
-    behaviors?: pulumi.Input<pulumi.Input<inputs.ZeroTrustRiskBehaviorBehavior>[]>;
+    behaviors?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ZeroTrustRiskBehaviorBehaviors>}>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustRiskBehavior resource.
  */
 export interface ZeroTrustRiskBehaviorArgs {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId: pulumi.Input<string>;
-    /**
-     * Zero Trust risk behaviors configured on this account
-     */
-    behaviors?: pulumi.Input<pulumi.Input<inputs.ZeroTrustRiskBehaviorBehavior>[]>;
+    behaviors: pulumi.Input<{[key: string]: pulumi.Input<inputs.ZeroTrustRiskBehaviorBehaviors>}>;
 }

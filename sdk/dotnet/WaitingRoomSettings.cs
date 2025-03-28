@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Configure zone-wide settings for Cloudflare waiting rooms.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,9 +20,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.WaitingRoomSettings("example", new()
+    ///     var exampleWaitingRoomSettings = new Cloudflare.WaitingRoomSettings("example_waiting_room_settings", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SearchEngineCrawlerBypass = true,
     ///     });
     /// 
@@ -34,20 +32,22 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example &lt;zone_id&gt;
+    /// $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/waitingRoomSettings:WaitingRoomSettings")]
     public partial class WaitingRoomSettings : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+        /// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+        /// Verified search engine crawlers will not be tracked or counted by the waiting room system,
+        /// and will not appear in waiting room analytics.
         /// </summary>
         [Output("searchEngineCrawlerBypass")]
-        public Output<bool?> SearchEngineCrawlerBypass { get; private set; } = null!;
+        public Output<bool> SearchEngineCrawlerBypass { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -99,13 +99,15 @@ namespace Pulumi.Cloudflare
     public sealed class WaitingRoomSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+        /// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+        /// Verified search engine crawlers will not be tracked or counted by the waiting room system,
+        /// and will not appear in waiting room analytics.
         /// </summary>
         [Input("searchEngineCrawlerBypass")]
         public Input<bool>? SearchEngineCrawlerBypass { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -119,13 +121,15 @@ namespace Pulumi.Cloudflare
     public sealed class WaitingRoomSettingsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+        /// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+        /// Verified search engine crawlers will not be tracked or counted by the waiting room system,
+        /// and will not appear in waiting room analytics.
         /// </summary>
         [Input("searchEngineCrawlerBypass")]
         public Input<bool>? SearchEngineCrawlerBypass { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

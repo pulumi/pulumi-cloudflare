@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.WorkerCronTriggerScheduleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -17,44 +18,36 @@ public final class WorkerCronTriggerState extends com.pulumi.resources.ResourceA
     public static final WorkerCronTriggerState Empty = new WorkerCronTriggerState();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
-    /**
-     * Cron expressions to execute the Worker script.
-     * 
-     */
     @Import(name="schedules")
-    private @Nullable Output<List<String>> schedules;
+    private @Nullable Output<List<WorkerCronTriggerScheduleArgs>> schedules;
 
-    /**
-     * @return Cron expressions to execute the Worker script.
-     * 
-     */
-    public Optional<Output<List<String>>> schedules() {
+    public Optional<Output<List<WorkerCronTriggerScheduleArgs>>> schedules() {
         return Optional.ofNullable(this.schedules);
     }
 
     /**
-     * Worker script to target for the schedules.
+     * Name of the script, used in URLs and route configuration.
      * 
      */
     @Import(name="scriptName")
     private @Nullable Output<String> scriptName;
 
     /**
-     * @return Worker script to target for the schedules.
+     * @return Name of the script, used in URLs and route configuration.
      * 
      */
     public Optional<Output<String>> scriptName() {
@@ -88,7 +81,7 @@ public final class WorkerCronTriggerState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -99,7 +92,7 @@ public final class WorkerCronTriggerState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -108,39 +101,21 @@ public final class WorkerCronTriggerState extends com.pulumi.resources.ResourceA
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param schedules Cron expressions to execute the Worker script.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder schedules(@Nullable Output<List<String>> schedules) {
+        public Builder schedules(@Nullable Output<List<WorkerCronTriggerScheduleArgs>> schedules) {
             $.schedules = schedules;
             return this;
         }
 
-        /**
-         * @param schedules Cron expressions to execute the Worker script.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder schedules(List<String> schedules) {
+        public Builder schedules(List<WorkerCronTriggerScheduleArgs> schedules) {
             return schedules(Output.of(schedules));
         }
 
-        /**
-         * @param schedules Cron expressions to execute the Worker script.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder schedules(String... schedules) {
+        public Builder schedules(WorkerCronTriggerScheduleArgs... schedules) {
             return schedules(List.of(schedules));
         }
 
         /**
-         * @param scriptName Worker script to target for the schedules.
+         * @param scriptName Name of the script, used in URLs and route configuration.
          * 
          * @return builder
          * 
@@ -151,7 +126,7 @@ public final class WorkerCronTriggerState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scriptName Worker script to target for the schedules.
+         * @param scriptName Name of the script, used in URLs and route configuration.
          * 
          * @return builder
          * 

@@ -20,36 +20,47 @@ __all__ = ['WorkerDomainArgs', 'WorkerDomain']
 class WorkerDomainArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
+                 environment: pulumi.Input[str],
                  hostname: pulumi.Input[str],
                  service: pulumi.Input[str],
-                 zone_id: pulumi.Input[str],
-                 environment: Optional[pulumi.Input[str]] = None):
+                 zone_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a WorkerDomain resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: Identifer of the account.
+        :param pulumi.Input[str] environment: Worker environment associated with the zone and hostname.
         :param pulumi.Input[str] hostname: Hostname of the Worker Domain.
-        :param pulumi.Input[str] service: Name of worker script to attach the domain to.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] environment: The name of the Worker environment. Defaults to `production`.
+        :param pulumi.Input[str] service: Worker service associated with the zone and hostname.
+        :param pulumi.Input[str] zone_id: Identifier of the zone.
         """
         pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "environment", environment)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "zone_id", zone_id)
-        if environment is not None:
-            pulumi.set(__self__, "environment", environment)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifer of the account.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
     def account_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> pulumi.Input[str]:
+        """
+        Worker environment associated with the zone and hostname.
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: pulumi.Input[str]):
+        pulumi.set(self, "environment", value)
 
     @property
     @pulumi.getter
@@ -67,7 +78,7 @@ class WorkerDomainArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[str]:
         """
-        Name of worker script to attach the domain to.
+        Worker service associated with the zone and hostname.
         """
         return pulumi.get(self, "service")
 
@@ -79,25 +90,13 @@ class WorkerDomainArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier of the zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
-
-    @property
-    @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the Worker environment. Defaults to `production`.
-        """
-        return pulumi.get(self, "environment")
-
-    @environment.setter
-    def environment(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "environment", value)
 
 
 @pulumi.input_type
@@ -107,14 +106,16 @@ class _WorkerDomainState:
                  environment: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 zone_id: Optional[pulumi.Input[str]] = None):
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 zone_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WorkerDomain resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] environment: The name of the Worker environment. Defaults to `production`.
+        :param pulumi.Input[str] account_id: Identifer of the account.
+        :param pulumi.Input[str] environment: Worker environment associated with the zone and hostname.
         :param pulumi.Input[str] hostname: Hostname of the Worker Domain.
-        :param pulumi.Input[str] service: Name of worker script to attach the domain to.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] service: Worker service associated with the zone and hostname.
+        :param pulumi.Input[str] zone_id: Identifier of the zone.
+        :param pulumi.Input[str] zone_name: Name of the zone.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -126,12 +127,14 @@ class _WorkerDomainState:
             pulumi.set(__self__, "service", service)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+        if zone_name is not None:
+            pulumi.set(__self__, "zone_name", zone_name)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifer of the account.
         """
         return pulumi.get(self, "account_id")
 
@@ -143,7 +146,7 @@ class _WorkerDomainState:
     @pulumi.getter
     def environment(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Worker environment. Defaults to `production`.
+        Worker environment associated with the zone and hostname.
         """
         return pulumi.get(self, "environment")
 
@@ -167,7 +170,7 @@ class _WorkerDomainState:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of worker script to attach the domain to.
+        Worker service associated with the zone and hostname.
         """
         return pulumi.get(self, "service")
 
@@ -179,7 +182,7 @@ class _WorkerDomainState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier of the zone.
         """
         return pulumi.get(self, "zone_id")
 
@@ -187,8 +190,25 @@ class _WorkerDomainState:
     def zone_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id", value)
 
+    @property
+    @pulumi.getter(name="zoneName")
+    def zone_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the zone.
+        """
+        return pulumi.get(self, "zone_name")
+
+    @zone_name.setter
+    def zone_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_name", value)
+
+
+warnings.warn("""cloudflare.index/workerdomain.WorkerDomain has been deprecated in favor of cloudflare.index/workerscustomdomain.WorkersCustomDomain""", DeprecationWarning)
+
 
 class WorkerDomain(pulumi.CustomResource):
+    warnings.warn("""cloudflare.index/workerdomain.WorkerDomain has been deprecated in favor of cloudflare.index/workerscustomdomain.WorkersCustomDomain""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -200,34 +220,33 @@ class WorkerDomain(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a Worker Custom Domain.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.WorkerDomain("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            hostname="subdomain.example.com",
-            service="my-service",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        example_workers_custom_domain = cloudflare.WorkersCustomDomain("example_workers_custom_domain",
+            account_id="9a7806061c88ada191ed06f989cc3dac",
+            environment="production",
+            hostname="foo.example.com",
+            service="foo",
+            zone_id="593c9c94de529bbbfaac7c53ced0447d")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/workerDomain:WorkerDomain example <account_id>/<worker_domain_id>
+        $ pulumi import cloudflare:index/workerDomain:WorkerDomain example '<account_id>/<domain_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] environment: The name of the Worker environment. Defaults to `production`.
+        :param pulumi.Input[str] account_id: Identifer of the account.
+        :param pulumi.Input[str] environment: Worker environment associated with the zone and hostname.
         :param pulumi.Input[str] hostname: Hostname of the Worker Domain.
-        :param pulumi.Input[str] service: Name of worker script to attach the domain to.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] service: Worker service associated with the zone and hostname.
+        :param pulumi.Input[str] zone_id: Identifier of the zone.
         """
         ...
     @overload
@@ -236,25 +255,24 @@ class WorkerDomain(pulumi.CustomResource):
                  args: WorkerDomainArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a Worker Custom Domain.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.WorkerDomain("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            hostname="subdomain.example.com",
-            service="my-service",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        example_workers_custom_domain = cloudflare.WorkersCustomDomain("example_workers_custom_domain",
+            account_id="9a7806061c88ada191ed06f989cc3dac",
+            environment="production",
+            hostname="foo.example.com",
+            service="foo",
+            zone_id="593c9c94de529bbbfaac7c53ced0447d")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/workerDomain:WorkerDomain example <account_id>/<worker_domain_id>
+        $ pulumi import cloudflare:index/workerDomain:WorkerDomain example '<account_id>/<domain_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -278,6 +296,7 @@ class WorkerDomain(pulumi.CustomResource):
                  service: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""WorkerDomain is deprecated: cloudflare.index/workerdomain.WorkerDomain has been deprecated in favor of cloudflare.index/workerscustomdomain.WorkersCustomDomain""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -289,6 +308,8 @@ class WorkerDomain(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            if environment is None and not opts.urn:
+                raise TypeError("Missing required property 'environment'")
             __props__.__dict__["environment"] = environment
             if hostname is None and not opts.urn:
                 raise TypeError("Missing required property 'hostname'")
@@ -299,6 +320,9 @@ class WorkerDomain(pulumi.CustomResource):
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["zone_name"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/workerDomain:WorkerDomain")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(WorkerDomain, __self__).__init__(
             'cloudflare:index/workerDomain:WorkerDomain',
             resource_name,
@@ -313,7 +337,8 @@ class WorkerDomain(pulumi.CustomResource):
             environment: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             service: Optional[pulumi.Input[str]] = None,
-            zone_id: Optional[pulumi.Input[str]] = None) -> 'WorkerDomain':
+            zone_id: Optional[pulumi.Input[str]] = None,
+            zone_name: Optional[pulumi.Input[str]] = None) -> 'WorkerDomain':
         """
         Get an existing WorkerDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -321,11 +346,12 @@ class WorkerDomain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] environment: The name of the Worker environment. Defaults to `production`.
+        :param pulumi.Input[str] account_id: Identifer of the account.
+        :param pulumi.Input[str] environment: Worker environment associated with the zone and hostname.
         :param pulumi.Input[str] hostname: Hostname of the Worker Domain.
-        :param pulumi.Input[str] service: Name of worker script to attach the domain to.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] service: Worker service associated with the zone and hostname.
+        :param pulumi.Input[str] zone_id: Identifier of the zone.
+        :param pulumi.Input[str] zone_name: Name of the zone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -336,21 +362,22 @@ class WorkerDomain(pulumi.CustomResource):
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["service"] = service
         __props__.__dict__["zone_id"] = zone_id
+        __props__.__dict__["zone_name"] = zone_name
         return WorkerDomain(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifer of the account.
         """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
-    def environment(self) -> pulumi.Output[Optional[str]]:
+    def environment(self) -> pulumi.Output[str]:
         """
-        The name of the Worker environment. Defaults to `production`.
+        Worker environment associated with the zone and hostname.
         """
         return pulumi.get(self, "environment")
 
@@ -366,7 +393,7 @@ class WorkerDomain(pulumi.CustomResource):
     @pulumi.getter
     def service(self) -> pulumi.Output[str]:
         """
-        Name of worker script to attach the domain to.
+        Worker service associated with the zone and hostname.
         """
         return pulumi.get(self, "service")
 
@@ -374,7 +401,15 @@ class WorkerDomain(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier of the zone.
         """
         return pulumi.get(self, "zone_id")
+
+    @property
+    @pulumi.getter(name="zoneName")
+    def zone_name(self) -> pulumi.Output[str]:
+        """
+        Name of the zone.
+        """
+        return pulumi.get(self, "zone_name")
 

@@ -14,10 +14,6 @@ namespace Pulumi.Cloudflare.Inputs
     {
         [Input("checkPresences")]
         private InputList<string>? _checkPresences;
-
-        /// <summary>
-        /// Check for presence of specified HTTP headers, without including their actual values.
-        /// </summary>
         public InputList<string> CheckPresences
         {
             get => _checkPresences ?? (_checkPresences = new InputList<string>());
@@ -26,10 +22,6 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("excludes")]
         private InputList<string>? _excludes;
-
-        /// <summary>
-        /// Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
-        /// </summary>
         public InputList<string> Excludes
         {
             get => _excludes ?? (_excludes = new InputList<string>());
@@ -38,10 +30,6 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("includes")]
         private InputList<string>? _includes;
-
-        /// <summary>
-        /// Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.
-        /// </summary>
         public InputList<string> Includes
         {
             get => _includes ?? (_includes = new InputList<string>());

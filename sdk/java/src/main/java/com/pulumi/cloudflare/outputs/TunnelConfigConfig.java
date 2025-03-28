@@ -3,11 +3,10 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.TunnelConfigConfigIngressRule;
+import com.pulumi.cloudflare.outputs.TunnelConfigConfigIngress;
 import com.pulumi.cloudflare.outputs.TunnelConfigConfigOriginRequest;
 import com.pulumi.cloudflare.outputs.TunnelConfigConfigWarpRouting;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,30 +15,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TunnelConfigConfig {
     /**
-     * @return Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+     * @return List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
      * 
      */
-    private List<TunnelConfigConfigIngressRule> ingressRules;
+    private @Nullable List<TunnelConfigConfigIngress> ingresses;
+    /**
+     * @return Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+     * 
+     */
     private @Nullable TunnelConfigConfigOriginRequest originRequest;
     /**
-     * @return If you&#39;re exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+     * @return Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
      * 
      */
     private @Nullable TunnelConfigConfigWarpRouting warpRouting;
 
     private TunnelConfigConfig() {}
     /**
-     * @return Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+     * @return List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
      * 
      */
-    public List<TunnelConfigConfigIngressRule> ingressRules() {
-        return this.ingressRules;
+    public List<TunnelConfigConfigIngress> ingresses() {
+        return this.ingresses == null ? List.of() : this.ingresses;
     }
+    /**
+     * @return Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+     * 
+     */
     public Optional<TunnelConfigConfigOriginRequest> originRequest() {
         return Optional.ofNullable(this.originRequest);
     }
     /**
-     * @return If you&#39;re exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+     * @return Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
      * 
      */
     public Optional<TunnelConfigConfigWarpRouting> warpRouting() {
@@ -55,27 +62,25 @@ public final class TunnelConfigConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<TunnelConfigConfigIngressRule> ingressRules;
+        private @Nullable List<TunnelConfigConfigIngress> ingresses;
         private @Nullable TunnelConfigConfigOriginRequest originRequest;
         private @Nullable TunnelConfigConfigWarpRouting warpRouting;
         public Builder() {}
         public Builder(TunnelConfigConfig defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.ingressRules = defaults.ingressRules;
+    	      this.ingresses = defaults.ingresses;
     	      this.originRequest = defaults.originRequest;
     	      this.warpRouting = defaults.warpRouting;
         }
 
         @CustomType.Setter
-        public Builder ingressRules(List<TunnelConfigConfigIngressRule> ingressRules) {
-            if (ingressRules == null) {
-              throw new MissingRequiredPropertyException("TunnelConfigConfig", "ingressRules");
-            }
-            this.ingressRules = ingressRules;
+        public Builder ingresses(@Nullable List<TunnelConfigConfigIngress> ingresses) {
+
+            this.ingresses = ingresses;
             return this;
         }
-        public Builder ingressRules(TunnelConfigConfigIngressRule... ingressRules) {
-            return ingressRules(List.of(ingressRules));
+        public Builder ingresses(TunnelConfigConfigIngress... ingresses) {
+            return ingresses(List.of(ingresses));
         }
         @CustomType.Setter
         public Builder originRequest(@Nullable TunnelConfigConfigOriginRequest originRequest) {
@@ -91,7 +96,7 @@ public final class TunnelConfigConfig {
         }
         public TunnelConfigConfig build() {
             final var _resultValue = new TunnelConfigConfig();
-            _resultValue.ingressRules = ingressRules;
+            _resultValue.ingresses = ingresses;
             _resultValue.originRequest = originRequest;
             _resultValue.warpRouting = warpRouting;
             return _resultValue;

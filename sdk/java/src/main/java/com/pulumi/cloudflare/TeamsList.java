@@ -6,21 +6,19 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.TeamsListArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.TeamsListState;
-import com.pulumi.cloudflare.outputs.TeamsListItemsWithDescription;
+import com.pulumi.cloudflare.outputs.TeamsListItem;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Teams List resource. Teams lists are
- * referenced when creating secure web gateway policies or device
- * posture rules.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -31,8 +29,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.TeamsList;
- * import com.pulumi.cloudflare.TeamsListArgs;
+ * import com.pulumi.cloudflare.ZeroTrustList;
+ * import com.pulumi.cloudflare.ZeroTrustListArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustListItemArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,15 +45,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TeamsList("example", TeamsListArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("Corporate devices")
+ *         var exampleZeroTrustList = new ZeroTrustList("exampleZeroTrustList", ZeroTrustListArgs.builder()
+ *             .accountId("699d98642c564d2e855e9661899b7252")
+ *             .name("Admin Serial Numbers")
  *             .type("SERIAL")
- *             .description("Serial numbers for all corporate devices.")
- *             .items(            
- *                 "8GE8721REF",
- *                 "5RE8543EGG",
- *                 "1YE2880LNP")
+ *             .description("The serial numbers for administrators")
+ *             .items(ZeroTrustListItemArgs.builder()
+ *                 .description("Austin office IP")
+ *                 .value("8GE8721REF")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -66,95 +65,105 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/teamsList:TeamsList example &lt;account_id&gt;/&lt;teams_list_id&gt;
+ * $ pulumi import cloudflare:index/teamsList:TeamsList example &#39;&lt;account_id&gt;/&lt;list_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare.index/teamslist.TeamsList has been deprecated in favor of cloudflare.index/zerotrustlist.ZeroTrustList
+ * 
  */
+@Deprecated /* cloudflare.index/teamslist.TeamsList has been deprecated in favor of cloudflare.index/zerotrustlist.ZeroTrustList */
 @ResourceType(type="cloudflare:index/teamsList:TeamsList")
 public class TeamsList extends com.pulumi.resources.CustomResource {
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
     /**
-     * The description of the teams list.
+     * The description of the list.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the teams list.
+     * @return The description of the list.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The items of the teams list.
+     * The items in the list.
      * 
      */
-    @Export(name="items", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> items;
+    @Export(name="items", refs={List.class,TeamsListItem.class}, tree="[0,1]")
+    private Output<List<TeamsListItem>> items;
 
     /**
-     * @return The items of the teams list.
+     * @return The items in the list.
      * 
      */
-    public Output<Optional<List<String>>> items() {
-        return Codegen.optional(this.items);
+    public Output<List<TeamsListItem>> items() {
+        return this.items;
     }
     /**
-     * The items of the teams list that has explicit description.
+     * The number of items in the list.
      * 
      */
-    @Export(name="itemsWithDescriptions", refs={List.class,TeamsListItemsWithDescription.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<TeamsListItemsWithDescription>> itemsWithDescriptions;
+    @Export(name="listCount", refs={Double.class}, tree="[0]")
+    private Output<Double> listCount;
 
     /**
-     * @return The items of the teams list that has explicit description.
+     * @return The number of items in the list.
      * 
      */
-    public Output<Optional<List<TeamsListItemsWithDescription>>> itemsWithDescriptions() {
-        return Codegen.optional(this.itemsWithDescriptions);
+    public Output<Double> listCount() {
+        return this.listCount;
     }
     /**
-     * Name of the teams list.
+     * The name of the list.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the teams list.
+     * @return The name of the list.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+     * The type of list.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+     * @return The type of list.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
     public Output<String> type() {
         return this.type;
+    }
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
+
+    public Output<String> updatedAt() {
+        return this.updatedAt;
     }
 
     /**
@@ -196,6 +205,9 @@ public class TeamsList extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/teamsList:TeamsList").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

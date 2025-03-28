@@ -3,18 +3,30 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeAnyValidServiceTokenArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeAuthContextArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeAzureArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeAuthMethodArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeAzureAdArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeCertificateArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeCommonNameArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeDevicePostureArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeEmailArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeEmailDomainArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeEmailListArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeEveryoneArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeExternalEvaluationArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeGithubArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeGeoArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeGithubOrganizationArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeGroupArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeGsuiteArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeIpArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeIpListArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeLoginMethodArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeOktaArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeSamlArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeServiceTokenArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
-import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -25,368 +37,200 @@ public final class ZeroTrustAccessGroupIncludeArgs extends com.pulumi.resources.
     public static final ZeroTrustAccessGroupIncludeArgs Empty = new ZeroTrustAccessGroupIncludeArgs();
 
     /**
-     * Matches any valid Access service token.
+     * An empty object which matches on all service tokens.
      * 
      */
     @Import(name="anyValidServiceToken")
-    private @Nullable Output<Boolean> anyValidServiceToken;
+    private @Nullable Output<ZeroTrustAccessGroupIncludeAnyValidServiceTokenArgs> anyValidServiceToken;
 
     /**
-     * @return Matches any valid Access service token.
+     * @return An empty object which matches on all service tokens.
      * 
      */
-    public Optional<Output<Boolean>> anyValidServiceToken() {
+    public Optional<Output<ZeroTrustAccessGroupIncludeAnyValidServiceTokenArgs>> anyValidServiceToken() {
         return Optional.ofNullable(this.anyValidServiceToken);
     }
 
-    @Import(name="authContexts")
-    private @Nullable Output<List<ZeroTrustAccessGroupIncludeAuthContextArgs>> authContexts;
+    @Import(name="authContext")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeAuthContextArgs> authContext;
 
-    public Optional<Output<List<ZeroTrustAccessGroupIncludeAuthContextArgs>>> authContexts() {
-        return Optional.ofNullable(this.authContexts);
+    public Optional<Output<ZeroTrustAccessGroupIncludeAuthContextArgs>> authContext() {
+        return Optional.ofNullable(this.authContext);
     }
 
-    /**
-     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
-     * 
-     */
     @Import(name="authMethod")
-    private @Nullable Output<String> authMethod;
+    private @Nullable Output<ZeroTrustAccessGroupIncludeAuthMethodArgs> authMethod;
 
-    /**
-     * @return The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
-     * 
-     */
-    public Optional<Output<String>> authMethod() {
+    public Optional<Output<ZeroTrustAccessGroupIncludeAuthMethodArgs>> authMethod() {
         return Optional.ofNullable(this.authMethod);
     }
 
-    /**
-     * Matches an Azure group. Requires an Azure identity provider.
-     * 
-     */
-    @Import(name="azures")
-    private @Nullable Output<List<ZeroTrustAccessGroupIncludeAzureArgs>> azures;
+    @Import(name="azureAd")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeAzureAdArgs> azureAd;
 
-    /**
-     * @return Matches an Azure group. Requires an Azure identity provider.
-     * 
-     */
-    public Optional<Output<List<ZeroTrustAccessGroupIncludeAzureArgs>>> azures() {
-        return Optional.ofNullable(this.azures);
+    public Optional<Output<ZeroTrustAccessGroupIncludeAzureAdArgs>> azureAd() {
+        return Optional.ofNullable(this.azureAd);
     }
 
-    /**
-     * Matches any valid client certificate.
-     * 
-     */
     @Import(name="certificate")
-    private @Nullable Output<Boolean> certificate;
+    private @Nullable Output<ZeroTrustAccessGroupIncludeCertificateArgs> certificate;
 
-    /**
-     * @return Matches any valid client certificate.
-     * 
-     */
-    public Optional<Output<Boolean>> certificate() {
+    public Optional<Output<ZeroTrustAccessGroupIncludeCertificateArgs>> certificate() {
         return Optional.ofNullable(this.certificate);
     }
 
-    /**
-     * Matches a valid client certificate common name.
-     * 
-     */
     @Import(name="commonName")
-    private @Nullable Output<String> commonName;
+    private @Nullable Output<ZeroTrustAccessGroupIncludeCommonNameArgs> commonName;
 
-    /**
-     * @return Matches a valid client certificate common name.
-     * 
-     */
-    public Optional<Output<String>> commonName() {
+    public Optional<Output<ZeroTrustAccessGroupIncludeCommonNameArgs>> commonName() {
         return Optional.ofNullable(this.commonName);
     }
 
-    /**
-     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-     * 
-     */
-    @Import(name="commonNames")
-    private @Nullable Output<List<String>> commonNames;
+    @Import(name="devicePosture")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeDevicePostureArgs> devicePosture;
 
-    /**
-     * @return Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-     * 
-     */
-    public Optional<Output<List<String>>> commonNames() {
-        return Optional.ofNullable(this.commonNames);
+    public Optional<Output<ZeroTrustAccessGroupIncludeDevicePostureArgs>> devicePosture() {
+        return Optional.ofNullable(this.devicePosture);
+    }
+
+    @Import(name="email")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeEmailArgs> email;
+
+    public Optional<Output<ZeroTrustAccessGroupIncludeEmailArgs>> email() {
+        return Optional.ofNullable(this.email);
+    }
+
+    @Import(name="emailDomain")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeEmailDomainArgs> emailDomain;
+
+    public Optional<Output<ZeroTrustAccessGroupIncludeEmailDomainArgs>> emailDomain() {
+        return Optional.ofNullable(this.emailDomain);
+    }
+
+    @Import(name="emailList")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeEmailListArgs> emailList;
+
+    public Optional<Output<ZeroTrustAccessGroupIncludeEmailListArgs>> emailList() {
+        return Optional.ofNullable(this.emailList);
     }
 
     /**
-     * The ID of a device posture integration.
-     * 
-     */
-    @Import(name="devicePostures")
-    private @Nullable Output<List<String>> devicePostures;
-
-    /**
-     * @return The ID of a device posture integration.
-     * 
-     */
-    public Optional<Output<List<String>>> devicePostures() {
-        return Optional.ofNullable(this.devicePostures);
-    }
-
-    /**
-     * The email domain to match.
-     * 
-     */
-    @Import(name="emailDomains")
-    private @Nullable Output<List<String>> emailDomains;
-
-    /**
-     * @return The email domain to match.
-     * 
-     */
-    public Optional<Output<List<String>>> emailDomains() {
-        return Optional.ofNullable(this.emailDomains);
-    }
-
-    /**
-     * The ID of a previously created email list.
-     * 
-     */
-    @Import(name="emailLists")
-    private @Nullable Output<List<String>> emailLists;
-
-    /**
-     * @return The ID of a previously created email list.
-     * 
-     */
-    public Optional<Output<List<String>>> emailLists() {
-        return Optional.ofNullable(this.emailLists);
-    }
-
-    /**
-     * The email of the user.
-     * 
-     */
-    @Import(name="emails")
-    private @Nullable Output<List<String>> emails;
-
-    /**
-     * @return The email of the user.
-     * 
-     */
-    public Optional<Output<List<String>>> emails() {
-        return Optional.ofNullable(this.emails);
-    }
-
-    /**
-     * Matches everyone.
+     * An empty object which matches on all users.
      * 
      */
     @Import(name="everyone")
-    private @Nullable Output<Boolean> everyone;
+    private @Nullable Output<ZeroTrustAccessGroupIncludeEveryoneArgs> everyone;
 
     /**
-     * @return Matches everyone.
+     * @return An empty object which matches on all users.
      * 
      */
-    public Optional<Output<Boolean>> everyone() {
+    public Optional<Output<ZeroTrustAccessGroupIncludeEveryoneArgs>> everyone() {
         return Optional.ofNullable(this.everyone);
     }
 
-    /**
-     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
-     * 
-     */
-    @Import(name="externalEvaluations")
-    private @Nullable Output<List<ZeroTrustAccessGroupIncludeExternalEvaluationArgs>> externalEvaluations;
+    @Import(name="externalEvaluation")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeExternalEvaluationArgs> externalEvaluation;
 
-    /**
-     * @return Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
-     * 
-     */
-    public Optional<Output<List<ZeroTrustAccessGroupIncludeExternalEvaluationArgs>>> externalEvaluations() {
-        return Optional.ofNullable(this.externalEvaluations);
+    public Optional<Output<ZeroTrustAccessGroupIncludeExternalEvaluationArgs>> externalEvaluation() {
+        return Optional.ofNullable(this.externalEvaluation);
     }
 
-    /**
-     * Matches a specific country.
-     * 
-     */
-    @Import(name="geos")
-    private @Nullable Output<List<String>> geos;
+    @Import(name="geo")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeGeoArgs> geo;
 
-    /**
-     * @return Matches a specific country.
-     * 
-     */
-    public Optional<Output<List<String>>> geos() {
-        return Optional.ofNullable(this.geos);
+    public Optional<Output<ZeroTrustAccessGroupIncludeGeoArgs>> geo() {
+        return Optional.ofNullable(this.geo);
     }
 
-    /**
-     * Matches a Github organization. Requires a Github identity provider.
-     * 
-     */
-    @Import(name="githubs")
-    private @Nullable Output<List<ZeroTrustAccessGroupIncludeGithubArgs>> githubs;
+    @Import(name="githubOrganization")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeGithubOrganizationArgs> githubOrganization;
 
-    /**
-     * @return Matches a Github organization. Requires a Github identity provider.
-     * 
-     */
-    public Optional<Output<List<ZeroTrustAccessGroupIncludeGithubArgs>>> githubs() {
-        return Optional.ofNullable(this.githubs);
+    public Optional<Output<ZeroTrustAccessGroupIncludeGithubOrganizationArgs>> githubOrganization() {
+        return Optional.ofNullable(this.githubOrganization);
     }
 
-    /**
-     * The ID of a previously created Access group.
-     * 
-     */
-    @Import(name="groups")
-    private @Nullable Output<List<String>> groups;
+    @Import(name="group")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeGroupArgs> group;
 
-    /**
-     * @return The ID of a previously created Access group.
-     * 
-     */
-    public Optional<Output<List<String>>> groups() {
-        return Optional.ofNullable(this.groups);
+    public Optional<Output<ZeroTrustAccessGroupIncludeGroupArgs>> group() {
+        return Optional.ofNullable(this.group);
     }
 
-    /**
-     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-     * 
-     */
-    @Import(name="gsuites")
-    private @Nullable Output<List<ZeroTrustAccessGroupIncludeGsuiteArgs>> gsuites;
+    @Import(name="gsuite")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeGsuiteArgs> gsuite;
 
-    /**
-     * @return Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-     * 
-     */
-    public Optional<Output<List<ZeroTrustAccessGroupIncludeGsuiteArgs>>> gsuites() {
-        return Optional.ofNullable(this.gsuites);
+    public Optional<Output<ZeroTrustAccessGroupIncludeGsuiteArgs>> gsuite() {
+        return Optional.ofNullable(this.gsuite);
     }
 
-    /**
-     * The ID of a previously created IP list.
-     * 
-     */
-    @Import(name="ipLists")
-    private @Nullable Output<List<String>> ipLists;
+    @Import(name="ip")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeIpArgs> ip;
 
-    /**
-     * @return The ID of a previously created IP list.
-     * 
-     */
-    public Optional<Output<List<String>>> ipLists() {
-        return Optional.ofNullable(this.ipLists);
+    public Optional<Output<ZeroTrustAccessGroupIncludeIpArgs>> ip() {
+        return Optional.ofNullable(this.ip);
     }
 
-    /**
-     * An IPv4 or IPv6 CIDR block.
-     * 
-     */
-    @Import(name="ips")
-    private @Nullable Output<List<String>> ips;
+    @Import(name="ipList")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeIpListArgs> ipList;
 
-    /**
-     * @return An IPv4 or IPv6 CIDR block.
-     * 
-     */
-    public Optional<Output<List<String>>> ips() {
-        return Optional.ofNullable(this.ips);
+    public Optional<Output<ZeroTrustAccessGroupIncludeIpListArgs>> ipList() {
+        return Optional.ofNullable(this.ipList);
     }
 
-    /**
-     * The ID of a configured identity provider.
-     * 
-     */
-    @Import(name="loginMethods")
-    private @Nullable Output<List<String>> loginMethods;
+    @Import(name="loginMethod")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeLoginMethodArgs> loginMethod;
 
-    /**
-     * @return The ID of a configured identity provider.
-     * 
-     */
-    public Optional<Output<List<String>>> loginMethods() {
-        return Optional.ofNullable(this.loginMethods);
+    public Optional<Output<ZeroTrustAccessGroupIncludeLoginMethodArgs>> loginMethod() {
+        return Optional.ofNullable(this.loginMethod);
     }
 
-    /**
-     * Matches an Okta group. Requires an Okta identity provider.
-     * 
-     */
-    @Import(name="oktas")
-    private @Nullable Output<List<ZeroTrustAccessGroupIncludeOktaArgs>> oktas;
+    @Import(name="okta")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeOktaArgs> okta;
 
-    /**
-     * @return Matches an Okta group. Requires an Okta identity provider.
-     * 
-     */
-    public Optional<Output<List<ZeroTrustAccessGroupIncludeOktaArgs>>> oktas() {
-        return Optional.ofNullable(this.oktas);
+    public Optional<Output<ZeroTrustAccessGroupIncludeOktaArgs>> okta() {
+        return Optional.ofNullable(this.okta);
     }
 
-    /**
-     * Matches a SAML group. Requires a SAML identity provider.
-     * 
-     */
-    @Import(name="samls")
-    private @Nullable Output<List<ZeroTrustAccessGroupIncludeSamlArgs>> samls;
+    @Import(name="saml")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeSamlArgs> saml;
 
-    /**
-     * @return Matches a SAML group. Requires a SAML identity provider.
-     * 
-     */
-    public Optional<Output<List<ZeroTrustAccessGroupIncludeSamlArgs>>> samls() {
-        return Optional.ofNullable(this.samls);
+    public Optional<Output<ZeroTrustAccessGroupIncludeSamlArgs>> saml() {
+        return Optional.ofNullable(this.saml);
     }
 
-    /**
-     * The ID of an Access service token.
-     * 
-     */
-    @Import(name="serviceTokens")
-    private @Nullable Output<List<String>> serviceTokens;
+    @Import(name="serviceToken")
+    private @Nullable Output<ZeroTrustAccessGroupIncludeServiceTokenArgs> serviceToken;
 
-    /**
-     * @return The ID of an Access service token.
-     * 
-     */
-    public Optional<Output<List<String>>> serviceTokens() {
-        return Optional.ofNullable(this.serviceTokens);
+    public Optional<Output<ZeroTrustAccessGroupIncludeServiceTokenArgs>> serviceToken() {
+        return Optional.ofNullable(this.serviceToken);
     }
 
     private ZeroTrustAccessGroupIncludeArgs() {}
 
     private ZeroTrustAccessGroupIncludeArgs(ZeroTrustAccessGroupIncludeArgs $) {
         this.anyValidServiceToken = $.anyValidServiceToken;
-        this.authContexts = $.authContexts;
+        this.authContext = $.authContext;
         this.authMethod = $.authMethod;
-        this.azures = $.azures;
+        this.azureAd = $.azureAd;
         this.certificate = $.certificate;
         this.commonName = $.commonName;
-        this.commonNames = $.commonNames;
-        this.devicePostures = $.devicePostures;
-        this.emailDomains = $.emailDomains;
-        this.emailLists = $.emailLists;
-        this.emails = $.emails;
+        this.devicePosture = $.devicePosture;
+        this.email = $.email;
+        this.emailDomain = $.emailDomain;
+        this.emailList = $.emailList;
         this.everyone = $.everyone;
-        this.externalEvaluations = $.externalEvaluations;
-        this.geos = $.geos;
-        this.githubs = $.githubs;
-        this.groups = $.groups;
-        this.gsuites = $.gsuites;
-        this.ipLists = $.ipLists;
-        this.ips = $.ips;
-        this.loginMethods = $.loginMethods;
-        this.oktas = $.oktas;
-        this.samls = $.samls;
-        this.serviceTokens = $.serviceTokens;
+        this.externalEvaluation = $.externalEvaluation;
+        this.geo = $.geo;
+        this.githubOrganization = $.githubOrganization;
+        this.group = $.group;
+        this.gsuite = $.gsuite;
+        this.ip = $.ip;
+        this.ipList = $.ipList;
+        this.loginMethod = $.loginMethod;
+        this.okta = $.okta;
+        this.saml = $.saml;
+        this.serviceToken = $.serviceToken;
     }
 
     public static Builder builder() {
@@ -408,648 +252,225 @@ public final class ZeroTrustAccessGroupIncludeArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param anyValidServiceToken Matches any valid Access service token.
+         * @param anyValidServiceToken An empty object which matches on all service tokens.
          * 
          * @return builder
          * 
          */
-        public Builder anyValidServiceToken(@Nullable Output<Boolean> anyValidServiceToken) {
+        public Builder anyValidServiceToken(@Nullable Output<ZeroTrustAccessGroupIncludeAnyValidServiceTokenArgs> anyValidServiceToken) {
             $.anyValidServiceToken = anyValidServiceToken;
             return this;
         }
 
         /**
-         * @param anyValidServiceToken Matches any valid Access service token.
+         * @param anyValidServiceToken An empty object which matches on all service tokens.
          * 
          * @return builder
          * 
          */
-        public Builder anyValidServiceToken(Boolean anyValidServiceToken) {
+        public Builder anyValidServiceToken(ZeroTrustAccessGroupIncludeAnyValidServiceTokenArgs anyValidServiceToken) {
             return anyValidServiceToken(Output.of(anyValidServiceToken));
         }
 
-        public Builder authContexts(@Nullable Output<List<ZeroTrustAccessGroupIncludeAuthContextArgs>> authContexts) {
-            $.authContexts = authContexts;
+        public Builder authContext(@Nullable Output<ZeroTrustAccessGroupIncludeAuthContextArgs> authContext) {
+            $.authContext = authContext;
             return this;
         }
 
-        public Builder authContexts(List<ZeroTrustAccessGroupIncludeAuthContextArgs> authContexts) {
-            return authContexts(Output.of(authContexts));
+        public Builder authContext(ZeroTrustAccessGroupIncludeAuthContextArgs authContext) {
+            return authContext(Output.of(authContext));
         }
 
-        public Builder authContexts(ZeroTrustAccessGroupIncludeAuthContextArgs... authContexts) {
-            return authContexts(List.of(authContexts));
-        }
-
-        /**
-         * @param authMethod The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder authMethod(@Nullable Output<String> authMethod) {
+        public Builder authMethod(@Nullable Output<ZeroTrustAccessGroupIncludeAuthMethodArgs> authMethod) {
             $.authMethod = authMethod;
             return this;
         }
 
-        /**
-         * @param authMethod The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder authMethod(String authMethod) {
+        public Builder authMethod(ZeroTrustAccessGroupIncludeAuthMethodArgs authMethod) {
             return authMethod(Output.of(authMethod));
         }
 
-        /**
-         * @param azures Matches an Azure group. Requires an Azure identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder azures(@Nullable Output<List<ZeroTrustAccessGroupIncludeAzureArgs>> azures) {
-            $.azures = azures;
+        public Builder azureAd(@Nullable Output<ZeroTrustAccessGroupIncludeAzureAdArgs> azureAd) {
+            $.azureAd = azureAd;
             return this;
         }
 
-        /**
-         * @param azures Matches an Azure group. Requires an Azure identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder azures(List<ZeroTrustAccessGroupIncludeAzureArgs> azures) {
-            return azures(Output.of(azures));
+        public Builder azureAd(ZeroTrustAccessGroupIncludeAzureAdArgs azureAd) {
+            return azureAd(Output.of(azureAd));
         }
 
-        /**
-         * @param azures Matches an Azure group. Requires an Azure identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder azures(ZeroTrustAccessGroupIncludeAzureArgs... azures) {
-            return azures(List.of(azures));
-        }
-
-        /**
-         * @param certificate Matches any valid client certificate.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder certificate(@Nullable Output<Boolean> certificate) {
+        public Builder certificate(@Nullable Output<ZeroTrustAccessGroupIncludeCertificateArgs> certificate) {
             $.certificate = certificate;
             return this;
         }
 
-        /**
-         * @param certificate Matches any valid client certificate.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder certificate(Boolean certificate) {
+        public Builder certificate(ZeroTrustAccessGroupIncludeCertificateArgs certificate) {
             return certificate(Output.of(certificate));
         }
 
-        /**
-         * @param commonName Matches a valid client certificate common name.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder commonName(@Nullable Output<String> commonName) {
+        public Builder commonName(@Nullable Output<ZeroTrustAccessGroupIncludeCommonNameArgs> commonName) {
             $.commonName = commonName;
             return this;
         }
 
-        /**
-         * @param commonName Matches a valid client certificate common name.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder commonName(String commonName) {
+        public Builder commonName(ZeroTrustAccessGroupIncludeCommonNameArgs commonName) {
             return commonName(Output.of(commonName));
         }
 
-        /**
-         * @param commonNames Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder commonNames(@Nullable Output<List<String>> commonNames) {
-            $.commonNames = commonNames;
+        public Builder devicePosture(@Nullable Output<ZeroTrustAccessGroupIncludeDevicePostureArgs> devicePosture) {
+            $.devicePosture = devicePosture;
             return this;
         }
 
-        /**
-         * @param commonNames Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder commonNames(List<String> commonNames) {
-            return commonNames(Output.of(commonNames));
+        public Builder devicePosture(ZeroTrustAccessGroupIncludeDevicePostureArgs devicePosture) {
+            return devicePosture(Output.of(devicePosture));
         }
 
-        /**
-         * @param commonNames Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder commonNames(String... commonNames) {
-            return commonNames(List.of(commonNames));
-        }
-
-        /**
-         * @param devicePostures The ID of a device posture integration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder devicePostures(@Nullable Output<List<String>> devicePostures) {
-            $.devicePostures = devicePostures;
+        public Builder email(@Nullable Output<ZeroTrustAccessGroupIncludeEmailArgs> email) {
+            $.email = email;
             return this;
         }
 
-        /**
-         * @param devicePostures The ID of a device posture integration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder devicePostures(List<String> devicePostures) {
-            return devicePostures(Output.of(devicePostures));
+        public Builder email(ZeroTrustAccessGroupIncludeEmailArgs email) {
+            return email(Output.of(email));
         }
 
-        /**
-         * @param devicePostures The ID of a device posture integration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder devicePostures(String... devicePostures) {
-            return devicePostures(List.of(devicePostures));
-        }
-
-        /**
-         * @param emailDomains The email domain to match.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emailDomains(@Nullable Output<List<String>> emailDomains) {
-            $.emailDomains = emailDomains;
+        public Builder emailDomain(@Nullable Output<ZeroTrustAccessGroupIncludeEmailDomainArgs> emailDomain) {
+            $.emailDomain = emailDomain;
             return this;
         }
 
-        /**
-         * @param emailDomains The email domain to match.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emailDomains(List<String> emailDomains) {
-            return emailDomains(Output.of(emailDomains));
+        public Builder emailDomain(ZeroTrustAccessGroupIncludeEmailDomainArgs emailDomain) {
+            return emailDomain(Output.of(emailDomain));
         }
 
-        /**
-         * @param emailDomains The email domain to match.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emailDomains(String... emailDomains) {
-            return emailDomains(List.of(emailDomains));
-        }
-
-        /**
-         * @param emailLists The ID of a previously created email list.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emailLists(@Nullable Output<List<String>> emailLists) {
-            $.emailLists = emailLists;
+        public Builder emailList(@Nullable Output<ZeroTrustAccessGroupIncludeEmailListArgs> emailList) {
+            $.emailList = emailList;
             return this;
         }
 
-        /**
-         * @param emailLists The ID of a previously created email list.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emailLists(List<String> emailLists) {
-            return emailLists(Output.of(emailLists));
+        public Builder emailList(ZeroTrustAccessGroupIncludeEmailListArgs emailList) {
+            return emailList(Output.of(emailList));
         }
 
         /**
-         * @param emailLists The ID of a previously created email list.
+         * @param everyone An empty object which matches on all users.
          * 
          * @return builder
          * 
          */
-        public Builder emailLists(String... emailLists) {
-            return emailLists(List.of(emailLists));
-        }
-
-        /**
-         * @param emails The email of the user.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emails(@Nullable Output<List<String>> emails) {
-            $.emails = emails;
-            return this;
-        }
-
-        /**
-         * @param emails The email of the user.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emails(List<String> emails) {
-            return emails(Output.of(emails));
-        }
-
-        /**
-         * @param emails The email of the user.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emails(String... emails) {
-            return emails(List.of(emails));
-        }
-
-        /**
-         * @param everyone Matches everyone.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder everyone(@Nullable Output<Boolean> everyone) {
+        public Builder everyone(@Nullable Output<ZeroTrustAccessGroupIncludeEveryoneArgs> everyone) {
             $.everyone = everyone;
             return this;
         }
 
         /**
-         * @param everyone Matches everyone.
+         * @param everyone An empty object which matches on all users.
          * 
          * @return builder
          * 
          */
-        public Builder everyone(Boolean everyone) {
+        public Builder everyone(ZeroTrustAccessGroupIncludeEveryoneArgs everyone) {
             return everyone(Output.of(everyone));
         }
 
-        /**
-         * @param externalEvaluations Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder externalEvaluations(@Nullable Output<List<ZeroTrustAccessGroupIncludeExternalEvaluationArgs>> externalEvaluations) {
-            $.externalEvaluations = externalEvaluations;
+        public Builder externalEvaluation(@Nullable Output<ZeroTrustAccessGroupIncludeExternalEvaluationArgs> externalEvaluation) {
+            $.externalEvaluation = externalEvaluation;
             return this;
         }
 
-        /**
-         * @param externalEvaluations Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder externalEvaluations(List<ZeroTrustAccessGroupIncludeExternalEvaluationArgs> externalEvaluations) {
-            return externalEvaluations(Output.of(externalEvaluations));
+        public Builder externalEvaluation(ZeroTrustAccessGroupIncludeExternalEvaluationArgs externalEvaluation) {
+            return externalEvaluation(Output.of(externalEvaluation));
         }
 
-        /**
-         * @param externalEvaluations Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder externalEvaluations(ZeroTrustAccessGroupIncludeExternalEvaluationArgs... externalEvaluations) {
-            return externalEvaluations(List.of(externalEvaluations));
-        }
-
-        /**
-         * @param geos Matches a specific country.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder geos(@Nullable Output<List<String>> geos) {
-            $.geos = geos;
+        public Builder geo(@Nullable Output<ZeroTrustAccessGroupIncludeGeoArgs> geo) {
+            $.geo = geo;
             return this;
         }
 
-        /**
-         * @param geos Matches a specific country.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder geos(List<String> geos) {
-            return geos(Output.of(geos));
+        public Builder geo(ZeroTrustAccessGroupIncludeGeoArgs geo) {
+            return geo(Output.of(geo));
         }
 
-        /**
-         * @param geos Matches a specific country.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder geos(String... geos) {
-            return geos(List.of(geos));
-        }
-
-        /**
-         * @param githubs Matches a Github organization. Requires a Github identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder githubs(@Nullable Output<List<ZeroTrustAccessGroupIncludeGithubArgs>> githubs) {
-            $.githubs = githubs;
+        public Builder githubOrganization(@Nullable Output<ZeroTrustAccessGroupIncludeGithubOrganizationArgs> githubOrganization) {
+            $.githubOrganization = githubOrganization;
             return this;
         }
 
-        /**
-         * @param githubs Matches a Github organization. Requires a Github identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder githubs(List<ZeroTrustAccessGroupIncludeGithubArgs> githubs) {
-            return githubs(Output.of(githubs));
+        public Builder githubOrganization(ZeroTrustAccessGroupIncludeGithubOrganizationArgs githubOrganization) {
+            return githubOrganization(Output.of(githubOrganization));
         }
 
-        /**
-         * @param githubs Matches a Github organization. Requires a Github identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder githubs(ZeroTrustAccessGroupIncludeGithubArgs... githubs) {
-            return githubs(List.of(githubs));
-        }
-
-        /**
-         * @param groups The ID of a previously created Access group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groups(@Nullable Output<List<String>> groups) {
-            $.groups = groups;
+        public Builder group(@Nullable Output<ZeroTrustAccessGroupIncludeGroupArgs> group) {
+            $.group = group;
             return this;
         }
 
-        /**
-         * @param groups The ID of a previously created Access group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groups(List<String> groups) {
-            return groups(Output.of(groups));
+        public Builder group(ZeroTrustAccessGroupIncludeGroupArgs group) {
+            return group(Output.of(group));
         }
 
-        /**
-         * @param groups The ID of a previously created Access group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groups(String... groups) {
-            return groups(List.of(groups));
-        }
-
-        /**
-         * @param gsuites Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder gsuites(@Nullable Output<List<ZeroTrustAccessGroupIncludeGsuiteArgs>> gsuites) {
-            $.gsuites = gsuites;
+        public Builder gsuite(@Nullable Output<ZeroTrustAccessGroupIncludeGsuiteArgs> gsuite) {
+            $.gsuite = gsuite;
             return this;
         }
 
-        /**
-         * @param gsuites Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder gsuites(List<ZeroTrustAccessGroupIncludeGsuiteArgs> gsuites) {
-            return gsuites(Output.of(gsuites));
+        public Builder gsuite(ZeroTrustAccessGroupIncludeGsuiteArgs gsuite) {
+            return gsuite(Output.of(gsuite));
         }
 
-        /**
-         * @param gsuites Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder gsuites(ZeroTrustAccessGroupIncludeGsuiteArgs... gsuites) {
-            return gsuites(List.of(gsuites));
-        }
-
-        /**
-         * @param ipLists The ID of a previously created IP list.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ipLists(@Nullable Output<List<String>> ipLists) {
-            $.ipLists = ipLists;
+        public Builder ip(@Nullable Output<ZeroTrustAccessGroupIncludeIpArgs> ip) {
+            $.ip = ip;
             return this;
         }
 
-        /**
-         * @param ipLists The ID of a previously created IP list.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ipLists(List<String> ipLists) {
-            return ipLists(Output.of(ipLists));
+        public Builder ip(ZeroTrustAccessGroupIncludeIpArgs ip) {
+            return ip(Output.of(ip));
         }
 
-        /**
-         * @param ipLists The ID of a previously created IP list.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ipLists(String... ipLists) {
-            return ipLists(List.of(ipLists));
-        }
-
-        /**
-         * @param ips An IPv4 or IPv6 CIDR block.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ips(@Nullable Output<List<String>> ips) {
-            $.ips = ips;
+        public Builder ipList(@Nullable Output<ZeroTrustAccessGroupIncludeIpListArgs> ipList) {
+            $.ipList = ipList;
             return this;
         }
 
-        /**
-         * @param ips An IPv4 or IPv6 CIDR block.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ips(List<String> ips) {
-            return ips(Output.of(ips));
+        public Builder ipList(ZeroTrustAccessGroupIncludeIpListArgs ipList) {
+            return ipList(Output.of(ipList));
         }
 
-        /**
-         * @param ips An IPv4 or IPv6 CIDR block.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ips(String... ips) {
-            return ips(List.of(ips));
-        }
-
-        /**
-         * @param loginMethods The ID of a configured identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder loginMethods(@Nullable Output<List<String>> loginMethods) {
-            $.loginMethods = loginMethods;
+        public Builder loginMethod(@Nullable Output<ZeroTrustAccessGroupIncludeLoginMethodArgs> loginMethod) {
+            $.loginMethod = loginMethod;
             return this;
         }
 
-        /**
-         * @param loginMethods The ID of a configured identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder loginMethods(List<String> loginMethods) {
-            return loginMethods(Output.of(loginMethods));
+        public Builder loginMethod(ZeroTrustAccessGroupIncludeLoginMethodArgs loginMethod) {
+            return loginMethod(Output.of(loginMethod));
         }
 
-        /**
-         * @param loginMethods The ID of a configured identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder loginMethods(String... loginMethods) {
-            return loginMethods(List.of(loginMethods));
-        }
-
-        /**
-         * @param oktas Matches an Okta group. Requires an Okta identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder oktas(@Nullable Output<List<ZeroTrustAccessGroupIncludeOktaArgs>> oktas) {
-            $.oktas = oktas;
+        public Builder okta(@Nullable Output<ZeroTrustAccessGroupIncludeOktaArgs> okta) {
+            $.okta = okta;
             return this;
         }
 
-        /**
-         * @param oktas Matches an Okta group. Requires an Okta identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder oktas(List<ZeroTrustAccessGroupIncludeOktaArgs> oktas) {
-            return oktas(Output.of(oktas));
+        public Builder okta(ZeroTrustAccessGroupIncludeOktaArgs okta) {
+            return okta(Output.of(okta));
         }
 
-        /**
-         * @param oktas Matches an Okta group. Requires an Okta identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder oktas(ZeroTrustAccessGroupIncludeOktaArgs... oktas) {
-            return oktas(List.of(oktas));
-        }
-
-        /**
-         * @param samls Matches a SAML group. Requires a SAML identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder samls(@Nullable Output<List<ZeroTrustAccessGroupIncludeSamlArgs>> samls) {
-            $.samls = samls;
+        public Builder saml(@Nullable Output<ZeroTrustAccessGroupIncludeSamlArgs> saml) {
+            $.saml = saml;
             return this;
         }
 
-        /**
-         * @param samls Matches a SAML group. Requires a SAML identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder samls(List<ZeroTrustAccessGroupIncludeSamlArgs> samls) {
-            return samls(Output.of(samls));
+        public Builder saml(ZeroTrustAccessGroupIncludeSamlArgs saml) {
+            return saml(Output.of(saml));
         }
 
-        /**
-         * @param samls Matches a SAML group. Requires a SAML identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder samls(ZeroTrustAccessGroupIncludeSamlArgs... samls) {
-            return samls(List.of(samls));
-        }
-
-        /**
-         * @param serviceTokens The ID of an Access service token.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder serviceTokens(@Nullable Output<List<String>> serviceTokens) {
-            $.serviceTokens = serviceTokens;
+        public Builder serviceToken(@Nullable Output<ZeroTrustAccessGroupIncludeServiceTokenArgs> serviceToken) {
+            $.serviceToken = serviceToken;
             return this;
         }
 
-        /**
-         * @param serviceTokens The ID of an Access service token.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder serviceTokens(List<String> serviceTokens) {
-            return serviceTokens(Output.of(serviceTokens));
-        }
-
-        /**
-         * @param serviceTokens The ID of an Access service token.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder serviceTokens(String... serviceTokens) {
-            return serviceTokens(List.of(serviceTokens));
+        public Builder serviceToken(ZeroTrustAccessGroupIncludeServiceTokenArgs serviceToken) {
+            return serviceToken(Output.of(serviceToken));
         }
 
         public ZeroTrustAccessGroupIncludeArgs build() {

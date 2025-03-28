@@ -8,16 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Cache Reserve resource. Cache Reserve can
-// increase cache lifetimes by automatically storing all cacheable
-// files in Cloudflare's persistent object storage buckets.
-//
-// Note: Using Cache Reserve without Tiered Cache is not recommended.
-//
 // ## Example Usage
 //
 // ```go
@@ -25,16 +19,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZoneCacheReserve(ctx, "example", &cloudflare.ZoneCacheReserveArgs{
-//				ZoneId:  pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Enabled: pulumi.Bool(true),
+//			_, err := cloudflare.NewZoneCacheReserve(ctx, "example_zone_cache_reserve", &cloudflare.ZoneCacheReserveArgs{
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Value:  pulumi.String("on"),
 //			})
 //			if err != nil {
 //				return err
@@ -48,14 +42,19 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example <zone_id>
+// $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example '<zone_id>'
 // ```
 type ZoneCacheReserve struct {
 	pulumi.CustomResourceState
 
-	// Whether to enable or disable Cache Reserve support for a given zone.
-	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Whether the setting is editable
+	Editable pulumi.BoolOutput `pulumi:"editable"`
+	// Last time this setting was modified.
+	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
+	// Value of the Cache Reserve zone setting.
+	// Available values: "on", "off".
+	Value pulumi.StringOutput `pulumi:"value"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -66,9 +65,6 @@ func NewZoneCacheReserve(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Enabled == nil {
-		return nil, errors.New("invalid value for required argument 'Enabled'")
-	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
@@ -95,16 +91,26 @@ func GetZoneCacheReserve(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZoneCacheReserve resources.
 type zoneCacheReserveState struct {
-	// Whether to enable or disable Cache Reserve support for a given zone.
-	Enabled *bool `pulumi:"enabled"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Whether the setting is editable
+	Editable *bool `pulumi:"editable"`
+	// Last time this setting was modified.
+	ModifiedOn *string `pulumi:"modifiedOn"`
+	// Value of the Cache Reserve zone setting.
+	// Available values: "on", "off".
+	Value *string `pulumi:"value"`
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ZoneCacheReserveState struct {
-	// Whether to enable or disable Cache Reserve support for a given zone.
-	Enabled pulumi.BoolPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Whether the setting is editable
+	Editable pulumi.BoolPtrInput
+	// Last time this setting was modified.
+	ModifiedOn pulumi.StringPtrInput
+	// Value of the Cache Reserve zone setting.
+	// Available values: "on", "off".
+	Value pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -113,17 +119,19 @@ func (ZoneCacheReserveState) ElementType() reflect.Type {
 }
 
 type zoneCacheReserveArgs struct {
-	// Whether to enable or disable Cache Reserve support for a given zone.
-	Enabled bool `pulumi:"enabled"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Value of the Cache Reserve zone setting.
+	// Available values: "on", "off".
+	Value *string `pulumi:"value"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ZoneCacheReserve resource.
 type ZoneCacheReserveArgs struct {
-	// Whether to enable or disable Cache Reserve support for a given zone.
-	Enabled pulumi.BoolInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Value of the Cache Reserve zone setting.
+	// Available values: "on", "off".
+	Value pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -214,12 +222,23 @@ func (o ZoneCacheReserveOutput) ToZoneCacheReserveOutputWithContext(ctx context.
 	return o
 }
 
-// Whether to enable or disable Cache Reserve support for a given zone.
-func (o ZoneCacheReserveOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ZoneCacheReserve) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+// Whether the setting is editable
+func (o ZoneCacheReserveOutput) Editable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZoneCacheReserve) pulumi.BoolOutput { return v.Editable }).(pulumi.BoolOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Last time this setting was modified.
+func (o ZoneCacheReserveOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneCacheReserve) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// Value of the Cache Reserve zone setting.
+// Available values: "on", "off".
+func (o ZoneCacheReserveOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneCacheReserve) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
+// Identifier
 func (o ZoneCacheReserveOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneCacheReserve) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -17,14 +17,20 @@ public final class ApiShieldOperationSchemaValidationSettingsArgs extends com.pu
     public static final ApiShieldOperationSchemaValidationSettingsArgs Empty = new ApiShieldOperationSchemaValidationSettingsArgs();
 
     /**
-     * The mitigation action to apply to this operation.
+     * When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+     * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+     * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+     * Level Schema Validation Settings for mitigation action that will be applied Available values: &#34;log&#34;, &#34;block&#34;, &#34;none&#34;.
      * 
      */
     @Import(name="mitigationAction")
     private @Nullable Output<String> mitigationAction;
 
     /**
-     * @return The mitigation action to apply to this operation.
+     * @return When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+     * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+     * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+     * Level Schema Validation Settings for mitigation action that will be applied Available values: &#34;log&#34;, &#34;block&#34;, &#34;none&#34;.
      * 
      */
     public Optional<Output<String>> mitigationAction() {
@@ -32,14 +38,14 @@ public final class ApiShieldOperationSchemaValidationSettingsArgs extends com.pu
     }
 
     /**
-     * Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+     * UUID
      * 
      */
     @Import(name="operationId", required=true)
     private Output<String> operationId;
 
     /**
-     * @return Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+     * @return UUID
      * 
      */
     public Output<String> operationId() {
@@ -47,14 +53,14 @@ public final class ApiShieldOperationSchemaValidationSettingsArgs extends com.pu
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -88,7 +94,10 @@ public final class ApiShieldOperationSchemaValidationSettingsArgs extends com.pu
         }
 
         /**
-         * @param mitigationAction The mitigation action to apply to this operation.
+         * @param mitigationAction When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+         * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+         * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+         * Level Schema Validation Settings for mitigation action that will be applied Available values: &#34;log&#34;, &#34;block&#34;, &#34;none&#34;.
          * 
          * @return builder
          * 
@@ -99,7 +108,10 @@ public final class ApiShieldOperationSchemaValidationSettingsArgs extends com.pu
         }
 
         /**
-         * @param mitigationAction The mitigation action to apply to this operation.
+         * @param mitigationAction When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+         * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+         * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+         * Level Schema Validation Settings for mitigation action that will be applied Available values: &#34;log&#34;, &#34;block&#34;, &#34;none&#34;.
          * 
          * @return builder
          * 
@@ -109,7 +121,7 @@ public final class ApiShieldOperationSchemaValidationSettingsArgs extends com.pu
         }
 
         /**
-         * @param operationId Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+         * @param operationId UUID
          * 
          * @return builder
          * 
@@ -120,7 +132,7 @@ public final class ApiShieldOperationSchemaValidationSettingsArgs extends com.pu
         }
 
         /**
-         * @param operationId Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+         * @param operationId UUID
          * 
          * @return builder
          * 
@@ -130,7 +142,7 @@ public final class ApiShieldOperationSchemaValidationSettingsArgs extends com.pu
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -141,7 +153,7 @@ public final class ApiShieldOperationSchemaValidationSettingsArgs extends com.pu
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
