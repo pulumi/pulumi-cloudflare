@@ -71,12 +71,7 @@ func testUpgrade(
 		opttest.AttachProvider(providerName, rpFactory))
 	pt.SetConfig(t, "cloudflare-account-id", os.Getenv("CLOUDFLARE_ACCOUNT_ID"))
 	pt.SetConfig(t, "cloudflare-zone-id", os.Getenv("CLOUDFLARE_ZONE_ID"))
-
-	upgradeOpts := []optproviderupgrade.PreviewProviderUpgradeOpt{
-		optproviderupgrade.DisableAttach(),
-	}
-	upgradeOpts = append(upgradeOpts, opts...)
-	previewResult := providertest.PreviewProviderUpgrade(t, pt, providerName, defaultBaselineVersion, upgradeOpts...)
+	previewResult := providertest.PreviewProviderUpgrade(t, pt, providerName, defaultBaselineVersion, opts...)
 
 	assertpreview.HasNoReplacements(t, previewResult)
 	assertpreview.HasNoDeletes(t, previewResult)
