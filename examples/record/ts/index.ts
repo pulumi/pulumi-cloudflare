@@ -5,8 +5,8 @@ const config = new pulumi.Config();
 const accountId = config.require("accountId");
 
 const zone = new cloudflare.Zone("my-zone", {
-    zone: `ts-${pulumi.getStack()}-test-cloudflare-pulumi.com`,
-    accountId: accountId,
+    name: `ts-${pulumi.getStack()}-test-cloudflare-pulumi.com`,
+    account: { id: accountId },
 });
 
 new cloudflare.Record("my-record", {

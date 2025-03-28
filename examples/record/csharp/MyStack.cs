@@ -10,8 +10,8 @@ class MyStack : Stack
 
         var zone = new Cloudflare.Zone("my-zone", new Cloudflare.ZoneArgs
         {
-            ZoneName = "cs-test-cloudflare-pulumi.com",
-            AccountId = accountId
+            Name = "cs-test-cloudflare-pulumi.com",
+            Account = new Cloudflare.ZoneAccount { Id = accountId }
         });
 
         var foobar = new Cloudflare.DnsRecord("foobar", new Cloudflare.DnsRecordArgs
