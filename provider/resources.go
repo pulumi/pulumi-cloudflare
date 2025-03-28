@@ -86,36 +86,6 @@ func Provider() info.Provider {
 		MetadataInfo:            tfbridge.NewProviderMetadata(metadata),
 		DocRules:                &info.DocRule{EditRules: docEditRules},
 		Config: map[string]*info.Schema{
-			"rps": {
-				Default: &info.Default{
-					Value:   4,
-					EnvVars: []string{"CLOUDFLARE_RPS"},
-				},
-			},
-			"retries": {
-				Default: &info.Default{
-					Value:   3,
-					EnvVars: []string{"CLOUDFLARE_RETRIES"},
-				},
-			},
-			"min_backoff": {
-				Default: &info.Default{
-					Value:   1,
-					EnvVars: []string{"CLOUDFLARE_MIN_BACKOFF"},
-				},
-			},
-			"max_backoff": {
-				Default: &info.Default{
-					Value:   30,
-					EnvVars: []string{"CLOUDFLARE_MAX_BACKOFF"},
-				},
-			},
-			"api_client_logging": {
-				Default: &info.Default{
-					Value:   false,
-					EnvVars: []string{"CLOUDFLARE_API_CLIENT_LOGGING"},
-				},
-			},
 			"api_token": {
 				Secret: tfbridge.True(),
 			},
@@ -135,13 +105,11 @@ func Provider() info.Provider {
 			//
 			// Set our ID as site Key, which is what it represents upstream:
 			// <https://developers.cloudflare.com/turnstile/get-started/terraform/#create-a-turnstile-widget>.
-			"cloudflare_turnstile_widget": {ComputeID: delegateID("id")},
 			"cloudflare_leaked_credential_check": {
 				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
 					return resource.ID(state["enabled"].String() + "_" + state["zoneId"].String()), nil
 				},
 			},
-			"cloudflare_snippet_rules": {Docs: &info.Doc{AllowMissing: true}},
 			"cloudflare_zone": {
 				TransformFromState: func(_ context.Context, state resource.PropertyMap) (resource.PropertyMap, error) {
 					if zone, ok := state["zone"]; ok {
@@ -159,6 +127,7 @@ func Provider() info.Provider {
 					}
 					return state, nil
 				},
+				ComputeID: delegateID("name"),
 			},
 			"cloudflare_zero_trust_access_application": {
 				Aliases: alias("cloudflare:index/accessApplication:AccessApplication"),
@@ -359,12 +328,77 @@ func Provider() info.Provider {
 	prov.MustComputeTokens(tfbridgetokens.SingleModule("cloudflare_", mainMod,
 		tfbridgetokens.MakeStandard(mainPkg)))
 
-	for _, r := range prov.Resources {
-		_, ok := r.Fields["id"]
-		if ok {
+	resourcesWithMistypedID := []string{
+		"cloudflare_email_security_trusted_domains",
+		"cloudflare_cloudforce_one_request_message",
+		"cloudflare_email_security_block_sender",
+		"cloudflare_cloudforce_one_request_asset",
+		"cloudflare_email_security_impersonation_registry",
+		"cloudflare_logpush_job",
+		"cloudflare_magic_network_monitoring_rule",
+		"cloudflare_image_variant",
+		"cloudflare_zone_setting",
+		"cloudflare_turnstile_widget",
+	}
+
+	for _, r := range resourcesWithMistypedID {
+		prov.Resources[r].ComputeID = delegateID("id")
+	}
+
+	resourcesWithMissingID := []string{
+		"cloudflare_zero_trust_organization",
+		"cloudflare_zero_trust_risk_behavior_legacy",
+		"cloudflare_zero_trust_organization_legacy",
+		"cloudflare_r2_bucket_lock",
+		"cloudflare_workers_script_subdomain",
+		"cloudflare_stream_watermark",
+		"cloudflare_stream_webhook",
+		"cloudflare_magic_wan_gre_tunnel",
+		"cloudflare_calls_sfu_app",
+		"cloudflare_r2_managed_domain",
+		"cloudflare_registrar_domain",
+		"cloudflare_stream_caption_language",
+		"cloudflare_r2_bucket_cors",
+		"cloudflare_snippet_rules",
+		"cloudflare_account_dns_settings",
+		"cloudflare_magic_wan_static_route",
+		"cloudflare_logpush_ownership_challenge",
+		"cloudflare_r2_bucket_sippy",
+		"cloudflare_zero_trust_device_default_profile_local_domain_fallback",
+		"cloudflare_snippets",
+		"cloudflare_magic_wan_ipsec_tunnel",
+		"cloudflare_stream_live_input",
+		"cloudflare_stream",
+		"cloudflare_queue_consumer",
+		"cloudflare_zero_trust_device_default_profile_certificates",
+		"cloudflare_zone_subscription",
+		"cloudflare_r2_bucket_lifecycle",
+		"cloudflare_stream_download",
+		"cloudflare_authenticated_origin_pulls_settings",
+		"cloudflare_logpull_retention",
+		"cloudflare_r2_custom_domain",
+		"cloudflare_r2_bucket_event_notification",
+		"cloudflare_api_shield_schema",
+		"cloudflare_calls_turn_app",
+		"cloudflare_zero_trust_risk_behavior",
+		"cloudflare_magic_wan_static_route_legacy",
+		"cloudflare_zone_dns_settings",
+		"cloudflare_zero_trust_gateway_logging",
+		"cloudflare_user",
+		"cloudflare_stream_audio_track",
+		"cloudflare_user_agent_blocking_rule",
+		"cloudflare_magic_network_monitoring_configuration",
+	}
+
+	for _, resName := range resourcesWithMissingID {
+		r := prov.Resources[resName]
+		if r == nil {
+			prov.Resources[resName] = &info.Resource{}
+			r = prov.Resources[resName]
+		}
+		if r.Fields != nil && r.Fields["id"] != nil || r.ComputeID != nil {
 			continue
 		}
-
 		r.ComputeID = func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
 			account, hasAccount := state["accountId"]
 			zone, hasZone := state["zoneId"]
