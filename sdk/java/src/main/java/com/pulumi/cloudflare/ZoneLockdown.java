@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *         // Restrict access to these endpoints to requests from a known IP address range.
  *         var example = new ZoneLockdown("example", ZoneLockdownArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .paused("false")
+ *             .paused(false)
  *             .description("Restrict access to these endpoints to requests from a known IP address range")
  *             .urls("api.mysite.com/some/endpoint*")
  *             .configurations(ZoneLockdownConfigurationArgs.builder()

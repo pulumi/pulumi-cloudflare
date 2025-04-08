@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.WorkersForPlatformsNamespaceArgs;
  * import com.pulumi.cloudflare.WorkersScript;
  * import com.pulumi.cloudflare.WorkersScriptArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;

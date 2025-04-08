@@ -34,9 +34,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.tls.privateKey;
- * import com.pulumi.tls.PrivateKeyArgs;
+ * import com.pulumi.tls.privateKeyArgs;
  * import com.pulumi.tls.certRequest;
- * import com.pulumi.tls.CertRequestArgs;
+ * import com.pulumi.tls.certRequestArgs;
  * import com.pulumi.cloudflare.OriginCaCertificate;
  * import com.pulumi.cloudflare.OriginCaCertificateArgs;
  * import java.util.List;
@@ -58,7 +58,10 @@ import javax.annotation.Nullable;
  * 
  *         var exampleCertRequest = new CertRequest("exampleCertRequest", CertRequestArgs.builder()
  *             .privateKeyPem(example.privateKeyPem())
- *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .subject(List.of(Map.ofEntries(
+ *                 Map.entry("commonName", ""),
+ *                 Map.entry("organization", "Terraform Test")
+ *             )))
  *             .build());
  * 
  *         var exampleOriginCaCertificate = new OriginCaCertificate("exampleOriginCaCertificate", OriginCaCertificateArgs.builder()
