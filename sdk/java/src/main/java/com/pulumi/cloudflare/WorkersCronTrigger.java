@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.WorkersScript;
  * import com.pulumi.cloudflare.WorkersScriptArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.cloudflare.WorkersCronTrigger;
  * import com.pulumi.cloudflare.WorkersCronTriggerArgs;
  * import java.util.List;
