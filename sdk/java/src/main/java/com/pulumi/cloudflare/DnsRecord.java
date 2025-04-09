@@ -24,48 +24,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.DnsRecord;
- * import com.pulumi.cloudflare.DnsRecordArgs;
- * import com.pulumi.cloudflare.inputs.DnsRecordSettingsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleDnsRecord = new DnsRecord("exampleDnsRecord", DnsRecordArgs.builder()
- *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .comment("Domain verification record")
- *             .content("198.51.100.4")
- *             .name("example.com")
- *             .proxied(true)
- *             .settings(DnsRecordSettingsArgs.builder()
- *                 .ipv4_only(true)
- *                 .ipv6_only(true)
- *                 .build())
- *             .tags("owner:dns-team")
- *             .ttl(3600)
- *             .type("A")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -20,46 +20,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDevicePostureIntegration;
- * import com.pulumi.cloudflare.ZeroTrustDevicePostureIntegrationArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDevicePostureIntegrationConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDevicePostureIntegration = new ZeroTrustDevicePostureIntegration("exampleZeroTrustDevicePostureIntegration", ZeroTrustDevicePostureIntegrationArgs.builder()
- *             .accountId("699d98642c564d2e855e9661899b7252")
- *             .config(ZeroTrustDevicePostureIntegrationConfigArgs.builder()
- *                 .api_url("https://as123.awmdm.com/API")
- *                 .auth_url("https://na.uemauth.vmwservices.com/connect/token")
- *                 .client_id("example client id")
- *                 .client_secret("example client secret")
- *                 .build())
- *             .interval("10m")
- *             .name("My Workspace One Integration")
- *             .type("workspace_one")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

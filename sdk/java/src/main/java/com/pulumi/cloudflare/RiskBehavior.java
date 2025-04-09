@@ -45,10 +45,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleZeroTrustRiskBehavior = new ZeroTrustRiskBehavior("exampleZeroTrustRiskBehavior", ZeroTrustRiskBehaviorArgs.builder()
  *             .accountId("account_id")
- *             .behaviors(Map.of("foo", Map.ofEntries(
- *                 Map.entry("enabled", true),
- *                 Map.entry("riskLevel", "low")
- *             )))
+ *             .behaviors(Map.of("foo", ZeroTrustRiskBehaviorBehaviorsArgs.builder()
+ *                 .enabled(true)
+ *                 .riskLevel("low")
+ *                 .build()))
  *             .build());
  * 
  *     }

@@ -48,8 +48,8 @@ import javax.annotation.Nullable;
  *             .duration("1m")
  *             .name("my_rule_1")
  *             .automaticAdvertisement(true)
- *             .bandwidth(1000)
- *             .packetThreshold(10000)
+ *             .bandwidth(1000.0)
+ *             .packetThreshold(10000.0)
  *             .prefixes("203.0.113.1/32")
  *             .build());
  * 

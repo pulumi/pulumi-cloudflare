@@ -21,42 +21,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredConfig;
- * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredConfigArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleZeroTrustTunnelCloudflaredConfig = new ZeroTrustTunnelCloudflaredConfig("exampleZeroTrustTunnelCloudflaredConfig", ZeroTrustTunnelCloudflaredConfigArgs.builder()
- *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
- *             .config(ZeroTrustTunnelCloudflaredConfigConfigArgs.builder()
- *                 .ingress(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                 .origin_request(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

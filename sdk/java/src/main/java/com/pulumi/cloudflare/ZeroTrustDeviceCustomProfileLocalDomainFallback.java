@@ -20,43 +20,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDeviceCustomProfileLocalDomainFallback;
- * import com.pulumi.cloudflare.ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDeviceCustomProfileLocalDomainFallback = new ZeroTrustDeviceCustomProfileLocalDomainFallback("exampleZeroTrustDeviceCustomProfileLocalDomainFallback", ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs.builder()
- *             .accountId("699d98642c564d2e855e9661899b7252")
- *             .policyId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
- *             .domains(ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs.builder()
- *                 .suffix("example.com")
- *                 .description("Domain bypass for local development")
- *                 .dns_server("1.1.1.1")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

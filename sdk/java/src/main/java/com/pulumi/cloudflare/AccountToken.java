@@ -21,54 +21,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AccountToken;
- * import com.pulumi.cloudflare.AccountTokenArgs;
- * import com.pulumi.cloudflare.inputs.AccountTokenPolicyArgs;
- * import com.pulumi.cloudflare.inputs.AccountTokenConditionArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleAccountToken = new AccountToken("exampleAccountToken", AccountTokenArgs.builder()
- *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
- *             .name("readonly token")
- *             .policies(AccountTokenPolicyArgs.builder()
- *                 .effect("allow")
- *                 .permission_groups(                
- *                     %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                     %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                 .resources(Map.ofEntries(
- *                     Map.entry("com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43", "*"),
- *                     Map.entry("com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4", "*")
- *                 ))
- *                 .build())
- *             .condition(AccountTokenConditionArgs.builder()
- *                 .request_ip(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                 .build())
- *             .expiresOn("2020-01-01T00:00:00Z")
- *             .notBefore("2018-07-01T05:20:00Z")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

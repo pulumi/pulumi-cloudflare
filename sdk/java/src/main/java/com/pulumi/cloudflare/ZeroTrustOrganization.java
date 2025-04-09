@@ -23,58 +23,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustOrganization;
- * import com.pulumi.cloudflare.ZeroTrustOrganizationArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationCustomPagesArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationLoginDesignArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleZeroTrustOrganization = new ZeroTrustOrganization("exampleZeroTrustOrganization", ZeroTrustOrganizationArgs.builder()
- *             .zoneId("zone_id")
- *             .allowAuthenticateViaWarp(true)
- *             .authDomain("test.cloudflareaccess.com")
- *             .autoRedirectToIdentity(true)
- *             .customPages(ZeroTrustOrganizationCustomPagesArgs.builder()
- *                 .forbidden("699d98642c564d2e855e9661899b7252")
- *                 .identity_denied("699d98642c564d2e855e9661899b7252")
- *                 .build())
- *             .isUiReadOnly(true)
- *             .loginDesign(ZeroTrustOrganizationLoginDesignArgs.builder()
- *                 .background_color("#c5ed1b")
- *                 .footer_text("This is an example description.")
- *                 .header_text("This is an example description.")
- *                 .logo_path("https://example.com/logo.png")
- *                 .text_color("#c5ed1b")
- *                 .build())
- *             .name("Widget Corps Internal Applications")
- *             .sessionDuration("24h")
- *             .uiReadOnlyToggleReason("Temporarily turn off the UI read only lock to make a change via the UI")
- *             .userSeatExpirationInactiveTime("730h")
- *             .warpAuthSessionDuration("24h")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -21,48 +21,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CloudConnectorRules;
- * import com.pulumi.cloudflare.CloudConnectorRulesArgs;
- * import com.pulumi.cloudflare.inputs.CloudConnectorRulesRuleArgs;
- * import com.pulumi.cloudflare.inputs.CloudConnectorRulesRuleParametersArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleCloudConnectorRules = new CloudConnectorRules("exampleCloudConnectorRules", CloudConnectorRulesArgs.builder()
- *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .rules(CloudConnectorRulesRuleArgs.builder()
- *                 .id("95c365e17e1b46599cd99e5b231fac4e")
- *                 .description("Rule description")
- *                 .enabled(true)
- *                 .expression("http.cookie eq \"a=b\"")
- *                 .parameters(CloudConnectorRulesRuleParametersArgs.builder()
- *                     .host("examplebucket.s3.eu-north-1.amazonaws.com")
- *                     .build())
- *                 .cloud_provider("aws_s3")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

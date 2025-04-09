@@ -20,66 +20,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.Ruleset;
- * import com.pulumi.cloudflare.RulesetArgs;
- * import com.pulumi.cloudflare.inputs.RulesetRuleArgs;
- * import com.pulumi.cloudflare.inputs.RulesetRuleLoggingArgs;
- * import com.pulumi.cloudflare.inputs.RulesetRuleRatelimitArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleRuleset = new Ruleset("exampleRuleset", RulesetArgs.builder()
- *             .kind("managed")
- *             .name("My ruleset")
- *             .phase("ddos_l4")
- *             .zoneId("zone_id")
- *             .description("My ruleset to execute managed rulesets")
- *             .rules(RulesetRuleArgs.builder()
- *                 .id("3a03d665bac047339bb530ecb439a90d")
- *                 .action("block")
- *                 .action_parameters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                 .description("Block when the IP address is not 1.1.1.1")
- *                 .enabled(true)
- *                 .exposed_credential_check(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                 .expression("ip.src ne 1.1.1.1")
- *                 .logging(RulesetRuleLoggingArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .ratelimit(RulesetRuleRatelimitArgs.builder()
- *                     .characteristics("ip.src")
- *                     .period(10)
- *                     .countingExpression("http.request.body.raw eq \"abcd\"")
- *                     .mitigationTimeout(600)
- *                     .requestsPerPeriod(1000)
- *                     .requestsToOrigin(true)
- *                     .scorePerPeriod(400)
- *                     .scoreResponseHeaderName("my-score")
- *                     .build())
- *                 .ref("my_ref")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -18,60 +18,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AccountDnsSettings;
- * import com.pulumi.cloudflare.AccountDnsSettingsArgs;
- * import com.pulumi.cloudflare.inputs.AccountDnsSettingsZoneDefaultsArgs;
- * import com.pulumi.cloudflare.inputs.AccountDnsSettingsZoneDefaultsNameserversArgs;
- * import com.pulumi.cloudflare.inputs.AccountDnsSettingsZoneDefaultsSoaArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleAccountDnsSettings = new AccountDnsSettings("exampleAccountDnsSettings", AccountDnsSettingsArgs.builder()
- *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .zoneDefaults(AccountDnsSettingsZoneDefaultsArgs.builder()
- *                 .flatten_all_cnames(false)
- *                 .foundation_dns(false)
- *                 .internal_dns(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                 .multi_provider(false)
- *                 .nameservers(AccountDnsSettingsZoneDefaultsNameserversArgs.builder()
- *                     .type("cloudflare.standard")
- *                     .build())
- *                 .ns_ttl(86400)
- *                 .secondary_overrides(false)
- *                 .soa(AccountDnsSettingsZoneDefaultsSoaArgs.builder()
- *                     .expire(604800)
- *                     .minTtl(1800)
- *                     .mname("kristina.ns.cloudflare.com")
- *                     .refresh(10000)
- *                     .retry(2400)
- *                     .rname("admin.example.com")
- *                     .ttl(3600)
- *                     .build())
- *                 .zone_mode("standard")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

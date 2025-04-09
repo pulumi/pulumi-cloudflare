@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleDnsZoneTransfersIncoming = new DnsZoneTransfersIncoming("exampleDnsZoneTransfersIncoming", DnsZoneTransfersIncomingArgs.builder()
  *             .zoneId("269d8f4853475ca241c4e730be286b20")
- *             .autoRefreshSeconds(86400)
+ *             .autoRefreshSeconds(86400.0)
  *             .name("www.example.com.")
  *             .peers(            
  *                 "23ff594956f20c2a721606e94745a8aa",

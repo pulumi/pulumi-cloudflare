@@ -20,47 +20,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.MagicTransitSiteWan;
- * import com.pulumi.cloudflare.MagicTransitSiteWanArgs;
- * import com.pulumi.cloudflare.inputs.MagicTransitSiteWanStaticAddressingArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleMagicTransitSiteWan = new MagicTransitSiteWan("exampleMagicTransitSiteWan", MagicTransitSiteWanArgs.builder()
- *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .siteId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .physport(1)
- *             .vlanTag(0)
- *             .name("name")
- *             .priority(0)
- *             .staticAddressing(MagicTransitSiteWanStaticAddressingArgs.builder()
- *                 .address("192.0.2.0/24")
- *                 .gateway_address("192.0.2.1")
- *                 .secondary_address("192.0.2.0/24")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

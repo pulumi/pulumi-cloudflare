@@ -44,8 +44,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleImage = new Image("exampleImage", ImageArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .file()
- *             .metadata()
+ *             .file(Map.ofEntries(
+ *             ))
+ *             .metadata(Map.ofEntries(
+ *             ))
  *             .requireSignedUrls(true)
  *             .url("https://example.com/path/to/logo.png")
  *             .build());

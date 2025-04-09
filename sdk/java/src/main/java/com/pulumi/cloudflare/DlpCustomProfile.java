@@ -26,55 +26,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDlpCustomProfile;
- * import com.pulumi.cloudflare.ZeroTrustDlpCustomProfileArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileProfileArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDlpCustomProfile = new ZeroTrustDlpCustomProfile("exampleZeroTrustDlpCustomProfile", ZeroTrustDlpCustomProfileArgs.builder()
- *             .accountId("account_id")
- *             .profiles(ZeroTrustDlpCustomProfileProfileArgs.builder()
- *                 .entries(ZeroTrustDlpCustomProfileProfileEntryArgs.builder()
- *                     .enabled(true)
- *                     .name("name")
- *                     .pattern(ZeroTrustDlpCustomProfileProfileEntryPatternArgs.builder()
- *                         .regex("regex")
- *                         .validation("luhn")
- *                         .build())
- *                     .build())
- *                 .name("name")
- *                 .ai_context_enabled(true)
- *                 .allowed_match_count(5)
- *                 .confidence_threshold("confidence_threshold")
- *                 .context_awareness(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                 .description("description")
- *                 .ocr_enabled(true)
- *                 .shared_entries(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

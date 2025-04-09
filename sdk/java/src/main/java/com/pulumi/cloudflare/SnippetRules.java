@@ -20,43 +20,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.SnippetRules;
- * import com.pulumi.cloudflare.SnippetRulesArgs;
- * import com.pulumi.cloudflare.inputs.SnippetRulesRuleArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleSnippetRules = new SnippetRules("exampleSnippetRules", SnippetRulesArgs.builder()
- *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .rules(SnippetRulesRuleArgs.builder()
- *                 .description("Rule description")
- *                 .enabled(true)
- *                 .expression("http.cookie eq \"a=b\"")
- *                 .snippet_name("snippet_name_01")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                     .body("<error>This request has been rate-limited.</error>")
  *                     .contentType("text/xml")
  *                     .build())
- *                 .timeout(86400)
+ *                 .timeout(86400.0)
  *                 .build())
  *             .match(RateLimitMatchArgs.builder()
  *                 .headers(RateLimitMatchHeaderArgs.builder()
@@ -85,8 +85,8 @@ import javax.annotation.Nullable;
  *                     .originTraffic(true)
  *                     .build())
  *                 .build())
- *             .period(900)
- *             .threshold(60)
+ *             .period(900.0)
+ *             .threshold(60.0)
  *             .build());
  * 
  *     }

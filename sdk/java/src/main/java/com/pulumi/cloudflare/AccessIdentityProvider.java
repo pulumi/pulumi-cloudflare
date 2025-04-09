@@ -22,59 +22,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessIdentityProvider;
- * import com.pulumi.cloudflare.ZeroTrustAccessIdentityProviderArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessIdentityProviderConfigArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessIdentityProviderScimConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessIdentityProvider = new ZeroTrustAccessIdentityProvider("exampleZeroTrustAccessIdentityProvider", ZeroTrustAccessIdentityProviderArgs.builder()
- *             .config(ZeroTrustAccessIdentityProviderConfigArgs.builder()
- *                 .claims(                
- *                     "email_verified",
- *                     "preferred_username",
- *                     "custom_claim_name")
- *                 .client_id("<your client id>")
- *                 .client_secret("<your client secret>")
- *                 .conditional_access_enabled(true)
- *                 .directory_id("<your azure directory uuid>")
- *                 .email_claim_name("custom_claim_name")
- *                 .prompt("login")
- *                 .support_groups(true)
- *                 .build())
- *             .name("Widget Corps IDP")
- *             .type("onetimepin")
- *             .zoneId("zone_id")
- *             .scimConfig(ZeroTrustAccessIdentityProviderScimConfigArgs.builder()
- *                 .enabled(true)
- *                 .identity_update_behavior("automatic")
- *                 .seat_deprovision(true)
- *                 .user_deprovision(true)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

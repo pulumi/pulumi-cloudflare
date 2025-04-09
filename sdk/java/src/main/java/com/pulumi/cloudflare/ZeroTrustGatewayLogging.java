@@ -47,9 +47,12 @@ import javax.annotation.Nullable;
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .redactPii(true)
  *             .settingsByRuleType(ZeroTrustGatewayLoggingSettingsByRuleTypeArgs.builder()
- *                 .dns()
- *                 .http()
- *                 .l4()
+ *                 .dns(Map.ofEntries(
+ *                 ))
+ *                 .http(Map.ofEntries(
+ *                 ))
+ *                 .l4(Map.ofEntries(
+ *                 ))
  *                 .build())
  *             .build());
  * 

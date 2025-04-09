@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleZeroTrustAccessKeyConfiguration = new ZeroTrustAccessKeyConfiguration("exampleZeroTrustAccessKeyConfiguration", ZeroTrustAccessKeyConfigurationArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .keyRotationIntervalDays(30)
+ *             .keyRotationIntervalDays(30.0)
  *             .build());
  * 
  *     }

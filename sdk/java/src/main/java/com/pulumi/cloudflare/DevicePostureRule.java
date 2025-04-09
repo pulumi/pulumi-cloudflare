@@ -22,53 +22,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDevicePostureRule;
- * import com.pulumi.cloudflare.ZeroTrustDevicePostureRuleArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDevicePostureRuleInputArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDevicePostureRuleMatchArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDevicePostureRule = new ZeroTrustDevicePostureRule("exampleZeroTrustDevicePostureRule", ZeroTrustDevicePostureRuleArgs.builder()
- *             .accountId("699d98642c564d2e855e9661899b7252")
- *             .name("Admin Serial Numbers")
- *             .type("file")
- *             .description("The rule for admin serial numbers")
- *             .expiration("1h")
- *             .input(ZeroTrustDevicePostureRuleInputArgs.builder()
- *                 .operating_system("windows")
- *                 .path("/bin/cat")
- *                 .exists(true)
- *                 .sha256("https://api.us-2.crowdstrike.com")
- *                 .thumbprint("0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e")
- *                 .build())
- *             .matches(ZeroTrustDevicePostureRuleMatchArgs.builder()
- *                 .platform("windows")
- *                 .build())
- *             .schedule("1h")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

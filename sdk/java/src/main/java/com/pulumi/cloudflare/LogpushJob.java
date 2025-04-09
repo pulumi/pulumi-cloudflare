@@ -22,65 +22,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.LogpushJob;
- * import com.pulumi.cloudflare.LogpushJobArgs;
- * import com.pulumi.cloudflare.inputs.LogpushJobOutputOptionsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleLogpushJob = new LogpushJob("exampleLogpushJob", LogpushJobArgs.builder()
- *             .destinationConf("s3://mybucket/logs?region=us-west-2")
- *             .zoneId("zone_id")
- *             .dataset("http_requests")
- *             .enabled(false)
- *             .frequency("high")
- *             .kind("edge")
- *             .logpullOptions("fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339")
- *             .maxUploadBytes(5000000)
- *             .maxUploadIntervalSeconds(30)
- *             .maxUploadRecords(1000)
- *             .name("example.com")
- *             .outputOptions(LogpushJobOutputOptionsArgs.builder()
- *                 .batch_prefix("batch_prefix")
- *                 .batch_suffix("batch_suffix")
- *                 .cve_2021_44228(true)
- *                 .field_delimiter("field_delimiter")
- *                 .field_names(                
- *                     "ClientIP",
- *                     "EdgeStartTimestamp",
- *                     "RayID")
- *                 .output_type("ndjson")
- *                 .record_delimiter("record_delimiter")
- *                 .record_prefix("record_prefix")
- *                 .record_suffix("record_suffix")
- *                 .record_template("record_template")
- *                 .sample_rate(0)
- *                 .timestamp_format("unixnano")
- *                 .build())
- *             .ownershipChallenge("00000000000000000000")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

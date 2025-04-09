@@ -5910,38 +5910,6 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetApiShieldOperationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleApiShieldOperation = CloudflareFunctions.getApiShieldOperation(GetApiShieldOperationArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
-     *             .features("thresholds")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5952,38 +5920,6 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetApiShieldOperationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleApiShieldOperation = CloudflareFunctions.getApiShieldOperation(GetApiShieldOperationArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
-     *             .features("thresholds")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5994,38 +5930,6 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetApiShieldOperationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleApiShieldOperation = CloudflareFunctions.getApiShieldOperation(GetApiShieldOperationArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
-     *             .features("thresholds")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6036,38 +5940,6 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetApiShieldOperationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleApiShieldOperation = CloudflareFunctions.getApiShieldOperation(GetApiShieldOperationArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
-     *             .features("thresholds")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6078,38 +5950,6 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetApiShieldOperationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleApiShieldOperation = CloudflareFunctions.getApiShieldOperation(GetApiShieldOperationArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
-     *             .features("thresholds")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7472,7 +7312,8 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList();
+     *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList(GetApiTokenPermissionGroupsListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -7510,7 +7351,8 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList();
+     *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList(GetApiTokenPermissionGroupsListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -7548,7 +7390,8 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList();
+     *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList(GetApiTokenPermissionGroupsListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -7586,7 +7429,8 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList();
+     *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList(GetApiTokenPermissionGroupsListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -7624,7 +7468,8 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList();
+     *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList(GetApiTokenPermissionGroupsListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -7662,7 +7507,8 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList();
+     *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList(GetApiTokenPermissionGroupsListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -7700,7 +7546,8 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList();
+     *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList(GetApiTokenPermissionGroupsListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -43691,7 +43538,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUser = CloudflareFunctions.getUser();
+     *         final var exampleUser = CloudflareFunctions.getUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -43728,7 +43575,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUser = CloudflareFunctions.getUser();
+     *         final var exampleUser = CloudflareFunctions.getUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -43765,7 +43612,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUser = CloudflareFunctions.getUser();
+     *         final var exampleUser = CloudflareFunctions.getUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -43802,7 +43649,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUser = CloudflareFunctions.getUser();
+     *         final var exampleUser = CloudflareFunctions.getUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -43839,7 +43686,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUser = CloudflareFunctions.getUser();
+     *         final var exampleUser = CloudflareFunctions.getUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -43876,7 +43723,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUser = CloudflareFunctions.getUser();
+     *         final var exampleUser = CloudflareFunctions.getUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -43913,7 +43760,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUser = CloudflareFunctions.getUser();
+     *         final var exampleUser = CloudflareFunctions.getUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }

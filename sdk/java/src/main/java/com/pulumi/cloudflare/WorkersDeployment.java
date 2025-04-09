@@ -21,47 +21,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersDeployment;
- * import com.pulumi.cloudflare.WorkersDeploymentArgs;
- * import com.pulumi.cloudflare.inputs.WorkersDeploymentVersionArgs;
- * import com.pulumi.cloudflare.inputs.WorkersDeploymentAnnotationsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleWorkersDeployment = new WorkersDeployment("exampleWorkersDeployment", WorkersDeploymentArgs.builder()
- *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .scriptName("this-is_my_script-01")
- *             .strategy("percentage")
- *             .versions(WorkersDeploymentVersionArgs.builder()
- *                 .percentage(100)
- *                 .version_id("bcf48806-b317-4351-9ee7-36e7d557d4de")
- *                 .build())
- *             .annotations(WorkersDeploymentAnnotationsArgs.builder()
- *                 .workers_message("Deploy bug fix.")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

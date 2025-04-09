@@ -47,8 +47,8 @@ import javax.annotation.Nullable;
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .connectorId("connector_id")
  *             .activated(true)
- *             .interruptWindowDurationHours(0)
- *             .interruptWindowHourOfDay(0)
+ *             .interruptWindowDurationHours(0.0)
+ *             .interruptWindowHourOfDay(0.0)
  *             .notes("notes")
  *             .timezone("timezone")
  *             .build());
