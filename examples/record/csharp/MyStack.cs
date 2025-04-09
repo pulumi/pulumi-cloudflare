@@ -1,6 +1,6 @@
 using Pulumi;
 using Cloudflare = Pulumi.Cloudflare;
-using Inputs = Pulumi.Cloudflare.Inputs
+using Inputs = Pulumi.Cloudflare.Inputs;
 
 class MyStack : Stack
 {
