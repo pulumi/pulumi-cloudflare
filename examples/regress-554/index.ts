@@ -39,4 +39,6 @@ const ruleset = new cloudflare.Ruleset("domain-rate-limit", {
 
 export const importName = pulumi.interpolate`zone/${zoneId}/${ruleset.id}`;
 
-cloudflare.Ruleset.get("imported", importName);
+cloudflare.Ruleset.get("imported", importName, {
+  zoneId: zoneId,
+});
