@@ -13,17 +13,12 @@ import * as cloudflare from "@pulumi/cloudflare";
  * as incorrect data.
  */
 
-const accountId = pulumi.secret(process.env["CLOUDFLARE_ACCOUNT_ID"]!);
-
-const zone = cloudflare.getZoneOutput({
-  accountId,
-  name: "pulumi-cloudflare-demo.com",
-})
+const zoneId = pulumi.secret(process.env["CLOUDFLARE_ZONE_ID"]!);
 
 const ruleset = new cloudflare.Ruleset("domain-rate-limit", {
   name: "domain-rate-limit",
   kind: "zone",
-  zoneId: zone.zoneId,
+  zoneId: zoneId,
   phase: "http_request_transform",
 
   rules: [{
@@ -42,6 +37,6 @@ const ruleset = new cloudflare.Ruleset("domain-rate-limit", {
   }],
 });
 
-export const importName = pulumi.interpolate`zone/${zone.id}/${ruleset.id}`;
+export const importName = pulumi.interpolate`zone/${zoneId}/${ruleset.id}`;
 
 cloudflare.Ruleset.get("imported", importName);
