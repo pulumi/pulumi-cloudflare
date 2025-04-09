@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *                     .disableChunkedEncoding(false)
  *                     .bastionMode(false)
  *                     .proxyAddress("10.0.0.1")
- *                     .proxyPort("8123")
+ *                     .proxyPort(8123)
  *                     .proxyType("socks")
  *                     .ipRules(ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleArgs.builder()
  *                         .prefix("/web")

@@ -22,46 +22,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CloudConnectorRules;
- * import com.pulumi.cloudflare.CloudConnectorRulesArgs;
- * import com.pulumi.cloudflare.inputs.CloudConnectorRulesRuleArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new CloudConnectorRules("example", CloudConnectorRulesArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .rules(CloudConnectorRulesRuleArgs.builder()
- *                 .description("connect aws bucket")
- *                 .enabled(true)
- *                 .expression("http.uri")
- *                 .provider("aws_s3")
- *                 .parameters(CloudConnectorRulesRuleParametersArgs.builder()
- *                     .host("mystorage.s3.ams.amazonaws.com")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

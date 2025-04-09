@@ -193,7 +193,7 @@ public final class CloudflareFunctions {
      *             .domain("name.example.com")
      *             .type("self_hosted")
      *             .sessionDuration("24h")
-     *             .allowedIdps(example.applyValue(getAccessIdentityProviderResult -> getAccessIdentityProviderResult.id()))
+     *             .allowedIdps(example.id())
      *             .autoRedirectToIdentity(true)
      *             .build());
      * 
@@ -248,7 +248,7 @@ public final class CloudflareFunctions {
      *             .domain("name.example.com")
      *             .type("self_hosted")
      *             .sessionDuration("24h")
-     *             .allowedIdps(example.applyValue(getAccessIdentityProviderResult -> getAccessIdentityProviderResult.id()))
+     *             .allowedIdps(example.id())
      *             .autoRedirectToIdentity(true)
      *             .build());
      * 
@@ -303,7 +303,7 @@ public final class CloudflareFunctions {
      *             .domain("name.example.com")
      *             .type("self_hosted")
      *             .sessionDuration("24h")
-     *             .allowedIdps(example.applyValue(getAccessIdentityProviderResult -> getAccessIdentityProviderResult.id()))
+     *             .allowedIdps(example.id())
      *             .autoRedirectToIdentity(true)
      *             .build());
      * 
@@ -358,7 +358,7 @@ public final class CloudflareFunctions {
      *             .domain("name.example.com")
      *             .type("self_hosted")
      *             .sessionDuration("24h")
-     *             .allowedIdps(example.applyValue(getAccessIdentityProviderResult -> getAccessIdentityProviderResult.id()))
+     *             .allowedIdps(example.id())
      *             .autoRedirectToIdentity(true)
      *             .build());
      * 
@@ -413,7 +413,7 @@ public final class CloudflareFunctions {
      *             .domain("name.example.com")
      *             .type("self_hosted")
      *             .sessionDuration("24h")
-     *             .allowedIdps(example.applyValue(getAccessIdentityProviderResult -> getAccessIdentityProviderResult.id()))
+     *             .allowedIdps(example.id())
      *             .autoRedirectToIdentity(true)
      *             .build());
      * 
@@ -809,11 +809,11 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dnsReadPermissionId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.zone().DNS Read()));
-     *         ctx.export("accountLbMonitorsAndReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
-     *         ctx.export("userMembershipsReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().Memberships Read()));
+     *         ctx.export("dnsReadPermissionId", all.zone().DNS Read());
+     *         ctx.export("accountLbMonitorsAndReadId", all.account().Load Balancing: Monitors and Pools Read());
+     *         ctx.export("userMembershipsReadId", all.user().Memberships Read());
      *     }
      * }
      * }
@@ -852,11 +852,11 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dnsReadPermissionId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.zone().DNS Read()));
-     *         ctx.export("accountLbMonitorsAndReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
-     *         ctx.export("userMembershipsReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().Memberships Read()));
+     *         ctx.export("dnsReadPermissionId", all.zone().DNS Read());
+     *         ctx.export("accountLbMonitorsAndReadId", all.account().Load Balancing: Monitors and Pools Read());
+     *         ctx.export("userMembershipsReadId", all.user().Memberships Read());
      *     }
      * }
      * }
@@ -895,11 +895,11 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dnsReadPermissionId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.zone().DNS Read()));
-     *         ctx.export("accountLbMonitorsAndReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
-     *         ctx.export("userMembershipsReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().Memberships Read()));
+     *         ctx.export("dnsReadPermissionId", all.zone().DNS Read());
+     *         ctx.export("accountLbMonitorsAndReadId", all.account().Load Balancing: Monitors and Pools Read());
+     *         ctx.export("userMembershipsReadId", all.user().Memberships Read());
      *     }
      * }
      * }
@@ -938,11 +938,11 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dnsReadPermissionId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.zone().DNS Read()));
-     *         ctx.export("accountLbMonitorsAndReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
-     *         ctx.export("userMembershipsReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().Memberships Read()));
+     *         ctx.export("dnsReadPermissionId", all.zone().DNS Read());
+     *         ctx.export("accountLbMonitorsAndReadId", all.account().Load Balancing: Monitors and Pools Read());
+     *         ctx.export("userMembershipsReadId", all.user().Memberships Read());
      *     }
      * }
      * }
@@ -981,11 +981,11 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dnsReadPermissionId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.zone().DNS Read()));
-     *         ctx.export("accountLbMonitorsAndReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
-     *         ctx.export("userMembershipsReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().Memberships Read()));
+     *         ctx.export("dnsReadPermissionId", all.zone().DNS Read());
+     *         ctx.export("accountLbMonitorsAndReadId", all.account().Load Balancing: Monitors and Pools Read());
+     *         ctx.export("userMembershipsReadId", all.user().Memberships Read());
      *     }
      * }
      * }
@@ -1024,11 +1024,11 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dnsReadPermissionId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.zone().DNS Read()));
-     *         ctx.export("accountLbMonitorsAndReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
-     *         ctx.export("userMembershipsReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().Memberships Read()));
+     *         ctx.export("dnsReadPermissionId", all.zone().DNS Read());
+     *         ctx.export("accountLbMonitorsAndReadId", all.account().Load Balancing: Monitors and Pools Read());
+     *         ctx.export("userMembershipsReadId", all.user().Memberships Read());
      *     }
      * }
      * }
@@ -1067,11 +1067,11 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("dnsReadPermissionId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.zone().DNS Read()));
-     *         ctx.export("accountLbMonitorsAndReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
-     *         ctx.export("userMembershipsReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().Memberships Read()));
+     *         ctx.export("dnsReadPermissionId", all.zone().DNS Read());
+     *         ctx.export("accountLbMonitorsAndReadId", all.account().Load Balancing: Monitors and Pools Read());
+     *         ctx.export("userMembershipsReadId", all.user().Memberships Read());
      *     }
      * }
      * }
@@ -2211,7 +2211,7 @@ public final class CloudflareFunctions {
      *             .ipv4("198.51.100.1")
      *             .build());
      * 
-     *         ctx.export("targets", example.applyValue(getInfrastructureAccessTargetsResult -> getInfrastructureAccessTargetsResult.targets()));
+     *         ctx.export("targets", example.targets());
      *     }
      * }
      * }
@@ -2256,7 +2256,7 @@ public final class CloudflareFunctions {
      *             .ipv4("198.51.100.1")
      *             .build());
      * 
-     *         ctx.export("targets", example.applyValue(getInfrastructureAccessTargetsResult -> getInfrastructureAccessTargetsResult.targets()));
+     *         ctx.export("targets", example.targets());
      *     }
      * }
      * }
@@ -2301,7 +2301,7 @@ public final class CloudflareFunctions {
      *             .ipv4("198.51.100.1")
      *             .build());
      * 
-     *         ctx.export("targets", example.applyValue(getInfrastructureAccessTargetsResult -> getInfrastructureAccessTargetsResult.targets()));
+     *         ctx.export("targets", example.targets());
      *     }
      * }
      * }
@@ -2346,7 +2346,7 @@ public final class CloudflareFunctions {
      *             .ipv4("198.51.100.1")
      *             .build());
      * 
-     *         ctx.export("targets", example.applyValue(getInfrastructureAccessTargetsResult -> getInfrastructureAccessTargetsResult.targets()));
+     *         ctx.export("targets", example.targets());
      *     }
      * }
      * }
@@ -2391,7 +2391,7 @@ public final class CloudflareFunctions {
      *             .ipv4("198.51.100.1")
      *             .build());
      * 
-     *         ctx.export("targets", example.applyValue(getInfrastructureAccessTargetsResult -> getInfrastructureAccessTargetsResult.targets()));
+     *         ctx.export("targets", example.targets());
      *     }
      * }
      * }
@@ -2417,7 +2417,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
      * import com.pulumi.example.firewallResource;
-     * import com.pulumi.example.FirewallResourceArgs;
+     * import com.pulumi.example.firewallResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2431,13 +2431,16 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var cloudflare = CloudflareFunctions.getIpRanges();
+     *         final var cloudflare = CloudflareFunctions.getIpRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var example = new FirewallResource("example", FirewallResourceArgs.builder()
      *             .name("from-cloudflare")
      *             .network("default")
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
-     *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .sourceRanges(cloudflare.ipv4CidrBlocks())
+     *             .allow(List.of(Map.ofEntries(
+     *                 Map.entry("ports", "443"),
+     *                 Map.entry("protocol", "tcp")
+     *             )))
      *             .build());
      * 
      *     }
@@ -2465,7 +2468,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
      * import com.pulumi.example.firewallResource;
-     * import com.pulumi.example.FirewallResourceArgs;
+     * import com.pulumi.example.firewallResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2479,13 +2482,16 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var cloudflare = CloudflareFunctions.getIpRanges();
+     *         final var cloudflare = CloudflareFunctions.getIpRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var example = new FirewallResource("example", FirewallResourceArgs.builder()
      *             .name("from-cloudflare")
      *             .network("default")
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
-     *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .sourceRanges(cloudflare.ipv4CidrBlocks())
+     *             .allow(List.of(Map.ofEntries(
+     *                 Map.entry("ports", "443"),
+     *                 Map.entry("protocol", "tcp")
+     *             )))
      *             .build());
      * 
      *     }
@@ -2513,7 +2519,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
      * import com.pulumi.example.firewallResource;
-     * import com.pulumi.example.FirewallResourceArgs;
+     * import com.pulumi.example.firewallResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2527,13 +2533,16 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var cloudflare = CloudflareFunctions.getIpRanges();
+     *         final var cloudflare = CloudflareFunctions.getIpRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var example = new FirewallResource("example", FirewallResourceArgs.builder()
      *             .name("from-cloudflare")
      *             .network("default")
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
-     *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .sourceRanges(cloudflare.ipv4CidrBlocks())
+     *             .allow(List.of(Map.ofEntries(
+     *                 Map.entry("ports", "443"),
+     *                 Map.entry("protocol", "tcp")
+     *             )))
      *             .build());
      * 
      *     }
@@ -2561,7 +2570,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
      * import com.pulumi.example.firewallResource;
-     * import com.pulumi.example.FirewallResourceArgs;
+     * import com.pulumi.example.firewallResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2575,13 +2584,16 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var cloudflare = CloudflareFunctions.getIpRanges();
+     *         final var cloudflare = CloudflareFunctions.getIpRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var example = new FirewallResource("example", FirewallResourceArgs.builder()
      *             .name("from-cloudflare")
      *             .network("default")
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
-     *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .sourceRanges(cloudflare.ipv4CidrBlocks())
+     *             .allow(List.of(Map.ofEntries(
+     *                 Map.entry("ports", "443"),
+     *                 Map.entry("protocol", "tcp")
+     *             )))
      *             .build());
      * 
      *     }
@@ -2609,7 +2621,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
      * import com.pulumi.example.firewallResource;
-     * import com.pulumi.example.FirewallResourceArgs;
+     * import com.pulumi.example.firewallResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2623,13 +2635,16 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var cloudflare = CloudflareFunctions.getIpRanges();
+     *         final var cloudflare = CloudflareFunctions.getIpRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var example = new FirewallResource("example", FirewallResourceArgs.builder()
      *             .name("from-cloudflare")
      *             .network("default")
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
-     *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .sourceRanges(cloudflare.ipv4CidrBlocks())
+     *             .allow(List.of(Map.ofEntries(
+     *                 Map.entry("ports", "443"),
+     *                 Map.entry("protocol", "tcp")
+     *             )))
      *             .build());
      * 
      *     }
@@ -2657,7 +2672,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
      * import com.pulumi.example.firewallResource;
-     * import com.pulumi.example.FirewallResourceArgs;
+     * import com.pulumi.example.firewallResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2671,13 +2686,16 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var cloudflare = CloudflareFunctions.getIpRanges();
+     *         final var cloudflare = CloudflareFunctions.getIpRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var example = new FirewallResource("example", FirewallResourceArgs.builder()
      *             .name("from-cloudflare")
      *             .network("default")
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
-     *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .sourceRanges(cloudflare.ipv4CidrBlocks())
+     *             .allow(List.of(Map.ofEntries(
+     *                 Map.entry("ports", "443"),
+     *                 Map.entry("protocol", "tcp")
+     *             )))
      *             .build());
      * 
      *     }
@@ -2705,7 +2723,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
      * import com.pulumi.example.firewallResource;
-     * import com.pulumi.example.FirewallResourceArgs;
+     * import com.pulumi.example.firewallResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2719,13 +2737,16 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var cloudflare = CloudflareFunctions.getIpRanges();
+     *         final var cloudflare = CloudflareFunctions.getIpRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var example = new FirewallResource("example", FirewallResourceArgs.builder()
      *             .name("from-cloudflare")
      *             .network("default")
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
-     *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .sourceRanges(cloudflare.ipv4CidrBlocks())
+     *             .allow(List.of(Map.ofEntries(
+     *                 Map.entry("ports", "443"),
+     *                 Map.entry("protocol", "tcp")
+     *             )))
      *             .build());
      * 
      *     }
@@ -4820,15 +4841,15 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var me = CloudflareFunctions.getUser();
+     *         final var me = CloudflareFunctions.getUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var example = new ApiToken("example", ApiTokenArgs.builder()
      *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
-     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
-     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.applyValue(getUserResult -> getUserResult.id())), "*"))
+     *                 .permissionGroups(all.user().User Details Read())
+     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.id()), "*"))
      *                 .build())
      *             .build());
      * 
@@ -4872,15 +4893,15 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var me = CloudflareFunctions.getUser();
+     *         final var me = CloudflareFunctions.getUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var example = new ApiToken("example", ApiTokenArgs.builder()
      *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
-     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
-     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.applyValue(getUserResult -> getUserResult.id())), "*"))
+     *                 .permissionGroups(all.user().User Details Read())
+     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.id()), "*"))
      *                 .build())
      *             .build());
      * 
@@ -4924,15 +4945,15 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var me = CloudflareFunctions.getUser();
+     *         final var me = CloudflareFunctions.getUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var example = new ApiToken("example", ApiTokenArgs.builder()
      *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
-     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
-     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.applyValue(getUserResult -> getUserResult.id())), "*"))
+     *                 .permissionGroups(all.user().User Details Read())
+     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.id()), "*"))
      *                 .build())
      *             .build());
      * 
@@ -4976,15 +4997,15 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var me = CloudflareFunctions.getUser();
+     *         final var me = CloudflareFunctions.getUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var example = new ApiToken("example", ApiTokenArgs.builder()
      *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
-     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
-     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.applyValue(getUserResult -> getUserResult.id())), "*"))
+     *                 .permissionGroups(all.user().User Details Read())
+     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.id()), "*"))
      *                 .build())
      *             .build());
      * 
@@ -5028,15 +5049,15 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var me = CloudflareFunctions.getUser();
+     *         final var me = CloudflareFunctions.getUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var example = new ApiToken("example", ApiTokenArgs.builder()
      *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
-     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
-     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.applyValue(getUserResult -> getUserResult.id())), "*"))
+     *                 .permissionGroups(all.user().User Details Read())
+     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.id()), "*"))
      *                 .build())
      *             .build());
      * 
@@ -5080,15 +5101,15 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var me = CloudflareFunctions.getUser();
+     *         final var me = CloudflareFunctions.getUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var example = new ApiToken("example", ApiTokenArgs.builder()
      *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
-     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
-     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.applyValue(getUserResult -> getUserResult.id())), "*"))
+     *                 .permissionGroups(all.user().User Details Read())
+     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.id()), "*"))
      *                 .build())
      *             .build());
      * 
@@ -5132,15 +5153,15 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var me = CloudflareFunctions.getUser();
+     *         final var me = CloudflareFunctions.getUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var example = new ApiToken("example", ApiTokenArgs.builder()
      *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
-     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
-     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.applyValue(getUserResult -> getUserResult.id())), "*"))
+     *                 .permissionGroups(all.user().User Details Read())
+     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.id()), "*"))
      *                 .build())
      *             .build());
      * 
@@ -5272,7 +5293,7 @@ public final class CloudflareFunctions {
      *             .ipv4("198.51.100.1")
      *             .build());
      * 
-     *         ctx.export("targets", example.applyValue(getZeroTrustInfrastructureAccessTargetsResult -> getZeroTrustInfrastructureAccessTargetsResult.targets()));
+     *         ctx.export("targets", example.targets());
      *     }
      * }
      * }
@@ -5317,7 +5338,7 @@ public final class CloudflareFunctions {
      *             .ipv4("198.51.100.1")
      *             .build());
      * 
-     *         ctx.export("targets", example.applyValue(getZeroTrustInfrastructureAccessTargetsResult -> getZeroTrustInfrastructureAccessTargetsResult.targets()));
+     *         ctx.export("targets", example.targets());
      *     }
      * }
      * }
@@ -5362,7 +5383,7 @@ public final class CloudflareFunctions {
      *             .ipv4("198.51.100.1")
      *             .build());
      * 
-     *         ctx.export("targets", example.applyValue(getZeroTrustInfrastructureAccessTargetsResult -> getZeroTrustInfrastructureAccessTargetsResult.targets()));
+     *         ctx.export("targets", example.targets());
      *     }
      * }
      * }
@@ -5407,7 +5428,7 @@ public final class CloudflareFunctions {
      *             .ipv4("198.51.100.1")
      *             .build());
      * 
-     *         ctx.export("targets", example.applyValue(getZeroTrustInfrastructureAccessTargetsResult -> getZeroTrustInfrastructureAccessTargetsResult.targets()));
+     *         ctx.export("targets", example.targets());
      *     }
      * }
      * }
@@ -5452,7 +5473,7 @@ public final class CloudflareFunctions {
      *             .ipv4("198.51.100.1")
      *             .build());
      * 
-     *         ctx.export("targets", example.applyValue(getZeroTrustInfrastructureAccessTargetsResult -> getZeroTrustInfrastructureAccessTargetsResult.targets()));
+     *         ctx.export("targets", example.targets());
      *     }
      * }
      * }
@@ -5574,7 +5595,7 @@ public final class CloudflareFunctions {
      *             .build());
      * 
      *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
-     *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
+     *             .zoneId(example.id())
      *             .name("www")
      *             .content("203.0.113.1")
      *             .type("A")
@@ -5632,7 +5653,7 @@ public final class CloudflareFunctions {
      *             .build());
      * 
      *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
-     *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
+     *             .zoneId(example.id())
      *             .name("www")
      *             .content("203.0.113.1")
      *             .type("A")
@@ -5690,7 +5711,7 @@ public final class CloudflareFunctions {
      *             .build());
      * 
      *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
-     *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
+     *             .zoneId(example.id())
      *             .name("www")
      *             .content("203.0.113.1")
      *             .type("A")
@@ -5748,7 +5769,7 @@ public final class CloudflareFunctions {
      *             .build());
      * 
      *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
-     *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
+     *             .zoneId(example.id())
      *             .name("www")
      *             .content("203.0.113.1")
      *             .type("A")
@@ -5806,7 +5827,7 @@ public final class CloudflareFunctions {
      *             .build());
      * 
      *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
-     *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
+     *             .zoneId(example.id())
      *             .name("www")
      *             .content("203.0.113.1")
      *             .type("A")
@@ -5864,7 +5885,7 @@ public final class CloudflareFunctions {
      *             .build());
      * 
      *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
-     *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
+     *             .zoneId(example.id())
      *             .name("www")
      *             .content("203.0.113.1")
      *             .type("A")
@@ -5922,7 +5943,7 @@ public final class CloudflareFunctions {
      *             .build());
      * 
      *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
-     *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
+     *             .zoneId(example.id())
      *             .name("www")
      *             .content("203.0.113.1")
      *             .type("A")
