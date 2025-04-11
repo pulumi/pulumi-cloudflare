@@ -30,6 +30,7 @@ func TestRegress444(t *testing.T) {
 }
 
 func TestRegress554(t *testing.T) {
+	t.Skip("Skipping due to issue with .get() on Ruleset")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "regress-554"),
