@@ -4,8 +4,11 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ApiShieldAuthIdCharacteristicArgs;
+import com.pulumi.cloudflare.inputs.ApiShieldErrorArgs;
+import com.pulumi.cloudflare.inputs.ApiShieldMessageArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,30 +20,51 @@ public final class ApiShieldState extends com.pulumi.resources.ResourceArgs {
 
     public static final ApiShieldState Empty = new ApiShieldState();
 
-    /**
-     * Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-     * 
-     */
     @Import(name="authIdCharacteristics")
     private @Nullable Output<List<ApiShieldAuthIdCharacteristicArgs>> authIdCharacteristics;
 
-    /**
-     * @return Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-     * 
-     */
     public Optional<Output<List<ApiShieldAuthIdCharacteristicArgs>>> authIdCharacteristics() {
         return Optional.ofNullable(this.authIdCharacteristics);
     }
 
+    @Import(name="errors")
+    private @Nullable Output<List<ApiShieldErrorArgs>> errors;
+
+    public Optional<Output<List<ApiShieldErrorArgs>>> errors() {
+        return Optional.ofNullable(this.errors);
+    }
+
+    @Import(name="messages")
+    private @Nullable Output<List<ApiShieldMessageArgs>> messages;
+
+    public Optional<Output<List<ApiShieldMessageArgs>>> messages() {
+        return Optional.ofNullable(this.messages);
+    }
+
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Whether the API call was successful
+     * 
+     */
+    @Import(name="success")
+    private @Nullable Output<Boolean> success;
+
+    /**
+     * @return Whether the API call was successful
+     * 
+     */
+    public Optional<Output<Boolean>> success() {
+        return Optional.ofNullable(this.success);
+    }
+
+    /**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -51,6 +75,9 @@ public final class ApiShieldState extends com.pulumi.resources.ResourceArgs {
 
     private ApiShieldState(ApiShieldState $) {
         this.authIdCharacteristics = $.authIdCharacteristics;
+        this.errors = $.errors;
+        this.messages = $.messages;
+        this.success = $.success;
         this.zoneId = $.zoneId;
     }
 
@@ -72,39 +99,68 @@ public final class ApiShieldState extends com.pulumi.resources.ResourceArgs {
             $ = new ApiShieldState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param authIdCharacteristics Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder authIdCharacteristics(@Nullable Output<List<ApiShieldAuthIdCharacteristicArgs>> authIdCharacteristics) {
             $.authIdCharacteristics = authIdCharacteristics;
             return this;
         }
 
-        /**
-         * @param authIdCharacteristics Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder authIdCharacteristics(List<ApiShieldAuthIdCharacteristicArgs> authIdCharacteristics) {
             return authIdCharacteristics(Output.of(authIdCharacteristics));
         }
 
-        /**
-         * @param authIdCharacteristics Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder authIdCharacteristics(ApiShieldAuthIdCharacteristicArgs... authIdCharacteristics) {
             return authIdCharacteristics(List.of(authIdCharacteristics));
         }
 
+        public Builder errors(@Nullable Output<List<ApiShieldErrorArgs>> errors) {
+            $.errors = errors;
+            return this;
+        }
+
+        public Builder errors(List<ApiShieldErrorArgs> errors) {
+            return errors(Output.of(errors));
+        }
+
+        public Builder errors(ApiShieldErrorArgs... errors) {
+            return errors(List.of(errors));
+        }
+
+        public Builder messages(@Nullable Output<List<ApiShieldMessageArgs>> messages) {
+            $.messages = messages;
+            return this;
+        }
+
+        public Builder messages(List<ApiShieldMessageArgs> messages) {
+            return messages(Output.of(messages));
+        }
+
+        public Builder messages(ApiShieldMessageArgs... messages) {
+            return messages(List.of(messages));
+        }
+
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param success Whether the API call was successful
+         * 
+         * @return builder
+         * 
+         */
+        public Builder success(@Nullable Output<Boolean> success) {
+            $.success = success;
+            return this;
+        }
+
+        /**
+         * @param success Whether the API call was successful
+         * 
+         * @return builder
+         * 
+         */
+        public Builder success(Boolean success) {
+            return success(Output.of(success));
+        }
+
+        /**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -115,7 +171,7 @@ public final class ApiShieldState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

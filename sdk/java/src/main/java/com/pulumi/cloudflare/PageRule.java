@@ -13,136 +13,110 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare page rule resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.PageRule;
- * import com.pulumi.cloudflare.PageRuleArgs;
- * import com.pulumi.cloudflare.inputs.PageRuleActionsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Add a page rule to the domain
- *         var foobar = new PageRule("foobar", PageRuleArgs.builder()
- *             .zoneId(cloudflareZoneId)
- *             .target(String.format("sub.%s/page", cloudflareZone))
- *             .priority(1)
- *             .actions(PageRuleActionsArgs.builder()
- *                 .ssl("flexible")
- *                 .emailObfuscation("on")
- *                 .minifies(PageRuleActionsMinifyArgs.builder()
- *                     .html("off")
- *                     .css("on")
- *                     .js("on")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * Page rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.
- * 
  * ```sh
- * $ pulumi import cloudflare:index/pageRule:PageRule default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
+ * $ pulumi import cloudflare:index/pageRule:PageRule example &#39;&lt;zone_id&gt;/&lt;pagerule_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/pageRule:PageRule")
 public class PageRule extends com.pulumi.resources.CustomResource {
-    /**
-     * The actions taken by the page rule, options given below.
-     * 
-     */
     @Export(name="actions", refs={PageRuleActions.class}, tree="[0]")
     private Output<PageRuleActions> actions;
 
-    /**
-     * @return The actions taken by the page rule, options given below.
-     * 
-     */
     public Output<PageRuleActions> actions() {
         return this.actions;
     }
     /**
-     * The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+     * The timestamp of when the Page Rule was created.
+     * 
+     */
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
+
+    /**
+     * @return The timestamp of when the Page Rule was created.
+     * 
+     */
+    public Output<String> createdOn() {
+        return this.createdOn;
+    }
+    /**
+     * The timestamp of when the Page Rule was last modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return The timestamp of when the Page Rule was last modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * The priority of the rule, used to define which Page Rule is processed
+     * over another. A higher number indicates a higher priority. For example,
+     * if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+     * specific Page Rule to take precedence (rule B: `/images/special/*`),
+     * specify a higher priority for rule B so it overrides rule A.
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> priority;
+    private Output<Integer> priority;
 
     /**
-     * @return The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+     * @return The priority of the rule, used to define which Page Rule is processed
+     * over another. A higher number indicates a higher priority. For example,
+     * if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+     * specific Page Rule to take precedence (rule B: `/images/special/*`),
+     * specify a higher priority for rule B so it overrides rule A.
      * 
      */
-    public Output<Optional<Integer>> priority() {
-        return Codegen.optional(this.priority);
+    public Output<Integer> priority() {
+        return this.priority;
     }
     /**
-     * Whether the page rule is active or disabled.
+     * The status of the Page Rule.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> status;
+    private Output<String> status;
 
     /**
-     * @return Whether the page rule is active or disabled.
+     * @return The status of the Page Rule.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;.
      * 
      */
-    public Output<Optional<String>> status() {
-        return Codegen.optional(this.status);
+    public Output<String> status() {
+        return this.status;
     }
-    /**
-     * The URL pattern to target with the page rule.
-     * 
-     */
     @Export(name="target", refs={String.class}, tree="[0]")
     private Output<String> target;
 
-    /**
-     * @return The URL pattern to target with the page rule.
-     * 
-     */
     public Output<String> target() {
         return this.target;
     }
     /**
-     * The DNS zone ID to which the page rule should be added.
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The DNS zone ID to which the page rule should be added.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

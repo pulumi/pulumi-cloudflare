@@ -14,122 +14,72 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['StaticRouteArgs', 'StaticRoute']
 
 @pulumi.input_type
 class StaticRouteArgs:
     def __init__(__self__, *,
-                 nexthop: pulumi.Input[builtins.str],
-                 prefix: pulumi.Input[builtins.str],
-                 priority: pulumi.Input[builtins.int],
-                 account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 colo_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-                 colo_regions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 account_id: pulumi.Input[builtins.str],
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 nexthop: Optional[pulumi.Input[builtins.str]] = None,
+                 prefix: Optional[pulumi.Input[builtins.str]] = None,
+                 priority: Optional[pulumi.Input[builtins.int]] = None,
+                 route: Optional[pulumi.Input['StaticRouteRouteArgs']] = None,
+                 route_id: Optional[pulumi.Input[builtins.str]] = None,
+                 routes: Optional[pulumi.Input[Sequence[pulumi.Input['StaticRouteRouteArgs']]]] = None,
+                 scope: Optional[pulumi.Input['StaticRouteScopeArgs']] = None,
                  weight: Optional[pulumi.Input[builtins.int]] = None):
         """
         The set of arguments for constructing a StaticRoute resource.
-        :param pulumi.Input[builtins.str] nexthop: The nexthop IP address where traffic will be routed to.
-        :param pulumi.Input[builtins.str] prefix: Your network prefix using CIDR notation.
-        :param pulumi.Input[builtins.int] priority: The priority for the static route.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] colo_names: List of Cloudflare colocation regions for this static route.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] colo_regions: List of Cloudflare colocation names for this static route.
-        :param pulumi.Input[builtins.str] description: Description of the static route.
-        :param pulumi.Input[builtins.int] weight: The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] description: An optional human provided description of the static route.
+        :param pulumi.Input[builtins.str] nexthop: The next-hop IP Address for the static route.
+        :param pulumi.Input[builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
+        :param pulumi.Input[builtins.int] priority: Priority of the static route.
+        :param pulumi.Input[builtins.str] route_id: Identifier
+        :param pulumi.Input['StaticRouteScopeArgs'] scope: Used only for ECMP routes.
+        :param pulumi.Input[builtins.int] weight: Optional weight of the ECMP scope - if provided.
         """
-        pulumi.set(__self__, "nexthop", nexthop)
-        pulumi.set(__self__, "prefix", prefix)
-        pulumi.set(__self__, "priority", priority)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
-        if colo_names is not None:
-            pulumi.set(__self__, "colo_names", colo_names)
-        if colo_regions is not None:
-            pulumi.set(__self__, "colo_regions", colo_regions)
+        pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if nexthop is not None:
+            pulumi.set(__self__, "nexthop", nexthop)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if route is not None:
+            pulumi.set(__self__, "route", route)
+        if route_id is not None:
+            pulumi.set(__self__, "route_id", route_id)
+        if routes is not None:
+            pulumi.set(__self__, "routes", routes)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
         if weight is not None:
             pulumi.set(__self__, "weight", weight)
 
     @property
-    @pulumi.getter
-    def nexthop(self) -> pulumi.Input[builtins.str]:
-        """
-        The nexthop IP address where traffic will be routed to.
-        """
-        return pulumi.get(self, "nexthop")
-
-    @nexthop.setter
-    def nexthop(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "nexthop", value)
-
-    @property
-    @pulumi.getter
-    def prefix(self) -> pulumi.Input[builtins.str]:
-        """
-        Your network prefix using CIDR notation.
-        """
-        return pulumi.get(self, "prefix")
-
-    @prefix.setter
-    def prefix(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "prefix", value)
-
-    @property
-    @pulumi.getter
-    def priority(self) -> pulumi.Input[builtins.int]:
-        """
-        The priority for the static route.
-        """
-        return pulumi.get(self, "priority")
-
-    @priority.setter
-    def priority(self, value: pulumi.Input[builtins.int]):
-        pulumi.set(self, "priority", value)
-
-    @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
+    def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
+    def account_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "account_id", value)
-
-    @property
-    @pulumi.getter(name="coloNames")
-    def colo_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
-        """
-        List of Cloudflare colocation regions for this static route.
-        """
-        return pulumi.get(self, "colo_names")
-
-    @colo_names.setter
-    def colo_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
-        pulumi.set(self, "colo_names", value)
-
-    @property
-    @pulumi.getter(name="coloRegions")
-    def colo_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
-        """
-        List of Cloudflare colocation names for this static route.
-        """
-        return pulumi.get(self, "colo_regions")
-
-    @colo_regions.setter
-    def colo_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
-        pulumi.set(self, "colo_regions", value)
 
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Description of the static route.
+        An optional human provided description of the static route.
         """
         return pulumi.get(self, "description")
 
@@ -139,9 +89,87 @@ class StaticRouteArgs:
 
     @property
     @pulumi.getter
+    def nexthop(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The next-hop IP Address for the static route.
+        """
+        return pulumi.get(self, "nexthop")
+
+    @nexthop.setter
+    def nexthop(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "nexthop", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        IP Prefix in Classless Inter-Domain Routing format.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Priority of the static route.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def route(self) -> Optional[pulumi.Input['StaticRouteRouteArgs']]:
+        return pulumi.get(self, "route")
+
+    @route.setter
+    def route(self, value: Optional[pulumi.Input['StaticRouteRouteArgs']]):
+        pulumi.set(self, "route", value)
+
+    @property
+    @pulumi.getter(name="routeId")
+    def route_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "route_id")
+
+    @route_id.setter
+    def route_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "route_id", value)
+
+    @property
+    @pulumi.getter
+    def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StaticRouteRouteArgs']]]]:
+        return pulumi.get(self, "routes")
+
+    @routes.setter
+    def routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StaticRouteRouteArgs']]]]):
+        pulumi.set(self, "routes", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input['StaticRouteScopeArgs']]:
+        """
+        Used only for ECMP routes.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input['StaticRouteScopeArgs']]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+        Optional weight of the ECMP scope - if provided.
         """
         return pulumi.get(self, "weight")
 
@@ -154,38 +182,50 @@ class StaticRouteArgs:
 class _StaticRouteState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 colo_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-                 colo_regions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 modified: Optional[pulumi.Input[builtins.bool]] = None,
+                 modified_route: Optional[pulumi.Input['StaticRouteModifiedRouteArgs']] = None,
                  nexthop: Optional[pulumi.Input[builtins.str]] = None,
                  prefix: Optional[pulumi.Input[builtins.str]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
+                 route: Optional[pulumi.Input['StaticRouteRouteArgs']] = None,
+                 route_id: Optional[pulumi.Input[builtins.str]] = None,
+                 routes: Optional[pulumi.Input[Sequence[pulumi.Input['StaticRouteRouteArgs']]]] = None,
+                 scope: Optional[pulumi.Input['StaticRouteScopeArgs']] = None,
                  weight: Optional[pulumi.Input[builtins.int]] = None):
         """
         Input properties used for looking up and filtering StaticRoute resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] colo_names: List of Cloudflare colocation regions for this static route.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] colo_regions: List of Cloudflare colocation names for this static route.
-        :param pulumi.Input[builtins.str] description: Description of the static route.
-        :param pulumi.Input[builtins.str] nexthop: The nexthop IP address where traffic will be routed to.
-        :param pulumi.Input[builtins.str] prefix: Your network prefix using CIDR notation.
-        :param pulumi.Input[builtins.int] priority: The priority for the static route.
-        :param pulumi.Input[builtins.int] weight: The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] description: An optional human provided description of the static route.
+        :param pulumi.Input[builtins.str] nexthop: The next-hop IP Address for the static route.
+        :param pulumi.Input[builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
+        :param pulumi.Input[builtins.int] priority: Priority of the static route.
+        :param pulumi.Input[builtins.str] route_id: Identifier
+        :param pulumi.Input['StaticRouteScopeArgs'] scope: Used only for ECMP routes.
+        :param pulumi.Input[builtins.int] weight: Optional weight of the ECMP scope - if provided.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if colo_names is not None:
-            pulumi.set(__self__, "colo_names", colo_names)
-        if colo_regions is not None:
-            pulumi.set(__self__, "colo_regions", colo_regions)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if modified is not None:
+            pulumi.set(__self__, "modified", modified)
+        if modified_route is not None:
+            pulumi.set(__self__, "modified_route", modified_route)
         if nexthop is not None:
             pulumi.set(__self__, "nexthop", nexthop)
         if prefix is not None:
             pulumi.set(__self__, "prefix", prefix)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if route is not None:
+            pulumi.set(__self__, "route", route)
+        if route_id is not None:
+            pulumi.set(__self__, "route_id", route_id)
+        if routes is not None:
+            pulumi.set(__self__, "routes", routes)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
         if weight is not None:
             pulumi.set(__self__, "weight", weight)
 
@@ -193,7 +233,7 @@ class _StaticRouteState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -202,34 +242,10 @@ class _StaticRouteState:
         pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter(name="coloNames")
-    def colo_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
-        """
-        List of Cloudflare colocation regions for this static route.
-        """
-        return pulumi.get(self, "colo_names")
-
-    @colo_names.setter
-    def colo_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
-        pulumi.set(self, "colo_names", value)
-
-    @property
-    @pulumi.getter(name="coloRegions")
-    def colo_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
-        """
-        List of Cloudflare colocation names for this static route.
-        """
-        return pulumi.get(self, "colo_regions")
-
-    @colo_regions.setter
-    def colo_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
-        pulumi.set(self, "colo_regions", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Description of the static route.
+        An optional human provided description of the static route.
         """
         return pulumi.get(self, "description")
 
@@ -239,9 +255,27 @@ class _StaticRouteState:
 
     @property
     @pulumi.getter
+    def modified(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "modified")
+
+    @modified.setter
+    def modified(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "modified", value)
+
+    @property
+    @pulumi.getter(name="modifiedRoute")
+    def modified_route(self) -> Optional[pulumi.Input['StaticRouteModifiedRouteArgs']]:
+        return pulumi.get(self, "modified_route")
+
+    @modified_route.setter
+    def modified_route(self, value: Optional[pulumi.Input['StaticRouteModifiedRouteArgs']]):
+        pulumi.set(self, "modified_route", value)
+
+    @property
+    @pulumi.getter
     def nexthop(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The nexthop IP address where traffic will be routed to.
+        The next-hop IP Address for the static route.
         """
         return pulumi.get(self, "nexthop")
 
@@ -253,7 +287,7 @@ class _StaticRouteState:
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Your network prefix using CIDR notation.
+        IP Prefix in Classless Inter-Domain Routing format.
         """
         return pulumi.get(self, "prefix")
 
@@ -265,7 +299,7 @@ class _StaticRouteState:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The priority for the static route.
+        Priority of the static route.
         """
         return pulumi.get(self, "priority")
 
@@ -275,9 +309,51 @@ class _StaticRouteState:
 
     @property
     @pulumi.getter
+    def route(self) -> Optional[pulumi.Input['StaticRouteRouteArgs']]:
+        return pulumi.get(self, "route")
+
+    @route.setter
+    def route(self, value: Optional[pulumi.Input['StaticRouteRouteArgs']]):
+        pulumi.set(self, "route", value)
+
+    @property
+    @pulumi.getter(name="routeId")
+    def route_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "route_id")
+
+    @route_id.setter
+    def route_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "route_id", value)
+
+    @property
+    @pulumi.getter
+    def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StaticRouteRouteArgs']]]]:
+        return pulumi.get(self, "routes")
+
+    @routes.setter
+    def routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StaticRouteRouteArgs']]]]):
+        pulumi.set(self, "routes", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input['StaticRouteScopeArgs']]:
+        """
+        Used only for ECMP routes.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input['StaticRouteScopeArgs']]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+        Optional weight of the ECMP scope - if provided.
         """
         return pulumi.get(self, "weight")
 
@@ -286,58 +362,47 @@ class _StaticRouteState:
         pulumi.set(self, "weight", value)
 
 
+warnings.warn("""cloudflare.index/staticroute.StaticRoute has been deprecated in favor of cloudflare.index/magicwanstaticroute.MagicWanStaticRoute""", DeprecationWarning)
+
+
 class StaticRoute(pulumi.CustomResource):
+    warnings.warn("""cloudflare.index/staticroute.StaticRoute has been deprecated in favor of cloudflare.index/magicwanstaticroute.MagicWanStaticRoute""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 colo_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-                 colo_regions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  nexthop: Optional[pulumi.Input[builtins.str]] = None,
                  prefix: Optional[pulumi.Input[builtins.str]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
+                 route: Optional[pulumi.Input[Union['StaticRouteRouteArgs', 'StaticRouteRouteArgsDict']]] = None,
+                 route_id: Optional[pulumi.Input[builtins.str]] = None,
+                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StaticRouteRouteArgs', 'StaticRouteRouteArgsDict']]]]] = None,
+                 scope: Optional[pulumi.Input[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict']]] = None,
                  weight: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
         """
-        Provides a resource, that manages Cloudflare static routes for Magic
-        Transit or Magic WAN. Static routes are used to route traffic
-        through GRE tunnels.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.StaticRoute("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            description="New route for new prefix 192.0.2.0/24",
-            prefix="192.0.2.0/24",
-            nexthop="10.0.0.0",
-            priority=100,
-            weight=10,
-            colo_names=["den01"],
-            colo_regions=["APAC"])
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import cloudflare:index/staticRoute:StaticRoute example <account_id>/<static_route_id>
+        example_magic_wan_static_route = cloudflare.MagicWanStaticRoute("example_magic_wan_static_route", account_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] colo_names: List of Cloudflare colocation regions for this static route.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] colo_regions: List of Cloudflare colocation names for this static route.
-        :param pulumi.Input[builtins.str] description: Description of the static route.
-        :param pulumi.Input[builtins.str] nexthop: The nexthop IP address where traffic will be routed to.
-        :param pulumi.Input[builtins.str] prefix: Your network prefix using CIDR notation.
-        :param pulumi.Input[builtins.int] priority: The priority for the static route.
-        :param pulumi.Input[builtins.int] weight: The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] description: An optional human provided description of the static route.
+        :param pulumi.Input[builtins.str] nexthop: The next-hop IP Address for the static route.
+        :param pulumi.Input[builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
+        :param pulumi.Input[builtins.int] priority: Priority of the static route.
+        :param pulumi.Input[builtins.str] route_id: Identifier
+        :param pulumi.Input[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict']] scope: Used only for ECMP routes.
+        :param pulumi.Input[builtins.int] weight: Optional weight of the ECMP scope - if provided.
         """
         ...
     @overload
@@ -346,31 +411,13 @@ class StaticRoute(pulumi.CustomResource):
                  args: StaticRouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource, that manages Cloudflare static routes for Magic
-        Transit or Magic WAN. Static routes are used to route traffic
-        through GRE tunnels.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.StaticRoute("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            description="New route for new prefix 192.0.2.0/24",
-            prefix="192.0.2.0/24",
-            nexthop="10.0.0.0",
-            priority=100,
-            weight=10,
-            colo_names=["den01"],
-            colo_regions=["APAC"])
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import cloudflare:index/staticRoute:StaticRoute example <account_id>/<static_route_id>
+        example_magic_wan_static_route = cloudflare.MagicWanStaticRoute("example_magic_wan_static_route", account_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
 
         :param str resource_name: The name of the resource.
@@ -389,14 +436,17 @@ class StaticRoute(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 colo_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-                 colo_regions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  nexthop: Optional[pulumi.Input[builtins.str]] = None,
                  prefix: Optional[pulumi.Input[builtins.str]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
+                 route: Optional[pulumi.Input[Union['StaticRouteRouteArgs', 'StaticRouteRouteArgsDict']]] = None,
+                 route_id: Optional[pulumi.Input[builtins.str]] = None,
+                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StaticRouteRouteArgs', 'StaticRouteRouteArgsDict']]]]] = None,
+                 scope: Optional[pulumi.Input[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict']]] = None,
                  weight: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
+        pulumi.log.warn("""StaticRoute is deprecated: cloudflare.index/staticroute.StaticRoute has been deprecated in favor of cloudflare.index/magicwanstaticroute.MagicWanStaticRoute""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -405,20 +455,22 @@ class StaticRoute(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StaticRouteArgs.__new__(StaticRouteArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            __props__.__dict__["colo_names"] = colo_names
-            __props__.__dict__["colo_regions"] = colo_regions
             __props__.__dict__["description"] = description
-            if nexthop is None and not opts.urn:
-                raise TypeError("Missing required property 'nexthop'")
             __props__.__dict__["nexthop"] = nexthop
-            if prefix is None and not opts.urn:
-                raise TypeError("Missing required property 'prefix'")
             __props__.__dict__["prefix"] = prefix
-            if priority is None and not opts.urn:
-                raise TypeError("Missing required property 'priority'")
             __props__.__dict__["priority"] = priority
+            __props__.__dict__["route"] = route
+            __props__.__dict__["route_id"] = route_id
+            __props__.__dict__["routes"] = routes
+            __props__.__dict__["scope"] = scope
             __props__.__dict__["weight"] = weight
+            __props__.__dict__["modified"] = None
+            __props__.__dict__["modified_route"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/staticRoute:StaticRoute")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(StaticRoute, __self__).__init__(
             'cloudflare:index/staticRoute:StaticRoute',
             resource_name,
@@ -430,12 +482,16 @@ class StaticRoute(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
-            colo_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-            colo_regions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
+            modified: Optional[pulumi.Input[builtins.bool]] = None,
+            modified_route: Optional[pulumi.Input[Union['StaticRouteModifiedRouteArgs', 'StaticRouteModifiedRouteArgsDict']]] = None,
             nexthop: Optional[pulumi.Input[builtins.str]] = None,
             prefix: Optional[pulumi.Input[builtins.str]] = None,
             priority: Optional[pulumi.Input[builtins.int]] = None,
+            route: Optional[pulumi.Input[Union['StaticRouteRouteArgs', 'StaticRouteRouteArgsDict']]] = None,
+            route_id: Optional[pulumi.Input[builtins.str]] = None,
+            routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StaticRouteRouteArgs', 'StaticRouteRouteArgsDict']]]]] = None,
+            scope: Optional[pulumi.Input[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict']]] = None,
             weight: Optional[pulumi.Input[builtins.int]] = None) -> 'StaticRoute':
         """
         Get an existing StaticRoute resource's state with the given name, id, and optional extra
@@ -444,90 +500,114 @@ class StaticRoute(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] colo_names: List of Cloudflare colocation regions for this static route.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] colo_regions: List of Cloudflare colocation names for this static route.
-        :param pulumi.Input[builtins.str] description: Description of the static route.
-        :param pulumi.Input[builtins.str] nexthop: The nexthop IP address where traffic will be routed to.
-        :param pulumi.Input[builtins.str] prefix: Your network prefix using CIDR notation.
-        :param pulumi.Input[builtins.int] priority: The priority for the static route.
-        :param pulumi.Input[builtins.int] weight: The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] description: An optional human provided description of the static route.
+        :param pulumi.Input[builtins.str] nexthop: The next-hop IP Address for the static route.
+        :param pulumi.Input[builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
+        :param pulumi.Input[builtins.int] priority: Priority of the static route.
+        :param pulumi.Input[builtins.str] route_id: Identifier
+        :param pulumi.Input[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict']] scope: Used only for ECMP routes.
+        :param pulumi.Input[builtins.int] weight: Optional weight of the ECMP scope - if provided.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _StaticRouteState.__new__(_StaticRouteState)
 
         __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["colo_names"] = colo_names
-        __props__.__dict__["colo_regions"] = colo_regions
         __props__.__dict__["description"] = description
+        __props__.__dict__["modified"] = modified
+        __props__.__dict__["modified_route"] = modified_route
         __props__.__dict__["nexthop"] = nexthop
         __props__.__dict__["prefix"] = prefix
         __props__.__dict__["priority"] = priority
+        __props__.__dict__["route"] = route
+        __props__.__dict__["route_id"] = route_id
+        __props__.__dict__["routes"] = routes
+        __props__.__dict__["scope"] = scope
         __props__.__dict__["weight"] = weight
         return StaticRoute(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[builtins.str]]:
+    def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "account_id")
-
-    @property
-    @pulumi.getter(name="coloNames")
-    def colo_names(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
-        """
-        List of Cloudflare colocation regions for this static route.
-        """
-        return pulumi.get(self, "colo_names")
-
-    @property
-    @pulumi.getter(name="coloRegions")
-    def colo_regions(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
-        """
-        List of Cloudflare colocation names for this static route.
-        """
-        return pulumi.get(self, "colo_regions")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Description of the static route.
+        An optional human provided description of the static route.
         """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
-    def nexthop(self) -> pulumi.Output[builtins.str]:
+    def modified(self) -> pulumi.Output[builtins.bool]:
+        return pulumi.get(self, "modified")
+
+    @property
+    @pulumi.getter(name="modifiedRoute")
+    def modified_route(self) -> pulumi.Output['outputs.StaticRouteModifiedRoute']:
+        return pulumi.get(self, "modified_route")
+
+    @property
+    @pulumi.getter
+    def nexthop(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The nexthop IP address where traffic will be routed to.
+        The next-hop IP Address for the static route.
         """
         return pulumi.get(self, "nexthop")
 
     @property
     @pulumi.getter
-    def prefix(self) -> pulumi.Output[builtins.str]:
+    def prefix(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Your network prefix using CIDR notation.
+        IP Prefix in Classless Inter-Domain Routing format.
         """
         return pulumi.get(self, "prefix")
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[builtins.int]:
+    def priority(self) -> pulumi.Output[Optional[builtins.int]]:
         """
-        The priority for the static route.
+        Priority of the static route.
         """
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter
+    def route(self) -> pulumi.Output['outputs.StaticRouteRoute']:
+        return pulumi.get(self, "route")
+
+    @property
+    @pulumi.getter(name="routeId")
+    def route_id(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "route_id")
+
+    @property
+    @pulumi.getter
+    def routes(self) -> pulumi.Output[Sequence['outputs.StaticRouteRoute']]:
+        return pulumi.get(self, "routes")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> pulumi.Output['outputs.StaticRouteScope']:
+        """
+        Used only for ECMP routes.
+        """
+        return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter
     def weight(self) -> pulumi.Output[Optional[builtins.int]]:
         """
-        The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+        Optional weight of the ECMP scope - if provided.
         """
         return pulumi.get(self, "weight")
 

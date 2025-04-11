@@ -5,16 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The [Email Routing Address](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#destination-addresses) resource allows you to manage Cloudflare Email Routing Destination Addresses.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.EmailRoutingAddress("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
+ * const exampleEmailRoutingAddress = new cloudflare.EmailRoutingAddress("example_email_routing_address", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     email: "user@example.com",
  * });
  * ```
@@ -22,7 +20,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example <account_id>/<email_routing_id>
+ * $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example '<account_id>/<destination_address_identifier>'
  * ```
  */
 export class EmailRoutingAddress extends pulumi.CustomResource {
@@ -54,7 +52,7 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -66,11 +64,11 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
      */
     public readonly email!: pulumi.Output<string>;
     /**
-     * The date and time the destination address has been modified.
+     * The date and time the destination address was last modified.
      */
     public /*out*/ readonly modified!: pulumi.Output<string>;
     /**
-     * Destination address identifier.
+     * Destination address tag. (Deprecated, replaced by destination address identifier)
      */
     public /*out*/ readonly tag!: pulumi.Output<string>;
     /**
@@ -122,7 +120,7 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
  */
 export interface EmailRoutingAddressState {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -134,11 +132,11 @@ export interface EmailRoutingAddressState {
      */
     email?: pulumi.Input<string>;
     /**
-     * The date and time the destination address has been modified.
+     * The date and time the destination address was last modified.
      */
     modified?: pulumi.Input<string>;
     /**
-     * Destination address identifier.
+     * Destination address tag. (Deprecated, replaced by destination address identifier)
      */
     tag?: pulumi.Input<string>;
     /**
@@ -152,7 +150,7 @@ export interface EmailRoutingAddressState {
  */
 export interface EmailRoutingAddressArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: pulumi.Input<string>;
     /**

@@ -5,45 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Access Mutual TLS Certificate resource.
- * Mutual TLS authentication ensures that the traffic is secure and
- * trusted in both directions between a client and server and can be
- *  used with Access to only allows requests from devices with a
- *  corresponding client certificate.
- *
- * > It's required that an `accountId` or `zoneId` is provided and in
- *    most cases using either is fine. However, if you're using a scoped
- *    access token, you must provide the argument that matches the token's
- *    scope. For example, an access token that is scoped to the "example.com"
- *    zone needs to use the `zoneId` argument.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const myCert = new cloudflare.AccessMutualTlsCertificate("my_cert", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     name: "My Root Cert",
- *     certificate: caPem,
- *     associatedHostnames: ["staging.example.com"],
+ * const exampleZeroTrustAccessMtlsCertificate = new cloudflare.ZeroTrustAccessMtlsCertificate("example_zero_trust_access_mtls_certificate", {
+ *     certificate: `  -----BEGIN CERTIFICATE-----
+ *   MIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10
+ *   DrUtmu/B
+ *   -----END CERTIFICATE-----
+ * `,
+ *     name: "Allow devs",
+ *     zoneId: "zone_id",
+ *     associatedHostnames: ["admin.example.com"],
  * });
  * ```
  *
  * ## Import
  *
- * Account level import.
- *
  * ```sh
- * $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example account/<account_id>/<mutual_tls_certificate_id>
+ * $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example '<{accounts|zones}/{account_id|zone_id}>/<certificate_id>'
  * ```
  *
- * Zone level import.
- *
- * ```sh
- * $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example zone/<zone_id>/<mutual_tls_certificate_id>
- * ```
+ * @deprecated cloudflare.index/accessmutualtlscertificate.AccessMutualTlsCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessmtlscertificate.ZeroTrustAccessMtlsCertificate
  */
 export class AccessMutualTlsCertificate extends pulumi.CustomResource {
     /**
@@ -56,6 +42,7 @@ export class AccessMutualTlsCertificate extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccessMutualTlsCertificateState, opts?: pulumi.CustomResourceOptions): AccessMutualTlsCertificate {
+        pulumi.log.warn("AccessMutualTlsCertificate is deprecated: cloudflare.index/accessmutualtlscertificate.AccessMutualTlsCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessmtlscertificate.ZeroTrustAccessMtlsCertificate")
         return new AccessMutualTlsCertificate(name, <any>state, { ...opts, id: id });
     }
 
@@ -74,26 +61,32 @@ export class AccessMutualTlsCertificate extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * The hostnames that will be prompted for this certificate.
+     * The hostnames of the applications that will use this certificate.
      */
     public readonly associatedHostnames!: pulumi.Output<string[] | undefined>;
     /**
-     * The Root CA for your certificates.
+     * The certificate content.
      */
-    public readonly certificate!: pulumi.Output<string | undefined>;
+    public readonly certificate!: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    public /*out*/ readonly expiresOn!: pulumi.Output<string>;
+    /**
+     * The MD5 fingerprint of the certificate.
+     */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * The name of the certificate.
      */
     public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccessMutualTlsCertificate resource with the given unique name, arguments, and options.
@@ -102,8 +95,11 @@ export class AccessMutualTlsCertificate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/accessmutualtlscertificate.AccessMutualTlsCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessmtlscertificate.ZeroTrustAccessMtlsCertificate */
     constructor(name: string, args: AccessMutualTlsCertificateArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/accessmutualtlscertificate.AccessMutualTlsCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessmtlscertificate.ZeroTrustAccessMtlsCertificate */
     constructor(name: string, argsOrState?: AccessMutualTlsCertificateArgs | AccessMutualTlsCertificateState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AccessMutualTlsCertificate is deprecated: cloudflare.index/accessmutualtlscertificate.AccessMutualTlsCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessmtlscertificate.ZeroTrustAccessMtlsCertificate")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -111,11 +107,17 @@ export class AccessMutualTlsCertificate extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["associatedHostnames"] = state ? state.associatedHostnames : undefined;
             resourceInputs["certificate"] = state ? state.certificate : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessMutualTlsCertificateArgs | undefined;
+            if ((!args || args.certificate === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'certificate'");
+            }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -124,9 +126,14 @@ export class AccessMutualTlsCertificate extends pulumi.CustomResource {
             resourceInputs["certificate"] = args ? args.certificate : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["expiresOn"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/cloudflareAccessMutualTlsCertificate:AccessMutualTlsCertificate" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessMutualTlsCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -136,24 +143,30 @@ export class AccessMutualTlsCertificate extends pulumi.CustomResource {
  */
 export interface AccessMutualTlsCertificateState {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The hostnames that will be prompted for this certificate.
+     * The hostnames of the applications that will use this certificate.
      */
     associatedHostnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The Root CA for your certificates.
+     * The certificate content.
      */
     certificate?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
+    expiresOn?: pulumi.Input<string>;
+    /**
+     * The MD5 fingerprint of the certificate.
+     */
     fingerprint?: pulumi.Input<string>;
     /**
      * The name of the certificate.
      */
     name?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -163,23 +176,23 @@ export interface AccessMutualTlsCertificateState {
  */
 export interface AccessMutualTlsCertificateArgs {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The hostnames that will be prompted for this certificate.
+     * The hostnames of the applications that will use this certificate.
      */
     associatedHostnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The Root CA for your certificates.
+     * The certificate content.
      */
-    certificate?: pulumi.Input<string>;
+    certificate: pulumi.Input<string>;
     /**
      * The name of the certificate.
      */
     name: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }

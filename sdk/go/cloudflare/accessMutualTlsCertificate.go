@@ -8,24 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Access Mutual TLS Certificate resource.
-// Mutual TLS authentication ensures that the traffic is secure and
-// trusted in both directions between a client and server and can be
-//
-//	used with Access to only allows requests from devices with a
-//	corresponding client certificate.
-//
-// > It's required that an `accountId` or `zoneId` is provided and in
-//
-//	most cases using either is fine. However, if you're using a scoped
-//	access token, you must provide the argument that matches the token's
-//	scope. For example, an access token that is scoped to the "example.com"
-//	zone needs to use the `zoneId` argument.
-//
 // ## Example Usage
 //
 // ```go
@@ -33,19 +19,19 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccessMutualTlsCertificate(ctx, "my_cert", &cloudflare.AccessMutualTlsCertificateArgs{
-//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Name:        pulumi.String("My Root Cert"),
-//				Certificate: pulumi.Any(caPem),
+//			_, err := cloudflare.NewZeroTrustAccessMtlsCertificate(ctx, "example_zero_trust_access_mtls_certificate", &cloudflare.ZeroTrustAccessMtlsCertificateArgs{
+//				Certificate: pulumi.String("  -----BEGIN CERTIFICATE-----\n  MIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10\n  DrUtmu/B\n  -----END CERTIFICATE-----\n"),
+//				Name:        pulumi.String("Allow devs"),
+//				ZoneId:      pulumi.String("zone_id"),
 //				AssociatedHostnames: pulumi.StringArray{
-//					pulumi.String("staging.example.com"),
+//					pulumi.String("admin.example.com"),
 //				},
 //			})
 //			if err != nil {
@@ -59,31 +45,29 @@ import (
 //
 // ## Import
 //
-// Account level import.
-//
 // ```sh
-// $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example account/<account_id>/<mutual_tls_certificate_id>
+// $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example '<{accounts|zones}/{account_id|zone_id}>/<certificate_id>'
 // ```
 //
-// Zone level import.
-//
-// ```sh
-// $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example zone/<zone_id>/<mutual_tls_certificate_id>
-// ```
+// Deprecated: cloudflare.index/accessmutualtlscertificate.AccessMutualTlsCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessmtlscertificate.ZeroTrustAccessMtlsCertificate
 type AccessMutualTlsCertificate struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The hostnames that will be prompted for this certificate.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// The hostnames of the applications that will use this certificate.
 	AssociatedHostnames pulumi.StringArrayOutput `pulumi:"associatedHostnames"`
-	// The Root CA for your certificates.
-	Certificate pulumi.StringPtrOutput `pulumi:"certificate"`
-	Fingerprint pulumi.StringOutput    `pulumi:"fingerprint"`
+	// The certificate content.
+	Certificate pulumi.StringOutput `pulumi:"certificate"`
+	CreatedAt   pulumi.StringOutput `pulumi:"createdAt"`
+	ExpiresOn   pulumi.StringOutput `pulumi:"expiresOn"`
+	// The MD5 fingerprint of the certificate.
+	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The name of the certificate.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	Name      pulumi.StringOutput `pulumi:"name"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewAccessMutualTlsCertificate registers a new resource with the given unique name, arguments, and options.
@@ -93,9 +77,18 @@ func NewAccessMutualTlsCertificate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Certificate == nil {
+		return nil, errors.New("invalid value for required argument 'Certificate'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/cloudflareAccessMutualTlsCertificate:AccessMutualTlsCertificate"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessMutualTlsCertificate
 	err := ctx.RegisterResource("cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate", name, args, &resource, opts...)
@@ -119,30 +112,38 @@ func GetAccessMutualTlsCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessMutualTlsCertificate resources.
 type accessMutualTlsCertificateState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// The hostnames that will be prompted for this certificate.
+	// The hostnames of the applications that will use this certificate.
 	AssociatedHostnames []string `pulumi:"associatedHostnames"`
-	// The Root CA for your certificates.
+	// The certificate content.
 	Certificate *string `pulumi:"certificate"`
+	CreatedAt   *string `pulumi:"createdAt"`
+	ExpiresOn   *string `pulumi:"expiresOn"`
+	// The MD5 fingerprint of the certificate.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The name of the certificate.
-	Name *string `pulumi:"name"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	Name      *string `pulumi:"name"`
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessMutualTlsCertificateState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// The hostnames that will be prompted for this certificate.
+	// The hostnames of the applications that will use this certificate.
 	AssociatedHostnames pulumi.StringArrayInput
-	// The Root CA for your certificates.
+	// The certificate content.
 	Certificate pulumi.StringPtrInput
+	CreatedAt   pulumi.StringPtrInput
+	ExpiresOn   pulumi.StringPtrInput
+	// The MD5 fingerprint of the certificate.
 	Fingerprint pulumi.StringPtrInput
 	// The name of the certificate.
-	Name pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	Name      pulumi.StringPtrInput
+	UpdatedAt pulumi.StringPtrInput
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -151,29 +152,29 @@ func (AccessMutualTlsCertificateState) ElementType() reflect.Type {
 }
 
 type accessMutualTlsCertificateArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// The hostnames that will be prompted for this certificate.
+	// The hostnames of the applications that will use this certificate.
 	AssociatedHostnames []string `pulumi:"associatedHostnames"`
-	// The Root CA for your certificates.
-	Certificate *string `pulumi:"certificate"`
+	// The certificate content.
+	Certificate string `pulumi:"certificate"`
 	// The name of the certificate.
 	Name string `pulumi:"name"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessMutualTlsCertificate resource.
 type AccessMutualTlsCertificateArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// The hostnames that will be prompted for this certificate.
+	// The hostnames of the applications that will use this certificate.
 	AssociatedHostnames pulumi.StringArrayInput
-	// The Root CA for your certificates.
-	Certificate pulumi.StringPtrInput
+	// The certificate content.
+	Certificate pulumi.StringInput
 	// The name of the certificate.
 	Name pulumi.StringInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -264,21 +265,30 @@ func (o AccessMutualTlsCertificateOutput) ToAccessMutualTlsCertificateOutputWith
 	return o
 }
 
-// The account identifier to target for the resource. Conflicts with `zoneId`.
-func (o AccessMutualTlsCertificateOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+func (o AccessMutualTlsCertificateOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// The hostnames that will be prompted for this certificate.
+// The hostnames of the applications that will use this certificate.
 func (o AccessMutualTlsCertificateOutput) AssociatedHostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringArrayOutput { return v.AssociatedHostnames }).(pulumi.StringArrayOutput)
 }
 
-// The Root CA for your certificates.
-func (o AccessMutualTlsCertificateOutput) Certificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringPtrOutput { return v.Certificate }).(pulumi.StringPtrOutput)
+// The certificate content.
+func (o AccessMutualTlsCertificateOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
 }
 
+func (o AccessMutualTlsCertificateOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o AccessMutualTlsCertificateOutput) ExpiresOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringOutput { return v.ExpiresOn }).(pulumi.StringOutput)
+}
+
+// The MD5 fingerprint of the certificate.
 func (o AccessMutualTlsCertificateOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }
@@ -288,9 +298,13 @@ func (o AccessMutualTlsCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource. Conflicts with `accountId`.
-func (o AccessMutualTlsCertificateOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o AccessMutualTlsCertificateOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+func (o AccessMutualTlsCertificateOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type AccessMutualTlsCertificateArrayOutput struct{ *pulumi.OutputState }

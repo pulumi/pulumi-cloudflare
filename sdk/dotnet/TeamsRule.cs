@@ -10,115 +10,111 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Teams rule resource. Teams rules comprise secure web gateway policies.
-    /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.TeamsRule("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "office",
-    ///         Description = "desc",
-    ///         Precedence = 1,
-    ///         Action = "block",
-    ///         Filters = new[]
-    ///         {
-    ///             "http",
-    ///         },
-    ///         Traffic = "http.request.uri == \"https://www.example.com/malicious\"",
-    ///         RuleSettings = new Cloudflare.Inputs.TeamsRuleRuleSettingsArgs
-    ///         {
-    ///             BlockPageEnabled = true,
-    ///             BlockPageReason = "access not permitted",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/teamsRule:TeamsRule example &lt;account_id&gt;/&lt;teams_rule_id&gt;
+    /// $ pulumi import cloudflare:index/teamsRule:TeamsRule example '&lt;account_id&gt;/&lt;rule_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare.index/teamsrule.TeamsRule has been deprecated in favor of cloudflare.index/zerotrustgatewaypolicy.ZeroTrustGatewayPolicy")]
     [CloudflareResourceType("cloudflare:index/teamsRule:TeamsRule")]
     public partial class TeamsRule : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
+        /// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
 
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
         /// <summary>
-        /// The description of the teams rule.
+        /// Date of deletion, if any.
+        /// </summary>
+        [Output("deletedAt")]
+        public Output<string> DeletedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the rule.
         /// </summary>
         [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The wirefilter expression to be used for device_posture check matching.
+        /// The wirefilter expression used for device posture check matching.
         /// </summary>
         [Output("devicePosture")]
-        public Output<string> DevicePosture { get; private set; } = null!;
+        public Output<string?> DevicePosture { get; private set; } = null!;
 
         /// <summary>
-        /// Indicator of rule enablement.
+        /// True if the rule is enabled.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol or layer to evaluate the traffic and identity expressions.
+        /// The expiration time stamp and default duration of a DNS policy. Takes
+        /// precedence over the policy's `schedule` configuration, if any.
+        /// </summary>
+        [Output("expiration")]
+        public Output<Outputs.TeamsRuleExpiration> Expiration { get; private set; } = null!;
+
+        /// <summary>
+        /// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
         /// </summary>
         [Output("filters")]
         public Output<ImmutableArray<string>> Filters { get; private set; } = null!;
 
         /// <summary>
-        /// The wirefilter expression to be used for identity matching.
+        /// The wirefilter expression used for identity matching.
         /// </summary>
         [Output("identity")]
-        public Output<string> Identity { get; private set; } = null!;
+        public Output<string?> Identity { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the teams rule.
+        /// The name of the rule.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The evaluation precedence of the teams rule.
+        /// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
+        /// rules are evaluated in ascending order of this value.
         /// </summary>
         [Output("precedence")]
-        public Output<int> Precedence { get; private set; } = null!;
+        public Output<int?> Precedence { get; private set; } = null!;
 
         /// <summary>
-        /// Additional rule settings.
+        /// Additional settings that modify the rule's action.
         /// </summary>
         [Output("ruleSettings")]
         public Output<Outputs.TeamsRuleRuleSettings> RuleSettings { get; private set; } = null!;
 
         /// <summary>
-        /// The wirefilter expression to be used for traffic matching.
+        /// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+        /// </summary>
+        [Output("schedule")]
+        public Output<Outputs.TeamsRuleSchedule> Schedule { get; private set; } = null!;
+
+        /// <summary>
+        /// The wirefilter expression used for traffic matching.
         /// </summary>
         [Output("traffic")]
-        public Output<string> Traffic { get; private set; } = null!;
+        public Output<string?> Traffic { get; private set; } = null!;
 
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// version number of the rule
+        /// </summary>
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;
 
@@ -145,6 +141,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/teamsRule:TeamsRule" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -168,41 +168,46 @@ namespace Pulumi.Cloudflare
 
     public sealed class TeamsRuleArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
+        /// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
 
         /// <summary>
-        /// The description of the teams rule.
+        /// The description of the rule.
         /// </summary>
-        [Input("description", required: true)]
-        public Input<string> Description { get; set; } = null!;
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The wirefilter expression to be used for device_posture check matching.
+        /// The wirefilter expression used for device posture check matching.
         /// </summary>
         [Input("devicePosture")]
         public Input<string>? DevicePosture { get; set; }
 
         /// <summary>
-        /// Indicator of rule enablement.
+        /// True if the rule is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// The expiration time stamp and default duration of a DNS policy. Takes
+        /// precedence over the policy's `schedule` configuration, if any.
+        /// </summary>
+        [Input("expiration")]
+        public Input<Inputs.TeamsRuleExpirationArgs>? Expiration { get; set; }
 
         [Input("filters")]
         private InputList<string>? _filters;
 
         /// <summary>
-        /// The protocol or layer to evaluate the traffic and identity expressions.
+        /// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
         /// </summary>
         public InputList<string> Filters
         {
@@ -211,31 +216,38 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The wirefilter expression to be used for identity matching.
+        /// The wirefilter expression used for identity matching.
         /// </summary>
         [Input("identity")]
         public Input<string>? Identity { get; set; }
 
         /// <summary>
-        /// The name of the teams rule.
+        /// The name of the rule.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The evaluation precedence of the teams rule.
+        /// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
+        /// rules are evaluated in ascending order of this value.
         /// </summary>
-        [Input("precedence", required: true)]
-        public Input<int> Precedence { get; set; } = null!;
+        [Input("precedence")]
+        public Input<int>? Precedence { get; set; }
 
         /// <summary>
-        /// Additional rule settings.
+        /// Additional settings that modify the rule's action.
         /// </summary>
         [Input("ruleSettings")]
         public Input<Inputs.TeamsRuleRuleSettingsArgs>? RuleSettings { get; set; }
 
         /// <summary>
-        /// The wirefilter expression to be used for traffic matching.
+        /// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+        /// </summary>
+        [Input("schedule")]
+        public Input<Inputs.TeamsRuleScheduleArgs>? Schedule { get; set; }
+
+        /// <summary>
+        /// The wirefilter expression used for traffic matching.
         /// </summary>
         [Input("traffic")]
         public Input<string>? Traffic { get; set; }
@@ -248,41 +260,55 @@ namespace Pulumi.Cloudflare
 
     public sealed class TeamsRuleState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
+        /// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
         /// <summary>
-        /// The description of the teams rule.
+        /// Date of deletion, if any.
+        /// </summary>
+        [Input("deletedAt")]
+        public Input<string>? DeletedAt { get; set; }
+
+        /// <summary>
+        /// The description of the rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The wirefilter expression to be used for device_posture check matching.
+        /// The wirefilter expression used for device posture check matching.
         /// </summary>
         [Input("devicePosture")]
         public Input<string>? DevicePosture { get; set; }
 
         /// <summary>
-        /// Indicator of rule enablement.
+        /// True if the rule is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// The expiration time stamp and default duration of a DNS policy. Takes
+        /// precedence over the policy's `schedule` configuration, if any.
+        /// </summary>
+        [Input("expiration")]
+        public Input<Inputs.TeamsRuleExpirationGetArgs>? Expiration { get; set; }
 
         [Input("filters")]
         private InputList<string>? _filters;
 
         /// <summary>
-        /// The protocol or layer to evaluate the traffic and identity expressions.
+        /// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
         /// </summary>
         public InputList<string> Filters
         {
@@ -291,35 +317,48 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The wirefilter expression to be used for identity matching.
+        /// The wirefilter expression used for identity matching.
         /// </summary>
         [Input("identity")]
         public Input<string>? Identity { get; set; }
 
         /// <summary>
-        /// The name of the teams rule.
+        /// The name of the rule.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The evaluation precedence of the teams rule.
+        /// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
+        /// rules are evaluated in ascending order of this value.
         /// </summary>
         [Input("precedence")]
         public Input<int>? Precedence { get; set; }
 
         /// <summary>
-        /// Additional rule settings.
+        /// Additional settings that modify the rule's action.
         /// </summary>
         [Input("ruleSettings")]
         public Input<Inputs.TeamsRuleRuleSettingsGetArgs>? RuleSettings { get; set; }
 
         /// <summary>
-        /// The wirefilter expression to be used for traffic matching.
+        /// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+        /// </summary>
+        [Input("schedule")]
+        public Input<Inputs.TeamsRuleScheduleGetArgs>? Schedule { get; set; }
+
+        /// <summary>
+        /// The wirefilter expression used for traffic matching.
         /// </summary>
         [Input("traffic")]
         public Input<string>? Traffic { get; set; }
 
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// version number of the rule
+        /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }
 

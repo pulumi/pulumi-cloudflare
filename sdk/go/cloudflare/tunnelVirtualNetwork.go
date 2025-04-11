@@ -8,15 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource, that manages Cloudflare tunnel virtual networks
-// for Zero Trust. Tunnel virtual networks are used for segregation of
-// Tunnel IP Routes via Virtualized Networks to handle overlapping
-// private IPs in your origins.
-//
 // ## Example Usage
 //
 // ```go
@@ -24,17 +19,18 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTunnelVirtualNetwork(ctx, "example", &cloudflare.TunnelVirtualNetworkArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("vnet-for-documentation"),
-//				Comment:   pulumi.String("New tunnel virtual network for documentation"),
+//			_, err := cloudflare.NewZeroTrustTunnelCloudflaredVirtualNetwork(ctx, "example_zero_trust_tunnel_cloudflared_virtual_network", &cloudflare.ZeroTrustTunnelCloudflaredVirtualNetworkArgs{
+//				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				Name:      pulumi.String("us-east-1-vpc"),
+//				Comment:   pulumi.String("Staging VPC for data science"),
+//				IsDefault: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -48,18 +44,26 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example <account_id>/<vnet_id>
+// $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example '<account_id>/<virtual_network_id>'
 // ```
+//
+// Deprecated: cloudflare.index/tunnelvirtualnetwork.TunnelVirtualNetwork has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredvirtualnetwork.ZeroTrustTunnelCloudflaredVirtualNetwork
 type TunnelVirtualNetwork struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Description of the tunnel virtual network.
+	// Optional remark describing the virtual network.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+	// Timestamp of when the resource was created.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+	DeletedAt pulumi.StringOutput `pulumi:"deletedAt"`
+	// If `true`, this virtual network is the default for the account.
+	IsDefault pulumi.BoolPtrOutput `pulumi:"isDefault"`
+	// If `true`, this virtual network is the default for the account.
 	IsDefaultNetwork pulumi.BoolPtrOutput `pulumi:"isDefaultNetwork"`
-	// A user-friendly name chosen when the virtual network is created.
+	// A user-friendly name for the virtual network.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -76,6 +80,12 @@ func NewTunnelVirtualNetwork(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TunnelVirtualNetwork
 	err := ctx.RegisterResource("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork", name, args, &resource, opts...)
@@ -99,24 +109,36 @@ func GetTunnelVirtualNetwork(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TunnelVirtualNetwork resources.
 type tunnelVirtualNetworkState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
 	AccountId *string `pulumi:"accountId"`
-	// Description of the tunnel virtual network.
+	// Optional remark describing the virtual network.
 	Comment *string `pulumi:"comment"`
-	// Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+	// Timestamp of when the resource was created.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+	DeletedAt *string `pulumi:"deletedAt"`
+	// If `true`, this virtual network is the default for the account.
+	IsDefault *bool `pulumi:"isDefault"`
+	// If `true`, this virtual network is the default for the account.
 	IsDefaultNetwork *bool `pulumi:"isDefaultNetwork"`
-	// A user-friendly name chosen when the virtual network is created.
+	// A user-friendly name for the virtual network.
 	Name *string `pulumi:"name"`
 }
 
 type TunnelVirtualNetworkState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
 	AccountId pulumi.StringPtrInput
-	// Description of the tunnel virtual network.
+	// Optional remark describing the virtual network.
 	Comment pulumi.StringPtrInput
-	// Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+	// Timestamp of when the resource was created.
+	CreatedAt pulumi.StringPtrInput
+	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+	DeletedAt pulumi.StringPtrInput
+	// If `true`, this virtual network is the default for the account.
+	IsDefault pulumi.BoolPtrInput
+	// If `true`, this virtual network is the default for the account.
 	IsDefaultNetwork pulumi.BoolPtrInput
-	// A user-friendly name chosen when the virtual network is created.
+	// A user-friendly name for the virtual network.
 	Name pulumi.StringPtrInput
 }
 
@@ -125,25 +147,29 @@ func (TunnelVirtualNetworkState) ElementType() reflect.Type {
 }
 
 type tunnelVirtualNetworkArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
 	AccountId string `pulumi:"accountId"`
-	// Description of the tunnel virtual network.
+	// Optional remark describing the virtual network.
 	Comment *string `pulumi:"comment"`
-	// Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+	// If `true`, this virtual network is the default for the account.
+	IsDefault *bool `pulumi:"isDefault"`
+	// If `true`, this virtual network is the default for the account.
 	IsDefaultNetwork *bool `pulumi:"isDefaultNetwork"`
-	// A user-friendly name chosen when the virtual network is created.
+	// A user-friendly name for the virtual network.
 	Name string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a TunnelVirtualNetwork resource.
 type TunnelVirtualNetworkArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
 	AccountId pulumi.StringInput
-	// Description of the tunnel virtual network.
+	// Optional remark describing the virtual network.
 	Comment pulumi.StringPtrInput
-	// Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+	// If `true`, this virtual network is the default for the account.
+	IsDefault pulumi.BoolPtrInput
+	// If `true`, this virtual network is the default for the account.
 	IsDefaultNetwork pulumi.BoolPtrInput
-	// A user-friendly name chosen when the virtual network is created.
+	// A user-friendly name for the virtual network.
 	Name pulumi.StringInput
 }
 
@@ -234,22 +260,37 @@ func (o TunnelVirtualNetworkOutput) ToTunnelVirtualNetworkOutputWithContext(ctx 
 	return o
 }
 
-// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Cloudflare account ID
 func (o TunnelVirtualNetworkOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TunnelVirtualNetwork) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Description of the tunnel virtual network.
+// Optional remark describing the virtual network.
 func (o TunnelVirtualNetworkOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TunnelVirtualNetwork) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+// Timestamp of when the resource was created.
+func (o TunnelVirtualNetworkOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *TunnelVirtualNetwork) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+func (o TunnelVirtualNetworkOutput) DeletedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *TunnelVirtualNetwork) pulumi.StringOutput { return v.DeletedAt }).(pulumi.StringOutput)
+}
+
+// If `true`, this virtual network is the default for the account.
+func (o TunnelVirtualNetworkOutput) IsDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TunnelVirtualNetwork) pulumi.BoolPtrOutput { return v.IsDefault }).(pulumi.BoolPtrOutput)
+}
+
+// If `true`, this virtual network is the default for the account.
 func (o TunnelVirtualNetworkOutput) IsDefaultNetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TunnelVirtualNetwork) pulumi.BoolPtrOutput { return v.IsDefaultNetwork }).(pulumi.BoolPtrOutput)
 }
 
-// A user-friendly name chosen when the virtual network is created.
+// A user-friendly name for the virtual network.
 func (o TunnelVirtualNetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TunnelVirtualNetwork) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -15,14 +15,14 @@ public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArg
     public static final RegionalHostnameArgs Empty = new RegionalHostnameArgs();
 
     /**
-     * The hostname to regionalize.
+     * DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
      * 
      */
     @Import(name="hostname", required=true)
     private Output<String> hostname;
 
     /**
-     * @return The hostname to regionalize.
+     * @return DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
      * 
      */
     public Output<String> hostname() {
@@ -30,14 +30,14 @@ public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+     * Identifying key for the region
      * 
      */
     @Import(name="regionKey", required=true)
     private Output<String> regionKey;
 
     /**
-     * @return The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+     * @return Identifying key for the region
      * 
      */
     public Output<String> regionKey() {
@@ -45,14 +45,14 @@ public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -86,7 +86,7 @@ public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param hostname The hostname to regionalize.
+         * @param hostname DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param hostname The hostname to regionalize.
+         * @param hostname DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param regionKey The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+         * @param regionKey Identifying key for the region
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param regionKey The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+         * @param regionKey Identifying key for the region
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

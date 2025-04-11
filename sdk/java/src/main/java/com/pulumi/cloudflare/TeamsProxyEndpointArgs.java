@@ -15,30 +15,22 @@ public final class TeamsProxyEndpointArgs extends com.pulumi.resources.ResourceA
 
     public static final TeamsProxyEndpointArgs Empty = new TeamsProxyEndpointArgs();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
     /**
-     * The networks CIDRs that will be allowed to initiate proxy connections.
+     * A list of CIDRs to restrict ingress connections.
      * 
      */
     @Import(name="ips", required=true)
     private Output<List<String>> ips;
 
     /**
-     * @return The networks CIDRs that will be allowed to initiate proxy connections.
+     * @return A list of CIDRs to restrict ingress connections.
      * 
      */
     public Output<List<String>> ips() {
@@ -46,14 +38,14 @@ public final class TeamsProxyEndpointArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Name of the teams proxy endpoint.
+     * The name of the proxy endpoint.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the teams proxy endpoint.
+     * @return The name of the proxy endpoint.
      * 
      */
     public Output<String> name() {
@@ -86,29 +78,17 @@ public final class TeamsProxyEndpointArgs extends com.pulumi.resources.ResourceA
             $ = new TeamsProxyEndpointArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param ips The networks CIDRs that will be allowed to initiate proxy connections.
+         * @param ips A list of CIDRs to restrict ingress connections.
          * 
          * @return builder
          * 
@@ -119,7 +99,7 @@ public final class TeamsProxyEndpointArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ips The networks CIDRs that will be allowed to initiate proxy connections.
+         * @param ips A list of CIDRs to restrict ingress connections.
          * 
          * @return builder
          * 
@@ -129,7 +109,7 @@ public final class TeamsProxyEndpointArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ips The networks CIDRs that will be allowed to initiate proxy connections.
+         * @param ips A list of CIDRs to restrict ingress connections.
          * 
          * @return builder
          * 
@@ -139,7 +119,7 @@ public final class TeamsProxyEndpointArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name Name of the teams proxy endpoint.
+         * @param name The name of the proxy endpoint.
          * 
          * @return builder
          * 
@@ -150,7 +130,7 @@ public final class TeamsProxyEndpointArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name Name of the teams proxy endpoint.
+         * @param name The name of the proxy endpoint.
          * 
          * @return builder
          * 

@@ -63,6 +63,7 @@ public final class Web3HostnameArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Target gateway of the hostname.
+     * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
      * 
      */
     @Import(name="target", required=true)
@@ -70,6 +71,7 @@ public final class Web3HostnameArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Target gateway of the hostname.
+     * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
      * 
      */
     public Output<String> target() {
@@ -77,14 +79,14 @@ public final class Web3HostnameArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -184,6 +186,7 @@ public final class Web3HostnameArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param target Target gateway of the hostname.
+         * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
          * 
          * @return builder
          * 
@@ -195,6 +198,7 @@ public final class Web3HostnameArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param target Target gateway of the hostname.
+         * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
          * 
          * @return builder
          * 
@@ -204,7 +208,7 @@ public final class Web3HostnameArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -215,7 +219,7 @@ public final class Web3HostnameArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

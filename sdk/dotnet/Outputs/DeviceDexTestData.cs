@@ -14,23 +14,23 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class DeviceDexTestData
     {
         /// <summary>
-        /// The host URL for `http` test `kind`. For `traceroute`, it must be a valid hostname or IP address.
+        /// The desired endpoint to test.
         /// </summary>
-        public readonly string Host;
+        public readonly string? Host;
         /// <summary>
-        /// The type of Device Dex Test. Available values: `http`, `traceroute`.
+        /// The type of test.
         /// </summary>
-        public readonly string Kind;
+        public readonly string? Kind;
         /// <summary>
-        /// The http request method. Available values: `GET`.
+        /// The HTTP request method type.
         /// </summary>
         public readonly string? Method;
 
         [OutputConstructor]
         private DeviceDexTestData(
-            string host,
+            string? host,
 
-            string kind,
+            string? kind,
 
             string? method)
         {

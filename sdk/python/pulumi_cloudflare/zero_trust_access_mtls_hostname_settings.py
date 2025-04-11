@@ -22,26 +22,34 @@ __all__ = ['ZeroTrustAccessMtlsHostnameSettingsArgs', 'ZeroTrustAccessMtlsHostna
 @pulumi.input_type
 class ZeroTrustAccessMtlsHostnameSettingsArgs:
     def __init__(__self__, *,
+                 settings: pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessMtlsHostnameSettingsSettingArgs']]],
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 settings: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessMtlsHostnameSettingsSettingArgs']]]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustAccessMtlsHostnameSettings resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
+        pulumi.set(__self__, "settings", settings)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if settings is not None:
-            pulumi.set(__self__, "settings", settings)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def settings(self) -> pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessMtlsHostnameSettingsSettingArgs']]]:
+        return pulumi.get(self, "settings")
+
+    @settings.setter
+    def settings(self, value: pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessMtlsHostnameSettingsSettingArgs']]]):
+        pulumi.set(self, "settings", value)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -50,19 +58,10 @@ class ZeroTrustAccessMtlsHostnameSettingsArgs:
         pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessMtlsHostnameSettingsSettingArgs']]]]:
-        return pulumi.get(self, "settings")
-
-    @settings.setter
-    def settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessMtlsHostnameSettingsSettingArgs']]]]):
-        pulumi.set(self, "settings", value)
-
-    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -75,15 +74,27 @@ class ZeroTrustAccessMtlsHostnameSettingsArgs:
 class _ZeroTrustAccessMtlsHostnameSettingsState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 china_network: Optional[pulumi.Input[builtins.bool]] = None,
+                 client_certificate_forwarding: Optional[pulumi.Input[builtins.bool]] = None,
+                 hostname: Optional[pulumi.Input[builtins.str]] = None,
                  settings: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessMtlsHostnameSettingsSettingArgs']]]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessMtlsHostnameSettings resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.bool] china_network: Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        :param pulumi.Input[builtins.bool] client_certificate_forwarding: Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        :param pulumi.Input[builtins.str] hostname: The hostname that these settings apply to.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if china_network is not None:
+            pulumi.set(__self__, "china_network", china_network)
+        if client_certificate_forwarding is not None:
+            pulumi.set(__self__, "client_certificate_forwarding", client_certificate_forwarding)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
         if zone_id is not None:
@@ -93,13 +104,49 @@ class _ZeroTrustAccessMtlsHostnameSettingsState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="chinaNetwork")
+    def china_network(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        """
+        return pulumi.get(self, "china_network")
+
+    @china_network.setter
+    def china_network(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "china_network", value)
+
+    @property
+    @pulumi.getter(name="clientCertificateForwarding")
+    def client_certificate_forwarding(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        """
+        return pulumi.get(self, "client_certificate_forwarding")
+
+    @client_certificate_forwarding.setter
+    def client_certificate_forwarding(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "client_certificate_forwarding", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The hostname that these settings apply to.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "hostname", value)
 
     @property
     @pulumi.getter
@@ -114,7 +161,7 @@ class _ZeroTrustAccessMtlsHostnameSettingsState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -133,79 +180,21 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Access Mutual TLS Certificate Settings resource.
-
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.ZeroTrustAccessMtlsHostnameSettings("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            settings=[{
-                "hostname": "example.com",
-                "client_certificate_forwarding": True,
-                "china_network": False,
-            }])
-        ```
-
-        ## Import
-
-        Account level mTLS hostname settings import.
-
-        ```sh
-        $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example account/<account_id>
-        ```
-
-        Zone level mTLS hostname settings import.
-
-        ```sh
-        $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example zone/<zone_id>
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ZeroTrustAccessMtlsHostnameSettingsArgs] = None,
+                 args: ZeroTrustAccessMtlsHostnameSettingsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Access Mutual TLS Certificate Settings resource.
-
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.ZeroTrustAccessMtlsHostnameSettings("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            settings=[{
-                "hostname": "example.com",
-                "client_certificate_forwarding": True,
-                "china_network": False,
-            }])
-        ```
-
-        ## Import
-
-        Account level mTLS hostname settings import.
-
-        ```sh
-        $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example account/<account_id>
-        ```
-
-        Zone level mTLS hostname settings import.
-
-        ```sh
-        $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example zone/<zone_id>
-        ```
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustAccessMtlsHostnameSettingsArgs args: The arguments to use to populate this resource's properties.
@@ -235,8 +224,15 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
             __props__ = ZeroTrustAccessMtlsHostnameSettingsArgs.__new__(ZeroTrustAccessMtlsHostnameSettingsArgs)
 
             __props__.__dict__["account_id"] = account_id
+            if settings is None and not opts.urn:
+                raise TypeError("Missing required property 'settings'")
             __props__.__dict__["settings"] = settings
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["china_network"] = None
+            __props__.__dict__["client_certificate_forwarding"] = None
+            __props__.__dict__["hostname"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustAccessMtlsHostnameSettings, __self__).__init__(
             'cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings',
             resource_name,
@@ -248,6 +244,9 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
+            china_network: Optional[pulumi.Input[builtins.bool]] = None,
+            client_certificate_forwarding: Optional[pulumi.Input[builtins.bool]] = None,
+            hostname: Optional[pulumi.Input[builtins.str]] = None,
             settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessMtlsHostnameSettingsSettingArgs', 'ZeroTrustAccessMtlsHostnameSettingsSettingArgsDict']]]]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'ZeroTrustAccessMtlsHostnameSettings':
         """
@@ -257,14 +256,20 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.bool] china_network: Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        :param pulumi.Input[builtins.bool] client_certificate_forwarding: Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        :param pulumi.Input[builtins.str] hostname: The hostname that these settings apply to.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ZeroTrustAccessMtlsHostnameSettingsState.__new__(_ZeroTrustAccessMtlsHostnameSettingsState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["china_network"] = china_network
+        __props__.__dict__["client_certificate_forwarding"] = client_certificate_forwarding
+        __props__.__dict__["hostname"] = hostname
         __props__.__dict__["settings"] = settings
         __props__.__dict__["zone_id"] = zone_id
         return ZeroTrustAccessMtlsHostnameSettings(resource_name, opts=opts, __props__=__props__)
@@ -273,20 +278,44 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The account identifier to target for the resource.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
     @property
+    @pulumi.getter(name="chinaNetwork")
+    def china_network(self) -> pulumi.Output[builtins.bool]:
+        """
+        Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        """
+        return pulumi.get(self, "china_network")
+
+    @property
+    @pulumi.getter(name="clientCertificateForwarding")
+    def client_certificate_forwarding(self) -> pulumi.Output[builtins.bool]:
+        """
+        Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        """
+        return pulumi.get(self, "client_certificate_forwarding")
+
+    @property
     @pulumi.getter
-    def settings(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustAccessMtlsHostnameSettingsSetting']]]:
+    def hostname(self) -> pulumi.Output[builtins.str]:
+        """
+        The hostname that these settings apply to.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def settings(self) -> pulumi.Output[Sequence['outputs.ZeroTrustAccessMtlsHostnameSettingsSetting']]:
         return pulumi.get(self, "settings")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The zone identifier to target for the resource.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 

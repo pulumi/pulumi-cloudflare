@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.ApiShieldOperationArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.ApiShieldOperationState;
+import com.pulumi.cloudflare.outputs.ApiShieldOperationFeatures;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -14,8 +15,6 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Api shield operation
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -41,11 +40,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApiShieldOperation("example", ApiShieldOperationArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *         var exampleApiShieldOperation = new ApiShieldOperation("exampleApiShieldOperation", ApiShieldOperationArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .endpoint("/api/v1/users/{var1}")
+ *             .host("www.example.com")
  *             .method("GET")
- *             .host("api.example.com")
- *             .endpoint("/path")
  *             .build());
  * 
  *     }
@@ -54,60 +53,94 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/apiShieldOperation:ApiShieldOperation example &#39;&lt;zone_id&gt;/&lt;operation_id&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/apiShieldOperation:ApiShieldOperation")
 public class ApiShieldOperation extends com.pulumi.resources.CustomResource {
     /**
-     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
      * 
      */
     @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 
     /**
-     * @return The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+     * @return The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
      * 
      */
     public Output<String> endpoint() {
         return this.endpoint;
     }
+    @Export(name="features", refs={ApiShieldOperationFeatures.class}, tree="[0]")
+    private Output<ApiShieldOperationFeatures> features;
+
+    public Output<ApiShieldOperationFeatures> features() {
+        return this.features;
+    }
     /**
-     * RFC3986-compliant host
+     * RFC3986-compliant host.
      * 
      */
     @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
-     * @return RFC3986-compliant host
+     * @return RFC3986-compliant host.
      * 
      */
     public Output<String> host() {
         return this.host;
     }
+    @Export(name="lastUpdated", refs={String.class}, tree="[0]")
+    private Output<String> lastUpdated;
+
+    public Output<String> lastUpdated() {
+        return this.lastUpdated;
+    }
     /**
-     * The HTTP method used to access the endpoint
+     * The HTTP method used to access the endpoint.
+     * Available values: &#34;GET&#34;, &#34;POST&#34;, &#34;HEAD&#34;, &#34;OPTIONS&#34;, &#34;PUT&#34;, &#34;DELETE&#34;, &#34;CONNECT&#34;, &#34;PATCH&#34;, &#34;TRACE&#34;.
      * 
      */
     @Export(name="method", refs={String.class}, tree="[0]")
     private Output<String> method;
 
     /**
-     * @return The HTTP method used to access the endpoint
+     * @return The HTTP method used to access the endpoint.
+     * Available values: &#34;GET&#34;, &#34;POST&#34;, &#34;HEAD&#34;, &#34;OPTIONS&#34;, &#34;PUT&#34;, &#34;DELETE&#34;, &#34;CONNECT&#34;, &#34;PATCH&#34;, &#34;TRACE&#34;.
      * 
      */
     public Output<String> method() {
         return this.method;
     }
     /**
-     * The zone identifier to target for the resource.
+     * UUID
+     * 
+     */
+    @Export(name="operationId", refs={String.class}, tree="[0]")
+    private Output<String> operationId;
+
+    /**
+     * @return UUID
+     * 
+     */
+    public Output<String> operationId() {
+        return this.operationId;
+    }
+    /**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

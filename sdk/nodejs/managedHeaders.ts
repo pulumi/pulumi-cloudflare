@@ -7,29 +7,32 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The [Cloudflare Managed Headers](https://developers.cloudflare.com/rules/transform/managed-transforms/)
- * allows you to add or remove some predefined headers to one's
- * requests or origin responses.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * // Enable security headers using Managed Meaders
- * const example = new cloudflare.ManagedHeaders("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * const exampleManagedTransforms = new cloudflare.ManagedTransforms("example_managed_transforms", {
+ *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
  *     managedRequestHeaders: [{
- *         id: "add_true_client_ip_headers",
+ *         id: "add_bot_protection_headers",
  *         enabled: true,
  *     }],
  *     managedResponseHeaders: [{
- *         id: "remove_x-powered-by_header",
+ *         id: "add_security_headers",
  *         enabled: true,
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/managedHeaders:ManagedHeaders example '<zone_id>'
+ * ```
+ *
+ * @deprecated cloudflare.index/managedheaders.ManagedHeaders has been deprecated in favor of cloudflare.index/managedtransforms.ManagedTransforms
  */
 export class ManagedHeaders extends pulumi.CustomResource {
     /**
@@ -42,6 +45,7 @@ export class ManagedHeaders extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ManagedHeadersState, opts?: pulumi.CustomResourceOptions): ManagedHeaders {
+        pulumi.log.warn("ManagedHeaders is deprecated: cloudflare.index/managedheaders.ManagedHeaders has been deprecated in favor of cloudflare.index/managedtransforms.ManagedTransforms")
         return new ManagedHeaders(name, <any>state, { ...opts, id: id });
     }
 
@@ -60,15 +64,15 @@ export class ManagedHeaders extends pulumi.CustomResource {
     }
 
     /**
-     * The list of managed request headers.
+     * The list of Managed Request Transforms.
      */
-    public readonly managedRequestHeaders!: pulumi.Output<outputs.ManagedHeadersManagedRequestHeader[] | undefined>;
+    public readonly managedRequestHeaders!: pulumi.Output<outputs.ManagedHeadersManagedRequestHeader[]>;
     /**
-     * The list of managed response headers.
+     * The list of Managed Response Transforms.
      */
-    public readonly managedResponseHeaders!: pulumi.Output<outputs.ManagedHeadersManagedResponseHeader[] | undefined>;
+    public readonly managedResponseHeaders!: pulumi.Output<outputs.ManagedHeadersManagedResponseHeader[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The unique ID of the zone.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -79,8 +83,11 @@ export class ManagedHeaders extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/managedheaders.ManagedHeaders has been deprecated in favor of cloudflare.index/managedtransforms.ManagedTransforms */
     constructor(name: string, args: ManagedHeadersArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/managedheaders.ManagedHeaders has been deprecated in favor of cloudflare.index/managedtransforms.ManagedTransforms */
     constructor(name: string, argsOrState?: ManagedHeadersArgs | ManagedHeadersState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ManagedHeaders is deprecated: cloudflare.index/managedheaders.ManagedHeaders has been deprecated in favor of cloudflare.index/managedtransforms.ManagedTransforms")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -90,6 +97,12 @@ export class ManagedHeaders extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ManagedHeadersArgs | undefined;
+            if ((!args || args.managedRequestHeaders === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'managedRequestHeaders'");
+            }
+            if ((!args || args.managedResponseHeaders === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'managedResponseHeaders'");
+            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
@@ -98,6 +111,8 @@ export class ManagedHeaders extends pulumi.CustomResource {
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/managedHeaders:ManagedHeaders" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedHeaders.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -107,15 +122,15 @@ export class ManagedHeaders extends pulumi.CustomResource {
  */
 export interface ManagedHeadersState {
     /**
-     * The list of managed request headers.
+     * The list of Managed Request Transforms.
      */
     managedRequestHeaders?: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedRequestHeader>[]>;
     /**
-     * The list of managed response headers.
+     * The list of Managed Response Transforms.
      */
     managedResponseHeaders?: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedResponseHeader>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The unique ID of the zone.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -125,15 +140,15 @@ export interface ManagedHeadersState {
  */
 export interface ManagedHeadersArgs {
     /**
-     * The list of managed request headers.
+     * The list of Managed Request Transforms.
      */
-    managedRequestHeaders?: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedRequestHeader>[]>;
+    managedRequestHeaders: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedRequestHeader>[]>;
     /**
-     * The list of managed response headers.
+     * The list of Managed Response Transforms.
      */
-    managedResponseHeaders?: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedResponseHeader>[]>;
+    managedResponseHeaders: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedResponseHeader>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The unique ID of the zone.
      */
     zoneId: pulumi.Input<string>;
 }

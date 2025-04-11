@@ -3,7 +3,7 @@
 
 package com.pulumi.cloudflare;
 
-import com.pulumi.cloudflare.inputs.ZeroTrustListItemsWithDescriptionArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustListItemArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -18,30 +18,22 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ZeroTrustListArgs Empty = new ZeroTrustListArgs();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
     /**
-     * The description of the teams list.
+     * The description of the list.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the teams list.
+     * @return The description of the list.
      * 
      */
     public Optional<Output<String>> description() {
@@ -49,44 +41,29 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The items of the teams list.
+     * The items in the list.
      * 
      */
     @Import(name="items")
-    private @Nullable Output<List<String>> items;
+    private @Nullable Output<List<ZeroTrustListItemArgs>> items;
 
     /**
-     * @return The items of the teams list.
+     * @return The items in the list.
      * 
      */
-    public Optional<Output<List<String>>> items() {
+    public Optional<Output<List<ZeroTrustListItemArgs>>> items() {
         return Optional.ofNullable(this.items);
     }
 
     /**
-     * The items of the teams list that has explicit description.
-     * 
-     */
-    @Import(name="itemsWithDescriptions")
-    private @Nullable Output<List<ZeroTrustListItemsWithDescriptionArgs>> itemsWithDescriptions;
-
-    /**
-     * @return The items of the teams list that has explicit description.
-     * 
-     */
-    public Optional<Output<List<ZeroTrustListItemsWithDescriptionArgs>>> itemsWithDescriptions() {
-        return Optional.ofNullable(this.itemsWithDescriptions);
-    }
-
-    /**
-     * Name of the teams list.
+     * The name of the list.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the teams list.
+     * @return The name of the list.
      * 
      */
     public Output<String> name() {
@@ -94,14 +71,16 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+     * The type of list.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+     * @return The type of list.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
     public Output<String> type() {
@@ -114,7 +93,6 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.description = $.description;
         this.items = $.items;
-        this.itemsWithDescriptions = $.itemsWithDescriptions;
         this.name = $.name;
         this.type = $.type;
     }
@@ -137,29 +115,17 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ZeroTrustListArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param description The description of the teams list.
+         * @param description The description of the list.
          * 
          * @return builder
          * 
@@ -170,7 +136,7 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the teams list.
+         * @param description The description of the list.
          * 
          * @return builder
          * 
@@ -180,69 +146,38 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param items The items of the teams list.
+         * @param items The items in the list.
          * 
          * @return builder
          * 
          */
-        public Builder items(@Nullable Output<List<String>> items) {
+        public Builder items(@Nullable Output<List<ZeroTrustListItemArgs>> items) {
             $.items = items;
             return this;
         }
 
         /**
-         * @param items The items of the teams list.
+         * @param items The items in the list.
          * 
          * @return builder
          * 
          */
-        public Builder items(List<String> items) {
+        public Builder items(List<ZeroTrustListItemArgs> items) {
             return items(Output.of(items));
         }
 
         /**
-         * @param items The items of the teams list.
+         * @param items The items in the list.
          * 
          * @return builder
          * 
          */
-        public Builder items(String... items) {
+        public Builder items(ZeroTrustListItemArgs... items) {
             return items(List.of(items));
         }
 
         /**
-         * @param itemsWithDescriptions The items of the teams list that has explicit description.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder itemsWithDescriptions(@Nullable Output<List<ZeroTrustListItemsWithDescriptionArgs>> itemsWithDescriptions) {
-            $.itemsWithDescriptions = itemsWithDescriptions;
-            return this;
-        }
-
-        /**
-         * @param itemsWithDescriptions The items of the teams list that has explicit description.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder itemsWithDescriptions(List<ZeroTrustListItemsWithDescriptionArgs> itemsWithDescriptions) {
-            return itemsWithDescriptions(Output.of(itemsWithDescriptions));
-        }
-
-        /**
-         * @param itemsWithDescriptions The items of the teams list that has explicit description.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder itemsWithDescriptions(ZeroTrustListItemsWithDescriptionArgs... itemsWithDescriptions) {
-            return itemsWithDescriptions(List.of(itemsWithDescriptions));
-        }
-
-        /**
-         * @param name Name of the teams list.
+         * @param name The name of the list.
          * 
          * @return builder
          * 
@@ -253,7 +188,7 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the teams list.
+         * @param name The name of the list.
          * 
          * @return builder
          * 
@@ -263,7 +198,8 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+         * @param type The type of list.
+         * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
          * 
          * @return builder
          * 
@@ -274,7 +210,8 @@ public final class ZeroTrustListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+         * @param type The type of list.
+         * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
          * 
          * @return builder
          * 

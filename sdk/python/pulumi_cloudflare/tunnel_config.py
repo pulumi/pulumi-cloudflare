@@ -23,23 +23,29 @@ __all__ = ['TunnelConfigArgs', 'TunnelConfig']
 class TunnelConfigArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[builtins.str],
-                 config: pulumi.Input['TunnelConfigConfigArgs'],
-                 tunnel_id: pulumi.Input[builtins.str]):
+                 tunnel_id: pulumi.Input[builtins.str],
+                 config: Optional[pulumi.Input['TunnelConfigConfigArgs']] = None,
+                 source: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a TunnelConfig resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input['TunnelConfigConfigArgs'] config: Configuration block for Tunnel Configuration.
-        :param pulumi.Input[builtins.str] tunnel_id: Identifier of the Tunnel to target for this configuration.
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] tunnel_id: UUID of the tunnel.
+        :param pulumi.Input['TunnelConfigConfigArgs'] config: The tunnel configuration and ingress rules.
+        :param pulumi.Input[builtins.str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+               Available values: "local", "cloudflare".
         """
         pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "tunnel_id", tunnel_id)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -48,22 +54,10 @@ class TunnelConfigArgs:
         pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter
-    def config(self) -> pulumi.Input['TunnelConfigConfigArgs']:
-        """
-        Configuration block for Tunnel Configuration.
-        """
-        return pulumi.get(self, "config")
-
-    @config.setter
-    def config(self, value: pulumi.Input['TunnelConfigConfigArgs']):
-        pulumi.set(self, "config", value)
-
-    @property
     @pulumi.getter(name="tunnelId")
     def tunnel_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier of the Tunnel to target for this configuration.
+        UUID of the tunnel.
         """
         return pulumi.get(self, "tunnel_id")
 
@@ -71,31 +65,68 @@ class TunnelConfigArgs:
     def tunnel_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "tunnel_id", value)
 
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['TunnelConfigConfigArgs']]:
+        """
+        The tunnel configuration and ingress rules.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['TunnelConfigConfigArgs']]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        Available values: "local", "cloudflare".
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "source", value)
+
 
 @pulumi.input_type
 class _TunnelConfigState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  config: Optional[pulumi.Input['TunnelConfigConfigArgs']] = None,
-                 tunnel_id: Optional[pulumi.Input[builtins.str]] = None):
+                 created_at: Optional[pulumi.Input[builtins.str]] = None,
+                 source: Optional[pulumi.Input[builtins.str]] = None,
+                 tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
+                 version: Optional[pulumi.Input[builtins.int]] = None):
         """
         Input properties used for looking up and filtering TunnelConfig resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input['TunnelConfigConfigArgs'] config: Configuration block for Tunnel Configuration.
-        :param pulumi.Input[builtins.str] tunnel_id: Identifier of the Tunnel to target for this configuration.
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input['TunnelConfigConfigArgs'] config: The tunnel configuration and ingress rules.
+        :param pulumi.Input[builtins.str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+               Available values: "local", "cloudflare".
+        :param pulumi.Input[builtins.str] tunnel_id: UUID of the tunnel.
+        :param pulumi.Input[builtins.int] version: The version of the Tunnel Configuration.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
         if tunnel_id is not None:
             pulumi.set(__self__, "tunnel_id", tunnel_id)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -107,7 +138,7 @@ class _TunnelConfigState:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['TunnelConfigConfigArgs']]:
         """
-        Configuration block for Tunnel Configuration.
+        The tunnel configuration and ingress rules.
         """
         return pulumi.get(self, "config")
 
@@ -116,10 +147,32 @@ class _TunnelConfigState:
         pulumi.set(self, "config", value)
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        Available values: "local", "cloudflare".
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "source", value)
+
+    @property
     @pulumi.getter(name="tunnelId")
     def tunnel_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier of the Tunnel to target for this configuration.
+        UUID of the tunnel.
         """
         return pulumi.get(self, "tunnel_id")
 
@@ -127,93 +180,50 @@ class _TunnelConfigState:
     def tunnel_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "tunnel_id", value)
 
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The version of the Tunnel Configuration.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "version", value)
+
+
+warnings.warn("""cloudflare.index/tunnelconfig.TunnelConfig has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredconfig.ZeroTrustTunnelCloudflaredConfig""", DeprecationWarning)
+
 
 class TunnelConfig(pulumi.CustomResource):
+    warnings.warn("""cloudflare.index/tunnelconfig.TunnelConfig has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredconfig.ZeroTrustTunnelCloudflaredConfig""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  config: Optional[pulumi.Input[Union['TunnelConfigConfigArgs', 'TunnelConfigConfigArgsDict']]] = None,
+                 source: Optional[pulumi.Input[builtins.str]] = None,
                  tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Tunnel configuration resource.
-
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_tunnel = cloudflare.ZeroTrustTunnelCloudflared("example_tunnel",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example_tunnel",
-            secret="<32 character secret>")
-        example_config = cloudflare.TunnelConfig("example_config",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            tunnel_id=example_tunnel.id,
-            config={
-                "warp_routing": {
-                    "enabled": True,
-                },
-                "origin_request": {
-                    "connect_timeout": "1m0s",
-                    "tls_timeout": "1m0s",
-                    "tcp_keep_alive": "1m0s",
-                    "no_happy_eyeballs": False,
-                    "keep_alive_connections": 1024,
-                    "keep_alive_timeout": "1m0s",
-                    "http_host_header": "baz",
-                    "origin_server_name": "foobar",
-                    "ca_pool": "/path/to/unsigned/ca/pool",
-                    "no_tls_verify": False,
-                    "disable_chunked_encoding": False,
-                    "bastion_mode": False,
-                    "proxy_address": "10.0.0.1",
-                    "proxy_port": 8123,
-                    "proxy_type": "socks",
-                    "ip_rules": [{
-                        "prefix": "/web",
-                        "ports": [
-                            80,
-                            443,
-                        ],
-                        "allow": False,
-                    }],
-                },
-                "ingress_rules": [
-                    {
-                        "hostname": "foo",
-                        "path": "/bar",
-                        "service": "http://10.0.0.2:8080",
-                        "origin_request": {
-                            "connect_timeout": "2m0s",
-                            "access": {
-                                "required": True,
-                                "team_name": "terraform",
-                                "aud_tags": ["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"],
-                            },
-                        },
-                    },
-                    {
-                        "service": "https://10.0.0.3:8081",
-                    },
-                ],
-            })
-        ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/tunnelConfig:TunnelConfig example <account_id>/<tunnel_id>
+        $ pulumi import cloudflare:index/tunnelConfig:TunnelConfig example '<account_id>/<tunnel_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Union['TunnelConfigConfigArgs', 'TunnelConfigConfigArgsDict']] config: Configuration block for Tunnel Configuration.
-        :param pulumi.Input[builtins.str] tunnel_id: Identifier of the Tunnel to target for this configuration.
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[Union['TunnelConfigConfigArgs', 'TunnelConfigConfigArgsDict']] config: The tunnel configuration and ingress rules.
+        :param pulumi.Input[builtins.str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+               Available values: "local", "cloudflare".
+        :param pulumi.Input[builtins.str] tunnel_id: UUID of the tunnel.
         """
         ...
     @overload
@@ -222,75 +232,12 @@ class TunnelConfig(pulumi.CustomResource):
                  args: TunnelConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Tunnel configuration resource.
-
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_tunnel = cloudflare.ZeroTrustTunnelCloudflared("example_tunnel",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example_tunnel",
-            secret="<32 character secret>")
-        example_config = cloudflare.TunnelConfig("example_config",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            tunnel_id=example_tunnel.id,
-            config={
-                "warp_routing": {
-                    "enabled": True,
-                },
-                "origin_request": {
-                    "connect_timeout": "1m0s",
-                    "tls_timeout": "1m0s",
-                    "tcp_keep_alive": "1m0s",
-                    "no_happy_eyeballs": False,
-                    "keep_alive_connections": 1024,
-                    "keep_alive_timeout": "1m0s",
-                    "http_host_header": "baz",
-                    "origin_server_name": "foobar",
-                    "ca_pool": "/path/to/unsigned/ca/pool",
-                    "no_tls_verify": False,
-                    "disable_chunked_encoding": False,
-                    "bastion_mode": False,
-                    "proxy_address": "10.0.0.1",
-                    "proxy_port": 8123,
-                    "proxy_type": "socks",
-                    "ip_rules": [{
-                        "prefix": "/web",
-                        "ports": [
-                            80,
-                            443,
-                        ],
-                        "allow": False,
-                    }],
-                },
-                "ingress_rules": [
-                    {
-                        "hostname": "foo",
-                        "path": "/bar",
-                        "service": "http://10.0.0.2:8080",
-                        "origin_request": {
-                            "connect_timeout": "2m0s",
-                            "access": {
-                                "required": True,
-                                "team_name": "terraform",
-                                "aud_tags": ["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"],
-                            },
-                        },
-                    },
-                    {
-                        "service": "https://10.0.0.3:8081",
-                    },
-                ],
-            })
-        ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/tunnelConfig:TunnelConfig example <account_id>/<tunnel_id>
+        $ pulumi import cloudflare:index/tunnelConfig:TunnelConfig example '<account_id>/<tunnel_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -310,8 +257,10 @@ class TunnelConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  config: Optional[pulumi.Input[Union['TunnelConfigConfigArgs', 'TunnelConfigConfigArgsDict']]] = None,
+                 source: Optional[pulumi.Input[builtins.str]] = None,
                  tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""TunnelConfig is deprecated: cloudflare.index/tunnelconfig.TunnelConfig has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredconfig.ZeroTrustTunnelCloudflaredConfig""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -323,12 +272,15 @@ class TunnelConfig(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            if config is None and not opts.urn:
-                raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
+            __props__.__dict__["source"] = source
             if tunnel_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tunnel_id'")
             __props__.__dict__["tunnel_id"] = tunnel_id
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["version"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/tunnelConfig:TunnelConfig")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(TunnelConfig, __self__).__init__(
             'cloudflare:index/tunnelConfig:TunnelConfig',
             resource_name,
@@ -341,7 +293,10 @@ class TunnelConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
             config: Optional[pulumi.Input[Union['TunnelConfigConfigArgs', 'TunnelConfigConfigArgsDict']]] = None,
-            tunnel_id: Optional[pulumi.Input[builtins.str]] = None) -> 'TunnelConfig':
+            created_at: Optional[pulumi.Input[builtins.str]] = None,
+            source: Optional[pulumi.Input[builtins.str]] = None,
+            tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
+            version: Optional[pulumi.Input[builtins.int]] = None) -> 'TunnelConfig':
         """
         Get an existing TunnelConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -349,9 +304,12 @@ class TunnelConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Union['TunnelConfigConfigArgs', 'TunnelConfigConfigArgsDict']] config: Configuration block for Tunnel Configuration.
-        :param pulumi.Input[builtins.str] tunnel_id: Identifier of the Tunnel to target for this configuration.
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[Union['TunnelConfigConfigArgs', 'TunnelConfigConfigArgsDict']] config: The tunnel configuration and ingress rules.
+        :param pulumi.Input[builtins.str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+               Available values: "local", "cloudflare".
+        :param pulumi.Input[builtins.str] tunnel_id: UUID of the tunnel.
+        :param pulumi.Input[builtins.int] version: The version of the Tunnel Configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -359,14 +317,17 @@ class TunnelConfig(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["config"] = config
+        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["source"] = source
         __props__.__dict__["tunnel_id"] = tunnel_id
+        __props__.__dict__["version"] = version
         return TunnelConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -374,15 +335,37 @@ class TunnelConfig(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output['outputs.TunnelConfigConfig']:
         """
-        Configuration block for Tunnel Configuration.
+        The tunnel configuration and ingress rules.
         """
         return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def source(self) -> pulumi.Output[builtins.str]:
+        """
+        Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        Available values: "local", "cloudflare".
+        """
+        return pulumi.get(self, "source")
 
     @property
     @pulumi.getter(name="tunnelId")
     def tunnel_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier of the Tunnel to target for this configuration.
+        UUID of the tunnel.
         """
         return pulumi.get(self, "tunnel_id")
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Output[builtins.int]:
+        """
+        The version of the Tunnel Configuration.
+        """
+        return pulumi.get(self, "version")
 

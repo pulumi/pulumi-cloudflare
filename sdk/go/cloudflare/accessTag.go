@@ -8,23 +8,55 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource to customize the pages your end users will see
-// when trying to reach applications behind Cloudflare Access.
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustAccessTag(ctx, "example_zero_trust_access_tag", &cloudflare.ZeroTrustAccessTagArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Name:      pulumi.String("engineers"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/accessTag:AccessTag example '<account_id>/<tag_name>'
+// ```
+//
+// Deprecated: cloudflare.index/accesstag.AccessTag has been deprecated in favor of cloudflare.index/zerotrustaccesstag.ZeroTrustAccessTag
 type AccessTag struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// Number of apps associated with the tag.
-	AppCount pulumi.IntOutput `pulumi:"appCount"`
-	// Friendly name of the Access Tag.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	// Identifier
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// The number of applications that have this tag
+	AppCount  pulumi.IntOutput    `pulumi:"appCount"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The name of the tag
+	Name      pulumi.StringOutput `pulumi:"name"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
 // NewAccessTag registers a new resource with the given unique name, arguments, and options.
@@ -34,9 +66,18 @@ func NewAccessTag(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/accessTag:AccessTag"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessTag
 	err := ctx.RegisterResource("cloudflare:index/accessTag:AccessTag", name, args, &resource, opts...)
@@ -60,25 +101,25 @@ func GetAccessTag(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessTag resources.
 type accessTagState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// Number of apps associated with the tag.
-	AppCount *int `pulumi:"appCount"`
-	// Friendly name of the Access Tag.
-	Name *string `pulumi:"name"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
-	ZoneId *string `pulumi:"zoneId"`
+	// The number of applications that have this tag
+	AppCount  *int    `pulumi:"appCount"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// The name of the tag
+	Name      *string `pulumi:"name"`
+	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type AccessTagState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// Number of apps associated with the tag.
-	AppCount pulumi.IntPtrInput
-	// Friendly name of the Access Tag.
-	Name pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
-	ZoneId pulumi.StringPtrInput
+	// The number of applications that have this tag
+	AppCount  pulumi.IntPtrInput
+	CreatedAt pulumi.StringPtrInput
+	// The name of the tag
+	Name      pulumi.StringPtrInput
+	UpdatedAt pulumi.StringPtrInput
 }
 
 func (AccessTagState) ElementType() reflect.Type {
@@ -86,26 +127,18 @@ func (AccessTagState) ElementType() reflect.Type {
 }
 
 type accessTagArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
-	AccountId *string `pulumi:"accountId"`
-	// Number of apps associated with the tag.
-	AppCount *int `pulumi:"appCount"`
-	// Friendly name of the Access Tag.
+	// Identifier
+	AccountId string `pulumi:"accountId"`
+	// The name of the tag
 	Name string `pulumi:"name"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
-	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessTag resource.
 type AccessTagArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
-	AccountId pulumi.StringPtrInput
-	// Number of apps associated with the tag.
-	AppCount pulumi.IntPtrInput
-	// Friendly name of the Access Tag.
+	// Identifier
+	AccountId pulumi.StringInput
+	// The name of the tag
 	Name pulumi.StringInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
-	ZoneId pulumi.StringPtrInput
 }
 
 func (AccessTagArgs) ElementType() reflect.Type {
@@ -195,24 +228,27 @@ func (o AccessTagOutput) ToAccessTagOutputWithContext(ctx context.Context) Acces
 	return o
 }
 
-// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
-func (o AccessTagOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessTag) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+// Identifier
+func (o AccessTagOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessTag) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Number of apps associated with the tag.
+// The number of applications that have this tag
 func (o AccessTagOutput) AppCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *AccessTag) pulumi.IntOutput { return v.AppCount }).(pulumi.IntOutput)
 }
 
-// Friendly name of the Access Tag.
+func (o AccessTagOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessTag) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The name of the tag
 func (o AccessTagOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessTag) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
-func (o AccessTagOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessTag) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o AccessTagOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessTag) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type AccessTagArrayOutput struct{ *pulumi.OutputState }

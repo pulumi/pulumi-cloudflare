@@ -18,14 +18,14 @@ public final class TunnelVirtualNetworkArgs extends com.pulumi.resources.Resourc
     public static final TunnelVirtualNetworkArgs Empty = new TunnelVirtualNetworkArgs();
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Cloudflare account ID
      * 
      */
     public Output<String> accountId() {
@@ -33,14 +33,14 @@ public final class TunnelVirtualNetworkArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Description of the tunnel virtual network.
+     * Optional remark describing the virtual network.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return Description of the tunnel virtual network.
+     * @return Optional remark describing the virtual network.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -48,14 +48,29 @@ public final class TunnelVirtualNetworkArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+     * If `true`, this virtual network is the default for the account.
+     * 
+     */
+    @Import(name="isDefault")
+    private @Nullable Output<Boolean> isDefault;
+
+    /**
+     * @return If `true`, this virtual network is the default for the account.
+     * 
+     */
+    public Optional<Output<Boolean>> isDefault() {
+        return Optional.ofNullable(this.isDefault);
+    }
+
+    /**
+     * If `true`, this virtual network is the default for the account.
      * 
      */
     @Import(name="isDefaultNetwork")
     private @Nullable Output<Boolean> isDefaultNetwork;
 
     /**
-     * @return Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+     * @return If `true`, this virtual network is the default for the account.
      * 
      */
     public Optional<Output<Boolean>> isDefaultNetwork() {
@@ -63,14 +78,14 @@ public final class TunnelVirtualNetworkArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * A user-friendly name chosen when the virtual network is created.
+     * A user-friendly name for the virtual network.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return A user-friendly name chosen when the virtual network is created.
+     * @return A user-friendly name for the virtual network.
      * 
      */
     public Output<String> name() {
@@ -82,6 +97,7 @@ public final class TunnelVirtualNetworkArgs extends com.pulumi.resources.Resourc
     private TunnelVirtualNetworkArgs(TunnelVirtualNetworkArgs $) {
         this.accountId = $.accountId;
         this.comment = $.comment;
+        this.isDefault = $.isDefault;
         this.isDefaultNetwork = $.isDefaultNetwork;
         this.name = $.name;
     }
@@ -105,7 +121,7 @@ public final class TunnelVirtualNetworkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Cloudflare account ID
          * 
          * @return builder
          * 
@@ -116,7 +132,7 @@ public final class TunnelVirtualNetworkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Cloudflare account ID
          * 
          * @return builder
          * 
@@ -126,7 +142,7 @@ public final class TunnelVirtualNetworkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param comment Description of the tunnel virtual network.
+         * @param comment Optional remark describing the virtual network.
          * 
          * @return builder
          * 
@@ -137,7 +153,7 @@ public final class TunnelVirtualNetworkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param comment Description of the tunnel virtual network.
+         * @param comment Optional remark describing the virtual network.
          * 
          * @return builder
          * 
@@ -147,7 +163,28 @@ public final class TunnelVirtualNetworkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param isDefaultNetwork Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+         * @param isDefault If `true`, this virtual network is the default for the account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefault(@Nullable Output<Boolean> isDefault) {
+            $.isDefault = isDefault;
+            return this;
+        }
+
+        /**
+         * @param isDefault If `true`, this virtual network is the default for the account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefault(Boolean isDefault) {
+            return isDefault(Output.of(isDefault));
+        }
+
+        /**
+         * @param isDefaultNetwork If `true`, this virtual network is the default for the account.
          * 
          * @return builder
          * 
@@ -158,7 +195,7 @@ public final class TunnelVirtualNetworkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param isDefaultNetwork Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+         * @param isDefaultNetwork If `true`, this virtual network is the default for the account.
          * 
          * @return builder
          * 
@@ -168,7 +205,7 @@ public final class TunnelVirtualNetworkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name A user-friendly name chosen when the virtual network is created.
+         * @param name A user-friendly name for the virtual network.
          * 
          * @return builder
          * 
@@ -179,7 +216,7 @@ public final class TunnelVirtualNetworkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name A user-friendly name chosen when the virtual network is created.
+         * @param name A user-friendly name for the virtual network.
          * 
          * @return builder
          * 

@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyHostArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Resolve hostname to IP address.
+        /// Use the resolved host in the cache key. A value of true will use the resolved host, while a value or false will use the original host.
         /// </summary>
         [Input("resolved")]
         public Input<bool>? Resolved { get; set; }

@@ -5,8 +5,8 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,42 +14,42 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
     /**
-     * @return Status code for which the edge TTL is applied.
+     * @return Set the ttl for responses with this specific status code
      * 
      */
     private @Nullable Integer statusCode;
     /**
-     * @return Status code range for which the edge TTL is applied.
+     * @return The range of status codes used to apply the selected mode.
      * 
      */
-    private @Nullable List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges;
+    private @Nullable RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange statusCodeRange;
     /**
-     * @return Status code edge TTL value.
+     * @return Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting Cache-Control header with the value of &#34;no-store&#34;.
      * 
      */
-    private @Nullable Integer value;
+    private Integer value;
 
     private RulesetRuleActionParametersEdgeTtlStatusCodeTtl() {}
     /**
-     * @return Status code for which the edge TTL is applied.
+     * @return Set the ttl for responses with this specific status code
      * 
      */
     public Optional<Integer> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
     /**
-     * @return Status code range for which the edge TTL is applied.
+     * @return The range of status codes used to apply the selected mode.
      * 
      */
-    public List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges() {
-        return this.statusCodeRanges == null ? List.of() : this.statusCodeRanges;
+    public Optional<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRange() {
+        return Optional.ofNullable(this.statusCodeRange);
     }
     /**
-     * @return Status code edge TTL value.
+     * @return Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting Cache-Control header with the value of &#34;no-store&#34;.
      * 
      */
-    public Optional<Integer> value() {
-        return Optional.ofNullable(this.value);
+    public Integer value() {
+        return this.value;
     }
 
     public static Builder builder() {
@@ -62,13 +62,13 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer statusCode;
-        private @Nullable List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges;
-        private @Nullable Integer value;
+        private @Nullable RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange statusCodeRange;
+        private Integer value;
         public Builder() {}
         public Builder(RulesetRuleActionParametersEdgeTtlStatusCodeTtl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.statusCode = defaults.statusCode;
-    	      this.statusCodeRanges = defaults.statusCodeRanges;
+    	      this.statusCodeRange = defaults.statusCodeRange;
     	      this.value = defaults.value;
         }
 
@@ -79,24 +79,23 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
             return this;
         }
         @CustomType.Setter
-        public Builder statusCodeRanges(@Nullable List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges) {
+        public Builder statusCodeRange(@Nullable RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange statusCodeRange) {
 
-            this.statusCodeRanges = statusCodeRanges;
+            this.statusCodeRange = statusCodeRange;
             return this;
         }
-        public Builder statusCodeRanges(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange... statusCodeRanges) {
-            return statusCodeRanges(List.of(statusCodeRanges));
-        }
         @CustomType.Setter
-        public Builder value(@Nullable Integer value) {
-
+        public Builder value(Integer value) {
+            if (value == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleActionParametersEdgeTtlStatusCodeTtl", "value");
+            }
             this.value = value;
             return this;
         }
         public RulesetRuleActionParametersEdgeTtlStatusCodeTtl build() {
             final var _resultValue = new RulesetRuleActionParametersEdgeTtlStatusCodeTtl();
             _resultValue.statusCode = statusCode;
-            _resultValue.statusCodeRanges = statusCodeRanges;
+            _resultValue.statusCodeRange = statusCodeRange;
             _resultValue.value = value;
             return _resultValue;
         }

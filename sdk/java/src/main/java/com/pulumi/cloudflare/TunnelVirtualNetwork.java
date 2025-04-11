@@ -6,21 +6,18 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.TunnelVirtualNetworkArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.TunnelVirtualNetworkState;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource, that manages Cloudflare tunnel virtual networks
- * for Zero Trust. Tunnel virtual networks are used for segregation of
- * Tunnel IP Routes via Virtualized Networks to handle overlapping
- * private IPs in your origins.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -31,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.TunnelVirtualNetwork;
- * import com.pulumi.cloudflare.TunnelVirtualNetworkArgs;
+ * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredVirtualNetwork;
+ * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredVirtualNetworkArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,10 +43,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TunnelVirtualNetwork("example", TunnelVirtualNetworkArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("vnet-for-documentation")
- *             .comment("New tunnel virtual network for documentation")
+ *         var exampleZeroTrustTunnelCloudflaredVirtualNetwork = new ZeroTrustTunnelCloudflaredVirtualNetwork("exampleZeroTrustTunnelCloudflaredVirtualNetwork", ZeroTrustTunnelCloudflaredVirtualNetworkArgs.builder()
+ *             .accountId("699d98642c564d2e855e9661899b7252")
+ *             .name("us-east-1-vpc")
+ *             .comment("Staging VPC for data science")
+ *             .isDefault(true)
  *             .build());
  * 
  *     }
@@ -61,63 +59,109 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example &lt;account_id&gt;/&lt;vnet_id&gt;
+ * $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example &#39;&lt;account_id&gt;/&lt;virtual_network_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare.index/tunnelvirtualnetwork.TunnelVirtualNetwork has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredvirtualnetwork.ZeroTrustTunnelCloudflaredVirtualNetwork
+ * 
  */
+@Deprecated /* cloudflare.index/tunnelvirtualnetwork.TunnelVirtualNetwork has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredvirtualnetwork.ZeroTrustTunnelCloudflaredVirtualNetwork */
 @ResourceType(type="cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork")
 public class TunnelVirtualNetwork extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Cloudflare account ID
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Description of the tunnel virtual network.
+     * Optional remark describing the virtual network.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return Description of the tunnel virtual network.
+     * @return Optional remark describing the virtual network.
      * 
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
     /**
-     * Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+     * Timestamp of when the resource was created.
+     * 
+     */
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    /**
+     * @return Timestamp of when the resource was created.
+     * 
+     */
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     * 
+     */
+    @Export(name="deletedAt", refs={String.class}, tree="[0]")
+    private Output<String> deletedAt;
+
+    /**
+     * @return Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     * 
+     */
+    public Output<String> deletedAt() {
+        return this.deletedAt;
+    }
+    /**
+     * If `true`, this virtual network is the default for the account.
+     * 
+     */
+    @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isDefault;
+
+    /**
+     * @return If `true`, this virtual network is the default for the account.
+     * 
+     */
+    public Output<Optional<Boolean>> isDefault() {
+        return Codegen.optional(this.isDefault);
+    }
+    /**
+     * If `true`, this virtual network is the default for the account.
      * 
      */
     @Export(name="isDefaultNetwork", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isDefaultNetwork;
 
     /**
-     * @return Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+     * @return If `true`, this virtual network is the default for the account.
      * 
      */
     public Output<Optional<Boolean>> isDefaultNetwork() {
         return Codegen.optional(this.isDefaultNetwork);
     }
     /**
-     * A user-friendly name chosen when the virtual network is created.
+     * A user-friendly name for the virtual network.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return A user-friendly name chosen when the virtual network is created.
+     * @return A user-friendly name for the virtual network.
      * 
      */
     public Output<String> name() {
@@ -163,6 +207,9 @@ public class TunnelVirtualNetwork extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

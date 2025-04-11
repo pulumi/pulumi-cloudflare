@@ -8,14 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Teams List resource. Teams lists are
-// referenced when creating secure web gateway policies or device
-// posture rules.
-//
 // ## Example Usage
 //
 // ```go
@@ -23,22 +19,23 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTeamsList(ctx, "example", &cloudflare.TeamsListArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:        pulumi.String("Corporate devices"),
+//			_, err := cloudflare.NewZeroTrustList(ctx, "example_zero_trust_list", &cloudflare.ZeroTrustListArgs{
+//				AccountId:   pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				Name:        pulumi.String("Admin Serial Numbers"),
 //				Type:        pulumi.String("SERIAL"),
-//				Description: pulumi.String("Serial numbers for all corporate devices."),
-//				Items: pulumi.StringArray{
-//					pulumi.String("8GE8721REF"),
-//					pulumi.String("5RE8543EGG"),
-//					pulumi.String("1YE2880LNP"),
+//				Description: pulumi.String("The serial numbers for administrators"),
+//				Items: cloudflare.ZeroTrustListItemArray{
+//					&cloudflare.ZeroTrustListItemArgs{
+//						Description: pulumi.String("Austin office IP"),
+//						Value:       pulumi.String("8GE8721REF"),
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -53,23 +50,27 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/teamsList:TeamsList example <account_id>/<teams_list_id>
+// $ pulumi import cloudflare:index/teamsList:TeamsList example '<account_id>/<list_id>'
 // ```
+//
+// Deprecated: cloudflare.index/teamslist.TeamsList has been deprecated in favor of cloudflare.index/zerotrustlist.ZeroTrustList
 type TeamsList struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The description of the teams list.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The description of the list.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The items of the teams list.
-	Items pulumi.StringArrayOutput `pulumi:"items"`
-	// The items of the teams list that has explicit description.
-	ItemsWithDescriptions TeamsListItemsWithDescriptionArrayOutput `pulumi:"itemsWithDescriptions"`
-	// Name of the teams list.
+	// The items in the list.
+	Items TeamsListItemArrayOutput `pulumi:"items"`
+	// The number of items in the list.
+	ListCount pulumi.Float64Output `pulumi:"listCount"`
+	// The name of the list.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
-	Type pulumi.StringOutput `pulumi:"type"`
+	// The type of list.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+	Type      pulumi.StringOutput `pulumi:"type"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
 // NewTeamsList registers a new resource with the given unique name, arguments, and options.
@@ -88,6 +89,12 @@ func NewTeamsList(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/teamsList:TeamsList"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TeamsList
 	err := ctx.RegisterResource("cloudflare:index/teamsList:TeamsList", name, args, &resource, opts...)
@@ -111,33 +118,37 @@ func GetTeamsList(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TeamsList resources.
 type teamsListState struct {
-	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// The description of the teams list.
+	CreatedAt *string `pulumi:"createdAt"`
+	// The description of the list.
 	Description *string `pulumi:"description"`
-	// The items of the teams list.
-	Items []string `pulumi:"items"`
-	// The items of the teams list that has explicit description.
-	ItemsWithDescriptions []TeamsListItemsWithDescription `pulumi:"itemsWithDescriptions"`
-	// Name of the teams list.
+	// The items in the list.
+	Items []TeamsListItem `pulumi:"items"`
+	// The number of items in the list.
+	ListCount *float64 `pulumi:"listCount"`
+	// The name of the list.
 	Name *string `pulumi:"name"`
-	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
-	Type *string `pulumi:"type"`
+	// The type of list.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+	Type      *string `pulumi:"type"`
+	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type TeamsListState struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// The description of the teams list.
+	CreatedAt pulumi.StringPtrInput
+	// The description of the list.
 	Description pulumi.StringPtrInput
-	// The items of the teams list.
-	Items pulumi.StringArrayInput
-	// The items of the teams list that has explicit description.
-	ItemsWithDescriptions TeamsListItemsWithDescriptionArrayInput
-	// Name of the teams list.
+	// The items in the list.
+	Items TeamsListItemArrayInput
+	// The number of items in the list.
+	ListCount pulumi.Float64PtrInput
+	// The name of the list.
 	Name pulumi.StringPtrInput
-	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
-	Type pulumi.StringPtrInput
+	// The type of list.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+	Type      pulumi.StringPtrInput
+	UpdatedAt pulumi.StringPtrInput
 }
 
 func (TeamsListState) ElementType() reflect.Type {
@@ -145,33 +156,29 @@ func (TeamsListState) ElementType() reflect.Type {
 }
 
 type teamsListArgs struct {
-	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// The description of the teams list.
+	// The description of the list.
 	Description *string `pulumi:"description"`
-	// The items of the teams list.
-	Items []string `pulumi:"items"`
-	// The items of the teams list that has explicit description.
-	ItemsWithDescriptions []TeamsListItemsWithDescription `pulumi:"itemsWithDescriptions"`
-	// Name of the teams list.
+	// The items in the list.
+	Items []TeamsListItem `pulumi:"items"`
+	// The name of the list.
 	Name string `pulumi:"name"`
-	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+	// The type of list.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a TeamsList resource.
 type TeamsListArgs struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// The description of the teams list.
+	// The description of the list.
 	Description pulumi.StringPtrInput
-	// The items of the teams list.
-	Items pulumi.StringArrayInput
-	// The items of the teams list that has explicit description.
-	ItemsWithDescriptions TeamsListItemsWithDescriptionArrayInput
-	// Name of the teams list.
+	// The items in the list.
+	Items TeamsListItemArrayInput
+	// The name of the list.
 	Name pulumi.StringInput
-	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+	// The type of list.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 	Type pulumi.StringInput
 }
 
@@ -262,34 +269,42 @@ func (o TeamsListOutput) ToTeamsListOutputWithContext(ctx context.Context) Teams
 	return o
 }
 
-// The account identifier to target for the resource.
 func (o TeamsListOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The description of the teams list.
+func (o TeamsListOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The description of the list.
 func (o TeamsListOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamsList) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The items of the teams list.
-func (o TeamsListOutput) Items() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TeamsList) pulumi.StringArrayOutput { return v.Items }).(pulumi.StringArrayOutput)
+// The items in the list.
+func (o TeamsListOutput) Items() TeamsListItemArrayOutput {
+	return o.ApplyT(func(v *TeamsList) TeamsListItemArrayOutput { return v.Items }).(TeamsListItemArrayOutput)
 }
 
-// The items of the teams list that has explicit description.
-func (o TeamsListOutput) ItemsWithDescriptions() TeamsListItemsWithDescriptionArrayOutput {
-	return o.ApplyT(func(v *TeamsList) TeamsListItemsWithDescriptionArrayOutput { return v.ItemsWithDescriptions }).(TeamsListItemsWithDescriptionArrayOutput)
+// The number of items in the list.
+func (o TeamsListOutput) ListCount() pulumi.Float64Output {
+	return o.ApplyT(func(v *TeamsList) pulumi.Float64Output { return v.ListCount }).(pulumi.Float64Output)
 }
 
-// Name of the teams list.
+// The name of the list.
 func (o TeamsListOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+// The type of list.
+// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 func (o TeamsListOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o TeamsListOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type TeamsListArrayOutput struct{ *pulumi.OutputState }

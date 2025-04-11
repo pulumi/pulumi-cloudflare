@@ -4,12 +4,10 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.TunnelConfigConfigOriginRequestAccess;
-import com.pulumi.cloudflare.outputs.TunnelConfigConfigOriginRequestIpRule;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,221 +15,173 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TunnelConfigConfigOriginRequest {
     /**
-     * @return Access rules for the ingress service.
+     * @return For all L7 requests to this hostname, cloudflared will validate each request&#39;s Cf-Access-Jwt-Assertion request header.
      * 
      */
     private @Nullable TunnelConfigConfigOriginRequestAccess access;
     /**
-     * @return Runs as jump host.
-     * 
-     */
-    private @Nullable Boolean bastionMode;
-    /**
-     * @return Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `&#34;&#34;`.
+     * @return Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
      * 
      */
     private @Nullable String caPool;
     /**
-     * @return Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`.
+     * @return Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
      * 
      */
-    private @Nullable String connectTimeout;
+    private @Nullable Integer connectTimeout;
     /**
-     * @return Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`.
+     * @return Disables chunked transfer encoding. Useful if you are running a WSGI server.
      * 
      */
     private @Nullable Boolean disableChunkedEncoding;
     /**
-     * @return Enables HTTP/2 support for the origin connection. Defaults to `false`.
+     * @return Attempt to connect to origin using HTTP2. Origin must be configured as https.
      * 
      */
     private @Nullable Boolean http2Origin;
     /**
-     * @return Sets the HTTP Host header on requests sent to the local service. Defaults to `&#34;&#34;`.
+     * @return Sets the HTTP Host header on requests sent to the local service.
      * 
      */
     private @Nullable String httpHostHeader;
     /**
-     * @return IP rules for the proxy service.
-     * 
-     */
-    private @Nullable List<TunnelConfigConfigOriginRequestIpRule> ipRules;
-    /**
-     * @return Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`.
+     * @return Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
      * 
      */
     private @Nullable Integer keepAliveConnections;
     /**
-     * @return Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`.
+     * @return Timeout after which an idle keepalive connection can be discarded.
      * 
      */
-    private @Nullable String keepAliveTimeout;
+    private @Nullable Integer keepAliveTimeout;
     /**
-     * @return Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`.
+     * @return Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      * 
      */
     private @Nullable Boolean noHappyEyeballs;
     /**
-     * @return Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`.
+     * @return Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
      * 
      */
     private @Nullable Boolean noTlsVerify;
     /**
-     * @return Hostname that cloudflared should expect from your origin server certificate. Defaults to `&#34;&#34;`.
+     * @return Hostname that cloudflared should expect from your origin server certificate.
      * 
      */
     private @Nullable String originServerName;
     /**
-     * @return cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`.
-     * 
-     */
-    private @Nullable String proxyAddress;
-    /**
-     * @return cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`.
-     * 
-     */
-    private @Nullable Integer proxyPort;
-    /**
-     * @return cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `&#34;&#34;`, `socks`. Defaults to `&#34;&#34;`.
+     * @return cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: &#34;&#34; for the regular proxy and &#34;socks&#34; for a SOCKS5 proxy.
      * 
      */
     private @Nullable String proxyType;
     /**
-     * @return The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`.
+     * @return The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
      * 
      */
-    private @Nullable String tcpKeepAlive;
+    private @Nullable Integer tcpKeepAlive;
     /**
-     * @return Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`.
+     * @return Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
      * 
      */
-    private @Nullable String tlsTimeout;
+    private @Nullable Integer tlsTimeout;
 
     private TunnelConfigConfigOriginRequest() {}
     /**
-     * @return Access rules for the ingress service.
+     * @return For all L7 requests to this hostname, cloudflared will validate each request&#39;s Cf-Access-Jwt-Assertion request header.
      * 
      */
     public Optional<TunnelConfigConfigOriginRequestAccess> access() {
         return Optional.ofNullable(this.access);
     }
     /**
-     * @return Runs as jump host.
-     * 
-     */
-    public Optional<Boolean> bastionMode() {
-        return Optional.ofNullable(this.bastionMode);
-    }
-    /**
-     * @return Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `&#34;&#34;`.
+     * @return Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
      * 
      */
     public Optional<String> caPool() {
         return Optional.ofNullable(this.caPool);
     }
     /**
-     * @return Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`.
+     * @return Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
      * 
      */
-    public Optional<String> connectTimeout() {
+    public Optional<Integer> connectTimeout() {
         return Optional.ofNullable(this.connectTimeout);
     }
     /**
-     * @return Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`.
+     * @return Disables chunked transfer encoding. Useful if you are running a WSGI server.
      * 
      */
     public Optional<Boolean> disableChunkedEncoding() {
         return Optional.ofNullable(this.disableChunkedEncoding);
     }
     /**
-     * @return Enables HTTP/2 support for the origin connection. Defaults to `false`.
+     * @return Attempt to connect to origin using HTTP2. Origin must be configured as https.
      * 
      */
     public Optional<Boolean> http2Origin() {
         return Optional.ofNullable(this.http2Origin);
     }
     /**
-     * @return Sets the HTTP Host header on requests sent to the local service. Defaults to `&#34;&#34;`.
+     * @return Sets the HTTP Host header on requests sent to the local service.
      * 
      */
     public Optional<String> httpHostHeader() {
         return Optional.ofNullable(this.httpHostHeader);
     }
     /**
-     * @return IP rules for the proxy service.
-     * 
-     */
-    public List<TunnelConfigConfigOriginRequestIpRule> ipRules() {
-        return this.ipRules == null ? List.of() : this.ipRules;
-    }
-    /**
-     * @return Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`.
+     * @return Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
      * 
      */
     public Optional<Integer> keepAliveConnections() {
         return Optional.ofNullable(this.keepAliveConnections);
     }
     /**
-     * @return Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`.
+     * @return Timeout after which an idle keepalive connection can be discarded.
      * 
      */
-    public Optional<String> keepAliveTimeout() {
+    public Optional<Integer> keepAliveTimeout() {
         return Optional.ofNullable(this.keepAliveTimeout);
     }
     /**
-     * @return Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`.
+     * @return Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      * 
      */
     public Optional<Boolean> noHappyEyeballs() {
         return Optional.ofNullable(this.noHappyEyeballs);
     }
     /**
-     * @return Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`.
+     * @return Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
      * 
      */
     public Optional<Boolean> noTlsVerify() {
         return Optional.ofNullable(this.noTlsVerify);
     }
     /**
-     * @return Hostname that cloudflared should expect from your origin server certificate. Defaults to `&#34;&#34;`.
+     * @return Hostname that cloudflared should expect from your origin server certificate.
      * 
      */
     public Optional<String> originServerName() {
         return Optional.ofNullable(this.originServerName);
     }
     /**
-     * @return cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`.
-     * 
-     */
-    public Optional<String> proxyAddress() {
-        return Optional.ofNullable(this.proxyAddress);
-    }
-    /**
-     * @return cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`.
-     * 
-     */
-    public Optional<Integer> proxyPort() {
-        return Optional.ofNullable(this.proxyPort);
-    }
-    /**
-     * @return cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `&#34;&#34;`, `socks`. Defaults to `&#34;&#34;`.
+     * @return cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: &#34;&#34; for the regular proxy and &#34;socks&#34; for a SOCKS5 proxy.
      * 
      */
     public Optional<String> proxyType() {
         return Optional.ofNullable(this.proxyType);
     }
     /**
-     * @return The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`.
+     * @return The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
      * 
      */
-    public Optional<String> tcpKeepAlive() {
+    public Optional<Integer> tcpKeepAlive() {
         return Optional.ofNullable(this.tcpKeepAlive);
     }
     /**
-     * @return Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`.
+     * @return Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
      * 
      */
-    public Optional<String> tlsTimeout() {
+    public Optional<Integer> tlsTimeout() {
         return Optional.ofNullable(this.tlsTimeout);
     }
 
@@ -245,41 +195,33 @@ public final class TunnelConfigConfigOriginRequest {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable TunnelConfigConfigOriginRequestAccess access;
-        private @Nullable Boolean bastionMode;
         private @Nullable String caPool;
-        private @Nullable String connectTimeout;
+        private @Nullable Integer connectTimeout;
         private @Nullable Boolean disableChunkedEncoding;
         private @Nullable Boolean http2Origin;
         private @Nullable String httpHostHeader;
-        private @Nullable List<TunnelConfigConfigOriginRequestIpRule> ipRules;
         private @Nullable Integer keepAliveConnections;
-        private @Nullable String keepAliveTimeout;
+        private @Nullable Integer keepAliveTimeout;
         private @Nullable Boolean noHappyEyeballs;
         private @Nullable Boolean noTlsVerify;
         private @Nullable String originServerName;
-        private @Nullable String proxyAddress;
-        private @Nullable Integer proxyPort;
         private @Nullable String proxyType;
-        private @Nullable String tcpKeepAlive;
-        private @Nullable String tlsTimeout;
+        private @Nullable Integer tcpKeepAlive;
+        private @Nullable Integer tlsTimeout;
         public Builder() {}
         public Builder(TunnelConfigConfigOriginRequest defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.access = defaults.access;
-    	      this.bastionMode = defaults.bastionMode;
     	      this.caPool = defaults.caPool;
     	      this.connectTimeout = defaults.connectTimeout;
     	      this.disableChunkedEncoding = defaults.disableChunkedEncoding;
     	      this.http2Origin = defaults.http2Origin;
     	      this.httpHostHeader = defaults.httpHostHeader;
-    	      this.ipRules = defaults.ipRules;
     	      this.keepAliveConnections = defaults.keepAliveConnections;
     	      this.keepAliveTimeout = defaults.keepAliveTimeout;
     	      this.noHappyEyeballs = defaults.noHappyEyeballs;
     	      this.noTlsVerify = defaults.noTlsVerify;
     	      this.originServerName = defaults.originServerName;
-    	      this.proxyAddress = defaults.proxyAddress;
-    	      this.proxyPort = defaults.proxyPort;
     	      this.proxyType = defaults.proxyType;
     	      this.tcpKeepAlive = defaults.tcpKeepAlive;
     	      this.tlsTimeout = defaults.tlsTimeout;
@@ -292,19 +234,13 @@ public final class TunnelConfigConfigOriginRequest {
             return this;
         }
         @CustomType.Setter
-        public Builder bastionMode(@Nullable Boolean bastionMode) {
-
-            this.bastionMode = bastionMode;
-            return this;
-        }
-        @CustomType.Setter
         public Builder caPool(@Nullable String caPool) {
 
             this.caPool = caPool;
             return this;
         }
         @CustomType.Setter
-        public Builder connectTimeout(@Nullable String connectTimeout) {
+        public Builder connectTimeout(@Nullable Integer connectTimeout) {
 
             this.connectTimeout = connectTimeout;
             return this;
@@ -328,22 +264,13 @@ public final class TunnelConfigConfigOriginRequest {
             return this;
         }
         @CustomType.Setter
-        public Builder ipRules(@Nullable List<TunnelConfigConfigOriginRequestIpRule> ipRules) {
-
-            this.ipRules = ipRules;
-            return this;
-        }
-        public Builder ipRules(TunnelConfigConfigOriginRequestIpRule... ipRules) {
-            return ipRules(List.of(ipRules));
-        }
-        @CustomType.Setter
         public Builder keepAliveConnections(@Nullable Integer keepAliveConnections) {
 
             this.keepAliveConnections = keepAliveConnections;
             return this;
         }
         @CustomType.Setter
-        public Builder keepAliveTimeout(@Nullable String keepAliveTimeout) {
+        public Builder keepAliveTimeout(@Nullable Integer keepAliveTimeout) {
 
             this.keepAliveTimeout = keepAliveTimeout;
             return this;
@@ -367,31 +294,19 @@ public final class TunnelConfigConfigOriginRequest {
             return this;
         }
         @CustomType.Setter
-        public Builder proxyAddress(@Nullable String proxyAddress) {
-
-            this.proxyAddress = proxyAddress;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder proxyPort(@Nullable Integer proxyPort) {
-
-            this.proxyPort = proxyPort;
-            return this;
-        }
-        @CustomType.Setter
         public Builder proxyType(@Nullable String proxyType) {
 
             this.proxyType = proxyType;
             return this;
         }
         @CustomType.Setter
-        public Builder tcpKeepAlive(@Nullable String tcpKeepAlive) {
+        public Builder tcpKeepAlive(@Nullable Integer tcpKeepAlive) {
 
             this.tcpKeepAlive = tcpKeepAlive;
             return this;
         }
         @CustomType.Setter
-        public Builder tlsTimeout(@Nullable String tlsTimeout) {
+        public Builder tlsTimeout(@Nullable Integer tlsTimeout) {
 
             this.tlsTimeout = tlsTimeout;
             return this;
@@ -399,20 +314,16 @@ public final class TunnelConfigConfigOriginRequest {
         public TunnelConfigConfigOriginRequest build() {
             final var _resultValue = new TunnelConfigConfigOriginRequest();
             _resultValue.access = access;
-            _resultValue.bastionMode = bastionMode;
             _resultValue.caPool = caPool;
             _resultValue.connectTimeout = connectTimeout;
             _resultValue.disableChunkedEncoding = disableChunkedEncoding;
             _resultValue.http2Origin = http2Origin;
             _resultValue.httpHostHeader = httpHostHeader;
-            _resultValue.ipRules = ipRules;
             _resultValue.keepAliveConnections = keepAliveConnections;
             _resultValue.keepAliveTimeout = keepAliveTimeout;
             _resultValue.noHappyEyeballs = noHappyEyeballs;
             _resultValue.noTlsVerify = noTlsVerify;
             _resultValue.originServerName = originServerName;
-            _resultValue.proxyAddress = proxyAddress;
-            _resultValue.proxyPort = proxyPort;
             _resultValue.proxyType = proxyType;
             _resultValue.tcpKeepAlive = tcpKeepAlive;
             _resultValue.tlsTimeout = tlsTimeout;

@@ -12,15 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class PageRuleActionsForwardingUrlGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The status code to use for the redirection.
-        /// </summary>
         [Input("statusCode", required: true)]
         public Input<int> StatusCode { get; set; } = null!;
 
-        /// <summary>
-        /// The URL to which the page rule should forward.
-        /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 

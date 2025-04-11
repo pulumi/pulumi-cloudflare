@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare mTLS certificate resource. These certificates may be used with mTLS enabled Cloudflare services.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,19 +19,19 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMtlsCertificate(ctx, "example", &cloudflare.MtlsCertificateArgs{
-//				AccountId:    pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:         pulumi.String("example"),
-//				Certificates: pulumi.String("-----BEGIN CERTIFICATE-----\nMIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE\n-----END CERTIFICATE-----"),
-//				PrivateKey:   pulumi.String("-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=\n-----END PRIVATE KEY-----"),
+//			_, err := cloudflare.NewMtlsCertificate(ctx, "example_mtls_certificate", &cloudflare.MtlsCertificateArgs{
+//				AccountId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Ca:           pulumi.Bool(true),
+//				Certificates: pulumi.String("  -----BEGIN CERTIFICATE-----\n  MIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE\n  -----END CERTIFICATE-----\n"),
+//				Name:         pulumi.String("example_ca_cert"),
+//				PrivateKey:   pulumi.String("  -----BEGIN PRIVATE KEY-----\n  MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEXDkcICRU3XBv9hiiPnBWIjgTQyowmVFxDr11mONgZB/cMYjE/OvQjvnpwNcOaSK16MOpAjNbELKRx2lZiVJaLRDCccqCxXwP/CrdRChcqGzo7mbNksMlcidrErb0LlEBKLFC2QjRmRKqB+YOs4TD8WsZu2S667A2fZmjRlaqOxFi1h62ee0P+TLU628UC/nl41JifSt5Evt7hMDHakemdwZblNYr2p6T3NQjdhjYXTtP4UmOGJBhJ7i7Kicg3d3CIgdTMbggSeGWqjndr4ldVnD96FN3cVT5uDFsn2CJXTFgdeBWoUnMS4VnUZzPWGf4vSBXC8qV7Ls+w46yT7T1AgMBAAECggEAQZnp/oqCeNPOR6l5S2L+1tfx0gWjZ78hJVteUpZ0iHSK7F6kKeOxyOird7vUXV0kmo+cJq+0hp0Ke4eam640FCpwKfYoSQ4/R3vgujGWJnaihCN5tv5sMet0XeJPuz5qE7ALoKCvwI6aXLHs20aAeZIDTQJ9QbGSGnJVzOWn+JDTidIgZpN57RpXfSAwnJPTQK/PN8i5z108hsaDOdEgGmxYZ7kYqMqzX20KXmth58LDfPixs5JGtS60iiKC/wOcGzkB2/AdTSojR76oEU77cANP/3zO25NG//whUdYlW0t0d7PgXxIeJe+xgYnamDQJx3qonVyt4H77ha0ObRAj9QKBgQDicZr+VTwFMnELP3a+FXGnjehRiuS1i7MXGKxNweCD+dFlML0FplSQS8Ro2n+d8lu8BBXGx0qm6VXu8Rhn7TAUL6q+PCgfarzxfIhacb/TZCqfieIHsMlVBfhV5HCXnk+kis0tuC/PRArcWTwDHJUJXkBhvkUsNswvQzavDPI7KwKBgQDd/WgLkj7A3X5fgIHZH/GbDSBiXwzKb+rF4ZCT2XFgG/OAW7vapfcX/w+v+5lBLyrocmOAS3PGGAhM5T3HLnUCQfnK4qgps1Lqibkc9Tmnsn60LanUjuUMsYv/zSw70tozbzhJ0pioEpWfRxRZBztO2Rr8Ntm7h6Fk701EXGNAXwKBgQCD1xsjy2J3sCerIdcz0u5qXLAPkeuZW+34m4/ucdwTWwc0gEz9lhsULFj9p4G351zLuiEnq+7mAWLcDJlmIO3mQt6JhiLiL9Y0T4pgBmxmWqKKYtAsJB0EmMY+1BNN44mBRqMxZFTJu1cLdhT/xstrOeoIPqytknYNanfTMZlzIwKBgHrLXe5oq0XMP8dcMneEcAUwsaU4pr6kQd3L9EmUkl5zl7J9C+DaxWAEuwzBw/iGutlxzRB+rD/7szu14wJ29EqXbDGKRzMp+se5/yfBjm7xEZ1hVPw7PwBShfqt57X/4Ktq7lwHnmH6RcGhc+P7WBc5iO/S94YAdIp8xOT3pf9JAoGAE0QkqJUY+5Mgr+fBO0VNV72ZoPveGpW+De59uhKAOnu1zljQCUtk59m6+DXfm0tNYKtawa5n8iN71Zh+s62xXSt3pYi1Y5CCCmv8Y4BhwIcPwXKk3zEvLgSHVTpC0bayA9aSO4bbZgVXa5w+Z0w/vvfp9DWo1IS3EnQRrz6WMYA=\n  -----END PRIVATE KEY-----\n"),
 //			})
 //			if err != nil {
 //				return err
@@ -47,30 +45,32 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example <account_id>/<mtls_certificate_id>
+// $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example '<account_id>/<mtls_certificate_id>'
 // ```
 type MtlsCertificate struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
+	// Indicates whether the certificate is a CA or leaf certificate.
 	Ca pulumi.BoolOutput `pulumi:"ca"`
-	// Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
+	// The uploaded root CA certificate.
 	Certificates pulumi.StringOutput `pulumi:"certificates"`
-	// **Modifying this attribute will force creation of a new resource.**
+	// When the certificate expires.
 	ExpiresOn pulumi.StringOutput `pulumi:"expiresOn"`
-	// **Modifying this attribute will force creation of a new resource.**
+	// The certificate authority that issued the certificate.
 	Issuer pulumi.StringOutput `pulumi:"issuer"`
-	// Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
+	// Optional unique name for the certificate. Only used for human readability.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
-	// The certificate's private key. **Modifying this attribute will force creation of a new resource.**
+	// The private key for the certificate
 	PrivateKey pulumi.StringPtrOutput `pulumi:"privateKey"`
-	// **Modifying this attribute will force creation of a new resource.**
+	// The certificate serial number.
 	SerialNumber pulumi.StringOutput `pulumi:"serialNumber"`
-	// **Modifying this attribute will force creation of a new resource.**
+	// The type of hash used for the certificate.
 	Signature pulumi.StringOutput `pulumi:"signature"`
-	// **Modifying this attribute will force creation of a new resource.**
+	// This is the time the certificate was updated.
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	// This is the time the certificate was uploaded.
 	UploadedOn pulumi.StringOutput `pulumi:"uploadedOn"`
 }
 
@@ -90,6 +90,13 @@ func NewMtlsCertificate(ctx *pulumi.Context,
 	if args.Certificates == nil {
 		return nil, errors.New("invalid value for required argument 'Certificates'")
 	}
+	if args.PrivateKey != nil {
+		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"privateKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MtlsCertificate
 	err := ctx.RegisterResource("cloudflare:index/mtlsCertificate:MtlsCertificate", name, args, &resource, opts...)
@@ -113,48 +120,52 @@ func GetMtlsCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MtlsCertificate resources.
 type mtlsCertificateState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
+	// Indicates whether the certificate is a CA or leaf certificate.
 	Ca *bool `pulumi:"ca"`
-	// Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
+	// The uploaded root CA certificate.
 	Certificates *string `pulumi:"certificates"`
-	// **Modifying this attribute will force creation of a new resource.**
+	// When the certificate expires.
 	ExpiresOn *string `pulumi:"expiresOn"`
-	// **Modifying this attribute will force creation of a new resource.**
+	// The certificate authority that issued the certificate.
 	Issuer *string `pulumi:"issuer"`
-	// Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
+	// Optional unique name for the certificate. Only used for human readability.
 	Name *string `pulumi:"name"`
-	// The certificate's private key. **Modifying this attribute will force creation of a new resource.**
+	// The private key for the certificate
 	PrivateKey *string `pulumi:"privateKey"`
-	// **Modifying this attribute will force creation of a new resource.**
+	// The certificate serial number.
 	SerialNumber *string `pulumi:"serialNumber"`
-	// **Modifying this attribute will force creation of a new resource.**
+	// The type of hash used for the certificate.
 	Signature *string `pulumi:"signature"`
-	// **Modifying this attribute will force creation of a new resource.**
+	// This is the time the certificate was updated.
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// This is the time the certificate was uploaded.
 	UploadedOn *string `pulumi:"uploadedOn"`
 }
 
 type MtlsCertificateState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
+	// Indicates whether the certificate is a CA or leaf certificate.
 	Ca pulumi.BoolPtrInput
-	// Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
+	// The uploaded root CA certificate.
 	Certificates pulumi.StringPtrInput
-	// **Modifying this attribute will force creation of a new resource.**
+	// When the certificate expires.
 	ExpiresOn pulumi.StringPtrInput
-	// **Modifying this attribute will force creation of a new resource.**
+	// The certificate authority that issued the certificate.
 	Issuer pulumi.StringPtrInput
-	// Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
+	// Optional unique name for the certificate. Only used for human readability.
 	Name pulumi.StringPtrInput
-	// The certificate's private key. **Modifying this attribute will force creation of a new resource.**
+	// The private key for the certificate
 	PrivateKey pulumi.StringPtrInput
-	// **Modifying this attribute will force creation of a new resource.**
+	// The certificate serial number.
 	SerialNumber pulumi.StringPtrInput
-	// **Modifying this attribute will force creation of a new resource.**
+	// The type of hash used for the certificate.
 	Signature pulumi.StringPtrInput
-	// **Modifying this attribute will force creation of a new resource.**
+	// This is the time the certificate was updated.
+	UpdatedAt pulumi.StringPtrInput
+	// This is the time the certificate was uploaded.
 	UploadedOn pulumi.StringPtrInput
 }
 
@@ -163,29 +174,29 @@ func (MtlsCertificateState) ElementType() reflect.Type {
 }
 
 type mtlsCertificateArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
+	// Indicates whether the certificate is a CA or leaf certificate.
 	Ca bool `pulumi:"ca"`
-	// Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
+	// The uploaded root CA certificate.
 	Certificates string `pulumi:"certificates"`
-	// Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
+	// Optional unique name for the certificate. Only used for human readability.
 	Name *string `pulumi:"name"`
-	// The certificate's private key. **Modifying this attribute will force creation of a new resource.**
+	// The private key for the certificate
 	PrivateKey *string `pulumi:"privateKey"`
 }
 
 // The set of arguments for constructing a MtlsCertificate resource.
 type MtlsCertificateArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId pulumi.StringInput
-	// Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
+	// Indicates whether the certificate is a CA or leaf certificate.
 	Ca pulumi.BoolInput
-	// Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
+	// The uploaded root CA certificate.
 	Certificates pulumi.StringInput
-	// Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
+	// Optional unique name for the certificate. Only used for human readability.
 	Name pulumi.StringPtrInput
-	// The certificate's private key. **Modifying this attribute will force creation of a new resource.**
+	// The private key for the certificate
 	PrivateKey pulumi.StringPtrInput
 }
 
@@ -276,52 +287,57 @@ func (o MtlsCertificateOutput) ToMtlsCertificateOutputWithContext(ctx context.Co
 	return o
 }
 
-// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o MtlsCertificateOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MtlsCertificate) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
+// Indicates whether the certificate is a CA or leaf certificate.
 func (o MtlsCertificateOutput) Ca() pulumi.BoolOutput {
 	return o.ApplyT(func(v *MtlsCertificate) pulumi.BoolOutput { return v.Ca }).(pulumi.BoolOutput)
 }
 
-// Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
+// The uploaded root CA certificate.
 func (o MtlsCertificateOutput) Certificates() pulumi.StringOutput {
 	return o.ApplyT(func(v *MtlsCertificate) pulumi.StringOutput { return v.Certificates }).(pulumi.StringOutput)
 }
 
-// **Modifying this attribute will force creation of a new resource.**
+// When the certificate expires.
 func (o MtlsCertificateOutput) ExpiresOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *MtlsCertificate) pulumi.StringOutput { return v.ExpiresOn }).(pulumi.StringOutput)
 }
 
-// **Modifying this attribute will force creation of a new resource.**
+// The certificate authority that issued the certificate.
 func (o MtlsCertificateOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v *MtlsCertificate) pulumi.StringOutput { return v.Issuer }).(pulumi.StringOutput)
 }
 
-// Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
+// Optional unique name for the certificate. Only used for human readability.
 func (o MtlsCertificateOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MtlsCertificate) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The certificate's private key. **Modifying this attribute will force creation of a new resource.**
+// The private key for the certificate
 func (o MtlsCertificateOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MtlsCertificate) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
-// **Modifying this attribute will force creation of a new resource.**
+// The certificate serial number.
 func (o MtlsCertificateOutput) SerialNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v *MtlsCertificate) pulumi.StringOutput { return v.SerialNumber }).(pulumi.StringOutput)
 }
 
-// **Modifying this attribute will force creation of a new resource.**
+// The type of hash used for the certificate.
 func (o MtlsCertificateOutput) Signature() pulumi.StringOutput {
 	return o.ApplyT(func(v *MtlsCertificate) pulumi.StringOutput { return v.Signature }).(pulumi.StringOutput)
 }
 
-// **Modifying this attribute will force creation of a new resource.**
+// This is the time the certificate was updated.
+func (o MtlsCertificateOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *MtlsCertificate) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// This is the time the certificate was uploaded.
 func (o MtlsCertificateOutput) UploadedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *MtlsCertificate) pulumi.StringOutput { return v.UploadedOn }).(pulumi.StringOutput)
 }

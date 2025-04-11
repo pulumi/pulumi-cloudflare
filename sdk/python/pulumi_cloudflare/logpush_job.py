@@ -22,11 +22,10 @@ __all__ = ['LogpushJobArgs', 'LogpushJob']
 @pulumi.input_type
 class LogpushJobArgs:
     def __init__(__self__, *,
-                 dataset: pulumi.Input[builtins.str],
                  destination_conf: pulumi.Input[builtins.str],
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 dataset: Optional[pulumi.Input[builtins.str]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 filter: Optional[pulumi.Input[builtins.str]] = None,
                  frequency: Optional[pulumi.Input[builtins.str]] = None,
                  kind: Optional[pulumi.Input[builtins.str]] = None,
                  logpull_options: Optional[pulumi.Input[builtins.str]] = None,
@@ -39,33 +38,30 @@ class LogpushJobArgs:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a LogpushJob resource.
-        :param pulumi.Input[builtins.str] dataset: The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`, `page_shield_events`, `dlp_forensic_copies`.
-        :param pulumi.Input[builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
-        :param pulumi.Input[builtins.bool] enabled: Whether to enable the job.
-        :param pulumi.Input[builtins.str] filter: Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
-        :param pulumi.Input[builtins.str] frequency: A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
-        :param pulumi.Input[builtins.str] kind: The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
-        :param pulumi.Input[builtins.str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
-        :param pulumi.Input[builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
-        :param pulumi.Input[builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. Value must be between 30 and 300.
-        :param pulumi.Input[builtins.int] max_upload_records: The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
-        :param pulumi.Input[builtins.str] name: The name of the logpush job to create.
-        :param pulumi.Input['LogpushJobOutputOptionsArgs'] output_options: Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
-        :param pulumi.Input[builtins.str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        :param pulumi.Input[builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] dataset: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+        :param pulumi.Input[builtins.bool] enabled: Flag that indicates if the job is enabled.
+        :param pulumi.Input[builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+               Available values: "high", "low".
+        :param pulumi.Input[builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+               Available values: "edge".
+        :param pulumi.Input[builtins.str] logpull_options: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+        :param pulumi.Input[builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+        :param pulumi.Input[builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+        :param pulumi.Input[builtins.int] max_upload_records: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+        :param pulumi.Input[builtins.str] name: Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
+        :param pulumi.Input['LogpushJobOutputOptionsArgs'] output_options: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+        :param pulumi.Input[builtins.str] ownership_challenge: Ownership challenge token to prove destination ownership.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
-        pulumi.set(__self__, "dataset", dataset)
         pulumi.set(__self__, "destination_conf", destination_conf)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if filter is not None:
-            pulumi.set(__self__, "filter", filter)
-        if frequency is not None:
-            warnings.warn("""`frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.""", DeprecationWarning)
-            pulumi.log.warn("""frequency is deprecated: `frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.""")
         if frequency is not None:
             pulumi.set(__self__, "frequency", frequency)
         if kind is not None:
@@ -88,22 +84,10 @@ class LogpushJobArgs:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @property
-    @pulumi.getter
-    def dataset(self) -> pulumi.Input[builtins.str]:
-        """
-        The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`, `page_shield_events`, `dlp_forensic_copies`.
-        """
-        return pulumi.get(self, "dataset")
-
-    @dataset.setter
-    def dataset(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "dataset", value)
-
-    @property
     @pulumi.getter(name="destinationConf")
     def destination_conf(self) -> pulumi.Input[builtins.str]:
         """
-        Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
+        Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
         """
         return pulumi.get(self, "destination_conf")
 
@@ -115,7 +99,7 @@ class LogpushJobArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -125,9 +109,21 @@ class LogpushJobArgs:
 
     @property
     @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether to enable the job.
+        Flag that indicates if the job is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -137,22 +133,10 @@ class LogpushJobArgs:
 
     @property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
-        """
-        return pulumi.get(self, "filter")
-
-    @filter.setter
-    def filter(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "filter", value)
-
-    @property
-    @pulumi.getter
-    @_utilities.deprecated("""`frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.""")
     def frequency(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
+        This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+        Available values: "high", "low".
         """
         return pulumi.get(self, "frequency")
 
@@ -164,7 +148,8 @@ class LogpushJobArgs:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
+        The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+        Available values: "edge".
         """
         return pulumi.get(self, "kind")
 
@@ -176,7 +161,7 @@ class LogpushJobArgs:
     @pulumi.getter(name="logpullOptions")
     def logpull_options(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
         """
         return pulumi.get(self, "logpull_options")
 
@@ -188,7 +173,7 @@ class LogpushJobArgs:
     @pulumi.getter(name="maxUploadBytes")
     def max_upload_bytes(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+        The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
         """
         return pulumi.get(self, "max_upload_bytes")
 
@@ -200,7 +185,7 @@ class LogpushJobArgs:
     @pulumi.getter(name="maxUploadIntervalSeconds")
     def max_upload_interval_seconds(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The maximum interval in seconds for log batches. Value must be between 30 and 300.
+        The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
         """
         return pulumi.get(self, "max_upload_interval_seconds")
 
@@ -212,7 +197,7 @@ class LogpushJobArgs:
     @pulumi.getter(name="maxUploadRecords")
     def max_upload_records(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+        The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
         """
         return pulumi.get(self, "max_upload_records")
 
@@ -224,7 +209,7 @@ class LogpushJobArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The name of the logpush job to create.
+        Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
         """
         return pulumi.get(self, "name")
 
@@ -236,7 +221,7 @@ class LogpushJobArgs:
     @pulumi.getter(name="outputOptions")
     def output_options(self) -> Optional[pulumi.Input['LogpushJobOutputOptionsArgs']]:
         """
-        Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+        The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
         """
         return pulumi.get(self, "output_options")
 
@@ -248,7 +233,7 @@ class LogpushJobArgs:
     @pulumi.getter(name="ownershipChallenge")
     def ownership_challenge(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+        Ownership challenge token to prove destination ownership.
         """
         return pulumi.get(self, "ownership_challenge")
 
@@ -260,7 +245,7 @@ class LogpushJobArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -276,9 +261,11 @@ class _LogpushJobState:
                  dataset: Optional[pulumi.Input[builtins.str]] = None,
                  destination_conf: Optional[pulumi.Input[builtins.str]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 filter: Optional[pulumi.Input[builtins.str]] = None,
+                 error_message: Optional[pulumi.Input[builtins.str]] = None,
                  frequency: Optional[pulumi.Input[builtins.str]] = None,
                  kind: Optional[pulumi.Input[builtins.str]] = None,
+                 last_complete: Optional[pulumi.Input[builtins.str]] = None,
+                 last_error: Optional[pulumi.Input[builtins.str]] = None,
                  logpull_options: Optional[pulumi.Input[builtins.str]] = None,
                  max_upload_bytes: Optional[pulumi.Input[builtins.int]] = None,
                  max_upload_interval_seconds: Optional[pulumi.Input[builtins.int]] = None,
@@ -289,21 +276,25 @@ class _LogpushJobState:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogpushJob resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
-        :param pulumi.Input[builtins.str] dataset: The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`, `page_shield_events`, `dlp_forensic_copies`.
-        :param pulumi.Input[builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
-        :param pulumi.Input[builtins.bool] enabled: Whether to enable the job.
-        :param pulumi.Input[builtins.str] filter: Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
-        :param pulumi.Input[builtins.str] frequency: A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
-        :param pulumi.Input[builtins.str] kind: The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
-        :param pulumi.Input[builtins.str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
-        :param pulumi.Input[builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
-        :param pulumi.Input[builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. Value must be between 30 and 300.
-        :param pulumi.Input[builtins.int] max_upload_records: The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
-        :param pulumi.Input[builtins.str] name: The name of the logpush job to create.
-        :param pulumi.Input['LogpushJobOutputOptionsArgs'] output_options: Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
-        :param pulumi.Input[builtins.str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] dataset: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+        :param pulumi.Input[builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+        :param pulumi.Input[builtins.bool] enabled: Flag that indicates if the job is enabled.
+        :param pulumi.Input[builtins.str] error_message: If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
+        :param pulumi.Input[builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+               Available values: "high", "low".
+        :param pulumi.Input[builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+               Available values: "edge".
+        :param pulumi.Input[builtins.str] last_complete: Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
+        :param pulumi.Input[builtins.str] last_error: Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
+        :param pulumi.Input[builtins.str] logpull_options: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+        :param pulumi.Input[builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+        :param pulumi.Input[builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+        :param pulumi.Input[builtins.int] max_upload_records: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+        :param pulumi.Input[builtins.str] name: Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
+        :param pulumi.Input['LogpushJobOutputOptionsArgs'] output_options: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+        :param pulumi.Input[builtins.str] ownership_challenge: Ownership challenge token to prove destination ownership.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -313,15 +304,16 @@ class _LogpushJobState:
             pulumi.set(__self__, "destination_conf", destination_conf)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if filter is not None:
-            pulumi.set(__self__, "filter", filter)
-        if frequency is not None:
-            warnings.warn("""`frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.""", DeprecationWarning)
-            pulumi.log.warn("""frequency is deprecated: `frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.""")
+        if error_message is not None:
+            pulumi.set(__self__, "error_message", error_message)
         if frequency is not None:
             pulumi.set(__self__, "frequency", frequency)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
+        if last_complete is not None:
+            pulumi.set(__self__, "last_complete", last_complete)
+        if last_error is not None:
+            pulumi.set(__self__, "last_error", last_error)
         if logpull_options is not None:
             pulumi.set(__self__, "logpull_options", logpull_options)
         if max_upload_bytes is not None:
@@ -343,7 +335,7 @@ class _LogpushJobState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -355,7 +347,7 @@ class _LogpushJobState:
     @pulumi.getter
     def dataset(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`, `page_shield_events`, `dlp_forensic_copies`.
+        Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
         """
         return pulumi.get(self, "dataset")
 
@@ -367,7 +359,7 @@ class _LogpushJobState:
     @pulumi.getter(name="destinationConf")
     def destination_conf(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
+        Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
         """
         return pulumi.get(self, "destination_conf")
 
@@ -379,7 +371,7 @@ class _LogpushJobState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether to enable the job.
+        Flag that indicates if the job is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -388,23 +380,23 @@ class _LogpushJobState:
         pulumi.set(self, "enabled", value)
 
     @property
-    @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[builtins.str]]:
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
+        If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
         """
-        return pulumi.get(self, "filter")
+        return pulumi.get(self, "error_message")
 
-    @filter.setter
-    def filter(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "filter", value)
+    @error_message.setter
+    def error_message(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "error_message", value)
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""`frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.""")
     def frequency(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
+        This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+        Available values: "high", "low".
         """
         return pulumi.get(self, "frequency")
 
@@ -416,7 +408,8 @@ class _LogpushJobState:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
+        The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+        Available values: "edge".
         """
         return pulumi.get(self, "kind")
 
@@ -425,10 +418,34 @@ class _LogpushJobState:
         pulumi.set(self, "kind", value)
 
     @property
+    @pulumi.getter(name="lastComplete")
+    def last_complete(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
+        """
+        return pulumi.get(self, "last_complete")
+
+    @last_complete.setter
+    def last_complete(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "last_complete", value)
+
+    @property
+    @pulumi.getter(name="lastError")
+    def last_error(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
+        """
+        return pulumi.get(self, "last_error")
+
+    @last_error.setter
+    def last_error(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "last_error", value)
+
+    @property
     @pulumi.getter(name="logpullOptions")
     def logpull_options(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
         """
         return pulumi.get(self, "logpull_options")
 
@@ -440,7 +457,7 @@ class _LogpushJobState:
     @pulumi.getter(name="maxUploadBytes")
     def max_upload_bytes(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+        The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
         """
         return pulumi.get(self, "max_upload_bytes")
 
@@ -452,7 +469,7 @@ class _LogpushJobState:
     @pulumi.getter(name="maxUploadIntervalSeconds")
     def max_upload_interval_seconds(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The maximum interval in seconds for log batches. Value must be between 30 and 300.
+        The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
         """
         return pulumi.get(self, "max_upload_interval_seconds")
 
@@ -464,7 +481,7 @@ class _LogpushJobState:
     @pulumi.getter(name="maxUploadRecords")
     def max_upload_records(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+        The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
         """
         return pulumi.get(self, "max_upload_records")
 
@@ -476,7 +493,7 @@ class _LogpushJobState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The name of the logpush job to create.
+        Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
         """
         return pulumi.get(self, "name")
 
@@ -488,7 +505,7 @@ class _LogpushJobState:
     @pulumi.getter(name="outputOptions")
     def output_options(self) -> Optional[pulumi.Input['LogpushJobOutputOptionsArgs']]:
         """
-        Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+        The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
         """
         return pulumi.get(self, "output_options")
 
@@ -500,7 +517,7 @@ class _LogpushJobState:
     @pulumi.getter(name="ownershipChallenge")
     def ownership_challenge(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+        Ownership challenge token to prove destination ownership.
         """
         return pulumi.get(self, "ownership_challenge")
 
@@ -512,7 +529,7 @@ class _LogpushJobState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -530,7 +547,6 @@ class LogpushJob(pulumi.CustomResource):
                  dataset: Optional[pulumi.Input[builtins.str]] = None,
                  destination_conf: Optional[pulumi.Input[builtins.str]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 filter: Optional[pulumi.Input[builtins.str]] = None,
                  frequency: Optional[pulumi.Input[builtins.str]] = None,
                  kind: Optional[pulumi.Input[builtins.str]] = None,
                  logpull_options: Optional[pulumi.Input[builtins.str]] = None,
@@ -547,35 +563,28 @@ class LogpushJob(pulumi.CustomResource):
 
         ## Import
 
-        Import an account-scoped job.
-
         ```sh
-        $ pulumi import cloudflare:index/logpushJob:LogpushJob example account/<account_id>/<job_id>
-        ```
-
-        Import a zone-scoped job.
-
-        ```sh
-        $ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/<zone_id>/<job_id>
+        $ pulumi import cloudflare:index/logpushJob:LogpushJob example '<{accounts|zones}/{account_id|zone_id}>/<job_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
-        :param pulumi.Input[builtins.str] dataset: The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`, `page_shield_events`, `dlp_forensic_copies`.
-        :param pulumi.Input[builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
-        :param pulumi.Input[builtins.bool] enabled: Whether to enable the job.
-        :param pulumi.Input[builtins.str] filter: Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
-        :param pulumi.Input[builtins.str] frequency: A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
-        :param pulumi.Input[builtins.str] kind: The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
-        :param pulumi.Input[builtins.str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
-        :param pulumi.Input[builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
-        :param pulumi.Input[builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. Value must be between 30 and 300.
-        :param pulumi.Input[builtins.int] max_upload_records: The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
-        :param pulumi.Input[builtins.str] name: The name of the logpush job to create.
-        :param pulumi.Input[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict']] output_options: Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
-        :param pulumi.Input[builtins.str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] dataset: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+        :param pulumi.Input[builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+        :param pulumi.Input[builtins.bool] enabled: Flag that indicates if the job is enabled.
+        :param pulumi.Input[builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+               Available values: "high", "low".
+        :param pulumi.Input[builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+               Available values: "edge".
+        :param pulumi.Input[builtins.str] logpull_options: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+        :param pulumi.Input[builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+        :param pulumi.Input[builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+        :param pulumi.Input[builtins.int] max_upload_records: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+        :param pulumi.Input[builtins.str] name: Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
+        :param pulumi.Input[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict']] output_options: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+        :param pulumi.Input[builtins.str] ownership_challenge: Ownership challenge token to prove destination ownership.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
     @overload
@@ -588,16 +597,8 @@ class LogpushJob(pulumi.CustomResource):
 
         ## Import
 
-        Import an account-scoped job.
-
         ```sh
-        $ pulumi import cloudflare:index/logpushJob:LogpushJob example account/<account_id>/<job_id>
-        ```
-
-        Import a zone-scoped job.
-
-        ```sh
-        $ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/<zone_id>/<job_id>
+        $ pulumi import cloudflare:index/logpushJob:LogpushJob example '<{accounts|zones}/{account_id|zone_id}>/<job_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -619,7 +620,6 @@ class LogpushJob(pulumi.CustomResource):
                  dataset: Optional[pulumi.Input[builtins.str]] = None,
                  destination_conf: Optional[pulumi.Input[builtins.str]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 filter: Optional[pulumi.Input[builtins.str]] = None,
                  frequency: Optional[pulumi.Input[builtins.str]] = None,
                  kind: Optional[pulumi.Input[builtins.str]] = None,
                  logpull_options: Optional[pulumi.Input[builtins.str]] = None,
@@ -640,14 +640,11 @@ class LogpushJob(pulumi.CustomResource):
             __props__ = LogpushJobArgs.__new__(LogpushJobArgs)
 
             __props__.__dict__["account_id"] = account_id
-            if dataset is None and not opts.urn:
-                raise TypeError("Missing required property 'dataset'")
             __props__.__dict__["dataset"] = dataset
             if destination_conf is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_conf'")
             __props__.__dict__["destination_conf"] = destination_conf
             __props__.__dict__["enabled"] = enabled
-            __props__.__dict__["filter"] = filter
             __props__.__dict__["frequency"] = frequency
             __props__.__dict__["kind"] = kind
             __props__.__dict__["logpull_options"] = logpull_options
@@ -656,8 +653,13 @@ class LogpushJob(pulumi.CustomResource):
             __props__.__dict__["max_upload_records"] = max_upload_records
             __props__.__dict__["name"] = name
             __props__.__dict__["output_options"] = output_options
-            __props__.__dict__["ownership_challenge"] = ownership_challenge
+            __props__.__dict__["ownership_challenge"] = None if ownership_challenge is None else pulumi.Output.secret(ownership_challenge)
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["error_message"] = None
+            __props__.__dict__["last_complete"] = None
+            __props__.__dict__["last_error"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["ownershipChallenge"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(LogpushJob, __self__).__init__(
             'cloudflare:index/logpushJob:LogpushJob',
             resource_name,
@@ -672,9 +674,11 @@ class LogpushJob(pulumi.CustomResource):
             dataset: Optional[pulumi.Input[builtins.str]] = None,
             destination_conf: Optional[pulumi.Input[builtins.str]] = None,
             enabled: Optional[pulumi.Input[builtins.bool]] = None,
-            filter: Optional[pulumi.Input[builtins.str]] = None,
+            error_message: Optional[pulumi.Input[builtins.str]] = None,
             frequency: Optional[pulumi.Input[builtins.str]] = None,
             kind: Optional[pulumi.Input[builtins.str]] = None,
+            last_complete: Optional[pulumi.Input[builtins.str]] = None,
+            last_error: Optional[pulumi.Input[builtins.str]] = None,
             logpull_options: Optional[pulumi.Input[builtins.str]] = None,
             max_upload_bytes: Optional[pulumi.Input[builtins.int]] = None,
             max_upload_interval_seconds: Optional[pulumi.Input[builtins.int]] = None,
@@ -690,21 +694,25 @@ class LogpushJob(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
-        :param pulumi.Input[builtins.str] dataset: The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`, `page_shield_events`, `dlp_forensic_copies`.
-        :param pulumi.Input[builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
-        :param pulumi.Input[builtins.bool] enabled: Whether to enable the job.
-        :param pulumi.Input[builtins.str] filter: Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
-        :param pulumi.Input[builtins.str] frequency: A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
-        :param pulumi.Input[builtins.str] kind: The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
-        :param pulumi.Input[builtins.str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
-        :param pulumi.Input[builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
-        :param pulumi.Input[builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. Value must be between 30 and 300.
-        :param pulumi.Input[builtins.int] max_upload_records: The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
-        :param pulumi.Input[builtins.str] name: The name of the logpush job to create.
-        :param pulumi.Input[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict']] output_options: Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
-        :param pulumi.Input[builtins.str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] dataset: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+        :param pulumi.Input[builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+        :param pulumi.Input[builtins.bool] enabled: Flag that indicates if the job is enabled.
+        :param pulumi.Input[builtins.str] error_message: If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
+        :param pulumi.Input[builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+               Available values: "high", "low".
+        :param pulumi.Input[builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+               Available values: "edge".
+        :param pulumi.Input[builtins.str] last_complete: Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
+        :param pulumi.Input[builtins.str] last_error: Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
+        :param pulumi.Input[builtins.str] logpull_options: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+        :param pulumi.Input[builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+        :param pulumi.Input[builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+        :param pulumi.Input[builtins.int] max_upload_records: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+        :param pulumi.Input[builtins.str] name: Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
+        :param pulumi.Input[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict']] output_options: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+        :param pulumi.Input[builtins.str] ownership_challenge: Ownership challenge token to prove destination ownership.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -714,9 +722,11 @@ class LogpushJob(pulumi.CustomResource):
         __props__.__dict__["dataset"] = dataset
         __props__.__dict__["destination_conf"] = destination_conf
         __props__.__dict__["enabled"] = enabled
-        __props__.__dict__["filter"] = filter
+        __props__.__dict__["error_message"] = error_message
         __props__.__dict__["frequency"] = frequency
         __props__.__dict__["kind"] = kind
+        __props__.__dict__["last_complete"] = last_complete
+        __props__.__dict__["last_error"] = last_error
         __props__.__dict__["logpull_options"] = logpull_options
         __props__.__dict__["max_upload_bytes"] = max_upload_bytes
         __props__.__dict__["max_upload_interval_seconds"] = max_upload_interval_seconds
@@ -731,15 +741,15 @@ class LogpushJob(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
-    def dataset(self) -> pulumi.Output[builtins.str]:
+    def dataset(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`, `page_shield_events`, `dlp_forensic_copies`.
+        Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
         """
         return pulumi.get(self, "dataset")
 
@@ -747,7 +757,7 @@ class LogpushJob(pulumi.CustomResource):
     @pulumi.getter(name="destinationConf")
     def destination_conf(self) -> pulumi.Output[builtins.str]:
         """
-        Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
+        Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
         """
         return pulumi.get(self, "destination_conf")
 
@@ -755,24 +765,24 @@ class LogpushJob(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Whether to enable the job.
+        Flag that indicates if the job is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @property
-    @pulumi.getter
-    def filter(self) -> pulumi.Output[Optional[builtins.str]]:
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> pulumi.Output[builtins.str]:
         """
-        Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
+        If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
         """
-        return pulumi.get(self, "filter")
+        return pulumi.get(self, "error_message")
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""`frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.""")
-    def frequency(self) -> pulumi.Output[Optional[builtins.str]]:
+    def frequency(self) -> pulumi.Output[builtins.str]:
         """
-        A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
+        This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+        Available values: "high", "low".
         """
         return pulumi.get(self, "frequency")
 
@@ -780,15 +790,32 @@ class LogpushJob(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
+        The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+        Available values: "edge".
         """
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="lastComplete")
+    def last_complete(self) -> pulumi.Output[builtins.str]:
+        """
+        Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
+        """
+        return pulumi.get(self, "last_complete")
+
+    @property
+    @pulumi.getter(name="lastError")
+    def last_error(self) -> pulumi.Output[builtins.str]:
+        """
+        Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
+        """
+        return pulumi.get(self, "last_error")
 
     @property
     @pulumi.getter(name="logpullOptions")
     def logpull_options(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
         """
         return pulumi.get(self, "logpull_options")
 
@@ -796,23 +823,23 @@ class LogpushJob(pulumi.CustomResource):
     @pulumi.getter(name="maxUploadBytes")
     def max_upload_bytes(self) -> pulumi.Output[Optional[builtins.int]]:
         """
-        The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+        The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
         """
         return pulumi.get(self, "max_upload_bytes")
 
     @property
     @pulumi.getter(name="maxUploadIntervalSeconds")
-    def max_upload_interval_seconds(self) -> pulumi.Output[Optional[builtins.int]]:
+    def max_upload_interval_seconds(self) -> pulumi.Output[builtins.int]:
         """
-        The maximum interval in seconds for log batches. Value must be between 30 and 300.
+        The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
         """
         return pulumi.get(self, "max_upload_interval_seconds")
 
     @property
     @pulumi.getter(name="maxUploadRecords")
-    def max_upload_records(self) -> pulumi.Output[Optional[builtins.int]]:
+    def max_upload_records(self) -> pulumi.Output[builtins.int]:
         """
-        The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+        The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
         """
         return pulumi.get(self, "max_upload_records")
 
@@ -820,15 +847,15 @@ class LogpushJob(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The name of the logpush job to create.
+        Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="outputOptions")
-    def output_options(self) -> pulumi.Output[Optional['outputs.LogpushJobOutputOptions']]:
+    def output_options(self) -> pulumi.Output['outputs.LogpushJobOutputOptions']:
         """
-        Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+        The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
         """
         return pulumi.get(self, "output_options")
 
@@ -836,7 +863,7 @@ class LogpushJob(pulumi.CustomResource):
     @pulumi.getter(name="ownershipChallenge")
     def ownership_challenge(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+        Ownership challenge token to prove destination ownership.
         """
         return pulumi.get(self, "ownership_challenge")
 
@@ -844,7 +871,7 @@ class LogpushJob(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 

@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a Worker Custom Domain.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,18 +19,19 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWorkerDomain(ctx, "example", &cloudflare.WorkerDomainArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Hostname:  pulumi.String("subdomain.example.com"),
-//				Service:   pulumi.String("my-service"),
-//				ZoneId:    pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			_, err := cloudflare.NewWorkersCustomDomain(ctx, "example_workers_custom_domain", &cloudflare.WorkersCustomDomainArgs{
+//				AccountId:   pulumi.String("9a7806061c88ada191ed06f989cc3dac"),
+//				Environment: pulumi.String("production"),
+//				Hostname:    pulumi.String("foo.example.com"),
+//				Service:     pulumi.String("foo"),
+//				ZoneId:      pulumi.String("593c9c94de529bbbfaac7c53ced0447d"),
 //			})
 //			if err != nil {
 //				return err
@@ -46,21 +45,25 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/workerDomain:WorkerDomain example <account_id>/<worker_domain_id>
+// $ pulumi import cloudflare:index/workerDomain:WorkerDomain example '<account_id>/<domain_id>'
 // ```
+//
+// Deprecated: cloudflare.index/workerdomain.WorkerDomain has been deprecated in favor of cloudflare.index/workerscustomdomain.WorkersCustomDomain
 type WorkerDomain struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifer of the account.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The name of the Worker environment. Defaults to `production`.
-	Environment pulumi.StringPtrOutput `pulumi:"environment"`
+	// Worker environment associated with the zone and hostname.
+	Environment pulumi.StringOutput `pulumi:"environment"`
 	// Hostname of the Worker Domain.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
-	// Name of worker script to attach the domain to.
+	// Worker service associated with the zone and hostname.
 	Service pulumi.StringOutput `pulumi:"service"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier of the zone.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	// Name of the zone.
+	ZoneName pulumi.StringOutput `pulumi:"zoneName"`
 }
 
 // NewWorkerDomain registers a new resource with the given unique name, arguments, and options.
@@ -73,6 +76,9 @@ func NewWorkerDomain(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	if args.Environment == nil {
+		return nil, errors.New("invalid value for required argument 'Environment'")
+	}
 	if args.Hostname == nil {
 		return nil, errors.New("invalid value for required argument 'Hostname'")
 	}
@@ -82,6 +88,12 @@ func NewWorkerDomain(ctx *pulumi.Context,
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/workerDomain:WorkerDomain"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkerDomain
 	err := ctx.RegisterResource("cloudflare:index/workerDomain:WorkerDomain", name, args, &resource, opts...)
@@ -105,29 +117,33 @@ func GetWorkerDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkerDomain resources.
 type workerDomainState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifer of the account.
 	AccountId *string `pulumi:"accountId"`
-	// The name of the Worker environment. Defaults to `production`.
+	// Worker environment associated with the zone and hostname.
 	Environment *string `pulumi:"environment"`
 	// Hostname of the Worker Domain.
 	Hostname *string `pulumi:"hostname"`
-	// Name of worker script to attach the domain to.
+	// Worker service associated with the zone and hostname.
 	Service *string `pulumi:"service"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier of the zone.
 	ZoneId *string `pulumi:"zoneId"`
+	// Name of the zone.
+	ZoneName *string `pulumi:"zoneName"`
 }
 
 type WorkerDomainState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifer of the account.
 	AccountId pulumi.StringPtrInput
-	// The name of the Worker environment. Defaults to `production`.
+	// Worker environment associated with the zone and hostname.
 	Environment pulumi.StringPtrInput
 	// Hostname of the Worker Domain.
 	Hostname pulumi.StringPtrInput
-	// Name of worker script to attach the domain to.
+	// Worker service associated with the zone and hostname.
 	Service pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier of the zone.
 	ZoneId pulumi.StringPtrInput
+	// Name of the zone.
+	ZoneName pulumi.StringPtrInput
 }
 
 func (WorkerDomainState) ElementType() reflect.Type {
@@ -135,29 +151,29 @@ func (WorkerDomainState) ElementType() reflect.Type {
 }
 
 type workerDomainArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifer of the account.
 	AccountId string `pulumi:"accountId"`
-	// The name of the Worker environment. Defaults to `production`.
-	Environment *string `pulumi:"environment"`
+	// Worker environment associated with the zone and hostname.
+	Environment string `pulumi:"environment"`
 	// Hostname of the Worker Domain.
 	Hostname string `pulumi:"hostname"`
-	// Name of worker script to attach the domain to.
+	// Worker service associated with the zone and hostname.
 	Service string `pulumi:"service"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a WorkerDomain resource.
 type WorkerDomainArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifer of the account.
 	AccountId pulumi.StringInput
-	// The name of the Worker environment. Defaults to `production`.
-	Environment pulumi.StringPtrInput
+	// Worker environment associated with the zone and hostname.
+	Environment pulumi.StringInput
 	// Hostname of the Worker Domain.
 	Hostname pulumi.StringInput
-	// Name of worker script to attach the domain to.
+	// Worker service associated with the zone and hostname.
 	Service pulumi.StringInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier of the zone.
 	ZoneId pulumi.StringInput
 }
 
@@ -248,14 +264,14 @@ func (o WorkerDomainOutput) ToWorkerDomainOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifer of the account.
 func (o WorkerDomainOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The name of the Worker environment. Defaults to `production`.
-func (o WorkerDomainOutput) Environment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerDomain) pulumi.StringPtrOutput { return v.Environment }).(pulumi.StringPtrOutput)
+// Worker environment associated with the zone and hostname.
+func (o WorkerDomainOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerDomain) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
 }
 
 // Hostname of the Worker Domain.
@@ -263,14 +279,19 @@ func (o WorkerDomainOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerDomain) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// Name of worker script to attach the domain to.
+// Worker service associated with the zone and hostname.
 func (o WorkerDomainOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerDomain) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier of the zone.
 func (o WorkerDomainOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerDomain) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+// Name of the zone.
+func (o WorkerDomainOutput) ZoneName() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerDomain) pulumi.StringOutput { return v.ZoneName }).(pulumi.StringOutput)
 }
 
 type WorkerDomainArrayOutput struct{ *pulumi.OutputState }

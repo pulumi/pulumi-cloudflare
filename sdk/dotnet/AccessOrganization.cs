@@ -10,56 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// A Zero Trust organization defines the user login experience.
-    /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.AccessOrganization("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "example.cloudflareaccess.com",
-    ///         AuthDomain = "example.cloudflareaccess.com",
-    ///         IsUiReadOnly = false,
-    ///         UserSeatExpirationInactiveTime = "720h",
-    ///         AutoRedirectToIdentity = false,
-    ///         LoginDesigns = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.AccessOrganizationLoginDesignArgs
-    ///             {
-    ///                 BackgroundColor = "#ffffff",
-    ///                 TextColor = "#000000",
-    ///                 LogoPath = "https://example.com/logo.png",
-    ///                 HeaderText = "My header text",
-    ///                 FooterText = "My footer text",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example &lt;account_id&gt;
-    /// ```
     /// </summary>
+    [Obsolete(@"cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization")]
     [CloudflareResourceType("cloudflare:index/accessOrganization:AccessOrganization")]
     public partial class AccessOrganization : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
@@ -71,37 +32,34 @@ namespace Pulumi.Cloudflare
         /// The unique subdomain assigned to your Zero Trust organization.
         /// </summary>
         [Output("authDomain")]
-        public Output<string> AuthDomain { get; private set; } = null!;
+        public Output<string?> AuthDomain { get; private set; } = null!;
 
         /// <summary>
-        /// When set to true, users skip the identity provider selection step during login.
+        /// When set to `true`, users skip the identity provider selection step during login.
         /// </summary>
         [Output("autoRedirectToIdentity")]
-        public Output<bool?> AutoRedirectToIdentity { get; private set; } = null!;
+        public Output<bool> AutoRedirectToIdentity { get; private set; } = null!;
 
-        /// <summary>
-        /// Custom pages for your Zero Trust organization.
-        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
         [Output("customPages")]
-        public Output<ImmutableArray<Outputs.AccessOrganizationCustomPage>> CustomPages { get; private set; } = null!;
+        public Output<Outputs.AccessOrganizationCustomPages> CustomPages { get; private set; } = null!;
 
-        /// <summary>
-        /// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-        /// </summary>
         [Output("isUiReadOnly")]
         public Output<bool?> IsUiReadOnly { get; private set; } = null!;
 
-        [Output("loginDesigns")]
-        public Output<ImmutableArray<Outputs.AccessOrganizationLoginDesign>> LoginDesigns { get; private set; } = null!;
+        [Output("loginDesign")]
+        public Output<Outputs.AccessOrganizationLoginDesign> LoginDesign { get; private set; } = null!;
 
         /// <summary>
         /// The name of your Zero Trust organization.
         /// </summary>
         [Output("name")]
-        public Output<string> Name { get; private set; } = null!;
+        public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
-        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+        /// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         /// </summary>
         [Output("sessionDuration")]
         public Output<string?> SessionDuration { get; private set; } = null!;
@@ -112,23 +70,26 @@ namespace Pulumi.Cloudflare
         [Output("uiReadOnlyToggleReason")]
         public Output<string?> UiReadOnlyToggleReason { get; private set; } = null!;
 
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
+
         /// <summary>
-        /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+        /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
         /// </summary>
         [Output("userSeatExpirationInactiveTime")]
         public Output<string?> UserSeatExpirationInactiveTime { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
+        /// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
         /// </summary>
         [Output("warpAuthSessionDuration")]
         public Output<string?> WarpAuthSessionDuration { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -138,7 +99,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public AccessOrganization(string name, AccessOrganizationArgs args, CustomResourceOptions? options = null)
+        public AccessOrganization(string name, AccessOrganizationArgs? args = null, CustomResourceOptions? options = null)
             : base("cloudflare:index/accessOrganization:AccessOrganization", name, args ?? new AccessOrganizationArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -153,6 +114,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/accessOrganization:AccessOrganization" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -177,101 +142,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessOrganizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
-        /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
-
-        /// <summary>
-        /// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
-        /// </summary>
-        [Input("allowAuthenticateViaWarp")]
-        public Input<bool>? AllowAuthenticateViaWarp { get; set; }
-
-        /// <summary>
-        /// The unique subdomain assigned to your Zero Trust organization.
-        /// </summary>
-        [Input("authDomain", required: true)]
-        public Input<string> AuthDomain { get; set; } = null!;
-
-        /// <summary>
-        /// When set to true, users skip the identity provider selection step during login.
-        /// </summary>
-        [Input("autoRedirectToIdentity")]
-        public Input<bool>? AutoRedirectToIdentity { get; set; }
-
-        [Input("customPages")]
-        private InputList<Inputs.AccessOrganizationCustomPageArgs>? _customPages;
-
-        /// <summary>
-        /// Custom pages for your Zero Trust organization.
-        /// </summary>
-        public InputList<Inputs.AccessOrganizationCustomPageArgs> CustomPages
-        {
-            get => _customPages ?? (_customPages = new InputList<Inputs.AccessOrganizationCustomPageArgs>());
-            set => _customPages = value;
-        }
-
-        /// <summary>
-        /// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-        /// </summary>
-        [Input("isUiReadOnly")]
-        public Input<bool>? IsUiReadOnly { get; set; }
-
-        [Input("loginDesigns")]
-        private InputList<Inputs.AccessOrganizationLoginDesignArgs>? _loginDesigns;
-        public InputList<Inputs.AccessOrganizationLoginDesignArgs> LoginDesigns
-        {
-            get => _loginDesigns ?? (_loginDesigns = new InputList<Inputs.AccessOrganizationLoginDesignArgs>());
-            set => _loginDesigns = value;
-        }
-
-        /// <summary>
-        /// The name of your Zero Trust organization.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
-        /// </summary>
-        [Input("sessionDuration")]
-        public Input<string>? SessionDuration { get; set; }
-
-        /// <summary>
-        /// A description of the reason why the UI read only field is being toggled.
-        /// </summary>
-        [Input("uiReadOnlyToggleReason")]
-        public Input<string>? UiReadOnlyToggleReason { get; set; }
-
-        /// <summary>
-        /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
-        /// </summary>
-        [Input("userSeatExpirationInactiveTime")]
-        public Input<string>? UserSeatExpirationInactiveTime { get; set; }
-
-        /// <summary>
-        /// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
-        /// </summary>
-        [Input("warpAuthSessionDuration")]
-        public Input<string>? WarpAuthSessionDuration { get; set; }
-
-        /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
-        /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
-
-        public AccessOrganizationArgs()
-        {
-        }
-        public static new AccessOrganizationArgs Empty => new AccessOrganizationArgs();
-    }
-
-    public sealed class AccessOrganizationState : global::Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -289,36 +160,19 @@ namespace Pulumi.Cloudflare
         public Input<string>? AuthDomain { get; set; }
 
         /// <summary>
-        /// When set to true, users skip the identity provider selection step during login.
+        /// When set to `true`, users skip the identity provider selection step during login.
         /// </summary>
         [Input("autoRedirectToIdentity")]
         public Input<bool>? AutoRedirectToIdentity { get; set; }
 
         [Input("customPages")]
-        private InputList<Inputs.AccessOrganizationCustomPageGetArgs>? _customPages;
+        public Input<Inputs.AccessOrganizationCustomPagesArgs>? CustomPages { get; set; }
 
-        /// <summary>
-        /// Custom pages for your Zero Trust organization.
-        /// </summary>
-        public InputList<Inputs.AccessOrganizationCustomPageGetArgs> CustomPages
-        {
-            get => _customPages ?? (_customPages = new InputList<Inputs.AccessOrganizationCustomPageGetArgs>());
-            set => _customPages = value;
-        }
-
-        /// <summary>
-        /// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-        /// </summary>
         [Input("isUiReadOnly")]
         public Input<bool>? IsUiReadOnly { get; set; }
 
-        [Input("loginDesigns")]
-        private InputList<Inputs.AccessOrganizationLoginDesignGetArgs>? _loginDesigns;
-        public InputList<Inputs.AccessOrganizationLoginDesignGetArgs> LoginDesigns
-        {
-            get => _loginDesigns ?? (_loginDesigns = new InputList<Inputs.AccessOrganizationLoginDesignGetArgs>());
-            set => _loginDesigns = value;
-        }
+        [Input("loginDesign")]
+        public Input<Inputs.AccessOrganizationLoginDesignArgs>? LoginDesign { get; set; }
 
         /// <summary>
         /// The name of your Zero Trust organization.
@@ -327,7 +181,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+        /// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
@@ -339,19 +193,102 @@ namespace Pulumi.Cloudflare
         public Input<string>? UiReadOnlyToggleReason { get; set; }
 
         /// <summary>
-        /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+        /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
         /// </summary>
         [Input("userSeatExpirationInactiveTime")]
         public Input<string>? UserSeatExpirationInactiveTime { get; set; }
 
         /// <summary>
-        /// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
+        /// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
         /// </summary>
         [Input("warpAuthSessionDuration")]
         public Input<string>? WarpAuthSessionDuration { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public AccessOrganizationArgs()
+        {
+        }
+        public static new AccessOrganizationArgs Empty => new AccessOrganizationArgs();
+    }
+
+    public sealed class AccessOrganizationState : global::Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
+        /// </summary>
+        [Input("allowAuthenticateViaWarp")]
+        public Input<bool>? AllowAuthenticateViaWarp { get; set; }
+
+        /// <summary>
+        /// The unique subdomain assigned to your Zero Trust organization.
+        /// </summary>
+        [Input("authDomain")]
+        public Input<string>? AuthDomain { get; set; }
+
+        /// <summary>
+        /// When set to `true`, users skip the identity provider selection step during login.
+        /// </summary>
+        [Input("autoRedirectToIdentity")]
+        public Input<bool>? AutoRedirectToIdentity { get; set; }
+
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
+        [Input("customPages")]
+        public Input<Inputs.AccessOrganizationCustomPagesGetArgs>? CustomPages { get; set; }
+
+        [Input("isUiReadOnly")]
+        public Input<bool>? IsUiReadOnly { get; set; }
+
+        [Input("loginDesign")]
+        public Input<Inputs.AccessOrganizationLoginDesignGetArgs>? LoginDesign { get; set; }
+
+        /// <summary>
+        /// The name of your Zero Trust organization.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+        /// </summary>
+        [Input("sessionDuration")]
+        public Input<string>? SessionDuration { get; set; }
+
+        /// <summary>
+        /// A description of the reason why the UI read only field is being toggled.
+        /// </summary>
+        [Input("uiReadOnlyToggleReason")]
+        public Input<string>? UiReadOnlyToggleReason { get; set; }
+
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
+        /// </summary>
+        [Input("userSeatExpirationInactiveTime")]
+        public Input<string>? UserSeatExpirationInactiveTime { get; set; }
+
+        /// <summary>
+        /// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
+        /// </summary>
+        [Input("warpAuthSessionDuration")]
+        public Input<string>? WarpAuthSessionDuration { get; set; }
+
+        /// <summary>
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

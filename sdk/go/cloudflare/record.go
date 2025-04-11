@@ -8,103 +8,56 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare record resource.
-//
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Add a record to the domain
-//			_, err := cloudflare.NewRecord(ctx, "example", &cloudflare.RecordArgs{
-//				ZoneId:  pulumi.Any(cloudflareZoneId),
-//				Name:    pulumi.String("terraform"),
-//				Content: pulumi.String("192.0.2.1"),
-//				Type:    pulumi.String("A"),
-//				Ttl:     pulumi.Int(3600),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Add a record requiring a data map
-//			_, err = cloudflare.NewRecord(ctx, "_sip_tls", &cloudflare.RecordArgs{
-//				ZoneId: pulumi.Any(cloudflareZoneId),
-//				Name:   pulumi.String("_sip._tls"),
-//				Type:   pulumi.String("SRV"),
-//				Data: &cloudflare.RecordDataArgs{
-//					Service:  pulumi.String("_sip"),
-//					Proto:    pulumi.String("_tls"),
-//					Name:     pulumi.String("terraform-srv"),
-//					Priority: pulumi.Int(0),
-//					Weight:   pulumi.Int(0),
-//					Port:     pulumi.Int(443),
-//					Target:   pulumi.String("example.com"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/record:Record example <zone_id>/<record_id>
+// $ pulumi import cloudflare:index/record:Record example '<zone_id>/<dns_record_id>'
 // ```
+//
+// Deprecated: cloudflare.index/record.Record has been deprecated in favor of cloudflare.index/dnsrecord.DnsRecord
 type Record struct {
 	pulumi.CustomResourceState
 
-	AllowOverwrite pulumi.BoolPtrOutput `pulumi:"allowOverwrite"`
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
-	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// The content of the record. Must provide only one of `data`, `content`, `value`.
+	Comment pulumi.StringOutput `pulumi:"comment"`
+	// When the record comment was last modified. Omitted if there is no comment.
+	CommentModifiedOn pulumi.StringOutput `pulumi:"commentModifiedOn"`
+	// A valid IPv4 address.
 	Content pulumi.StringOutput `pulumi:"content"`
-	// The RFC3339 timestamp of when the record was created.
+	// When the record was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
-	// Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
-	Data RecordDataPtrOutput `pulumi:"data"`
-	// The FQDN of the record.
-	Hostname pulumi.StringOutput `pulumi:"hostname"`
-	// A key-value map of string metadata Cloudflare associates with the record.
-	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
-	// The RFC3339 timestamp of when the record was last modified.
+	// Components of a CAA record.
+	Data RecordDataOutput `pulumi:"data"`
+	// Extra Cloudflare-specific information about the record.
+	Meta pulumi.StringOutput `pulumi:"meta"`
+	// When the record was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
-	// The name of the record. **Modifying this attribute will force creation of a new resource.**
+	// DNS record name (or @ for the zone apex) in Punycode.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The priority of the record.
-	Priority pulumi.IntPtrOutput `pulumi:"priority"`
-	// Shows whether this record can be proxied.
+	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+	Priority pulumi.Float64PtrOutput `pulumi:"priority"`
+	// Whether the record can be proxied by Cloudflare or not.
 	Proxiable pulumi.BoolOutput `pulumi:"proxiable"`
-	// Whether the record gets Cloudflare's origin protection.
-	Proxied pulumi.BoolPtrOutput `pulumi:"proxied"`
-	// Custom tags for the DNS record.
+	// Whether the record is receiving the performance and security benefits of Cloudflare.
+	Proxied pulumi.BoolOutput `pulumi:"proxied"`
+	// Settings for the DNS record.
+	Settings RecordSettingsOutput `pulumi:"settings"`
+	// Custom tags for the DNS record. This field has no effect on DNS responses.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// The TTL of the record.
-	Ttl pulumi.IntOutput `pulumi:"ttl"`
-	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+	// When the record tags were last modified. Omitted if there are no tags.
+	TagsModifiedOn pulumi.StringOutput `pulumi:"tagsModifiedOn"`
+	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
+	Ttl pulumi.Float64Output `pulumi:"ttl"`
+	// Record type.
+	// Available values: "A".
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The value of the record. Must provide only one of `data`, `content`, `value`.
-	//
-	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-	Value pulumi.StringOutput `pulumi:"value"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -118,12 +71,21 @@ func NewRecord(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	if args.Ttl == nil {
+		return nil, errors.New("invalid value for required argument 'Ttl'")
+	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/record:Record"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Record
 	err := ctx.RegisterResource("cloudflare:index/record:Record", name, args, &resource, opts...)
@@ -147,78 +109,78 @@ func GetRecord(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Record resources.
 type recordState struct {
-	AllowOverwrite *bool `pulumi:"allowOverwrite"`
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	Comment *string `pulumi:"comment"`
-	// The content of the record. Must provide only one of `data`, `content`, `value`.
+	// When the record comment was last modified. Omitted if there is no comment.
+	CommentModifiedOn *string `pulumi:"commentModifiedOn"`
+	// A valid IPv4 address.
 	Content *string `pulumi:"content"`
-	// The RFC3339 timestamp of when the record was created.
+	// When the record was created.
 	CreatedOn *string `pulumi:"createdOn"`
-	// Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
+	// Components of a CAA record.
 	Data *RecordData `pulumi:"data"`
-	// The FQDN of the record.
-	Hostname *string `pulumi:"hostname"`
-	// A key-value map of string metadata Cloudflare associates with the record.
-	Metadata map[string]string `pulumi:"metadata"`
-	// The RFC3339 timestamp of when the record was last modified.
+	// Extra Cloudflare-specific information about the record.
+	Meta *string `pulumi:"meta"`
+	// When the record was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
-	// The name of the record. **Modifying this attribute will force creation of a new resource.**
+	// DNS record name (or @ for the zone apex) in Punycode.
 	Name *string `pulumi:"name"`
-	// The priority of the record.
-	Priority *int `pulumi:"priority"`
-	// Shows whether this record can be proxied.
+	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+	Priority *float64 `pulumi:"priority"`
+	// Whether the record can be proxied by Cloudflare or not.
 	Proxiable *bool `pulumi:"proxiable"`
-	// Whether the record gets Cloudflare's origin protection.
+	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	Proxied *bool `pulumi:"proxied"`
-	// Custom tags for the DNS record.
+	// Settings for the DNS record.
+	Settings *RecordSettings `pulumi:"settings"`
+	// Custom tags for the DNS record. This field has no effect on DNS responses.
 	Tags []string `pulumi:"tags"`
-	// The TTL of the record.
-	Ttl *int `pulumi:"ttl"`
-	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+	// When the record tags were last modified. Omitted if there are no tags.
+	TagsModifiedOn *string `pulumi:"tagsModifiedOn"`
+	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
+	Ttl *float64 `pulumi:"ttl"`
+	// Record type.
+	// Available values: "A".
 	Type *string `pulumi:"type"`
-	// The value of the record. Must provide only one of `data`, `content`, `value`.
-	//
-	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-	Value *string `pulumi:"value"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type RecordState struct {
-	AllowOverwrite pulumi.BoolPtrInput
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	Comment pulumi.StringPtrInput
-	// The content of the record. Must provide only one of `data`, `content`, `value`.
+	// When the record comment was last modified. Omitted if there is no comment.
+	CommentModifiedOn pulumi.StringPtrInput
+	// A valid IPv4 address.
 	Content pulumi.StringPtrInput
-	// The RFC3339 timestamp of when the record was created.
+	// When the record was created.
 	CreatedOn pulumi.StringPtrInput
-	// Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
+	// Components of a CAA record.
 	Data RecordDataPtrInput
-	// The FQDN of the record.
-	Hostname pulumi.StringPtrInput
-	// A key-value map of string metadata Cloudflare associates with the record.
-	Metadata pulumi.StringMapInput
-	// The RFC3339 timestamp of when the record was last modified.
+	// Extra Cloudflare-specific information about the record.
+	Meta pulumi.StringPtrInput
+	// When the record was last modified.
 	ModifiedOn pulumi.StringPtrInput
-	// The name of the record. **Modifying this attribute will force creation of a new resource.**
+	// DNS record name (or @ for the zone apex) in Punycode.
 	Name pulumi.StringPtrInput
-	// The priority of the record.
-	Priority pulumi.IntPtrInput
-	// Shows whether this record can be proxied.
+	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+	Priority pulumi.Float64PtrInput
+	// Whether the record can be proxied by Cloudflare or not.
 	Proxiable pulumi.BoolPtrInput
-	// Whether the record gets Cloudflare's origin protection.
+	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	Proxied pulumi.BoolPtrInput
-	// Custom tags for the DNS record.
+	// Settings for the DNS record.
+	Settings RecordSettingsPtrInput
+	// Custom tags for the DNS record. This field has no effect on DNS responses.
 	Tags pulumi.StringArrayInput
-	// The TTL of the record.
-	Ttl pulumi.IntPtrInput
-	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+	// When the record tags were last modified. Omitted if there are no tags.
+	TagsModifiedOn pulumi.StringPtrInput
+	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
+	Ttl pulumi.Float64PtrInput
+	// Record type.
+	// Available values: "A".
 	Type pulumi.StringPtrInput
-	// The value of the record. Must provide only one of `data`, `content`, `value`.
-	//
-	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-	Value pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -227,59 +189,55 @@ func (RecordState) ElementType() reflect.Type {
 }
 
 type recordArgs struct {
-	AllowOverwrite *bool `pulumi:"allowOverwrite"`
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	Comment *string `pulumi:"comment"`
-	// The content of the record. Must provide only one of `data`, `content`, `value`.
+	// A valid IPv4 address.
 	Content *string `pulumi:"content"`
-	// Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
+	// Components of a CAA record.
 	Data *RecordData `pulumi:"data"`
-	// The name of the record. **Modifying this attribute will force creation of a new resource.**
+	// DNS record name (or @ for the zone apex) in Punycode.
 	Name string `pulumi:"name"`
-	// The priority of the record.
-	Priority *int `pulumi:"priority"`
-	// Whether the record gets Cloudflare's origin protection.
+	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+	Priority *float64 `pulumi:"priority"`
+	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	Proxied *bool `pulumi:"proxied"`
-	// Custom tags for the DNS record.
+	// Settings for the DNS record.
+	Settings *RecordSettings `pulumi:"settings"`
+	// Custom tags for the DNS record. This field has no effect on DNS responses.
 	Tags []string `pulumi:"tags"`
-	// The TTL of the record.
-	Ttl *int `pulumi:"ttl"`
-	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
+	Ttl float64 `pulumi:"ttl"`
+	// Record type.
+	// Available values: "A".
 	Type string `pulumi:"type"`
-	// The value of the record. Must provide only one of `data`, `content`, `value`.
-	//
-	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-	Value *string `pulumi:"value"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Record resource.
 type RecordArgs struct {
-	AllowOverwrite pulumi.BoolPtrInput
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	Comment pulumi.StringPtrInput
-	// The content of the record. Must provide only one of `data`, `content`, `value`.
+	// A valid IPv4 address.
 	Content pulumi.StringPtrInput
-	// Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
+	// Components of a CAA record.
 	Data RecordDataPtrInput
-	// The name of the record. **Modifying this attribute will force creation of a new resource.**
+	// DNS record name (or @ for the zone apex) in Punycode.
 	Name pulumi.StringInput
-	// The priority of the record.
-	Priority pulumi.IntPtrInput
-	// Whether the record gets Cloudflare's origin protection.
+	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+	Priority pulumi.Float64PtrInput
+	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	Proxied pulumi.BoolPtrInput
-	// Custom tags for the DNS record.
+	// Settings for the DNS record.
+	Settings RecordSettingsPtrInput
+	// Custom tags for the DNS record. This field has no effect on DNS responses.
 	Tags pulumi.StringArrayInput
-	// The TTL of the record.
-	Ttl pulumi.IntPtrInput
-	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
+	Ttl pulumi.Float64Input
+	// Record type.
+	// Available values: "A".
 	Type pulumi.StringInput
-	// The value of the record. Must provide only one of `data`, `content`, `value`.
-	//
-	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-	Value pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -370,88 +328,88 @@ func (o RecordOutput) ToRecordOutputWithContext(ctx context.Context) RecordOutpu
 	return o
 }
 
-func (o RecordOutput) AllowOverwrite() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Record) pulumi.BoolPtrOutput { return v.AllowOverwrite }).(pulumi.BoolPtrOutput)
-}
-
 // Comments or notes about the DNS record. This field has no effect on DNS responses.
-func (o RecordOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Record) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+func (o RecordOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Comment }).(pulumi.StringOutput)
 }
 
-// The content of the record. Must provide only one of `data`, `content`, `value`.
+// When the record comment was last modified. Omitted if there is no comment.
+func (o RecordOutput) CommentModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.CommentModifiedOn }).(pulumi.StringOutput)
+}
+
+// A valid IPv4 address.
 func (o RecordOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
 }
 
-// The RFC3339 timestamp of when the record was created.
+// When the record was created.
 func (o RecordOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
-func (o RecordOutput) Data() RecordDataPtrOutput {
-	return o.ApplyT(func(v *Record) RecordDataPtrOutput { return v.Data }).(RecordDataPtrOutput)
+// Components of a CAA record.
+func (o RecordOutput) Data() RecordDataOutput {
+	return o.ApplyT(func(v *Record) RecordDataOutput { return v.Data }).(RecordDataOutput)
 }
 
-// The FQDN of the record.
-func (o RecordOutput) Hostname() pulumi.StringOutput {
-	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
+// Extra Cloudflare-specific information about the record.
+func (o RecordOutput) Meta() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Meta }).(pulumi.StringOutput)
 }
 
-// A key-value map of string metadata Cloudflare associates with the record.
-func (o RecordOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Record) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
-}
-
-// The RFC3339 timestamp of when the record was last modified.
+// When the record was last modified.
 func (o RecordOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// The name of the record. **Modifying this attribute will force creation of a new resource.**
+// DNS record name (or @ for the zone apex) in Punycode.
 func (o RecordOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The priority of the record.
-func (o RecordOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Record) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+func (o RecordOutput) Priority() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *Record) pulumi.Float64PtrOutput { return v.Priority }).(pulumi.Float64PtrOutput)
 }
 
-// Shows whether this record can be proxied.
+// Whether the record can be proxied by Cloudflare or not.
 func (o RecordOutput) Proxiable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Record) pulumi.BoolOutput { return v.Proxiable }).(pulumi.BoolOutput)
 }
 
-// Whether the record gets Cloudflare's origin protection.
-func (o RecordOutput) Proxied() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Record) pulumi.BoolPtrOutput { return v.Proxied }).(pulumi.BoolPtrOutput)
+// Whether the record is receiving the performance and security benefits of Cloudflare.
+func (o RecordOutput) Proxied() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Record) pulumi.BoolOutput { return v.Proxied }).(pulumi.BoolOutput)
 }
 
-// Custom tags for the DNS record.
+// Settings for the DNS record.
+func (o RecordOutput) Settings() RecordSettingsOutput {
+	return o.ApplyT(func(v *Record) RecordSettingsOutput { return v.Settings }).(RecordSettingsOutput)
+}
+
+// Custom tags for the DNS record. This field has no effect on DNS responses.
 func (o RecordOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// The TTL of the record.
-func (o RecordOutput) Ttl() pulumi.IntOutput {
-	return o.ApplyT(func(v *Record) pulumi.IntOutput { return v.Ttl }).(pulumi.IntOutput)
+// When the record tags were last modified. Omitted if there are no tags.
+func (o RecordOutput) TagsModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.TagsModifiedOn }).(pulumi.StringOutput)
 }
 
-// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
+func (o RecordOutput) Ttl() pulumi.Float64Output {
+	return o.ApplyT(func(v *Record) pulumi.Float64Output { return v.Ttl }).(pulumi.Float64Output)
+}
+
+// Record type.
+// Available values: "A".
 func (o RecordOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The value of the record. Must provide only one of `data`, `content`, `value`.
-//
-// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-func (o RecordOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
-}
-
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o RecordOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

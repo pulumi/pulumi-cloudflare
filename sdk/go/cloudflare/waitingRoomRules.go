@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Waiting Room Rules resource.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,28 +19,22 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWaitingRoomRules(ctx, "example", &cloudflare.WaitingRoomRulesArgs{
-//				ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				WaitingRoomId: pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+//			_, err := cloudflare.NewWaitingRoomRules(ctx, "example_waiting_room_rules", &cloudflare.WaitingRoomRulesArgs{
+//				ZoneId:        pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				WaitingRoomId: pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Rules: cloudflare.WaitingRoomRulesRuleArray{
 //					&cloudflare.WaitingRoomRulesRuleArgs{
-//						Description: pulumi.String("bypass ip list"),
-//						Expression:  pulumi.String("src.ip in {192.0.2.0 192.0.2.1}"),
 //						Action:      pulumi.String("bypass_waiting_room"),
-//						Status:      pulumi.String("enabled"),
-//					},
-//					&cloudflare.WaitingRoomRulesRuleArgs{
-//						Description: pulumi.String("bypass query string"),
-//						Expression:  pulumi.String("http.request.uri.query contains \"bypass=true\""),
-//						Action:      pulumi.String("bypass_waiting_room"),
-//						Status:      pulumi.String("enabled"),
+//						Expression:  pulumi.String("ip.src in {10.20.30.40}"),
+//						Description: pulumi.String("allow all traffic from 10.20.30.40"),
+//						Enabled:     pulumi.Bool(true),
 //					},
 //				},
 //			})
@@ -58,16 +50,26 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules default <zone_id>/<waiting_room_id>
+// $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules example '<zone_id>/<waiting_room_id>'
 // ```
 type WaitingRoomRules struct {
 	pulumi.CustomResourceState
 
-	// List of rules to apply to the ruleset.
-	Rules WaitingRoomRulesRuleArrayOutput `pulumi:"rules"`
-	// The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
+	// The action to take when the expression matches.
+	// Available values: "bypass*waiting*room".
+	Action pulumi.StringOutput `pulumi:"action"`
+	// The description of the rule.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// When set to true, the rule is enabled.
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// Criteria defining when there is a match for the current rule.
+	Expression  pulumi.StringOutput             `pulumi:"expression"`
+	LastUpdated pulumi.StringOutput             `pulumi:"lastUpdated"`
+	Rules       WaitingRoomRulesRuleArrayOutput `pulumi:"rules"`
+	// The version of the rule.
+	Version       pulumi.StringOutput `pulumi:"version"`
 	WaitingRoomId pulumi.StringOutput `pulumi:"waitingRoomId"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -78,6 +80,9 @@ func NewWaitingRoomRules(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Rules == nil {
+		return nil, errors.New("invalid value for required argument 'Rules'")
+	}
 	if args.WaitingRoomId == nil {
 		return nil, errors.New("invalid value for required argument 'WaitingRoomId'")
 	}
@@ -107,20 +112,40 @@ func GetWaitingRoomRules(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WaitingRoomRules resources.
 type waitingRoomRulesState struct {
-	// List of rules to apply to the ruleset.
-	Rules []WaitingRoomRulesRule `pulumi:"rules"`
-	// The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
+	// The action to take when the expression matches.
+	// Available values: "bypass*waiting*room".
+	Action *string `pulumi:"action"`
+	// The description of the rule.
+	Description *string `pulumi:"description"`
+	// When set to true, the rule is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Criteria defining when there is a match for the current rule.
+	Expression  *string                `pulumi:"expression"`
+	LastUpdated *string                `pulumi:"lastUpdated"`
+	Rules       []WaitingRoomRulesRule `pulumi:"rules"`
+	// The version of the rule.
+	Version       *string `pulumi:"version"`
 	WaitingRoomId *string `pulumi:"waitingRoomId"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type WaitingRoomRulesState struct {
-	// List of rules to apply to the ruleset.
-	Rules WaitingRoomRulesRuleArrayInput
-	// The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
+	// The action to take when the expression matches.
+	// Available values: "bypass*waiting*room".
+	Action pulumi.StringPtrInput
+	// The description of the rule.
+	Description pulumi.StringPtrInput
+	// When set to true, the rule is enabled.
+	Enabled pulumi.BoolPtrInput
+	// Criteria defining when there is a match for the current rule.
+	Expression  pulumi.StringPtrInput
+	LastUpdated pulumi.StringPtrInput
+	Rules       WaitingRoomRulesRuleArrayInput
+	// The version of the rule.
+	Version       pulumi.StringPtrInput
 	WaitingRoomId pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -129,21 +154,17 @@ func (WaitingRoomRulesState) ElementType() reflect.Type {
 }
 
 type waitingRoomRulesArgs struct {
-	// List of rules to apply to the ruleset.
-	Rules []WaitingRoomRulesRule `pulumi:"rules"`
-	// The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
-	WaitingRoomId string `pulumi:"waitingRoomId"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	Rules         []WaitingRoomRulesRule `pulumi:"rules"`
+	WaitingRoomId string                 `pulumi:"waitingRoomId"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a WaitingRoomRules resource.
 type WaitingRoomRulesArgs struct {
-	// List of rules to apply to the ruleset.
-	Rules WaitingRoomRulesRuleArrayInput
-	// The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
+	Rules         WaitingRoomRulesRuleArrayInput
 	WaitingRoomId pulumi.StringInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -234,17 +255,45 @@ func (o WaitingRoomRulesOutput) ToWaitingRoomRulesOutputWithContext(ctx context.
 	return o
 }
 
-// List of rules to apply to the ruleset.
+// The action to take when the expression matches.
+// Available values: "bypass*waiting*room".
+func (o WaitingRoomRulesOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
+}
+
+// The description of the rule.
+func (o WaitingRoomRulesOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// When set to true, the rule is enabled.
+func (o WaitingRoomRulesOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WaitingRoomRules) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Criteria defining when there is a match for the current rule.
+func (o WaitingRoomRulesOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o WaitingRoomRulesOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.LastUpdated }).(pulumi.StringOutput)
+}
+
 func (o WaitingRoomRulesOutput) Rules() WaitingRoomRulesRuleArrayOutput {
 	return o.ApplyT(func(v *WaitingRoomRules) WaitingRoomRulesRuleArrayOutput { return v.Rules }).(WaitingRoomRulesRuleArrayOutput)
 }
 
-// The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
+// The version of the rule.
+func (o WaitingRoomRulesOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
 func (o WaitingRoomRulesOutput) WaitingRoomId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.WaitingRoomId }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o WaitingRoomRulesOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

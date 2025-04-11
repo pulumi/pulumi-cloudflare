@@ -2,35 +2,18 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource, that manages Cloudflare static routes for Magic
- * Transit or Magic WAN. Static routes are used to route traffic
- * through GRE tunnels.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.MagicWanStaticRoute("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     description: "New route for new prefix 192.0.2.0/24",
- *     prefix: "192.0.2.0/24",
- *     nexthop: "10.0.0.0",
- *     priority: 100,
- *     weight: 10,
- *     coloNames: ["den01"],
- *     coloRegions: ["APAC"],
- * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute example <account_id>/<static_route_id>
+ * const exampleMagicWanStaticRoute = new cloudflare.MagicWanStaticRoute("example_magic_wan_static_route", {accountId: "023e105f4ecef8ad9ca31a8372d0c353"});
  * ```
  */
 export class MagicWanStaticRoute extends pulumi.CustomResource {
@@ -62,35 +45,39 @@ export class MagicWanStaticRoute extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    public readonly accountId!: pulumi.Output<string>;
     /**
-     * List of Cloudflare colocation regions for this static route.
-     */
-    public readonly coloNames!: pulumi.Output<string[] | undefined>;
-    /**
-     * List of Cloudflare colocation names for this static route.
-     */
-    public readonly coloRegions!: pulumi.Output<string[] | undefined>;
-    /**
-     * Description of the static route.
+     * An optional human provided description of the static route.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly modified!: pulumi.Output<boolean>;
+    public /*out*/ readonly modifiedRoute!: pulumi.Output<outputs.MagicWanStaticRouteModifiedRoute>;
     /**
-     * The nexthop IP address where traffic will be routed to.
+     * The next-hop IP Address for the static route.
      */
-    public readonly nexthop!: pulumi.Output<string>;
+    public readonly nexthop!: pulumi.Output<string | undefined>;
     /**
-     * Your network prefix using CIDR notation.
+     * IP Prefix in Classless Inter-Domain Routing format.
      */
-    public readonly prefix!: pulumi.Output<string>;
+    public readonly prefix!: pulumi.Output<string | undefined>;
     /**
-     * The priority for the static route.
+     * Priority of the static route.
      */
-    public readonly priority!: pulumi.Output<number>;
+    public readonly priority!: pulumi.Output<number | undefined>;
+    public readonly route!: pulumi.Output<outputs.MagicWanStaticRouteRoute>;
     /**
-     * The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
+     */
+    public readonly routeId!: pulumi.Output<string | undefined>;
+    public readonly routes!: pulumi.Output<outputs.MagicWanStaticRouteRoute[]>;
+    /**
+     * Used only for ECMP routes.
+     */
+    public readonly scope!: pulumi.Output<outputs.MagicWanStaticRouteScope>;
+    /**
+     * Optional weight of the ECMP scope - if provided.
      */
     public readonly weight!: pulumi.Output<number | undefined>;
 
@@ -108,34 +95,38 @@ export class MagicWanStaticRoute extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MagicWanStaticRouteState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["coloNames"] = state ? state.coloNames : undefined;
-            resourceInputs["coloRegions"] = state ? state.coloRegions : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["modified"] = state ? state.modified : undefined;
+            resourceInputs["modifiedRoute"] = state ? state.modifiedRoute : undefined;
             resourceInputs["nexthop"] = state ? state.nexthop : undefined;
             resourceInputs["prefix"] = state ? state.prefix : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["route"] = state ? state.route : undefined;
+            resourceInputs["routeId"] = state ? state.routeId : undefined;
+            resourceInputs["routes"] = state ? state.routes : undefined;
+            resourceInputs["scope"] = state ? state.scope : undefined;
             resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as MagicWanStaticRouteArgs | undefined;
-            if ((!args || args.nexthop === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'nexthop'");
-            }
-            if ((!args || args.prefix === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'prefix'");
-            }
-            if ((!args || args.priority === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'priority'");
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["coloNames"] = args ? args.coloNames : undefined;
-            resourceInputs["coloRegions"] = args ? args.coloRegions : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["nexthop"] = args ? args.nexthop : undefined;
             resourceInputs["prefix"] = args ? args.prefix : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["route"] = args ? args.route : undefined;
+            resourceInputs["routeId"] = args ? args.routeId : undefined;
+            resourceInputs["routes"] = args ? args.routes : undefined;
+            resourceInputs["scope"] = args ? args.scope : undefined;
             resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["modified"] = undefined /*out*/;
+            resourceInputs["modifiedRoute"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/staticRoute:StaticRoute" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(MagicWanStaticRoute.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -145,35 +136,39 @@ export class MagicWanStaticRoute extends pulumi.CustomResource {
  */
 export interface MagicWanStaticRouteState {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
     /**
-     * List of Cloudflare colocation regions for this static route.
-     */
-    coloNames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of Cloudflare colocation names for this static route.
-     */
-    coloRegions?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Description of the static route.
+     * An optional human provided description of the static route.
      */
     description?: pulumi.Input<string>;
+    modified?: pulumi.Input<boolean>;
+    modifiedRoute?: pulumi.Input<inputs.MagicWanStaticRouteModifiedRoute>;
     /**
-     * The nexthop IP address where traffic will be routed to.
+     * The next-hop IP Address for the static route.
      */
     nexthop?: pulumi.Input<string>;
     /**
-     * Your network prefix using CIDR notation.
+     * IP Prefix in Classless Inter-Domain Routing format.
      */
     prefix?: pulumi.Input<string>;
     /**
-     * The priority for the static route.
+     * Priority of the static route.
      */
     priority?: pulumi.Input<number>;
+    route?: pulumi.Input<inputs.MagicWanStaticRouteRoute>;
     /**
-     * The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
+     */
+    routeId?: pulumi.Input<string>;
+    routes?: pulumi.Input<pulumi.Input<inputs.MagicWanStaticRouteRoute>[]>;
+    /**
+     * Used only for ECMP routes.
+     */
+    scope?: pulumi.Input<inputs.MagicWanStaticRouteScope>;
+    /**
+     * Optional weight of the ECMP scope - if provided.
      */
     weight?: pulumi.Input<number>;
 }
@@ -183,35 +178,37 @@ export interface MagicWanStaticRouteState {
  */
 export interface MagicWanStaticRouteArgs {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
-     * List of Cloudflare colocation regions for this static route.
-     */
-    coloNames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of Cloudflare colocation names for this static route.
-     */
-    coloRegions?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Description of the static route.
+     * An optional human provided description of the static route.
      */
     description?: pulumi.Input<string>;
     /**
-     * The nexthop IP address where traffic will be routed to.
+     * The next-hop IP Address for the static route.
      */
-    nexthop: pulumi.Input<string>;
+    nexthop?: pulumi.Input<string>;
     /**
-     * Your network prefix using CIDR notation.
+     * IP Prefix in Classless Inter-Domain Routing format.
      */
-    prefix: pulumi.Input<string>;
+    prefix?: pulumi.Input<string>;
     /**
-     * The priority for the static route.
+     * Priority of the static route.
      */
-    priority: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
+    route?: pulumi.Input<inputs.MagicWanStaticRouteRoute>;
     /**
-     * The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
+     */
+    routeId?: pulumi.Input<string>;
+    routes?: pulumi.Input<pulumi.Input<inputs.MagicWanStaticRouteRoute>[]>;
+    /**
+     * Used only for ECMP routes.
+     */
+    scope?: pulumi.Input<inputs.MagicWanStaticRouteScope>;
+    /**
+     * Optional weight of the ECMP scope - if provided.
      */
     weight?: pulumi.Input<number>;
 }

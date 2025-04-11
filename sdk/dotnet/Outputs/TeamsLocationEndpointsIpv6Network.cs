@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsLocationEndpointsIpv6Network
     {
         /// <summary>
-        /// CIDR notation representation of the network IP.
+        /// The IPv6 address or IPv6 CIDR.
         /// </summary>
         public readonly string Network;
 

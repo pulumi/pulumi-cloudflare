@@ -8,122 +8,32 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Access Identity Provider resource. Identity
-// Providers are used as an authentication or authorisation source
-// within Access.
-//
-// > It's required that an `accountId` or `zoneId` is provided and in
-//
-//	most cases using either is fine. However, if you're using a scoped
-//	access token, you must provide the argument that matches the token's
-//	scope. For example, an access token that is scoped to the "example.com"
-//	zone needs to use the `zoneId` argument.
-//
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// one time pin
-//			_, err := cloudflare.NewZeroTrustAccessIdentityProvider(ctx, "pin_login", &cloudflare.ZeroTrustAccessIdentityProviderArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("PIN login"),
-//				Type:      pulumi.String("onetimepin"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// oauth
-//			_, err = cloudflare.NewZeroTrustAccessIdentityProvider(ctx, "github_oauth", &cloudflare.ZeroTrustAccessIdentityProviderArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("GitHub OAuth"),
-//				Type:      pulumi.String("github"),
-//				Configs: cloudflare.ZeroTrustAccessIdentityProviderConfigArray{
-//					&cloudflare.ZeroTrustAccessIdentityProviderConfigArgs{
-//						ClientId:     pulumi.String("example"),
-//						ClientSecret: pulumi.String("secret_key"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// saml
-//			_, err = cloudflare.NewZeroTrustAccessIdentityProvider(ctx, "jumpcloud_saml", &cloudflare.ZeroTrustAccessIdentityProviderArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("JumpCloud SAML"),
-//				Type:      pulumi.String("saml"),
-//				Configs: cloudflare.ZeroTrustAccessIdentityProviderConfigArray{
-//					&cloudflare.ZeroTrustAccessIdentityProviderConfigArgs{
-//						IssuerUrl:    pulumi.String("jumpcloud"),
-//						SsoTargetUrl: pulumi.String("https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess"),
-//						Attributes: pulumi.StringArray{
-//							pulumi.String("email"),
-//							pulumi.String("username"),
-//						},
-//						SignRequest:   pulumi.Bool(false),
-//						IdpPublicCert: pulumi.String("MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// okta
-//			_, err = cloudflare.NewZeroTrustAccessIdentityProvider(ctx, "okta", &cloudflare.ZeroTrustAccessIdentityProviderArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("Okta"),
-//				Type:      pulumi.String("okta"),
-//				Configs: cloudflare.ZeroTrustAccessIdentityProviderConfigArray{
-//					&cloudflare.ZeroTrustAccessIdentityProviderConfigArgs{
-//						ClientId:     pulumi.String("example"),
-//						ClientSecret: pulumi.String("secret_key"),
-//						ApiToken:     pulumi.String("okta_api_token"),
-//						OktaAccount:  pulumi.String("https://example.com"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider example <account_id>/<identity_provider_id>
+// $ pulumi import cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider example '<{accounts|zones}/{account_id|zone_id}>/<identity_provider_id>'
 // ```
 type ZeroTrustAccessIdentityProvider struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
-	Configs ZeroTrustAccessIdentityProviderConfigArrayOutput `pulumi:"configs"`
-	// Friendly name of the Access Identity Provider configuration.
+	// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+	Config ZeroTrustAccessIdentityProviderConfigOutput `pulumi:"config"`
+	// The name of the identity provider, shown to users on the login page.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Configuration for SCIM settings for a given IDP.
-	ScimConfigs ZeroTrustAccessIdentityProviderScimConfigArrayOutput `pulumi:"scimConfigs"`
-	// The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+	// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
+	ScimConfig ZeroTrustAccessIdentityProviderScimConfigOutput `pulumi:"scimConfig"`
+	// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+	// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
@@ -134,12 +44,21 @@ func NewZeroTrustAccessIdentityProvider(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Config == nil {
+		return nil, errors.New("invalid value for required argument 'Config'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/accessIdentityProvider:AccessIdentityProvider"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustAccessIdentityProvider
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider", name, args, &resource, opts...)
@@ -163,32 +82,34 @@ func GetZeroTrustAccessIdentityProvider(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustAccessIdentityProvider resources.
 type zeroTrustAccessIdentityProviderState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
-	Configs []ZeroTrustAccessIdentityProviderConfig `pulumi:"configs"`
-	// Friendly name of the Access Identity Provider configuration.
+	// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+	Config *ZeroTrustAccessIdentityProviderConfig `pulumi:"config"`
+	// The name of the identity provider, shown to users on the login page.
 	Name *string `pulumi:"name"`
-	// Configuration for SCIM settings for a given IDP.
-	ScimConfigs []ZeroTrustAccessIdentityProviderScimConfig `pulumi:"scimConfigs"`
-	// The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+	// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
+	ScimConfig *ZeroTrustAccessIdentityProviderScimConfig `pulumi:"scimConfig"`
+	// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+	// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
 	Type *string `pulumi:"type"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ZeroTrustAccessIdentityProviderState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
-	Configs ZeroTrustAccessIdentityProviderConfigArrayInput
-	// Friendly name of the Access Identity Provider configuration.
+	// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+	Config ZeroTrustAccessIdentityProviderConfigPtrInput
+	// The name of the identity provider, shown to users on the login page.
 	Name pulumi.StringPtrInput
-	// Configuration for SCIM settings for a given IDP.
-	ScimConfigs ZeroTrustAccessIdentityProviderScimConfigArrayInput
-	// The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+	// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
+	ScimConfig ZeroTrustAccessIdentityProviderScimConfigPtrInput
+	// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+	// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
 	Type pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -197,33 +118,35 @@ func (ZeroTrustAccessIdentityProviderState) ElementType() reflect.Type {
 }
 
 type zeroTrustAccessIdentityProviderArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
-	Configs []ZeroTrustAccessIdentityProviderConfig `pulumi:"configs"`
-	// Friendly name of the Access Identity Provider configuration.
+	// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+	Config ZeroTrustAccessIdentityProviderConfig `pulumi:"config"`
+	// The name of the identity provider, shown to users on the login page.
 	Name string `pulumi:"name"`
-	// Configuration for SCIM settings for a given IDP.
-	ScimConfigs []ZeroTrustAccessIdentityProviderScimConfig `pulumi:"scimConfigs"`
-	// The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+	// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
+	ScimConfig *ZeroTrustAccessIdentityProviderScimConfig `pulumi:"scimConfig"`
+	// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+	// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
 	Type string `pulumi:"type"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ZeroTrustAccessIdentityProvider resource.
 type ZeroTrustAccessIdentityProviderArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
-	Configs ZeroTrustAccessIdentityProviderConfigArrayInput
-	// Friendly name of the Access Identity Provider configuration.
+	// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+	Config ZeroTrustAccessIdentityProviderConfigInput
+	// The name of the identity provider, shown to users on the login page.
 	Name pulumi.StringInput
-	// Configuration for SCIM settings for a given IDP.
-	ScimConfigs ZeroTrustAccessIdentityProviderScimConfigArrayInput
-	// The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+	// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
+	ScimConfig ZeroTrustAccessIdentityProviderScimConfigPtrInput
+	// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+	// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
 	Type pulumi.StringInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -314,36 +237,35 @@ func (o ZeroTrustAccessIdentityProviderOutput) ToZeroTrustAccessIdentityProvider
 	return o
 }
 
-// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 func (o ZeroTrustAccessIdentityProviderOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessIdentityProvider) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
-func (o ZeroTrustAccessIdentityProviderOutput) Configs() ZeroTrustAccessIdentityProviderConfigArrayOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessIdentityProvider) ZeroTrustAccessIdentityProviderConfigArrayOutput {
-		return v.Configs
-	}).(ZeroTrustAccessIdentityProviderConfigArrayOutput)
+// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+func (o ZeroTrustAccessIdentityProviderOutput) Config() ZeroTrustAccessIdentityProviderConfigOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessIdentityProvider) ZeroTrustAccessIdentityProviderConfigOutput { return v.Config }).(ZeroTrustAccessIdentityProviderConfigOutput)
 }
 
-// Friendly name of the Access Identity Provider configuration.
+// The name of the identity provider, shown to users on the login page.
 func (o ZeroTrustAccessIdentityProviderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessIdentityProvider) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Configuration for SCIM settings for a given IDP.
-func (o ZeroTrustAccessIdentityProviderOutput) ScimConfigs() ZeroTrustAccessIdentityProviderScimConfigArrayOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessIdentityProvider) ZeroTrustAccessIdentityProviderScimConfigArrayOutput {
-		return v.ScimConfigs
-	}).(ZeroTrustAccessIdentityProviderScimConfigArrayOutput)
+// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
+func (o ZeroTrustAccessIdentityProviderOutput) ScimConfig() ZeroTrustAccessIdentityProviderScimConfigOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessIdentityProvider) ZeroTrustAccessIdentityProviderScimConfigOutput {
+		return v.ScimConfig
+	}).(ZeroTrustAccessIdentityProviderScimConfigOutput)
 }
 
-// The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
 func (o ZeroTrustAccessIdentityProviderOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessIdentityProvider) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 func (o ZeroTrustAccessIdentityProviderOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessIdentityProvider) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

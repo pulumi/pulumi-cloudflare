@@ -24,23 +24,18 @@ class ZeroTrustLocalFallbackDomainArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[builtins.str],
                  domains: pulumi.Input[Sequence[pulumi.Input['ZeroTrustLocalFallbackDomainDomainArgs']]],
-                 policy_id: Optional[pulumi.Input[builtins.str]] = None):
+                 policy_id: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a ZeroTrustLocalFallbackDomain resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] policy_id: The settings policy for which to configure this fallback domain policy.
+        :param pulumi.Input[builtins.str] policy_id: Device ID.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "domains", domains)
-        if policy_id is not None:
-            pulumi.set(__self__, "policy_id", policy_id)
+        pulumi.set(__self__, "policy_id", policy_id)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -58,14 +53,14 @@ class ZeroTrustLocalFallbackDomainArgs:
 
     @property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> Optional[pulumi.Input[builtins.str]]:
+    def policy_id(self) -> pulumi.Input[builtins.str]:
         """
-        The settings policy for which to configure this fallback domain policy.
+        Device ID.
         """
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
-    def policy_id(self, value: Optional[pulumi.Input[builtins.str]]):
+    def policy_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "policy_id", value)
 
 
@@ -73,31 +68,63 @@ class ZeroTrustLocalFallbackDomainArgs:
 class _ZeroTrustLocalFallbackDomainState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 description: Optional[pulumi.Input[builtins.str]] = None,
+                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustLocalFallbackDomainDomainArgs']]]] = None,
-                 policy_id: Optional[pulumi.Input[builtins.str]] = None):
+                 policy_id: Optional[pulumi.Input[builtins.str]] = None,
+                 suffix: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustLocalFallbackDomain resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] policy_id: The settings policy for which to configure this fallback domain policy.
+        :param pulumi.Input[builtins.str] description: A description of the fallback domain, displayed in the client UI.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_servers: A list of IP addresses to handle domain resolution.
+        :param pulumi.Input[builtins.str] policy_id: Device ID.
+        :param pulumi.Input[builtins.str] suffix: The domain suffix to match when resolving locally.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if dns_servers is not None:
+            pulumi.set(__self__, "dns_servers", dns_servers)
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A description of the fallback domain, displayed in the client UI.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        A list of IP addresses to handle domain resolution.
+        """
+        return pulumi.get(self, "dns_servers")
+
+    @dns_servers.setter
+    def dns_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "dns_servers", value)
 
     @property
     @pulumi.getter
@@ -112,7 +139,7 @@ class _ZeroTrustLocalFallbackDomainState:
     @pulumi.getter(name="policyId")
     def policy_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The settings policy for which to configure this fallback domain policy.
+        Device ID.
         """
         return pulumi.get(self, "policy_id")
 
@@ -120,8 +147,25 @@ class _ZeroTrustLocalFallbackDomainState:
     def policy_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "policy_id", value)
 
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The domain suffix to match when resolving locally.
+        """
+        return pulumi.get(self, "suffix")
+
+    @suffix.setter
+    def suffix(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "suffix", value)
+
+
+warnings.warn("""cloudflare.index/zerotrustlocalfallbackdomain.ZeroTrustLocalFallbackDomain has been deprecated in favor of cloudflare.index/zerotrustdevicecustomprofilelocaldomainfallback.ZeroTrustDeviceCustomProfileLocalDomainFallback""", DeprecationWarning)
+
 
 class ZeroTrustLocalFallbackDomain(pulumi.CustomResource):
+    warnings.warn("""cloudflare.index/zerotrustlocalfallbackdomain.ZeroTrustLocalFallbackDomain has been deprecated in favor of cloudflare.index/zerotrustdevicecustomprofilelocaldomainfallback.ZeroTrustDeviceCustomProfileLocalDomainFallback""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -131,15 +175,17 @@ class ZeroTrustLocalFallbackDomain(pulumi.CustomResource):
                  policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Fallback Domain resource. Fallback domains are
-        used to ignore DNS requests to a given list of domains. These DNS
-        requests will be passed back to other DNS servers configured on
-        existing network interfaces on the device.
+        ## Example Usage
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain example '<account_id>/<policy_id>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] policy_id: The settings policy for which to configure this fallback domain policy.
+        :param pulumi.Input[builtins.str] policy_id: Device ID.
         """
         ...
     @overload
@@ -148,10 +194,13 @@ class ZeroTrustLocalFallbackDomain(pulumi.CustomResource):
                  args: ZeroTrustLocalFallbackDomainArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Fallback Domain resource. Fallback domains are
-        used to ignore DNS requests to a given list of domains. These DNS
-        requests will be passed back to other DNS servers configured on
-        existing network interfaces on the device.
+        ## Example Usage
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain example '<account_id>/<policy_id>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param ZeroTrustLocalFallbackDomainArgs args: The arguments to use to populate this resource's properties.
@@ -172,6 +221,7 @@ class ZeroTrustLocalFallbackDomain(pulumi.CustomResource):
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustLocalFallbackDomainDomainArgs', 'ZeroTrustLocalFallbackDomainDomainArgsDict']]]]] = None,
                  policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustLocalFallbackDomain is deprecated: cloudflare.index/zerotrustlocalfallbackdomain.ZeroTrustLocalFallbackDomain has been deprecated in favor of cloudflare.index/zerotrustdevicecustomprofilelocaldomainfallback.ZeroTrustDeviceCustomProfileLocalDomainFallback""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -186,7 +236,14 @@ class ZeroTrustLocalFallbackDomain(pulumi.CustomResource):
             if domains is None and not opts.urn:
                 raise TypeError("Missing required property 'domains'")
             __props__.__dict__["domains"] = domains
+            if policy_id is None and not opts.urn:
+                raise TypeError("Missing required property 'policy_id'")
             __props__.__dict__["policy_id"] = policy_id
+            __props__.__dict__["description"] = None
+            __props__.__dict__["dns_servers"] = None
+            __props__.__dict__["suffix"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/fallbackDomain:FallbackDomain"), pulumi.Alias(type_="cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustLocalFallbackDomain, __self__).__init__(
             'cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain',
             resource_name,
@@ -198,8 +255,11 @@ class ZeroTrustLocalFallbackDomain(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
+            description: Optional[pulumi.Input[builtins.str]] = None,
+            dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustLocalFallbackDomainDomainArgs', 'ZeroTrustLocalFallbackDomainDomainArgsDict']]]]] = None,
-            policy_id: Optional[pulumi.Input[builtins.str]] = None) -> 'ZeroTrustLocalFallbackDomain':
+            policy_id: Optional[pulumi.Input[builtins.str]] = None,
+            suffix: Optional[pulumi.Input[builtins.str]] = None) -> 'ZeroTrustLocalFallbackDomain':
         """
         Get an existing ZeroTrustLocalFallbackDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -207,25 +267,43 @@ class ZeroTrustLocalFallbackDomain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] policy_id: The settings policy for which to configure this fallback domain policy.
+        :param pulumi.Input[builtins.str] description: A description of the fallback domain, displayed in the client UI.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_servers: A list of IP addresses to handle domain resolution.
+        :param pulumi.Input[builtins.str] policy_id: Device ID.
+        :param pulumi.Input[builtins.str] suffix: The domain suffix to match when resolving locally.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ZeroTrustLocalFallbackDomainState.__new__(_ZeroTrustLocalFallbackDomainState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["dns_servers"] = dns_servers
         __props__.__dict__["domains"] = domains
         __props__.__dict__["policy_id"] = policy_id
+        __props__.__dict__["suffix"] = suffix
         return ZeroTrustLocalFallbackDomain(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[builtins.str]:
+        """
+        A description of the fallback domain, displayed in the client UI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> pulumi.Output[Sequence[builtins.str]]:
+        """
+        A list of IP addresses to handle domain resolution.
+        """
+        return pulumi.get(self, "dns_servers")
 
     @property
     @pulumi.getter
@@ -234,9 +312,17 @@ class ZeroTrustLocalFallbackDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> pulumi.Output[Optional[builtins.str]]:
+    def policy_id(self) -> pulumi.Output[builtins.str]:
         """
-        The settings policy for which to configure this fallback domain policy.
+        Device ID.
         """
         return pulumi.get(self, "policy_id")
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> pulumi.Output[builtins.str]:
+        """
+        The domain suffix to match when resolving locally.
+        """
+        return pulumi.get(self, "suffix")
 

@@ -17,122 +17,117 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Cloudflare Ruleset Engine (https://developers.cloudflare.com/ruleset-engine/about/)
- * allows you to create and deploy rules and rulesets.
+ * ## Example Usage
  * 
- * Cloudflare uses the Ruleset Engine in different products, allowing
- * you to configure several products using the same basic syntax.
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * Import an account scoped Ruleset configuration.
- * 
  * ```sh
- * $ pulumi import cloudflare:index/ruleset:Ruleset example account/&lt;account_id&gt;/&lt;ruleset_id&gt;
- * ```
- * 
- * Import a zone scoped Ruleset configuration.
- * 
- * ```sh
- * $ pulumi import cloudflare:index/ruleset:Ruleset example zone/&lt;zone_id&gt;/&lt;ruleset_id&gt;
+ * $ pulumi import cloudflare:index/ruleset:Ruleset example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;ruleset_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/ruleset:Ruleset")
 public class Ruleset extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
     /**
-     * Brief summary of the ruleset and its intended use.
+     * An informative description of the ruleset.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return Brief summary of the ruleset and its intended use.
+     * @return An informative description of the ruleset.
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+     * The kind of the ruleset.
+     * Available values: &#34;managed&#34;, &#34;custom&#34;, &#34;root&#34;, &#34;zone&#34;.
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
-     * @return Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+     * @return The kind of the ruleset.
+     * Available values: &#34;managed&#34;, &#34;custom&#34;, &#34;root&#34;, &#34;zone&#34;.
      * 
      */
     public Output<String> kind() {
         return this.kind;
     }
     /**
-     * Name of the ruleset.
+     * The human-readable name of the ruleset.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the ruleset.
+     * @return The human-readable name of the ruleset.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+     * The phase of the ruleset.
+     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
      * 
      */
     @Export(name="phase", refs={String.class}, tree="[0]")
     private Output<String> phase;
 
     /**
-     * @return Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+     * @return The phase of the ruleset.
+     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
      * 
      */
     public Output<String> phase() {
         return this.phase;
     }
     /**
-     * List of rules to apply to the ruleset.
+     * The list of rules in the ruleset.
      * 
      */
     @Export(name="rules", refs={List.class,RulesetRule.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<RulesetRule>> rules;
+    private Output<List<RulesetRule>> rules;
 
     /**
-     * @return List of rules to apply to the ruleset.
+     * @return The list of rules in the ruleset.
      * 
      */
-    public Output<Optional<List<RulesetRule>>> rules() {
-        return Codegen.optional(this.rules);
+    public Output<List<RulesetRule>> rules() {
+        return this.rules;
     }
     /**
-     * The zone identifier to target for the resource.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Output<Optional<String>> zoneId() {

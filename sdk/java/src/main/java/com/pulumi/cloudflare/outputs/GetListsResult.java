@@ -3,44 +3,113 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.GetListsList;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Double;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetListsResult {
     /**
-     * @return The account identifier to target for the resource.
+     * @return The RFC 3339 timestamp of when the list was created.
      * 
      */
-    private String accountId;
+    private String createdOn;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return An informative summary of the list.
+     * 
+     */
+    private String description;
+    /**
+     * @return The unique ID of the list.
      * 
      */
     private String id;
-    private List<GetListsList> lists;
+    /**
+     * @return The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+     * Available values: &#34;ip&#34;, &#34;redirect&#34;, &#34;hostname&#34;, &#34;asn&#34;.
+     * 
+     */
+    private String kind;
+    /**
+     * @return The RFC 3339 timestamp of when the list was last modified.
+     * 
+     */
+    private String modifiedOn;
+    /**
+     * @return An informative name for the list. Use this name in filter and rule expressions.
+     * 
+     */
+    private String name;
+    /**
+     * @return The number of items in the list.
+     * 
+     */
+    private Double numItems;
+    /**
+     * @return The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     * 
+     */
+    private Double numReferencingFilters;
 
     private GetListsResult() {}
     /**
-     * @return The account identifier to target for the resource.
+     * @return The RFC 3339 timestamp of when the list was created.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public String createdOn() {
+        return this.createdOn;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return An informative summary of the list.
+     * 
+     */
+    public String description() {
+        return this.description;
+    }
+    /**
+     * @return The unique ID of the list.
      * 
      */
     public String id() {
         return this.id;
     }
-    public List<GetListsList> lists() {
-        return this.lists;
+    /**
+     * @return The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+     * Available values: &#34;ip&#34;, &#34;redirect&#34;, &#34;hostname&#34;, &#34;asn&#34;.
+     * 
+     */
+    public String kind() {
+        return this.kind;
+    }
+    /**
+     * @return The RFC 3339 timestamp of when the list was last modified.
+     * 
+     */
+    public String modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * @return An informative name for the list. Use this name in filter and rule expressions.
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return The number of items in the list.
+     * 
+     */
+    public Double numItems() {
+        return this.numItems;
+    }
+    /**
+     * @return The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     * 
+     */
+    public Double numReferencingFilters() {
+        return this.numReferencingFilters;
     }
 
     public static Builder builder() {
@@ -52,23 +121,41 @@ public final class GetListsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private String createdOn;
+        private String description;
         private String id;
-        private List<GetListsList> lists;
+        private String kind;
+        private String modifiedOn;
+        private String name;
+        private Double numItems;
+        private Double numReferencingFilters;
         public Builder() {}
         public Builder(GetListsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accountId = defaults.accountId;
+    	      this.createdOn = defaults.createdOn;
+    	      this.description = defaults.description;
     	      this.id = defaults.id;
-    	      this.lists = defaults.lists;
+    	      this.kind = defaults.kind;
+    	      this.modifiedOn = defaults.modifiedOn;
+    	      this.name = defaults.name;
+    	      this.numItems = defaults.numItems;
+    	      this.numReferencingFilters = defaults.numReferencingFilters;
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetListsResult", "accountId");
+        public Builder createdOn(String createdOn) {
+            if (createdOn == null) {
+              throw new MissingRequiredPropertyException("GetListsResult", "createdOn");
             }
-            this.accountId = accountId;
+            this.createdOn = createdOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetListsResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
@@ -80,21 +167,55 @@ public final class GetListsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder lists(List<GetListsList> lists) {
-            if (lists == null) {
-              throw new MissingRequiredPropertyException("GetListsResult", "lists");
+        public Builder kind(String kind) {
+            if (kind == null) {
+              throw new MissingRequiredPropertyException("GetListsResult", "kind");
             }
-            this.lists = lists;
+            this.kind = kind;
             return this;
         }
-        public Builder lists(GetListsList... lists) {
-            return lists(List.of(lists));
+        @CustomType.Setter
+        public Builder modifiedOn(String modifiedOn) {
+            if (modifiedOn == null) {
+              throw new MissingRequiredPropertyException("GetListsResult", "modifiedOn");
+            }
+            this.modifiedOn = modifiedOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetListsResult", "name");
+            }
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder numItems(Double numItems) {
+            if (numItems == null) {
+              throw new MissingRequiredPropertyException("GetListsResult", "numItems");
+            }
+            this.numItems = numItems;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder numReferencingFilters(Double numReferencingFilters) {
+            if (numReferencingFilters == null) {
+              throw new MissingRequiredPropertyException("GetListsResult", "numReferencingFilters");
+            }
+            this.numReferencingFilters = numReferencingFilters;
+            return this;
         }
         public GetListsResult build() {
             final var _resultValue = new GetListsResult();
-            _resultValue.accountId = accountId;
+            _resultValue.createdOn = createdOn;
+            _resultValue.description = description;
             _resultValue.id = id;
-            _resultValue.lists = lists;
+            _resultValue.kind = kind;
+            _resultValue.modifiedOn = modifiedOn;
+            _resultValue.name = name;
+            _resultValue.numItems = numItems;
+            _resultValue.numReferencingFilters = numReferencingFilters;
             return _resultValue;
         }
     }

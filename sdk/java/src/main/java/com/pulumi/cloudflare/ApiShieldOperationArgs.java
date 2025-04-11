@@ -15,14 +15,14 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
     public static final ApiShieldOperationArgs Empty = new ApiShieldOperationArgs();
 
     /**
-     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
      * 
      */
     @Import(name="endpoint", required=true)
     private Output<String> endpoint;
 
     /**
-     * @return The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+     * @return The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
      * 
      */
     public Output<String> endpoint() {
@@ -30,14 +30,14 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * RFC3986-compliant host
+     * RFC3986-compliant host.
      * 
      */
     @Import(name="host", required=true)
     private Output<String> host;
 
     /**
-     * @return RFC3986-compliant host
+     * @return RFC3986-compliant host.
      * 
      */
     public Output<String> host() {
@@ -45,14 +45,16 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The HTTP method used to access the endpoint
+     * The HTTP method used to access the endpoint.
+     * Available values: &#34;GET&#34;, &#34;POST&#34;, &#34;HEAD&#34;, &#34;OPTIONS&#34;, &#34;PUT&#34;, &#34;DELETE&#34;, &#34;CONNECT&#34;, &#34;PATCH&#34;, &#34;TRACE&#34;.
      * 
      */
     @Import(name="method", required=true)
     private Output<String> method;
 
     /**
-     * @return The HTTP method used to access the endpoint
+     * @return The HTTP method used to access the endpoint.
+     * Available values: &#34;GET&#34;, &#34;POST&#34;, &#34;HEAD&#34;, &#34;OPTIONS&#34;, &#34;PUT&#34;, &#34;DELETE&#34;, &#34;CONNECT&#34;, &#34;PATCH&#34;, &#34;TRACE&#34;.
      * 
      */
     public Output<String> method() {
@@ -60,14 +62,14 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -102,7 +104,7 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param endpoint The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+         * @param endpoint The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
          * 
          * @return builder
          * 
@@ -113,7 +115,7 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param endpoint The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+         * @param endpoint The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
          * 
          * @return builder
          * 
@@ -123,7 +125,7 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param host RFC3986-compliant host
+         * @param host RFC3986-compliant host.
          * 
          * @return builder
          * 
@@ -134,7 +136,7 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param host RFC3986-compliant host
+         * @param host RFC3986-compliant host.
          * 
          * @return builder
          * 
@@ -144,7 +146,8 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param method The HTTP method used to access the endpoint
+         * @param method The HTTP method used to access the endpoint.
+         * Available values: &#34;GET&#34;, &#34;POST&#34;, &#34;HEAD&#34;, &#34;OPTIONS&#34;, &#34;PUT&#34;, &#34;DELETE&#34;, &#34;CONNECT&#34;, &#34;PATCH&#34;, &#34;TRACE&#34;.
          * 
          * @return builder
          * 
@@ -155,7 +158,8 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param method The HTTP method used to access the endpoint
+         * @param method The HTTP method used to access the endpoint.
+         * Available values: &#34;GET&#34;, &#34;POST&#34;, &#34;HEAD&#34;, &#34;OPTIONS&#34;, &#34;PUT&#34;, &#34;DELETE&#34;, &#34;CONNECT&#34;, &#34;PATCH&#34;, &#34;TRACE&#34;.
          * 
          * @return builder
          * 
@@ -165,7 +169,7 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -176,7 +180,7 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

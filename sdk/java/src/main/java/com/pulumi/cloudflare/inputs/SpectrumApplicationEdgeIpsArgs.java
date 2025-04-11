@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,14 +17,16 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
     public static final SpectrumApplicationEdgeIpsArgs Empty = new SpectrumApplicationEdgeIpsArgs();
 
     /**
-     * The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+     * The IP versions supported for inbound connections on Spectrum anycast IPs.
+     * Available values: &#34;all&#34;, &#34;ipv4&#34;, &#34;ipv6&#34;.
      * 
      */
     @Import(name="connectivity")
     private @Nullable Output<String> connectivity;
 
     /**
-     * @return The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+     * @return The IP versions supported for inbound connections on Spectrum anycast IPs.
+     * Available values: &#34;all&#34;, &#34;ipv4&#34;, &#34;ipv6&#34;.
      * 
      */
     public Optional<Output<String>> connectivity() {
@@ -33,14 +34,14 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     * The array of customer owned IPs we broadcast via anycast for this hostname and application.
      * 
      */
     @Import(name="ips")
     private @Nullable Output<List<String>> ips;
 
     /**
-     * @return The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     * @return The array of customer owned IPs we broadcast via anycast for this hostname and application.
      * 
      */
     public Optional<Output<List<String>>> ips() {
@@ -48,18 +49,20 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+     * The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
+     * Available values: &#34;dynamic&#34;.
      * 
      */
-    @Import(name="type", required=true)
-    private Output<String> type;
+    @Import(name="type")
+    private @Nullable Output<String> type;
 
     /**
-     * @return The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+     * @return The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
+     * Available values: &#34;dynamic&#34;.
      * 
      */
-    public Output<String> type() {
-        return this.type;
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     private SpectrumApplicationEdgeIpsArgs() {}
@@ -89,7 +92,8 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param connectivity The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+         * @param connectivity The IP versions supported for inbound connections on Spectrum anycast IPs.
+         * Available values: &#34;all&#34;, &#34;ipv4&#34;, &#34;ipv6&#34;.
          * 
          * @return builder
          * 
@@ -100,7 +104,8 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param connectivity The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+         * @param connectivity The IP versions supported for inbound connections on Spectrum anycast IPs.
+         * Available values: &#34;all&#34;, &#34;ipv4&#34;, &#34;ipv6&#34;.
          * 
          * @return builder
          * 
@@ -110,7 +115,7 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param ips The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+         * @param ips The array of customer owned IPs we broadcast via anycast for this hostname and application.
          * 
          * @return builder
          * 
@@ -121,7 +126,7 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param ips The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+         * @param ips The array of customer owned IPs we broadcast via anycast for this hostname and application.
          * 
          * @return builder
          * 
@@ -131,7 +136,7 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param ips The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+         * @param ips The array of customer owned IPs we broadcast via anycast for this hostname and application.
          * 
          * @return builder
          * 
@@ -141,18 +146,20 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+         * @param type The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
+         * Available values: &#34;dynamic&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder type(Output<String> type) {
+        public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
         /**
-         * @param type The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+         * @param type The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
+         * Available values: &#34;dynamic&#34;.
          * 
          * @return builder
          * 
@@ -162,9 +169,6 @@ public final class SpectrumApplicationEdgeIpsArgs extends com.pulumi.resources.R
         }
 
         public SpectrumApplicationEdgeIpsArgs build() {
-            if ($.type == null) {
-                throw new MissingRequiredPropertyException("SpectrumApplicationEdgeIpsArgs", "type");
-            }
             return $;
         }
     }

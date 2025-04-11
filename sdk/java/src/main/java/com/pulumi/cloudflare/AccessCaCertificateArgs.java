@@ -17,14 +17,14 @@ public final class AccessCaCertificateArgs extends com.pulumi.resources.Resource
     public static final AccessCaCertificateArgs Empty = new AccessCaCertificateArgs();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -32,29 +32,29 @@ public final class AccessCaCertificateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The Access Application ID to associate with the CA certificate.
+     * UUID
      * 
      */
-    @Import(name="applicationId", required=true)
-    private Output<String> applicationId;
+    @Import(name="appId", required=true)
+    private Output<String> appId;
 
     /**
-     * @return The Access Application ID to associate with the CA certificate.
+     * @return UUID
      * 
      */
-    public Output<String> applicationId() {
-        return this.applicationId;
+    public Output<String> appId() {
+        return this.appId;
     }
 
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -65,7 +65,7 @@ public final class AccessCaCertificateArgs extends com.pulumi.resources.Resource
 
     private AccessCaCertificateArgs(AccessCaCertificateArgs $) {
         this.accountId = $.accountId;
-        this.applicationId = $.applicationId;
+        this.appId = $.appId;
         this.zoneId = $.zoneId;
     }
 
@@ -88,7 +88,7 @@ public final class AccessCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class AccessCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -109,28 +109,28 @@ public final class AccessCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param applicationId The Access Application ID to associate with the CA certificate.
+         * @param appId UUID
          * 
          * @return builder
          * 
          */
-        public Builder applicationId(Output<String> applicationId) {
-            $.applicationId = applicationId;
+        public Builder appId(Output<String> appId) {
+            $.appId = appId;
             return this;
         }
 
         /**
-         * @param applicationId The Access Application ID to associate with the CA certificate.
+         * @param appId UUID
          * 
          * @return builder
          * 
          */
-        public Builder applicationId(String applicationId) {
-            return applicationId(Output.of(applicationId));
+        public Builder appId(String appId) {
+            return appId(Output.of(appId));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class AccessCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -151,8 +151,8 @@ public final class AccessCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         public AccessCaCertificateArgs build() {
-            if ($.applicationId == null) {
-                throw new MissingRequiredPropertyException("AccessCaCertificateArgs", "applicationId");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("AccessCaCertificateArgs", "appId");
             }
             return $;
         }

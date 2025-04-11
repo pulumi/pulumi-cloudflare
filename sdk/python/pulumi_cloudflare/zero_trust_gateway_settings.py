@@ -23,84 +23,18 @@ __all__ = ['ZeroTrustGatewaySettingsArgs', 'ZeroTrustGatewaySettings']
 class ZeroTrustGatewaySettingsArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[builtins.str],
-                 activity_log_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 antivirus: Optional[pulumi.Input['ZeroTrustGatewaySettingsAntivirusArgs']] = None,
-                 block_page: Optional[pulumi.Input['ZeroTrustGatewaySettingsBlockPageArgs']] = None,
-                 body_scanning: Optional[pulumi.Input['ZeroTrustGatewaySettingsBodyScanningArgs']] = None,
-                 certificate: Optional[pulumi.Input['ZeroTrustGatewaySettingsCertificateArgs']] = None,
-                 custom_certificate: Optional[pulumi.Input['ZeroTrustGatewaySettingsCustomCertificateArgs']] = None,
-                 extended_email_matching: Optional[pulumi.Input['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs']] = None,
-                 fips: Optional[pulumi.Input['ZeroTrustGatewaySettingsFipsArgs']] = None,
-                 logging: Optional[pulumi.Input['ZeroTrustGatewaySettingsLoggingArgs']] = None,
-                 non_identity_browser_isolation_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 payload_log: Optional[pulumi.Input['ZeroTrustGatewaySettingsPayloadLogArgs']] = None,
-                 protocol_detection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 proxy: Optional[pulumi.Input['ZeroTrustGatewaySettingsProxyArgs']] = None,
-                 ssh_session_log: Optional[pulumi.Input['ZeroTrustGatewaySettingsSshSessionLogArgs']] = None,
-                 tls_decrypt_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 url_browser_isolation_enabled: Optional[pulumi.Input[builtins.bool]] = None):
+                 settings: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs']] = None):
         """
         The set of arguments for constructing a ZeroTrustGatewaySettings resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.bool] activity_log_enabled: Whether to enable the activity log.
-        :param pulumi.Input['ZeroTrustGatewaySettingsAntivirusArgs'] antivirus: Configuration block for antivirus traffic scanning.
-        :param pulumi.Input['ZeroTrustGatewaySettingsBlockPageArgs'] block_page: Configuration for a custom block page.
-        :param pulumi.Input['ZeroTrustGatewaySettingsBodyScanningArgs'] body_scanning: Configuration for body scanning.
-        :param pulumi.Input['ZeroTrustGatewaySettingsCertificateArgs'] certificate: Configuration for TLS interception certificate. This will be required starting Feb 2025.
-        :param pulumi.Input['ZeroTrustGatewaySettingsCustomCertificateArgs'] custom_certificate: Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-        :param pulumi.Input['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs'] extended_email_matching: Configuration for extended e-mail matching.
-        :param pulumi.Input['ZeroTrustGatewaySettingsFipsArgs'] fips: Configure compliance with Federal Information Processing Standards.
-        :param pulumi.Input[builtins.bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-        :param pulumi.Input['ZeroTrustGatewaySettingsPayloadLogArgs'] payload_log: Configuration for DLP Payload Logging.
-        :param pulumi.Input[builtins.bool] protocol_detection_enabled: Indicator that protocol detection is enabled.
-        :param pulumi.Input['ZeroTrustGatewaySettingsProxyArgs'] proxy: Configuration block for specifying which protocols are proxied.
-        :param pulumi.Input['ZeroTrustGatewaySettingsSshSessionLogArgs'] ssh_session_log: Configuration for SSH Session Logging.
-        :param pulumi.Input[builtins.bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
-        :param pulumi.Input[builtins.bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
+        :param pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs'] settings: Account settings
         """
         pulumi.set(__self__, "account_id", account_id)
-        if activity_log_enabled is not None:
-            pulumi.set(__self__, "activity_log_enabled", activity_log_enabled)
-        if antivirus is not None:
-            pulumi.set(__self__, "antivirus", antivirus)
-        if block_page is not None:
-            pulumi.set(__self__, "block_page", block_page)
-        if body_scanning is not None:
-            pulumi.set(__self__, "body_scanning", body_scanning)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if custom_certificate is not None:
-            warnings.warn("""Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.""", DeprecationWarning)
-            pulumi.log.warn("""custom_certificate is deprecated: Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.""")
-        if custom_certificate is not None:
-            pulumi.set(__self__, "custom_certificate", custom_certificate)
-        if extended_email_matching is not None:
-            pulumi.set(__self__, "extended_email_matching", extended_email_matching)
-        if fips is not None:
-            pulumi.set(__self__, "fips", fips)
-        if logging is not None:
-            pulumi.set(__self__, "logging", logging)
-        if non_identity_browser_isolation_enabled is not None:
-            pulumi.set(__self__, "non_identity_browser_isolation_enabled", non_identity_browser_isolation_enabled)
-        if payload_log is not None:
-            pulumi.set(__self__, "payload_log", payload_log)
-        if protocol_detection_enabled is not None:
-            pulumi.set(__self__, "protocol_detection_enabled", protocol_detection_enabled)
-        if proxy is not None:
-            pulumi.set(__self__, "proxy", proxy)
-        if ssh_session_log is not None:
-            pulumi.set(__self__, "ssh_session_log", ssh_session_log)
-        if tls_decrypt_enabled is not None:
-            pulumi.set(__self__, "tls_decrypt_enabled", tls_decrypt_enabled)
-        if url_browser_isolation_enabled is not None:
-            pulumi.set(__self__, "url_browser_isolation_enabled", url_browser_isolation_enabled)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -108,279 +42,41 @@ class ZeroTrustGatewaySettingsArgs:
         pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter(name="activityLogEnabled")
-    def activity_log_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Whether to enable the activity log.
-        """
-        return pulumi.get(self, "activity_log_enabled")
-
-    @activity_log_enabled.setter
-    def activity_log_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "activity_log_enabled", value)
-
-    @property
     @pulumi.getter
-    def antivirus(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsAntivirusArgs']]:
+    def settings(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs']]:
         """
-        Configuration block for antivirus traffic scanning.
+        Account settings
         """
-        return pulumi.get(self, "antivirus")
+        return pulumi.get(self, "settings")
 
-    @antivirus.setter
-    def antivirus(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsAntivirusArgs']]):
-        pulumi.set(self, "antivirus", value)
-
-    @property
-    @pulumi.getter(name="blockPage")
-    def block_page(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsBlockPageArgs']]:
-        """
-        Configuration for a custom block page.
-        """
-        return pulumi.get(self, "block_page")
-
-    @block_page.setter
-    def block_page(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsBlockPageArgs']]):
-        pulumi.set(self, "block_page", value)
-
-    @property
-    @pulumi.getter(name="bodyScanning")
-    def body_scanning(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsBodyScanningArgs']]:
-        """
-        Configuration for body scanning.
-        """
-        return pulumi.get(self, "body_scanning")
-
-    @body_scanning.setter
-    def body_scanning(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsBodyScanningArgs']]):
-        pulumi.set(self, "body_scanning", value)
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsCertificateArgs']]:
-        """
-        Configuration for TLS interception certificate. This will be required starting Feb 2025.
-        """
-        return pulumi.get(self, "certificate")
-
-    @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsCertificateArgs']]):
-        pulumi.set(self, "certificate", value)
-
-    @property
-    @pulumi.getter(name="customCertificate")
-    @_utilities.deprecated("""Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.""")
-    def custom_certificate(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsCustomCertificateArgs']]:
-        """
-        Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-        """
-        return pulumi.get(self, "custom_certificate")
-
-    @custom_certificate.setter
-    def custom_certificate(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsCustomCertificateArgs']]):
-        pulumi.set(self, "custom_certificate", value)
-
-    @property
-    @pulumi.getter(name="extendedEmailMatching")
-    def extended_email_matching(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs']]:
-        """
-        Configuration for extended e-mail matching.
-        """
-        return pulumi.get(self, "extended_email_matching")
-
-    @extended_email_matching.setter
-    def extended_email_matching(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs']]):
-        pulumi.set(self, "extended_email_matching", value)
-
-    @property
-    @pulumi.getter
-    def fips(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsFipsArgs']]:
-        """
-        Configure compliance with Federal Information Processing Standards.
-        """
-        return pulumi.get(self, "fips")
-
-    @fips.setter
-    def fips(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsFipsArgs']]):
-        pulumi.set(self, "fips", value)
-
-    @property
-    @pulumi.getter
-    def logging(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsLoggingArgs']]:
-        return pulumi.get(self, "logging")
-
-    @logging.setter
-    def logging(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsLoggingArgs']]):
-        pulumi.set(self, "logging", value)
-
-    @property
-    @pulumi.getter(name="nonIdentityBrowserIsolationEnabled")
-    def non_identity_browser_isolation_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-        """
-        return pulumi.get(self, "non_identity_browser_isolation_enabled")
-
-    @non_identity_browser_isolation_enabled.setter
-    def non_identity_browser_isolation_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "non_identity_browser_isolation_enabled", value)
-
-    @property
-    @pulumi.getter(name="payloadLog")
-    def payload_log(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsPayloadLogArgs']]:
-        """
-        Configuration for DLP Payload Logging.
-        """
-        return pulumi.get(self, "payload_log")
-
-    @payload_log.setter
-    def payload_log(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsPayloadLogArgs']]):
-        pulumi.set(self, "payload_log", value)
-
-    @property
-    @pulumi.getter(name="protocolDetectionEnabled")
-    def protocol_detection_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Indicator that protocol detection is enabled.
-        """
-        return pulumi.get(self, "protocol_detection_enabled")
-
-    @protocol_detection_enabled.setter
-    def protocol_detection_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "protocol_detection_enabled", value)
-
-    @property
-    @pulumi.getter
-    def proxy(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsProxyArgs']]:
-        """
-        Configuration block for specifying which protocols are proxied.
-        """
-        return pulumi.get(self, "proxy")
-
-    @proxy.setter
-    def proxy(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsProxyArgs']]):
-        pulumi.set(self, "proxy", value)
-
-    @property
-    @pulumi.getter(name="sshSessionLog")
-    def ssh_session_log(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsSshSessionLogArgs']]:
-        """
-        Configuration for SSH Session Logging.
-        """
-        return pulumi.get(self, "ssh_session_log")
-
-    @ssh_session_log.setter
-    def ssh_session_log(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsSshSessionLogArgs']]):
-        pulumi.set(self, "ssh_session_log", value)
-
-    @property
-    @pulumi.getter(name="tlsDecryptEnabled")
-    def tls_decrypt_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Indicator that decryption of TLS traffic is enabled.
-        """
-        return pulumi.get(self, "tls_decrypt_enabled")
-
-    @tls_decrypt_enabled.setter
-    def tls_decrypt_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "tls_decrypt_enabled", value)
-
-    @property
-    @pulumi.getter(name="urlBrowserIsolationEnabled")
-    def url_browser_isolation_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-        """
-        return pulumi.get(self, "url_browser_isolation_enabled")
-
-    @url_browser_isolation_enabled.setter
-    def url_browser_isolation_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "url_browser_isolation_enabled", value)
+    @settings.setter
+    def settings(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs']]):
+        pulumi.set(self, "settings", value)
 
 
 @pulumi.input_type
 class _ZeroTrustGatewaySettingsState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 activity_log_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 antivirus: Optional[pulumi.Input['ZeroTrustGatewaySettingsAntivirusArgs']] = None,
-                 block_page: Optional[pulumi.Input['ZeroTrustGatewaySettingsBlockPageArgs']] = None,
-                 body_scanning: Optional[pulumi.Input['ZeroTrustGatewaySettingsBodyScanningArgs']] = None,
-                 certificate: Optional[pulumi.Input['ZeroTrustGatewaySettingsCertificateArgs']] = None,
-                 custom_certificate: Optional[pulumi.Input['ZeroTrustGatewaySettingsCustomCertificateArgs']] = None,
-                 extended_email_matching: Optional[pulumi.Input['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs']] = None,
-                 fips: Optional[pulumi.Input['ZeroTrustGatewaySettingsFipsArgs']] = None,
-                 logging: Optional[pulumi.Input['ZeroTrustGatewaySettingsLoggingArgs']] = None,
-                 non_identity_browser_isolation_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 payload_log: Optional[pulumi.Input['ZeroTrustGatewaySettingsPayloadLogArgs']] = None,
-                 protocol_detection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 proxy: Optional[pulumi.Input['ZeroTrustGatewaySettingsProxyArgs']] = None,
-                 ssh_session_log: Optional[pulumi.Input['ZeroTrustGatewaySettingsSshSessionLogArgs']] = None,
-                 tls_decrypt_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 url_browser_isolation_enabled: Optional[pulumi.Input[builtins.bool]] = None):
+                 created_at: Optional[pulumi.Input[builtins.str]] = None,
+                 settings: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs']] = None,
+                 updated_at: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustGatewaySettings resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.bool] activity_log_enabled: Whether to enable the activity log.
-        :param pulumi.Input['ZeroTrustGatewaySettingsAntivirusArgs'] antivirus: Configuration block for antivirus traffic scanning.
-        :param pulumi.Input['ZeroTrustGatewaySettingsBlockPageArgs'] block_page: Configuration for a custom block page.
-        :param pulumi.Input['ZeroTrustGatewaySettingsBodyScanningArgs'] body_scanning: Configuration for body scanning.
-        :param pulumi.Input['ZeroTrustGatewaySettingsCertificateArgs'] certificate: Configuration for TLS interception certificate. This will be required starting Feb 2025.
-        :param pulumi.Input['ZeroTrustGatewaySettingsCustomCertificateArgs'] custom_certificate: Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-        :param pulumi.Input['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs'] extended_email_matching: Configuration for extended e-mail matching.
-        :param pulumi.Input['ZeroTrustGatewaySettingsFipsArgs'] fips: Configure compliance with Federal Information Processing Standards.
-        :param pulumi.Input[builtins.bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-        :param pulumi.Input['ZeroTrustGatewaySettingsPayloadLogArgs'] payload_log: Configuration for DLP Payload Logging.
-        :param pulumi.Input[builtins.bool] protocol_detection_enabled: Indicator that protocol detection is enabled.
-        :param pulumi.Input['ZeroTrustGatewaySettingsProxyArgs'] proxy: Configuration block for specifying which protocols are proxied.
-        :param pulumi.Input['ZeroTrustGatewaySettingsSshSessionLogArgs'] ssh_session_log: Configuration for SSH Session Logging.
-        :param pulumi.Input[builtins.bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
-        :param pulumi.Input[builtins.bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
+        :param pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs'] settings: Account settings
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if activity_log_enabled is not None:
-            pulumi.set(__self__, "activity_log_enabled", activity_log_enabled)
-        if antivirus is not None:
-            pulumi.set(__self__, "antivirus", antivirus)
-        if block_page is not None:
-            pulumi.set(__self__, "block_page", block_page)
-        if body_scanning is not None:
-            pulumi.set(__self__, "body_scanning", body_scanning)
-        if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
-        if custom_certificate is not None:
-            warnings.warn("""Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.""", DeprecationWarning)
-            pulumi.log.warn("""custom_certificate is deprecated: Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.""")
-        if custom_certificate is not None:
-            pulumi.set(__self__, "custom_certificate", custom_certificate)
-        if extended_email_matching is not None:
-            pulumi.set(__self__, "extended_email_matching", extended_email_matching)
-        if fips is not None:
-            pulumi.set(__self__, "fips", fips)
-        if logging is not None:
-            pulumi.set(__self__, "logging", logging)
-        if non_identity_browser_isolation_enabled is not None:
-            pulumi.set(__self__, "non_identity_browser_isolation_enabled", non_identity_browser_isolation_enabled)
-        if payload_log is not None:
-            pulumi.set(__self__, "payload_log", payload_log)
-        if protocol_detection_enabled is not None:
-            pulumi.set(__self__, "protocol_detection_enabled", protocol_detection_enabled)
-        if proxy is not None:
-            pulumi.set(__self__, "proxy", proxy)
-        if ssh_session_log is not None:
-            pulumi.set(__self__, "ssh_session_log", ssh_session_log)
-        if tls_decrypt_enabled is not None:
-            pulumi.set(__self__, "tls_decrypt_enabled", tls_decrypt_enabled)
-        if url_browser_isolation_enabled is not None:
-            pulumi.set(__self__, "url_browser_isolation_enabled", url_browser_isolation_enabled)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -388,194 +84,34 @@ class _ZeroTrustGatewaySettingsState:
         pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter(name="activityLogEnabled")
-    def activity_log_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Whether to enable the activity log.
-        """
-        return pulumi.get(self, "activity_log_enabled")
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "created_at")
 
-    @activity_log_enabled.setter
-    def activity_log_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "activity_log_enabled", value)
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_at", value)
 
     @property
     @pulumi.getter
-    def antivirus(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsAntivirusArgs']]:
+    def settings(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs']]:
         """
-        Configuration block for antivirus traffic scanning.
+        Account settings
         """
-        return pulumi.get(self, "antivirus")
+        return pulumi.get(self, "settings")
 
-    @antivirus.setter
-    def antivirus(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsAntivirusArgs']]):
-        pulumi.set(self, "antivirus", value)
+    @settings.setter
+    def settings(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs']]):
+        pulumi.set(self, "settings", value)
 
     @property
-    @pulumi.getter(name="blockPage")
-    def block_page(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsBlockPageArgs']]:
-        """
-        Configuration for a custom block page.
-        """
-        return pulumi.get(self, "block_page")
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "updated_at")
 
-    @block_page.setter
-    def block_page(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsBlockPageArgs']]):
-        pulumi.set(self, "block_page", value)
-
-    @property
-    @pulumi.getter(name="bodyScanning")
-    def body_scanning(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsBodyScanningArgs']]:
-        """
-        Configuration for body scanning.
-        """
-        return pulumi.get(self, "body_scanning")
-
-    @body_scanning.setter
-    def body_scanning(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsBodyScanningArgs']]):
-        pulumi.set(self, "body_scanning", value)
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsCertificateArgs']]:
-        """
-        Configuration for TLS interception certificate. This will be required starting Feb 2025.
-        """
-        return pulumi.get(self, "certificate")
-
-    @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsCertificateArgs']]):
-        pulumi.set(self, "certificate", value)
-
-    @property
-    @pulumi.getter(name="customCertificate")
-    @_utilities.deprecated("""Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.""")
-    def custom_certificate(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsCustomCertificateArgs']]:
-        """
-        Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-        """
-        return pulumi.get(self, "custom_certificate")
-
-    @custom_certificate.setter
-    def custom_certificate(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsCustomCertificateArgs']]):
-        pulumi.set(self, "custom_certificate", value)
-
-    @property
-    @pulumi.getter(name="extendedEmailMatching")
-    def extended_email_matching(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs']]:
-        """
-        Configuration for extended e-mail matching.
-        """
-        return pulumi.get(self, "extended_email_matching")
-
-    @extended_email_matching.setter
-    def extended_email_matching(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs']]):
-        pulumi.set(self, "extended_email_matching", value)
-
-    @property
-    @pulumi.getter
-    def fips(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsFipsArgs']]:
-        """
-        Configure compliance with Federal Information Processing Standards.
-        """
-        return pulumi.get(self, "fips")
-
-    @fips.setter
-    def fips(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsFipsArgs']]):
-        pulumi.set(self, "fips", value)
-
-    @property
-    @pulumi.getter
-    def logging(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsLoggingArgs']]:
-        return pulumi.get(self, "logging")
-
-    @logging.setter
-    def logging(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsLoggingArgs']]):
-        pulumi.set(self, "logging", value)
-
-    @property
-    @pulumi.getter(name="nonIdentityBrowserIsolationEnabled")
-    def non_identity_browser_isolation_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-        """
-        return pulumi.get(self, "non_identity_browser_isolation_enabled")
-
-    @non_identity_browser_isolation_enabled.setter
-    def non_identity_browser_isolation_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "non_identity_browser_isolation_enabled", value)
-
-    @property
-    @pulumi.getter(name="payloadLog")
-    def payload_log(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsPayloadLogArgs']]:
-        """
-        Configuration for DLP Payload Logging.
-        """
-        return pulumi.get(self, "payload_log")
-
-    @payload_log.setter
-    def payload_log(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsPayloadLogArgs']]):
-        pulumi.set(self, "payload_log", value)
-
-    @property
-    @pulumi.getter(name="protocolDetectionEnabled")
-    def protocol_detection_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Indicator that protocol detection is enabled.
-        """
-        return pulumi.get(self, "protocol_detection_enabled")
-
-    @protocol_detection_enabled.setter
-    def protocol_detection_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "protocol_detection_enabled", value)
-
-    @property
-    @pulumi.getter
-    def proxy(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsProxyArgs']]:
-        """
-        Configuration block for specifying which protocols are proxied.
-        """
-        return pulumi.get(self, "proxy")
-
-    @proxy.setter
-    def proxy(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsProxyArgs']]):
-        pulumi.set(self, "proxy", value)
-
-    @property
-    @pulumi.getter(name="sshSessionLog")
-    def ssh_session_log(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsSshSessionLogArgs']]:
-        """
-        Configuration for SSH Session Logging.
-        """
-        return pulumi.get(self, "ssh_session_log")
-
-    @ssh_session_log.setter
-    def ssh_session_log(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsSshSessionLogArgs']]):
-        pulumi.set(self, "ssh_session_log", value)
-
-    @property
-    @pulumi.getter(name="tlsDecryptEnabled")
-    def tls_decrypt_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Indicator that decryption of TLS traffic is enabled.
-        """
-        return pulumi.get(self, "tls_decrypt_enabled")
-
-    @tls_decrypt_enabled.setter
-    def tls_decrypt_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "tls_decrypt_enabled", value)
-
-    @property
-    @pulumi.getter(name="urlBrowserIsolationEnabled")
-    def url_browser_isolation_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-        """
-        return pulumi.get(self, "url_browser_isolation_enabled")
-
-    @url_browser_isolation_enabled.setter
-    def url_browser_isolation_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "url_browser_isolation_enabled", value)
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "updated_at", value)
 
 
 class ZeroTrustGatewaySettings(pulumi.CustomResource):
@@ -584,113 +120,20 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 activity_log_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 antivirus: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsAntivirusArgs', 'ZeroTrustGatewaySettingsAntivirusArgsDict']]] = None,
-                 block_page: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsBlockPageArgs', 'ZeroTrustGatewaySettingsBlockPageArgsDict']]] = None,
-                 body_scanning: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsBodyScanningArgs', 'ZeroTrustGatewaySettingsBodyScanningArgsDict']]] = None,
-                 certificate: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsCertificateArgs', 'ZeroTrustGatewaySettingsCertificateArgsDict']]] = None,
-                 custom_certificate: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsCustomCertificateArgs', 'ZeroTrustGatewaySettingsCustomCertificateArgsDict']]] = None,
-                 extended_email_matching: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs', 'ZeroTrustGatewaySettingsExtendedEmailMatchingArgsDict']]] = None,
-                 fips: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsFipsArgs', 'ZeroTrustGatewaySettingsFipsArgsDict']]] = None,
-                 logging: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsLoggingArgs', 'ZeroTrustGatewaySettingsLoggingArgsDict']]] = None,
-                 non_identity_browser_isolation_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 payload_log: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsPayloadLogArgs', 'ZeroTrustGatewaySettingsPayloadLogArgsDict']]] = None,
-                 protocol_detection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 proxy: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsProxyArgs', 'ZeroTrustGatewaySettingsProxyArgsDict']]] = None,
-                 ssh_session_log: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsSshSessionLogArgs', 'ZeroTrustGatewaySettingsSshSessionLogArgsDict']]] = None,
-                 tls_decrypt_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 url_browser_isolation_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 settings: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsSettingsArgs', 'ZeroTrustGatewaySettingsSettingsArgsDict']]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Teams Account resource. The Teams Account
-        resource defines configuration for secure web gateway.
-
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.ZeroTrustGatewaySettings("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            tls_decrypt_enabled=True,
-            protocol_detection_enabled=True,
-            block_page={
-                "footer_text": "hello",
-                "header_text": "hello",
-                "logo_path": "https://example.com/logo.jpg",
-                "background_color": "#000000",
-            },
-            body_scanning={
-                "inspection_mode": "deep",
-            },
-            antivirus={
-                "enabled_download_phase": True,
-                "enabled_upload_phase": False,
-                "fail_closed": True,
-                "notification_settings": {
-                    "enabled": True,
-                    "message": "you are blocked",
-                    "support_url": "https://example.com/blocked",
-                },
-            },
-            fips={
-                "tls": True,
-            },
-            proxy={
-                "tcp": True,
-                "udp": True,
-                "root_ca": True,
-                "virtual_ip": False,
-                "disable_for_time": 3600,
-            },
-            url_browser_isolation_enabled=True,
-            logging={
-                "redact_pii": True,
-                "settings_by_rule_type": {
-                    "dns": {
-                        "log_all": False,
-                        "log_blocks": True,
-                    },
-                    "http": {
-                        "log_all": True,
-                        "log_blocks": True,
-                    },
-                    "l4": {
-                        "log_all": False,
-                        "log_blocks": True,
-                    },
-                },
-            },
-            extended_email_matching={
-                "enabled": True,
-            })
-        ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example <account_id>
+        $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example '<account_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.bool] activity_log_enabled: Whether to enable the activity log.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsAntivirusArgs', 'ZeroTrustGatewaySettingsAntivirusArgsDict']] antivirus: Configuration block for antivirus traffic scanning.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsBlockPageArgs', 'ZeroTrustGatewaySettingsBlockPageArgsDict']] block_page: Configuration for a custom block page.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsBodyScanningArgs', 'ZeroTrustGatewaySettingsBodyScanningArgsDict']] body_scanning: Configuration for body scanning.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsCertificateArgs', 'ZeroTrustGatewaySettingsCertificateArgsDict']] certificate: Configuration for TLS interception certificate. This will be required starting Feb 2025.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsCustomCertificateArgs', 'ZeroTrustGatewaySettingsCustomCertificateArgsDict']] custom_certificate: Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs', 'ZeroTrustGatewaySettingsExtendedEmailMatchingArgsDict']] extended_email_matching: Configuration for extended e-mail matching.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsFipsArgs', 'ZeroTrustGatewaySettingsFipsArgsDict']] fips: Configure compliance with Federal Information Processing Standards.
-        :param pulumi.Input[builtins.bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsPayloadLogArgs', 'ZeroTrustGatewaySettingsPayloadLogArgsDict']] payload_log: Configuration for DLP Payload Logging.
-        :param pulumi.Input[builtins.bool] protocol_detection_enabled: Indicator that protocol detection is enabled.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsProxyArgs', 'ZeroTrustGatewaySettingsProxyArgsDict']] proxy: Configuration block for specifying which protocols are proxied.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsSshSessionLogArgs', 'ZeroTrustGatewaySettingsSshSessionLogArgsDict']] ssh_session_log: Configuration for SSH Session Logging.
-        :param pulumi.Input[builtins.bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
-        :param pulumi.Input[builtins.bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
+        :param pulumi.Input[Union['ZeroTrustGatewaySettingsSettingsArgs', 'ZeroTrustGatewaySettingsSettingsArgsDict']] settings: Account settings
         """
         ...
     @overload
@@ -699,75 +142,12 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
                  args: ZeroTrustGatewaySettingsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Teams Account resource. The Teams Account
-        resource defines configuration for secure web gateway.
-
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.ZeroTrustGatewaySettings("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            tls_decrypt_enabled=True,
-            protocol_detection_enabled=True,
-            block_page={
-                "footer_text": "hello",
-                "header_text": "hello",
-                "logo_path": "https://example.com/logo.jpg",
-                "background_color": "#000000",
-            },
-            body_scanning={
-                "inspection_mode": "deep",
-            },
-            antivirus={
-                "enabled_download_phase": True,
-                "enabled_upload_phase": False,
-                "fail_closed": True,
-                "notification_settings": {
-                    "enabled": True,
-                    "message": "you are blocked",
-                    "support_url": "https://example.com/blocked",
-                },
-            },
-            fips={
-                "tls": True,
-            },
-            proxy={
-                "tcp": True,
-                "udp": True,
-                "root_ca": True,
-                "virtual_ip": False,
-                "disable_for_time": 3600,
-            },
-            url_browser_isolation_enabled=True,
-            logging={
-                "redact_pii": True,
-                "settings_by_rule_type": {
-                    "dns": {
-                        "log_all": False,
-                        "log_blocks": True,
-                    },
-                    "http": {
-                        "log_all": True,
-                        "log_blocks": True,
-                    },
-                    "l4": {
-                        "log_all": False,
-                        "log_blocks": True,
-                    },
-                },
-            },
-            extended_email_matching={
-                "enabled": True,
-            })
-        ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example <account_id>
+        $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example '<account_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -786,22 +166,7 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 activity_log_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 antivirus: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsAntivirusArgs', 'ZeroTrustGatewaySettingsAntivirusArgsDict']]] = None,
-                 block_page: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsBlockPageArgs', 'ZeroTrustGatewaySettingsBlockPageArgsDict']]] = None,
-                 body_scanning: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsBodyScanningArgs', 'ZeroTrustGatewaySettingsBodyScanningArgsDict']]] = None,
-                 certificate: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsCertificateArgs', 'ZeroTrustGatewaySettingsCertificateArgsDict']]] = None,
-                 custom_certificate: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsCustomCertificateArgs', 'ZeroTrustGatewaySettingsCustomCertificateArgsDict']]] = None,
-                 extended_email_matching: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs', 'ZeroTrustGatewaySettingsExtendedEmailMatchingArgsDict']]] = None,
-                 fips: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsFipsArgs', 'ZeroTrustGatewaySettingsFipsArgsDict']]] = None,
-                 logging: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsLoggingArgs', 'ZeroTrustGatewaySettingsLoggingArgsDict']]] = None,
-                 non_identity_browser_isolation_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 payload_log: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsPayloadLogArgs', 'ZeroTrustGatewaySettingsPayloadLogArgsDict']]] = None,
-                 protocol_detection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 proxy: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsProxyArgs', 'ZeroTrustGatewaySettingsProxyArgsDict']]] = None,
-                 ssh_session_log: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsSshSessionLogArgs', 'ZeroTrustGatewaySettingsSshSessionLogArgsDict']]] = None,
-                 tls_decrypt_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 url_browser_isolation_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 settings: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsSettingsArgs', 'ZeroTrustGatewaySettingsSettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -814,22 +179,11 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            __props__.__dict__["activity_log_enabled"] = activity_log_enabled
-            __props__.__dict__["antivirus"] = antivirus
-            __props__.__dict__["block_page"] = block_page
-            __props__.__dict__["body_scanning"] = body_scanning
-            __props__.__dict__["certificate"] = certificate
-            __props__.__dict__["custom_certificate"] = custom_certificate
-            __props__.__dict__["extended_email_matching"] = extended_email_matching
-            __props__.__dict__["fips"] = fips
-            __props__.__dict__["logging"] = logging
-            __props__.__dict__["non_identity_browser_isolation_enabled"] = non_identity_browser_isolation_enabled
-            __props__.__dict__["payload_log"] = payload_log
-            __props__.__dict__["protocol_detection_enabled"] = protocol_detection_enabled
-            __props__.__dict__["proxy"] = proxy
-            __props__.__dict__["ssh_session_log"] = ssh_session_log
-            __props__.__dict__["tls_decrypt_enabled"] = tls_decrypt_enabled
-            __props__.__dict__["url_browser_isolation_enabled"] = url_browser_isolation_enabled
+            __props__.__dict__["settings"] = settings
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/teamsAccount:TeamsAccount")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustGatewaySettings, __self__).__init__(
             'cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings',
             resource_name,
@@ -841,22 +195,9 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
-            activity_log_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-            antivirus: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsAntivirusArgs', 'ZeroTrustGatewaySettingsAntivirusArgsDict']]] = None,
-            block_page: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsBlockPageArgs', 'ZeroTrustGatewaySettingsBlockPageArgsDict']]] = None,
-            body_scanning: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsBodyScanningArgs', 'ZeroTrustGatewaySettingsBodyScanningArgsDict']]] = None,
-            certificate: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsCertificateArgs', 'ZeroTrustGatewaySettingsCertificateArgsDict']]] = None,
-            custom_certificate: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsCustomCertificateArgs', 'ZeroTrustGatewaySettingsCustomCertificateArgsDict']]] = None,
-            extended_email_matching: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs', 'ZeroTrustGatewaySettingsExtendedEmailMatchingArgsDict']]] = None,
-            fips: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsFipsArgs', 'ZeroTrustGatewaySettingsFipsArgsDict']]] = None,
-            logging: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsLoggingArgs', 'ZeroTrustGatewaySettingsLoggingArgsDict']]] = None,
-            non_identity_browser_isolation_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-            payload_log: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsPayloadLogArgs', 'ZeroTrustGatewaySettingsPayloadLogArgsDict']]] = None,
-            protocol_detection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-            proxy: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsProxyArgs', 'ZeroTrustGatewaySettingsProxyArgsDict']]] = None,
-            ssh_session_log: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsSshSessionLogArgs', 'ZeroTrustGatewaySettingsSshSessionLogArgsDict']]] = None,
-            tls_decrypt_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-            url_browser_isolation_enabled: Optional[pulumi.Input[builtins.bool]] = None) -> 'ZeroTrustGatewaySettings':
+            created_at: Optional[pulumi.Input[builtins.str]] = None,
+            settings: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsSettingsArgs', 'ZeroTrustGatewaySettingsSettingsArgsDict']]] = None,
+            updated_at: Optional[pulumi.Input[builtins.str]] = None) -> 'ZeroTrustGatewaySettings':
         """
         Get an existing ZeroTrustGatewaySettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -864,177 +205,38 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.bool] activity_log_enabled: Whether to enable the activity log.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsAntivirusArgs', 'ZeroTrustGatewaySettingsAntivirusArgsDict']] antivirus: Configuration block for antivirus traffic scanning.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsBlockPageArgs', 'ZeroTrustGatewaySettingsBlockPageArgsDict']] block_page: Configuration for a custom block page.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsBodyScanningArgs', 'ZeroTrustGatewaySettingsBodyScanningArgsDict']] body_scanning: Configuration for body scanning.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsCertificateArgs', 'ZeroTrustGatewaySettingsCertificateArgsDict']] certificate: Configuration for TLS interception certificate. This will be required starting Feb 2025.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsCustomCertificateArgs', 'ZeroTrustGatewaySettingsCustomCertificateArgsDict']] custom_certificate: Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs', 'ZeroTrustGatewaySettingsExtendedEmailMatchingArgsDict']] extended_email_matching: Configuration for extended e-mail matching.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsFipsArgs', 'ZeroTrustGatewaySettingsFipsArgsDict']] fips: Configure compliance with Federal Information Processing Standards.
-        :param pulumi.Input[builtins.bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsPayloadLogArgs', 'ZeroTrustGatewaySettingsPayloadLogArgsDict']] payload_log: Configuration for DLP Payload Logging.
-        :param pulumi.Input[builtins.bool] protocol_detection_enabled: Indicator that protocol detection is enabled.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsProxyArgs', 'ZeroTrustGatewaySettingsProxyArgsDict']] proxy: Configuration block for specifying which protocols are proxied.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsSshSessionLogArgs', 'ZeroTrustGatewaySettingsSshSessionLogArgsDict']] ssh_session_log: Configuration for SSH Session Logging.
-        :param pulumi.Input[builtins.bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
-        :param pulumi.Input[builtins.bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
+        :param pulumi.Input[Union['ZeroTrustGatewaySettingsSettingsArgs', 'ZeroTrustGatewaySettingsSettingsArgsDict']] settings: Account settings
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ZeroTrustGatewaySettingsState.__new__(_ZeroTrustGatewaySettingsState)
 
         __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["activity_log_enabled"] = activity_log_enabled
-        __props__.__dict__["antivirus"] = antivirus
-        __props__.__dict__["block_page"] = block_page
-        __props__.__dict__["body_scanning"] = body_scanning
-        __props__.__dict__["certificate"] = certificate
-        __props__.__dict__["custom_certificate"] = custom_certificate
-        __props__.__dict__["extended_email_matching"] = extended_email_matching
-        __props__.__dict__["fips"] = fips
-        __props__.__dict__["logging"] = logging
-        __props__.__dict__["non_identity_browser_isolation_enabled"] = non_identity_browser_isolation_enabled
-        __props__.__dict__["payload_log"] = payload_log
-        __props__.__dict__["protocol_detection_enabled"] = protocol_detection_enabled
-        __props__.__dict__["proxy"] = proxy
-        __props__.__dict__["ssh_session_log"] = ssh_session_log
-        __props__.__dict__["tls_decrypt_enabled"] = tls_decrypt_enabled
-        __props__.__dict__["url_browser_isolation_enabled"] = url_browser_isolation_enabled
+        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["settings"] = settings
+        __props__.__dict__["updated_at"] = updated_at
         return ZeroTrustGatewaySettings(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @property
-    @pulumi.getter(name="activityLogEnabled")
-    def activity_log_enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
-        """
-        Whether to enable the activity log.
-        """
-        return pulumi.get(self, "activity_log_enabled")
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
-    def antivirus(self) -> pulumi.Output[Optional['outputs.ZeroTrustGatewaySettingsAntivirus']]:
+    def settings(self) -> pulumi.Output['outputs.ZeroTrustGatewaySettingsSettings']:
         """
-        Configuration block for antivirus traffic scanning.
+        Account settings
         """
-        return pulumi.get(self, "antivirus")
+        return pulumi.get(self, "settings")
 
     @property
-    @pulumi.getter(name="blockPage")
-    def block_page(self) -> pulumi.Output[Optional['outputs.ZeroTrustGatewaySettingsBlockPage']]:
-        """
-        Configuration for a custom block page.
-        """
-        return pulumi.get(self, "block_page")
-
-    @property
-    @pulumi.getter(name="bodyScanning")
-    def body_scanning(self) -> pulumi.Output[Optional['outputs.ZeroTrustGatewaySettingsBodyScanning']]:
-        """
-        Configuration for body scanning.
-        """
-        return pulumi.get(self, "body_scanning")
-
-    @property
-    @pulumi.getter
-    def certificate(self) -> pulumi.Output[Optional['outputs.ZeroTrustGatewaySettingsCertificate']]:
-        """
-        Configuration for TLS interception certificate. This will be required starting Feb 2025.
-        """
-        return pulumi.get(self, "certificate")
-
-    @property
-    @pulumi.getter(name="customCertificate")
-    @_utilities.deprecated("""Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.""")
-    def custom_certificate(self) -> pulumi.Output[Optional['outputs.ZeroTrustGatewaySettingsCustomCertificate']]:
-        """
-        Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-        """
-        return pulumi.get(self, "custom_certificate")
-
-    @property
-    @pulumi.getter(name="extendedEmailMatching")
-    def extended_email_matching(self) -> pulumi.Output['outputs.ZeroTrustGatewaySettingsExtendedEmailMatching']:
-        """
-        Configuration for extended e-mail matching.
-        """
-        return pulumi.get(self, "extended_email_matching")
-
-    @property
-    @pulumi.getter
-    def fips(self) -> pulumi.Output[Optional['outputs.ZeroTrustGatewaySettingsFips']]:
-        """
-        Configure compliance with Federal Information Processing Standards.
-        """
-        return pulumi.get(self, "fips")
-
-    @property
-    @pulumi.getter
-    def logging(self) -> pulumi.Output[Optional['outputs.ZeroTrustGatewaySettingsLogging']]:
-        return pulumi.get(self, "logging")
-
-    @property
-    @pulumi.getter(name="nonIdentityBrowserIsolationEnabled")
-    def non_identity_browser_isolation_enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
-        """
-        Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-        """
-        return pulumi.get(self, "non_identity_browser_isolation_enabled")
-
-    @property
-    @pulumi.getter(name="payloadLog")
-    def payload_log(self) -> pulumi.Output[Optional['outputs.ZeroTrustGatewaySettingsPayloadLog']]:
-        """
-        Configuration for DLP Payload Logging.
-        """
-        return pulumi.get(self, "payload_log")
-
-    @property
-    @pulumi.getter(name="protocolDetectionEnabled")
-    def protocol_detection_enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
-        """
-        Indicator that protocol detection is enabled.
-        """
-        return pulumi.get(self, "protocol_detection_enabled")
-
-    @property
-    @pulumi.getter
-    def proxy(self) -> pulumi.Output[Optional['outputs.ZeroTrustGatewaySettingsProxy']]:
-        """
-        Configuration block for specifying which protocols are proxied.
-        """
-        return pulumi.get(self, "proxy")
-
-    @property
-    @pulumi.getter(name="sshSessionLog")
-    def ssh_session_log(self) -> pulumi.Output[Optional['outputs.ZeroTrustGatewaySettingsSshSessionLog']]:
-        """
-        Configuration for SSH Session Logging.
-        """
-        return pulumi.get(self, "ssh_session_log")
-
-    @property
-    @pulumi.getter(name="tlsDecryptEnabled")
-    def tls_decrypt_enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
-        """
-        Indicator that decryption of TLS traffic is enabled.
-        """
-        return pulumi.get(self, "tls_decrypt_enabled")
-
-    @property
-    @pulumi.getter(name="urlBrowserIsolationEnabled")
-    def url_browser_isolation_enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
-        """
-        Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-        """
-        return pulumi.get(self, "url_browser_isolation_enabled")
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "updated_at")
 

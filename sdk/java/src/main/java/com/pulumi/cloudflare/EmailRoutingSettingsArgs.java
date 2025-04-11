@@ -6,11 +6,8 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class EmailRoutingSettingsArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,44 +15,14 @@ public final class EmailRoutingSettingsArgs extends com.pulumi.resources.Resourc
     public static final EmailRoutingSettingsArgs Empty = new EmailRoutingSettingsArgs();
 
     /**
-     * State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
-
-    /**
-     * @return State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Output<Boolean> enabled() {
-        return this.enabled;
-    }
-
-    /**
-     * Flag to check if the user skipped the configuration wizard.
-     * 
-     */
-    @Import(name="skipWizard")
-    private @Nullable Output<Boolean> skipWizard;
-
-    /**
-     * @return Flag to check if the user skipped the configuration wizard.
-     * 
-     */
-    public Optional<Output<Boolean>> skipWizard() {
-        return Optional.ofNullable(this.skipWizard);
-    }
-
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -65,8 +32,6 @@ public final class EmailRoutingSettingsArgs extends com.pulumi.resources.Resourc
     private EmailRoutingSettingsArgs() {}
 
     private EmailRoutingSettingsArgs(EmailRoutingSettingsArgs $) {
-        this.enabled = $.enabled;
-        this.skipWizard = $.skipWizard;
         this.zoneId = $.zoneId;
     }
 
@@ -89,49 +54,7 @@ public final class EmailRoutingSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param enabled State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enabled(Output<Boolean> enabled) {
-            $.enabled = enabled;
-            return this;
-        }
-
-        /**
-         * @param enabled State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enabled(Boolean enabled) {
-            return enabled(Output.of(enabled));
-        }
-
-        /**
-         * @param skipWizard Flag to check if the user skipped the configuration wizard.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder skipWizard(@Nullable Output<Boolean> skipWizard) {
-            $.skipWizard = skipWizard;
-            return this;
-        }
-
-        /**
-         * @param skipWizard Flag to check if the user skipped the configuration wizard.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder skipWizard(Boolean skipWizard) {
-            return skipWizard(Output.of(skipWizard));
-        }
-
-        /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -142,7 +65,7 @@ public final class EmailRoutingSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -152,9 +75,6 @@ public final class EmailRoutingSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         public EmailRoutingSettingsArgs build() {
-            if ($.enabled == null) {
-                throw new MissingRequiredPropertyException("EmailRoutingSettingsArgs", "enabled");
-            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("EmailRoutingSettingsArgs", "zoneId");
             }

@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource which manages Cloudflare custom error pages.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,18 +19,18 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCustomPages(ctx, "example", &cloudflare.CustomPagesArgs{
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Type:   pulumi.String("basic_challenge"),
-//				Url:    pulumi.String("https://example.com/challenge.html"),
-//				State:  pulumi.String("customized"),
+//			_, err := cloudflare.NewCustomPages(ctx, "example_custom_pages", &cloudflare.CustomPagesArgs{
+//				Identifier: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				State:      pulumi.String("default"),
+//				Url:        pulumi.String("http://www.example.com"),
+//				ZoneId:     pulumi.String("zone_id"),
 //			})
 //			if err != nil {
 //				return err
@@ -46,20 +44,21 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/customPages:CustomPages example <resource_level>/<resource_id>/<custom_page_type>
+// $ pulumi import cloudflare:index/customPages:CustomPages example '<{accounts|zones}/{account_id|zone_id}>/<identifier>'
 // ```
 type CustomPages struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// Managed state of the custom page. Available values: `default`, `customized`.
-	State pulumi.StringPtrOutput `pulumi:"state"`
-	// The type of custom page you wish to update. Available values: `basicChallenge`, `wafChallenge`, `wafBlock`, `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`, `500Errors`, `1000Errors`, `managedChallenge`.
-	Type pulumi.StringOutput `pulumi:"type"`
-	// URL of where the custom page source is located.
+	// Identifier
+	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// The custom page state.
+	// Available values: "default", "customized".
+	State pulumi.StringOutput `pulumi:"state"`
+	// The URL associated with the custom page.
 	Url pulumi.StringOutput `pulumi:"url"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
@@ -70,8 +69,11 @@ func NewCustomPages(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Type == nil {
-		return nil, errors.New("invalid value for required argument 'Type'")
+	if args.Identifier == nil {
+		return nil, errors.New("invalid value for required argument 'Identifier'")
+	}
+	if args.State == nil {
+		return nil, errors.New("invalid value for required argument 'State'")
 	}
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
@@ -99,28 +101,30 @@ func GetCustomPages(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomPages resources.
 type customPagesState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// Managed state of the custom page. Available values: `default`, `customized`.
+	// Identifier
+	Identifier *string `pulumi:"identifier"`
+	// The custom page state.
+	// Available values: "default", "customized".
 	State *string `pulumi:"state"`
-	// The type of custom page you wish to update. Available values: `basicChallenge`, `wafChallenge`, `wafBlock`, `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`, `500Errors`, `1000Errors`, `managedChallenge`.
-	Type *string `pulumi:"type"`
-	// URL of where the custom page source is located.
+	// The URL associated with the custom page.
 	Url *string `pulumi:"url"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type CustomPagesState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// Managed state of the custom page. Available values: `default`, `customized`.
+	// Identifier
+	Identifier pulumi.StringPtrInput
+	// The custom page state.
+	// Available values: "default", "customized".
 	State pulumi.StringPtrInput
-	// The type of custom page you wish to update. Available values: `basicChallenge`, `wafChallenge`, `wafBlock`, `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`, `500Errors`, `1000Errors`, `managedChallenge`.
-	Type pulumi.StringPtrInput
-	// URL of where the custom page source is located.
+	// The URL associated with the custom page.
 	Url pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -129,29 +133,31 @@ func (CustomPagesState) ElementType() reflect.Type {
 }
 
 type customPagesArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// Managed state of the custom page. Available values: `default`, `customized`.
-	State *string `pulumi:"state"`
-	// The type of custom page you wish to update. Available values: `basicChallenge`, `wafChallenge`, `wafBlock`, `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`, `500Errors`, `1000Errors`, `managedChallenge`.
-	Type string `pulumi:"type"`
-	// URL of where the custom page source is located.
+	// Identifier
+	Identifier string `pulumi:"identifier"`
+	// The custom page state.
+	// Available values: "default", "customized".
+	State string `pulumi:"state"`
+	// The URL associated with the custom page.
 	Url string `pulumi:"url"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a CustomPages resource.
 type CustomPagesArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// Managed state of the custom page. Available values: `default`, `customized`.
-	State pulumi.StringPtrInput
-	// The type of custom page you wish to update. Available values: `basicChallenge`, `wafChallenge`, `wafBlock`, `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`, `500Errors`, `1000Errors`, `managedChallenge`.
-	Type pulumi.StringInput
-	// URL of where the custom page source is located.
+	// Identifier
+	Identifier pulumi.StringInput
+	// The custom page state.
+	// Available values: "default", "customized".
+	State pulumi.StringInput
+	// The URL associated with the custom page.
 	Url pulumi.StringInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -242,27 +248,28 @@ func (o CustomPagesOutput) ToCustomPagesOutputWithContext(ctx context.Context) C
 	return o
 }
 
-// The account identifier to target for the resource. Conflicts with `zoneId`.
+// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 func (o CustomPagesOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomPages) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Managed state of the custom page. Available values: `default`, `customized`.
-func (o CustomPagesOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomPages) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
+// Identifier
+func (o CustomPagesOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomPages) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// The type of custom page you wish to update. Available values: `basicChallenge`, `wafChallenge`, `wafBlock`, `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`, `500Errors`, `1000Errors`, `managedChallenge`.
-func (o CustomPagesOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v *CustomPages) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+// The custom page state.
+// Available values: "default", "customized".
+func (o CustomPagesOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomPages) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// URL of where the custom page source is located.
+// The URL associated with the custom page.
 func (o CustomPagesOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomPages) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource. Conflicts with `accountId`.
+// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 func (o CustomPagesOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomPages) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

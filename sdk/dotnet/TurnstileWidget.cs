@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,16 +20,21 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.TurnstileWidget("example", new()
+    ///     var exampleTurnstileWidget = new Cloudflare.TurnstileWidget("example_turnstile_widget", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "example widget",
-    ///         BotFightMode = false,
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Domains = new[]
     ///         {
-    ///             "example.com",
+    ///             "203.0.113.1",
+    ///             "cloudflare.com",
+    ///             "blog.example.com",
     ///         },
-    ///         Mode = "invisible",
+    ///         Mode = "non-interactive",
+    ///         Name = "blog.cloudflare.com login form",
+    ///         BotFightMode = false,
+    ///         ClearanceLevel = "no_clearance",
+    ///         EphemeralId = false,
+    ///         Offlabel = false,
     ///         Region = "world",
     ///     });
     /// 
@@ -41,50 +44,78 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example &lt;account_id&gt;/&lt;site_key&gt;
+    /// $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example '&lt;account_id&gt;/&lt;sitekey&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/turnstileWidget:TurnstileWidget")]
     public partial class TurnstileWidget : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+        /// If bot*fight*mode is set to `true`, Cloudflare issues computationally
+        /// expensive challenges in response to malicious bots (ENT only).
         /// </summary>
         [Output("botFightMode")]
         public Output<bool> BotFightMode { get; private set; } = null!;
 
         /// <summary>
-        /// Domains where the widget is deployed
+        /// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+        /// this setting can determine the clearance level to be set
+        /// Available values: "no_clearance", "jschallenge", "managed", "interactive".
         /// </summary>
+        [Output("clearanceLevel")]
+        public Output<string?> ClearanceLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// When the widget was created.
+        /// </summary>
+        [Output("createdOn")]
+        public Output<string> CreatedOn { get; private set; } = null!;
+
         [Output("domains")]
         public Output<ImmutableArray<string>> Domains { get; private set; } = null!;
 
         /// <summary>
-        /// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+        /// Return the Ephemeral ID in /siteverify (ENT only).
+        /// </summary>
+        [Output("ephemeralId")]
+        public Output<bool?> EphemeralId { get; private set; } = null!;
+
+        /// <summary>
+        /// Widget Mode
+        /// Available values: "non-interactive", "invisible", "managed".
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
-        /// Human readable widget name.
+        /// When the widget was modified.
+        /// </summary>
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// Human readable widget name. Not unique. Cloudflare suggests that you
+        /// set this to a meaningful string to make it easier to identify your
+        /// widget, and where it is used.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Do not show any Cloudflare branding on the widget (Enterprise only).
+        /// Do not show any Cloudflare branding on the widget (ENT only).
         /// </summary>
         [Output("offlabel")]
         public Output<bool> Offlabel { get; private set; } = null!;
 
         /// <summary>
         /// Region where this widget can be used.
+        /// Available values: "world".
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -94,6 +125,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("secret")]
         public Output<string> Secret { get; private set; } = null!;
+
+        /// <summary>
+        /// Widget item identifier tag.
+        /// </summary>
+        [Output("sitekey")]
+        public Output<string> Sitekey { get; private set; } = null!;
 
 
         /// <summary>
@@ -118,10 +155,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                AdditionalSecretOutputs =
-                {
-                    "secret",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -146,23 +179,28 @@ namespace Pulumi.Cloudflare
     public sealed class TurnstileWidgetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+        /// If bot*fight*mode is set to `true`, Cloudflare issues computationally
+        /// expensive challenges in response to malicious bots (ENT only).
         /// </summary>
         [Input("botFightMode")]
         public Input<bool>? BotFightMode { get; set; }
 
+        /// <summary>
+        /// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+        /// this setting can determine the clearance level to be set
+        /// Available values: "no_clearance", "jschallenge", "managed", "interactive".
+        /// </summary>
+        [Input("clearanceLevel")]
+        public Input<string>? ClearanceLevel { get; set; }
+
         [Input("domains", required: true)]
         private InputList<string>? _domains;
-
-        /// <summary>
-        /// Domains where the widget is deployed
-        /// </summary>
         public InputList<string> Domains
         {
             get => _domains ?? (_domains = new InputList<string>());
@@ -170,25 +208,35 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+        /// Return the Ephemeral ID in /siteverify (ENT only).
+        /// </summary>
+        [Input("ephemeralId")]
+        public Input<bool>? EphemeralId { get; set; }
+
+        /// <summary>
+        /// Widget Mode
+        /// Available values: "non-interactive", "invisible", "managed".
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;
 
         /// <summary>
-        /// Human readable widget name.
+        /// Human readable widget name. Not unique. Cloudflare suggests that you
+        /// set this to a meaningful string to make it easier to identify your
+        /// widget, and where it is used.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Do not show any Cloudflare branding on the widget (Enterprise only).
+        /// Do not show any Cloudflare branding on the widget (ENT only).
         /// </summary>
         [Input("offlabel")]
         public Input<bool>? Offlabel { get; set; }
 
         /// <summary>
         /// Region where this widget can be used.
+        /// Available values: "world".
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -202,23 +250,34 @@ namespace Pulumi.Cloudflare
     public sealed class TurnstileWidgetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+        /// If bot*fight*mode is set to `true`, Cloudflare issues computationally
+        /// expensive challenges in response to malicious bots (ENT only).
         /// </summary>
         [Input("botFightMode")]
         public Input<bool>? BotFightMode { get; set; }
 
-        [Input("domains")]
-        private InputList<string>? _domains;
+        /// <summary>
+        /// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+        /// this setting can determine the clearance level to be set
+        /// Available values: "no_clearance", "jschallenge", "managed", "interactive".
+        /// </summary>
+        [Input("clearanceLevel")]
+        public Input<string>? ClearanceLevel { get; set; }
 
         /// <summary>
-        /// Domains where the widget is deployed
+        /// When the widget was created.
         /// </summary>
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
+
+        [Input("domains")]
+        private InputList<string>? _domains;
         public InputList<string> Domains
         {
             get => _domains ?? (_domains = new InputList<string>());
@@ -226,44 +285,56 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+        /// Return the Ephemeral ID in /siteverify (ENT only).
+        /// </summary>
+        [Input("ephemeralId")]
+        public Input<bool>? EphemeralId { get; set; }
+
+        /// <summary>
+        /// Widget Mode
+        /// Available values: "non-interactive", "invisible", "managed".
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// Human readable widget name.
+        /// When the widget was modified.
+        /// </summary>
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
+
+        /// <summary>
+        /// Human readable widget name. Not unique. Cloudflare suggests that you
+        /// set this to a meaningful string to make it easier to identify your
+        /// widget, and where it is used.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Do not show any Cloudflare branding on the widget (Enterprise only).
+        /// Do not show any Cloudflare branding on the widget (ENT only).
         /// </summary>
         [Input("offlabel")]
         public Input<bool>? Offlabel { get; set; }
 
         /// <summary>
         /// Region where this widget can be used.
+        /// Available values: "world".
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        [Input("secret")]
-        private Input<string>? _secret;
-
         /// <summary>
         /// Secret key for this widget.
         /// </summary>
-        public Input<string>? Secret
-        {
-            get => _secret;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("secret")]
+        public Input<string>? Secret { get; set; }
+
+        /// <summary>
+        /// Widget item identifier tag.
+        /// </summary>
+        [Input("sitekey")]
+        public Input<string>? Sitekey { get; set; }
 
         public TurnstileWidgetState()
         {

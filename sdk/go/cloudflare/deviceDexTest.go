@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Device Dex Test resource. Device Dex Tests allow for building location-aware device settings policies.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,24 +19,32 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewDeviceDexTest(ctx, "example", &cloudflare.DeviceDexTestArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:        pulumi.String("GET homepage"),
-//				Description: pulumi.String("Send a HTTP GET request to the home endpoint every half hour."),
-//				Interval:    pulumi.String("0h30m0s"),
-//				Enabled:     pulumi.Bool(true),
-//				Data: &cloudflare.DeviceDexTestDataArgs{
-//					Host:   pulumi.String("https://example.com/home"),
+//			_, err := cloudflare.NewZeroTrustDexTest(ctx, "example_zero_trust_dex_test", &cloudflare.ZeroTrustDexTestArgs{
+//				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				Data: &cloudflare.ZeroTrustDexTestDataArgs{
+//					Host:   pulumi.String("https://dash.cloudflare.com"),
 //					Kind:   pulumi.String("http"),
 //					Method: pulumi.String("GET"),
 //				},
+//				Enabled:     pulumi.Bool(true),
+//				Interval:    pulumi.String("30m"),
+//				Name:        pulumi.String("HTTP dash health check"),
+//				Description: pulumi.String("Checks the dash endpoint every 30 minutes"),
+//				TargetPolicies: cloudflare.ZeroTrustDexTestTargetPolicyArray{
+//					&cloudflare.ZeroTrustDexTestTargetPolicyArgs{
+//						Id:      pulumi.String("id"),
+//						Default: pulumi.Bool(true),
+//						Name:    pulumi.String("name"),
+//					},
+//				},
+//				Targeted: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -52,27 +58,29 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/deviceDexTest:DeviceDexTest example <account_id>/<device_dex_test_id>
+// $ pulumi import cloudflare:index/deviceDexTest:DeviceDexTest example '<account_id>/<dex_test_id>'
 // ```
+//
+// Deprecated: cloudflare.index/devicedextest.DeviceDexTest has been deprecated in favor of cloudflare.index/zerotrustdextest.ZeroTrustDexTest
 type DeviceDexTest struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Timestamp of when the Dex Test was created.
-	Created pulumi.StringOutput `pulumi:"created"`
 	// The configuration object which contains the details for the WARP client to conduct the test.
 	Data DeviceDexTestDataOutput `pulumi:"data"`
 	// Additional details about the test.
-	Description pulumi.StringOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Determines whether or not the test is active.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// How often the test will run.
 	Interval pulumi.StringOutput `pulumi:"interval"`
-	// The name of the Device Dex Test. Must be unique.
+	// The name of the DEX test. Must be unique.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Timestamp of when the Dex Test was last updated.
-	Updated pulumi.StringOutput `pulumi:"updated"`
+	// Device settings profiles targeted by this test
+	TargetPolicies DeviceDexTestTargetPolicyArrayOutput `pulumi:"targetPolicies"`
+	Targeted       pulumi.BoolPtrOutput                 `pulumi:"targeted"`
+	// The unique identifier for the test.
+	TestId pulumi.StringOutput `pulumi:"testId"`
 }
 
 // NewDeviceDexTest registers a new resource with the given unique name, arguments, and options.
@@ -88,9 +96,6 @@ func NewDeviceDexTest(ctx *pulumi.Context,
 	if args.Data == nil {
 		return nil, errors.New("invalid value for required argument 'Data'")
 	}
-	if args.Description == nil {
-		return nil, errors.New("invalid value for required argument 'Description'")
-	}
 	if args.Enabled == nil {
 		return nil, errors.New("invalid value for required argument 'Enabled'")
 	}
@@ -100,6 +105,12 @@ func NewDeviceDexTest(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/deviceDexTest:DeviceDexTest"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DeviceDexTest
 	err := ctx.RegisterResource("cloudflare:index/deviceDexTest:DeviceDexTest", name, args, &resource, opts...)
@@ -123,10 +134,7 @@ func GetDeviceDexTest(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DeviceDexTest resources.
 type deviceDexTestState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
-	// Timestamp of when the Dex Test was created.
-	Created *string `pulumi:"created"`
 	// The configuration object which contains the details for the WARP client to conduct the test.
 	Data *DeviceDexTestData `pulumi:"data"`
 	// Additional details about the test.
@@ -135,17 +143,17 @@ type deviceDexTestState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// How often the test will run.
 	Interval *string `pulumi:"interval"`
-	// The name of the Device Dex Test. Must be unique.
+	// The name of the DEX test. Must be unique.
 	Name *string `pulumi:"name"`
-	// Timestamp of when the Dex Test was last updated.
-	Updated *string `pulumi:"updated"`
+	// Device settings profiles targeted by this test
+	TargetPolicies []DeviceDexTestTargetPolicy `pulumi:"targetPolicies"`
+	Targeted       *bool                       `pulumi:"targeted"`
+	// The unique identifier for the test.
+	TestId *string `pulumi:"testId"`
 }
 
 type DeviceDexTestState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
-	// Timestamp of when the Dex Test was created.
-	Created pulumi.StringPtrInput
 	// The configuration object which contains the details for the WARP client to conduct the test.
 	Data DeviceDexTestDataPtrInput
 	// Additional details about the test.
@@ -154,10 +162,13 @@ type DeviceDexTestState struct {
 	Enabled pulumi.BoolPtrInput
 	// How often the test will run.
 	Interval pulumi.StringPtrInput
-	// The name of the Device Dex Test. Must be unique.
+	// The name of the DEX test. Must be unique.
 	Name pulumi.StringPtrInput
-	// Timestamp of when the Dex Test was last updated.
-	Updated pulumi.StringPtrInput
+	// Device settings profiles targeted by this test
+	TargetPolicies DeviceDexTestTargetPolicyArrayInput
+	Targeted       pulumi.BoolPtrInput
+	// The unique identifier for the test.
+	TestId pulumi.StringPtrInput
 }
 
 func (DeviceDexTestState) ElementType() reflect.Type {
@@ -165,34 +176,38 @@ func (DeviceDexTestState) ElementType() reflect.Type {
 }
 
 type deviceDexTestArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId string `pulumi:"accountId"`
 	// The configuration object which contains the details for the WARP client to conduct the test.
 	Data DeviceDexTestData `pulumi:"data"`
 	// Additional details about the test.
-	Description string `pulumi:"description"`
+	Description *string `pulumi:"description"`
 	// Determines whether or not the test is active.
 	Enabled bool `pulumi:"enabled"`
 	// How often the test will run.
 	Interval string `pulumi:"interval"`
-	// The name of the Device Dex Test. Must be unique.
+	// The name of the DEX test. Must be unique.
 	Name string `pulumi:"name"`
+	// Device settings profiles targeted by this test
+	TargetPolicies []DeviceDexTestTargetPolicy `pulumi:"targetPolicies"`
+	Targeted       *bool                       `pulumi:"targeted"`
 }
 
 // The set of arguments for constructing a DeviceDexTest resource.
 type DeviceDexTestArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringInput
 	// The configuration object which contains the details for the WARP client to conduct the test.
 	Data DeviceDexTestDataInput
 	// Additional details about the test.
-	Description pulumi.StringInput
+	Description pulumi.StringPtrInput
 	// Determines whether or not the test is active.
 	Enabled pulumi.BoolInput
 	// How often the test will run.
 	Interval pulumi.StringInput
-	// The name of the Device Dex Test. Must be unique.
+	// The name of the DEX test. Must be unique.
 	Name pulumi.StringInput
+	// Device settings profiles targeted by this test
+	TargetPolicies DeviceDexTestTargetPolicyArrayInput
+	Targeted       pulumi.BoolPtrInput
 }
 
 func (DeviceDexTestArgs) ElementType() reflect.Type {
@@ -282,14 +297,8 @@ func (o DeviceDexTestOutput) ToDeviceDexTestOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o DeviceDexTestOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceDexTest) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// Timestamp of when the Dex Test was created.
-func (o DeviceDexTestOutput) Created() pulumi.StringOutput {
-	return o.ApplyT(func(v *DeviceDexTest) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
 
 // The configuration object which contains the details for the WARP client to conduct the test.
@@ -298,8 +307,8 @@ func (o DeviceDexTestOutput) Data() DeviceDexTestDataOutput {
 }
 
 // Additional details about the test.
-func (o DeviceDexTestOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v *DeviceDexTest) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+func (o DeviceDexTestOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceDexTest) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Determines whether or not the test is active.
@@ -312,14 +321,23 @@ func (o DeviceDexTestOutput) Interval() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceDexTest) pulumi.StringOutput { return v.Interval }).(pulumi.StringOutput)
 }
 
-// The name of the Device Dex Test. Must be unique.
+// The name of the DEX test. Must be unique.
 func (o DeviceDexTestOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceDexTest) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Timestamp of when the Dex Test was last updated.
-func (o DeviceDexTestOutput) Updated() pulumi.StringOutput {
-	return o.ApplyT(func(v *DeviceDexTest) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+// Device settings profiles targeted by this test
+func (o DeviceDexTestOutput) TargetPolicies() DeviceDexTestTargetPolicyArrayOutput {
+	return o.ApplyT(func(v *DeviceDexTest) DeviceDexTestTargetPolicyArrayOutput { return v.TargetPolicies }).(DeviceDexTestTargetPolicyArrayOutput)
+}
+
+func (o DeviceDexTestOutput) Targeted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceDexTest) pulumi.BoolPtrOutput { return v.Targeted }).(pulumi.BoolPtrOutput)
+}
+
+// The unique identifier for the test.
+func (o DeviceDexTestOutput) TestId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeviceDexTest) pulumi.StringOutput { return v.TestId }).(pulumi.StringOutput)
 }
 
 type DeviceDexTestArrayOutput struct{ *pulumi.OutputState }

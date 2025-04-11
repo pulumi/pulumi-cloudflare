@@ -3,9 +3,10 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.TeamsListItemsWithDescriptionArgs;
+import com.pulumi.cloudflare.inputs.TeamsListItemArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,30 +18,29 @@ public final class TeamsListState extends com.pulumi.resources.ResourceArgs {
 
     public static final TeamsListState Empty = new TeamsListState();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
     /**
-     * The description of the teams list.
+     * The description of the list.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the teams list.
+     * @return The description of the list.
      * 
      */
     public Optional<Output<String>> description() {
@@ -48,44 +48,44 @@ public final class TeamsListState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The items of the teams list.
+     * The items in the list.
      * 
      */
     @Import(name="items")
-    private @Nullable Output<List<String>> items;
+    private @Nullable Output<List<TeamsListItemArgs>> items;
 
     /**
-     * @return The items of the teams list.
+     * @return The items in the list.
      * 
      */
-    public Optional<Output<List<String>>> items() {
+    public Optional<Output<List<TeamsListItemArgs>>> items() {
         return Optional.ofNullable(this.items);
     }
 
     /**
-     * The items of the teams list that has explicit description.
+     * The number of items in the list.
      * 
      */
-    @Import(name="itemsWithDescriptions")
-    private @Nullable Output<List<TeamsListItemsWithDescriptionArgs>> itemsWithDescriptions;
+    @Import(name="listCount")
+    private @Nullable Output<Double> listCount;
 
     /**
-     * @return The items of the teams list that has explicit description.
+     * @return The number of items in the list.
      * 
      */
-    public Optional<Output<List<TeamsListItemsWithDescriptionArgs>>> itemsWithDescriptions() {
-        return Optional.ofNullable(this.itemsWithDescriptions);
+    public Optional<Output<Double>> listCount() {
+        return Optional.ofNullable(this.listCount);
     }
 
     /**
-     * Name of the teams list.
+     * The name of the list.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the teams list.
+     * @return The name of the list.
      * 
      */
     public Optional<Output<String>> name() {
@@ -93,29 +93,40 @@ public final class TeamsListState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+     * The type of list.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+     * @return The type of list.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    @Import(name="updatedAt")
+    private @Nullable Output<String> updatedAt;
+
+    public Optional<Output<String>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
+    }
+
     private TeamsListState() {}
 
     private TeamsListState(TeamsListState $) {
         this.accountId = $.accountId;
+        this.createdAt = $.createdAt;
         this.description = $.description;
         this.items = $.items;
-        this.itemsWithDescriptions = $.itemsWithDescriptions;
+        this.listCount = $.listCount;
         this.name = $.name;
         this.type = $.type;
+        this.updatedAt = $.updatedAt;
     }
 
     public static Builder builder() {
@@ -136,29 +147,26 @@ public final class TeamsListState extends com.pulumi.resources.ResourceArgs {
             $ = new TeamsListState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
         /**
-         * @param description The description of the teams list.
+         * @param description The description of the list.
          * 
          * @return builder
          * 
@@ -169,7 +177,7 @@ public final class TeamsListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the teams list.
+         * @param description The description of the list.
          * 
          * @return builder
          * 
@@ -179,69 +187,59 @@ public final class TeamsListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param items The items of the teams list.
+         * @param items The items in the list.
          * 
          * @return builder
          * 
          */
-        public Builder items(@Nullable Output<List<String>> items) {
+        public Builder items(@Nullable Output<List<TeamsListItemArgs>> items) {
             $.items = items;
             return this;
         }
 
         /**
-         * @param items The items of the teams list.
+         * @param items The items in the list.
          * 
          * @return builder
          * 
          */
-        public Builder items(List<String> items) {
+        public Builder items(List<TeamsListItemArgs> items) {
             return items(Output.of(items));
         }
 
         /**
-         * @param items The items of the teams list.
+         * @param items The items in the list.
          * 
          * @return builder
          * 
          */
-        public Builder items(String... items) {
+        public Builder items(TeamsListItemArgs... items) {
             return items(List.of(items));
         }
 
         /**
-         * @param itemsWithDescriptions The items of the teams list that has explicit description.
+         * @param listCount The number of items in the list.
          * 
          * @return builder
          * 
          */
-        public Builder itemsWithDescriptions(@Nullable Output<List<TeamsListItemsWithDescriptionArgs>> itemsWithDescriptions) {
-            $.itemsWithDescriptions = itemsWithDescriptions;
+        public Builder listCount(@Nullable Output<Double> listCount) {
+            $.listCount = listCount;
             return this;
         }
 
         /**
-         * @param itemsWithDescriptions The items of the teams list that has explicit description.
+         * @param listCount The number of items in the list.
          * 
          * @return builder
          * 
          */
-        public Builder itemsWithDescriptions(List<TeamsListItemsWithDescriptionArgs> itemsWithDescriptions) {
-            return itemsWithDescriptions(Output.of(itemsWithDescriptions));
+        public Builder listCount(Double listCount) {
+            return listCount(Output.of(listCount));
         }
 
         /**
-         * @param itemsWithDescriptions The items of the teams list that has explicit description.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder itemsWithDescriptions(TeamsListItemsWithDescriptionArgs... itemsWithDescriptions) {
-            return itemsWithDescriptions(List.of(itemsWithDescriptions));
-        }
-
-        /**
-         * @param name Name of the teams list.
+         * @param name The name of the list.
          * 
          * @return builder
          * 
@@ -252,7 +250,7 @@ public final class TeamsListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the teams list.
+         * @param name The name of the list.
          * 
          * @return builder
          * 
@@ -262,7 +260,8 @@ public final class TeamsListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+         * @param type The type of list.
+         * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
          * 
          * @return builder
          * 
@@ -273,13 +272,23 @@ public final class TeamsListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+         * @param type The type of list.
+         * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
          * 
          * @return builder
          * 
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        public Builder updatedAt(@Nullable Output<String> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        public Builder updatedAt(String updatedAt) {
+            return updatedAt(Output.of(updatedAt));
         }
 
         public TeamsListState build() {

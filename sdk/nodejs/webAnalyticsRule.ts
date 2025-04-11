@@ -5,35 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Web Analytics Rule resource.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.WebAnalyticsSite("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     zoneTag: "0da42c8d2132a9ddaf714f9e7c920711",
- *     autoInstall: true,
- * });
- * const exampleWebAnalyticsRule = new cloudflare.WebAnalyticsRule("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     rulesetId: example.rulesetId,
- *     host: "*",
- *     paths: ["/excluded"],
- *     inclusive: false,
+ * const exampleWebAnalyticsRule = new cloudflare.WebAnalyticsRule("example_web_analytics_rule", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     rulesetId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     host: "example.com",
+ *     inclusive: true,
  *     isPaused: false,
- * }, {
- *     dependsOn: [example],
+ *     paths: ["*"],
  * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import cloudflare:index/webAnalyticsRule:WebAnalyticsRule example <account_id>/<ruleset_id>/<rule_id>
  * ```
  */
 export class WebAnalyticsRule extends pulumi.CustomResource {
@@ -65,27 +50,23 @@ export class WebAnalyticsRule extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
+    public /*out*/ readonly created!: pulumi.Output<string>;
+    public readonly host!: pulumi.Output<string | undefined>;
     /**
-     * The host to apply the rule to.
+     * Whether the rule includes or excludes traffic from being measured.
      */
-    public readonly host!: pulumi.Output<string>;
-    /**
-     * Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
-     */
-    public readonly inclusive!: pulumi.Output<boolean>;
+    public readonly inclusive!: pulumi.Output<boolean | undefined>;
     /**
      * Whether the rule is paused or not.
      */
-    public readonly isPaused!: pulumi.Output<boolean>;
+    public readonly isPaused!: pulumi.Output<boolean | undefined>;
+    public readonly paths!: pulumi.Output<string[] | undefined>;
+    public /*out*/ readonly priority!: pulumi.Output<number>;
     /**
-     * A list of paths to apply the rule to.
-     */
-    public readonly paths!: pulumi.Output<string[]>;
-    /**
-     * The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+     * The Web Analytics ruleset identifier.
      */
     public readonly rulesetId!: pulumi.Output<string>;
 
@@ -103,27 +84,17 @@ export class WebAnalyticsRule extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WebAnalyticsRuleState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
             resourceInputs["inclusive"] = state ? state.inclusive : undefined;
             resourceInputs["isPaused"] = state ? state.isPaused : undefined;
             resourceInputs["paths"] = state ? state.paths : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["rulesetId"] = state ? state.rulesetId : undefined;
         } else {
             const args = argsOrState as WebAnalyticsRuleArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
-            }
-            if ((!args || args.host === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'host'");
-            }
-            if ((!args || args.inclusive === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'inclusive'");
-            }
-            if ((!args || args.isPaused === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'isPaused'");
-            }
-            if ((!args || args.paths === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'paths'");
             }
             if ((!args || args.rulesetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rulesetId'");
@@ -134,6 +105,8 @@ export class WebAnalyticsRule extends pulumi.CustomResource {
             resourceInputs["isPaused"] = args ? args.isPaused : undefined;
             resourceInputs["paths"] = args ? args.paths : undefined;
             resourceInputs["rulesetId"] = args ? args.rulesetId : undefined;
+            resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["priority"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WebAnalyticsRule.__pulumiType, name, resourceInputs, opts);
@@ -145,27 +118,23 @@ export class WebAnalyticsRule extends pulumi.CustomResource {
  */
 export interface WebAnalyticsRuleState {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
-    /**
-     * The host to apply the rule to.
-     */
+    created?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     /**
-     * Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
+     * Whether the rule includes or excludes traffic from being measured.
      */
     inclusive?: pulumi.Input<boolean>;
     /**
      * Whether the rule is paused or not.
      */
     isPaused?: pulumi.Input<boolean>;
-    /**
-     * A list of paths to apply the rule to.
-     */
     paths?: pulumi.Input<pulumi.Input<string>[]>;
+    priority?: pulumi.Input<number>;
     /**
-     * The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+     * The Web Analytics ruleset identifier.
      */
     rulesetId?: pulumi.Input<string>;
 }
@@ -175,27 +144,21 @@ export interface WebAnalyticsRuleState {
  */
 export interface WebAnalyticsRuleArgs {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     accountId: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
-     * The host to apply the rule to.
+     * Whether the rule includes or excludes traffic from being measured.
      */
-    host: pulumi.Input<string>;
-    /**
-     * Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
-     */
-    inclusive: pulumi.Input<boolean>;
+    inclusive?: pulumi.Input<boolean>;
     /**
      * Whether the rule is paused or not.
      */
-    isPaused: pulumi.Input<boolean>;
+    isPaused?: pulumi.Input<boolean>;
+    paths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of paths to apply the rule to.
-     */
-    paths: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+     * The Web Analytics ruleset identifier.
      */
     rulesetId: pulumi.Input<string>;
 }

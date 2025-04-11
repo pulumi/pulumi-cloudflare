@@ -24,33 +24,22 @@ class ZoneLockdownArgs:
     def __init__(__self__, *,
                  configurations: pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]],
                  urls: pulumi.Input[Sequence[pulumi.Input[builtins.str]]],
-                 zone_id: pulumi.Input[builtins.str],
-                 description: Optional[pulumi.Input[builtins.str]] = None,
-                 paused: Optional[pulumi.Input[builtins.bool]] = None,
-                 priority: Optional[pulumi.Input[builtins.int]] = None):
+                 zone_id: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a ZoneLockdown resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
-        :param pulumi.Input[builtins.bool] paused: Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] urls: The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         pulumi.set(__self__, "configurations", configurations)
         pulumi.set(__self__, "urls", urls)
         pulumi.set(__self__, "zone_id", zone_id)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if paused is not None:
-            pulumi.set(__self__, "paused", paused)
-        if priority is not None:
-            pulumi.set(__self__, "priority", priority)
 
     @property
     @pulumi.getter
     def configurations(self) -> pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]]:
         """
-        A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+        A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
         """
         return pulumi.get(self, "configurations")
 
@@ -62,7 +51,7 @@ class ZoneLockdownArgs:
     @pulumi.getter
     def urls(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
         """
-        A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+        The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
         """
         return pulumi.get(self, "urls")
 
@@ -74,7 +63,7 @@ class ZoneLockdownArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -82,65 +71,37 @@ class ZoneLockdownArgs:
     def zone_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "zone_id", value)
 
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def paused(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
-        """
-        return pulumi.get(self, "paused")
-
-    @paused.setter
-    def paused(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "paused", value)
-
-    @property
-    @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[builtins.int]]:
-        return pulumi.get(self, "priority")
-
-    @priority.setter
-    def priority(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "priority", value)
-
 
 @pulumi.input_type
 class _ZoneLockdownState:
     def __init__(__self__, *,
                  configurations: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]]] = None,
+                 created_on: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 modified_on: Optional[pulumi.Input[builtins.str]] = None,
                  paused: Optional[pulumi.Input[builtins.bool]] = None,
-                 priority: Optional[pulumi.Input[builtins.int]] = None,
                  urls: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneLockdown resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
-        :param pulumi.Input[builtins.str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
-        :param pulumi.Input[builtins.bool] paused: Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+        :param pulumi.Input[builtins.str] created_on: The timestamp of when the rule was created.
+        :param pulumi.Input[builtins.str] description: An informative summary of the rule.
+        :param pulumi.Input[builtins.str] modified_on: The timestamp of when the rule was last modified.
+        :param pulumi.Input[builtins.bool] paused: When true, indicates that the rule is currently paused.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] urls: The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         if configurations is not None:
             pulumi.set(__self__, "configurations", configurations)
+        if created_on is not None:
+            pulumi.set(__self__, "created_on", created_on)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
         if paused is not None:
             pulumi.set(__self__, "paused", paused)
-        if priority is not None:
-            pulumi.set(__self__, "priority", priority)
         if urls is not None:
             pulumi.set(__self__, "urls", urls)
         if zone_id is not None:
@@ -150,7 +111,7 @@ class _ZoneLockdownState:
     @pulumi.getter
     def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]]]:
         """
-        A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+        A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
         """
         return pulumi.get(self, "configurations")
 
@@ -159,10 +120,22 @@ class _ZoneLockdownState:
         pulumi.set(self, "configurations", value)
 
     @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The timestamp of when the rule was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @created_on.setter
+    def created_on(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_on", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+        An informative summary of the rule.
         """
         return pulumi.get(self, "description")
 
@@ -171,10 +144,22 @@ class _ZoneLockdownState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The timestamp of when the rule was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "modified_on", value)
+
+    @property
     @pulumi.getter
     def paused(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
+        When true, indicates that the rule is currently paused.
         """
         return pulumi.get(self, "paused")
 
@@ -184,18 +169,9 @@ class _ZoneLockdownState:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[builtins.int]]:
-        return pulumi.get(self, "priority")
-
-    @priority.setter
-    def priority(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "priority", value)
-
-    @property
-    @pulumi.getter
     def urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+        The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
         """
         return pulumi.get(self, "urls")
 
@@ -207,7 +183,7 @@ class _ZoneLockdownState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -222,50 +198,36 @@ class ZoneLockdown(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[builtins.str]] = None,
-                 paused: Optional[pulumi.Input[builtins.bool]] = None,
-                 priority: Optional[pulumi.Input[builtins.int]] = None,
                  urls: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows
-        you to define one or more URLs (with wildcard matching on the domain
-        or path) that will only permit access if the request originates
-        from an IP address that matches a safelist of one or more IP
-        addresses and/or IP ranges.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Restrict access to these endpoints to requests from a known IP address range.
-        example = cloudflare.ZoneLockdown("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            paused=False,
-            description="Restrict access to these endpoints to requests from a known IP address range",
-            urls=["api.mysite.com/some/endpoint*"],
+        example_zone_lockdown = cloudflare.ZoneLockdown("example_zone_lockdown",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             configurations=[{
-                "target": "ip_range",
-                "value": "192.0.2.0/24",
-            }])
+                "target": "ip",
+                "value": "198.51.100.4",
+            }],
+            urls=["shop.example.com/*"])
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example <zone_id>/<lockdown_id>
+        $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example '<zone_id>/<lock_downs_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
-        :param pulumi.Input[builtins.str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
-        :param pulumi.Input[builtins.bool] paused: Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]] configurations: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] urls: The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         ...
     @overload
@@ -274,34 +236,25 @@ class ZoneLockdown(pulumi.CustomResource):
                  args: ZoneLockdownArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows
-        you to define one or more URLs (with wildcard matching on the domain
-        or path) that will only permit access if the request originates
-        from an IP address that matches a safelist of one or more IP
-        addresses and/or IP ranges.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Restrict access to these endpoints to requests from a known IP address range.
-        example = cloudflare.ZoneLockdown("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            paused=False,
-            description="Restrict access to these endpoints to requests from a known IP address range",
-            urls=["api.mysite.com/some/endpoint*"],
+        example_zone_lockdown = cloudflare.ZoneLockdown("example_zone_lockdown",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             configurations=[{
-                "target": "ip_range",
-                "value": "192.0.2.0/24",
-            }])
+                "target": "ip",
+                "value": "198.51.100.4",
+            }],
+            urls=["shop.example.com/*"])
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example <zone_id>/<lockdown_id>
+        $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example '<zone_id>/<lock_downs_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -320,9 +273,6 @@ class ZoneLockdown(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[builtins.str]] = None,
-                 paused: Optional[pulumi.Input[builtins.bool]] = None,
-                 priority: Optional[pulumi.Input[builtins.int]] = None,
                  urls: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -337,15 +287,16 @@ class ZoneLockdown(pulumi.CustomResource):
             if configurations is None and not opts.urn:
                 raise TypeError("Missing required property 'configurations'")
             __props__.__dict__["configurations"] = configurations
-            __props__.__dict__["description"] = description
-            __props__.__dict__["paused"] = paused
-            __props__.__dict__["priority"] = priority
             if urls is None and not opts.urn:
                 raise TypeError("Missing required property 'urls'")
             __props__.__dict__["urls"] = urls
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["created_on"] = None
+            __props__.__dict__["description"] = None
+            __props__.__dict__["modified_on"] = None
+            __props__.__dict__["paused"] = None
         super(ZoneLockdown, __self__).__init__(
             'cloudflare:index/zoneLockdown:ZoneLockdown',
             resource_name,
@@ -357,9 +308,10 @@ class ZoneLockdown(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]]] = None,
+            created_on: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
+            modified_on: Optional[pulumi.Input[builtins.str]] = None,
             paused: Optional[pulumi.Input[builtins.bool]] = None,
-            priority: Optional[pulumi.Input[builtins.int]] = None,
             urls: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'ZoneLockdown':
         """
@@ -369,20 +321,23 @@ class ZoneLockdown(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
-        :param pulumi.Input[builtins.str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
-        :param pulumi.Input[builtins.bool] paused: Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]] configurations: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+        :param pulumi.Input[builtins.str] created_on: The timestamp of when the rule was created.
+        :param pulumi.Input[builtins.str] description: An informative summary of the rule.
+        :param pulumi.Input[builtins.str] modified_on: The timestamp of when the rule was last modified.
+        :param pulumi.Input[builtins.bool] paused: When true, indicates that the rule is currently paused.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] urls: The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ZoneLockdownState.__new__(_ZoneLockdownState)
 
         __props__.__dict__["configurations"] = configurations
+        __props__.__dict__["created_on"] = created_on
         __props__.__dict__["description"] = description
+        __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["paused"] = paused
-        __props__.__dict__["priority"] = priority
         __props__.__dict__["urls"] = urls
         __props__.__dict__["zone_id"] = zone_id
         return ZoneLockdown(resource_name, opts=opts, __props__=__props__)
@@ -391,36 +346,47 @@ class ZoneLockdown(pulumi.CustomResource):
     @pulumi.getter
     def configurations(self) -> pulumi.Output[Sequence['outputs.ZoneLockdownConfiguration']]:
         """
-        A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+        A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
         """
         return pulumi.get(self, "configurations")
 
     @property
-    @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[builtins.str]]:
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> pulumi.Output[builtins.str]:
         """
-        A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+        The timestamp of when the rule was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[builtins.str]:
+        """
+        An informative summary of the rule.
         """
         return pulumi.get(self, "description")
 
     @property
-    @pulumi.getter
-    def paused(self) -> pulumi.Output[Optional[builtins.bool]]:
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> pulumi.Output[builtins.str]:
         """
-        Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
+        The timestamp of when the rule was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @property
+    @pulumi.getter
+    def paused(self) -> pulumi.Output[builtins.bool]:
+        """
+        When true, indicates that the rule is currently paused.
         """
         return pulumi.get(self, "paused")
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[Optional[builtins.int]]:
-        return pulumi.get(self, "priority")
-
-    @property
-    @pulumi.getter
     def urls(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+        The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
         """
         return pulumi.get(self, "urls")
 
@@ -428,7 +394,7 @@ class ZoneLockdown(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

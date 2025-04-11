@@ -7,159 +7,108 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredConfigArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigState;
 import com.pulumi.cloudflare.outputs.ZeroTrustTunnelCloudflaredConfigConfig;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Tunnel configuration resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflared;
- * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredArgs;
- * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredConfig;
- * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredConfigArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleTunnel = new ZeroTrustTunnelCloudflared("exampleTunnel", ZeroTrustTunnelCloudflaredArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("example_tunnel")
- *             .secret("<32 character secret>")
- *             .build());
- * 
- *         var exampleConfig = new ZeroTrustTunnelCloudflaredConfig("exampleConfig", ZeroTrustTunnelCloudflaredConfigArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .tunnelId(exampleTunnel.id())
- *             .config(ZeroTrustTunnelCloudflaredConfigConfigArgs.builder()
- *                 .warpRouting(ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .originRequest(ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs.builder()
- *                     .connectTimeout("1m0s")
- *                     .tlsTimeout("1m0s")
- *                     .tcpKeepAlive("1m0s")
- *                     .noHappyEyeballs(false)
- *                     .keepAliveConnections(1024)
- *                     .keepAliveTimeout("1m0s")
- *                     .httpHostHeader("baz")
- *                     .originServerName("foobar")
- *                     .caPool("/path/to/unsigned/ca/pool")
- *                     .noTlsVerify(false)
- *                     .disableChunkedEncoding(false)
- *                     .bastionMode(false)
- *                     .proxyAddress("10.0.0.1")
- *                     .proxyPort(8123)
- *                     .proxyType("socks")
- *                     .ipRules(ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleArgs.builder()
- *                         .prefix("/web")
- *                         .ports(                        
- *                             80,
- *                             443)
- *                         .allow(false)
- *                         .build())
- *                     .build())
- *                 .ingressRules(                
- *                     ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgs.builder()
- *                         .hostname("foo")
- *                         .path("/bar")
- *                         .service("http://10.0.0.2:8080")
- *                         .originRequest(ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestArgs.builder()
- *                             .connectTimeout("2m0s")
- *                             .access(ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccessArgs.builder()
- *                                 .required(true)
- *                                 .teamName("terraform")
- *                                 .audTags("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
- *                                 .build())
- *                             .build())
- *                         .build(),
- *                     ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgs.builder()
- *                         .service("https://10.0.0.3:8081")
- *                         .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig example &lt;account_id&gt;/&lt;tunnel_id&gt;
+ * $ pulumi import cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig example &#39;&lt;account_id&gt;/&lt;tunnel_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig")
 public class ZeroTrustTunnelCloudflaredConfig extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Configuration block for Tunnel Configuration.
+     * The tunnel configuration and ingress rules.
      * 
      */
     @Export(name="config", refs={ZeroTrustTunnelCloudflaredConfigConfig.class}, tree="[0]")
     private Output<ZeroTrustTunnelCloudflaredConfigConfig> config;
 
     /**
-     * @return Configuration block for Tunnel Configuration.
+     * @return The tunnel configuration and ingress rules.
      * 
      */
     public Output<ZeroTrustTunnelCloudflaredConfigConfig> config() {
         return this.config;
     }
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
     /**
-     * Identifier of the Tunnel to target for this configuration.
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel&#39;s configuration on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
+     * 
+     */
+    @Export(name="source", refs={String.class}, tree="[0]")
+    private Output<String> source;
+
+    /**
+     * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel&#39;s configuration on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
+     * 
+     */
+    public Output<String> source() {
+        return this.source;
+    }
+    /**
+     * UUID of the tunnel.
      * 
      */
     @Export(name="tunnelId", refs={String.class}, tree="[0]")
     private Output<String> tunnelId;
 
     /**
-     * @return Identifier of the Tunnel to target for this configuration.
+     * @return UUID of the tunnel.
      * 
      */
     public Output<String> tunnelId() {
         return this.tunnelId;
+    }
+    /**
+     * The version of the Tunnel Configuration.
+     * 
+     */
+    @Export(name="version", refs={Integer.class}, tree="[0]")
+    private Output<Integer> version;
+
+    /**
+     * @return The version of the Tunnel Configuration.
+     * 
+     */
+    public Output<Integer> version() {
+        return this.version;
     }
 
     /**
@@ -201,6 +150,9 @@ public class ZeroTrustTunnelCloudflaredConfig extends com.pulumi.resources.Custo
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/tunnelConfig:TunnelConfig").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptions
     {
         /// <summary>
-        /// If true, the authorization endpoint will return an access token.
+        /// If an Access Token should be returned from the OIDC Authorization endpoint
         /// </summary>
         public readonly bool? ReturnAccessTokenFromAuthorizationEndpoint;
         /// <summary>
-        /// If true, the authorization endpoint will return an id token.
+        /// If an ID Token should be returned from the OIDC Authorization endpoint
         /// </summary>
         public readonly bool? ReturnIdTokenFromAuthorizationEndpoint;
 

@@ -10,79 +10,41 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Device Posture Integration resource. Device
-    /// posture integrations configure third-party data providers for device
-    /// posture rules.
-    /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.ZeroTrustDevicePostureIntegration("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "Device posture integration",
-    ///         Type = "workspace_one",
-    ///         Interval = "24h",
-    ///         Configs = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustDevicePostureIntegrationConfigArgs
-    ///             {
-    ///                 ApiUrl = "https://example.com/api",
-    ///                 AuthUrl = "https://example.com/connect/token",
-    ///                 ClientId = "client-id",
-    ///                 ClientSecret = "client-secret",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration example &lt;account_id&gt;/&lt;device_posture_integration_id&gt;
+    /// $ pulumi import cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration example '&lt;account_id&gt;/&lt;integration_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration")]
     public partial class ZeroTrustDevicePostureIntegration : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The device posture integration's connection authorization parameters.
+        /// The configuration object containing third-party integration information.
         /// </summary>
-        [Output("configs")]
-        public Output<ImmutableArray<Outputs.ZeroTrustDevicePostureIntegrationConfig>> Configs { get; private set; } = null!;
-
-        [Output("identifier")]
-        public Output<string?> Identifier { get; private set; } = null!;
+        [Output("config")]
+        public Output<Outputs.ZeroTrustDevicePostureIntegrationConfig> Config { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+        /// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
         /// </summary>
         [Output("interval")]
-        public Output<string?> Interval { get; private set; } = null!;
+        public Output<string> Interval { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the device posture integration.
+        /// The name of the device posture integration.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+        /// The type of device posture integration.
+        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -110,6 +72,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/devicePostureIntegration:DevicePostureIntegration" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -133,41 +99,30 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDevicePostureIntegrationArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("configs")]
-        private InputList<Inputs.ZeroTrustDevicePostureIntegrationConfigArgs>? _configs;
-
         /// <summary>
-        /// The device posture integration's connection authorization parameters.
+        /// The configuration object containing third-party integration information.
         /// </summary>
-        public InputList<Inputs.ZeroTrustDevicePostureIntegrationConfigArgs> Configs
-        {
-            get => _configs ?? (_configs = new InputList<Inputs.ZeroTrustDevicePostureIntegrationConfigArgs>());
-            set => _configs = value;
-        }
-
-        [Input("identifier")]
-        public Input<string>? Identifier { get; set; }
+        [Input("config", required: true)]
+        public Input<Inputs.ZeroTrustDevicePostureIntegrationConfigArgs> Config { get; set; } = null!;
 
         /// <summary>
-        /// Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+        /// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
         /// </summary>
-        [Input("interval")]
-        public Input<string>? Interval { get; set; }
+        [Input("interval", required: true)]
+        public Input<string> Interval { get; set; } = null!;
 
         /// <summary>
-        /// Name of the device posture integration.
+        /// The name of the device posture integration.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+        /// The type of device posture integration.
+        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -180,41 +135,30 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDevicePostureIntegrationState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        [Input("configs")]
-        private InputList<Inputs.ZeroTrustDevicePostureIntegrationConfigGetArgs>? _configs;
-
         /// <summary>
-        /// The device posture integration's connection authorization parameters.
+        /// The configuration object containing third-party integration information.
         /// </summary>
-        public InputList<Inputs.ZeroTrustDevicePostureIntegrationConfigGetArgs> Configs
-        {
-            get => _configs ?? (_configs = new InputList<Inputs.ZeroTrustDevicePostureIntegrationConfigGetArgs>());
-            set => _configs = value;
-        }
-
-        [Input("identifier")]
-        public Input<string>? Identifier { get; set; }
+        [Input("config")]
+        public Input<Inputs.ZeroTrustDevicePostureIntegrationConfigGetArgs>? Config { get; set; }
 
         /// <summary>
-        /// Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+        /// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
         /// </summary>
         [Input("interval")]
         public Input<string>? Interval { get; set; }
 
         /// <summary>
-        /// Name of the device posture integration.
+        /// The name of the device posture integration.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+        /// The type of device posture integration.
+        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

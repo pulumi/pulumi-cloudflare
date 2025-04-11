@@ -6,19 +6,18 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.CloudConnectorRulesArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.CloudConnectorRulesState;
+import com.pulumi.cloudflare.outputs.CloudConnectorRulesParameters;
 import com.pulumi.cloudflare.outputs.CloudConnectorRulesRule;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The [Cloud Connector Rules](https://developers.cloudflare.com/rules/cloud-connector/) resource allows you to create and manage cloud connector rules for a zone.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -28,28 +27,76 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/cloudConnectorRules:CloudConnectorRules")
 public class CloudConnectorRules extends com.pulumi.resources.CustomResource {
     /**
-     * List of Cloud Connector Rules
+     * Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
+     * 
+     */
+    @Export(name="cloudProvider", refs={String.class}, tree="[0]")
+    private Output<String> cloudProvider;
+
+    /**
+     * @return Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
+     * 
+     */
+    public Output<String> cloudProvider() {
+        return this.cloudProvider;
+    }
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    public Output<String> description() {
+        return this.description;
+    }
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enabled;
+
+    public Output<Boolean> enabled() {
+        return this.enabled;
+    }
+    @Export(name="expression", refs={String.class}, tree="[0]")
+    private Output<String> expression;
+
+    public Output<String> expression() {
+        return this.expression;
+    }
+    /**
+     * Parameters of Cloud Connector Rule
+     * 
+     */
+    @Export(name="parameters", refs={CloudConnectorRulesParameters.class}, tree="[0]")
+    private Output<CloudConnectorRulesParameters> parameters;
+
+    /**
+     * @return Parameters of Cloud Connector Rule
+     * 
+     */
+    public Output<CloudConnectorRulesParameters> parameters() {
+        return this.parameters;
+    }
+    /**
+     * List of Cloud Connector rules
      * 
      */
     @Export(name="rules", refs={List.class,CloudConnectorRulesRule.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<CloudConnectorRulesRule>> rules;
+    private Output<List<CloudConnectorRulesRule>> rules;
 
     /**
-     * @return List of Cloud Connector Rules
+     * @return List of Cloud Connector rules
      * 
      */
-    public Output<Optional<List<CloudConnectorRulesRule>>> rules() {
-        return Codegen.optional(this.rules);
+    public Output<List<CloudConnectorRulesRule>> rules() {
+        return this.rules;
     }
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

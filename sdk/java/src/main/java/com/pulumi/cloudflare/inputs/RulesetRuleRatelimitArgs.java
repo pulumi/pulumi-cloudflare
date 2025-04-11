@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -19,29 +20,29 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
     public static final RulesetRuleRatelimitArgs Empty = new RulesetRuleRatelimitArgs();
 
     /**
-     * List of parameters that define how Cloudflare tracks the request rate for this rule.
+     * Characteristics of the request on which the ratelimiter counter will be incremented.
      * 
      */
-    @Import(name="characteristics")
-    private @Nullable Output<List<String>> characteristics;
+    @Import(name="characteristics", required=true)
+    private Output<List<String>> characteristics;
 
     /**
-     * @return List of parameters that define how Cloudflare tracks the request rate for this rule.
+     * @return Characteristics of the request on which the ratelimiter counter will be incremented.
      * 
      */
-    public Optional<Output<List<String>>> characteristics() {
-        return Optional.ofNullable(this.characteristics);
+    public Output<List<String>> characteristics() {
+        return this.characteristics;
     }
 
     /**
-     * Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * Defines when the ratelimit counter should be incremented. It is optional and defaults to the same as the rule&#39;s expression.
      * 
      */
     @Import(name="countingExpression")
     private @Nullable Output<String> countingExpression;
 
     /**
-     * @return Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * @return Defines when the ratelimit counter should be incremented. It is optional and defaults to the same as the rule&#39;s expression.
      * 
      */
     public Optional<Output<String>> countingExpression() {
@@ -49,14 +50,14 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+     * Period of time in seconds after which the action will be disabled following its first execution.
      * 
      */
     @Import(name="mitigationTimeout")
     private @Nullable Output<Integer> mitigationTimeout;
 
     /**
-     * @return Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+     * @return Period of time in seconds after which the action will be disabled following its first execution.
      * 
      */
     public Optional<Output<Integer>> mitigationTimeout() {
@@ -64,29 +65,31 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The period of time to consider (in seconds) when evaluating the request rate.
+     * Period in seconds over which the counter is being incremented.
+     * Available values: 10, 60, 600, 3600.
      * 
      */
-    @Import(name="period")
-    private @Nullable Output<Integer> period;
+    @Import(name="period", required=true)
+    private Output<Integer> period;
 
     /**
-     * @return The period of time to consider (in seconds) when evaluating the request rate.
+     * @return Period in seconds over which the counter is being incremented.
+     * Available values: 10, 60, 600, 3600.
      * 
      */
-    public Optional<Output<Integer>> period() {
-        return Optional.ofNullable(this.period);
+    public Output<Integer> period() {
+        return this.period;
     }
 
     /**
-     * The number of requests over the period of time that will trigger the Rate Limiting rule.
+     * The threshold of requests per period after which the action will be executed for the first time.
      * 
      */
     @Import(name="requestsPerPeriod")
     private @Nullable Output<Integer> requestsPerPeriod;
 
     /**
-     * @return The number of requests over the period of time that will trigger the Rate Limiting rule.
+     * @return The threshold of requests per period after which the action will be executed for the first time.
      * 
      */
     public Optional<Output<Integer>> requestsPerPeriod() {
@@ -94,14 +97,14 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Whether to include requests to origin within the Rate Limiting count.
+     * Defines if ratelimit counting is only done when an origin is reached.
      * 
      */
     @Import(name="requestsToOrigin")
     private @Nullable Output<Boolean> requestsToOrigin;
 
     /**
-     * @return Whether to include requests to origin within the Rate Limiting count.
+     * @return Defines if ratelimit counting is only done when an origin is reached.
      * 
      */
     public Optional<Output<Boolean>> requestsToOrigin() {
@@ -109,14 +112,14 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
+     * The score threshold per period for which the action will be executed the first time.
      * 
      */
     @Import(name="scorePerPeriod")
     private @Nullable Output<Integer> scorePerPeriod;
 
     /**
-     * @return The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
+     * @return The score threshold per period for which the action will be executed the first time.
      * 
      */
     public Optional<Output<Integer>> scorePerPeriod() {
@@ -124,14 +127,14 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of HTTP header in the response, set by the origin server, with the score for the current request.
+     * The response header name provided by the origin which should contain the score to increment ratelimit counter on.
      * 
      */
     @Import(name="scoreResponseHeaderName")
     private @Nullable Output<String> scoreResponseHeaderName;
 
     /**
-     * @return Name of HTTP header in the response, set by the origin server, with the score for the current request.
+     * @return The response header name provided by the origin which should contain the score to increment ratelimit counter on.
      * 
      */
     public Optional<Output<String>> scoreResponseHeaderName() {
@@ -170,18 +173,18 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param characteristics List of parameters that define how Cloudflare tracks the request rate for this rule.
+         * @param characteristics Characteristics of the request on which the ratelimiter counter will be incremented.
          * 
          * @return builder
          * 
          */
-        public Builder characteristics(@Nullable Output<List<String>> characteristics) {
+        public Builder characteristics(Output<List<String>> characteristics) {
             $.characteristics = characteristics;
             return this;
         }
 
         /**
-         * @param characteristics List of parameters that define how Cloudflare tracks the request rate for this rule.
+         * @param characteristics Characteristics of the request on which the ratelimiter counter will be incremented.
          * 
          * @return builder
          * 
@@ -191,7 +194,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param characteristics List of parameters that define how Cloudflare tracks the request rate for this rule.
+         * @param characteristics Characteristics of the request on which the ratelimiter counter will be incremented.
          * 
          * @return builder
          * 
@@ -201,7 +204,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param countingExpression Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+         * @param countingExpression Defines when the ratelimit counter should be incremented. It is optional and defaults to the same as the rule&#39;s expression.
          * 
          * @return builder
          * 
@@ -212,7 +215,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param countingExpression Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+         * @param countingExpression Defines when the ratelimit counter should be incremented. It is optional and defaults to the same as the rule&#39;s expression.
          * 
          * @return builder
          * 
@@ -222,7 +225,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mitigationTimeout Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+         * @param mitigationTimeout Period of time in seconds after which the action will be disabled following its first execution.
          * 
          * @return builder
          * 
@@ -233,7 +236,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mitigationTimeout Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+         * @param mitigationTimeout Period of time in seconds after which the action will be disabled following its first execution.
          * 
          * @return builder
          * 
@@ -243,18 +246,20 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param period The period of time to consider (in seconds) when evaluating the request rate.
+         * @param period Period in seconds over which the counter is being incremented.
+         * Available values: 10, 60, 600, 3600.
          * 
          * @return builder
          * 
          */
-        public Builder period(@Nullable Output<Integer> period) {
+        public Builder period(Output<Integer> period) {
             $.period = period;
             return this;
         }
 
         /**
-         * @param period The period of time to consider (in seconds) when evaluating the request rate.
+         * @param period Period in seconds over which the counter is being incremented.
+         * Available values: 10, 60, 600, 3600.
          * 
          * @return builder
          * 
@@ -264,7 +269,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param requestsPerPeriod The number of requests over the period of time that will trigger the Rate Limiting rule.
+         * @param requestsPerPeriod The threshold of requests per period after which the action will be executed for the first time.
          * 
          * @return builder
          * 
@@ -275,7 +280,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param requestsPerPeriod The number of requests over the period of time that will trigger the Rate Limiting rule.
+         * @param requestsPerPeriod The threshold of requests per period after which the action will be executed for the first time.
          * 
          * @return builder
          * 
@@ -285,7 +290,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param requestsToOrigin Whether to include requests to origin within the Rate Limiting count.
+         * @param requestsToOrigin Defines if ratelimit counting is only done when an origin is reached.
          * 
          * @return builder
          * 
@@ -296,7 +301,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param requestsToOrigin Whether to include requests to origin within the Rate Limiting count.
+         * @param requestsToOrigin Defines if ratelimit counting is only done when an origin is reached.
          * 
          * @return builder
          * 
@@ -306,7 +311,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scorePerPeriod The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
+         * @param scorePerPeriod The score threshold per period for which the action will be executed the first time.
          * 
          * @return builder
          * 
@@ -317,7 +322,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scorePerPeriod The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
+         * @param scorePerPeriod The score threshold per period for which the action will be executed the first time.
          * 
          * @return builder
          * 
@@ -327,7 +332,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scoreResponseHeaderName Name of HTTP header in the response, set by the origin server, with the score for the current request.
+         * @param scoreResponseHeaderName The response header name provided by the origin which should contain the score to increment ratelimit counter on.
          * 
          * @return builder
          * 
@@ -338,7 +343,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scoreResponseHeaderName Name of HTTP header in the response, set by the origin server, with the score for the current request.
+         * @param scoreResponseHeaderName The response header name provided by the origin which should contain the score to increment ratelimit counter on.
          * 
          * @return builder
          * 
@@ -348,6 +353,12 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         public RulesetRuleRatelimitArgs build() {
+            if ($.characteristics == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleRatelimitArgs", "characteristics");
+            }
+            if ($.period == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleRatelimitArgs", "period");
+            }
             return $;
         }
     }

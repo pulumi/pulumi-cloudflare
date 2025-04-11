@@ -4,38 +4,26 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class LoadBalancerPoolOriginHeader {
     /**
-     * @return HTTP Header name.
+     * @return The &#39;Host&#39; header allows to override the hostname set in the HTTP request. Current support is 1 &#39;Host&#39; header override per origin.
      * 
      */
-    private String header;
-    /**
-     * @return Values for the HTTP headers.
-     * 
-     */
-    private List<String> values;
+    private @Nullable List<String> hosts;
 
     private LoadBalancerPoolOriginHeader() {}
     /**
-     * @return HTTP Header name.
+     * @return The &#39;Host&#39; header allows to override the hostname set in the HTTP request. Current support is 1 &#39;Host&#39; header override per origin.
      * 
      */
-    public String header() {
-        return this.header;
-    }
-    /**
-     * @return Values for the HTTP headers.
-     * 
-     */
-    public List<String> values() {
-        return this.values;
+    public List<String> hosts() {
+        return this.hosts == null ? List.of() : this.hosts;
     }
 
     public static Builder builder() {
@@ -47,38 +35,25 @@ public final class LoadBalancerPoolOriginHeader {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String header;
-        private List<String> values;
+        private @Nullable List<String> hosts;
         public Builder() {}
         public Builder(LoadBalancerPoolOriginHeader defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.header = defaults.header;
-    	      this.values = defaults.values;
+    	      this.hosts = defaults.hosts;
         }
 
         @CustomType.Setter
-        public Builder header(String header) {
-            if (header == null) {
-              throw new MissingRequiredPropertyException("LoadBalancerPoolOriginHeader", "header");
-            }
-            this.header = header;
+        public Builder hosts(@Nullable List<String> hosts) {
+
+            this.hosts = hosts;
             return this;
         }
-        @CustomType.Setter
-        public Builder values(List<String> values) {
-            if (values == null) {
-              throw new MissingRequiredPropertyException("LoadBalancerPoolOriginHeader", "values");
-            }
-            this.values = values;
-            return this;
-        }
-        public Builder values(String... values) {
-            return values(List.of(values));
+        public Builder hosts(String... hosts) {
+            return hosts(List.of(hosts));
         }
         public LoadBalancerPoolOriginHeader build() {
             final var _resultValue = new LoadBalancerPoolOriginHeader();
-            _resultValue.header = header;
-            _resultValue.values = values;
+            _resultValue.hosts = hosts;
             return _resultValue;
         }
     }

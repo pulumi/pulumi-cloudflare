@@ -9,74 +9,33 @@ import com.pulumi.cloudflare.outputs.PageRuleActionsCacheKeyFieldsHost;
 import com.pulumi.cloudflare.outputs.PageRuleActionsCacheKeyFieldsQueryString;
 import com.pulumi.cloudflare.outputs.PageRuleActionsCacheKeyFieldsUser;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class PageRuleActionsCacheKeyFields {
-    /**
-     * @return Controls what cookies go into Cache Key:
-     * 
-     */
     private @Nullable PageRuleActionsCacheKeyFieldsCookie cookie;
-    /**
-     * @return Controls what HTTP headers go into Cache Key:
-     * 
-     */
     private @Nullable PageRuleActionsCacheKeyFieldsHeader header;
-    /**
-     * @return Controls which Host header goes into Cache Key:
-     * 
-     */
-    private PageRuleActionsCacheKeyFieldsHost host;
-    /**
-     * @return Controls which URL query string parameters go into the Cache Key.
-     * 
-     */
-    private PageRuleActionsCacheKeyFieldsQueryString queryString;
-    /**
-     * @return Controls which end user-related features go into the Cache Key.
-     * 
-     */
-    private PageRuleActionsCacheKeyFieldsUser user;
+    private @Nullable PageRuleActionsCacheKeyFieldsHost host;
+    private @Nullable PageRuleActionsCacheKeyFieldsQueryString queryString;
+    private @Nullable PageRuleActionsCacheKeyFieldsUser user;
 
     private PageRuleActionsCacheKeyFields() {}
-    /**
-     * @return Controls what cookies go into Cache Key:
-     * 
-     */
     public Optional<PageRuleActionsCacheKeyFieldsCookie> cookie() {
         return Optional.ofNullable(this.cookie);
     }
-    /**
-     * @return Controls what HTTP headers go into Cache Key:
-     * 
-     */
     public Optional<PageRuleActionsCacheKeyFieldsHeader> header() {
         return Optional.ofNullable(this.header);
     }
-    /**
-     * @return Controls which Host header goes into Cache Key:
-     * 
-     */
-    public PageRuleActionsCacheKeyFieldsHost host() {
-        return this.host;
+    public Optional<PageRuleActionsCacheKeyFieldsHost> host() {
+        return Optional.ofNullable(this.host);
     }
-    /**
-     * @return Controls which URL query string parameters go into the Cache Key.
-     * 
-     */
-    public PageRuleActionsCacheKeyFieldsQueryString queryString() {
-        return this.queryString;
+    public Optional<PageRuleActionsCacheKeyFieldsQueryString> queryString() {
+        return Optional.ofNullable(this.queryString);
     }
-    /**
-     * @return Controls which end user-related features go into the Cache Key.
-     * 
-     */
-    public PageRuleActionsCacheKeyFieldsUser user() {
-        return this.user;
+    public Optional<PageRuleActionsCacheKeyFieldsUser> user() {
+        return Optional.ofNullable(this.user);
     }
 
     public static Builder builder() {
@@ -90,9 +49,9 @@ public final class PageRuleActionsCacheKeyFields {
     public static final class Builder {
         private @Nullable PageRuleActionsCacheKeyFieldsCookie cookie;
         private @Nullable PageRuleActionsCacheKeyFieldsHeader header;
-        private PageRuleActionsCacheKeyFieldsHost host;
-        private PageRuleActionsCacheKeyFieldsQueryString queryString;
-        private PageRuleActionsCacheKeyFieldsUser user;
+        private @Nullable PageRuleActionsCacheKeyFieldsHost host;
+        private @Nullable PageRuleActionsCacheKeyFieldsQueryString queryString;
+        private @Nullable PageRuleActionsCacheKeyFieldsUser user;
         public Builder() {}
         public Builder(PageRuleActionsCacheKeyFields defaults) {
     	      Objects.requireNonNull(defaults);
@@ -116,26 +75,20 @@ public final class PageRuleActionsCacheKeyFields {
             return this;
         }
         @CustomType.Setter
-        public Builder host(PageRuleActionsCacheKeyFieldsHost host) {
-            if (host == null) {
-              throw new MissingRequiredPropertyException("PageRuleActionsCacheKeyFields", "host");
-            }
+        public Builder host(@Nullable PageRuleActionsCacheKeyFieldsHost host) {
+
             this.host = host;
             return this;
         }
         @CustomType.Setter
-        public Builder queryString(PageRuleActionsCacheKeyFieldsQueryString queryString) {
-            if (queryString == null) {
-              throw new MissingRequiredPropertyException("PageRuleActionsCacheKeyFields", "queryString");
-            }
+        public Builder queryString(@Nullable PageRuleActionsCacheKeyFieldsQueryString queryString) {
+
             this.queryString = queryString;
             return this;
         }
         @CustomType.Setter
-        public Builder user(PageRuleActionsCacheKeyFieldsUser user) {
-            if (user == null) {
-              throw new MissingRequiredPropertyException("PageRuleActionsCacheKeyFields", "user");
-            }
+        public Builder user(@Nullable PageRuleActionsCacheKeyFieldsUser user) {
+
             this.user = user;
             return this;
         }

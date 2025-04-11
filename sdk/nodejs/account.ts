@@ -2,29 +2,30 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Account resource. Account is the basic resource for
- * working with Cloudflare zones, teams and users.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.Account("example", {
- *     name: "some-enterprise-account",
- *     type: "enterprise",
- *     enforceTwofactor: true,
+ * const exampleAccount = new cloudflare.Account("example_account", {
+ *     name: "name",
+ *     type: "standard",
+ *     unit: {
+ *         id: "f267e341f3dd4697bd3b9f71dd96247f",
+ *     },
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/account:Account example <account_id>
+ * $ pulumi import cloudflare:index/account:Account example '<account_id>'
  * ```
  */
 export class Account extends pulumi.CustomResource {
@@ -56,17 +57,26 @@ export class Account extends pulumi.CustomResource {
     }
 
     /**
-     * Whether 2FA is enforced on the account. Defaults to `false`.
+     * Timestamp for the creation of the account
      */
-    public readonly enforceTwofactor!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * The name of the account that is displayed in the Cloudflare dashboard.
+     * Account name
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+     * Account settings
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    public readonly settings!: pulumi.Output<outputs.AccountSettings>;
+    /**
+     * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+     * Available values: "standard", "enterprise".
+     */
+    public readonly type!: pulumi.Output<string>;
+    /**
+     * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+     */
+    public readonly unit!: pulumi.Output<outputs.AccountUnit>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -81,17 +91,24 @@ export class Account extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            resourceInputs["enforceTwofactor"] = state ? state.enforceTwofactor : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["settings"] = state ? state.settings : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["unit"] = state ? state.unit : undefined;
         } else {
             const args = argsOrState as AccountArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["enforceTwofactor"] = args ? args.enforceTwofactor : undefined;
+            if ((!args || args.type === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'type'");
+            }
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["settings"] = args ? args.settings : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["unit"] = args ? args.unit : undefined;
+            resourceInputs["createdOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Account.__pulumiType, name, resourceInputs, opts);
@@ -103,17 +120,26 @@ export class Account extends pulumi.CustomResource {
  */
 export interface AccountState {
     /**
-     * Whether 2FA is enforced on the account. Defaults to `false`.
+     * Timestamp for the creation of the account
      */
-    enforceTwofactor?: pulumi.Input<boolean>;
+    createdOn?: pulumi.Input<string>;
     /**
-     * The name of the account that is displayed in the Cloudflare dashboard.
+     * Account name
      */
     name?: pulumi.Input<string>;
     /**
-     * Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+     * Account settings
+     */
+    settings?: pulumi.Input<inputs.AccountSettings>;
+    /**
+     * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+     * Available values: "standard", "enterprise".
      */
     type?: pulumi.Input<string>;
+    /**
+     * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+     */
+    unit?: pulumi.Input<inputs.AccountUnit>;
 }
 
 /**
@@ -121,15 +147,20 @@ export interface AccountState {
  */
 export interface AccountArgs {
     /**
-     * Whether 2FA is enforced on the account. Defaults to `false`.
-     */
-    enforceTwofactor?: pulumi.Input<boolean>;
-    /**
-     * The name of the account that is displayed in the Cloudflare dashboard.
+     * Account name
      */
     name: pulumi.Input<string>;
     /**
-     * Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+     * Account settings
      */
-    type?: pulumi.Input<string>;
+    settings?: pulumi.Input<inputs.AccountSettings>;
+    /**
+     * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+     * Available values: "standard", "enterprise".
+     */
+    type: pulumi.Input<string>;
+    /**
+     * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+     */
+    unit?: pulumi.Input<inputs.AccountUnit>;
 }

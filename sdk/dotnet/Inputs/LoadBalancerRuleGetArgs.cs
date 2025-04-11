@@ -13,49 +13,43 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class LoadBalancerRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The statement to evaluate to determine if this rule's effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+        /// The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
         /// </summary>
         [Input("condition")]
         public Input<string>? Condition { get; set; }
 
         /// <summary>
-        /// A disabled rule will not be executed.
+        /// Disable this specific rule. It will no longer be evaluated by this load balancer.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixed_response` must be set.
+        /// A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed*response is supplied the rule will be marked as terminates.
         /// </summary>
         [Input("fixedResponse")]
         public Input<Inputs.LoadBalancerRuleFixedResponseGetArgs>? FixedResponse { get; set; }
 
         /// <summary>
-        /// Human readable name for this rule.
+        /// Name of this rule. Only used for human readability.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional.
+        /// </summary>
         [Input("overrides")]
-        private InputList<Inputs.LoadBalancerRuleOverrideGetArgs>? _overrides;
+        public Input<Inputs.LoadBalancerRuleOverridesGetArgs>? Overrides { get; set; }
 
         /// <summary>
-        /// The load balancer settings to alter if this rule's `condition` is true. Note: `overrides` or `fixed_response` must be set.
-        /// </summary>
-        public InputList<Inputs.LoadBalancerRuleOverrideGetArgs> Overrides
-        {
-            get => _overrides ?? (_overrides = new InputList<Inputs.LoadBalancerRuleOverrideGetArgs>());
-            set => _overrides = value;
-        }
-
-        /// <summary>
-        /// Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
+        /// The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixed_response` forces this field to `true`.
+        /// If this rule's condition is true, this causes rule evaluation to stop after processing this rule.
         /// </summary>
         [Input("terminates")]
         public Input<bool>? Terminates { get; set; }

@@ -28,21 +28,31 @@ class GetAccountsResult:
     """
     A collection of values returned by getAccounts.
     """
-    def __init__(__self__, accounts=None, id=None, name=None):
-        if accounts and not isinstance(accounts, list):
-            raise TypeError("Expected argument 'accounts' to be a list")
-        pulumi.set(__self__, "accounts", accounts)
+    def __init__(__self__, direction=None, id=None, max_items=None, name=None, results=None):
+        if direction and not isinstance(direction, str):
+            raise TypeError("Expected argument 'direction' to be a str")
+        pulumi.set(__self__, "direction", direction)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if max_items and not isinstance(max_items, int):
+            raise TypeError("Expected argument 'max_items' to be a int")
+        pulumi.set(__self__, "max_items", max_items)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if results and not isinstance(results, list):
+            raise TypeError("Expected argument 'results' to be a list")
+        pulumi.set(__self__, "results", results)
 
     @property
     @pulumi.getter
-    def accounts(self) -> Sequence['outputs.GetAccountsAccountResult']:
-        return pulumi.get(self, "accounts")
+    def direction(self) -> Optional[builtins.str]:
+        """
+        Direction to order results.
+        Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -53,12 +63,28 @@ class GetAccountsResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="maxItems")
+    def max_items(self) -> Optional[builtins.int]:
+        """
+        Max items to fetch, default: 1000
+        """
+        return pulumi.get(self, "max_items")
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[builtins.str]:
         """
-        The account name to target for the resource.
+        Name of the account.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def results(self) -> Sequence['outputs.GetAccountsResultResult']:
+        """
+        The items returned by the data source
+        """
+        return pulumi.get(self, "results")
 
 
 class AwaitableGetAccountsResult(GetAccountsResult):
@@ -67,59 +93,77 @@ class AwaitableGetAccountsResult(GetAccountsResult):
         if False:
             yield self
         return GetAccountsResult(
-            accounts=self.accounts,
+            direction=self.direction,
             id=self.id,
-            name=self.name)
+            max_items=self.max_items,
+            name=self.name,
+            results=self.results)
 
 
-def get_accounts(name: Optional[builtins.str] = None,
+def get_accounts(direction: Optional[builtins.str] = None,
+                 max_items: Optional[builtins.int] = None,
+                 name: Optional[builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountsResult:
     """
-    Data source for looking up Cloudflare Accounts.
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_accounts(name="example account")
+    example_accounts = cloudflare.get_accounts(direction="asc",
+        name="example.com")
     ```
 
 
-    :param builtins.str name: The account name to target for the resource.
+    :param builtins.str direction: Direction to order results.
+           Available values: "asc", "desc".
+    :param builtins.int max_items: Max items to fetch, default: 1000
+    :param builtins.str name: Name of the account.
     """
     __args__ = dict()
+    __args__['direction'] = direction
+    __args__['maxItems'] = max_items
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult).value
 
     return AwaitableGetAccountsResult(
-        accounts=pulumi.get(__ret__, 'accounts'),
+        direction=pulumi.get(__ret__, 'direction'),
         id=pulumi.get(__ret__, 'id'),
-        name=pulumi.get(__ret__, 'name'))
-def get_accounts_output(name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+        max_items=pulumi.get(__ret__, 'max_items'),
+        name=pulumi.get(__ret__, 'name'),
+        results=pulumi.get(__ret__, 'results'))
+def get_accounts_output(direction: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                        max_items: Optional[pulumi.Input[Optional[builtins.int]]] = None,
+                        name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountsResult]:
     """
-    Data source for looking up Cloudflare Accounts.
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_accounts(name="example account")
+    example_accounts = cloudflare.get_accounts(direction="asc",
+        name="example.com")
     ```
 
 
-    :param builtins.str name: The account name to target for the resource.
+    :param builtins.str direction: Direction to order results.
+           Available values: "asc", "desc".
+    :param builtins.int max_items: Max items to fetch, default: 1000
+    :param builtins.str name: Name of the account.
     """
     __args__ = dict()
+    __args__['direction'] = direction
+    __args__['maxItems'] = max_items
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult)
     return __ret__.apply(lambda __response__: GetAccountsResult(
-        accounts=pulumi.get(__response__, 'accounts'),
+        direction=pulumi.get(__response__, 'direction'),
         id=pulumi.get(__response__, 'id'),
-        name=pulumi.get(__response__, 'name')))
+        max_items=pulumi.get(__response__, 'max_items'),
+        name=pulumi.get(__response__, 'name'),
+        results=pulumi.get(__response__, 'results')))

@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Data Localization Suite Regional Hostname.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,52 +20,45 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Regionalized hostname record resources are managed independently from the
-    ///     // Regionalized Hostname resources.
-    ///     var example = new Cloudflare.Record("example", new()
+    ///     var exampleRegionalHostname = new Cloudflare.RegionalHostname("example_regional_hostname", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Name = "example.com",
-    ///         Content = "192.0.2.1",
-    ///         Type = "A",
-    ///         Ttl = 3600,
-    ///     });
-    /// 
-    ///     // The cloudflare_regional_hostname resource may exist with or without its
-    ///     // corresponding record resource.
-    ///     var exampleRegionalHostname = new Cloudflare.RegionalHostname("example", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Hostname = "example.com",
-    ///         RegionKey = "eu",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Hostname = "foo.example.com",
+    ///         RegionKey = "ca",
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/regionalHostname:RegionalHostname example '&lt;zone_id&gt;/&lt;hostname&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/regionalHostname:RegionalHostname")]
     public partial class RegionalHostname : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The RFC3339 timestamp of when the hostname was created.
+        /// When the regional hostname was created
         /// </summary>
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// The hostname to regionalize.
+        /// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
         /// </summary>
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
-        /// The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+        /// Identifying key for the region
         /// </summary>
         [Output("regionKey")]
         public Output<string> RegionKey { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -119,19 +110,19 @@ namespace Pulumi.Cloudflare
     public sealed class RegionalHostnameArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The hostname to regionalize.
+        /// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
         /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
 
         /// <summary>
-        /// The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+        /// Identifying key for the region
         /// </summary>
         [Input("regionKey", required: true)]
         public Input<string> RegionKey { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -145,25 +136,25 @@ namespace Pulumi.Cloudflare
     public sealed class RegionalHostnameState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The RFC3339 timestamp of when the hostname was created.
+        /// When the regional hostname was created
         /// </summary>
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// The hostname to regionalize.
+        /// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+        /// Identifying key for the region
         /// </summary>
         [Input("regionKey")]
         public Input<string>? RegionKey { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

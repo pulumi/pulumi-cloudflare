@@ -7,23 +7,18 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Access Policy resource. Access Policies are
- * used in conjunction with Access Applications to restrict access to
- * a particular resource.
- *
- * > It's required that an `accountId` or `zoneId` is provided and in most cases using either is fine.
- *    However, if you're using a scoped access token, you must provide the argument that matches the token's
- *    scope. For example, an access token that is scoped to the "example.com" zone needs to use the `zoneId` argument.
- *    If 'application_id' is omitted, the policy created can be reused by multiple access applications.
- *    Any cloudflare.AccessApplication resource can reference reusable policies through its `policies` argument.
+ * > If 'application_id' is omitted, the policy created can be reused by multiple access applications.
+ *    Any `cloudflare.ZeroTrustAccessApplication` resource can reference reusable policies through its `policies` argument.
  *    To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
- *    lifecycle option `createBeforeDestroy` to true on the 'cloudflare_access_policy' resource.
+ *    lifecycle option `createBeforeDestroy` to true on the 'cloudflare_zero_trust_access_policy' resource.
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/<account_id>/<application_id>/<policy_id>
+ * $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example '<account_id>/<policy_id>'
  * ```
+ *
+ * @deprecated cloudflare.index/accesspolicy.AccessPolicy has been deprecated in favor of cloudflare.index/zerotrustaccesspolicy.ZeroTrustAccessPolicy
  */
 export class AccessPolicy extends pulumi.CustomResource {
     /**
@@ -36,6 +31,7 @@ export class AccessPolicy extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccessPolicyState, opts?: pulumi.CustomResourceOptions): AccessPolicy {
+        pulumi.log.warn("AccessPolicy is deprecated: cloudflare.index/accesspolicy.AccessPolicy has been deprecated in favor of cloudflare.index/zerotrustaccesspolicy.ZeroTrustAccessPolicy")
         return new AccessPolicy(name, <any>state, { ...opts, id: id });
     }
 
@@ -54,63 +50,61 @@ export class AccessPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * Identifier
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    public readonly accountId!: pulumi.Output<string>;
     /**
-     * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+     * Number of access applications currently using this policy.
      */
-    public readonly applicationId!: pulumi.Output<string | undefined>;
-    public readonly approvalGroups!: pulumi.Output<outputs.AccessPolicyApprovalGroup[] | undefined>;
-    public readonly approvalRequired!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly appCount!: pulumi.Output<number>;
     /**
-     * The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
+     * Administrators who can approve a temporary authentication request.
      */
-    public readonly connectionRules!: pulumi.Output<outputs.AccessPolicyConnectionRules | undefined>;
+    public readonly approvalGroups!: pulumi.Output<outputs.AccessPolicyApprovalGroup[]>;
     /**
-     * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
+     * Requires the user to request access from an administrator at the start of each session.
+     */
+    public readonly approvalRequired!: pulumi.Output<boolean>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: "allow", "deny", "nonIdentity", "bypass".
      */
     public readonly decision!: pulumi.Output<string>;
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      */
-    public readonly excludes!: pulumi.Output<outputs.AccessPolicyExclude[] | undefined>;
+    public readonly excludes!: pulumi.Output<outputs.AccessPolicyExclude[]>;
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
     public readonly includes!: pulumi.Output<outputs.AccessPolicyInclude[]>;
     /**
-     * Require this application to be served in an isolated browser for users matching this policy.
+     * Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
      */
-    public readonly isolationRequired!: pulumi.Output<boolean | undefined>;
+    public readonly isolationRequired!: pulumi.Output<boolean>;
     /**
-     * Friendly name of the Access Policy.
+     * The name of the Access policy.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The unique precedence for policies on a single application. Required when using `applicationId`.
-     */
-    public readonly precedence!: pulumi.Output<number | undefined>;
-    /**
-     * The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
+     * A custom message that will appear on the purpose justification screen.
      */
     public readonly purposeJustificationPrompt!: pulumi.Output<string | undefined>;
     /**
-     * Whether to prompt the user for a justification for accessing the resource.
+     * Require users to enter a justification when they log in to the application.
      */
-    public readonly purposeJustificationRequired!: pulumi.Output<boolean | undefined>;
+    public readonly purposeJustificationRequired!: pulumi.Output<boolean>;
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
-    public readonly requires!: pulumi.Output<outputs.AccessPolicyRequire[] | undefined>;
+    public readonly requires!: pulumi.Output<outputs.AccessPolicyRequire[]>;
+    public /*out*/ readonly reusable!: pulumi.Output<boolean>;
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
-    public readonly sessionDuration!: pulumi.Output<string | undefined>;
-    /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
-     */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    public readonly sessionDuration!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a AccessPolicy resource with the given unique name, arguments, and options.
@@ -119,30 +113,36 @@ export class AccessPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/accesspolicy.AccessPolicy has been deprecated in favor of cloudflare.index/zerotrustaccesspolicy.ZeroTrustAccessPolicy */
     constructor(name: string, args: AccessPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/accesspolicy.AccessPolicy has been deprecated in favor of cloudflare.index/zerotrustaccesspolicy.ZeroTrustAccessPolicy */
     constructor(name: string, argsOrState?: AccessPolicyArgs | AccessPolicyState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AccessPolicy is deprecated: cloudflare.index/accesspolicy.AccessPolicy has been deprecated in favor of cloudflare.index/zerotrustaccesspolicy.ZeroTrustAccessPolicy")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessPolicyState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
+            resourceInputs["appCount"] = state ? state.appCount : undefined;
             resourceInputs["approvalGroups"] = state ? state.approvalGroups : undefined;
             resourceInputs["approvalRequired"] = state ? state.approvalRequired : undefined;
-            resourceInputs["connectionRules"] = state ? state.connectionRules : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["decision"] = state ? state.decision : undefined;
             resourceInputs["excludes"] = state ? state.excludes : undefined;
             resourceInputs["includes"] = state ? state.includes : undefined;
             resourceInputs["isolationRequired"] = state ? state.isolationRequired : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["precedence"] = state ? state.precedence : undefined;
             resourceInputs["purposeJustificationPrompt"] = state ? state.purposeJustificationPrompt : undefined;
             resourceInputs["purposeJustificationRequired"] = state ? state.purposeJustificationRequired : undefined;
             resourceInputs["requires"] = state ? state.requires : undefined;
+            resourceInputs["reusable"] = state ? state.reusable : undefined;
             resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as AccessPolicyArgs | undefined;
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if ((!args || args.decision === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'decision'");
             }
@@ -153,23 +153,25 @@ export class AccessPolicy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
             resourceInputs["approvalGroups"] = args ? args.approvalGroups : undefined;
             resourceInputs["approvalRequired"] = args ? args.approvalRequired : undefined;
-            resourceInputs["connectionRules"] = args ? args.connectionRules : undefined;
             resourceInputs["decision"] = args ? args.decision : undefined;
             resourceInputs["excludes"] = args ? args.excludes : undefined;
             resourceInputs["includes"] = args ? args.includes : undefined;
             resourceInputs["isolationRequired"] = args ? args.isolationRequired : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["precedence"] = args ? args.precedence : undefined;
             resourceInputs["purposeJustificationPrompt"] = args ? args.purposeJustificationPrompt : undefined;
             resourceInputs["purposeJustificationRequired"] = args ? args.purposeJustificationRequired : undefined;
             resourceInputs["requires"] = args ? args.requires : undefined;
             resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["appCount"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["reusable"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessPolicy:AccessPolicy" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -179,63 +181,61 @@ export class AccessPolicy extends pulumi.CustomResource {
  */
 export interface AccessPolicyState {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+     * Number of access applications currently using this policy.
      */
-    applicationId?: pulumi.Input<string>;
+    appCount?: pulumi.Input<number>;
+    /**
+     * Administrators who can approve a temporary authentication request.
+     */
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
-    approvalRequired?: pulumi.Input<boolean>;
     /**
-     * The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
+     * Requires the user to request access from an administrator at the start of each session.
      */
-    connectionRules?: pulumi.Input<inputs.AccessPolicyConnectionRules>;
+    approvalRequired?: pulumi.Input<boolean>;
+    createdAt?: pulumi.Input<string>;
     /**
-     * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
+     * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: "allow", "deny", "nonIdentity", "bypass".
      */
     decision?: pulumi.Input<string>;
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      */
     excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
     includes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
     /**
-     * Require this application to be served in an isolated browser for users matching this policy.
+     * Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
      */
     isolationRequired?: pulumi.Input<boolean>;
     /**
-     * Friendly name of the Access Policy.
+     * The name of the Access policy.
      */
     name?: pulumi.Input<string>;
     /**
-     * The unique precedence for policies on a single application. Required when using `applicationId`.
-     */
-    precedence?: pulumi.Input<number>;
-    /**
-     * The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
+     * A custom message that will appear on the purpose justification screen.
      */
     purposeJustificationPrompt?: pulumi.Input<string>;
     /**
-     * Whether to prompt the user for a justification for accessing the resource.
+     * Require users to enter a justification when they log in to the application.
      */
     purposeJustificationRequired?: pulumi.Input<boolean>;
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
     requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
+    reusable?: pulumi.Input<boolean>;
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
     sessionDuration?: pulumi.Input<string>;
-    /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
-     */
-    zoneId?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
@@ -243,61 +243,52 @@ export interface AccessPolicyState {
  */
 export interface AccessPolicyArgs {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
-     * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+     * Administrators who can approve a temporary authentication request.
      */
-    applicationId?: pulumi.Input<string>;
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
+    /**
+     * Requires the user to request access from an administrator at the start of each session.
+     */
     approvalRequired?: pulumi.Input<boolean>;
     /**
-     * The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-     */
-    connectionRules?: pulumi.Input<inputs.AccessPolicyConnectionRules>;
-    /**
-     * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
+     * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: "allow", "deny", "nonIdentity", "bypass".
      */
     decision: pulumi.Input<string>;
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      */
     excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
     includes: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
     /**
-     * Require this application to be served in an isolated browser for users matching this policy.
+     * Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
      */
     isolationRequired?: pulumi.Input<boolean>;
     /**
-     * Friendly name of the Access Policy.
+     * The name of the Access policy.
      */
     name: pulumi.Input<string>;
     /**
-     * The unique precedence for policies on a single application. Required when using `applicationId`.
-     */
-    precedence?: pulumi.Input<number>;
-    /**
-     * The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
+     * A custom message that will appear on the purpose justification screen.
      */
     purposeJustificationPrompt?: pulumi.Input<string>;
     /**
-     * Whether to prompt the user for a justification for accessing the resource.
+     * Require users to enter a justification when they log in to the application.
      */
     purposeJustificationRequired?: pulumi.Input<boolean>;
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
     requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
     sessionDuration?: pulumi.Input<string>;
-    /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
-     */
-    zoneId?: pulumi.Input<string>;
 }

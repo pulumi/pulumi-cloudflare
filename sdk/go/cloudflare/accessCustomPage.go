@@ -8,13 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource to customize the pages your end users will see
-// when trying to reach applications behind Cloudflare Access.
-//
 // ## Example Usage
 //
 // ```go
@@ -22,18 +19,19 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccessCustomPage(ctx, "example", &cloudflare.AccessCustomPageArgs{
-//				ZoneId:     pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Name:       pulumi.String("example"),
-//				Type:       pulumi.String("forbidden"),
-//				CustomHtml: pulumi.String("<html><body><h1>Forbidden</h1></body></html>"),
+//			_, err := cloudflare.NewZeroTrustAccessCustomPage(ctx, "example_zero_trust_access_custom_page", &cloudflare.ZeroTrustAccessCustomPageArgs{
+//				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				CustomHtml: pulumi.String("<html><body><h1>Access Denied</h1></body></html>"),
+//				Name:       pulumi.String("name"),
+//				Type:       pulumi.String("identity_denied"),
+//				AppCount:   pulumi.Int(0),
 //			})
 //			if err != nil {
 //				return err
@@ -43,21 +41,32 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/accessCustomPage:AccessCustomPage example '<account_id>/<custom_page_id>'
+// ```
+//
+// Deprecated: cloudflare.index/accesscustompage.AccessCustomPage has been deprecated in favor of cloudflare.index/zerotrustaccesscustompage.ZeroTrustAccessCustomPage
 type AccessCustomPage struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// Number of apps to display on the custom page.
-	AppCount pulumi.IntPtrOutput `pulumi:"appCount"`
-	// Custom HTML to display on the custom page.
-	CustomHtml pulumi.StringPtrOutput `pulumi:"customHtml"`
-	// Friendly name of the Access Custom Page configuration.
+	// Identifier
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Number of apps the custom page is assigned to.
+	AppCount  pulumi.IntPtrOutput `pulumi:"appCount"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Custom page HTML.
+	CustomHtml pulumi.StringOutput `pulumi:"customHtml"`
+	// Custom page name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Type of Access custom page to create. Available values: `identityDenied`, `forbidden`.
+	// Custom page type.
+	// Available values: "identityDenied", "forbidden".
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	// UUID
+	Uid       pulumi.StringOutput `pulumi:"uid"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
 // NewAccessCustomPage registers a new resource with the given unique name, arguments, and options.
@@ -67,12 +76,24 @@ func NewAccessCustomPage(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.CustomHtml == nil {
+		return nil, errors.New("invalid value for required argument 'CustomHtml'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/accessCustomPage:AccessCustomPage"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessCustomPage
 	err := ctx.RegisterResource("cloudflare:index/accessCustomPage:AccessCustomPage", name, args, &resource, opts...)
@@ -96,33 +117,39 @@ func GetAccessCustomPage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessCustomPage resources.
 type accessCustomPageState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// Number of apps to display on the custom page.
-	AppCount *int `pulumi:"appCount"`
-	// Custom HTML to display on the custom page.
+	// Number of apps the custom page is assigned to.
+	AppCount  *int    `pulumi:"appCount"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// Custom page HTML.
 	CustomHtml *string `pulumi:"customHtml"`
-	// Friendly name of the Access Custom Page configuration.
+	// Custom page name.
 	Name *string `pulumi:"name"`
-	// Type of Access custom page to create. Available values: `identityDenied`, `forbidden`.
+	// Custom page type.
+	// Available values: "identityDenied", "forbidden".
 	Type *string `pulumi:"type"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
-	ZoneId *string `pulumi:"zoneId"`
+	// UUID
+	Uid       *string `pulumi:"uid"`
+	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type AccessCustomPageState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// Number of apps to display on the custom page.
-	AppCount pulumi.IntPtrInput
-	// Custom HTML to display on the custom page.
+	// Number of apps the custom page is assigned to.
+	AppCount  pulumi.IntPtrInput
+	CreatedAt pulumi.StringPtrInput
+	// Custom page HTML.
 	CustomHtml pulumi.StringPtrInput
-	// Friendly name of the Access Custom Page configuration.
+	// Custom page name.
 	Name pulumi.StringPtrInput
-	// Type of Access custom page to create. Available values: `identityDenied`, `forbidden`.
+	// Custom page type.
+	// Available values: "identityDenied", "forbidden".
 	Type pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
-	ZoneId pulumi.StringPtrInput
+	// UUID
+	Uid       pulumi.StringPtrInput
+	UpdatedAt pulumi.StringPtrInput
 }
 
 func (AccessCustomPageState) ElementType() reflect.Type {
@@ -130,34 +157,32 @@ func (AccessCustomPageState) ElementType() reflect.Type {
 }
 
 type accessCustomPageArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
-	AccountId *string `pulumi:"accountId"`
-	// Number of apps to display on the custom page.
+	// Identifier
+	AccountId string `pulumi:"accountId"`
+	// Number of apps the custom page is assigned to.
 	AppCount *int `pulumi:"appCount"`
-	// Custom HTML to display on the custom page.
-	CustomHtml *string `pulumi:"customHtml"`
-	// Friendly name of the Access Custom Page configuration.
+	// Custom page HTML.
+	CustomHtml string `pulumi:"customHtml"`
+	// Custom page name.
 	Name string `pulumi:"name"`
-	// Type of Access custom page to create. Available values: `identityDenied`, `forbidden`.
+	// Custom page type.
+	// Available values: "identityDenied", "forbidden".
 	Type string `pulumi:"type"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
-	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessCustomPage resource.
 type AccessCustomPageArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
-	AccountId pulumi.StringPtrInput
-	// Number of apps to display on the custom page.
+	// Identifier
+	AccountId pulumi.StringInput
+	// Number of apps the custom page is assigned to.
 	AppCount pulumi.IntPtrInput
-	// Custom HTML to display on the custom page.
-	CustomHtml pulumi.StringPtrInput
-	// Friendly name of the Access Custom Page configuration.
+	// Custom page HTML.
+	CustomHtml pulumi.StringInput
+	// Custom page name.
 	Name pulumi.StringInput
-	// Type of Access custom page to create. Available values: `identityDenied`, `forbidden`.
+	// Custom page type.
+	// Available values: "identityDenied", "forbidden".
 	Type pulumi.StringInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
-	ZoneId pulumi.StringPtrInput
 }
 
 func (AccessCustomPageArgs) ElementType() reflect.Type {
@@ -247,34 +272,43 @@ func (o AccessCustomPageOutput) ToAccessCustomPageOutputWithContext(ctx context.
 	return o
 }
 
-// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
-func (o AccessCustomPageOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+// Identifier
+func (o AccessCustomPageOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Number of apps to display on the custom page.
+// Number of apps the custom page is assigned to.
 func (o AccessCustomPageOutput) AppCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AccessCustomPage) pulumi.IntPtrOutput { return v.AppCount }).(pulumi.IntPtrOutput)
 }
 
-// Custom HTML to display on the custom page.
-func (o AccessCustomPageOutput) CustomHtml() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringPtrOutput { return v.CustomHtml }).(pulumi.StringPtrOutput)
+func (o AccessCustomPageOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Friendly name of the Access Custom Page configuration.
+// Custom page HTML.
+func (o AccessCustomPageOutput) CustomHtml() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.CustomHtml }).(pulumi.StringOutput)
+}
+
+// Custom page name.
 func (o AccessCustomPageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Type of Access custom page to create. Available values: `identityDenied`, `forbidden`.
+// Custom page type.
+// Available values: "identityDenied", "forbidden".
 func (o AccessCustomPageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
-func (o AccessCustomPageOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+// UUID
+func (o AccessCustomPageOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+func (o AccessCustomPageOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type AccessCustomPageArrayOutput struct{ *pulumi.OutputState }

@@ -7,7 +7,6 @@ import com.pulumi.cloudflare.inputs.DevicePostureIntegrationConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,52 +16,37 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
 
     public static final DevicePostureIntegrationState Empty = new DevicePostureIntegrationState();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * The device posture integration&#39;s connection authorization parameters.
+     * The configuration object containing third-party integration information.
      * 
      */
-    @Import(name="configs")
-    private @Nullable Output<List<DevicePostureIntegrationConfigArgs>> configs;
+    @Import(name="config")
+    private @Nullable Output<DevicePostureIntegrationConfigArgs> config;
 
     /**
-     * @return The device posture integration&#39;s connection authorization parameters.
+     * @return The configuration object containing third-party integration information.
      * 
      */
-    public Optional<Output<List<DevicePostureIntegrationConfigArgs>>> configs() {
-        return Optional.ofNullable(this.configs);
-    }
-
-    @Import(name="identifier")
-    private @Nullable Output<String> identifier;
-
-    public Optional<Output<String>> identifier() {
-        return Optional.ofNullable(this.identifier);
+    public Optional<Output<DevicePostureIntegrationConfigArgs>> config() {
+        return Optional.ofNullable(this.config);
     }
 
     /**
-     * Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+     * The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
      * 
      */
     @Import(name="interval")
     private @Nullable Output<String> interval;
 
     /**
-     * @return Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+     * @return The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
      * 
      */
     public Optional<Output<String>> interval() {
@@ -70,14 +54,14 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
     }
 
     /**
-     * Name of the device posture integration.
+     * The name of the device posture integration.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the device posture integration.
+     * @return The name of the device posture integration.
      * 
      */
     public Optional<Output<String>> name() {
@@ -85,14 +69,16 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
     }
 
     /**
-     * The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+     * The type of device posture integration.
+     * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+     * @return The type of device posture integration.
+     * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -103,8 +89,7 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
 
     private DevicePostureIntegrationState(DevicePostureIntegrationState $) {
         this.accountId = $.accountId;
-        this.configs = $.configs;
-        this.identifier = $.identifier;
+        this.config = $.config;
         this.interval = $.interval;
         this.name = $.name;
         this.type = $.type;
@@ -128,69 +113,38 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
             $ = new DevicePostureIntegrationState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param configs The device posture integration&#39;s connection authorization parameters.
+         * @param config The configuration object containing third-party integration information.
          * 
          * @return builder
          * 
          */
-        public Builder configs(@Nullable Output<List<DevicePostureIntegrationConfigArgs>> configs) {
-            $.configs = configs;
+        public Builder config(@Nullable Output<DevicePostureIntegrationConfigArgs> config) {
+            $.config = config;
             return this;
         }
 
         /**
-         * @param configs The device posture integration&#39;s connection authorization parameters.
+         * @param config The configuration object containing third-party integration information.
          * 
          * @return builder
          * 
          */
-        public Builder configs(List<DevicePostureIntegrationConfigArgs> configs) {
-            return configs(Output.of(configs));
+        public Builder config(DevicePostureIntegrationConfigArgs config) {
+            return config(Output.of(config));
         }
 
         /**
-         * @param configs The device posture integration&#39;s connection authorization parameters.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder configs(DevicePostureIntegrationConfigArgs... configs) {
-            return configs(List.of(configs));
-        }
-
-        public Builder identifier(@Nullable Output<String> identifier) {
-            $.identifier = identifier;
-            return this;
-        }
-
-        public Builder identifier(String identifier) {
-            return identifier(Output.of(identifier));
-        }
-
-        /**
-         * @param interval Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+         * @param interval The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
          * 
          * @return builder
          * 
@@ -201,7 +155,7 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interval Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+         * @param interval The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
          * 
          * @return builder
          * 
@@ -211,7 +165,7 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name Name of the device posture integration.
+         * @param name The name of the device posture integration.
          * 
          * @return builder
          * 
@@ -222,7 +176,7 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name Name of the device posture integration.
+         * @param name The name of the device posture integration.
          * 
          * @return builder
          * 
@@ -232,7 +186,8 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+         * @param type The type of device posture integration.
+         * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
          * 
          * @return builder
          * 
@@ -243,7 +198,8 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+         * @param type The type of device posture integration.
+         * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
          * 
          * @return builder
          * 

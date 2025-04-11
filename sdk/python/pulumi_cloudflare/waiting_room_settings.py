@@ -24,8 +24,10 @@ class WaitingRoomSettingsArgs:
                  search_engine_crawler_bypass: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a WaitingRoomSettings resource.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.bool] search_engine_crawler_bypass: Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.bool] search_engine_crawler_bypass: Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+               Verified search engine crawlers will not be tracked or counted by the waiting room system,
+               and will not appear in waiting room analytics.
         """
         pulumi.set(__self__, "zone_id", zone_id)
         if search_engine_crawler_bypass is not None:
@@ -35,7 +37,7 @@ class WaitingRoomSettingsArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -47,7 +49,9 @@ class WaitingRoomSettingsArgs:
     @pulumi.getter(name="searchEngineCrawlerBypass")
     def search_engine_crawler_bypass(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+        Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+        Verified search engine crawlers will not be tracked or counted by the waiting room system,
+        and will not appear in waiting room analytics.
         """
         return pulumi.get(self, "search_engine_crawler_bypass")
 
@@ -63,8 +67,10 @@ class _WaitingRoomSettingsState:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering WaitingRoomSettings resources.
-        :param pulumi.Input[builtins.bool] search_engine_crawler_bypass: Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.bool] search_engine_crawler_bypass: Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+               Verified search engine crawlers will not be tracked or counted by the waiting room system,
+               and will not appear in waiting room analytics.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         if search_engine_crawler_bypass is not None:
             pulumi.set(__self__, "search_engine_crawler_bypass", search_engine_crawler_bypass)
@@ -75,7 +81,9 @@ class _WaitingRoomSettingsState:
     @pulumi.getter(name="searchEngineCrawlerBypass")
     def search_engine_crawler_bypass(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+        Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+        Verified search engine crawlers will not be tracked or counted by the waiting room system,
+        and will not appear in waiting room analytics.
         """
         return pulumi.get(self, "search_engine_crawler_bypass")
 
@@ -87,7 +95,7 @@ class _WaitingRoomSettingsState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -105,29 +113,29 @@ class WaitingRoomSettings(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Configure zone-wide settings for Cloudflare waiting rooms.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.WaitingRoomSettings("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+        example_waiting_room_settings = cloudflare.WaitingRoomSettings("example_waiting_room_settings",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             search_engine_crawler_bypass=True)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example <zone_id>
+        $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] search_engine_crawler_bypass: Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.bool] search_engine_crawler_bypass: Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+               Verified search engine crawlers will not be tracked or counted by the waiting room system,
+               and will not appear in waiting room analytics.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         ...
     @overload
@@ -136,23 +144,21 @@ class WaitingRoomSettings(pulumi.CustomResource):
                  args: WaitingRoomSettingsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Configure zone-wide settings for Cloudflare waiting rooms.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.WaitingRoomSettings("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+        example_waiting_room_settings = cloudflare.WaitingRoomSettings("example_waiting_room_settings",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             search_engine_crawler_bypass=True)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example <zone_id>
+        $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -204,8 +210,10 @@ class WaitingRoomSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] search_engine_crawler_bypass: Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.bool] search_engine_crawler_bypass: Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+               Verified search engine crawlers will not be tracked or counted by the waiting room system,
+               and will not appear in waiting room analytics.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -217,9 +225,11 @@ class WaitingRoomSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="searchEngineCrawlerBypass")
-    def search_engine_crawler_bypass(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def search_engine_crawler_bypass(self) -> pulumi.Output[builtins.bool]:
         """
-        Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+        Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+        Verified search engine crawlers will not be tracked or counted by the waiting room system,
+        and will not appear in waiting room analytics.
         """
         return pulumi.get(self, "search_engine_crawler_bypass")
 
@@ -227,7 +237,7 @@ class WaitingRoomSettings(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

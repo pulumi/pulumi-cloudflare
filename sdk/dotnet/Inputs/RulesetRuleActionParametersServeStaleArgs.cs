@@ -13,10 +13,10 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersServeStaleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Disable stale while updating.
+        /// Defines whether Cloudflare should serve stale content while updating. If true, Cloudflare will not serve stale content while getting the latest content from the origin.
         /// </summary>
-        [Input("disableStaleWhileUpdating")]
-        public Input<bool>? DisableStaleWhileUpdating { get; set; }
+        [Input("disableStaleWhileUpdating", required: true)]
+        public Input<bool> DisableStaleWhileUpdating { get; set; } = null!;
 
         public RulesetRuleActionParametersServeStaleArgs()
         {

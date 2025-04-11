@@ -13,25 +13,25 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsRuleRuleSettingsDnsResolversIpv4GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IPv4 or IPv6 address of the upstream resolver.
+        /// IPv4 address of upstream resolver.
         /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
         /// <summary>
-        /// A port number to use for the upstream resolver. Defaults to `53`.
+        /// A port number to use for upstream resolver. Defaults to 53 if unspecified.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+        /// Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
         /// </summary>
         [Input("routeThroughPrivateNetwork")]
         public Input<bool>? RouteThroughPrivateNetwork { get; set; }
 
         /// <summary>
-        /// specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        /// Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
         /// </summary>
         [Input("vnetId")]
         public Input<string>? VnetId { get; set; }

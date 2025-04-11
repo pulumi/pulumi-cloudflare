@@ -3,16 +3,13 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.FirewallRuleActionArgs;
+import com.pulumi.cloudflare.inputs.FirewallRuleFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
@@ -20,104 +17,36 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
     public static final FirewallRuleArgs Empty = new FirewallRuleArgs();
 
     /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`, `managed_challenge`, `log`, `bypass`.
+     * The action to perform when the threshold of matched traffic within the configured period is exceeded.
      * 
      */
     @Import(name="action", required=true)
-    private Output<String> action;
+    private Output<FirewallRuleActionArgs> action;
 
     /**
-     * @return The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`, `managed_challenge`, `log`, `bypass`.
+     * @return The action to perform when the threshold of matched traffic within the configured period is exceeded.
      * 
      */
-    public Output<String> action() {
+    public Output<FirewallRuleActionArgs> action() {
         return this.action;
     }
 
-    /**
-     * A description of the rule to help identify it.
-     * 
-     */
-    @Import(name="description")
-    private @Nullable Output<String> description;
+    @Import(name="filter", required=true)
+    private Output<FirewallRuleFilterArgs> filter;
 
-    /**
-     * @return A description of the rule to help identify it.
-     * 
-     */
-    public Optional<Output<String>> description() {
-        return Optional.ofNullable(this.description);
+    public Output<FirewallRuleFilterArgs> filter() {
+        return this.filter;
     }
 
     /**
-     * The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
-     * 
-     */
-    @Import(name="filterId", required=true)
-    private Output<String> filterId;
-
-    /**
-     * @return The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
-     * 
-     */
-    public Output<String> filterId() {
-        return this.filterId;
-    }
-
-    /**
-     * Whether this filter based firewall rule is currently paused.
-     * 
-     */
-    @Import(name="paused")
-    private @Nullable Output<Boolean> paused;
-
-    /**
-     * @return Whether this filter based firewall rule is currently paused.
-     * 
-     */
-    public Optional<Output<Boolean>> paused() {
-        return Optional.ofNullable(this.paused);
-    }
-
-    /**
-     * The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
-     * 
-     */
-    @Import(name="priority")
-    private @Nullable Output<Integer> priority;
-
-    /**
-     * @return The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
-     * 
-     */
-    public Optional<Output<Integer>> priority() {
-        return Optional.ofNullable(this.priority);
-    }
-
-    /**
-     * List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
-     * 
-     */
-    @Import(name="products")
-    private @Nullable Output<List<String>> products;
-
-    /**
-     * @return List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
-     * 
-     */
-    public Optional<Output<List<String>>> products() {
-        return Optional.ofNullable(this.products);
-    }
-
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -128,11 +57,7 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     private FirewallRuleArgs(FirewallRuleArgs $) {
         this.action = $.action;
-        this.description = $.description;
-        this.filterId = $.filterId;
-        this.paused = $.paused;
-        this.priority = $.priority;
-        this.products = $.products;
+        this.filter = $.filter;
         this.zoneId = $.zoneId;
     }
 
@@ -155,143 +80,37 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`, `managed_challenge`, `log`, `bypass`.
+         * @param action The action to perform when the threshold of matched traffic within the configured period is exceeded.
          * 
          * @return builder
          * 
          */
-        public Builder action(Output<String> action) {
+        public Builder action(Output<FirewallRuleActionArgs> action) {
             $.action = action;
             return this;
         }
 
         /**
-         * @param action The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`, `managed_challenge`, `log`, `bypass`.
+         * @param action The action to perform when the threshold of matched traffic within the configured period is exceeded.
          * 
          * @return builder
          * 
          */
-        public Builder action(String action) {
+        public Builder action(FirewallRuleActionArgs action) {
             return action(Output.of(action));
         }
 
-        /**
-         * @param description A description of the rule to help identify it.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(@Nullable Output<String> description) {
-            $.description = description;
+        public Builder filter(Output<FirewallRuleFilterArgs> filter) {
+            $.filter = filter;
             return this;
         }
 
-        /**
-         * @param description A description of the rule to help identify it.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(String description) {
-            return description(Output.of(description));
+        public Builder filter(FirewallRuleFilterArgs filter) {
+            return filter(Output.of(filter));
         }
 
         /**
-         * @param filterId The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder filterId(Output<String> filterId) {
-            $.filterId = filterId;
-            return this;
-        }
-
-        /**
-         * @param filterId The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder filterId(String filterId) {
-            return filterId(Output.of(filterId));
-        }
-
-        /**
-         * @param paused Whether this filter based firewall rule is currently paused.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder paused(@Nullable Output<Boolean> paused) {
-            $.paused = paused;
-            return this;
-        }
-
-        /**
-         * @param paused Whether this filter based firewall rule is currently paused.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder paused(Boolean paused) {
-            return paused(Output.of(paused));
-        }
-
-        /**
-         * @param priority The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder priority(@Nullable Output<Integer> priority) {
-            $.priority = priority;
-            return this;
-        }
-
-        /**
-         * @param priority The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder priority(Integer priority) {
-            return priority(Output.of(priority));
-        }
-
-        /**
-         * @param products List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder products(@Nullable Output<List<String>> products) {
-            $.products = products;
-            return this;
-        }
-
-        /**
-         * @param products List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder products(List<String> products) {
-            return products(Output.of(products));
-        }
-
-        /**
-         * @param products List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder products(String... products) {
-            return products(List.of(products));
-        }
-
-        /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -302,7 +121,7 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -315,8 +134,8 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
             if ($.action == null) {
                 throw new MissingRequiredPropertyException("FirewallRuleArgs", "action");
             }
-            if ($.filterId == null) {
-                throw new MissingRequiredPropertyException("FirewallRuleArgs", "filterId");
+            if ($.filter == null) {
+                throw new MissingRequiredPropertyException("FirewallRuleArgs", "filter");
             }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("FirewallRuleArgs", "zoneId");

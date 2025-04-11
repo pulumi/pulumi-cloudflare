@@ -13,40 +13,29 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WaitingRoomRulesRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Action to perform in the ruleset rule. Available values: `bypass_waiting_room`.
+        /// The action to take when the expression matches.
+        /// Available values: "bypass*waiting*room".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
 
         /// <summary>
-        /// Brief summary of the waiting room rule and its intended use.
+        /// The description of the rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Criteria for an HTTP request to trigger the waiting room rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Waiting Room Rules Docs](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/).
+        /// When set to true, the rule is enabled.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Criteria defining when there is a match for the current rule.
         /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
-
-        /// <summary>
-        /// Unique rule identifier.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// Whether the rule is enabled or disabled. Available values: `enabled`, `disabled`.
-        /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
-
-        /// <summary>
-        /// Version of the waiting room rule.
-        /// </summary>
-        [Input("version")]
-        public Input<string>? Version { get; set; }
 
         public WaitingRoomRulesRuleArgs()
         {

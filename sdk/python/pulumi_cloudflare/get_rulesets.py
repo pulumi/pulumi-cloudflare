@@ -15,7 +15,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetRulesetsResult',
@@ -29,22 +28,19 @@ class GetRulesetsResult:
     """
     A collection of values returned by getRulesets.
     """
-    def __init__(__self__, account_id=None, filter=None, id=None, include_rules=None, rulesets=None, zone_id=None):
+    def __init__(__self__, account_id=None, id=None, max_items=None, results=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if filter and not isinstance(filter, dict):
-            raise TypeError("Expected argument 'filter' to be a dict")
-        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if include_rules and not isinstance(include_rules, bool):
-            raise TypeError("Expected argument 'include_rules' to be a bool")
-        pulumi.set(__self__, "include_rules", include_rules)
-        if rulesets and not isinstance(rulesets, list):
-            raise TypeError("Expected argument 'rulesets' to be a list")
-        pulumi.set(__self__, "rulesets", rulesets)
+        if max_items and not isinstance(max_items, int):
+            raise TypeError("Expected argument 'max_items' to be a int")
+        pulumi.set(__self__, "max_items", max_items)
+        if results and not isinstance(results, list):
+            raise TypeError("Expected argument 'results' to be a list")
+        pulumi.set(__self__, "results", results)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -53,14 +49,9 @@ class GetRulesetsResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[builtins.str]:
         """
-        The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
-
-    @property
-    @pulumi.getter
-    def filter(self) -> Optional['outputs.GetRulesetsFilterResult']:
-        return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter
@@ -71,23 +62,26 @@ class GetRulesetsResult:
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter(name="includeRules")
-    def include_rules(self) -> Optional[builtins.bool]:
+    @pulumi.getter(name="maxItems")
+    def max_items(self) -> Optional[builtins.int]:
         """
-        Include rule data in response.
+        Max items to fetch, default: 1000
         """
-        return pulumi.get(self, "include_rules")
+        return pulumi.get(self, "max_items")
 
     @property
     @pulumi.getter
-    def rulesets(self) -> Sequence['outputs.GetRulesetsRulesetResult']:
-        return pulumi.get(self, "rulesets")
+    def results(self) -> Sequence['outputs.GetRulesetsResultResult']:
+        """
+        The items returned by the data source
+        """
+        return pulumi.get(self, "results")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[builtins.str]:
         """
-        The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -99,89 +93,74 @@ class AwaitableGetRulesetsResult(GetRulesetsResult):
             yield self
         return GetRulesetsResult(
             account_id=self.account_id,
-            filter=self.filter,
             id=self.id,
-            include_rules=self.include_rules,
-            rulesets=self.rulesets,
+            max_items=self.max_items,
+            results=self.results,
             zone_id=self.zone_id)
 
 
 def get_rulesets(account_id: Optional[builtins.str] = None,
-                 filter: Optional[Union['GetRulesetsFilterArgs', 'GetRulesetsFilterArgsDict']] = None,
-                 include_rules: Optional[builtins.bool] = None,
+                 max_items: Optional[builtins.int] = None,
                  zone_id: Optional[builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRulesetsResult:
     """
-    Use this datasource to lookup Rulesets in an account or zone.
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_rulesets(zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-        filter={
-            "name": ".*OWASP.*",
-        })
+    example_rulesets = cloudflare.get_rulesets(account_id="account_id",
+        zone_id="zone_id")
     ```
 
 
-    :param builtins.str account_id: The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
-    :param builtins.bool include_rules: Include rule data in response.
-    :param builtins.str zone_id: The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+    :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+    :param builtins.int max_items: Max items to fetch, default: 1000
+    :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    __args__['filter'] = filter
-    __args__['includeRules'] = include_rules
+    __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getRulesets:getRulesets', __args__, opts=opts, typ=GetRulesetsResult).value
 
     return AwaitableGetRulesetsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
-        include_rules=pulumi.get(__ret__, 'include_rules'),
-        rulesets=pulumi.get(__ret__, 'rulesets'),
+        max_items=pulumi.get(__ret__, 'max_items'),
+        results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_rulesets_output(account_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
-                        filter: Optional[pulumi.Input[Optional[Union['GetRulesetsFilterArgs', 'GetRulesetsFilterArgsDict']]]] = None,
-                        include_rules: Optional[pulumi.Input[Optional[builtins.bool]]] = None,
+                        max_items: Optional[pulumi.Input[Optional[builtins.int]]] = None,
                         zone_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRulesetsResult]:
     """
-    Use this datasource to lookup Rulesets in an account or zone.
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_rulesets(zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-        filter={
-            "name": ".*OWASP.*",
-        })
+    example_rulesets = cloudflare.get_rulesets(account_id="account_id",
+        zone_id="zone_id")
     ```
 
 
-    :param builtins.str account_id: The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
-    :param builtins.bool include_rules: Include rule data in response.
-    :param builtins.str zone_id: The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+    :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+    :param builtins.int max_items: Max items to fetch, default: 1000
+    :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    __args__['filter'] = filter
-    __args__['includeRules'] = include_rules
+    __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getRulesets:getRulesets', __args__, opts=opts, typ=GetRulesetsResult)
     return __ret__.apply(lambda __response__: GetRulesetsResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
-        include_rules=pulumi.get(__response__, 'include_rules'),
-        rulesets=pulumi.get(__response__, 'rulesets'),
+        max_items=pulumi.get(__response__, 'max_items'),
+        results=pulumi.get(__response__, 'results'),
         zone_id=pulumi.get(__response__, 'zone_id')))

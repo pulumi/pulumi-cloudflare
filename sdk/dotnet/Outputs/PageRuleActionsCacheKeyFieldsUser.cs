@@ -13,81 +13,8 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class PageRuleActionsCacheKeyFieldsUser
     {
-        /// <summary>
-        /// `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
-        /// </summary>
         public readonly bool? DeviceType;
-        /// <summary>
-        /// `true` - includes the client’s country, derived from the IP address; defaults to `false`.
-        /// </summary>
         public readonly bool? Geo;
-        /// <summary>
-        /// `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
-        /// 
-        /// Example:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     // Unrealistic example with all features used
-        ///     var foobar = new Cloudflare.PageRule("foobar", new()
-        ///     {
-        ///         ZoneId = cloudflareZoneId,
-        ///         Target = $"{cloudflareZone}/app/*",
-        ///         Priority = 1,
-        ///         Actions = new Cloudflare.Inputs.PageRuleActionsArgs
-        ///         {
-        ///             CacheKeyFields = new Cloudflare.Inputs.PageRuleActionsCacheKeyFieldsArgs
-        ///             {
-        ///                 Cookie = new Cloudflare.Inputs.PageRuleActionsCacheKeyFieldsCookieArgs
-        ///                 {
-        ///                     CheckPresences = new[]
-        ///                     {
-        ///                         "wordpress_test_cookie",
-        ///                     },
-        ///                 },
-        ///                 Header = new Cloudflare.Inputs.PageRuleActionsCacheKeyFieldsHeaderArgs
-        ///                 {
-        ///                     CheckPresences = new[]
-        ///                     {
-        ///                         "header_present",
-        ///                     },
-        ///                     Excludes = new[]
-        ///                     {
-        ///                         "origin",
-        ///                     },
-        ///                     Includes = new[]
-        ///                     {
-        ///                         "api-key",
-        ///                         "dnt",
-        ///                     },
-        ///                 },
-        ///                 Host = new Cloudflare.Inputs.PageRuleActionsCacheKeyFieldsHostArgs
-        ///                 {
-        ///                     Resolved = true,
-        ///                 },
-        ///                 QueryString = new Cloudflare.Inputs.PageRuleActionsCacheKeyFieldsQueryStringArgs
-        ///                 {
-        ///                     Ignore = true,
-        ///                 },
-        ///                 User = new Cloudflare.Inputs.PageRuleActionsCacheKeyFieldsUserArgs
-        ///                 {
-        ///                     DeviceType = false,
-        ///                     Geo = true,
-        ///                     Lang = true,
-        ///                 },
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public readonly bool? Lang;
 
         [OutputConstructor]

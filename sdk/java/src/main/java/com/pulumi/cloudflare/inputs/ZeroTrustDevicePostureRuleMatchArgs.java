@@ -16,14 +16,14 @@ public final class ZeroTrustDevicePostureRuleMatchArgs extends com.pulumi.resour
     public static final ZeroTrustDevicePostureRuleMatchArgs Empty = new ZeroTrustDevicePostureRuleMatchArgs();
 
     /**
-     * The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
+     * Available values: &#34;windows&#34;, &#34;mac&#34;, &#34;linux&#34;, &#34;android&#34;, &#34;ios&#34;.
      * 
      */
     @Import(name="platform")
     private @Nullable Output<String> platform;
 
     /**
-     * @return The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
+     * @return Available values: &#34;windows&#34;, &#34;mac&#34;, &#34;linux&#34;, &#34;android&#34;, &#34;ios&#34;.
      * 
      */
     public Optional<Output<String>> platform() {
@@ -55,7 +55,7 @@ public final class ZeroTrustDevicePostureRuleMatchArgs extends com.pulumi.resour
         }
 
         /**
-         * @param platform The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
+         * @param platform Available values: &#34;windows&#34;, &#34;mac&#34;, &#34;linux&#34;, &#34;android&#34;, &#34;ios&#34;.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ZeroTrustDevicePostureRuleMatchArgs extends com.pulumi.resour
         }
 
         /**
-         * @param platform The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
+         * @param platform Available values: &#34;windows&#34;, &#34;mac&#34;, &#34;linux&#34;, &#34;android&#34;, &#34;ios&#34;.
          * 
          * @return builder
          * 

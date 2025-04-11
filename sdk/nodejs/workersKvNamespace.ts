@@ -5,24 +5,22 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides the ability to manage Cloudflare Workers KV Namespace features.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.WorkersKvNamespace("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     title: "test-namespace",
+ * const exampleWorkersKvNamespace = new cloudflare.WorkersKvNamespace("example_workers_kv_namespace", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     title: "My Own Namespace",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example <account_id>/<namespace_id>
+ * $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example '<account_id>/<namespace_id>'
  * ```
  */
 export class WorkersKvNamespace extends pulumi.CustomResource {
@@ -54,11 +52,15 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Title value of the Worker KV Namespace.
+     * True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
+     */
+    public /*out*/ readonly supportsUrlEncoding!: pulumi.Output<boolean>;
+    /**
+     * A human-readable string name for a Namespace.
      */
     public readonly title!: pulumi.Output<string>;
 
@@ -76,6 +78,7 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WorkersKvNamespaceState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["supportsUrlEncoding"] = state ? state.supportsUrlEncoding : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
         } else {
             const args = argsOrState as WorkersKvNamespaceArgs | undefined;
@@ -87,6 +90,7 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["supportsUrlEncoding"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkersKvNamespace.__pulumiType, name, resourceInputs, opts);
@@ -98,11 +102,15 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
  */
 export interface WorkersKvNamespaceState {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Title value of the Worker KV Namespace.
+     * True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
+     */
+    supportsUrlEncoding?: pulumi.Input<boolean>;
+    /**
+     * A human-readable string name for a Namespace.
      */
     title?: pulumi.Input<string>;
 }
@@ -112,11 +120,11 @@ export interface WorkersKvNamespaceState {
  */
 export interface WorkersKvNamespaceArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: pulumi.Input<string>;
     /**
-     * Title value of the Worker KV Namespace.
+     * A human-readable string name for a Namespace.
      */
     title: pulumi.Input<string>;
 }

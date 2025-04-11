@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Configure zone-wide settings for Cloudflare waiting rooms.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,15 +19,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWaitingRoomSettings(ctx, "example", &cloudflare.WaitingRoomSettingsArgs{
-//				ZoneId:                    pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			_, err := cloudflare.NewWaitingRoomSettings(ctx, "example_waiting_room_settings", &cloudflare.WaitingRoomSettingsArgs{
+//				ZoneId:                    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SearchEngineCrawlerBypass: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -44,14 +42,16 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example <zone_id>
+// $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example '<zone_id>'
 // ```
 type WaitingRoomSettings struct {
 	pulumi.CustomResourceState
 
-	// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
-	SearchEngineCrawlerBypass pulumi.BoolPtrOutput `pulumi:"searchEngineCrawlerBypass"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
+	// and will not appear in waiting room analytics.
+	SearchEngineCrawlerBypass pulumi.BoolOutput `pulumi:"searchEngineCrawlerBypass"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -88,16 +88,20 @@ func GetWaitingRoomSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WaitingRoomSettings resources.
 type waitingRoomSettingsState struct {
-	// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+	// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
+	// and will not appear in waiting room analytics.
 	SearchEngineCrawlerBypass *bool `pulumi:"searchEngineCrawlerBypass"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type WaitingRoomSettingsState struct {
-	// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+	// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
+	// and will not appear in waiting room analytics.
 	SearchEngineCrawlerBypass pulumi.BoolPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -106,17 +110,21 @@ func (WaitingRoomSettingsState) ElementType() reflect.Type {
 }
 
 type waitingRoomSettingsArgs struct {
-	// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+	// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
+	// and will not appear in waiting room analytics.
 	SearchEngineCrawlerBypass *bool `pulumi:"searchEngineCrawlerBypass"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a WaitingRoomSettings resource.
 type WaitingRoomSettingsArgs struct {
-	// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+	// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
+	// and will not appear in waiting room analytics.
 	SearchEngineCrawlerBypass pulumi.BoolPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -207,12 +215,14 @@ func (o WaitingRoomSettingsOutput) ToWaitingRoomSettingsOutputWithContext(ctx co
 	return o
 }
 
-// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
-func (o WaitingRoomSettingsOutput) SearchEngineCrawlerBypass() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *WaitingRoomSettings) pulumi.BoolPtrOutput { return v.SearchEngineCrawlerBypass }).(pulumi.BoolPtrOutput)
+// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+// Verified search engine crawlers will not be tracked or counted by the waiting room system,
+// and will not appear in waiting room analytics.
+func (o WaitingRoomSettingsOutput) SearchEngineCrawlerBypass() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WaitingRoomSettings) pulumi.BoolOutput { return v.SearchEngineCrawlerBypass }).(pulumi.BoolOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o WaitingRoomSettingsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomSettings) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

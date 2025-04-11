@@ -16,14 +16,14 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
     public static final WorkerDomainState Empty = new WorkerDomainState();
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifer of the account.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifer of the account.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -31,14 +31,14 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the Worker environment. Defaults to `production`.
+     * Worker environment associated with the zone and hostname.
      * 
      */
     @Import(name="environment")
     private @Nullable Output<String> environment;
 
     /**
-     * @return The name of the Worker environment. Defaults to `production`.
+     * @return Worker environment associated with the zone and hostname.
      * 
      */
     public Optional<Output<String>> environment() {
@@ -61,14 +61,14 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of worker script to attach the domain to.
+     * Worker service associated with the zone and hostname.
      * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
 
     /**
-     * @return Name of worker script to attach the domain to.
+     * @return Worker service associated with the zone and hostname.
      * 
      */
     public Optional<Output<String>> service() {
@@ -76,18 +76,33 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier of the zone.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier of the zone.
      * 
      */
     public Optional<Output<String>> zoneId() {
         return Optional.ofNullable(this.zoneId);
+    }
+
+    /**
+     * Name of the zone.
+     * 
+     */
+    @Import(name="zoneName")
+    private @Nullable Output<String> zoneName;
+
+    /**
+     * @return Name of the zone.
+     * 
+     */
+    public Optional<Output<String>> zoneName() {
+        return Optional.ofNullable(this.zoneName);
     }
 
     private WorkerDomainState() {}
@@ -98,6 +113,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         this.hostname = $.hostname;
         this.service = $.service;
         this.zoneId = $.zoneId;
+        this.zoneName = $.zoneName;
     }
 
     public static Builder builder() {
@@ -119,7 +135,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifer of the account.
          * 
          * @return builder
          * 
@@ -130,7 +146,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifer of the account.
          * 
          * @return builder
          * 
@@ -140,7 +156,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environment The name of the Worker environment. Defaults to `production`.
+         * @param environment Worker environment associated with the zone and hostname.
          * 
          * @return builder
          * 
@@ -151,7 +167,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environment The name of the Worker environment. Defaults to `production`.
+         * @param environment Worker environment associated with the zone and hostname.
          * 
          * @return builder
          * 
@@ -182,7 +198,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param service Name of worker script to attach the domain to.
+         * @param service Worker service associated with the zone and hostname.
          * 
          * @return builder
          * 
@@ -193,7 +209,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param service Name of worker script to attach the domain to.
+         * @param service Worker service associated with the zone and hostname.
          * 
          * @return builder
          * 
@@ -203,7 +219,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier of the zone.
          * 
          * @return builder
          * 
@@ -214,13 +230,34 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier of the zone.
          * 
          * @return builder
          * 
          */
         public Builder zoneId(String zoneId) {
             return zoneId(Output.of(zoneId));
+        }
+
+        /**
+         * @param zoneName Name of the zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneName(@Nullable Output<String> zoneName) {
+            $.zoneName = zoneName;
+            return this;
+        }
+
+        /**
+         * @param zoneName Name of the zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneName(String zoneName) {
+            return zoneName(Output.of(zoneName));
         }
 
         public WorkerDomainState build() {

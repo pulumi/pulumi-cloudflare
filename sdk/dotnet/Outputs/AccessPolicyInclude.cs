@@ -14,166 +14,102 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessPolicyInclude
     {
         /// <summary>
-        /// Matches any valid Access service token.
+        /// An empty object which matches on all service tokens.
         /// </summary>
-        public readonly bool? AnyValidServiceToken;
-        public readonly ImmutableArray<Outputs.AccessPolicyIncludeAuthContext> AuthContexts;
+        public readonly Outputs.AccessPolicyIncludeAnyValidServiceToken? AnyValidServiceToken;
+        public readonly Outputs.AccessPolicyIncludeAuthContext? AuthContext;
+        public readonly Outputs.AccessPolicyIncludeAuthMethod? AuthMethod;
+        public readonly Outputs.AccessPolicyIncludeAzureAd? AzureAd;
+        public readonly Outputs.AccessPolicyIncludeCertificate? Certificate;
+        public readonly Outputs.AccessPolicyIncludeCommonName? CommonName;
+        public readonly Outputs.AccessPolicyIncludeDevicePosture? DevicePosture;
+        public readonly Outputs.AccessPolicyIncludeEmail? Email;
+        public readonly Outputs.AccessPolicyIncludeEmailDomain? EmailDomain;
+        public readonly Outputs.AccessPolicyIncludeEmailList? EmailList;
         /// <summary>
-        /// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        /// An empty object which matches on all users.
         /// </summary>
-        public readonly string? AuthMethod;
-        /// <summary>
-        /// Matches an Azure group. Requires an Azure identity provider.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.AccessPolicyIncludeAzure> Azures;
-        /// <summary>
-        /// Matches any valid client certificate.
-        /// </summary>
-        public readonly bool? Certificate;
-        /// <summary>
-        /// Matches a valid client certificate common name.
-        /// </summary>
-        public readonly string? CommonName;
-        /// <summary>
-        /// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-        /// </summary>
-        public readonly ImmutableArray<string> CommonNames;
-        /// <summary>
-        /// The ID of a device posture integration.
-        /// </summary>
-        public readonly ImmutableArray<string> DevicePostures;
-        /// <summary>
-        /// The email domain to match.
-        /// </summary>
-        public readonly ImmutableArray<string> EmailDomains;
-        /// <summary>
-        /// The ID of a previously created email list.
-        /// </summary>
-        public readonly ImmutableArray<string> EmailLists;
-        /// <summary>
-        /// The email of the user.
-        /// </summary>
-        public readonly ImmutableArray<string> Emails;
-        /// <summary>
-        /// Matches everyone.
-        /// </summary>
-        public readonly bool? Everyone;
-        /// <summary>
-        /// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
-        /// </summary>
+        public readonly Outputs.AccessPolicyIncludeEveryone? Everyone;
         public readonly Outputs.AccessPolicyIncludeExternalEvaluation? ExternalEvaluation;
-        /// <summary>
-        /// Matches a specific country.
-        /// </summary>
-        public readonly ImmutableArray<string> Geos;
-        /// <summary>
-        /// Matches a Github organization. Requires a Github identity provider.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.AccessPolicyIncludeGithub> Githubs;
-        /// <summary>
-        /// The ID of a previously created Access group.
-        /// </summary>
-        public readonly ImmutableArray<string> Groups;
-        /// <summary>
-        /// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.AccessPolicyIncludeGsuite> Gsuites;
-        /// <summary>
-        /// The ID of a previously created IP list.
-        /// </summary>
-        public readonly ImmutableArray<string> IpLists;
-        /// <summary>
-        /// An IPv4 or IPv6 CIDR block.
-        /// </summary>
-        public readonly ImmutableArray<string> Ips;
-        /// <summary>
-        /// The ID of a configured identity provider.
-        /// </summary>
-        public readonly ImmutableArray<string> LoginMethods;
-        /// <summary>
-        /// Matches an Okta group. Requires an Okta identity provider.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.AccessPolicyIncludeOkta> Oktas;
-        /// <summary>
-        /// Matches a SAML group. Requires a SAML identity provider.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.AccessPolicyIncludeSaml> Samls;
-        /// <summary>
-        /// The ID of an Access service token.
-        /// </summary>
-        public readonly ImmutableArray<string> ServiceTokens;
+        public readonly Outputs.AccessPolicyIncludeGeo? Geo;
+        public readonly Outputs.AccessPolicyIncludeGithubOrganization? GithubOrganization;
+        public readonly Outputs.AccessPolicyIncludeGroup? Group;
+        public readonly Outputs.AccessPolicyIncludeGsuite? Gsuite;
+        public readonly Outputs.AccessPolicyIncludeIp? Ip;
+        public readonly Outputs.AccessPolicyIncludeIpList? IpList;
+        public readonly Outputs.AccessPolicyIncludeLoginMethod? LoginMethod;
+        public readonly Outputs.AccessPolicyIncludeOkta? Okta;
+        public readonly Outputs.AccessPolicyIncludeSaml? Saml;
+        public readonly Outputs.AccessPolicyIncludeServiceToken? ServiceToken;
 
         [OutputConstructor]
         private AccessPolicyInclude(
-            bool? anyValidServiceToken,
+            Outputs.AccessPolicyIncludeAnyValidServiceToken? anyValidServiceToken,
 
-            ImmutableArray<Outputs.AccessPolicyIncludeAuthContext> authContexts,
+            Outputs.AccessPolicyIncludeAuthContext? authContext,
 
-            string? authMethod,
+            Outputs.AccessPolicyIncludeAuthMethod? authMethod,
 
-            ImmutableArray<Outputs.AccessPolicyIncludeAzure> azures,
+            Outputs.AccessPolicyIncludeAzureAd? azureAd,
 
-            bool? certificate,
+            Outputs.AccessPolicyIncludeCertificate? certificate,
 
-            string? commonName,
+            Outputs.AccessPolicyIncludeCommonName? commonName,
 
-            ImmutableArray<string> commonNames,
+            Outputs.AccessPolicyIncludeDevicePosture? devicePosture,
 
-            ImmutableArray<string> devicePostures,
+            Outputs.AccessPolicyIncludeEmail? email,
 
-            ImmutableArray<string> emailDomains,
+            Outputs.AccessPolicyIncludeEmailDomain? emailDomain,
 
-            ImmutableArray<string> emailLists,
+            Outputs.AccessPolicyIncludeEmailList? emailList,
 
-            ImmutableArray<string> emails,
-
-            bool? everyone,
+            Outputs.AccessPolicyIncludeEveryone? everyone,
 
             Outputs.AccessPolicyIncludeExternalEvaluation? externalEvaluation,
 
-            ImmutableArray<string> geos,
+            Outputs.AccessPolicyIncludeGeo? geo,
 
-            ImmutableArray<Outputs.AccessPolicyIncludeGithub> githubs,
+            Outputs.AccessPolicyIncludeGithubOrganization? githubOrganization,
 
-            ImmutableArray<string> groups,
+            Outputs.AccessPolicyIncludeGroup? group,
 
-            ImmutableArray<Outputs.AccessPolicyIncludeGsuite> gsuites,
+            Outputs.AccessPolicyIncludeGsuite? gsuite,
 
-            ImmutableArray<string> ipLists,
+            Outputs.AccessPolicyIncludeIp? ip,
 
-            ImmutableArray<string> ips,
+            Outputs.AccessPolicyIncludeIpList? ipList,
 
-            ImmutableArray<string> loginMethods,
+            Outputs.AccessPolicyIncludeLoginMethod? loginMethod,
 
-            ImmutableArray<Outputs.AccessPolicyIncludeOkta> oktas,
+            Outputs.AccessPolicyIncludeOkta? okta,
 
-            ImmutableArray<Outputs.AccessPolicyIncludeSaml> samls,
+            Outputs.AccessPolicyIncludeSaml? saml,
 
-            ImmutableArray<string> serviceTokens)
+            Outputs.AccessPolicyIncludeServiceToken? serviceToken)
         {
             AnyValidServiceToken = anyValidServiceToken;
-            AuthContexts = authContexts;
+            AuthContext = authContext;
             AuthMethod = authMethod;
-            Azures = azures;
+            AzureAd = azureAd;
             Certificate = certificate;
             CommonName = commonName;
-            CommonNames = commonNames;
-            DevicePostures = devicePostures;
-            EmailDomains = emailDomains;
-            EmailLists = emailLists;
-            Emails = emails;
+            DevicePosture = devicePosture;
+            Email = email;
+            EmailDomain = emailDomain;
+            EmailList = emailList;
             Everyone = everyone;
             ExternalEvaluation = externalEvaluation;
-            Geos = geos;
-            Githubs = githubs;
-            Groups = groups;
-            Gsuites = gsuites;
-            IpLists = ipLists;
-            Ips = ips;
-            LoginMethods = loginMethods;
-            Oktas = oktas;
-            Samls = samls;
-            ServiceTokens = serviceTokens;
+            Geo = geo;
+            GithubOrganization = githubOrganization;
+            Group = group;
+            Gsuite = gsuite;
+            Ip = ip;
+            IpList = ipList;
+            LoginMethod = loginMethod;
+            Okta = okta;
+            Saml = saml;
+            ServiceToken = serviceToken;
         }
     }
 }

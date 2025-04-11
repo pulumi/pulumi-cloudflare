@@ -14,31 +14,32 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessApplicationDestination
     {
         /// <summary>
-        /// The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+        /// The CIDR range of the destination. Single IPs will be computed as /32.
         /// </summary>
         public readonly string? Cidr;
         /// <summary>
-        /// The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+        /// The hostname of the destination. Matches a valid SNI served by an HTTPS origin.
         /// </summary>
         public readonly string? Hostname;
         /// <summary>
-        /// The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+        /// The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+        /// Available values: "tcp", "udp".
         /// </summary>
         public readonly string? L4Protocol;
         /// <summary>
-        /// The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+        /// The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
         /// </summary>
         public readonly string? PortRange;
         /// <summary>
-        /// The destination type. Available values: `public`, `private`. Defaults to `public`.
+        /// Available values: "public".
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+        /// The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
         /// </summary>
         public readonly string? Uri;
         /// <summary>
-        /// The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+        /// The VNET ID to match the destination. When omitted, all VNETs will match.
         /// </summary>
         public readonly string? VnetId;
 

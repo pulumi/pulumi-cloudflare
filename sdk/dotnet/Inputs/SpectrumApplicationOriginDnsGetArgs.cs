@@ -13,10 +13,23 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class SpectrumApplicationOriginDnsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Fully qualified domain name of the origin.
+        /// The name of the DNS record associated with the origin.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The TTL of our resolution of your DNS record in seconds.
+        /// </summary>
+        [Input("ttl")]
+        public Input<int>? Ttl { get; set; }
+
+        /// <summary>
+        /// The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records.
+        /// Available values: "", "A", "AAAA", "SRV".
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public SpectrumApplicationOriginDnsGetArgs()
         {

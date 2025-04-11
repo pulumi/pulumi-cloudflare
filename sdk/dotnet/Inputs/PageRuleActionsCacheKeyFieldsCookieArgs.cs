@@ -14,10 +14,6 @@ namespace Pulumi.Cloudflare.Inputs
     {
         [Input("checkPresences")]
         private InputList<string>? _checkPresences;
-
-        /// <summary>
-        /// Check for presence of specified cookies, without including their actual values.
-        /// </summary>
         public InputList<string> CheckPresences
         {
             get => _checkPresences ?? (_checkPresences = new InputList<string>());
@@ -26,10 +22,6 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("includes")]
         private InputList<string>? _includes;
-
-        /// <summary>
-        /// Use values of specified cookies in Cache Key.
-        /// </summary>
         public InputList<string> Includes
         {
             get => _includes ?? (_includes = new InputList<string>());

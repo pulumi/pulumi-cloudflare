@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -13,42 +14,56 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersOverridesCategory {
     /**
-     * @return Action to perform in the tag-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * @return The action to override rules in the category with.
      * 
      */
     private @Nullable String action;
     /**
-     * @return Tag name to apply the ruleset rule override to.
+     * @return The name of the category to override.
      * 
      */
-    private @Nullable String category;
+    private String category;
     /**
-     * @return Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * @return Whether to enable execution of rules in the category.
      * 
      */
     private @Nullable Boolean enabled;
+    /**
+     * @return The sensitivity level to use for rules in the category.
+     * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
+     * 
+     */
+    private @Nullable String sensitivityLevel;
 
     private RulesetRuleActionParametersOverridesCategory() {}
     /**
-     * @return Action to perform in the tag-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * @return The action to override rules in the category with.
      * 
      */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
     /**
-     * @return Tag name to apply the ruleset rule override to.
+     * @return The name of the category to override.
      * 
      */
-    public Optional<String> category() {
-        return Optional.ofNullable(this.category);
+    public String category() {
+        return this.category;
     }
     /**
-     * @return Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * @return Whether to enable execution of rules in the category.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
+    }
+    /**
+     * @return The sensitivity level to use for rules in the category.
+     * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
+     * 
+     */
+    public Optional<String> sensitivityLevel() {
+        return Optional.ofNullable(this.sensitivityLevel);
     }
 
     public static Builder builder() {
@@ -61,14 +76,16 @@ public final class RulesetRuleActionParametersOverridesCategory {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String action;
-        private @Nullable String category;
+        private String category;
         private @Nullable Boolean enabled;
+        private @Nullable String sensitivityLevel;
         public Builder() {}
         public Builder(RulesetRuleActionParametersOverridesCategory defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
     	      this.category = defaults.category;
     	      this.enabled = defaults.enabled;
+    	      this.sensitivityLevel = defaults.sensitivityLevel;
         }
 
         @CustomType.Setter
@@ -78,8 +95,10 @@ public final class RulesetRuleActionParametersOverridesCategory {
             return this;
         }
         @CustomType.Setter
-        public Builder category(@Nullable String category) {
-
+        public Builder category(String category) {
+            if (category == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleActionParametersOverridesCategory", "category");
+            }
             this.category = category;
             return this;
         }
@@ -89,11 +108,18 @@ public final class RulesetRuleActionParametersOverridesCategory {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder sensitivityLevel(@Nullable String sensitivityLevel) {
+
+            this.sensitivityLevel = sensitivityLevel;
+            return this;
+        }
         public RulesetRuleActionParametersOverridesCategory build() {
             final var _resultValue = new RulesetRuleActionParametersOverridesCategory();
             _resultValue.action = action;
             _resultValue.category = category;
             _resultValue.enabled = enabled;
+            _resultValue.sensitivityLevel = sensitivityLevel;
             return _resultValue;
         }
     }

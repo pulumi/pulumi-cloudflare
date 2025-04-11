@@ -20,45 +20,58 @@ __all__ = ['CustomPagesArgs', 'CustomPages']
 @pulumi.input_type
 class CustomPagesArgs:
     def __init__(__self__, *,
-                 type: pulumi.Input[builtins.str],
+                 identifier: pulumi.Input[builtins.str],
+                 state: pulumi.Input[builtins.str],
                  url: pulumi.Input[builtins.str],
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 state: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a CustomPages resource.
-        :param pulumi.Input[builtins.str] type: The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
-        :param pulumi.Input[builtins.str] url: URL of where the custom page source is located.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[builtins.str] state: Managed state of the custom page. Available values: `default`, `customized`.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] identifier: Identifier
+        :param pulumi.Input[builtins.str] state: The custom page state.
+               Available values: "default", "customized".
+        :param pulumi.Input[builtins.str] url: The URL associated with the custom page.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
-        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "url", url)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
-    def type(self) -> pulumi.Input[builtins.str]:
+    def identifier(self) -> pulumi.Input[builtins.str]:
         """
-        The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
+        Identifier
         """
-        return pulumi.get(self, "type")
+        return pulumi.get(self, "identifier")
 
-    @type.setter
-    def type(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "type", value)
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Input[builtins.str]:
+        """
+        The custom page state.
+        Available values: "default", "customized".
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "state", value)
 
     @property
     @pulumi.getter
     def url(self) -> pulumi.Input[builtins.str]:
         """
-        URL of where the custom page source is located.
+        The URL associated with the custom page.
         """
         return pulumi.get(self, "url")
 
@@ -70,7 +83,7 @@ class CustomPagesArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -79,22 +92,10 @@ class CustomPagesArgs:
         pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Managed state of the custom page. Available values: `default`, `customized`.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "state", value)
-
-    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -107,24 +108,25 @@ class CustomPagesArgs:
 class _CustomPagesState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 identifier: Optional[pulumi.Input[builtins.str]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
-                 type: Optional[pulumi.Input[builtins.str]] = None,
                  url: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomPages resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[builtins.str] state: Managed state of the custom page. Available values: `default`, `customized`.
-        :param pulumi.Input[builtins.str] type: The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
-        :param pulumi.Input[builtins.str] url: URL of where the custom page source is located.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] identifier: Identifier
+        :param pulumi.Input[builtins.str] state: The custom page state.
+               Available values: "default", "customized".
+        :param pulumi.Input[builtins.str] url: The URL associated with the custom page.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
         if state is not None:
             pulumi.set(__self__, "state", state)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
         if url is not None:
             pulumi.set(__self__, "url", url)
         if zone_id is not None:
@@ -134,7 +136,7 @@ class _CustomPagesState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -144,9 +146,22 @@ class _CustomPagesState:
 
     @property
     @pulumi.getter
+    def identifier(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
     def state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Managed state of the custom page. Available values: `default`, `customized`.
+        The custom page state.
+        Available values: "default", "customized".
         """
         return pulumi.get(self, "state")
 
@@ -156,21 +171,9 @@ class _CustomPagesState:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter
     def url(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        URL of where the custom page source is located.
+        The URL associated with the custom page.
         """
         return pulumi.get(self, "url")
 
@@ -182,7 +185,7 @@ class _CustomPagesState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -197,40 +200,39 @@ class CustomPages(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 identifier: Optional[pulumi.Input[builtins.str]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
-                 type: Optional[pulumi.Input[builtins.str]] = None,
                  url: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a resource which manages Cloudflare custom error pages.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.CustomPages("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            type="basic_challenge",
-            url="https://example.com/challenge.html",
-            state="customized")
+        example_custom_pages = cloudflare.CustomPages("example_custom_pages",
+            identifier="023e105f4ecef8ad9ca31a8372d0c353",
+            state="default",
+            url="http://www.example.com",
+            zone_id="zone_id")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/customPages:CustomPages example <resource_level>/<resource_id>/<custom_page_type>
+        $ pulumi import cloudflare:index/customPages:CustomPages example '<{accounts|zones}/{account_id|zone_id}>/<identifier>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[builtins.str] state: Managed state of the custom page. Available values: `default`, `customized`.
-        :param pulumi.Input[builtins.str] type: The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
-        :param pulumi.Input[builtins.str] url: URL of where the custom page source is located.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] identifier: Identifier
+        :param pulumi.Input[builtins.str] state: The custom page state.
+               Available values: "default", "customized".
+        :param pulumi.Input[builtins.str] url: The URL associated with the custom page.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
     @overload
@@ -239,25 +241,23 @@ class CustomPages(pulumi.CustomResource):
                  args: CustomPagesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource which manages Cloudflare custom error pages.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.CustomPages("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            type="basic_challenge",
-            url="https://example.com/challenge.html",
-            state="customized")
+        example_custom_pages = cloudflare.CustomPages("example_custom_pages",
+            identifier="023e105f4ecef8ad9ca31a8372d0c353",
+            state="default",
+            url="http://www.example.com",
+            zone_id="zone_id")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/customPages:CustomPages example <resource_level>/<resource_id>/<custom_page_type>
+        $ pulumi import cloudflare:index/customPages:CustomPages example '<{accounts|zones}/{account_id|zone_id}>/<identifier>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -276,8 +276,8 @@ class CustomPages(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 identifier: Optional[pulumi.Input[builtins.str]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
-                 type: Optional[pulumi.Input[builtins.str]] = None,
                  url: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -290,10 +290,12 @@ class CustomPages(pulumi.CustomResource):
             __props__ = CustomPagesArgs.__new__(CustomPagesArgs)
 
             __props__.__dict__["account_id"] = account_id
+            if identifier is None and not opts.urn:
+                raise TypeError("Missing required property 'identifier'")
+            __props__.__dict__["identifier"] = identifier
+            if state is None and not opts.urn:
+                raise TypeError("Missing required property 'state'")
             __props__.__dict__["state"] = state
-            if type is None and not opts.urn:
-                raise TypeError("Missing required property 'type'")
-            __props__.__dict__["type"] = type
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__.__dict__["url"] = url
@@ -309,8 +311,8 @@ class CustomPages(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
+            identifier: Optional[pulumi.Input[builtins.str]] = None,
             state: Optional[pulumi.Input[builtins.str]] = None,
-            type: Optional[pulumi.Input[builtins.str]] = None,
             url: Optional[pulumi.Input[builtins.str]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'CustomPages':
         """
@@ -320,19 +322,20 @@ class CustomPages(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[builtins.str] state: Managed state of the custom page. Available values: `default`, `customized`.
-        :param pulumi.Input[builtins.str] type: The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
-        :param pulumi.Input[builtins.str] url: URL of where the custom page source is located.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] identifier: Identifier
+        :param pulumi.Input[builtins.str] state: The custom page state.
+               Available values: "default", "customized".
+        :param pulumi.Input[builtins.str] url: The URL associated with the custom page.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _CustomPagesState.__new__(_CustomPagesState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["identifier"] = identifier
         __props__.__dict__["state"] = state
-        __props__.__dict__["type"] = type
         __props__.__dict__["url"] = url
         __props__.__dict__["zone_id"] = zone_id
         return CustomPages(resource_name, opts=opts, __props__=__props__)
@@ -341,31 +344,32 @@ class CustomPages(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
-    def state(self) -> pulumi.Output[Optional[builtins.str]]:
+    def identifier(self) -> pulumi.Output[builtins.str]:
         """
-        Managed state of the custom page. Available values: `default`, `customized`.
+        Identifier
+        """
+        return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[builtins.str]:
+        """
+        The custom page state.
+        Available values: "default", "customized".
         """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
-    def type(self) -> pulumi.Output[builtins.str]:
-        """
-        The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
     def url(self) -> pulumi.Output[builtins.str]:
         """
-        URL of where the custom page source is located.
+        The URL associated with the custom page.
         """
         return pulumi.get(self, "url")
 
@@ -373,7 +377,7 @@ class CustomPages(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 

@@ -5,9 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RateLimitActionResponseArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,33 +16,33 @@ public final class RateLimitActionResponseArgs extends com.pulumi.resources.Reso
     public static final RateLimitActionResponseArgs Empty = new RateLimitActionResponseArgs();
 
     /**
-     * The body to return, the content here should conform to the `content_type`.
+     * The response body to return. The value must conform to the configured content type.
      * 
      */
-    @Import(name="body", required=true)
-    private Output<String> body;
+    @Import(name="body")
+    private @Nullable Output<String> body;
 
     /**
-     * @return The body to return, the content here should conform to the `content_type`.
+     * @return The response body to return. The value must conform to the configured content type.
      * 
      */
-    public Output<String> body() {
-        return this.body;
+    public Optional<Output<String>> body() {
+        return Optional.ofNullable(this.body);
     }
 
     /**
-     * The content-type of the body. Available values: `text/plain`, `text/xml`, `application/json`.
+     * The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.
      * 
      */
-    @Import(name="contentType", required=true)
-    private Output<String> contentType;
+    @Import(name="contentType")
+    private @Nullable Output<String> contentType;
 
     /**
-     * @return The content-type of the body. Available values: `text/plain`, `text/xml`, `application/json`.
+     * @return The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.
      * 
      */
-    public Output<String> contentType() {
-        return this.contentType;
+    public Optional<Output<String>> contentType() {
+        return Optional.ofNullable(this.contentType);
     }
 
     private RateLimitActionResponseArgs() {}
@@ -70,18 +71,18 @@ public final class RateLimitActionResponseArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param body The body to return, the content here should conform to the `content_type`.
+         * @param body The response body to return. The value must conform to the configured content type.
          * 
          * @return builder
          * 
          */
-        public Builder body(Output<String> body) {
+        public Builder body(@Nullable Output<String> body) {
             $.body = body;
             return this;
         }
 
         /**
-         * @param body The body to return, the content here should conform to the `content_type`.
+         * @param body The response body to return. The value must conform to the configured content type.
          * 
          * @return builder
          * 
@@ -91,18 +92,18 @@ public final class RateLimitActionResponseArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param contentType The content-type of the body. Available values: `text/plain`, `text/xml`, `application/json`.
+         * @param contentType The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.
          * 
          * @return builder
          * 
          */
-        public Builder contentType(Output<String> contentType) {
+        public Builder contentType(@Nullable Output<String> contentType) {
             $.contentType = contentType;
             return this;
         }
 
         /**
-         * @param contentType The content-type of the body. Available values: `text/plain`, `text/xml`, `application/json`.
+         * @param contentType The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.
          * 
          * @return builder
          * 
@@ -112,12 +113,6 @@ public final class RateLimitActionResponseArgs extends com.pulumi.resources.Reso
         }
 
         public RateLimitActionResponseArgs build() {
-            if ($.body == null) {
-                throw new MissingRequiredPropertyException("RateLimitActionResponseArgs", "body");
-            }
-            if ($.contentType == null) {
-                throw new MissingRequiredPropertyException("RateLimitActionResponseArgs", "contentType");
-            }
             return $;
         }
     }

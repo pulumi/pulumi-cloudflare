@@ -13,25 +13,27 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class LoadBalancerPoolLoadSheddingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Percent of traffic to shed 0 - 100. Defaults to `0`.
+        /// The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity.
         /// </summary>
         [Input("defaultPercent")]
         public Input<double>? DefaultPercent { get; set; }
 
         /// <summary>
-        /// Method of shedding traffic. Available values: `""`, `hash`, `random`. Defaults to `""`.
+        /// The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.
+        /// Available values: "random", "hash".
         /// </summary>
         [Input("defaultPolicy")]
         public Input<string>? DefaultPolicy { get; set; }
 
         /// <summary>
-        /// Percent of session traffic to shed 0 - 100. Defaults to `0`.
+        /// The percent of existing sessions to shed from the pool, according to the session policy.
         /// </summary>
         [Input("sessionPercent")]
         public Input<double>? SessionPercent { get; set; }
 
         /// <summary>
-        /// Method of shedding traffic. Available values: `""`, `hash`. Defaults to `""`.
+        /// Only the hash policy is supported for existing sessions (to avoid exponential decay).
+        /// Available values: "hash".
         /// </summary>
         [Input("sessionPolicy")]
         public Input<string>? SessionPolicy { get; set; }

@@ -19,37 +19,37 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
 
     public static final DevicePostureRuleArgs Empty = new DevicePostureRuleArgs();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
+    /**
+     * The description of the device posture rule.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return The description of the device posture rule.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
     /**
-     * Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      * 
      */
     @Import(name="expiration")
     private @Nullable Output<String> expiration;
 
     /**
-     * @return Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * @return Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      * 
      */
     public Optional<Output<String>> expiration() {
@@ -57,18 +57,18 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Required for all rule types except `warp`, `gateway`, and `tanium`.
+     * The value to be checked against.
      * 
      */
-    @Import(name="inputs")
-    private @Nullable Output<List<DevicePostureRuleInputArgs>> inputs;
+    @Import(name="input")
+    private @Nullable Output<DevicePostureRuleInputArgs> input;
 
     /**
-     * @return Required for all rule types except `warp`, `gateway`, and `tanium`.
+     * @return The value to be checked against.
      * 
      */
-    public Optional<Output<List<DevicePostureRuleInputArgs>>> inputs() {
-        return Optional.ofNullable(this.inputs);
+    public Optional<Output<DevicePostureRuleInputArgs>> input() {
+        return Optional.ofNullable(this.input);
     }
 
     /**
@@ -87,29 +87,29 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Name of the device posture rule.
+     * The name of the device posture rule.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
-     * @return Name of the device posture rule.
+     * @return The name of the device posture rule.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
-     * Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
      * 
      */
     @Import(name="schedule")
     private @Nullable Output<String> schedule;
 
     /**
-     * @return Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * @return Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
      * 
      */
     public Optional<Output<String>> schedule() {
@@ -117,14 +117,16 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
+     * The type of device posture rule.
+     * Available values: &#34;file&#34;, &#34;application&#34;, &#34;tanium&#34;, &#34;gateway&#34;, &#34;warp&#34;, &#34;disk*encryption&#34;, &#34;sentinelone&#34;, &#34;carbonblack&#34;, &#34;firewall&#34;, &#34;os*version&#34;, &#34;domain*joined&#34;, &#34;client*certificate&#34;, &#34;client*certificate*v2&#34;, &#34;unique*client*id&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;crowdstrike*s2s&#34;, &#34;intune&#34;, &#34;workspace*one&#34;, &#34;sentinelone*s2s&#34;, &#34;custom_s2s&#34;.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
+     * @return The type of device posture rule.
+     * Available values: &#34;file&#34;, &#34;application&#34;, &#34;tanium&#34;, &#34;gateway&#34;, &#34;warp&#34;, &#34;disk*encryption&#34;, &#34;sentinelone&#34;, &#34;carbonblack&#34;, &#34;firewall&#34;, &#34;os*version&#34;, &#34;domain*joined&#34;, &#34;client*certificate&#34;, &#34;client*certificate*v2&#34;, &#34;unique*client*id&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;crowdstrike*s2s&#34;, &#34;intune&#34;, &#34;workspace*one&#34;, &#34;sentinelone*s2s&#34;, &#34;custom_s2s&#34;.
      * 
      */
     public Output<String> type() {
@@ -137,7 +139,7 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         this.accountId = $.accountId;
         this.description = $.description;
         this.expiration = $.expiration;
-        this.inputs = $.inputs;
+        this.input = $.input;
         this.matches = $.matches;
         this.name = $.name;
         this.schedule = $.schedule;
@@ -162,38 +164,38 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
             $ = new DevicePostureRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param description The description of the device posture rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description The description of the device posture rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
         /**
-         * @param expiration Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+         * @param expiration Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
          * 
          * @return builder
          * 
@@ -204,7 +206,7 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param expiration Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+         * @param expiration Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
          * 
          * @return builder
          * 
@@ -214,34 +216,24 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param inputs Required for all rule types except `warp`, `gateway`, and `tanium`.
+         * @param input The value to be checked against.
          * 
          * @return builder
          * 
          */
-        public Builder inputs(@Nullable Output<List<DevicePostureRuleInputArgs>> inputs) {
-            $.inputs = inputs;
+        public Builder input(@Nullable Output<DevicePostureRuleInputArgs> input) {
+            $.input = input;
             return this;
         }
 
         /**
-         * @param inputs Required for all rule types except `warp`, `gateway`, and `tanium`.
+         * @param input The value to be checked against.
          * 
          * @return builder
          * 
          */
-        public Builder inputs(List<DevicePostureRuleInputArgs> inputs) {
-            return inputs(Output.of(inputs));
-        }
-
-        /**
-         * @param inputs Required for all rule types except `warp`, `gateway`, and `tanium`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder inputs(DevicePostureRuleInputArgs... inputs) {
-            return inputs(List.of(inputs));
+        public Builder input(DevicePostureRuleInputArgs input) {
+            return input(Output.of(input));
         }
 
         /**
@@ -276,18 +268,18 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Name of the device posture rule.
+         * @param name The name of the device posture rule.
          * 
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Name of the device posture rule.
+         * @param name The name of the device posture rule.
          * 
          * @return builder
          * 
@@ -297,7 +289,7 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param schedule Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+         * @param schedule Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
          * 
          * @return builder
          * 
@@ -308,7 +300,7 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param schedule Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+         * @param schedule Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
          * 
          * @return builder
          * 
@@ -318,7 +310,8 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
+         * @param type The type of device posture rule.
+         * Available values: &#34;file&#34;, &#34;application&#34;, &#34;tanium&#34;, &#34;gateway&#34;, &#34;warp&#34;, &#34;disk*encryption&#34;, &#34;sentinelone&#34;, &#34;carbonblack&#34;, &#34;firewall&#34;, &#34;os*version&#34;, &#34;domain*joined&#34;, &#34;client*certificate&#34;, &#34;client*certificate*v2&#34;, &#34;unique*client*id&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;crowdstrike*s2s&#34;, &#34;intune&#34;, &#34;workspace*one&#34;, &#34;sentinelone*s2s&#34;, &#34;custom_s2s&#34;.
          * 
          * @return builder
          * 
@@ -329,7 +322,8 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
+         * @param type The type of device posture rule.
+         * Available values: &#34;file&#34;, &#34;application&#34;, &#34;tanium&#34;, &#34;gateway&#34;, &#34;warp&#34;, &#34;disk*encryption&#34;, &#34;sentinelone&#34;, &#34;carbonblack&#34;, &#34;firewall&#34;, &#34;os*version&#34;, &#34;domain*joined&#34;, &#34;client*certificate&#34;, &#34;client*certificate*v2&#34;, &#34;unique*client*id&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;crowdstrike*s2s&#34;, &#34;intune&#34;, &#34;workspace*one&#34;, &#34;sentinelone*s2s&#34;, &#34;custom_s2s&#34;.
          * 
          * @return builder
          * 
@@ -341,6 +335,9 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         public DevicePostureRuleArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("DevicePostureRuleArgs", "accountId");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("DevicePostureRuleArgs", "name");
             }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("DevicePostureRuleArgs", "type");

@@ -14,89 +14,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ListItemRedirect {
-    /**
-     * @return Whether the redirect also matches subdomains of the source url.
-     * 
-     */
     private @Nullable Boolean includeSubdomains;
-    /**
-     * @return Whether the redirect target url should keep the query string of the request&#39;s url.
-     * 
-     */
     private @Nullable Boolean preservePathSuffix;
-    /**
-     * @return Whether the redirect target url should keep the query string of the request&#39;s url.
-     * 
-     */
     private @Nullable Boolean preserveQueryString;
-    /**
-     * @return The source url of the redirect.
-     * 
-     */
     private String sourceUrl;
     /**
-     * @return The status code to be used when redirecting a request.
+     * @return Available values: 301, 302, 307, 308.
      * 
      */
     private @Nullable Integer statusCode;
-    /**
-     * @return Whether the redirect also matches subpaths of the source url.
-     * 
-     */
     private @Nullable Boolean subpathMatching;
-    /**
-     * @return The target url of the redirect.
-     * 
-     */
     private String targetUrl;
 
     private ListItemRedirect() {}
-    /**
-     * @return Whether the redirect also matches subdomains of the source url.
-     * 
-     */
     public Optional<Boolean> includeSubdomains() {
         return Optional.ofNullable(this.includeSubdomains);
     }
-    /**
-     * @return Whether the redirect target url should keep the query string of the request&#39;s url.
-     * 
-     */
     public Optional<Boolean> preservePathSuffix() {
         return Optional.ofNullable(this.preservePathSuffix);
     }
-    /**
-     * @return Whether the redirect target url should keep the query string of the request&#39;s url.
-     * 
-     */
     public Optional<Boolean> preserveQueryString() {
         return Optional.ofNullable(this.preserveQueryString);
     }
-    /**
-     * @return The source url of the redirect.
-     * 
-     */
     public String sourceUrl() {
         return this.sourceUrl;
     }
     /**
-     * @return The status code to be used when redirecting a request.
+     * @return Available values: 301, 302, 307, 308.
      * 
      */
     public Optional<Integer> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
-    /**
-     * @return Whether the redirect also matches subpaths of the source url.
-     * 
-     */
     public Optional<Boolean> subpathMatching() {
         return Optional.ofNullable(this.subpathMatching);
     }
-    /**
-     * @return The target url of the redirect.
-     * 
-     */
     public String targetUrl() {
         return this.targetUrl;
     }

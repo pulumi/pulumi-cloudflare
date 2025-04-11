@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Device Dex Test resource. Device Dex Tests allow for building location-aware device settings policies.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,19 +20,29 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.DeviceDexTest("example", new()
+    ///     var exampleZeroTrustDexTest = new Cloudflare.ZeroTrustDexTest("example_zero_trust_dex_test", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "GET homepage",
-    ///         Description = "Send a HTTP GET request to the home endpoint every half hour.",
-    ///         Interval = "0h30m0s",
-    ///         Enabled = true,
-    ///         Data = new Cloudflare.Inputs.DeviceDexTestDataArgs
+    ///         AccountId = "699d98642c564d2e855e9661899b7252",
+    ///         Data = new Cloudflare.Inputs.ZeroTrustDexTestDataArgs
     ///         {
-    ///             Host = "https://example.com/home",
+    ///             Host = "https://dash.cloudflare.com",
     ///             Kind = "http",
     ///             Method = "GET",
     ///         },
+    ///         Enabled = true,
+    ///         Interval = "30m",
+    ///         Name = "HTTP dash health check",
+    ///         Description = "Checks the dash endpoint every 30 minutes",
+    ///         TargetPolicies = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustDexTestTargetPolicyArgs
+    ///             {
+    ///                 Id = "id",
+    ///                 Default = true,
+    ///                 Name = "name",
+    ///             },
+    ///         },
+    ///         Targeted = true,
     ///     });
     /// 
     /// });
@@ -43,23 +51,15 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/deviceDexTest:DeviceDexTest example &lt;account_id&gt;/&lt;device_dex_test_id&gt;
+    /// $ pulumi import cloudflare:index/deviceDexTest:DeviceDexTest example '&lt;account_id&gt;/&lt;dex_test_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare.index/devicedextest.DeviceDexTest has been deprecated in favor of cloudflare.index/zerotrustdextest.ZeroTrustDexTest")]
     [CloudflareResourceType("cloudflare:index/deviceDexTest:DeviceDexTest")]
     public partial class DeviceDexTest : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
-
-        /// <summary>
-        /// Timestamp of when the Dex Test was created.
-        /// </summary>
-        [Output("created")]
-        public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
         /// The configuration object which contains the details for the WARP client to conduct the test.
@@ -71,7 +71,7 @@ namespace Pulumi.Cloudflare
         /// Additional details about the test.
         /// </summary>
         [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// Determines whether or not the test is active.
@@ -86,16 +86,25 @@ namespace Pulumi.Cloudflare
         public Output<string> Interval { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Device Dex Test. Must be unique.
+        /// The name of the DEX test. Must be unique.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp of when the Dex Test was last updated.
+        /// Device settings profiles targeted by this test
         /// </summary>
-        [Output("updated")]
-        public Output<string> Updated { get; private set; } = null!;
+        [Output("targetPolicies")]
+        public Output<ImmutableArray<Outputs.DeviceDexTestTargetPolicy>> TargetPolicies { get; private set; } = null!;
+
+        [Output("targeted")]
+        public Output<bool?> Targeted { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier for the test.
+        /// </summary>
+        [Output("testId")]
+        public Output<string> TestId { get; private set; } = null!;
 
 
         /// <summary>
@@ -120,6 +129,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/deviceDexTest:DeviceDexTest" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -143,9 +156,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class DeviceDexTestArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
@@ -158,8 +168,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Additional details about the test.
         /// </summary>
-        [Input("description", required: true)]
-        public Input<string> Description { get; set; } = null!;
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// Determines whether or not the test is active.
@@ -174,10 +184,25 @@ namespace Pulumi.Cloudflare
         public Input<string> Interval { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Device Dex Test. Must be unique.
+        /// The name of the DEX test. Must be unique.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        [Input("targetPolicies")]
+        private InputList<Inputs.DeviceDexTestTargetPolicyArgs>? _targetPolicies;
+
+        /// <summary>
+        /// Device settings profiles targeted by this test
+        /// </summary>
+        public InputList<Inputs.DeviceDexTestTargetPolicyArgs> TargetPolicies
+        {
+            get => _targetPolicies ?? (_targetPolicies = new InputList<Inputs.DeviceDexTestTargetPolicyArgs>());
+            set => _targetPolicies = value;
+        }
+
+        [Input("targeted")]
+        public Input<bool>? Targeted { get; set; }
 
         public DeviceDexTestArgs()
         {
@@ -187,17 +212,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class DeviceDexTestState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
-
-        /// <summary>
-        /// Timestamp of when the Dex Test was created.
-        /// </summary>
-        [Input("created")]
-        public Input<string>? Created { get; set; }
 
         /// <summary>
         /// The configuration object which contains the details for the WARP client to conduct the test.
@@ -224,16 +240,31 @@ namespace Pulumi.Cloudflare
         public Input<string>? Interval { get; set; }
 
         /// <summary>
-        /// The name of the Device Dex Test. Must be unique.
+        /// The name of the DEX test. Must be unique.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("targetPolicies")]
+        private InputList<Inputs.DeviceDexTestTargetPolicyGetArgs>? _targetPolicies;
+
         /// <summary>
-        /// Timestamp of when the Dex Test was last updated.
+        /// Device settings profiles targeted by this test
         /// </summary>
-        [Input("updated")]
-        public Input<string>? Updated { get; set; }
+        public InputList<Inputs.DeviceDexTestTargetPolicyGetArgs> TargetPolicies
+        {
+            get => _targetPolicies ?? (_targetPolicies = new InputList<Inputs.DeviceDexTestTargetPolicyGetArgs>());
+            set => _targetPolicies = value;
+        }
+
+        [Input("targeted")]
+        public Input<bool>? Targeted { get; set; }
+
+        /// <summary>
+        /// The unique identifier for the test.
+        /// </summary>
+        [Input("testId")]
+        public Input<string>? TestId { get; set; }
 
         public DeviceDexTestState()
         {

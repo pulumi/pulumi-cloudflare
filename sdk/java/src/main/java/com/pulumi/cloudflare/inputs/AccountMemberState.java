@@ -3,6 +3,8 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.AccountMemberPolicyArgs;
+import com.pulumi.cloudflare.inputs.AccountMemberUserArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -17,14 +19,14 @@ public final class AccountMemberState extends com.pulumi.resources.ResourceArgs 
     public static final AccountMemberState Empty = new AccountMemberState();
 
     /**
-     * Account ID to create the account member in.
+     * Account identifier tag.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account ID to create the account member in.
+     * @return Account identifier tag.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -32,57 +34,89 @@ public final class AccountMemberState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
+     * The contact email address of the user.
      * 
      */
-    @Import(name="emailAddress")
-    private @Nullable Output<String> emailAddress;
+    @Import(name="email")
+    private @Nullable Output<String> email;
 
     /**
-     * @return The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
+     * @return The contact email address of the user.
      * 
      */
-    public Optional<Output<String>> emailAddress() {
-        return Optional.ofNullable(this.emailAddress);
+    public Optional<Output<String>> email() {
+        return Optional.ofNullable(this.email);
     }
 
     /**
-     * List of account role IDs that you want to assign to a member.
+     * Array of policies associated with this member.
      * 
      */
-    @Import(name="roleIds")
-    private @Nullable Output<List<String>> roleIds;
+    @Import(name="policies")
+    private @Nullable Output<List<AccountMemberPolicyArgs>> policies;
 
     /**
-     * @return List of account role IDs that you want to assign to a member.
+     * @return Array of policies associated with this member.
      * 
      */
-    public Optional<Output<List<String>>> roleIds() {
-        return Optional.ofNullable(this.roleIds);
+    public Optional<Output<List<AccountMemberPolicyArgs>>> policies() {
+        return Optional.ofNullable(this.policies);
     }
 
     /**
-     * A member&#39;s status in the account. Available values: `accepted`, `pending`.
+     * Array of roles associated with this member.
+     * 
+     */
+    @Import(name="roles")
+    private @Nullable Output<List<String>> roles;
+
+    /**
+     * @return Array of roles associated with this member.
+     * 
+     */
+    public Optional<Output<List<String>>> roles() {
+        return Optional.ofNullable(this.roles);
+    }
+
+    /**
+     * Available values: &#34;accepted&#34;, &#34;pending&#34;.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return A member&#39;s status in the account. Available values: `accepted`, `pending`.
+     * @return Available values: &#34;accepted&#34;, &#34;pending&#34;.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * Details of the user associated to the membership.
+     * 
+     */
+    @Import(name="user")
+    private @Nullable Output<AccountMemberUserArgs> user;
+
+    /**
+     * @return Details of the user associated to the membership.
+     * 
+     */
+    public Optional<Output<AccountMemberUserArgs>> user() {
+        return Optional.ofNullable(this.user);
+    }
+
     private AccountMemberState() {}
 
     private AccountMemberState(AccountMemberState $) {
         this.accountId = $.accountId;
-        this.emailAddress = $.emailAddress;
-        this.roleIds = $.roleIds;
+        this.email = $.email;
+        this.policies = $.policies;
+        this.roles = $.roles;
         this.status = $.status;
+        this.user = $.user;
     }
 
     public static Builder builder() {
@@ -104,7 +138,7 @@ public final class AccountMemberState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountId Account ID to create the account member in.
+         * @param accountId Account identifier tag.
          * 
          * @return builder
          * 
@@ -115,7 +149,7 @@ public final class AccountMemberState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountId Account ID to create the account member in.
+         * @param accountId Account identifier tag.
          * 
          * @return builder
          * 
@@ -125,59 +159,90 @@ public final class AccountMemberState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param emailAddress The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
+         * @param email The contact email address of the user.
          * 
          * @return builder
          * 
          */
-        public Builder emailAddress(@Nullable Output<String> emailAddress) {
-            $.emailAddress = emailAddress;
+        public Builder email(@Nullable Output<String> email) {
+            $.email = email;
             return this;
         }
 
         /**
-         * @param emailAddress The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
+         * @param email The contact email address of the user.
          * 
          * @return builder
          * 
          */
-        public Builder emailAddress(String emailAddress) {
-            return emailAddress(Output.of(emailAddress));
+        public Builder email(String email) {
+            return email(Output.of(email));
         }
 
         /**
-         * @param roleIds List of account role IDs that you want to assign to a member.
+         * @param policies Array of policies associated with this member.
          * 
          * @return builder
          * 
          */
-        public Builder roleIds(@Nullable Output<List<String>> roleIds) {
-            $.roleIds = roleIds;
+        public Builder policies(@Nullable Output<List<AccountMemberPolicyArgs>> policies) {
+            $.policies = policies;
             return this;
         }
 
         /**
-         * @param roleIds List of account role IDs that you want to assign to a member.
+         * @param policies Array of policies associated with this member.
          * 
          * @return builder
          * 
          */
-        public Builder roleIds(List<String> roleIds) {
-            return roleIds(Output.of(roleIds));
+        public Builder policies(List<AccountMemberPolicyArgs> policies) {
+            return policies(Output.of(policies));
         }
 
         /**
-         * @param roleIds List of account role IDs that you want to assign to a member.
+         * @param policies Array of policies associated with this member.
          * 
          * @return builder
          * 
          */
-        public Builder roleIds(String... roleIds) {
-            return roleIds(List.of(roleIds));
+        public Builder policies(AccountMemberPolicyArgs... policies) {
+            return policies(List.of(policies));
         }
 
         /**
-         * @param status A member&#39;s status in the account. Available values: `accepted`, `pending`.
+         * @param roles Array of roles associated with this member.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roles(@Nullable Output<List<String>> roles) {
+            $.roles = roles;
+            return this;
+        }
+
+        /**
+         * @param roles Array of roles associated with this member.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roles(List<String> roles) {
+            return roles(Output.of(roles));
+        }
+
+        /**
+         * @param roles Array of roles associated with this member.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roles(String... roles) {
+            return roles(List.of(roles));
+        }
+
+        /**
+         * @param status Available values: &#34;accepted&#34;, &#34;pending&#34;.
          * 
          * @return builder
          * 
@@ -188,13 +253,34 @@ public final class AccountMemberState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param status A member&#39;s status in the account. Available values: `accepted`, `pending`.
+         * @param status Available values: &#34;accepted&#34;, &#34;pending&#34;.
          * 
          * @return builder
          * 
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param user Details of the user associated to the membership.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder user(@Nullable Output<AccountMemberUserArgs> user) {
+            $.user = user;
+            return this;
+        }
+
+        /**
+         * @param user Details of the user associated to the membership.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder user(AccountMemberUserArgs user) {
+            return user(Output.of(user));
         }
 
         public AccountMemberState build() {

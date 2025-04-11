@@ -8,13 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Instructs Cloudflare to check a regional hub data center on the way to your upper tier.
-// This can help improve performance for smart and custom tiered cache topologies.
-//
 // ## Example Usage
 //
 // ```go
@@ -22,15 +19,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewRegionalTieredCache(ctx, "example", &cloudflare.RegionalTieredCacheArgs{
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			_, err := cloudflare.NewRegionalTieredCache(ctx, "example_regional_tiered_cache", &cloudflare.RegionalTieredCacheArgs{
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Value:  pulumi.String("on"),
 //			})
 //			if err != nil {
@@ -45,14 +42,19 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example <zone_id>
+// $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example '<zone_id>'
 // ```
 type RegionalTieredCache struct {
 	pulumi.CustomResourceState
 
+	// Whether the setting is editable
+	Editable pulumi.BoolOutput `pulumi:"editable"`
+	// Last time this setting was modified.
+	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// Value of the Regional Tiered Cache zone setting.
+	// Available values: "on", "off".
 	Value pulumi.StringOutput `pulumi:"value"`
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -63,9 +65,6 @@ func NewRegionalTieredCache(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Value == nil {
-		return nil, errors.New("invalid value for required argument 'Value'")
-	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
@@ -92,16 +91,26 @@ func GetRegionalTieredCache(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionalTieredCache resources.
 type regionalTieredCacheState struct {
+	// Whether the setting is editable
+	Editable *bool `pulumi:"editable"`
+	// Last time this setting was modified.
+	ModifiedOn *string `pulumi:"modifiedOn"`
 	// Value of the Regional Tiered Cache zone setting.
+	// Available values: "on", "off".
 	Value *string `pulumi:"value"`
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type RegionalTieredCacheState struct {
+	// Whether the setting is editable
+	Editable pulumi.BoolPtrInput
+	// Last time this setting was modified.
+	ModifiedOn pulumi.StringPtrInput
 	// Value of the Regional Tiered Cache zone setting.
+	// Available values: "on", "off".
 	Value pulumi.StringPtrInput
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -111,16 +120,18 @@ func (RegionalTieredCacheState) ElementType() reflect.Type {
 
 type regionalTieredCacheArgs struct {
 	// Value of the Regional Tiered Cache zone setting.
-	Value string `pulumi:"value"`
-	// The zone identifier to target for the resource.
+	// Available values: "on", "off".
+	Value *string `pulumi:"value"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a RegionalTieredCache resource.
 type RegionalTieredCacheArgs struct {
 	// Value of the Regional Tiered Cache zone setting.
-	Value pulumi.StringInput
-	// The zone identifier to target for the resource.
+	// Available values: "on", "off".
+	Value pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -211,12 +222,23 @@ func (o RegionalTieredCacheOutput) ToRegionalTieredCacheOutputWithContext(ctx co
 	return o
 }
 
+// Whether the setting is editable
+func (o RegionalTieredCacheOutput) Editable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RegionalTieredCache) pulumi.BoolOutput { return v.Editable }).(pulumi.BoolOutput)
+}
+
+// Last time this setting was modified.
+func (o RegionalTieredCacheOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionalTieredCache) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
 // Value of the Regional Tiered Cache zone setting.
+// Available values: "on", "off".
 func (o RegionalTieredCacheOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalTieredCache) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource.
+// Identifier
 func (o RegionalTieredCacheOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalTieredCache) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

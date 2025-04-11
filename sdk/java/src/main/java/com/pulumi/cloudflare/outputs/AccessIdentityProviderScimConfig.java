@@ -18,22 +18,23 @@ public final class AccessIdentityProviderScimConfig {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Deprecated. Use `identity_update_behavior`.
-     * 
-     */
-    private @Nullable Boolean groupMemberDeprovision;
-    /**
-     * @return Indicates how a SCIM event updates a user identity used for policy evaluation. Use &#34;automatic&#34; to automatically update a user&#39;s identity and augment it with fields from the SCIM user resource. Use &#34;reauth&#34; to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With &#34;reauth&#34; identities will not contain fields from the SCIM user resource. With &#34;no_action&#34; identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+     * @return Indicates how a SCIM event updates a user identity used for policy evaluation. Use &#34;automatic&#34; to automatically update a user&#39;s identity and augment it with fields from the SCIM user resource. Use &#34;reauth&#34; to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With &#34;reauth&#34; identities will not contain fields from the SCIM user resource. With &#34;no*action&#34; identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+     * Available values: &#34;automatic&#34;, &#34;reauth&#34;, &#34;no*action&#34;.
      * 
      */
     private @Nullable String identityUpdateBehavior;
+    /**
+     * @return The base URL of Cloudflare&#39;s SCIM V2.0 API endpoint.
+     * 
+     */
+    private @Nullable String scimBaseUrl;
     /**
      * @return A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
      * 
      */
     private @Nullable Boolean seatDeprovision;
     /**
-     * @return A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+     * @return A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
      * 
      */
     private @Nullable String secret;
@@ -52,18 +53,19 @@ public final class AccessIdentityProviderScimConfig {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Deprecated. Use `identity_update_behavior`.
-     * 
-     */
-    public Optional<Boolean> groupMemberDeprovision() {
-        return Optional.ofNullable(this.groupMemberDeprovision);
-    }
-    /**
-     * @return Indicates how a SCIM event updates a user identity used for policy evaluation. Use &#34;automatic&#34; to automatically update a user&#39;s identity and augment it with fields from the SCIM user resource. Use &#34;reauth&#34; to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With &#34;reauth&#34; identities will not contain fields from the SCIM user resource. With &#34;no_action&#34; identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+     * @return Indicates how a SCIM event updates a user identity used for policy evaluation. Use &#34;automatic&#34; to automatically update a user&#39;s identity and augment it with fields from the SCIM user resource. Use &#34;reauth&#34; to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With &#34;reauth&#34; identities will not contain fields from the SCIM user resource. With &#34;no*action&#34; identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+     * Available values: &#34;automatic&#34;, &#34;reauth&#34;, &#34;no*action&#34;.
      * 
      */
     public Optional<String> identityUpdateBehavior() {
         return Optional.ofNullable(this.identityUpdateBehavior);
+    }
+    /**
+     * @return The base URL of Cloudflare&#39;s SCIM V2.0 API endpoint.
+     * 
+     */
+    public Optional<String> scimBaseUrl() {
+        return Optional.ofNullable(this.scimBaseUrl);
     }
     /**
      * @return A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
@@ -73,7 +75,7 @@ public final class AccessIdentityProviderScimConfig {
         return Optional.ofNullable(this.seatDeprovision);
     }
     /**
-     * @return A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+     * @return A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
      * 
      */
     public Optional<String> secret() {
@@ -97,8 +99,8 @@ public final class AccessIdentityProviderScimConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
-        private @Nullable Boolean groupMemberDeprovision;
         private @Nullable String identityUpdateBehavior;
+        private @Nullable String scimBaseUrl;
         private @Nullable Boolean seatDeprovision;
         private @Nullable String secret;
         private @Nullable Boolean userDeprovision;
@@ -106,8 +108,8 @@ public final class AccessIdentityProviderScimConfig {
         public Builder(AccessIdentityProviderScimConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
-    	      this.groupMemberDeprovision = defaults.groupMemberDeprovision;
     	      this.identityUpdateBehavior = defaults.identityUpdateBehavior;
+    	      this.scimBaseUrl = defaults.scimBaseUrl;
     	      this.seatDeprovision = defaults.seatDeprovision;
     	      this.secret = defaults.secret;
     	      this.userDeprovision = defaults.userDeprovision;
@@ -120,15 +122,15 @@ public final class AccessIdentityProviderScimConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder groupMemberDeprovision(@Nullable Boolean groupMemberDeprovision) {
-
-            this.groupMemberDeprovision = groupMemberDeprovision;
-            return this;
-        }
-        @CustomType.Setter
         public Builder identityUpdateBehavior(@Nullable String identityUpdateBehavior) {
 
             this.identityUpdateBehavior = identityUpdateBehavior;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder scimBaseUrl(@Nullable String scimBaseUrl) {
+
+            this.scimBaseUrl = scimBaseUrl;
             return this;
         }
         @CustomType.Setter
@@ -152,8 +154,8 @@ public final class AccessIdentityProviderScimConfig {
         public AccessIdentityProviderScimConfig build() {
             final var _resultValue = new AccessIdentityProviderScimConfig();
             _resultValue.enabled = enabled;
-            _resultValue.groupMemberDeprovision = groupMemberDeprovision;
             _resultValue.identityUpdateBehavior = identityUpdateBehavior;
+            _resultValue.scimBaseUrl = scimBaseUrl;
             _resultValue.seatDeprovision = seatDeprovision;
             _resultValue.secret = secret;
             _resultValue.userDeprovision = userDeprovision;

@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +17,46 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetAccountsArgs Empty = new GetAccountsArgs();
 
     /**
-     * The account name to target for the resource.
+     * Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Import(name="direction")
+    private @Nullable Output<String> direction;
+
+    /**
+     * @return Direction to order results.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<Output<String>> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+
+    /**
+     * Max items to fetch, default: 1000
+     * 
+     */
+    @Import(name="maxItems")
+    private @Nullable Output<Integer> maxItems;
+
+    /**
+     * @return Max items to fetch, default: 1000
+     * 
+     */
+    public Optional<Output<Integer>> maxItems() {
+        return Optional.ofNullable(this.maxItems);
+    }
+
+    /**
+     * Name of the account.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The account name to target for the resource.
+     * @return Name of the account.
      * 
      */
     public Optional<Output<String>> name() {
@@ -33,6 +66,8 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
     private GetAccountsArgs() {}
 
     private GetAccountsArgs(GetAccountsArgs $) {
+        this.direction = $.direction;
+        this.maxItems = $.maxItems;
         this.name = $.name;
     }
 
@@ -55,7 +90,51 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The account name to target for the resource.
+         * @param direction Direction to order results.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(@Nullable Output<String> direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        /**
+         * @param direction Direction to order results.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(String direction) {
+            return direction(Output.of(direction));
+        }
+
+        /**
+         * @param maxItems Max items to fetch, default: 1000
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxItems(@Nullable Output<Integer> maxItems) {
+            $.maxItems = maxItems;
+            return this;
+        }
+
+        /**
+         * @param maxItems Max items to fetch, default: 1000
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxItems(Integer maxItems) {
+            return maxItems(Output.of(maxItems));
+        }
+
+        /**
+         * @param name Name of the account.
          * 
          * @return builder
          * 
@@ -66,7 +145,7 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The account name to target for the resource.
+         * @param name Name of the account.
          * 
          * @return builder
          * 

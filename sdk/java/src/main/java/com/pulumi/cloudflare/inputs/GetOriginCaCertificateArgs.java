@@ -3,11 +3,13 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetOriginCaCertificateFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetOriginCaCertificateArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,24 +17,32 @@ public final class GetOriginCaCertificateArgs extends com.pulumi.resources.Invok
     public static final GetOriginCaCertificateArgs Empty = new GetOriginCaCertificateArgs();
 
     /**
-     * The Origin CA Certificate unique identifier.
+     * Identifier
      * 
      */
-    @Import(name="id", required=true)
-    private Output<String> id;
+    @Import(name="certificateId")
+    private @Nullable Output<String> certificateId;
 
     /**
-     * @return The Origin CA Certificate unique identifier.
+     * @return Identifier
      * 
      */
-    public Output<String> id() {
-        return this.id;
+    public Optional<Output<String>> certificateId() {
+        return Optional.ofNullable(this.certificateId);
+    }
+
+    @Import(name="filter")
+    private @Nullable Output<GetOriginCaCertificateFilterArgs> filter;
+
+    public Optional<Output<GetOriginCaCertificateFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     private GetOriginCaCertificateArgs() {}
 
     private GetOriginCaCertificateArgs(GetOriginCaCertificateArgs $) {
-        this.id = $.id;
+        this.certificateId = $.certificateId;
+        this.filter = $.filter;
     }
 
     public static Builder builder() {
@@ -54,30 +64,36 @@ public final class GetOriginCaCertificateArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param id The Origin CA Certificate unique identifier.
+         * @param certificateId Identifier
          * 
          * @return builder
          * 
          */
-        public Builder id(Output<String> id) {
-            $.id = id;
+        public Builder certificateId(@Nullable Output<String> certificateId) {
+            $.certificateId = certificateId;
             return this;
         }
 
         /**
-         * @param id The Origin CA Certificate unique identifier.
+         * @param certificateId Identifier
          * 
          * @return builder
          * 
          */
-        public Builder id(String id) {
-            return id(Output.of(id));
+        public Builder certificateId(String certificateId) {
+            return certificateId(Output.of(certificateId));
+        }
+
+        public Builder filter(@Nullable Output<GetOriginCaCertificateFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetOriginCaCertificateFilterArgs filter) {
+            return filter(Output.of(filter));
         }
 
         public GetOriginCaCertificateArgs build() {
-            if ($.id == null) {
-                throw new MissingRequiredPropertyException("GetOriginCaCertificateArgs", "id");
-            }
             return $;
         }
     }

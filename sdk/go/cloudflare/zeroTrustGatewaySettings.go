@@ -8,134 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Teams Account resource. The Teams Account
-// resource defines configuration for secure web gateway.
-//
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustGatewaySettings(ctx, "example", &cloudflare.ZeroTrustGatewaySettingsArgs{
-//				AccountId:                pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				TlsDecryptEnabled:        pulumi.Bool(true),
-//				ProtocolDetectionEnabled: pulumi.Bool(true),
-//				BlockPage: &cloudflare.ZeroTrustGatewaySettingsBlockPageArgs{
-//					FooterText:      pulumi.String("hello"),
-//					HeaderText:      pulumi.String("hello"),
-//					LogoPath:        pulumi.String("https://example.com/logo.jpg"),
-//					BackgroundColor: pulumi.String("#000000"),
-//				},
-//				BodyScanning: &cloudflare.ZeroTrustGatewaySettingsBodyScanningArgs{
-//					InspectionMode: pulumi.String("deep"),
-//				},
-//				Antivirus: &cloudflare.ZeroTrustGatewaySettingsAntivirusArgs{
-//					EnabledDownloadPhase: pulumi.Bool(true),
-//					EnabledUploadPhase:   pulumi.Bool(false),
-//					FailClosed:           pulumi.Bool(true),
-//					NotificationSettings: &cloudflare.ZeroTrustGatewaySettingsAntivirusNotificationSettingsArgs{
-//						Enabled:    pulumi.Bool(true),
-//						Message:    pulumi.String("you are blocked"),
-//						SupportUrl: pulumi.String("https://example.com/blocked"),
-//					},
-//				},
-//				Fips: &cloudflare.ZeroTrustGatewaySettingsFipsArgs{
-//					Tls: pulumi.Bool(true),
-//				},
-//				Proxy: &cloudflare.ZeroTrustGatewaySettingsProxyArgs{
-//					Tcp:            pulumi.Bool(true),
-//					Udp:            pulumi.Bool(true),
-//					RootCa:         pulumi.Bool(true),
-//					VirtualIp:      pulumi.Bool(false),
-//					DisableForTime: pulumi.Int(3600),
-//				},
-//				UrlBrowserIsolationEnabled: pulumi.Bool(true),
-//				Logging: &cloudflare.ZeroTrustGatewaySettingsLoggingArgs{
-//					RedactPii: pulumi.Bool(true),
-//					SettingsByRuleType: &cloudflare.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeArgs{
-//						Dns: &cloudflare.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDnsArgs{
-//							LogAll:    pulumi.Bool(false),
-//							LogBlocks: pulumi.Bool(true),
-//						},
-//						Http: &cloudflare.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttpArgs{
-//							LogAll:    pulumi.Bool(true),
-//							LogBlocks: pulumi.Bool(true),
-//						},
-//						L4: &cloudflare.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4Args{
-//							LogAll:    pulumi.Bool(false),
-//							LogBlocks: pulumi.Bool(true),
-//						},
-//					},
-//				},
-//				ExtendedEmailMatching: &cloudflare.ZeroTrustGatewaySettingsExtendedEmailMatchingArgs{
-//					Enabled: pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example <account_id>
+// $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example '<account_id>'
 // ```
 type ZeroTrustGatewaySettings struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Whether to enable the activity log.
-	ActivityLogEnabled pulumi.BoolPtrOutput `pulumi:"activityLogEnabled"`
-	// Configuration block for antivirus traffic scanning.
-	Antivirus ZeroTrustGatewaySettingsAntivirusPtrOutput `pulumi:"antivirus"`
-	// Configuration for a custom block page.
-	BlockPage ZeroTrustGatewaySettingsBlockPagePtrOutput `pulumi:"blockPage"`
-	// Configuration for body scanning.
-	BodyScanning ZeroTrustGatewaySettingsBodyScanningPtrOutput `pulumi:"bodyScanning"`
-	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
-	Certificate ZeroTrustGatewaySettingsCertificatePtrOutput `pulumi:"certificate"`
-	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-	//
-	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-	CustomCertificate ZeroTrustGatewaySettingsCustomCertificatePtrOutput `pulumi:"customCertificate"`
-	// Configuration for extended e-mail matching.
-	ExtendedEmailMatching ZeroTrustGatewaySettingsExtendedEmailMatchingOutput `pulumi:"extendedEmailMatching"`
-	// Configure compliance with Federal Information Processing Standards.
-	Fips    ZeroTrustGatewaySettingsFipsPtrOutput    `pulumi:"fips"`
-	Logging ZeroTrustGatewaySettingsLoggingPtrOutput `pulumi:"logging"`
-	// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-	NonIdentityBrowserIsolationEnabled pulumi.BoolPtrOutput `pulumi:"nonIdentityBrowserIsolationEnabled"`
-	// Configuration for DLP Payload Logging.
-	PayloadLog ZeroTrustGatewaySettingsPayloadLogPtrOutput `pulumi:"payloadLog"`
-	// Indicator that protocol detection is enabled.
-	ProtocolDetectionEnabled pulumi.BoolPtrOutput `pulumi:"protocolDetectionEnabled"`
-	// Configuration block for specifying which protocols are proxied.
-	Proxy ZeroTrustGatewaySettingsProxyPtrOutput `pulumi:"proxy"`
-	// Configuration for SSH Session Logging.
-	SshSessionLog ZeroTrustGatewaySettingsSshSessionLogPtrOutput `pulumi:"sshSessionLog"`
-	// Indicator that decryption of TLS traffic is enabled.
-	TlsDecryptEnabled pulumi.BoolPtrOutput `pulumi:"tlsDecryptEnabled"`
-	// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-	UrlBrowserIsolationEnabled pulumi.BoolPtrOutput `pulumi:"urlBrowserIsolationEnabled"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Account settings
+	Settings  ZeroTrustGatewaySettingsSettingsOutput `pulumi:"settings"`
+	UpdatedAt pulumi.StringOutput                    `pulumi:"updatedAt"`
 }
 
 // NewZeroTrustGatewaySettings registers a new resource with the given unique name, arguments, and options.
@@ -148,6 +39,12 @@ func NewZeroTrustGatewaySettings(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/teamsAccount:TeamsAccount"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustGatewaySettings
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings", name, args, &resource, opts...)
@@ -171,79 +68,19 @@ func GetZeroTrustGatewaySettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustGatewaySettings resources.
 type zeroTrustGatewaySettingsState struct {
-	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// Whether to enable the activity log.
-	ActivityLogEnabled *bool `pulumi:"activityLogEnabled"`
-	// Configuration block for antivirus traffic scanning.
-	Antivirus *ZeroTrustGatewaySettingsAntivirus `pulumi:"antivirus"`
-	// Configuration for a custom block page.
-	BlockPage *ZeroTrustGatewaySettingsBlockPage `pulumi:"blockPage"`
-	// Configuration for body scanning.
-	BodyScanning *ZeroTrustGatewaySettingsBodyScanning `pulumi:"bodyScanning"`
-	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
-	Certificate *ZeroTrustGatewaySettingsCertificate `pulumi:"certificate"`
-	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-	//
-	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-	CustomCertificate *ZeroTrustGatewaySettingsCustomCertificate `pulumi:"customCertificate"`
-	// Configuration for extended e-mail matching.
-	ExtendedEmailMatching *ZeroTrustGatewaySettingsExtendedEmailMatching `pulumi:"extendedEmailMatching"`
-	// Configure compliance with Federal Information Processing Standards.
-	Fips    *ZeroTrustGatewaySettingsFips    `pulumi:"fips"`
-	Logging *ZeroTrustGatewaySettingsLogging `pulumi:"logging"`
-	// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-	NonIdentityBrowserIsolationEnabled *bool `pulumi:"nonIdentityBrowserIsolationEnabled"`
-	// Configuration for DLP Payload Logging.
-	PayloadLog *ZeroTrustGatewaySettingsPayloadLog `pulumi:"payloadLog"`
-	// Indicator that protocol detection is enabled.
-	ProtocolDetectionEnabled *bool `pulumi:"protocolDetectionEnabled"`
-	// Configuration block for specifying which protocols are proxied.
-	Proxy *ZeroTrustGatewaySettingsProxy `pulumi:"proxy"`
-	// Configuration for SSH Session Logging.
-	SshSessionLog *ZeroTrustGatewaySettingsSshSessionLog `pulumi:"sshSessionLog"`
-	// Indicator that decryption of TLS traffic is enabled.
-	TlsDecryptEnabled *bool `pulumi:"tlsDecryptEnabled"`
-	// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-	UrlBrowserIsolationEnabled *bool `pulumi:"urlBrowserIsolationEnabled"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// Account settings
+	Settings  *ZeroTrustGatewaySettingsSettings `pulumi:"settings"`
+	UpdatedAt *string                           `pulumi:"updatedAt"`
 }
 
 type ZeroTrustGatewaySettingsState struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// Whether to enable the activity log.
-	ActivityLogEnabled pulumi.BoolPtrInput
-	// Configuration block for antivirus traffic scanning.
-	Antivirus ZeroTrustGatewaySettingsAntivirusPtrInput
-	// Configuration for a custom block page.
-	BlockPage ZeroTrustGatewaySettingsBlockPagePtrInput
-	// Configuration for body scanning.
-	BodyScanning ZeroTrustGatewaySettingsBodyScanningPtrInput
-	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
-	Certificate ZeroTrustGatewaySettingsCertificatePtrInput
-	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-	//
-	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-	CustomCertificate ZeroTrustGatewaySettingsCustomCertificatePtrInput
-	// Configuration for extended e-mail matching.
-	ExtendedEmailMatching ZeroTrustGatewaySettingsExtendedEmailMatchingPtrInput
-	// Configure compliance with Federal Information Processing Standards.
-	Fips    ZeroTrustGatewaySettingsFipsPtrInput
-	Logging ZeroTrustGatewaySettingsLoggingPtrInput
-	// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-	NonIdentityBrowserIsolationEnabled pulumi.BoolPtrInput
-	// Configuration for DLP Payload Logging.
-	PayloadLog ZeroTrustGatewaySettingsPayloadLogPtrInput
-	// Indicator that protocol detection is enabled.
-	ProtocolDetectionEnabled pulumi.BoolPtrInput
-	// Configuration block for specifying which protocols are proxied.
-	Proxy ZeroTrustGatewaySettingsProxyPtrInput
-	// Configuration for SSH Session Logging.
-	SshSessionLog ZeroTrustGatewaySettingsSshSessionLogPtrInput
-	// Indicator that decryption of TLS traffic is enabled.
-	TlsDecryptEnabled pulumi.BoolPtrInput
-	// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-	UrlBrowserIsolationEnabled pulumi.BoolPtrInput
+	CreatedAt pulumi.StringPtrInput
+	// Account settings
+	Settings  ZeroTrustGatewaySettingsSettingsPtrInput
+	UpdatedAt pulumi.StringPtrInput
 }
 
 func (ZeroTrustGatewaySettingsState) ElementType() reflect.Type {
@@ -251,80 +88,16 @@ func (ZeroTrustGatewaySettingsState) ElementType() reflect.Type {
 }
 
 type zeroTrustGatewaySettingsArgs struct {
-	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// Whether to enable the activity log.
-	ActivityLogEnabled *bool `pulumi:"activityLogEnabled"`
-	// Configuration block for antivirus traffic scanning.
-	Antivirus *ZeroTrustGatewaySettingsAntivirus `pulumi:"antivirus"`
-	// Configuration for a custom block page.
-	BlockPage *ZeroTrustGatewaySettingsBlockPage `pulumi:"blockPage"`
-	// Configuration for body scanning.
-	BodyScanning *ZeroTrustGatewaySettingsBodyScanning `pulumi:"bodyScanning"`
-	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
-	Certificate *ZeroTrustGatewaySettingsCertificate `pulumi:"certificate"`
-	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-	//
-	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-	CustomCertificate *ZeroTrustGatewaySettingsCustomCertificate `pulumi:"customCertificate"`
-	// Configuration for extended e-mail matching.
-	ExtendedEmailMatching *ZeroTrustGatewaySettingsExtendedEmailMatching `pulumi:"extendedEmailMatching"`
-	// Configure compliance with Federal Information Processing Standards.
-	Fips    *ZeroTrustGatewaySettingsFips    `pulumi:"fips"`
-	Logging *ZeroTrustGatewaySettingsLogging `pulumi:"logging"`
-	// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-	NonIdentityBrowserIsolationEnabled *bool `pulumi:"nonIdentityBrowserIsolationEnabled"`
-	// Configuration for DLP Payload Logging.
-	PayloadLog *ZeroTrustGatewaySettingsPayloadLog `pulumi:"payloadLog"`
-	// Indicator that protocol detection is enabled.
-	ProtocolDetectionEnabled *bool `pulumi:"protocolDetectionEnabled"`
-	// Configuration block for specifying which protocols are proxied.
-	Proxy *ZeroTrustGatewaySettingsProxy `pulumi:"proxy"`
-	// Configuration for SSH Session Logging.
-	SshSessionLog *ZeroTrustGatewaySettingsSshSessionLog `pulumi:"sshSessionLog"`
-	// Indicator that decryption of TLS traffic is enabled.
-	TlsDecryptEnabled *bool `pulumi:"tlsDecryptEnabled"`
-	// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-	UrlBrowserIsolationEnabled *bool `pulumi:"urlBrowserIsolationEnabled"`
+	// Account settings
+	Settings *ZeroTrustGatewaySettingsSettings `pulumi:"settings"`
 }
 
 // The set of arguments for constructing a ZeroTrustGatewaySettings resource.
 type ZeroTrustGatewaySettingsArgs struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// Whether to enable the activity log.
-	ActivityLogEnabled pulumi.BoolPtrInput
-	// Configuration block for antivirus traffic scanning.
-	Antivirus ZeroTrustGatewaySettingsAntivirusPtrInput
-	// Configuration for a custom block page.
-	BlockPage ZeroTrustGatewaySettingsBlockPagePtrInput
-	// Configuration for body scanning.
-	BodyScanning ZeroTrustGatewaySettingsBodyScanningPtrInput
-	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
-	Certificate ZeroTrustGatewaySettingsCertificatePtrInput
-	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-	//
-	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-	CustomCertificate ZeroTrustGatewaySettingsCustomCertificatePtrInput
-	// Configuration for extended e-mail matching.
-	ExtendedEmailMatching ZeroTrustGatewaySettingsExtendedEmailMatchingPtrInput
-	// Configure compliance with Federal Information Processing Standards.
-	Fips    ZeroTrustGatewaySettingsFipsPtrInput
-	Logging ZeroTrustGatewaySettingsLoggingPtrInput
-	// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-	NonIdentityBrowserIsolationEnabled pulumi.BoolPtrInput
-	// Configuration for DLP Payload Logging.
-	PayloadLog ZeroTrustGatewaySettingsPayloadLogPtrInput
-	// Indicator that protocol detection is enabled.
-	ProtocolDetectionEnabled pulumi.BoolPtrInput
-	// Configuration block for specifying which protocols are proxied.
-	Proxy ZeroTrustGatewaySettingsProxyPtrInput
-	// Configuration for SSH Session Logging.
-	SshSessionLog ZeroTrustGatewaySettingsSshSessionLogPtrInput
-	// Indicator that decryption of TLS traffic is enabled.
-	TlsDecryptEnabled pulumi.BoolPtrInput
-	// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-	UrlBrowserIsolationEnabled pulumi.BoolPtrInput
+	// Account settings
+	Settings ZeroTrustGatewaySettingsSettingsPtrInput
 }
 
 func (ZeroTrustGatewaySettingsArgs) ElementType() reflect.Type {
@@ -414,96 +187,21 @@ func (o ZeroTrustGatewaySettingsOutput) ToZeroTrustGatewaySettingsOutputWithCont
 	return o
 }
 
-// The account identifier to target for the resource.
 func (o ZeroTrustGatewaySettingsOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettings) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Whether to enable the activity log.
-func (o ZeroTrustGatewaySettingsOutput) ActivityLogEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewaySettings) pulumi.BoolPtrOutput { return v.ActivityLogEnabled }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustGatewaySettingsOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettings) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Configuration block for antivirus traffic scanning.
-func (o ZeroTrustGatewaySettingsOutput) Antivirus() ZeroTrustGatewaySettingsAntivirusPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsAntivirusPtrOutput { return v.Antivirus }).(ZeroTrustGatewaySettingsAntivirusPtrOutput)
+// Account settings
+func (o ZeroTrustGatewaySettingsOutput) Settings() ZeroTrustGatewaySettingsSettingsOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsSettingsOutput { return v.Settings }).(ZeroTrustGatewaySettingsSettingsOutput)
 }
 
-// Configuration for a custom block page.
-func (o ZeroTrustGatewaySettingsOutput) BlockPage() ZeroTrustGatewaySettingsBlockPagePtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsBlockPagePtrOutput { return v.BlockPage }).(ZeroTrustGatewaySettingsBlockPagePtrOutput)
-}
-
-// Configuration for body scanning.
-func (o ZeroTrustGatewaySettingsOutput) BodyScanning() ZeroTrustGatewaySettingsBodyScanningPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsBodyScanningPtrOutput { return v.BodyScanning }).(ZeroTrustGatewaySettingsBodyScanningPtrOutput)
-}
-
-// Configuration for TLS interception certificate. This will be required starting Feb 2025.
-func (o ZeroTrustGatewaySettingsOutput) Certificate() ZeroTrustGatewaySettingsCertificatePtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsCertificatePtrOutput { return v.Certificate }).(ZeroTrustGatewaySettingsCertificatePtrOutput)
-}
-
-// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-//
-// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-func (o ZeroTrustGatewaySettingsOutput) CustomCertificate() ZeroTrustGatewaySettingsCustomCertificatePtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsCustomCertificatePtrOutput {
-		return v.CustomCertificate
-	}).(ZeroTrustGatewaySettingsCustomCertificatePtrOutput)
-}
-
-// Configuration for extended e-mail matching.
-func (o ZeroTrustGatewaySettingsOutput) ExtendedEmailMatching() ZeroTrustGatewaySettingsExtendedEmailMatchingOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsExtendedEmailMatchingOutput {
-		return v.ExtendedEmailMatching
-	}).(ZeroTrustGatewaySettingsExtendedEmailMatchingOutput)
-}
-
-// Configure compliance with Federal Information Processing Standards.
-func (o ZeroTrustGatewaySettingsOutput) Fips() ZeroTrustGatewaySettingsFipsPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsFipsPtrOutput { return v.Fips }).(ZeroTrustGatewaySettingsFipsPtrOutput)
-}
-
-func (o ZeroTrustGatewaySettingsOutput) Logging() ZeroTrustGatewaySettingsLoggingPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsLoggingPtrOutput { return v.Logging }).(ZeroTrustGatewaySettingsLoggingPtrOutput)
-}
-
-// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-func (o ZeroTrustGatewaySettingsOutput) NonIdentityBrowserIsolationEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewaySettings) pulumi.BoolPtrOutput { return v.NonIdentityBrowserIsolationEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Configuration for DLP Payload Logging.
-func (o ZeroTrustGatewaySettingsOutput) PayloadLog() ZeroTrustGatewaySettingsPayloadLogPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsPayloadLogPtrOutput { return v.PayloadLog }).(ZeroTrustGatewaySettingsPayloadLogPtrOutput)
-}
-
-// Indicator that protocol detection is enabled.
-func (o ZeroTrustGatewaySettingsOutput) ProtocolDetectionEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewaySettings) pulumi.BoolPtrOutput { return v.ProtocolDetectionEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Configuration block for specifying which protocols are proxied.
-func (o ZeroTrustGatewaySettingsOutput) Proxy() ZeroTrustGatewaySettingsProxyPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsProxyPtrOutput { return v.Proxy }).(ZeroTrustGatewaySettingsProxyPtrOutput)
-}
-
-// Configuration for SSH Session Logging.
-func (o ZeroTrustGatewaySettingsOutput) SshSessionLog() ZeroTrustGatewaySettingsSshSessionLogPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsSshSessionLogPtrOutput {
-		return v.SshSessionLog
-	}).(ZeroTrustGatewaySettingsSshSessionLogPtrOutput)
-}
-
-// Indicator that decryption of TLS traffic is enabled.
-func (o ZeroTrustGatewaySettingsOutput) TlsDecryptEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewaySettings) pulumi.BoolPtrOutput { return v.TlsDecryptEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-func (o ZeroTrustGatewaySettingsOutput) UrlBrowserIsolationEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewaySettings) pulumi.BoolPtrOutput { return v.UrlBrowserIsolationEnabled }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustGatewaySettingsOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettings) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type ZeroTrustGatewaySettingsArrayOutput struct{ *pulumi.OutputState }

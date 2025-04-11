@@ -4,38 +4,37 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class AccessApplicationFooterLink {
     /**
-     * @return The name of the footer link.
+     * @return The hypertext in the footer link.
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
-     * @return The URL of the footer link.
+     * @return the hyperlink in the footer link.
      * 
      */
-    private @Nullable String url;
+    private String url;
 
     private AccessApplicationFooterLink() {}
     /**
-     * @return The name of the footer link.
+     * @return The hypertext in the footer link.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
-     * @return The URL of the footer link.
+     * @return the hyperlink in the footer link.
      * 
      */
-    public Optional<String> url() {
-        return Optional.ofNullable(this.url);
+    public String url() {
+        return this.url;
     }
 
     public static Builder builder() {
@@ -47,8 +46,8 @@ public final class AccessApplicationFooterLink {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String name;
-        private @Nullable String url;
+        private String name;
+        private String url;
         public Builder() {}
         public Builder(AccessApplicationFooterLink defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,14 +56,18 @@ public final class AccessApplicationFooterLink {
         }
 
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("AccessApplicationFooterLink", "name");
+            }
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder url(@Nullable String url) {
-
+        public Builder url(String url) {
+            if (url == null) {
+              throw new MissingRequiredPropertyException("AccessApplicationFooterLink", "url");
+            }
             this.url = url;
             return this;
         }

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,14 +18,16 @@ public final class WaitingRoomRulesRuleArgs extends com.pulumi.resources.Resourc
     public static final WaitingRoomRulesRuleArgs Empty = new WaitingRoomRulesRuleArgs();
 
     /**
-     * Action to perform in the ruleset rule. Available values: `bypass_waiting_room`.
+     * The action to take when the expression matches.
+     * Available values: &#34;bypass*waiting*room&#34;.
      * 
      */
     @Import(name="action", required=true)
     private Output<String> action;
 
     /**
-     * @return Action to perform in the ruleset rule. Available values: `bypass_waiting_room`.
+     * @return The action to take when the expression matches.
+     * Available values: &#34;bypass*waiting*room&#34;.
      * 
      */
     public Output<String> action() {
@@ -32,14 +35,14 @@ public final class WaitingRoomRulesRuleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Brief summary of the waiting room rule and its intended use.
+     * The description of the rule.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Brief summary of the waiting room rule and its intended use.
+     * @return The description of the rule.
      * 
      */
     public Optional<Output<String>> description() {
@@ -47,63 +50,33 @@ public final class WaitingRoomRulesRuleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Criteria for an HTTP request to trigger the waiting room rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Waiting Room Rules Docs](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/).
+     * When set to true, the rule is enabled.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    /**
+     * @return When set to true, the rule is enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
+
+    /**
+     * Criteria defining when there is a match for the current rule.
      * 
      */
     @Import(name="expression", required=true)
     private Output<String> expression;
 
     /**
-     * @return Criteria for an HTTP request to trigger the waiting room rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Waiting Room Rules Docs](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/).
+     * @return Criteria defining when there is a match for the current rule.
      * 
      */
     public Output<String> expression() {
         return this.expression;
-    }
-
-    /**
-     * Unique rule identifier.
-     * 
-     */
-    @Import(name="id")
-    private @Nullable Output<String> id;
-
-    /**
-     * @return Unique rule identifier.
-     * 
-     */
-    public Optional<Output<String>> id() {
-        return Optional.ofNullable(this.id);
-    }
-
-    /**
-     * Whether the rule is enabled or disabled. Available values: `enabled`, `disabled`.
-     * 
-     */
-    @Import(name="status")
-    private @Nullable Output<String> status;
-
-    /**
-     * @return Whether the rule is enabled or disabled. Available values: `enabled`, `disabled`.
-     * 
-     */
-    public Optional<Output<String>> status() {
-        return Optional.ofNullable(this.status);
-    }
-
-    /**
-     * Version of the waiting room rule.
-     * 
-     */
-    @Import(name="version")
-    private @Nullable Output<String> version;
-
-    /**
-     * @return Version of the waiting room rule.
-     * 
-     */
-    public Optional<Output<String>> version() {
-        return Optional.ofNullable(this.version);
     }
 
     private WaitingRoomRulesRuleArgs() {}
@@ -111,10 +84,8 @@ public final class WaitingRoomRulesRuleArgs extends com.pulumi.resources.Resourc
     private WaitingRoomRulesRuleArgs(WaitingRoomRulesRuleArgs $) {
         this.action = $.action;
         this.description = $.description;
+        this.enabled = $.enabled;
         this.expression = $.expression;
-        this.id = $.id;
-        this.status = $.status;
-        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -136,7 +107,8 @@ public final class WaitingRoomRulesRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param action Action to perform in the ruleset rule. Available values: `bypass_waiting_room`.
+         * @param action The action to take when the expression matches.
+         * Available values: &#34;bypass*waiting*room&#34;.
          * 
          * @return builder
          * 
@@ -147,7 +119,8 @@ public final class WaitingRoomRulesRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param action Action to perform in the ruleset rule. Available values: `bypass_waiting_room`.
+         * @param action The action to take when the expression matches.
+         * Available values: &#34;bypass*waiting*room&#34;.
          * 
          * @return builder
          * 
@@ -157,7 +130,7 @@ public final class WaitingRoomRulesRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description Brief summary of the waiting room rule and its intended use.
+         * @param description The description of the rule.
          * 
          * @return builder
          * 
@@ -168,7 +141,7 @@ public final class WaitingRoomRulesRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description Brief summary of the waiting room rule and its intended use.
+         * @param description The description of the rule.
          * 
          * @return builder
          * 
@@ -178,7 +151,28 @@ public final class WaitingRoomRulesRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param expression Criteria for an HTTP request to trigger the waiting room rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Waiting Room Rules Docs](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/).
+         * @param enabled When set to true, the rule is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled When set to true, the rule is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param expression Criteria defining when there is a match for the current rule.
          * 
          * @return builder
          * 
@@ -189,76 +183,13 @@ public final class WaitingRoomRulesRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param expression Criteria for an HTTP request to trigger the waiting room rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Waiting Room Rules Docs](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/).
+         * @param expression Criteria defining when there is a match for the current rule.
          * 
          * @return builder
          * 
          */
         public Builder expression(String expression) {
             return expression(Output.of(expression));
-        }
-
-        /**
-         * @param id Unique rule identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder id(@Nullable Output<String> id) {
-            $.id = id;
-            return this;
-        }
-
-        /**
-         * @param id Unique rule identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder id(String id) {
-            return id(Output.of(id));
-        }
-
-        /**
-         * @param status Whether the rule is enabled or disabled. Available values: `enabled`, `disabled`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder status(@Nullable Output<String> status) {
-            $.status = status;
-            return this;
-        }
-
-        /**
-         * @param status Whether the rule is enabled or disabled. Available values: `enabled`, `disabled`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder status(String status) {
-            return status(Output.of(status));
-        }
-
-        /**
-         * @param version Version of the waiting room rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder version(@Nullable Output<String> version) {
-            $.version = version;
-            return this;
-        }
-
-        /**
-         * @param version Version of the waiting room rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder version(String version) {
-            return version(Output.of(version));
         }
 
         public WaitingRoomRulesRuleArgs build() {

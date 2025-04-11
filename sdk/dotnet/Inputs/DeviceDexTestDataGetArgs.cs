@@ -13,19 +13,19 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class DeviceDexTestDataGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The host URL for `http` test `kind`. For `traceroute`, it must be a valid hostname or IP address.
+        /// The desired endpoint to test.
         /// </summary>
-        [Input("host", required: true)]
-        public Input<string> Host { get; set; } = null!;
+        [Input("host")]
+        public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// The type of Device Dex Test. Available values: `http`, `traceroute`.
+        /// The type of test.
         /// </summary>
-        [Input("kind", required: true)]
-        public Input<string> Kind { get; set; } = null!;
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The http request method. Available values: `GET`.
+        /// The HTTP request method type.
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }

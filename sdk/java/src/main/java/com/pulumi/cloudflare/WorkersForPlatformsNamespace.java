@@ -6,17 +6,18 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkersForPlatformsNamespaceArgs;
 import com.pulumi.cloudflare.inputs.WorkersForPlatformsNamespaceState;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) resource allows you
- * to manage Cloudflare Workers for Platforms namespaces.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -27,12 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersForPlatformsNamespace;
- * import com.pulumi.cloudflare.WorkersForPlatformsNamespaceArgs;
- * import com.pulumi.cloudflare.WorkersScript;
- * import com.pulumi.cloudflare.WorkersScriptArgs;
- * import com.pulumi.std.StdFunctions;
- * import com.pulumi.std.inputs.FileArgs;
+ * import com.pulumi.cloudflare.WorkersForPlatformsDispatchNamespace;
+ * import com.pulumi.cloudflare.WorkersForPlatformsDispatchNamespaceArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,19 +43,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WorkersForPlatformsNamespace("example", WorkersForPlatformsNamespaceArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("example-namespace")
- *             .build());
- * 
- *         var customerWorker1 = new WorkersScript("customerWorker1", WorkersScriptArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("customer-worker-1")
- *             .content(StdFunctions.file(FileArgs.builder()
- *                 .input("script.js")
- *                 .build()).result())
- *             .dispatchNamespace(example.name())
- *             .tags("free")
+ *         var exampleWorkersForPlatformsDispatchNamespace = new WorkersForPlatformsDispatchNamespace("exampleWorkersForPlatformsDispatchNamespace", WorkersForPlatformsDispatchNamespaceArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .name("my-dispatch-namespace")
  *             .build());
  * 
  *     }
@@ -70,39 +57,141 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace example &lt;account_id&gt;/&lt;namespace_name&gt;
+ * $ pulumi import cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace example &#39;&lt;account_id&gt;/&lt;dispatch_namespace&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare.index/workersforplatformsnamespace.WorkersForPlatformsNamespace has been deprecated in favor of cloudflare.index/workersforplatformsdispatchnamespace.WorkersForPlatformsDispatchNamespace
+ * 
  */
+@Deprecated /* cloudflare.index/workersforplatformsnamespace.WorkersForPlatformsNamespace has been deprecated in favor of cloudflare.index/workersforplatformsdispatchnamespace.WorkersForPlatformsDispatchNamespace */
 @ResourceType(type="cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace")
 public class WorkersForPlatformsNamespace extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * The name of the Workers for Platforms namespace.
+     * Identifier
+     * 
+     */
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
+    private Output<String> createdBy;
+
+    /**
+     * @return Identifier
+     * 
+     */
+    public Output<String> createdBy() {
+        return this.createdBy;
+    }
+    /**
+     * When the script was created.
+     * 
+     */
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
+
+    /**
+     * @return When the script was created.
+     * 
+     */
+    public Output<String> createdOn() {
+        return this.createdOn;
+    }
+    /**
+     * Identifier
+     * 
+     */
+    @Export(name="modifiedBy", refs={String.class}, tree="[0]")
+    private Output<String> modifiedBy;
+
+    /**
+     * @return Identifier
+     * 
+     */
+    public Output<String> modifiedBy() {
+        return this.modifiedBy;
+    }
+    /**
+     * When the script was last modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return When the script was last modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * The name of the dispatch namespace
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output<String> name;
+    private Output</* @Nullable */ String> name;
 
     /**
-     * @return The name of the Workers for Platforms namespace.
+     * @return The name of the dispatch namespace
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Output<Optional<String>> name() {
+        return Codegen.optional(this.name);
+    }
+    /**
+     * API Resource UUID tag.
+     * 
+     */
+    @Export(name="namespaceId", refs={String.class}, tree="[0]")
+    private Output<String> namespaceId;
+
+    /**
+     * @return API Resource UUID tag.
+     * 
+     */
+    public Output<String> namespaceId() {
+        return this.namespaceId;
+    }
+    /**
+     * Name of the Workers for Platforms dispatch namespace.
+     * 
+     */
+    @Export(name="namespaceName", refs={String.class}, tree="[0]")
+    private Output<String> namespaceName;
+
+    /**
+     * @return Name of the Workers for Platforms dispatch namespace.
+     * 
+     */
+    public Output<String> namespaceName() {
+        return this.namespaceName;
+    }
+    /**
+     * The current number of scripts in this Dispatch Namespace
+     * 
+     */
+    @Export(name="scriptCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> scriptCount;
+
+    /**
+     * @return The current number of scripts in this Dispatch Namespace
+     * 
+     */
+    public Output<Integer> scriptCount() {
+        return this.scriptCount;
     }
 
     /**
@@ -144,6 +233,9 @@ public class WorkersForPlatformsNamespace extends com.pulumi.resources.CustomRes
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WaitingRoomAdditionalRoute {
     /**
-     * @return The additional host name for which the waiting room to be applied on (no wildcards).
+     * @return The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://).
      * 
      */
-    private String host;
+    private @Nullable String host;
     /**
-     * @return The path within the additional host to enable the waiting room on. Defaults to `/`.
+     * @return Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported.
      * 
      */
     private @Nullable String path;
 
     private WaitingRoomAdditionalRoute() {}
     /**
-     * @return The additional host name for which the waiting room to be applied on (no wildcards).
+     * @return The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://).
      * 
      */
-    public String host() {
-        return this.host;
+    public Optional<String> host() {
+        return Optional.ofNullable(this.host);
     }
     /**
-     * @return The path within the additional host to enable the waiting room on. Defaults to `/`.
+     * @return Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported.
      * 
      */
     public Optional<String> path() {
@@ -48,7 +47,7 @@ public final class WaitingRoomAdditionalRoute {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String host;
+        private @Nullable String host;
         private @Nullable String path;
         public Builder() {}
         public Builder(WaitingRoomAdditionalRoute defaults) {
@@ -58,10 +57,8 @@ public final class WaitingRoomAdditionalRoute {
         }
 
         @CustomType.Setter
-        public Builder host(String host) {
-            if (host == null) {
-              throw new MissingRequiredPropertyException("WaitingRoomAdditionalRoute", "host");
-            }
+        public Builder host(@Nullable String host) {
+
             this.host = host;
             return this;
         }

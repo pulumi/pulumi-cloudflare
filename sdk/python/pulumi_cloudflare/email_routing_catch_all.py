@@ -24,29 +24,30 @@ class EmailRoutingCatchAllArgs:
     def __init__(__self__, *,
                  actions: pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllActionArgs']]],
                  matchers: pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]],
-                 name: pulumi.Input[builtins.str],
                  zone_id: pulumi.Input[builtins.str],
-                 enabled: Optional[pulumi.Input[builtins.bool]] = None):
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 name: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a EmailRoutingCatchAll resource.
-        :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllActionArgs']]] actions: List actions patterns.
-        :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]] matchers: Matching patterns to forward to your actions.
-        :param pulumi.Input[builtins.str] name: Routing rule name.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllActionArgs']]] actions: List actions for the catch-all routing rule.
+        :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]] matchers: List of matchers for the catch-all routing rule.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         :param pulumi.Input[builtins.bool] enabled: Routing rule status.
+        :param pulumi.Input[builtins.str] name: Routing rule name.
         """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "matchers", matchers)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "zone_id", zone_id)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def actions(self) -> pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllActionArgs']]]:
         """
-        List actions patterns.
+        List actions for the catch-all routing rule.
         """
         return pulumi.get(self, "actions")
 
@@ -58,7 +59,7 @@ class EmailRoutingCatchAllArgs:
     @pulumi.getter
     def matchers(self) -> pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]]:
         """
-        Matching patterns to forward to your actions.
+        List of matchers for the catch-all routing rule.
         """
         return pulumi.get(self, "matchers")
 
@@ -67,22 +68,10 @@ class EmailRoutingCatchAllArgs:
         pulumi.set(self, "matchers", value)
 
     @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[builtins.str]:
-        """
-        Routing rule name.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "name", value)
-
-    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -102,6 +91,18 @@ class EmailRoutingCatchAllArgs:
     def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Routing rule name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
 
 @pulumi.input_type
 class _EmailRoutingCatchAllState:
@@ -114,12 +115,12 @@ class _EmailRoutingCatchAllState:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering EmailRoutingCatchAll resources.
-        :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllActionArgs']]] actions: List actions patterns.
+        :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllActionArgs']]] actions: List actions for the catch-all routing rule.
         :param pulumi.Input[builtins.bool] enabled: Routing rule status.
-        :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]] matchers: Matching patterns to forward to your actions.
+        :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]] matchers: List of matchers for the catch-all routing rule.
         :param pulumi.Input[builtins.str] name: Routing rule name.
-        :param pulumi.Input[builtins.str] tag: Routing rule identifier.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] tag: Routing rule tag. (Deprecated, replaced by routing rule identifier)
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
@@ -138,7 +139,7 @@ class _EmailRoutingCatchAllState:
     @pulumi.getter
     def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllActionArgs']]]]:
         """
-        List actions patterns.
+        List actions for the catch-all routing rule.
         """
         return pulumi.get(self, "actions")
 
@@ -162,7 +163,7 @@ class _EmailRoutingCatchAllState:
     @pulumi.getter
     def matchers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]]]:
         """
-        Matching patterns to forward to your actions.
+        List of matchers for the catch-all routing rule.
         """
         return pulumi.get(self, "matchers")
 
@@ -186,7 +187,7 @@ class _EmailRoutingCatchAllState:
     @pulumi.getter
     def tag(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Routing rule identifier.
+        Routing rule tag. (Deprecated, replaced by routing rule identifier)
         """
         return pulumi.get(self, "tag")
 
@@ -198,7 +199,7 @@ class _EmailRoutingCatchAllState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -219,34 +220,21 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a resource for managing Email Routing Addresses catch all behaviour.
-
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
+        ## Import
 
-        example = cloudflare.EmailRoutingCatchAll("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="example catch all",
-            enabled=True,
-            matchers=[{
-                "type": "all",
-            }],
-            actions=[{
-                "type": "forward",
-                "values": ["destinationaddress@example.net"],
-            }])
+        ```sh
+        $ pulumi import cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict']]]] actions: List actions patterns.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict']]]] actions: List actions for the catch-all routing rule.
         :param pulumi.Input[builtins.bool] enabled: Routing rule status.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]] matchers: Matching patterns to forward to your actions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]] matchers: List of matchers for the catch-all routing rule.
         :param pulumi.Input[builtins.str] name: Routing rule name.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         ...
     @overload
@@ -255,25 +243,12 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
                  args: EmailRoutingCatchAllArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource for managing Email Routing Addresses catch all behaviour.
-
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
+        ## Import
 
-        example = cloudflare.EmailRoutingCatchAll("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="example catch all",
-            enabled=True,
-            matchers=[{
-                "type": "all",
-            }],
-            actions=[{
-                "type": "forward",
-                "values": ["destinationaddress@example.net"],
-            }])
+        ```sh
+        $ pulumi import cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -312,8 +287,6 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
             if matchers is None and not opts.urn:
                 raise TypeError("Missing required property 'matchers'")
             __props__.__dict__["matchers"] = matchers
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
@@ -342,12 +315,12 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict']]]] actions: List actions patterns.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict']]]] actions: List actions for the catch-all routing rule.
         :param pulumi.Input[builtins.bool] enabled: Routing rule status.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]] matchers: Matching patterns to forward to your actions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]] matchers: List of matchers for the catch-all routing rule.
         :param pulumi.Input[builtins.str] name: Routing rule name.
-        :param pulumi.Input[builtins.str] tag: Routing rule identifier.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] tag: Routing rule tag. (Deprecated, replaced by routing rule identifier)
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -365,13 +338,13 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
     @pulumi.getter
     def actions(self) -> pulumi.Output[Sequence['outputs.EmailRoutingCatchAllAction']]:
         """
-        List actions patterns.
+        List actions for the catch-all routing rule.
         """
         return pulumi.get(self, "actions")
 
     @property
     @pulumi.getter
-    def enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def enabled(self) -> pulumi.Output[builtins.bool]:
         """
         Routing rule status.
         """
@@ -381,13 +354,13 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
     @pulumi.getter
     def matchers(self) -> pulumi.Output[Sequence['outputs.EmailRoutingCatchAllMatcher']]:
         """
-        Matching patterns to forward to your actions.
+        List of matchers for the catch-all routing rule.
         """
         return pulumi.get(self, "matchers")
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Output[builtins.str]:
+    def name(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         Routing rule name.
         """
@@ -397,7 +370,7 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
     @pulumi.getter
     def tag(self) -> pulumi.Output[builtins.str]:
         """
-        Routing rule identifier.
+        Routing rule tag. (Deprecated, replaced by routing rule identifier)
         """
         return pulumi.get(self, "tag")
 
@@ -405,7 +378,7 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

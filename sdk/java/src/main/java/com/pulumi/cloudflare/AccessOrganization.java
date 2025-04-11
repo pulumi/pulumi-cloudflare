@@ -6,8 +6,9 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.AccessOrganizationArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccessOrganizationState;
-import com.pulumi.cloudflare.outputs.AccessOrganizationCustomPage;
+import com.pulumi.cloudflare.outputs.AccessOrganizationCustomPages;
 import com.pulumi.cloudflare.outputs.AccessOrganizationLoginDesign;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -19,78 +20,31 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A Zero Trust organization defines the user login experience.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AccessOrganization;
- * import com.pulumi.cloudflare.AccessOrganizationArgs;
- * import com.pulumi.cloudflare.inputs.AccessOrganizationLoginDesignArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new AccessOrganization("example", AccessOrganizationArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("example.cloudflareaccess.com")
- *             .authDomain("example.cloudflareaccess.com")
- *             .isUiReadOnly(false)
- *             .userSeatExpirationInactiveTime("720h")
- *             .autoRedirectToIdentity(false)
- *             .loginDesigns(AccessOrganizationLoginDesignArgs.builder()
- *                 .backgroundColor("#ffffff")
- *                 .textColor("#000000")
- *                 .logoPath("https://example.com/logo.png")
- *                 .headerText("My header text")
- *                 .footerText("My footer text")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example &lt;account_id&gt;
- * ```
+ * @deprecated
+ * cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization
  * 
  */
+@Deprecated /* cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization */
 @ResourceType(type="cloudflare:index/accessOrganization:AccessOrganization")
 public class AccessOrganization extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
@@ -111,86 +65,76 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="authDomain", refs={String.class}, tree="[0]")
-    private Output<String> authDomain;
+    private Output</* @Nullable */ String> authDomain;
 
     /**
      * @return The unique subdomain assigned to your Zero Trust organization.
      * 
      */
-    public Output<String> authDomain() {
-        return this.authDomain;
+    public Output<Optional<String>> authDomain() {
+        return Codegen.optional(this.authDomain);
     }
     /**
-     * When set to true, users skip the identity provider selection step during login.
+     * When set to `true`, users skip the identity provider selection step during login.
      * 
      */
     @Export(name="autoRedirectToIdentity", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> autoRedirectToIdentity;
+    private Output<Boolean> autoRedirectToIdentity;
 
     /**
-     * @return When set to true, users skip the identity provider selection step during login.
+     * @return When set to `true`, users skip the identity provider selection step during login.
      * 
      */
-    public Output<Optional<Boolean>> autoRedirectToIdentity() {
-        return Codegen.optional(this.autoRedirectToIdentity);
+    public Output<Boolean> autoRedirectToIdentity() {
+        return this.autoRedirectToIdentity;
     }
-    /**
-     * Custom pages for your Zero Trust organization.
-     * 
-     */
-    @Export(name="customPages", refs={List.class,AccessOrganizationCustomPage.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<AccessOrganizationCustomPage>> customPages;
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
 
-    /**
-     * @return Custom pages for your Zero Trust organization.
-     * 
-     */
-    public Output<Optional<List<AccessOrganizationCustomPage>>> customPages() {
-        return Codegen.optional(this.customPages);
+    public Output<String> createdAt() {
+        return this.createdAt;
     }
-    /**
-     * When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-     * 
-     */
+    @Export(name="customPages", refs={AccessOrganizationCustomPages.class}, tree="[0]")
+    private Output<AccessOrganizationCustomPages> customPages;
+
+    public Output<AccessOrganizationCustomPages> customPages() {
+        return this.customPages;
+    }
     @Export(name="isUiReadOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isUiReadOnly;
 
-    /**
-     * @return When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-     * 
-     */
     public Output<Optional<Boolean>> isUiReadOnly() {
         return Codegen.optional(this.isUiReadOnly);
     }
-    @Export(name="loginDesigns", refs={List.class,AccessOrganizationLoginDesign.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<AccessOrganizationLoginDesign>> loginDesigns;
+    @Export(name="loginDesign", refs={AccessOrganizationLoginDesign.class}, tree="[0]")
+    private Output<AccessOrganizationLoginDesign> loginDesign;
 
-    public Output<Optional<List<AccessOrganizationLoginDesign>>> loginDesigns() {
-        return Codegen.optional(this.loginDesigns);
+    public Output<AccessOrganizationLoginDesign> loginDesign() {
+        return this.loginDesign;
     }
     /**
      * The name of your Zero Trust organization.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output<String> name;
+    private Output</* @Nullable */ String> name;
 
     /**
      * @return The name of your Zero Trust organization.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Output<Optional<String>> name() {
+        return Codegen.optional(this.name);
     }
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
     @Export(name="sessionDuration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sessionDuration;
 
     /**
-     * @return How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * @return The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
     public Output<Optional<String>> sessionDuration() {
@@ -210,47 +154,53 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> uiReadOnlyToggleReason() {
         return Codegen.optional(this.uiReadOnlyToggleReason);
     }
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
+
+    public Output<String> updatedAt() {
+        return this.updatedAt;
+    }
     /**
-     * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+     * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      * 
      */
     @Export(name="userSeatExpirationInactiveTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userSeatExpirationInactiveTime;
 
     /**
-     * @return The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+     * @return The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      * 
      */
     public Output<Optional<String>> userSeatExpirationInactiveTime() {
         return Codegen.optional(this.userSeatExpirationInactiveTime);
     }
     /**
-     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
+     * The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
      * 
      */
     @Export(name="warpAuthSessionDuration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> warpAuthSessionDuration;
 
     /**
-     * @return The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
+     * @return The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
      * 
      */
     public Output<Optional<String>> warpAuthSessionDuration() {
         return Codegen.optional(this.warpAuthSessionDuration);
     }
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**
@@ -265,7 +215,7 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessOrganization(java.lang.String name, AccessOrganizationArgs args) {
+    public AccessOrganization(java.lang.String name, @Nullable AccessOrganizationArgs args) {
         this(name, args, null);
     }
     /**
@@ -274,7 +224,7 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessOrganization(java.lang.String name, AccessOrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public AccessOrganization(java.lang.String name, @Nullable AccessOrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/accessOrganization:AccessOrganization", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -282,7 +232,7 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/accessOrganization:AccessOrganization", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static AccessOrganizationArgs makeArgs(AccessOrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static AccessOrganizationArgs makeArgs(@Nullable AccessOrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
@@ -292,6 +242,9 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/accessOrganization:AccessOrganization").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

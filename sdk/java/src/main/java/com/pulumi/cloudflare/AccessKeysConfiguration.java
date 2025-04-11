@@ -6,48 +6,121 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.AccessKeysConfigurationArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccessKeysConfigurationState;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Access Keys Configuration defines the rotation policy for the keys
- * that access will use to sign data.
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustAccessKeyConfiguration;
+ * import com.pulumi.cloudflare.ZeroTrustAccessKeyConfigurationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZeroTrustAccessKeyConfiguration = new ZeroTrustAccessKeyConfiguration("exampleZeroTrustAccessKeyConfiguration", ZeroTrustAccessKeyConfigurationArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .keyRotationIntervalDays(30.0)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration example &#39;&lt;account_id&gt;&#39;
+ * ```
+ * 
+ * @deprecated
+ * cloudflare.index/accesskeysconfiguration.AccessKeysConfiguration has been deprecated in favor of cloudflare.index/zerotrustaccesskeyconfiguration.ZeroTrustAccessKeyConfiguration
  * 
  */
+@Deprecated /* cloudflare.index/accesskeysconfiguration.AccessKeysConfiguration has been deprecated in favor of cloudflare.index/zerotrustaccesskeyconfiguration.ZeroTrustAccessKeyConfiguration */
 @ResourceType(type="cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration")
 public class AccessKeysConfiguration extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Number of days to trigger a rotation of the keys.
+     * The number of days until the next key rotation.
      * 
      */
-    @Export(name="keyRotationIntervalDays", refs={Integer.class}, tree="[0]")
-    private Output<Integer> keyRotationIntervalDays;
+    @Export(name="daysUntilNextRotation", refs={Double.class}, tree="[0]")
+    private Output<Double> daysUntilNextRotation;
 
     /**
-     * @return Number of days to trigger a rotation of the keys.
+     * @return The number of days until the next key rotation.
      * 
      */
-    public Output<Integer> keyRotationIntervalDays() {
+    public Output<Double> daysUntilNextRotation() {
+        return this.daysUntilNextRotation;
+    }
+    /**
+     * The number of days between key rotations.
+     * 
+     */
+    @Export(name="keyRotationIntervalDays", refs={Double.class}, tree="[0]")
+    private Output<Double> keyRotationIntervalDays;
+
+    /**
+     * @return The number of days between key rotations.
+     * 
+     */
+    public Output<Double> keyRotationIntervalDays() {
         return this.keyRotationIntervalDays;
+    }
+    /**
+     * The timestamp of the previous key rotation.
+     * 
+     */
+    @Export(name="lastKeyRotationAt", refs={String.class}, tree="[0]")
+    private Output<String> lastKeyRotationAt;
+
+    /**
+     * @return The timestamp of the previous key rotation.
+     * 
+     */
+    public Output<String> lastKeyRotationAt() {
+        return this.lastKeyRotationAt;
     }
 
     /**
@@ -89,6 +162,9 @@ public class AccessKeysConfiguration extends com.pulumi.resources.CustomResource
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

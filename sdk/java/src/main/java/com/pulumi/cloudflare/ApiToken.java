@@ -18,79 +18,91 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource which manages Cloudflare API tokens.
+ * ## Example Usage
  * 
- * Read more about permission groups and their applicable scopes in the
- * [developer documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/apiToken:ApiToken example &#39;&lt;token_id&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/apiToken:ApiToken")
 public class ApiToken extends com.pulumi.resources.CustomResource {
-    /**
-     * Conditions under which the token should be considered valid.
-     * 
-     */
     @Export(name="condition", refs={ApiTokenCondition.class}, tree="[0]")
-    private Output</* @Nullable */ ApiTokenCondition> condition;
+    private Output<ApiTokenCondition> condition;
 
-    /**
-     * @return Conditions under which the token should be considered valid.
-     * 
-     */
-    public Output<Optional<ApiTokenCondition>> condition() {
-        return Codegen.optional(this.condition);
+    public Output<ApiTokenCondition> condition() {
+        return this.condition;
     }
     /**
-     * The expiration time on or after which the token MUST NOT be accepted for processing.
+     * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      * 
      */
     @Export(name="expiresOn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expiresOn;
 
     /**
-     * @return The expiration time on or after which the token MUST NOT be accepted for processing.
+     * @return The expiration time on or after which the JWT MUST NOT be accepted for processing.
      * 
      */
     public Output<Optional<String>> expiresOn() {
         return Codegen.optional(this.expiresOn);
     }
     /**
-     * Timestamp of when the token was issued.
+     * The time on which the token was created.
      * 
      */
     @Export(name="issuedOn", refs={String.class}, tree="[0]")
     private Output<String> issuedOn;
 
     /**
-     * @return Timestamp of when the token was issued.
+     * @return The time on which the token was created.
      * 
      */
     public Output<String> issuedOn() {
         return this.issuedOn;
     }
     /**
-     * Timestamp of when the token was last modified.
+     * Last time the token was used.
+     * 
+     */
+    @Export(name="lastUsedOn", refs={String.class}, tree="[0]")
+    private Output<String> lastUsedOn;
+
+    /**
+     * @return Last time the token was used.
+     * 
+     */
+    public Output<String> lastUsedOn() {
+        return this.lastUsedOn;
+    }
+    /**
+     * Last time the token was modified.
      * 
      */
     @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
     /**
-     * @return Timestamp of when the token was last modified.
+     * @return Last time the token was modified.
      * 
      */
     public Output<String> modifiedOn() {
         return this.modifiedOn;
     }
     /**
-     * Name of the API Token.
+     * Token name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the API Token.
+     * @return Token name.
      * 
      */
     public Output<String> name() {
@@ -111,34 +123,44 @@ public class ApiToken extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notBefore);
     }
     /**
-     * Permissions policy. Multiple policy blocks can be defined.
+     * List of access policies assigned to the token.
      * 
      */
     @Export(name="policies", refs={List.class,ApiTokenPolicy.class}, tree="[0,1]")
     private Output<List<ApiTokenPolicy>> policies;
 
     /**
-     * @return Permissions policy. Multiple policy blocks can be defined.
+     * @return List of access policies assigned to the token.
      * 
      */
     public Output<List<ApiTokenPolicy>> policies() {
         return this.policies;
     }
+    /**
+     * Status of the token.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
+     * 
+     */
     @Export(name="status", refs={String.class}, tree="[0]")
-    private Output<String> status;
+    private Output</* @Nullable */ String> status;
 
-    public Output<String> status() {
-        return this.status;
+    /**
+     * @return Status of the token.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
+     * 
+     */
+    public Output<Optional<String>> status() {
+        return Codegen.optional(this.status);
     }
     /**
-     * The value of the API Token.
+     * The token value.
      * 
      */
     @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**
-     * @return The value of the API Token.
+     * @return The token value.
      * 
      */
     public Output<String> value() {

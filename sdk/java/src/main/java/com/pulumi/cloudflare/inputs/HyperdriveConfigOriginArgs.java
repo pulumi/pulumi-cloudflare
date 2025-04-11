@@ -18,14 +18,14 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
     public static final HyperdriveConfigOriginArgs Empty = new HyperdriveConfigOriginArgs();
 
     /**
-     * Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+     * The Client ID of the Access token to use when connecting to the origin database.
      * 
      */
     @Import(name="accessClientId")
     private @Nullable Output<String> accessClientId;
 
     /**
-     * @return Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+     * @return The Client ID of the Access token to use when connecting to the origin database.
      * 
      */
     public Optional<Output<String>> accessClientId() {
@@ -33,14 +33,14 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+     * The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
      * 
      */
     @Import(name="accessClientSecret")
     private @Nullable Output<String> accessClientSecret;
 
     /**
-     * @return Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+     * @return The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
      * 
      */
     public Optional<Output<String>> accessClientSecret() {
@@ -78,14 +78,14 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The password of the Hyperdrive configuration.
+     * The password required to access your origin database. This value is write-only and never returned by the API.
      * 
      */
     @Import(name="password", required=true)
     private Output<String> password;
 
     /**
-     * @return The password of the Hyperdrive configuration.
+     * @return The password required to access your origin database. This value is write-only and never returned by the API.
      * 
      */
     public Output<String> password() {
@@ -109,6 +109,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
 
     /**
      * Specifies the URL scheme used to connect to your origin database.
+     * Available values: &#34;postgres&#34;, &#34;postgresql&#34;.
      * 
      */
     @Import(name="scheme", required=true)
@@ -116,6 +117,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Specifies the URL scheme used to connect to your origin database.
+     * Available values: &#34;postgres&#34;, &#34;postgresql&#34;.
      * 
      */
     public Output<String> scheme() {
@@ -169,7 +171,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param accessClientId Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+         * @param accessClientId The Client ID of the Access token to use when connecting to the origin database.
          * 
          * @return builder
          * 
@@ -180,7 +182,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param accessClientId Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+         * @param accessClientId The Client ID of the Access token to use when connecting to the origin database.
          * 
          * @return builder
          * 
@@ -190,7 +192,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param accessClientSecret Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+         * @param accessClientSecret The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
          * 
          * @return builder
          * 
@@ -201,7 +203,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param accessClientSecret Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+         * @param accessClientSecret The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
          * 
          * @return builder
          * 
@@ -253,7 +255,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param password The password of the Hyperdrive configuration.
+         * @param password The password required to access your origin database. This value is write-only and never returned by the API.
          * 
          * @return builder
          * 
@@ -264,7 +266,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param password The password of the Hyperdrive configuration.
+         * @param password The password required to access your origin database. This value is write-only and never returned by the API.
          * 
          * @return builder
          * 
@@ -296,6 +298,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
 
         /**
          * @param scheme Specifies the URL scheme used to connect to your origin database.
+         * Available values: &#34;postgres&#34;, &#34;postgresql&#34;.
          * 
          * @return builder
          * 
@@ -307,6 +310,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
 
         /**
          * @param scheme Specifies the URL scheme used to connect to your origin database.
+         * Available values: &#34;postgres&#34;, &#34;postgresql&#34;.
          * 
          * @return builder
          * 

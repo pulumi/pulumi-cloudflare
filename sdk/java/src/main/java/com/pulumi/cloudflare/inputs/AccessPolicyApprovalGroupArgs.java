@@ -6,7 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,38 +19,46 @@ public final class AccessPolicyApprovalGroupArgs extends com.pulumi.resources.Re
     public static final AccessPolicyApprovalGroupArgs Empty = new AccessPolicyApprovalGroupArgs();
 
     /**
-     * Number of approvals needed.
+     * The number of approvals needed to obtain access.
      * 
      */
     @Import(name="approvalsNeeded", required=true)
-    private Output<Integer> approvalsNeeded;
+    private Output<Double> approvalsNeeded;
 
     /**
-     * @return Number of approvals needed.
+     * @return The number of approvals needed to obtain access.
      * 
      */
-    public Output<Integer> approvalsNeeded() {
+    public Output<Double> approvalsNeeded() {
         return this.approvalsNeeded;
     }
 
     /**
-     * List of emails to request approval from.
+     * A list of emails that can approve the access request.
      * 
      */
     @Import(name="emailAddresses")
     private @Nullable Output<List<String>> emailAddresses;
 
     /**
-     * @return List of emails to request approval from.
+     * @return A list of emails that can approve the access request.
      * 
      */
     public Optional<Output<List<String>>> emailAddresses() {
         return Optional.ofNullable(this.emailAddresses);
     }
 
+    /**
+     * The UUID of an re-usable email list.
+     * 
+     */
     @Import(name="emailListUuid")
     private @Nullable Output<String> emailListUuid;
 
+    /**
+     * @return The UUID of an re-usable email list.
+     * 
+     */
     public Optional<Output<String>> emailListUuid() {
         return Optional.ofNullable(this.emailListUuid);
     }
@@ -82,28 +90,28 @@ public final class AccessPolicyApprovalGroupArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param approvalsNeeded Number of approvals needed.
+         * @param approvalsNeeded The number of approvals needed to obtain access.
          * 
          * @return builder
          * 
          */
-        public Builder approvalsNeeded(Output<Integer> approvalsNeeded) {
+        public Builder approvalsNeeded(Output<Double> approvalsNeeded) {
             $.approvalsNeeded = approvalsNeeded;
             return this;
         }
 
         /**
-         * @param approvalsNeeded Number of approvals needed.
+         * @param approvalsNeeded The number of approvals needed to obtain access.
          * 
          * @return builder
          * 
          */
-        public Builder approvalsNeeded(Integer approvalsNeeded) {
+        public Builder approvalsNeeded(Double approvalsNeeded) {
             return approvalsNeeded(Output.of(approvalsNeeded));
         }
 
         /**
-         * @param emailAddresses List of emails to request approval from.
+         * @param emailAddresses A list of emails that can approve the access request.
          * 
          * @return builder
          * 
@@ -114,7 +122,7 @@ public final class AccessPolicyApprovalGroupArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param emailAddresses List of emails to request approval from.
+         * @param emailAddresses A list of emails that can approve the access request.
          * 
          * @return builder
          * 
@@ -124,7 +132,7 @@ public final class AccessPolicyApprovalGroupArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param emailAddresses List of emails to request approval from.
+         * @param emailAddresses A list of emails that can approve the access request.
          * 
          * @return builder
          * 
@@ -133,11 +141,23 @@ public final class AccessPolicyApprovalGroupArgs extends com.pulumi.resources.Re
             return emailAddresses(List.of(emailAddresses));
         }
 
+        /**
+         * @param emailListUuid The UUID of an re-usable email list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailListUuid(@Nullable Output<String> emailListUuid) {
             $.emailListUuid = emailListUuid;
             return this;
         }
 
+        /**
+         * @param emailListUuid The UUID of an re-usable email list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailListUuid(String emailListUuid) {
             return emailListUuid(Output.of(emailListUuid));
         }

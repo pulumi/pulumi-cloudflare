@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsRuleRuleSettings
     {
         /// <summary>
-        /// Add custom headers to allowed requests in the form of key-value pairs.
+        /// Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
         /// </summary>
         public readonly ImmutableDictionary<string, string>? AddHeaders;
         /// <summary>
-        /// Allow parent MSP accounts to enable bypass their children's rules.
+        /// Set by parent MSP accounts to enable their children to bypass this rule.
         /// </summary>
         public readonly bool? AllowChildBypass;
         /// <summary>
-        /// Settings for auditing SSH usage.
+        /// Settings for the Audit SSH action.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsAuditSsh? AuditSsh;
         /// <summary>
@@ -30,15 +30,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsBisoAdminControls? BisoAdminControls;
         /// <summary>
-        /// Indicator of block page enablement.
+        /// Enable the custom block page.
         /// </summary>
         public readonly bool? BlockPageEnabled;
         /// <summary>
-        /// The displayed reason for a user being blocked.
+        /// The text describing why this block occurred, displayed on the custom block page (if enabled).
         /// </summary>
-        public readonly string? BlockPageReason;
+        public readonly string? BlockReason;
         /// <summary>
-        /// Allow child MSP accounts to bypass their parent's rule.
+        /// Set by children MSP accounts to bypass their parent's rules.
         /// </summary>
         public readonly bool? BypassParentRule;
         /// <summary>
@@ -46,55 +46,63 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsCheckSession? CheckSession;
         /// <summary>
-        /// Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+        /// Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsDnsResolvers? DnsResolvers;
         /// <summary>
-        /// Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+        /// Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsEgress? Egress;
         /// <summary>
-        /// Set to true, to ignore the category matches at CNAME domains in a response.
+        /// Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
         /// </summary>
         public readonly bool? IgnoreCnameCategoryMatches;
         /// <summary>
-        /// Disable DNSSEC validation (must be Allow rule).
+        /// INSECURE - disable DNSSEC validation (for Allow actions).
         /// </summary>
         public readonly bool? InsecureDisableDnssecValidation;
         /// <summary>
-        /// Turns on IP category based filter on dns if the rule contains dns category checks.
+        /// Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
         /// </summary>
         public readonly bool? IpCategories;
         /// <summary>
-        /// Settings to forward layer 4 traffic.
+        /// Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+        /// </summary>
+        public readonly bool? IpIndicatorFeeds;
+        /// <summary>
+        /// Send matching traffic to the supplied destination IP address and port.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsL4override? L4override;
         /// <summary>
-        /// Notification settings on a block rule.
+        /// Configure a notification to display on the user's device when this rule is matched.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsNotificationSettings? NotificationSettings;
         /// <summary>
-        /// The host to override matching DNS queries with.
+        /// Override matching DNS queries with a hostname.
         /// </summary>
         public readonly string? OverrideHost;
         /// <summary>
-        /// The IPs to override matching DNS queries with.
+        /// Override matching DNS queries with an IP or set of IPs.
         /// </summary>
         public readonly ImmutableArray<string> OverrideIps;
         /// <summary>
-        /// Configure DLP Payload Logging settings for this rule.
+        /// Configure DLP payload logging.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsPayloadLog? PayloadLog;
+        /// <summary>
+        /// Settings that apply to quarantine rules
+        /// </summary>
+        public readonly Outputs.TeamsRuleRuleSettingsQuarantine? Quarantine;
         /// <summary>
         /// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsResolveDnsInternally? ResolveDnsInternally;
         /// <summary>
-        /// Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+        /// Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns_internally' is set. Only valid when a rule's action is set to 'resolve'.
         /// </summary>
         public readonly bool? ResolveDnsThroughCloudflare;
         /// <summary>
-        /// Configure untrusted certificate settings for this rule.
+        /// Configure behavior when an upstream cert is invalid or an SSL error occurs.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsUntrustedCert? UntrustedCert;
 
@@ -110,7 +118,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? blockPageEnabled,
 
-            string? blockPageReason,
+            string? blockReason,
 
             bool? bypassParentRule,
 
@@ -126,6 +134,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? ipCategories,
 
+            bool? ipIndicatorFeeds,
+
             Outputs.TeamsRuleRuleSettingsL4override? l4override,
 
             Outputs.TeamsRuleRuleSettingsNotificationSettings? notificationSettings,
@@ -135,6 +145,8 @@ namespace Pulumi.Cloudflare.Outputs
             ImmutableArray<string> overrideIps,
 
             Outputs.TeamsRuleRuleSettingsPayloadLog? payloadLog,
+
+            Outputs.TeamsRuleRuleSettingsQuarantine? quarantine,
 
             Outputs.TeamsRuleRuleSettingsResolveDnsInternally? resolveDnsInternally,
 
@@ -147,7 +159,7 @@ namespace Pulumi.Cloudflare.Outputs
             AuditSsh = auditSsh;
             BisoAdminControls = bisoAdminControls;
             BlockPageEnabled = blockPageEnabled;
-            BlockPageReason = blockPageReason;
+            BlockReason = blockReason;
             BypassParentRule = bypassParentRule;
             CheckSession = checkSession;
             DnsResolvers = dnsResolvers;
@@ -155,11 +167,13 @@ namespace Pulumi.Cloudflare.Outputs
             IgnoreCnameCategoryMatches = ignoreCnameCategoryMatches;
             InsecureDisableDnssecValidation = insecureDisableDnssecValidation;
             IpCategories = ipCategories;
+            IpIndicatorFeeds = ipIndicatorFeeds;
             L4override = l4override;
             NotificationSettings = notificationSettings;
             OverrideHost = overrideHost;
             OverrideIps = overrideIps;
             PayloadLog = payloadLog;
+            Quarantine = quarantine;
             ResolveDnsInternally = resolveDnsInternally;
             ResolveDnsThroughCloudflare = resolveDnsThroughCloudflare;
             UntrustedCert = untrustedCert;

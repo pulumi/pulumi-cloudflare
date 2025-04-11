@@ -13,50 +13,54 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerPoolLoadShedding {
     /**
-     * @return Percent of traffic to shed 0 - 100. Defaults to `0`.
+     * @return The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity.
      * 
      */
     private @Nullable Double defaultPercent;
     /**
-     * @return Method of shedding traffic. Available values: `&#34;&#34;`, `hash`, `random`. Defaults to `&#34;&#34;`.
+     * @return The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.
+     * Available values: &#34;random&#34;, &#34;hash&#34;.
      * 
      */
     private @Nullable String defaultPolicy;
     /**
-     * @return Percent of session traffic to shed 0 - 100. Defaults to `0`.
+     * @return The percent of existing sessions to shed from the pool, according to the session policy.
      * 
      */
     private @Nullable Double sessionPercent;
     /**
-     * @return Method of shedding traffic. Available values: `&#34;&#34;`, `hash`. Defaults to `&#34;&#34;`.
+     * @return Only the hash policy is supported for existing sessions (to avoid exponential decay).
+     * Available values: &#34;hash&#34;.
      * 
      */
     private @Nullable String sessionPolicy;
 
     private LoadBalancerPoolLoadShedding() {}
     /**
-     * @return Percent of traffic to shed 0 - 100. Defaults to `0`.
+     * @return The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity.
      * 
      */
     public Optional<Double> defaultPercent() {
         return Optional.ofNullable(this.defaultPercent);
     }
     /**
-     * @return Method of shedding traffic. Available values: `&#34;&#34;`, `hash`, `random`. Defaults to `&#34;&#34;`.
+     * @return The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.
+     * Available values: &#34;random&#34;, &#34;hash&#34;.
      * 
      */
     public Optional<String> defaultPolicy() {
         return Optional.ofNullable(this.defaultPolicy);
     }
     /**
-     * @return Percent of session traffic to shed 0 - 100. Defaults to `0`.
+     * @return The percent of existing sessions to shed from the pool, according to the session policy.
      * 
      */
     public Optional<Double> sessionPercent() {
         return Optional.ofNullable(this.sessionPercent);
     }
     /**
-     * @return Method of shedding traffic. Available values: `&#34;&#34;`, `hash`. Defaults to `&#34;&#34;`.
+     * @return Only the hash policy is supported for existing sessions (to avoid exponential decay).
+     * Available values: &#34;hash&#34;.
      * 
      */
     public Optional<String> sessionPolicy() {

@@ -20,33 +20,23 @@ __all__ = ['ZoneCacheReserveArgs', 'ZoneCacheReserve']
 @pulumi.input_type
 class ZoneCacheReserveArgs:
     def __init__(__self__, *,
-                 enabled: pulumi.Input[builtins.bool],
-                 zone_id: pulumi.Input[builtins.str]):
+                 zone_id: pulumi.Input[builtins.str],
+                 value: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a ZoneCacheReserve resource.
-        :param pulumi.Input[builtins.bool] enabled: Whether to enable or disable Cache Reserve support for a given zone.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] value: Value of the Cache Reserve zone setting.
+               Available values: "on", "off".
         """
-        pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> pulumi.Input[builtins.bool]:
-        """
-        Whether to enable or disable Cache Reserve support for a given zone.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: pulumi.Input[builtins.bool]):
-        pulumi.set(self, "enabled", value)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -54,39 +44,86 @@ class ZoneCacheReserveArgs:
     def zone_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "zone_id", value)
 
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Value of the Cache Reserve zone setting.
+        Available values: "on", "off".
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "value", value)
+
 
 @pulumi.input_type
 class _ZoneCacheReserveState:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 editable: Optional[pulumi.Input[builtins.bool]] = None,
+                 modified_on: Optional[pulumi.Input[builtins.str]] = None,
+                 value: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneCacheReserve resources.
-        :param pulumi.Input[builtins.bool] enabled: Whether to enable or disable Cache Reserve support for a given zone.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.bool] editable: Whether the setting is editable
+        :param pulumi.Input[builtins.str] modified_on: Last time this setting was modified.
+        :param pulumi.Input[builtins.str] value: Value of the Cache Reserve zone setting.
+               Available values: "on", "off".
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+        if editable is not None:
+            pulumi.set(__self__, "editable", editable)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+    def editable(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether to enable or disable Cache Reserve support for a given zone.
+        Whether the setting is editable
         """
-        return pulumi.get(self, "enabled")
+        return pulumi.get(self, "editable")
 
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "enabled", value)
+    @editable.setter
+    def editable(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "editable", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Last time this setting was modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "modified_on", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Value of the Cache Reserve zone setting.
+        Available values: "on", "off".
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -100,37 +137,32 @@ class ZoneCacheReserve(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 value: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Cache Reserve resource. Cache Reserve can
-        increase cache lifetimes by automatically storing all cacheable
-        files in Cloudflare's persistent object storage buckets.
-
-        Note: Using Cache Reserve without Tiered Cache is not recommended.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.ZoneCacheReserve("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            enabled=True)
+        example_zone_cache_reserve = cloudflare.ZoneCacheReserve("example_zone_cache_reserve",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            value="on")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example <zone_id>
+        $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] enabled: Whether to enable or disable Cache Reserve support for a given zone.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] value: Value of the Cache Reserve zone setting.
+               Available values: "on", "off".
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         ...
     @overload
@@ -139,27 +171,21 @@ class ZoneCacheReserve(pulumi.CustomResource):
                  args: ZoneCacheReserveArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Cache Reserve resource. Cache Reserve can
-        increase cache lifetimes by automatically storing all cacheable
-        files in Cloudflare's persistent object storage buckets.
-
-        Note: Using Cache Reserve without Tiered Cache is not recommended.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.ZoneCacheReserve("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            enabled=True)
+        example_zone_cache_reserve = cloudflare.ZoneCacheReserve("example_zone_cache_reserve",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            value="on")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example <zone_id>
+        $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -177,7 +203,7 @@ class ZoneCacheReserve(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 value: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -188,12 +214,12 @@ class ZoneCacheReserve(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZoneCacheReserveArgs.__new__(ZoneCacheReserveArgs)
 
-            if enabled is None and not opts.urn:
-                raise TypeError("Missing required property 'enabled'")
-            __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["value"] = value
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["editable"] = None
+            __props__.__dict__["modified_on"] = None
         super(ZoneCacheReserve, __self__).__init__(
             'cloudflare:index/zoneCacheReserve:ZoneCacheReserve',
             resource_name,
@@ -204,7 +230,9 @@ class ZoneCacheReserve(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enabled: Optional[pulumi.Input[builtins.bool]] = None,
+            editable: Optional[pulumi.Input[builtins.bool]] = None,
+            modified_on: Optional[pulumi.Input[builtins.str]] = None,
+            value: Optional[pulumi.Input[builtins.str]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'ZoneCacheReserve':
         """
         Get an existing ZoneCacheReserve resource's state with the given name, id, and optional extra
@@ -213,30 +241,52 @@ class ZoneCacheReserve(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] enabled: Whether to enable or disable Cache Reserve support for a given zone.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.bool] editable: Whether the setting is editable
+        :param pulumi.Input[builtins.str] modified_on: Last time this setting was modified.
+        :param pulumi.Input[builtins.str] value: Value of the Cache Reserve zone setting.
+               Available values: "on", "off".
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ZoneCacheReserveState.__new__(_ZoneCacheReserveState)
 
-        __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["editable"] = editable
+        __props__.__dict__["modified_on"] = modified_on
+        __props__.__dict__["value"] = value
         __props__.__dict__["zone_id"] = zone_id
         return ZoneCacheReserve(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def enabled(self) -> pulumi.Output[builtins.bool]:
+    def editable(self) -> pulumi.Output[builtins.bool]:
         """
-        Whether to enable or disable Cache Reserve support for a given zone.
+        Whether the setting is editable
         """
-        return pulumi.get(self, "enabled")
+        return pulumi.get(self, "editable")
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> pulumi.Output[builtins.str]:
+        """
+        Last time this setting was modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Output[builtins.str]:
+        """
+        Value of the Cache Reserve zone setting.
+        Available values: "on", "off".
+        """
+        return pulumi.get(self, "value")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

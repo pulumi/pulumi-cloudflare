@@ -14,23 +14,24 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersOverrides
     {
         /// <summary>
-        /// Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+        /// An action to override all rules with. This option has lower precedence than rule and category overrides.
         /// </summary>
         public readonly string? Action;
         /// <summary>
-        /// List of tag-based overrides.
+        /// A list of category-level overrides. This option has the second-highest precedence after rule-level overrides.
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersOverridesCategory> Categories;
         /// <summary>
-        /// Defines if the current ruleset-level override enables or disables the ruleset.
+        /// Whether to enable execution of all rules. This option has lower precedence than rule and category overrides.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// List of rule-based overrides.
+        /// A list of rule-level overrides. This option has the highest precedence.
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersOverridesRule> Rules;
         /// <summary>
-        /// Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`.
+        /// A sensitivity level to set for all rules. This option has lower precedence than rule and category overrides and is only applicable for DDoS phases.
+        /// Available values: "default", "medium", "low", "eoff".
         /// </summary>
         public readonly string? SensitivityLevel;
 

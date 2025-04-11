@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare custom hostname fallback origin resource.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,9 +20,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.CustomHostnameFallbackOrigin("example", new()
+    ///     var exampleCustomHostnameFallbackOrigin = new Cloudflare.CustomHostnameFallbackOrigin("example_custom_hostname_fallback_origin", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Origin = "fallback.example.com",
     ///     });
     /// 
@@ -34,26 +32,45 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example &lt;zone_id&gt;/&lt;fallback_hostname&gt;
+    /// $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin")]
     public partial class CustomHostnameFallbackOrigin : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+        /// This is the time the fallback origin was created.
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// These are errors that were encountered while trying to activate a fallback origin.
+        /// </summary>
+        [Output("errors")]
+        public Output<ImmutableArray<string>> Errors { get; private set; } = null!;
+
+        /// <summary>
+        /// Your origin hostname that requests to your custom hostnames will be sent to.
         /// </summary>
         [Output("origin")]
         public Output<string> Origin { get; private set; } = null!;
 
         /// <summary>
         /// Status of the fallback origin's activation.
+        /// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// This is the time the fallback origin was updated.
+        /// </summary>
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -105,13 +122,13 @@ namespace Pulumi.Cloudflare
     public sealed class CustomHostnameFallbackOriginArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+        /// Your origin hostname that requests to your custom hostnames will be sent to.
         /// </summary>
         [Input("origin", required: true)]
         public Input<string> Origin { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -125,19 +142,44 @@ namespace Pulumi.Cloudflare
     public sealed class CustomHostnameFallbackOriginState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+        /// This is the time the fallback origin was created.
+        /// </summary>
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
+        [Input("errors")]
+        private InputList<string>? _errors;
+
+        /// <summary>
+        /// These are errors that were encountered while trying to activate a fallback origin.
+        /// </summary>
+        public InputList<string> Errors
+        {
+            get => _errors ?? (_errors = new InputList<string>());
+            set => _errors = value;
+        }
+
+        /// <summary>
+        /// Your origin hostname that requests to your custom hostnames will be sent to.
         /// </summary>
         [Input("origin")]
         public Input<string>? Origin { get; set; }
 
         /// <summary>
         /// Status of the fallback origin's activation.
+        /// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// This is the time the fallback origin was updated.
+        /// </summary>
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

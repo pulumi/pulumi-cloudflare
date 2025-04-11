@@ -7,34 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The [Email Routing Rule](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#email-rule-actions) resource allows you to create and manage email routing rules for a zone.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const main = new cloudflare.EmailRoutingRule("main", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     name: "terraform rule",
- *     enabled: true,
- *     matchers: [{
- *         type: "literal",
- *         field: "to",
- *         value: "test@example.com",
- *     }],
- *     actions: [{
- *         type: "forward",
- *         values: ["destinationaddress@example.net"],
- *     }],
- * });
- * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example <zone_id>/<email_routing_rule_id>
+ * $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example '<zone_id>/<rule_identifier>'
  * ```
  */
 export class EmailRoutingRule extends pulumi.CustomResource {
@@ -66,31 +44,31 @@ export class EmailRoutingRule extends pulumi.CustomResource {
     }
 
     /**
-     * Actions to take when a match is found.
+     * List actions patterns.
      */
-    public readonly actions!: pulumi.Output<outputs.EmailRoutingRuleAction[] | undefined>;
+    public readonly actions!: pulumi.Output<outputs.EmailRoutingRuleAction[]>;
     /**
-     * Whether the email routing rule is enabled.
+     * Routing rule status.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean>;
     /**
      * Matching patterns to forward to your actions.
      */
-    public readonly matchers!: pulumi.Output<outputs.EmailRoutingRuleMatcher[] | undefined>;
+    public readonly matchers!: pulumi.Output<outputs.EmailRoutingRuleMatcher[]>;
     /**
      * Routing rule name.
      */
-    public readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string | undefined>;
     /**
-     * The priority of the email routing rule.
+     * Priority of the routing rule.
      */
     public readonly priority!: pulumi.Output<number>;
     /**
-     * The tag of the email routing rule.
+     * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      */
     public /*out*/ readonly tag!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -116,8 +94,11 @@ export class EmailRoutingRule extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as EmailRoutingRuleArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
+            if ((!args || args.actions === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'actions'");
+            }
+            if ((!args || args.matchers === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'matchers'");
             }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
@@ -140,11 +121,11 @@ export class EmailRoutingRule extends pulumi.CustomResource {
  */
 export interface EmailRoutingRuleState {
     /**
-     * Actions to take when a match is found.
+     * List actions patterns.
      */
     actions?: pulumi.Input<pulumi.Input<inputs.EmailRoutingRuleAction>[]>;
     /**
-     * Whether the email routing rule is enabled.
+     * Routing rule status.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -156,15 +137,15 @@ export interface EmailRoutingRuleState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The priority of the email routing rule.
+     * Priority of the routing rule.
      */
     priority?: pulumi.Input<number>;
     /**
-     * The tag of the email routing rule.
+     * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      */
     tag?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -174,27 +155,27 @@ export interface EmailRoutingRuleState {
  */
 export interface EmailRoutingRuleArgs {
     /**
-     * Actions to take when a match is found.
+     * List actions patterns.
      */
-    actions?: pulumi.Input<pulumi.Input<inputs.EmailRoutingRuleAction>[]>;
+    actions: pulumi.Input<pulumi.Input<inputs.EmailRoutingRuleAction>[]>;
     /**
-     * Whether the email routing rule is enabled.
+     * Routing rule status.
      */
     enabled?: pulumi.Input<boolean>;
     /**
      * Matching patterns to forward to your actions.
      */
-    matchers?: pulumi.Input<pulumi.Input<inputs.EmailRoutingRuleMatcher>[]>;
+    matchers: pulumi.Input<pulumi.Input<inputs.EmailRoutingRuleMatcher>[]>;
     /**
      * Routing rule name.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
-     * The priority of the email routing rule.
+     * Priority of the routing rule.
      */
     priority?: pulumi.Input<number>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

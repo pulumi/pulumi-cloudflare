@@ -7,10 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource which manages Cloudflare API tokens.
+ * ## Example Usage
  *
- * Read more about permission groups and their applicable scopes in the
- * [developer documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/apiToken:ApiToken example '<token_id>'
+ * ```
  */
 export class ApiToken extends pulumi.CustomResource {
     /**
@@ -40,24 +43,25 @@ export class ApiToken extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApiToken.__pulumiType;
     }
 
+    public readonly condition!: pulumi.Output<outputs.ApiTokenCondition>;
     /**
-     * Conditions under which the token should be considered valid.
-     */
-    public readonly condition!: pulumi.Output<outputs.ApiTokenCondition | undefined>;
-    /**
-     * The expiration time on or after which the token MUST NOT be accepted for processing.
+     * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      */
     public readonly expiresOn!: pulumi.Output<string | undefined>;
     /**
-     * Timestamp of when the token was issued.
+     * The time on which the token was created.
      */
     public /*out*/ readonly issuedOn!: pulumi.Output<string>;
     /**
-     * Timestamp of when the token was last modified.
+     * Last time the token was used.
+     */
+    public /*out*/ readonly lastUsedOn!: pulumi.Output<string>;
+    /**
+     * Last time the token was modified.
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
-     * Name of the API Token.
+     * Token name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -65,12 +69,16 @@ export class ApiToken extends pulumi.CustomResource {
      */
     public readonly notBefore!: pulumi.Output<string | undefined>;
     /**
-     * Permissions policy. Multiple policy blocks can be defined.
+     * List of access policies assigned to the token.
      */
     public readonly policies!: pulumi.Output<outputs.ApiTokenPolicy[]>;
-    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The value of the API Token.
+     * Status of the token.
+     * Available values: "active", "disabled", "expired".
+     */
+    public readonly status!: pulumi.Output<string | undefined>;
+    /**
+     * The token value.
      */
     public /*out*/ readonly value!: pulumi.Output<string>;
 
@@ -90,6 +98,7 @@ export class ApiToken extends pulumi.CustomResource {
             resourceInputs["condition"] = state ? state.condition : undefined;
             resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
             resourceInputs["issuedOn"] = state ? state.issuedOn : undefined;
+            resourceInputs["lastUsedOn"] = state ? state.lastUsedOn : undefined;
             resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notBefore"] = state ? state.notBefore : undefined;
@@ -109,9 +118,10 @@ export class ApiToken extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notBefore"] = args ? args.notBefore : undefined;
             resourceInputs["policies"] = args ? args.policies : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["issuedOn"] = undefined /*out*/;
+            resourceInputs["lastUsedOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
-            resourceInputs["status"] = undefined /*out*/;
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -125,24 +135,25 @@ export class ApiToken extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApiToken resources.
  */
 export interface ApiTokenState {
-    /**
-     * Conditions under which the token should be considered valid.
-     */
     condition?: pulumi.Input<inputs.ApiTokenCondition>;
     /**
-     * The expiration time on or after which the token MUST NOT be accepted for processing.
+     * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      */
     expiresOn?: pulumi.Input<string>;
     /**
-     * Timestamp of when the token was issued.
+     * The time on which the token was created.
      */
     issuedOn?: pulumi.Input<string>;
     /**
-     * Timestamp of when the token was last modified.
+     * Last time the token was used.
+     */
+    lastUsedOn?: pulumi.Input<string>;
+    /**
+     * Last time the token was modified.
      */
     modifiedOn?: pulumi.Input<string>;
     /**
-     * Name of the API Token.
+     * Token name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -150,12 +161,16 @@ export interface ApiTokenState {
      */
     notBefore?: pulumi.Input<string>;
     /**
-     * Permissions policy. Multiple policy blocks can be defined.
+     * List of access policies assigned to the token.
      */
     policies?: pulumi.Input<pulumi.Input<inputs.ApiTokenPolicy>[]>;
+    /**
+     * Status of the token.
+     * Available values: "active", "disabled", "expired".
+     */
     status?: pulumi.Input<string>;
     /**
-     * The value of the API Token.
+     * The token value.
      */
     value?: pulumi.Input<string>;
 }
@@ -164,16 +179,13 @@ export interface ApiTokenState {
  * The set of arguments for constructing a ApiToken resource.
  */
 export interface ApiTokenArgs {
-    /**
-     * Conditions under which the token should be considered valid.
-     */
     condition?: pulumi.Input<inputs.ApiTokenCondition>;
     /**
-     * The expiration time on or after which the token MUST NOT be accepted for processing.
+     * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      */
     expiresOn?: pulumi.Input<string>;
     /**
-     * Name of the API Token.
+     * Token name.
      */
     name: pulumi.Input<string>;
     /**
@@ -181,7 +193,12 @@ export interface ApiTokenArgs {
      */
     notBefore?: pulumi.Input<string>;
     /**
-     * Permissions policy. Multiple policy blocks can be defined.
+     * List of access policies assigned to the token.
      */
     policies: pulumi.Input<pulumi.Input<inputs.ApiTokenPolicy>[]>;
+    /**
+     * Status of the token.
+     * Available values: "active", "disabled", "expired".
+     */
+    status?: pulumi.Input<string>;
 }

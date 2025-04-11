@@ -7,35 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Device Posture Integration resource. Device
- * posture integrations configure third-party data providers for device
- * posture rules.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.DevicePostureIntegration("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "Device posture integration",
- *     type: "workspace_one",
- *     interval: "24h",
- *     configs: [{
- *         apiUrl: "https://example.com/api",
- *         authUrl: "https://example.com/connect/token",
- *         clientId: "client-id",
- *         clientSecret: "client-secret",
- *     }],
- * });
- * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration example <account_id>/<device_posture_integration_id>
+ * $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration example '<account_id>/<integration_id>'
  * ```
+ *
+ * @deprecated cloudflare.index/devicepostureintegration.DevicePostureIntegration has been deprecated in favor of cloudflare.index/zerotrustdevicepostureintegration.ZeroTrustDevicePostureIntegration
  */
 export class DevicePostureIntegration extends pulumi.CustomResource {
     /**
@@ -48,6 +28,7 @@ export class DevicePostureIntegration extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DevicePostureIntegrationState, opts?: pulumi.CustomResourceOptions): DevicePostureIntegration {
+        pulumi.log.warn("DevicePostureIntegration is deprecated: cloudflare.index/devicepostureintegration.DevicePostureIntegration has been deprecated in favor of cloudflare.index/zerotrustdevicepostureintegration.ZeroTrustDevicePostureIntegration")
         return new DevicePostureIntegration(name, <any>state, { ...opts, id: id });
     }
 
@@ -65,25 +46,22 @@ export class DevicePostureIntegration extends pulumi.CustomResource {
         return obj['__pulumiType'] === DevicePostureIntegration.__pulumiType;
     }
 
-    /**
-     * The account identifier to target for the resource.
-     */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The device posture integration's connection authorization parameters.
+     * The configuration object containing third-party integration information.
      */
-    public readonly configs!: pulumi.Output<outputs.DevicePostureIntegrationConfig[] | undefined>;
-    public readonly identifier!: pulumi.Output<string | undefined>;
+    public readonly config!: pulumi.Output<outputs.DevicePostureIntegrationConfig>;
     /**
-     * Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+     * The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
      */
-    public readonly interval!: pulumi.Output<string | undefined>;
+    public readonly interval!: pulumi.Output<string>;
     /**
-     * Name of the device posture integration.
+     * The name of the device posture integration.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`, `kolide`, `sentineloneS2s`, `taniumS2s`, `customS2s`.
+     * The type of device posture integration.
+     * Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -94,15 +72,17 @@ export class DevicePostureIntegration extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/devicepostureintegration.DevicePostureIntegration has been deprecated in favor of cloudflare.index/zerotrustdevicepostureintegration.ZeroTrustDevicePostureIntegration */
     constructor(name: string, args: DevicePostureIntegrationArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/devicepostureintegration.DevicePostureIntegration has been deprecated in favor of cloudflare.index/zerotrustdevicepostureintegration.ZeroTrustDevicePostureIntegration */
     constructor(name: string, argsOrState?: DevicePostureIntegrationArgs | DevicePostureIntegrationState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("DevicePostureIntegration is deprecated: cloudflare.index/devicepostureintegration.DevicePostureIntegration has been deprecated in favor of cloudflare.index/zerotrustdevicepostureintegration.ZeroTrustDevicePostureIntegration")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DevicePostureIntegrationState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["configs"] = state ? state.configs : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["interval"] = state ? state.interval : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -111,6 +91,12 @@ export class DevicePostureIntegration extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
+            if ((!args || args.config === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'config'");
+            }
+            if ((!args || args.interval === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'interval'");
+            }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -118,13 +104,14 @@ export class DevicePostureIntegration extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["configs"] = args ? args.configs : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
+            resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["interval"] = args ? args.interval : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/devicePostureIntegration:DevicePostureIntegration" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DevicePostureIntegration.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -133,25 +120,22 @@ export class DevicePostureIntegration extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DevicePostureIntegration resources.
  */
 export interface DevicePostureIntegrationState {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId?: pulumi.Input<string>;
     /**
-     * The device posture integration's connection authorization parameters.
+     * The configuration object containing third-party integration information.
      */
-    configs?: pulumi.Input<pulumi.Input<inputs.DevicePostureIntegrationConfig>[]>;
-    identifier?: pulumi.Input<string>;
+    config?: pulumi.Input<inputs.DevicePostureIntegrationConfig>;
     /**
-     * Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+     * The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
      */
     interval?: pulumi.Input<string>;
     /**
-     * Name of the device posture integration.
+     * The name of the device posture integration.
      */
     name?: pulumi.Input<string>;
     /**
-     * The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`, `kolide`, `sentineloneS2s`, `taniumS2s`, `customS2s`.
+     * The type of device posture integration.
+     * Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
      */
     type?: pulumi.Input<string>;
 }
@@ -160,25 +144,22 @@ export interface DevicePostureIntegrationState {
  * The set of arguments for constructing a DevicePostureIntegration resource.
  */
 export interface DevicePostureIntegrationArgs {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId: pulumi.Input<string>;
     /**
-     * The device posture integration's connection authorization parameters.
+     * The configuration object containing third-party integration information.
      */
-    configs?: pulumi.Input<pulumi.Input<inputs.DevicePostureIntegrationConfig>[]>;
-    identifier?: pulumi.Input<string>;
+    config: pulumi.Input<inputs.DevicePostureIntegrationConfig>;
     /**
-     * Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+     * The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
      */
-    interval?: pulumi.Input<string>;
+    interval: pulumi.Input<string>;
     /**
-     * Name of the device posture integration.
+     * The name of the device posture integration.
      */
     name: pulumi.Input<string>;
     /**
-     * The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`, `kolide`, `sentineloneS2s`, `taniumS2s`, `customS2s`.
+     * The type of device posture integration.
+     * Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
      */
     type: pulumi.Input<string>;
 }

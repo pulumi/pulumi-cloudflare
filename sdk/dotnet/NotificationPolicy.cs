@@ -10,84 +10,71 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource, that manages a notification policy for
-    /// Cloudflare's products. The delivery mechanisms supported are email,
-    /// webhooks, and PagerDuty.
+    /// ## Example Usage
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example &lt;account_id&gt;/&lt;policy_id&gt;
+    /// $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example '&lt;account_id&gt;/&lt;policy_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/notificationPolicy:NotificationPolicy")]
     public partial class NotificationPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account id
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `image_resizing_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.
+        /// Optional specification of how often to re-alert from the same incident, not support on all alert types.
+        /// </summary>
+        [Output("alertInterval")]
+        public Output<string?> AlertInterval { get; private set; } = null!;
+
+        /// <summary>
+        /// Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
+        /// Available values: "access*custom*certificate*expiration*type", "advanced*ddos*attack*l4*alert", "advanced*ddos*attack*l7*alert", "advanced*http*alert*error", "bgp*hijack*notification", "billing*usage*alert", "block*notification*block*removed", "block*notification*new*block", "block*notification*review*rejected", "brand*protection*alert", "brand*protection*digest", "clickhouse*alert*fw*anomaly", "clickhouse*alert*fw*ent*anomaly", "cloudforce*one*request*notification", "custom*analytics", "custom*ssl*certificate*event*type", "dedicated*ssl*certificate*event*type", "device*connectivity*anomaly*alert", "dos*attack*l4", "dos*attack*l7", "expiring*service*token*alert", "failing*logpush*job*disabled*alert", "fbm*auto*advertisement", "fbm*dosd*attack", "fbm*volumetric*attack", "health*check*status*notification", "hostname*aop*custom*certificate*expiration*type", "http*alert*edge*error", "http*alert*origin*error", "image*notification", "image*resizing*notification", "incident*alert", "load*balancing*health*alert", "load*balancing*pool*enablement*alert", "logo*match*alert", "magic*tunnel*health*check*event", "magic*wan*tunnel*health", "maintenance*event*notification", "mtls*certificate*store*certificate*expiration*type", "pages*event*alert", "radar*notification", "real*origin*monitoring", "scriptmonitor*alert*new*code*change*detections", "scriptmonitor*alert*new*hosts", "scriptmonitor*alert*new*malicious*hosts", "scriptmonitor*alert*new*malicious*scripts", "scriptmonitor*alert*new*malicious*url", "scriptmonitor*alert*new*max*length*resource*url", "scriptmonitor*alert*new*resources", "secondary*dns*all*primaries*failing", "secondary*dns*primaries*failing", "secondary*dns*warning", "secondary*dns*zone*successfully*updated", "secondary*dns*zone*validation*warning", "security*insights*alert", "sentinel*alert", "stream*live*notifications", "synthetic*test*latency*alert", "synthetic*test*low*availability*alert", "traffic*anomalies*alert", "tunnel*health*event", "tunnel*update*event", "universal*ssl*event*type", "web*analytics*metrics*update", "zone*aop*custom*certificate*expiration*type".
         /// </summary>
         [Output("alertType")]
         public Output<string> AlertType { get; private set; } = null!;
 
-        /// <summary>
-        /// When the notification policy was created.
-        /// </summary>
         [Output("created")]
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the notification policy.
+        /// Optional description for the Notification policy.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The email ID to which the notification should be dispatched.
-        /// </summary>
-        [Output("emailIntegrations")]
-        public Output<ImmutableArray<Outputs.NotificationPolicyEmailIntegration>> EmailIntegrations { get; private set; } = null!;
-
-        /// <summary>
-        /// The status of the notification policy.
+        /// Whether or not the Notification policy is enabled.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
+        /// Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
         /// </summary>
         [Output("filters")]
-        public Output<Outputs.NotificationPolicyFilters?> Filters { get; private set; } = null!;
+        public Output<Outputs.NotificationPolicyFilters> Filters { get; private set; } = null!;
 
         /// <summary>
-        /// When the notification policy was last modified.
+        /// List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
         /// </summary>
+        [Output("mechanisms")]
+        public Output<Outputs.NotificationPolicyMechanisms> Mechanisms { get; private set; } = null!;
+
         [Output("modified")]
         public Output<string> Modified { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the notification policy.
+        /// Name of the policy.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        /// <summary>
-        /// The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
-        /// </summary>
-        [Output("pagerdutyIntegrations")]
-        public Output<ImmutableArray<Outputs.NotificationPolicyPagerdutyIntegration>> PagerdutyIntegrations { get; private set; } = null!;
-
-        /// <summary>
-        /// The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
-        /// </summary>
-        [Output("webhooksIntegrations")]
-        public Output<ImmutableArray<Outputs.NotificationPolicyWebhooksIntegration>> WebhooksIntegrations { get; private set; } = null!;
 
 
         /// <summary>
@@ -136,76 +123,53 @@ namespace Pulumi.Cloudflare
     public sealed class NotificationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account id
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `image_resizing_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.
+        /// Optional specification of how often to re-alert from the same incident, not support on all alert types.
+        /// </summary>
+        [Input("alertInterval")]
+        public Input<string>? AlertInterval { get; set; }
+
+        /// <summary>
+        /// Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
+        /// Available values: "access*custom*certificate*expiration*type", "advanced*ddos*attack*l4*alert", "advanced*ddos*attack*l7*alert", "advanced*http*alert*error", "bgp*hijack*notification", "billing*usage*alert", "block*notification*block*removed", "block*notification*new*block", "block*notification*review*rejected", "brand*protection*alert", "brand*protection*digest", "clickhouse*alert*fw*anomaly", "clickhouse*alert*fw*ent*anomaly", "cloudforce*one*request*notification", "custom*analytics", "custom*ssl*certificate*event*type", "dedicated*ssl*certificate*event*type", "device*connectivity*anomaly*alert", "dos*attack*l4", "dos*attack*l7", "expiring*service*token*alert", "failing*logpush*job*disabled*alert", "fbm*auto*advertisement", "fbm*dosd*attack", "fbm*volumetric*attack", "health*check*status*notification", "hostname*aop*custom*certificate*expiration*type", "http*alert*edge*error", "http*alert*origin*error", "image*notification", "image*resizing*notification", "incident*alert", "load*balancing*health*alert", "load*balancing*pool*enablement*alert", "logo*match*alert", "magic*tunnel*health*check*event", "magic*wan*tunnel*health", "maintenance*event*notification", "mtls*certificate*store*certificate*expiration*type", "pages*event*alert", "radar*notification", "real*origin*monitoring", "scriptmonitor*alert*new*code*change*detections", "scriptmonitor*alert*new*hosts", "scriptmonitor*alert*new*malicious*hosts", "scriptmonitor*alert*new*malicious*scripts", "scriptmonitor*alert*new*malicious*url", "scriptmonitor*alert*new*max*length*resource*url", "scriptmonitor*alert*new*resources", "secondary*dns*all*primaries*failing", "secondary*dns*primaries*failing", "secondary*dns*warning", "secondary*dns*zone*successfully*updated", "secondary*dns*zone*validation*warning", "security*insights*alert", "sentinel*alert", "stream*live*notifications", "synthetic*test*latency*alert", "synthetic*test*low*availability*alert", "traffic*anomalies*alert", "tunnel*health*event", "tunnel*update*event", "universal*ssl*event*type", "web*analytics*metrics*update", "zone*aop*custom*certificate*expiration*type".
         /// </summary>
         [Input("alertType", required: true)]
         public Input<string> AlertType { get; set; } = null!;
 
         /// <summary>
-        /// Description of the notification policy.
+        /// Optional description for the Notification policy.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("emailIntegrations")]
-        private InputList<Inputs.NotificationPolicyEmailIntegrationArgs>? _emailIntegrations;
-
         /// <summary>
-        /// The email ID to which the notification should be dispatched.
+        /// Whether or not the Notification policy is enabled.
         /// </summary>
-        public InputList<Inputs.NotificationPolicyEmailIntegrationArgs> EmailIntegrations
-        {
-            get => _emailIntegrations ?? (_emailIntegrations = new InputList<Inputs.NotificationPolicyEmailIntegrationArgs>());
-            set => _emailIntegrations = value;
-        }
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The status of the notification policy.
-        /// </summary>
-        [Input("enabled", required: true)]
-        public Input<bool> Enabled { get; set; } = null!;
-
-        /// <summary>
-        /// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
+        /// Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
         /// </summary>
         [Input("filters")]
         public Input<Inputs.NotificationPolicyFiltersArgs>? Filters { get; set; }
 
         /// <summary>
-        /// The name of the notification policy.
+        /// List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
+        /// </summary>
+        [Input("mechanisms", required: true)]
+        public Input<Inputs.NotificationPolicyMechanismsArgs> Mechanisms { get; set; } = null!;
+
+        /// <summary>
+        /// Name of the policy.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
-
-        [Input("pagerdutyIntegrations")]
-        private InputList<Inputs.NotificationPolicyPagerdutyIntegrationArgs>? _pagerdutyIntegrations;
-
-        /// <summary>
-        /// The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
-        /// </summary>
-        public InputList<Inputs.NotificationPolicyPagerdutyIntegrationArgs> PagerdutyIntegrations
-        {
-            get => _pagerdutyIntegrations ?? (_pagerdutyIntegrations = new InputList<Inputs.NotificationPolicyPagerdutyIntegrationArgs>());
-            set => _pagerdutyIntegrations = value;
-        }
-
-        [Input("webhooksIntegrations")]
-        private InputList<Inputs.NotificationPolicyWebhooksIntegrationArgs>? _webhooksIntegrations;
-
-        /// <summary>
-        /// The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
-        /// </summary>
-        public InputList<Inputs.NotificationPolicyWebhooksIntegrationArgs> WebhooksIntegrations
-        {
-            get => _webhooksIntegrations ?? (_webhooksIntegrations = new InputList<Inputs.NotificationPolicyWebhooksIntegrationArgs>());
-            set => _webhooksIntegrations = value;
-        }
 
         public NotificationPolicyArgs()
         {
@@ -216,88 +180,59 @@ namespace Pulumi.Cloudflare
     public sealed class NotificationPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account id
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `image_resizing_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.
+        /// Optional specification of how often to re-alert from the same incident, not support on all alert types.
+        /// </summary>
+        [Input("alertInterval")]
+        public Input<string>? AlertInterval { get; set; }
+
+        /// <summary>
+        /// Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
+        /// Available values: "access*custom*certificate*expiration*type", "advanced*ddos*attack*l4*alert", "advanced*ddos*attack*l7*alert", "advanced*http*alert*error", "bgp*hijack*notification", "billing*usage*alert", "block*notification*block*removed", "block*notification*new*block", "block*notification*review*rejected", "brand*protection*alert", "brand*protection*digest", "clickhouse*alert*fw*anomaly", "clickhouse*alert*fw*ent*anomaly", "cloudforce*one*request*notification", "custom*analytics", "custom*ssl*certificate*event*type", "dedicated*ssl*certificate*event*type", "device*connectivity*anomaly*alert", "dos*attack*l4", "dos*attack*l7", "expiring*service*token*alert", "failing*logpush*job*disabled*alert", "fbm*auto*advertisement", "fbm*dosd*attack", "fbm*volumetric*attack", "health*check*status*notification", "hostname*aop*custom*certificate*expiration*type", "http*alert*edge*error", "http*alert*origin*error", "image*notification", "image*resizing*notification", "incident*alert", "load*balancing*health*alert", "load*balancing*pool*enablement*alert", "logo*match*alert", "magic*tunnel*health*check*event", "magic*wan*tunnel*health", "maintenance*event*notification", "mtls*certificate*store*certificate*expiration*type", "pages*event*alert", "radar*notification", "real*origin*monitoring", "scriptmonitor*alert*new*code*change*detections", "scriptmonitor*alert*new*hosts", "scriptmonitor*alert*new*malicious*hosts", "scriptmonitor*alert*new*malicious*scripts", "scriptmonitor*alert*new*malicious*url", "scriptmonitor*alert*new*max*length*resource*url", "scriptmonitor*alert*new*resources", "secondary*dns*all*primaries*failing", "secondary*dns*primaries*failing", "secondary*dns*warning", "secondary*dns*zone*successfully*updated", "secondary*dns*zone*validation*warning", "security*insights*alert", "sentinel*alert", "stream*live*notifications", "synthetic*test*latency*alert", "synthetic*test*low*availability*alert", "traffic*anomalies*alert", "tunnel*health*event", "tunnel*update*event", "universal*ssl*event*type", "web*analytics*metrics*update", "zone*aop*custom*certificate*expiration*type".
         /// </summary>
         [Input("alertType")]
         public Input<string>? AlertType { get; set; }
 
-        /// <summary>
-        /// When the notification policy was created.
-        /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }
 
         /// <summary>
-        /// Description of the notification policy.
+        /// Optional description for the Notification policy.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("emailIntegrations")]
-        private InputList<Inputs.NotificationPolicyEmailIntegrationGetArgs>? _emailIntegrations;
-
         /// <summary>
-        /// The email ID to which the notification should be dispatched.
-        /// </summary>
-        public InputList<Inputs.NotificationPolicyEmailIntegrationGetArgs> EmailIntegrations
-        {
-            get => _emailIntegrations ?? (_emailIntegrations = new InputList<Inputs.NotificationPolicyEmailIntegrationGetArgs>());
-            set => _emailIntegrations = value;
-        }
-
-        /// <summary>
-        /// The status of the notification policy.
+        /// Whether or not the Notification policy is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
+        /// Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
         /// </summary>
         [Input("filters")]
         public Input<Inputs.NotificationPolicyFiltersGetArgs>? Filters { get; set; }
 
         /// <summary>
-        /// When the notification policy was last modified.
+        /// List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
         /// </summary>
+        [Input("mechanisms")]
+        public Input<Inputs.NotificationPolicyMechanismsGetArgs>? Mechanisms { get; set; }
+
         [Input("modified")]
         public Input<string>? Modified { get; set; }
 
         /// <summary>
-        /// The name of the notification policy.
+        /// Name of the policy.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("pagerdutyIntegrations")]
-        private InputList<Inputs.NotificationPolicyPagerdutyIntegrationGetArgs>? _pagerdutyIntegrations;
-
-        /// <summary>
-        /// The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
-        /// </summary>
-        public InputList<Inputs.NotificationPolicyPagerdutyIntegrationGetArgs> PagerdutyIntegrations
-        {
-            get => _pagerdutyIntegrations ?? (_pagerdutyIntegrations = new InputList<Inputs.NotificationPolicyPagerdutyIntegrationGetArgs>());
-            set => _pagerdutyIntegrations = value;
-        }
-
-        [Input("webhooksIntegrations")]
-        private InputList<Inputs.NotificationPolicyWebhooksIntegrationGetArgs>? _webhooksIntegrations;
-
-        /// <summary>
-        /// The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
-        /// </summary>
-        public InputList<Inputs.NotificationPolicyWebhooksIntegrationGetArgs> WebhooksIntegrations
-        {
-            get => _webhooksIntegrations ?? (_webhooksIntegrations = new InputList<Inputs.NotificationPolicyWebhooksIntegrationGetArgs>());
-            set => _webhooksIntegrations = value;
-        }
 
         public NotificationPolicyState()
         {

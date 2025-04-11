@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyCookie
     {
         /// <summary>
-        /// List of cookies to check for presence in the custom key.
+        /// Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
         /// </summary>
         public readonly ImmutableArray<string> CheckPresences;
         /// <summary>
-        /// List of cookies to include in the custom key.
+        /// Include these cookies' names and their values.
         /// </summary>
         public readonly ImmutableArray<string> Includes;
 

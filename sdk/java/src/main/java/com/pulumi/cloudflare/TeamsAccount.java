@@ -6,371 +6,66 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.TeamsAccountArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.TeamsAccountState;
-import com.pulumi.cloudflare.outputs.TeamsAccountAntivirus;
-import com.pulumi.cloudflare.outputs.TeamsAccountBlockPage;
-import com.pulumi.cloudflare.outputs.TeamsAccountBodyScanning;
-import com.pulumi.cloudflare.outputs.TeamsAccountCertificate;
-import com.pulumi.cloudflare.outputs.TeamsAccountCustomCertificate;
-import com.pulumi.cloudflare.outputs.TeamsAccountExtendedEmailMatching;
-import com.pulumi.cloudflare.outputs.TeamsAccountFips;
-import com.pulumi.cloudflare.outputs.TeamsAccountLogging;
-import com.pulumi.cloudflare.outputs.TeamsAccountPayloadLog;
-import com.pulumi.cloudflare.outputs.TeamsAccountProxy;
-import com.pulumi.cloudflare.outputs.TeamsAccountSshSessionLog;
+import com.pulumi.cloudflare.outputs.TeamsAccountSettings;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Teams Account resource. The Teams Account
- * resource defines configuration for secure web gateway.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.TeamsAccount;
- * import com.pulumi.cloudflare.TeamsAccountArgs;
- * import com.pulumi.cloudflare.inputs.TeamsAccountBlockPageArgs;
- * import com.pulumi.cloudflare.inputs.TeamsAccountBodyScanningArgs;
- * import com.pulumi.cloudflare.inputs.TeamsAccountAntivirusArgs;
- * import com.pulumi.cloudflare.inputs.TeamsAccountAntivirusNotificationSettingsArgs;
- * import com.pulumi.cloudflare.inputs.TeamsAccountFipsArgs;
- * import com.pulumi.cloudflare.inputs.TeamsAccountProxyArgs;
- * import com.pulumi.cloudflare.inputs.TeamsAccountLoggingArgs;
- * import com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeArgs;
- * import com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeDnsArgs;
- * import com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeHttpArgs;
- * import com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeL4Args;
- * import com.pulumi.cloudflare.inputs.TeamsAccountExtendedEmailMatchingArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new TeamsAccount("example", TeamsAccountArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .tlsDecryptEnabled(true)
- *             .protocolDetectionEnabled(true)
- *             .blockPage(TeamsAccountBlockPageArgs.builder()
- *                 .footerText("hello")
- *                 .headerText("hello")
- *                 .logoPath("https://example.com/logo.jpg")
- *                 .backgroundColor("#000000")
- *                 .build())
- *             .bodyScanning(TeamsAccountBodyScanningArgs.builder()
- *                 .inspectionMode("deep")
- *                 .build())
- *             .antivirus(TeamsAccountAntivirusArgs.builder()
- *                 .enabledDownloadPhase(true)
- *                 .enabledUploadPhase(false)
- *                 .failClosed(true)
- *                 .notificationSettings(TeamsAccountAntivirusNotificationSettingsArgs.builder()
- *                     .enabled(true)
- *                     .message("you are blocked")
- *                     .supportUrl("https://example.com/blocked")
- *                     .build())
- *                 .build())
- *             .fips(TeamsAccountFipsArgs.builder()
- *                 .tls(true)
- *                 .build())
- *             .proxy(TeamsAccountProxyArgs.builder()
- *                 .tcp(true)
- *                 .udp(true)
- *                 .rootCa(true)
- *                 .virtualIp(false)
- *                 .disableForTime(3600)
- *                 .build())
- *             .urlBrowserIsolationEnabled(true)
- *             .logging(TeamsAccountLoggingArgs.builder()
- *                 .redactPii(true)
- *                 .settingsByRuleType(TeamsAccountLoggingSettingsByRuleTypeArgs.builder()
- *                     .dns(TeamsAccountLoggingSettingsByRuleTypeDnsArgs.builder()
- *                         .logAll(false)
- *                         .logBlocks(true)
- *                         .build())
- *                     .http(TeamsAccountLoggingSettingsByRuleTypeHttpArgs.builder()
- *                         .logAll(true)
- *                         .logBlocks(true)
- *                         .build())
- *                     .l4(TeamsAccountLoggingSettingsByRuleTypeL4Args.builder()
- *                         .logAll(false)
- *                         .logBlocks(true)
- *                         .build())
- *                     .build())
- *                 .build())
- *             .extendedEmailMatching(TeamsAccountExtendedEmailMatchingArgs.builder()
- *                 .enabled(true)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example &lt;account_id&gt;
+ * $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example &#39;&lt;account_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare.index/teamsaccount.TeamsAccount has been deprecated in favor of cloudflare.index/zerotrustgatewaysettings.ZeroTrustGatewaySettings
+ * 
  */
+@Deprecated /* cloudflare.index/teamsaccount.TeamsAccount has been deprecated in favor of cloudflare.index/zerotrustgatewaysettings.ZeroTrustGatewaySettings */
 @ResourceType(type="cloudflare:index/teamsAccount:TeamsAccount")
 public class TeamsAccount extends com.pulumi.resources.CustomResource {
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
-    /**
-     * Whether to enable the activity log.
-     * 
-     */
-    @Export(name="activityLogEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> activityLogEnabled;
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
 
-    /**
-     * @return Whether to enable the activity log.
-     * 
-     */
-    public Output<Optional<Boolean>> activityLogEnabled() {
-        return Codegen.optional(this.activityLogEnabled);
+    public Output<String> createdAt() {
+        return this.createdAt;
     }
     /**
-     * Configuration block for antivirus traffic scanning.
+     * Account settings
      * 
      */
-    @Export(name="antivirus", refs={TeamsAccountAntivirus.class}, tree="[0]")
-    private Output</* @Nullable */ TeamsAccountAntivirus> antivirus;
+    @Export(name="settings", refs={TeamsAccountSettings.class}, tree="[0]")
+    private Output<TeamsAccountSettings> settings;
 
     /**
-     * @return Configuration block for antivirus traffic scanning.
+     * @return Account settings
      * 
      */
-    public Output<Optional<TeamsAccountAntivirus>> antivirus() {
-        return Codegen.optional(this.antivirus);
+    public Output<TeamsAccountSettings> settings() {
+        return this.settings;
     }
-    /**
-     * Configuration for a custom block page.
-     * 
-     */
-    @Export(name="blockPage", refs={TeamsAccountBlockPage.class}, tree="[0]")
-    private Output</* @Nullable */ TeamsAccountBlockPage> blockPage;
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
 
-    /**
-     * @return Configuration for a custom block page.
-     * 
-     */
-    public Output<Optional<TeamsAccountBlockPage>> blockPage() {
-        return Codegen.optional(this.blockPage);
-    }
-    /**
-     * Configuration for body scanning.
-     * 
-     */
-    @Export(name="bodyScanning", refs={TeamsAccountBodyScanning.class}, tree="[0]")
-    private Output</* @Nullable */ TeamsAccountBodyScanning> bodyScanning;
-
-    /**
-     * @return Configuration for body scanning.
-     * 
-     */
-    public Output<Optional<TeamsAccountBodyScanning>> bodyScanning() {
-        return Codegen.optional(this.bodyScanning);
-    }
-    /**
-     * Configuration for TLS interception certificate. This will be required starting Feb 2025.
-     * 
-     */
-    @Export(name="certificate", refs={TeamsAccountCertificate.class}, tree="[0]")
-    private Output</* @Nullable */ TeamsAccountCertificate> certificate;
-
-    /**
-     * @return Configuration for TLS interception certificate. This will be required starting Feb 2025.
-     * 
-     */
-    public Output<Optional<TeamsAccountCertificate>> certificate() {
-        return Codegen.optional(this.certificate);
-    }
-    /**
-     * Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-     * 
-     * @deprecated
-     * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
-     * 
-     */
-    @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
-    @Export(name="customCertificate", refs={TeamsAccountCustomCertificate.class}, tree="[0]")
-    private Output</* @Nullable */ TeamsAccountCustomCertificate> customCertificate;
-
-    /**
-     * @return Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-     * 
-     */
-    public Output<Optional<TeamsAccountCustomCertificate>> customCertificate() {
-        return Codegen.optional(this.customCertificate);
-    }
-    /**
-     * Configuration for extended e-mail matching.
-     * 
-     */
-    @Export(name="extendedEmailMatching", refs={TeamsAccountExtendedEmailMatching.class}, tree="[0]")
-    private Output<TeamsAccountExtendedEmailMatching> extendedEmailMatching;
-
-    /**
-     * @return Configuration for extended e-mail matching.
-     * 
-     */
-    public Output<TeamsAccountExtendedEmailMatching> extendedEmailMatching() {
-        return this.extendedEmailMatching;
-    }
-    /**
-     * Configure compliance with Federal Information Processing Standards.
-     * 
-     */
-    @Export(name="fips", refs={TeamsAccountFips.class}, tree="[0]")
-    private Output</* @Nullable */ TeamsAccountFips> fips;
-
-    /**
-     * @return Configure compliance with Federal Information Processing Standards.
-     * 
-     */
-    public Output<Optional<TeamsAccountFips>> fips() {
-        return Codegen.optional(this.fips);
-    }
-    @Export(name="logging", refs={TeamsAccountLogging.class}, tree="[0]")
-    private Output</* @Nullable */ TeamsAccountLogging> logging;
-
-    public Output<Optional<TeamsAccountLogging>> logging() {
-        return Codegen.optional(this.logging);
-    }
-    /**
-     * Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-     * 
-     */
-    @Export(name="nonIdentityBrowserIsolationEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> nonIdentityBrowserIsolationEnabled;
-
-    /**
-     * @return Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-     * 
-     */
-    public Output<Optional<Boolean>> nonIdentityBrowserIsolationEnabled() {
-        return Codegen.optional(this.nonIdentityBrowserIsolationEnabled);
-    }
-    /**
-     * Configuration for DLP Payload Logging.
-     * 
-     */
-    @Export(name="payloadLog", refs={TeamsAccountPayloadLog.class}, tree="[0]")
-    private Output</* @Nullable */ TeamsAccountPayloadLog> payloadLog;
-
-    /**
-     * @return Configuration for DLP Payload Logging.
-     * 
-     */
-    public Output<Optional<TeamsAccountPayloadLog>> payloadLog() {
-        return Codegen.optional(this.payloadLog);
-    }
-    /**
-     * Indicator that protocol detection is enabled.
-     * 
-     */
-    @Export(name="protocolDetectionEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> protocolDetectionEnabled;
-
-    /**
-     * @return Indicator that protocol detection is enabled.
-     * 
-     */
-    public Output<Optional<Boolean>> protocolDetectionEnabled() {
-        return Codegen.optional(this.protocolDetectionEnabled);
-    }
-    /**
-     * Configuration block for specifying which protocols are proxied.
-     * 
-     */
-    @Export(name="proxy", refs={TeamsAccountProxy.class}, tree="[0]")
-    private Output</* @Nullable */ TeamsAccountProxy> proxy;
-
-    /**
-     * @return Configuration block for specifying which protocols are proxied.
-     * 
-     */
-    public Output<Optional<TeamsAccountProxy>> proxy() {
-        return Codegen.optional(this.proxy);
-    }
-    /**
-     * Configuration for SSH Session Logging.
-     * 
-     */
-    @Export(name="sshSessionLog", refs={TeamsAccountSshSessionLog.class}, tree="[0]")
-    private Output</* @Nullable */ TeamsAccountSshSessionLog> sshSessionLog;
-
-    /**
-     * @return Configuration for SSH Session Logging.
-     * 
-     */
-    public Output<Optional<TeamsAccountSshSessionLog>> sshSessionLog() {
-        return Codegen.optional(this.sshSessionLog);
-    }
-    /**
-     * Indicator that decryption of TLS traffic is enabled.
-     * 
-     */
-    @Export(name="tlsDecryptEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> tlsDecryptEnabled;
-
-    /**
-     * @return Indicator that decryption of TLS traffic is enabled.
-     * 
-     */
-    public Output<Optional<Boolean>> tlsDecryptEnabled() {
-        return Codegen.optional(this.tlsDecryptEnabled);
-    }
-    /**
-     * Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-     * 
-     */
-    @Export(name="urlBrowserIsolationEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> urlBrowserIsolationEnabled;
-
-    /**
-     * @return Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-     * 
-     */
-    public Output<Optional<Boolean>> urlBrowserIsolationEnabled() {
-        return Codegen.optional(this.urlBrowserIsolationEnabled);
+    public Output<String> updatedAt() {
+        return this.updatedAt;
     }
 
     /**
@@ -412,6 +107,9 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/teamsAccount:TeamsAccount").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

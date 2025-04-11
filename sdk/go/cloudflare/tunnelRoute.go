@@ -8,31 +8,63 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource, that manages Cloudflare tunnel routes for Zero
-// Trust. Tunnel routes are used to direct IP traffic through
-// Cloudflare Tunnels.
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustTunnelCloudflaredRoute(ctx, "example_zero_trust_tunnel_cloudflared_route", &cloudflare.ZeroTrustTunnelCloudflaredRouteArgs{
+//				AccountId:        pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				Network:          pulumi.String("172.16.0.0/16"),
+//				TunnelId:         pulumi.String("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
+//				Comment:          pulumi.String("Example comment for this route."),
+//				VirtualNetworkId: pulumi.String("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example <account_id>/<network_cidr>/<virtual_network_id>
+// $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example '<account_id>/<route_id>'
 // ```
+//
+// Deprecated: cloudflare.index/tunnelroute.TunnelRoute has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredroute.ZeroTrustTunnelCloudflaredRoute
 type TunnelRoute struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Description of the tunnel route.
+	// Optional remark describing the route.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+	// Timestamp of when the resource was created.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+	DeletedAt pulumi.StringOutput `pulumi:"deletedAt"`
+	// The private IPv4 or IPv6 range connected by the route, in CIDR notation.
 	Network pulumi.StringOutput `pulumi:"network"`
-	// The ID of the tunnel that will service the tunnel route.
+	// UUID of the tunnel.
 	TunnelId pulumi.StringOutput `pulumi:"tunnelId"`
-	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+	// UUID of the virtual network.
 	VirtualNetworkId pulumi.StringPtrOutput `pulumi:"virtualNetworkId"`
 }
 
@@ -52,6 +84,12 @@ func NewTunnelRoute(ctx *pulumi.Context,
 	if args.TunnelId == nil {
 		return nil, errors.New("invalid value for required argument 'TunnelId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/tunnelRoute:TunnelRoute"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TunnelRoute
 	err := ctx.RegisterResource("cloudflare:index/tunnelRoute:TunnelRoute", name, args, &resource, opts...)
@@ -75,28 +113,36 @@ func GetTunnelRoute(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TunnelRoute resources.
 type tunnelRouteState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
 	AccountId *string `pulumi:"accountId"`
-	// Description of the tunnel route.
+	// Optional remark describing the route.
 	Comment *string `pulumi:"comment"`
-	// The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+	// Timestamp of when the resource was created.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+	DeletedAt *string `pulumi:"deletedAt"`
+	// The private IPv4 or IPv6 range connected by the route, in CIDR notation.
 	Network *string `pulumi:"network"`
-	// The ID of the tunnel that will service the tunnel route.
+	// UUID of the tunnel.
 	TunnelId *string `pulumi:"tunnelId"`
-	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+	// UUID of the virtual network.
 	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
 }
 
 type TunnelRouteState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
 	AccountId pulumi.StringPtrInput
-	// Description of the tunnel route.
+	// Optional remark describing the route.
 	Comment pulumi.StringPtrInput
-	// The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+	// Timestamp of when the resource was created.
+	CreatedAt pulumi.StringPtrInput
+	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+	DeletedAt pulumi.StringPtrInput
+	// The private IPv4 or IPv6 range connected by the route, in CIDR notation.
 	Network pulumi.StringPtrInput
-	// The ID of the tunnel that will service the tunnel route.
+	// UUID of the tunnel.
 	TunnelId pulumi.StringPtrInput
-	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+	// UUID of the virtual network.
 	VirtualNetworkId pulumi.StringPtrInput
 }
 
@@ -105,29 +151,29 @@ func (TunnelRouteState) ElementType() reflect.Type {
 }
 
 type tunnelRouteArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
 	AccountId string `pulumi:"accountId"`
-	// Description of the tunnel route.
+	// Optional remark describing the route.
 	Comment *string `pulumi:"comment"`
-	// The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+	// The private IPv4 or IPv6 range connected by the route, in CIDR notation.
 	Network string `pulumi:"network"`
-	// The ID of the tunnel that will service the tunnel route.
+	// UUID of the tunnel.
 	TunnelId string `pulumi:"tunnelId"`
-	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+	// UUID of the virtual network.
 	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
 }
 
 // The set of arguments for constructing a TunnelRoute resource.
 type TunnelRouteArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
 	AccountId pulumi.StringInput
-	// Description of the tunnel route.
+	// Optional remark describing the route.
 	Comment pulumi.StringPtrInput
-	// The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+	// The private IPv4 or IPv6 range connected by the route, in CIDR notation.
 	Network pulumi.StringInput
-	// The ID of the tunnel that will service the tunnel route.
+	// UUID of the tunnel.
 	TunnelId pulumi.StringInput
-	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+	// UUID of the virtual network.
 	VirtualNetworkId pulumi.StringPtrInput
 }
 
@@ -218,27 +264,37 @@ func (o TunnelRouteOutput) ToTunnelRouteOutputWithContext(ctx context.Context) T
 	return o
 }
 
-// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Cloudflare account ID
 func (o TunnelRouteOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TunnelRoute) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Description of the tunnel route.
+// Optional remark describing the route.
 func (o TunnelRouteOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TunnelRoute) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+// Timestamp of when the resource was created.
+func (o TunnelRouteOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *TunnelRoute) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+func (o TunnelRouteOutput) DeletedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *TunnelRoute) pulumi.StringOutput { return v.DeletedAt }).(pulumi.StringOutput)
+}
+
+// The private IPv4 or IPv6 range connected by the route, in CIDR notation.
 func (o TunnelRouteOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *TunnelRoute) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
 
-// The ID of the tunnel that will service the tunnel route.
+// UUID of the tunnel.
 func (o TunnelRouteOutput) TunnelId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TunnelRoute) pulumi.StringOutput { return v.TunnelId }).(pulumi.StringOutput)
 }
 
-// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+// UUID of the virtual network.
 func (o TunnelRouteOutput) VirtualNetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TunnelRoute) pulumi.StringPtrOutput { return v.VirtualNetworkId }).(pulumi.StringPtrOutput)
 }

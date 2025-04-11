@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// The [Hyperdrive Config](https://developers.cloudflare.com/hyperdrive/) resource allows you to manage Cloudflare Hyperdrive Configs.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,18 +20,22 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var noDefaults = new Cloudflare.HyperdriveConfig("no_defaults", new()
+    ///     var exampleHyperdriveConfig = new Cloudflare.HyperdriveConfig("example_hyperdrive_config", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "my-hyperdrive-config",
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Name = "example-hyperdrive",
     ///         Origin = new Cloudflare.Inputs.HyperdriveConfigOriginArgs
     ///         {
     ///             Database = "postgres",
-    ///             Password = "my-password",
-    ///             Host = "my-database.example.com",
+    ///             Host = "database.example.com",
+    ///             Password = "password",
     ///             Port = 5432,
     ///             Scheme = "postgres",
-    ///             User = "my-user",
+    ///             User = "postgres",
+    ///         },
+    ///         Caching = new Cloudflare.Inputs.HyperdriveConfigCachingArgs
+    ///         {
+    ///             Disabled = true,
     ///         },
     ///     });
     /// 
@@ -43,41 +45,38 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example &lt;account_id&gt;/&lt;hyperdrive_config_id&gt;
+    /// $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example '&lt;account_id&gt;/&lt;hyperdrive_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/hyperdriveConfig:HyperdriveConfig")]
     public partial class HyperdriveConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-        /// <summary>
-        /// The caching details for the Hyperdrive configuration.
-        /// </summary>
         [Output("caching")]
         public Output<Outputs.HyperdriveConfigCaching> Caching { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Hyperdrive configuration.
+        /// When the Hyperdrive configuration was created.
         /// </summary>
+        [Output("createdOn")]
+        public Output<string> CreatedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// When the Hyperdrive configuration was last modified.
+        /// </summary>
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
+
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The origin details for the Hyperdrive configuration.
-        /// </summary>
         [Output("origin")]
         public Output<Outputs.HyperdriveConfigOrigin> Origin { get; private set; } = null!;
-
-        /// <summary>
-        /// The identifier of this resource. This is the hyperdrive config value.
-        /// </summary>
-        [Output("resourceId")]
-        public Output<string> ResourceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -126,34 +125,19 @@ namespace Pulumi.Cloudflare
     public sealed class HyperdriveConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// The caching details for the Hyperdrive configuration.
-        /// </summary>
         [Input("caching")]
         public Input<Inputs.HyperdriveConfigCachingArgs>? Caching { get; set; }
 
-        /// <summary>
-        /// The name of the Hyperdrive configuration.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// The origin details for the Hyperdrive configuration.
-        /// </summary>
         [Input("origin", required: true)]
         public Input<Inputs.HyperdriveConfigOriginArgs> Origin { get; set; } = null!;
-
-        /// <summary>
-        /// The identifier of this resource. This is the hyperdrive config value.
-        /// </summary>
-        [Input("resourceId")]
-        public Input<string>? ResourceId { get; set; }
 
         public HyperdriveConfigArgs()
         {
@@ -164,34 +148,31 @@ namespace Pulumi.Cloudflare
     public sealed class HyperdriveConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// The caching details for the Hyperdrive configuration.
-        /// </summary>
         [Input("caching")]
         public Input<Inputs.HyperdriveConfigCachingGetArgs>? Caching { get; set; }
 
         /// <summary>
-        /// The name of the Hyperdrive configuration.
+        /// When the Hyperdrive configuration was created.
         /// </summary>
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
+
+        /// <summary>
+        /// When the Hyperdrive configuration was last modified.
+        /// </summary>
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The origin details for the Hyperdrive configuration.
-        /// </summary>
         [Input("origin")]
         public Input<Inputs.HyperdriveConfigOriginGetArgs>? Origin { get; set; }
-
-        /// <summary>
-        /// The identifier of this resource. This is the hyperdrive config value.
-        /// </summary>
-        [Input("resourceId")]
-        public Input<string>? ResourceId { get; set; }
 
         public HyperdriveConfigState()
         {

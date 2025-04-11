@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PageRuleActionsCacheKeyFieldsCookie {
-    /**
-     * @return Check for presence of specified cookies, without including their actual values.
-     * 
-     */
     private @Nullable List<String> checkPresences;
-    /**
-     * @return Use values of specified cookies in Cache Key.
-     * 
-     */
     private @Nullable List<String> includes;
 
     private PageRuleActionsCacheKeyFieldsCookie() {}
-    /**
-     * @return Check for presence of specified cookies, without including their actual values.
-     * 
-     */
     public List<String> checkPresences() {
         return this.checkPresences == null ? List.of() : this.checkPresences;
     }
-    /**
-     * @return Use values of specified cookies in Cache Key.
-     * 
-     */
     public List<String> includes() {
         return this.includes == null ? List.of() : this.includes;
     }

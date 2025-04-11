@@ -7,9 +7,7 @@ import com.pulumi.cloudflare.inputs.CustomHostnameSslArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,14 +19,14 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
     public static final CustomHostnameArgs Empty = new CustomHostnameArgs();
 
     /**
-     * Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     * Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
      * 
      */
     @Import(name="customMetadata")
     private @Nullable Output<Map<String,String>> customMetadata;
 
     /**
-     * @return Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     * @return Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
      * 
      */
     public Optional<Output<Map<String,String>>> customMetadata() {
@@ -36,14 +34,14 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The custom origin server used for certificates.
+     * a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
      * 
      */
     @Import(name="customOriginServer")
     private @Nullable Output<String> customOriginServer;
 
     /**
-     * @return The custom origin server used for certificates.
+     * @return a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
      * 
      */
     public Optional<Output<String>> customOriginServer() {
@@ -51,14 +49,14 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+     * A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string &#39;:request*host*header:&#39; which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
      * 
      */
     @Import(name="customOriginSni")
     private @Nullable Output<String> customOriginSni;
 
     /**
-     * @return The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+     * @return A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string &#39;:request*host*header:&#39; which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
      * 
      */
     public Optional<Output<String>> customOriginSni() {
@@ -66,14 +64,14 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+     * The custom hostname that will point to your hostname via CNAME.
      * 
      */
     @Import(name="hostname", required=true)
     private Output<String> hostname;
 
     /**
-     * @return Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+     * @return The custom hostname that will point to your hostname via CNAME.
      * 
      */
     public Output<String> hostname() {
@@ -84,41 +82,26 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
      * SSL properties used when creating the custom hostname.
      * 
      */
-    @Import(name="ssls")
-    private @Nullable Output<List<CustomHostnameSslArgs>> ssls;
+    @Import(name="ssl", required=true)
+    private Output<CustomHostnameSslArgs> ssl;
 
     /**
      * @return SSL properties used when creating the custom hostname.
      * 
      */
-    public Optional<Output<List<CustomHostnameSslArgs>>> ssls() {
-        return Optional.ofNullable(this.ssls);
+    public Output<CustomHostnameSslArgs> ssl() {
+        return this.ssl;
     }
 
     /**
-     * Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
-     * 
-     */
-    @Import(name="waitForSslPendingValidation")
-    private @Nullable Output<Boolean> waitForSslPendingValidation;
-
-    /**
-     * @return Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
-     * 
-     */
-    public Optional<Output<Boolean>> waitForSslPendingValidation() {
-        return Optional.ofNullable(this.waitForSslPendingValidation);
-    }
-
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -132,8 +115,7 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
         this.customOriginServer = $.customOriginServer;
         this.customOriginSni = $.customOriginSni;
         this.hostname = $.hostname;
-        this.ssls = $.ssls;
-        this.waitForSslPendingValidation = $.waitForSslPendingValidation;
+        this.ssl = $.ssl;
         this.zoneId = $.zoneId;
     }
 
@@ -156,7 +138,7 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param customMetadata Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+         * @param customMetadata Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
          * 
          * @return builder
          * 
@@ -167,7 +149,7 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param customMetadata Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+         * @param customMetadata Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
          * 
          * @return builder
          * 
@@ -177,7 +159,7 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param customOriginServer The custom origin server used for certificates.
+         * @param customOriginServer a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
          * 
          * @return builder
          * 
@@ -188,7 +170,7 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param customOriginServer The custom origin server used for certificates.
+         * @param customOriginServer a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
          * 
          * @return builder
          * 
@@ -198,7 +180,7 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param customOriginSni The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+         * @param customOriginSni A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string &#39;:request*host*header:&#39; which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
          * 
          * @return builder
          * 
@@ -209,7 +191,7 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param customOriginSni The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+         * @param customOriginSni A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string &#39;:request*host*header:&#39; which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
          * 
          * @return builder
          * 
@@ -219,7 +201,7 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param hostname Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+         * @param hostname The custom hostname that will point to your hostname via CNAME.
          * 
          * @return builder
          * 
@@ -230,7 +212,7 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param hostname Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+         * @param hostname The custom hostname that will point to your hostname via CNAME.
          * 
          * @return builder
          * 
@@ -240,59 +222,28 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ssls SSL properties used when creating the custom hostname.
+         * @param ssl SSL properties used when creating the custom hostname.
          * 
          * @return builder
          * 
          */
-        public Builder ssls(@Nullable Output<List<CustomHostnameSslArgs>> ssls) {
-            $.ssls = ssls;
+        public Builder ssl(Output<CustomHostnameSslArgs> ssl) {
+            $.ssl = ssl;
             return this;
         }
 
         /**
-         * @param ssls SSL properties used when creating the custom hostname.
+         * @param ssl SSL properties used when creating the custom hostname.
          * 
          * @return builder
          * 
          */
-        public Builder ssls(List<CustomHostnameSslArgs> ssls) {
-            return ssls(Output.of(ssls));
+        public Builder ssl(CustomHostnameSslArgs ssl) {
+            return ssl(Output.of(ssl));
         }
 
         /**
-         * @param ssls SSL properties used when creating the custom hostname.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ssls(CustomHostnameSslArgs... ssls) {
-            return ssls(List.of(ssls));
-        }
-
-        /**
-         * @param waitForSslPendingValidation Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder waitForSslPendingValidation(@Nullable Output<Boolean> waitForSslPendingValidation) {
-            $.waitForSslPendingValidation = waitForSslPendingValidation;
-            return this;
-        }
-
-        /**
-         * @param waitForSslPendingValidation Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder waitForSslPendingValidation(Boolean waitForSslPendingValidation) {
-            return waitForSslPendingValidation(Output.of(waitForSslPendingValidation));
-        }
-
-        /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -303,7 +254,7 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -315,6 +266,9 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
         public CustomHostnameArgs build() {
             if ($.hostname == null) {
                 throw new MissingRequiredPropertyException("CustomHostnameArgs", "hostname");
+            }
+            if ($.ssl == null) {
+                throw new MissingRequiredPropertyException("CustomHostnameArgs", "ssl");
             }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("CustomHostnameArgs", "zoneId");

@@ -28,9 +28,14 @@ public final class AccessApplicationScimConfigAuthentication {
      * 
      */
     private @Nullable String clientSecret;
+    /**
+     * @return Password used to authenticate with the remote SCIM service.
+     * 
+     */
     private @Nullable String password;
     /**
      * @return The authentication scheme to use when making SCIM requests to this application.
+     * Available values: &#34;httpbasic&#34;.
      * 
      */
     private String scheme;
@@ -77,11 +82,16 @@ public final class AccessApplicationScimConfigAuthentication {
     public Optional<String> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }
+    /**
+     * @return Password used to authenticate with the remote SCIM service.
+     * 
+     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
      * @return The authentication scheme to use when making SCIM requests to this application.
+     * Available values: &#34;httpbasic&#34;.
      * 
      */
     public String scheme() {

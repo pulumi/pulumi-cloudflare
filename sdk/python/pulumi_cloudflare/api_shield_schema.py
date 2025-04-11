@@ -14,62 +14,70 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ApiShieldSchemaArgs', 'ApiShieldSchema']
 
 @pulumi.input_type
 class ApiShieldSchemaArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[builtins.str],
-                 source: pulumi.Input[builtins.str],
+                 file: pulumi.Input[builtins.str],
+                 kind: pulumi.Input[builtins.str],
                  zone_id: pulumi.Input[builtins.str],
-                 kind: Optional[pulumi.Input[builtins.str]] = None,
-                 validation_enabled: Optional[pulumi.Input[builtins.bool]] = None):
+                 name: Optional[pulumi.Input[builtins.str]] = None,
+                 schema_id: Optional[pulumi.Input[builtins.str]] = None,
+                 validation_enabled: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a ApiShieldSchema resource.
-        :param pulumi.Input[builtins.str] name: Name of the schema. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] source: Schema file bytes. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] kind: Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.bool] validation_enabled: Flag whether schema is enabled for validation.
+        :param pulumi.Input[builtins.str] file: Schema file bytes
+        :param pulumi.Input[builtins.str] kind: Kind of schema
+               Available values: "openapi_v3".
+        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] name: Name of the schema
+        :param pulumi.Input[builtins.str] validation_enabled: Flag whether schema is enabled for validation.
+               Available values: "true", "false".
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "file", file)
+        pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "zone_id", zone_id)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if schema_id is not None:
+            pulumi.set(__self__, "schema_id", schema_id)
         if validation_enabled is not None:
             pulumi.set(__self__, "validation_enabled", validation_enabled)
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Input[builtins.str]:
+    def file(self) -> pulumi.Input[builtins.str]:
         """
-        Name of the schema. **Modifying this attribute will force creation of a new resource.**
+        Schema file bytes
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "file")
 
-    @name.setter
-    def name(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "name", value)
+    @file.setter
+    def file(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "file", value)
 
     @property
     @pulumi.getter
-    def source(self) -> pulumi.Input[builtins.str]:
+    def kind(self) -> pulumi.Input[builtins.str]:
         """
-        Schema file bytes. **Modifying this attribute will force creation of a new resource.**
+        Kind of schema
+        Available values: "openapi_v3".
         """
-        return pulumi.get(self, "source")
+        return pulumi.get(self, "kind")
 
-    @source.setter
-    def source(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "source", value)
+    @kind.setter
+    def kind(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -79,61 +87,111 @@ class ApiShieldSchemaArgs:
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[builtins.str]]:
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
+        Name of the schema
         """
-        return pulumi.get(self, "kind")
+        return pulumi.get(self, "name")
 
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "kind", value)
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="schemaId")
+    def schema_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "schema_id")
+
+    @schema_id.setter
+    def schema_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "schema_id", value)
 
     @property
     @pulumi.getter(name="validationEnabled")
-    def validation_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+    def validation_enabled(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Flag whether schema is enabled for validation.
+        Available values: "true", "false".
         """
         return pulumi.get(self, "validation_enabled")
 
     @validation_enabled.setter
-    def validation_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+    def validation_enabled(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "validation_enabled", value)
 
 
 @pulumi.input_type
 class _ApiShieldSchemaState:
     def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[builtins.str]] = None,
+                 file: Optional[pulumi.Input[builtins.str]] = None,
                  kind: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 schema: Optional[pulumi.Input['ApiShieldSchemaSchemaArgs']] = None,
+                 schema_id: Optional[pulumi.Input[builtins.str]] = None,
                  source: Optional[pulumi.Input[builtins.str]] = None,
-                 validation_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 upload_details: Optional[pulumi.Input['ApiShieldSchemaUploadDetailsArgs']] = None,
+                 validation_enabled: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiShieldSchema resources.
-        :param pulumi.Input[builtins.str] kind: Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] name: Name of the schema. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] source: Schema file bytes. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.bool] validation_enabled: Flag whether schema is enabled for validation.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] file: Schema file bytes
+        :param pulumi.Input[builtins.str] kind: Kind of schema
+               Available values: "openapi_v3".
+        :param pulumi.Input[builtins.str] name: Name of the schema
+        :param pulumi.Input[builtins.str] source: Source of the schema
+        :param pulumi.Input[builtins.str] validation_enabled: Flag whether schema is enabled for validation.
+               Available values: "true", "false".
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if file is not None:
+            pulumi.set(__self__, "file", file)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if schema_id is not None:
+            pulumi.set(__self__, "schema_id", schema_id)
         if source is not None:
             pulumi.set(__self__, "source", source)
+        if upload_details is not None:
+            pulumi.set(__self__, "upload_details", upload_details)
         if validation_enabled is not None:
             pulumi.set(__self__, "validation_enabled", validation_enabled)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter
+    def file(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Schema file bytes
+        """
+        return pulumi.get(self, "file")
+
+    @file.setter
+    def file(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "file", value)
+
+    @property
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
+        Kind of schema
+        Available values: "openapi_v3".
         """
         return pulumi.get(self, "kind")
 
@@ -145,7 +203,7 @@ class _ApiShieldSchemaState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the schema. **Modifying this attribute will force creation of a new resource.**
+        Name of the schema
         """
         return pulumi.get(self, "name")
 
@@ -155,9 +213,27 @@ class _ApiShieldSchemaState:
 
     @property
     @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input['ApiShieldSchemaSchemaArgs']]:
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input['ApiShieldSchemaSchemaArgs']]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter(name="schemaId")
+    def schema_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "schema_id")
+
+    @schema_id.setter
+    def schema_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "schema_id", value)
+
+    @property
+    @pulumi.getter
     def source(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Schema file bytes. **Modifying this attribute will force creation of a new resource.**
+        Source of the schema
         """
         return pulumi.get(self, "source")
 
@@ -166,22 +242,32 @@ class _ApiShieldSchemaState:
         pulumi.set(self, "source", value)
 
     @property
+    @pulumi.getter(name="uploadDetails")
+    def upload_details(self) -> Optional[pulumi.Input['ApiShieldSchemaUploadDetailsArgs']]:
+        return pulumi.get(self, "upload_details")
+
+    @upload_details.setter
+    def upload_details(self, value: Optional[pulumi.Input['ApiShieldSchemaUploadDetailsArgs']]):
+        pulumi.set(self, "upload_details", value)
+
+    @property
     @pulumi.getter(name="validationEnabled")
-    def validation_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+    def validation_enabled(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Flag whether schema is enabled for validation.
+        Available values: "true", "false".
         """
         return pulumi.get(self, "validation_enabled")
 
     @validation_enabled.setter
-    def validation_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+    def validation_enabled(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "validation_enabled", value)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -195,37 +281,37 @@ class ApiShieldSchema(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 file: Optional[pulumi.Input[builtins.str]] = None,
                  kind: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 source: Optional[pulumi.Input[builtins.str]] = None,
-                 validation_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 schema_id: Optional[pulumi.Input[builtins.str]] = None,
+                 validation_enabled: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a resource to manage a schema in API Shield Schema Validation 2.0.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
-        import pulumi_std as std
 
-        petstore_schema = cloudflare.ApiShieldSchema("petstore_schema",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="myschema",
+        example_api_shield_schema = cloudflare.ApiShieldSchema("example_api_shield_schema",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            file="file.txt",
             kind="openapi_v3",
-            validation_enabled=True,
-            source=std.file(input="./schemas/petstore.json").result)
+            name="petstore schema",
+            validation_enabled="true")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] kind: Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] name: Name of the schema. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] source: Schema file bytes. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.bool] validation_enabled: Flag whether schema is enabled for validation.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] file: Schema file bytes
+        :param pulumi.Input[builtins.str] kind: Kind of schema
+               Available values: "openapi_v3".
+        :param pulumi.Input[builtins.str] name: Name of the schema
+        :param pulumi.Input[builtins.str] validation_enabled: Flag whether schema is enabled for validation.
+               Available values: "true", "false".
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         ...
     @overload
@@ -234,21 +320,18 @@ class ApiShieldSchema(pulumi.CustomResource):
                  args: ApiShieldSchemaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource to manage a schema in API Shield Schema Validation 2.0.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
-        import pulumi_std as std
 
-        petstore_schema = cloudflare.ApiShieldSchema("petstore_schema",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="myschema",
+        example_api_shield_schema = cloudflare.ApiShieldSchema("example_api_shield_schema",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            file="file.txt",
             kind="openapi_v3",
-            validation_enabled=True,
-            source=std.file(input="./schemas/petstore.json").result)
+            name="petstore schema",
+            validation_enabled="true")
         ```
 
         :param str resource_name: The name of the resource.
@@ -266,10 +349,11 @@ class ApiShieldSchema(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 file: Optional[pulumi.Input[builtins.str]] = None,
                  kind: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 source: Optional[pulumi.Input[builtins.str]] = None,
-                 validation_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 schema_id: Optional[pulumi.Input[builtins.str]] = None,
+                 validation_enabled: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -280,17 +364,22 @@ class ApiShieldSchema(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ApiShieldSchemaArgs.__new__(ApiShieldSchemaArgs)
 
+            if file is None and not opts.urn:
+                raise TypeError("Missing required property 'file'")
+            __props__.__dict__["file"] = file
+            if kind is None and not opts.urn:
+                raise TypeError("Missing required property 'kind'")
             __props__.__dict__["kind"] = kind
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            if source is None and not opts.urn:
-                raise TypeError("Missing required property 'source'")
-            __props__.__dict__["source"] = source
+            __props__.__dict__["schema_id"] = schema_id
             __props__.__dict__["validation_enabled"] = validation_enabled
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["schema"] = None
+            __props__.__dict__["source"] = None
+            __props__.__dict__["upload_details"] = None
         super(ApiShieldSchema, __self__).__init__(
             'cloudflare:index/apiShieldSchema:ApiShieldSchema',
             resource_name,
@@ -301,10 +390,15 @@ class ApiShieldSchema(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: Optional[pulumi.Input[builtins.str]] = None,
+            file: Optional[pulumi.Input[builtins.str]] = None,
             kind: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
+            schema: Optional[pulumi.Input[Union['ApiShieldSchemaSchemaArgs', 'ApiShieldSchemaSchemaArgsDict']]] = None,
+            schema_id: Optional[pulumi.Input[builtins.str]] = None,
             source: Optional[pulumi.Input[builtins.str]] = None,
-            validation_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+            upload_details: Optional[pulumi.Input[Union['ApiShieldSchemaUploadDetailsArgs', 'ApiShieldSchemaUploadDetailsArgsDict']]] = None,
+            validation_enabled: Optional[pulumi.Input[builtins.str]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'ApiShieldSchema':
         """
         Get an existing ApiShieldSchema resource's state with the given name, id, and optional extra
@@ -313,52 +407,90 @@ class ApiShieldSchema(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] kind: Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] name: Name of the schema. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] source: Schema file bytes. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.bool] validation_enabled: Flag whether schema is enabled for validation.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] file: Schema file bytes
+        :param pulumi.Input[builtins.str] kind: Kind of schema
+               Available values: "openapi_v3".
+        :param pulumi.Input[builtins.str] name: Name of the schema
+        :param pulumi.Input[builtins.str] source: Source of the schema
+        :param pulumi.Input[builtins.str] validation_enabled: Flag whether schema is enabled for validation.
+               Available values: "true", "false".
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ApiShieldSchemaState.__new__(_ApiShieldSchemaState)
 
+        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["file"] = file
         __props__.__dict__["kind"] = kind
         __props__.__dict__["name"] = name
+        __props__.__dict__["schema"] = schema
+        __props__.__dict__["schema_id"] = schema_id
         __props__.__dict__["source"] = source
+        __props__.__dict__["upload_details"] = upload_details
         __props__.__dict__["validation_enabled"] = validation_enabled
         __props__.__dict__["zone_id"] = zone_id
         return ApiShieldSchema(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "created_at")
+
+    @property
     @pulumi.getter
-    def kind(self) -> pulumi.Output[Optional[builtins.str]]:
+    def file(self) -> pulumi.Output[builtins.str]:
         """
-        Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
+        Schema file bytes
+        """
+        return pulumi.get(self, "file")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[builtins.str]:
+        """
+        Kind of schema
+        Available values: "openapi_v3".
         """
         return pulumi.get(self, "kind")
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Output[builtins.str]:
+    def name(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Name of the schema. **Modifying this attribute will force creation of a new resource.**
+        Name of the schema
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
+    def schema(self) -> pulumi.Output['outputs.ApiShieldSchemaSchema']:
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="schemaId")
+    def schema_id(self) -> pulumi.Output[Optional[builtins.str]]:
+        return pulumi.get(self, "schema_id")
+
+    @property
+    @pulumi.getter
     def source(self) -> pulumi.Output[builtins.str]:
         """
-        Schema file bytes. **Modifying this attribute will force creation of a new resource.**
+        Source of the schema
         """
         return pulumi.get(self, "source")
 
     @property
+    @pulumi.getter(name="uploadDetails")
+    def upload_details(self) -> pulumi.Output['outputs.ApiShieldSchemaUploadDetails']:
+        return pulumi.get(self, "upload_details")
+
+    @property
     @pulumi.getter(name="validationEnabled")
-    def validation_enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def validation_enabled(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         Flag whether schema is enabled for validation.
+        Available values: "true", "false".
         """
         return pulumi.get(self, "validation_enabled")
 
@@ -366,7 +498,7 @@ class ApiShieldSchema(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

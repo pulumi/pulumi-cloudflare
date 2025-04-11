@@ -3,6 +3,8 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.PagesDomainValidationDataArgs;
+import com.pulumi.cloudflare.inputs.PagesDomainVerificationDataArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -16,14 +18,14 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
     public static final PagesDomainState Empty = new PagesDomainState();
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -31,29 +33,50 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom domain. **Modifying this attribute will force creation of a new resource.**
+     * Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
      * 
      */
-    @Import(name="domain")
-    private @Nullable Output<String> domain;
+    @Import(name="certificateAuthority")
+    private @Nullable Output<String> certificateAuthority;
 
     /**
-     * @return Custom domain. **Modifying this attribute will force creation of a new resource.**
+     * @return Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
      * 
      */
-    public Optional<Output<String>> domain() {
-        return Optional.ofNullable(this.domain);
+    public Optional<Output<String>> certificateAuthority() {
+        return Optional.ofNullable(this.certificateAuthority);
+    }
+
+    @Import(name="createdOn")
+    private @Nullable Output<String> createdOn;
+
+    public Optional<Output<String>> createdOn() {
+        return Optional.ofNullable(this.createdOn);
+    }
+
+    @Import(name="domainId")
+    private @Nullable Output<String> domainId;
+
+    public Optional<Output<String>> domainId() {
+        return Optional.ofNullable(this.domainId);
+    }
+
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
-     * Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+     * Name of the project.
      * 
      */
     @Import(name="projectName")
     private @Nullable Output<String> projectName;
 
     /**
-     * @return Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the project.
      * 
      */
     public Optional<Output<String>> projectName() {
@@ -61,27 +84,54 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Status of the custom domain.
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Status of the custom domain.
+     * @return Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
+    @Import(name="validationData")
+    private @Nullable Output<PagesDomainValidationDataArgs> validationData;
+
+    public Optional<Output<PagesDomainValidationDataArgs>> validationData() {
+        return Optional.ofNullable(this.validationData);
+    }
+
+    @Import(name="verificationData")
+    private @Nullable Output<PagesDomainVerificationDataArgs> verificationData;
+
+    public Optional<Output<PagesDomainVerificationDataArgs>> verificationData() {
+        return Optional.ofNullable(this.verificationData);
+    }
+
+    @Import(name="zoneTag")
+    private @Nullable Output<String> zoneTag;
+
+    public Optional<Output<String>> zoneTag() {
+        return Optional.ofNullable(this.zoneTag);
+    }
+
     private PagesDomainState() {}
 
     private PagesDomainState(PagesDomainState $) {
         this.accountId = $.accountId;
-        this.domain = $.domain;
+        this.certificateAuthority = $.certificateAuthority;
+        this.createdOn = $.createdOn;
+        this.domainId = $.domainId;
+        this.name = $.name;
         this.projectName = $.projectName;
         this.status = $.status;
+        this.validationData = $.validationData;
+        this.verificationData = $.verificationData;
+        this.zoneTag = $.zoneTag;
     }
 
     public static Builder builder() {
@@ -103,7 +153,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -114,7 +164,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -124,28 +174,55 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain Custom domain. **Modifying this attribute will force creation of a new resource.**
+         * @param certificateAuthority Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder domain(@Nullable Output<String> domain) {
-            $.domain = domain;
+        public Builder certificateAuthority(@Nullable Output<String> certificateAuthority) {
+            $.certificateAuthority = certificateAuthority;
             return this;
         }
 
         /**
-         * @param domain Custom domain. **Modifying this attribute will force creation of a new resource.**
+         * @param certificateAuthority Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder domain(String domain) {
-            return domain(Output.of(domain));
+        public Builder certificateAuthority(String certificateAuthority) {
+            return certificateAuthority(Output.of(certificateAuthority));
+        }
+
+        public Builder createdOn(@Nullable Output<String> createdOn) {
+            $.createdOn = createdOn;
+            return this;
+        }
+
+        public Builder createdOn(String createdOn) {
+            return createdOn(Output.of(createdOn));
+        }
+
+        public Builder domainId(@Nullable Output<String> domainId) {
+            $.domainId = domainId;
+            return this;
+        }
+
+        public Builder domainId(String domainId) {
+            return domainId(Output.of(domainId));
+        }
+
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**
-         * @param projectName Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+         * @param projectName Name of the project.
          * 
          * @return builder
          * 
@@ -156,7 +233,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+         * @param projectName Name of the project.
          * 
          * @return builder
          * 
@@ -166,7 +243,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Status of the custom domain.
+         * @param status Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
          * 
          * @return builder
          * 
@@ -177,13 +254,40 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Status of the custom domain.
+         * @param status Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
          * 
          * @return builder
          * 
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        public Builder validationData(@Nullable Output<PagesDomainValidationDataArgs> validationData) {
+            $.validationData = validationData;
+            return this;
+        }
+
+        public Builder validationData(PagesDomainValidationDataArgs validationData) {
+            return validationData(Output.of(validationData));
+        }
+
+        public Builder verificationData(@Nullable Output<PagesDomainVerificationDataArgs> verificationData) {
+            $.verificationData = verificationData;
+            return this;
+        }
+
+        public Builder verificationData(PagesDomainVerificationDataArgs verificationData) {
+            return verificationData(Output.of(verificationData));
+        }
+
+        public Builder zoneTag(@Nullable Output<String> zoneTag) {
+            $.zoneTag = zoneTag;
+            return this;
+        }
+
+        public Builder zoneTag(String zoneTag) {
+            return zoneTag(Output.of(zoneTag));
         }
 
         public PagesDomainState build() {

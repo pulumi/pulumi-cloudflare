@@ -3,40 +3,41 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.Map;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustAccessApplicationSaasAppCustomAttributeSource {
     /**
-     * @return The name of the attribute as provided by the IDP.
+     * @return The name of the IdP attribute.
      * 
      */
-    private String name;
+    private @Nullable String name;
     /**
-     * @return A mapping from IdP ID to claim name.
+     * @return A mapping from IdP ID to attribute name.
      * 
      */
-    private @Nullable Map<String,String> nameByIdp;
+    private @Nullable List<ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp> nameByIdps;
 
     private ZeroTrustAccessApplicationSaasAppCustomAttributeSource() {}
     /**
-     * @return The name of the attribute as provided by the IDP.
+     * @return The name of the IdP attribute.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
-     * @return A mapping from IdP ID to claim name.
+     * @return A mapping from IdP ID to attribute name.
      * 
      */
-    public Map<String,String> nameByIdp() {
-        return this.nameByIdp == null ? Map.of() : this.nameByIdp;
+    public List<ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp> nameByIdps() {
+        return this.nameByIdps == null ? List.of() : this.nameByIdps;
     }
 
     public static Builder builder() {
@@ -48,33 +49,34 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeSource {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String name;
-        private @Nullable Map<String,String> nameByIdp;
+        private @Nullable String name;
+        private @Nullable List<ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp> nameByIdps;
         public Builder() {}
         public Builder(ZeroTrustAccessApplicationSaasAppCustomAttributeSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
-    	      this.nameByIdp = defaults.nameByIdp;
+    	      this.nameByIdps = defaults.nameByIdps;
         }
 
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("ZeroTrustAccessApplicationSaasAppCustomAttributeSource", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder nameByIdp(@Nullable Map<String,String> nameByIdp) {
+        public Builder nameByIdps(@Nullable List<ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp> nameByIdps) {
 
-            this.nameByIdp = nameByIdp;
+            this.nameByIdps = nameByIdps;
             return this;
+        }
+        public Builder nameByIdps(ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp... nameByIdps) {
+            return nameByIdps(List.of(nameByIdps));
         }
         public ZeroTrustAccessApplicationSaasAppCustomAttributeSource build() {
             final var _resultValue = new ZeroTrustAccessApplicationSaasAppCustomAttributeSource();
             _resultValue.name = name;
-            _resultValue.nameByIdp = nameByIdp;
+            _resultValue.nameByIdps = nameByIdps;
             return _resultValue;
         }
     }

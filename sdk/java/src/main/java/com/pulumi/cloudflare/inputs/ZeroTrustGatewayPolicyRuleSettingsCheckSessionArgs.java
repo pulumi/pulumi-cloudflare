@@ -5,10 +5,11 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,30 +20,30 @@ public final class ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs extends co
      * Configure how fresh the session needs to be to be considered valid.
      * 
      */
-    @Import(name="duration", required=true)
-    private Output<String> duration;
+    @Import(name="duration")
+    private @Nullable Output<String> duration;
 
     /**
      * @return Configure how fresh the session needs to be to be considered valid.
      * 
      */
-    public Output<String> duration() {
-        return this.duration;
+    public Optional<Output<String>> duration() {
+        return Optional.ofNullable(this.duration);
     }
 
     /**
-     * Enable session enforcement for this rule.
+     * Set to true to enable session enforcement.
      * 
      */
-    @Import(name="enforce", required=true)
-    private Output<Boolean> enforce;
+    @Import(name="enforce")
+    private @Nullable Output<Boolean> enforce;
 
     /**
-     * @return Enable session enforcement for this rule.
+     * @return Set to true to enable session enforcement.
      * 
      */
-    public Output<Boolean> enforce() {
-        return this.enforce;
+    public Optional<Output<Boolean>> enforce() {
+        return Optional.ofNullable(this.enforce);
     }
 
     private ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs() {}
@@ -76,7 +77,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs extends co
          * @return builder
          * 
          */
-        public Builder duration(Output<String> duration) {
+        public Builder duration(@Nullable Output<String> duration) {
             $.duration = duration;
             return this;
         }
@@ -92,18 +93,18 @@ public final class ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs extends co
         }
 
         /**
-         * @param enforce Enable session enforcement for this rule.
+         * @param enforce Set to true to enable session enforcement.
          * 
          * @return builder
          * 
          */
-        public Builder enforce(Output<Boolean> enforce) {
+        public Builder enforce(@Nullable Output<Boolean> enforce) {
             $.enforce = enforce;
             return this;
         }
 
         /**
-         * @param enforce Enable session enforcement for this rule.
+         * @param enforce Set to true to enable session enforcement.
          * 
          * @return builder
          * 
@@ -113,12 +114,6 @@ public final class ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs extends co
         }
 
         public ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs build() {
-            if ($.duration == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs", "duration");
-            }
-            if ($.enforce == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs", "enforce");
-            }
             return $;
         }
     }

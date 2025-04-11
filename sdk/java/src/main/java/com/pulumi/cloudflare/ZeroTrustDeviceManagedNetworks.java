@@ -7,118 +7,89 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustDeviceManagedNetworksArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceManagedNetworksState;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceManagedNetworksConfig;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Device Managed Network resource. Device managed networks allow for building location-aware device settings policies.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDeviceManagedNetworks;
- * import com.pulumi.cloudflare.ZeroTrustDeviceManagedNetworksArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceManagedNetworksConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var managedNetworks = new ZeroTrustDeviceManagedNetworks("managedNetworks", ZeroTrustDeviceManagedNetworksArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("managed-network-1")
- *             .type("tls")
- *             .config(ZeroTrustDeviceManagedNetworksConfigArgs.builder()
- *                 .tlsSockaddr("foobar:1234")
- *                 .sha256("b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example &lt;account_id&gt;/&lt;device_managed_networks_id&gt;
+ * $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example &#39;&lt;account_id&gt;/&lt;network_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks")
 public class ZeroTrustDeviceManagedNetworks extends com.pulumi.resources.CustomResource {
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * The configuration containing information for the WARP client to detect the managed network.
+     * The configuration object containing information for the WARP client to detect the managed network.
      * 
      */
     @Export(name="config", refs={ZeroTrustDeviceManagedNetworksConfig.class}, tree="[0]")
     private Output<ZeroTrustDeviceManagedNetworksConfig> config;
 
     /**
-     * @return The configuration containing information for the WARP client to detect the managed network.
+     * @return The configuration object containing information for the WARP client to detect the managed network.
      * 
      */
     public Output<ZeroTrustDeviceManagedNetworksConfig> config() {
         return this.config;
     }
     /**
-     * The name of the Device Managed Network. Must be unique.
+     * The name of the device managed network. This name must be unique.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the Device Managed Network. Must be unique.
+     * @return The name of the device managed network. This name must be unique.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The type of Device Managed Network. Available values: `tls`.
+     * API UUID.
+     * 
+     */
+    @Export(name="networkId", refs={String.class}, tree="[0]")
+    private Output<String> networkId;
+
+    /**
+     * @return API UUID.
+     * 
+     */
+    public Output<String> networkId() {
+        return this.networkId;
+    }
+    /**
+     * The type of device managed network.
+     * Available values: &#34;tls&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The type of Device Managed Network. Available values: `tls`.
+     * @return The type of device managed network.
+     * Available values: &#34;tls&#34;.
      * 
      */
     public Output<String> type() {
@@ -164,6 +135,9 @@ public class ZeroTrustDeviceManagedNetworks extends com.pulumi.resources.CustomR
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

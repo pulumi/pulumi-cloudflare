@@ -18,30 +18,22 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
 
     public static final ApiTokenState Empty = new ApiTokenState();
 
-    /**
-     * Conditions under which the token should be considered valid.
-     * 
-     */
     @Import(name="condition")
     private @Nullable Output<ApiTokenConditionArgs> condition;
 
-    /**
-     * @return Conditions under which the token should be considered valid.
-     * 
-     */
     public Optional<Output<ApiTokenConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
     /**
-     * The expiration time on or after which the token MUST NOT be accepted for processing.
+     * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      * 
      */
     @Import(name="expiresOn")
     private @Nullable Output<String> expiresOn;
 
     /**
-     * @return The expiration time on or after which the token MUST NOT be accepted for processing.
+     * @return The expiration time on or after which the JWT MUST NOT be accepted for processing.
      * 
      */
     public Optional<Output<String>> expiresOn() {
@@ -49,14 +41,14 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timestamp of when the token was issued.
+     * The time on which the token was created.
      * 
      */
     @Import(name="issuedOn")
     private @Nullable Output<String> issuedOn;
 
     /**
-     * @return Timestamp of when the token was issued.
+     * @return The time on which the token was created.
      * 
      */
     public Optional<Output<String>> issuedOn() {
@@ -64,14 +56,29 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timestamp of when the token was last modified.
+     * Last time the token was used.
+     * 
+     */
+    @Import(name="lastUsedOn")
+    private @Nullable Output<String> lastUsedOn;
+
+    /**
+     * @return Last time the token was used.
+     * 
+     */
+    public Optional<Output<String>> lastUsedOn() {
+        return Optional.ofNullable(this.lastUsedOn);
+    }
+
+    /**
+     * Last time the token was modified.
      * 
      */
     @Import(name="modifiedOn")
     private @Nullable Output<String> modifiedOn;
 
     /**
-     * @return Timestamp of when the token was last modified.
+     * @return Last time the token was modified.
      * 
      */
     public Optional<Output<String>> modifiedOn() {
@@ -79,14 +86,14 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the API Token.
+     * Token name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the API Token.
+     * @return Token name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -109,36 +116,46 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Permissions policy. Multiple policy blocks can be defined.
+     * List of access policies assigned to the token.
      * 
      */
     @Import(name="policies")
     private @Nullable Output<List<ApiTokenPolicyArgs>> policies;
 
     /**
-     * @return Permissions policy. Multiple policy blocks can be defined.
+     * @return List of access policies assigned to the token.
      * 
      */
     public Optional<Output<List<ApiTokenPolicyArgs>>> policies() {
         return Optional.ofNullable(this.policies);
     }
 
+    /**
+     * Status of the token.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return Status of the token.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
     /**
-     * The value of the API Token.
+     * The token value.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The value of the API Token.
+     * @return The token value.
      * 
      */
     public Optional<Output<String>> value() {
@@ -151,6 +168,7 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
         this.condition = $.condition;
         this.expiresOn = $.expiresOn;
         this.issuedOn = $.issuedOn;
+        this.lastUsedOn = $.lastUsedOn;
         this.modifiedOn = $.modifiedOn;
         this.name = $.name;
         this.notBefore = $.notBefore;
@@ -177,29 +195,17 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
             $ = new ApiTokenState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param condition Conditions under which the token should be considered valid.
-         * 
-         * @return builder
-         * 
-         */
         public Builder condition(@Nullable Output<ApiTokenConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
-        /**
-         * @param condition Conditions under which the token should be considered valid.
-         * 
-         * @return builder
-         * 
-         */
         public Builder condition(ApiTokenConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
         /**
-         * @param expiresOn The expiration time on or after which the token MUST NOT be accepted for processing.
+         * @param expiresOn The expiration time on or after which the JWT MUST NOT be accepted for processing.
          * 
          * @return builder
          * 
@@ -210,7 +216,7 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expiresOn The expiration time on or after which the token MUST NOT be accepted for processing.
+         * @param expiresOn The expiration time on or after which the JWT MUST NOT be accepted for processing.
          * 
          * @return builder
          * 
@@ -220,7 +226,7 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param issuedOn Timestamp of when the token was issued.
+         * @param issuedOn The time on which the token was created.
          * 
          * @return builder
          * 
@@ -231,7 +237,7 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param issuedOn Timestamp of when the token was issued.
+         * @param issuedOn The time on which the token was created.
          * 
          * @return builder
          * 
@@ -241,7 +247,28 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifiedOn Timestamp of when the token was last modified.
+         * @param lastUsedOn Last time the token was used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUsedOn(@Nullable Output<String> lastUsedOn) {
+            $.lastUsedOn = lastUsedOn;
+            return this;
+        }
+
+        /**
+         * @param lastUsedOn Last time the token was used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUsedOn(String lastUsedOn) {
+            return lastUsedOn(Output.of(lastUsedOn));
+        }
+
+        /**
+         * @param modifiedOn Last time the token was modified.
          * 
          * @return builder
          * 
@@ -252,7 +279,7 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifiedOn Timestamp of when the token was last modified.
+         * @param modifiedOn Last time the token was modified.
          * 
          * @return builder
          * 
@@ -262,7 +289,7 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the API Token.
+         * @param name Token name.
          * 
          * @return builder
          * 
@@ -273,7 +300,7 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the API Token.
+         * @param name Token name.
          * 
          * @return builder
          * 
@@ -304,7 +331,7 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policies Permissions policy. Multiple policy blocks can be defined.
+         * @param policies List of access policies assigned to the token.
          * 
          * @return builder
          * 
@@ -315,7 +342,7 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policies Permissions policy. Multiple policy blocks can be defined.
+         * @param policies List of access policies assigned to the token.
          * 
          * @return builder
          * 
@@ -325,7 +352,7 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policies Permissions policy. Multiple policy blocks can be defined.
+         * @param policies List of access policies assigned to the token.
          * 
          * @return builder
          * 
@@ -334,17 +361,31 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
             return policies(List.of(policies));
         }
 
+        /**
+         * @param status Status of the token.
+         * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status Status of the token.
+         * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }
 
         /**
-         * @param value The value of the API Token.
+         * @param value The token value.
          * 
          * @return builder
          * 
@@ -355,7 +396,7 @@ public final class ApiTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The value of the API Token.
+         * @param value The token value.
          * 
          * @return builder
          * 

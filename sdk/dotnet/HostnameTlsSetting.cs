@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare per-hostname TLS setting resource. Used to set TLS settings for hostnames under the specified zone.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,12 +20,16 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.HostnameTlsSetting("example", new()
+    ///     var exampleHostnameTlsSetting = new Cloudflare.HostnameTlsSetting("example_hostname_tls_setting", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Hostname = "sub.example.com",
-    ///         Setting = "min_tls_version",
-    ///         Value = "1.2",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "ciphers",
+    ///         Hostname = "app.example.com",
+    ///         Value = new[]
+    ///         {
+    ///             "ECDHE-RSA-AES128-GCM-SHA256",
+    ///             "AES128-GCM-SHA256",
+    ///         },
     ///     });
     /// 
     /// });
@@ -36,38 +38,51 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example &lt;zone_id&gt;/&lt;hostname&gt;/&lt;setting_name&gt;
+    /// $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example '&lt;zone_id&gt;/&lt;setting_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/hostnameTlsSetting:HostnameTlsSetting")]
     public partial class HostnameTlsSetting : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// This is the time the tls setting was originally created for this hostname.
+        /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+        /// The hostname for which the tls settings are set.
         /// </summary>
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
-        /// TLS setting name. **Modifying this attribute will force creation of a new resource.**
+        /// The TLS Setting name.
+        /// Available values: "ciphers", "min*tls*version", "http2".
         /// </summary>
-        [Output("setting")]
-        public Output<string> Setting { get; private set; } = null!;
+        [Output("settingId")]
+        public Output<string> SettingId { get; private set; } = null!;
 
+        /// <summary>
+        /// Deployment status for the given tls setting.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// This is the time the tls setting was updated.
+        /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// TLS setting value.
+        /// The tls setting value.
         /// </summary>
         [Output("value")]
-        public Output<string> Value { get; private set; } = null!;
+        public Output<object> Value { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -119,25 +134,26 @@ namespace Pulumi.Cloudflare
     public sealed class HostnameTlsSettingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+        /// The hostname for which the tls settings are set.
         /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
 
         /// <summary>
-        /// TLS setting name. **Modifying this attribute will force creation of a new resource.**
+        /// The TLS Setting name.
+        /// Available values: "ciphers", "min*tls*version", "http2".
         /// </summary>
-        [Input("setting", required: true)]
-        public Input<string> Setting { get; set; } = null!;
+        [Input("settingId", required: true)]
+        public Input<string> SettingId { get; set; } = null!;
 
         /// <summary>
-        /// TLS setting value.
+        /// The tls setting value.
         /// </summary>
         [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        public Input<object> Value { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -150,32 +166,45 @@ namespace Pulumi.Cloudflare
 
     public sealed class HostnameTlsSettingState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// This is the time the tls setting was originally created for this hostname.
+        /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+        /// The hostname for which the tls settings are set.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// TLS setting name. **Modifying this attribute will force creation of a new resource.**
+        /// The TLS Setting name.
+        /// Available values: "ciphers", "min*tls*version", "http2".
         /// </summary>
-        [Input("setting")]
-        public Input<string>? Setting { get; set; }
+        [Input("settingId")]
+        public Input<string>? SettingId { get; set; }
 
+        /// <summary>
+        /// Deployment status for the given tls setting.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// This is the time the tls setting was updated.
+        /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// TLS setting value.
+        /// The tls setting value.
         /// </summary>
         [Input("value")]
-        public Input<string>? Value { get; set; }
+        public Input<object>? Value { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

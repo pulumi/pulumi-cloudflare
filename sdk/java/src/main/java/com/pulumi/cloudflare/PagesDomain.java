@@ -6,6 +6,8 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.PagesDomainArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.PagesDomainState;
+import com.pulumi.cloudflare.outputs.PagesDomainValidationData;
+import com.pulumi.cloudflare.outputs.PagesDomainVerificationData;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -14,10 +16,8 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource for managing Cloudflare Pages domains.
- * 
  * &gt; A DNS record for the domain is not automatically created. You need to create
- *    a `cloudflare.Record` resource for the domain you want to use.
+ *    a `cloudflare_record` resource for the domain you want to use.
  * 
  * ## Example Usage
  * 
@@ -44,10 +44,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_domain = new PagesDomain("my-domain", PagesDomainArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .projectName("my-example-project")
- *             .domain("example.com")
+ *         var examplePagesDomain = new PagesDomain("examplePagesDomain", PagesDomainArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .projectName("this-is-my-project-01")
+ *             .name("example.com")
  *             .build());
  * 
  *     }
@@ -59,67 +59,103 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/pagesDomain:PagesDomain example &lt;account_id&gt;/&lt;project_name&gt;/&lt;domain-name&gt;
+ * $ pulumi import cloudflare:index/pagesDomain:PagesDomain example &#39;&lt;account_id&gt;/&lt;project_name&gt;/&lt;domain_name&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/pagesDomain:PagesDomain")
 public class PagesDomain extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Custom domain. **Modifying this attribute will force creation of a new resource.**
+     * Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
      * 
      */
-    @Export(name="domain", refs={String.class}, tree="[0]")
-    private Output<String> domain;
+    @Export(name="certificateAuthority", refs={String.class}, tree="[0]")
+    private Output<String> certificateAuthority;
 
     /**
-     * @return Custom domain. **Modifying this attribute will force creation of a new resource.**
+     * @return Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
      * 
      */
-    public Output<String> domain() {
-        return this.domain;
+    public Output<String> certificateAuthority() {
+        return this.certificateAuthority;
+    }
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
+
+    public Output<String> createdOn() {
+        return this.createdOn;
+    }
+    @Export(name="domainId", refs={String.class}, tree="[0]")
+    private Output<String> domainId;
+
+    public Output<String> domainId() {
+        return this.domainId;
+    }
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    public Output<String> name() {
+        return this.name;
     }
     /**
-     * Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+     * Name of the project.
      * 
      */
     @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
-     * @return Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the project.
      * 
      */
     public Output<String> projectName() {
         return this.projectName;
     }
     /**
-     * Status of the custom domain.
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Status of the custom domain.
+     * @return Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    @Export(name="validationData", refs={PagesDomainValidationData.class}, tree="[0]")
+    private Output<PagesDomainValidationData> validationData;
+
+    public Output<PagesDomainValidationData> validationData() {
+        return this.validationData;
+    }
+    @Export(name="verificationData", refs={PagesDomainVerificationData.class}, tree="[0]")
+    private Output<PagesDomainVerificationData> verificationData;
+
+    public Output<PagesDomainVerificationData> verificationData() {
+        return this.verificationData;
+    }
+    @Export(name="zoneTag", refs={String.class}, tree="[0]")
+    private Output<String> zoneTag;
+
+    public Output<String> zoneTag() {
+        return this.zoneTag;
     }
 
     /**

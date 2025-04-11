@@ -5,7 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,32 +15,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessPolicyApprovalGroup {
     /**
-     * @return Number of approvals needed.
+     * @return The number of approvals needed to obtain access.
      * 
      */
-    private Integer approvalsNeeded;
+    private Double approvalsNeeded;
     /**
-     * @return List of emails to request approval from.
+     * @return A list of emails that can approve the access request.
      * 
      */
     private @Nullable List<String> emailAddresses;
+    /**
+     * @return The UUID of an re-usable email list.
+     * 
+     */
     private @Nullable String emailListUuid;
 
     private AccessPolicyApprovalGroup() {}
     /**
-     * @return Number of approvals needed.
+     * @return The number of approvals needed to obtain access.
      * 
      */
-    public Integer approvalsNeeded() {
+    public Double approvalsNeeded() {
         return this.approvalsNeeded;
     }
     /**
-     * @return List of emails to request approval from.
+     * @return A list of emails that can approve the access request.
      * 
      */
     public List<String> emailAddresses() {
         return this.emailAddresses == null ? List.of() : this.emailAddresses;
     }
+    /**
+     * @return The UUID of an re-usable email list.
+     * 
+     */
     public Optional<String> emailListUuid() {
         return Optional.ofNullable(this.emailListUuid);
     }
@@ -54,7 +62,7 @@ public final class AccessPolicyApprovalGroup {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer approvalsNeeded;
+        private Double approvalsNeeded;
         private @Nullable List<String> emailAddresses;
         private @Nullable String emailListUuid;
         public Builder() {}
@@ -66,7 +74,7 @@ public final class AccessPolicyApprovalGroup {
         }
 
         @CustomType.Setter
-        public Builder approvalsNeeded(Integer approvalsNeeded) {
+        public Builder approvalsNeeded(Double approvalsNeeded) {
             if (approvalsNeeded == null) {
               throw new MissingRequiredPropertyException("AccessPolicyApprovalGroup", "approvalsNeeded");
             }

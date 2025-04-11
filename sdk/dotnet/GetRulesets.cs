@@ -12,8 +12,6 @@ namespace Pulumi.Cloudflare
     public static class GetRulesets
     {
         /// <summary>
-        /// Use this datasource to lookup Rulesets in an account or zone.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -24,13 +22,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetRulesets.Invoke(new()
+        ///     var exampleRulesets = Cloudflare.GetRulesets.Invoke(new()
         ///     {
-        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-        ///         Filter = new Cloudflare.Inputs.GetRulesetsFilterInputArgs
-        ///         {
-        ///             Name = ".*OWASP.*",
-        ///         },
+        ///         AccountId = "account_id",
+        ///         ZoneId = "zone_id",
         ///     });
         /// 
         /// });
@@ -40,8 +35,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRulesetsResult>("cloudflare:index/getRulesets:getRulesets", args ?? new GetRulesetsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this datasource to lookup Rulesets in an account or zone.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,13 +45,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetRulesets.Invoke(new()
+        ///     var exampleRulesets = Cloudflare.GetRulesets.Invoke(new()
         ///     {
-        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-        ///         Filter = new Cloudflare.Inputs.GetRulesetsFilterInputArgs
-        ///         {
-        ///             Name = ".*OWASP.*",
-        ///         },
+        ///         AccountId = "account_id",
+        ///         ZoneId = "zone_id",
         ///     });
         /// 
         /// });
@@ -68,8 +58,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetRulesetsResult>("cloudflare:index/getRulesets:getRulesets", args ?? new GetRulesetsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this datasource to lookup Rulesets in an account or zone.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -80,13 +68,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetRulesets.Invoke(new()
+        ///     var exampleRulesets = Cloudflare.GetRulesets.Invoke(new()
         ///     {
-        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-        ///         Filter = new Cloudflare.Inputs.GetRulesetsFilterInputArgs
-        ///         {
-        ///             Name = ".*OWASP.*",
-        ///         },
+        ///         AccountId = "account_id",
+        ///         ZoneId = "zone_id",
         ///     });
         /// 
         /// });
@@ -100,22 +85,19 @@ namespace Pulumi.Cloudflare
     public sealed class GetRulesetsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
-        [Input("filter")]
-        public Inputs.GetRulesetsFilterArgs? Filter { get; set; }
-
         /// <summary>
-        /// Include rule data in response.
+        /// Max items to fetch, default: 1000
         /// </summary>
-        [Input("includeRules")]
-        public bool? IncludeRules { get; set; }
+        [Input("maxItems")]
+        public int? MaxItems { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
@@ -129,22 +111,19 @@ namespace Pulumi.Cloudflare
     public sealed class GetRulesetsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        [Input("filter")]
-        public Input<Inputs.GetRulesetsFilterInputArgs>? Filter { get; set; }
-
         /// <summary>
-        /// Include rule data in response.
+        /// Max items to fetch, default: 1000
         /// </summary>
-        [Input("includeRules")]
-        public Input<bool>? IncludeRules { get; set; }
+        [Input("maxItems")]
+        public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -160,21 +139,23 @@ namespace Pulumi.Cloudflare
     public sealed class GetRulesetsResult
     {
         /// <summary>
-        /// The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         public readonly string? AccountId;
-        public readonly Outputs.GetRulesetsFilterResult? Filter;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Include rule data in response.
+        /// Max items to fetch, default: 1000
         /// </summary>
-        public readonly bool? IncludeRules;
-        public readonly ImmutableArray<Outputs.GetRulesetsRulesetResult> Rulesets;
+        public readonly int? MaxItems;
         /// <summary>
-        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// The items returned by the data source
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRulesetsResultResult> Results;
+        /// <summary>
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         public readonly string? ZoneId;
 
@@ -182,21 +163,18 @@ namespace Pulumi.Cloudflare
         private GetRulesetsResult(
             string? accountId,
 
-            Outputs.GetRulesetsFilterResult? filter,
-
             string id,
 
-            bool? includeRules,
+            int? maxItems,
 
-            ImmutableArray<Outputs.GetRulesetsRulesetResult> rulesets,
+            ImmutableArray<Outputs.GetRulesetsResultResult> results,
 
             string? zoneId)
         {
             AccountId = accountId;
-            Filter = filter;
             Id = id;
-            IncludeRules = includeRules;
-            Rulesets = rulesets;
+            MaxItems = maxItems;
+            Results = results;
             ZoneId = zoneId;
         }
     }

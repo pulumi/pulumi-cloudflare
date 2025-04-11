@@ -27,49 +27,33 @@ class GetIpRangesResult:
     """
     A collection of values returned by getIpRanges.
     """
-    def __init__(__self__, china_ipv4_cidr_blocks=None, china_ipv6_cidr_blocks=None, cidr_blocks=None, id=None, ipv4_cidr_blocks=None, ipv6_cidr_blocks=None):
-        if china_ipv4_cidr_blocks and not isinstance(china_ipv4_cidr_blocks, list):
-            raise TypeError("Expected argument 'china_ipv4_cidr_blocks' to be a list")
-        pulumi.set(__self__, "china_ipv4_cidr_blocks", china_ipv4_cidr_blocks)
-        if china_ipv6_cidr_blocks and not isinstance(china_ipv6_cidr_blocks, list):
-            raise TypeError("Expected argument 'china_ipv6_cidr_blocks' to be a list")
-        pulumi.set(__self__, "china_ipv6_cidr_blocks", china_ipv6_cidr_blocks)
-        if cidr_blocks and not isinstance(cidr_blocks, list):
-            raise TypeError("Expected argument 'cidr_blocks' to be a list")
-        pulumi.set(__self__, "cidr_blocks", cidr_blocks)
+    def __init__(__self__, etag=None, id=None, ipv4_cidrs=None, ipv6_cidrs=None, jdcloud_cidrs=None, networks=None):
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        pulumi.set(__self__, "etag", etag)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if ipv4_cidr_blocks and not isinstance(ipv4_cidr_blocks, list):
-            raise TypeError("Expected argument 'ipv4_cidr_blocks' to be a list")
-        pulumi.set(__self__, "ipv4_cidr_blocks", ipv4_cidr_blocks)
-        if ipv6_cidr_blocks and not isinstance(ipv6_cidr_blocks, list):
-            raise TypeError("Expected argument 'ipv6_cidr_blocks' to be a list")
-        pulumi.set(__self__, "ipv6_cidr_blocks", ipv6_cidr_blocks)
+        if ipv4_cidrs and not isinstance(ipv4_cidrs, list):
+            raise TypeError("Expected argument 'ipv4_cidrs' to be a list")
+        pulumi.set(__self__, "ipv4_cidrs", ipv4_cidrs)
+        if ipv6_cidrs and not isinstance(ipv6_cidrs, list):
+            raise TypeError("Expected argument 'ipv6_cidrs' to be a list")
+        pulumi.set(__self__, "ipv6_cidrs", ipv6_cidrs)
+        if jdcloud_cidrs and not isinstance(jdcloud_cidrs, list):
+            raise TypeError("Expected argument 'jdcloud_cidrs' to be a list")
+        pulumi.set(__self__, "jdcloud_cidrs", jdcloud_cidrs)
+        if networks and not isinstance(networks, str):
+            raise TypeError("Expected argument 'networks' to be a str")
+        pulumi.set(__self__, "networks", networks)
 
     @property
-    @pulumi.getter(name="chinaIpv4CidrBlocks")
-    def china_ipv4_cidr_blocks(self) -> Sequence[builtins.str]:
+    @pulumi.getter
+    def etag(self) -> builtins.str:
         """
-        The lexically ordered list of only the IPv4 China CIDR blocks.
+        A digest of the IP data. Useful for determining if the data has changed.
         """
-        return pulumi.get(self, "china_ipv4_cidr_blocks")
-
-    @property
-    @pulumi.getter(name="chinaIpv6CidrBlocks")
-    def china_ipv6_cidr_blocks(self) -> Sequence[builtins.str]:
-        """
-        The lexically ordered list of only the IPv6 China CIDR blocks.
-        """
-        return pulumi.get(self, "china_ipv6_cidr_blocks")
-
-    @property
-    @pulumi.getter(name="cidrBlocks")
-    def cidr_blocks(self) -> Sequence[builtins.str]:
-        """
-        The lexically ordered list of all non-China CIDR blocks.
-        """
-        return pulumi.get(self, "cidr_blocks")
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter
@@ -80,20 +64,36 @@ class GetIpRangesResult:
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter(name="ipv4CidrBlocks")
-    def ipv4_cidr_blocks(self) -> Sequence[builtins.str]:
+    @pulumi.getter(name="ipv4Cidrs")
+    def ipv4_cidrs(self) -> Sequence[builtins.str]:
         """
-        The lexically ordered list of only the IPv4 CIDR blocks.
+        List of Cloudflare IPv4 CIDR addresses.
         """
-        return pulumi.get(self, "ipv4_cidr_blocks")
+        return pulumi.get(self, "ipv4_cidrs")
 
     @property
-    @pulumi.getter(name="ipv6CidrBlocks")
-    def ipv6_cidr_blocks(self) -> Sequence[builtins.str]:
+    @pulumi.getter(name="ipv6Cidrs")
+    def ipv6_cidrs(self) -> Sequence[builtins.str]:
         """
-        The lexically ordered list of only the IPv6 CIDR blocks.
+        List of Cloudflare IPv6 CIDR addresses.
         """
-        return pulumi.get(self, "ipv6_cidr_blocks")
+        return pulumi.get(self, "ipv6_cidrs")
+
+    @property
+    @pulumi.getter(name="jdcloudCidrs")
+    def jdcloud_cidrs(self) -> Sequence[builtins.str]:
+        """
+        List IPv4 and IPv6 CIDRs, only populated if `?networks=jdcloud` is used.
+        """
+        return pulumi.get(self, "jdcloud_cidrs")
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[builtins.str]:
+        """
+        Specified as `jdcloud` to list IPs used by JD Cloud data centers.
+        """
+        return pulumi.get(self, "networks")
 
 
 class AwaitableGetIpRangesResult(GetIpRangesResult):
@@ -102,76 +102,64 @@ class AwaitableGetIpRangesResult(GetIpRangesResult):
         if False:
             yield self
         return GetIpRangesResult(
-            china_ipv4_cidr_blocks=self.china_ipv4_cidr_blocks,
-            china_ipv6_cidr_blocks=self.china_ipv6_cidr_blocks,
-            cidr_blocks=self.cidr_blocks,
+            etag=self.etag,
             id=self.id,
-            ipv4_cidr_blocks=self.ipv4_cidr_blocks,
-            ipv6_cidr_blocks=self.ipv6_cidr_blocks)
+            ipv4_cidrs=self.ipv4_cidrs,
+            ipv6_cidrs=self.ipv6_cidrs,
+            jdcloud_cidrs=self.jdcloud_cidrs,
+            networks=self.networks)
 
 
-def get_ip_ranges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpRangesResult:
+def get_ip_ranges(networks: Optional[builtins.str] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpRangesResult:
     """
-    Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
-    import pulumi_example as example
 
-    cloudflare = cloudflare.get_ip_ranges()
-    example = example.index.FirewallResource("example",
-        name=from-cloudflare,
-        network=default,
-        source_ranges=cloudflare.ipv4_cidr_blocks,
-        allow=[{
-            ports: 443,
-            protocol: tcp,
-        }])
+    example_ip_ranges = cloudflare.get_ip_ranges(networks="networks")
     ```
+
+
+    :param builtins.str networks: Specified as `jdcloud` to list IPs used by JD Cloud data centers.
     """
     __args__ = dict()
+    __args__['networks'] = networks
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getIpRanges:getIpRanges', __args__, opts=opts, typ=GetIpRangesResult).value
 
     return AwaitableGetIpRangesResult(
-        china_ipv4_cidr_blocks=pulumi.get(__ret__, 'china_ipv4_cidr_blocks'),
-        china_ipv6_cidr_blocks=pulumi.get(__ret__, 'china_ipv6_cidr_blocks'),
-        cidr_blocks=pulumi.get(__ret__, 'cidr_blocks'),
+        etag=pulumi.get(__ret__, 'etag'),
         id=pulumi.get(__ret__, 'id'),
-        ipv4_cidr_blocks=pulumi.get(__ret__, 'ipv4_cidr_blocks'),
-        ipv6_cidr_blocks=pulumi.get(__ret__, 'ipv6_cidr_blocks'))
-def get_ip_ranges_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpRangesResult]:
+        ipv4_cidrs=pulumi.get(__ret__, 'ipv4_cidrs'),
+        ipv6_cidrs=pulumi.get(__ret__, 'ipv6_cidrs'),
+        jdcloud_cidrs=pulumi.get(__ret__, 'jdcloud_cidrs'),
+        networks=pulumi.get(__ret__, 'networks'))
+def get_ip_ranges_output(networks: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpRangesResult]:
     """
-    Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
-    import pulumi_example as example
 
-    cloudflare = cloudflare.get_ip_ranges()
-    example = example.index.FirewallResource("example",
-        name=from-cloudflare,
-        network=default,
-        source_ranges=cloudflare.ipv4_cidr_blocks,
-        allow=[{
-            ports: 443,
-            protocol: tcp,
-        }])
+    example_ip_ranges = cloudflare.get_ip_ranges(networks="networks")
     ```
+
+
+    :param builtins.str networks: Specified as `jdcloud` to list IPs used by JD Cloud data centers.
     """
     __args__ = dict()
+    __args__['networks'] = networks
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getIpRanges:getIpRanges', __args__, opts=opts, typ=GetIpRangesResult)
     return __ret__.apply(lambda __response__: GetIpRangesResult(
-        china_ipv4_cidr_blocks=pulumi.get(__response__, 'china_ipv4_cidr_blocks'),
-        china_ipv6_cidr_blocks=pulumi.get(__response__, 'china_ipv6_cidr_blocks'),
-        cidr_blocks=pulumi.get(__response__, 'cidr_blocks'),
+        etag=pulumi.get(__response__, 'etag'),
         id=pulumi.get(__response__, 'id'),
-        ipv4_cidr_blocks=pulumi.get(__response__, 'ipv4_cidr_blocks'),
-        ipv6_cidr_blocks=pulumi.get(__response__, 'ipv6_cidr_blocks')))
+        ipv4_cidrs=pulumi.get(__response__, 'ipv4_cidrs'),
+        ipv6_cidrs=pulumi.get(__response__, 'ipv6_cidrs'),
+        jdcloud_cidrs=pulumi.get(__response__, 'jdcloud_cidrs'),
+        networks=pulumi.get(__response__, 'networks')))

@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['BotManagementArgs', 'BotManagement']
 
@@ -23,6 +25,7 @@ class BotManagementArgs:
                  zone_id: pulumi.Input[builtins.str],
                  ai_bots_protection: Optional[pulumi.Input[builtins.str]] = None,
                  auto_update_model: Optional[pulumi.Input[builtins.bool]] = None,
+                 crawler_protection: Optional[pulumi.Input[builtins.str]] = None,
                  enable_js: Optional[pulumi.Input[builtins.bool]] = None,
                  fight_mode: Optional[pulumi.Input[builtins.bool]] = None,
                  optimize_wordpress: Optional[pulumi.Input[builtins.bool]] = None,
@@ -33,16 +36,24 @@ class BotManagementArgs:
                  suppress_session_score: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a BotManagement resource.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         :param pulumi.Input[builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
-        :param pulumi.Input[builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+               Available values: "block", "disabled".
+        :param pulumi.Input[builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
+        :param pulumi.Input[builtins.str] crawler_protection: Enable rule to punish AI Scrapers and Crawlers via a link maze.
+               Available values: "enabled", "disabled".
         :param pulumi.Input[builtins.bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         :param pulumi.Input[builtins.bool] fight_mode: Whether to enable Bot Fight Mode.
         :param pulumi.Input[builtins.bool] optimize_wordpress: Whether to optimize Super Bot Fight Mode protections for Wordpress.
         :param pulumi.Input[builtins.str] sbfm_definitely_automated: Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+               Available values: "allow", "block", "managed_challenge".
         :param pulumi.Input[builtins.str] sbfm_likely_automated: Super Bot Fight Mode (SBFM) action to take on likely automated requests.
-        :param pulumi.Input[builtins.bool] sbfm_static_resource_protection: Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+               Available values: "allow", "block", "managed_challenge".
+        :param pulumi.Input[builtins.bool] sbfm_static_resource_protection: Super Bot Fight Mode (SBFM) to enable static resource protection.
+               Enable if static resources on your application need bot protection.
+               Note: Static resource protection can also result in legitimate traffic being blocked.
         :param pulumi.Input[builtins.str] sbfm_verified_bots: Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+               Available values: "allow", "block".
         :param pulumi.Input[builtins.bool] suppress_session_score: Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
         """
         pulumi.set(__self__, "zone_id", zone_id)
@@ -50,6 +61,8 @@ class BotManagementArgs:
             pulumi.set(__self__, "ai_bots_protection", ai_bots_protection)
         if auto_update_model is not None:
             pulumi.set(__self__, "auto_update_model", auto_update_model)
+        if crawler_protection is not None:
+            pulumi.set(__self__, "crawler_protection", crawler_protection)
         if enable_js is not None:
             pulumi.set(__self__, "enable_js", enable_js)
         if fight_mode is not None:
@@ -71,7 +84,7 @@ class BotManagementArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -84,6 +97,7 @@ class BotManagementArgs:
     def ai_bots_protection(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Enable rule to block AI Scrapers and Crawlers.
+        Available values: "block", "disabled".
         """
         return pulumi.get(self, "ai_bots_protection")
 
@@ -95,13 +109,26 @@ class BotManagementArgs:
     @pulumi.getter(name="autoUpdateModel")
     def auto_update_model(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+        Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         """
         return pulumi.get(self, "auto_update_model")
 
     @auto_update_model.setter
     def auto_update_model(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "auto_update_model", value)
+
+    @property
+    @pulumi.getter(name="crawlerProtection")
+    def crawler_protection(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Enable rule to punish AI Scrapers and Crawlers via a link maze.
+        Available values: "enabled", "disabled".
+        """
+        return pulumi.get(self, "crawler_protection")
+
+    @crawler_protection.setter
+    def crawler_protection(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "crawler_protection", value)
 
     @property
     @pulumi.getter(name="enableJs")
@@ -144,6 +171,7 @@ class BotManagementArgs:
     def sbfm_definitely_automated(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+        Available values: "allow", "block", "managed_challenge".
         """
         return pulumi.get(self, "sbfm_definitely_automated")
 
@@ -156,6 +184,7 @@ class BotManagementArgs:
     def sbfm_likely_automated(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+        Available values: "allow", "block", "managed_challenge".
         """
         return pulumi.get(self, "sbfm_likely_automated")
 
@@ -167,7 +196,9 @@ class BotManagementArgs:
     @pulumi.getter(name="sbfmStaticResourceProtection")
     def sbfm_static_resource_protection(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+        Super Bot Fight Mode (SBFM) to enable static resource protection.
+        Enable if static resources on your application need bot protection.
+        Note: Static resource protection can also result in legitimate traffic being blocked.
         """
         return pulumi.get(self, "sbfm_static_resource_protection")
 
@@ -180,6 +211,7 @@ class BotManagementArgs:
     def sbfm_verified_bots(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+        Available values: "allow", "block".
         """
         return pulumi.get(self, "sbfm_verified_bots")
 
@@ -205,6 +237,7 @@ class _BotManagementState:
     def __init__(__self__, *,
                  ai_bots_protection: Optional[pulumi.Input[builtins.str]] = None,
                  auto_update_model: Optional[pulumi.Input[builtins.bool]] = None,
+                 crawler_protection: Optional[pulumi.Input[builtins.str]] = None,
                  enable_js: Optional[pulumi.Input[builtins.bool]] = None,
                  fight_mode: Optional[pulumi.Input[builtins.bool]] = None,
                  optimize_wordpress: Optional[pulumi.Input[builtins.bool]] = None,
@@ -212,28 +245,40 @@ class _BotManagementState:
                  sbfm_likely_automated: Optional[pulumi.Input[builtins.str]] = None,
                  sbfm_static_resource_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  sbfm_verified_bots: Optional[pulumi.Input[builtins.str]] = None,
+                 stale_zone_configuration: Optional[pulumi.Input['BotManagementStaleZoneConfigurationArgs']] = None,
                  suppress_session_score: Optional[pulumi.Input[builtins.bool]] = None,
                  using_latest_model: Optional[pulumi.Input[builtins.bool]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering BotManagement resources.
         :param pulumi.Input[builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
-        :param pulumi.Input[builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+               Available values: "block", "disabled".
+        :param pulumi.Input[builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
+        :param pulumi.Input[builtins.str] crawler_protection: Enable rule to punish AI Scrapers and Crawlers via a link maze.
+               Available values: "enabled", "disabled".
         :param pulumi.Input[builtins.bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         :param pulumi.Input[builtins.bool] fight_mode: Whether to enable Bot Fight Mode.
         :param pulumi.Input[builtins.bool] optimize_wordpress: Whether to optimize Super Bot Fight Mode protections for Wordpress.
         :param pulumi.Input[builtins.str] sbfm_definitely_automated: Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+               Available values: "allow", "block", "managed_challenge".
         :param pulumi.Input[builtins.str] sbfm_likely_automated: Super Bot Fight Mode (SBFM) action to take on likely automated requests.
-        :param pulumi.Input[builtins.bool] sbfm_static_resource_protection: Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+               Available values: "allow", "block", "managed_challenge".
+        :param pulumi.Input[builtins.bool] sbfm_static_resource_protection: Super Bot Fight Mode (SBFM) to enable static resource protection.
+               Enable if static resources on your application need bot protection.
+               Note: Static resource protection can also result in legitimate traffic being blocked.
         :param pulumi.Input[builtins.str] sbfm_verified_bots: Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+               Available values: "allow", "block".
+        :param pulumi.Input['BotManagementStaleZoneConfigurationArgs'] stale_zone_configuration: A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
         :param pulumi.Input[builtins.bool] suppress_session_score: Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
         :param pulumi.Input[builtins.bool] using_latest_model: A read-only field that indicates whether the zone currently is running the latest ML model.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         if ai_bots_protection is not None:
             pulumi.set(__self__, "ai_bots_protection", ai_bots_protection)
         if auto_update_model is not None:
             pulumi.set(__self__, "auto_update_model", auto_update_model)
+        if crawler_protection is not None:
+            pulumi.set(__self__, "crawler_protection", crawler_protection)
         if enable_js is not None:
             pulumi.set(__self__, "enable_js", enable_js)
         if fight_mode is not None:
@@ -248,6 +293,8 @@ class _BotManagementState:
             pulumi.set(__self__, "sbfm_static_resource_protection", sbfm_static_resource_protection)
         if sbfm_verified_bots is not None:
             pulumi.set(__self__, "sbfm_verified_bots", sbfm_verified_bots)
+        if stale_zone_configuration is not None:
+            pulumi.set(__self__, "stale_zone_configuration", stale_zone_configuration)
         if suppress_session_score is not None:
             pulumi.set(__self__, "suppress_session_score", suppress_session_score)
         if using_latest_model is not None:
@@ -260,6 +307,7 @@ class _BotManagementState:
     def ai_bots_protection(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Enable rule to block AI Scrapers and Crawlers.
+        Available values: "block", "disabled".
         """
         return pulumi.get(self, "ai_bots_protection")
 
@@ -271,13 +319,26 @@ class _BotManagementState:
     @pulumi.getter(name="autoUpdateModel")
     def auto_update_model(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+        Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         """
         return pulumi.get(self, "auto_update_model")
 
     @auto_update_model.setter
     def auto_update_model(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "auto_update_model", value)
+
+    @property
+    @pulumi.getter(name="crawlerProtection")
+    def crawler_protection(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Enable rule to punish AI Scrapers and Crawlers via a link maze.
+        Available values: "enabled", "disabled".
+        """
+        return pulumi.get(self, "crawler_protection")
+
+    @crawler_protection.setter
+    def crawler_protection(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "crawler_protection", value)
 
     @property
     @pulumi.getter(name="enableJs")
@@ -320,6 +381,7 @@ class _BotManagementState:
     def sbfm_definitely_automated(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+        Available values: "allow", "block", "managed_challenge".
         """
         return pulumi.get(self, "sbfm_definitely_automated")
 
@@ -332,6 +394,7 @@ class _BotManagementState:
     def sbfm_likely_automated(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+        Available values: "allow", "block", "managed_challenge".
         """
         return pulumi.get(self, "sbfm_likely_automated")
 
@@ -343,7 +406,9 @@ class _BotManagementState:
     @pulumi.getter(name="sbfmStaticResourceProtection")
     def sbfm_static_resource_protection(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+        Super Bot Fight Mode (SBFM) to enable static resource protection.
+        Enable if static resources on your application need bot protection.
+        Note: Static resource protection can also result in legitimate traffic being blocked.
         """
         return pulumi.get(self, "sbfm_static_resource_protection")
 
@@ -356,12 +421,25 @@ class _BotManagementState:
     def sbfm_verified_bots(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+        Available values: "allow", "block".
         """
         return pulumi.get(self, "sbfm_verified_bots")
 
     @sbfm_verified_bots.setter
     def sbfm_verified_bots(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "sbfm_verified_bots", value)
+
+    @property
+    @pulumi.getter(name="staleZoneConfiguration")
+    def stale_zone_configuration(self) -> Optional[pulumi.Input['BotManagementStaleZoneConfigurationArgs']]:
+        """
+        A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
+        """
+        return pulumi.get(self, "stale_zone_configuration")
+
+    @stale_zone_configuration.setter
+    def stale_zone_configuration(self, value: Optional[pulumi.Input['BotManagementStaleZoneConfigurationArgs']]):
+        pulumi.set(self, "stale_zone_configuration", value)
 
     @property
     @pulumi.getter(name="suppressSessionScore")
@@ -391,7 +469,7 @@ class _BotManagementState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -407,6 +485,7 @@ class BotManagement(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ai_bots_protection: Optional[pulumi.Input[builtins.str]] = None,
                  auto_update_model: Optional[pulumi.Input[builtins.bool]] = None,
+                 crawler_protection: Optional[pulumi.Input[builtins.str]] = None,
                  enable_js: Optional[pulumi.Input[builtins.bool]] = None,
                  fight_mode: Optional[pulumi.Input[builtins.bool]] = None,
                  optimize_wordpress: Optional[pulumi.Input[builtins.bool]] = None,
@@ -418,49 +497,47 @@ class BotManagement(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a resource to configure Bot Management.
-
-        Specifically, this resource can be used to manage:
-
-        - **Bot Fight Mode**
-        - **Super Bot Fight Mode**
-        - **Bot Management for Enterprise**
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.BotManagement("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+        example_bot_management = cloudflare.BotManagement("example_bot_management",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            ai_bots_protection="block",
+            crawler_protection="enabled",
             enable_js=True,
-            sbfm_definitely_automated="block",
-            sbfm_likely_automated="managed_challenge",
-            sbfm_verified_bots="allow",
-            sbfm_static_resource_protection=False,
-            optimize_wordpress=True)
+            fight_mode=True)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/botManagement:BotManagement example <zone_id>
+        $ pulumi import cloudflare:index/botManagement:BotManagement example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
-        :param pulumi.Input[builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+               Available values: "block", "disabled".
+        :param pulumi.Input[builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
+        :param pulumi.Input[builtins.str] crawler_protection: Enable rule to punish AI Scrapers and Crawlers via a link maze.
+               Available values: "enabled", "disabled".
         :param pulumi.Input[builtins.bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         :param pulumi.Input[builtins.bool] fight_mode: Whether to enable Bot Fight Mode.
         :param pulumi.Input[builtins.bool] optimize_wordpress: Whether to optimize Super Bot Fight Mode protections for Wordpress.
         :param pulumi.Input[builtins.str] sbfm_definitely_automated: Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+               Available values: "allow", "block", "managed_challenge".
         :param pulumi.Input[builtins.str] sbfm_likely_automated: Super Bot Fight Mode (SBFM) action to take on likely automated requests.
-        :param pulumi.Input[builtins.bool] sbfm_static_resource_protection: Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+               Available values: "allow", "block", "managed_challenge".
+        :param pulumi.Input[builtins.bool] sbfm_static_resource_protection: Super Bot Fight Mode (SBFM) to enable static resource protection.
+               Enable if static resources on your application need bot protection.
+               Note: Static resource protection can also result in legitimate traffic being blocked.
         :param pulumi.Input[builtins.str] sbfm_verified_bots: Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+               Available values: "allow", "block".
         :param pulumi.Input[builtins.bool] suppress_session_score: Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         ...
     @overload
@@ -469,34 +546,24 @@ class BotManagement(pulumi.CustomResource):
                  args: BotManagementArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource to configure Bot Management.
-
-        Specifically, this resource can be used to manage:
-
-        - **Bot Fight Mode**
-        - **Super Bot Fight Mode**
-        - **Bot Management for Enterprise**
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.BotManagement("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+        example_bot_management = cloudflare.BotManagement("example_bot_management",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            ai_bots_protection="block",
+            crawler_protection="enabled",
             enable_js=True,
-            sbfm_definitely_automated="block",
-            sbfm_likely_automated="managed_challenge",
-            sbfm_verified_bots="allow",
-            sbfm_static_resource_protection=False,
-            optimize_wordpress=True)
+            fight_mode=True)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/botManagement:BotManagement example <zone_id>
+        $ pulumi import cloudflare:index/botManagement:BotManagement example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -516,6 +583,7 @@ class BotManagement(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ai_bots_protection: Optional[pulumi.Input[builtins.str]] = None,
                  auto_update_model: Optional[pulumi.Input[builtins.bool]] = None,
+                 crawler_protection: Optional[pulumi.Input[builtins.str]] = None,
                  enable_js: Optional[pulumi.Input[builtins.bool]] = None,
                  fight_mode: Optional[pulumi.Input[builtins.bool]] = None,
                  optimize_wordpress: Optional[pulumi.Input[builtins.bool]] = None,
@@ -536,6 +604,7 @@ class BotManagement(pulumi.CustomResource):
 
             __props__.__dict__["ai_bots_protection"] = ai_bots_protection
             __props__.__dict__["auto_update_model"] = auto_update_model
+            __props__.__dict__["crawler_protection"] = crawler_protection
             __props__.__dict__["enable_js"] = enable_js
             __props__.__dict__["fight_mode"] = fight_mode
             __props__.__dict__["optimize_wordpress"] = optimize_wordpress
@@ -547,6 +616,7 @@ class BotManagement(pulumi.CustomResource):
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["stale_zone_configuration"] = None
             __props__.__dict__["using_latest_model"] = None
         super(BotManagement, __self__).__init__(
             'cloudflare:index/botManagement:BotManagement',
@@ -560,6 +630,7 @@ class BotManagement(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             ai_bots_protection: Optional[pulumi.Input[builtins.str]] = None,
             auto_update_model: Optional[pulumi.Input[builtins.bool]] = None,
+            crawler_protection: Optional[pulumi.Input[builtins.str]] = None,
             enable_js: Optional[pulumi.Input[builtins.bool]] = None,
             fight_mode: Optional[pulumi.Input[builtins.bool]] = None,
             optimize_wordpress: Optional[pulumi.Input[builtins.bool]] = None,
@@ -567,6 +638,7 @@ class BotManagement(pulumi.CustomResource):
             sbfm_likely_automated: Optional[pulumi.Input[builtins.str]] = None,
             sbfm_static_resource_protection: Optional[pulumi.Input[builtins.bool]] = None,
             sbfm_verified_bots: Optional[pulumi.Input[builtins.str]] = None,
+            stale_zone_configuration: Optional[pulumi.Input[Union['BotManagementStaleZoneConfigurationArgs', 'BotManagementStaleZoneConfigurationArgsDict']]] = None,
             suppress_session_score: Optional[pulumi.Input[builtins.bool]] = None,
             using_latest_model: Optional[pulumi.Input[builtins.bool]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'BotManagement':
@@ -578,17 +650,26 @@ class BotManagement(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
-        :param pulumi.Input[builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+               Available values: "block", "disabled".
+        :param pulumi.Input[builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
+        :param pulumi.Input[builtins.str] crawler_protection: Enable rule to punish AI Scrapers and Crawlers via a link maze.
+               Available values: "enabled", "disabled".
         :param pulumi.Input[builtins.bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         :param pulumi.Input[builtins.bool] fight_mode: Whether to enable Bot Fight Mode.
         :param pulumi.Input[builtins.bool] optimize_wordpress: Whether to optimize Super Bot Fight Mode protections for Wordpress.
         :param pulumi.Input[builtins.str] sbfm_definitely_automated: Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+               Available values: "allow", "block", "managed_challenge".
         :param pulumi.Input[builtins.str] sbfm_likely_automated: Super Bot Fight Mode (SBFM) action to take on likely automated requests.
-        :param pulumi.Input[builtins.bool] sbfm_static_resource_protection: Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+               Available values: "allow", "block", "managed_challenge".
+        :param pulumi.Input[builtins.bool] sbfm_static_resource_protection: Super Bot Fight Mode (SBFM) to enable static resource protection.
+               Enable if static resources on your application need bot protection.
+               Note: Static resource protection can also result in legitimate traffic being blocked.
         :param pulumi.Input[builtins.str] sbfm_verified_bots: Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+               Available values: "allow", "block".
+        :param pulumi.Input[Union['BotManagementStaleZoneConfigurationArgs', 'BotManagementStaleZoneConfigurationArgsDict']] stale_zone_configuration: A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
         :param pulumi.Input[builtins.bool] suppress_session_score: Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
         :param pulumi.Input[builtins.bool] using_latest_model: A read-only field that indicates whether the zone currently is running the latest ML model.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -596,6 +677,7 @@ class BotManagement(pulumi.CustomResource):
 
         __props__.__dict__["ai_bots_protection"] = ai_bots_protection
         __props__.__dict__["auto_update_model"] = auto_update_model
+        __props__.__dict__["crawler_protection"] = crawler_protection
         __props__.__dict__["enable_js"] = enable_js
         __props__.__dict__["fight_mode"] = fight_mode
         __props__.__dict__["optimize_wordpress"] = optimize_wordpress
@@ -603,6 +685,7 @@ class BotManagement(pulumi.CustomResource):
         __props__.__dict__["sbfm_likely_automated"] = sbfm_likely_automated
         __props__.__dict__["sbfm_static_resource_protection"] = sbfm_static_resource_protection
         __props__.__dict__["sbfm_verified_bots"] = sbfm_verified_bots
+        __props__.__dict__["stale_zone_configuration"] = stale_zone_configuration
         __props__.__dict__["suppress_session_score"] = suppress_session_score
         __props__.__dict__["using_latest_model"] = using_latest_model
         __props__.__dict__["zone_id"] = zone_id
@@ -610,9 +693,10 @@ class BotManagement(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="aiBotsProtection")
-    def ai_bots_protection(self) -> pulumi.Output[builtins.str]:
+    def ai_bots_protection(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         Enable rule to block AI Scrapers and Crawlers.
+        Available values: "block", "disabled".
         """
         return pulumi.get(self, "ai_bots_protection")
 
@@ -620,9 +704,18 @@ class BotManagement(pulumi.CustomResource):
     @pulumi.getter(name="autoUpdateModel")
     def auto_update_model(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+        Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         """
         return pulumi.get(self, "auto_update_model")
+
+    @property
+    @pulumi.getter(name="crawlerProtection")
+    def crawler_protection(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Enable rule to punish AI Scrapers and Crawlers via a link maze.
+        Available values: "enabled", "disabled".
+        """
+        return pulumi.get(self, "crawler_protection")
 
     @property
     @pulumi.getter(name="enableJs")
@@ -653,6 +746,7 @@ class BotManagement(pulumi.CustomResource):
     def sbfm_definitely_automated(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
+        Available values: "allow", "block", "managed_challenge".
         """
         return pulumi.get(self, "sbfm_definitely_automated")
 
@@ -661,6 +755,7 @@ class BotManagement(pulumi.CustomResource):
     def sbfm_likely_automated(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         Super Bot Fight Mode (SBFM) action to take on likely automated requests.
+        Available values: "allow", "block", "managed_challenge".
         """
         return pulumi.get(self, "sbfm_likely_automated")
 
@@ -668,7 +763,9 @@ class BotManagement(pulumi.CustomResource):
     @pulumi.getter(name="sbfmStaticResourceProtection")
     def sbfm_static_resource_protection(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+        Super Bot Fight Mode (SBFM) to enable static resource protection.
+        Enable if static resources on your application need bot protection.
+        Note: Static resource protection can also result in legitimate traffic being blocked.
         """
         return pulumi.get(self, "sbfm_static_resource_protection")
 
@@ -677,12 +774,21 @@ class BotManagement(pulumi.CustomResource):
     def sbfm_verified_bots(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         Super Bot Fight Mode (SBFM) action to take on verified bots requests.
+        Available values: "allow", "block".
         """
         return pulumi.get(self, "sbfm_verified_bots")
 
     @property
+    @pulumi.getter(name="staleZoneConfiguration")
+    def stale_zone_configuration(self) -> pulumi.Output['outputs.BotManagementStaleZoneConfiguration']:
+        """
+        A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
+        """
+        return pulumi.get(self, "stale_zone_configuration")
+
+    @property
     @pulumi.getter(name="suppressSessionScore")
-    def suppress_session_score(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def suppress_session_score(self) -> pulumi.Output[builtins.bool]:
         """
         Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
         """
@@ -700,7 +806,7 @@ class BotManagement(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

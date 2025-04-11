@@ -16,17 +16,17 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The API endpoint containing your business logic.
         /// </summary>
-        public readonly string? EvaluateUrl;
+        public readonly string EvaluateUrl;
         /// <summary>
         /// The API endpoint containing the key that Access uses to verify that the response came from your API.
         /// </summary>
-        public readonly string? KeysUrl;
+        public readonly string KeysUrl;
 
         [OutputConstructor]
         private AccessPolicyRequireExternalEvaluation(
-            string? evaluateUrl,
+            string evaluateUrl,
 
-            string? keysUrl)
+            string keysUrl)
         {
             EvaluateUrl = evaluateUrl;
             KeysUrl = keysUrl;

@@ -4,25 +4,26 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class TeamsRuleRuleSettingsAuditSsh {
     /**
-     * @return Log all SSH commands.
+     * @return Enable to turn on SSH command logging.
      * 
      */
-    private Boolean commandLogging;
+    private @Nullable Boolean commandLogging;
 
     private TeamsRuleRuleSettingsAuditSsh() {}
     /**
-     * @return Log all SSH commands.
+     * @return Enable to turn on SSH command logging.
      * 
      */
-    public Boolean commandLogging() {
-        return this.commandLogging;
+    public Optional<Boolean> commandLogging() {
+        return Optional.ofNullable(this.commandLogging);
     }
 
     public static Builder builder() {
@@ -34,7 +35,7 @@ public final class TeamsRuleRuleSettingsAuditSsh {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean commandLogging;
+        private @Nullable Boolean commandLogging;
         public Builder() {}
         public Builder(TeamsRuleRuleSettingsAuditSsh defaults) {
     	      Objects.requireNonNull(defaults);
@@ -42,10 +43,8 @@ public final class TeamsRuleRuleSettingsAuditSsh {
         }
 
         @CustomType.Setter
-        public Builder commandLogging(Boolean commandLogging) {
-            if (commandLogging == null) {
-              throw new MissingRequiredPropertyException("TeamsRuleRuleSettingsAuditSsh", "commandLogging");
-            }
+        public Builder commandLogging(@Nullable Boolean commandLogging) {
+
             this.commandLogging = commandLogging;
             return this;
         }

@@ -6,17 +6,18 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.AccountMemberArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccountMemberState;
+import com.pulumi.cloudflare.outputs.AccountMemberPolicy;
+import com.pulumi.cloudflare.outputs.AccountMemberUser;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource which manages Cloudflare account members.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -42,12 +43,11 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var example = new AccountMember("example", AccountMemberArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .emailAddress("user}{@literal @}{@code example.com")
- *             .roleIds(            
- *                 "68b329da9893e34099c7d8ad5cb9c940",
- *                 "d784fa8b6d98d27699781bd9a7cf19f0")
+ *         var exampleAccountMember = new AccountMember("exampleAccountMember", AccountMemberArgs.builder()
+ *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+ *             .email("user}{@literal @}{@code example.com")
+ *             .roles("3536bcfad5faccb999b47003c79917fb")
+ *             .status("accepted")
  *             .build());
  * 
  *     }}{@code
@@ -59,67 +59,95 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/accountMember:AccountMember example &lt;account_id&gt;/&lt;member_id&gt;
+ * $ pulumi import cloudflare:index/accountMember:AccountMember example &#39;&lt;account_id&gt;/&lt;member_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/accountMember:AccountMember")
 public class AccountMember extends com.pulumi.resources.CustomResource {
     /**
-     * Account ID to create the account member in.
+     * Account identifier tag.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Account ID to create the account member in.
+     * @return Account identifier tag.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
+     * The contact email address of the user.
      * 
      */
-    @Export(name="emailAddress", refs={String.class}, tree="[0]")
-    private Output<String> emailAddress;
+    @Export(name="email", refs={String.class}, tree="[0]")
+    private Output<String> email;
 
     /**
-     * @return The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
+     * @return The contact email address of the user.
      * 
      */
-    public Output<String> emailAddress() {
-        return this.emailAddress;
+    public Output<String> email() {
+        return this.email;
     }
     /**
-     * List of account role IDs that you want to assign to a member.
+     * Array of policies associated with this member.
      * 
      */
-    @Export(name="roleIds", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> roleIds;
+    @Export(name="policies", refs={List.class,AccountMemberPolicy.class}, tree="[0,1]")
+    private Output<List<AccountMemberPolicy>> policies;
 
     /**
-     * @return List of account role IDs that you want to assign to a member.
+     * @return Array of policies associated with this member.
      * 
      */
-    public Output<List<String>> roleIds() {
-        return this.roleIds;
+    public Output<List<AccountMemberPolicy>> policies() {
+        return this.policies;
     }
     /**
-     * A member&#39;s status in the account. Available values: `accepted`, `pending`.
+     * Array of roles associated with this member.
+     * 
+     */
+    @Export(name="roles", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> roles;
+
+    /**
+     * @return Array of roles associated with this member.
+     * 
+     */
+    public Output<Optional<List<String>>> roles() {
+        return Codegen.optional(this.roles);
+    }
+    /**
+     * Available values: &#34;accepted&#34;, &#34;pending&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return A member&#39;s status in the account. Available values: `accepted`, `pending`.
+     * @return Available values: &#34;accepted&#34;, &#34;pending&#34;.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * Details of the user associated to the membership.
+     * 
+     */
+    @Export(name="user", refs={AccountMemberUser.class}, tree="[0]")
+    private Output<AccountMemberUser> user;
+
+    /**
+     * @return Details of the user associated to the membership.
+     * 
+     */
+    public Output<AccountMemberUser> user() {
+        return this.user;
     }
 
     /**

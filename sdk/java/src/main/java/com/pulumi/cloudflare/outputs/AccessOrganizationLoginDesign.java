@@ -12,62 +12,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessOrganizationLoginDesign {
     /**
-     * @return The background color on the login page.
+     * @return The background color on your login page.
      * 
      */
     private @Nullable String backgroundColor;
     /**
-     * @return The text at the bottom of the login page.
+     * @return The text at the bottom of your login page.
      * 
      */
     private @Nullable String footerText;
     /**
-     * @return The text at the top of the login page.
+     * @return The text at the top of your login page.
      * 
      */
     private @Nullable String headerText;
     /**
-     * @return The URL of the logo on the login page.
+     * @return The URL of the logo on your login page.
      * 
      */
     private @Nullable String logoPath;
     /**
-     * @return The text color on the login page.
+     * @return The text color on your login page.
      * 
      */
     private @Nullable String textColor;
 
     private AccessOrganizationLoginDesign() {}
     /**
-     * @return The background color on the login page.
+     * @return The background color on your login page.
      * 
      */
     public Optional<String> backgroundColor() {
         return Optional.ofNullable(this.backgroundColor);
     }
     /**
-     * @return The text at the bottom of the login page.
+     * @return The text at the bottom of your login page.
      * 
      */
     public Optional<String> footerText() {
         return Optional.ofNullable(this.footerText);
     }
     /**
-     * @return The text at the top of the login page.
+     * @return The text at the top of your login page.
      * 
      */
     public Optional<String> headerText() {
         return Optional.ofNullable(this.headerText);
     }
     /**
-     * @return The URL of the logo on the login page.
+     * @return The URL of the logo on your login page.
      * 
      */
     public Optional<String> logoPath() {
         return Optional.ofNullable(this.logoPath);
     }
     /**
-     * @return The text color on the login page.
+     * @return The text color on your login page.
      * 
      */
     public Optional<String> textColor() {

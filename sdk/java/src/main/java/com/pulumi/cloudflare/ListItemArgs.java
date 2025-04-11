@@ -20,29 +20,29 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
     public static final ListItemArgs Empty = new ListItemArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * A non-negative 32 bit integer
      * 
      */
     @Import(name="asn")
     private @Nullable Output<Integer> asn;
 
     /**
-     * @return Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * @return A non-negative 32 bit integer
      * 
      */
     public Optional<Output<Integer>> asn() {
@@ -50,14 +50,14 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An optional comment for the item.
+     * An informative summary of the list item.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return An optional comment for the item.
+     * @return An informative summary of the list item.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -65,14 +65,14 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<ListItemHostnameArgs> hostname;
 
     /**
-     * @return Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * @return Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      * 
      */
     public Optional<Output<ListItemHostnameArgs>> hostname() {
@@ -80,14 +80,14 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * @return An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
      * 
      */
     public Optional<Output<String>> ip() {
@@ -95,14 +95,14 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list identifier to target for the resource.
+     * The unique ID of the list.
      * 
      */
     @Import(name="listId", required=true)
     private Output<String> listId;
 
     /**
-     * @return The list identifier to target for the resource.
+     * @return The unique ID of the list.
      * 
      */
     public Output<String> listId() {
@@ -110,14 +110,14 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * The definition of the redirect.
      * 
      */
     @Import(name="redirect")
     private @Nullable Output<ListItemRedirectArgs> redirect;
 
     /**
-     * @return Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * @return The definition of the redirect.
      * 
      */
     public Optional<Output<ListItemRedirectArgs>> redirect() {
@@ -155,18 +155,18 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param asn Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+         * @param asn A non-negative 32 bit integer
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param asn Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+         * @param asn A non-negative 32 bit integer
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment An optional comment for the item.
+         * @param comment An informative summary of the list item.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment An optional comment for the item.
+         * @param comment An informative summary of the list item.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostname Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+         * @param hostname Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostname Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+         * @param hostname Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+         * @param ip An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+         * @param ip An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listId The list identifier to target for the resource.
+         * @param listId The unique ID of the list.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listId The list identifier to target for the resource.
+         * @param listId The unique ID of the list.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redirect Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+         * @param redirect The definition of the redirect.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redirect Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+         * @param redirect The definition of the redirect.
          * 
          * @return builder
          * 
@@ -302,9 +302,6 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ListItemArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("ListItemArgs", "accountId");
-            }
             if ($.listId == null) {
                 throw new MissingRequiredPropertyException("ListItemArgs", "listId");
             }

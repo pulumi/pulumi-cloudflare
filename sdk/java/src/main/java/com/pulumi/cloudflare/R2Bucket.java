@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -39,10 +40,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new R2Bucket("example", R2BucketArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("terraform-bucket")
- *             .location("enam")
+ *         var exampleR2Bucket = new R2Bucket("exampleR2Bucket", R2BucketArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .name("example-bucket")
+ *             .location("apac")
+ *             .storageClass("Standard")
  *             .build());
  * 
  *     }
@@ -51,58 +53,102 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * &gt; Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/reference/data-location/#available-hints).
- * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/r2Bucket:R2Bucket default &lt;account id&gt;/&lt;bucket name&gt;
+ * $ pulumi import cloudflare:index/r2Bucket:R2Bucket example &#39;&lt;account_id&gt;/&lt;bucket_name&gt;/&lt;jurisdiction&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/r2Bucket:R2Bucket")
 public class R2Bucket extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Account ID
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Account ID
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
+     * Creation timestamp
+     * 
+     */
+    @Export(name="creationDate", refs={String.class}, tree="[0]")
+    private Output<String> creationDate;
+
+    /**
+     * @return Creation timestamp
+     * 
+     */
+    public Output<String> creationDate() {
+        return this.creationDate;
+    }
+    /**
+     * Jurisdiction of the bucket
+     * 
+     */
+    @Export(name="jurisdiction", refs={String.class}, tree="[0]")
+    private Output<String> jurisdiction;
+
+    /**
+     * @return Jurisdiction of the bucket
+     * 
+     */
+    public Output<String> jurisdiction() {
+        return this.jurisdiction;
+    }
+    /**
+     * Location of the bucket
+     * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
-    private Output<String> location;
+    private Output</* @Nullable */ String> location;
 
     /**
-     * @return The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
+     * @return Location of the bucket
+     * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
      */
-    public Output<String> location() {
-        return this.location;
+    public Output<Optional<String>> location() {
+        return Codegen.optional(this.location);
     }
     /**
-     * The name of the R2 bucket.
+     * Name of the bucket
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the R2 bucket.
+     * @return Name of the bucket
      * 
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Storage class for newly uploaded objects, unless specified otherwise.
+     * Available values: &#34;Standard&#34;, &#34;InfrequentAccess&#34;.
+     * 
+     */
+    @Export(name="storageClass", refs={String.class}, tree="[0]")
+    private Output<String> storageClass;
+
+    /**
+     * @return Storage class for newly uploaded objects, unless specified otherwise.
+     * Available values: &#34;Standard&#34;, &#34;InfrequentAccess&#34;.
+     * 
+     */
+    public Output<String> storageClass() {
+        return this.storageClass;
     }
 
     /**

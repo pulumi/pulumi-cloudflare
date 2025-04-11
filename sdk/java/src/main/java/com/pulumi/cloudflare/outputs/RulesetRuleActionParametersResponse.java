@@ -4,51 +4,50 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersResponse {
     /**
-     * @return Body content to include in the response.
+     * @return The content to return.
      * 
      */
-    private @Nullable String content;
+    private String content;
     /**
-     * @return HTTP content type to send in the response.
+     * @return The type of the content to return.
      * 
      */
-    private @Nullable String contentType;
+    private String contentType;
     /**
-     * @return HTTP status code to send in the response.
+     * @return The status code to return.
      * 
      */
-    private @Nullable Integer statusCode;
+    private Integer statusCode;
 
     private RulesetRuleActionParametersResponse() {}
     /**
-     * @return Body content to include in the response.
+     * @return The content to return.
      * 
      */
-    public Optional<String> content() {
-        return Optional.ofNullable(this.content);
+    public String content() {
+        return this.content;
     }
     /**
-     * @return HTTP content type to send in the response.
+     * @return The type of the content to return.
      * 
      */
-    public Optional<String> contentType() {
-        return Optional.ofNullable(this.contentType);
+    public String contentType() {
+        return this.contentType;
     }
     /**
-     * @return HTTP status code to send in the response.
+     * @return The status code to return.
      * 
      */
-    public Optional<Integer> statusCode() {
-        return Optional.ofNullable(this.statusCode);
+    public Integer statusCode() {
+        return this.statusCode;
     }
 
     public static Builder builder() {
@@ -60,9 +59,9 @@ public final class RulesetRuleActionParametersResponse {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String content;
-        private @Nullable String contentType;
-        private @Nullable Integer statusCode;
+        private String content;
+        private String contentType;
+        private Integer statusCode;
         public Builder() {}
         public Builder(RulesetRuleActionParametersResponse defaults) {
     	      Objects.requireNonNull(defaults);
@@ -72,20 +71,26 @@ public final class RulesetRuleActionParametersResponse {
         }
 
         @CustomType.Setter
-        public Builder content(@Nullable String content) {
-
+        public Builder content(String content) {
+            if (content == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleActionParametersResponse", "content");
+            }
             this.content = content;
             return this;
         }
         @CustomType.Setter
-        public Builder contentType(@Nullable String contentType) {
-
+        public Builder contentType(String contentType) {
+            if (contentType == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleActionParametersResponse", "contentType");
+            }
             this.contentType = contentType;
             return this;
         }
         @CustomType.Setter
-        public Builder statusCode(@Nullable Integer statusCode) {
-
+        public Builder statusCode(Integer statusCode) {
+            if (statusCode == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleActionParametersResponse", "statusCode");
+            }
             this.statusCode = statusCode;
             return this;
         }

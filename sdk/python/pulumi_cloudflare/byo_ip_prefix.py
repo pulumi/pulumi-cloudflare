@@ -21,20 +21,22 @@ __all__ = ['ByoIpPrefixArgs', 'ByoIpPrefix']
 class ByoIpPrefixArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[builtins.str],
-                 prefix_id: pulumi.Input[builtins.str],
-                 advertisement: Optional[pulumi.Input[builtins.str]] = None,
+                 asn: pulumi.Input[builtins.int],
+                 cidr: pulumi.Input[builtins.str],
+                 loa_document_id: pulumi.Input[builtins.str],
                  description: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a ByoIpPrefix resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] prefix_id: The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] advertisement: Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
-        :param pulumi.Input[builtins.str] description: Description of the BYO IP prefix.
+        :param pulumi.Input[builtins.str] account_id: Identifier of a Cloudflare account.
+        :param pulumi.Input[builtins.int] asn: Autonomous System Number (ASN) the prefix will be advertised under.
+        :param pulumi.Input[builtins.str] cidr: IP Prefix in Classless Inter-Domain Routing format.
+        :param pulumi.Input[builtins.str] loa_document_id: Identifier for the uploaded LOA document.
+        :param pulumi.Input[builtins.str] description: Description of the prefix.
         """
         pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "prefix_id", prefix_id)
-        if advertisement is not None:
-            pulumi.set(__self__, "advertisement", advertisement)
+        pulumi.set(__self__, "asn", asn)
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "loa_document_id", loa_document_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
 
@@ -42,7 +44,7 @@ class ByoIpPrefixArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        The account identifier to target for the resource.
+        Identifier of a Cloudflare account.
         """
         return pulumi.get(self, "account_id")
 
@@ -51,34 +53,46 @@ class ByoIpPrefixArgs:
         pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter(name="prefixId")
-    def prefix_id(self) -> pulumi.Input[builtins.str]:
+    @pulumi.getter
+    def asn(self) -> pulumi.Input[builtins.int]:
         """
-        The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+        Autonomous System Number (ASN) the prefix will be advertised under.
         """
-        return pulumi.get(self, "prefix_id")
+        return pulumi.get(self, "asn")
 
-    @prefix_id.setter
-    def prefix_id(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "prefix_id", value)
+    @asn.setter
+    def asn(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "asn", value)
 
     @property
     @pulumi.getter
-    def advertisement(self) -> Optional[pulumi.Input[builtins.str]]:
+    def cidr(self) -> pulumi.Input[builtins.str]:
         """
-        Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+        IP Prefix in Classless Inter-Domain Routing format.
         """
-        return pulumi.get(self, "advertisement")
+        return pulumi.get(self, "cidr")
 
-    @advertisement.setter
-    def advertisement(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "advertisement", value)
+    @cidr.setter
+    def cidr(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "cidr", value)
+
+    @property
+    @pulumi.getter(name="loaDocumentId")
+    def loa_document_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Identifier for the uploaded LOA document.
+        """
+        return pulumi.get(self, "loa_document_id")
+
+    @loa_document_id.setter
+    def loa_document_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "loa_document_id", value)
 
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Description of the BYO IP prefix.
+        Description of the prefix.
         """
         return pulumi.get(self, "description")
 
@@ -91,30 +105,60 @@ class ByoIpPrefixArgs:
 class _ByoIpPrefixState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 advertisement: Optional[pulumi.Input[builtins.str]] = None,
+                 advertised: Optional[pulumi.Input[builtins.bool]] = None,
+                 advertised_modified_at: Optional[pulumi.Input[builtins.str]] = None,
+                 approved: Optional[pulumi.Input[builtins.str]] = None,
+                 asn: Optional[pulumi.Input[builtins.int]] = None,
+                 cidr: Optional[pulumi.Input[builtins.str]] = None,
+                 created_at: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
-                 prefix_id: Optional[pulumi.Input[builtins.str]] = None):
+                 loa_document_id: Optional[pulumi.Input[builtins.str]] = None,
+                 modified_at: Optional[pulumi.Input[builtins.str]] = None,
+                 on_demand_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 on_demand_locked: Optional[pulumi.Input[builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ByoIpPrefix resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] advertisement: Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
-        :param pulumi.Input[builtins.str] description: Description of the BYO IP prefix.
-        :param pulumi.Input[builtins.str] prefix_id: The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier of a Cloudflare account.
+        :param pulumi.Input[builtins.bool] advertised: Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
+        :param pulumi.Input[builtins.str] advertised_modified_at: Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+        :param pulumi.Input[builtins.str] approved: Approval state of the prefix (P = pending, V = active).
+        :param pulumi.Input[builtins.int] asn: Autonomous System Number (ASN) the prefix will be advertised under.
+        :param pulumi.Input[builtins.str] cidr: IP Prefix in Classless Inter-Domain Routing format.
+        :param pulumi.Input[builtins.str] description: Description of the prefix.
+        :param pulumi.Input[builtins.str] loa_document_id: Identifier for the uploaded LOA document.
+        :param pulumi.Input[builtins.bool] on_demand_enabled: Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+        :param pulumi.Input[builtins.bool] on_demand_locked: Whether advertisement status of the prefix is locked, meaning it cannot be changed.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if advertisement is not None:
-            pulumi.set(__self__, "advertisement", advertisement)
+        if advertised is not None:
+            pulumi.set(__self__, "advertised", advertised)
+        if advertised_modified_at is not None:
+            pulumi.set(__self__, "advertised_modified_at", advertised_modified_at)
+        if approved is not None:
+            pulumi.set(__self__, "approved", approved)
+        if asn is not None:
+            pulumi.set(__self__, "asn", asn)
+        if cidr is not None:
+            pulumi.set(__self__, "cidr", cidr)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if prefix_id is not None:
-            pulumi.set(__self__, "prefix_id", prefix_id)
+        if loa_document_id is not None:
+            pulumi.set(__self__, "loa_document_id", loa_document_id)
+        if modified_at is not None:
+            pulumi.set(__self__, "modified_at", modified_at)
+        if on_demand_enabled is not None:
+            pulumi.set(__self__, "on_demand_enabled", on_demand_enabled)
+        if on_demand_locked is not None:
+            pulumi.set(__self__, "on_demand_locked", on_demand_locked)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource.
+        Identifier of a Cloudflare account.
         """
         return pulumi.get(self, "account_id")
 
@@ -124,21 +168,78 @@ class _ByoIpPrefixState:
 
     @property
     @pulumi.getter
-    def advertisement(self) -> Optional[pulumi.Input[builtins.str]]:
+    def advertised(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+        Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
         """
-        return pulumi.get(self, "advertisement")
+        return pulumi.get(self, "advertised")
 
-    @advertisement.setter
-    def advertisement(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "advertisement", value)
+    @advertised.setter
+    def advertised(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "advertised", value)
+
+    @property
+    @pulumi.getter(name="advertisedModifiedAt")
+    def advertised_modified_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+        """
+        return pulumi.get(self, "advertised_modified_at")
+
+    @advertised_modified_at.setter
+    def advertised_modified_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "advertised_modified_at", value)
+
+    @property
+    @pulumi.getter
+    def approved(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Approval state of the prefix (P = pending, V = active).
+        """
+        return pulumi.get(self, "approved")
+
+    @approved.setter
+    def approved(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "approved", value)
+
+    @property
+    @pulumi.getter
+    def asn(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Autonomous System Number (ASN) the prefix will be advertised under.
+        """
+        return pulumi.get(self, "asn")
+
+    @asn.setter
+    def asn(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "asn", value)
+
+    @property
+    @pulumi.getter
+    def cidr(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        IP Prefix in Classless Inter-Domain Routing format.
+        """
+        return pulumi.get(self, "cidr")
+
+    @cidr.setter
+    def cidr(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cidr", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_at", value)
 
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Description of the BYO IP prefix.
+        Description of the prefix.
         """
         return pulumi.get(self, "description")
 
@@ -147,16 +248,49 @@ class _ByoIpPrefixState:
         pulumi.set(self, "description", value)
 
     @property
-    @pulumi.getter(name="prefixId")
-    def prefix_id(self) -> Optional[pulumi.Input[builtins.str]]:
+    @pulumi.getter(name="loaDocumentId")
+    def loa_document_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+        Identifier for the uploaded LOA document.
         """
-        return pulumi.get(self, "prefix_id")
+        return pulumi.get(self, "loa_document_id")
 
-    @prefix_id.setter
-    def prefix_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "prefix_id", value)
+    @loa_document_id.setter
+    def loa_document_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "loa_document_id", value)
+
+    @property
+    @pulumi.getter(name="modifiedAt")
+    def modified_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "modified_at")
+
+    @modified_at.setter
+    def modified_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "modified_at", value)
+
+    @property
+    @pulumi.getter(name="onDemandEnabled")
+    def on_demand_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+        """
+        return pulumi.get(self, "on_demand_enabled")
+
+    @on_demand_enabled.setter
+    def on_demand_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "on_demand_enabled", value)
+
+    @property
+    @pulumi.getter(name="onDemandLocked")
+    def on_demand_locked(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+        """
+        return pulumi.get(self, "on_demand_locked")
+
+    @on_demand_locked.setter
+    def on_demand_locked(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "on_demand_locked", value)
 
 
 class ByoIpPrefix(pulumi.CustomResource):
@@ -165,39 +299,38 @@ class ByoIpPrefix(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 advertisement: Optional[pulumi.Input[builtins.str]] = None,
+                 asn: Optional[pulumi.Input[builtins.int]] = None,
+                 cidr: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
-                 prefix_id: Optional[pulumi.Input[builtins.str]] = None,
+                 loa_document_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP)
-        which are used with or without Magic Transit.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.ByoIpPrefix("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            prefix_id="d41d8cd98f00b204e9800998ecf8427e",
-            description="Example IP Prefix",
-            advertisement="on")
+        example_byo_ip_prefix = cloudflare.ByoIpPrefix("example_byo_ip_prefix",
+            account_id="258def64c72dae45f3e4c8516e2111f2",
+            asn=209242,
+            cidr="192.0.2.0/24",
+            loa_document_id="d933b1530bc56c9953cf8ce166da8004")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example <account_id>/<prefix_id>
+        $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example '<account_id>/<prefix_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] advertisement: Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
-        :param pulumi.Input[builtins.str] description: Description of the BYO IP prefix.
-        :param pulumi.Input[builtins.str] prefix_id: The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier of a Cloudflare account.
+        :param pulumi.Input[builtins.int] asn: Autonomous System Number (ASN) the prefix will be advertised under.
+        :param pulumi.Input[builtins.str] cidr: IP Prefix in Classless Inter-Domain Routing format.
+        :param pulumi.Input[builtins.str] description: Description of the prefix.
+        :param pulumi.Input[builtins.str] loa_document_id: Identifier for the uploaded LOA document.
         """
         ...
     @overload
@@ -206,26 +339,23 @@ class ByoIpPrefix(pulumi.CustomResource):
                  args: ByoIpPrefixArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP)
-        which are used with or without Magic Transit.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.ByoIpPrefix("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            prefix_id="d41d8cd98f00b204e9800998ecf8427e",
-            description="Example IP Prefix",
-            advertisement="on")
+        example_byo_ip_prefix = cloudflare.ByoIpPrefix("example_byo_ip_prefix",
+            account_id="258def64c72dae45f3e4c8516e2111f2",
+            asn=209242,
+            cidr="192.0.2.0/24",
+            loa_document_id="d933b1530bc56c9953cf8ce166da8004")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example <account_id>/<prefix_id>
+        $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example '<account_id>/<prefix_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -244,9 +374,10 @@ class ByoIpPrefix(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 advertisement: Optional[pulumi.Input[builtins.str]] = None,
+                 asn: Optional[pulumi.Input[builtins.int]] = None,
+                 cidr: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
-                 prefix_id: Optional[pulumi.Input[builtins.str]] = None,
+                 loa_document_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -259,11 +390,23 @@ class ByoIpPrefix(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            __props__.__dict__["advertisement"] = advertisement
+            if asn is None and not opts.urn:
+                raise TypeError("Missing required property 'asn'")
+            __props__.__dict__["asn"] = asn
+            if cidr is None and not opts.urn:
+                raise TypeError("Missing required property 'cidr'")
+            __props__.__dict__["cidr"] = cidr
             __props__.__dict__["description"] = description
-            if prefix_id is None and not opts.urn:
-                raise TypeError("Missing required property 'prefix_id'")
-            __props__.__dict__["prefix_id"] = prefix_id
+            if loa_document_id is None and not opts.urn:
+                raise TypeError("Missing required property 'loa_document_id'")
+            __props__.__dict__["loa_document_id"] = loa_document_id
+            __props__.__dict__["advertised"] = None
+            __props__.__dict__["advertised_modified_at"] = None
+            __props__.__dict__["approved"] = None
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["modified_at"] = None
+            __props__.__dict__["on_demand_enabled"] = None
+            __props__.__dict__["on_demand_locked"] = None
         super(ByoIpPrefix, __self__).__init__(
             'cloudflare:index/byoIpPrefix:ByoIpPrefix',
             resource_name,
@@ -275,9 +418,17 @@ class ByoIpPrefix(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
-            advertisement: Optional[pulumi.Input[builtins.str]] = None,
+            advertised: Optional[pulumi.Input[builtins.bool]] = None,
+            advertised_modified_at: Optional[pulumi.Input[builtins.str]] = None,
+            approved: Optional[pulumi.Input[builtins.str]] = None,
+            asn: Optional[pulumi.Input[builtins.int]] = None,
+            cidr: Optional[pulumi.Input[builtins.str]] = None,
+            created_at: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
-            prefix_id: Optional[pulumi.Input[builtins.str]] = None) -> 'ByoIpPrefix':
+            loa_document_id: Optional[pulumi.Input[builtins.str]] = None,
+            modified_at: Optional[pulumi.Input[builtins.str]] = None,
+            on_demand_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+            on_demand_locked: Optional[pulumi.Input[builtins.bool]] = None) -> 'ByoIpPrefix':
         """
         Get an existing ByoIpPrefix resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -285,50 +436,122 @@ class ByoIpPrefix(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] advertisement: Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
-        :param pulumi.Input[builtins.str] description: Description of the BYO IP prefix.
-        :param pulumi.Input[builtins.str] prefix_id: The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier of a Cloudflare account.
+        :param pulumi.Input[builtins.bool] advertised: Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
+        :param pulumi.Input[builtins.str] advertised_modified_at: Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+        :param pulumi.Input[builtins.str] approved: Approval state of the prefix (P = pending, V = active).
+        :param pulumi.Input[builtins.int] asn: Autonomous System Number (ASN) the prefix will be advertised under.
+        :param pulumi.Input[builtins.str] cidr: IP Prefix in Classless Inter-Domain Routing format.
+        :param pulumi.Input[builtins.str] description: Description of the prefix.
+        :param pulumi.Input[builtins.str] loa_document_id: Identifier for the uploaded LOA document.
+        :param pulumi.Input[builtins.bool] on_demand_enabled: Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+        :param pulumi.Input[builtins.bool] on_demand_locked: Whether advertisement status of the prefix is locked, meaning it cannot be changed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ByoIpPrefixState.__new__(_ByoIpPrefixState)
 
         __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["advertisement"] = advertisement
+        __props__.__dict__["advertised"] = advertised
+        __props__.__dict__["advertised_modified_at"] = advertised_modified_at
+        __props__.__dict__["approved"] = approved
+        __props__.__dict__["asn"] = asn
+        __props__.__dict__["cidr"] = cidr
+        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["description"] = description
-        __props__.__dict__["prefix_id"] = prefix_id
+        __props__.__dict__["loa_document_id"] = loa_document_id
+        __props__.__dict__["modified_at"] = modified_at
+        __props__.__dict__["on_demand_enabled"] = on_demand_enabled
+        __props__.__dict__["on_demand_locked"] = on_demand_locked
         return ByoIpPrefix(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        The account identifier to target for the resource.
+        Identifier of a Cloudflare account.
         """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
-    def advertisement(self) -> pulumi.Output[builtins.str]:
+    def advertised(self) -> pulumi.Output[builtins.bool]:
         """
-        Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+        Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
         """
-        return pulumi.get(self, "advertisement")
+        return pulumi.get(self, "advertised")
+
+    @property
+    @pulumi.getter(name="advertisedModifiedAt")
+    def advertised_modified_at(self) -> pulumi.Output[builtins.str]:
+        """
+        Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+        """
+        return pulumi.get(self, "advertised_modified_at")
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[builtins.str]:
+    def approved(self) -> pulumi.Output[builtins.str]:
         """
-        Description of the BYO IP prefix.
+        Approval state of the prefix (P = pending, V = active).
+        """
+        return pulumi.get(self, "approved")
+
+    @property
+    @pulumi.getter
+    def asn(self) -> pulumi.Output[builtins.int]:
+        """
+        Autonomous System Number (ASN) the prefix will be advertised under.
+        """
+        return pulumi.get(self, "asn")
+
+    @property
+    @pulumi.getter
+    def cidr(self) -> pulumi.Output[builtins.str]:
+        """
+        IP Prefix in Classless Inter-Domain Routing format.
+        """
+        return pulumi.get(self, "cidr")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Description of the prefix.
         """
         return pulumi.get(self, "description")
 
     @property
-    @pulumi.getter(name="prefixId")
-    def prefix_id(self) -> pulumi.Output[builtins.str]:
+    @pulumi.getter(name="loaDocumentId")
+    def loa_document_id(self) -> pulumi.Output[builtins.str]:
         """
-        The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+        Identifier for the uploaded LOA document.
         """
-        return pulumi.get(self, "prefix_id")
+        return pulumi.get(self, "loa_document_id")
+
+    @property
+    @pulumi.getter(name="modifiedAt")
+    def modified_at(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "modified_at")
+
+    @property
+    @pulumi.getter(name="onDemandEnabled")
+    def on_demand_enabled(self) -> pulumi.Output[builtins.bool]:
+        """
+        Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+        """
+        return pulumi.get(self, "on_demand_enabled")
+
+    @property
+    @pulumi.getter(name="onDemandLocked")
+    def on_demand_locked(self) -> pulumi.Output[builtins.bool]:
+        """
+        Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+        """
+        return pulumi.get(self, "on_demand_locked")
 

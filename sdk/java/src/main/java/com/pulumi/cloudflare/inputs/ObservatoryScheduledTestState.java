@@ -3,6 +3,8 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ObservatoryScheduledTestScheduleArgs;
+import com.pulumi.cloudflare.inputs.ObservatoryScheduledTestTestArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -16,14 +18,16 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
     public static final ObservatoryScheduledTestState Empty = new ObservatoryScheduledTestState();
 
     /**
-     * The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
+     * The frequency of the test.
+     * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
      * 
      */
     @Import(name="frequency")
     private @Nullable Output<String> frequency;
 
     /**
-     * @return The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
+     * @return The frequency of the test.
+     * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
      * 
      */
     public Optional<Output<String>> frequency() {
@@ -31,14 +35,16 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
     }
 
     /**
-     * The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
+     * A test region.
+     * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
+     * @return A test region.
+     * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
      * 
      */
     public Optional<Output<String>> region() {
@@ -46,14 +52,36 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
     }
 
     /**
-     * The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+     * The test schedule.
+     * 
+     */
+    @Import(name="schedule")
+    private @Nullable Output<ObservatoryScheduledTestScheduleArgs> schedule;
+
+    /**
+     * @return The test schedule.
+     * 
+     */
+    public Optional<Output<ObservatoryScheduledTestScheduleArgs>> schedule() {
+        return Optional.ofNullable(this.schedule);
+    }
+
+    @Import(name="test")
+    private @Nullable Output<ObservatoryScheduledTestTestArgs> test;
+
+    public Optional<Output<ObservatoryScheduledTestTestArgs>> test() {
+        return Optional.ofNullable(this.test);
+    }
+
+    /**
+     * A URL.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+     * @return A URL.
      * 
      */
     public Optional<Output<String>> url() {
@@ -61,14 +89,14 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -80,6 +108,8 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
     private ObservatoryScheduledTestState(ObservatoryScheduledTestState $) {
         this.frequency = $.frequency;
         this.region = $.region;
+        this.schedule = $.schedule;
+        this.test = $.test;
         this.url = $.url;
         this.zoneId = $.zoneId;
     }
@@ -103,7 +133,8 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param frequency The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
+         * @param frequency The frequency of the test.
+         * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
          * 
          * @return builder
          * 
@@ -114,7 +145,8 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param frequency The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
+         * @param frequency The frequency of the test.
+         * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
          * 
          * @return builder
          * 
@@ -124,7 +156,8 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param region The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
+         * @param region A test region.
+         * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
          * 
          * @return builder
          * 
@@ -135,7 +168,8 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param region The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
+         * @param region A test region.
+         * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
          * 
          * @return builder
          * 
@@ -145,7 +179,37 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param url The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+         * @param schedule The test schedule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedule(@Nullable Output<ObservatoryScheduledTestScheduleArgs> schedule) {
+            $.schedule = schedule;
+            return this;
+        }
+
+        /**
+         * @param schedule The test schedule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedule(ObservatoryScheduledTestScheduleArgs schedule) {
+            return schedule(Output.of(schedule));
+        }
+
+        public Builder test(@Nullable Output<ObservatoryScheduledTestTestArgs> test) {
+            $.test = test;
+            return this;
+        }
+
+        public Builder test(ObservatoryScheduledTestTestArgs test) {
+            return test(Output.of(test));
+        }
+
+        /**
+         * @param url A URL.
          * 
          * @return builder
          * 
@@ -156,7 +220,7 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param url The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+         * @param url A URL.
          * 
          * @return builder
          * 
@@ -166,7 +230,7 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -177,7 +241,7 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

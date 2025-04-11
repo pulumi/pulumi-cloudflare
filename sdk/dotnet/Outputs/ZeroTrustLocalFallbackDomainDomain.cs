@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The domain suffix to match when resolving locally.
         /// </summary>
-        public readonly string? Suffix;
+        public readonly string Suffix;
 
         [OutputConstructor]
         private ZeroTrustLocalFallbackDomainDomain(
@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> dnsServers,
 
-            string? suffix)
+            string suffix)
         {
             Description = description;
             DnsServers = dnsServers;

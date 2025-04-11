@@ -7,7 +7,9 @@ import com.pulumi.cloudflare.PagesProjectArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.PagesProjectState;
 import com.pulumi.cloudflare.outputs.PagesProjectBuildConfig;
+import com.pulumi.cloudflare.outputs.PagesProjectCanonicalDeployment;
 import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigs;
+import com.pulumi.cloudflare.outputs.PagesProjectLatestDeployment;
 import com.pulumi.cloudflare.outputs.PagesProjectSource;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -19,50 +21,67 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource which manages Cloudflare Pages projects.
- * 
  * &gt; If you are using a `source` block configuration, you must first have a
  *    connected GitHub or GitLab account connected to Cloudflare. See the
  *    [Getting Started with Pages] documentation on how to link your accounts.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * !&gt; It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.
  * 
  * ```sh
- * $ pulumi import cloudflare:index/pagesProject:PagesProject example &lt;account_id&gt;/&lt;project_name&gt;
+ * $ pulumi import cloudflare:index/pagesProject:PagesProject example &#39;&lt;account_id&gt;/&lt;project_name&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/pagesProject:PagesProject")
 public class PagesProject extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+     * Configs for the project build process.
      * 
      */
     @Export(name="buildConfig", refs={PagesProjectBuildConfig.class}, tree="[0]")
-    private Output</* @Nullable */ PagesProjectBuildConfig> buildConfig;
+    private Output<PagesProjectBuildConfig> buildConfig;
 
     /**
-     * @return Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+     * @return Configs for the project build process.
      * 
      */
-    public Output<Optional<PagesProjectBuildConfig>> buildConfig() {
-        return Codegen.optional(this.buildConfig);
+    public Output<PagesProjectBuildConfig> buildConfig() {
+        return this.buildConfig;
+    }
+    /**
+     * Most recent deployment to the repo.
+     * 
+     */
+    @Export(name="canonicalDeployment", refs={PagesProjectCanonicalDeployment.class}, tree="[0]")
+    private Output<PagesProjectCanonicalDeployment> canonicalDeployment;
+
+    /**
+     * @return Most recent deployment to the repo.
+     * 
+     */
+    public Output<PagesProjectCanonicalDeployment> canonicalDeployment() {
+        return this.canonicalDeployment;
     }
     /**
      * When the project was created.
@@ -79,14 +98,14 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
         return this.createdOn;
     }
     /**
-     * Configuration for deployments in a project.
+     * Configs for deployments in a project.
      * 
      */
     @Export(name="deploymentConfigs", refs={PagesProjectDeploymentConfigs.class}, tree="[0]")
     private Output<PagesProjectDeploymentConfigs> deploymentConfigs;
 
     /**
-     * @return Configuration for deployments in a project.
+     * @return Configs for deployments in a project.
      * 
      */
     public Output<PagesProjectDeploymentConfigs> deploymentConfigs() {
@@ -107,6 +126,20 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
         return this.domains;
     }
     /**
+     * Most recent deployment to the repo.
+     * 
+     */
+    @Export(name="latestDeployment", refs={PagesProjectLatestDeployment.class}, tree="[0]")
+    private Output<PagesProjectLatestDeployment> latestDeployment;
+
+    /**
+     * @return Most recent deployment to the repo.
+     * 
+     */
+    public Output<PagesProjectLatestDeployment> latestDeployment() {
+        return this.latestDeployment;
+    }
+    /**
      * Name of the project.
      * 
      */
@@ -121,32 +154,24 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The name of the branch that is used for the production environment.
+     * Production branch of the project. Used to identify production deployments.
      * 
      */
     @Export(name="productionBranch", refs={String.class}, tree="[0]")
-    private Output<String> productionBranch;
+    private Output</* @Nullable */ String> productionBranch;
 
     /**
-     * @return The name of the branch that is used for the production environment.
+     * @return Production branch of the project. Used to identify production deployments.
      * 
      */
-    public Output<String> productionBranch() {
-        return this.productionBranch;
+    public Output<Optional<String>> productionBranch() {
+        return Codegen.optional(this.productionBranch);
     }
-    /**
-     * Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-     * 
-     */
     @Export(name="source", refs={PagesProjectSource.class}, tree="[0]")
-    private Output</* @Nullable */ PagesProjectSource> source;
+    private Output<PagesProjectSource> source;
 
-    /**
-     * @return Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-     * 
-     */
-    public Output<Optional<PagesProjectSource>> source() {
-        return Codegen.optional(this.source);
+    public Output<PagesProjectSource> source() {
+        return this.source;
     }
     /**
      * The Cloudflare subdomain associated with the project.

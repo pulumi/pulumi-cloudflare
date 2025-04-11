@@ -6,7 +6,10 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustGatewayPolicyArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyState;
+import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyExpiration;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettings;
+import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicySchedule;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -19,220 +22,237 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Teams rule resource. Teams rules comprise secure web gateway policies.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustGatewayPolicy;
- * import com.pulumi.cloudflare.ZeroTrustGatewayPolicyArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new ZeroTrustGatewayPolicy("example", ZeroTrustGatewayPolicyArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("office")
- *             .description("desc")
- *             .precedence(1)
- *             .action("block")
- *             .filters("http")
- *             .traffic("http.request.uri == \"https://www.example.com/malicious\"")
- *             .ruleSettings(ZeroTrustGatewayPolicyRuleSettingsArgs.builder()
- *                 .blockPageEnabled(true)
- *                 .blockPageReason("access not permitted")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy example &lt;account_id&gt;/&lt;teams_rule_id&gt;
+ * $ pulumi import cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy example &#39;&lt;account_id&gt;/&lt;rule_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy")
 public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource {
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
+     * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;.
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
-     * @return The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
+     * @return The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;.
      * 
      */
     public Output<String> action() {
         return this.action;
     }
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
     /**
-     * The description of the teams rule.
+     * Date of deletion, if any.
+     * 
+     */
+    @Export(name="deletedAt", refs={String.class}, tree="[0]")
+    private Output<String> deletedAt;
+
+    /**
+     * @return Date of deletion, if any.
+     * 
+     */
+    public Output<String> deletedAt() {
+        return this.deletedAt;
+    }
+    /**
+     * The description of the rule.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output<String> description;
+    private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the teams rule.
+     * @return The description of the rule.
      * 
      */
-    public Output<String> description() {
-        return this.description;
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
-     * The wirefilter expression to be used for device_posture check matching.
+     * The wirefilter expression used for device posture check matching.
      * 
      */
     @Export(name="devicePosture", refs={String.class}, tree="[0]")
-    private Output<String> devicePosture;
+    private Output</* @Nullable */ String> devicePosture;
 
     /**
-     * @return The wirefilter expression to be used for device_posture check matching.
+     * @return The wirefilter expression used for device posture check matching.
      * 
      */
-    public Output<String> devicePosture() {
-        return this.devicePosture;
+    public Output<Optional<String>> devicePosture() {
+        return Codegen.optional(this.devicePosture);
     }
     /**
-     * Indicator of rule enablement.
+     * True if the rule is enabled.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Indicator of rule enablement.
+     * @return True if the rule is enabled.
      * 
      */
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
     }
     /**
-     * The protocol or layer to evaluate the traffic and identity expressions.
+     * The expiration time stamp and default duration of a DNS policy. Takes
+     * precedence over the policy&#39;s `schedule` configuration, if any.
+     * 
+     */
+    @Export(name="expiration", refs={ZeroTrustGatewayPolicyExpiration.class}, tree="[0]")
+    private Output<ZeroTrustGatewayPolicyExpiration> expiration;
+
+    /**
+     * @return The expiration time stamp and default duration of a DNS policy. Takes
+     * precedence over the policy&#39;s `schedule` configuration, if any.
+     * 
+     */
+    public Output<ZeroTrustGatewayPolicyExpiration> expiration() {
+        return this.expiration;
+    }
+    /**
+     * The protocol or layer to evaluate the traffic, identity, and device posture expressions.
      * 
      */
     @Export(name="filters", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> filters;
 
     /**
-     * @return The protocol or layer to evaluate the traffic and identity expressions.
+     * @return The protocol or layer to evaluate the traffic, identity, and device posture expressions.
      * 
      */
     public Output<Optional<List<String>>> filters() {
         return Codegen.optional(this.filters);
     }
     /**
-     * The wirefilter expression to be used for identity matching.
+     * The wirefilter expression used for identity matching.
      * 
      */
     @Export(name="identity", refs={String.class}, tree="[0]")
-    private Output<String> identity;
+    private Output</* @Nullable */ String> identity;
 
     /**
-     * @return The wirefilter expression to be used for identity matching.
+     * @return The wirefilter expression used for identity matching.
      * 
      */
-    public Output<String> identity() {
-        return this.identity;
+    public Output<Optional<String>> identity() {
+        return Codegen.optional(this.identity);
     }
     /**
-     * The name of the teams rule.
+     * The name of the rule.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the teams rule.
+     * @return The name of the rule.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The evaluation precedence of the teams rule.
+     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
+     * rules are evaluated in ascending order of this value.
      * 
      */
     @Export(name="precedence", refs={Integer.class}, tree="[0]")
-    private Output<Integer> precedence;
+    private Output</* @Nullable */ Integer> precedence;
 
     /**
-     * @return The evaluation precedence of the teams rule.
+     * @return Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
+     * rules are evaluated in ascending order of this value.
      * 
      */
-    public Output<Integer> precedence() {
-        return this.precedence;
+    public Output<Optional<Integer>> precedence() {
+        return Codegen.optional(this.precedence);
     }
     /**
-     * Additional rule settings.
+     * Additional settings that modify the rule&#39;s action.
      * 
      */
     @Export(name="ruleSettings", refs={ZeroTrustGatewayPolicyRuleSettings.class}, tree="[0]")
     private Output<ZeroTrustGatewayPolicyRuleSettings> ruleSettings;
 
     /**
-     * @return Additional rule settings.
+     * @return Additional settings that modify the rule&#39;s action.
      * 
      */
     public Output<ZeroTrustGatewayPolicyRuleSettings> ruleSettings() {
         return this.ruleSettings;
     }
     /**
-     * The wirefilter expression to be used for traffic matching.
+     * The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+     * 
+     */
+    @Export(name="schedule", refs={ZeroTrustGatewayPolicySchedule.class}, tree="[0]")
+    private Output<ZeroTrustGatewayPolicySchedule> schedule;
+
+    /**
+     * @return The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+     * 
+     */
+    public Output<ZeroTrustGatewayPolicySchedule> schedule() {
+        return this.schedule;
+    }
+    /**
+     * The wirefilter expression used for traffic matching.
      * 
      */
     @Export(name="traffic", refs={String.class}, tree="[0]")
-    private Output<String> traffic;
+    private Output</* @Nullable */ String> traffic;
 
     /**
-     * @return The wirefilter expression to be used for traffic matching.
+     * @return The wirefilter expression used for traffic matching.
      * 
      */
-    public Output<String> traffic() {
-        return this.traffic;
+    public Output<Optional<String>> traffic() {
+        return Codegen.optional(this.traffic);
     }
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
+
+    public Output<String> updatedAt() {
+        return this.updatedAt;
+    }
+    /**
+     * version number of the rule
+     * 
+     */
     @Export(name="version", refs={Integer.class}, tree="[0]")
     private Output<Integer> version;
 
+    /**
+     * @return version number of the rule
+     * 
+     */
     public Output<Integer> version() {
         return this.version;
     }
@@ -276,6 +296,9 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/teamsRule:TeamsRule").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

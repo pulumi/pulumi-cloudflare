@@ -14,43 +14,39 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class CloudConnectorRulesRule
     {
         /// <summary>
-        /// Brief summary of the cloud connector rule and its intended use.
+        /// Cloud Provider type
+        /// Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
         /// </summary>
+        public readonly string? CloudProvider;
         public readonly string? Description;
-        /// <summary>
-        /// Whether the headers rule is active.
-        /// </summary>
         public readonly bool? Enabled;
+        public readonly string? Expression;
+        public readonly string? Id;
         /// <summary>
-        /// Criteria for an HTTP request to trigger the cloud connector rule. Uses the Firewall Rules expression language based on Wireshark display filters.
-        /// </summary>
-        public readonly string Expression;
-        /// <summary>
-        /// Cloud Connector Rule Parameters
+        /// Parameters of Cloud Connector Rule
         /// </summary>
         public readonly Outputs.CloudConnectorRulesRuleParameters? Parameters;
-        /// <summary>
-        /// Type of provider. Available values: `aws_s3`, `cloudflare_r2`, `azure_storage`, `gcp_storage`
-        /// </summary>
-        public readonly string Provider;
 
         [OutputConstructor]
         private CloudConnectorRulesRule(
+            string? cloudProvider,
+
             string? description,
 
             bool? enabled,
 
-            string expression,
+            string? expression,
 
-            Outputs.CloudConnectorRulesRuleParameters? parameters,
+            string? id,
 
-            string provider)
+            Outputs.CloudConnectorRulesRuleParameters? parameters)
         {
+            CloudProvider = cloudProvider;
             Description = description;
             Enabled = enabled;
             Expression = expression;
+            Id = id;
             Parameters = parameters;
-            Provider = provider;
         }
     }
 }

@@ -16,32 +16,16 @@ public final class PagesProjectSourceArgs extends com.pulumi.resources.ResourceA
 
     public static final PagesProjectSourceArgs Empty = new PagesProjectSourceArgs();
 
-    /**
-     * Configuration for the source of the Cloudflare Pages project.
-     * 
-     */
     @Import(name="config")
     private @Nullable Output<PagesProjectSourceConfigArgs> config;
 
-    /**
-     * @return Configuration for the source of the Cloudflare Pages project.
-     * 
-     */
     public Optional<Output<PagesProjectSourceConfigArgs>> config() {
         return Optional.ofNullable(this.config);
     }
 
-    /**
-     * Project host type.
-     * 
-     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
-    /**
-     * @return Project host type.
-     * 
-     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -71,44 +55,20 @@ public final class PagesProjectSourceArgs extends com.pulumi.resources.ResourceA
             $ = new PagesProjectSourceArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param config Configuration for the source of the Cloudflare Pages project.
-         * 
-         * @return builder
-         * 
-         */
         public Builder config(@Nullable Output<PagesProjectSourceConfigArgs> config) {
             $.config = config;
             return this;
         }
 
-        /**
-         * @param config Configuration for the source of the Cloudflare Pages project.
-         * 
-         * @return builder
-         * 
-         */
         public Builder config(PagesProjectSourceConfigArgs config) {
             return config(Output.of(config));
         }
 
-        /**
-         * @param type Project host type.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type Project host type.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

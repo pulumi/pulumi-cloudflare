@@ -18,19 +18,20 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Deprecated. Use `identity_update_behavior`.
-        /// </summary>
-        public readonly bool? GroupMemberDeprovision;
-        /// <summary>
-        /// Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no_action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+        /// Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no*action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+        /// Available values: "automatic", "reauth", "no*action".
         /// </summary>
         public readonly string? IdentityUpdateBehavior;
+        /// <summary>
+        /// The base URL of Cloudflare's SCIM V2.0 API endpoint.
+        /// </summary>
+        public readonly string? ScimBaseUrl;
         /// <summary>
         /// A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
         /// </summary>
         public readonly bool? SeatDeprovision;
         /// <summary>
-        /// A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+        /// A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
         /// </summary>
         public readonly string? Secret;
         /// <summary>
@@ -42,9 +43,9 @@ namespace Pulumi.Cloudflare.Outputs
         private ZeroTrustAccessIdentityProviderScimConfig(
             bool? enabled,
 
-            bool? groupMemberDeprovision,
-
             string? identityUpdateBehavior,
+
+            string? scimBaseUrl,
 
             bool? seatDeprovision,
 
@@ -53,8 +54,8 @@ namespace Pulumi.Cloudflare.Outputs
             bool? userDeprovision)
         {
             Enabled = enabled;
-            GroupMemberDeprovision = groupMemberDeprovision;
             IdentityUpdateBehavior = identityUpdateBehavior;
+            ScimBaseUrl = scimBaseUrl;
             SeatDeprovision = seatDeprovision;
             Secret = secret;
             UserDeprovision = userDeprovision;

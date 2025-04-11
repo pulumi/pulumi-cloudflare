@@ -3,9 +3,14 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.QueueConsumerArgs;
+import com.pulumi.cloudflare.inputs.QueueProducerArgs;
+import com.pulumi.cloudflare.inputs.QueueSettingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,40 +21,96 @@ public final class QueueState extends com.pulumi.resources.ResourceArgs {
     public static final QueueState Empty = new QueueState();
 
     /**
-     * The account identifier to target for the resource.
+     * A Resource identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return A Resource identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
-    /**
-     * The name of the queue.
-     * 
-     */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="consumers")
+    private @Nullable Output<List<QueueConsumerArgs>> consumers;
 
-    /**
-     * @return The name of the queue.
-     * 
-     */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Optional<Output<List<QueueConsumerArgs>>> consumers() {
+        return Optional.ofNullable(this.consumers);
+    }
+
+    @Import(name="consumersTotalCount")
+    private @Nullable Output<Double> consumersTotalCount;
+
+    public Optional<Output<Double>> consumersTotalCount() {
+        return Optional.ofNullable(this.consumersTotalCount);
+    }
+
+    @Import(name="createdOn")
+    private @Nullable Output<String> createdOn;
+
+    public Optional<Output<String>> createdOn() {
+        return Optional.ofNullable(this.createdOn);
+    }
+
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
+    }
+
+    @Import(name="producers")
+    private @Nullable Output<List<QueueProducerArgs>> producers;
+
+    public Optional<Output<List<QueueProducerArgs>>> producers() {
+        return Optional.ofNullable(this.producers);
+    }
+
+    @Import(name="producersTotalCount")
+    private @Nullable Output<Double> producersTotalCount;
+
+    public Optional<Output<Double>> producersTotalCount() {
+        return Optional.ofNullable(this.producersTotalCount);
+    }
+
+    @Import(name="queueId")
+    private @Nullable Output<String> queueId;
+
+    public Optional<Output<String>> queueId() {
+        return Optional.ofNullable(this.queueId);
+    }
+
+    @Import(name="queueName")
+    private @Nullable Output<String> queueName;
+
+    public Optional<Output<String>> queueName() {
+        return Optional.ofNullable(this.queueName);
+    }
+
+    @Import(name="settings")
+    private @Nullable Output<QueueSettingsArgs> settings;
+
+    public Optional<Output<QueueSettingsArgs>> settings() {
+        return Optional.ofNullable(this.settings);
     }
 
     private QueueState() {}
 
     private QueueState(QueueState $) {
         this.accountId = $.accountId;
-        this.name = $.name;
+        this.consumers = $.consumers;
+        this.consumersTotalCount = $.consumersTotalCount;
+        this.createdOn = $.createdOn;
+        this.modifiedOn = $.modifiedOn;
+        this.producers = $.producers;
+        this.producersTotalCount = $.producersTotalCount;
+        this.queueId = $.queueId;
+        this.queueName = $.queueName;
+        this.settings = $.settings;
     }
 
     public static Builder builder() {
@@ -71,7 +132,7 @@ public final class QueueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId A Resource identifier.
          * 
          * @return builder
          * 
@@ -82,7 +143,7 @@ public final class QueueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId A Resource identifier.
          * 
          * @return builder
          * 
@@ -91,25 +152,93 @@ public final class QueueState extends com.pulumi.resources.ResourceArgs {
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param name The name of the queue.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(@Nullable Output<String> name) {
-            $.name = name;
+        public Builder consumers(@Nullable Output<List<QueueConsumerArgs>> consumers) {
+            $.consumers = consumers;
             return this;
         }
 
-        /**
-         * @param name The name of the queue.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(String name) {
-            return name(Output.of(name));
+        public Builder consumers(List<QueueConsumerArgs> consumers) {
+            return consumers(Output.of(consumers));
+        }
+
+        public Builder consumers(QueueConsumerArgs... consumers) {
+            return consumers(List.of(consumers));
+        }
+
+        public Builder consumersTotalCount(@Nullable Output<Double> consumersTotalCount) {
+            $.consumersTotalCount = consumersTotalCount;
+            return this;
+        }
+
+        public Builder consumersTotalCount(Double consumersTotalCount) {
+            return consumersTotalCount(Output.of(consumersTotalCount));
+        }
+
+        public Builder createdOn(@Nullable Output<String> createdOn) {
+            $.createdOn = createdOn;
+            return this;
+        }
+
+        public Builder createdOn(String createdOn) {
+            return createdOn(Output.of(createdOn));
+        }
+
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
+        }
+
+        public Builder producers(@Nullable Output<List<QueueProducerArgs>> producers) {
+            $.producers = producers;
+            return this;
+        }
+
+        public Builder producers(List<QueueProducerArgs> producers) {
+            return producers(Output.of(producers));
+        }
+
+        public Builder producers(QueueProducerArgs... producers) {
+            return producers(List.of(producers));
+        }
+
+        public Builder producersTotalCount(@Nullable Output<Double> producersTotalCount) {
+            $.producersTotalCount = producersTotalCount;
+            return this;
+        }
+
+        public Builder producersTotalCount(Double producersTotalCount) {
+            return producersTotalCount(Output.of(producersTotalCount));
+        }
+
+        public Builder queueId(@Nullable Output<String> queueId) {
+            $.queueId = queueId;
+            return this;
+        }
+
+        public Builder queueId(String queueId) {
+            return queueId(Output.of(queueId));
+        }
+
+        public Builder queueName(@Nullable Output<String> queueName) {
+            $.queueName = queueName;
+            return this;
+        }
+
+        public Builder queueName(String queueName) {
+            return queueName(Output.of(queueName));
+        }
+
+        public Builder settings(@Nullable Output<QueueSettingsArgs> settings) {
+            $.settings = settings;
+            return this;
+        }
+
+        public Builder settings(QueueSettingsArgs settings) {
+            return settings(Output.of(settings));
         }
 
         public QueueState build() {

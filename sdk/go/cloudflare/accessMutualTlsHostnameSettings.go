@@ -7,65 +7,27 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"errors"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Access Mutual TLS Certificate Settings resource.
-//
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccessMutualTlsHostnameSettings(ctx, "example", &cloudflare.AccessMutualTlsHostnameSettingsArgs{
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Settings: cloudflare.AccessMutualTlsHostnameSettingsSettingArray{
-//					&cloudflare.AccessMutualTlsHostnameSettingsSettingArgs{
-//						Hostname:                    pulumi.String("example.com"),
-//						ClientCertificateForwarding: pulumi.Bool(true),
-//						ChinaNetwork:                pulumi.Bool(false),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Account level mTLS hostname settings import.
-//
-// ```sh
-// $ pulumi import cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings example account/<account_id>
-// ```
-//
-// Zone level mTLS hostname settings import.
-//
-// ```sh
-// $ pulumi import cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings example zone/<zone_id>
-// ```
+// Deprecated: cloudflare.index/accessmutualtlshostnamesettings.AccessMutualTlsHostnameSettings has been deprecated in favor of cloudflare.index/zerotrustaccessmtlshostnamesettings.ZeroTrustAccessMtlsHostnameSettings
 type AccessMutualTlsHostnameSettings struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
-	AccountId pulumi.StringPtrOutput                            `pulumi:"accountId"`
-	Settings  AccessMutualTlsHostnameSettingsSettingArrayOutput `pulumi:"settings"`
-	// The zone identifier to target for the resource.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+	ChinaNetwork pulumi.BoolOutput `pulumi:"chinaNetwork"`
+	// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+	ClientCertificateForwarding pulumi.BoolOutput `pulumi:"clientCertificateForwarding"`
+	// The hostname that these settings apply to.
+	Hostname pulumi.StringOutput                               `pulumi:"hostname"`
+	Settings AccessMutualTlsHostnameSettingsSettingArrayOutput `pulumi:"settings"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
@@ -73,9 +35,18 @@ type AccessMutualTlsHostnameSettings struct {
 func NewAccessMutualTlsHostnameSettings(ctx *pulumi.Context,
 	name string, args *AccessMutualTlsHostnameSettingsArgs, opts ...pulumi.ResourceOption) (*AccessMutualTlsHostnameSettings, error) {
 	if args == nil {
-		args = &AccessMutualTlsHostnameSettingsArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Settings == nil {
+		return nil, errors.New("invalid value for required argument 'Settings'")
+	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessMutualTlsHostnameSettings
 	err := ctx.RegisterResource("cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings", name, args, &resource, opts...)
@@ -99,18 +70,30 @@ func GetAccessMutualTlsHostnameSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessMutualTlsHostnameSettings resources.
 type accessMutualTlsHostnameSettingsState struct {
-	// The account identifier to target for the resource.
-	AccountId *string                                  `pulumi:"accountId"`
-	Settings  []AccessMutualTlsHostnameSettingsSetting `pulumi:"settings"`
-	// The zone identifier to target for the resource.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId *string `pulumi:"accountId"`
+	// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+	ChinaNetwork *bool `pulumi:"chinaNetwork"`
+	// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+	ClientCertificateForwarding *bool `pulumi:"clientCertificateForwarding"`
+	// The hostname that these settings apply to.
+	Hostname *string                                  `pulumi:"hostname"`
+	Settings []AccessMutualTlsHostnameSettingsSetting `pulumi:"settings"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessMutualTlsHostnameSettingsState struct {
-	// The account identifier to target for the resource.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	Settings  AccessMutualTlsHostnameSettingsSettingArrayInput
-	// The zone identifier to target for the resource.
+	// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+	ChinaNetwork pulumi.BoolPtrInput
+	// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+	ClientCertificateForwarding pulumi.BoolPtrInput
+	// The hostname that these settings apply to.
+	Hostname pulumi.StringPtrInput
+	Settings AccessMutualTlsHostnameSettingsSettingArrayInput
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -119,19 +102,19 @@ func (AccessMutualTlsHostnameSettingsState) ElementType() reflect.Type {
 }
 
 type accessMutualTlsHostnameSettingsArgs struct {
-	// The account identifier to target for the resource.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string                                  `pulumi:"accountId"`
 	Settings  []AccessMutualTlsHostnameSettingsSetting `pulumi:"settings"`
-	// The zone identifier to target for the resource.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessMutualTlsHostnameSettings resource.
 type AccessMutualTlsHostnameSettingsArgs struct {
-	// The account identifier to target for the resource.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
 	Settings  AccessMutualTlsHostnameSettingsSettingArrayInput
-	// The zone identifier to target for the resource.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -222,9 +205,24 @@ func (o AccessMutualTlsHostnameSettingsOutput) ToAccessMutualTlsHostnameSettings
 	return o
 }
 
-// The account identifier to target for the resource.
+// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 func (o AccessMutualTlsHostnameSettingsOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessMutualTlsHostnameSettings) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+func (o AccessMutualTlsHostnameSettingsOutput) ChinaNetwork() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AccessMutualTlsHostnameSettings) pulumi.BoolOutput { return v.ChinaNetwork }).(pulumi.BoolOutput)
+}
+
+// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+func (o AccessMutualTlsHostnameSettingsOutput) ClientCertificateForwarding() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AccessMutualTlsHostnameSettings) pulumi.BoolOutput { return v.ClientCertificateForwarding }).(pulumi.BoolOutput)
+}
+
+// The hostname that these settings apply to.
+func (o AccessMutualTlsHostnameSettingsOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessMutualTlsHostnameSettings) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
 func (o AccessMutualTlsHostnameSettingsOutput) Settings() AccessMutualTlsHostnameSettingsSettingArrayOutput {
@@ -233,7 +231,7 @@ func (o AccessMutualTlsHostnameSettingsOutput) Settings() AccessMutualTlsHostnam
 	}).(AccessMutualTlsHostnameSettingsSettingArrayOutput)
 }
 
-// The zone identifier to target for the resource.
+// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 func (o AccessMutualTlsHostnameSettingsOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessMutualTlsHostnameSettings) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

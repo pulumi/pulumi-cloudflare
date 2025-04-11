@@ -7,10 +7,10 @@ import com.pulumi.cloudflare.AccessPolicyArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccessPolicyState;
 import com.pulumi.cloudflare.outputs.AccessPolicyApprovalGroup;
-import com.pulumi.cloudflare.outputs.AccessPolicyConnectionRules;
 import com.pulumi.cloudflare.outputs.AccessPolicyExclude;
 import com.pulumi.cloudflare.outputs.AccessPolicyInclude;
 import com.pulumi.cloudflare.outputs.AccessPolicyRequire;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -23,234 +23,230 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Access Policy resource. Access Policies are
- * used in conjunction with Access Applications to restrict access to
- * a particular resource.
- * 
- * &gt; It&#39;s required that an `account_id` or `zone_id` is provided and in most cases using either is fine.
- *    However, if you&#39;re using a scoped access token, you must provide the argument that matches the token&#39;s
- *    scope. For example, an access token that is scoped to the &#34;example.com&#34; zone needs to use the `zone_id` argument.
- *    If &#39;application_id&#39; is omitted, the policy created can be reused by multiple access applications.
- *    Any cloudflare.AccessApplication resource can reference reusable policies through its `policies` argument.
+ * &gt; If &#39;application_id&#39; is omitted, the policy created can be reused by multiple access applications.
+ *    Any `cloudflare.ZeroTrustAccessApplication` resource can reference reusable policies through its `policies` argument.
  *    To destroy a reusable policy and remove it from all applications&#39; policies lists on the same apply, preemptively set the
- *    lifecycle option `create_before_destroy` to true on the &#39;cloudflare_access_policy&#39; resource.
+ *    lifecycle option `create_before_destroy` to true on the &#39;cloudflare_zero_trust_access_policy&#39; resource.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/&lt;account_id&gt;/&lt;application_id&gt;/&lt;policy_id&gt;
+ * $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example &#39;&lt;account_id&gt;/&lt;policy_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare.index/accesspolicy.AccessPolicy has been deprecated in favor of cloudflare.index/zerotrustaccesspolicy.ZeroTrustAccessPolicy
+ * 
  */
+@Deprecated /* cloudflare.index/accesspolicy.AccessPolicy has been deprecated in favor of cloudflare.index/zerotrustaccesspolicy.ZeroTrustAccessPolicy */
 @ResourceType(type="cloudflare:index/accessPolicy:AccessPolicy")
 public class AccessPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return Identifier
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
-     * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+     * Number of access applications currently using this policy.
      * 
      */
-    @Export(name="applicationId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> applicationId;
+    @Export(name="appCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> appCount;
 
     /**
-     * @return The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+     * @return Number of access applications currently using this policy.
      * 
      */
-    public Output<Optional<String>> applicationId() {
-        return Codegen.optional(this.applicationId);
+    public Output<Integer> appCount() {
+        return this.appCount;
     }
+    /**
+     * Administrators who can approve a temporary authentication request.
+     * 
+     */
     @Export(name="approvalGroups", refs={List.class,AccessPolicyApprovalGroup.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<AccessPolicyApprovalGroup>> approvalGroups;
+    private Output<List<AccessPolicyApprovalGroup>> approvalGroups;
 
-    public Output<Optional<List<AccessPolicyApprovalGroup>>> approvalGroups() {
-        return Codegen.optional(this.approvalGroups);
+    /**
+     * @return Administrators who can approve a temporary authentication request.
+     * 
+     */
+    public Output<List<AccessPolicyApprovalGroup>> approvalGroups() {
+        return this.approvalGroups;
     }
+    /**
+     * Requires the user to request access from an administrator at the start of each session.
+     * 
+     */
     @Export(name="approvalRequired", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> approvalRequired;
-
-    public Output<Optional<Boolean>> approvalRequired() {
-        return Codegen.optional(this.approvalRequired);
-    }
-    /**
-     * The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-     * 
-     */
-    @Export(name="connectionRules", refs={AccessPolicyConnectionRules.class}, tree="[0]")
-    private Output</* @Nullable */ AccessPolicyConnectionRules> connectionRules;
+    private Output<Boolean> approvalRequired;
 
     /**
-     * @return The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
+     * @return Requires the user to request access from an administrator at the start of each session.
      * 
      */
-    public Output<Optional<AccessPolicyConnectionRules>> connectionRules() {
-        return Codegen.optional(this.connectionRules);
+    public Output<Boolean> approvalRequired() {
+        return this.approvalRequired;
+    }
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
     }
     /**
-     * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+     * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
      * 
      */
     @Export(name="decision", refs={String.class}, tree="[0]")
     private Output<String> decision;
 
     /**
-     * @return Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+     * @return The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
      * 
      */
     public Output<String> decision() {
         return this.decision;
     }
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      * 
      */
     @Export(name="excludes", refs={List.class,AccessPolicyExclude.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<AccessPolicyExclude>> excludes;
+    private Output<List<AccessPolicyExclude>> excludes;
 
     /**
-     * @return A series of access conditions, see Access Groups.
+     * @return Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      * 
      */
-    public Output<Optional<List<AccessPolicyExclude>>> excludes() {
-        return Codegen.optional(this.excludes);
+    public Output<List<AccessPolicyExclude>> excludes() {
+        return this.excludes;
     }
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      * 
      */
     @Export(name="includes", refs={List.class,AccessPolicyInclude.class}, tree="[0,1]")
     private Output<List<AccessPolicyInclude>> includes;
 
     /**
-     * @return A series of access conditions, see Access Groups.
+     * @return Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      * 
      */
     public Output<List<AccessPolicyInclude>> includes() {
         return this.includes;
     }
     /**
-     * Require this application to be served in an isolated browser for users matching this policy.
+     * Require this application to be served in an isolated browser for users matching this policy. &#39;Client Web Isolation&#39; must be on for the account in order to use this feature.
      * 
      */
     @Export(name="isolationRequired", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> isolationRequired;
+    private Output<Boolean> isolationRequired;
 
     /**
-     * @return Require this application to be served in an isolated browser for users matching this policy.
+     * @return Require this application to be served in an isolated browser for users matching this policy. &#39;Client Web Isolation&#39; must be on for the account in order to use this feature.
      * 
      */
-    public Output<Optional<Boolean>> isolationRequired() {
-        return Codegen.optional(this.isolationRequired);
+    public Output<Boolean> isolationRequired() {
+        return this.isolationRequired;
     }
     /**
-     * Friendly name of the Access Policy.
+     * The name of the Access policy.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Friendly name of the Access Policy.
+     * @return The name of the Access policy.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The unique precedence for policies on a single application. Required when using `application_id`.
-     * 
-     */
-    @Export(name="precedence", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> precedence;
-
-    /**
-     * @return The unique precedence for policies on a single application. Required when using `application_id`.
-     * 
-     */
-    public Output<Optional<Integer>> precedence() {
-        return Codegen.optional(this.precedence);
-    }
-    /**
-     * The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+     * A custom message that will appear on the purpose justification screen.
      * 
      */
     @Export(name="purposeJustificationPrompt", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> purposeJustificationPrompt;
 
     /**
-     * @return The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+     * @return A custom message that will appear on the purpose justification screen.
      * 
      */
     public Output<Optional<String>> purposeJustificationPrompt() {
         return Codegen.optional(this.purposeJustificationPrompt);
     }
     /**
-     * Whether to prompt the user for a justification for accessing the resource.
+     * Require users to enter a justification when they log in to the application.
      * 
      */
     @Export(name="purposeJustificationRequired", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> purposeJustificationRequired;
+    private Output<Boolean> purposeJustificationRequired;
 
     /**
-     * @return Whether to prompt the user for a justification for accessing the resource.
+     * @return Require users to enter a justification when they log in to the application.
      * 
      */
-    public Output<Optional<Boolean>> purposeJustificationRequired() {
-        return Codegen.optional(this.purposeJustificationRequired);
+    public Output<Boolean> purposeJustificationRequired() {
+        return this.purposeJustificationRequired;
     }
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      * 
      */
     @Export(name="requires", refs={List.class,AccessPolicyRequire.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<AccessPolicyRequire>> requires;
+    private Output<List<AccessPolicyRequire>> requires;
 
     /**
-     * @return A series of access conditions, see Access Groups.
+     * @return Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      * 
      */
-    public Output<Optional<List<AccessPolicyRequire>>> requires() {
-        return Codegen.optional(this.requires);
+    public Output<List<AccessPolicyRequire>> requires() {
+        return this.requires;
+    }
+    @Export(name="reusable", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> reusable;
+
+    public Output<Boolean> reusable() {
+        return this.reusable;
     }
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
     @Export(name="sessionDuration", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> sessionDuration;
+    private Output<String> sessionDuration;
 
     /**
-     * @return How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * @return The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
-    public Output<Optional<String>> sessionDuration() {
-        return Codegen.optional(this.sessionDuration);
+    public Output<String> sessionDuration() {
+        return this.sessionDuration;
     }
-    /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
-     * 
-     */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zoneId;
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
 
-    /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
-     * 
-     */
-    public Output<Optional<String>> zoneId() {
-        return Codegen.optional(this.zoneId);
+    public Output<String> updatedAt() {
+        return this.updatedAt;
     }
 
     /**
@@ -292,6 +288,9 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/accessPolicy:AccessPolicy").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

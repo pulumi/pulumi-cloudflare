@@ -18,107 +18,59 @@ public final class ListItemRedirectArgs extends com.pulumi.resources.ResourceArg
 
     public static final ListItemRedirectArgs Empty = new ListItemRedirectArgs();
 
-    /**
-     * Whether the redirect also matches subdomains of the source url.
-     * 
-     */
     @Import(name="includeSubdomains")
     private @Nullable Output<Boolean> includeSubdomains;
 
-    /**
-     * @return Whether the redirect also matches subdomains of the source url.
-     * 
-     */
     public Optional<Output<Boolean>> includeSubdomains() {
         return Optional.ofNullable(this.includeSubdomains);
     }
 
-    /**
-     * Whether the redirect target url should keep the query string of the request&#39;s url.
-     * 
-     */
     @Import(name="preservePathSuffix")
     private @Nullable Output<Boolean> preservePathSuffix;
 
-    /**
-     * @return Whether the redirect target url should keep the query string of the request&#39;s url.
-     * 
-     */
     public Optional<Output<Boolean>> preservePathSuffix() {
         return Optional.ofNullable(this.preservePathSuffix);
     }
 
-    /**
-     * Whether the redirect target url should keep the query string of the request&#39;s url.
-     * 
-     */
     @Import(name="preserveQueryString")
     private @Nullable Output<Boolean> preserveQueryString;
 
-    /**
-     * @return Whether the redirect target url should keep the query string of the request&#39;s url.
-     * 
-     */
     public Optional<Output<Boolean>> preserveQueryString() {
         return Optional.ofNullable(this.preserveQueryString);
     }
 
-    /**
-     * The source url of the redirect.
-     * 
-     */
     @Import(name="sourceUrl", required=true)
     private Output<String> sourceUrl;
 
-    /**
-     * @return The source url of the redirect.
-     * 
-     */
     public Output<String> sourceUrl() {
         return this.sourceUrl;
     }
 
     /**
-     * The status code to be used when redirecting a request.
+     * Available values: 301, 302, 307, 308.
      * 
      */
     @Import(name="statusCode")
     private @Nullable Output<Integer> statusCode;
 
     /**
-     * @return The status code to be used when redirecting a request.
+     * @return Available values: 301, 302, 307, 308.
      * 
      */
     public Optional<Output<Integer>> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
 
-    /**
-     * Whether the redirect also matches subpaths of the source url.
-     * 
-     */
     @Import(name="subpathMatching")
     private @Nullable Output<Boolean> subpathMatching;
 
-    /**
-     * @return Whether the redirect also matches subpaths of the source url.
-     * 
-     */
     public Optional<Output<Boolean>> subpathMatching() {
         return Optional.ofNullable(this.subpathMatching);
     }
 
-    /**
-     * The target url of the redirect.
-     * 
-     */
     @Import(name="targetUrl", required=true)
     private Output<String> targetUrl;
 
-    /**
-     * @return The target url of the redirect.
-     * 
-     */
     public Output<String> targetUrl() {
         return this.targetUrl;
     }
@@ -153,92 +105,44 @@ public final class ListItemRedirectArgs extends com.pulumi.resources.ResourceArg
             $ = new ListItemRedirectArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param includeSubdomains Whether the redirect also matches subdomains of the source url.
-         * 
-         * @return builder
-         * 
-         */
         public Builder includeSubdomains(@Nullable Output<Boolean> includeSubdomains) {
             $.includeSubdomains = includeSubdomains;
             return this;
         }
 
-        /**
-         * @param includeSubdomains Whether the redirect also matches subdomains of the source url.
-         * 
-         * @return builder
-         * 
-         */
         public Builder includeSubdomains(Boolean includeSubdomains) {
             return includeSubdomains(Output.of(includeSubdomains));
         }
 
-        /**
-         * @param preservePathSuffix Whether the redirect target url should keep the query string of the request&#39;s url.
-         * 
-         * @return builder
-         * 
-         */
         public Builder preservePathSuffix(@Nullable Output<Boolean> preservePathSuffix) {
             $.preservePathSuffix = preservePathSuffix;
             return this;
         }
 
-        /**
-         * @param preservePathSuffix Whether the redirect target url should keep the query string of the request&#39;s url.
-         * 
-         * @return builder
-         * 
-         */
         public Builder preservePathSuffix(Boolean preservePathSuffix) {
             return preservePathSuffix(Output.of(preservePathSuffix));
         }
 
-        /**
-         * @param preserveQueryString Whether the redirect target url should keep the query string of the request&#39;s url.
-         * 
-         * @return builder
-         * 
-         */
         public Builder preserveQueryString(@Nullable Output<Boolean> preserveQueryString) {
             $.preserveQueryString = preserveQueryString;
             return this;
         }
 
-        /**
-         * @param preserveQueryString Whether the redirect target url should keep the query string of the request&#39;s url.
-         * 
-         * @return builder
-         * 
-         */
         public Builder preserveQueryString(Boolean preserveQueryString) {
             return preserveQueryString(Output.of(preserveQueryString));
         }
 
-        /**
-         * @param sourceUrl The source url of the redirect.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourceUrl(Output<String> sourceUrl) {
             $.sourceUrl = sourceUrl;
             return this;
         }
 
-        /**
-         * @param sourceUrl The source url of the redirect.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourceUrl(String sourceUrl) {
             return sourceUrl(Output.of(sourceUrl));
         }
 
         /**
-         * @param statusCode The status code to be used when redirecting a request.
+         * @param statusCode Available values: 301, 302, 307, 308.
          * 
          * @return builder
          * 
@@ -249,7 +153,7 @@ public final class ListItemRedirectArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param statusCode The status code to be used when redirecting a request.
+         * @param statusCode Available values: 301, 302, 307, 308.
          * 
          * @return builder
          * 
@@ -258,44 +162,20 @@ public final class ListItemRedirectArgs extends com.pulumi.resources.ResourceArg
             return statusCode(Output.of(statusCode));
         }
 
-        /**
-         * @param subpathMatching Whether the redirect also matches subpaths of the source url.
-         * 
-         * @return builder
-         * 
-         */
         public Builder subpathMatching(@Nullable Output<Boolean> subpathMatching) {
             $.subpathMatching = subpathMatching;
             return this;
         }
 
-        /**
-         * @param subpathMatching Whether the redirect also matches subpaths of the source url.
-         * 
-         * @return builder
-         * 
-         */
         public Builder subpathMatching(Boolean subpathMatching) {
             return subpathMatching(Output.of(subpathMatching));
         }
 
-        /**
-         * @param targetUrl The target url of the redirect.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetUrl(Output<String> targetUrl) {
             $.targetUrl = targetUrl;
             return this;
         }
 
-        /**
-         * @param targetUrl The target url of the redirect.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetUrl(String targetUrl) {
             return targetUrl(Output.of(targetUrl));
         }

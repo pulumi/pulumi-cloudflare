@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Device Dex Test resource. Device Dex Tests allow for building location-aware device settings policies.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,24 +19,32 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDexTest(ctx, "example", &cloudflare.ZeroTrustDexTestArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:        pulumi.String("GET homepage"),
-//				Description: pulumi.String("Send a HTTP GET request to the home endpoint every half hour."),
-//				Interval:    pulumi.String("0h30m0s"),
-//				Enabled:     pulumi.Bool(true),
+//			_, err := cloudflare.NewZeroTrustDexTest(ctx, "example_zero_trust_dex_test", &cloudflare.ZeroTrustDexTestArgs{
+//				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Data: &cloudflare.ZeroTrustDexTestDataArgs{
-//					Host:   pulumi.String("https://example.com/home"),
+//					Host:   pulumi.String("https://dash.cloudflare.com"),
 //					Kind:   pulumi.String("http"),
 //					Method: pulumi.String("GET"),
 //				},
+//				Enabled:     pulumi.Bool(true),
+//				Interval:    pulumi.String("30m"),
+//				Name:        pulumi.String("HTTP dash health check"),
+//				Description: pulumi.String("Checks the dash endpoint every 30 minutes"),
+//				TargetPolicies: cloudflare.ZeroTrustDexTestTargetPolicyArray{
+//					&cloudflare.ZeroTrustDexTestTargetPolicyArgs{
+//						Id:      pulumi.String("id"),
+//						Default: pulumi.Bool(true),
+//						Name:    pulumi.String("name"),
+//					},
+//				},
+//				Targeted: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -52,27 +58,27 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest example <account_id>/<device_dex_test_id>
+// $ pulumi import cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest example '<account_id>/<dex_test_id>'
 // ```
 type ZeroTrustDexTest struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Timestamp of when the Dex Test was created.
-	Created pulumi.StringOutput `pulumi:"created"`
 	// The configuration object which contains the details for the WARP client to conduct the test.
 	Data ZeroTrustDexTestDataOutput `pulumi:"data"`
 	// Additional details about the test.
-	Description pulumi.StringOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Determines whether or not the test is active.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// How often the test will run.
 	Interval pulumi.StringOutput `pulumi:"interval"`
-	// The name of the Device Dex Test. Must be unique.
+	// The name of the DEX test. Must be unique.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Timestamp of when the Dex Test was last updated.
-	Updated pulumi.StringOutput `pulumi:"updated"`
+	// Device settings profiles targeted by this test
+	TargetPolicies ZeroTrustDexTestTargetPolicyArrayOutput `pulumi:"targetPolicies"`
+	Targeted       pulumi.BoolPtrOutput                    `pulumi:"targeted"`
+	// The unique identifier for the test.
+	TestId pulumi.StringOutput `pulumi:"testId"`
 }
 
 // NewZeroTrustDexTest registers a new resource with the given unique name, arguments, and options.
@@ -88,9 +94,6 @@ func NewZeroTrustDexTest(ctx *pulumi.Context,
 	if args.Data == nil {
 		return nil, errors.New("invalid value for required argument 'Data'")
 	}
-	if args.Description == nil {
-		return nil, errors.New("invalid value for required argument 'Description'")
-	}
 	if args.Enabled == nil {
 		return nil, errors.New("invalid value for required argument 'Enabled'")
 	}
@@ -100,6 +103,12 @@ func NewZeroTrustDexTest(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/deviceDexTest:DeviceDexTest"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustDexTest
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest", name, args, &resource, opts...)
@@ -123,10 +132,7 @@ func GetZeroTrustDexTest(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustDexTest resources.
 type zeroTrustDexTestState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
-	// Timestamp of when the Dex Test was created.
-	Created *string `pulumi:"created"`
 	// The configuration object which contains the details for the WARP client to conduct the test.
 	Data *ZeroTrustDexTestData `pulumi:"data"`
 	// Additional details about the test.
@@ -135,17 +141,17 @@ type zeroTrustDexTestState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// How often the test will run.
 	Interval *string `pulumi:"interval"`
-	// The name of the Device Dex Test. Must be unique.
+	// The name of the DEX test. Must be unique.
 	Name *string `pulumi:"name"`
-	// Timestamp of when the Dex Test was last updated.
-	Updated *string `pulumi:"updated"`
+	// Device settings profiles targeted by this test
+	TargetPolicies []ZeroTrustDexTestTargetPolicy `pulumi:"targetPolicies"`
+	Targeted       *bool                          `pulumi:"targeted"`
+	// The unique identifier for the test.
+	TestId *string `pulumi:"testId"`
 }
 
 type ZeroTrustDexTestState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
-	// Timestamp of when the Dex Test was created.
-	Created pulumi.StringPtrInput
 	// The configuration object which contains the details for the WARP client to conduct the test.
 	Data ZeroTrustDexTestDataPtrInput
 	// Additional details about the test.
@@ -154,10 +160,13 @@ type ZeroTrustDexTestState struct {
 	Enabled pulumi.BoolPtrInput
 	// How often the test will run.
 	Interval pulumi.StringPtrInput
-	// The name of the Device Dex Test. Must be unique.
+	// The name of the DEX test. Must be unique.
 	Name pulumi.StringPtrInput
-	// Timestamp of when the Dex Test was last updated.
-	Updated pulumi.StringPtrInput
+	// Device settings profiles targeted by this test
+	TargetPolicies ZeroTrustDexTestTargetPolicyArrayInput
+	Targeted       pulumi.BoolPtrInput
+	// The unique identifier for the test.
+	TestId pulumi.StringPtrInput
 }
 
 func (ZeroTrustDexTestState) ElementType() reflect.Type {
@@ -165,34 +174,38 @@ func (ZeroTrustDexTestState) ElementType() reflect.Type {
 }
 
 type zeroTrustDexTestArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId string `pulumi:"accountId"`
 	// The configuration object which contains the details for the WARP client to conduct the test.
 	Data ZeroTrustDexTestData `pulumi:"data"`
 	// Additional details about the test.
-	Description string `pulumi:"description"`
+	Description *string `pulumi:"description"`
 	// Determines whether or not the test is active.
 	Enabled bool `pulumi:"enabled"`
 	// How often the test will run.
 	Interval string `pulumi:"interval"`
-	// The name of the Device Dex Test. Must be unique.
+	// The name of the DEX test. Must be unique.
 	Name string `pulumi:"name"`
+	// Device settings profiles targeted by this test
+	TargetPolicies []ZeroTrustDexTestTargetPolicy `pulumi:"targetPolicies"`
+	Targeted       *bool                          `pulumi:"targeted"`
 }
 
 // The set of arguments for constructing a ZeroTrustDexTest resource.
 type ZeroTrustDexTestArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringInput
 	// The configuration object which contains the details for the WARP client to conduct the test.
 	Data ZeroTrustDexTestDataInput
 	// Additional details about the test.
-	Description pulumi.StringInput
+	Description pulumi.StringPtrInput
 	// Determines whether or not the test is active.
 	Enabled pulumi.BoolInput
 	// How often the test will run.
 	Interval pulumi.StringInput
-	// The name of the Device Dex Test. Must be unique.
+	// The name of the DEX test. Must be unique.
 	Name pulumi.StringInput
+	// Device settings profiles targeted by this test
+	TargetPolicies ZeroTrustDexTestTargetPolicyArrayInput
+	Targeted       pulumi.BoolPtrInput
 }
 
 func (ZeroTrustDexTestArgs) ElementType() reflect.Type {
@@ -282,14 +295,8 @@ func (o ZeroTrustDexTestOutput) ToZeroTrustDexTestOutputWithContext(ctx context.
 	return o
 }
 
-// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o ZeroTrustDexTestOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDexTest) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// Timestamp of when the Dex Test was created.
-func (o ZeroTrustDexTestOutput) Created() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDexTest) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
 
 // The configuration object which contains the details for the WARP client to conduct the test.
@@ -298,8 +305,8 @@ func (o ZeroTrustDexTestOutput) Data() ZeroTrustDexTestDataOutput {
 }
 
 // Additional details about the test.
-func (o ZeroTrustDexTestOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDexTest) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+func (o ZeroTrustDexTestOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDexTest) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Determines whether or not the test is active.
@@ -312,14 +319,23 @@ func (o ZeroTrustDexTestOutput) Interval() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDexTest) pulumi.StringOutput { return v.Interval }).(pulumi.StringOutput)
 }
 
-// The name of the Device Dex Test. Must be unique.
+// The name of the DEX test. Must be unique.
 func (o ZeroTrustDexTestOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDexTest) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Timestamp of when the Dex Test was last updated.
-func (o ZeroTrustDexTestOutput) Updated() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDexTest) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+// Device settings profiles targeted by this test
+func (o ZeroTrustDexTestOutput) TargetPolicies() ZeroTrustDexTestTargetPolicyArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustDexTest) ZeroTrustDexTestTargetPolicyArrayOutput { return v.TargetPolicies }).(ZeroTrustDexTestTargetPolicyArrayOutput)
+}
+
+func (o ZeroTrustDexTestOutput) Targeted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDexTest) pulumi.BoolPtrOutput { return v.Targeted }).(pulumi.BoolPtrOutput)
+}
+
+// The unique identifier for the test.
+func (o ZeroTrustDexTestOutput) TestId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDexTest) pulumi.StringOutput { return v.TestId }).(pulumi.StringOutput)
 }
 
 type ZeroTrustDexTestArrayOutput struct{ *pulumi.OutputState }

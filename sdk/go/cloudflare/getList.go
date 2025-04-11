@@ -7,12 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to lookup a [List](https://developers.cloudflare.com/api/operations/lists-get-lists).
-//
 // ## Example Usage
 //
 // ```go
@@ -20,7 +18,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,8 +26,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupList(ctx, &cloudflare.LookupListArgs{
-//				AccountId: "f037e56e89293a057740de681ac9abbe",
-//				Name:      "list_name",
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ListId:    pulumi.StringRef("2c0fc9fa937b11eaa1b71c4d701ab86e"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,26 +49,35 @@ func LookupList(ctx *pulumi.Context, args *LookupListArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getList.
 type LookupListArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// The list name to target for the resource.
-	Name string `pulumi:"name"`
+	// The unique ID of the list.
+	ListId *string `pulumi:"listId"`
 }
 
 // A collection of values returned by getList.
 type LookupListResult struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// List description.
+	// The RFC 3339 timestamp of when the list was created.
+	CreatedOn string `pulumi:"createdOn"`
+	// An informative summary of the list.
 	Description string `pulumi:"description"`
-	// The provider-assigned unique ID for this managed resource.
+	// The unique ID of the list.
 	Id string `pulumi:"id"`
-	// List kind.
+	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+	// Available values: "ip", "redirect", "hostname", "asn".
 	Kind string `pulumi:"kind"`
-	// The list name to target for the resource.
+	// The unique ID of the list.
+	ListId *string `pulumi:"listId"`
+	// The RFC 3339 timestamp of when the list was last modified.
+	ModifiedOn string `pulumi:"modifiedOn"`
+	// An informative name for the list. Use this name in filter and rule expressions.
 	Name string `pulumi:"name"`
-	// Number of items in list.
-	Numitems int `pulumi:"numitems"`
+	// The number of items in the list.
+	NumItems float64 `pulumi:"numItems"`
+	// The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+	NumReferencingFilters float64 `pulumi:"numReferencingFilters"`
 }
 
 func LookupListOutput(ctx *pulumi.Context, args LookupListOutputArgs, opts ...pulumi.InvokeOption) LookupListResultOutput {
@@ -84,10 +91,10 @@ func LookupListOutput(ctx *pulumi.Context, args LookupListOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getList.
 type LookupListOutputArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// The list name to target for the resource.
-	Name pulumi.StringInput `pulumi:"name"`
+	// The unique ID of the list.
+	ListId pulumi.StringPtrInput `pulumi:"listId"`
 }
 
 func (LookupListOutputArgs) ElementType() reflect.Type {
@@ -109,34 +116,55 @@ func (o LookupListResultOutput) ToLookupListResultOutputWithContext(ctx context.
 	return o
 }
 
-// The account identifier to target for the resource.
+// Identifier
 func (o LookupListResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// List description.
+// The RFC 3339 timestamp of when the list was created.
+func (o LookupListResultOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupListResult) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// An informative summary of the list.
 func (o LookupListResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The unique ID of the list.
 func (o LookupListResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// List kind.
+// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+// Available values: "ip", "redirect", "hostname", "asn".
 func (o LookupListResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The list name to target for the resource.
+// The unique ID of the list.
+func (o LookupListResultOutput) ListId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupListResult) *string { return v.ListId }).(pulumi.StringPtrOutput)
+}
+
+// The RFC 3339 timestamp of when the list was last modified.
+func (o LookupListResultOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupListResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// An informative name for the list. Use this name in filter and rule expressions.
 func (o LookupListResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Number of items in list.
-func (o LookupListResultOutput) Numitems() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupListResult) int { return v.Numitems }).(pulumi.IntOutput)
+// The number of items in the list.
+func (o LookupListResultOutput) NumItems() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupListResult) float64 { return v.NumItems }).(pulumi.Float64Output)
+}
+
+// The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+func (o LookupListResultOutput) NumReferencingFilters() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupListResult) float64 { return v.NumReferencingFilters }).(pulumi.Float64Output)
 }
 
 func init() {

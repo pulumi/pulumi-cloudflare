@@ -24,8 +24,8 @@ class CustomHostnameFallbackOriginArgs:
                  zone_id: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a CustomHostnameFallbackOrigin resource.
-        :param pulumi.Input[builtins.str] origin: Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] origin: Your origin hostname that requests to your custom hostnames will be sent to.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         pulumi.set(__self__, "origin", origin)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -34,7 +34,7 @@ class CustomHostnameFallbackOriginArgs:
     @pulumi.getter
     def origin(self) -> pulumi.Input[builtins.str]:
         """
-        Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+        Your origin hostname that requests to your custom hostnames will be sent to.
         """
         return pulumi.get(self, "origin")
 
@@ -46,7 +46,7 @@ class CustomHostnameFallbackOriginArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -58,27 +58,64 @@ class CustomHostnameFallbackOriginArgs:
 @pulumi.input_type
 class _CustomHostnameFallbackOriginState:
     def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[builtins.str]] = None,
+                 errors: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  origin: Optional[pulumi.Input[builtins.str]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomHostnameFallbackOrigin resources.
-        :param pulumi.Input[builtins.str] origin: Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+        :param pulumi.Input[builtins.str] created_at: This is the time the fallback origin was created.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] errors: These are errors that were encountered while trying to activate a fallback origin.
+        :param pulumi.Input[builtins.str] origin: Your origin hostname that requests to your custom hostnames will be sent to.
         :param pulumi.Input[builtins.str] status: Status of the fallback origin's activation.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+               Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
+        :param pulumi.Input[builtins.str] updated_at: This is the time the fallback origin was updated.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
         if origin is not None:
             pulumi.set(__self__, "origin", origin)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        This is the time the fallback origin was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        These are errors that were encountered while trying to activate a fallback origin.
+        """
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "errors", value)
 
     @property
     @pulumi.getter
     def origin(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+        Your origin hostname that requests to your custom hostnames will be sent to.
         """
         return pulumi.get(self, "origin")
 
@@ -91,6 +128,7 @@ class _CustomHostnameFallbackOriginState:
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Status of the fallback origin's activation.
+        Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
         """
         return pulumi.get(self, "status")
 
@@ -99,10 +137,22 @@ class _CustomHostnameFallbackOriginState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        This is the time the fallback origin was updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -120,29 +170,27 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare custom hostname fallback origin resource.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.CustomHostnameFallbackOrigin("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+        example_custom_hostname_fallback_origin = cloudflare.CustomHostnameFallbackOrigin("example_custom_hostname_fallback_origin",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             origin="fallback.example.com")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example <zone_id>/<fallback_hostname>
+        $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] origin: Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] origin: Your origin hostname that requests to your custom hostnames will be sent to.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         ...
     @overload
@@ -151,23 +199,21 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
                  args: CustomHostnameFallbackOriginArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare custom hostname fallback origin resource.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.CustomHostnameFallbackOrigin("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+        example_custom_hostname_fallback_origin = cloudflare.CustomHostnameFallbackOrigin("example_custom_hostname_fallback_origin",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             origin="fallback.example.com")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example <zone_id>/<fallback_hostname>
+        $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -202,7 +248,10 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["errors"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["updated_at"] = None
         super(CustomHostnameFallbackOrigin, __self__).__init__(
             'cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin',
             resource_name,
@@ -213,8 +262,11 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: Optional[pulumi.Input[builtins.str]] = None,
+            errors: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             origin: Optional[pulumi.Input[builtins.str]] = None,
             status: Optional[pulumi.Input[builtins.str]] = None,
+            updated_at: Optional[pulumi.Input[builtins.str]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'CustomHostnameFallbackOrigin':
         """
         Get an existing CustomHostnameFallbackOrigin resource's state with the given name, id, and optional extra
@@ -223,24 +275,47 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] origin: Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+        :param pulumi.Input[builtins.str] created_at: This is the time the fallback origin was created.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] errors: These are errors that were encountered while trying to activate a fallback origin.
+        :param pulumi.Input[builtins.str] origin: Your origin hostname that requests to your custom hostnames will be sent to.
         :param pulumi.Input[builtins.str] status: Status of the fallback origin's activation.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+               Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
+        :param pulumi.Input[builtins.str] updated_at: This is the time the fallback origin was updated.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _CustomHostnameFallbackOriginState.__new__(_CustomHostnameFallbackOriginState)
 
+        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["errors"] = errors
         __props__.__dict__["origin"] = origin
         __props__.__dict__["status"] = status
+        __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["zone_id"] = zone_id
         return CustomHostnameFallbackOrigin(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[builtins.str]:
+        """
+        This is the time the fallback origin was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def errors(self) -> pulumi.Output[Sequence[builtins.str]]:
+        """
+        These are errors that were encountered while trying to activate a fallback origin.
+        """
+        return pulumi.get(self, "errors")
 
     @property
     @pulumi.getter
     def origin(self) -> pulumi.Output[builtins.str]:
         """
-        Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+        Your origin hostname that requests to your custom hostnames will be sent to.
         """
         return pulumi.get(self, "origin")
 
@@ -249,14 +324,23 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
     def status(self) -> pulumi.Output[builtins.str]:
         """
         Status of the fallback origin's activation.
+        Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[builtins.str]:
+        """
+        This is the time the fallback origin was updated.
+        """
+        return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

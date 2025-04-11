@@ -6,187 +6,157 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.NotificationPolicyArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.NotificationPolicyState;
-import com.pulumi.cloudflare.outputs.NotificationPolicyEmailIntegration;
 import com.pulumi.cloudflare.outputs.NotificationPolicyFilters;
-import com.pulumi.cloudflare.outputs.NotificationPolicyPagerdutyIntegration;
-import com.pulumi.cloudflare.outputs.NotificationPolicyWebhooksIntegration;
+import com.pulumi.cloudflare.outputs.NotificationPolicyMechanisms;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource, that manages a notification policy for
- * Cloudflare&#39;s products. The delivery mechanisms supported are email,
- * webhooks, and PagerDuty.
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example &lt;account_id&gt;/&lt;policy_id&gt;
+ * $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example &#39;&lt;account_id&gt;/&lt;policy_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/notificationPolicy:NotificationPolicy")
 public class NotificationPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * The account id
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account id
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `image_resizing_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.
+     * Optional specification of how often to re-alert from the same incident, not support on all alert types.
+     * 
+     */
+    @Export(name="alertInterval", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> alertInterval;
+
+    /**
+     * @return Optional specification of how often to re-alert from the same incident, not support on all alert types.
+     * 
+     */
+    public Output<Optional<String>> alertInterval() {
+        return Codegen.optional(this.alertInterval);
+    }
+    /**
+     * Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
+     * Available values: &#34;access*custom*certificate*expiration*type&#34;, &#34;advanced*ddos*attack*l4*alert&#34;, &#34;advanced*ddos*attack*l7*alert&#34;, &#34;advanced*http*alert*error&#34;, &#34;bgp*hijack*notification&#34;, &#34;billing*usage*alert&#34;, &#34;block*notification*block*removed&#34;, &#34;block*notification*new*block&#34;, &#34;block*notification*review*rejected&#34;, &#34;brand*protection*alert&#34;, &#34;brand*protection*digest&#34;, &#34;clickhouse*alert*fw*anomaly&#34;, &#34;clickhouse*alert*fw*ent*anomaly&#34;, &#34;cloudforce*one*request*notification&#34;, &#34;custom*analytics&#34;, &#34;custom*ssl*certificate*event*type&#34;, &#34;dedicated*ssl*certificate*event*type&#34;, &#34;device*connectivity*anomaly*alert&#34;, &#34;dos*attack*l4&#34;, &#34;dos*attack*l7&#34;, &#34;expiring*service*token*alert&#34;, &#34;failing*logpush*job*disabled*alert&#34;, &#34;fbm*auto*advertisement&#34;, &#34;fbm*dosd*attack&#34;, &#34;fbm*volumetric*attack&#34;, &#34;health*check*status*notification&#34;, &#34;hostname*aop*custom*certificate*expiration*type&#34;, &#34;http*alert*edge*error&#34;, &#34;http*alert*origin*error&#34;, &#34;image*notification&#34;, &#34;image*resizing*notification&#34;, &#34;incident*alert&#34;, &#34;load*balancing*health*alert&#34;, &#34;load*balancing*pool*enablement*alert&#34;, &#34;logo*match*alert&#34;, &#34;magic*tunnel*health*check*event&#34;, &#34;magic*wan*tunnel*health&#34;, &#34;maintenance*event*notification&#34;, &#34;mtls*certificate*store*certificate*expiration*type&#34;, &#34;pages*event*alert&#34;, &#34;radar*notification&#34;, &#34;real*origin*monitoring&#34;, &#34;scriptmonitor*alert*new*code*change*detections&#34;, &#34;scriptmonitor*alert*new*hosts&#34;, &#34;scriptmonitor*alert*new*malicious*hosts&#34;, &#34;scriptmonitor*alert*new*malicious*scripts&#34;, &#34;scriptmonitor*alert*new*malicious*url&#34;, &#34;scriptmonitor*alert*new*max*length*resource*url&#34;, &#34;scriptmonitor*alert*new*resources&#34;, &#34;secondary*dns*all*primaries*failing&#34;, &#34;secondary*dns*primaries*failing&#34;, &#34;secondary*dns*warning&#34;, &#34;secondary*dns*zone*successfully*updated&#34;, &#34;secondary*dns*zone*validation*warning&#34;, &#34;security*insights*alert&#34;, &#34;sentinel*alert&#34;, &#34;stream*live*notifications&#34;, &#34;synthetic*test*latency*alert&#34;, &#34;synthetic*test*low*availability*alert&#34;, &#34;traffic*anomalies*alert&#34;, &#34;tunnel*health*event&#34;, &#34;tunnel*update*event&#34;, &#34;universal*ssl*event*type&#34;, &#34;web*analytics*metrics*update&#34;, &#34;zone*aop*custom*certificate*expiration*type&#34;.
      * 
      */
     @Export(name="alertType", refs={String.class}, tree="[0]")
     private Output<String> alertType;
 
     /**
-     * @return The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `image_resizing_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.
+     * @return Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
+     * Available values: &#34;access*custom*certificate*expiration*type&#34;, &#34;advanced*ddos*attack*l4*alert&#34;, &#34;advanced*ddos*attack*l7*alert&#34;, &#34;advanced*http*alert*error&#34;, &#34;bgp*hijack*notification&#34;, &#34;billing*usage*alert&#34;, &#34;block*notification*block*removed&#34;, &#34;block*notification*new*block&#34;, &#34;block*notification*review*rejected&#34;, &#34;brand*protection*alert&#34;, &#34;brand*protection*digest&#34;, &#34;clickhouse*alert*fw*anomaly&#34;, &#34;clickhouse*alert*fw*ent*anomaly&#34;, &#34;cloudforce*one*request*notification&#34;, &#34;custom*analytics&#34;, &#34;custom*ssl*certificate*event*type&#34;, &#34;dedicated*ssl*certificate*event*type&#34;, &#34;device*connectivity*anomaly*alert&#34;, &#34;dos*attack*l4&#34;, &#34;dos*attack*l7&#34;, &#34;expiring*service*token*alert&#34;, &#34;failing*logpush*job*disabled*alert&#34;, &#34;fbm*auto*advertisement&#34;, &#34;fbm*dosd*attack&#34;, &#34;fbm*volumetric*attack&#34;, &#34;health*check*status*notification&#34;, &#34;hostname*aop*custom*certificate*expiration*type&#34;, &#34;http*alert*edge*error&#34;, &#34;http*alert*origin*error&#34;, &#34;image*notification&#34;, &#34;image*resizing*notification&#34;, &#34;incident*alert&#34;, &#34;load*balancing*health*alert&#34;, &#34;load*balancing*pool*enablement*alert&#34;, &#34;logo*match*alert&#34;, &#34;magic*tunnel*health*check*event&#34;, &#34;magic*wan*tunnel*health&#34;, &#34;maintenance*event*notification&#34;, &#34;mtls*certificate*store*certificate*expiration*type&#34;, &#34;pages*event*alert&#34;, &#34;radar*notification&#34;, &#34;real*origin*monitoring&#34;, &#34;scriptmonitor*alert*new*code*change*detections&#34;, &#34;scriptmonitor*alert*new*hosts&#34;, &#34;scriptmonitor*alert*new*malicious*hosts&#34;, &#34;scriptmonitor*alert*new*malicious*scripts&#34;, &#34;scriptmonitor*alert*new*malicious*url&#34;, &#34;scriptmonitor*alert*new*max*length*resource*url&#34;, &#34;scriptmonitor*alert*new*resources&#34;, &#34;secondary*dns*all*primaries*failing&#34;, &#34;secondary*dns*primaries*failing&#34;, &#34;secondary*dns*warning&#34;, &#34;secondary*dns*zone*successfully*updated&#34;, &#34;secondary*dns*zone*validation*warning&#34;, &#34;security*insights*alert&#34;, &#34;sentinel*alert&#34;, &#34;stream*live*notifications&#34;, &#34;synthetic*test*latency*alert&#34;, &#34;synthetic*test*low*availability*alert&#34;, &#34;traffic*anomalies*alert&#34;, &#34;tunnel*health*event&#34;, &#34;tunnel*update*event&#34;, &#34;universal*ssl*event*type&#34;, &#34;web*analytics*metrics*update&#34;, &#34;zone*aop*custom*certificate*expiration*type&#34;.
      * 
      */
     public Output<String> alertType() {
         return this.alertType;
     }
-    /**
-     * When the notification policy was created.
-     * 
-     */
     @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
-    /**
-     * @return When the notification policy was created.
-     * 
-     */
     public Output<String> created() {
         return this.created;
     }
     /**
-     * Description of the notification policy.
+     * Optional description for the Notification policy.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the notification policy.
+     * @return Optional description for the Notification policy.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The email ID to which the notification should be dispatched.
-     * 
-     */
-    @Export(name="emailIntegrations", refs={List.class,NotificationPolicyEmailIntegration.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<NotificationPolicyEmailIntegration>> emailIntegrations;
-
-    /**
-     * @return The email ID to which the notification should be dispatched.
-     * 
-     */
-    public Output<Optional<List<NotificationPolicyEmailIntegration>>> emailIntegrations() {
-        return Codegen.optional(this.emailIntegrations);
-    }
-    /**
-     * The status of the notification policy.
+     * Whether or not the Notification policy is enabled.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return The status of the notification policy.
+     * @return Whether or not the Notification policy is enabled.
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
+     * Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
      * 
      */
     @Export(name="filters", refs={NotificationPolicyFilters.class}, tree="[0]")
-    private Output</* @Nullable */ NotificationPolicyFilters> filters;
+    private Output<NotificationPolicyFilters> filters;
 
     /**
-     * @return An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
+     * @return Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
      * 
      */
-    public Output<Optional<NotificationPolicyFilters>> filters() {
-        return Codegen.optional(this.filters);
+    public Output<NotificationPolicyFilters> filters() {
+        return this.filters;
     }
     /**
-     * When the notification policy was last modified.
+     * List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
      * 
      */
+    @Export(name="mechanisms", refs={NotificationPolicyMechanisms.class}, tree="[0]")
+    private Output<NotificationPolicyMechanisms> mechanisms;
+
+    /**
+     * @return List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
+     * 
+     */
+    public Output<NotificationPolicyMechanisms> mechanisms() {
+        return this.mechanisms;
+    }
     @Export(name="modified", refs={String.class}, tree="[0]")
     private Output<String> modified;
 
-    /**
-     * @return When the notification policy was last modified.
-     * 
-     */
     public Output<String> modified() {
         return this.modified;
     }
     /**
-     * The name of the notification policy.
+     * Name of the policy.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the notification policy.
+     * @return Name of the policy.
      * 
      */
     public Output<String> name() {
         return this.name;
-    }
-    /**
-     * The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
-     * 
-     */
-    @Export(name="pagerdutyIntegrations", refs={List.class,NotificationPolicyPagerdutyIntegration.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<NotificationPolicyPagerdutyIntegration>> pagerdutyIntegrations;
-
-    /**
-     * @return The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
-     * 
-     */
-    public Output<Optional<List<NotificationPolicyPagerdutyIntegration>>> pagerdutyIntegrations() {
-        return Codegen.optional(this.pagerdutyIntegrations);
-    }
-    /**
-     * The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
-     * 
-     */
-    @Export(name="webhooksIntegrations", refs={List.class,NotificationPolicyWebhooksIntegration.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<NotificationPolicyWebhooksIntegration>> webhooksIntegrations;
-
-    /**
-     * @return The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
-     * 
-     */
-    public Output<Optional<List<NotificationPolicyWebhooksIntegration>>> webhooksIntegrations() {
-        return Codegen.optional(this.webhooksIntegrations);
     }
 
     /**

@@ -15,6 +15,7 @@ func TestAccRecordPy(t *testing.T) {
 	test := getPythonBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "record", "python"),
+			ExpectRefreshChanges: true,
 		})
 
 	integration.ProgramTest(t, &test)

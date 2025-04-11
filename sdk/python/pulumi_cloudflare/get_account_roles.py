@@ -28,22 +28,25 @@ class GetAccountRolesResult:
     """
     A collection of values returned by getAccountRoles.
     """
-    def __init__(__self__, account_id=None, id=None, roles=None):
+    def __init__(__self__, account_id=None, id=None, max_items=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if roles and not isinstance(roles, list):
-            raise TypeError("Expected argument 'roles' to be a list")
-        pulumi.set(__self__, "roles", roles)
+        if max_items and not isinstance(max_items, int):
+            raise TypeError("Expected argument 'max_items' to be a int")
+        pulumi.set(__self__, "max_items", max_items)
+        if results and not isinstance(results, list):
+            raise TypeError("Expected argument 'results' to be a list")
+        pulumi.set(__self__, "results", results)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        The account identifier to target for the resource.
+        Account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
@@ -56,12 +59,20 @@ class GetAccountRolesResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="maxItems")
+    def max_items(self) -> Optional[builtins.int]:
+        """
+        Max items to fetch, default: 1000
+        """
+        return pulumi.get(self, "max_items")
+
+    @property
     @pulumi.getter
-    def roles(self) -> Sequence['outputs.GetAccountRolesRoleResult']:
+    def results(self) -> Sequence['outputs.GetAccountRolesResultResult']:
         """
-        A list of roles object.
+        The items returned by the data source
         """
-        return pulumi.get(self, "roles")
+        return pulumi.get(self, "results")
 
 
 class AwaitableGetAccountRolesResult(GetAccountRolesResult):
@@ -72,67 +83,62 @@ class AwaitableGetAccountRolesResult(GetAccountRolesResult):
         return GetAccountRolesResult(
             account_id=self.account_id,
             id=self.id,
-            roles=self.roles)
+            max_items=self.max_items,
+            results=self.results)
 
 
 def get_account_roles(account_id: Optional[builtins.str] = None,
+                      max_items: Optional[builtins.int] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountRolesResult:
     """
-    Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    account_roles = cloudflare.get_account_roles(account_id="f037e56e89293a057740de681ac9abbe")
-    roles_by_name = {role.name: role for role in account_roles.roles}
-    member = cloudflare.AccountMember("member",
-        account_id="f037e56e89293a057740de681ac9abbe",
-        email_address="user@example.com",
-        role_ids=[%!v(PANIC=Format method: runtime error: index out of range [-1])])
+    example_account_roles = cloudflare.get_account_roles(account_id="eb78d65290b24279ba6f44721b3ea3c4")
     ```
 
 
-    :param builtins.str account_id: The account identifier to target for the resource.
+    :param builtins.str account_id: Account identifier tag.
+    :param builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['maxItems'] = max_items
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getAccountRoles:getAccountRoles', __args__, opts=opts, typ=GetAccountRolesResult).value
 
     return AwaitableGetAccountRolesResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         id=pulumi.get(__ret__, 'id'),
-        roles=pulumi.get(__ret__, 'roles'))
+        max_items=pulumi.get(__ret__, 'max_items'),
+        results=pulumi.get(__ret__, 'results'))
 def get_account_roles_output(account_id: Optional[pulumi.Input[builtins.str]] = None,
+                             max_items: Optional[pulumi.Input[Optional[builtins.int]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountRolesResult]:
     """
-    Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    account_roles = cloudflare.get_account_roles(account_id="f037e56e89293a057740de681ac9abbe")
-    roles_by_name = {role.name: role for role in account_roles.roles}
-    member = cloudflare.AccountMember("member",
-        account_id="f037e56e89293a057740de681ac9abbe",
-        email_address="user@example.com",
-        role_ids=[%!v(PANIC=Format method: runtime error: index out of range [-1])])
+    example_account_roles = cloudflare.get_account_roles(account_id="eb78d65290b24279ba6f44721b3ea3c4")
     ```
 
 
-    :param builtins.str account_id: The account identifier to target for the resource.
+    :param builtins.str account_id: Account identifier tag.
+    :param builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['maxItems'] = max_items
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAccountRoles:getAccountRoles', __args__, opts=opts, typ=GetAccountRolesResult)
     return __ret__.apply(lambda __response__: GetAccountRolesResult(
         account_id=pulumi.get(__response__, 'account_id'),
         id=pulumi.get(__response__, 'id'),
-        roles=pulumi.get(__response__, 'roles')))
+        max_items=pulumi.get(__response__, 'max_items'),
+        results=pulumi.get(__response__, 'results')))

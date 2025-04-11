@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersUriQuery
     {
         /// <summary>
-        /// Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        /// Expression to evaluate for the replacement value.
         /// </summary>
         public readonly string? Expression;
         /// <summary>
-        /// Static string value of the updated URI path or query string component.
+        /// Predefined replacement value.
         /// </summary>
         public readonly string? Value;
 

@@ -12,23 +12,26 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TunnelConfigConfigArgs : global::Pulumi.ResourceArgs
     {
-        [Input("ingressRules", required: true)]
-        private InputList<Inputs.TunnelConfigConfigIngressRuleArgs>? _ingressRules;
+        [Input("ingresses")]
+        private InputList<Inputs.TunnelConfigConfigIngressArgs>? _ingresses;
 
         /// <summary>
-        /// Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = "http_status:503"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+        /// List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
         /// </summary>
-        public InputList<Inputs.TunnelConfigConfigIngressRuleArgs> IngressRules
+        public InputList<Inputs.TunnelConfigConfigIngressArgs> Ingresses
         {
-            get => _ingressRules ?? (_ingressRules = new InputList<Inputs.TunnelConfigConfigIngressRuleArgs>());
-            set => _ingressRules = value;
+            get => _ingresses ?? (_ingresses = new InputList<Inputs.TunnelConfigConfigIngressArgs>());
+            set => _ingresses = value;
         }
 
+        /// <summary>
+        /// Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+        /// </summary>
         [Input("originRequest")]
         public Input<Inputs.TunnelConfigConfigOriginRequestArgs>? OriginRequest { get; set; }
 
         /// <summary>
-        /// If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+        /// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
         /// </summary>
         [Input("warpRouting")]
         public Input<Inputs.TunnelConfigConfigWarpRoutingArgs>? WarpRouting { get; set; }

@@ -20,39 +20,40 @@ __all__ = ['LeakedCredentialCheckArgs', 'LeakedCredentialCheck']
 @pulumi.input_type
 class LeakedCredentialCheckArgs:
     def __init__(__self__, *,
-                 enabled: pulumi.Input[builtins.bool],
-                 zone_id: pulumi.Input[builtins.str]):
+                 zone_id: pulumi.Input[builtins.str],
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a LeakedCredentialCheck resource.
-        :param pulumi.Input[builtins.bool] enabled: State of the Leaked Credential Check detection
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.bool] enabled: Whether or not Leaked Credential Checks are enabled
         """
-        pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> pulumi.Input[builtins.bool]:
-        """
-        State of the Leaked Credential Check detection
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: pulumi.Input[builtins.bool]):
-        pulumi.set(self, "enabled", value)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether or not Leaked Credential Checks are enabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type
@@ -62,8 +63,8 @@ class _LeakedCredentialCheckState:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering LeakedCredentialCheck resources.
-        :param pulumi.Input[builtins.bool] enabled: State of the Leaked Credential Check detection
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.bool] enabled: Whether or not Leaked Credential Checks are enabled
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -74,7 +75,7 @@ class _LeakedCredentialCheckState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        State of the Leaked Credential Check detection
+        Whether or not Leaked Credential Checks are enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -86,7 +87,7 @@ class _LeakedCredentialCheckState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -104,30 +105,21 @@ class LeakedCredentialCheck(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Leaked Credential Check resource to be used for managing the status of the Cloudflare Leaked Credential detection within a specific zone.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Enable the Leaked Credentials Check detection
-        example = cloudflare.LeakedCredentialCheck("example",
-            zone_id="399c6f4950c01a5a141b99ff7fbcbd8b",
+        example_leaked_credential_check = cloudflare.LeakedCredentialCheck("example_leaked_credential_check",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             enabled=True)
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck example <zone_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] enabled: State of the Leaked Credential Check detection
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.bool] enabled: Whether or not Leaked Credential Checks are enabled
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         ...
     @overload
@@ -136,24 +128,15 @@ class LeakedCredentialCheck(pulumi.CustomResource):
                  args: LeakedCredentialCheckArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Leaked Credential Check resource to be used for managing the status of the Cloudflare Leaked Credential detection within a specific zone.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Enable the Leaked Credentials Check detection
-        example = cloudflare.LeakedCredentialCheck("example",
-            zone_id="399c6f4950c01a5a141b99ff7fbcbd8b",
+        example_leaked_credential_check = cloudflare.LeakedCredentialCheck("example_leaked_credential_check",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             enabled=True)
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck example <zone_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -182,8 +165,6 @@ class LeakedCredentialCheck(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LeakedCredentialCheckArgs.__new__(LeakedCredentialCheckArgs)
 
-            if enabled is None and not opts.urn:
-                raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
@@ -207,8 +188,8 @@ class LeakedCredentialCheck(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] enabled: State of the Leaked Credential Check detection
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.bool] enabled: Whether or not Leaked Credential Checks are enabled
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -220,9 +201,9 @@ class LeakedCredentialCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> pulumi.Output[builtins.bool]:
+    def enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        State of the Leaked Credential Check detection
+        Whether or not Leaked Credential Checks are enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -230,7 +211,7 @@ class LeakedCredentialCheck(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

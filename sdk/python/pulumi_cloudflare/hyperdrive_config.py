@@ -25,29 +25,22 @@ class HyperdriveConfigArgs:
                  account_id: pulumi.Input[builtins.str],
                  name: pulumi.Input[builtins.str],
                  origin: pulumi.Input['HyperdriveConfigOriginArgs'],
-                 caching: Optional[pulumi.Input['HyperdriveConfigCachingArgs']] = None,
-                 resource_id: Optional[pulumi.Input[builtins.str]] = None):
+                 caching: Optional[pulumi.Input['HyperdriveConfigCachingArgs']] = None):
         """
         The set of arguments for constructing a HyperdriveConfig resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] name: The name of the Hyperdrive configuration.
-        :param pulumi.Input['HyperdriveConfigOriginArgs'] origin: The origin details for the Hyperdrive configuration.
-        :param pulumi.Input['HyperdriveConfigCachingArgs'] caching: The caching details for the Hyperdrive configuration.
-        :param pulumi.Input[builtins.str] resource_id: The identifier of this resource. This is the hyperdrive config value.
+        :param pulumi.Input[builtins.str] account_id: Identifier
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "origin", origin)
         if caching is not None:
             pulumi.set(__self__, "caching", caching)
-        if resource_id is not None:
-            pulumi.set(__self__, "resource_id", resource_id)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -58,9 +51,6 @@ class HyperdriveConfigArgs:
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[builtins.str]:
-        """
-        The name of the Hyperdrive configuration.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -70,9 +60,6 @@ class HyperdriveConfigArgs:
     @property
     @pulumi.getter
     def origin(self) -> pulumi.Input['HyperdriveConfigOriginArgs']:
-        """
-        The origin details for the Hyperdrive configuration.
-        """
         return pulumi.get(self, "origin")
 
     @origin.setter
@@ -82,26 +69,11 @@ class HyperdriveConfigArgs:
     @property
     @pulumi.getter
     def caching(self) -> Optional[pulumi.Input['HyperdriveConfigCachingArgs']]:
-        """
-        The caching details for the Hyperdrive configuration.
-        """
         return pulumi.get(self, "caching")
 
     @caching.setter
     def caching(self, value: Optional[pulumi.Input['HyperdriveConfigCachingArgs']]):
         pulumi.set(self, "caching", value)
-
-    @property
-    @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The identifier of this resource. This is the hyperdrive config value.
-        """
-        return pulumi.get(self, "resource_id")
-
-    @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "resource_id", value)
 
 
 @pulumi.input_type
@@ -109,33 +81,34 @@ class _HyperdriveConfigState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  caching: Optional[pulumi.Input['HyperdriveConfigCachingArgs']] = None,
+                 created_on: Optional[pulumi.Input[builtins.str]] = None,
+                 modified_on: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 origin: Optional[pulumi.Input['HyperdriveConfigOriginArgs']] = None,
-                 resource_id: Optional[pulumi.Input[builtins.str]] = None):
+                 origin: Optional[pulumi.Input['HyperdriveConfigOriginArgs']] = None):
         """
         Input properties used for looking up and filtering HyperdriveConfig resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input['HyperdriveConfigCachingArgs'] caching: The caching details for the Hyperdrive configuration.
-        :param pulumi.Input[builtins.str] name: The name of the Hyperdrive configuration.
-        :param pulumi.Input['HyperdriveConfigOriginArgs'] origin: The origin details for the Hyperdrive configuration.
-        :param pulumi.Input[builtins.str] resource_id: The identifier of this resource. This is the hyperdrive config value.
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] created_on: When the Hyperdrive configuration was created.
+        :param pulumi.Input[builtins.str] modified_on: When the Hyperdrive configuration was last modified.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if caching is not None:
             pulumi.set(__self__, "caching", caching)
+        if created_on is not None:
+            pulumi.set(__self__, "created_on", created_on)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if origin is not None:
             pulumi.set(__self__, "origin", origin)
-        if resource_id is not None:
-            pulumi.set(__self__, "resource_id", resource_id)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -146,9 +119,6 @@ class _HyperdriveConfigState:
     @property
     @pulumi.getter
     def caching(self) -> Optional[pulumi.Input['HyperdriveConfigCachingArgs']]:
-        """
-        The caching details for the Hyperdrive configuration.
-        """
         return pulumi.get(self, "caching")
 
     @caching.setter
@@ -156,11 +126,32 @@ class _HyperdriveConfigState:
         pulumi.set(self, "caching", value)
 
     @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        When the Hyperdrive configuration was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @created_on.setter
+    def created_on(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_on", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        When the Hyperdrive configuration was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "modified_on", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The name of the Hyperdrive configuration.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -170,26 +161,11 @@ class _HyperdriveConfigState:
     @property
     @pulumi.getter
     def origin(self) -> Optional[pulumi.Input['HyperdriveConfigOriginArgs']]:
-        """
-        The origin details for the Hyperdrive configuration.
-        """
         return pulumi.get(self, "origin")
 
     @origin.setter
     def origin(self, value: Optional[pulumi.Input['HyperdriveConfigOriginArgs']]):
         pulumi.set(self, "origin", value)
-
-    @property
-    @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The identifier of this resource. This is the hyperdrive config value.
-        """
-        return pulumi.get(self, "resource_id")
-
-    @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "resource_id", value)
 
 
 class HyperdriveConfig(pulumi.CustomResource):
@@ -201,43 +177,39 @@ class HyperdriveConfig(pulumi.CustomResource):
                  caching: Optional[pulumi.Input[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  origin: Optional[pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
-                 resource_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        The [Hyperdrive Config](https://developers.cloudflare.com/hyperdrive/) resource allows you to manage Cloudflare Hyperdrive Configs.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        no_defaults = cloudflare.HyperdriveConfig("no_defaults",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="my-hyperdrive-config",
+        example_hyperdrive_config = cloudflare.HyperdriveConfig("example_hyperdrive_config",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="example-hyperdrive",
             origin={
                 "database": "postgres",
-                "password": "my-password",
-                "host": "my-database.example.com",
+                "host": "database.example.com",
+                "password": "password",
                 "port": 5432,
                 "scheme": "postgres",
-                "user": "my-user",
+                "user": "postgres",
+            },
+            caching={
+                "disabled": True,
             })
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example <account_id>/<hyperdrive_config_id>
+        $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example '<account_id>/<hyperdrive_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict']] caching: The caching details for the Hyperdrive configuration.
-        :param pulumi.Input[builtins.str] name: The name of the Hyperdrive configuration.
-        :param pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']] origin: The origin details for the Hyperdrive configuration.
-        :param pulumi.Input[builtins.str] resource_id: The identifier of this resource. This is the hyperdrive config value.
+        :param pulumi.Input[builtins.str] account_id: Identifier
         """
         ...
     @overload
@@ -246,31 +218,32 @@ class HyperdriveConfig(pulumi.CustomResource):
                  args: HyperdriveConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The [Hyperdrive Config](https://developers.cloudflare.com/hyperdrive/) resource allows you to manage Cloudflare Hyperdrive Configs.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        no_defaults = cloudflare.HyperdriveConfig("no_defaults",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="my-hyperdrive-config",
+        example_hyperdrive_config = cloudflare.HyperdriveConfig("example_hyperdrive_config",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="example-hyperdrive",
             origin={
                 "database": "postgres",
-                "password": "my-password",
-                "host": "my-database.example.com",
+                "host": "database.example.com",
+                "password": "password",
                 "port": 5432,
                 "scheme": "postgres",
-                "user": "my-user",
+                "user": "postgres",
+            },
+            caching={
+                "disabled": True,
             })
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example <account_id>/<hyperdrive_config_id>
+        $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example '<account_id>/<hyperdrive_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -292,7 +265,6 @@ class HyperdriveConfig(pulumi.CustomResource):
                  caching: Optional[pulumi.Input[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  origin: Optional[pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
-                 resource_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -312,7 +284,8 @@ class HyperdriveConfig(pulumi.CustomResource):
             if origin is None and not opts.urn:
                 raise TypeError("Missing required property 'origin'")
             __props__.__dict__["origin"] = origin
-            __props__.__dict__["resource_id"] = resource_id
+            __props__.__dict__["created_on"] = None
+            __props__.__dict__["modified_on"] = None
         super(HyperdriveConfig, __self__).__init__(
             'cloudflare:index/hyperdriveConfig:HyperdriveConfig',
             resource_name,
@@ -325,9 +298,10 @@ class HyperdriveConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
             caching: Optional[pulumi.Input[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict']]] = None,
+            created_on: Optional[pulumi.Input[builtins.str]] = None,
+            modified_on: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
-            origin: Optional[pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
-            resource_id: Optional[pulumi.Input[builtins.str]] = None) -> 'HyperdriveConfig':
+            origin: Optional[pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None) -> 'HyperdriveConfig':
         """
         Get an existing HyperdriveConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -335,11 +309,9 @@ class HyperdriveConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict']] caching: The caching details for the Hyperdrive configuration.
-        :param pulumi.Input[builtins.str] name: The name of the Hyperdrive configuration.
-        :param pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']] origin: The origin details for the Hyperdrive configuration.
-        :param pulumi.Input[builtins.str] resource_id: The identifier of this resource. This is the hyperdrive config value.
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] created_on: When the Hyperdrive configuration was created.
+        :param pulumi.Input[builtins.str] modified_on: When the Hyperdrive configuration was last modified.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -347,48 +319,48 @@ class HyperdriveConfig(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["caching"] = caching
+        __props__.__dict__["created_on"] = created_on
+        __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["name"] = name
         __props__.__dict__["origin"] = origin
-        __props__.__dict__["resource_id"] = resource_id
         return HyperdriveConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def caching(self) -> pulumi.Output['outputs.HyperdriveConfigCaching']:
-        """
-        The caching details for the Hyperdrive configuration.
-        """
         return pulumi.get(self, "caching")
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> pulumi.Output[builtins.str]:
+        """
+        When the Hyperdrive configuration was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> pulumi.Output[builtins.str]:
+        """
+        When the Hyperdrive configuration was last modified.
+        """
+        return pulumi.get(self, "modified_on")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
-        """
-        The name of the Hyperdrive configuration.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def origin(self) -> pulumi.Output['outputs.HyperdriveConfigOrigin']:
-        """
-        The origin details for the Hyperdrive configuration.
-        """
         return pulumi.get(self, "origin")
-
-    @property
-    @pulumi.getter(name="resourceId")
-    def resource_id(self) -> pulumi.Output[builtins.str]:
-        """
-        The identifier of this resource. This is the hyperdrive config value.
-        """
-        return pulumi.get(self, "resource_id")
 

@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ApiShieldOperationArgs', 'ApiShieldOperation']
 
@@ -26,10 +28,11 @@ class ApiShieldOperationArgs:
                  zone_id: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a ApiShieldOperation resource.
-        :param pulumi.Input[builtins.str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
-        :param pulumi.Input[builtins.str] host: RFC3986-compliant host
-        :param pulumi.Input[builtins.str] method: The HTTP method used to access the endpoint
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
+        :param pulumi.Input[builtins.str] host: RFC3986-compliant host.
+        :param pulumi.Input[builtins.str] method: The HTTP method used to access the endpoint.
+               Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "host", host)
@@ -40,7 +43,7 @@ class ApiShieldOperationArgs:
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[builtins.str]:
         """
-        The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+        The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
         """
         return pulumi.get(self, "endpoint")
 
@@ -52,7 +55,7 @@ class ApiShieldOperationArgs:
     @pulumi.getter
     def host(self) -> pulumi.Input[builtins.str]:
         """
-        RFC3986-compliant host
+        RFC3986-compliant host.
         """
         return pulumi.get(self, "host")
 
@@ -64,7 +67,8 @@ class ApiShieldOperationArgs:
     @pulumi.getter
     def method(self) -> pulumi.Input[builtins.str]:
         """
-        The HTTP method used to access the endpoint
+        The HTTP method used to access the endpoint.
+        Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         """
         return pulumi.get(self, "method")
 
@@ -76,7 +80,7 @@ class ApiShieldOperationArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -89,22 +93,33 @@ class ApiShieldOperationArgs:
 class _ApiShieldOperationState:
     def __init__(__self__, *,
                  endpoint: Optional[pulumi.Input[builtins.str]] = None,
+                 features: Optional[pulumi.Input['ApiShieldOperationFeaturesArgs']] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
+                 last_updated: Optional[pulumi.Input[builtins.str]] = None,
                  method: Optional[pulumi.Input[builtins.str]] = None,
+                 operation_id: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiShieldOperation resources.
-        :param pulumi.Input[builtins.str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
-        :param pulumi.Input[builtins.str] host: RFC3986-compliant host
-        :param pulumi.Input[builtins.str] method: The HTTP method used to access the endpoint
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
+        :param pulumi.Input[builtins.str] host: RFC3986-compliant host.
+        :param pulumi.Input[builtins.str] method: The HTTP method used to access the endpoint.
+               Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
+        :param pulumi.Input[builtins.str] operation_id: UUID
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
+        if features is not None:
+            pulumi.set(__self__, "features", features)
         if host is not None:
             pulumi.set(__self__, "host", host)
+        if last_updated is not None:
+            pulumi.set(__self__, "last_updated", last_updated)
         if method is not None:
             pulumi.set(__self__, "method", method)
+        if operation_id is not None:
+            pulumi.set(__self__, "operation_id", operation_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -112,7 +127,7 @@ class _ApiShieldOperationState:
     @pulumi.getter
     def endpoint(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+        The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
         """
         return pulumi.get(self, "endpoint")
 
@@ -122,9 +137,18 @@ class _ApiShieldOperationState:
 
     @property
     @pulumi.getter
+    def features(self) -> Optional[pulumi.Input['ApiShieldOperationFeaturesArgs']]:
+        return pulumi.get(self, "features")
+
+    @features.setter
+    def features(self, value: Optional[pulumi.Input['ApiShieldOperationFeaturesArgs']]):
+        pulumi.set(self, "features", value)
+
+    @property
+    @pulumi.getter
     def host(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        RFC3986-compliant host
+        RFC3986-compliant host.
         """
         return pulumi.get(self, "host")
 
@@ -133,10 +157,20 @@ class _ApiShieldOperationState:
         pulumi.set(self, "host", value)
 
     @property
+    @pulumi.getter(name="lastUpdated")
+    def last_updated(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "last_updated")
+
+    @last_updated.setter
+    def last_updated(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "last_updated", value)
+
+    @property
     @pulumi.getter
     def method(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The HTTP method used to access the endpoint
+        The HTTP method used to access the endpoint.
+        Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         """
         return pulumi.get(self, "method")
 
@@ -145,10 +179,22 @@ class _ApiShieldOperationState:
         pulumi.set(self, "method", value)
 
     @property
+    @pulumi.getter(name="operationId")
+    def operation_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        UUID
+        """
+        return pulumi.get(self, "operation_id")
+
+    @operation_id.setter
+    def operation_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "operation_id", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -168,27 +214,32 @@ class ApiShieldOperation(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Api shield operation
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.ApiShieldOperation("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            method="GET",
-            host="api.example.com",
-            endpoint="/path")
+        example_api_shield_operation = cloudflare.ApiShieldOperation("example_api_shield_operation",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            endpoint="/api/v1/users/{var1}",
+            host="www.example.com",
+            method="GET")
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/apiShieldOperation:ApiShieldOperation example '<zone_id>/<operation_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
-        :param pulumi.Input[builtins.str] host: RFC3986-compliant host
-        :param pulumi.Input[builtins.str] method: The HTTP method used to access the endpoint
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
+        :param pulumi.Input[builtins.str] host: RFC3986-compliant host.
+        :param pulumi.Input[builtins.str] method: The HTTP method used to access the endpoint.
+               Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         ...
     @overload
@@ -197,19 +248,23 @@ class ApiShieldOperation(pulumi.CustomResource):
                  args: ApiShieldOperationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Api shield operation
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.ApiShieldOperation("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            method="GET",
-            host="api.example.com",
-            endpoint="/path")
+        example_api_shield_operation = cloudflare.ApiShieldOperation("example_api_shield_operation",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            endpoint="/api/v1/users/{var1}",
+            host="www.example.com",
+            method="GET")
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/apiShieldOperation:ApiShieldOperation example '<zone_id>/<operation_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -252,6 +307,9 @@ class ApiShieldOperation(pulumi.CustomResource):
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["features"] = None
+            __props__.__dict__["last_updated"] = None
+            __props__.__dict__["operation_id"] = None
         super(ApiShieldOperation, __self__).__init__(
             'cloudflare:index/apiShieldOperation:ApiShieldOperation',
             resource_name,
@@ -263,8 +321,11 @@ class ApiShieldOperation(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             endpoint: Optional[pulumi.Input[builtins.str]] = None,
+            features: Optional[pulumi.Input[Union['ApiShieldOperationFeaturesArgs', 'ApiShieldOperationFeaturesArgsDict']]] = None,
             host: Optional[pulumi.Input[builtins.str]] = None,
+            last_updated: Optional[pulumi.Input[builtins.str]] = None,
             method: Optional[pulumi.Input[builtins.str]] = None,
+            operation_id: Optional[pulumi.Input[builtins.str]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'ApiShieldOperation':
         """
         Get an existing ApiShieldOperation resource's state with the given name, id, and optional extra
@@ -273,18 +334,23 @@ class ApiShieldOperation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
-        :param pulumi.Input[builtins.str] host: RFC3986-compliant host
-        :param pulumi.Input[builtins.str] method: The HTTP method used to access the endpoint
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
+        :param pulumi.Input[builtins.str] host: RFC3986-compliant host.
+        :param pulumi.Input[builtins.str] method: The HTTP method used to access the endpoint.
+               Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
+        :param pulumi.Input[builtins.str] operation_id: UUID
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ApiShieldOperationState.__new__(_ApiShieldOperationState)
 
         __props__.__dict__["endpoint"] = endpoint
+        __props__.__dict__["features"] = features
         __props__.__dict__["host"] = host
+        __props__.__dict__["last_updated"] = last_updated
         __props__.__dict__["method"] = method
+        __props__.__dict__["operation_id"] = operation_id
         __props__.__dict__["zone_id"] = zone_id
         return ApiShieldOperation(resource_name, opts=opts, __props__=__props__)
 
@@ -292,31 +358,50 @@ class ApiShieldOperation(pulumi.CustomResource):
     @pulumi.getter
     def endpoint(self) -> pulumi.Output[builtins.str]:
         """
-        The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+        The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
         """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter
+    def features(self) -> pulumi.Output['outputs.ApiShieldOperationFeatures']:
+        return pulumi.get(self, "features")
+
+    @property
+    @pulumi.getter
     def host(self) -> pulumi.Output[builtins.str]:
         """
-        RFC3986-compliant host
+        RFC3986-compliant host.
         """
         return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="lastUpdated")
+    def last_updated(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "last_updated")
 
     @property
     @pulumi.getter
     def method(self) -> pulumi.Output[builtins.str]:
         """
-        The HTTP method used to access the endpoint
+        The HTTP method used to access the endpoint.
+        Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         """
         return pulumi.get(self, "method")
+
+    @property
+    @pulumi.getter(name="operationId")
+    def operation_id(self) -> pulumi.Output[builtins.str]:
+        """
+        UUID
+        """
+        return pulumi.get(self, "operation_id")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

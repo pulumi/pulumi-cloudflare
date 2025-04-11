@@ -4,38 +4,39 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class ApiShieldAuthIdCharacteristic {
     /**
-     * @return The name of the characteristic.
+     * @return The name of the characteristic field, i.e., the header or cookie name.
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
-     * @return The type of characteristic. Available values: `header`, `cookie`.
+     * @return The type of characteristic.
+     * Available values: &#34;header&#34;, &#34;cookie&#34;.
      * 
      */
-    private @Nullable String type;
+    private String type;
 
     private ApiShieldAuthIdCharacteristic() {}
     /**
-     * @return The name of the characteristic.
+     * @return The name of the characteristic field, i.e., the header or cookie name.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
-     * @return The type of characteristic. Available values: `header`, `cookie`.
+     * @return The type of characteristic.
+     * Available values: &#34;header&#34;, &#34;cookie&#34;.
      * 
      */
-    public Optional<String> type() {
-        return Optional.ofNullable(this.type);
+    public String type() {
+        return this.type;
     }
 
     public static Builder builder() {
@@ -47,8 +48,8 @@ public final class ApiShieldAuthIdCharacteristic {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String name;
-        private @Nullable String type;
+        private String name;
+        private String type;
         public Builder() {}
         public Builder(ApiShieldAuthIdCharacteristic defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,14 +58,18 @@ public final class ApiShieldAuthIdCharacteristic {
         }
 
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ApiShieldAuthIdCharacteristic", "name");
+            }
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder type(@Nullable String type) {
-
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("ApiShieldAuthIdCharacteristic", "type");
+            }
             this.type = type;
             return this;
         }

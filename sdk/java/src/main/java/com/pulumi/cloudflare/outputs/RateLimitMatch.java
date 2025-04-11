@@ -3,38 +3,28 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.RateLimitMatchHeader;
 import com.pulumi.cloudflare.outputs.RateLimitMatchRequest;
 import com.pulumi.cloudflare.outputs.RateLimitMatchResponse;
 import com.pulumi.core.annotations.CustomType;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class RateLimitMatch {
-    /**
-     * @return Matches HTTP requests (from the client to Cloudflare).
-     * 
-     */
+    private @Nullable List<RateLimitMatchHeader> headers;
     private @Nullable RateLimitMatchRequest request;
-    /**
-     * @return Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
-     * 
-     */
     private @Nullable RateLimitMatchResponse response;
 
     private RateLimitMatch() {}
-    /**
-     * @return Matches HTTP requests (from the client to Cloudflare).
-     * 
-     */
+    public List<RateLimitMatchHeader> headers() {
+        return this.headers == null ? List.of() : this.headers;
+    }
     public Optional<RateLimitMatchRequest> request() {
         return Optional.ofNullable(this.request);
     }
-    /**
-     * @return Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
-     * 
-     */
     public Optional<RateLimitMatchResponse> response() {
         return Optional.ofNullable(this.response);
     }
@@ -48,15 +38,26 @@ public final class RateLimitMatch {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<RateLimitMatchHeader> headers;
         private @Nullable RateLimitMatchRequest request;
         private @Nullable RateLimitMatchResponse response;
         public Builder() {}
         public Builder(RateLimitMatch defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.headers = defaults.headers;
     	      this.request = defaults.request;
     	      this.response = defaults.response;
         }
 
+        @CustomType.Setter
+        public Builder headers(@Nullable List<RateLimitMatchHeader> headers) {
+
+            this.headers = headers;
+            return this;
+        }
+        public Builder headers(RateLimitMatchHeader... headers) {
+            return headers(List.of(headers));
+        }
         @CustomType.Setter
         public Builder request(@Nullable RateLimitMatchRequest request) {
 
@@ -71,6 +72,7 @@ public final class RateLimitMatch {
         }
         public RateLimitMatch build() {
             final var _resultValue = new RateLimitMatch();
+            _resultValue.headers = headers;
             _resultValue.request = request;
             _resultValue.response = response;
             return _resultValue;

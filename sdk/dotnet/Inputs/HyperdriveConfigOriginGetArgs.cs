@@ -13,16 +13,26 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class HyperdriveConfigOriginGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+        /// The Client ID of the Access token to use when connecting to the origin database.
         /// </summary>
         [Input("accessClientId")]
         public Input<string>? AccessClientId { get; set; }
 
-        /// <summary>
-        /// Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
-        /// </summary>
         [Input("accessClientSecret")]
-        public Input<string>? AccessClientSecret { get; set; }
+        private Input<string>? _accessClientSecret;
+
+        /// <summary>
+        /// The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
+        /// </summary>
+        public Input<string>? AccessClientSecret
+        {
+            get => _accessClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The name of your origin database.
@@ -40,7 +50,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the Hyperdrive configuration.
+        /// The password required to access your origin database. This value is write-only and never returned by the API.
         /// </summary>
         public Input<string>? Password
         {
@@ -60,6 +70,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Specifies the URL scheme used to connect to your origin database.
+        /// Available values: "postgres", "postgresql".
         /// </summary>
         [Input("scheme", required: true)]
         public Input<string> Scheme { get; set; } = null!;

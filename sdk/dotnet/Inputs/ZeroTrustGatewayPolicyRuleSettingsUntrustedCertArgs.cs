@@ -13,7 +13,8 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
+        /// The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+        /// Available values: "pass_through", "block", "error".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

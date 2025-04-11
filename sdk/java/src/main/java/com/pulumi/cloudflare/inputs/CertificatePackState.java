@@ -3,8 +3,6 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.CertificatePackValidationErrorArgs;
-import com.pulumi.cloudflare.inputs.CertificatePackValidationRecordArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -21,14 +19,16 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
     public static final CertificatePackState Empty = new CertificatePackState();
 
     /**
-     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
+     * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     @Import(name="certificateAuthority")
     private @Nullable Output<String> certificateAuthority;
 
     /**
-     * @return Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
+     * @return Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     public Optional<Output<String>> certificateAuthority() {
@@ -36,14 +36,14 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
+     * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      * 
      */
     @Import(name="cloudflareBranding")
     private @Nullable Output<Boolean> cloudflareBranding;
 
     /**
-     * @return Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
+     * @return Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      * 
      */
     public Optional<Output<Boolean>> cloudflareBranding() {
@@ -51,14 +51,14 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let&#39;s Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
+     * Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
      * 
      */
     @Import(name="hosts")
     private @Nullable Output<List<String>> hosts;
 
     /**
-     * @return List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let&#39;s Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
+     * @return Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
      * 
      */
     public Optional<Output<List<String>>> hosts() {
@@ -66,58 +66,67 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
+     * Status of certificate pack.
+     * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return Status of certificate pack.
+     * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * Type of certificate pack.
+     * Available values: &#34;advanced&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
+     * @return Type of certificate pack.
+     * Available values: &#34;advanced&#34;.
      * 
      */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
-    @Import(name="validationErrors")
-    private @Nullable Output<List<CertificatePackValidationErrorArgs>> validationErrors;
-
-    public Optional<Output<List<CertificatePackValidationErrorArgs>>> validationErrors() {
-        return Optional.ofNullable(this.validationErrors);
-    }
-
     /**
-     * Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
+     * Validation Method selected for the order.
+     * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
      * 
      */
     @Import(name="validationMethod")
     private @Nullable Output<String> validationMethod;
 
     /**
-     * @return Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
+     * @return Validation Method selected for the order.
+     * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
      * 
      */
     public Optional<Output<String>> validationMethod() {
         return Optional.ofNullable(this.validationMethod);
     }
 
-    @Import(name="validationRecords")
-    private @Nullable Output<List<CertificatePackValidationRecordArgs>> validationRecords;
-
-    public Optional<Output<List<CertificatePackValidationRecordArgs>>> validationRecords() {
-        return Optional.ofNullable(this.validationRecords);
-    }
-
     /**
-     * How long the certificate is valid for. Note: If using Let&#39;s Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
+     * Validity Days selected for the order.
+     * Available values: 14, 30, 90, 365.
      * 
      */
     @Import(name="validityDays")
     private @Nullable Output<Integer> validityDays;
 
     /**
-     * @return How long the certificate is valid for. Note: If using Let&#39;s Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
+     * @return Validity Days selected for the order.
+     * Available values: 14, 30, 90, 365.
      * 
      */
     public Optional<Output<Integer>> validityDays() {
@@ -125,29 +134,14 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    @Import(name="waitForActiveStatus")
-    private @Nullable Output<Boolean> waitForActiveStatus;
-
-    /**
-     * @return Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Optional<Output<Boolean>> waitForActiveStatus() {
-        return Optional.ofNullable(this.waitForActiveStatus);
-    }
-
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -160,12 +154,10 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         this.certificateAuthority = $.certificateAuthority;
         this.cloudflareBranding = $.cloudflareBranding;
         this.hosts = $.hosts;
+        this.status = $.status;
         this.type = $.type;
-        this.validationErrors = $.validationErrors;
         this.validationMethod = $.validationMethod;
-        this.validationRecords = $.validationRecords;
         this.validityDays = $.validityDays;
-        this.waitForActiveStatus = $.waitForActiveStatus;
         this.zoneId = $.zoneId;
     }
 
@@ -188,7 +180,8 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param certificateAuthority Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
+         * @param certificateAuthority Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+         * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
          * 
@@ -199,7 +192,8 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param certificateAuthority Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
+         * @param certificateAuthority Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+         * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
          * 
@@ -209,7 +203,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param cloudflareBranding Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
+         * @param cloudflareBranding Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
          * 
          * @return builder
          * 
@@ -220,7 +214,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param cloudflareBranding Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
+         * @param cloudflareBranding Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
          * 
          * @return builder
          * 
@@ -230,7 +224,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param hosts List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let&#39;s Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
+         * @param hosts Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
          * 
          * @return builder
          * 
@@ -241,7 +235,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param hosts List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let&#39;s Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
+         * @param hosts Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
          * 
          * @return builder
          * 
@@ -251,7 +245,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param hosts List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let&#39;s Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
+         * @param hosts Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
          * 
          * @return builder
          * 
@@ -261,7 +255,31 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
+         * @param status Status of certificate pack.
+         * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status Status of certificate pack.
+         * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param type Type of certificate pack.
+         * Available values: &#34;advanced&#34;.
          * 
          * @return builder
          * 
@@ -272,7 +290,8 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
+         * @param type Type of certificate pack.
+         * Available values: &#34;advanced&#34;.
          * 
          * @return builder
          * 
@@ -281,21 +300,9 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
             return type(Output.of(type));
         }
 
-        public Builder validationErrors(@Nullable Output<List<CertificatePackValidationErrorArgs>> validationErrors) {
-            $.validationErrors = validationErrors;
-            return this;
-        }
-
-        public Builder validationErrors(List<CertificatePackValidationErrorArgs> validationErrors) {
-            return validationErrors(Output.of(validationErrors));
-        }
-
-        public Builder validationErrors(CertificatePackValidationErrorArgs... validationErrors) {
-            return validationErrors(List.of(validationErrors));
-        }
-
         /**
-         * @param validationMethod Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
+         * @param validationMethod Validation Method selected for the order.
+         * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
          * 
          * @return builder
          * 
@@ -306,7 +313,8 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param validationMethod Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
+         * @param validationMethod Validation Method selected for the order.
+         * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
          * 
          * @return builder
          * 
@@ -315,21 +323,9 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
             return validationMethod(Output.of(validationMethod));
         }
 
-        public Builder validationRecords(@Nullable Output<List<CertificatePackValidationRecordArgs>> validationRecords) {
-            $.validationRecords = validationRecords;
-            return this;
-        }
-
-        public Builder validationRecords(List<CertificatePackValidationRecordArgs> validationRecords) {
-            return validationRecords(Output.of(validationRecords));
-        }
-
-        public Builder validationRecords(CertificatePackValidationRecordArgs... validationRecords) {
-            return validationRecords(List.of(validationRecords));
-        }
-
         /**
-         * @param validityDays How long the certificate is valid for. Note: If using Let&#39;s Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
+         * @param validityDays Validity Days selected for the order.
+         * Available values: 14, 30, 90, 365.
          * 
          * @return builder
          * 
@@ -340,7 +336,8 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param validityDays How long the certificate is valid for. Note: If using Let&#39;s Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
+         * @param validityDays Validity Days selected for the order.
+         * Available values: 14, 30, 90, 365.
          * 
          * @return builder
          * 
@@ -350,28 +347,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param waitForActiveStatus Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder waitForActiveStatus(@Nullable Output<Boolean> waitForActiveStatus) {
-            $.waitForActiveStatus = waitForActiveStatus;
-            return this;
-        }
-
-        /**
-         * @param waitForActiveStatus Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder waitForActiveStatus(Boolean waitForActiveStatus) {
-            return waitForActiveStatus(Output.of(waitForActiveStatus));
-        }
-
-        /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -382,7 +358,7 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

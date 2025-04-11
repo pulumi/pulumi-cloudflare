@@ -14,238 +14,262 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
- * Import an account-scoped job.
- * 
  * ```sh
- * $ pulumi import cloudflare:index/logpushJob:LogpushJob example account/&lt;account_id&gt;/&lt;job_id&gt;
- * ```
- * 
- * Import a zone-scoped job.
- * 
- * ```sh
- * $ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/&lt;zone_id&gt;/&lt;job_id&gt;
+ * $ pulumi import cloudflare:index/logpushJob:LogpushJob example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;job_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/logpushJob:LogpushJob")
 public class LogpushJob extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
     /**
-     * The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`, `page_shield_events`, `dlp_forensic_copies`.
+     * Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
      * 
      */
     @Export(name="dataset", refs={String.class}, tree="[0]")
-    private Output<String> dataset;
+    private Output</* @Nullable */ String> dataset;
 
     /**
-     * @return The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`, `page_shield_events`, `dlp_forensic_copies`.
+     * @return Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
      * 
      */
-    public Output<String> dataset() {
-        return this.dataset;
+    public Output<Optional<String>> dataset() {
+        return Codegen.optional(this.dataset);
     }
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
      * 
      */
     @Export(name="destinationConf", refs={String.class}, tree="[0]")
     private Output<String> destinationConf;
 
     /**
-     * @return Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
+     * @return Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
      * 
      */
     public Output<String> destinationConf() {
         return this.destinationConf;
     }
     /**
-     * Whether to enable the job.
+     * Flag that indicates if the job is enabled.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Whether to enable the job.
+     * @return Flag that indicates if the job is enabled.
      * 
      */
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
     }
     /**
-     * Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
+     * If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
      * 
      */
-    @Export(name="filter", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> filter;
+    @Export(name="errorMessage", refs={String.class}, tree="[0]")
+    private Output<String> errorMessage;
 
     /**
-     * @return Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
+     * @return If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
      * 
      */
-    public Output<Optional<String>> filter() {
-        return Codegen.optional(this.filter);
+    public Output<String> errorMessage() {
+        return this.errorMessage;
     }
     /**
-     * A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
-     * 
-     * @deprecated
-     * `frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.
+     * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+     * Available values: &#34;high&#34;, &#34;low&#34;.
      * 
      */
-    @Deprecated /* `frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead. */
     @Export(name="frequency", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> frequency;
+    private Output<String> frequency;
 
     /**
-     * @return A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
+     * @return This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+     * Available values: &#34;high&#34;, &#34;low&#34;.
      * 
      */
-    public Output<Optional<String>> frequency() {
-        return Codegen.optional(this.frequency);
+    public Output<String> frequency() {
+        return this.frequency;
     }
     /**
-     * The kind of logpush job to create. Available values: `edge`, `instant-logs`, `&#34;&#34;`.
+     * The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+     * Available values: &#34;edge&#34;.
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kind;
 
     /**
-     * @return The kind of logpush job to create. Available values: `edge`, `instant-logs`, `&#34;&#34;`.
+     * @return The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
+     * Available values: &#34;edge&#34;.
      * 
      */
     public Output<Optional<String>> kind() {
         return Codegen.optional(this.kind);
     }
     /**
-     * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+     * Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn&#39;t run yet then the field will be empty.
+     * 
+     */
+    @Export(name="lastComplete", refs={String.class}, tree="[0]")
+    private Output<String> lastComplete;
+
+    /**
+     * @return Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn&#39;t run yet then the field will be empty.
+     * 
+     */
+    public Output<String> lastComplete() {
+        return this.lastComplete;
+    }
+    /**
+     * Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
+     * 
+     */
+    @Export(name="lastError", refs={String.class}, tree="[0]")
+    private Output<String> lastError;
+
+    /**
+     * @return Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
+     * 
+     */
+    public Output<String> lastError() {
+        return this.lastError;
+    }
+    /**
+     * This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
      * 
      */
     @Export(name="logpullOptions", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logpullOptions;
 
     /**
-     * @return Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+     * @return This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
      * 
      */
     public Output<Optional<String>> logpullOptions() {
         return Codegen.optional(this.logpullOptions);
     }
     /**
-     * The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+     * The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
      * 
      */
     @Export(name="maxUploadBytes", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxUploadBytes;
 
     /**
-     * @return The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+     * @return The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
      * 
      */
     public Output<Optional<Integer>> maxUploadBytes() {
         return Codegen.optional(this.maxUploadBytes);
     }
     /**
-     * The maximum interval in seconds for log batches. Value must be between 30 and 300.
+     * The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
      * 
      */
     @Export(name="maxUploadIntervalSeconds", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> maxUploadIntervalSeconds;
+    private Output<Integer> maxUploadIntervalSeconds;
 
     /**
-     * @return The maximum interval in seconds for log batches. Value must be between 30 and 300.
+     * @return The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
      * 
      */
-    public Output<Optional<Integer>> maxUploadIntervalSeconds() {
-        return Codegen.optional(this.maxUploadIntervalSeconds);
+    public Output<Integer> maxUploadIntervalSeconds() {
+        return this.maxUploadIntervalSeconds;
     }
     /**
-     * The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+     * The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
      * 
      */
     @Export(name="maxUploadRecords", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> maxUploadRecords;
+    private Output<Integer> maxUploadRecords;
 
     /**
-     * @return The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+     * @return The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
      * 
      */
-    public Output<Optional<Integer>> maxUploadRecords() {
-        return Codegen.optional(this.maxUploadRecords);
+    public Output<Integer> maxUploadRecords() {
+        return this.maxUploadRecords;
     }
     /**
-     * The name of the logpush job to create.
+     * Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> name;
 
     /**
-     * @return The name of the logpush job to create.
+     * @return Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
      * 
      */
     public Output<Optional<String>> name() {
         return Codegen.optional(this.name);
     }
     /**
-     * Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+     * The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
      * 
      */
     @Export(name="outputOptions", refs={LogpushJobOutputOptions.class}, tree="[0]")
-    private Output</* @Nullable */ LogpushJobOutputOptions> outputOptions;
+    private Output<LogpushJobOutputOptions> outputOptions;
 
     /**
-     * @return Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+     * @return The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
      * 
      */
-    public Output<Optional<LogpushJobOutputOptions>> outputOptions() {
-        return Codegen.optional(this.outputOptions);
+    public Output<LogpushJobOutputOptions> outputOptions() {
+        return this.outputOptions;
     }
     /**
-     * Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+     * Ownership challenge token to prove destination ownership.
      * 
      */
     @Export(name="ownershipChallenge", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ownershipChallenge;
 
     /**
-     * @return Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+     * @return Ownership challenge token to prove destination ownership.
      * 
      */
     public Output<Optional<String>> ownershipChallenge() {
         return Codegen.optional(this.ownershipChallenge);
     }
     /**
-     * The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Output<Optional<String>> zoneId() {
@@ -291,6 +315,9 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "ownershipChallenge"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

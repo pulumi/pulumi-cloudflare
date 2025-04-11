@@ -10,136 +10,51 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Access Identity Provider resource. Identity
-    /// Providers are used as an authentication or authorisation source
-    /// within Access.
-    /// 
-    /// &gt; It's required that an `account_id` or `zone_id` is provided and in
-    ///    most cases using either is fine. However, if you're using a scoped
-    ///    access token, you must provide the argument that matches the token's
-    ///    scope. For example, an access token that is scoped to the "example.com"
-    ///    zone needs to use the `zone_id` argument.
-    /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // one time pin
-    ///     var pinLogin = new Cloudflare.AccessIdentityProvider("pin_login", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "PIN login",
-    ///         Type = "onetimepin",
-    ///     });
-    /// 
-    ///     // oauth
-    ///     var githubOauth = new Cloudflare.AccessIdentityProvider("github_oauth", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "GitHub OAuth",
-    ///         Type = "github",
-    ///         Configs = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.AccessIdentityProviderConfigArgs
-    ///             {
-    ///                 ClientId = "example",
-    ///                 ClientSecret = "secret_key",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     // saml
-    ///     var jumpcloudSaml = new Cloudflare.AccessIdentityProvider("jumpcloud_saml", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "JumpCloud SAML",
-    ///         Type = "saml",
-    ///         Configs = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.AccessIdentityProviderConfigArgs
-    ///             {
-    ///                 IssuerUrl = "jumpcloud",
-    ///                 SsoTargetUrl = "https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
-    ///                 Attributes = new[]
-    ///                 {
-    ///                     "email",
-    ///                     "username",
-    ///                 },
-    ///                 SignRequest = false,
-    ///                 IdpPublicCert = @"MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
-    /// uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     // okta
-    ///     var okta = new Cloudflare.AccessIdentityProvider("okta", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "Okta",
-    ///         Type = "okta",
-    ///         Configs = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.AccessIdentityProviderConfigArgs
-    ///             {
-    ///                 ClientId = "example",
-    ///                 ClientSecret = "secret_key",
-    ///                 ApiToken = "okta_api_token",
-    ///                 OktaAccount = "https://example.com",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider example &lt;account_id&gt;/&lt;identity_provider_id&gt;
+    /// $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;identity_provider_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare.index/accessidentityprovider.AccessIdentityProvider has been deprecated in favor of cloudflare.index/zerotrustaccessidentityprovider.ZeroTrustAccessIdentityProvider")]
     [CloudflareResourceType("cloudflare:index/accessIdentityProvider:AccessIdentityProvider")]
     public partial class AccessIdentityProvider : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+        /// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
         /// </summary>
-        [Output("configs")]
-        public Output<ImmutableArray<Outputs.AccessIdentityProviderConfig>> Configs { get; private set; } = null!;
+        [Output("config")]
+        public Output<Outputs.AccessIdentityProviderConfig> Config { get; private set; } = null!;
 
         /// <summary>
-        /// Friendly name of the Access Identity Provider configuration.
+        /// The name of the identity provider, shown to users on the login page.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for SCIM settings for a given IDP.
+        /// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
         /// </summary>
-        [Output("scimConfigs")]
-        public Output<ImmutableArray<Outputs.AccessIdentityProviderScimConfig>> ScimConfigs { get; private set; } = null!;
+        [Output("scimConfig")]
+        public Output<Outputs.AccessIdentityProviderScimConfig> ScimConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+        /// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+        /// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Output("zoneId")]
         public Output<string?> ZoneId { get; private set; } = null!;
@@ -167,6 +82,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/accessIdentityProvider:AccessIdentityProvider" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -191,49 +110,38 @@ namespace Pulumi.Cloudflare
     public sealed class AccessIdentityProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        [Input("configs")]
-        private InputList<Inputs.AccessIdentityProviderConfigArgs>? _configs;
-
         /// <summary>
-        /// Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+        /// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
         /// </summary>
-        public InputList<Inputs.AccessIdentityProviderConfigArgs> Configs
-        {
-            get => _configs ?? (_configs = new InputList<Inputs.AccessIdentityProviderConfigArgs>());
-            set => _configs = value;
-        }
+        [Input("config", required: true)]
+        public Input<Inputs.AccessIdentityProviderConfigArgs> Config { get; set; } = null!;
 
         /// <summary>
-        /// Friendly name of the Access Identity Provider configuration.
+        /// The name of the identity provider, shown to users on the login page.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("scimConfigs")]
-        private InputList<Inputs.AccessIdentityProviderScimConfigArgs>? _scimConfigs;
-
         /// <summary>
-        /// Configuration for SCIM settings for a given IDP.
+        /// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
         /// </summary>
-        public InputList<Inputs.AccessIdentityProviderScimConfigArgs> ScimConfigs
-        {
-            get => _scimConfigs ?? (_scimConfigs = new InputList<Inputs.AccessIdentityProviderScimConfigArgs>());
-            set => _scimConfigs = value;
-        }
+        [Input("scimConfig")]
+        public Input<Inputs.AccessIdentityProviderScimConfigArgs>? ScimConfig { get; set; }
 
         /// <summary>
-        /// The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+        /// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+        /// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -247,49 +155,38 @@ namespace Pulumi.Cloudflare
     public sealed class AccessIdentityProviderState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        [Input("configs")]
-        private InputList<Inputs.AccessIdentityProviderConfigGetArgs>? _configs;
-
         /// <summary>
-        /// Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+        /// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
         /// </summary>
-        public InputList<Inputs.AccessIdentityProviderConfigGetArgs> Configs
-        {
-            get => _configs ?? (_configs = new InputList<Inputs.AccessIdentityProviderConfigGetArgs>());
-            set => _configs = value;
-        }
+        [Input("config")]
+        public Input<Inputs.AccessIdentityProviderConfigGetArgs>? Config { get; set; }
 
         /// <summary>
-        /// Friendly name of the Access Identity Provider configuration.
+        /// The name of the identity provider, shown to users on the login page.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("scimConfigs")]
-        private InputList<Inputs.AccessIdentityProviderScimConfigGetArgs>? _scimConfigs;
-
         /// <summary>
-        /// Configuration for SCIM settings for a given IDP.
+        /// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
         /// </summary>
-        public InputList<Inputs.AccessIdentityProviderScimConfigGetArgs> ScimConfigs
-        {
-            get => _scimConfigs ?? (_scimConfigs = new InputList<Inputs.AccessIdentityProviderScimConfigGetArgs>());
-            set => _scimConfigs = value;
-        }
+        [Input("scimConfig")]
+        public Input<Inputs.AccessIdentityProviderScimConfigGetArgs>? ScimConfig { get; set; }
 
         /// <summary>
-        /// The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+        /// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+        /// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

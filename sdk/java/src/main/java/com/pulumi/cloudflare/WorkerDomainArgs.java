@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class WorkerDomainArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,14 +15,14 @@ public final class WorkerDomainArgs extends com.pulumi.resources.ResourceArgs {
     public static final WorkerDomainArgs Empty = new WorkerDomainArgs();
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifer of the account.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifer of the account.
      * 
      */
     public Output<String> accountId() {
@@ -32,18 +30,18 @@ public final class WorkerDomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the Worker environment. Defaults to `production`.
+     * Worker environment associated with the zone and hostname.
      * 
      */
-    @Import(name="environment")
-    private @Nullable Output<String> environment;
+    @Import(name="environment", required=true)
+    private Output<String> environment;
 
     /**
-     * @return The name of the Worker environment. Defaults to `production`.
+     * @return Worker environment associated with the zone and hostname.
      * 
      */
-    public Optional<Output<String>> environment() {
-        return Optional.ofNullable(this.environment);
+    public Output<String> environment() {
+        return this.environment;
     }
 
     /**
@@ -62,14 +60,14 @@ public final class WorkerDomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of worker script to attach the domain to.
+     * Worker service associated with the zone and hostname.
      * 
      */
     @Import(name="service", required=true)
     private Output<String> service;
 
     /**
-     * @return Name of worker script to attach the domain to.
+     * @return Worker service associated with the zone and hostname.
      * 
      */
     public Output<String> service() {
@@ -77,14 +75,14 @@ public final class WorkerDomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier of the zone.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier of the zone.
      * 
      */
     public Output<String> zoneId() {
@@ -120,7 +118,7 @@ public final class WorkerDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifer of the account.
          * 
          * @return builder
          * 
@@ -131,7 +129,7 @@ public final class WorkerDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifer of the account.
          * 
          * @return builder
          * 
@@ -141,18 +139,18 @@ public final class WorkerDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environment The name of the Worker environment. Defaults to `production`.
+         * @param environment Worker environment associated with the zone and hostname.
          * 
          * @return builder
          * 
          */
-        public Builder environment(@Nullable Output<String> environment) {
+        public Builder environment(Output<String> environment) {
             $.environment = environment;
             return this;
         }
 
         /**
-         * @param environment The name of the Worker environment. Defaults to `production`.
+         * @param environment Worker environment associated with the zone and hostname.
          * 
          * @return builder
          * 
@@ -183,7 +181,7 @@ public final class WorkerDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param service Name of worker script to attach the domain to.
+         * @param service Worker service associated with the zone and hostname.
          * 
          * @return builder
          * 
@@ -194,7 +192,7 @@ public final class WorkerDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param service Name of worker script to attach the domain to.
+         * @param service Worker service associated with the zone and hostname.
          * 
          * @return builder
          * 
@@ -204,7 +202,7 @@ public final class WorkerDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier of the zone.
          * 
          * @return builder
          * 
@@ -215,7 +213,7 @@ public final class WorkerDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier of the zone.
          * 
          * @return builder
          * 
@@ -227,6 +225,9 @@ public final class WorkerDomainArgs extends com.pulumi.resources.ResourceArgs {
         public WorkerDomainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("WorkerDomainArgs", "accountId");
+            }
+            if ($.environment == null) {
+                throw new MissingRequiredPropertyException("WorkerDomainArgs", "environment");
             }
             if ($.hostname == null) {
                 throw new MissingRequiredPropertyException("WorkerDomainArgs", "hostname");

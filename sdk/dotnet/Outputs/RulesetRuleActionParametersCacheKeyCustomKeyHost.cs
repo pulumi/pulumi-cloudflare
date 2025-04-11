@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyHost
     {
         /// <summary>
-        /// Resolve hostname to IP address.
+        /// Use the resolved host in the cache key. A value of true will use the resolved host, while a value or false will use the original host.
         /// </summary>
         public readonly bool? Resolved;
 

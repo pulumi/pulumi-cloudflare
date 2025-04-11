@@ -10,10 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Zone resource. Zone is the basic resource for
-    /// working with Cloudflare and is roughly equivalent to a domain name
-    /// that the user purchases.
-    /// 
     /// &gt; If you are attempting to sign up a subdomain of a zone you must first have Subdomain Support entitlement for your account.
     /// 
     /// ## Example Usage
@@ -26,10 +22,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.Zone("example", new()
+    ///     var exampleZone = new Cloudflare.Zone("example_zone", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         ZoneName = "example.com",
+    ///         Account = new Cloudflare.Inputs.ZoneAccountArgs
+    ///         {
+    ///             Id = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         },
+    ///         Name = "example.com",
+    ///         Type = "full",
     ///     });
     /// 
     /// });
@@ -38,74 +38,119 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/zone:Zone example &lt;zone_id&gt;
+    /// $ pulumi import cloudflare:index/zone:Zone example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zone:Zone")]
     public partial class Zone : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Account ID to manage the zone resource in.
-        /// </summary>
-        [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        [Output("account")]
+        public Output<Outputs.ZoneAccount> Account { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to scan for DNS records on creation. Ignored after zone is created.
+        /// The last time proof of ownership was detected and the zone was made
+        /// active
         /// </summary>
-        [Output("jumpStart")]
-        public Output<bool?> JumpStart { get; private set; } = null!;
+        [Output("activatedOn")]
+        public Output<string> ActivatedOn { get; private set; } = null!;
 
+        /// <summary>
+        /// When the zone was created
+        /// </summary>
+        [Output("createdOn")]
+        public Output<string> CreatedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// The interval (in seconds) from when development mode expires
+        /// (positive integer) or last expired (negative integer) for the
+        /// domain. If development mode has never been enabled, this value is 0.
+        /// </summary>
+        [Output("developmentMode")]
+        public Output<double> DevelopmentMode { get; private set; } = null!;
+
+        /// <summary>
+        /// Metadata about the zone
+        /// </summary>
         [Output("meta")]
-        public Output<ImmutableDictionary<string, bool>> Meta { get; private set; } = null!;
+        public Output<Outputs.ZoneMeta> Meta { get; private set; } = null!;
 
         /// <summary>
-        /// Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
+        /// When the zone was last modified
+        /// </summary>
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// The domain name
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The name servers Cloudflare assigns to a zone
         /// </summary>
         [Output("nameServers")]
         public Output<ImmutableArray<string>> NameServers { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
+        /// DNS host at the time of switching to Cloudflare
+        /// </summary>
+        [Output("originalDnshost")]
+        public Output<string> OriginalDnshost { get; private set; } = null!;
+
+        /// <summary>
+        /// Original name servers before moving to Cloudflare
+        /// </summary>
+        [Output("originalNameServers")]
+        public Output<ImmutableArray<string>> OriginalNameServers { get; private set; } = null!;
+
+        /// <summary>
+        /// Registrar for the domain at the time of switching to Cloudflare
+        /// </summary>
+        [Output("originalRegistrar")]
+        public Output<string> OriginalRegistrar { get; private set; } = null!;
+
+        /// <summary>
+        /// The owner of the zone
+        /// </summary>
+        [Output("owner")]
+        public Output<Outputs.ZoneOwner> Owner { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the zone is only using Cloudflare DNS services. A
+        /// true value means the zone will not receive security or performance
+        /// benefits.
         /// </summary>
         [Output("paused")]
-        public Output<bool?> Paused { get; private set; } = null!;
+        public Output<bool> Paused { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
-        /// </summary>
-        [Output("plan")]
-        public Output<string> Plan { get; private set; } = null!;
-
-        /// <summary>
-        /// Status of the zone. Available values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
+        /// The zone status on Cloudflare.
+        /// Available values: "initializing", "pending", "active", "moved".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
+        /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
+        /// typically a partner-hosted zone or a CNAME setup.
+        /// Available values: "full", "partial", "secondary".
         /// </summary>
         [Output("type")]
-        public Output<string?> Type { get; private set; } = null!;
+        public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// List of Vanity Nameservers (if set).
+        /// An array of domains used for custom name servers. This is only
+        /// available for Business and Enterprise plans.
         /// </summary>
         [Output("vanityNameServers")]
         public Output<ImmutableArray<string>> VanityNameServers { get; private set; } = null!;
 
         /// <summary>
-        /// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
+        /// Verification key for partial zone setup.
         /// </summary>
         [Output("verificationKey")]
         public Output<string> VerificationKey { get; private set; } = null!;
-
-        /// <summary>
-        /// The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Output("zone")]
-        public Output<string> ZoneName { get; private set; } = null!;
 
 
         /// <summary>
@@ -153,32 +198,19 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZoneArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Account ID to manage the zone resource in.
-        /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("account", required: true)]
+        public Input<Inputs.ZoneAccountArgs> Account { get; set; } = null!;
 
         /// <summary>
-        /// Whether to scan for DNS records on creation. Ignored after zone is created.
+        /// The domain name
         /// </summary>
-        [Input("jumpStart")]
-        public Input<bool>? JumpStart { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
-        /// </summary>
-        [Input("paused")]
-        public Input<bool>? Paused { get; set; }
-
-        /// <summary>
-        /// The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
-        /// </summary>
-        [Input("plan")]
-        public Input<string>? Plan { get; set; }
-
-        /// <summary>
-        /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
+        /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
+        /// typically a partner-hosted zone or a CNAME setup.
+        /// Available values: "full", "partial", "secondary".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -187,19 +219,14 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _vanityNameServers;
 
         /// <summary>
-        /// List of Vanity Nameservers (if set).
+        /// An array of domains used for custom name servers. This is only
+        /// available for Business and Enterprise plans.
         /// </summary>
         public InputList<string> VanityNameServers
         {
             get => _vanityNameServers ?? (_vanityNameServers = new InputList<string>());
             set => _vanityNameServers = value;
         }
-
-        /// <summary>
-        /// The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> ZoneName { get; set; } = null!;
 
         public ZoneArgs()
         {
@@ -209,31 +236,53 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZoneState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Account ID to manage the zone resource in.
-        /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("account")]
+        public Input<Inputs.ZoneAccountGetArgs>? Account { get; set; }
 
         /// <summary>
-        /// Whether to scan for DNS records on creation. Ignored after zone is created.
+        /// The last time proof of ownership was detected and the zone was made
+        /// active
         /// </summary>
-        [Input("jumpStart")]
-        public Input<bool>? JumpStart { get; set; }
+        [Input("activatedOn")]
+        public Input<string>? ActivatedOn { get; set; }
 
+        /// <summary>
+        /// When the zone was created
+        /// </summary>
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
+
+        /// <summary>
+        /// The interval (in seconds) from when development mode expires
+        /// (positive integer) or last expired (negative integer) for the
+        /// domain. If development mode has never been enabled, this value is 0.
+        /// </summary>
+        [Input("developmentMode")]
+        public Input<double>? DevelopmentMode { get; set; }
+
+        /// <summary>
+        /// Metadata about the zone
+        /// </summary>
         [Input("meta")]
-        private InputMap<bool>? _meta;
-        public InputMap<bool> Meta
-        {
-            get => _meta ?? (_meta = new InputMap<bool>());
-            set => _meta = value;
-        }
+        public Input<Inputs.ZoneMetaGetArgs>? Meta { get; set; }
+
+        /// <summary>
+        /// When the zone was last modified
+        /// </summary>
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
+
+        /// <summary>
+        /// The domain name
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("nameServers")]
         private InputList<string>? _nameServers;
 
         /// <summary>
-        /// Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
+        /// The name servers Cloudflare assigns to a zone
         /// </summary>
         public InputList<string> NameServers
         {
@@ -242,25 +291,54 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
+        /// DNS host at the time of switching to Cloudflare
+        /// </summary>
+        [Input("originalDnshost")]
+        public Input<string>? OriginalDnshost { get; set; }
+
+        [Input("originalNameServers")]
+        private InputList<string>? _originalNameServers;
+
+        /// <summary>
+        /// Original name servers before moving to Cloudflare
+        /// </summary>
+        public InputList<string> OriginalNameServers
+        {
+            get => _originalNameServers ?? (_originalNameServers = new InputList<string>());
+            set => _originalNameServers = value;
+        }
+
+        /// <summary>
+        /// Registrar for the domain at the time of switching to Cloudflare
+        /// </summary>
+        [Input("originalRegistrar")]
+        public Input<string>? OriginalRegistrar { get; set; }
+
+        /// <summary>
+        /// The owner of the zone
+        /// </summary>
+        [Input("owner")]
+        public Input<Inputs.ZoneOwnerGetArgs>? Owner { get; set; }
+
+        /// <summary>
+        /// Indicates whether the zone is only using Cloudflare DNS services. A
+        /// true value means the zone will not receive security or performance
+        /// benefits.
         /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
         /// <summary>
-        /// The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
-        /// </summary>
-        [Input("plan")]
-        public Input<string>? Plan { get; set; }
-
-        /// <summary>
-        /// Status of the zone. Available values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
+        /// The zone status on Cloudflare.
+        /// Available values: "initializing", "pending", "active", "moved".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
+        /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
+        /// typically a partner-hosted zone or a CNAME setup.
+        /// Available values: "full", "partial", "secondary".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -269,7 +347,8 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _vanityNameServers;
 
         /// <summary>
-        /// List of Vanity Nameservers (if set).
+        /// An array of domains used for custom name servers. This is only
+        /// available for Business and Enterprise plans.
         /// </summary>
         public InputList<string> VanityNameServers
         {
@@ -278,16 +357,10 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
+        /// Verification key for partial zone setup.
         /// </summary>
         [Input("verificationKey")]
         public Input<string>? VerificationKey { get; set; }
-
-        /// <summary>
-        /// The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Input("zone")]
-        public Input<string>? ZoneName { get; set; }
 
         public ZoneState()
         {

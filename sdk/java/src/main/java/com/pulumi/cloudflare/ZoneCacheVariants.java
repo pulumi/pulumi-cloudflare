@@ -6,252 +6,81 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZoneCacheVariantsArgs;
 import com.pulumi.cloudflare.inputs.ZoneCacheVariantsState;
+import com.pulumi.cloudflare.outputs.ZoneCacheVariantsValue;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource which customizes Cloudflare zone cache variants.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZoneCacheVariants;
- * import com.pulumi.cloudflare.ZoneCacheVariantsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new ZoneCacheVariants("example", ZoneCacheVariantsArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .avifs(            
- *                 "image/avif",
- *                 "image/webp")
- *             .bmps(            
- *                 "image/bmp",
- *                 "image/webp")
- *             .gifs(            
- *                 "image/gif",
- *                 "image/webp")
- *             .jpegs(            
- *                 "image/jpeg",
- *                 "image/webp")
- *             .jpgs(            
- *                 "image/jpg",
- *                 "image/webp")
- *             .jpg2s(            
- *                 "image/jpg2",
- *                 "image/webp")
- *             .jp2s(            
- *                 "image/jp2",
- *                 "image/webp")
- *             .pngs(            
- *                 "image/png",
- *                 "image/webp")
- *             .tiffs(            
- *                 "image/tiff",
- *                 "image/webp")
- *             .tifs(            
- *                 "image/tif",
- *                 "image/webp")
- *             .webps(            
- *                 "image/jpeg",
- *                 "image/webp")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/zoneCacheVariants:ZoneCacheVariants example &#39;&lt;zone_id&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zoneCacheVariants:ZoneCacheVariants")
 public class ZoneCacheVariants extends com.pulumi.resources.CustomResource {
     /**
-     * List of strings with the MIME types of all the variants that should be served for avif.
+     * Whether the setting is editable
      * 
      */
-    @Export(name="avifs", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> avifs;
+    @Export(name="editable", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> editable;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for avif.
+     * @return Whether the setting is editable
      * 
      */
-    public Output<Optional<List<String>>> avifs() {
-        return Codegen.optional(this.avifs);
+    public Output<Boolean> editable() {
+        return this.editable;
     }
     /**
-     * List of strings with the MIME types of all the variants that should be served for bmp.
+     * Last time this setting was modified.
      * 
      */
-    @Export(name="bmps", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> bmps;
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for bmp.
+     * @return Last time this setting was modified.
      * 
      */
-    public Output<Optional<List<String>>> bmps() {
-        return Codegen.optional(this.bmps);
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
     }
     /**
-     * List of strings with the MIME types of all the variants that should be served for gif.
+     * Value of the zone setting.
      * 
      */
-    @Export(name="gifs", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> gifs;
+    @Export(name="value", refs={ZoneCacheVariantsValue.class}, tree="[0]")
+    private Output<ZoneCacheVariantsValue> value;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for gif.
+     * @return Value of the zone setting.
      * 
      */
-    public Output<Optional<List<String>>> gifs() {
-        return Codegen.optional(this.gifs);
+    public Output<ZoneCacheVariantsValue> value() {
+        return this.value;
     }
     /**
-     * List of strings with the MIME types of all the variants that should be served for jp2.
-     * 
-     */
-    @Export(name="jp2s", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> jp2s;
-
-    /**
-     * @return List of strings with the MIME types of all the variants that should be served for jp2.
-     * 
-     */
-    public Output<Optional<List<String>>> jp2s() {
-        return Codegen.optional(this.jp2s);
-    }
-    /**
-     * List of strings with the MIME types of all the variants that should be served for jpeg.
-     * 
-     */
-    @Export(name="jpegs", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> jpegs;
-
-    /**
-     * @return List of strings with the MIME types of all the variants that should be served for jpeg.
-     * 
-     */
-    public Output<Optional<List<String>>> jpegs() {
-        return Codegen.optional(this.jpegs);
-    }
-    /**
-     * List of strings with the MIME types of all the variants that should be served for jpg2.
-     * 
-     */
-    @Export(name="jpg2s", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> jpg2s;
-
-    /**
-     * @return List of strings with the MIME types of all the variants that should be served for jpg2.
-     * 
-     */
-    public Output<Optional<List<String>>> jpg2s() {
-        return Codegen.optional(this.jpg2s);
-    }
-    /**
-     * List of strings with the MIME types of all the variants that should be served for jpg.
-     * 
-     */
-    @Export(name="jpgs", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> jpgs;
-
-    /**
-     * @return List of strings with the MIME types of all the variants that should be served for jpg.
-     * 
-     */
-    public Output<Optional<List<String>>> jpgs() {
-        return Codegen.optional(this.jpgs);
-    }
-    /**
-     * List of strings with the MIME types of all the variants that should be served for png.
-     * 
-     */
-    @Export(name="pngs", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> pngs;
-
-    /**
-     * @return List of strings with the MIME types of all the variants that should be served for png.
-     * 
-     */
-    public Output<Optional<List<String>>> pngs() {
-        return Codegen.optional(this.pngs);
-    }
-    /**
-     * List of strings with the MIME types of all the variants that should be served for tiff.
-     * 
-     */
-    @Export(name="tiffs", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> tiffs;
-
-    /**
-     * @return List of strings with the MIME types of all the variants that should be served for tiff.
-     * 
-     */
-    public Output<Optional<List<String>>> tiffs() {
-        return Codegen.optional(this.tiffs);
-    }
-    /**
-     * List of strings with the MIME types of all the variants that should be served for tif.
-     * 
-     */
-    @Export(name="tifs", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> tifs;
-
-    /**
-     * @return List of strings with the MIME types of all the variants that should be served for tif.
-     * 
-     */
-    public Output<Optional<List<String>>> tifs() {
-        return Codegen.optional(this.tifs);
-    }
-    /**
-     * List of strings with the MIME types of all the variants that should be served for webp.
-     * 
-     */
-    @Export(name="webps", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> webps;
-
-    /**
-     * @return List of strings with the MIME types of all the variants that should be served for webp.
-     * 
-     */
-    public Output<Optional<List<String>>> webps() {
-        return Codegen.optional(this.webps);
-    }
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

@@ -3,21 +3,10 @@
 
 package com.pulumi.cloudflare;
 
-import com.pulumi.cloudflare.inputs.TeamsAccountAntivirusArgs;
-import com.pulumi.cloudflare.inputs.TeamsAccountBlockPageArgs;
-import com.pulumi.cloudflare.inputs.TeamsAccountBodyScanningArgs;
-import com.pulumi.cloudflare.inputs.TeamsAccountCertificateArgs;
-import com.pulumi.cloudflare.inputs.TeamsAccountCustomCertificateArgs;
-import com.pulumi.cloudflare.inputs.TeamsAccountExtendedEmailMatchingArgs;
-import com.pulumi.cloudflare.inputs.TeamsAccountFipsArgs;
-import com.pulumi.cloudflare.inputs.TeamsAccountLoggingArgs;
-import com.pulumi.cloudflare.inputs.TeamsAccountPayloadLogArgs;
-import com.pulumi.cloudflare.inputs.TeamsAccountProxyArgs;
-import com.pulumi.cloudflare.inputs.TeamsAccountSshSessionLogArgs;
+import com.pulumi.cloudflare.inputs.TeamsAccountSettingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -28,281 +17,33 @@ public final class TeamsAccountArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TeamsAccountArgs Empty = new TeamsAccountArgs();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
     /**
-     * Whether to enable the activity log.
+     * Account settings
      * 
      */
-    @Import(name="activityLogEnabled")
-    private @Nullable Output<Boolean> activityLogEnabled;
+    @Import(name="settings")
+    private @Nullable Output<TeamsAccountSettingsArgs> settings;
 
     /**
-     * @return Whether to enable the activity log.
+     * @return Account settings
      * 
      */
-    public Optional<Output<Boolean>> activityLogEnabled() {
-        return Optional.ofNullable(this.activityLogEnabled);
-    }
-
-    /**
-     * Configuration block for antivirus traffic scanning.
-     * 
-     */
-    @Import(name="antivirus")
-    private @Nullable Output<TeamsAccountAntivirusArgs> antivirus;
-
-    /**
-     * @return Configuration block for antivirus traffic scanning.
-     * 
-     */
-    public Optional<Output<TeamsAccountAntivirusArgs>> antivirus() {
-        return Optional.ofNullable(this.antivirus);
-    }
-
-    /**
-     * Configuration for a custom block page.
-     * 
-     */
-    @Import(name="blockPage")
-    private @Nullable Output<TeamsAccountBlockPageArgs> blockPage;
-
-    /**
-     * @return Configuration for a custom block page.
-     * 
-     */
-    public Optional<Output<TeamsAccountBlockPageArgs>> blockPage() {
-        return Optional.ofNullable(this.blockPage);
-    }
-
-    /**
-     * Configuration for body scanning.
-     * 
-     */
-    @Import(name="bodyScanning")
-    private @Nullable Output<TeamsAccountBodyScanningArgs> bodyScanning;
-
-    /**
-     * @return Configuration for body scanning.
-     * 
-     */
-    public Optional<Output<TeamsAccountBodyScanningArgs>> bodyScanning() {
-        return Optional.ofNullable(this.bodyScanning);
-    }
-
-    /**
-     * Configuration for TLS interception certificate. This will be required starting Feb 2025.
-     * 
-     */
-    @Import(name="certificate")
-    private @Nullable Output<TeamsAccountCertificateArgs> certificate;
-
-    /**
-     * @return Configuration for TLS interception certificate. This will be required starting Feb 2025.
-     * 
-     */
-    public Optional<Output<TeamsAccountCertificateArgs>> certificate() {
-        return Optional.ofNullable(this.certificate);
-    }
-
-    /**
-     * Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-     * 
-     * @deprecated
-     * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
-     * 
-     */
-    @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
-    @Import(name="customCertificate")
-    private @Nullable Output<TeamsAccountCustomCertificateArgs> customCertificate;
-
-    /**
-     * @return Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-     * 
-     * @deprecated
-     * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
-     * 
-     */
-    @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
-    public Optional<Output<TeamsAccountCustomCertificateArgs>> customCertificate() {
-        return Optional.ofNullable(this.customCertificate);
-    }
-
-    /**
-     * Configuration for extended e-mail matching.
-     * 
-     */
-    @Import(name="extendedEmailMatching")
-    private @Nullable Output<TeamsAccountExtendedEmailMatchingArgs> extendedEmailMatching;
-
-    /**
-     * @return Configuration for extended e-mail matching.
-     * 
-     */
-    public Optional<Output<TeamsAccountExtendedEmailMatchingArgs>> extendedEmailMatching() {
-        return Optional.ofNullable(this.extendedEmailMatching);
-    }
-
-    /**
-     * Configure compliance with Federal Information Processing Standards.
-     * 
-     */
-    @Import(name="fips")
-    private @Nullable Output<TeamsAccountFipsArgs> fips;
-
-    /**
-     * @return Configure compliance with Federal Information Processing Standards.
-     * 
-     */
-    public Optional<Output<TeamsAccountFipsArgs>> fips() {
-        return Optional.ofNullable(this.fips);
-    }
-
-    @Import(name="logging")
-    private @Nullable Output<TeamsAccountLoggingArgs> logging;
-
-    public Optional<Output<TeamsAccountLoggingArgs>> logging() {
-        return Optional.ofNullable(this.logging);
-    }
-
-    /**
-     * Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-     * 
-     */
-    @Import(name="nonIdentityBrowserIsolationEnabled")
-    private @Nullable Output<Boolean> nonIdentityBrowserIsolationEnabled;
-
-    /**
-     * @return Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-     * 
-     */
-    public Optional<Output<Boolean>> nonIdentityBrowserIsolationEnabled() {
-        return Optional.ofNullable(this.nonIdentityBrowserIsolationEnabled);
-    }
-
-    /**
-     * Configuration for DLP Payload Logging.
-     * 
-     */
-    @Import(name="payloadLog")
-    private @Nullable Output<TeamsAccountPayloadLogArgs> payloadLog;
-
-    /**
-     * @return Configuration for DLP Payload Logging.
-     * 
-     */
-    public Optional<Output<TeamsAccountPayloadLogArgs>> payloadLog() {
-        return Optional.ofNullable(this.payloadLog);
-    }
-
-    /**
-     * Indicator that protocol detection is enabled.
-     * 
-     */
-    @Import(name="protocolDetectionEnabled")
-    private @Nullable Output<Boolean> protocolDetectionEnabled;
-
-    /**
-     * @return Indicator that protocol detection is enabled.
-     * 
-     */
-    public Optional<Output<Boolean>> protocolDetectionEnabled() {
-        return Optional.ofNullable(this.protocolDetectionEnabled);
-    }
-
-    /**
-     * Configuration block for specifying which protocols are proxied.
-     * 
-     */
-    @Import(name="proxy")
-    private @Nullable Output<TeamsAccountProxyArgs> proxy;
-
-    /**
-     * @return Configuration block for specifying which protocols are proxied.
-     * 
-     */
-    public Optional<Output<TeamsAccountProxyArgs>> proxy() {
-        return Optional.ofNullable(this.proxy);
-    }
-
-    /**
-     * Configuration for SSH Session Logging.
-     * 
-     */
-    @Import(name="sshSessionLog")
-    private @Nullable Output<TeamsAccountSshSessionLogArgs> sshSessionLog;
-
-    /**
-     * @return Configuration for SSH Session Logging.
-     * 
-     */
-    public Optional<Output<TeamsAccountSshSessionLogArgs>> sshSessionLog() {
-        return Optional.ofNullable(this.sshSessionLog);
-    }
-
-    /**
-     * Indicator that decryption of TLS traffic is enabled.
-     * 
-     */
-    @Import(name="tlsDecryptEnabled")
-    private @Nullable Output<Boolean> tlsDecryptEnabled;
-
-    /**
-     * @return Indicator that decryption of TLS traffic is enabled.
-     * 
-     */
-    public Optional<Output<Boolean>> tlsDecryptEnabled() {
-        return Optional.ofNullable(this.tlsDecryptEnabled);
-    }
-
-    /**
-     * Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-     * 
-     */
-    @Import(name="urlBrowserIsolationEnabled")
-    private @Nullable Output<Boolean> urlBrowserIsolationEnabled;
-
-    /**
-     * @return Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-     * 
-     */
-    public Optional<Output<Boolean>> urlBrowserIsolationEnabled() {
-        return Optional.ofNullable(this.urlBrowserIsolationEnabled);
+    public Optional<Output<TeamsAccountSettingsArgs>> settings() {
+        return Optional.ofNullable(this.settings);
     }
 
     private TeamsAccountArgs() {}
 
     private TeamsAccountArgs(TeamsAccountArgs $) {
         this.accountId = $.accountId;
-        this.activityLogEnabled = $.activityLogEnabled;
-        this.antivirus = $.antivirus;
-        this.blockPage = $.blockPage;
-        this.bodyScanning = $.bodyScanning;
-        this.certificate = $.certificate;
-        this.customCertificate = $.customCertificate;
-        this.extendedEmailMatching = $.extendedEmailMatching;
-        this.fips = $.fips;
-        this.logging = $.logging;
-        this.nonIdentityBrowserIsolationEnabled = $.nonIdentityBrowserIsolationEnabled;
-        this.payloadLog = $.payloadLog;
-        this.protocolDetectionEnabled = $.protocolDetectionEnabled;
-        this.proxy = $.proxy;
-        this.sshSessionLog = $.sshSessionLog;
-        this.tlsDecryptEnabled = $.tlsDecryptEnabled;
-        this.urlBrowserIsolationEnabled = $.urlBrowserIsolationEnabled;
+        this.settings = $.settings;
     }
 
     public static Builder builder() {
@@ -323,357 +64,34 @@ public final class TeamsAccountArgs extends com.pulumi.resources.ResourceArgs {
             $ = new TeamsAccountArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param activityLogEnabled Whether to enable the activity log.
+         * @param settings Account settings
          * 
          * @return builder
          * 
          */
-        public Builder activityLogEnabled(@Nullable Output<Boolean> activityLogEnabled) {
-            $.activityLogEnabled = activityLogEnabled;
+        public Builder settings(@Nullable Output<TeamsAccountSettingsArgs> settings) {
+            $.settings = settings;
             return this;
         }
 
         /**
-         * @param activityLogEnabled Whether to enable the activity log.
+         * @param settings Account settings
          * 
          * @return builder
          * 
          */
-        public Builder activityLogEnabled(Boolean activityLogEnabled) {
-            return activityLogEnabled(Output.of(activityLogEnabled));
-        }
-
-        /**
-         * @param antivirus Configuration block for antivirus traffic scanning.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder antivirus(@Nullable Output<TeamsAccountAntivirusArgs> antivirus) {
-            $.antivirus = antivirus;
-            return this;
-        }
-
-        /**
-         * @param antivirus Configuration block for antivirus traffic scanning.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder antivirus(TeamsAccountAntivirusArgs antivirus) {
-            return antivirus(Output.of(antivirus));
-        }
-
-        /**
-         * @param blockPage Configuration for a custom block page.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder blockPage(@Nullable Output<TeamsAccountBlockPageArgs> blockPage) {
-            $.blockPage = blockPage;
-            return this;
-        }
-
-        /**
-         * @param blockPage Configuration for a custom block page.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder blockPage(TeamsAccountBlockPageArgs blockPage) {
-            return blockPage(Output.of(blockPage));
-        }
-
-        /**
-         * @param bodyScanning Configuration for body scanning.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder bodyScanning(@Nullable Output<TeamsAccountBodyScanningArgs> bodyScanning) {
-            $.bodyScanning = bodyScanning;
-            return this;
-        }
-
-        /**
-         * @param bodyScanning Configuration for body scanning.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder bodyScanning(TeamsAccountBodyScanningArgs bodyScanning) {
-            return bodyScanning(Output.of(bodyScanning));
-        }
-
-        /**
-         * @param certificate Configuration for TLS interception certificate. This will be required starting Feb 2025.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder certificate(@Nullable Output<TeamsAccountCertificateArgs> certificate) {
-            $.certificate = certificate;
-            return this;
-        }
-
-        /**
-         * @param certificate Configuration for TLS interception certificate. This will be required starting Feb 2025.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder certificate(TeamsAccountCertificateArgs certificate) {
-            return certificate(Output.of(certificate));
-        }
-
-        /**
-         * @param customCertificate Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
-         * 
-         */
-        @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
-        public Builder customCertificate(@Nullable Output<TeamsAccountCustomCertificateArgs> customCertificate) {
-            $.customCertificate = customCertificate;
-            return this;
-        }
-
-        /**
-         * @param customCertificate Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
-         * 
-         */
-        @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
-        public Builder customCertificate(TeamsAccountCustomCertificateArgs customCertificate) {
-            return customCertificate(Output.of(customCertificate));
-        }
-
-        /**
-         * @param extendedEmailMatching Configuration for extended e-mail matching.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder extendedEmailMatching(@Nullable Output<TeamsAccountExtendedEmailMatchingArgs> extendedEmailMatching) {
-            $.extendedEmailMatching = extendedEmailMatching;
-            return this;
-        }
-
-        /**
-         * @param extendedEmailMatching Configuration for extended e-mail matching.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder extendedEmailMatching(TeamsAccountExtendedEmailMatchingArgs extendedEmailMatching) {
-            return extendedEmailMatching(Output.of(extendedEmailMatching));
-        }
-
-        /**
-         * @param fips Configure compliance with Federal Information Processing Standards.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder fips(@Nullable Output<TeamsAccountFipsArgs> fips) {
-            $.fips = fips;
-            return this;
-        }
-
-        /**
-         * @param fips Configure compliance with Federal Information Processing Standards.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder fips(TeamsAccountFipsArgs fips) {
-            return fips(Output.of(fips));
-        }
-
-        public Builder logging(@Nullable Output<TeamsAccountLoggingArgs> logging) {
-            $.logging = logging;
-            return this;
-        }
-
-        public Builder logging(TeamsAccountLoggingArgs logging) {
-            return logging(Output.of(logging));
-        }
-
-        /**
-         * @param nonIdentityBrowserIsolationEnabled Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nonIdentityBrowserIsolationEnabled(@Nullable Output<Boolean> nonIdentityBrowserIsolationEnabled) {
-            $.nonIdentityBrowserIsolationEnabled = nonIdentityBrowserIsolationEnabled;
-            return this;
-        }
-
-        /**
-         * @param nonIdentityBrowserIsolationEnabled Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nonIdentityBrowserIsolationEnabled(Boolean nonIdentityBrowserIsolationEnabled) {
-            return nonIdentityBrowserIsolationEnabled(Output.of(nonIdentityBrowserIsolationEnabled));
-        }
-
-        /**
-         * @param payloadLog Configuration for DLP Payload Logging.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder payloadLog(@Nullable Output<TeamsAccountPayloadLogArgs> payloadLog) {
-            $.payloadLog = payloadLog;
-            return this;
-        }
-
-        /**
-         * @param payloadLog Configuration for DLP Payload Logging.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder payloadLog(TeamsAccountPayloadLogArgs payloadLog) {
-            return payloadLog(Output.of(payloadLog));
-        }
-
-        /**
-         * @param protocolDetectionEnabled Indicator that protocol detection is enabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder protocolDetectionEnabled(@Nullable Output<Boolean> protocolDetectionEnabled) {
-            $.protocolDetectionEnabled = protocolDetectionEnabled;
-            return this;
-        }
-
-        /**
-         * @param protocolDetectionEnabled Indicator that protocol detection is enabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder protocolDetectionEnabled(Boolean protocolDetectionEnabled) {
-            return protocolDetectionEnabled(Output.of(protocolDetectionEnabled));
-        }
-
-        /**
-         * @param proxy Configuration block for specifying which protocols are proxied.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder proxy(@Nullable Output<TeamsAccountProxyArgs> proxy) {
-            $.proxy = proxy;
-            return this;
-        }
-
-        /**
-         * @param proxy Configuration block for specifying which protocols are proxied.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder proxy(TeamsAccountProxyArgs proxy) {
-            return proxy(Output.of(proxy));
-        }
-
-        /**
-         * @param sshSessionLog Configuration for SSH Session Logging.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sshSessionLog(@Nullable Output<TeamsAccountSshSessionLogArgs> sshSessionLog) {
-            $.sshSessionLog = sshSessionLog;
-            return this;
-        }
-
-        /**
-         * @param sshSessionLog Configuration for SSH Session Logging.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sshSessionLog(TeamsAccountSshSessionLogArgs sshSessionLog) {
-            return sshSessionLog(Output.of(sshSessionLog));
-        }
-
-        /**
-         * @param tlsDecryptEnabled Indicator that decryption of TLS traffic is enabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tlsDecryptEnabled(@Nullable Output<Boolean> tlsDecryptEnabled) {
-            $.tlsDecryptEnabled = tlsDecryptEnabled;
-            return this;
-        }
-
-        /**
-         * @param tlsDecryptEnabled Indicator that decryption of TLS traffic is enabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tlsDecryptEnabled(Boolean tlsDecryptEnabled) {
-            return tlsDecryptEnabled(Output.of(tlsDecryptEnabled));
-        }
-
-        /**
-         * @param urlBrowserIsolationEnabled Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder urlBrowserIsolationEnabled(@Nullable Output<Boolean> urlBrowserIsolationEnabled) {
-            $.urlBrowserIsolationEnabled = urlBrowserIsolationEnabled;
-            return this;
-        }
-
-        /**
-         * @param urlBrowserIsolationEnabled Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder urlBrowserIsolationEnabled(Boolean urlBrowserIsolationEnabled) {
-            return urlBrowserIsolationEnabled(Output.of(urlBrowserIsolationEnabled));
+        public Builder settings(TeamsAccountSettingsArgs settings) {
+            return settings(Output.of(settings));
         }
 
         public TeamsAccountArgs build() {

@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Leaked Credential Check resource to be used for managing the status of the Cloudflare Leaked Credential detection within a specific zone.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,33 +20,26 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Enable the Leaked Credentials Check detection
-    ///     var example = new Cloudflare.LeakedCredentialCheck("example", new()
+    ///     var exampleLeakedCredentialCheck = new Cloudflare.LeakedCredentialCheck("example_leaked_credential_check", new()
     ///     {
-    ///         ZoneId = "399c6f4950c01a5a141b99ff7fbcbd8b",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Enabled = true,
     ///     });
     /// 
     /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck example &lt;zone_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck")]
     public partial class LeakedCredentialCheck : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// State of the Leaked Credential Check detection
+        /// Whether or not Leaked Credential Checks are enabled
         /// </summary>
         [Output("enabled")]
-        public Output<bool> Enabled { get; private set; } = null!;
+        public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -100,13 +91,13 @@ namespace Pulumi.Cloudflare
     public sealed class LeakedCredentialCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// State of the Leaked Credential Check detection
+        /// Whether or not Leaked Credential Checks are enabled
         /// </summary>
-        [Input("enabled", required: true)]
-        public Input<bool> Enabled { get; set; } = null!;
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -120,13 +111,13 @@ namespace Pulumi.Cloudflare
     public sealed class LeakedCredentialCheckState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// State of the Leaked Credential Check detection
+        /// Whether or not Leaked Credential Checks are enabled
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

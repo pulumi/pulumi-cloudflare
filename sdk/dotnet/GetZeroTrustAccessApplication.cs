@@ -12,19 +12,73 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustAccessApplication
     {
         /// <summary>
-        /// Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustAccessApplication = Cloudflare.GetZeroTrustAccessApplication.Invoke(new()
+        ///     {
+        ///         AppId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         AccountId = "account_id",
+        ///         ZoneId = "zone_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetZeroTrustAccessApplicationResult> InvokeAsync(GetZeroTrustAccessApplicationArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustAccessApplicationResult>("cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication", args ?? new GetZeroTrustAccessApplicationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustAccessApplication = Cloudflare.GetZeroTrustAccessApplication.Invoke(new()
+        ///     {
+        ///         AppId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         AccountId = "account_id",
+        ///         ZoneId = "zone_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetZeroTrustAccessApplicationResult> Invoke(GetZeroTrustAccessApplicationInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessApplicationResult>("cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication", args ?? new GetZeroTrustAccessApplicationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustAccessApplication = Cloudflare.GetZeroTrustAccessApplication.Invoke(new()
+        ///     {
+        ///         AppId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         AccountId = "account_id",
+        ///         ZoneId = "zone_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetZeroTrustAccessApplicationResult> Invoke(GetZeroTrustAccessApplicationInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessApplicationResult>("cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication", args ?? new GetZeroTrustAccessApplicationInvokeArgs(), options.WithDefaults());
@@ -34,25 +88,22 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustAccessApplicationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
         /// <summary>
-        /// The primary hostname and path that Access will secure. Must provide only one of `name`, `domain`.
+        /// Identifier
         /// </summary>
-        [Input("domain")]
-        public string? Domain { get; set; }
+        [Input("appId")]
+        public string? AppId { get; set; }
+
+        [Input("filter")]
+        public Inputs.GetZeroTrustAccessApplicationFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// Friendly name of the Access Application. Must provide only one of `name`, `domain`.
-        /// </summary>
-        [Input("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
-        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
@@ -66,25 +117,22 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustAccessApplicationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The primary hostname and path that Access will secure. Must provide only one of `name`, `domain`.
+        /// Identifier
         /// </summary>
-        [Input("domain")]
-        public Input<string>? Domain { get; set; }
+        [Input("appId")]
+        public Input<string>? AppId { get; set; }
+
+        [Input("filter")]
+        public Input<Inputs.GetZeroTrustAccessApplicationFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// Friendly name of the Access Application. Must provide only one of `name`, `domain`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -100,27 +148,150 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustAccessApplicationResult
     {
         /// <summary>
-        /// The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
-        /// Application Audience (AUD) Tag of the application.
+        /// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+        /// </summary>
+        public readonly bool AllowAuthenticateViaWarp;
+        /// <summary>
+        /// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
+        /// </summary>
+        public readonly ImmutableArray<string> AllowedIdps;
+        /// <summary>
+        /// Identifier
+        /// </summary>
+        public readonly string? AppId;
+        /// <summary>
+        /// The image URL of the logo shown in the App Launcher header.
+        /// </summary>
+        public readonly string AppLauncherLogoUrl;
+        /// <summary>
+        /// Displays the application in the App Launcher.
+        /// </summary>
+        public readonly bool AppLauncherVisible;
+        /// <summary>
+        /// Audience tag.
         /// </summary>
         public readonly string Aud;
         /// <summary>
-        /// The primary hostname and path that Access will secure. Must provide only one of `name`, `domain`.
+        /// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
+        /// </summary>
+        public readonly bool AutoRedirectToIdentity;
+        /// <summary>
+        /// The background color of the App Launcher page.
+        /// </summary>
+        public readonly string BgColor;
+        public readonly Outputs.GetZeroTrustAccessApplicationCorsHeadersResult CorsHeaders;
+        public readonly string CreatedAt;
+        /// <summary>
+        /// The custom error message shown to a user when they are denied access to the application.
+        /// </summary>
+        public readonly string CustomDenyMessage;
+        /// <summary>
+        /// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
+        /// </summary>
+        public readonly string CustomDenyUrl;
+        /// <summary>
+        /// The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
+        /// </summary>
+        public readonly string CustomNonIdentityDenyUrl;
+        /// <summary>
+        /// The custom pages that will be displayed when applicable for this application
+        /// </summary>
+        public readonly ImmutableArray<string> CustomPages;
+        /// <summary>
+        /// List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetZeroTrustAccessApplicationDestinationResult> Destinations;
+        /// <summary>
+        /// The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
         /// </summary>
         public readonly string Domain;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
+        /// </summary>
+        public readonly bool EnableBindingCookie;
+        public readonly Outputs.GetZeroTrustAccessApplicationFilterResult? Filter;
+        /// <summary>
+        /// The links in the App Launcher footer.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetZeroTrustAccessApplicationFooterLinkResult> FooterLinks;
+        /// <summary>
+        /// The background color of the App Launcher header.
+        /// </summary>
+        public readonly string HeaderBgColor;
+        /// <summary>
+        /// Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
+        /// </summary>
+        public readonly bool HttpOnlyCookieAttribute;
+        /// <summary>
+        /// Identifier
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Friendly name of the Access Application. Must provide only one of `name`, `domain`.
+        /// The design of the App Launcher landing page shown to users when they log in.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustAccessApplicationLandingPageDesignResult LandingPageDesign;
+        /// <summary>
+        /// The image URL for the logo shown in the App Launcher dashboard.
+        /// </summary>
+        public readonly string LogoUrl;
+        /// <summary>
+        /// The name of the application.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
+        /// </summary>
+        public readonly bool OptionsPreflightBypass;
+        /// <summary>
+        /// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+        /// </summary>
+        public readonly bool PathCookieAttribute;
+        public readonly ImmutableArray<Outputs.GetZeroTrustAccessApplicationPolicyResult> Policies;
+        public readonly Outputs.GetZeroTrustAccessApplicationSaasAppResult SaasApp;
+        /// <summary>
+        /// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
+        /// </summary>
+        public readonly string SameSiteCookieAttribute;
+        /// <summary>
+        /// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustAccessApplicationScimConfigResult ScimConfig;
+        /// <summary>
+        /// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        /// </summary>
+        public readonly ImmutableArray<string> SelfHostedDomains;
+        /// <summary>
+        /// Returns a 401 status code when the request is blocked by a Service Auth policy.
+        /// </summary>
+        public readonly bool ServiceAuth401Redirect;
+        /// <summary>
+        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+        /// </summary>
+        public readonly string SessionDuration;
+        /// <summary>
+        /// Determines when to skip the App Launcher landing page.
+        /// </summary>
+        public readonly bool SkipAppLauncherLoginPage;
+        /// <summary>
+        /// Enables automatic authentication through cloudflared.
+        /// </summary>
+        public readonly bool SkipInterstitial;
+        /// <summary>
+        /// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
+        public readonly ImmutableArray<Outputs.GetZeroTrustAccessApplicationTargetCriteriaResult> TargetCriterias;
+        /// <summary>
+        /// The application type.
+        /// </summary>
+        public readonly string Type;
+        public readonly string UpdatedAt;
+        /// <summary>
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         public readonly string? ZoneId;
 
@@ -128,21 +299,129 @@ namespace Pulumi.Cloudflare
         private GetZeroTrustAccessApplicationResult(
             string? accountId,
 
+            bool allowAuthenticateViaWarp,
+
+            ImmutableArray<string> allowedIdps,
+
+            string? appId,
+
+            string appLauncherLogoUrl,
+
+            bool appLauncherVisible,
+
             string aud,
+
+            bool autoRedirectToIdentity,
+
+            string bgColor,
+
+            Outputs.GetZeroTrustAccessApplicationCorsHeadersResult corsHeaders,
+
+            string createdAt,
+
+            string customDenyMessage,
+
+            string customDenyUrl,
+
+            string customNonIdentityDenyUrl,
+
+            ImmutableArray<string> customPages,
+
+            ImmutableArray<Outputs.GetZeroTrustAccessApplicationDestinationResult> destinations,
 
             string domain,
 
+            bool enableBindingCookie,
+
+            Outputs.GetZeroTrustAccessApplicationFilterResult? filter,
+
+            ImmutableArray<Outputs.GetZeroTrustAccessApplicationFooterLinkResult> footerLinks,
+
+            string headerBgColor,
+
+            bool httpOnlyCookieAttribute,
+
             string id,
 
+            Outputs.GetZeroTrustAccessApplicationLandingPageDesignResult landingPageDesign,
+
+            string logoUrl,
+
             string name,
+
+            bool optionsPreflightBypass,
+
+            bool pathCookieAttribute,
+
+            ImmutableArray<Outputs.GetZeroTrustAccessApplicationPolicyResult> policies,
+
+            Outputs.GetZeroTrustAccessApplicationSaasAppResult saasApp,
+
+            string sameSiteCookieAttribute,
+
+            Outputs.GetZeroTrustAccessApplicationScimConfigResult scimConfig,
+
+            ImmutableArray<string> selfHostedDomains,
+
+            bool serviceAuth401Redirect,
+
+            string sessionDuration,
+
+            bool skipAppLauncherLoginPage,
+
+            bool skipInterstitial,
+
+            ImmutableArray<string> tags,
+
+            ImmutableArray<Outputs.GetZeroTrustAccessApplicationTargetCriteriaResult> targetCriterias,
+
+            string type,
+
+            string updatedAt,
 
             string? zoneId)
         {
             AccountId = accountId;
+            AllowAuthenticateViaWarp = allowAuthenticateViaWarp;
+            AllowedIdps = allowedIdps;
+            AppId = appId;
+            AppLauncherLogoUrl = appLauncherLogoUrl;
+            AppLauncherVisible = appLauncherVisible;
             Aud = aud;
+            AutoRedirectToIdentity = autoRedirectToIdentity;
+            BgColor = bgColor;
+            CorsHeaders = corsHeaders;
+            CreatedAt = createdAt;
+            CustomDenyMessage = customDenyMessage;
+            CustomDenyUrl = customDenyUrl;
+            CustomNonIdentityDenyUrl = customNonIdentityDenyUrl;
+            CustomPages = customPages;
+            Destinations = destinations;
             Domain = domain;
+            EnableBindingCookie = enableBindingCookie;
+            Filter = filter;
+            FooterLinks = footerLinks;
+            HeaderBgColor = headerBgColor;
+            HttpOnlyCookieAttribute = httpOnlyCookieAttribute;
             Id = id;
+            LandingPageDesign = landingPageDesign;
+            LogoUrl = logoUrl;
             Name = name;
+            OptionsPreflightBypass = optionsPreflightBypass;
+            PathCookieAttribute = pathCookieAttribute;
+            Policies = policies;
+            SaasApp = saasApp;
+            SameSiteCookieAttribute = sameSiteCookieAttribute;
+            ScimConfig = scimConfig;
+            SelfHostedDomains = selfHostedDomains;
+            ServiceAuth401Redirect = serviceAuth401Redirect;
+            SessionDuration = sessionDuration;
+            SkipAppLauncherLoginPage = skipAppLauncherLoginPage;
+            SkipInterstitial = skipInterstitial;
+            Tags = tags;
+            TargetCriterias = targetCriterias;
+            Type = type;
+            UpdatedAt = updatedAt;
             ZoneId = zoneId;
         }
     }

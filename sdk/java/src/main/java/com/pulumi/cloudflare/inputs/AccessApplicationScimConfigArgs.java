@@ -21,14 +21,14 @@ public final class AccessApplicationScimConfigArgs extends com.pulumi.resources.
     public static final AccessApplicationScimConfigArgs Empty = new AccessApplicationScimConfigArgs();
 
     /**
-     * Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
+     * Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
      * 
      */
     @Import(name="authentication")
     private @Nullable Output<AccessApplicationScimConfigAuthenticationArgs> authentication;
 
     /**
-     * @return Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
+     * @return Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
      * 
      */
     public Optional<Output<AccessApplicationScimConfigAuthenticationArgs>> authentication() {
@@ -66,14 +66,14 @@ public final class AccessApplicationScimConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
+     * The UID of the IdP to use as the source for SCIM resources to provision to this application.
      * 
      */
     @Import(name="idpUid", required=true)
     private Output<String> idpUid;
 
     /**
-     * @return The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
+     * @return The UID of the IdP to use as the source for SCIM resources to provision to this application.
      * 
      */
     public Output<String> idpUid() {
@@ -140,7 +140,7 @@ public final class AccessApplicationScimConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param authentication Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
+         * @param authentication Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class AccessApplicationScimConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param authentication Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
+         * @param authentication Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class AccessApplicationScimConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param idpUid The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
+         * @param idpUid The UID of the IdP to use as the source for SCIM resources to provision to this application.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class AccessApplicationScimConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param idpUid The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
+         * @param idpUid The UID of the IdP to use as the source for SCIM resources to provision to this application.
          * 
          * @return builder
          * 

@@ -8,113 +8,34 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Tunnel configuration resource.
-//
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleTunnel, err := cloudflare.NewZeroTrustTunnelCloudflared(ctx, "example_tunnel", &cloudflare.ZeroTrustTunnelCloudflaredArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("example_tunnel"),
-//				Secret:    pulumi.String("<32 character secret>"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewTunnelConfig(ctx, "example_config", &cloudflare.TunnelConfigArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				TunnelId:  exampleTunnel.ID(),
-//				Config: &cloudflare.TunnelConfigConfigArgs{
-//					WarpRouting: &cloudflare.TunnelConfigConfigWarpRoutingArgs{
-//						Enabled: pulumi.Bool(true),
-//					},
-//					OriginRequest: &cloudflare.TunnelConfigConfigOriginRequestArgs{
-//						ConnectTimeout:         pulumi.String("1m0s"),
-//						TlsTimeout:             pulumi.String("1m0s"),
-//						TcpKeepAlive:           pulumi.String("1m0s"),
-//						NoHappyEyeballs:        pulumi.Bool(false),
-//						KeepAliveConnections:   pulumi.Int(1024),
-//						KeepAliveTimeout:       pulumi.String("1m0s"),
-//						HttpHostHeader:         pulumi.String("baz"),
-//						OriginServerName:       pulumi.String("foobar"),
-//						CaPool:                 pulumi.String("/path/to/unsigned/ca/pool"),
-//						NoTlsVerify:            pulumi.Bool(false),
-//						DisableChunkedEncoding: pulumi.Bool(false),
-//						BastionMode:            pulumi.Bool(false),
-//						ProxyAddress:           pulumi.String("10.0.0.1"),
-//						ProxyPort:              pulumi.Int(8123),
-//						ProxyType:              pulumi.String("socks"),
-//						IpRules: cloudflare.TunnelConfigConfigOriginRequestIpRuleArray{
-//							&cloudflare.TunnelConfigConfigOriginRequestIpRuleArgs{
-//								Prefix: pulumi.String("/web"),
-//								Ports: pulumi.IntArray{
-//									pulumi.Int(80),
-//									pulumi.Int(443),
-//								},
-//								Allow: pulumi.Bool(false),
-//							},
-//						},
-//					},
-//					IngressRules: cloudflare.TunnelConfigConfigIngressRuleArray{
-//						&cloudflare.TunnelConfigConfigIngressRuleArgs{
-//							Hostname: pulumi.String("foo"),
-//							Path:     pulumi.String("/bar"),
-//							Service:  pulumi.String("http://10.0.0.2:8080"),
-//							OriginRequest: &cloudflare.TunnelConfigConfigIngressRuleOriginRequestArgs{
-//								ConnectTimeout: pulumi.String("2m0s"),
-//								Access: &cloudflare.TunnelConfigConfigIngressRuleOriginRequestAccessArgs{
-//									Required: pulumi.Bool(true),
-//									TeamName: pulumi.String("terraform"),
-//									AudTags: pulumi.StringArray{
-//										pulumi.String("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
-//									},
-//								},
-//							},
-//						},
-//						&cloudflare.TunnelConfigConfigIngressRuleArgs{
-//							Service: pulumi.String("https://10.0.0.3:8081"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/tunnelConfig:TunnelConfig example <account_id>/<tunnel_id>
+// $ pulumi import cloudflare:index/tunnelConfig:TunnelConfig example '<account_id>/<tunnel_id>'
 // ```
+//
+// Deprecated: cloudflare.index/tunnelconfig.TunnelConfig has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredconfig.ZeroTrustTunnelCloudflaredConfig
 type TunnelConfig struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Configuration block for Tunnel Configuration.
-	Config TunnelConfigConfigOutput `pulumi:"config"`
-	// Identifier of the Tunnel to target for this configuration.
+	// The tunnel configuration and ingress rules.
+	Config    TunnelConfigConfigOutput `pulumi:"config"`
+	CreatedAt pulumi.StringOutput      `pulumi:"createdAt"`
+	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+	// Available values: "local", "cloudflare".
+	Source pulumi.StringOutput `pulumi:"source"`
+	// UUID of the tunnel.
 	TunnelId pulumi.StringOutput `pulumi:"tunnelId"`
+	// The version of the Tunnel Configuration.
+	Version pulumi.IntOutput `pulumi:"version"`
 }
 
 // NewTunnelConfig registers a new resource with the given unique name, arguments, and options.
@@ -127,12 +48,15 @@ func NewTunnelConfig(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-	if args.Config == nil {
-		return nil, errors.New("invalid value for required argument 'Config'")
-	}
 	if args.TunnelId == nil {
 		return nil, errors.New("invalid value for required argument 'TunnelId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/tunnelConfig:TunnelConfig"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TunnelConfig
 	err := ctx.RegisterResource("cloudflare:index/tunnelConfig:TunnelConfig", name, args, &resource, opts...)
@@ -156,21 +80,33 @@ func GetTunnelConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TunnelConfig resources.
 type tunnelConfigState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// Configuration block for Tunnel Configuration.
-	Config *TunnelConfigConfig `pulumi:"config"`
-	// Identifier of the Tunnel to target for this configuration.
+	// The tunnel configuration and ingress rules.
+	Config    *TunnelConfigConfig `pulumi:"config"`
+	CreatedAt *string             `pulumi:"createdAt"`
+	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+	// Available values: "local", "cloudflare".
+	Source *string `pulumi:"source"`
+	// UUID of the tunnel.
 	TunnelId *string `pulumi:"tunnelId"`
+	// The version of the Tunnel Configuration.
+	Version *int `pulumi:"version"`
 }
 
 type TunnelConfigState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// Configuration block for Tunnel Configuration.
-	Config TunnelConfigConfigPtrInput
-	// Identifier of the Tunnel to target for this configuration.
+	// The tunnel configuration and ingress rules.
+	Config    TunnelConfigConfigPtrInput
+	CreatedAt pulumi.StringPtrInput
+	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+	// Available values: "local", "cloudflare".
+	Source pulumi.StringPtrInput
+	// UUID of the tunnel.
 	TunnelId pulumi.StringPtrInput
+	// The version of the Tunnel Configuration.
+	Version pulumi.IntPtrInput
 }
 
 func (TunnelConfigState) ElementType() reflect.Type {
@@ -178,21 +114,27 @@ func (TunnelConfigState) ElementType() reflect.Type {
 }
 
 type tunnelConfigArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// Configuration block for Tunnel Configuration.
-	Config TunnelConfigConfig `pulumi:"config"`
-	// Identifier of the Tunnel to target for this configuration.
+	// The tunnel configuration and ingress rules.
+	Config *TunnelConfigConfig `pulumi:"config"`
+	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+	// Available values: "local", "cloudflare".
+	Source *string `pulumi:"source"`
+	// UUID of the tunnel.
 	TunnelId string `pulumi:"tunnelId"`
 }
 
 // The set of arguments for constructing a TunnelConfig resource.
 type TunnelConfigArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringInput
-	// Configuration block for Tunnel Configuration.
-	Config TunnelConfigConfigInput
-	// Identifier of the Tunnel to target for this configuration.
+	// The tunnel configuration and ingress rules.
+	Config TunnelConfigConfigPtrInput
+	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+	// Available values: "local", "cloudflare".
+	Source pulumi.StringPtrInput
+	// UUID of the tunnel.
 	TunnelId pulumi.StringInput
 }
 
@@ -283,19 +225,34 @@ func (o TunnelConfigOutput) ToTunnelConfigOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The account identifier to target for the resource.
+// Identifier
 func (o TunnelConfigOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TunnelConfig) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Configuration block for Tunnel Configuration.
+// The tunnel configuration and ingress rules.
 func (o TunnelConfigOutput) Config() TunnelConfigConfigOutput {
 	return o.ApplyT(func(v *TunnelConfig) TunnelConfigConfigOutput { return v.Config }).(TunnelConfigConfigOutput)
 }
 
-// Identifier of the Tunnel to target for this configuration.
+func (o TunnelConfigOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *TunnelConfig) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+// Available values: "local", "cloudflare".
+func (o TunnelConfigOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v *TunnelConfig) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
+}
+
+// UUID of the tunnel.
 func (o TunnelConfigOutput) TunnelId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TunnelConfig) pulumi.StringOutput { return v.TunnelId }).(pulumi.StringOutput)
+}
+
+// The version of the Tunnel Configuration.
+func (o TunnelConfigOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v *TunnelConfig) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
 }
 
 type TunnelConfigArrayOutput struct{ *pulumi.OutputState }

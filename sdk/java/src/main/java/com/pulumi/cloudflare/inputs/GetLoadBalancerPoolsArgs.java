@@ -3,13 +3,11 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolsFilterArgs;
-import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolsPoolArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,14 +18,14 @@ public final class GetLoadBalancerPoolsArgs extends com.pulumi.resources.InvokeA
     public static final GetLoadBalancerPoolsArgs Empty = new GetLoadBalancerPoolsArgs();
 
     /**
-     * The account identifier to target for the datasource lookups.
+     * Identifier
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the datasource lookups.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
@@ -35,41 +33,41 @@ public final class GetLoadBalancerPoolsArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
+     * Max items to fetch, default: 1000
      * 
      */
-    @Import(name="filter")
-    private @Nullable Output<GetLoadBalancerPoolsFilterArgs> filter;
+    @Import(name="maxItems")
+    private @Nullable Output<Integer> maxItems;
 
     /**
-     * @return One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
+     * @return Max items to fetch, default: 1000
      * 
      */
-    public Optional<Output<GetLoadBalancerPoolsFilterArgs>> filter() {
-        return Optional.ofNullable(this.filter);
+    public Optional<Output<Integer>> maxItems() {
+        return Optional.ofNullable(this.maxItems);
     }
 
     /**
-     * A list of Load Balancer Pools details.
+     * The ID of the Monitor to use for checking the health of origins within this pool.
      * 
      */
-    @Import(name="pools")
-    private @Nullable Output<List<GetLoadBalancerPoolsPoolArgs>> pools;
+    @Import(name="monitor")
+    private @Nullable Output<String> monitor;
 
     /**
-     * @return A list of Load Balancer Pools details.
+     * @return The ID of the Monitor to use for checking the health of origins within this pool.
      * 
      */
-    public Optional<Output<List<GetLoadBalancerPoolsPoolArgs>>> pools() {
-        return Optional.ofNullable(this.pools);
+    public Optional<Output<String>> monitor() {
+        return Optional.ofNullable(this.monitor);
     }
 
     private GetLoadBalancerPoolsArgs() {}
 
     private GetLoadBalancerPoolsArgs(GetLoadBalancerPoolsArgs $) {
         this.accountId = $.accountId;
-        this.filter = $.filter;
-        this.pools = $.pools;
+        this.maxItems = $.maxItems;
+        this.monitor = $.monitor;
     }
 
     public static Builder builder() {
@@ -91,7 +89,7 @@ public final class GetLoadBalancerPoolsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param accountId The account identifier to target for the datasource lookups.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -102,7 +100,7 @@ public final class GetLoadBalancerPoolsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param accountId The account identifier to target for the datasource lookups.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -112,55 +110,45 @@ public final class GetLoadBalancerPoolsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param filter One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
+         * @param maxItems Max items to fetch, default: 1000
          * 
          * @return builder
          * 
          */
-        public Builder filter(@Nullable Output<GetLoadBalancerPoolsFilterArgs> filter) {
-            $.filter = filter;
+        public Builder maxItems(@Nullable Output<Integer> maxItems) {
+            $.maxItems = maxItems;
             return this;
         }
 
         /**
-         * @param filter One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
+         * @param maxItems Max items to fetch, default: 1000
          * 
          * @return builder
          * 
          */
-        public Builder filter(GetLoadBalancerPoolsFilterArgs filter) {
-            return filter(Output.of(filter));
+        public Builder maxItems(Integer maxItems) {
+            return maxItems(Output.of(maxItems));
         }
 
         /**
-         * @param pools A list of Load Balancer Pools details.
+         * @param monitor The ID of the Monitor to use for checking the health of origins within this pool.
          * 
          * @return builder
          * 
          */
-        public Builder pools(@Nullable Output<List<GetLoadBalancerPoolsPoolArgs>> pools) {
-            $.pools = pools;
+        public Builder monitor(@Nullable Output<String> monitor) {
+            $.monitor = monitor;
             return this;
         }
 
         /**
-         * @param pools A list of Load Balancer Pools details.
+         * @param monitor The ID of the Monitor to use for checking the health of origins within this pool.
          * 
          * @return builder
          * 
          */
-        public Builder pools(List<GetLoadBalancerPoolsPoolArgs> pools) {
-            return pools(Output.of(pools));
-        }
-
-        /**
-         * @param pools A list of Load Balancer Pools details.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder pools(GetLoadBalancerPoolsPoolArgs... pools) {
-            return pools(List.of(pools));
+        public Builder monitor(String monitor) {
+            return monitor(Output.of(monitor));
         }
 
         public GetLoadBalancerPoolsArgs build() {

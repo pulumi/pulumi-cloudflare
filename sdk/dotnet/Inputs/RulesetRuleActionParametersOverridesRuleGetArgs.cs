@@ -13,31 +13,32 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersOverridesRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+        /// The action to override the rule with.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// Defines if the current rule-level override enables or disables the rule.
+        /// Whether to enable execution of the rule.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Rule ID to apply the override to.
+        /// The ID of the rule to override.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+        /// The score threshold to use for the rule.
         /// </summary>
         [Input("scoreThreshold")]
         public Input<int>? ScoreThreshold { get; set; }
 
         /// <summary>
-        /// Sensitivity level for a ruleset rule override.
+        /// The sensitivity level to use for the rule.
+        /// Available values: "default", "medium", "low", "eoff".
         /// </summary>
         [Input("sensitivityLevel")]
         public Input<string>? SensitivityLevel { get; set; }
